@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: A9C98F8F-90F2-4BF4-A234-31966FBB975B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchcertificate
 schema: 2.0.0
 ---
 
-# Get-AzureBatchCertificate
+# Get-AzBatchCertificate
 
 ## SYNOPSIS
 Gets the certificates in a Batch account.
@@ -15,18 +15,18 @@ Gets the certificates in a Batch account.
 
 ### ODataFilter (Default)
 ```
-Get-AzureBatchCertificate [-Filter <String>] [-MaxCount <Int32>] [-Select <String>]
+Get-AzBatchCertificate [-Filter <String>] [-MaxCount <Int32>] [-Select <String>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Thumbprint
 ```
-Get-AzureBatchCertificate [-ThumbprintAlgorithm] <String> [-Thumbprint] <String> [-Select <String>]
+Get-AzBatchCertificate [-ThumbprintAlgorithm] <String> [-Thumbprint] <String> [-Select <String>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureBatchCertificate** cmdlet gets the certificates in the Azure Batch account that the *BatchContext* parameter specifies.
+The **Get-AzBatchCertificate** cmdlet gets the certificates in the Azure Batch account that the *BatchContext* parameter specifies.
 To obtain a particular certificate, specify the *ThumbprintAlgorithm* and *Thumbprint* parameters.
 Specify the *Filter* parameter to get the certificates that match an Open Data Protocol (OData) filter.
 
@@ -34,7 +34,7 @@ Specify the *Filter* parameter to get the certificates that match an Open Data P
 
 ### Example 1: Get a certificate by thumbprint
 ```
-PS C:\>Get-AzureBatchCertificate -ThumbprintAlgorithm "sha1" - Thumbprint "C1E494A415149C5F211C4778B52F2E834A07247C" -BatchContext $Context
+PS C:\>Get-AzBatchCertificate -ThumbprintAlgorithm "sha1" - Thumbprint "C1E494A415149C5F211C4778B52F2E834A07247C" -BatchContext $Context
 Thumbprint                  : c1e494a415149c5f211c4778b52f2e834a07247c
 ThumbprintAlgorithm         : sha1
 Url                         : https://pstests.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=C1E494A415149C5F211C4778B52F2E834A07247
@@ -60,7 +60,7 @@ The certificate thumbprint algorithm is sha1.
 
 ### Example 2: Get filtered certificates
 ```
-PS C:\>Get-AzureBatchCertificate -Filter "state eq 'active'" -BatchContext $Context
+PS C:\>Get-AzBatchCertificate -Filter "state eq 'active'" -BatchContext $Context
 Thumbprint                  : 025b351b087a084c5067f5e71eff8591970323f9
 ThumbprintAlgorithm         : sha1
 Url                         : https://pstests.eastus.batch.azure.com/certificates(thumbprintAlgorithm=sha1,thumbprint=025b351b087a084c5067f5e71eff8591970323f9) 
@@ -105,7 +105,7 @@ The *Filter* parameter specifies the state.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -232,12 +232,12 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[New-AzureBatchCertificate](./New-AzureBatchCertificate.md)
+[New-AzBatchCertificate](./New-AzBatchCertificate.md)
 
-[Remove-AzureBatchCertificate](./Remove-AzureBatchCertificate.md)
+[Remove-AzBatchCertificate](./Remove-AzBatchCertificate.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

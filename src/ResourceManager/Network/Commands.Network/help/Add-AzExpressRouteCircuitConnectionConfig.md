@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 7b4a8c9f-874c-4a27-b87e-c8ad7e73188d
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermexpressroutecircuitconnectionconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azexpressroutecircuitconnectionconfig
 schema: 2.0.0
 ---
 
-# Add-AzureRmExpressRouteCircuitConnectionConfig
+# Add-AzExpressRouteCircuitConnectionConfig
 
 ## SYNOPSIS
 Adds a circuit connection configuration to Private Peering of an Express Route Circuit. 
@@ -15,40 +15,40 @@ Adds a circuit connection configuration to Private Peering of an Express Route C
 
 ### SetByResource (Default)
 ```
-Add-AzureRmExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
+Add-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
  [-AddressPrefix] <String> [-AuthorizationKey <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-Add-AzureRmExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
+Add-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
  [-PeerExpressRouteCircuitPeering] <String> [-AddressPrefix] <String> [-AuthorizationKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmExpressRouteCircuitConnectionConfig** cmdlet adds a circuit connection configuration to
+The **Add-AzExpressRouteCircuitConnectionConfig** cmdlet adds a circuit connection configuration to
 private peering for an ExpressRoute circuit. This allows peering two Express Route Circuits 
-across regions or subscriptions.Note that, after running **Add-AzureRmExpressRouteCircuitPeeringConfig**, 
-you must call the Set-AzureRmExpressRouteCircuit cmdlet to activate the configuration.
+across regions or subscriptions.Note that, after running **Add-AzExpressRouteCircuitPeeringConfig**, 
+you must call the Set-AzExpressRouteCircuit cmdlet to activate the configuration.
 
 ## EXAMPLES
 
 ### Example 1: Add a circuit connection resource to an existing ExpressRoute circuit
 ```
-$circuit_init = Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
-$circuit_peer = Get-AzureRmExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
+$circuit_init = Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
+$circuit_peer = Get-AzExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
 $addressSpace = '60.0.0.0/29'
-Add-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit_init
+Add-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 ```
 
 ### Example 2: Add a circuit connection configuration using Piping to an existing ExpressRoute Circuit
 ```
-$circuit_peer = Get-AzureRmExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
+$circuit_peer = Get-AzExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
 $addressSpace = '60.0.0.0/29'
-Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Add-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey |Set-AzureRmExpressRouteCircuit
+Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Add-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey |Set-AzExpressRouteCircuit
 ```
 
 ## PARAMETERS
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 
 ### -ExpressRouteCircuit
 The ExpressRoute circuit being modified. This is Azure object returned by the
-**Get-AzureRmExpressRouteCircuit** cmdlet.
+**Get-AzExpressRouteCircuit** cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
@@ -192,16 +192,16 @@ Parameters: ExpressRouteCircuit (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)
+[Get-AzExpressRouteCircuit](Get-AzExpressRouteCircuit.md)
 
-[Get-AzureRmExpressRouteCircuitConnectionConfig](Get-AzureRmExpressRouteCircuitConnectionConfig.md)
+[Get-AzExpressRouteCircuitConnectionConfig](Get-AzExpressRouteCircuitConnectionConfig.md)
 
-[Remove-AzureRmExpressRouteCircuitConnectionConfig](Remove-AzureRmExpressRouteCircuitConnectionConfig.md)
+[Remove-AzExpressRouteCircuitConnectionConfig](Remove-AzExpressRouteCircuitConnectionConfig.md)
 
-[Set-AzureRmExpressRouteCircuitConnectionConfig](Set-AzureRmExpressRouteCircuitConnectionConfig.md)
+[Set-AzExpressRouteCircuitConnectionConfig](Set-AzExpressRouteCircuitConnectionConfig.md)
 
-[New-AzureRmExpressRouteCircuitConnectionConfig](New-AzureRmExpressRouteCircuitConnectionConfig.md)
+[New-AzExpressRouteCircuitConnectionConfig](New-AzExpressRouteCircuitConnectionConfig.md)
 
-[Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)
+[Set-AzExpressRouteCircuit](Set-AzExpressRouteCircuit.md)
 
-[Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)
+[Get-AzExpressRouteCircuit](Get-AzExpressRouteCircuit.md)

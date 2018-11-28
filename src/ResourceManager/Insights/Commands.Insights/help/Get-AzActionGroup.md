@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 1CA26790-C791-4BFD-B986-70F28E3B095B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermactiongroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azactiongroup
 schema: 2.0.0
 ---
 
-# Get-AzureRmActionGroup
+# Get-AzActionGroup
 
 ## SYNOPSIS
 Gets action group(s).
@@ -15,38 +15,37 @@ Gets action group(s).
 
 ### BySubscriptionOrResourceGroup (Default)
 ```
-Get-AzureRmActionGroup [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzActionGroup [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmActionGroup -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzActionGroup -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmActionGroup** cmdlet gets one or more action groups.
+The **Get-AzActionGroup** cmdlet gets one or more action groups.
 
 ## EXAMPLES
 
 ### Example 1: Get an action group by subscription ID
 ```
-PS C:\>Get-AzureRmActionGroup
+PS C:\>Get-AzActionGroup
 ```
 
 This command lists all the action group for the current subscription.
 
 ### Example 2: Get action groups for the given resource group
 ```
-PS C:\>Get-AzureRmActionGroup -ResourceGroup "Default-activityLogAlerts"
+PS C:\>Get-AzActionGroup -ResourceGroup "Default-activityLogAlerts"
 ```
 
 This command lists action groups for the given resource group.
 
 ### Example 3: Get an action group.
 ```
-PS C:\>Get-AzureRmActionGroup -ResourceGroup "Default-activityLogAlerts" -Name "actionGroup1"
+PS C:\>Get-AzActionGroup -ResourceGroup "Default-activityLogAlerts" -Name "actionGroup1"
 ```
 
 This command lists one (a list with a single element) action group.
@@ -57,7 +56,7 @@ This command lists one (a list with a single element) action group.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -125,6 +124,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmActionGroup](./Set-AzureRmActionGroup.md)
-[Remove-AzureRmActionGroup](./Remove-AzureRmActionGroup.md)
-[New-AzureRmActionGroupReceiver](./AzureRmActionGroupReceiver.md)
+[Set-AzActionGroup](./Set-AzActionGroup.md)
+[Remove-AzActionGroup](./Remove-AzActionGroup.md)
+[New-AzActionGroupReceiver](./AzureRmActionGroupReceiver.md)

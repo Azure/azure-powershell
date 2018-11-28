@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 064196C3-ABF3-4F3A-A4AB-EB0D27098C70
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmextension
 schema: 2.0.0
 ---
 
-# Set-AzureRmVMExtension
+# Set-AzVMExtension
 
 ## SYNOPSIS
 Updates extension properties or adds an extension to a virtual machine.
@@ -15,7 +15,7 @@ Updates extension properties or adds an extension to a virtual machine.
 
 ### Settings (Default)
 ```
-Set-AzureRmVMExtension -Publisher <String> -ExtensionType <String> [-Settings <Hashtable>]
+Set-AzVMExtension -Publisher <String> -ExtensionType <String> [-Settings <Hashtable>]
  [-ProtectedSettings <Hashtable>] [-AsJob] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -23,14 +23,14 @@ Set-AzureRmVMExtension -Publisher <String> -ExtensionType <String> [-Settings <H
 
 ### SettingString
 ```
-Set-AzureRmVMExtension -Publisher <String> -ExtensionType <String> [-SettingString <String>]
+Set-AzVMExtension -Publisher <String> -ExtensionType <String> [-SettingString <String>]
  [-ProtectedSettingString <String>] [-AsJob] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMExtension** cmdlet updates properties for existing Virtual Machine Extensions or adds an extension to a virtual machine.
+The **Set-AzVMExtension** cmdlet updates properties for existing Virtual Machine Extensions or adds an extension to a virtual machine.
 
 ## EXAMPLES
 
@@ -38,7 +38,7 @@ The **Set-AzureRmVMExtension** cmdlet updates properties for existing Virtual Ma
 ```
 PS C:\> $Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
 PS C:\> $ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
-PS C:\> Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "ContosoTest" -Publisher "Contoso.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion "1.1" -Settings $Settings -ProtectedSettings $ProtectedSettings;
+PS C:\> Set-AzVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "ContosoTest" -Publisher "Contoso.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion "1.1" -Settings $Settings -ProtectedSettings $ProtectedSettings;
 ```
 
 The first two commands use standard Windows PowerShell syntax to create hash tables, and then stores those hash tables in the $Settings and $ProtectedSettings variables.
@@ -51,7 +51,7 @@ The command specifies other required information that includes the publisher and
 ```
 PS C:\> $SettingsString = '{"fileUris":[],"commandToExecute":""}';
 PS C:\> $ProtectedSettingsString = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
-PS C:\> Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "CustomScriptExtension" -Publisher "Contoso.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion "1.1" -SettingString $SettingsString -ProtectedSettingString $ProtectedSettingsString ;
+PS C:\> Set-AzVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "CustomScriptExtension" -Publisher "Contoso.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion "1.1" -SettingString $SettingsString -ProtectedSettingString $ProtectedSettingsString ;
 ```
 
 The first two commands create strings that contain settings, and then stores them in the $SettingsString and $ProtectedSettingsString variables.
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -344,8 +344,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMExtension](./Get-AzureRmVMExtension.md)
+[Get-AzVMExtension](./Get-AzVMExtension.md)
 
-[Remove-AzureRmVMExtension](./Remove-AzureRmVMExtension.md)
+[Remove-AzVMExtension](./Remove-AzVMExtension.md)
 
 

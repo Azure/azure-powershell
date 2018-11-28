@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: BBC85035-DCF7-44FA-A747-A1563A55B820
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebappbackuplist
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebappbackuplist
 schema: 2.0.0
 ---
 
-# Get-AzureRmWebAppBackupList
+# Get-AzWebAppBackupList
 
 ## SYNOPSIS
 
@@ -14,23 +14,23 @@ schema: 2.0.0
 
 ### FromResourceName
 ```
-Get-AzureRmWebAppBackupList [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
+Get-AzWebAppBackupList [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromWebApp
 ```
-Get-AzureRmWebAppBackupList [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzWebAppBackupList [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmWebAppBackupList** cmdlet gets a list of backups for an Azure Web App.
+The **Get-AzWebAppBackupList** cmdlet gets a list of backups for an Azure Web App.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>Get-AzureRmWebAppBackupList -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard"
+PS C:\>Get-AzWebAppBackupList -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard"
 ```
 
 This command returns a backup list pertaining to WebApp WebAppStandard associated with the resource group ContosoResourceGroup.
@@ -41,7 +41,7 @@ This command returns a backup list pertaining to WebApp WebAppStandard associate
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

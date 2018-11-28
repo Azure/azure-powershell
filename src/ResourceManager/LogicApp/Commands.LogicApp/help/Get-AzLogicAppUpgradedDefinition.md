@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: B7FED447-C398-47D7-AF1B-A3E4FDAD0B41
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermlogicappupgradeddefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azlogicappupgradeddefinition
 schema: 2.0.0
 ---
 
-# Get-AzureRmLogicAppUpgradedDefinition
+# Get-AzLogicAppUpgradedDefinition
 
 ## SYNOPSIS
 Gets the upgraded definition for a logic app.
@@ -14,12 +14,12 @@ Gets the upgraded definition for a logic app.
 ## SYNTAX
 
 ```
-Get-AzureRmLogicAppUpgradedDefinition -ResourceGroupName <String> -Name <String> -TargetSchemaVersion <String>
+Get-AzLogicAppUpgradedDefinition -ResourceGroupName <String> -Name <String> -TargetSchemaVersion <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmLogicAppUpgradedDefinition** cmdlet gets the upgraded definition for the schema version and logic app from a resource group.
+The **Get-AzLogicAppUpgradedDefinition** cmdlet gets the upgraded definition for the schema version and logic app from a resource group.
 This cmdlet returns an object that represents the definition of the upgraded logic app.
 Specify the resource group name, logic app name, and target schema version.
 This module supports dynamic parameters.
@@ -31,7 +31,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Get a logic app upgraded definition
 ```
-PS C:\>$UpgradedDefinition = Get-AzureRmLogicAppUpgradedDefinition -ResourceGroupName "ResourceGroup11" -Name "LogicApp01" -TargetSchemaVersion "2016-06-01"
+PS C:\>$UpgradedDefinition = Get-AzLogicAppUpgradedDefinition -ResourceGroupName "ResourceGroup11" -Name "LogicApp01" -TargetSchemaVersion "2016-06-01"
 $UpgradedDefinition.ToString()
 {
 
@@ -186,7 +186,7 @@ The second command displays the contents of $UpgradedDefinition as a string.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -257,6 +257,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmLogicApp](./Get-AzureRmLogicApp.md)
+[Get-AzLogicApp](./Get-AzLogicApp.md)
 
 

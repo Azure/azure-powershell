@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 4DC26C26-6162-4A15-BFCB-4D2B6B52DD81
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermadserviceprincipal
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadserviceprincipal
 schema: 2.0.0
 ---
 
-# Get-AzureRmADServicePrincipal
+# Get-AzADServicePrincipal
 
 ## SYNOPSIS
 Filters active directory service principals.
@@ -15,43 +15,43 @@ Filters active directory service principals.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzureRmADServicePrincipal [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>]
+Get-AzADServicePrincipal [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>]
  [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
-Get-AzureRmADServicePrincipal -DisplayNameBeginsWith <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzADServicePrincipal -DisplayNameBeginsWith <String> [-DefaultProfile <IAzureContextContainer>]
  [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzureRmADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureContextContainer>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Get-AzureRmADServicePrincipal -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+Get-AzADServicePrincipal -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
-Get-AzureRmADServicePrincipal -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADServicePrincipal -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ApplicationObjectParameterSet
 ```
-Get-AzureRmADServicePrincipal -ApplicationObject <PSADApplication> [-DefaultProfile <IAzureContextContainer>]
+Get-AzADServicePrincipal -ApplicationObject <PSADApplication> [-DefaultProfile <IAzureContextContainer>]
  [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### SPNParameterSet
 ```
-Get-AzureRmADServicePrincipal -ServicePrincipalName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzADServicePrincipal -ServicePrincipalName <String> [-DefaultProfile <IAzureContextContainer>]
  [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
@@ -63,7 +63,7 @@ Filters active directory service principals.
 ### Example 1 - List AD service principals
 
 ```
-PS C:\> Get-AzureRmADServicePrincipal
+PS C:\> Get-AzADServicePrincipal
 ```
 
 Lists all AD service principals in a tenant.
@@ -71,7 +71,7 @@ Lists all AD service principals in a tenant.
 ### Example 2 - List AD service principals using paging
 
 ```
-PS C:\> Get-AzureRmADServicePrincipal -First 100
+PS C:\> Get-AzADServicePrincipal -First 100
 ```
 
 Lists the first 100 AD service principals in a tenant.
@@ -79,7 +79,7 @@ Lists the first 100 AD service principals in a tenant.
 ### Example 3 - List service principals by SPN
 
 ```
-PS C:\> Get-AzureRmADServicePrincipal -ServicePrincipalName 36f81fc3-b00f-48cd-8218-3879f51ff39f
+PS C:\> Get-AzADServicePrincipal -ServicePrincipalName 36f81fc3-b00f-48cd-8218-3879f51ff39f
 ```
 
 Lists service principals with the SPN '36f81fc3-b00f-48cd-8218-3879f51ff39f'.
@@ -87,7 +87,7 @@ Lists service principals with the SPN '36f81fc3-b00f-48cd-8218-3879f51ff39f'.
 ### Example 4 - List service principals by search string
 
 ```
-PS C:\> Get-AzureRmADServicePrincipal -SearchString "Web"
+PS C:\> Get-AzADServicePrincipal -SearchString "Web"
 ```
 
 Lists all AD service principals whose display name start with "Web".
@@ -95,10 +95,10 @@ Lists all AD service principals whose display name start with "Web".
 ### Example 5 - List service principals by piping
 
 ```
-PS C:\> Get-AzureRmADApplication -ObjectId 39e64ec6-569b-4030-8e1c-c3c519a05d69 | Get-AzureRmADServicePrincipal
+PS C:\> Get-AzADApplication -ObjectId 39e64ec6-569b-4030-8e1c-c3c519a05d69 | Get-AzADServicePrincipal
 ```
 
-Gets the AD application with object id '39e64ec6-569b-4030-8e1c-c3c519a05d69' and pipes it to the Get-AzureRmADServicePrincipal cmdlet to list all service principals for that application.
+Gets the AD application with object id '39e64ec6-569b-4030-8e1c-c3c519a05d69' and pipes it to the Get-AzADServicePrincipal cmdlet to list all service principals for that application.
 
 ## PARAMETERS
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -177,36 +177,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -First
-The maximum number of objects to return.
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncludeTotalCount
-Reports the number of objects in the data set. Currently, this parameter does nothing.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ObjectId
 Object id of the service principal.
 
@@ -237,8 +207,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -IncludeTotalCount
+Reports the number of objects in the data set. Currently, this parameter does nothing.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Skip
 Ignores the first N objects and then gets the remaining objects.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -First
+The maximum number of objects to return.
 
 ```yaml
 Type: System.UInt64
@@ -272,13 +272,13 @@ Parameters: ApplicationObject (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmADServicePrincipal](./New-AzureRmADServicePrincipal.md)
+[New-AzADServicePrincipal](./New-AzADServicePrincipal.md)
 
-[Set-AzureRmADServicePrincipal](./Set-AzureRmADServicePrincipal.md)
+[Set-AzADServicePrincipal](./Set-AzADServicePrincipal.md)
 
-[Remove-AzureRmADServicePrincipal](./Remove-AzureRmADServicePrincipal.md)
+[Remove-AzADServicePrincipal](./Remove-AzADServicePrincipal.md)
 
-[Get-AzureRmADApplication](./Get-AzureRmADApplication.md)
+[Get-AzADApplication](./Get-AzADApplication.md)
 
-[Get-AzureRmADSpCredential](./Get-AzureRmADSpCredential.md)
+[Get-AzADSpCredential](./Get-AzADSpCredential.md)
 

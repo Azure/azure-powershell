@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 ms.assetid: A22D930B-5026-4915-B498-EE31153E1E9A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/remove-azurermrediscache
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/remove-azrediscache
 schema: 2.0.0
 ---
 
-# Remove-AzureRmRedisCache
+# Remove-AzRedisCache
 
 ## SYNOPSIS
 Removes a Redis Cache.
@@ -14,18 +14,18 @@ Removes a Redis Cache.
 ## SYNTAX
 
 ```
-Remove-AzureRmRedisCache [-ResourceGroupName <String>] -Name <String> [-Force] [-PassThru]
+Remove-AzRedisCache [-ResourceGroupName <String>] -Name <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRedisCache** cmdlet removes an Azure Redis Cache.
+The **Remove-AzRedisCache** cmdlet removes an Azure Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1: Remove a Redis Cache and return the result
 ```
-PS C:\>Remove-AzureRmRedisCache -ResourceGroupName "ResourceGroup03" -Name "myCache" -Force -PassThru
+PS C:\>Remove-AzRedisCache -ResourceGroupName "ResourceGroup03" -Name "myCache" -Force -PassThru
 True
 ```
 
@@ -33,7 +33,7 @@ This command removes a Redis Cache and displays whether the operation is success
 
 ### Example 2: Remove a Redis Cache and do not display the result
 ```
-PS C:\>Remove-AzureRmRedisCache -ResourceGroupName "ResourceGroup03" -Name "myCache" -Force
+PS C:\>Remove-AzRedisCache -ResourceGroupName "ResourceGroup03" -Name "myCache" -Force
 ```
 
 This command removes a Redis Cache.
@@ -45,7 +45,7 @@ Because the *PassThru* parameter is not specified, the result of the operation i
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -163,10 +163,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmRedisCache](./Get-AzureRmRedisCache.md)
+[Get-AzRedisCache](./Get-AzRedisCache.md)
 
-[New-AzureRmRedisCache](./New-AzureRmRedisCache.md)
+[New-AzRedisCache](./New-AzRedisCache.md)
 
-[Set-AzureRmRedisCache](./Set-AzureRmRedisCache.md)
+[Set-AzRedisCache](./Set-AzRedisCache.md)
 
 

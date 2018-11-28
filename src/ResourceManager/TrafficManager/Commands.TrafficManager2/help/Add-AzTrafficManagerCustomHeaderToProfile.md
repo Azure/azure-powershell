@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM.TrafficManager
+Module Name: Az.TrafficManager
 ms.assetid: 25E3F297-1D91-4102-B4D3-1E7195A5D33F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/add-azurertmtrafficmanagercustomheadertoprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/add-azrtmtrafficmanagercustomheadertoprofile
 schema: 2.0.0
 ---
 
-# Add-AzureRmTrafficManagerCustomHeaderToProfile
+# Add-AzTrafficManagerCustomHeaderToProfile
 
 ## SYNOPSIS
 Adds custom header information to a local Traffic Manager profile object.
@@ -14,28 +14,28 @@ Adds custom header information to a local Traffic Manager profile object.
 ## SYNTAX
 
 ```
-Add-AzureRmTrafficManagerCustomHeaderToProfile -Name <String> -Value <String>
+Add-AzTrafficManagerCustomHeaderToProfile -Name <String> -Value <String>
  -TrafficManagerProfile <TrafficManagerProfile> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmTrafficManagerCustomHeaderToProfile** cmdlet adds custom header information to a local Azure Traffic Manager profile object.
-You can get a profile by using the New-AzureRmTrafficManagerProfile or Get-AzureRmTrafficManagerProfile cmdlets.
+The **Add-AzTrafficManagerCustomHeaderToProfile** cmdlet adds custom header information to a local Azure Traffic Manager profile object.
+You can get a profile by using the New-AzTrafficManagerProfile or Get-AzTrafficManagerProfile cmdlets.
 
 This cmdlet operates on the local profile object.
-Commit your changes to the profile for Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet.
+Commit your changes to the profile for Traffic Manager by using the Set-AzTrafficManagerProfile cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Add custom header information to a profile
 ```
-PS C:\> $TrafficManagerProfile = Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
-PS C:\> Add-AzureRmTrafficManagerCustomHeaderToProfile -TrafficManagerProfile $TrafficManagerProfile -Name "host" -Value "www.contoso.com"
-PS C:\> Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
+PS C:\> $TrafficManagerProfile = Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+PS C:\> Add-AzTrafficManagerCustomHeaderToProfile -TrafficManagerProfile $TrafficManagerProfile -Name "host" -Value "www.contoso.com"
+PS C:\> Set-AzTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
 ```
 
-The first command gets an Azure Traffic Manager profile by using the **Get-AzureRmTrafficManagerProfile** cmdlet.
+The first command gets an Azure Traffic Manager profile by using the **Get-AzTrafficManagerProfile** cmdlet.
 The command stores the local profile in the $TrafficManagerProfile variable.
 The second command adds custom header information to the profile stored in $TrafficManagerProfile.
 The final command updates the profile in Traffic Manager to match the local value in $TrafficManagerProfile.
@@ -46,7 +46,7 @@ The final command updates the profile in Traffic Manager to match the local valu
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ### -TrafficManagerProfile
 Specifies a local **TrafficManagerProfile** object.
 This cmdlet modifies this local object.
-To obtain a **TrafficManagerProfile** object, use the Get-AzureRmTrafficManagerProfile cmdlet.
+To obtain a **TrafficManagerProfile** object, use the Get-AzTrafficManagerProfile cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
@@ -151,8 +151,8 @@ This cmdlet returns a modified **TrafficManagerProfile** object.
 
 ## RELATED LINKS
 
-[Remove-AzureRmTrafficManagerCustomHeaderFromProfile](./Remove-AzureRmTrafficManagerCustomHeaderFromProfile.md)
+[Remove-AzTrafficManagerCustomHeaderFromProfile](./Remove-AzTrafficManagerCustomHeaderFromProfile.md)
 
-[Get-AzureRmTrafficManagerProfile](./Get-AzureRmTrafficManagerProfile.md)
+[Get-AzTrafficManagerProfile](./Get-AzTrafficManagerProfile.md)
 
-[Set-AzureRmTrafficManagerProfile](./Set-AzureRmTrafficManagerProfile.md)
+[Set-AzTrafficManagerProfile](./Set-AzTrafficManagerProfile.md)

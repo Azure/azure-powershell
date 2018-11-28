@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermmanagedapplication
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azmanagedapplication
 schema: 2.0.0
 ---
 
-# Get-AzureRmManagedApplication
+# Get-AzManagedApplication
 
 ## SYNOPSIS
 Gets managed applications
@@ -14,37 +14,37 @@ Gets managed applications
 
 ### GetBySubscription (Default)
 ```
-Get-AzureRmManagedApplication [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+Get-AzManagedApplication [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByNameAndResourceGroup
 ```
-Get-AzureRmManagedApplication [-Name <String>] -ResourceGroupName <String> [-ApiVersion <String>] [-Pre]
+Get-AzManagedApplication [-Name <String>] -ResourceGroupName <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetById
 ```
-Get-AzureRmManagedApplication -Id <String> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzManagedApplication -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmManagedApplication** cmdlet gets managed applications
+The **Get-AzManagedApplication** cmdlet gets managed applications
 
 ## EXAMPLES
 
 ### Example 1: Get all managed applications under a resource group
 ```
-PS C:\>Get-AzureRmManagedApplication -ResourceGroupName "MyRG"
+PS C:\>Get-AzManagedApplication -ResourceGroupName "MyRG"
 ```
 
 This command gets managed applications under resource group "MyRG"
 
 ### Example 2: Get all managed applications
 ```
-PS C:\>Get-AzureRmManagedApplication
+PS C:\>Get-AzManagedApplication
 ```
 
 This command get all managed applications under the current subscription
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

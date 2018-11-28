@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 0C8AC52C-4E70-493C-A299-79CE32EC5EF1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqldatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabase
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlDatabase
+# Get-AzSqlDatabase
 
 ## SYNOPSIS
 Gets one or more databases.
@@ -14,19 +14,19 @@ Gets one or more databases.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlDatabase [[-DatabaseName] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+Get-AzSqlDatabase [[-DatabaseName] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlDatabase** cmdlet gets one or more Azure SQL databases from an Azure SQL Database Server.
+The **Get-AzSqlDatabase** cmdlet gets one or more Azure SQL databases from an Azure SQL Database Server.
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
 
 ### Example 1: Get all databases on a server
 ```
-PS C:\>Get-AzureRmSqlDatabase -ResourceGroupName "resourcegroup01" -ServerName "server01"
+PS C:\>Get-AzSqlDatabase -ResourceGroupName "resourcegroup01" -ServerName "server01"
 ResourceGroupName             : resourcegroup01
 ServerName                    : server01
 DatabaseName                  : master
@@ -70,7 +70,7 @@ This command gets all databases on the server named server01.
 
 ### Example 2: Get a database by name on a server
 ```
-PS C:\>Get-AzureRmSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02"
+PS C:\>Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02"
 ResourceGroupName             : resourcegroup01
 ServerName                    : server01
 DatabaseName                  : database01
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -201,14 +201,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlDatabase](./New-AzureRmSqlDatabase.md)
+[New-AzSqlDatabase](./New-AzSqlDatabase.md)
 
-[Remove-AzureRmSqlDatabase](./Remove-AzureRmSqlDatabase.md)
+[Remove-AzSqlDatabase](./Remove-AzSqlDatabase.md)
 
-[Resume-AzureRmSqlDatabase](./Resume-AzureRmSqlDatabase.md)
+[Resume-AzSqlDatabase](./Resume-AzSqlDatabase.md)
 
-[Set-AzureRmSqlDatabase](./Set-AzureRmSqlDatabase.md)
+[Set-AzSqlDatabase](./Set-AzSqlDatabase.md)
 
-[Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
+[Suspend-AzSqlDatabase](./Suspend-AzSqlDatabase.md)
 
 

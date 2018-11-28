@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: B39C4D6B-392A-4C8D-A6FB-886DA1A2BA58
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationjoboutput
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationjoboutput
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationJobOutput
+# Get-AzAutomationJobOutput
 
 ## SYNOPSIS
 Gets the output of an Automation job.
@@ -14,19 +14,19 @@ Gets the output of an Automation job.
 ## SYNTAX
 
 ```
-Get-AzureRmAutomationJobOutput [-Id] <Guid> [-Stream <StreamType>] [-StartTime <DateTimeOffset>]
+Get-AzAutomationJobOutput [-Id] <Guid> [-Stream <StreamType>] [-StartTime <DateTimeOffset>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutomationJobOutput** cmdlet gets the output of an Azure Automation job.
+The **Get-AzAutomationJobOutput** cmdlet gets the output of an Azure Automation job.
 
 ## EXAMPLES
 
 ### Example 1: Get the output of an Automation job
 ```
-PS C:\>Get-AzureRmAutomationJobOutput -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -ResourceGroupName "ResourceGroup01" -Stream "Any"
+PS C:\>Get-AzAutomationJobOutput -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -ResourceGroupName "ResourceGroup01" -Stream "Any"
 ```
 
 This command gets all of the output of the job that has the specified ID.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -125,7 +125,7 @@ Valid values are:
 Type: Microsoft.Azure.Commands.Automation.Common.StreamType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Any, Progress, Output, Warning, Error, Debug, Verbose
+Accepted values: Any, Progress, Output, Warning, Error, Verbose
 
 Required: False
 Position: Named
@@ -155,12 +155,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationJob](./Get-AzureRMAutomationJob.md)
+[Get-AzAutomationJob](./Get-AzAutomationJob.md)
 
-[Resume-AzureRmAutomationJob](./Resume-AzureRMAutomationJob.md)
+[Resume-AzAutomationJob](./Resume-AzAutomationJob.md)
 
-[Stop-AzureRmAutomationJob](./Stop-AzureRMAutomationJob.md)
+[Stop-AzAutomationJob](./Stop-AzAutomationJob.md)
 
-[Suspend-AzureRmAutomationJob](./Suspend-AzureRMAutomationJob.md)
+[Suspend-AzAutomationJob](./Suspend-AzAutomationJob.md)
 
 

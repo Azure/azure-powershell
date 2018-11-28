@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmruncommanddocument
+Module Name: Az.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmruncommanddocument
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMRunCommandDocument
+# Get-AzVMRunCommandDocument
 
 ## SYNOPSIS
 Get run command document.
@@ -13,7 +13,7 @@ Get run command document.
 ## SYNTAX
 
 ```
-Get-AzureRmVMRunCommandDocument [-Location] <String> [[-CommandId] <String>]
+Get-AzVMRunCommandDocument [-Location] <String> [[-CommandId] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,15 +24,15 @@ Get run command document.
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmVMRunCommandDocument -Location 'westus' -CommandId 'RunPowerShellScript'
+PS C:\> Get-AzVMRunCommandDocument -Location 'westus' -CommandId 'RunPowerShellScript'
 ```
 
 Gets a specific run command document for 'RunPowerShellScript' in 'westus'.
-Get-AzureRmVMRunCommandDocument -Location $loc
+Get-AzVMRunCommandDocument -Location $loc
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmVMRunCommandDocument -Location 'westus'
+PS C:\> Get-AzVMRunCommandDocument -Location 'westus'
 ```
 
 Lists all available run commands in 'westus'.
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

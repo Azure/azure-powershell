@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Consumption.dll-Help.xml
-Module Name: AzureRM.Consumption
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.consumption/get-azurermconsumptionreservationsummary
+Module Name: Az.Consumption
+online version: https://docs.microsoft.com/en-us/powershell/module/az.consumption/get-azconsumptionreservationsummary
 schema: 2.0.0
 ---
 
-# Get-AzureRmConsumptionReservationSummary
+# Get-AzConsumptionReservationSummary
 
 ## SYNOPSIS
 Get reservation summaries for daily or monthly grain.
@@ -13,18 +13,18 @@ Get reservation summaries for daily or monthly grain.
 ## SYNTAX
 
 ```
-Get-AzureRmConsumptionReservationSummary -Grain <String> -ReservationOrderId <String> [-ReservationId <String>]
+Get-AzConsumptionReservationSummary -Grain <String> -ReservationOrderId <String> [-ReservationId <String>]
  [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmConsumptionReservationSummay** cmdlet gets reservation summaries for daily or monthly grain.
+The **Get-AzConsumptionReservationSummay** cmdlet gets reservation summaries for daily or monthly grain.
 
 ## EXAMPLES
 
 ### Example 1: Get reservation summaries with reservation order Id for monthly grain
 ```powershell
-PS C:\> Get-AzureRmConsumptionReservationSummary -Grain monthly -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b
+PS C:\> Get-AzConsumptionReservationSummary -Grain monthly -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b
 AvgUtilizationPercentage:  100
 Id:  providers/Microsoft.Capacity/reservationOrders/ca69259e-bd4f-45c3-bf28-3f353f9cce9b/reservations/f37f4b70-52ba-4344-a8bd-28abfd21d640/providers/Microsoft.Consumption/reservationSummaries/20170901
 MaxUtilizationPercentage:  100
@@ -41,7 +41,7 @@ UsedHour:  288
 
 ### Example 2: Get reservation summaries with reservation order Id and reservation Id for monthly grain
 ```powershell
-PS C:\> Get-AzureRmConsumptionReservationSummary -Grain monthly -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -ReservationId f37f4b70-52ba-4344-a8bd-28abfd21d640
+PS C:\> Get-AzConsumptionReservationSummary -Grain monthly -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -ReservationId f37f4b70-52ba-4344-a8bd-28abfd21d640
 AvgUtilizationPercentage:  100
 Id:  providers/Microsoft.Capacity/reservationOrders/ca69259e-bd4f-45c3-bf28-3f353f9cce9b/reservations/f37f4b70-52ba-4344-a8bd-28abfd21d640/providers/Microsoft.Consumption/reservationSummaries/20170901
 MaxUtilizationPercentage:  100
@@ -58,7 +58,7 @@ UsedHour:  288
 
 ### Example 3: Get reservation summaries with reservation order Id for daily grain provided date range
 ```powershell
-PS C:\> Get-AzureRmConsumptionReservationSummary -Grain daily -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -StartDate 2017-10-01 -EndDate 2017-12-07
+PS C:\> Get-AzConsumptionReservationSummary -Grain daily -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -StartDate 2017-10-01 -EndDate 2017-12-07
 AvgUtilizationPercentage:  100
 Id:  providers/Microsoft.Capacity/reservationOrders/ca69259e-bd4f-45c3-bf28-3f353f9cce9b/reservations/f37f4b70-52ba-4344-a8bd-28abfd21d640/providers/Microsoft.Consumption/reservationSummaries/20171101
 MaxUtilizationPercentage:  100
@@ -75,7 +75,7 @@ UsedHour:  24
 
 ### Example 4: Get reservation summaries with reservation order Id and reservation Id for daily grain provided date range
 ```powershell
-PS C:\> Get-AzureRmConsumptionReservationSummary -Grain daily -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -ReservationId f37f4b70-52ba-4344-a8bd-28abfd21d640 -StartDate 2017-10-01 -EndDate 2017-12-07
+PS C:\> Get-AzConsumptionReservationSummary -Grain daily -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -ReservationId f37f4b70-52ba-4344-a8bd-28abfd21d640 -StartDate 2017-10-01 -EndDate 2017-12-07
 AvgUtilizationPercentage:  100
 Id:  providers/Microsoft.Capacity/reservationOrders/ca69259e-bd4f-45c3-bf28-3f353f9cce9b/reservations/f37f4b70-52ba-4344-a8bd-28abfd21d640/providers/Microsoft.Consumption/reservationSummaries/20171101
 MaxUtilizationPercentage:  100
@@ -96,7 +96,7 @@ UsedHour:  24
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

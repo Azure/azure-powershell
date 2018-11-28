@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 9D4A68A8-0A39-4C9A-8EA6-391A5E7A0E25
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/add-azurermapimanagementregion
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/add-azapimanagementregion
 schema: 2.0.0
 ---
 
-# Add-AzureRmApiManagementRegion
+# Add-AzApiManagementRegion
 
 ## SYNOPSIS
 Adds new deployment regions to a PsApiManagement instance.
@@ -14,28 +14,28 @@ Adds new deployment regions to a PsApiManagement instance.
 ## SYNTAX
 
 ```
-Add-AzureRmApiManagementRegion -ApiManagement <PsApiManagement> -Location <String> [-Sku <PsApiManagementSku>]
+Add-AzApiManagementRegion -ApiManagement <PsApiManagement> -Location <String> [-Sku <PsApiManagementSku>]
  [-Capacity <Int32>] [-VirtualNetwork <PsApiManagementVirtualNetwork>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmApiManagementRegion** cmdlet adds new instance of type **PsApiManagementRegion** to the collection of **AdditionalRegions** of provided instance of type **Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement**.
+The **Add-AzApiManagementRegion** cmdlet adds new instance of type **PsApiManagementRegion** to the collection of **AdditionalRegions** of provided instance of type **Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement**.
 This cmdlet does not deploy anything by itself but updates instance of **PsApiManagement** in-memory.
-To update a deployment of an API Management pass the modified **PsApiManagement** Instance to Update-AzureRmApiManagementDeployment.
+To update a deployment of an API Management pass the modified **PsApiManagement** Instance to Update-AzApiManagementDeployment.
 
 ## EXAMPLES
 
 ### Example 1: Add new deployment regions to a PsApiManagement instance
 ```
-PS C:\>Add-AzureRmApiManagementRegion -ApiManagement $ApiManagement -Location "East US" -Sku "Premium" -Capacity 2
+PS C:\>Add-AzApiManagementRegion -ApiManagement $ApiManagement -Location "East US" -Sku "Premium" -Capacity 2
 ```
 
 This command adds two premium SKU units and the region named East US to the **PsApiManagement** instance.
 
 ### Example 2: Add new deployment regions to a PsApiManagement instance and then update deployment
 ```
-PS C:\>Get-AzureRmApiManagement -ResourceGroupName "Contoso" -Name "ContosoApi" | Add-AzureRmApiManagementRegion -Location "East US" -Sku "Premium" -Capacity 2 | Update-AzureRmApiManagementDeployment
+PS C:\>Get-AzApiManagement -ResourceGroupName "Contoso" -Name "ContosoApi" | Add-AzApiManagementRegion -Location "East US" -Sku "Premium" -Capacity 2 | Update-AzApiManagementDeployment
 ```
 
 This command gets a **PsApiManagement** object, adds two premium SKU units for the region named East US, and then updates deployment.
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ### -Location
 Specifies the location of the new deployment region amongst the supported region for Api Management service.
 To obtain valid locations, use the cmdlet
-Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
+Get-AzResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
 Type: System.String
@@ -156,10 +156,10 @@ Parameters: ApiManagement (ByValue)
 
 ## RELATED LINKS
 
-[Remove-AzureRmApiManagementRegion](./Remove-AzureRmApiManagementRegion.md)
+[Remove-AzApiManagementRegion](./Remove-AzApiManagementRegion.md)
 
-[Update-AzureRmApiManagementRegion](./Update-AzureRmApiManagementRegion.md)
+[Update-AzApiManagementRegion](./Update-AzApiManagementRegion.md)
 
-[Update-AzureRmApiManagementDeployment](./Update-AzureRmApiManagementDeployment.md)
+[Update-AzApiManagementDeployment](./Update-AzApiManagementDeployment.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermpubliciptag
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azpubliciptag
 schema: 2.0.0
 ---
 
-# New-AzureRmPublicIpTag
+# New-AzPublicIpTag
 
 ## SYNOPSIS
 Creates an IP Tag.
@@ -13,18 +13,18 @@ Creates an IP Tag.
 ## SYNTAX
 
 ```
-New-AzureRmPublicIpTag -IpTagType <String> -Tag <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+New-AzPublicIpTag -IpTagType <String> -Tag <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmPublicIpTag** cmdlet creates a IP Tag.
+The **New-AzPublicIpTag** cmdlet creates a IP Tag.
 
 ## EXAMPLES
 
 ### 1: Create a new IP Tag
 ```
-$ipTag = New-AzureRmPublicIpTag -IpTagType $ipTagType -Tag $tag
+$ipTag = New-AzPublicIpTag -IpTagType $ipTagType -Tag $tag
 ```
 
 This command creates a new IP Tag with the Tagtype like "FirstPartyUsage"
@@ -37,7 +37,7 @@ specific tags for allocation.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

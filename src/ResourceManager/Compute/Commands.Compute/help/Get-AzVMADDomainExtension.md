@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 49D17667-35C3-4A79-A0C8-C197DAA5CD90
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmaddomainextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmaddomainextension
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMADDomainExtension
+# Get-AzVMADDomainExtension
 
 ## SYNOPSIS
 Gets information about an AD domain extension.
@@ -14,12 +14,12 @@ Gets information about an AD domain extension.
 ## SYNTAX
 
 ```
-Get-AzureRmVMADDomainExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Status]
+Get-AzVMADDomainExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Status]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMADDomainExtension** cmdlet gets information about the specified Azure Active Directory (AD) domain extension.
+The **Get-AzVMADDomainExtension** cmdlet gets information about the specified Azure Active Directory (AD) domain extension.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ The **Get-AzureRmVMADDomainExtension** cmdlet gets information about the specifi
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,6 +117,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmVMADDomainExtension](./Set-AzureRmVMADDomainExtension.md)
+[Set-AzVMADDomainExtension](./Set-AzVMADDomainExtension.md)
 
 

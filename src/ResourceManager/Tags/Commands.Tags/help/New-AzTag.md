@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Tags.dll-Help.xml
-Module Name: AzureRM.Tags
+Module Name: Az.Tags
 ms.assetid: 23DB0AD2-7EB7-4373-BB8D-BB6CB651DD54
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.tags/new-azurermtag
+online version: https://docs.microsoft.com/en-us/powershell/module/az.tags/new-aztag
 schema: 2.0.0
 ---
 
-# New-AzureRmTag
+# New-AzTag
 
 ## SYNOPSIS
 Creates a predefined Azure tag or adds values to an existing tag.
@@ -14,21 +14,20 @@ Creates a predefined Azure tag or adds values to an existing tag.
 ## SYNTAX
 
 ```
-New-AzureRmTag [-Name] <String> [[-Value] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzTag [-Name] <String> [[-Value] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmTag** cmdlet creates a predefined Azure tag with an optional predefined value.
+The **New-AzTag** cmdlet creates a predefined Azure tag with an optional predefined value.
 You can also use it to add additional values to existing predefined tags.
 To create a predefined tag, enter a unique tag name.
 To add a value to an existing predefined tag, specify the name of the existing tag and the new value.
 This cmdlet returns an object that represents the new or modified tag with its values and the number of resources to which it has been applied.
-The Azure Tags module that **New-AzureRmTag** is part of can help you manage predefined Azure tags.
+The Azure Tags module that **New-AzTag** is part of can help you manage predefined Azure tags.
 An Azure tag is a name-value pair that you can use to categorize your Azure resources and resource groups, such as by department or cost center, or to track notes or comments about the resources and groups.
 You can define and apply tags in a single step, but predefined tags let you establish standard, consistent, predictable names and values for the tags in your subscription.
-To apply a predefined tag to a resource or resource group, use the *Tag* parameter of the New-AzureRmTag cmdlet.
-To search for resource groups with a specified tag name or name and value, use the *Tag* parameter of the Get-AzureRMResourceGroup cmdlet.
+To apply a predefined tag to a resource or resource group, use the *Tag* parameter of the New-AzTag cmdlet.
+To search for resource groups with a specified tag name or name and value, use the *Tag* parameter of the Get-AzResourceGroup cmdlet.
 Every tag has a name.
 The values are optional.
 A predefined Azure tag can have multiple values, but when you apply the tag to a resource or resource group, you apply the tag name and only one of its values.
@@ -39,7 +38,7 @@ When you apply the Department tag to a resource, you apply only one predefined v
 
 ### Example 1: Create a predefined tag
 ```
-PS C:\>New-AzureRmTag -Name "FY2015"
+PS C:\>New-AzTag -Name "FY2015"
                                 
 Name   ValuesTable Count Values 
 ----   ----------- ----- ------
@@ -48,12 +47,12 @@ FY2015             0     {}
 
 This command creates a predefined tag named FY2015.
 This tag has no values.
-You can apply a tag with no values to a resource or resource group, or use **New-AzureRmTag** to add values to the tag.
+You can apply a tag with no values to a resource or resource group, or use **New-AzTag** to add values to the tag.
 You can also specify a value when you apply the tag to the resource or resource group.
 
 ### Example 2: Create a predefined tag with a value
 ```
-PS C:\>New-AzureRmTag -Name "Department" -Value "Finance"
+PS C:\>New-AzTag -Name "Department" -Value "Finance"
 Name:   Department
 Count:  0
 Values: 
@@ -67,14 +66,14 @@ This command creates a predefined tag named Department with a value of Finance.
 
 ### Example 3: Add a value to a predefined tag
 ```
-PS C:\>New-AzureRmTag -Name "Department" -Value "Finance"
+PS C:\>New-AzTag -Name "Department" -Value "Finance"
 Name:   Department
 Count:  0
 Values: 
         Name        Count
         =========   =====
         Finance     0 
-PS C:\>New-AzureRmTag -Name "Department" -Value "IT"
+PS C:\>New-AzTag -Name "Department" -Value "IT"
 Name:   Department
 Count:  0
 Values: 
@@ -85,18 +84,18 @@ Values:
 ```
 
 These commands create a predefined tag named Department with two values.
-If the tag name exists, **New-AzureRmTag** adds the value to the existing tag instead of creating a new one.
+If the tag name exists, **New-AzTag** adds the value to the existing tag instead of creating a new one.
 
 ### Example 4: Use a predefined tag
 ```
-PS C:\>New-AzureRmTag -Name "CostCenter" -Value "0001"
+PS C:\>New-AzTag -Name "CostCenter" -Value "0001"
 Name:   CostCenter
 Count:  0
 Values: 
         Name        Count
         =========   =====
         0001        0 
-PS C:\>Set-AzureRmResourceGroup -Name "EngineerBlog" -Tag @{Name="CostCenter";Value="0001"}
+PS C:\>Set-AzResourceGroup -Name "EngineerBlog" -Tag @{Name="CostCenter";Value="0001"}
 Name:      EngineerBlog
 Location:  East US
 Resources: 
@@ -110,14 +109,14 @@ Tags:
     Name         Value
     ==========   =====
     CostCenter   0001 
-PS C:\>Get-AzureRmTag -Name "CostCenter"
+PS C:\>Get-AzTag -Name "CostCenter"
 Name:   CostCenter
 Count:  1
 Values: 
         Name        Count
         =========   =====
         0001        1 
-PS C:\>Get-AzureRmResourceGroup -Tag @{Name="CostCenter"}
+PS C:\>Get-AzResourceGroup -Tag @{Name="CostCenter"}
 Name:      EngineerBlog
 Location:  East US
 Resources: 
@@ -141,7 +140,7 @@ The commands in this example create and use a predefined tag.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -156,7 +155,7 @@ Accept wildcard characters: False
 Specifies the tag name.
 To create a new predefined tag, enter a unique name.
 To add a value to an existing tag, enter the name of the existing tag.
-If an existing predefined tag has the specified name, **New-AzureRmTag** adds the specified value, if any, to the tag with that name instead of creating a new tag.
+If an existing predefined tag has the specified name, **New-AzTag** adds the specified value, if any, to the tag with that name instead of creating a new tag.
 
 ```yaml
 Type: System.String
@@ -202,8 +201,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmTag](./Get-AzureRmTag.md)
+[Get-AzTag](./Get-AzTag.md)
 
-[Remove-AzureRmTag](./Remove-AzureRmTag.md)
+[Remove-AzTag](./Remove-AzTag.md)
 
 

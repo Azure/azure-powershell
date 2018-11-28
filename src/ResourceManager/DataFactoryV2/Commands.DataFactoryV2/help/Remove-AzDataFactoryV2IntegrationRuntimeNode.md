@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactoryv2integrationruntimenode
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactoryv2integrationruntimenode
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryV2IntegrationRuntimeNode
+# Remove-AzDataFactoryV2IntegrationRuntimeNode
 
 ## SYNOPSIS
 Remove a node with the given name on an integration runtime.
@@ -14,32 +14,32 @@ Remove a node with the given name on an integration runtime.
 
 ### ByIntegrationRuntimeName (Default)
 ```
-Remove-AzureRmDataFactoryV2IntegrationRuntimeNode -NodeName <String> [-Force]
+Remove-AzDataFactoryV2IntegrationRuntimeNode -NodeName <String> [-Force]
  [-IntegrationRuntimeName] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzureRmDataFactoryV2IntegrationRuntimeNode -NodeName <String> [-Force] [-ResourceId] <String>
+Remove-AzDataFactoryV2IntegrationRuntimeNode -NodeName <String> [-Force] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Remove-AzureRmDataFactoryV2IntegrationRuntimeNode -NodeName <String> [-Force]
+Remove-AzDataFactoryV2IntegrationRuntimeNode -NodeName <String> [-Force]
  [-InputObject] <PSIntegrationRuntime> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmDataFactoryV2IntegrationRuntimeNode cmdlet removes a node in an integration runtime.
+The Remove-AzDataFactoryV2IntegrationRuntimeNode cmdlet removes a node in an integration runtime.
 
 ## EXAMPLES
 
 ### Example 1: Remove a node from an integration runtime
 ```
-PS C:\> Remove-AzureRmDataFactoryV2IntegrationRuntimeNode -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' -NodeName 'Node_1'
+PS C:\> Remove-AzDataFactoryV2IntegrationRuntimeNode -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' -NodeName 'Node_1'
 ```
 
 This command removes an node named 'Node_1' in the integration runtime named 'test-selfhost-ir' in the subscription for the resource group named 'rg-test-dfv2' and data factory named 'test-df-eu2'.

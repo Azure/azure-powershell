@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: DEBD58A3-AFAF-485C-8708-53228625138F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermloadbalancerruleconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azloadbalancerruleconfig
 schema: 2.0.0
 ---
 
-# Remove-AzureRmLoadBalancerRuleConfig
+# Remove-AzLoadBalancerRuleConfig
 
 ## SYNOPSIS
 Removes a rule configuration for a load balancer.
@@ -14,19 +14,19 @@ Removes a rule configuration for a load balancer.
 ## SYNTAX
 
 ```
-Remove-AzureRmLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
+Remove-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmLoadBalancerRuleConfig** cmdlet removes a rule configuration for an Azure load balancer.
+The **Remove-AzLoadBalancerRuleConfig** cmdlet removes a rule configuration for an Azure load balancer.
 
 ## EXAMPLES
 
 ### Example 1: Remove a rule configuration from a load balancer
 ```
-PS C:\>$loadbalancer = Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:> Remove-AzureRmLoadBalancerRuleConfig -Name "MyLBruleName" -LoadBalancer $loadbalancer
+PS C:\>$loadbalancer = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+PS C:> Remove-AzLoadBalancerRuleConfig -Name "MyLBruleName" -LoadBalancer $loadbalancer
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the $loadbalancer variable.
@@ -38,7 +38,7 @@ The second command removes the rule configuration named MyLBruleName from the lo
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -125,14 +125,14 @@ Parameters: LoadBalancer (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmLoadBalancerRuleConfig](./Add-AzureRmLoadBalancerRuleConfig.md)
+[Add-AzLoadBalancerRuleConfig](./Add-AzLoadBalancerRuleConfig.md)
 
-[Get-AzureRmLoadBalancer](./Get-AzureRmLoadBalancer.md)
+[Get-AzLoadBalancer](./Get-AzLoadBalancer.md)
 
-[Get-AzureRmLoadBalancerRuleConfig](./Get-AzureRmLoadBalancerRuleConfig.md)
+[Get-AzLoadBalancerRuleConfig](./Get-AzLoadBalancerRuleConfig.md)
 
-[New-AzureRmLoadBalancerRuleConfig](./New-AzureRmLoadBalancerRuleConfig.md)
+[New-AzLoadBalancerRuleConfig](./New-AzLoadBalancerRuleConfig.md)
 
-[Set-AzureRmLoadBalancerRuleConfig](./Set-AzureRmLoadBalancerRuleConfig.md)
+[Set-AzLoadBalancerRuleConfig](./Set-AzLoadBalancerRuleConfig.md)
 
 

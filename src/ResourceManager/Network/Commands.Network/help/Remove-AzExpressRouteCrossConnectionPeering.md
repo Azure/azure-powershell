@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 462F3EF7-4C15-41F8-853D-CDCC8E67673D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/Remove-AzureRmExpressRouteCrossConnectionPeering
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/Remove-AzExpressRouteCrossConnectionPeering
 schema: 2.0.0
 ---
 
-# Remove-AzureRmExpressRouteCrossConnectionPeering
+# Remove-AzExpressRouteCrossConnectionPeering
 
 ## SYNOPSIS
 Removes an ExpressRoute cross connection peering configuration.
@@ -14,21 +14,21 @@ Removes an ExpressRoute cross connection peering configuration.
 ## SYNTAX
 
 ```
-Remove-AzureRmExpressRouteCrossConnectionPeering [-Name <String>] -ExpressRouteCrossConnection <PSExpressRouteCrossConnection>
+Remove-AzExpressRouteCrossConnectionPeering [-Name <String>] -ExpressRouteCrossConnection <PSExpressRouteCrossConnection>
  [-PeerAddressType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmExpressRouteCrossConnectionPeering** cmdlet removes an ExpressRoute cross connection
+The **Remove-AzExpressRouteCrossConnectionPeering** cmdlet removes an ExpressRoute cross connection
 peering configuration.
 
 ## EXAMPLES
 
 ### Example 1: Remove a peering configuration from an ExpressRoute cross connection
 ```
-$cc = Get-AzureRmExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
-Remove-AzureRmExpressRouteCrossConnectionPeering -Name 'AzurePrivatePeering' -ExpressRouteCrossConnection $cc
-Set-AzureRmExpressRouteCrossConnection -ExpressRouteCrossConnection $cc
+$cc = Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
+Remove-AzExpressRouteCrossConnectionPeering -Name 'AzurePrivatePeering' -ExpressRouteCrossConnection $cc
+Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection $cc
 ```
 
 ## PARAMETERS
@@ -110,10 +110,10 @@ Parameter 'ExpressRouteCrossConnection' accepts value of type 'PSExpressRouteCro
 
 ## RELATED LINKS
 
-[Add-AzureRmExpressRouteCrossConnectionPeering](Add-AzureRmExpressRouteCrossConnectionPeering.md)
+[Add-AzExpressRouteCrossConnectionPeering](Add-AzExpressRouteCrossConnectionPeering.md)
 
-[Get-AzureRmExpressRouteCrossConnection](Get-AzureRmExpressRouteCrossConnection.md)
+[Get-AzExpressRouteCrossConnection](Get-AzExpressRouteCrossConnection.md)
 
-[New-AzureRmExpressRouteCrossConnectionPeering](New-AzureRmExpressRouteCrossConnectionPeering.md)
+[New-AzExpressRouteCrossConnectionPeering](New-AzExpressRouteCrossConnectionPeering.md)
 
-[Set-AzureRmExpressRouteCrossConnection](Set-AzureRmExpressRouteCrossConnection.md)
+[Set-AzExpressRouteCrossConnection](Set-AzExpressRouteCrossConnection.md)

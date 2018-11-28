@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 5AECCBD7-1FDE-4217-9F59-36328062E669
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworksecuritygroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworksecuritygroup
 schema: 2.0.0
 ---
 
-# Get-AzureRmNetworkSecurityGroup
+# Get-AzNetworkSecurityGroup
 
 ## SYNOPSIS
 Gets a network security group.
@@ -15,24 +15,24 @@ Gets a network security group.
 
 ### NoExpand
 ```
-Get-AzureRmNetworkSecurityGroup [-Name <String>] [-ResourceGroupName <String>]
+Get-AzNetworkSecurityGroup [-Name <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Expand
 ```
-Get-AzureRmNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -ExpandResource <String>
+Get-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -ExpandResource <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmNetworkSecurityGroup** cmdlet gets an Azure network security group.
+The **Get-AzNetworkSecurityGroup** cmdlet gets an Azure network security group.
 
 ## EXAMPLES
 
 ### 1: Retrieve an existing network security group
 ```
-Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName "rg1"
+Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName "rg1"
 ```
 
 This command returns contents of Azure network security group "nsg1" in resource group "rg1"
@@ -43,7 +43,7 @@ This command returns contents of Azure network security group "nsg1" in resource
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -136,10 +136,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmNetworkSecurityGroup](./New-AzureRmNetworkSecurityGroup.md)
+[New-AzNetworkSecurityGroup](./New-AzNetworkSecurityGroup.md)
 
-[Remove-AzureRmNetworkSecurityGroup](./Remove-AzureRmNetworkSecurityGroup.md)
+[Remove-AzNetworkSecurityGroup](./Remove-AzNetworkSecurityGroup.md)
 
-[Set-AzureRmNetworkSecurityGroup](./Set-AzureRmNetworkSecurityGroup.md)
+[Set-AzNetworkSecurityGroup](./Set-AzNetworkSecurityGroup.md)
 
 

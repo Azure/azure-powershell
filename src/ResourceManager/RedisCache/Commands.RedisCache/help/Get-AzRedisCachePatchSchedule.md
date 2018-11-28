@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 ms.assetid: DA180A4A-88B6-4359-94E0-CF72F66D1FE4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/get-azurermrediscachepatchschedule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/get-azrediscachepatchschedule
 schema: 2.0.0
 ---
 
-# Get-AzureRmRedisCachePatchSchedule
+# Get-AzRedisCachePatchSchedule
 
 ## SYNOPSIS
 Gets a patch schedule.
@@ -14,18 +14,18 @@ Gets a patch schedule.
 ## SYNTAX
 
 ```
-Get-AzureRmRedisCachePatchSchedule [-ResourceGroupName <String>] -Name <String>
+Get-AzRedisCachePatchSchedule [-ResourceGroupName <String>] -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRedisCachePatchSchedule** cmdlet gets a patch schedule for a cache in Azure Redis Cache.
+The **Get-AzRedisCachePatchSchedule** cmdlet gets a patch schedule for a cache in Azure Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1: Get the patch schedule
 ```
-PS C:\>Get-AzureRmRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06"
+PS C:\>Get-AzRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06"
 ```
 
 This command gets the patch schedule from the cache named RedisCache06.
@@ -36,7 +36,7 @@ This command gets the patch schedule from the cache named RedisCache06.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,10 +93,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmRedisCachePatchSchedule](./New-AzureRmRedisCachePatchSchedule.md)
+[New-AzRedisCachePatchSchedule](./New-AzRedisCachePatchSchedule.md)
 
-[New-AzureRmRedisCacheScheduleEntry](./New-AzureRmRedisCacheScheduleEntry.md)
+[New-AzRedisCacheScheduleEntry](./New-AzRedisCacheScheduleEntry.md)
 
-[Remove-AzureRmRedisCachePatchSchedule](./Remove-AzureRmRedisCachePatchSchedule.md)
+[Remove-AzRedisCachePatchSchedule](./Remove-AzRedisCachePatchSchedule.md)
 
 

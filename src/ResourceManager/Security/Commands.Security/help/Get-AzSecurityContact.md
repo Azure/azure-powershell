@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
-Module Name: AzureRM.Security
-online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzureRmSecurityContact.md
+Module Name: Az.Security
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzSecurityContact.md
 schema: 2.0.0
 ---
 
-# Get-AzureRmSecurityContact
+# Get-AzSecurityContact
 
 ## SYNOPSIS
 Gets security contacts that were configured on this subscription
@@ -14,17 +14,17 @@ Gets security contacts that were configured on this subscription
 
 ### SubscriptionScope (Default)
 ```
-Get-AzureRmSecurityContact [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityContact [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
-Get-AzureRmSecurityContact -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityContact -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzureRmSecurityContact -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityContact -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ The security contact can get notifications on security alerts that happen on the
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmSecurityContact
+PS C:\> Get-AzSecurityContact
 Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/securityContacts/default1
 Name               : default1
 Email              : ascasc@microsoft.com
@@ -52,7 +52,7 @@ Gets all the configured security contacts on the subscription
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelResource
 Aliases:
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 

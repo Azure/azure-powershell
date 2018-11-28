@@ -1,12 +1,12 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 3efb6270-f908-4734-bdb1-6c7e4e4eb382
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressroutecrossconnection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecrossconnection
 schema: 2.0.0
 ---
 
-# Get-AzureRmExpressRouteCrossConnection
+# Get-AzExpressRouteCrossConnection
 
 ## SYNOPSIS
 Gets an Azure ExpressRoute cross connection from Azure.
@@ -14,19 +14,19 @@ Gets an Azure ExpressRoute cross connection from Azure.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCrossConnection [-Name <String>] [-ResourceGroupName <String>]
+Get-AzExpressRouteCrossConnection [-Name <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmExpressRouteCrossConnection** cmdlet is used to retrieve an ExpressRoute cross connection object
+The **Get-AzExpressRouteCrossConnection** cmdlet is used to retrieve an ExpressRoute cross connection object
 from your subscription.
 AzureRmExpressRouteCrossConnection
 ## EXAMPLES
 
 ### Example 1: Get the ExpressRoute cross connection
 ```
-Get-AzureRmExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
+Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
 ```
 
 ## PARAMETERS
@@ -92,4 +92,4 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[Set-AzureRmExpressRouteCrossConnection](Set-AzureRmExpressRouteCrossConnection.md)
+[Set-AzExpressRouteCrossConnection](Set-AzExpressRouteCrossConnection.md)

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 8679240C-EA47-41C5-B8C1-A3C99547F42B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/new-azurermlogicapp
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/new-azlogicapp
 schema: 2.0.0
 ---
 
-# New-AzureRmLogicApp
+# New-AzLogicApp
 
 ## SYNOPSIS
 Creates a logic app in a resource group.
@@ -15,21 +15,21 @@ Creates a logic app in a resource group.
 
 ### LogicAppWithDefinitionParameterSet
 ```
-New-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
+New-AzLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
  -Definition <Object> [-IntegrationAccountId <String>] [-Parameters <Object>] [-ParameterFilePath <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LogicAppWithDefinitionFileParameterSet
 ```
-New-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
+New-AzLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
  -DefinitionFilePath <String> [-IntegrationAccountId <String>] [-Parameters <Object>]
  [-ParameterFilePath <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmLogicApp** cmdlet creates a logic app by using the Logic Apps feature.
+The **New-AzLogicApp** cmdlet creates a logic app by using the Logic Apps feature.
 A logic app is a collection of actions or triggers defined in Logic App definition.
 This cmdlet returns a **Workflow** object.
 You can create a logic app by specifying a name, location, Logic App definition, resource group, and plan.
@@ -45,7 +45,7 @@ Template parameter file values that you specify at the command line take precede
 
 ### Example 1: Create a logic app by using definition and parameter file paths
 ```
-PS C:\>New-AzureRmLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03" -State "Enabled" -AppServicePlan "ServicePlan01" -DefinitionFilePath "d:\workflows\Definition03.json" -ParameterFilePath "d:\workflows\Parameters03.json"
+PS C:\>New-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03" -State "Enabled" -AppServicePlan "ServicePlan01" -DefinitionFilePath "d:\workflows\Definition03.json" -ParameterFilePath "d:\workflows\Parameters03.json"
 Id                           : /subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/LogicAppCmdletTest/providers/Microsoft.Logic/workflows/LogicApp03
 Name                         : LogicApp03
 Type                         : Microsoft.Logic/workflows
@@ -72,7 +72,7 @@ The logic app includes the definition and parameters specified by file paths.
 
 ### Example 2: Create a logic app by using definition and parameter objects
 ```
-PS C:\>New-AzureRmLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -Location "westus" -State "Enabled" -AppServicePlan "ServicePlan01" -Definition [IO.File]::ReadAllText("d:\Workflows\Definition.json") -Parameters @{name1="value1", name2="value2"}
+PS C:\>New-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -Location "westus" -State "Enabled" -AppServicePlan "ServicePlan01" -Definition [IO.File]::ReadAllText("d:\Workflows\Definition.json") -Parameters @{name1="value1", name2="value2"}
 Id                           : /subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/LogicAppCmdletTest/providers/Microsoft.Logic/workflows/LogicApp05
 Name                         : LogicApp05
 Type                         : Microsoft.Logic/workflows
@@ -98,7 +98,7 @@ This command creates a logic app in the specified resource group resource group.
 
 ### Example 3: Create a logic app by using the pipeline to specify the resource group
 ```
-PS C:\>Get-AzureRmResourceGroup -ResourceGroupName "ResourceGroup11" | New-AzureRmLogicApp -Name "LogicApp11" -State "Enabled" -AppServicePlan "ServicePlan01" -DefinitionFilePath "d:\Workflow\Definition.json" -ParameterFilePath "d:\Workflow\Parameters.json"
+PS C:\>Get-AzResourceGroup -ResourceGroupName "ResourceGroup11" | New-AzLogicApp -Name "LogicApp11" -State "Enabled" -AppServicePlan "ServicePlan01" -DefinitionFilePath "d:\Workflow\Definition.json" -ParameterFilePath "d:\Workflow\Parameters.json"
 Id                           : /subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/LogicAppCmdletTest/providers/Microsoft.Logic/workflows/LogicApp11
 Name                         : LogicApp11
 Type                         : Microsoft.Logic/workflows
@@ -120,15 +120,15 @@ PlanId                       : /subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a
 Version                      : 08587489107859952120
 ```
 
-This command gets the resource group named ResourceGroup11 by using the Get-AzureRmResourceGroup cmdlet.
+This command gets the resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
 The command passes that resource group to the current cmdlet by using the pipeline operator.
 The current cmdlet creates a logic app in that resource group.
 The logic app includes the definition and parameters specified by file paths.
 
 ### Example 4: Create a logic app based on an existing logic app
 ```
-PS C:\>$Workflow = Get-AzureRmLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03"
-PS C:\> New-AzureRmLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp13" -State "Enabled" -AppServicePlan "ServicePlan01" -Definition $Workflow.Definition -Parameters $Workflow.Parameters
+PS C:\>$Workflow = Get-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03"
+PS C:\> New-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp13" -State "Enabled" -AppServicePlan "ServicePlan01" -Definition $Workflow.Definition -Parameters $Workflow.Parameters
 Id                           : /subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/LogicAppCmdletTest/providers/Microsoft.Logic/workflows/LogicApp13
 Name                         : LogicApp13
 Type                         : Microsoft.Logic/workflows
@@ -150,7 +150,7 @@ PlanId                       : /subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a
 Version                      : 08587489107859952120
 ```
 
-The first command gets the logic app named LogicApp03 by using the Get-AzureRmLogicApp cmdlet.
+The first command gets the logic app named LogicApp03 by using the Get-AzLogicApp cmdlet.
 The command stores the logic app in the $Workflow variable.
 The second command creates a new logic app that uses the definition and parameters of the logic app stored in $Workflow.
 
@@ -160,7 +160,7 @@ The second command creates a new logic app that uses the definition and paramete
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -357,12 +357,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmLogicApp](./Get-AzureRmLogicApp.md)
+[Get-AzLogicApp](./Get-AzLogicApp.md)
 
-[Remove-AzureRmLogicApp](./Remove-AzureRmLogicApp.md)
+[Remove-AzLogicApp](./Remove-AzLogicApp.md)
 
-[Set-AzureRmLogicApp](./Set-AzureRmLogicApp.md)
+[Set-AzLogicApp](./Set-AzLogicApp.md)
 
-[Start-AzureRmLogicApp](./Start-AzureRmLogicApp.md)
+[Start-AzLogicApp](./Start-AzLogicApp.md)
 
 

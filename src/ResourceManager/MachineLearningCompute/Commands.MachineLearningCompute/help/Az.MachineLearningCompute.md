@@ -1,34 +1,34 @@
 ---
-Module Name: AzureRM.MachineLearningCompute
+Module Name: Az.MachineLearningCompute
 Module Guid: bb030259-49f9-46ef-806f-2a3f5a2e018f
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.machinelearningcompute
 Help Version: 0.4.2.0
 Locale: en-US
 ---
 
-# AzureRM.MachineLearningCompute Module
+# Az.MachineLearningCompute Module
 ## Description
 This topic displays help topics for the Azure Machine Learning Compute Cmdlets.
 
-## AzureRM.MachineLearningCompute Cmdlets
-### [Get-AzureRmMlOpCluster](Get-AzureRmMlOpCluster.md)
+## Az.MachineLearningCompute Cmdlets
+### [Get-AzMlOpCluster](Get-AzMlOpCluster.md)
 Gets an operationalization cluster object.
 
-### [Get-AzureRmMlOpClusterKey](Get-AzureRmMlOpClusterKey.md)
+### [Get-AzMlOpClusterKey](Get-AzMlOpClusterKey.md)
 Gets the access keys associated with an operationalization cluster.
 
-### [New-AzureRmMlOpCluster](New-AzureRmMlOpCluster.md)
+### [New-AzMlOpCluster](New-AzMlOpCluster.md)
 Creates a new operationalization cluster.
 
-### [Remove-AzureRmMlOpCluster](Remove-AzureRmMlOpCluster.md)
+### [Remove-AzMlOpCluster](Remove-AzMlOpCluster.md)
 Removes an operationalization cluster.
 
-### [Set-AzureRmMlOpCluster](Set-AzureRmMlOpCluster.md)
+### [Set-AzMlOpCluster](Set-AzMlOpCluster.md)
 Sets the properties of an operationalization cluster.
 
-### [Test-AzureRmMlOpClusterSystemServicesUpdateAvailability](Test-AzureRmMlOpClusterSystemServicesUpdateAvailability.md)
+### [Test-AzMlOpClusterSystemServicesUpdateAvailability](Test-AzMlOpClusterSystemServicesUpdateAvailability.md)
 Checks if there are updates available for the system services associated with an operationalization cluster.
 
-### [Update-AzureRmMlOpClusterSystemService](Update-AzureRmMlOpClusterSystemService.md)
+### [Update-AzMlOpClusterSystemService](Update-AzMlOpClusterSystemService.md)
 Starts an update on the operationalization cluster's system services.
 

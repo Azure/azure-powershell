@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: CBDF4BCB-7EB3-4D64-B19C-1314D4AB84E4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvirtualnetwork
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetwork
 schema: 2.0.0
 ---
 
-# Get-AzureRmVirtualNetwork
+# Get-AzVirtualNetwork
 
 ## SYNOPSIS
 Gets a virtual network in a resource group.
@@ -15,24 +15,24 @@ Gets a virtual network in a resource group.
 
 ### NoExpand
 ```
-Get-AzureRmVirtualNetwork [-Name <String>] [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVirtualNetwork [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Expand
 ```
-Get-AzureRmVirtualNetwork -Name <String> -ResourceGroupName <String> -ExpandResource <String>
+Get-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -ExpandResource <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVirtualNetwork** cmdlet gets one or more virtual networks n a resource group.
+The **Get-AzVirtualNetwork** cmdlet gets one or more virtual networks n a resource group.
 
 ## EXAMPLES
 
 ### 1: Retrieve a virtual network
 ```
-Get-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup
+Get-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup
 ```
 
 This command gets the virtual network named MyVirtualNetwork in the resource group TestResourceGroup
@@ -43,7 +43,7 @@ This command gets the virtual network named MyVirtualNetwork in the resource gro
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -136,10 +136,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmVirtualNetwork](./New-AzureRmVirtualNetwork.md)
+[New-AzVirtualNetwork](./New-AzVirtualNetwork.md)
 
-[Remove-AzureRmVirtualNetwork](./Remove-AzureRmVirtualNetwork.md)
+[Remove-AzVirtualNetwork](./Remove-AzVirtualNetwork.md)
 
-[Set-AzureRmVirtualNetwork](./Set-AzureRmVirtualNetwork.md)
+[Set-AzVirtualNetwork](./Set-AzVirtualNetwork.md)
 
 

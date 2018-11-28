@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationsourcecontrol
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationsourcecontrol
 schema: 2.0.0
 ---
 
-# New-AzureRmAutomationSourceControl
+# New-AzAutomationSourceControl
 
 ## SYNOPSIS
 Creates an A Automation source control.
@@ -13,14 +13,14 @@ Creates an A Automation source control.
 ## SYNTAX
 
 ```
-New-AzureRmAutomationSourceControl -Name <String> -RepoUrl <Uri> -SourceType <String>
- -AccessToken <SecureString> -FolderPath <String> [-Branch <String>] [-Description <String>] [-EnableAutoSync]
- [-DoNotPublishRunbook] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAutomationSourceControl -Name <String> -RepoUrl <Uri> -SourceType <String> -AccessToken <SecureString>
+ -FolderPath <String> [-Branch <String>] [-Description <String>] [-EnableAutoSync] [-DoNotPublishRunbook]
+ [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmAutomationSourceControl cmdlet creates a configuration to link my Azure Automation account with my VSTS TFVC, VSTS Git or GitHub.
+The New-AzAutomationSourceControl cmdlet creates a configuration to link my Azure Automation account with my VSTS TFVC, VSTS Git or GitHub.
 
 ## EXAMPLES
 
@@ -31,7 +31,7 @@ Create a source control configuration to link my Azure Automation account with m
 PS C:\> # VSTS Personal access token
 PS C:\> $token = "vppmrabbs65axamofglyo66rjg6reddaa7xxgvaddd5555aaaaddxzbmma"
 PS C:\> $accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
-PS C:\> New-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
+PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "VSTSNative" `
                                            -RepoUrl "https://contoso.visualstudio.com/ContosoProduction/_versionControl" `
@@ -52,7 +52,7 @@ Create a source control configuration to link my Azure Automation account with m
 PS C:\> # VSTS Personal access token
 PS C:\> $token = "vppmrabbs65axamofglyo66rjg6reddaa7xxgvaddd5555aaaaddxzbmma"
 PS C:\> $accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
-PS C:\> New-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
+PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "VSTSGit" `
                                            -RepoUrl "https://contoso.visualstudio.com/_git/Finance" `
@@ -74,7 +74,7 @@ Create a source control configuration to link my Azure Automation account with m
 PS C:\> # GitHub access token
 PS C:\> $token = "68b08011223aac8bdd3388913a44rrsaa84fdf"
 PS C:\> $accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
-PS C:\> New-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
+PS C:\> New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "GitHub1" `
                                            -RepoUrl "https://github.com/Contoso/TestSourceControl.git" `
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

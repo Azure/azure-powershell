@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 52C5CD8B-2489-4FE6-9F33-B3350531CD8E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermadgroupmember
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadgroupmember
 schema: 2.0.0
 ---
 
-# Get-AzureRmADGroupMember
+# Get-AzADGroupMember
 
 ## SYNOPSIS
 Lists members of an AD group in the current tenant.
@@ -15,20 +15,20 @@ Lists members of an AD group in the current tenant.
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzureRmADGroupMember [-GroupObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroupMember [-GroupObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzureRmADGroupMember -GroupDisplayName <String> [-DefaultProfile <IAzureContextContainer>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroupMember -GroupDisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### GroupObjectParameterSet
 ```
-Get-AzureRmADGroupMember -GroupObject <PSADGroup> [-DefaultProfile <IAzureContextContainer>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroupMember -GroupObject <PSADGroup> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +39,7 @@ Lists members of an AD group in the current tenant.
 ### Example 1 - List members by AD group object id
 
 ```
-PS C:\> Get-AzureRmADGroupMember -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
+PS C:\> Get-AzADGroupMember -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
 ```
 
 Lists members of the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
@@ -47,7 +47,7 @@ Lists members of the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322E
 ### Example 2 - List members by AD group object id using paging
 
 ```
-PS C:\> Get-AzureRmADGroupMember -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE -First 100
+PS C:\> Get-AzADGroupMember -GroupObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE -First 100
 ```
 
 Lists the first 100 members of the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
@@ -55,10 +55,10 @@ Lists the first 100 members of the AD group with object id '85F89C90-780E-4AA6-9
 ### Example 3 - List members by piping
 
 ```
-PS C:\> Get-AzureRmADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE | Get-AzureRmADGroupMember
+PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE | Get-AzADGroupMember
 ```
 
-Gets the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipes it to the Get-AzureRmADGroupMember cmdlet to list all members in that group. 
+Gets the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipes it to the Get-AzADGroupMember cmdlet to list all members in that group. 
 
 ## PARAMETERS
 
@@ -66,24 +66,9 @@ Gets the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipe
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -First
-The maximum number of objects to return.
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -167,6 +152,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -First
+The maximum number of objects to return.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -185,7 +185,7 @@ Parameters: GroupObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmADUser](./Get-AzureRmADUser.md)
+[Get-AzADUser](./Get-AzADUser.md)
 
-[Get-AzureRmADServicePrincipal](./Get-AzureRmADServicePrincipal.md)
+[Get-AzADServicePrincipal](./Get-AzADServicePrincipal.md)
 

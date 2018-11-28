@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 ms.assetid: EF3FE3F1-1C8F-41EB-990E-F2B30BD9D082
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/disable-azurermoperationalinsightslinuxcustomlogcollection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/disable-azoperationalinsightslinuxcustomlogcollection
 schema: 2.0.0
 ---
 
-# Disable-AzureRmOperationalInsightsLinuxCustomLogCollection
+# Disable-AzOperationalInsightsLinuxCustomLogCollection
 
 ## SYNOPSIS
 Stops collection of custom logs from Linux computers.
@@ -15,18 +15,18 @@ Stops collection of custom logs from Linux computers.
 
 ### ByWorkspaceName (Default)
 ```
-Disable-AzureRmOperationalInsightsLinuxCustomLogCollection [-ResourceGroupName] <String>
- [-WorkspaceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Disable-AzOperationalInsightsLinuxCustomLogCollection [-ResourceGroupName] <String> [-WorkspaceName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
-Disable-AzureRmOperationalInsightsLinuxCustomLogCollection [-Workspace] <PSWorkspace>
+Disable-AzOperationalInsightsLinuxCustomLogCollection [-Workspace] <PSWorkspace>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzureRmOperationalInsightsLinuxCustomLogCollection** cmdlet stops collection of custom logs from connected Linux computers in a workspace.
+The **Disable-AzOperationalInsightsLinuxCustomLogCollection** cmdlet stops collection of custom logs from connected Linux computers in a workspace.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ The **Disable-AzureRmOperationalInsightsLinuxCustomLogCollection** cmdlet stops 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -142,6 +142,6 @@ Parameters: Workspace (ByValue)
 
 ## RELATED LINKS
 
-[Enable-AzureRmOperationalInsightsLinuxCustomLogCollection](./Enable-AzureRmOperationalInsightsLinuxCustomLogCollection.md)
+[Enable-AzOperationalInsightsLinuxCustomLogCollection](./Enable-AzOperationalInsightsLinuxCustomLogCollection.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ManagedServiceIdentity.dll-Help.xml
-Module Name: AzureRM.ManagedServiceIdentity
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity
+Module Name: Az.ManagedServiceIdentity
+online version: https://docs.microsoft.com/en-us/powershell/module/az.managedserviceidentity/new-azuserassignedidentity
 schema: 2.0.0
 ---
 
-# New-AzureRmUserAssignedIdentity
+# New-AzUserAssignedIdentity
 
 ## SYNOPSIS
 Creates a new User Assigned Identity or updates an existing User Assigned Identity.
@@ -13,13 +13,13 @@ Creates a new User Assigned Identity or updates an existing User Assigned Identi
 ## SYNTAX
 
 ```
-New-AzureRmUserAssignedIdentity [-ResourceGroupName] <String> [-Name] <String> [-Location <String>] [-AsJob]
+New-AzUserAssignedIdentity [-ResourceGroupName] <String> [-Name] <String> [-Location <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmUserAssignedIdentity** cmdlet creates a new User Assigned Identity. When used with an already existing identity, it updated the identity.
-To add Azure Resource Manager tags to the identity, please use the Set-AzureRmResource cmdlet.
+The **New-AzUserAssignedIdentity** cmdlet creates a new User Assigned Identity. When used with an already existing identity, it updated the identity.
+To add Azure Resource Manager tags to the identity, please use the Set-AzResource cmdlet.
 
 ## EXAMPLES
 
@@ -27,7 +27,7 @@ To add Azure Resource Manager tags to the identity, please use the Set-AzureRmRe
 This example cmdlet creates a new User Assigned Identity with name **ID1** under resource group **PSRG** in the location of the ResourceGroup.
 
 ```powershell
-PS C:\> New-AzureRmUserAssignedIdentity -ResourceGroupName PSRG -Name ID1
+PS C:\> New-AzUserAssignedIdentity -ResourceGroupName PSRG -Name ID1
 
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
@@ -52,7 +52,7 @@ Type              : Microsoft.ManagedIdentity/userAssignedIdentities
 This example cmdlet creates a new User Assigned Identity with name **ID1** under the resource group **PSRG** in the westus region.
 
 ```powershell
-PS C:\> New-AzureRmUserAssignedIdentity -ResourceGroupName PSRG -Name ID1 -Location westus
+PS C:\> New-AzUserAssignedIdentity -ResourceGroupName PSRG -Name ID1 -Location westus
 
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

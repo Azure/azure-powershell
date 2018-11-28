@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubcertificate
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubcertificate
 schema: 2.0.0
 ---
 
-# Get-AzureRmIotHubCertificate
+# Get-AzIotHubCertificate
 
 ## SYNOPSIS
 Lists all certificates or a particular certificate contained within an Azure IoT Hub. 
@@ -14,19 +14,19 @@ Lists all certificates or a particular certificate contained within an Azure IoT
 
 ### ResourceSet (Default)
 ```
-Get-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-CertificateName <String>]
+Get-AzIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-CertificateName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Get-AzureRmIotHubCertificate [-InputObject] <PSIotHub> [-CertificateName <String>]
+Get-AzIotHubCertificate [-InputObject] <PSIotHub> [-CertificateName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmIotHubCertificate [-ResourceId] <String> [-CertificateName <String>]
+Get-AzIotHubCertificate [-ResourceId] <String> [-CertificateName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub"
+PS C:\> Get-AzIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub"
 
 ResourceGroupName	Name		CertificateName Status     Expiry
 -----------------	----        ---------------	------     ------
@@ -49,7 +49,7 @@ List all certificates in MyIotHub
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate"
+PS C:\> Get-AzIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate"
 
 Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/IotHubs/myiothub/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

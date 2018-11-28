@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
-Module Name: AzureRM.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor/new-azurermfrontdoorloadbalancingsettingobject
+Module Name: Az.FrontDoor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorloadbalancingsettingobject
 schema: 2.0.0
 ---
 
-# New-AzureRmFrontDoorLoadBalancingSettingObject
+# New-AzFrontDoorLoadBalancingSettingObject
 
 ## SYNOPSIS
 Create a PSLoadBalancingSetting object for Front Door creation
@@ -13,7 +13,7 @@ Create a PSLoadBalancingSetting object for Front Door creation
 ## SYNTAX
 
 ```
-New-AzureRmFrontDoorLoadBalancingSettingObject -Name <String> [-SampleSize <Int32>]
+New-AzFrontDoorLoadBalancingSettingObject -Name <String> [-SampleSize <Int32>]
  [-SuccessfulSamplesRequired <Int32>] [-AdditionalLatencyInMilliseconds <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Create a PSLoadBalancingSetting object for Front Door creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1"
+PS C:\> New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1"
 
 
 SampleSize                    : 4
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -134,5 +134,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmFrontDoor](./New-AzureRmFrontDoor.md)
-[Set-AzureRmFrontDoor](./Set-AzureRmFrontDoor.md)
+[New-AzFrontDoor](./New-AzFrontDoor.md)
+[Set-AzFrontDoor](./Set-AzFrontDoor.md)

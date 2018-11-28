@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DevSpaces.dll-Help.xml
-Module Name: AzureRM.DevSpaces
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.devspaces/new-azureevspacescontroller
+Module Name: Az.DevSpaces
+online version: https://docs.microsoft.com/en-us/powershell/module/az.devspaces/new-azevspacescontroller
 schema: 2.0.0
 ---
 
-# New-AzureRmDevSpacesController
+# New-AzDevSpacesController
 
 ## SYNOPSIS
 Create a new Azure DevSpaces controller.
@@ -13,9 +13,9 @@ Create a new Azure DevSpaces controller.
 ## SYNTAX
 
 ```
-New-AzureRmDevSpacesController [-ResourceGroupName] <String> [-Name] <String>
- [-TargetResourceGroupName] <String> [-TargetClusterName] <String> [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDevSpacesController [-ResourceGroupName] <String> [-Name] <String> [-TargetResourceGroupName] <String>
+ [-TargetClusterName] <String> [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Create a new Azure DevSpaces controller.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName -TargetResourceGroupName clusterResourceGroup -TargetClusterName clusterName
+PS C:\> New-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName -TargetResourceGroupName clusterResourceGroup -TargetClusterName clusterName
 
 Name        Resource Group  Location  Provisioning State
 ----------  --------------  --------  ------------------
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

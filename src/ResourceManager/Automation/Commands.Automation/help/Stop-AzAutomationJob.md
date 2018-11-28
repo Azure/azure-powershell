@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: BE1A9247-9F8E-45EA-9590-684A5A5662AC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/stop-azurermautomationjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/stop-azautomationjob
 schema: 2.0.0
 ---
 
-# Stop-AzureRmAutomationJob
+# Stop-AzAutomationJob
 
 ## SYNOPSIS
 Stops an Automation job.
@@ -14,19 +14,19 @@ Stops an Automation job.
 ## SYNTAX
 
 ```
-Stop-AzureRmAutomationJob [-Id] <Guid> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Stop-AzAutomationJob [-Id] <Guid> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmAutomationJob** cmdlet stops an Azure Automation job.
+The **Stop-AzAutomationJob** cmdlet stops an Azure Automation job.
 Specify a running Automation job.
 
 ## EXAMPLES
 
 ### Example 1: Stop a job
 ```
-PS C:\>Stop-AzureRmAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -ResourceGroupName "ResourceGroup01"
+PS C:\>Stop-AzAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -ResourceGroupName "ResourceGroup01"
 ```
 
 This command stops the job that has the specified ID.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -110,12 +110,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationJob](./Get-AzureRMAutomationJob.md)
+[Get-AzAutomationJob](./Get-AzAutomationJob.md)
 
-[Get-AzureRmAutomationJobOutput](./Get-AzureRMAutomationJobOutput.md)
+[Get-AzAutomationJobOutput](./Get-AzAutomationJobOutput.md)
 
-[Resume-AzureRmAutomationJob](./Resume-AzureRMAutomationJob.md)
+[Resume-AzAutomationJob](./Resume-AzAutomationJob.md)
 
-[Suspend-AzureRmAutomationJob](./Suspend-AzureRMAutomationJob.md)
+[Suspend-AzAutomationJob](./Suspend-AzAutomationJob.md)
 
 

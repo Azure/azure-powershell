@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/start-azurermdatafactoryv2trigger
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/start-azdatafactoryv2trigger
 schema: 2.0.0
 ---
 
-# Start-AzureRmDataFactoryV2Trigger
+# Start-AzDataFactoryV2Trigger
 
 ## SYNOPSIS
 Starts a trigger in a data factory.
@@ -14,30 +14,30 @@ Starts a trigger in a data factory.
 
 ### ByFactoryName (Default)
 ```
-Start-AzureRmDataFactoryV2Trigger [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
+Start-AzDataFactoryV2Trigger [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Start-AzureRmDataFactoryV2Trigger [-InputObject] <PSTrigger> [-Force]
+Start-AzDataFactoryV2Trigger [-InputObject] <PSTrigger> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Start-AzureRmDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+Start-AzDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmDataFactoryV2Trigger** cmdlet starts a trigger in a data factory. If the trigger is in the 'Stopped' state, the cmdlet starts the trigger and it eventually invokes pipelines based on its definition. If the trigger is already in the 'Started' state, this cmdlet has no effect. If the Force parameter is specified, the cmdlet doesn't prompt before starting the trigger.
+The **Start-AzDataFactoryV2Trigger** cmdlet starts a trigger in a data factory. If the trigger is in the 'Stopped' state, the cmdlet starts the trigger and it eventually invokes pipelines based on its definition. If the trigger is already in the 'Started' state, this cmdlet has no effect. If the Force parameter is specified, the cmdlet doesn't prompt before starting the trigger.
 
 ## EXAMPLES
 
 ### Example 1: Start a trigger
 ```
-Start-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
+Start-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
 
 Confirm
 Are you sure you want to start trigger 'ScheduledTrigger' in data factory 'WikiADF'?
@@ -202,10 +202,10 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2Trigger]()
+[Get-AzDataFactoryV2Trigger]()
 
-[Set-AzureRmDataFactoryV2Trigger]()
+[Set-AzDataFactoryV2Trigger]()
 
-[Stop-AzureRmDataFactoryV2Trigger]()
+[Stop-AzDataFactoryV2Trigger]()
 
-[Remove-AzureRmDataFactoryV2Trigger]()
+[Remove-AzDataFactoryV2Trigger]()

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM.TrafficManager
+Module Name: Az.TrafficManager
 ms.assetid: 2129C457-592B-484C-A148-828BFD5895D4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/remove-azurermtrafficmanagerendpoint
+online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/remove-aztrafficmanagerendpoint
 schema: 2.0.0
 ---
 
-# Remove-AzureRmTrafficManagerEndpoint
+# Remove-AzTrafficManagerEndpoint
 
 ## SYNOPSIS
 Removes an endpoint from Traffic Manager.
@@ -15,22 +15,21 @@ Removes an endpoint from Traffic Manager.
 
 ### Fields
 ```
-Remove-AzureRmTrafficManagerEndpoint -Name <String> -Type <String> -ProfileName <String>
- -ResourceGroupName <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzTrafficManagerEndpoint -Name <String> -Type <String> -ProfileName <String> -ResourceGroupName <String>
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
-Remove-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint <TrafficManagerEndpoint> [-Force]
+Remove-AzTrafficManagerEndpoint -TrafficManagerEndpoint <TrafficManagerEndpoint> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmTrafficManagerEndpoint** cmdlet removes an endpoint from Azure Traffic Manager.
+The **Remove-AzTrafficManagerEndpoint** cmdlet removes an endpoint from Azure Traffic Manager.
 
 This cmdlet commits each change to the Traffic Manager service.
-To remove multiple endpoints from a local Traffic Manager profile object and commit changes in a single operation, use the Remove-AzureRmTrafficManagerEndpointConfig cmdlet.
+To remove multiple endpoints from a local Traffic Manager profile object and commit changes in a single operation, use the Remove-AzTrafficManagerEndpointConfig cmdlet.
 
 You can use the pipeline operator to pass a **TrafficManagerEndpoint** object to this cmdlet, or you can specify a **TrafficManagerEndpoint** object by using the *TrafficManagerEndpoint* parameter.
 
@@ -40,7 +39,7 @@ Alternatively, you can specify the endpoint name and type by using the *Name* an
 
 ### Example 1: Remove an endpoint from a profile
 ```
-PS C:\>Remove-AzureRmTrafficManagerEndpoint -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName "ResourceGroup11" -Type AzureEndpoints
+PS C:\>Remove-AzTrafficManagerEndpoint -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName "ResourceGroup11" -Type AzureEndpoints
 ```
 
 This command removes the Azure endpoint named contoso from the profile named ContosoProfile in the resource group named ResourceGroup11.
@@ -51,7 +50,7 @@ This command removes the Azure endpoint named contoso from the profile named Con
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,7 +93,7 @@ Accept wildcard characters: False
 
 ### -ProfileName
 Specifies the name of a Traffic Manager profile from which this cmdlet removes an endpoint.
-To obtain a profile, use the Get-AzureRmTrafficManagerProfile cmdlet.
+To obtain a profile, use the Get-AzTrafficManagerProfile cmdlet.
 
 ```yaml
 Type: System.String
@@ -126,7 +125,7 @@ Accept wildcard characters: False
 
 ### -TrafficManagerEndpoint
 Specifies the Traffic Manager endpoint that this cmdlet removes.
-To obtain a **TrafficManagerEndpoint** object, use the Get-AzureRmTrafficManagerEndpoint cmdlet.
+To obtain a **TrafficManagerEndpoint** object, use the Get-AzTrafficManagerEndpoint cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint
@@ -208,14 +207,14 @@ Parameter 'TrafficManagerEndpoint' accepts value of type 'TrafficManagerEndpoint
 
 ## RELATED LINKS
 
-[Get-AzureRmTrafficManagerEndpoint](./Get-AzureRmTrafficManagerEndpoint.md)
+[Get-AzTrafficManagerEndpoint](./Get-AzTrafficManagerEndpoint.md)
 
-[Get-AzureRmTrafficManagerProfile](./Get-AzureRmTrafficManagerProfile.md)
+[Get-AzTrafficManagerProfile](./Get-AzTrafficManagerProfile.md)
 
-[New-AzureRmTrafficManagerEndpoint](./New-AzureRmTrafficManagerEndpoint.md)
+[New-AzTrafficManagerEndpoint](./New-AzTrafficManagerEndpoint.md)
 
-[Remove-AzureRmTrafficManagerEndpointConfig](./Remove-AzureRmTrafficManagerEndpointConfig.md)
+[Remove-AzTrafficManagerEndpointConfig](./Remove-AzTrafficManagerEndpointConfig.md)
 
-[Set-AzureRmTrafficManagerProfile](./Set-AzureRmTrafficManagerProfile.md)
+[Set-AzTrafficManagerProfile](./Set-AzTrafficManagerProfile.md)
 
 

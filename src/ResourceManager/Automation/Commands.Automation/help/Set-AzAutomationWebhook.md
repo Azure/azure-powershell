@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 9EA7F710-36FB-435C-BF28-1015E5D3155F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/set-azurermautomationwebhook
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationwebhook
 schema: 2.0.0
 ---
 
-# Set-AzureRmAutomationWebhook
+# Set-AzAutomationWebhook
 
 ## SYNOPSIS
 Modifies a webhook for an Automation runbook.
@@ -14,19 +14,19 @@ Modifies a webhook for an Automation runbook.
 ## SYNTAX
 
 ```
-Set-AzureRmAutomationWebhook [-Name] <String> [-IsEnabled] <Boolean> [[-Parameters] <IDictionary>]
+Set-AzAutomationWebhook [-Name] <String> [-IsEnabled] <Boolean> [[-Parameters] <IDictionary>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmAutomationWebhook** cmdlet modifies a webhook for an Azure Automation runbook.
+The **Set-AzAutomationWebhook** cmdlet modifies a webhook for an Azure Automation runbook.
 
 ## EXAMPLES
 
 ### Example 1: Disable a webhook
 ```
-PS C:\>Set-AzureAutomationWebhook -Name "Webhook01" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -IsEnabled $False
+PS C:\>Set-AzAutomationWebhook -Name "Webhook01" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -IsEnabled $False
 ```
 
 This command disables a webhook named Webhook01 in the Automation account named AutomationAccount01.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -145,10 +145,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationWebhook](./Get-AzureRMAutomationWebhook.md)
+[Get-AzAutomationWebhook](./Get-AzAutomationWebhook.md)
 
-[New-AzureRmAutomationWebhook](./New-AzureRMAutomationWebhook.md)
+[New-AzAutomationWebhook](./New-AzAutomationWebhook.md)
 
-[Remove-AzureRmAutomationWebhook](./Remove-AzureRMAutomationWebhook.md)
+[Remove-AzAutomationWebhook](./Remove-AzAutomationWebhook.md)
 
 

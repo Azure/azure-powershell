@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: CB621890-EF8A-4F14-8F18-D8806E624DAB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationschedule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationschedule
 schema: 2.0.0
 ---
 
-# New-AzureRmAutomationSchedule
+# New-AzAutomationSchedule
 
 ## SYNOPSIS
 Creates an Automation schedule.
@@ -15,7 +15,7 @@ Creates an Automation schedule.
 
 ### ByDaily (Default)
 ```
-New-AzureRmAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-Description <String>]
+New-AzAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-Description <String>]
  [-ExpiryTime <DateTimeOffset>] -DayInterval <Byte> [-TimeZone <String>] [-ForUpdateConfiguration]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -23,7 +23,7 @@ New-AzureRmAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-D
 
 ### ByWeekly
 ```
-New-AzureRmAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-Description <String>]
+New-AzAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-Description <String>]
  [-DaysOfWeek <DayOfWeek[]>] [-ExpiryTime <DateTimeOffset>] -WeekInterval <Byte> [-TimeZone <String>]
  [-ForUpdateConfiguration] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -31,7 +31,7 @@ New-AzureRmAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-D
 
 ### ByMonthlyDaysOfMonth
 ```
-New-AzureRmAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-Description <String>]
+New-AzAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-Description <String>]
  [-DaysOfMonth <DaysOfMonth[]>] [-ExpiryTime <DateTimeOffset>] -MonthInterval <Byte> [-TimeZone <String>]
  [-ForUpdateConfiguration] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -39,7 +39,7 @@ New-AzureRmAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-D
 
 ### ByMonthlyDayOfWeek
 ```
-New-AzureRmAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-Description <String>]
+New-AzAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-Description <String>]
  [-DayOfWeek <DayOfWeek>] [-DayOfWeekOccurrence <DayOfWeekOccurrence>] [-ExpiryTime <DateTimeOffset>]
  -MonthInterval <Byte> [-TimeZone <String>] [-ForUpdateConfiguration] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -47,28 +47,28 @@ New-AzureRmAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-D
 
 ### ByOneTime
 ```
-New-AzureRmAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-Description <String>] [-OneTime]
+New-AzAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-Description <String>] [-OneTime]
  [-TimeZone <String>] [-ForUpdateConfiguration] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByHourly
 ```
-New-AzureRmAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-Description <String>]
+New-AzAutomationSchedule [-Name] <String> [-StartTime] <DateTimeOffset> [-Description <String>]
  [-ExpiryTime <DateTimeOffset>] -HourInterval <Byte> [-TimeZone <String>] [-ForUpdateConfiguration]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAutomationSchedule** cmdlet creates a schedule in Azure Automation.
+The **New-AzAutomationSchedule** cmdlet creates a schedule in Azure Automation.
 
 ## EXAMPLES
 
 ### Example 1: Create a one-time schedule in local time
 ```
 PS C:\> $TimeZone = ([System.TimeZoneInfo]::Local).Id
-PS C:\> New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
+PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
 ```
 
 The first command gets the time zone ID from the system and stores it in the $TimeZone variable.
@@ -78,7 +78,7 @@ The second command creates a schedule that runs one time on the current date at 
 ```
 PS C:\> $StartTime = Get-Date "13:00:00"
 PS C:\> $EndTime = $StartTime.AddYears(1)
-PS C:\> New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DayInterval 1 -ResourceGroupName "ResourceGroup01"
+PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DayInterval 1 -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command creates a date object by using the **Get-Date** cmdlet, and then stores the object in the $StartDate variable.
@@ -91,7 +91,7 @@ The final command creates a daily schedule named Schedule02 to begin at the time
 ```
 PS C:\> $StartTime = (Get-Date "13:00:00").AddDays(1)
 PS C:\> [System.DayOfWeek[]]$WeekDays = @([System.DayOfWeek]::Monday..[System.DayOfWeek]::Friday)
-PS C:\> New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule03" -StartTime $StartTime - WeekInterval 1 -DaysOfWeek $WeekDays -ResourceGroupName "ResourceGroup01"
+PS C:\> New-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule03" -StartTime $StartTime - WeekInterval 1 -DaysOfWeek $WeekDays -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command creates a date object by using the **Get-Date** cmdlet, and then stores the object in the $StartDate variable.
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -407,10 +407,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationSchedule](./Get-AzureRMAutomationSchedule.md)
+[Get-AzAutomationSchedule](./Get-AzAutomationSchedule.md)
 
-[Remove-AzureRmAutomationSchedule](./Remove-AzureRMAutomationSchedule.md)
+[Remove-AzAutomationSchedule](./Remove-AzAutomationSchedule.md)
 
-[Set-AzureRmAutomationSchedule](./Set-AzureRMAutomationSchedule.md)
+[Set-AzAutomationSchedule](./Set-AzAutomationSchedule.md)
 
 

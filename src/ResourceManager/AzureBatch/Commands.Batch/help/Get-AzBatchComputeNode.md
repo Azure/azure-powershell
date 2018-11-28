@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 93614655-A8F2-4A67-887D-43D41AB91F82
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchcomputenode
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchcomputenode
 schema: 2.0.0
 ---
 
-# Get-AzureBatchComputeNode
+# Get-AzBatchComputeNode
 
 ## SYNOPSIS
 Gets Batch compute nodes from a pool.
@@ -15,24 +15,24 @@ Gets Batch compute nodes from a pool.
 
 ### ODataFilter (Default)
 ```
-Get-AzureBatchComputeNode [-PoolId] <String> [-Filter <String>] [-MaxCount <Int32>] [-Select <String>]
+Get-AzBatchComputeNode [-PoolId] <String> [-Filter <String>] [-MaxCount <Int32>] [-Select <String>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Get-AzureBatchComputeNode [-PoolId] <String> [[-Id] <String>] [-Select <String>]
+Get-AzBatchComputeNode [-PoolId] <String> [[-Id] <String>] [-Select <String>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentObject
 ```
-Get-AzureBatchComputeNode [[-Pool] <PSCloudPool>] [-Filter <String>] [-MaxCount <Int32>] [-Select <String>]
+Get-AzBatchComputeNode [[-Pool] <PSCloudPool>] [-Filter <String>] [-MaxCount <Int32>] [-Select <String>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureBatchComputeNode** cmdlet gets Azure Batch compute nodes from a pool.
+The **Get-AzBatchComputeNode** cmdlet gets Azure Batch compute nodes from a pool.
 Specify either the *PoolID* or *Pool* parameter.
 Specify the *Id* parameter to get a single compute node.
 Specify the *Filter* parameter to get the compute nodes that match an Open Data Protocol (OData) filter.
@@ -41,7 +41,7 @@ Specify the *Filter* parameter to get the compute nodes that match an Open Data 
 
 ### Example 1: Get a compute node by ID
 ```
-PS C:\>Get-AzureBatchComputeNode -PoolId "Pool06" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context
+PS C:\>Get-AzBatchComputeNode -PoolId "Pool06" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context
 Id                    : tvm-2316545714_1-20150725t213220z
 Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
 State                 : Idle
@@ -60,11 +60,11 @@ Errors                :
 ```
 
 This command gets the compute node that has the ID tvm-2316545714_1-20150725t213220z from the pool that has the ID Pool06.
-Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.
+Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Get all idle compute nodes from a pool
 ```
-PS C:\>Get-AzureBatchComputeNode -PoolId "Pool06" -Filter "state eq 'idle'" -BatchContext $Context
+PS C:\>Get-AzBatchComputeNode -PoolId "Pool06" -Filter "state eq 'idle'" -BatchContext $Context
 Id                    : tvm-2316545714_1-20150725t213220z
 Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
 State                 : Idle
@@ -103,7 +103,7 @@ The command specifies the idle state by using the *Filter* parameter.
 
 ### Example 3: Get all compute nodes in a specified pool
 ```
-PS C:\>Get-AzureBatchPool -Id "Pool07" -BatchContext $Context | Get-AzureBatchComputeNode -BatchContext $Context
+PS C:\>Get-AzBatchPool -Id "Pool07" -BatchContext $Context | Get-AzBatchComputeNode -BatchContext $Context
 Id                    : tvm-2316545714_1-20150725t213220z
 Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
 State                 : Idle
@@ -139,7 +139,7 @@ CertificateReferences :
 Errors                :
 ```
 
-This command gets the pool that has the ID Pool07 by using the Get-AzureBatchPool cmdlet.
+This command gets the pool that has the ID Pool07 by using the Get-AzBatchPool cmdlet.
 The command passes that pool to the current cmdlet by using the pipeline operator.
 That cmdlet gets all compute nodes from that pool.
 
@@ -147,7 +147,7 @@ That cmdlet gets all compute nodes from that pool.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -228,7 +228,7 @@ Accept wildcard characters: False
 
 ### -Pool
 Specifies the pool, as a **PSCloudPool** object, that contains the compute nodes.
-To obtain a **PSCloudPool** object, use the Get-AzureBatchPool cmdlet.
+To obtain a **PSCloudPool** object, use the Get-AzBatchPool cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.Models.PSCloudPool
@@ -294,18 +294,18 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureBatchComputeNode](./Get-AzureBatchComputeNode.md)
+[Get-AzBatchComputeNode](./Get-AzBatchComputeNode.md)
 
-[Get-AzureBatchNodeFile](./Get-AzureBatchNodeFile.md)
+[Get-AzBatchNodeFile](./Get-AzBatchNodeFile.md)
 
-[Get-AzureBatchNodeFileContent](./Get-AzureBatchNodeFileContent.md)
+[Get-AzBatchNodeFileContent](./Get-AzBatchNodeFileContent.md)
 
-[Get-AzureBatchPool](./Get-AzureBatchPool.md)
+[Get-AzBatchPool](./Get-AzBatchPool.md)
 
-[Reset-AzureBatchComputeNode](./Reset-AzureBatchComputeNode.md)
+[Reset-AzBatchComputeNode](./Reset-AzBatchComputeNode.md)
 
-[Restart-AzureBatchComputeNode](./Restart-AzureBatchComputeNode.md)
+[Restart-AzBatchComputeNode](./Restart-AzBatchComputeNode.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

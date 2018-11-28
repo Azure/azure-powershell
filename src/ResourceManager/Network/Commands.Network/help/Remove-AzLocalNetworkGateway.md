@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 75E30205-97AD-44E3-A61F-62B81ADB532C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermlocalnetworkgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azlocalnetworkgateway
 schema: 2.0.0
 ---
 
-# Remove-AzureRmLocalNetworkGateway
+# Remove-AzLocalNetworkGateway
 
 ## SYNOPSIS
 Deletes a Local Network Gateway
@@ -14,23 +14,23 @@ Deletes a Local Network Gateway
 ## SYNTAX
 
 ```
-Remove-AzureRmLocalNetworkGateway -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
+Remove-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Local Network Gateway is the object representing your VPN device On-Premises.
-The **Remove-AzureRmLocalNetworkGateway** cmdlet deletes the object representing your on-prem gateway based on Name and Resource Group Name.
+The **Remove-AzLocalNetworkGateway** cmdlet deletes the object representing your on-prem gateway based on Name and Resource Group Name.
 
 ## EXAMPLES
 
 ### 1: Delete a Local Network Gateway
 ```
-Remove-AzureRmLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
+Remove-AzLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
 ```
 
 Deletes the object of the Local Network Gateway with the name "myLocalGW" within the resource group "myRG"
-Note: You must first delete all connections to the Local Network Gateway using the **Remove-AzureRmVirtualNetworkGatewayConnection** cmdlet.
+Note: You must first delete all connections to the Local Network Gateway using the **Remove-AzVirtualNetworkGatewayConnection** cmdlet.
 
 ## PARAMETERS
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -171,10 +171,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmLocalNetworkGateway](./Get-AzureRmLocalNetworkGateway.md)
+[Get-AzLocalNetworkGateway](./Get-AzLocalNetworkGateway.md)
 
-[New-AzureRmLocalNetworkGateway](./New-AzureRmLocalNetworkGateway.md)
+[New-AzLocalNetworkGateway](./New-AzLocalNetworkGateway.md)
 
-[Set-AzureRmLocalNetworkGateway](./Set-AzureRmLocalNetworkGateway.md)
+[Set-AzLocalNetworkGateway](./Set-AzLocalNetworkGateway.md)
 
 

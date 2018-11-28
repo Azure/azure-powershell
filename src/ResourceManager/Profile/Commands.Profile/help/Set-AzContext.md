@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/set-azurermcontext
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/set-azcontext
 schema: 2.0.0
 ---
 
-# Set-AzureRmContext
+# Set-AzContext
 
 ## SYNOPSIS
 Sets the tenant, subscription, and environment for cmdlets to use in the current session.
@@ -14,7 +14,7 @@ Sets the tenant, subscription, and environment for cmdlets to use in the current
 
 ### Context (Default)
 ```
-Set-AzureRmContext [-Context] <PSAzureContext>
+Set-AzContext [-Context] <PSAzureContext>
  [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
  [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -22,7 +22,7 @@ Set-AzureRmContext [-Context] <PSAzureContext>
 
 ### TenantObject
 ```
-Set-AzureRmContext [-TenantObject] <PSAzureTenant>
+Set-AzContext [-TenantObject] <PSAzureTenant>
  [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
  [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -30,7 +30,7 @@ Set-AzureRmContext [-TenantObject] <PSAzureTenant>
 
 ### SubscriptionObject
 ```
-Set-AzureRmContext [-SubscriptionObject] <PSAzureSubscription>
+Set-AzContext [-SubscriptionObject] <PSAzureSubscription>
  [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
  [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -38,7 +38,7 @@ Set-AzureRmContext [-SubscriptionObject] <PSAzureSubscription>
 
 ### Subscription
 ```
-Set-AzureRmContext [-Tenant <String>] [-Subscription] <String>
+Set-AzContext [-Tenant <String>] [-Subscription] <String>
  [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
  [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -46,21 +46,21 @@ Set-AzureRmContext [-Tenant <String>] [-Subscription] <String>
 
 ### TenantNameOnly
 ```
-Set-AzureRmContext -Tenant <String>
+Set-AzContext -Tenant <String>
  [-ExtendedProperty <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Name <String>]
  [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzureRmContext cmdlet sets authentication information for cmdlets that you run in the current session.
+The Set-AzContext cmdlet sets authentication information for cmdlets that you run in the current session.
 The context includes tenant, subscription, and environment information.
 
 ## EXAMPLES
 
 ### Example 1: Set the subscription context
 ```
-PS C:\>Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
+PS C:\>Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
 
 Name    Account             SubscriptionName    Environment         TenantId
 ----    -------             ----------------    -----------         --------
@@ -75,7 +75,7 @@ This command sets the context to use the specified subscription.
 Specifies the context for the current session.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Profile.Models.PSAzureContext
+Type: Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext
 Parameter Sets: Context
 Aliases:
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The credentials, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -286,5 +286,5 @@ Parameters: SubscriptionObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRMContext](./Get-AzureRMContext.md)
+[Get-AzContext](./Get-AzContext.md)
 

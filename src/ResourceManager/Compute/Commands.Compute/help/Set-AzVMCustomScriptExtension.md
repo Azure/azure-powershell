@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 64AB1BAE-A756-43A8-A40F-10B746EA0946
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmcustomscriptextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmcustomscriptextension
 schema: 2.0.0
 ---
 
-# Set-AzureRmVMCustomScriptExtension
+# Set-AzVMCustomScriptExtension
 
 ## SYNOPSIS
 Adds a custom script extension to a virtual machine.
@@ -15,7 +15,7 @@ Adds a custom script extension to a virtual machine.
 
 ### SetCustomScriptExtensionByContainerAndFileNames (Default)
 ```
-Set-AzureRmVMCustomScriptExtension -ContainerName <String> -FileName <String[]> [-StorageAccountName <String>]
+Set-AzVMCustomScriptExtension -ContainerName <String> -FileName <String[]> [-StorageAccountName <String>]
  [-StorageEndpointSuffix <String>] [-StorageAccountKey <String>] [-Run <String>] [-Argument <String>]
  [-SecureExecution] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
@@ -24,21 +24,21 @@ Set-AzureRmVMCustomScriptExtension -ContainerName <String> -FileName <String[]> 
 
 ### SetCustomScriptExtensionByUriLinks
 ```
-Set-AzureRmVMCustomScriptExtension [-FileUri <String[]>] [-Run <String>] [-Argument <String>]
- [-SecureExecution] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
- [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
+Set-AzVMCustomScriptExtension [-FileUri <String[]>] [-Run <String>] [-Argument <String>] [-SecureExecution]
+ [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>] [-TypeHandlerVersion <String>]
+ [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMCustomScriptExtension** cmdlet adds a custom script Virtual Machine Extension to a virtual machine.
+The **Set-AzVMCustomScriptExtension** cmdlet adds a custom script Virtual Machine Extension to a virtual machine.
 This extension lets you run your own scripts on the virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Add a custom script
 ```
-PS C:\> Set-AzureRmVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -Location "Central US" -VMName "VirtualMachine07" -Name "ContosoTest" -TypeHandlerVersion "1.1" -StorageAccountName "Contoso" -StorageAccountKey <StorageKey> -FileName "ContosoScript.exe" -ContainerName "Scripts"
+PS C:\> Set-AzVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -Location "Central US" -VMName "VirtualMachine07" -Name "ContosoTest" -TypeHandlerVersion "1.1" -StorageAccountName "Contoso" -StorageAccountKey <StorageKey> -FileName "ContosoScript.exe" -ContainerName "Scripts"
 ```
 
 This command adds a custom script to the virtual machine named VirtualMachine07.
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -275,7 +275,7 @@ Accept wildcard characters: False
 
 ### -TypeHandlerVersion
 Specifies the version of the extension to use for this virtual machine.
-To obtain the version, run the Get-AzureRmVMExtensionImage cmdlet with a value of Microsoft.Compute for the *PublisherName* parameter and VMAccessAgent for the *Type* parameter.
+To obtain the version, run the Get-AzVMExtensionImage cmdlet with a value of Microsoft.Compute for the *PublisherName* parameter and VMAccessAgent for the *Type* parameter.
 
 ```yaml
 Type: System.String
@@ -355,8 +355,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMCustomScriptExtension](./Get-AzureRmVMCustomScriptExtension.md)
+[Get-AzVMCustomScriptExtension](./Get-AzVMCustomScriptExtension.md)
 
-[Remove-AzureRmVMCustomScriptExtension](./Remove-AzureRmVMCustomScriptExtension.md)
+[Remove-AzVMCustomScriptExtension](./Remove-AzVMCustomScriptExtension.md)
 
 

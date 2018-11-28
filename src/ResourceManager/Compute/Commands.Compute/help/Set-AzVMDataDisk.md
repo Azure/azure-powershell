@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: C453485D-67A7-480E-83F6-527D4F5EBC93
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmdatadisk
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmdatadisk
 schema: 2.0.0
 ---
 
-# Set-AzureRmVMDataDisk
+# Set-AzVMDataDisk
 
 ## SYNOPSIS
 Modifies properties of a virtual machine data disk.
@@ -15,33 +15,33 @@ Modifies properties of a virtual machine data disk.
 
 ### ChangeWithName
 ```
-Set-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-Name] <String> [[-Caching] <CachingTypes>]
+Set-AzVMDataDisk [-VM] <PSVirtualMachine> [-Name] <String> [[-Caching] <CachingTypes>]
  [[-DiskSizeInGB] <Int32>] [-StorageAccountType <String>] [-WriteAccelerator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ChangeWithLun
 ```
-Set-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-Lun] <Int32> [[-Caching] <CachingTypes>]
- [[-DiskSizeInGB] <Int32>] [-StorageAccountType <String>] [-WriteAccelerator]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzVMDataDisk [-VM] <PSVirtualMachine> [-Lun] <Int32> [[-Caching] <CachingTypes>] [[-DiskSizeInGB] <Int32>]
+ [-StorageAccountType <String>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMDataDisk** cmdlet modifies properties of a virtual machine data disk.
+The **Set-AzVMDataDisk** cmdlet modifies properties of a virtual machine data disk.
 
 ## EXAMPLES
 
 ### Example 1: Modify the caching mode of a data disk
 ```
-PS C:\> $VM = Get-AzureRMVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
-PS C:\> Set-AzureRmVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite | Update-AzureRmVM
+PS C:\> $VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+PS C:\> Set-AzVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite | Update-AzVM
 ```
 
-The first command gets the virtual machine named ContosoVM07 by using **Get-AzureRmVM**.
+The first command gets the virtual machine named ContosoVM07 by using **Get-AzVM**.
 The command stores it in the $VM variable.
 The second command modifies the caching mode for the data disk named DataDisk01 on the virtual machine in $VM.
-The command passes the result to the Update-AzureRmVM cmdlet, which implements your changes.
+The command passes the result to the Update-AzVM cmdlet, which implements your changes.
 A change to the cashing mode causes the virtual machine to restart.
 
 ## PARAMETERS
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies the virtual machine for which this cmdlet modifies a data disk.
-To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
+To obtain a virtual machine object, use the Get-AzVM cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
@@ -195,8 +195,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVM](./Get-AzureRmVM.md)
+[Get-AzVM](./Get-AzVM.md)
 
-[Update-AzureRmVM](./Update-AzureRmVM.md)
+[Update-AzVM](./Update-AzVM.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.PolicyInsights.dll-Help.xml
-Module Name: AzureRM.PolicyInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.policyinsights/get-azurermpolicyremediation
+Module Name: Az.PolicyInsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.policyinsights/get-azpolicyremediation
 schema: 2.0.0
 ---
 
-# Get-AzureRmPolicyRemediation
+# Get-AzPolicyRemediation
 
 ## SYNOPSIS
 Gets policy remediations.
@@ -14,64 +14,64 @@ Gets policy remediations.
 
 ### SubscriptionScope (Default)
 ```
-Get-AzureRmPolicyRemediation [-Top <Int32>] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzPolicyRemediation [-Top <Int32>] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
+Get-AzPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
  [-ResourceGroupName <String>] [-Top <Int32>] [-IncludeDetail] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GenericScope
 ```
-Get-AzureRmPolicyRemediation -Scope <String> [-Top <Int32>] [-Filter <String>]
+Get-AzPolicyRemediation -Scope <String> [-Top <Int32>] [-Filter <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ManagementGroupScope
 ```
-Get-AzureRmPolicyRemediation -ManagementGroupName <String> [-Top <Int32>] [-Filter <String>]
+Get-AzPolicyRemediation -ManagementGroupName <String> [-Top <Int32>] [-Filter <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
-Get-AzureRmPolicyRemediation -ResourceGroupName <String> [-Top <Int32>] [-Filter <String>]
+Get-AzPolicyRemediation -ResourceGroupName <String> [-Top <Int32>] [-Filter <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzureRmPolicyRemediation -ResourceId <String> [-Top <Int32>] [-IncludeDetail]
+Get-AzPolicyRemediation -ResourceId <String> [-Top <Int32>] [-IncludeDetail]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmPolicyRemediation** cmdlet gets all policy remediations in a scope or a particular remediation.
+The **Get-AzPolicyRemediation** cmdlet gets all policy remediations in a scope or a particular remediation.
 
 ## EXAMPLES
 
 ### Example 1: Get all policy remediations in the current subscription
 ```
-PS C:\> Select-AzureRmSubscription -Subscription "My Subscription"
-PS C:\> Get-AzureRmPolicyRemediation
+PS C:\> Select-AzSubscription -Subscription "My Subscription"
+PS C:\> Get-AzPolicyRemediation
 ```
 
 This command gets all the remediations created at or underneath a subscription named 'My Subscription'.
 
 ### Example 2: Get a specific policy remediation and the deployment details
 ```
-PS C:\> Get-AzureRmPolicyRemediation -ResourceGroupName "myResourceGroup" -Name "remediation1" -IncludeDetail
+PS C:\> Get-AzPolicyRemediation -ResourceGroupName "myResourceGroup" -Name "remediation1" -IncludeDetail
 ```
 
 This command gets the remediation named 'remediation1' from resource group 'myResourceGroup'. The details of the resources being remediated will be included.
 
 ### Example 3: Get 10 policy remediations in a management group with optional filters
 ```
-PS C:\> Get-AzureRmPolicyRemediation -ManagementGroupName "mg1" -Top 10 -Filter "PolicyAssignmentId eq '/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Authorization/policyAssignments/pa1'"
+PS C:\> Get-AzPolicyRemediation -ManagementGroupName "mg1" -Top 10 -Filter "PolicyAssignmentId eq '/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Authorization/policyAssignments/pa1'"
 ```
 
 This command gets a max of 10 policy remediations from a management group named 'mg1'. Only policy remediations for the given policy assignment will be retrieved.
@@ -82,7 +82,7 @@ This command gets a max of 10 policy remediations from a management group named 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

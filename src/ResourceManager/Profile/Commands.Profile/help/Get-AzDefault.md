@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermdefault
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/get-azdefault
 schema: 2.0.0
 ---
 
-# Get-AzureRmDefault
+# Get-AzDefault
 
 ## SYNOPSIS
 Get the defaults set by the user in the current context.
@@ -13,18 +13,18 @@ Get the defaults set by the user in the current context.
 ## SYNTAX
 
 ```
-Get-AzureRmDefault [-ResourceGroup] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDefault [-ResourceGroup] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDefault cmdlet gets the Resource Group that the 
+The Get-AzDefault cmdlet gets the Resource Group that the 
 user has set as default in the current context.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmDefault
+PS C:\> Get-AzDefault
 
 Id         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup
 Name       : myResourceGroup
@@ -38,7 +38,7 @@ This command returns the current defaults if there are defaults set, or returns 
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmDefault -ResourceGroup
+PS C:\> Get-AzDefault -ResourceGroup
 
 Id         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup
 Name       : myResourceGroup
@@ -56,7 +56,7 @@ This command returns the current default Resource Group if there is a default se
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

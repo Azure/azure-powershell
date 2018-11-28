@@ -1,51 +1,51 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
-Module Name: AzureRM.CognitiveServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccounttype
+Module Name: Az.CognitiveServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccounttype
 schema: 2.0.0
 ---
 
-# Get-AzureRmCognitiveServicesAccountType
+# Get-AzCognitiveServicesAccountType
 
 ## SYNOPSIS
 Gets the available Cognitive Services Account Types.
 
 ## SYNTAX
 
-### GetAccountTypeWithName
+### GetAccountTypes (Default)
 ```
-Get-AzureRmCognitiveServicesAccountType -TypeName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzCognitiveServicesAccountType [-Location <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### GetAccountTypes
+### GetAccountTypeWithName
 ```
-Get-AzureRmCognitiveServicesAccountType [-Location <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzCognitiveServicesAccountType -TypeName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmCognitiveServicesAccountType** cmdlet gets the available Cognitive Services Account Types under this subscription.
+The **Get-AzCognitiveServicesAccountType** cmdlet gets the available Cognitive Services Account Types under this subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmCognitiveServicesAccountType
+PS C:\> Get-AzCognitiveServicesAccountType
 ```
 
 Get the list of available Types.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmCognitiveServicesAccountType -Location westus
+PS C:\> Get-AzCognitiveServicesAccountType -Location westus
 ```
 
 Get the list of available Types in westus.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzureRmCognitiveServicesAccountType -TypeName Face
+PS C:\> Get-AzCognitiveServicesAccountType -TypeName Face
 
 Face
 ```
@@ -58,7 +58,7 @@ Check if `Face` is a valid Type name, the name will be returned if it is a valid
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 26EC220C-5123-4CEF-8CC6-5FFD08F33481
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqlserverrecommendedactionstate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverrecommendedactionstate
 schema: 2.0.0
 ---
 
-# Set-AzureRmSqlServerRecommendedActionState
+# Set-AzSqlServerRecommendedActionState
 
 ## SYNOPSIS
 Updates the state of an Azure SQL Server recommended action.
@@ -14,20 +14,20 @@ Updates the state of an Azure SQL Server recommended action.
 ## SYNTAX
 
 ```
-Set-AzureRmSqlServerRecommendedActionState -RecommendedActionName <String> -State <RecommendedActionState>
+Set-AzSqlServerRecommendedActionState -RecommendedActionName <String> -State <RecommendedActionState>
  -ServerName <String> -AdvisorName <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlServerRecommendedActionState** cmdlet updates state of an Azure SQL Server recommended action.
+The **Set-AzSqlServerRecommendedActionState** cmdlet updates state of an Azure SQL Server recommended action.
 This cmdlet applies, reverts, or discards the recommended action based on the new state.
 
 ## EXAMPLES
 
 ### Example1: Update the state of the specified recommended action to Pending
 ```
-PS C:\>Set-AzureRmSqlServerRecommendedActionState -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName "CreateIndex" -RecommendedActionName "IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893" -State Pending
+PS C:\>Set-AzSqlServerRecommendedActionState -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName "CreateIndex" -RecommendedActionName "IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893" -State Pending
 ResourceGroupName          : WIRunnersProd
 ServerName                 : wi-runner-australia-east
 AdvisorName                : CreateIndex
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -209,12 +209,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServerAdvisor](./Get-AzureRmSqlServerAdvisor.md)
+[Get-AzSqlServerAdvisor](./Get-AzSqlServerAdvisor.md)
 
-[Get-AzureRmSqlServerRecommendedAction](./Get-AzureRmSqlServerRecommendedAction.md)
+[Get-AzSqlServerRecommendedAction](./Get-AzSqlServerRecommendedAction.md)
 
-[Set-AzureRmSqlDatabaseRecommendedActionState](./Set-AzureRmSqlDatabaseRecommendedActionState.md)
+[Set-AzSqlDatabaseRecommendedActionState](./Set-AzSqlDatabaseRecommendedActionState.md)
 
-[Set-AzureRmSqlElasticPoolRecommendedActionState](./Set-AzureRmSqlElasticPoolRecommendedActionState.md)
+[Set-AzSqlElasticPoolRecommendedActionState](./Set-AzSqlElasticPoolRecommendedActionState.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

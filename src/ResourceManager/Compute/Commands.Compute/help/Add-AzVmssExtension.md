@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 7EC166C7-151D-4DA0-9B10-165E735D4F12
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/add-azurermvmssextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmssextension
 schema: 2.0.0
 ---
 
-# Add-AzureRmVmssExtension
+# Add-AzVmssExtension
 
 ## SYNOPSIS
 Adds an extension to the VMSS.
@@ -14,7 +14,7 @@ Adds an extension to the VMSS.
 ## SYNTAX
 
 ```
-Add-AzureRmVmssExtension [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Name] <String>]
+Add-AzVmssExtension [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Name] <String>]
  [[-Publisher] <String>] [[-Type] <String>] [[-TypeHandlerVersion] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [[-Setting] <Object>] [[-ProtectedSetting] <Object>]
  [-ForceUpdateTag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -22,13 +22,13 @@ Add-AzureRmVmssExtension [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmVmssExtension** cmdlet adds an extension to the Virtual Machine Scale Set (VMSS).
+The **Add-AzVmssExtension** cmdlet adds an extension to the Virtual Machine Scale Set (VMSS).
 
 ## EXAMPLES
 
 ### Example 1: Add an extension to the VMSS
 ```
-PS C:\> Add-AzureRmVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
+PS C:\> Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
 ```
 
 This command adds an extension to the VMSS.
@@ -38,7 +38,7 @@ This command adds an extension to the VMSS.
 PS C:\> $Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
 PS C:\> $ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
 
-PS C:\> Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName -Publisher $vmssPublisher  `
+PS C:\> Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName -Publisher $vmssPublisher  `
   -Type $vmssExtensionType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True  `
   -Setting $Settings -ProtectedSetting $ProtectedSettings
 ```
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ### -Publisher
 Specifies the name of the extension publisher.
 The publisher provides a name when the publisher registers an extension.
-This can use the [Get-AzureRmVMImagePublisher](./Get-AzureRmVMImagePublisher.md) cmdlet to get the publisher.
+This can use the [Get-AzVMImagePublisher](./Get-AzVMImagePublisher.md) cmdlet to get the publisher.
 
 ```yaml
 Type: System.String
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 
 ### -Type
 Specifies the extension type.
-You can use the [Get-AzureRmVMExtensionImageType](./Get-AzureRmVMExtensionImageType.md) cmdlet to get the extension type.
+You can use the [Get-AzVMExtensionImageType](./Get-AzVMExtensionImageType.md) cmdlet to get the extension type.
 
 ```yaml
 Type: System.String
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 
 ### -TypeHandlerVersion
 Specifies the version of the extension to use for this virtual machine.
-You can use the [Get-AzureRmVMExtensionImage](./Get-AzureRmVMExtensionImage.md) cmdlet to get the version of the extension.
+You can use the [Get-AzVMExtensionImage](./Get-AzVMExtensionImage.md) cmdlet to get the version of the extension.
 
 ```yaml
 Type: System.String
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specify the VMSS object.
-You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) to create the object.
+You can use the [New-AzVmssConfig](./New-AzVmssConfig.md) to create the object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
@@ -255,12 +255,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmVmssExtension](./Remove-AzureRmVmssExtension.md)
+[Remove-AzVmssExtension](./Remove-AzVmssExtension.md)
 
-[Get-AzureRmVMImagePublisher](./Get-AzureRmVMImagePublisher.md)
+[Get-AzVMImagePublisher](./Get-AzVMImagePublisher.md)
 
-[Get-AzureRmVMExtensionImageType](./Get-AzureRmVMExtensionImageType.md)
+[Get-AzVMExtensionImageType](./Get-AzVMExtensionImageType.md)
 
-[Get-AzureRmVMExtensionImage](./Get-AzureRmVMExtensionImage.md)
+[Get-AzVMExtensionImage](./Get-AzVMExtensionImage.md)
 
-[New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md)
+[New-AzVmssConfig](./New-AzVmssConfig.md)

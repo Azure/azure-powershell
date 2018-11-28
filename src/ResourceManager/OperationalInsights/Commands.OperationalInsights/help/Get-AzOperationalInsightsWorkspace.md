@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 ms.assetid: F94415DA-1A4A-4D37-A626-1EDF5D1EFE74
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsworkspace
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace
 schema: 2.0.0
 ---
 
-# Get-AzureRmOperationalInsightsWorkspace
+# Get-AzOperationalInsightsWorkspace
 
 ## SYNOPSIS
 Gets information about a workspace.
@@ -14,12 +14,12 @@ Gets information about a workspace.
 ## SYNTAX
 
 ```
-Get-AzureRmOperationalInsightsWorkspace [[-ResourceGroupName] <String>] [[-Name] <String>]
+Get-AzOperationalInsightsWorkspace [[-ResourceGroupName] <String>] [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmOperationalInsightsWorkspace** cmdlet gets information about an existing workspace.
+The **Get-AzOperationalInsightsWorkspace** cmdlet gets information about an existing workspace.
 If you specify a workspace name, this cmdlet gets information about that workspace.
 If you do not specify a name, this cmdlet gets information about all workspaces in a resource group.
 If you do not specify a name and resource group, this cmdlet gets information about all workspaces in a subscription.
@@ -28,7 +28,7 @@ If you do not specify a name and resource group, this cmdlet gets information ab
 
 ### Example 1: Get a workspace by name
 ```
-PS C:\>Get-AzureRmOperationalInsightsWorkspace -Name "MyWorkspace" -ResourceGroupName "ContosoResourceGroup"
+PS C:\>Get-AzOperationalInsightsWorkspace -Name "MyWorkspace" -ResourceGroupName "ContosoResourceGroup"
 ```
 
 This command gets a workspace named MyWorkspace in the resource group named ContosoResourceGroup.
@@ -39,7 +39,7 @@ This command gets a workspace named MyWorkspace in the resource group named Cont
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -95,6 +95,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure Operational Insights Cmdlets](./AzureRM.OperationalInsights.md)
+[Azure Operational Insights Cmdlets](./Az.OperationalInsights.md)
 
 

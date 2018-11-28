@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 ms.assetid: 2EA765B8-D82B-4789-8F10-88F79BDF44D0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/remove-azurermrediscachepatchschedule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/remove-azrediscachepatchschedule
 schema: 2.0.0
 ---
 
-# Remove-AzureRmRedisCachePatchSchedule
+# Remove-AzRedisCachePatchSchedule
 
 ## SYNOPSIS
 Removes the patch schedule.
@@ -14,18 +14,18 @@ Removes the patch schedule.
 ## SYNTAX
 
 ```
-Remove-AzureRmRedisCachePatchSchedule [-ResourceGroupName <String>] -Name <String> [-PassThru]
+Remove-AzRedisCachePatchSchedule [-ResourceGroupName <String>] -Name <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRedisCachePatchSchedule** cmdlet removes the patch schedule from a cache in Azure Redis Cache.
+The **Remove-AzRedisCachePatchSchedule** cmdlet removes the patch schedule from a cache in Azure Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1: Remove the patch schedule
 ```
-PS C:\>Remove-AzureRmRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06"
+PS C:\>Remove-AzRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06"
 ```
 
 This command removes the patch schedule from the cache named RedisCache06.
@@ -36,7 +36,7 @@ This command removes the patch schedule from the cache named RedisCache06.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -139,10 +139,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmRedisCachePatchSchedule](./Get-AzureRmRedisCachePatchSchedule.md)
+[Get-AzRedisCachePatchSchedule](./Get-AzRedisCachePatchSchedule.md)
 
-[New-AzureRmRedisCachePatchSchedule](./New-AzureRmRedisCachePatchSchedule.md)
+[New-AzRedisCachePatchSchedule](./New-AzRedisCachePatchSchedule.md)
 
-[New-AzureRmRedisCacheScheduleEntry](./New-AzureRmRedisCacheScheduleEntry.md)
+[New-AzRedisCacheScheduleEntry](./New-AzRedisCacheScheduleEntry.md)
 
 

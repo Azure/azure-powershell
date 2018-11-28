@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApplicationInsights.dll-Help.xml
-Module Name: AzureRM.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.applicationinsights/get-azurermapplicationinsightscontinuousexport
+Module Name: Az.ApplicationInsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/get-azapplicationinsightscontinuousexport
 schema: 2.0.0
 ---
 
-# Get-AzureRmApplicationInsightsContinuousExport
+# Get-AzApplicationInsightsContinuousExport
 
 ## SYNOPSIS
 Get application insights continuous export configuration for an application insights resource
@@ -14,19 +14,19 @@ Get application insights continuous export configuration for an application insi
 
 ### ComponentNameParameterSet (Default)
 ```
-Get-AzureRmApplicationInsightsContinuousExport [-ResourceGroupName] <String> [-Name] <String>
- [[-ExportId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApplicationInsightsContinuousExport [-ResourceGroupName] <String> [-Name] <String> [[-ExportId] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
-Get-AzureRmApplicationInsightsContinuousExport [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
+Get-AzApplicationInsightsContinuousExport [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
  [[-ExportId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmApplicationInsightsContinuousExport [-ResourceId] <String> [[-ExportId] <String>]
+Get-AzApplicationInsightsContinuousExport [-ResourceId] <String> [[-ExportId] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Get application insights continuous export configuration for an application insi
 
 ### Example 1 Get continuous export for an application insights resource
 ```
-PS C:\> Get-AzureRmApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
+PS C:\> Get-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
 
 ExportId                     DocumentTypes                ExportStatus DestinationStorageAccountId
 --------                     -------------                ------------ ---------------------------
@@ -48,7 +48,7 @@ Get application insights continuous export configurations for resource named "te
 
 ### Example 2 Get continuous export for an application insights resource
 ```
-PS C:\> Get-AzureRmApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" -ExportId "ZJrfffySPdtG3ESn3iRxVIEFuNY="
+PS C:\> Get-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" -ExportId "ZJrfffySPdtG3ESn3iRxVIEFuNY="
 
 ExportId                         : ZJrfffySPdtG3ESn3iRxVIEFuNY=
 StorageName                      : targetaccount
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

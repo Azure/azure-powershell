@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: 258A4EA9-B82C-4664-8DCE-30D47A623868
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/switch-azurermwebappslot
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/switch-azwebappslot
 schema: 2.0.0
 ---
 
-# Switch-AzureRmWebAppSlot
+# Switch-AzWebAppSlot
 
 ## SYNOPSIS
 Swap two slots with a Web App
@@ -15,26 +15,26 @@ Swap two slots with a Web App
 
 ### S1
 ```
-Switch-AzureRmWebAppSlot [-SourceSlotName] <String> [[-DestinationSlotName] <String>]
+Switch-AzWebAppSlot [-SourceSlotName] <String> [[-DestinationSlotName] <String>]
  [[-SwapWithPreviewAction] <SwapWithPreviewAction>] [[-PreserveVnet] <Boolean>] [-ResourceGroupName] <String>
  [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Switch-AzureRmWebAppSlot [-SourceSlotName] <String> [[-DestinationSlotName] <String>]
+Switch-AzWebAppSlot [-SourceSlotName] <String> [[-DestinationSlotName] <String>]
  [[-SwapWithPreviewAction] <SwapWithPreviewAction>] [[-PreserveVnet] <Boolean>] [-WebApp] <PSSite>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Switch-AzureRmWebAppSlot** switches two slots associated with an Azure Web App.
+The **Switch-AzWebAppSlot** switches two slots associated with an Azure Web App.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Switch-AzureRmWebAppSlot -SourceSlotName "sourceslot" -DestinationSlotName "destinationslot" -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
+PS C:\> Switch-AzWebAppSlot -SourceSlotName "sourceslot" -DestinationSlotName "destinationslot" -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
 ```
 
 This command will switch slot "sourceslot" slot with "destinationslot" for for Web App ContosoWebApp associated with the resource group Default-Web-WestUS
@@ -45,7 +45,7 @@ This command will switch slot "sourceslot" slot with "destinationslot" for for W
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: F9871519-F470-470C-8CCE-A674B6B5A3EE
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/remove-azurermintegrationaccountcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/remove-azintegrationaccountcertificate
 schema: 2.0.0
 ---
 
-# Remove-AzureRmIntegrationAccountCertificate
+# Remove-AzIntegrationAccountCertificate
 
 ## SYNOPSIS
 Removes an integration account certificate from a resource group.
@@ -14,13 +14,12 @@ Removes an integration account certificate from a resource group.
 ## SYNTAX
 
 ```
-Remove-AzureRmIntegrationAccountCertificate -ResourceGroupName <String> -Name <String>
- -CertificateName <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzIntegrationAccountCertificate -ResourceGroupName <String> -Name <String> -CertificateName <String>
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmIntegrationAccountCertificate** cmdlet removes an integration account certificate from a resource group.
+The **Remove-AzIntegrationAccountCertificate** cmdlet removes an integration account certificate from a resource group.
 Specify the integration account name, resource group name, and certificate name.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -31,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Remove an integration account certificate
 ```
-PS C:\>Remove-AzureRmIntegrationAccountCertificate -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -CertificateName "IntegrationAccountCertificate01"
+PS C:\>Remove-AzIntegrationAccountCertificate -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -CertificateName "IntegrationAccountCertificate01"
 ```
 
 This command removes the integration account certificate named IntegrationAccount31.
@@ -57,7 +56,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -159,10 +158,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmIntegrationAccountCertificate](./Get-AzureRmIntegrationAccountCertificate.md)
+[Get-AzIntegrationAccountCertificate](./Get-AzIntegrationAccountCertificate.md)
 
-[New-AzureRmIntegrationAccountCertificate](./New-AzureRmIntegrationAccountCertificate.md)
+[New-AzIntegrationAccountCertificate](./New-AzIntegrationAccountCertificate.md)
 
-[Set-AzureRmIntegrationAccountCertificate](./Set-AzureRmIntegrationAccountCertificate.md)
+[Set-AzIntegrationAccountCertificate](./Set-AzIntegrationAccountCertificate.md)
 
 

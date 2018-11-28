@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 486748AC-3932-4E0C-BBCC-2BC194E69DCC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/new-azurermbatchaccountkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/new-azbatchaccountkey
 schema: 2.0.0
 ---
 
-# New-AzureRmBatchAccountKey
+# New-AzBatchAccountKey
 
 ## SYNOPSIS
 Regenerates a key of a Batch account.
@@ -14,19 +14,19 @@ Regenerates a key of a Batch account.
 ## SYNTAX
 
 ```
-New-AzureRmBatchAccountKey [-AccountName] <String> [-ResourceGroupName <String>] -KeyType <String>
+New-AzBatchAccountKey [-AccountName] <String> [-ResourceGroupName <String>] -KeyType <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmBatchAccountKey** cmdlet regenerates the primary or secondary key of an Azure Batch account.
+The **New-AzBatchAccountKey** cmdlet regenerates the primary or secondary key of an Azure Batch account.
 The cmdlet returns a **BatchAccountContext** object that has its current **PrimaryAccountKey** and **SecondaryAccountKey** properties.
 
 ## EXAMPLES
 
 ### Example 1: Regenerate the primary account key on a Batch account
 ```
-PS C:\>New-AzureRmBatchAccountKey -AccountName "pfuller" -KeyType "Primary"
+PS C:\>New-AzBatchAccountKey -AccountName "pfuller" -KeyType "Primary"
 AccountName                  : pfuller
 
 Location                     : westus
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -126,8 +126,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

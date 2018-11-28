@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 2049CB74-E3CB-4294-B97C-B41E91209A1E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermloadbalancerprobeconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azloadbalancerprobeconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmLoadBalancerProbeConfig
+# New-AzLoadBalancerProbeConfig
 
 ## SYNOPSIS
 Creates a probe configuration for a load balancer.
@@ -14,19 +14,19 @@ Creates a probe configuration for a load balancer.
 ## SYNTAX
 
 ```
-New-AzureRmLoadBalancerProbeConfig -Name <String> [-Protocol <String>] -Port <Int32> -IntervalInSeconds <Int32>
+New-AzLoadBalancerProbeConfig -Name <String> [-Protocol <String>] -Port <Int32> -IntervalInSeconds <Int32>
  -ProbeCount <Int32> [-RequestPath <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmLoadBalancerProbeConfig** cmdlet creates a probe configuration for an Azure load balancer.
+The **New-AzLoadBalancerProbeConfig** cmdlet creates a probe configuration for an Azure load balancer.
 
 ## EXAMPLES
 
 ### Example 1: Create a probe configuration
 ```
-PS C:\>New-AzureRmLoadBalancerProbeConfig -Name "MyProbe" -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 15
+PS C:\>New-AzLoadBalancerProbeConfig -Name "MyProbe" -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 15
 ```
 
 This command creates a probe configuration named MyProbe using the HTTP protocol.
@@ -38,7 +38,7 @@ The new probe will connect to a load-balanced service on port 80.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -185,12 +185,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmLoadBalancerProbeConfig](./Add-AzureRmLoadBalancerProbeConfig.md)
+[Add-AzLoadBalancerProbeConfig](./Add-AzLoadBalancerProbeConfig.md)
 
-[Get-AzureRmLoadBalancerProbeConfig](./Get-AzureRmLoadBalancerProbeConfig.md)
+[Get-AzLoadBalancerProbeConfig](./Get-AzLoadBalancerProbeConfig.md)
 
-[Remove-AzureRmLoadBalancerProbeConfig](./Remove-AzureRmLoadBalancerProbeConfig.md)
+[Remove-AzLoadBalancerProbeConfig](./Remove-AzLoadBalancerProbeConfig.md)
 
-[Set-AzureRmLoadBalancerProbeConfig](./Set-AzureRmLoadBalancerProbeConfig.md)
+[Set-AzLoadBalancerProbeConfig](./Set-AzLoadBalancerProbeConfig.md)
 
 

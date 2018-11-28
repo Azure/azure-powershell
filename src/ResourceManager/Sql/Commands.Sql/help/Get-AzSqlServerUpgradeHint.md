@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: BFEAE1F7-56E3-4EA9-B39A-ED09582C8A09
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlserverupgradehint
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverupgradehint
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlServerUpgradeHint
+# Get-AzSqlServerUpgradeHint
 
 ## SYNOPSIS
 Gets pricing tier hints for upgrading an Azure SQL Database server.
@@ -14,13 +14,13 @@ Gets pricing tier hints for upgrading an Azure SQL Database server.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServerUpgradeHint [-ServerName] <String> [-ExcludeElasticPools <Boolean>]
+Get-AzSqlServerUpgradeHint [-ServerName] <String> [-ExcludeElasticPools <Boolean>]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlServerUpgradeHint** cmdlet gets pricing tier hints for upgrading an Azure SQL Database server.
+The **Get-AzSqlServerUpgradeHint** cmdlet gets pricing tier hints for upgrading an Azure SQL Database server.
 Hints may contain the elastic database pool and stand-alone database hints.
 Databases that are still in Web and Business pricing tiers get a hint to upgrade to the new Basic, Standard, or Premium pricing tiers, or to go into the elastic database pool.
 This cmdlet returns hints for all databases hosted on the specified server.
@@ -29,7 +29,7 @@ This cmdlet returns hints for all databases hosted on the specified server.
 
 ### Example 1: Get combined recommendations
 ```
-PS C:\>Get-AzureRmSqlServerUpgradeHint -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>Get-AzSqlServerUpgradeHint -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ElasticPools Databases           
 ------------ ---------           
 {}           {database01, database02}
@@ -43,7 +43,7 @@ This command gets combined recommendations for all the databases on a server nam
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -147,9 +147,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlDatabaseExpanded](./Get-AzureRmSqlDatabaseExpanded.md)
+[Get-AzSqlDatabaseExpanded](./Get-AzSqlDatabaseExpanded.md)
 
-[Get-AzureRmSqlElasticPoolRecommendation](./Get-AzureRmSqlElasticPoolRecommendation.md)
+[Get-AzSqlElasticPoolRecommendation](./Get-AzSqlElasticPoolRecommendation.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

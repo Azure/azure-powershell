@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 95103160-8101-4C43-8DAA-0BD75DFF3150
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationconnection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationconnection
 schema: 2.0.0
 ---
 
-# New-AzureRmAutomationConnection
+# New-AzAutomationConnection
 
 ## SYNOPSIS
 Creates an Automation connection.
@@ -14,20 +14,20 @@ Creates an Automation connection.
 ## SYNTAX
 
 ```
-New-AzureRmAutomationConnection [-Name] <String> [-ConnectionTypeName] <String>
+New-AzAutomationConnection [-Name] <String> [-ConnectionTypeName] <String>
  [-ConnectionFieldValues] <IDictionary> [-Description <String>] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAutomationConnection** cmdlet creates a connection in Azure Automation.
+The **New-AzAutomationConnection** cmdlet creates a connection in Azure Automation.
 
 ## EXAMPLES
 
 ### Example 1: Create a connection
 ```
 PS C:\>$FieldValues = @{"AutomationCertificateName"="ContosoCertificate";"SubscriptionID"="81b59010-dc55-45b7-89cd-5ca26db62472"}
-PS C:\> New-AzureRmAutomationConnection -Name "Connection12" -ConnectionTypeName Azure -ConnectionFieldValues $FieldValues -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+PS C:\> New-AzAutomationConnection -Name "Connection12" -ConnectionTypeName Azure -ConnectionFieldValues $FieldValues -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 The first command assigns a hash table of field values to the $FieldValue variable.
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -160,8 +160,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationConnection](./Get-AzureRMAutomationConnection.md)
+[Get-AzAutomationConnection](./Get-AzAutomationConnection.md)
 
-[Remove-AzureRmAutomationConnection](./Remove-AzureRMAutomationConnection.md)
+[Remove-AzAutomationConnection](./Remove-AzAutomationConnection.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementidentityprovider
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementidentityprovider
 schema: 2.0.0
 ---
 
-# Get-AzureRmApiManagementIdentityProvider
+# Get-AzApiManagementIdentityProvider
 
 ## SYNOPSIS
 Get the identity provider configuration details.
@@ -14,13 +14,13 @@ Get the identity provider configuration details.
 
 ### AllIdentityProviders (Default)
 ```
-Get-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext>
+Get-AzApiManagementIdentityProvider -Context <PsApiManagementContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IdentityProviderByType
 ```
-Get-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext>
+Get-AzApiManagementIdentityProvider -Context <PsApiManagementContext>
  -Type <PsApiManagementIdentityProviderType> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -32,16 +32,16 @@ Get the identity provider configuration details.
 ### Example 1: Get all Identity Providers
 
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementIdentityProvider -Context $apimContext
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementIdentityProvider -Context $apimContext
 ```
 
 Get all the identity provider Configuration on the service.
 
 ### Get the AAD Type Identity Provider
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementIdentityProvider -Context $apimContext -Type Aad
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementIdentityProvider -Context $apimContext -Type Aad
 ```
 
 Gets the Identity Provider Configuration of Azure Active Directory.
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/undo-azurekeyvaultcertificateremoval
+Module Name: Az.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/undo-azkeyvaultcertificateremoval
 schema: 2.0.0
 ---
 
-# Undo-AzureKeyVaultCertificateRemoval
+# Undo-AzKeyVaultCertificateRemoval
 
 ## SYNOPSIS
 Recovers a deleted certificate in a key vault into an active state.
@@ -14,18 +14,18 @@ Recovers a deleted certificate in a key vault into an active state.
 
 ### Default (Default)
 ```
-Undo-AzureKeyVaultCertificateRemoval [-VaultName] <String> [-Name] <String>
+Undo-AzKeyVaultCertificateRemoval [-VaultName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Undo-AzureKeyVaultCertificateRemoval [-InputObject] <PSDeletedKeyVaultCertificateIdentityItem>
+Undo-AzKeyVaultCertificateRemoval [-InputObject] <PSDeletedKeyVaultCertificateIdentityItem>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Undo-AzureKeyVaultCertificateRemoval** cmdlet will recover a previously deleted certificate.
+The **Undo-AzKeyVaultCertificateRemoval** cmdlet will recover a previously deleted certificate.
 The recovered certificate will be active and can be used for all operations.
 Caller needs to have 'recover' permission in order to perform this operation.
 
@@ -33,7 +33,7 @@ Caller needs to have 'recover' permission in order to perform this operation.
 
 ### Example 1
 ```powershell
-PS C:\> Undo-AzureKeyVaultCertificateRemoval -VaultName 'MyKeyVault' -Name 'MyCertificate'
+PS C:\> Undo-AzKeyVaultCertificateRemoval -VaultName 'MyKeyVault' -Name 'MyCertificate'
 
 Certificate   : [Subject]
                   CN=contoso.com
@@ -77,7 +77,7 @@ This command will recover the certificate 'MyCertificate' that was previously de
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -182,6 +182,6 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Remove-AzureKeyVaultCertificate](./Remove-AzureKeyVaultCertificate.md)
+[Remove-AzKeyVaultCertificate](./Remove-AzKeyVaultCertificate.md)
 
-[Get-AzureKeyVaultCertificate](./Get-AzureKeyVaultCertificate.md)
+[Get-AzKeyVaultCertificate](./Get-AzKeyVaultCertificate.md)

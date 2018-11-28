@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermadgroup
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadgroup
 schema: 2.0.0
 ---
 
-# New-AzureRmADGroup
+# New-AzADGroup
 
 ## SYNOPSIS
 Creates a new active directory group.
@@ -13,8 +13,8 @@ Creates a new active directory group.
 ## SYNTAX
 
 ```
-New-AzureRmADGroup -DisplayName <String> -MailNickname <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADGroup -DisplayName <String> -MailNickname <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Creates a new active directory group.
 ### Example 1 - Create a new AD group
 
 ```
-PS C:\> New-AzureRmADGroup -DisplayName "MyGroupDisplayName" -MailNickname "myemail@domain.com"
+PS C:\> New-AzADGroup -DisplayName "MyGroupDisplayName" -MailNickname "myemail@domain.com"
 ```
 
 Creates a new AD group with the name "MyGroupDisplayName" and the mail nickname "myemail@domain.com".
@@ -36,7 +36,7 @@ Creates a new AD group with the name "MyGroupDisplayName" and the mail nickname 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

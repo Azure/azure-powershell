@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Reservations.dll-Help.xml
-Module Name: AzureRM.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.reservations/get-azurermreservationhistory
+Module Name: Az.Reservations
+online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/get-azreservationhistory
 schema: 2.0.0
 ---
 
-# Get-AzureRmReservationHistory
+# Get-AzReservationHistory
 
 ## SYNOPSIS
 Get `Reservation` revision history.
@@ -14,13 +14,13 @@ Get `Reservation` revision history.
 
 ### CommandLine (Default)
 ```
-Get-AzureRmReservationHistory -ReservationOrderId <Guid> -ReservationId <Guid>
+Get-AzReservationHistory -ReservationOrderId <Guid> -ReservationId <Guid>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
-Get-AzureRmReservationHistory -Reservation <PSReservation> [-DefaultProfile <IAzureContextContainer>]
+Get-AzReservationHistory -Reservation <PSReservation> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ List of all the revisions for the `Reservation`.
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmReservationHistory -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservationId "00000000-ffff-ffff-0000-00000fffff"
+PS C:\> Get-AzReservationHistory -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservationId "00000000-ffff-ffff-0000-00000fffff"
 ```
 
 Get the revision history of the specific reservation
@@ -42,7 +42,7 @@ Get the revision history of the specific reservation
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

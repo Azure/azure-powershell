@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: B6229D26-D38C-44CD-B9CA-7F39365C8B9D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/new-azurebatchjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/new-azbatchjob
 schema: 2.0.0
 ---
 
-# New-AzureBatchJob
+# New-AzBatchJob
 
 ## SYNOPSIS
 Creates a job in the Batch service.
@@ -14,7 +14,7 @@ Creates a job in the Batch service.
 ## SYNTAX
 
 ```
-New-AzureBatchJob [-Id] <String> [-CommonEnvironmentSettings <IDictionary>] [-DisplayName <String>]
+New-AzBatchJob [-Id] <String> [-CommonEnvironmentSettings <IDictionary>] [-DisplayName <String>]
  [-Constraints <PSJobConstraints>] [-JobManagerTask <PSJobManagerTask>]
  [-JobPreparationTask <PSJobPreparationTask>] [-JobReleaseTask <PSJobReleaseTask>] [-Metadata <IDictionary>]
  -PoolInformation <PSPoolInformation> [-Priority <Int32>] [-UsesTaskDependencies]
@@ -23,7 +23,7 @@ New-AzureBatchJob [-Id] <String> [-CommonEnvironmentSettings <IDictionary>] [-Di
 ```
 
 ## DESCRIPTION
-The **New-AzureBatchJob** cmdlet creates a job in the Azure Batch service in the account specified by the *BatchAccountContext* parameter.
+The **New-AzBatchJob** cmdlet creates a job in the Azure Batch service in the account specified by the *BatchAccountContext* parameter.
 
 ## EXAMPLES
 
@@ -31,7 +31,7 @@ The **New-AzureBatchJob** cmdlet creates a job in the Azure Batch service in the
 ```
 PS C:\>$PoolInformation = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSPoolInformation" 
 PS C:\> $PoolInformation.PoolId = "Pool22" 
-PS C:\> New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformation -BatchContext $Context
+PS C:\> New-AzBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformation -BatchContext $Context
 ```
 
 The first command creates a **PSPoolInformation** object by using the New-Object cmdlet.
@@ -39,13 +39,13 @@ The command stores that object in the $PoolInformation variable.
 The second command assigns the ID Pool22 to the **PoolId** property of the object in $PoolInformation.
 The final command creates a job that has the ID ContosoJob35.
 Tasks added to the job run on the pool that has the ID Pool22.
-Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.
+Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
 
 ## PARAMETERS
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -299,20 +299,20 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Disable-AzureBatchJob](./Disable-AzureBatchJob.md)
+[Disable-AzBatchJob](./Disable-AzBatchJob.md)
 
-[Enable-AzureBatchJob](./Enable-AzureBatchJob.md)
+[Enable-AzBatchJob](./Enable-AzBatchJob.md)
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchJob](./Get-AzureBatchJob.md)
+[Get-AzBatchJob](./Get-AzBatchJob.md)
 
-[Get-AzureBatchJobSchedule](./Get-AzureBatchJobSchedule.md)
+[Get-AzBatchJobSchedule](./Get-AzBatchJobSchedule.md)
 
-[Remove-AzureBatchJob](./Remove-AzureBatchJob.md)
+[Remove-AzBatchJob](./Remove-AzBatchJob.md)
 
-[Stop-AzureBatchJob](./Stop-AzureBatchJob.md)
+[Stop-AzBatchJob](./Stop-AzBatchJob.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

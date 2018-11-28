@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressrouteportlinkconfig
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressrouteportlinkconfig
 schema: 2.0.0
 ---
 
-# Get-AzureRmExpressRoutePortLinkConfig
+# Get-AzExpressRoutePortLinkConfig
 
 ## SYNOPSIS
 Gets an ExpressRoutePort link configuration.
@@ -14,32 +14,32 @@ Gets an ExpressRoutePort link configuration.
 
 ### ResourceNameParameterSet (Default)
 ```
-Get-AzureRmExpressRoutePortLinkConfig -ExpressRoutePort <PSExpressRoutePort> [-Name <String>]
+Get-AzExpressRoutePortLinkConfig -ExpressRoutePort <PSExpressRoutePort> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmExpressRoutePortLinkConfig -ExpressRoutePort <PSExpressRoutePort> -ResourceId <String> 
+Get-AzExpressRoutePortLinkConfig -ResourceId <String> -ExpressRoutePort <PSExpressRoutePort>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmExpressRoutePortLinkConfig** cmdlet retrieves the configuration of a link
+The **Get-AzExpressRoutePortLinkConfig** cmdlet retrieves the configuration of a link
 of an ExpressRoutePort.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmExpressRoutePortLinkConfig -ExpressRoutePort $erport -Name Link1
+PS C:\> Get-AzExpressRoutePortLinkConfig -ExpressRoutePort $erport -Name Link1
 ```
 
 Gets the Link1 configuration of ExpressRoutePort $erport
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmExpressRoutePortLinkConfig -ExpressRoutePort $erport -ResourceId $id
+PS C:\> Get-AzExpressRoutePortLinkConfig -ExpressRoutePort $erport -ResourceId $id
 ```
 
 Gets the configuration of link with ResourceId $id in ExpressRoutePort $erport
@@ -50,7 +50,7 @@ Gets the configuration of link with ResourceId $id in ExpressRoutePort $erport
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

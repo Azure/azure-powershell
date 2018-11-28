@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 56604912-53A0-496D-9BDC-472BCE45A6A2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/update-azapimanagementdeployment
 schema: 2.0.0
 ---
 
-# Update-AzureRmApiManagementDeployment
+# Update-AzApiManagementDeployment
 
 ## SYNOPSIS
 Updates deployment of an API Management Service.
@@ -15,7 +15,7 @@ Updates deployment of an API Management Service.
 
 ### UpdateSpecificService (Default)
 ```
-Update-AzureRmApiManagementDeployment -ResourceGroupName <String> -Name <String> -Location <String>
+Update-AzApiManagementDeployment -ResourceGroupName <String> -Name <String> -Location <String>
  -Sku <PsApiManagementSku> -Capacity <Int32> [-VirtualNetwork <PsApiManagementVirtualNetwork>]
  [-VpnType <PsApiManagementVpnType>]
  [-AdditionalRegions <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]>]
@@ -24,45 +24,45 @@ Update-AzureRmApiManagementDeployment -ResourceGroupName <String> -Name <String>
 
 ### UpdateFromPsApiManagementInstance
 ```
-Update-AzureRmApiManagementDeployment -ApiManagement <PsApiManagement> [-PassThru]
+Update-AzApiManagementDeployment -ApiManagement <PsApiManagement> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmApiManagementDeployment** cmdlet updates current deployments of an API Management service.
+The **Update-AzApiManagementDeployment** cmdlet updates current deployments of an API Management service.
 
 ## EXAMPLES
 
 ### Example 1: Update a deployment of an ApiManagement instance
 ```powershell
-PS C:\>Update-AzureRmApiManagementDeployment -ResourceGroupName "Contoso" -Name "ContosoApi" -Sku "Standard" -Capacity 3
+PS C:\>Update-AzApiManagementDeployment -ResourceGroupName "Contoso" -Name "ContosoApi" -Sku "Standard" -Capacity 3
 ```
 
 This command updates deployment of an API Management instance to a three unit capacity standard.
 
 ### Example 2: Get an ApiManagement instance and rescale it
 ```powershell
-PS C:\>$ApiManagement = Get-AzureRmApiManagement -ResourceGroupName "Contoso" -Name "ContosoApi"
+PS C:\>$ApiManagement = Get-AzApiManagement -ResourceGroupName "Contoso" -Name "ContosoApi"
 PS C:\> $ApiManagement.Sku = "Premium"
 PS C:\> $ApiManagement.Capacity = 5
 PS C:\> $ApiManagement.AddRegion("Central US", "Premium", 3)
-PS C:\> Update-AzureRmApiManagementDeployment -ApiManagement $ApiManagement
+PS C:\> Update-AzApiManagementDeployment -ApiManagement $ApiManagement
 ```
 
 This example gets an Api Management instance, scales it to five premium units and then adds an additional three units to the premium region.
 
 ### Example 3: Update deployment (external VNET)
 ```powershell
-PS C:\> $virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-WestUS/providers/Microsoft.Network/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
-PS C:\> Update-AzureRmApiManagementDeployment -ResourceGroupName "ContosoGroup" -Name "ContosoApi" -VirtualNetwork $virtualNetwork -VpnType "External"
+PS C:\> $virtualNetwork = New-AzApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-WestUS/providers/Microsoft.Network/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
+PS C:\> Update-AzApiManagementDeployment -ResourceGroupName "ContosoGroup" -Name "ContosoApi" -VirtualNetwork $virtualNetwork -VpnType "External"
 ```
 
 This command updates an existing API Management deployment and joins to an external *VpnType*.
 
 ### Example 4: Update deployment (internal VNET)
 ```powershell
-PS C:\> $virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-WestUS/providers/Microsoft.ClassicNetwork/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
-PS C:\> Update-AzureRmApiManagementDeployment -ResourceGroupName "ContosoGroup" -Name "ContosoApi" -VirtualNetwork $virtualNetwork -VpnType "Internal"
+PS C:\> $virtualNetwork = New-AzApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-WestUS/providers/Microsoft.ClassicNetwork/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
+PS C:\> Update-AzApiManagementDeployment -ResourceGroupName "ContosoGroup" -Name "ContosoApi" -VirtualNetwork $virtualNetwork -VpnType "Internal"
 ```
 
 This command updates an existing API Management deployment and joins to an internal *VpnType*.
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ### -Location
 Specifies the location of the master API Management deployment region.
 To obtain valid locations, use the cmdlet
-Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
+Get-AzResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
 Type: System.String
@@ -280,6 +280,6 @@ Parameters: ApiManagement (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagement](./Get-AzureRmApiManagement.md)
+[Get-AzApiManagement](./Get-AzApiManagement.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: BF0C1A2F-2703-492F-A3A7-053416A5D1EB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/test-azurebatchautoscale
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/test-azbatchautoscale
 schema: 2.0.0
 ---
 
-# Test-AzureBatchAutoScale
+# Test-AzBatchAutoScale
 
 ## SYNOPSIS
 Gets the result of an automatic scaling formula on a pool.
@@ -14,19 +14,19 @@ Gets the result of an automatic scaling formula on a pool.
 ## SYNTAX
 
 ```
-Test-AzureBatchAutoScale [-Id] <String> [-AutoScaleFormula] <String> -BatchContext <BatchAccountContext>
+Test-AzBatchAutoScale [-Id] <String> [-AutoScaleFormula] <String> -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzureBatchAutoScale** cmdlet gets the result of an automatic scaling formula on the specified pool.
+The **Test-AzBatchAutoScale** cmdlet gets the result of an automatic scaling formula on the specified pool.
 
 ## EXAMPLES
 
 ### Example 1: Evaluate an autoscale formula on a pool
 ```
 PS C:\>$Formula = 'totalNodes=($CPUPercent.GetSamplePercent(TimeInterval_Minute*0,TimeInterval_Minute*10)<0.7?5:(min($CPUPercent.GetSample(TimeInterval_Minute*0, TimeInterval_Minute*10))>0.8?($CurrentDedicated*1.1):$CurrentDedicated));$TargetDedicated=min(100,totalNodes);';
-PS C:\> $Evaluation = Test-AzureBatchAutoScale -Id "ContosoPool" -AutoScaleFormula $Formula -BatchContext $Context
+PS C:\> $Evaluation = Test-AzBatchAutoScale -Id "ContosoPool" -AutoScaleFormula $Formula -BatchContext $Context
 PS C:\> $Evaluation.AutoScaleRun.Results
 $TargetDedicated=5;$NodeDeallocationOption=requeue;totalNodes=5
 ```
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,12 +116,12 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Disable-AzureBatchAutoScale](./Disable-AzureBatchAutoScale.md)
+[Disable-AzBatchAutoScale](./Disable-AzBatchAutoScale.md)
 
-[Enable-AzureBatchAutoScale](./Enable-AzureBatchAutoScale.md)
+[Enable-AzBatchAutoScale](./Enable-AzBatchAutoScale.md)
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

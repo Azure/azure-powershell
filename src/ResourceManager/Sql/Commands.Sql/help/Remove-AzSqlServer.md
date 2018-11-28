@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 068D70EF-39D1-4199-BD74-0EC266DF7072
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlserver
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlserver
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlServer
+# Remove-AzSqlServer
 
 ## SYNOPSIS
 Removes an Azure SQL Database server.
@@ -14,12 +14,12 @@ Removes an Azure SQL Database server.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlServer [-ServerName] <String> [-Force] [-ResourceGroupName] <String>
+Remove-AzSqlServer [-ServerName] <String> [-Force] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlServer** cmdlet removes an Azure SQL Database server.
+The **Remove-AzSqlServer** cmdlet removes an Azure SQL Database server.
 The delete operation is asynchronous and may take some time, so verify the operation is finished before performing any additional operations that depend on the server being completely deleted.
 For instance, you need to create a new server that uses the same name.
 
@@ -27,7 +27,7 @@ For instance, you need to create a new server that uses the same name.
 
 ### Example 1: Remove a server
 ```
-PS C:\>Remove-AzureRmSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>Remove-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
 This command removes the Azure SQL Database server named Server01.
@@ -38,7 +38,7 @@ This command removes the Azure SQL Database server named Server01.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -140,11 +140,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServer](./Get-AzureRmSqlServer.md)
+[Get-AzSqlServer](./Get-AzSqlServer.md)
 
-[New-AzureRmSqlServer](./New-AzureRmSqlServer.md)
+[New-AzSqlServer](./New-AzSqlServer.md)
 
-[Set-AzureRmSqlServer](./Set-AzureRmSqlServer.md)
+[Set-AzSqlServer](./Set-AzSqlServer.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

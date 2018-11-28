@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: EAD39EE1-C66F-4092-8876-E7F9FA612481
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/remove-azurermautomationschedule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/remove-azautomationschedule
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAutomationSchedule
+# Remove-AzAutomationSchedule
 
 ## SYNOPSIS
 Deletes an Automation schedule.
@@ -14,19 +14,19 @@ Deletes an Automation schedule.
 ## SYNTAX
 
 ```
-Remove-AzureRmAutomationSchedule [-Name] <String> [-Force] [-ResourceGroupName] <String>
+Remove-AzAutomationSchedule [-Name] <String> [-Force] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmAutomationSchedule** cmdlet deletes a schedule from Azure Automation.
+The **Remove-AzAutomationSchedule** cmdlet deletes a schedule from Azure Automation.
 
 ## EXAMPLES
 
 ### Example 1: Remove a schedule
 ```
-PS C:\>Remove-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -ResourceGroupName "ResourceGroup01"
+PS C:\>Remove-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command deletes the schedule named Schedule01 in automation account Contoso17 in resource group ResourceGroup01.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -154,10 +154,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationSchedule](./Get-AzureRMAutomationSchedule.md)
+[Get-AzAutomationSchedule](./Get-AzAutomationSchedule.md)
 
-[New-AzureRmAutomationSchedule](./New-AzureRMAutomationSchedule.md)
+[New-AzAutomationSchedule](./New-AzAutomationSchedule.md)
 
-[Set-AzureRmAutomationSchedule](./Set-AzureRMAutomationSchedule.md)
+[Set-AzAutomationSchedule](./Set-AzAutomationSchedule.md)
 
 

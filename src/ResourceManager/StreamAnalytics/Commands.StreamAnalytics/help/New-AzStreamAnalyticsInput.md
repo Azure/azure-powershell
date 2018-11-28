@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM.StreamAnalytics
+Module Name: Az.StreamAnalytics
 ms.assetid: 35CE5C5F-F8D4-426F-A33A-4F9EA50E9B83
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsinput
+online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
 schema: 2.0.0
 ---
 
-# New-AzureRmStreamAnalyticsInput
+# New-AzStreamAnalyticsInput
 
 ## SYNOPSIS
 Creates or updates a job input.
@@ -14,13 +14,13 @@ Creates or updates a job input.
 ## SYNTAX
 
 ```
-New-AzureRmStreamAnalyticsInput [-JobName] <String> [[-Name] <String>] [-File] <String> [-Force]
+New-AzStreamAnalyticsInput [-JobName] <String> [[-Name] <String>] [-File] <String> [-Force]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmStreamAnalyticsInput** cmdlet creates an input within a Stream Analytics job or updates an existing input.
+The **New-AzStreamAnalyticsInput** cmdlet creates an input within a Stream Analytics job or updates an existing input.
 The name of the input can be specified in the JSON file or on the command line.
 If both are specified, the name on command line must match the name in the file.
 If you specify an input that already exists and do not specify the *Force* parameter, the cmdlet will ask whether or not to replace the existing input.
@@ -30,7 +30,7 @@ If you specify the *Force* parameter and specify an existing input name, the inp
 
 ### EXAMPLE 1: Create a job input with a definition from a file
 ```
-PS C:\>New-AzureRmStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json"
+PS C:\>New-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json"
 ```
 
 This command creates an input from the file Input.json.
@@ -38,7 +38,7 @@ If an existing input with the name specified in the input definition file is alr
 
 ### EXAMPLE 2: Create a job input
 ```
-PS C:\>New-AzureRmStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json" -Name "EntryStream"
+PS C:\>New-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json" -Name "EntryStream"
 ```
 
 This command creates a new input on the job called EntryStream.
@@ -46,7 +46,7 @@ If an existing input with this name is already defined, the cmdlet will ask whet
 
 ### EXAMPLE 3: Replace a job input with a definition from a file
 ```
-PS C:\>New-AzureRmStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json" -Name "EntryStream" -Force
+PS C:\>New-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -File "C:\Input.json" -Name "EntryStream" -Force
 ```
 
 This command replaces the definition of the existing input source called EntryStream with the definition from file without confirmation.
@@ -57,7 +57,7 @@ This command replaces the definition of the existing input source called EntrySt
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -189,10 +189,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmStreamAnalyticsInput](./Get-AzureRmStreamAnalyticsInput.md)
+[Get-AzStreamAnalyticsInput](./Get-AzStreamAnalyticsInput.md)
 
-[Remove-AzureRmStreamAnalyticsInput](./Remove-AzureRmStreamAnalyticsInput.md)
+[Remove-AzStreamAnalyticsInput](./Remove-AzStreamAnalyticsInput.md)
 
-[Test-AzureRmStreamAnalyticsInput](./Test-AzureRmStreamAnalyticsInput.md)
+[Test-AzStreamAnalyticsInput](./Test-AzStreamAnalyticsInput.md)
 
 

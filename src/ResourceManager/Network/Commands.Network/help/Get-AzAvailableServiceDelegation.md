@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermavailableservicedelegation
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azavailableservicedelegation
 schema: 2.0.0
 ---
 
-# Get-AzureRmAvailableServiceDelegation
+# Get-AzAvailableServiceDelegation
 
 ## SYNOPSIS
 Get available service delegations in the region.
@@ -13,18 +13,18 @@ Get available service delegations in the region.
 ## SYNTAX
 
 ```
-Get-AzureRmAvailableServiceDelegation -Location <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzAvailableServiceDelegation -Location <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAvailableServiceDelegation** cmdlet allows you to retrieve all of the available service delegations for a subnet in the provided location. This cmdlet does *not* describe which delegations may co-exist on a single subnet.
+The **Get-AzAvailableServiceDelegation** cmdlet allows you to retrieve all of the available service delegations for a subnet in the provided location. This cmdlet does *not* describe which delegations may co-exist on a single subnet.
 
 ## EXAMPLES
 
 ### 1: Getting all available service delegations
 ```powershell
-PS C:\> Get-AzureRmAvailableServiceDelegation -Location "westus"
+PS C:\> Get-AzAvailableServiceDelegation -Location "westus"
 
 Name        : Microsoft.Web.serverFarms
 Id          : /subscriptions/subId/providers/Microsoft.Network/availableDelegations/Microsoft.Web.serverFarms
@@ -45,7 +45,7 @@ Actions     : {}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -72,8 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -86,7 +85,8 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## NOTES
 
 ## RELATED LINKS
-[Add-AzureRmDelegation](./Add-AzureRmDelegation.md)
-[New-AzureRmDelegation](./New-AzureRmDelegation.md)
-[Remove-AzureRmDelegation](./Remove-AzureRmDelegation.md)
-[Get-AzureRmDelegation](./Get-AzureRmDelegation.md)
+
+[Add-AzDelegation](./Add-AzDelegation.md)
+[New-AzDelegation](./New-AzDelegation.md)
+[Remove-AzDelegation](./Remove-AzDelegation.md)
+[Get-AzDelegation](./Get-AzDelegation.md)

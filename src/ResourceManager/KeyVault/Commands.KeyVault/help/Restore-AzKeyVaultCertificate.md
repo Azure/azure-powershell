@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate
+Module Name: Az.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/restore-azkeyvaultcertificate
 schema: 2.0.0
 ---
 
-# Restore-AzureKeyVaultCertificate
+# Restore-AzKeyVaultCertificate
 
 ## SYNOPSIS
 Restores a certificate in a key vault from a backup file.
@@ -14,24 +14,24 @@ Restores a certificate in a key vault from a backup file.
 
 ### ByVaultName (Default)
 ```
-Restore-AzureKeyVaultCertificate [-VaultName] <String> [-InputFile] <String>
+Restore-AzKeyVaultCertificate [-VaultName] <String> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Restore-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [-InputFile] <String>
+Restore-AzKeyVaultCertificate [-InputObject] <PSKeyVault> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Restore-AzureKeyVaultCertificate [-ResourceId] <String> [-InputFile] <String>
+Restore-AzKeyVaultCertificate [-ResourceId] <String> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Restore-AzureKeyVaultCertificate** cmdlet creates a certificate in the specified key vault from a backup file.
+The **Restore-AzKeyVaultCertificate** cmdlet creates a certificate in the specified key vault from a backup file.
 This certificate is a replica of the backed-up certificate in the input file and has the same name as the original certificate.
 If the key vault already contains a certificate by the same name, this cmdlet fails instead of overwriting the original certificate.
 If the backup contains multiple versions of a certificate, all versions are restored.
@@ -43,7 +43,7 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 
 ### Example 1: Restore a backed-up certificate
 ```powershell
-PS C:\> Restore-AzureKeyVaultCertificate -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+PS C:\> Restore-AzKeyVaultCertificate -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
 
 Certificate   : [Subject]
                   CN=contoso.com
@@ -87,7 +87,7 @@ This command restores a certificate, including all of its versions, from the bac
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

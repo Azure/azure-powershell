@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: C9954E3D-8645-473E-A6D4-86278C2F6BC1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressroutecircuit
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecircuit
 schema: 2.0.0
 ---
 
-# Get-AzureRmExpressRouteCircuit
+# Get-AzExpressRouteCircuit
 
 ## SYNOPSIS
 Gets an Azure ExpressRoute circuit from Azure.
@@ -14,12 +14,12 @@ Gets an Azure ExpressRoute circuit from Azure.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCircuit [-Name <String>] [-ResourceGroupName <String>]
+Get-AzExpressRouteCircuit [-Name <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmExpressRouteCircuit** cmdlet is used to retrieve an ExpressRoute circuit object
+The **Get-AzExpressRouteCircuit** cmdlet is used to retrieve an ExpressRoute circuit object
 from your subscription. The circuit object returned can be used as input to other cmdlets that
 operate on ExpressRoute circuits.
 
@@ -27,7 +27,7 @@ operate on ExpressRoute circuits.
 
 ### Example 1: Get the ExpressRoute circuit to be deleted
 ```
-Get-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg | Remove-AzureRmExpressRouteCircuit
+Get-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg | Remove-AzExpressRouteCircuit
 ```
 
 ## PARAMETERS
@@ -36,7 +36,7 @@ Get-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg | Remov
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,10 +92,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
+[Move-AzExpressRouteCircuit](Move-AzExpressRouteCircuit.md)
 
-[New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
+[New-AzExpressRouteCircuit](New-AzExpressRouteCircuit.md)
 
-[Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
+[Remove-AzExpressRouteCircuit](Remove-AzExpressRouteCircuit.md)
 
-[Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)
+[Set-AzExpressRouteCircuit](Set-AzExpressRouteCircuit.md)

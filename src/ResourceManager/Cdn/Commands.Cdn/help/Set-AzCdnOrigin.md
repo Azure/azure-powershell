@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-Module Name: AzureRM.Cdn
+Module Name: Az.Cdn
 ms.assetid: 0EB9F1C9-54CC-4794-9E37-108342341FE5
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/set-azurermcdnorigin
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/set-azcdnorigin
 schema: 2.0.0
 ---
 
-# Set-AzureRmCdnOrigin
+# Set-AzCdnOrigin
 
 ## SYNOPSIS
 Updates a CDN origin server.
@@ -14,11 +14,11 @@ Updates a CDN origin server.
 ## SYNTAX
 
 ```
-Set-AzureRmCdnOrigin -CdnOrigin <PSOrigin> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzCdnOrigin -CdnOrigin <PSOrigin> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmCdnOrigin** cmdlet updates an Azure Content Delivery Network (CDN) origin server.
+The **Set-AzCdnOrigin** cmdlet updates an Azure Content Delivery Network (CDN) origin server.
 
 ## EXAMPLES
 
@@ -43,7 +43,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,6 +70,6 @@ Parameters: CdnOrigin (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmCdnOrigin](./Get-AzureRmCdnOrigin.md)
+[Get-AzCdnOrigin](./Get-AzCdnOrigin.md)
 
 

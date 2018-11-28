@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 ms.assetid: 09CC097E-0210-4443-BCDB-5CF6C8300288
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightswindowsperformancecounterdatasource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/new-azoperationalinsightswindowsperformancecounterdatasource
 schema: 2.0.0
 ---
 
-# New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource
+# New-AzOperationalInsightsWindowsPerformanceCounterDataSource
 
 ## SYNOPSIS
 Adds Windows performance counter data source for connected computers that run the Windows operating system.
@@ -15,7 +15,7 @@ Adds Windows performance counter data source for connected computers that run th
 
 ### ByWorkspaceName (Default)
 ```
-New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource [-ResourceGroupName] <String>
+New-AzOperationalInsightsWindowsPerformanceCounterDataSource [-ResourceGroupName] <String>
  [-WorkspaceName] <String> [-Name] <String> [-ObjectName] <String> [-CounterName] <String>
  [-InstanceName <String>] [-IntervalSeconds <Int32>] [-UseLegacyCollector] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -23,14 +23,14 @@ New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource [-ResourceGrou
 
 ### ByWorkspaceObject
 ```
-New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource [-Workspace] <PSWorkspace> [-Name] <String>
+New-AzOperationalInsightsWindowsPerformanceCounterDataSource [-Workspace] <PSWorkspace> [-Name] <String>
  [-ObjectName] <String> [-CounterName] <String> [-InstanceName <String>] [-IntervalSeconds <Int32>]
  [-UseLegacyCollector] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource** cmdlet adds a Windows performance counter data source for connected computers that run the Windows operating system.
+The **New-AzOperationalInsightsWindowsPerformanceCounterDataSource** cmdlet adds a Windows performance counter data source for connected computers that run the Windows operating system.
 
 ## EXAMPLES
 
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

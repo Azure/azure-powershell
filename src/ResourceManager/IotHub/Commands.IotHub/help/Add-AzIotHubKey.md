@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/add-azurermiothubkey
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/add-aziothubkey
 schema: 2.0.0
 ---
 
-# Add-AzureRmIotHubKey
+# Add-AzIotHubKey
 
 ## SYNOPSIS
 Creates an IotHub Key.
@@ -13,7 +13,7 @@ Creates an IotHub Key.
 ## SYNTAX
 
 ```
-Add-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> [-PrimaryKey <String>]
+Add-AzIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> [-PrimaryKey <String>]
  [-SecondaryKey <String>] -Rights <PSAccessRights> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ KeyNames are not unique and need to be managed carefully.
 
 ### Example 1 Add a Key to an IotHub
 ```
-PS C:\> Add-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "newkey" -PrimaryKey "primarykey" -SecondaryKey "secondarykey" -Rights RegistryRead
+PS C:\> Add-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "newkey" -PrimaryKey "primarykey" -SecondaryKey "secondarykey" -Rights RegistryRead
 ```
 
 Creates a key named "mykey" for the iothub "myiothub" with RegistryRead permissions.
@@ -37,7 +37,7 @@ Creates a key named "mykey" for the iothub "myiothub" with RegistryRead permissi
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

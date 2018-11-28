@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 9BEE5888-304D-4438-BE97-D1FE254AEE98
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/set-azurermbatchaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/set-azbatchaccount
 schema: 2.0.0
 ---
 
-# Set-AzureRmBatchAccount
+# Set-AzBatchAccount
 
 ## SYNOPSIS
 Updates a Batch account.
@@ -14,19 +14,19 @@ Updates a Batch account.
 ## SYNTAX
 
 ```
-Set-AzureRmBatchAccount [-AccountName] <String> [-Tag] <Hashtable> [-ResourceGroupName <String>]
+Set-AzBatchAccount [-AccountName] <String> [-Tag] <Hashtable> [-ResourceGroupName <String>]
  [-AutoStorageAccountId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmBatchAccount** cmdlet updates an Azure Batch account.
+The **Set-AzBatchAccount** cmdlet updates an Azure Batch account.
 Currently, this cmdlet can update only tags.
 
 ## EXAMPLES
 
 ### Example 1: Update the tags on a Batch account
 ```
-PS C:\>Set-AzureRmBatchAccount -AccountName "cmdletexample" -Tag @{key0="value0";key1=$null;key2="value2"}
+PS C:\>Set-AzBatchAccount -AccountName "cmdletexample" -Tag @{key0="value0";key1=$null;key2="value2"}
 AccountName                  : cmdletexample
 Location                     : westus
 ResourceGroupName            : CmdletExampleRG
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -139,10 +139,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccount](./Get-AzureRmBatchAccount.md)
+[Get-AzBatchAccount](./Get-AzBatchAccount.md)
 
-[New-AzureRmBatchAccount](./New-AzureRmBatchAccount.md)
+[New-AzBatchAccount](./New-AzBatchAccount.md)
 
-[Remove-AzureRmBatchAccount](./Remove-AzureRmBatchAccount.md)
+[Remove-AzBatchAccount](./Remove-AzBatchAccount.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)

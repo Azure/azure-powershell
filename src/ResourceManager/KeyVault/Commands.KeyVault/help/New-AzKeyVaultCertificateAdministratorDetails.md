@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 775AB0E8-EC3C-4F96-8AF8-51C1DFEEF082
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/new-azurekeyvaultcertificateadministratordetails
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/new-azkeyvaultcertificateadministratordetails
 schema: 2.0.0
 ---
 
-# New-AzureKeyVaultCertificateAdministratorDetails
+# New-AzKeyVaultCertificateAdministratorDetails
 
 ## SYNOPSIS
 Creates an in-memory certificate administrator details object.
@@ -14,19 +14,19 @@ Creates an in-memory certificate administrator details object.
 ## SYNTAX
 
 ```
-New-AzureKeyVaultCertificateAdministratorDetails [-FirstName <String>] [-LastName <String>]
+New-AzKeyVaultCertificateAdministratorDetails [-FirstName <String>] [-LastName <String>]
  [-EmailAddress <String>] [-PhoneNumber <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureKeyVaultCertificateAdministratorDetails** cmdlet creates an in-memory certificate administrator details object.
+The **New-AzKeyVaultCertificateAdministratorDetails** cmdlet creates an in-memory certificate administrator details object.
 
 ## EXAMPLES
 
 ### Example 1: Create a certificate administrator details object
 ```
-PS C:\> $AdminDetails = New-AzureKeyVaultCertificateAdministratorDetails -FirstName "Patti" -LastName "Fuller" -EmailAddress "patti.fuller@contoso.com" -PhoneNumber "5553334444"
+PS C:\> $AdminDetails = New-AzKeyVaultCertificateAdministratorDetails -FirstName "Patti" -LastName "Fuller" -EmailAddress "patti.fuller@contoso.com" -PhoneNumber "5553334444"
 PS C:\> $AdminDetails
 
 FirstName LastName EmailAddress             PhoneNumber
@@ -42,7 +42,7 @@ This command creates an in-memory certificate administrator details object, and 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -159,5 +159,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureKeyVaultCertificateOrganizationDetails](./New-AzureKeyVaultCertificateOrganizationDetails.md)
+[New-AzKeyVaultCertificateOrganizationDetails](./New-AzKeyVaultCertificateOrganizationDetails.md)
 

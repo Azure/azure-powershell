@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubcertificateverificationcode
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubcertificateverificationcode
 schema: 2.0.0
 ---
 
-# Get-AzureRmIotHubCertificateVerificationCode
+# Get-AzIotHubCertificateVerificationCode
 
 ## SYNOPSIS
 Generates a verification code for an Azure IoT Hub certificate. 
@@ -14,19 +14,19 @@ Generates a verification code for an Azure IoT Hub certificate.
 
 ### ResourceSet (Default)
 ```
-Get-AzureRmIotHubCertificateVerificationCode [-ResourceGroupName] <String> [-Name] <String>
+Get-AzIotHubCertificateVerificationCode [-ResourceGroupName] <String> [-Name] <String>
  [-CertificateName] <String> [-Etag] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Get-AzureRmIotHubCertificateVerificationCode [-InputObject] <PSCertificateDescription>
+Get-AzIotHubCertificateVerificationCode [-InputObject] <PSCertificateDescription>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmIotHubCertificateVerificationCode [-ResourceId] <String> [-Etag] <String>
+Get-AzIotHubCertificateVerificationCode [-ResourceId] <String> [-Etag] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmIotHubCertificateVerificationCode -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Etag "AAAAAAFPazE="
+PS C:\> Get-AzIotHubCertificateVerificationCode -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Etag "AAAAAAFPazE="
 
 Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/IotHubs/myiothub/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

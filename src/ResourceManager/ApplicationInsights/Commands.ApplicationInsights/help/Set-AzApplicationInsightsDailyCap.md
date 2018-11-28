@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApplicationInsights.dll-Help.xml
-Module Name: AzureRM.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightsdailycap
+Module Name: Az.ApplicationInsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/set-azapplicationinsightsdailycap
 schema: 2.0.0
 ---
 
-# Set-AzureRmApplicationInsightsDailyCap
+# Set-AzApplicationInsightsDailyCap
 
 ## SYNOPSIS
 Set daily data volume cap for an application insights resource
@@ -14,21 +14,21 @@ Set daily data volume cap for an application insights resource
 
 ### ComponentNameParameterSet (Default)
 ```
-Set-AzureRmApplicationInsightsDailyCap [-ResourceGroupName] <String> [-Name] <String> [-DailyCapGB <Double>]
+Set-AzApplicationInsightsDailyCap [-ResourceGroupName] <String> [-Name] <String> [-DailyCapGB <Double>]
  [-DisableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
-Set-AzureRmApplicationInsightsDailyCap [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
+Set-AzApplicationInsightsDailyCap [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
  [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Set-AzureRmApplicationInsightsDailyCap [-ResourceId] <String> [-DailyCapGB <Double>]
+Set-AzApplicationInsightsDailyCap [-ResourceId] <String> [-DailyCapGB <Double>]
  [-DisableNotificationWhenHitCap] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -40,7 +40,7 @@ Set daily data volume cap for an application insights resource
 
 ### Example 1 Set daily data volume cap for an application insights resource
 ```
-PS C:\> Set-AzureRmApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -DailyCapGB 400
+PS C:\> Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -DailyCapGB 400
  -DisableNotificationWhenHitCap
 
  Cap ResetTime StopSendNotificationWhenHitCap
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

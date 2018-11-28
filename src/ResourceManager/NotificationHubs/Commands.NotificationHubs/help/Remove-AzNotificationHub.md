@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
-Module Name: AzureRM.NotificationHubs
+Module Name: Az.NotificationHubs
 ms.assetid: 62631E1C-FB43-4E87-82C2-159A9D1D4221
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/remove-azurermnotificationhub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/remove-aznotificationhub
 schema: 2.0.0
 ---
 
-# Remove-AzureRmNotificationHub
+# Remove-AzNotificationHub
 
 ## SYNOPSIS
 Removes an existing notification hub.
@@ -14,23 +14,23 @@ Removes an existing notification hub.
 ## SYNTAX
 
 ```
-Remove-AzureRmNotificationHub [-ResourceGroup] <String> [-Namespace] <String> [-NotificationHub] <String>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzNotificationHub [-ResourceGroup] <String> [-Namespace] <String> [-NotificationHub] <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmNotificationHub** cmdlet removes an existing notification hub.
+The **Remove-AzNotificationHub** cmdlet removes an existing notification hub.
 Notification hubs are used to send push notifications to multiple clients regardless of the platform used by those clients.
 Platforms include, but are not limited to: iOS, Android, Windows Phone 8, and Windows Store.
 Notification hubs are roughly equivalent to individual apps: each of your apps will typically have its own notification hub.
-You can remove an existing notification hub by using the **Remove-AzureRmNotificationHub** cmdlet.
+You can remove an existing notification hub by using the **Remove-AzNotificationHub** cmdlet.
 After a hub has been removed you can no longer use that hub to send push notifications to users.
 
 ## EXAMPLES
 
 ### Example 1: Remove a notification hub
 ```
-PS C:\>Remove-AzureRmNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -NotificationHub "ContosoInternalHub"
+PS C:\>Remove-AzNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -NotificationHub "ContosoInternalHub"
 ```
 
 This command removes the notification hub named ContosoInternalHub.
@@ -42,7 +42,7 @@ In order to remove the hub, you must specify the namespace where the hub is loca
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -161,10 +161,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNotificationHub](./Get-AzureRmNotificationHub.md)
+[Get-AzNotificationHub](./Get-AzNotificationHub.md)
 
-[New-AzureRmNotificationHub](./New-AzureRmNotificationHub.md)
+[New-AzNotificationHub](./New-AzNotificationHub.md)
 
-[Set-AzureRmNotificationHub](./Set-AzureRmNotificationHub.md)
+[Set-AzNotificationHub](./Set-AzNotificationHub.md)
 
 

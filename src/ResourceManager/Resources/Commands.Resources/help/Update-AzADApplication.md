@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/update-azurermadapplication
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadapplication
 schema: 2.0.0
 ---
 
-# Update-AzureRmADApplication
+# Update-AzADApplication
 
 ## SYNOPSIS
 Updates an existing azure active directory application.
@@ -14,35 +14,35 @@ Updates an existing azure active directory application.
 
 ### ApplicationObjectIdWithUpdateParamsParameterSet (Default)
 ```
-Update-AzureRmADApplication -ObjectId <Guid> [-DisplayName <String>] [-HomePage <String>]
+Update-AzADApplication -ObjectId <Guid> [-DisplayName <String>] [-HomePage <String>]
  [-IdentifierUri <String[]>] [-ReplyUrl <String[]>] [-AvailableToOtherTenants <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithUpdateParamsParameterSet
 ```
-Update-AzureRmADApplication -ApplicationId <Guid> [-DisplayName <String>] [-HomePage <String>]
+Update-AzADApplication -ApplicationId <Guid> [-DisplayName <String>] [-HomePage <String>]
  [-IdentifierUri <String[]>] [-ReplyUrl <String[]>] [-AvailableToOtherTenants <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectWithUpdateParamsParameterSet
 ```
-Update-AzureRmADApplication -InputObject <PSADApplication> [-DisplayName <String>] [-HomePage <String>]
+Update-AzADApplication -InputObject <PSADApplication> [-DisplayName <String>] [-HomePage <String>]
  [-IdentifierUri <String[]>] [-ReplyUrl <String[]>] [-AvailableToOtherTenants <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Updates an existing azure active directory application.
-To update the credentials associated with this application, please use the New-AzureRmADAppCredential cmdlet.
+To update the credentials associated with this application, please use the New-AzADAppCredential cmdlet.
 
 ## EXAMPLES
 
 ### Example 1 - Update the display name of an application
 
 ```
-PS C:\> Update-AzureRmADApplication -ObjectId fb7b3405-ca44-4b5b-8584-12392f5d96d7 -DisplayName MyNewDisplayName
+PS C:\> Update-AzADApplication -ObjectId fb7b3405-ca44-4b5b-8584-12392f5d96d7 -DisplayName MyNewDisplayName
 ```
 
 Updates the display name of the application with object id 'fb7b3405-ca44-4b5b-8584-12392f5d96d7' to be 'MyNewDisplayName'.
@@ -50,7 +50,7 @@ Updates the display name of the application with object id 'fb7b3405-ca44-4b5b-8
 ### Example 2 - Update all properties of an application
 
 ```
-PS C:\> Update-AzureRmADApplication -ObjectId fb7b3405-ca44-4b5b-8584-12392f5d96d7 -DisplayName MyNewDisplayName -HomePage https://www.microsoft.com -IdentifierUris "https://UpdateAppUri"
+PS C:\> Update-AzADApplication -ObjectId fb7b3405-ca44-4b5b-8584-12392f5d96d7 -DisplayName MyNewDisplayName -HomePage https://www.microsoft.com -IdentifierUris "https://UpdateAppUri"
 ```
 
 Updates the properties of an application with object id 'fb7b3405-ca44-4b5b-8584-12392f5d96d7'.
@@ -58,10 +58,10 @@ Updates the properties of an application with object id 'fb7b3405-ca44-4b5b-8584
 ### Example 3 - Update the display name of an application using piping
 
 ```
-PS C:\> Get-AzureRmADApplication -ObjectId fb7b3405-ca44-4b5b-8584-12392f5d96d7 | Update-AzureRmADApplication -DisplayName MyNewDisplayName
+PS C:\> Get-AzADApplication -ObjectId fb7b3405-ca44-4b5b-8584-12392f5d96d7 | Update-AzADApplication -DisplayName MyNewDisplayName
 ```
 
-Gets the application with object id 'fb7b3405-ca44-4b5b-8584-12392f5d96d7' and pipes that to the Update-AzureRmADApplication cmdlet to update the display name of the application to "MyNewDisplayName".
+Gets the application with object id 'fb7b3405-ca44-4b5b-8584-12392f5d96d7' and pipes that to the Update-AzADApplication cmdlet to update the display name of the application to "MyNewDisplayName".
 
 ## PARAMETERS
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

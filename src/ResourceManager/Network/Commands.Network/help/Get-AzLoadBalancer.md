@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 78F356F6-A621-4C27-B9CC-D103E74B3A33
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermloadbalancer
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azloadbalancer
 schema: 2.0.0
 ---
 
-# Get-AzureRmLoadBalancer
+# Get-AzLoadBalancer
 
 ## SYNOPSIS
 Gets a load balancer.
@@ -15,24 +15,24 @@ Gets a load balancer.
 
 ### NoExpand (Default)
 ```
-Get-AzureRmLoadBalancer [-ResourceGroupName <String>] [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzLoadBalancer [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Expand
 ```
-Get-AzureRmLoadBalancer -ResourceGroupName <String> -Name <String> -ExpandResource <String>
+Get-AzLoadBalancer -ResourceGroupName <String> -Name <String> -ExpandResource <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmLoadBalancer** cmdlet gets one or more Azure load balancers that are contained in a resource group.
+The **Get-AzLoadBalancer** cmdlet gets one or more Azure load balancers that are contained in a resource group.
 
 ## EXAMPLES
 
 ### Example 1: Get a load balancer
 ```
-PS C:\>Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+PS C:\>Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
 ```
 
 This command gets the load balancer named MyLoadBalancer.
@@ -44,7 +44,7 @@ A load balancer must exist before you can run this cmdlet.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -133,10 +133,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmLoadBalancer](./New-AzureRmLoadBalancer.md)
+[New-AzLoadBalancer](./New-AzLoadBalancer.md)
 
-[Remove-AzureRmLoadBalancer](./Remove-AzureRmLoadBalancer.md)
+[Remove-AzLoadBalancer](./Remove-AzLoadBalancer.md)
 
-[Set-AzureRmLoadBalancer](./Set-AzureRmLoadBalancer.md)
+[Set-AzLoadBalancer](./Set-AzLoadBalancer.md)
 
 

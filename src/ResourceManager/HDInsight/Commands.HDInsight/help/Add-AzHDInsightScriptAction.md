@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 8F0634BD-D817-4365-B6D1-924DC36AE4C9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightscriptaction
 schema: 2.0.0
 ---
 
-# Add-AzureRmHDInsightScriptAction
+# Add-AzHDInsightScriptAction
 
 ## SYNOPSIS
 Adds a script action to a cluster configuration object.
@@ -14,12 +14,12 @@ Adds a script action to a cluster configuration object.
 ## SYNTAX
 
 ```
-Add-AzureRmHDInsightScriptAction [-Config] <AzureHDInsightConfig> [-NodeType] <ClusterNodeType> [-Uri] <Uri>
+Add-AzHDInsightScriptAction [-Config] <AzureHDInsightConfig> [-NodeType] <ClusterNodeType> [-Uri] <Uri>
  [-Name] <String> [[-Parameters] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmHDInsightScriptAction** cmdlet adds script actions to the HDInsight configuration object created by the New-AzureRmHDInsightClusterConfig cmdlet.
+The **Add-AzHDInsightScriptAction** cmdlet adds script actions to the HDInsight configuration object created by the New-AzHDInsightClusterConfig cmdlet.
 Script actions provide functionality that is used to install additional software or to change the configuration of applications that run on a Hadoop cluster by using Windows PowerShell or Bash scripts (for Windows or Linux clusters, respectively).
 A script action runs on the cluster nodes when HDInsight clusters are deployed, and they run after nodes in the cluster complete HDInsight configuration.
 The script action runs under system administrator account privileges and provides full access rights to the cluster nodes.
@@ -32,7 +32,7 @@ You can provide each cluster with a list of script actions to run in a specified
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
 PS C:\> $storageAccountName = "yourstorageacct001"
-PS C:\> $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 
 PS C:\> $storageContainer = "container001"
@@ -49,21 +49,21 @@ PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $clusterCreds = Get-Credential
 
 # If the cluster's resource group doesn't exist yet, run:
-#   New-AzureRmResourceGroup -Name $clusterResourceGroupName -Location $location
+#   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
 # Create the cluster
-PS C:\> New-AzureRmHDInsightClusterConfig  `
-            | Add-AzureRmHDInsightScriptAction `
+PS C:\> New-AzHDInsightClusterConfig  `
+            | Add-AzHDInsightScriptAction `
                 -Name $scriptActionName `
                 -Uri $scriptActionURI `
                 -Parameters $scriptActionParameters `
                 -NodeType Worker `
-            | Add-AzureRmHDInsightScriptAction `
+            | Add-AzHDInsightScriptAction `
                 -Name $scriptActionName `
                 -Uri $scriptActionURI `
                 -Parameters $scriptActionParameters `
                 -NodeType Head `
-            | New-AzureRmHDInsightCluster `
+            | New-AzHDInsightCluster `
                 -ClusterType Hadoop `
                 -OSType Windows `
                 -ClusterSizeInNodes 4 `
@@ -82,7 +82,7 @@ This command adds a script action for the Head and Worker nodes of the your-hado
 
 ### -Config
 Specifies the HDInsight cluster configuration object that this cmdlet modifies.
-This object is created by the **New-AzureRmHDInsightClusterConfig** cmdlet.
+This object is created by the **New-AzHDInsightClusterConfig** cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
@@ -192,6 +192,6 @@ Parameters: Config (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmHDInsightClusterConfig](./New-AzureRmHDInsightClusterConfig.md)
+[New-AzHDInsightClusterConfig](./New-AzHDInsightClusterConfig.md)
 
 

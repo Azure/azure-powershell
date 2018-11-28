@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/remove-azurermservicebusnamespace
+Module Name: Az.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusnamespace
 schema: 2.0.0
 ---
 
-# Remove-AzureRmServiceBusNamespace
+# Remove-AzServiceBusNamespace
 
 ## SYNOPSIS
 Removes the namespace from the specified resource group. 
@@ -14,53 +14,53 @@ Removes the namespace from the specified resource group.
 
 ### NamespacePropertiesSet (Default)
 ```
-Remove-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob]
+Remove-AzServiceBusNamespace [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NamespaceInputObjectSet
 ```
-Remove-AzureRmServiceBusNamespace [-InputObject] <PSNamespaceAttributes> [-PassThru] [-AsJob]
+Remove-AzServiceBusNamespace [-InputObject] <PSNamespaceAttributes> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NamespaceResourceIdParameterSet
 ```
-Remove-AzureRmServiceBusNamespace [-ResourceId] <String> [-PassThru] [-AsJob]
+Remove-AzServiceBusNamespace [-ResourceId] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmServiceBusNamespace** cmdlet removes the namespace from the specified resource group.
+The **Remove-AzServiceBusNamespace** cmdlet removes the namespace from the specified resource group.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
+PS C:\> Remove-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
 ```
 
 Removes the Service Bus namespace `SB-Example1` from the specified resource group `Default-ServiceBus-WestUS`.
 
 ### Example 2.1 - InputObject - Using variable:
 ```
-PS C:\> $inputobject = Get-AzureRmServiceBusNamespace <params>
-PS C:\> Remove-AzureRmServiceBusNamespace -InputObject $inputobject
+PS C:\> $inputobject = Get-AzServiceBusNamespace <params>
+PS C:\> Remove-AzServiceBusNamespace -InputObject $inputobject
 ```
 
 Removes the Service Bus namespace provided through the $inputobject.
 
 ### Example 2.2 - InputObject - Using Piping:
 ```
-PS C:\> Get-AzureRmServiceBusNamespace <params> | Remove-AzureRmServiceBusNamespace
+PS C:\> Get-AzServiceBusNamespace <params> | Remove-AzServiceBusNamespace
 ```
 
 Removes the Service Bus namespace using Piping.
 
 ### Example 3 - ResourceId
 ```
-PS c:\> $ResourceId = (Get-AzureRmResource -ResourceType Microsoft.ServiceBus/namespaces).ResourceId
-PS C:\> Remove-AzureRmServiceBusNamespace -ResourceId $resourceid
+PS c:\> $ResourceId = (Get-AzResource -ResourceType Microsoft.ServiceBus/namespaces).ResourceId
+PS C:\> Remove-AzServiceBusNamespace -ResourceId $resourceid
 ```
 
 Removes the Service Bus namespace provided through ARM id in $resourceid for -ResourceId parameter or through piping.
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

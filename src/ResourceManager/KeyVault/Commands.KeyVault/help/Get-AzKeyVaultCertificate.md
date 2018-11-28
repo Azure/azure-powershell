@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 363FA51E-D075-4800-A4BE-BFF63FD25C90
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultcertificate
 schema: 2.0.0
 ---
 
-# Get-AzureKeyVaultCertificate
+# Get-AzKeyVaultCertificate
 
 ## SYNOPSIS
 Gets a certificate from a key vault.
@@ -15,66 +15,66 @@ Gets a certificate from a key vault.
 
 ### ByName (Default)
 ```
-Get-AzureKeyVaultCertificate [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
- [-IncludePending] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVaultCertificate [-VaultName] <String> [[-Name] <String>] [-InRemovedState] [-IncludePending]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateNameAndVersion
 ```
-Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-Version] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateAllVersions
 ```
-Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByNameInputObject
 ```
-Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
- [-IncludePending] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVaultCertificate [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState] [-IncludePending]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateNameAndVersionInputObject
 ```
-Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultCertificate [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateAllVersionsInputObject
 ```
-Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultCertificate [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByNameResourceId
 ```
-Get-AzureKeyVaultCertificate [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
- [-IncludePending] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVaultCertificate [-ResourceId] <String> [[-Name] <String>] [-InRemovedState] [-IncludePending]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateNameAndVersionResourceId
 ```
-Get-AzureKeyVaultCertificate [-ResourceId] <String> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultCertificate [-ResourceId] <String> [-Name] <String> [-Version] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateAllVersionsResourceId
 ```
-Get-AzureKeyVaultCertificate [-ResourceId] <String> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultCertificate [-ResourceId] <String> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureKeyVaultCertificate** cmdlet gets the specified certificate or the versions of a certificate from a key vault in Azure Key Vault.
+The **Get-AzKeyVaultCertificate** cmdlet gets the specified certificate or the versions of a certificate from a key vault in Azure Key Vault.
 
 ## EXAMPLES
 
 ### Example 1: Get a certificate
 ```powershell
-PS C:\> Get-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
+PS C:\> Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
 Name        : testCert01
 Certificate : [Subject] 
                 CN=contoso.com
@@ -105,7 +105,7 @@ This command gets the certificate named TestCert01 from the key vault named Cont
 
 ### Example 2: Get all the certificates that have been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzureKeyVaultCertificate -VaultName 'contoso' -InRemovedState
+PS C:\> Get-AzKeyVaultCertificate -VaultName 'contoso' -InRemovedState
 
 DeletedDate        : 5/24/2018 6:08:32 PM
 Enabled            : True
@@ -137,7 +137,7 @@ This command gets all the certificates that have been previously deleted, but no
 
 ### Example 3: Gets the certificate MyCert that has been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzureKeyVaultCertificate -VaultName 'contoso' -Name 'test1' -InRemovedState
+PS C:\> Get-AzKeyVaultCertificate -VaultName 'contoso' -Name 'test1' -InRemovedState
 
 Certificate        : [Subject]
                        CN=contoso.com
@@ -184,9 +184,24 @@ This command will return metadata such as the deletion date, and the scheduled p
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludePending
+Specifies whether to include pending certificates in the output
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ByName, ByNameInputObject, ByNameResourceId
+Aliases:
 
 Required: False
 Position: Named
@@ -312,21 +327,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludePending
-Specifies whether to include pending certificates in the output
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: ByName, ByNameInputObject, ByNameResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -351,10 +351,10 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultCertificate](./Add-AzureKeyVaultCertificate.md)
+[Add-AzKeyVaultCertificate](./Add-AzKeyVaultCertificate.md)
 
-[Import-AzureKeyVaultCertificate](./Import-AzureKeyVaultCertificate.md)
+[Import-AzKeyVaultCertificate](./Import-AzKeyVaultCertificate.md)
 
-[Remove-AzureKeyVaultCertificate](./Remove-AzureKeyVaultCertificate.md)
+[Remove-AzKeyVaultCertificate](./Remove-AzKeyVaultCertificate.md)
 
-[Undo-AzureKeyVaultSecretCertificate](./Undo-AzureKeyVaultSecretCertificate.md)
+[Undo-AzKeyVaultSecretCertificate](./Undo-AzKeyVaultSecretCertificate.md)

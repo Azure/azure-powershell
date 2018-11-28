@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermapplicationgatewayavailablessloptions
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayavailablessloptions
 schema: 2.0.0
 ---
 
-# Get-AzureRmApplicationGatewayAvailableSslOptions
+# Get-AzApplicationGatewayAvailableSslOptions
 
 ## SYNOPSIS
 Gets all available ssl options for ssl policy for Application Gateway.
@@ -13,18 +13,17 @@ Gets all available ssl options for ssl policy for Application Gateway.
 ## SYNTAX
 
 ```
-Get-AzureRmApplicationGatewayAvailableSslOptions [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzApplicationGatewayAvailableSslOptions [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApplicationGatewayAvailableSslOptions** cmdlet gets all available ssl options for ssl policy
+The **Get-AzApplicationGatewayAvailableSslOptions** cmdlet gets all available ssl options for ssl policy
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>$sslOptions = Get-AzureRmApplicationGatewayAvailableSslOptions
+PS C:\>$sslOptions = Get-AzApplicationGatewayAvailableSslOptions
 ```
 
 This commands returns all available ssl options for ssl policy.
@@ -35,7 +34,7 @@ This commands returns all available ssl options for ssl policy.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

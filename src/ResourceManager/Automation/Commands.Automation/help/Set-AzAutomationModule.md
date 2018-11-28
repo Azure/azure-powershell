@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: A06D36D7-3F72-4D21-8995-9DBBB9A9B880
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/set-azurermautomationmodule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationmodule
 schema: 2.0.0
 ---
 
-# Set-AzureRmAutomationModule
+# Set-AzAutomationModule
 
 ## SYNOPSIS
 Updates a module in Automation.
@@ -14,30 +14,30 @@ Updates a module in Automation.
 ## SYNTAX
 
 ```
-Set-AzureRmAutomationModule [-Name] <String> [-ContentLinkUri <Uri>] [-ContentLinkVersion <String>]
+Set-AzAutomationModule [-Name] <String> [-ContentLinkUri <Uri>] [-ContentLinkVersion <String>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmAutomationModule** cmdlet updates a module in Azure Automation.
+The **Set-AzAutomationModule** cmdlet updates a module in Azure Automation.
 This command accepts a compressed file that has a .zip file name extension.
 The file contains a folder that includes a file that is one of the following types: 
 - wps_2 module, which has a .psm1 or .dll file name extension 
 - wps_2 module manifest, which has a .psd1 file name extension
 The name of the .zip file, the name of the folder, and the name of the file in the folder must be the same.
 Specify the .zip file as a URL that the Automation service can access.
-If you import a wps_2 module into Automation by using this cmdlet or the New-AzureRmAutomationModule cmdlet, the operation is asynchronous.
+If you import a wps_2 module into Automation by using this cmdlet or the New-AzAutomationModule cmdlet, the operation is asynchronous.
 The command finishes whether the import succeeds or fails.
 To check whether it succeeded, run the following command:
-`PS C:\\\> $ModuleInstance = Get-AzureRmAutomationModule -Name `ModuleName
+`PS C:\\\> $ModuleInstance = Get-AzAutomationModule -Name `ModuleName
 Check the **ProvisioningState** property for a value of Succeeded.
 
 ## EXAMPLES
 
 ### Example 1: Update a module
 ```
-PS C:\>Set-AzureRmAutomationModule -AutomationAccountName "Contoso17" -Name "ContosoModule" -ContentLinkUri "http://contosostorage.blob.core.windows.net/modules/ContosoModule.zip" -ContentLinkVersion "1.1" -ResourceGroupName "ResourceGroup01"
+PS C:\>Set-AzAutomationModule -AutomationAccountName "Contoso17" -Name "ContosoModule" -ContentLinkUri "http://contosostorage.blob.core.windows.net/modules/ContosoModule.zip" -ContentLinkVersion "1.1" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command imports an updated version of an existing module named ContosoModule into the Automation account named Contoso17.  The module is stored in an Azure blob in a storage account named contosostorage and a container named modules.
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -151,10 +151,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationModule](./Get-AzureRmAutomationModule.md)
+[Get-AzAutomationModule](./Get-AzAutomationModule.md)
 
-[New-AzureRmAutomationModule](./New-AzureRmAutomationModule.md)
+[New-AzAutomationModule](./New-AzAutomationModule.md)
 
-[Remove-AzureRmAutomationModule](./Remove-AzureRmAutomationModule.md)
+[Remove-AzAutomationModule](./Remove-AzAutomationModule.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: B07FE1A2-732D-4CCF-A0DF-3CF6B91FB3F3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryhub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryhub
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryHub
+# Get-AzDataFactoryHub
 
 ## SYNOPSIS
 Gets information about hubs in Azure Data Factory.
@@ -15,18 +15,18 @@ Gets information about hubs in Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactoryHub [[-Name] <String>] [-DataFactoryName] <String> [-ResourceGroupName] <String>
+Get-AzDataFactoryHub [[-Name] <String>] [-DataFactoryName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactoryHub [[-Name] <String>] [-DataFactory] <PSDataFactory>
+Get-AzDataFactoryHub [[-Name] <String>] [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactoryHub** cmdlet gets information about hubs in Azure Data Factory.
+The **Get-AzDataFactoryHub** cmdlet gets information about hubs in Azure Data Factory.
 If you specify the name of a hub, this cmdlet gets information about that hub.
 If you do not specify a name, this cmdlet gets information about all of the hubs in a data factory.
 
@@ -34,14 +34,14 @@ If you do not specify a name, this cmdlet gets information about all of the hubs
 
 ### Example 1: Get all data hubs
 ```
-PS C:\>Get-AzureRmDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory"
+PS C:\>Get-AzDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory"
 ```
 
 This command gets all data hubs in the Azure resource group named ADFResourceGroup and the data factory named ADFDataFactory.
 
 ### Example 2: Get a specific data hub
 ```
-PS C:\>Get-AzureRmDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "MyDataHub"
+PS C:\>Get-AzDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "MyDataHub"
 ```
 
 This command gets information about the hub named MyDataHub in the Azure resource group named ADFResourceGroup and the data factory named ADFDataFactory.
@@ -144,8 +144,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmDataFactoryHub](./New-AzureRmDataFactoryHub.md)
+[New-AzDataFactoryHub](./New-AzDataFactoryHub.md)
 
-[Remove-AzureRmDataFactoryHub](./Remove-AzureRmDataFactoryHub.md)
+[Remove-AzDataFactoryHub](./Remove-AzDataFactoryHub.md)
 
 

@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: DAFB709D-A6F2-4645-8A9E-F8D95669E02F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationcredential
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationCredential
+# Get-AzAutomationCredential
 
 ## SYNOPSIS
 Gets Automation credentials.
@@ -15,18 +15,18 @@ Gets Automation credentials.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationCredential [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationCredential [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmAutomationCredential [-Name] <String> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAutomationCredential [-Name] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutomationCredential** cmdlet gets one or more Azure Automation credentials.
+The **Get-AzAutomationCredential** cmdlet gets one or more Azure Automation credentials.
 By default, all credentials are returned.
 Specify the name of a credential to get a specific credential.
 For security purposes, this cmdlet does not return credential passwords.
@@ -35,14 +35,14 @@ For security purposes, this cmdlet does not return credential passwords.
 
 ### Example 1: Get all credentials
 ```
-PS C:\>Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17"
+PS C:\>Get-AzAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17"
 ```
 
 This command gets metadata for all credentials in the Automation account named Contoso17.
 
 ### Example 2: Get a credential
 ```
-PS C:\>Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17" -Name "ContosoCredential"
+PS C:\>Get-AzAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17" -Name "ContosoCredential"
 ```
 
 This command gets metadata for the credential named ContosoCredential in the Automation account named Contoso17.
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -124,10 +124,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAutomationCredential](./New-AzureRMAutomationCredential.md)
+[New-AzAutomationCredential](./New-AzAutomationCredential.md)
 
-[Remove-AzureRmAutomationCredential](./Remove-AzureRMAutomationCredential.md)
+[Remove-AzAutomationCredential](./Remove-AzAutomationCredential.md)
 
-[Set-AzureRmAutomationCredential](./Set-AzureRMAutomationCredential.md)
+[Set-AzAutomationCredential](./Set-AzAutomationCredential.md)
 
 

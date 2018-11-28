@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SignalR.dll-Help.xml
-Module Name: AzureRM.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.signalr/get-azurermsignalrkey
+Module Name: Az.SignalR
+online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/get-azsignalrkey
 schema: 2.0.0
 ---
 
-# Get-AzureRmSignalRKey
+# Get-AzSignalRKey
 
 ## SYNOPSIS
 Get the access keys of a SignalR service.
@@ -14,18 +14,18 @@ Get the access keys of a SignalR service.
 
 ### ResourceGroupParameterSet (Default)
 ```
-Get-AzureRmSignalRKey [-ResourceGroupName <String>] [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSignalRKey [-ResourceGroupName <String>] [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmSignalRKey -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSignalRKey -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Get-AzureRmSignalRKey -InputObject <PSSignalRResource> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSignalRKey -InputObject <PSSignalRResource> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Get the access keys of a SignalR service.
 
 ### Get access keys of a specific SignalR service
 ```powershell
-PS C:\> Get-AzureRmSignalRKey -ResourceGroupName myResourceGroup -Name mysignalr1
+PS C:\> Get-AzSignalRKey -ResourceGroupName myResourceGroup -Name mysignalr1
 
 Name                      : mysignalr1
 PrimaryKey                : vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs=
@@ -50,7 +50,7 @@ SecondaryConnectionString : Endpoint=https://mysignalr1.service.signalr.net;Acce
 ### Get access keys from a SignalR service object in pipe
 
 ```powershell
-PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 | Get-AzureRmSignalRKey
+PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 | Get-AzSignalRKey
 
 Name                      : mysignalr1
 PrimaryKey                : vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs=
@@ -67,7 +67,7 @@ SecondaryConnectionString : Endpoint=https://mysignalr1.service.signalr.net;Acce
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

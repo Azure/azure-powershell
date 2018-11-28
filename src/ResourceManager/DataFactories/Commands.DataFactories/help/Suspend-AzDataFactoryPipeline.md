@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 1FF0B0F9-4B2C-46BC-8BED-12BE865E4480
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/suspend-azurermdatafactorypipeline
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/suspend-azdatafactorypipeline
 schema: 2.0.0
 ---
 
-# Suspend-AzureRmDataFactoryPipeline
+# Suspend-AzDataFactoryPipeline
 
 ## SYNOPSIS
 Suspends a pipeline in Azure Data Factory.
@@ -15,25 +15,25 @@ Suspends a pipeline in Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Suspend-AzureRmDataFactoryPipeline [-Name] <String> [-DataFactoryName] <String> [-ResourceGroupName] <String>
+Suspend-AzDataFactoryPipeline [-Name] <String> [-DataFactoryName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Suspend-AzureRmDataFactoryPipeline [-Name] <String> [-DataFactory] <PSDataFactory>
+Suspend-AzDataFactoryPipeline [-Name] <String> [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Suspend-AzureRmDataFactoryPipeline** cmdlet suspends a pipeline in Azure Data Factory.
-You can resume the pipeline by using the Resume-AzureRmDataFactoryPipeline cmdlet.
+The **Suspend-AzDataFactoryPipeline** cmdlet suspends a pipeline in Azure Data Factory.
+You can resume the pipeline by using the Resume-AzDataFactoryPipeline cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Suspend a pipeline
 ```
-PS C:\>Suspend-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikiSample" -DataFactoryName "WikiADF"
+PS C:\>Suspend-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikiSample" -DataFactoryName "WikiADF"
 Confirm
 Are you sure you want to suspend pipeline 'DPWikisample' in data factory 'WikiADF'? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -172,14 +172,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryPipeline](./Get-AzureRmDataFactoryPipeline.md)
+[Get-AzDataFactoryPipeline](./Get-AzDataFactoryPipeline.md)
 
-[New-AzureRmDataFactoryPipeline](./New-AzureRmDataFactoryPipeline.md)
+[New-AzDataFactoryPipeline](./New-AzDataFactoryPipeline.md)
 
-[Remove-AzureRmDataFactoryPipeline](./Remove-AzureRmDataFactoryPipeline.md)
+[Remove-AzDataFactoryPipeline](./Remove-AzDataFactoryPipeline.md)
 
-[Resume-AzureRmDataFactoryPipeline](./Resume-AzureRmDataFactoryPipeline.md)
+[Resume-AzDataFactoryPipeline](./Resume-AzDataFactoryPipeline.md)
 
-[Set-AzureRmDataFactoryPipelineActivePeriod](./Set-AzureRmDataFactoryPipelineActivePeriod.md)
+[Set-AzDataFactoryPipelineActivePeriod](./Set-AzDataFactoryPipelineActivePeriod.md)
 
 

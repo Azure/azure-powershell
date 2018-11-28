@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 2D3021B3-12C5-4797-8BF2-800E3CEAC56C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/add-azkeyvaultcertificatecontact
 schema: 2.0.0
 ---
 
-# Add-AzureKeyVaultCertificateContact
+# Add-AzKeyVaultCertificateContact
 
 ## SYNOPSIS
 Adds a contact for certificate notifications.
@@ -15,24 +15,24 @@ Adds a contact for certificate notifications.
 
 ### Interactive (Default)
 ```
-Add-AzureKeyVaultCertificateContact [-VaultName] <String> [-EmailAddress] <String[]> [-PassThru]
+Add-AzKeyVaultCertificateContact [-VaultName] <String> [-EmailAddress] <String[]> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObject
 ```
-Add-AzureKeyVaultCertificateContact [-InputObject] <PSKeyVault> [-EmailAddress] <String[]> [-PassThru]
+Add-AzKeyVaultCertificateContact [-InputObject] <PSKeyVault> [-EmailAddress] <String[]> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Add-AzureKeyVaultCertificateContact [-ResourceId] <String> [-EmailAddress] <String[]> [-PassThru]
+Add-AzKeyVaultCertificateContact [-ResourceId] <String> [-EmailAddress] <String[]> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureKeyVaultCertificateContact** cmdlet adds a contact for a key vault for certificate notifications in Azure Key Vault.
+The **Add-AzKeyVaultCertificateContact** cmdlet adds a contact for a key vault for certificate notifications in Azure Key Vault.
 The contact receives updates about events such as certificate close to expiry, certificate renewed, and so on.
 These events are determined by the certificate policy.
 
@@ -40,7 +40,7 @@ These events are determined by the certificate policy.
 
 ### Example 1: Add a key vault certificate contact
 ```powershell
-PS C:\> Add-AzureKeyVaultCertificateContact -VaultName "ContosoKV01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+PS C:\> Add-AzKeyVaultCertificateContact -VaultName "ContosoKV01" -EmailAddress "patti.fuller@contoso.com" -PassThru
 
 Email                    VaultName
 -----                    ---------
@@ -55,7 +55,7 @@ This command adds Patti Fuller as a certificate contact for the ContosoKV01 key 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -191,7 +191,7 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultCertificateContact](./Get-AzureKeyVaultCertificateContact.md)
+[Get-AzKeyVaultCertificateContact](./Get-AzKeyVaultCertificateContact.md)
 
-[Remove-AzureKeyVaultCertificateContact](./Remove-AzureKeyVaultCertificateContact.md)
+[Remove-AzKeyVaultCertificateContact](./Remove-AzKeyVaultCertificateContact.md)
 

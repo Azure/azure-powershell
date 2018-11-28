@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 7C79BFF1-41E1-472D-AF67-1C3B39AB7548
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/enable-azurebatchjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/enable-azbatchjob
 schema: 2.0.0
 ---
 
-# Enable-AzureBatchJob
+# Enable-AzBatchJob
 
 ## SYNOPSIS
 Enables a Batch job.
@@ -14,29 +14,29 @@ Enables a Batch job.
 ## SYNTAX
 
 ```
-Enable-AzureBatchJob [-Id] <String> -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Enable-AzBatchJob [-Id] <String> -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzureBatchJob** cmdlet enables an Azure Batch job.
+The **Enable-AzBatchJob** cmdlet enables an Azure Batch job.
 After you enable a job, new tasks can run.
 
 ## EXAMPLES
 
 ### Example 1: Enable a Batch job
 ```
-PS C:\>Enable-AzureBatchJob -Id "Job-000001" -BatchContext $Context
+PS C:\>Enable-AzBatchJob -Id "Job-000001" -BatchContext $Context
 ```
 
 This command enables the job that has the ID Job-000001.
-Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.
+Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
 
 ## PARAMETERS
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,16 +98,16 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Disable-AzureBatchJob](./Disable-AzureBatchJob.md)
+[Disable-AzBatchJob](./Disable-AzBatchJob.md)
 
-[Get-AzureBatchJob](./Get-AzureBatchJob.md)
+[Get-AzBatchJob](./Get-AzBatchJob.md)
 
-[New-AzureBatchJob](./New-AzureBatchJob.md)
+[New-AzBatchJob](./New-AzBatchJob.md)
 
-[Remove-AzureBatchJob](./Remove-AzureBatchJob.md)
+[Remove-AzBatchJob](./Remove-AzBatchJob.md)
 
-[Stop-AzureBatchJob](./Stop-AzureBatchJob.md)
+[Stop-AzBatchJob](./Stop-AzBatchJob.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 6A6D6C7D-EED7-4AD4-ACE6-BFA64404455E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/set-azurebatchtask
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/set-azbatchtask
 schema: 2.0.0
 ---
 
-# Set-AzureBatchTask
+# Set-AzBatchTask
 
 ## SYNOPSIS
 Updates the properties of a task.
@@ -14,26 +14,26 @@ Updates the properties of a task.
 ## SYNTAX
 
 ```
-Set-AzureBatchTask [-Task] <PSCloudTask> -BatchContext <BatchAccountContext>
+Set-AzBatchTask [-Task] <PSCloudTask> -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureBatchTask** cmdlet updates the properties of a task in the Azure Batch service.
-Use the Get-AzureBatchTask cmdlet to get a **PSCloudTask** object.
+The **Set-AzBatchTask** cmdlet updates the properties of a task in the Azure Batch service.
+Use the Get-AzBatchTask cmdlet to get a **PSCloudTask** object.
 Modify the properties of that object, and then use the current cmdlet to commit your changes to the Batch service.
 
 ## EXAMPLES
 
 ### Example 1: Update a task
 ```
-PS C:\>$Task = Get-AzureBatchTask -JobId "Job16" -Id "Task22" -BatchContext $Context
+PS C:\>$Task = Get-AzBatchTask -JobId "Job16" -Id "Task22" -BatchContext $Context
 PS C:\> $Constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @([TimeSpan}::FromDays(5), [TimeSpan]::FromDays(2), 3)
 PS C:\> $Task.Constraints = $Constraints
-PS C:\> Set-AzureBatchTask -Task $Task -BatchContext $Context
+PS C:\> Set-AzBatchTask -Task $Task -BatchContext $Context
 ```
 
-The first command gets a task by using **Get-AzureBatchTask**, and then stores it in the $Task variable.
+The first command gets a task by using **Get-AzBatchTask**, and then stores it in the $Task variable.
 The next two commands modify the constraints of the task in $Task.
 The final command updates the Batch service to match the local object in $Task.
 
@@ -41,7 +41,7 @@ The final command updates the Batch service to match the local object in $Task.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -104,16 +104,16 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureBatchTask](./Get-AzureBatchTask.md)
+[Get-AzBatchTask](./Get-AzBatchTask.md)
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[New-AzureBatchTask](./New-AzureBatchTask.md)
+[New-AzBatchTask](./New-AzBatchTask.md)
 
-[Remove-AzureBatchTask](./Remove-AzureBatchTask.md)
+[Remove-AzBatchTask](./Remove-AzBatchTask.md)
 
-[Stop-AzureBatchTask](./Stop-AzureBatchTask.md)
+[Stop-AzBatchTask](./Stop-AzBatchTask.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

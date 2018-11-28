@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlserverkeyvaultkey
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlserverkeyvaultkey
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlServerKeyVaultKey
+# Remove-AzSqlServerKeyVaultKey
 
 ## SYNOPSIS
 Removes a Key Vault key from a SQL server.
@@ -13,23 +13,22 @@ Removes a Key Vault key from a SQL server.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlServerKeyVaultKey [-KeyId] <String> [-AsJob] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzSqlServerKeyVaultKey [-KeyId] <String> [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmSqlServerKeyVaultKey cmdlet removes the Key Vault key from the specified SQL server.
+The Remove-AzSqlServerKeyVaultKey cmdlet removes the Key Vault key from the specified SQL server.
 Note that the SQL server's permissions to the key's vault are not changed.
-To change permissions, use Set-AzureRmKeyVaultAccessPolicy.
+To change permissions, use Set-AzKeyVaultAccessPolicy.
 Note that this cmdlet makes no changes to Key Vault.
-To remove a key from Key Vault, use Remove-AzureKeyVaultKey.
+To remove a key from Key Vault, use Remove-AzKeyVaultKey.
 
 ## EXAMPLES
 
 ### Example 1: Remove a Key Vault key
 ```
-PS C:\> Remove-AzureRmSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> Remove-AzSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
 ```
 
 This command removes the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' from the specified server.
@@ -62,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

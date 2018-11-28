@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 12FC21EB-0B4E-4275-88FB-7FF42730A6A0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementcertificate
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagementCertificate
+# Set-AzApiManagementCertificate
 
 ## SYNOPSIS
 Modifies an API Management certificate which is configured for mutual authentication with backend.
@@ -15,27 +15,25 @@ Modifies an API Management certificate which is configured for mutual authentica
 
 ### LoadFromFile (Default)
 ```
-Set-AzureRmApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String>
- -PfxFilePath <String> -PfxPassword <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String> -PfxFilePath <String>
+ -PfxPassword <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Raw
 ```
-Set-AzureRmApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String>
- -PfxBytes <Byte[]> -PfxPassword <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String> -PfxBytes <Byte[]>
+ -PfxPassword <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApiManagementCertificate** cmdlet modifies an Azure API Management certificate.
+The **Set-AzApiManagementCertificate** cmdlet modifies an Azure API Management certificate.
 
 ## EXAMPLES
 
 ### Example 1: Modify a certificate
 ```
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789" -PfxFilePath "C:\contoso\certificates\apimanagementnew.pfx" -PfxPassword "2222"
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789" -PfxFilePath "C:\contoso\certificates\apimanagementnew.pfx" -PfxPassword "2222"
 ```
 
 This command modifies the specified API Management certificate.
@@ -76,7 +74,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -170,10 +168,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementCertificate](./Get-AzureRmApiManagementCertificate.md)
+[Get-AzApiManagementCertificate](./Get-AzApiManagementCertificate.md)
 
-[New-AzureRmApiManagementCertificate](./New-AzureRmApiManagementCertificate.md)
+[New-AzApiManagementCertificate](./New-AzApiManagementCertificate.md)
 
-[Remove-AzureRmApiManagementCertificate](./Remove-AzureRmApiManagementCertificate.md)
+[Remove-AzApiManagementCertificate](./Remove-AzApiManagementCertificate.md)
 
 

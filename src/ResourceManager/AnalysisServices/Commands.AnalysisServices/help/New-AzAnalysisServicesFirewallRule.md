@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
-Module Name: AzureRM.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesfirewallrule
+Module Name: Az.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/new-azanalysisservicesfirewallrule
 schema: 2.0.0
 ---
 
-# New-AzureRmAnalysisServicesFirewallRule
+# New-AzAnalysisServicesFirewallRule
 
 ## SYNOPSIS
 Creates a new Analysis Services firewall rule
@@ -13,18 +13,18 @@ Creates a new Analysis Services firewall rule
 ## SYNTAX
 
 ```
-New-AzureRmAnalysisServicesFirewallRule [-FirewallRuleName] <String> [-RangeStart] <String>
- [-RangeEnd] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzAnalysisServicesFirewallRule [-FirewallRuleName] <String> [-RangeStart] <String> [-RangeEnd] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmAnalysisServicesFirewallRule creates a new firewall rule object.
+The New-AzAnalysisServicesFirewallRule creates a new firewall rule object.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmAnalysisServicesFirewallRule -FirewallRuleName rule1 -RangeStart 0.0.0.0 -RangeEnd 255.255.255.255
+PS C:\> New-AzAnalysisServicesFirewallRule -FirewallRuleName rule1 -RangeStart 0.0.0.0 -RangeEnd 255.255.255.255
 ```
 
 Creates a firewall rule named rule1 with start range 0.0.0.0 and end range 255.255.255.255
@@ -35,7 +35,7 @@ Creates a firewall rule named rule1 with start range 0.0.0.0 and end range 255.2
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -106,4 +106,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAnalysisServicesFirewallConfig](./New-AzureRmAnalysisServicesFirewallConfig.md)
+[New-AzAnalysisServicesFirewallConfig](./New-AzAnalysisServicesFirewallConfig.md)

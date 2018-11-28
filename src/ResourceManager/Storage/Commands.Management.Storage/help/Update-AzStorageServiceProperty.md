@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
-Module Name: Azure.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/update-azurestorageserviceproperty
+Module Name: Az.Storage
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/update-azstorageserviceproperty
 schema: 2.0.0
 ---
 
-# Update-AzureStorageServiceProperty
+# Update-AzStorageServiceProperty
 
 ## SYNOPSIS
 Modifies the properties for the Azure Storage service.
@@ -13,19 +13,19 @@ Modifies the properties for the Azure Storage service.
 ## SYNTAX
 
 ```
-Update-AzureStorageServiceProperty [-ServiceType] <StorageServiceType> [-DefaultServiceVersion <String>]
+Update-AzStorageServiceProperty [-ServiceType] <StorageServiceType> [-DefaultServiceVersion <String>]
  [-PassThru] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureStorageServiceProperty** cmdlet modifies the properties for the Azure Storage service.
+The **Update-AzStorageServiceProperty** cmdlet modifies the properties for the Azure Storage service.
 
 ## EXAMPLES
 
 ### Example 1: Set Blob Service DefaultServiceVersion to 2017-04-17
 ```
-C:\PS>Update-AzureStorageServiceProperty -ServiceType Blob -DefaultServiceVersion 2017-04-17
+C:\PS>Update-AzStorageServiceProperty -ServiceType Blob -DefaultServiceVersion 2017-04-17
 ```
 
 This command Set the DefaultServiceVersion of Blob Service to 2017-04-17
@@ -34,7 +34,7 @@ This command Set the DefaultServiceVersion of Blob Service to 2017-04-17
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 
 ### -DefaultServiceVersion
 DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request's version is not specified. Possible values include version 2008-10-27 and all more recent versions. 
-See more details in https://docs.microsoft.com/en-us/rest/api/storageservices/versioning-for-the-azure-storage-services
+See more details in https://docs.microsoft.com/en-us/rest/api/storageservices/versioning-for-the-az-storage-services
 
 ```yaml
 Type: System.String

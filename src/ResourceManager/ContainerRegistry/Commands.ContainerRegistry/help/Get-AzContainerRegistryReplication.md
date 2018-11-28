@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-Module Name: AzureRM.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/get-azurermcontainerregistrycredential
+Module Name: Az.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/get-azcontainerregistrycredential
 schema: 2.0.0
 ---
 
-# Get-AzureRmContainerRegistryReplication
+# Get-AzContainerRegistryReplication
 
 ## SYNOPSIS
 Gets a replication of a container registry.
@@ -14,42 +14,42 @@ Gets a replication of a container registry.
 
 ### ListReplicationByNameResourceGroupParameterSet (Default)
 ```
-Get-AzureRmContainerRegistryReplication [-ResourceGroupName] <String> [-RegistryName] <String>
+Get-AzContainerRegistryReplication [-ResourceGroupName] <String> [-RegistryName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ShowReplicationByNameResourceGroupParameterSet
 ```
-Get-AzureRmContainerRegistryReplication [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
+Get-AzContainerRegistryReplication [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ShowReplicationByRegistryObjectParameterSet
 ```
-Get-AzureRmContainerRegistryReplication [-Name] <String> -Registry <PSContainerRegistry>
+Get-AzContainerRegistryReplication [-Name] <String> -Registry <PSContainerRegistry>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListReplicationByRegistryObjectParameterSet
 ```
-Get-AzureRmContainerRegistryReplication -Registry <PSContainerRegistry>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContainerRegistryReplication -Registry <PSContainerRegistry> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmContainerRegistryReplication -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzContainerRegistryReplication -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmContainerRegistryReplication cmdlet gets a specified replication of a container registry or all the replications of a container registry.
+The Get-AzContainerRegistryReplication cmdlet gets a specified replication of a container registry or all the replications of a container registry.
 
 ## EXAMPLES
 
 ### Example 1: Gets a specified replication of a container registry
 ```powershell
-PS C:\>Get-AzureRmContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "myreplication"
+PS C:\>Get-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "myreplication"
 
 Name                 Location   Provisioni Status               StatusTimestamp                Tags
                                 ngState
@@ -61,7 +61,7 @@ Gets a specified replication of a container registry
 
 ### Example 2: Gets all the replications of a container registry
 ```powershell
-PS C:\>Get-AzureRmContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry"
+PS C:\>Get-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry"
 
 Name                 Location   Provisioni Status               StatusTimestamp                Tags
                                 ngState
@@ -78,7 +78,7 @@ Gets all the replications of a container registry
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -182,6 +182,6 @@ Parameters: Registry (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmContainerRegistryReplication](New-AzureRmContainerRegistryReplication.md)
+[New-AzContainerRegistryReplication](New-AzContainerRegistryReplication.md)
 
-[Remove-AzureRmContainerRegistryReplication](Remove-AzureRmContainerRegistryReplication.md)
+[Remove-AzContainerRegistryReplication](Remove-AzContainerRegistryReplication.md)

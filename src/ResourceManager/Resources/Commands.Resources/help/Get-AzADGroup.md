@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 85DDA491-7A7D-4217-B0E3-72CDC3787889
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermadgroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadgroup
 schema: 2.0.0
 ---
 
-# Get-AzureRmADGroup
+# Get-AzADGroup
 
 ## SYNOPSIS
 Filters active directory groups.
@@ -15,26 +15,26 @@ Filters active directory groups.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzureRmADGroup [-ObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+Get-AzADGroup [-ObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
-Get-AzureRmADGroup -DisplayNameStartsWith <String> [-DefaultProfile <IAzureContextContainer>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroup -DisplayNameStartsWith <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzureRmADGroup -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+Get-AzADGroup -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Get-AzureRmADGroup -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroup -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>]
+ [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,7 @@ Filters active directory groups.
 
 ### Example 1 - List all AD groups
 ```
-PS C:\> Get-AzureRmADGroup
+PS C:\> Get-AzADGroup
 ```
 
 Lists all AD groups in a tenant.
@@ -52,7 +52,7 @@ Lists all AD groups in a tenant.
 ### Example 2 - List all AD groups using paging
 
 ```
-PS C:\> Get-AzureRmADGroup -First 100
+PS C:\> Get-AzADGroup -First 100
 ```
 
 Lists the first 100 AD groups in a tenant.
@@ -60,7 +60,7 @@ Lists the first 100 AD groups in a tenant.
 ### Example 3 - Get AD group by object id
 
 ```
-PS C:\> Get-AzureRmADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
+PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
 ```
 
 Gets an AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
@@ -68,7 +68,7 @@ Gets an AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
 ### Example 4 - List groups by search string
 
 ```
-PS C:\> Get-AzureRmADGroup -SearchString Joe
+PS C:\> Get-AzADGroup -SearchString Joe
 ```
 
 Lists all AD groups whose display name begins with 'Joe'.
@@ -79,7 +79,7 @@ Lists all AD groups whose display name begins with 'Joe'.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -120,36 +120,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -First
-The maximum number of objects to return.
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncludeTotalCount
-Reports the number of objects in the data set. Currently, this parameter does nothing.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ObjectId
 Object id of the group.
 
@@ -177,8 +147,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -IncludeTotalCount
+Reports the number of objects in the data set. Currently, this parameter does nothing.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Skip
 Ignores the first N objects and then gets the remaining objects.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -First
+The maximum number of objects to return.
 
 ```yaml
 Type: System.UInt64
@@ -209,9 +209,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmADUser](./Get-AzureRmADUser.md)
+[Get-AzADUser](./Get-AzADUser.md)
 
-[Get-AzureRmADServicePrincipal](./Get-AzureRmADServicePrincipal.md)
+[Get-AzADServicePrincipal](./Get-AzADServicePrincipal.md)
 
-[Get-AzureRmADGroupMember](./Get-AzureRmADGroupMember.md)
+[Get-AzADGroupMember](./Get-AzADGroupMember.md)
 

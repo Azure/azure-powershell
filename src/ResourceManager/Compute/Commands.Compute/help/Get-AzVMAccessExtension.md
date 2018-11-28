@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 32CF9DA7-5607-4CF9-A2D0-D76A0C005FDA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmaccessextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmaccessextension
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMAccessExtension
+# Get-AzVMAccessExtension
 
 ## SYNOPSIS
 Gets information about the VMAccess extension.
@@ -14,25 +14,25 @@ Gets information about the VMAccess extension.
 ## SYNTAX
 
 ```
-Get-AzureRmVMAccessExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Status]
+Get-AzVMAccessExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Status]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMAccessExtension** cmdlet gets information about the Virtual Machine Access (VMAccess) Virtual Machine Extension.
+The **Get-AzVMAccessExtension** cmdlet gets information about the Virtual Machine Access (VMAccess) Virtual Machine Extension.
 
 ## EXAMPLES
 
 ### Example 1: Get the VMAccess extension
 ```
-PS C:\> $VMAccessExtension = Get-AzureRmVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest"
+PS C:\> $VMAccessExtension = Get-AzVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest"
 ```
 
 This command gets the VMAccess extension named ContosoTest for the virtual machine named VirtualMachine07.
 
 ### Example 2: Get the instance view of the VMAccess extension
 ```
-PS C:\> $VMAccessExtension = Get-AzureRmVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest" -Status
+PS C:\> $VMAccessExtension = Get-AzVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest" -Status
 ```
 
 This command gets the instance view of the VMAccess extension named ContosoTest for the virtual machine named VirtualMachine07.
@@ -43,7 +43,7 @@ This command gets the instance view of the VMAccess extension named ContosoTest 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -132,10 +132,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmVMAccessExtension](./Remove-AzureRmVMAccessExtension.md)
+[Remove-AzVMAccessExtension](./Remove-AzVMAccessExtension.md)
 
-[Set-AzureRmVMAccessExtension](./Set-AzureRmVMAccessExtension.md)
+[Set-AzVMAccessExtension](./Set-AzVMAccessExtension.md)
 
-[Get-AzureRmVMExtension](./Get-AzureRmVMExtension.md)
+[Get-AzVMExtension](./Get-AzVMExtension.md)
 
 

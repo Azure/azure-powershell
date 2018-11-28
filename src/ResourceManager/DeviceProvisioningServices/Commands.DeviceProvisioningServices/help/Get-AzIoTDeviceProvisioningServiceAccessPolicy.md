@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
-Module Name: AzureRM.DeviceProvisioningServices
+Module Name: Az.DeviceProvisioningServices
 online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy
+# Get-AzIoTDeviceProvisioningServiceAccessPolicy
 
 ## SYNOPSIS
 List all or show details of shared access policies in an Azure IoT Hub device provisioning service.
@@ -14,19 +14,19 @@ List all or show details of shared access policies in an Azure IoT Hub device pr
 
 ### ResourceSet (Default)
 ```
-Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
+Get-AzIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
  [-KeyName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-DpsObject] <PSProvisioningServiceDescription>
+Get-AzIoTDeviceProvisioningServiceAccessPolicy [-DpsObject] <PSProvisioningServiceDescription>
  [-KeyName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceId] <String> [-KeyName <String>]
+Get-AzIoTDeviceProvisioningServiceAccessPolicy [-ResourceId] <String> [-KeyName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps"
+PS C:\> Get-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps"
 
 KeyName		Rights		
 -------		------	
@@ -49,7 +49,7 @@ List all shared access policies in "myiotdps".
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy"
+PS C:\> Get-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy"
 
 ResourceGroupName	: myresourcegroup
 Name				: myiotdps
@@ -67,7 +67,7 @@ Show details of shared access policy "mypolicy" in an Azure IoT Hub device provi
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

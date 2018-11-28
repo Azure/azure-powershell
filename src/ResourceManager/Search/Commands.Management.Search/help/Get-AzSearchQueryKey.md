@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
-Module Name: AzureRM.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/get-azurermsearchquerykey
+Module Name: Az.Search
+online version: https://docs.microsoft.com/en-us/powershell/module/az.search/get-azsearchquerykey
 schema: 2.0.0
 ---
 
-# Get-AzureRmSearchQueryKey
+# Get-AzSearchQueryKey
 
 ## SYNOPSIS
 Gets query key(s) of the Azure Search service.
@@ -14,30 +14,30 @@ Gets query key(s) of the Azure Search service.
 
 ### ResourceNameParameterSet (Default)
 ```
-Get-AzureRmSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String>
+Get-AzSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
-Get-AzureRmSearchQueryKey [-ParentObject] <PSSearchService> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSearchQueryKey [-ParentObject] <PSSearchService> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ParentResourceIdParameterSet
 ```
-Get-AzureRmSearchQueryKey [-ParentResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSearchQueryKey [-ParentResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSearchQueryKey** cmdlet gets query key(s) of the Azure Search service.
+The **Get-AzSearchQueryKey** cmdlet gets query key(s) of the Azure Search service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01"
+PS C:\> Get-AzSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01"
 
 Name Key                             
 ---- ---                             
@@ -52,7 +52,7 @@ The example gets all query key(s) of the Azure Search Service.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -141,6 +141,6 @@ Parameters: ParentObject (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmSearchQueryKey.md](./New-AzureRmSearchQueryKey.md)
+[New-AzSearchQueryKey.md](./New-AzSearchQueryKey.md)
 
-[Remove-AzureRmSearchQueryKey.md](./Remove-AzureRmSearchQueryKey.md)
+[Remove-AzSearchQueryKey.md](./Remove-AzSearchQueryKey.md)

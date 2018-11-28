@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 7B3259CD-079D-4E07-8608-F818522EE7CF
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/start-azurermvm
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/start-azvm
 schema: 2.0.0
 ---
 
-# Start-AzureRmVM
+# Start-AzVM
 
 ## SYNOPSIS
 Starts an Azure virtual machine.
@@ -15,24 +15,24 @@ Starts an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzVM [-Name] <String> [-ResourceGroupName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Start-AzureRmVM [-Name] <String> [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Start-AzVM [-Name] <String> [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmVM** cmdlet starts an Azure virtual machine.
+The **Start-AzVM** cmdlet starts an Azure virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Start a virtual machine
 ```
-PS C:\> Start-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+PS C:\> Start-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command starts the virtual machine named VirtualMachine07 in ResourceGroup11.
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -159,16 +159,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVM](./Get-AzureRmVM.md)
+[Get-AzVM](./Get-AzVM.md)
 
-[New-AzureRmVM](./New-AzureRmVM.md)
+[New-AzVM](./New-AzVM.md)
 
-[Remove-AzureRmVM](./Remove-AzureRmVM.md)
+[Remove-AzVM](./Remove-AzVM.md)
 
-[Restart-AzureRmVM](./Restart-AzureRmVM.md)
+[Restart-AzVM](./Restart-AzVM.md)
 
-[Stop-AzureRmVM](./Stop-AzureRmVM.md)
+[Stop-AzVM](./Stop-AzVM.md)
 
-[Update-AzureRmVM](./Update-AzureRmVM.md)
+[Update-AzVM](./Update-AzVM.md)
 
 

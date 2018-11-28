@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: D3C60123-CE1F-45F1-8C8F-25CDC302490C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementproperty
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementproperty
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApiManagementProperty
+# Remove-AzApiManagementProperty
 
 ## SYNOPSIS
 Removes an API Management Property.
@@ -14,19 +14,19 @@ Removes an API Management Property.
 ## SYNTAX
 
 ```
-Remove-AzureRmApiManagementProperty -Context <PsApiManagementContext> -PropertyId <String> [-PassThru]
+Remove-AzApiManagementProperty -Context <PsApiManagementContext> -PropertyId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmApiManagementProperty** cmdlet removes an Azure API Management **Property**.
+The **Remove-AzApiManagementProperty** cmdlet removes an Azure API Management **Property**.
 
 ## EXAMPLES
 
 ### Example 1: Remove a property
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Property11" -PassThru
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzApiManagementProperty -Context $apimContext -PropertyId "Property11" -PassThru
 ```
 
 This command removes the property that has the ID Property11.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -143,8 +143,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagementProperty](./New-AzureRmApiManagementProperty.md)
+[New-AzApiManagementProperty](./New-AzApiManagementProperty.md)
 
-[Set-AzureRmApiManagementProperty](./Set-AzureRmApiManagementProperty.md)
+[Set-AzApiManagementProperty](./Set-AzApiManagementProperty.md)
 
 

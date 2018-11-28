@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
-Module Name: AzureRM.MachineLearningCompute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/test-azurermmlopclustersystemservicesupdateavailability
+Module Name: Az.MachineLearningCompute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearningcompute/test-azmlopclustersystemservicesupdateavailability
 schema: 2.0.0
 ---
 
-# Test-AzureRmMlOpClusterSystemServicesUpdateAvailability
+# Test-AzMlOpClusterSystemServicesUpdateAvailability
 
 ## SYNOPSIS
 Checks if there are updates available for the system services associated with an operationalization cluster.
@@ -14,40 +14,40 @@ Checks if there are updates available for the system services associated with an
 
 ### TestByNameAndResourceGroup
 ```
-Test-AzureRmMlOpClusterSystemServicesUpdateAvailability -ResourceGroupName <String> -Name <String>
+Test-AzMlOpClusterSystemServicesUpdateAvailability -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### TestByInputObject
 ```
-Test-AzureRmMlOpClusterSystemServicesUpdateAvailability -InputObject <PSOperationalizationCluster>
+Test-AzMlOpClusterSystemServicesUpdateAvailability -InputObject <PSOperationalizationCluster>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### TestByResourceId
 ```
-Test-AzureRmMlOpClusterSystemServicesUpdateAvailability -ResourceId <String>
+Test-AzMlOpClusterSystemServicesUpdateAvailability -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-System services receive updates independently from the operationalization cluster. Using this cmdlet will let the user know if Invoke-AzureRmMlOpClusterSystemServicesUpdate.
+System services receive updates independently from the operationalization cluster. Using this cmdlet will let the user know if Invoke-AzMlOpClusterSystemServicesUpdate.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Test-AzureRmMlOpClusterSystemServicesUpdateAvailability -ResourceGroupName my-group -Name my-cluster
+PS C:\> Test-AzMlOpClusterSystemServicesUpdateAvailability -ResourceGroupName my-group -Name my-cluster
 ```
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmMlOpCluster | Test-AzureRmMlOpClusterSystemServicesUpdateAvailability
+PS C:\> Get-AzMlOpCluster | Test-AzMlOpClusterSystemServicesUpdateAvailability
 ```
 
 ### Example 3
 ```
-PS C:\> Find-AzureRmResource -ResourceType Microsoft.MachineLearningCompute/operationalizationClusters | Test-AzureRmMlOpClusterSystemServicesUpdateAvailability
+PS C:\> Find-AzResource -ResourceType Microsoft.MachineLearningCompute/operationalizationClusters | Test-AzMlOpClusterSystemServicesUpdateAvailability
 ```
 
 ## PARAMETERS
@@ -56,7 +56,7 @@ PS C:\> Find-AzureRmResource -ResourceType Microsoft.MachineLearningCompute/oper
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

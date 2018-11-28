@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM.Relay
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/get-azurermrelayoperation
+Module Name: Az.Relay
+online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/get-azrelayoperation
 schema: 2.0.0
 ---
 
-# Get-AzureRmRelayOperation
+# Get-AzRelayOperation
 
 ## SYNOPSIS
 List supported Relay Operations
@@ -13,17 +13,17 @@ List supported Relay Operations
 ## SYNTAX
 
 ```
-Get-AzureRmRelayOperation [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRelayOperation [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRelayOperation** cmdlet Lists the Relay supported Operations.
+The **Get-AzRelayOperation** cmdlet Lists the Relay supported Operations.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmRelayOperation
+PS C:\> Get-AzRelayOperation
 
 Name                                                                            Display
 ----                                                                            -------
@@ -57,7 +57,7 @@ Lists Relay supported operations
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,18 +69,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.PSOperationAttributes
-
 
 ## NOTES
 

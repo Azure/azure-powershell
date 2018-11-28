@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 83EE33E5-18EF-4A7A-AEF2-E93D7A3CA541
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/register-azurermproviderfeature
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/register-azproviderfeature
 schema: 2.0.0
 ---
 
-# Register-AzureRmProviderFeature
+# Register-AzProviderFeature
 
 ## SYNOPSIS
 Registers an Azure provider feature in your account.
@@ -14,18 +14,18 @@ Registers an Azure provider feature in your account.
 ## SYNTAX
 
 ```
-Register-AzureRmProviderFeature -FeatureName <String> -ProviderNamespace <String>
+Register-AzProviderFeature -FeatureName <String> -ProviderNamespace <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Register-AzureRmProviderFeature** cmdlet registers an Azure provider feature in your account.
+The **Register-AzProviderFeature** cmdlet registers an Azure provider feature in your account.
 
 ## EXAMPLES
 
 ### Example 1: Register a feature
 ```
-PS C:\>Register-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
+PS C:\>Register-AzProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
 This adds the AllowApplicationSecurityGroups feature for Microsoft.Network to your account.
@@ -36,7 +36,7 @@ This adds the AllowApplicationSecurityGroups feature for Microsoft.Network to yo
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -119,6 +119,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmProviderFeature](./Get-AzureRmProviderFeature.md)
+[Get-AzProviderFeature](./Get-AzProviderFeature.md)
 
 

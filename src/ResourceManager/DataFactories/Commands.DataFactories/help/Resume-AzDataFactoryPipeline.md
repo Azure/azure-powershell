@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: F522841A-4246-4028-A754-393D8DADD924
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/resume-azurermdatafactorypipeline
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/resume-azdatafactorypipeline
 schema: 2.0.0
 ---
 
-# Resume-AzureRmDataFactoryPipeline
+# Resume-AzDataFactoryPipeline
 
 ## SYNOPSIS
 Resumes a suspended pipeline in Data Factory.
@@ -15,24 +15,24 @@ Resumes a suspended pipeline in Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Resume-AzureRmDataFactoryPipeline [-Name] <String> [-DataFactoryName] <String> [-ResourceGroupName] <String>
+Resume-AzDataFactoryPipeline [-Name] <String> [-DataFactoryName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Resume-AzureRmDataFactoryPipeline [-Name] <String> [-DataFactory] <PSDataFactory>
+Resume-AzDataFactoryPipeline [-Name] <String> [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Resume-AzureRmDataFactoryPipeline** cmdlet resumes a suspended pipeline in Azure Data Factory.
+The **Resume-AzDataFactoryPipeline** cmdlet resumes a suspended pipeline in Azure Data Factory.
 
 ## EXAMPLES
 
 ### Example 1: Resume a pipeline
 ```
-PS C:\>Resume-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
+PS C:\>Resume-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
 Confirm
 Are you sure you want to resume pipeline 'DPWikisample' in data factory 'WikiADF'? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -40,7 +40,7 @@ True
 ```
 
 This command resumes the pipeline named DPWikisample in the data factory named WikiADF.
-Use the **Suspend-AzureRmDataFactoryPipeline** cmdlet to suspend a pipeline.
+Use the **Suspend-AzDataFactoryPipeline** cmdlet to suspend a pipeline.
 The command returns a value of $True.
 
 ## PARAMETERS
@@ -172,14 +172,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryPipeline](./Get-AzureRmDataFactoryPipeline.md)
+[Get-AzDataFactoryPipeline](./Get-AzDataFactoryPipeline.md)
 
-[New-AzureRmDataFactoryPipeline](./New-AzureRmDataFactoryPipeline.md)
+[New-AzDataFactoryPipeline](./New-AzDataFactoryPipeline.md)
 
-[Remove-AzureRmDataFactoryPipeline](./Remove-AzureRmDataFactoryPipeline.md)
+[Remove-AzDataFactoryPipeline](./Remove-AzDataFactoryPipeline.md)
 
-[Set-AzureRmDataFactoryPipelineActivePeriod](./Set-AzureRmDataFactoryPipelineActivePeriod.md)
+[Set-AzDataFactoryPipelineActivePeriod](./Set-AzDataFactoryPipelineActivePeriod.md)
 
-[Suspend-AzureRmDataFactoryPipeline](./Suspend-AzureRmDataFactoryPipeline.md)
+[Suspend-AzDataFactoryPipeline](./Suspend-AzDataFactoryPipeline.md)
 
 

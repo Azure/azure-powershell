@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationsoftwareupdateconfiguration
 schema: 2.0.0
 ---
 
-# New-AzureRmAutomationSoftwareUpdateConfiguration
+# New-AzAutomationSoftwareUpdateConfiguration
 
 ## SYNOPSIS
 Creates a scheduled azure automation software update configuration.
@@ -14,16 +14,16 @@ Creates a scheduled azure automation software update configuration.
 
 ### Windows (Default)
 ```
-New-AzureRmAutomationSoftwareUpdateConfiguration -Schedule <Schedule> [-Windows]
- [-AzureVMResourceId <String[]>] [-NonAzureComputer <String[]>] [-Duration <TimeSpan>]
- [-IncludedUpdateClassification <WindowsUpdateClasses[]>] [-ExcludedKbNumber <String[]>]
- [-IncludedKbNumber <String[]>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAutomationSoftwareUpdateConfiguration -Schedule <Schedule> [-Windows] [-AzureVMResourceId <String[]>]
+ [-NonAzureComputer <String[]>] [-Duration <TimeSpan>] [-IncludedUpdateClassification <WindowsUpdateClasses[]>]
+ [-ExcludedKbNumber <String[]>] [-IncludedKbNumber <String[]>] [-ResourceGroupName] <String>
+ [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Linux
 ```
-New-AzureRmAutomationSoftwareUpdateConfiguration -Schedule <Schedule> [-Linux] [-AzureVMResourceId <String[]>]
+New-AzAutomationSoftwareUpdateConfiguration -Schedule <Schedule> [-Linux] [-AzureVMResourceId <String[]>]
  [-NonAzureComputer <String[]>] [-Duration <TimeSpan>] [-IncludedPackageClassification <LinuxPackageClasses[]>]
  [-ExcludedPackageNameMask <String[]>] [-IncludedPackageNameMask <String[]>] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -31,7 +31,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration -Schedule <Schedule> [-Linux] [
 ```
 
 ## DESCRIPTION
-Creates a software update configuration that runs on a schedule to update a list of computers. Computers include both azure virtual machines or non-azure computers.
+Creates a software update configuration that runs on a schedule to update a list of computers. Computers include both azure virtual machines or non-az computers.
 
 ## EXAMPLES
 
@@ -45,7 +45,7 @@ PS C:\> $targetMachines = @( `
     "/subscriptions/22e2445a-0984-4fa5-86a4-0280d76c4b2c/resourceGroups/compute/providers/Microsoft.Compute/virtualMachines/vm-w-02"
     )
 PS C:\> $duration = New-TimeSpan -Hours 2
-PS C:\> $schedule = New-AzureRmAutomationSchedule -ResourceGroupName "mygroup" `
+PS C:\> $schedule = New-AzAutomationSchedule -ResourceGroupName "mygroup" `
                                                   -AutomationAccountName "myaccount" `
                                                   -Name MyWeeklySchedule `
                                                   -StartTime $startTime `
@@ -53,11 +53,11 @@ PS C:\> $schedule = New-AzureRmAutomationSchedule -ResourceGroupName "mygroup" `
                                                   -WeekInterval 1 `
                                                   -ForUpdateConfiguration
 
-New-AzureRmAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" `
+New-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" `
                                                  -AutomationAccountName "myaccount" `
                                                  -Schedule $schedule `
                                                  -Windows `
-                                                 -AzureVMResourceIds $targetMachines `
+                                                 -AzVMResourceIds $targetMachines `
                                                  -IncludedUpdateClassifications Critical `
                                                  -Duration $duration
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -243,7 +243,7 @@ Accept wildcard characters: False
 ```
 
 ### -NonAzureComputer
-Non-Azure computer names.
+Non-Az computer names.
 
 ```yaml
 Type: System.String[]

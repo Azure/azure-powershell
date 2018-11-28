@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: C102232A-C9C8-4CEE-8535-7C7A70057B06
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryslice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryslice
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactorySlice
+# Get-AzDataFactorySlice
 
 ## SYNOPSIS
 Gets data slices for a dataset in Azure Data Factory.
@@ -15,19 +15,19 @@ Gets data slices for a dataset in Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactorySlice [[-EndDateTime] <DateTime>] [-DataFactoryName] <String> [-DatasetName] <String>
+Get-AzDataFactorySlice [[-EndDateTime] <DateTime>] [-DataFactoryName] <String> [-DatasetName] <String>
  [-StartDateTime] <DateTime> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactorySlice [[-EndDateTime] <DateTime>] [-DataFactory] <PSDataFactory> [-DatasetName] <String>
+Get-AzDataFactorySlice [[-EndDateTime] <DateTime>] [-DataFactory] <PSDataFactory> [-DatasetName] <String>
  [-StartDateTime] <DateTime> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactorySlice** cmdlet gets data slices for a dataset in Azure Data Factory.
+The **Get-AzDataFactorySlice** cmdlet gets data slices for a dataset in Azure Data Factory.
 Specify a start time and an end time to define a range of data slices to view.
 The status of a data slice is one of the following values: 
 - PendingExecution.
@@ -51,13 +51,13 @@ Data slice is waiting for validation before it is processed.
 Data Factory retries the validation of the slice. 
 - Failed Validation.
 Validation of the slice failed.
-For each of the slices, you can see more information about the run that produces the slice by using the Get-AzureRmDataFactoryRun cmdlet.
+For each of the slices, you can see more information about the run that produces the slice by using the Get-AzDataFactoryRun cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Get data slices for a dataset
 ```
-PS C:\>Get-AzureRmDataFactorySlice -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-20T10:00:00Z
+PS C:\>Get-AzDataFactorySlice -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-20T10:00:00Z
 ResourceGroupName : ADF
 DataFactoryName   : WikiADF
 DatasetName         : DAWikiAggregatedData
@@ -105,7 +105,7 @@ The following example code sets the availability for this dataset every hour in 
                         }
                     Some of the results are Ready and others are PendingExecution.
 Ready slices have already run.
-The pending slices are waiting to run at the end of each hour in the interval that the Set-AzureRmDataFactoryPipelineActivePeriod cmdlet specifies.
+The pending slices are waiting to run at the end of each hour in the interval that the Set-AzDataFactoryPipelineActivePeriod cmdlet specifies.
 In this example, both start and end periods for the pipeline and the slice have a value of one day (24 hours).
 
 ## PARAMETERS
@@ -245,10 +245,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmDataFactorySliceStatus](./Set-AzureRmDataFactorySliceStatus.md)
+[Set-AzDataFactorySliceStatus](./Set-AzDataFactorySliceStatus.md)
 
-[Get-AzureRmDataFactoryRun](./Get-AzureRmDataFactoryRun.md)
+[Get-AzDataFactoryRun](./Get-AzDataFactoryRun.md)
 
-[Set-AzureRmDataFactoryPipelineActivePeriod](./Set-AzureRmDataFactoryPipelineActivePeriod.md)
+[Set-AzDataFactoryPipelineActivePeriod](./Set-AzDataFactoryPipelineActivePeriod.md)
 
 

@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/remove-azurermautomationdscnodeconfiguration
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/remove-azautomationdscnodeconfiguration
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAutomationHybridWorkerGroup
+# Remove-AzAutomationHybridWorkerGroup
 
 ## SYNOPSIS
 Removes hybrid worker group from Automation.
@@ -13,13 +13,13 @@ Removes hybrid worker group from Automation.
 ## SYNTAX
 
 ```
-Remove-AzureRmAutomationHybridWorkerGroup [-Name] <String> [-ResourceGroupName] <String>
+Remove-AzAutomationHybridWorkerGroup [-Name] <String> [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmAutomationHybridWorkerGroup cmdlet removes a hybrid worker group from Automation.
+The Remove-AzAutomationHybridWorkerGroup cmdlet removes a hybrid worker group from Automation.
 
 ## EXAMPLES
 
@@ -27,7 +27,7 @@ The Remove-AzureRmAutomationHybridWorkerGroup cmdlet removes a hybrid worker gro
 This command removes a hybrid worker by name.
 
 ```powershell
-PS C:\> Remove-AzureRmAutomationHybridWorkerGroup -ResourceGroupName "rg1" `
+PS C:\> Remove-AzAutomationHybridWorkerGroup -ResourceGroupName "rg1" `
                                                   -AutomationAccountName "devAccount" `
                                                   -Name "GroupName" `
                                                   -Force
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

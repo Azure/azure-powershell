@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
-Module Name: AzureRM.Dns
+Module Name: Az.Dns
 ms.assetid: 40179CF3-7896-4C45-BC18-4CB653B245B6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/get-azurermdnsrecordset
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/get-azdnsrecordset
 schema: 2.0.0
 ---
 
-# Get-AzureRmDnsRecordSet
+# Get-AzDnsRecordSet
 
 ## SYNOPSIS
 Gets a DNS record set.
@@ -15,18 +15,18 @@ Gets a DNS record set.
 
 ### Fields
 ```
-Get-AzureRmDnsRecordSet [-Name <String>] -ZoneName <String> -ResourceGroupName <String>
- [-RecordType <RecordType>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDnsRecordSet [-Name <String>] -ZoneName <String> -ResourceGroupName <String> [-RecordType <RecordType>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Object
 ```
-Get-AzureRmDnsRecordSet [-Name <String>] -Zone <DnsZone> [-RecordType <RecordType>]
+Get-AzDnsRecordSet [-Name <String>] -Zone <DnsZone> [-RecordType <RecordType>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDnsRecordSet** cmdlet gets the Domain Name System (DNS) record set with the specified name and type, in the specified zone.
+The **Get-AzDnsRecordSet** cmdlet gets the Domain Name System (DNS) record set with the specified name and type, in the specified zone.
 If you do not specify the *Name* or *RecordType* parameters, this cmdlet returns all record sets of the specified type in the zone.
 If you specify the *RecordType* parameter but not the *Name* parameter, this cmdlet returns all record sets of the specified record type.
 You can use the pipeline operator to pass a **DnsZone** object to this cmdlet, or you can pass a **DnsZone** object as the *Zone* parameter, or alternatively you can specify the zone and resource group by name.
@@ -35,7 +35,7 @@ You can use the pipeline operator to pass a **DnsZone** object to this cmdlet, o
 
 ### Example 1: Get record sets with a specified name and type
 ```
-PS C:\>$RecordSet = Get-AzureRmDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "www" -RecordType A
+PS C:\>$RecordSet = Get-AzDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "www" -RecordType A
 ```
 
 This command gets the record set of record type A named www in the specified resource group and zone, and then stores it in the $RecordSet variable.
@@ -43,22 +43,22 @@ Because the *Name* and *RecordType* parameters are specified, only one **RecordS
 
 ### Example 2: Get record sets of a specified type
 ```
-PS C:\>$RecordSets = Get-AzureRmDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -RecordType A
+PS C:\>$RecordSets = Get-AzDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -RecordType A
 ```
 
 This command gets an array of all record sets of record type A in the zone named myzone.com in the resource group named MyResourceGroup, and then stores them in the $RecordSets variable.
 
 ### Example 3: Get all record sets in a zone
 ```
-PS C:\>$RecordSets = Get-AzureRmDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
+PS C:\>$RecordSets = Get-AzDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
 ```
 
 This command gets an array of all record sets in the zone named myzone.com in the resource group named MyResourceGroup, and then stores them in the $RecordSets variable.
 
 ### Example 4: Get all record sets in a zone, using a DnsZone object
 ```
-PS C:\> $Zone = Get-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
-PS C:\> $RecordSets = Get-AzureRmDnsRecordSet -Zone $Zone
+PS C:\> $Zone = Get-AzDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
+PS C:\> $RecordSets = Get-AzDnsRecordSet -Zone $Zone
 ```
 
 This example is equivalent to Example 3 above.
@@ -70,7 +70,7 @@ This time, the zone is specified using a zone object.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -207,10 +207,10 @@ Parameters: Zone (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmDnsRecordSet](./New-AzureRmDnsRecordSet.md)
+[New-AzDnsRecordSet](./New-AzDnsRecordSet.md)
 
-[Remove-AzureRmDnsRecordSet](./Remove-AzureRmDnsRecordSet.md)
+[Remove-AzDnsRecordSet](./Remove-AzDnsRecordSet.md)
 
-[Set-AzureRmDnsRecordSet](./Set-AzureRmDnsRecordSet.md)
+[Set-AzDnsRecordSet](./Set-AzDnsRecordSet.md)
 
 

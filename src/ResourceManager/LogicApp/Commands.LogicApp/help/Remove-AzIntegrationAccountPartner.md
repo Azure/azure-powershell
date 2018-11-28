@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: E8A557EA-FE3F-4433-BFDE-B4D73DF8467C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/remove-azurermintegrationaccountpartner
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/remove-azintegrationaccountpartner
 schema: 2.0.0
 ---
 
-# Remove-AzureRmIntegrationAccountPartner
+# Remove-AzIntegrationAccountPartner
 
 ## SYNOPSIS
 Removes an integration account partner.
@@ -14,12 +14,12 @@ Removes an integration account partner.
 ## SYNTAX
 
 ```
-Remove-AzureRmIntegrationAccountPartner -ResourceGroupName <String> -Name <String> -PartnerName <String>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzIntegrationAccountPartner -ResourceGroupName <String> -Name <String> -PartnerName <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmIntegrationAccountPartner** cmdlet removes an integration account partner from a resource group.
+The **Remove-AzIntegrationAccountPartner** cmdlet removes an integration account partner from a resource group.
 Specify the integration account name, resource group name, and partner name.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -30,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Remove an integration account partner
 ```
-PS C:\>Remove-AzureRmIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -PartnerName "IntegrationAccountPartner1"
+PS C:\>Remove-AzIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -PartnerName "IntegrationAccountPartner1"
 ```
 
 This command removes the integration account partner named IntegrationAccountPartner1.
@@ -41,7 +41,7 @@ This command removes the integration account partner named IntegrationAccountPar
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -158,10 +158,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmIntegrationAccountPartner](./Get-AzureRmIntegrationAccountPartner.md)
+[Get-AzIntegrationAccountPartner](./Get-AzIntegrationAccountPartner.md)
 
-[New-AzureRmIntegrationAccountPartner](./New-AzureRmIntegrationAccountPartner.md)
+[New-AzIntegrationAccountPartner](./New-AzIntegrationAccountPartner.md)
 
-[Set-AzureRmIntegrationAccountPartner](./Set-AzureRmIntegrationAccountPartner.md)
+[Set-AzIntegrationAccountPartner](./Set-AzIntegrationAccountPartner.md)
 
 

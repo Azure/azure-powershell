@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: E4FC60AE-16B4-4E62-874F-49B9285CFF7A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/unregister-azurermautomationdscnode
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/unregister-azautomationdscnode
 schema: 2.0.0
 ---
 
-# Unregister-AzureRmAutomationDscNode
+# Unregister-AzAutomationDscNode
 
 ## SYNOPSIS
 Removes a DSC node from management by an Automation account.
@@ -14,19 +14,19 @@ Removes a DSC node from management by an Automation account.
 ## SYNTAX
 
 ```
-Unregister-AzureRmAutomationDscNode -Id <Guid> [-Force] [-ResourceGroupName] <String>
+Unregister-AzAutomationDscNode -Id <Guid> [-Force] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Unregister-AzureRmAutomationDscNode** cmdlet removes an APS Desired State Configuration (DSC) node from management by an Azure Automation account.
+The **Unregister-AzAutomationDscNode** cmdlet removes an APS Desired State Configuration (DSC) node from management by an Azure Automation account.
 
 ## EXAMPLES
 
 ### Example 1: Remove an Azure DSC node from management by an Automation account
 ```
-PS C:\>Unregister-AzureRmAutomationDscNode -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Id 064a8929-c98b-25e4-80hh-111ca86067j8
+PS C:\>Unregister-AzAutomationDscNode -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Id 064a8929-c98b-25e4-80hh-111ca86067j8
 ```
 
 This command removes the DSC node that has the specified GUID from management by the Automation account named Contoso17.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -156,10 +156,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationDscNode](./Get-AzureRmAutomationDscNode.md)
+[Get-AzAutomationDscNode](./Get-AzAutomationDscNode.md)
 
-[Register-AzureRmAutomationDscNode](./Register-AzureRmAutomationDscNode.md)
+[Register-AzAutomationDscNode](./Register-AzAutomationDscNode.md)
 
-[Set-AzureRmAutomationDscNode](./Set-AzureRmAutomationDscNode.md)
+[Set-AzAutomationDscNode](./Set-AzAutomationDscNode.md)
 
 

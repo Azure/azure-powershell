@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: AEDA89D3-EF80-4E56-9B97-677EC8F3959D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/set-azurermlogicapp
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/set-azlogicapp
 schema: 2.0.0
 ---
 
-# Set-AzureRmLogicApp
+# Set-AzLogicApp
 
 ## SYNOPSIS
 Modifies a logic app in a resource group.
@@ -15,7 +15,7 @@ Modifies a logic app in a resource group.
 
 ### Consumption (Default)
 ```
-Set-AzureRmLogicApp -ResourceGroupName <String> -Name <String> [-UseConsumptionModel] [-State <String>]
+Set-AzLogicApp -ResourceGroupName <String> -Name <String> [-UseConsumptionModel] [-State <String>]
  [-Definition <Object>] [-DefinitionFilePath <String>] [-IntegrationAccountId <String>] [-Parameters <Object>]
  [-ParameterFilePath <String>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,14 +23,14 @@ Set-AzureRmLogicApp -ResourceGroupName <String> -Name <String> [-UseConsumptionM
 
 ### HostingPlan
 ```
-Set-AzureRmLogicApp -ResourceGroupName <String> -Name <String> [-AppServicePlan <String>] [-State <String>]
+Set-AzLogicApp -ResourceGroupName <String> -Name <String> [-AppServicePlan <String>] [-State <String>]
  [-Definition <Object>] [-DefinitionFilePath <String>] [-IntegrationAccountId <String>] [-Parameters <Object>]
  [-ParameterFilePath <String>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmLogicApp** cmdlet modifies a logic app by using the Logic Apps feature.
+The **Set-AzLogicApp** cmdlet modifies a logic app by using the Logic Apps feature.
 A logic app is a collection of actions or triggers defined in Logic App definition.
 This cmdlet returns a **Workflow** object.
 You can modify a logic app by specifying a name, location, Logic App definition, resource group, and plan.
@@ -46,7 +46,7 @@ Template parameter file values that you specify at the command line take precede
 
 ### Example 1: Modify a logic app
 ```
-PS C:\>Set-AzureRmLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp17" -State "Enabled" -AppServicePlan "ServicePlan01" -DefinitionFilePath "d:\workflows\Definition17.json" -ParameterFilePath "d:\workflows\Parameters17.json"
+PS C:\>Set-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp17" -State "Enabled" -AppServicePlan "ServicePlan01" -DefinitionFilePath "d:\workflows\Definition17.json" -ParameterFilePath "d:\workflows\Parameters17.json"
 Id                           : /subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/LogicAppCmdletTest/providers/Microsoft.Logic/workflows/LogicApp1
 Name                         : LogicApp17
 Type                         : Microsoft.Logic/workflows
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -301,12 +301,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmLogicApp](./Get-AzureRmLogicApp.md)
+[Get-AzLogicApp](./Get-AzLogicApp.md)
 
-[New-AzureRmLogicApp](./New-AzureRmLogicApp.md)
+[New-AzLogicApp](./New-AzLogicApp.md)
 
-[Remove-AzureRmLogicApp](./Remove-AzureRmLogicApp.md)
+[Remove-AzLogicApp](./Remove-AzLogicApp.md)
 
-[Start-AzureRmLogicApp](./Start-AzureRmLogicApp.md)
+[Start-AzLogicApp](./Start-AzLogicApp.md)
 
 

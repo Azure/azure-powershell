@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 015C7DB7-2B08-4033-9B6E-1738D4DDACDA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
-# Remove-AzureRmNetworkInterfaceIpConfig
+# Remove-AzNetworkInterfaceIpConfig
 
 ## SYNOPSIS
 Removes a network interface IP configuration from a network interface.
@@ -14,20 +14,20 @@ Removes a network interface IP configuration from a network interface.
 ## SYNTAX
 
 ```
-Remove-AzureRmNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
+Remove-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmNetworkInterfaceIpConfig** cmdlet removes a network interface IP configuration from an Azure network interface.
+The **Remove-AzNetworkInterfaceIpConfig** cmdlet removes a network interface IP configuration from an Azure network interface.
 
 ## EXAMPLES
 
 ### 1: Delete an IP configuration from a network interface
 ```
-$nic = Get-AzureRmNetworkInterface -Name mynic -ResourceGroupName myrg
+$nic = Get-AzNetworkInterface -Name mynic -ResourceGroupName myrg
 
-Remove-AzureRmNetworkInterfaceIpConfig -Name IPConfig-1 -NetworkInterface $nic
+Remove-AzNetworkInterfaceIpConfig -Name IPConfig-1 -NetworkInterface $nic
 ```
 
 The first command gets a network interface called mynic and stores it in the variable $nic. The second command
@@ -39,7 +39,7 @@ The first command gets a network interface called mynic and stores it in the var
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,12 +98,12 @@ Parameters: NetworkInterface (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmNetworkInterfaceIpConfig](./Add-AzureRmNetworkInterfaceIpConfig.md)
+[Add-AzNetworkInterfaceIpConfig](./Add-AzNetworkInterfaceIpConfig.md)
 
-[Get-AzureRmNetworkInterfaceIpConfig](./Get-AzureRmNetworkInterfaceIpConfig.md)
+[Get-AzNetworkInterfaceIpConfig](./Get-AzNetworkInterfaceIpConfig.md)
 
-[New-AzureRmNetworkInterfaceIpConfig](./New-AzureRmNetworkInterfaceIpConfig.md)
+[New-AzNetworkInterfaceIpConfig](./New-AzNetworkInterfaceIpConfig.md)
 
-[Set-AzureRmNetworkInterfaceIpConfig](./Set-AzureRmNetworkInterfaceIpConfig.md)
+[Set-AzNetworkInterfaceIpConfig](./Set-AzNetworkInterfaceIpConfig.md)
 
 

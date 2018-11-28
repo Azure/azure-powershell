@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
-Module Name: AzureRM.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor/new-azurermfrontdoorroutingruleobject
+Module Name: Az.FrontDoor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorroutingruleobject
 schema: 2.0.0
 ---
 
-# New-AzureRmFrontDoorRoutingRuleObject
+# New-AzFrontDoorRoutingRuleObject
 
 ## SYNOPSIS
 Create a PSRoutingRuleObject for Front Door creation
@@ -13,7 +13,7 @@ Create a PSRoutingRuleObject for Front Door creation
 ## SYNTAX
 
 ```
-New-AzureRmFrontDoorRoutingRuleObject -ResourceGroupName <String> -FrontDoorName <String> -Name <String>
+New-AzFrontDoorRoutingRuleObject -ResourceGroupName <String> -FrontDoorName <String> -Name <String>
  -FrontendEndpointName <String[]> -BackendPoolName <String> [-AcceptedProtocol <PSProtocol[]>]
  [-PatternToMatch <String[]>] [-CustomForwardingPath <String>] [-ForwardingProtocol <PSForwardingProtocol>]
  [-EnableCaching <Boolean>] [-QueryParameterStripDirective <PSQueryParameterStripDirective>]
@@ -28,7 +28,7 @@ Create a PSRoutingRuleObject for Front Door creation
 
 ### Example 1: Create a PSRoutingRuleObject for Front Door creation
 ```powershell
-PS C:\> New-AzureRmFrontDoorRoutingRuleObject -Name $routingRuleName -FrontDoorName $frontDoorName -ResourceGroupName  -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1" 
+PS C:\> New-AzFrontDoorRoutingRuleObject -Name $routingRuleName -FrontDoorName $frontDoorName -ResourceGroupName  -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1" 
 
 FrontendEndpointIds          : {/subscriptions/{subid}/resourceGroups/{rgname}/pro
                                viders/Microsoft.Network/frontDoors/{frontdoorname}/FrontendEndpoints/frontendEndpoint1}
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -291,5 +291,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmFrontDoor](./New-AzureRmFrontDoor.md)
-[Set-AzureRmFrontDoor](./Set-AzureRmFrontDoor.md)
+[New-AzFrontDoor](./New-AzFrontDoor.md)
+[Set-AzFrontDoor](./Set-AzFrontDoor.md)

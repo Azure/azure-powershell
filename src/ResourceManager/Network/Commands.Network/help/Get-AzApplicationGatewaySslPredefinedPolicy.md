@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermapplicationgatewaysslpredefinedpolicy
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewaysslpredefinedpolicy
 schema: 2.0.0
 ---
 
-# Get-AzureRmApplicationGatewaySslPredefinedPolicy
+# Get-AzApplicationGatewaySslPredefinedPolicy
 
 ## SYNOPSIS
 Gets Predefined SSL Policies provided by Application Gateway.
@@ -13,25 +13,25 @@ Gets Predefined SSL Policies provided by Application Gateway.
 ## SYNTAX
 
 ```
-Get-AzureRmApplicationGatewaySslPredefinedPolicy [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzApplicationGatewaySslPredefinedPolicy [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApplicationGatewaySslPredefinedPolicy** cmdlet gets Predefined SSL Policies provided by Application Gateway.
+The **Get-AzApplicationGatewaySslPredefinedPolicy** cmdlet gets Predefined SSL Policies provided by Application Gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>$policies = Get-AzureRmApplicationGatewaySslPredefinedPolicy
+PS C:\>$policies = Get-AzApplicationGatewaySslPredefinedPolicy
 ```
 
 This commands returns all the predefined SSL policies.
 
 ### Example 2
 ```
-PS C:\>$policy = Get-AzureRmApplicationGatewaySslPredefinedPolicy -Name AppGwSslPolicy20170401
+PS C:\>$policy = Get-AzApplicationGatewaySslPredefinedPolicy -Name AppGwSslPolicy20170401
 ```
 
 This commands returns predefined policy with name AppGwSslPolicy20170401.
@@ -42,7 +42,7 @@ This commands returns predefined policy with name AppGwSslPolicy20170401.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

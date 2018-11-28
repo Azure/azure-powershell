@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
-Module Name: AzureRM.DeviceProvisioningServices
+Module Name: Az.DeviceProvisioningServices
 online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmIoTDeviceProvisioningServiceCertificate
+# Get-AzIoTDeviceProvisioningServiceCertificate
 
 ## SYNOPSIS
 Lists all certificates or a particular certificate contained within an Azure IoT Hub Device Provisioning Service.
@@ -14,19 +14,19 @@ Lists all certificates or a particular certificate contained within an Azure IoT
 
 ### ResourceSet (Default)
 ```
-Get-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceGroupName] <String> [-Name] <String>
+Get-AzIoTDeviceProvisioningServiceCertificate [-ResourceGroupName] <String> [-Name] <String>
  [-CertificateName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Get-AzureRmIoTDeviceProvisioningServiceCertificate [-DpsObject] <PSProvisioningServiceDescription>
+Get-AzIoTDeviceProvisioningServiceCertificate [-DpsObject] <PSProvisioningServiceDescription>
  [-CertificateName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceId] <String> [-CertificateName <String>]
+Get-AzIoTDeviceProvisioningServiceCertificate [-ResourceId] <String> [-CertificateName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ For a detailed explanation of CA certificates in Azure IoT Hub Device Provisioni
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmIoTDeviceProvisioningServiceCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate"
+PS C:\> Get-AzIoTDeviceProvisioningServiceCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate"
 
 Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/provisioningServices/myiotdps/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
@@ -55,7 +55,7 @@ Show details about "mycertificate" in an Azure IoT Hub device provisioning servi
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Get-AzureRmIoTDpsCertificate
+PS C:\> Get-AzIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Get-AzIoTDpsCertificate
 
 ResourceGroupName	Name		CertificateName Status     Expiry
 -----------------	----        ---------------	------     ------
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

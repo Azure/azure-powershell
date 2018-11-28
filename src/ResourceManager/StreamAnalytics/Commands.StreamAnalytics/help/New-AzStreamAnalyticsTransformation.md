@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM.StreamAnalytics
+Module Name: Az.StreamAnalytics
 ms.assetid: 8FF53426-D4AE-455E-A182-D7FBC7262FE1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticstransformation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation
 schema: 2.0.0
 ---
 
-# New-AzureRmStreamAnalyticsTransformation
+# New-AzStreamAnalyticsTransformation
 
 ## SYNOPSIS
 Creates or updates a transformation within a job.
@@ -14,13 +14,13 @@ Creates or updates a transformation within a job.
 ## SYNTAX
 
 ```
-New-AzureRmStreamAnalyticsTransformation [-JobName] <String> [[-Name] <String>] [-File] <String> [-Force]
+New-AzStreamAnalyticsTransformation [-JobName] <String> [[-Name] <String>] [-File] <String> [-Force]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmStreamAnalyticsTransformation** cmdlet creates a transformation within a Stream Analytics job or updates the existing transformation.
+The **New-AzStreamAnalyticsTransformation** cmdlet creates a transformation within a Stream Analytics job or updates the existing transformation.
 The name of the transformation can be specified in the .JSON file or on the command line.
 If both are specified, the name on command line must match the name in the file.
 If you specify a transformation that already exists and do not specify the Force parameter, the cmdlet will ask whether or not to replace the existing transformation.
@@ -30,7 +30,7 @@ If you specify the *Force* parameter and specify an existing transformation name
 
 ### EXAMPLE 1: Create or replace a transformation in a job
 ```
-PS C:\>New-AzureRmStreamAnalyticsTransformation -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\Transformation.json" -JobName "StreamingJob" -Name "StreamingJobTransform"
+PS C:\>New-AzStreamAnalyticsTransformation -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\Transformation.json" -JobName "StreamingJob" -Name "StreamingJobTransform"
 ```
 
 This command creates a transformation called StreamingJobTransform in the job called StreamingJob.
@@ -38,7 +38,7 @@ If an existing transformation is already defined with that name, the cmdlet will
 
 ### EXAMPLE 2: Replace a transformation in a job
 ```
-PS C:\>New-AzureRmStreamAnalyticsTransformation -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\Transformation.json" -JobName "StreamingJob" -Name "StreamingJobTransform" -Force
+PS C:\>New-AzStreamAnalyticsTransformation -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\Transformation.json" -JobName "StreamingJob" -Name "StreamingJobTransform" -Force
 ```
 
 This command replaces the definition of StreamingJobTransform in the job StreamingJob without confirmation.
@@ -49,7 +49,7 @@ This command replaces the definition of StreamingJobTransform in the job Streami
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -181,6 +181,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmStreamAnalyticsTransformation](./Get-AzureRmStreamAnalyticsTransformation.md)
+[Get-AzStreamAnalyticsTransformation](./Get-AzStreamAnalyticsTransformation.md)
 
 

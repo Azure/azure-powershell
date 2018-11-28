@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 1D07222C-17D1-421C-8C9B-37043CBCF517
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/set-azdatafactoryslicestatus
 schema: 2.0.0
 ---
 
-# Set-AzureRmDataFactorySliceStatus
+# Set-AzDataFactorySliceStatus
 
 ## SYNOPSIS
 Sets the status of slices for a dataset in Azure Data Factory.
@@ -15,26 +15,26 @@ Sets the status of slices for a dataset in Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Set-AzureRmDataFactorySliceStatus [[-EndDateTime] <DateTime>] [-Status] <String> [[-UpdateType] <String>]
+Set-AzDataFactorySliceStatus [[-EndDateTime] <DateTime>] [-Status] <String> [[-UpdateType] <String>]
  [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Set-AzureRmDataFactorySliceStatus [[-EndDateTime] <DateTime>] [-Status] <String> [[-UpdateType] <String>]
+Set-AzDataFactorySliceStatus [[-EndDateTime] <DateTime>] [-Status] <String> [[-UpdateType] <String>]
  [-DataFactory] <PSDataFactory> [-DatasetName] <String> [-StartDateTime] <DateTime>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmDataFactorySliceStatus** cmdlet sets the status of slices for a dataset in Azure Data Factory.
+The **Set-AzDataFactorySliceStatus** cmdlet sets the status of slices for a dataset in Azure Data Factory.
 
 ## EXAMPLES
 
 ### Example 1: Set the status of all slices
 ```
-PS C:\>Set-AzureRmDataFactorySliceStatus -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00Z -EndDateTime 2014-05-21T20:00:00Z -Status "Waiting" -UpdateType "UpstreamInPipeline"
+PS C:\>Set-AzDataFactorySliceStatus -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00Z -EndDateTime 2014-05-21T20:00:00Z -Status "Waiting" -UpdateType "UpstreamInPipeline"
 True
 ```
 
@@ -228,6 +228,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactorySlice](./Get-AzureRmDataFactorySlice.md)
+[Get-AzDataFactorySlice](./Get-AzDataFactorySlice.md)
 
 

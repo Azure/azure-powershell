@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: CF8B8E94-3C6C-4D68-B55B-956393890946
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurermbatchapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchapplication
 schema: 2.0.0
 ---
 
-# Get-AzureRmBatchApplication
+# Get-AzBatchApplication
 
 ## SYNOPSIS
 Gets information about the specified application.
@@ -14,18 +14,18 @@ Gets information about the specified application.
 ## SYNTAX
 
 ```
-Get-AzureRmBatchApplication [-AccountName] <String> [-ResourceGroupName] <String> [[-ApplicationId] <String>]
+Get-AzBatchApplication [-AccountName] <String> [-ResourceGroupName] <String> [[-ApplicationId] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmBatchApplication** cmdlet gets information about an application in an Azure Batch account.
+The **Get-AzBatchApplication** cmdlet gets information about an application in an Azure Batch account.
 
 ## EXAMPLES
 
 ### Example 1: Display the applications in a Batch account
 ```
-PS C:\>Get-AzureRmBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup"
+PS C:\>Get-AzBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup"
 ApplicationId AllowUpdates DisplayName
 
 ------------- ------------ ----------------------------
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,16 +112,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchApplicationPackage](./Get-AzureRmBatchApplicationPackage.md)
+[Get-AzBatchApplicationPackage](./Get-AzBatchApplicationPackage.md)
 
-[New-AzureRmBatchApplication](./New-AzureRmBatchApplication.md)
+[New-AzBatchApplication](./New-AzBatchApplication.md)
 
-[New-AzureRmBatchApplicationPackage](./New-AzureRmBatchApplicationPackage.md)
+[New-AzBatchApplicationPackage](./New-AzBatchApplicationPackage.md)
 
-[Remove-AzureRmBatchApplication](./Remove-AzureRmBatchApplication.md)
+[Remove-AzBatchApplication](./Remove-AzBatchApplication.md)
 
-[Remove-AzureRmBatchApplicationPackage](./Remove-AzureRmBatchApplicationPackage.md)
+[Remove-AzBatchApplicationPackage](./Remove-AzBatchApplicationPackage.md)
 
-[Set-AzureRmBatchApplication](./Set-AzureRmBatchApplication.md)
+[Set-AzBatchApplication](./Set-AzBatchApplication.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 842652D4-0F1C-4D0D-AB55-0D43D3C5D82A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmextension
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMExtension
+# Get-AzVMExtension
 
 ## SYNOPSIS
 Gets properties of Virtual Machine Extensions installed on a virtual machine.
@@ -14,12 +14,12 @@ Gets properties of Virtual Machine Extensions installed on a virtual machine.
 ## SYNTAX
 
 ```
-Get-AzureRmVMExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Status]
+Get-AzVMExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Status]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMExtension** cmdlet gets properties of Virtual Machine Extensions installed on a virtual machine.
+The **Get-AzVMExtension** cmdlet gets properties of Virtual Machine Extensions installed on a virtual machine.
 Specify the name of an extension for which to get properties.
 To get only the instance view of an extension, specify the Status parameter.
 
@@ -27,14 +27,14 @@ To get only the instance view of an extension, specify the Status parameter.
 
 ### Example 1: Get properties of an extension
 ```
-PS C:\> Get-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine22" -Name "CustomScriptExtension"
+PS C:\> Get-AzVMExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine22" -Name "CustomScriptExtension"
 ```
 
 This command gets properties for the extension named CustomScriptExtension on the virtual machine named VirtualMachine22 in the resource group ResourceGroup11.
 
 ### Example 2: Get instance view of an extension
 ```
-PS C:\> Get-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine22" -Name "CustomScriptExtension" -Status
+PS C:\> Get-AzVMExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine22" -Name "CustomScriptExtension" -Status
 ```
 
 This command gets the instance view for the extension named CustomScriptExtension on the virtual machine named VirtualMachine22 in the resource group ResourceGroup11.
@@ -45,7 +45,7 @@ This command gets the instance view for the extension named CustomScriptExtensio
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -135,8 +135,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmVMExtension](./Remove-AzureRmVMExtension.md)
+[Remove-AzVMExtension](./Remove-AzVMExtension.md)
 
-[Set-AzureRmVMExtension](./Set-AzureRmVMExtension.md)
+[Set-AzVMExtension](./Set-AzVMExtension.md)
 
 

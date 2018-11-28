@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: B9BA5FD1-A4F8-4E24-8FCB-847649B82AB6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/new-azurermhdinsightpigjobdefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/new-azhdinsightpigjobdefinition
 schema: 2.0.0
 ---
 
-# New-AzureRmHDInsightPigJobDefinition
+# New-AzHDInsightPigJobDefinition
 
 ## SYNOPSIS
 Creates a Pig job object.
@@ -14,12 +14,12 @@ Creates a Pig job object.
 ## SYNTAX
 
 ```
-New-AzureRmHDInsightPigJobDefinition [-Arguments <String[]>] [-Files <String[]>] [-StatusFolder <String>]
+New-AzHDInsightPigJobDefinition [-Arguments <String[]>] [-Files <String[]>] [-StatusFolder <String>]
  [-File <String>] [-Query <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmHDInsightPigJobDefinition** cmdlet defines a Pig job object for use with an Azure HDInsight cluster.
+The **New-AzHDInsightPigJobDefinition** cmdlet defines a Pig job object for use with an Azure HDInsight cluster.
 
 ## EXAMPLES
 
@@ -33,9 +33,9 @@ PS C:\>$clusterCreds = Get-Credential
 PS C:\>$statusFolder = "tempStatusFolder/"
 PS C:\>$query = "SHOW TABLES"
 
-PS C:\>New-AzureRmHDInsightPigJobDefinition -StatusFolder $statusFolder `
+PS C:\>New-AzHDInsightPigJobDefinition -StatusFolder $statusFolder `
             -Query $query `
-        | Start-AzureRmHDInsightJob `
+        | Start-AzHDInsightJob `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds
 ```
@@ -152,6 +152,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Start-AzureRmHDInsightJob](./Start-AzureRmHDInsightJob.md)
+[Start-AzHDInsightJob](./Start-AzHDInsightJob.md)
 
 

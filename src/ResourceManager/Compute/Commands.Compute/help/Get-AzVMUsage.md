@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 3702701E-428D-47E2-A227-0F38B055F881
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmusage
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmusage
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMUsage
+# Get-AzVMUsage
 
 ## SYNOPSIS
 Gets the virtual machine core count usage for a location.
@@ -14,17 +14,17 @@ Gets the virtual machine core count usage for a location.
 ## SYNTAX
 
 ```
-Get-AzureRmVMUsage [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVMUsage [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMUsage** cmdlet gets the virtual machine core count usage for a location.
+The **Get-AzVMUsage** cmdlet gets the virtual machine core count usage for a location.
 
 ## EXAMPLES
 
 ### Example 1: Get core count usage for a location
 ```
-PS C:\> Get-AzureRmVMUsage -Location "Central US"
+PS C:\> Get-AzVMUsage -Location "Central US"
 ```
 
 This command gets the virtual machine core count usage for the location Central US.
@@ -35,7 +35,7 @@ This command gets the virtual machine core count usage for the location Central 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,6 +76,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVM](./Get-AzureRmVM.md)
+[Get-AzVM](./Get-AzVM.md)
 
 

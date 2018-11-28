@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 0BB79553-26DA-413C-8086-740DB6B31A85
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/remove-azurebatchcomputenode
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchcomputenode
 schema: 2.0.0
 ---
 
-# Remove-AzureBatchComputeNode
+# Remove-AzBatchComputeNode
 
 ## SYNOPSIS
 Removes compute nodes from a pool.
@@ -15,7 +15,7 @@ Removes compute nodes from a pool.
 
 ### Id (Default)
 ```
-Remove-AzureBatchComputeNode [-PoolId] <String> [-Ids] <String[]>
+Remove-AzBatchComputeNode [-PoolId] <String> [-Ids] <String[]>
  [-DeallocationOption <ComputeNodeDeallocationOption>] [-ResizeTimeout <TimeSpan>] [-Force]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,20 +23,20 @@ Remove-AzureBatchComputeNode [-PoolId] <String> [-Ids] <String[]>
 
 ### InputObject
 ```
-Remove-AzureBatchComputeNode [[-ComputeNode] <PSComputeNode>]
+Remove-AzBatchComputeNode [[-ComputeNode] <PSComputeNode>]
  [-DeallocationOption <ComputeNodeDeallocationOption>] [-ResizeTimeout <TimeSpan>] [-Force]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureBatchComputeNode** cmdlet removes Azure Batch compute nodes from a pool.
+The **Remove-AzBatchComputeNode** cmdlet removes Azure Batch compute nodes from a pool.
 
 ## EXAMPLES
 
 ### Example 1: Remove a compute node
 ```
-PS C:\>Remove-AzureBatchComputeNode -PoolId "Pool07" -Ids "tvm-2316545714_1-20150725t213220z" -DeallocationOption Terminate -ResizeTimeout ([TimeSpan]::FromMinutes(10)) -BatchContext $Context
+PS C:\>Remove-AzBatchComputeNode -PoolId "Pool07" -Ids "tvm-2316545714_1-20150725t213220z" -DeallocationOption Terminate -ResizeTimeout ([TimeSpan]::FromMinutes(10)) -BatchContext $Context
 ```
 
 This command removes compute node that has the specified ID from pool that has the ID Pool07.
@@ -45,10 +45,10 @@ The resize time-out is of 10 minutes.
 
 ### Example 2: Remove a compute node by using the pipeline
 ```
-PS C:\>Get-AzureBatchComputeNode -PoolId "Pool07" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context | Remove-AzureBatchComputeNode -Force -BatchContext $Context
+PS C:\>Get-AzBatchComputeNode -PoolId "Pool07" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context | Remove-AzBatchComputeNode -Force -BatchContext $Context
 ```
 
-This command gets the compute node that has the specified ID from pool that has the ID Pool07 by using the Get-AzureBatchComputeNode cmdlet.
+This command gets the compute node that has the specified ID from pool that has the ID Pool07 by using the Get-AzBatchComputeNode cmdlet.
 The command passes that node to the current cmdlet by using the pipeline.
 The current cmdlet removes the compute node.
 The command specifies the *Force* parameter.
@@ -56,7 +56,7 @@ Therefore, the command does not prompt you for confirmation.
 
 ### Example 3: Remove multiple nodes
 ```
-PS C:\>Remove-AzureBatchComputeNode -PoolId "Pool07" @("tvm-1783593343_28-20151117t214257z","tvm-1783593343_29-20151117t214257z") -Force -BatchContext $Context
+PS C:\>Remove-AzBatchComputeNode -PoolId "Pool07" @("tvm-1783593343_28-20151117t214257z","tvm-1783593343_29-20151117t214257z") -Force -BatchContext $Context
 ```
 
 This command removes two compute nodes from the pool that has the ID Pool07.
@@ -66,7 +66,7 @@ The command does not prompt you for confirmation.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -239,10 +239,10 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchComputeNode](./Get-AzureBatchComputeNode.md)
+[Get-AzBatchComputeNode](./Get-AzBatchComputeNode.md)
 
-[Restart-AzureBatchComputeNode](./Restart-AzureBatchComputeNode.md)
+[Restart-AzBatchComputeNode](./Restart-AzBatchComputeNode.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-Module Name: AzureRM.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/remove-azurermcontainerregistry
+Module Name: Az.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/remove-azcontainerregistry
 schema: 2.0.0
 ---
 
-# Remove-AzureRmContainerRegistry
+# Remove-AzContainerRegistry
 
 ## SYNOPSIS
 Removes a container registry.
@@ -14,30 +14,30 @@ Removes a container registry.
 
 ### NameResourceGroupParameterSet (Default)
 ```
-Remove-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+Remove-AzContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RegistryObjectParameterSet
 ```
-Remove-AzureRmContainerRegistry -Registry <PSContainerRegistry> [-PassThru]
+Remove-AzContainerRegistry -Registry <PSContainerRegistry> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzureRmContainerRegistry -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzContainerRegistry -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmContainerRegistry cmdlet removes a container registry.
+The Remove-AzContainerRegistry cmdlet removes a container registry.
 
 ## EXAMPLES
 
 ### Example 1: Remove a specified container registry
 ```powershell
-PS C:\>Remove-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
+PS C:\>Remove-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
 ```
 
 This command removes the specified container registry.
@@ -48,7 +48,7 @@ This command removes the specified container registry.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -180,9 +180,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmContainerRegistry]()
+[New-AzContainerRegistry]()
 
-[Get-AzureRmContainerRegistry]()
+[Get-AzContainerRegistry]()
 
-[Update-AzureRmContainerRegistry]()
+[Update-AzContainerRegistry]()
 

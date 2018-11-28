@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermbgpservicecommunity
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azbgpservicecommunity
 schema: 2.0.0
 ---
 
-# Get-AzureRmBgpServiceCommunity
+# Get-AzBgpServiceCommunity
 
 ## SYNOPSIS
 Provides a list of all services / regions, BGP communities, and associated prefixes.
@@ -13,7 +13,7 @@ Provides a list of all services / regions, BGP communities, and associated prefi
 ## SYNTAX
 
 ```
-Get-AzureRmBgpServiceCommunity [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBgpServiceCommunity [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ This cmdlet provides a list of all services / regions, BGP communities, and asso
 
 ### Example 1
 ```
-Get-AzureRmBgpServiceCommunity
+Get-AzBgpServiceCommunity
 
 ...
 
@@ -75,7 +75,7 @@ This cmdlet provides a list of all services / regions, BGP communities, and asso
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -101,26 +101,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
+[Move-AzExpressRouteCircuit](Move-AzExpressRouteCircuit.md)
 
-[New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
+[New-AzExpressRouteCircuit](New-AzExpressRouteCircuit.md)
 
-[Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
+[Remove-AzExpressRouteCircuit](Remove-AzExpressRouteCircuit.md)
 
-[Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)
+[Set-AzExpressRouteCircuit](Set-AzExpressRouteCircuit.md)
 
-[Get-AzureRmRouteFilter](Get-AzureRmRouteFilter.md)
+[Get-AzRouteFilter](Get-AzRouteFilter.md)
 
-[Get-AzureRmRouteFilterRuleConfig](Get-AzureRmRouteFilterRuleConfig.md)
+[Get-AzRouteFilterRuleConfig](Get-AzRouteFilterRuleConfig.md)
 
-[Remove-AzureRmRouteFilter](Remove-AzureRmRouteFilter.md)
+[Remove-AzRouteFilter](Remove-AzRouteFilter.md)
 
-[Remove-AzureRmRouteFilterRuleConfig](Remove-AzureRmRouteFilterRuleConfig.md)
+[Remove-AzRouteFilterRuleConfig](Remove-AzRouteFilterRuleConfig.md)
 
-[Set-AzureRmRouteFilter](Set-AzureRmRouteFilter.md)
+[Set-AzRouteFilter](Set-AzRouteFilter.md)
 
-[Set-AzureRmRouteFilterRuleConfig](Set-AzureRmRouteFilterRuleConfig.md)
+[Set-AzRouteFilterRuleConfig](Set-AzRouteFilterRuleConfig.md)
 
-[New-AzureRmRouteFilter](New-AzureRmRouteFilter.md)
+[New-AzRouteFilter](New-AzRouteFilter.md)
 
-[New-AzureRmRouteFilterRuleConfig](New-AzureRmRouteFilterRuleConfig.md)
+[New-AzRouteFilterRuleConfig](New-AzRouteFilterRuleConfig.md)

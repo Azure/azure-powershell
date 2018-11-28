@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-Module Name: AzureRM.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/update-azurermcontainerregistrycredential
+Module Name: Az.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/update-azcontainerregistrycredential
 schema: 2.0.0
 ---
 
-# Update-AzureRmContainerRegistryWebhook
+# Update-AzContainerRegistryWebhook
 
 ## SYNOPSIS
 Updates a container registry webhook.
@@ -14,33 +14,33 @@ Updates a container registry webhook.
 
 ### ResourceIdParameterSet (Default)
 ```
-Update-AzureRmContainerRegistryWebhook [-Uri <Uri>] [-Action <String[]>] [-Header <Hashtable>]
- [-Tag <Hashtable>] [-Status <String>] [-Scope <String>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzContainerRegistryWebhook [-Uri <Uri>] [-Action <String[]>] [-Header <Hashtable>] [-Tag <Hashtable>]
+ [-Status <String>] [-Scope <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### NameResourceGroupParameterSet
 ```
-Update-AzureRmContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
+Update-AzContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
  [-Uri <Uri>] [-Action <String[]>] [-Header <Hashtable>] [-Tag <Hashtable>] [-Status <String>]
  [-Scope <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### WebhookObjectParameterSet
 ```
-Update-AzureRmContainerRegistryWebhook [-Uri <Uri>] [-Action <String[]>] -Webhook <PSContainerRegistryWebhook>
+Update-AzContainerRegistryWebhook [-Uri <Uri>] [-Action <String[]>] -Webhook <PSContainerRegistryWebhook>
  [-Header <Hashtable>] [-Tag <Hashtable>] [-Status <String>] [-Scope <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Update-AzureRmContainerRegistryWebhook cmdlet updates a container registry webhook.
+The Update-AzContainerRegistryWebhook cmdlet updates a container registry webhook.
 
 ## EXAMPLES
 
 ### Example 1: Update an existing container registry webhook.
 ```powershell
-PS C:\>Update-AzureRmContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001" -Uri http://www.bing.com -Action Delete,Push -Header @{SpecialHeader='headerVal'} -Tag @{Key='val'} -Status Enabled -Scope 'foo:*'
+PS C:\>Update-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001" -Uri http://www.bing.com -Action Delete,Push -Header @{SpecialHeader='headerVal'} -Tag @{Key='val'} -Status Enabled -Scope 'foo:*'
 
 Name            Location   Status     Scope           Actions         Provisioni ServiceUri
                                                                       ngState
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -282,10 +282,10 @@ Parameters: Webhook (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmContainerRegistryWebhook](New-AzureRmContainerRegistryWebhook.md)
+[New-AzContainerRegistryWebhook](New-AzContainerRegistryWebhook.md)
 
-[Get-AzureRmContainerRegistryWebhook](Get-AzureRmContainerRegistryWebhook.md)
+[Get-AzContainerRegistryWebhook](Get-AzContainerRegistryWebhook.md)
 
-[Test-AzureRmContainerRegistryWebhook](Test-AzureRmContainerRegistryWebhook.md)
+[Test-AzContainerRegistryWebhook](Test-AzContainerRegistryWebhook.md)
 
-[Remove-AzureRmContainerRegistryWebhook](Remove-AzureRmContainerRegistryWebhook.md)
+[Remove-AzContainerRegistryWebhook](Remove-AzContainerRegistryWebhook.md)

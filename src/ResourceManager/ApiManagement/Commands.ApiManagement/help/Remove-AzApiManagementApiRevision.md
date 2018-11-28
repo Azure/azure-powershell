@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementapirevision
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementapirevision
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApiManagementApiRevision
+# Remove-AzApiManagementApiRevision
 
 ## SYNOPSIS
 Removed a particular API Revision
@@ -14,25 +14,25 @@ Removed a particular API Revision
 
 ### ByApiId (Default)
 ```
-Remove-AzureRmApiManagementApiRevision -Context <PsApiManagementContext> -ApiId <String> -ApiRevision <String>
+Remove-AzApiManagementApiRevision -Context <PsApiManagementContext> -ApiId <String> -ApiRevision <String>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzureRmApiManagementApiRevision -InputObject <PsApiManagementApi> [-PassThru]
+Remove-AzApiManagementApiRevision -InputObject <PsApiManagementApi> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The cmdlet **Remove-AzureRmApiManagementApiRevision** removes a particular API revision.
+The cmdlet **Remove-AzApiManagementApiRevision** removes a particular API revision.
 
 ## EXAMPLES
 
 ### Example 1: Remove an API Revision
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzureRmAzureRmApiManagementApiRevision -Context $apimContext -ApiId "echo-api" -ApiRevision "2"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzAzureRmApiManagementApiRevision -Context $apimContext -ApiId "echo-api" -ApiRevision "2"
 ```
 
 This command removes the `2` revision of the API `echo-api` from API Management service.
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -183,8 +183,8 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementApiRevision](./Get-AzureRmApiManagementApiRevision.md)
+[Get-AzApiManagementApiRevision](./Get-AzApiManagementApiRevision.md)
 
-[New-AzureRmApiManagementApiRevision](./New-AzureRmApiManagementApiRevision.md)
+[New-AzApiManagementApiRevision](./New-AzApiManagementApiRevision.md)
 
-[Set-AzureRmApiManagementApiRevision](./Set-AzureRmApiManagementApiRevision.md)
+[Set-AzApiManagementApiRevision](./Set-AzApiManagementApiRevision.md)

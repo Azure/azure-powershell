@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/remove-azurermdiagnosticsetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/remove-azdiagnosticsetting
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDiagnosticSetting
+# Remove-AzDiagnosticSetting
 
 ## SYNOPSIS
 Remove a diagnostic setting for the a resource.
@@ -14,26 +14,26 @@ Remove a diagnostic setting for the a resource.
 ## SYNTAX
 
 ```
-Remove-AzureRmDiagnosticSetting -ResourceId <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDiagnosticSetting -ResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDiagnosticSetting** cmdlet removes the diagnostic setting for the particular resource.
+The **Remove-AzDiagnosticSetting** cmdlet removes the diagnostic setting for the particular resource.
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
 
 ### Example 1: Remove the default diagnostic setting (service) for a resource
 ```
-PS C:\>Remove-AzureRmDiagnosticSetting -ResourceId "Resource01"
+PS C:\>Remove-AzDiagnosticSetting -ResourceId "Resource01"
 ```
 
 This command removes the default diagnostic setting (service) for the resource called Resource01.
 
 ### Example 2: Remove the default diagnostic setting identified by the given name for a resource
 ```
-PS C:\>Remove-AzureRmDiagnosticSetting -ResourceId "Resource01" -Name myDiagSetting
+PS C:\>Remove-AzDiagnosticSetting -ResourceId "Resource01" -Name myDiagSetting
 ```
 
 This command removes the diagnostic setting called myDiagSetting for the resource called Resource01.
@@ -44,7 +44,7 @@ This command removes the diagnostic setting called myDiagSetting for the resourc
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -130,5 +130,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDiagnosticSetting](./Get-AzureRmDiagnosticSetting.md)
-[Set-AzureRmDiagnosticSetting](./Set-AzureRmDiagnosticSetting.md)
+[Get-AzDiagnosticSetting](./Get-AzDiagnosticSetting.md)
+[Set-AzDiagnosticSetting](./Set-AzDiagnosticSetting.md)

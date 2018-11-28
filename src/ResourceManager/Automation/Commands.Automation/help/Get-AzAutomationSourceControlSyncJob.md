@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationsourcecontrolsyncjob
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationsourcecontrolsyncjob
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationSourceControlSyncJob
+# Get-AzAutomationSourceControlSyncJob
 
 ## SYNOPSIS
 Gets Azure Automation source control sync jobs.
@@ -13,13 +13,12 @@ Gets Azure Automation source control sync jobs.
 ## SYNTAX
 
 ```
-Get-AzureRmAutomationSourceControlSyncJob -SourceControlName <String> [-JobId <Guid>]
- [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzAutomationSourceControlSyncJob -SourceControlName <String> [-JobId <Guid>] [-ResourceGroupName] <String>
+ [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmAutomationSourceControlSyncJob cmdlet gets Azure Automation source control sync jobs. To get a specific source control sync job, specify its id.
+The Get-AzAutomationSourceControlSyncJob cmdlet gets Azure Automation source control sync jobs. To get a specific source control sync job, specify its id.
 
 ## EXAMPLES
 
@@ -28,7 +27,7 @@ This command gets all the Automation source control sync jobs for the source con
 
 
 ```powershell
-PS C:\> Get-AzureRmAutomationSourceControlSyncJob -ResourceGroupName "rg1" `
+PS C:\> Get-AzAutomationSourceControlSyncJob -ResourceGroupName "rg1" `
                                                   -AutomationAccountName "devAccount" `
                                                   -Name "VSTSNative"
 
@@ -44,7 +43,7 @@ for the source control VSTSNative.
 
 
 ```powershell
-PS C:\> Get-AzureRmAutomationSourceControlSyncJob -ResourceGroupName "rg1" `
+PS C:\> Get-AzAutomationSourceControlSyncJob -ResourceGroupName "rg1" `
                                                   -AutomationAccountName "devAccount" `
                                                   -Name "VSTSNative"
                                                   -Id "08d6d266-27b6-463c-beea-bc48a67ace15"
@@ -75,7 +74,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

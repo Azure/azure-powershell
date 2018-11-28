@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: 297071E5-FC06-4493-BCC2-37D4929E4025
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/restart-azurermwebapp
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/restart-azwebapp
 schema: 2.0.0
 ---
 
-# Restart-AzureRmWebApp
+# Restart-AzWebApp
 
 ## SYNOPSIS
 Restarts an Azure Web App.
@@ -15,24 +15,24 @@ Restarts an Azure Web App.
 
 ### S1
 ```
-Restart-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Restart-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### S2
 ```
-Restart-AzureRmWebApp [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Restart-AzWebApp [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Restart-AzureRmWebApp** cmdlet stops and then starts an Azure Web App.
-If the Web App is in a stopped state, use the Start-AzureRmWebApp cmdlet.
+The **Restart-AzWebApp** cmdlet stops and then starts an Azure Web App.
+If the Web App is in a stopped state, use the Start-AzWebApp cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Restart a Web App
 ```
-PS C:\>Restart-AzureRmWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
+PS C:\>Restart-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 
 This command stops the Azure Web App named ContosoSite that belongs to the resource group named Default-Web-WestUS and then restarts it.
@@ -43,7 +43,7 @@ This command stops the Azure Web App named ContosoSite that belongs to the resou
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,14 +117,14 @@ Parameters: WebApp (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)
+[Get-AzWebApp](./Get-AzWebApp.md)
 
-[New-AzureRmWebApp](./New-AzureRmWebApp.md)
+[New-AzWebApp](./New-AzWebApp.md)
 
-[Remove-AzureRmWebApp](./Remove-AzureRmWebApp.md)
+[Remove-AzWebApp](./Remove-AzWebApp.md)
 
-[Start-AzureRmWebApp](./Start-AzureRmWebApp.md)
+[Start-AzWebApp](./Start-AzWebApp.md)
 
-[Stop-AzureRmWebApp](./Stop-AzureRmWebApp.md)
+[Stop-AzWebApp](./Stop-AzWebApp.md)
 
 

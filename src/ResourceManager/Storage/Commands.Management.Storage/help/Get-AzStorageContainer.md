@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
-Module Name: Azure.Storage
+Module Name: Az.Storage
 ms.assetid: 90C3DF13-0010-49B6-A8CD-C6AC34BC3EFA
-online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragecontainer
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azstoragecontainer
 schema: 2.0.0
 ---
 
-# Get-AzureStorageContainer
+# Get-AzStorageContainer
 
 ## SYNOPSIS
 Lists the storage containers.
@@ -15,33 +15,33 @@ Lists the storage containers.
 
 ### ContainerName (Default)
 ```
-Get-AzureStorageContainer [[-Name] <String>] [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>]
+Get-AzStorageContainer [[-Name] <String>] [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### ContainerPrefix
 ```
-Get-AzureStorageContainer -Prefix <String> [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>]
+Get-AzStorageContainer -Prefix <String> [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageContainer** cmdlet lists the storage containers associated with the storage account in Azure.
+The **Get-AzStorageContainer** cmdlet lists the storage containers associated with the storage account in Azure.
 
 ## EXAMPLES
 
 ### Example 1: Get Azure Storage blob by name
 ```
-PS C:\>Get-AzureStorageContainer -Name container*
+PS C:\>Get-AzStorageContainer -Name container*
 ```
 
 This example uses a wildcard character to return a list of all containers with a name that starts with container.
 
 ### Example 2: Get Azure Storage container by container name prefix
 ```
-PS C:\>Get-AzureStorageContainer -Prefix "container"
+PS C:\>Get-AzStorageContainer -Prefix "container"
 ```
 
 This example uses the *Prefix* parameter to return a list of all containers with a name that starts with container.
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies the storage context.
-To create it, you can use the New-AzureStorageContext cmdlet.
+To create it, you can use the New-AzStorageContext cmdlet.
 The container permissions won't be retrieved when you use a storage context created from SAS Token, because query container permissions requires Storage account key permission.
 
 ```yaml
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -212,10 +212,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageContainer](./New-AzureStorageContainer.md)
+[New-AzStorageContainer](./New-AzStorageContainer.md)
 
-[Remove-AzureStorageContainer](./Remove-AzureStorageContainer.md)
+[Remove-AzStorageContainer](./Remove-AzStorageContainer.md)
 
-[Set-AzureStorageContainerAcl](./Set-AzureStorageContainerAcl.md)
+[Set-AzStorageContainerAcl](./Set-AzStorageContainerAcl.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 ms.assetid: 0F9D72C1-2E42-4A67-9FDE-6344F5DE6C30
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsintelligencepacks
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightsintelligencepacks
 schema: 2.0.0
 ---
 
-# Get-AzureRmOperationalInsightsIntelligencePacks
+# Get-AzOperationalInsightsIntelligencePacks
 
 ## SYNOPSIS
 Gets the available Intelligence Packs.
@@ -14,18 +14,18 @@ Gets the available Intelligence Packs.
 ## SYNTAX
 
 ```
-Get-AzureRmOperationalInsightsIntelligencePacks [-ResourceGroupName] <String> [-WorkspaceName] <String>
+Get-AzOperationalInsightsIntelligencePacks [-ResourceGroupName] <String> [-WorkspaceName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmOperationalInsightsIntelligencePacks** cmdlet gets the available Intelligence Packs.
+The **Get-AzOperationalInsightsIntelligencePacks** cmdlet gets the available Intelligence Packs.
 
 ## EXAMPLES
 
 ### Example 1: Get Intelligence Packs
 ```
-PS C:\>Get-AzureOperationalInsightsStorageInsight -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
+PS C:\>Get-AzOperationalInsightsStorageInsight -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
 ```
 
 This command gets the available Intelligence Packs.
@@ -36,7 +36,7 @@ This command gets the available Intelligence Packs.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,6 +92,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure Operational Insights Cmdlets](./AzureRM.OperationalInsights.md)
+[Azure Operational Insights Cmdlets](./Az.OperationalInsights.md)
 
 

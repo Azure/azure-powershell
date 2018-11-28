@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-Module Name: AzureRM.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/test-azurermcontainerregistrynameavailability
+Module Name: Az.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/test-azcontainerregistrynameavailability
 schema: 2.0.0
 ---
 
-# Test-AzureRmContainerRegistryNameAvailability
+# Test-AzContainerRegistryNameAvailability
 
 ## SYNOPSIS
 Checks the availability of a container registry name.
@@ -13,18 +13,18 @@ Checks the availability of a container registry name.
 ## SYNTAX
 
 ```
-Test-AzureRmContainerRegistryNameAvailability [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Test-AzContainerRegistryNameAvailability [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Test-AzureRmContainerRegistryNameAvailability cmdlet checks whether a container registry name is valid and available to use.
+The Test-AzContainerRegistryNameAvailability cmdlet checks whether a container registry name is valid and available to use.
 
 ## EXAMPLES
 
 ### Example 1: Checks the availability of a container registry name
 ```powershell
-PS C:\>Test-AzureRmContainerRegistryNameAvailability -Name 'SomeRegistryName'
+PS C:\>Test-AzContainerRegistryNameAvailability -Name 'SomeRegistryName'
 
 NameAvailable Reason Message
 ------------- ------ -------
@@ -39,7 +39,7 @@ This command checks the availability of the container registry name \`SomeRegist
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,5 +80,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmContainerRegistry]()
+[New-AzContainerRegistry]()
 

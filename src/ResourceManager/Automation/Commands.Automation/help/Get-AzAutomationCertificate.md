@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: D690C903-A481-45F2-9D42-1CE2F4184A98
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationcertificate
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationCertificate
+# Get-AzAutomationCertificate
 
 ## SYNOPSIS
 Gets Automation certificates.
@@ -15,18 +15,18 @@ Gets Automation certificates.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationCertificate [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationCertificate [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateName
 ```
-Get-AzureRmAutomationCertificate [-Name] <String> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAutomationCertificate [-Name] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutomationCertificate** cmdlet gets one or more Azure Automation certificates.
+The **Get-AzAutomationCertificate** cmdlet gets one or more Azure Automation certificates.
 By default, this cmdlet gets all certificates.
 Specify the name of a certificate to get a specific certificate.
 
@@ -34,14 +34,14 @@ Specify the name of a certificate to get a specific certificate.
 
 ### Example 1: Get all certificates
 ```
-PS C:\>Get-AzureRmAutomationCertificate -ResourceGroupName "ResourceGroup07" -AutomationAccountName "Contoso17"
+PS C:\>Get-AzAutomationCertificate -ResourceGroupName "ResourceGroup07" -AutomationAccountName "Contoso17"
 ```
 
 This command gets metadata for all certificates in the Automation account named Contoso17.
 
 ### Example 2: Get a certificate
 ```
-PS C:\>Get-AzureRmAutomationCertificate -ResourceGroupName "ResourceGroup07" -AutomationAccountName "Contoso17" -Name "ContosoCertificate"
+PS C:\>Get-AzAutomationCertificate -ResourceGroupName "ResourceGroup07" -AutomationAccountName "Contoso17" -Name "ContosoCertificate"
 ```
 
 This command gets metadata for the certificate named ContosoCertificate.
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -123,10 +123,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAutomationCertificate](./New-AzureRMAutomationCertificate.md)
+[New-AzAutomationCertificate](./New-AzAutomationCertificate.md)
 
-[Remove-AzureRmAutomationCertificate](./Remove-AzureRMAutomationCertificate.md)
+[Remove-AzAutomationCertificate](./Remove-AzAutomationCertificate.md)
 
-[Set-AzureRmAutomationCertificate](./Set-AzureRMAutomationCertificate.md)
+[Set-AzAutomationCertificate](./Set-AzAutomationCertificate.md)
 
 

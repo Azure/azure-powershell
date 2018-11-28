@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 50E09DF7-F5B5-4668-9520-73D562E91800
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqldatabaseadvisorautoexecutestatus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabaseadvisorautoexecutestatus
 schema: 2.0.0
 ---
 
-# Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus
+# Set-AzSqlDatabaseAdvisorAutoExecuteStatus
 
 ## SYNOPSIS
 Modifies auto execute status of an Azure SQL Database Advisor.
@@ -14,21 +14,20 @@ Modifies auto execute status of an Azure SQL Database Advisor.
 ## SYNTAX
 
 ```
-Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus -AdvisorName <String>
- -AutoExecuteStatus <AdvisorAutoExecuteStatus> -ServerName <String> -DatabaseName <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzSqlDatabaseAdvisorAutoExecuteStatus -AdvisorName <String> -AutoExecuteStatus <AdvisorAutoExecuteStatus>
+ -ServerName <String> -DatabaseName <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus** cmdlet modifies the auto execute property for an Azure SQL Database Advisor.
+The **Set-AzSqlDatabaseAdvisorAutoExecuteStatus** cmdlet modifies the auto execute property for an Azure SQL Database Advisor.
 Currently, this cmdlet supports the values Enabled, Disabled, and Default.
 
 ## EXAMPLES
 
 ### Example 1: Enable auto execute for an advisor
 ```
-PS C:\>Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus -ResourceGroupName "ContosoRunnersProd" -ServerName "runner-australia-east" -DatabaseName "ContosoRunner" -AdvisorName "CreateIndex" -AutoExecuteStatus Enabled
+PS C:\>Set-AzSqlDatabaseAdvisorAutoExecuteStatus -ResourceGroupName "ContosoRunnersProd" -ServerName "runner-australia-east" -DatabaseName "ContosoRunner" -AdvisorName "CreateIndex" -AutoExecuteStatus Enabled
 DatabaseName                   : ContosoRunner
 ResourceGroupName              : ContosoRunnersProd
 ServerName                     : runner-australia-east
@@ -99,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -187,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlDatabaseAdvisor](./Get-AzureRmSqlDatabaseAdvisor.md)
+[Get-AzSqlDatabaseAdvisor](./Get-AzSqlDatabaseAdvisor.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.IotCentral.dll-Help.xml
-Module Name: AzureRM.IotCentral
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iotcentral/get-azurermiotcentralapp
+Module Name: Az.IotCentral
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iotcentral/get-aziotcentralapp
 schema: 2.0.0
 ---
 
-# Get-AzureRmIotCentralApp
+# Get-AzIotCentralApp
 
 ## SYNOPSIS
 Gets properties for either one or several IoT Central Applications.
@@ -14,19 +14,19 @@ Gets properties for either one or several IoT Central Applications.
 
 ### ListIotCentralAppsParameterSet (Default)
 ```
-Get-AzureRmIotCentralApp [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzIotCentralApp [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### InteractiveIotCentralParameterSet
 ```
-Get-AzureRmIotCentralApp [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIotCentralApp [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmIotCentralApp -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIotCentralApp -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ Gets the metadata for either a specific IoT Central Application, or all the appl
 
 ### Example 1 Get Specific IoT Central Application.
 ```powershell
-PS C:\> Get-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName"
+PS C:\> Get-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName"
 ```
 
 Gets the metadata for the specified IoT Central Application.
@@ -59,7 +59,7 @@ ResourceGroupName : MyResourceGroupName
 
 ### Example 2 Get IoT Central Applications in Subscription.
 ```powershell
-PS C:\> Get-AzureRmIotCentralApp
+PS C:\> Get-AzIotCentralApp
 ```
 
 Gets the metadata for all the IoT Central Applications in the current Subscription.
@@ -96,7 +96,7 @@ ResourceGroupName : MyResourceGroupName2
 
 ### Example 3 Get IoT Central Applications in Resource Group.
 ```powershell
-PS C:\> Get-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName"
+PS C:\> Get-AzIotCentralApp -ResourceGroupName "MyResourceGroupName"
 ```
 
 Gets the metadata for all IoT Central Applications in the provided Resource Group.
@@ -137,7 +137,7 @@ ResourceGroupName : MyResourceGroupName
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 Name of the Iot Central Application Resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InteractiveIotCentralParameterSet
 Aliases:
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 Name of the Resource Group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListIotCentralAppsParameterSet
 Aliases:
 
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InteractiveIotCentralParameterSet
 Aliases:
 
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 Iot Central Application Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermmanagementgroup/
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azmanagementgroup/
 schema: 2.0.0
 ---
 
-# New-AzureRmManagementGroup
+# New-AzManagementGroup
 
 ## SYNOPSIS
 Creates a Management Group
@@ -14,25 +14,24 @@ Creates a Management Group
 
 ### GroupOperations (Default)
 ```
-New-AzureRmManagementGroup [-GroupName] <String> [-DisplayName <String>] [-ParentId <String>]
+New-AzManagementGroup [-GroupName] <String> [-DisplayName <String>] [-ParentId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentGroupObject
 ```
-New-AzureRmManagementGroup [-GroupName] <String> [-DisplayName <String>]
- [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzManagementGroup [-GroupName] <String> [-DisplayName <String>] [-DefaultProfile <IAzureContextContainer>]
+ -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRMManagementGroup** cmdlet creates a management group.
+The **New-AzManagementGroup** cmdlet creates a management group.
 
 ## EXAMPLES
 
 ### Example 1: Create a Management Group
 ```
-PS C:\> New-AzureRmManagementGroup -GroupName "TestGroup"
+PS C:\> New-AzManagementGroup -GroupName "TestGroup"
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -50,7 +49,7 @@ Creation of a new group with `DisplayName` and `ParentId` set to `null`. The `Di
 
 ### Example 2: Create a Management Group with a display name
 ```
-PS C:\> New-AzureRmManagementGroup -GroupName "TestGroup" -DisplayName "TestGroupDisplayName"
+PS C:\> New-AzManagementGroup -GroupName "TestGroup" -DisplayName "TestGroupDisplayName"
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -68,7 +67,7 @@ In this case, the parent of the group will be the tenant and the `DisplayName` w
 
 ### Example 3: Create a Management Group with a parent and a display name
 ```
-PS C:\> New-AzureRmManagementGroup -GroupName "TestGroup" -DisplayName "TestGroupDisplayName" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
+PS C:\> New-AzManagementGroup -GroupName "TestGroup" -DisplayName "TestGroupDisplayName" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -84,8 +83,8 @@ ParentDisplayName : TestGroupParent
 
 ### Example 4: Create a Management Group with a parent (using a parent object)
 ```
-PS C:\> $parentObject = Get-AzureRmManagementGroup -GroupName "TestGroupParent"
-PS C:\> New-AzureRmManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
+PS C:\> $parentObject = Get-AzManagementGroup -GroupName "TestGroupParent"
+PS C:\> New-AzManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -105,7 +104,7 @@ ParentDisplayName : TestGroupParent
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -222,8 +221,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRMManagementGroup](./Remove-AzureRMManagementGroup.md)
+[Remove-AzManagementGroup](./Remove-AzManagementGroup.md)
 
-[Update-AzureRmManagementGroup](./Update-AzureRmManagementGroup.md)
+[Update-AzManagementGroup](./Update-AzManagementGroup.md)
 
-[Get-AzureRmManagementGroup](./Get-AzureRmManagementGroup.md)
+[Get-AzManagementGroup](./Get-AzManagementGroup.md)

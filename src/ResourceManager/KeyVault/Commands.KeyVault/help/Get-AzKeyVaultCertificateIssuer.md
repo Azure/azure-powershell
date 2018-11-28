@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 5F856280-C561-47B5-AA96-27E34C86D604
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultcertificateissuer
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultcertificateissuer
 schema: 2.0.0
 ---
 
-# Get-AzureKeyVaultCertificateIssuer
+# Get-AzKeyVaultCertificateIssuer
 
 ## SYNOPSIS
 Gets a certificate issuer for a key vault.
@@ -15,30 +15,30 @@ Gets a certificate issuer for a key vault.
 
 ### ByName (Default)
 ```
-Get-AzureKeyVaultCertificateIssuer [-VaultName] <String> [[-Name] <String>]
+Get-AzKeyVaultCertificateIssuer [-VaultName] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Get-AzureKeyVaultCertificateIssuer [-InputObject] <PSKeyVault> [[-Name] <String>]
+Get-AzKeyVaultCertificateIssuer [-InputObject] <PSKeyVault> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzureKeyVaultCertificateIssuer [-ResourceId] <String> [[-Name] <String>]
+Get-AzKeyVaultCertificateIssuer [-ResourceId] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureKeyVaultCertificateIssuer** cmdlet gets a specified certificate issuer or all certificate issuers for a key vault in Azure Key Vault.
+The **Get-AzKeyVaultCertificateIssuer** cmdlet gets a specified certificate issuer or all certificate issuers for a key vault in Azure Key Vault.
 
 ## EXAMPLES
 
 ### Example 1: Get a certificate issuer
 ```powershell
-PS C:\> Get-AzureKeyVaultCertificateIssuer -VaultName "Contosokv01" -Name "TestIssuer01"
+PS C:\> Get-AzKeyVaultCertificateIssuer -VaultName "Contosokv01" -Name "TestIssuer01"
 
 AccountId           : 555
 ApiKey              :
@@ -56,7 +56,7 @@ This command gets the certificate issuer named TestIssuer01.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -147,8 +147,8 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Remove-AzureKeyVaultCertificateIssuer](./Remove-AzureKeyVaultCertificateIssuer.md)
+[Remove-AzKeyVaultCertificateIssuer](./Remove-AzKeyVaultCertificateIssuer.md)
 
-[Set-AzureKeyVaultCertificateIssuer](./Set-AzureKeyVaultCertificateIssuer.md)
+[Set-AzKeyVaultCertificateIssuer](./Set-AzKeyVaultCertificateIssuer.md)
 
 

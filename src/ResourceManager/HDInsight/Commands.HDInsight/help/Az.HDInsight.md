@@ -1,127 +1,127 @@
 ---
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 Module Guid: 3fd1475f-cb23-4ffb-bf08-33d94b7d1acb
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight
 Help Version: 4.1.2.0
 Locale: en-US
 ---
 
-# AzureRM.HDInsight Module
+# Az.HDInsight Module
 ## Description
 The topics in this section document the Azure PowerShell cmdlets for Microsoft Azure HDInsight in the Azure Resource Manager (ARM) framework. These cmdlets are used to manage HDInsight clusters and the jobs that run on them. The cmdlets exist in the Microsoft.Azure.Commands.HDInsight namespace.
 
-## AzureRM.HDInsight Cmdlets
-### [Add-AzureRmHDInsightClusterIdentity](Add-AzureRmHDInsightClusterIdentity.md)
+## Az.HDInsight Cmdlets
+### [Add-AzHDInsightClusterIdentity](Add-AzHDInsightClusterIdentity.md)
 Adds a cluster identity to a cluster configuration object.
 
-### [Add-AzureRmHDInsightComponentVersion](Add-AzureRmHDInsightComponentVersion.md)
+### [Add-AzHDInsightComponentVersion](Add-AzHDInsightComponentVersion.md)
 Adds a version for a service running in a cluster to a cluster configuration object.
 
-### [Add-AzureRmHDInsightConfigValues](Add-AzureRmHDInsightConfigValues.md)
+### [Add-AzHDInsightConfigValues](Add-AzHDInsightConfigValues.md)
 Adds a Hadoop configuration value customization and/or a Hive shared library customization to a cluster configuration object.
 
-### [Add-AzureRmHDInsightMetastore](Add-AzureRmHDInsightMetastore.md)
+### [Add-AzHDInsightMetastore](Add-AzHDInsightMetastore.md)
 Adds a SQL Database to serve as a Hive or Oozie metastore to a cluster configuration object.
 
-### [Add-AzureRmHDInsightScriptAction](Add-AzureRmHDInsightScriptAction.md)
+### [Add-AzHDInsightScriptAction](Add-AzHDInsightScriptAction.md)
 Adds a script action to a cluster configuration object.
 
-### [Add-AzureRmHDInsightSecurityProfile](Add-AzureRmHDInsightSecurityProfile.md)
+### [Add-AzHDInsightSecurityProfile](Add-AzHDInsightSecurityProfile.md)
 Adds a security profileto a cluster configuration object.
 
-### [Add-AzureRmHDInsightStorage](Add-AzureRmHDInsightStorage.md)
+### [Add-AzHDInsightStorage](Add-AzHDInsightStorage.md)
 Adds an Azure Storage key to a cluster configuration object.
 
-### [Disable-AzureRmHDInsightOperationsManagementSuite](Disable-AzureRmHDInsightOperationsManagementSuite.md)
+### [Disable-AzHDInsightOperationsManagementSuite](Disable-AzHDInsightOperationsManagementSuite.md)
 Disables Operations Management Suite (OMS) in a HDInsight cluster and relevant logs will stop flowing to the OMS workspace specified during enable.
 
-### [Enable-AzureRmHDInsightOperationsManagementSuite](Enable-AzureRmHDInsightOperationsManagementSuite.md)
+### [Enable-AzHDInsightOperationsManagementSuite](Enable-AzHDInsightOperationsManagementSuite.md)
 Enables Operations Management Suite (OMS) in a HDInsight cluster and relevant logs will be sent to the OMS workspace specified during enable.
 
-### [Get-AzureRmHDInsightCluster](Get-AzureRmHDInsightCluster.md)
+### [Get-AzHDInsightCluster](Get-AzHDInsightCluster.md)
 Gets and lists all of the Azure HDInsight clusters associated with the current subscription or a specified resource group, or retrieves a specific cluster.
 
-### [Get-AzureRmHDInsightJob](Get-AzureRmHDInsightJob.md)
+### [Get-AzHDInsightJob](Get-AzHDInsightJob.md)
 Gets the list of jobs from a cluster and lists them in reverse chronological order, or retrieves a specific job.
 
-### [Get-AzureRmHDInsightJobOutput](Get-AzureRmHDInsightJobOutput.md)
+### [Get-AzHDInsightJobOutput](Get-AzHDInsightJobOutput.md)
 Gets the log output for a job from the storage account associated with a specified cluster.
 
-### [Get-AzureRmHDInsightOperationsManagementSuite](Get-AzureRmHDInsightOperationsManagementSuite.md)
+### [Get-AzHDInsightOperationsManagementSuite](Get-AzHDInsightOperationsManagementSuite.md)
 Gets the status of Operations Management Suite (OMS) installation on the cluster.
 
-### [Get-AzureRmHDInsightPersistedScriptAction](Get-AzureRmHDInsightPersistedScriptAction.md)
+### [Get-AzHDInsightPersistedScriptAction](Get-AzHDInsightPersistedScriptAction.md)
 Gets the persisted script actions for a cluster and lists them in chronological order, or gets details for a specified persisted script action.
 
-### [Get-AzureRmHDInsightProperties](Get-AzureRmHDInsightProperties.md)
+### [Get-AzHDInsightProperties](Get-AzHDInsightProperties.md)
 Gets properties about the HDInsight service, such as available locations and capacity.
 
-### [Get-AzureRmHDInsightScriptActionHistory](Get-AzureRmHDInsightScriptActionHistory.md)
+### [Get-AzHDInsightScriptActionHistory](Get-AzHDInsightScriptActionHistory.md)
 Gets the script action history for a cluster and lists it in reverse chronological order, or gets details of a previously executed script action.
 
-### [Grant-AzureRmHDInsightHttpServicesAccess](Grant-AzureRmHDInsightHttpServicesAccess.md)
+### [Grant-AzHDInsightHttpServicesAccess](Grant-AzHDInsightHttpServicesAccess.md)
 Grants HTTP access to the cluster.
 
-### [Grant-AzureRmHDInsightRdpServicesAccess](Grant-AzureRmHDInsightRdpServicesAccess.md)
+### [Grant-AzHDInsightRdpServicesAccess](Grant-AzHDInsightRdpServicesAccess.md)
 Grants RDP access to the Windows cluster.
 
-### [Invoke-AzureRmHDInsightHiveJob](Invoke-AzureRmHDInsightHiveJob.md)
+### [Invoke-AzHDInsightHiveJob](Invoke-AzHDInsightHiveJob.md)
 Submits a Hive query to an HDInsight cluster and retrieves query results in one operation.
 
-### [New-AzureRmHDInsightCluster](New-AzureRmHDInsightCluster.md)
+### [New-AzHDInsightCluster](New-AzHDInsightCluster.md)
 Creates an Azure HDInsight cluster in the specified resource group for the current subscription.
 
-### [New-AzureRmHDInsightClusterConfig](New-AzureRmHDInsightClusterConfig.md)
+### [New-AzHDInsightClusterConfig](New-AzHDInsightClusterConfig.md)
 Creates a non-persisted cluster configuration object that describes an Azure HDInsight cluster configuration.
 
-### [New-AzureRmHDInsightHiveJobDefinition](New-AzureRmHDInsightHiveJobDefinition.md)
+### [New-AzHDInsightHiveJobDefinition](New-AzHDInsightHiveJobDefinition.md)
 Creates a Hive job object.
 
-### [New-AzureRmHDInsightMapReduceJobDefinition](New-AzureRmHDInsightMapReduceJobDefinition.md)
+### [New-AzHDInsightMapReduceJobDefinition](New-AzHDInsightMapReduceJobDefinition.md)
 Creates a MapReduce job object.
 
-### [New-AzureRmHDInsightPigJobDefinition](New-AzureRmHDInsightPigJobDefinition.md)
+### [New-AzHDInsightPigJobDefinition](New-AzHDInsightPigJobDefinition.md)
 Creates a Pig job object.
 
-### [New-AzureRmHDInsightSqoopJobDefinition](New-AzureRmHDInsightSqoopJobDefinition.md)
+### [New-AzHDInsightSqoopJobDefinition](New-AzHDInsightSqoopJobDefinition.md)
 Creates a Sqoop job object.
 
-### [New-AzureRmHDInsightStreamingMapReduceJobDefinition](New-AzureRmHDInsightStreamingMapReduceJobDefinition.md)
+### [New-AzHDInsightStreamingMapReduceJobDefinition](New-AzHDInsightStreamingMapReduceJobDefinition.md)
 Creates a Streaming MapReduce job object.
 
-### [Remove-AzureRmHDInsightCluster](Remove-AzureRmHDInsightCluster.md)
+### [Remove-AzHDInsightCluster](Remove-AzHDInsightCluster.md)
 Removes the specified HDInsight cluster from the current subscription.
 
-### [Remove-AzureRmHDInsightPersistedScriptAction](Remove-AzureRmHDInsightPersistedScriptAction.md)
+### [Remove-AzHDInsightPersistedScriptAction](Remove-AzHDInsightPersistedScriptAction.md)
 Removes an persisted script action from an HDInsight cluster.
 
-### [Revoke-AzureRmHDInsightHttpServicesAccess](Revoke-AzureRmHDInsightHttpServicesAccess.md)
+### [Revoke-AzHDInsightHttpServicesAccess](Revoke-AzHDInsightHttpServicesAccess.md)
 Disables HTTP access to the cluster.
 
-### [Revoke-AzureRmHDInsightRdpServicesAccess](Revoke-AzureRmHDInsightRdpServicesAccess.md)
+### [Revoke-AzHDInsightRdpServicesAccess](Revoke-AzHDInsightRdpServicesAccess.md)
 Disables RDP access to a Windows cluster.
 
-### [Set-AzureRmHDInsightClusterSize](Set-AzureRmHDInsightClusterSize.md)
+### [Set-AzHDInsightClusterSize](Set-AzHDInsightClusterSize.md)
 Sets the number of Worker nodes in a specified cluster.
 
-### [Set-AzureRmHDInsightDefaultStorage](Set-AzureRmHDInsightDefaultStorage.md)
+### [Set-AzHDInsightDefaultStorage](Set-AzHDInsightDefaultStorage.md)
 Sets the default Storage account setting in a cluster configuration object.
 
-### [Set-AzureRmHDInsightPersistedScriptAction](Set-AzureRmHDInsightPersistedScriptAction.md)
+### [Set-AzHDInsightPersistedScriptAction](Set-AzHDInsightPersistedScriptAction.md)
 Sets a previously executed script action to be a persisted script action.
 
-### [Start-AzureRmHDInsightJob](Start-AzureRmHDInsightJob.md)
+### [Start-AzHDInsightJob](Start-AzHDInsightJob.md)
 Starts a defined Azure HDInsight job on a specified cluster.
 
-### [Stop-AzureRmHDInsightJob](Stop-AzureRmHDInsightJob.md)
+### [Stop-AzHDInsightJob](Stop-AzHDInsightJob.md)
 Stops a specified running job on a cluster.
 
-### [Submit-AzureRmHDInsightScriptAction](Submit-AzureRmHDInsightScriptAction.md)
+### [Submit-AzHDInsightScriptAction](Submit-AzHDInsightScriptAction.md)
 Submits a new script action to an Azure HDInsight cluster.
 
-### [Use-AzureRmHDInsightCluster](Use-AzureRmHDInsightCluster.md)
+### [Use-AzHDInsightCluster](Use-AzHDInsightCluster.md)
 Selects a cluster to be used with the Invoke-RmAzureHDInsightHiveJob cmdlet.
 
-### [Wait-AzureRmHDInsightJob](Wait-AzureRmHDInsightJob.md)
+### [Wait-AzHDInsightJob](Wait-AzHDInsightJob.md)
 Waits for the completion or failure of a specified job.
 

@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationsourcecontrolsyncjoboutput
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationsourcecontrolsyncjoboutput
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationSourceControlSyncJobOutput
+# Get-AzAutomationSourceControlSyncJobOutput
 
 ## SYNOPSIS
 Gets the output of an Azure Automation source control sync job.
@@ -13,13 +13,13 @@ Gets the output of an Azure Automation source control sync job.
 ## SYNTAX
 
 ```
-Get-AzureRmAutomationSourceControlSyncJobOutput -SourceControlName <String> -JobId <Guid>
+Get-AzAutomationSourceControlSyncJobOutput -SourceControlName <String> -JobId <Guid>
  [-Stream <SourceControlSyncJobStreamType>] [-StreamId <String>] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutomationSourceControlSyncJobOutput** cmdlet gets the output for a Azure Automation source control sync job.
+The **Get-AzAutomationSourceControlSyncJobOutput** cmdlet gets the output for a Azure Automation source control sync job.
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ This command gets the output of source control sync job with id 08d6d266-27b6-46
 
 
 ```powershell
-PS C:\> Get-AzureRmAutomationSourceControlSyncJobOutput -ResourceGroupName "rg1" `
+PS C:\> Get-AzAutomationSourceControlSyncJobOutput -ResourceGroupName "rg1" `
                                                         -AutomationAccountName "devAccount" `
                                                         -Name "VSTSNative"
                                                         -Id "08d6d266-27b6-463c-beea-bc48a67ace15" `
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
-Module Name: AzureRM.MachineLearningCompute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/get-azurermmlopcluster
+Module Name: Az.MachineLearningCompute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearningcompute/get-azmlopcluster
 schema: 2.0.0
 ---
 
-# Get-AzureRmMlOpCluster
+# Get-AzMlOpCluster
 
 ## SYNOPSIS
 Gets an operationalization cluster object.
@@ -14,14 +14,13 @@ Gets an operationalization cluster object.
 
 ### GetByName
 ```
-Get-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzMlOpCluster -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByResourceGroup
 ```
-Get-AzureRmMlOpCluster [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzMlOpCluster [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,21 +30,21 @@ Gets an operationalization cluster object by name, or by resource group, or by s
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmMlOpCluster -ResourceGroupName my-group -Name my-cluster
+PS C:\> Get-AzMlOpCluster -ResourceGroupName my-group -Name my-cluster
 ```
 
 Gets a specific operationalization cluster by name.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmMlOpCluster -ResourceGroupName my-group
+PS C:\> Get-AzMlOpCluster -ResourceGroupName my-group
 ```
 
 Gets all the operationalization clusters in a resource group.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmMlOpCluster
+PS C:\> Get-AzMlOpCluster
 ```
 
 Gets all the operationalization clusters in a subscription.
@@ -56,7 +55,7 @@ Gets all the operationalization clusters in a subscription.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

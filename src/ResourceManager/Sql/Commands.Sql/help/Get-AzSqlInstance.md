@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlinstance
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlinstance
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlInstance
+# Get-AzSqlInstance
 
 ## SYNOPSIS
 Returns information about Azure SQL Managed Database Instance.
@@ -14,25 +14,25 @@ Returns information about Azure SQL Managed Database Instance.
 
 ### GetInstanceByResourceGroup (Default)
 ```
-Get-AzureRmSqlInstance [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzSqlInstance [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetInstanceByNameAndResourceGroup
 ```
-Get-AzureRmSqlInstance [-Name] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlInstance** cmdlet returns information about one or more Azure SQL Managed Instances.
+The **Get-AzSqlInstance** cmdlet returns information about one or more Azure SQL Managed Instances.
 Specify the name of a instance to see information for only that instance.
 
 ## EXAMPLES
 
 ### Example 1: Get all instances assigned to a resource group
 ```
-PS C:\>Get-AzureRmSqlInstance -ResourceGroupName "ResourceGroup01"
+PS C:\>Get-AzSqlInstance -ResourceGroupName "ResourceGroup01"
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -68,7 +68,7 @@ This command gets information about all instances assigned to the resource group
 
 ### Example 2: Get information about an  instance
 ```
-PS C:\>Get-AzureRmSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\>Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -93,7 +93,7 @@ This command gets information about the instance named managedInstance1.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 SQL instance name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetInstanceByNameAndResourceGroup
 Aliases: InstanceName
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetInstanceByResourceGroup
 Aliases:
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetInstanceByNameAndResourceGroup
 Aliases:
 

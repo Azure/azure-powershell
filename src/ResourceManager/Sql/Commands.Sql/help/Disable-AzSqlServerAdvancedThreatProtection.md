@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/disable-azurermsqlserveradvancedthreatprotection
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/disable-azsqlserveradvancedthreatprotection
 schema: 2.0.0
 ---
 
-# Disable-AzureRmSqlServerAdvancedThreatProtection
+# Disable-AzSqlServerAdvancedThreatProtection
 
 ## SYNOPSIS
 Disables Advanced Threat Protection on a server.
@@ -13,19 +13,19 @@ Disables Advanced Threat Protection on a server.
 ## SYNTAX
 
 ```
-Disable-AzureRmSqlServerAdvancedThreatProtection [-InputObject <AzureSqlServerModel>] -ServerName <String>
+Disable-AzSqlServerAdvancedThreatProtection [-InputObject <AzureSqlServerModel>] -ServerName <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzureRmSqlServerAdvancedThreatProtection** cmdlet disables Advanced Threat Protection on a server.
+The **Disable-AzSqlServerAdvancedThreatProtection** cmdlet disables Advanced Threat Protection on a server.
 
 ## EXAMPLES
 
 ### Example 1 - Disable server Advanced Threat Protection
 ```powershell
-PS C:\>  Disable-AzureRmSqlServerAdvancedThreatProtection `
+PS C:\>  Disable-AzSqlServerAdvancedThreatProtection `
             -ResourceGroupName "ResourceGroup01" `
             -ServerName "Server01" 
 
@@ -36,10 +36,10 @@ IsEnabled		             : False
 
 ### Example 2 - Disable server Advanced Threat Protection from server resource
 ```powershell
-PS C:\>  Get-AzureRmSqlServer `
+PS C:\>  Get-AzSqlServer `
            -ResourceGroupName "ResourceGroup01" `
            -ServerName "Server01" `
-           | Disable-AzureRmSqlServerAdvancedThreatProtection
+           | Disable-AzSqlServerAdvancedThreatProtection
 
 ResourceGroupName	         : ResourceGroup01
 ServerName		             : Server01
@@ -52,7 +52,7 @@ IsEnabled		             : False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

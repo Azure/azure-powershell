@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: A4A8D996-72A2-4154-98DA-5F84CAA010B9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementoperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementoperation
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApiManagementOperation
+# Remove-AzApiManagementOperation
 
 ## SYNOPSIS
 Removes an existing operation.
@@ -14,20 +14,20 @@ Removes an existing operation.
 ## SYNTAX
 
 ```
-Remove-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
+Remove-AzApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
  -OperationId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmApiManagementOperation** cmdlet removes an existing operation.
+The **Remove-AzApiManagementOperation** cmdlet removes an existing operation.
 
 ## EXAMPLES
 
 ### Example 1: Remove an existing API Operation
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzureRmApiManagementOperation -Context $apimContext -ApiId "0123456789" -OperationId "9876543210" -Force
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzApiManagementOperation -Context $apimContext -ApiId "0123456789" -OperationId "9876543210" -Force
 ```
 
 This command removes an existing API Operation.
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -174,10 +174,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementOperation](./Get-AzureRmApiManagementOperation.md)
+[Get-AzApiManagementOperation](./Get-AzApiManagementOperation.md)
 
-[New-AzureRmApiManagementOperation](./New-AzureRmApiManagementOperation.md)
+[New-AzApiManagementOperation](./New-AzApiManagementOperation.md)
 
-[Set-AzureRmApiManagementOperation](./Set-AzureRmApiManagementOperation.md)
+[Set-AzApiManagementOperation](./Set-AzApiManagementOperation.md)
 
 

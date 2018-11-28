@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: D6D4E733-31AE-4ABE-8C78-583EC48C56B8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/new-azurermwebapp
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azwebapp
 schema: 2.0.0
 ---
 
-# New-AzureRmWebApp
+# New-AzWebApp
 
 ## SYNOPSIS
 Creates an Azure Web App.
@@ -15,7 +15,7 @@ Creates an Azure Web App.
 
 ### SimpleParameterSet (Default)
 ```
-New-AzureRmWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <String>]
+New-AzWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <String>]
  [[-AppServicePlan] <String>] [-ContainerImageName <String>] [-EnableContainerContinuousDeployment] [-AsJob]
  [-GitRepositoryPath <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,31 +23,29 @@ New-AzureRmWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] 
 
 ### PrivateRegistry
 ```
-New-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>]
- [[-AppServicePlan] <String>] -ContainerImageName <String> -ContainerRegistryUrl <String>
- -ContainerRegistryUser <String> -ContainerRegistryPassword <SecureString>
- [-EnableContainerContinuousDeployment] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>] [[-AppServicePlan] <String>]
+ -ContainerImageName <String> -ContainerRegistryUrl <String> -ContainerRegistryUser <String>
+ -ContainerRegistryPassword <SecureString> [-EnableContainerContinuousDeployment] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### WebAppParameterSet
 ```
-New-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-AppServicePlan] <String>] [[-SourceWebApp] <PSSite>] [[-TrafficManagerProfile] <String>]
- [-EnableContainerContinuousDeployment] [-IgnoreSourceControl] [-IgnoreCustomHostNames]
- [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>] [[-AseResourceGroupName] <String>]
- [-IncludeSourceWebAppSlots] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-AppServicePlan] <String>]
+ [[-SourceWebApp] <PSSite>] [[-TrafficManagerProfile] <String>] [-EnableContainerContinuousDeployment]
+ [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
+ [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmWebApp** cmdlet creates an Azure Web App in a given a resource group that uses the specified App Service plan and data center.
+The **New-AzWebApp** cmdlet creates an Azure Web App in a given a resource group that uses the specified App Service plan and data center.
 
 ## EXAMPLES
 
 ### Example 1: Create a Web App
 ```
-PS C:\>New-AzureRmWebApp -ResourceGroupName Default-Web-WestUS -Name "ContosoSite" -Location "West US" -AppServicePlan "ContosoServicePlan"
+PS C:\>New-AzWebApp -ResourceGroupName Default-Web-WestUS -Name "ContosoSite" -Location "West US" -AppServicePlan "ContosoServicePlan"
 ```
 
 This command creates an Azure Web App named ContosoSite in the existing resource group named Default-Web-WestUS in data center West US.
@@ -206,7 +204,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -301,7 +299,7 @@ Parameter Sets: SimpleParameterSet, PrivateRegistry
 Aliases:
 
 Required: False
-Position: 2
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -313,7 +311,7 @@ Parameter Sets: WebAppParameterSet
 Aliases:
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -437,14 +435,14 @@ Parameters: SourceWebApp (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)
+[Get-AzWebApp](./Get-AzWebApp.md)
 
-[Remove-AzureRmWebApp](./Remove-AzureRmWebApp.md)
+[Remove-AzWebApp](./Remove-AzWebApp.md)
 
-[Restart-AzureRmWebApp](./Restart-AzureRmWebApp.md)
+[Restart-AzWebApp](./Restart-AzWebApp.md)
 
-[Start-AzureRmWebApp](./Start-AzureRmWebApp.md)
+[Start-AzWebApp](./Start-AzWebApp.md)
 
-[Stop-AzureRmWebApp](./Stop-AzureRmWebApp.md)
+[Stop-AzWebApp](./Stop-AzWebApp.md)
 
 

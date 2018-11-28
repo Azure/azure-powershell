@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 2B7C1B83-EEEA-4BD1-9E9B-1F3070295995
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/get-azurermhdinsightpersistedscriptaction
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/get-azhdinsightpersistedscriptaction
 schema: 2.0.0
 ---
 
-# Get-AzureRmHDInsightPersistedScriptAction
+# Get-AzHDInsightPersistedScriptAction
 
 ## SYNOPSIS
 Gets the persisted script actions for a cluster and lists them in chronological order, or gets details for a specified persisted script action.
@@ -14,18 +14,18 @@ Gets the persisted script actions for a cluster and lists them in chronological 
 ## SYNTAX
 
 ```
-Get-AzureRmHDInsightPersistedScriptAction [-ClusterName] <String> [[-Name] <String>]
+Get-AzHDInsightPersistedScriptAction [-ClusterName] <String> [[-Name] <String>]
  [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmHDInsightPersistedScriptAction** cmdlet gets the persisted script actions for an Azure HDInsight cluster and lists them in chronological order, or gets details for a specified persisted script action.
+The **Get-AzHDInsightPersistedScriptAction** cmdlet gets the persisted script actions for an Azure HDInsight cluster and lists them in chronological order, or gets details for a specified persisted script action.
 
 ## EXAMPLES
 
 ### Example 1: Get the persisted script actions on a cluster
 ```
-PS C:\>Get-AzureRmHDInsightPersistedScriptAction -ClusterName "your-hadoop-001"
+PS C:\>Get-AzHDInsightPersistedScriptAction -ClusterName "your-hadoop-001"
 ```
 
 This command gets persisted script actions on the cluster named your-hadoop-001.
@@ -107,8 +107,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmHDInsightPersistedScriptAction](./Remove-AzureRmHDInsightPersistedScriptAction.md)
+[Remove-AzHDInsightPersistedScriptAction](./Remove-AzHDInsightPersistedScriptAction.md)
 
-[Set-AzureRmHDInsightPersistedScriptAction](./Set-AzureRmHDInsightPersistedScriptAction.md)
+[Set-AzHDInsightPersistedScriptAction](./Set-AzHDInsightPersistedScriptAction.md)
 
 

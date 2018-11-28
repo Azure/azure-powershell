@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 73E6DF02-7171-481B-966F-DECEC122A602
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/register-azurermautomationdscnode
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/register-azautomationdscnode
 schema: 2.0.0
 ---
 
-# Register-AzureRmAutomationDscNode
+# Register-AzAutomationDscNode
 
 ## SYNOPSIS
 Registers an Azure virtual machine as a DSC node for an Automation account.
@@ -14,7 +14,7 @@ Registers an Azure virtual machine as a DSC node for an Automation account.
 ## SYNTAX
 
 ```
-Register-AzureRmAutomationDscNode -AzureVMName <String> [-NodeConfigurationName <String>]
+Register-AzAutomationDscNode -AzureVMName <String> [-NodeConfigurationName <String>]
  [-ConfigurationMode <String>] [-ConfigurationModeFrequencyMins <Int32>] [-RefreshFrequencyMins <Int32>]
  [-RebootNodeIfNeeded <Boolean>] [-ActionAfterReboot <String>] [-AllowModuleOverwrite <Boolean>]
  [-AzureVMResourceGroup <String>] [-AzureVMLocation <String>] [-ResourceGroupName] <String>
@@ -22,13 +22,13 @@ Register-AzureRmAutomationDscNode -AzureVMName <String> [-NodeConfigurationName 
 ```
 
 ## DESCRIPTION
-The **Register-AzureRmAutomationDscNode** cmdlet registers an Azure virtual machine as an APS Desired State Configuration (DSC) node in an Azure Automation account.
+The **Register-AzAutomationDscNode** cmdlet registers an Azure virtual machine as an APS Desired State Configuration (DSC) node in an Azure Automation account.
 
 ## EXAMPLES
 
 ### Example 1: Register an Azure virtual machine as an Azure DSC node
 ```
-PS C:\>Register-AzureRmAutomationDscNode -AutomationAccountName "Contoso17" -AzureVMName "VirtualMachine01" -ResourceGroupName "ResourceGroup01"-NodeConfigurationName "ContosoConfiguration.webserver"
+PS C:\>Register-AzAutomationDscNode -AutomationAccountName "Contoso17" -AzVMName "VirtualMachine01" -ResourceGroupName "ResourceGroup01"-NodeConfigurationName "ContosoConfiguration.webserver"
 ```
 
 This command registers the Azure virtual machine named VirtualMachine01 as a DSC node in the Automation account named Contoso17.
@@ -85,8 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureVMLocation
-Specifies the location in which this cmdlet registers a virtual machine.
-To obtain valid locations, use the Get-AzureRMLocation cmdlet.
+The Azure VM location.
 
 ```yaml
 Type: System.String
@@ -101,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureVMName
-Specifies the name of the Azure virtual machine that this cmdlet registers for management.
+The name of the Azure virtual machine to register for management with Azure Automation DSC.
 
 ```yaml
 Type: System.String
@@ -116,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureVMResourceGroup
-Specifies the name of the resource group of the Azure virtual machine that this cmdlet registers.
+The Azure VM resource group name.
 
 ```yaml
 Type: System.String
@@ -169,7 +168,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -260,10 +259,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationDscNode](./Get-AzureRmAutomationDscNode.md)
+[Get-AzAutomationDscNode](./Get-AzAutomationDscNode.md)
 
-[Set-AzureRmAutomationDscNode](./Set-AzureRmAutomationDscNode.md)
+[Set-AzAutomationDscNode](./Set-AzAutomationDscNode.md)
 
-[Unregister-AzureRmAutomationDscNode](./Unregister-AzureRmAutomationDscNode.md)
+[Unregister-AzAutomationDscNode](./Unregister-AzAutomationDscNode.md)
 
 

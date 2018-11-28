@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: A1EA7D34-A8B4-4FA0-BD8C-3E846715AFBA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmplan
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmplan
 schema: 2.0.0
 ---
 
-# Set-AzureRmVMPlan
+# Set-AzVMPlan
 
 ## SYNOPSIS
 Sets the Marketplace plan information on a virtual machine.
@@ -14,12 +14,12 @@ Sets the Marketplace plan information on a virtual machine.
 ## SYNTAX
 
 ```
-Set-AzureRmVMPlan [-VM] <PSVirtualMachine> [-Name] <String> [[-Product] <String>] [[-PromotionCode] <String>]
+Set-AzVMPlan [-VM] <PSVirtualMachine> [-Name] <String> [[-Product] <String>] [[-PromotionCode] <String>]
  [[-Publisher] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMPlan** cmdlet sets the Azure Marketplace plan information for a virtual machine.
+The **Set-AzVMPlan** cmdlet sets the Azure Marketplace plan information for a virtual machine.
 Before being able to deploy a Marketplace image through the command-line, programmatic access must be enabled or the virtual machine must be deployed by using the Azure portal.
 
 ## EXAMPLES
@@ -30,7 +30,7 @@ Before being able to deploy a Marketplace image through the command-line, progra
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -43,7 +43,7 @@ Accept wildcard characters: False
 
 ### -Name
 Specifies the name of the image from the Marketplace.
-This is the same value that is returned by the Get-AzureRmVMImageSku cmdlet.
+This is the same value that is returned by the Get-AzVMImageSku cmdlet.
 For more information about how to find image information, see Navigating and Selecting Azure Virtual Machine images with PowerShell and the Azure CLIhttps://azure.microsoft.com/documentation/articles/resource-groups-vm-searching/ (https://azure.microsoft.com/documentation/articles/resource-groups-vm-searching/) in the Microsoft Azure documentation.
 
 ```yaml
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 
 ### -Publisher
 Specifies the publisher of the image.
-You can find this information by using the Get-AzureRmVMImagePublisher cmdlet.
+You can find this information by using the Get-AzVMImagePublisher cmdlet.
 
 ```yaml
 Type: System.String
@@ -107,8 +107,8 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies the virtual machine object for which to set a Marketplace plan.
-You can use the Get-AzureRmVM cmdlet to obtain a virtual machine object.
-You can use the New-AzureRmVMConfig cmdlet to create a virtual machine object.
+You can use the Get-AzVM cmdlet to obtain a virtual machine object.
+You can use the New-AzVMConfig cmdlet to create a virtual machine object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
@@ -139,10 +139,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVM](./Get-AzureRmVM.md)
+[Get-AzVM](./Get-AzVM.md)
 
-[Get-AzureRmVMImagePublisher](./Get-AzureRmVMImagePublisher.md)
+[Get-AzVMImagePublisher](./Get-AzVMImagePublisher.md)
 
-[Get-AzureRmVMImageSku](./Get-AzureRmVMImageSku.md)
+[Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
-[New-AzureRmVMConfig](./New-AzureRmVMConfig.md)
+[New-AzVMConfig](./New-AzVMConfig.md)

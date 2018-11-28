@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: DC400E32-CAB9-4354-99B2-ABA4AA776030
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/restore-azurermwebappbackup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/restore-azwebappbackup
 schema: 2.0.0
 ---
 
-# Restore-AzureRmWebAppBackup
+# Restore-AzWebAppBackup
 
 ## SYNOPSIS
 
@@ -14,7 +14,7 @@ schema: 2.0.0
 
 ### FromResourceName
 ```
-Restore-AzureRmWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBackupSetting[]>]
+Restore-AzWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBackupSetting[]>]
  [-IgnoreConflictingHostNames] [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-StorageAccountUrl] <String> [-BlobName] <String> [-Overwrite]
  [<CommonParameters>]
@@ -22,19 +22,19 @@ Restore-AzureRmWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBack
 
 ### FromWebApp
 ```
-Restore-AzureRmWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBackupSetting[]>]
+Restore-AzWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBackupSetting[]>]
  [-IgnoreConflictingHostNames] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
  [-StorageAccountUrl] <String> [-BlobName] <String> [-Overwrite] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Restore-AzureRmWebAppBackup** cmdlet restores an Azure Web App Backup.
+The **Restore-AzWebAppBackup** cmdlet restores an Azure Web App Backup.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\> Restore-AzureRmWebAppBackup -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -StorageAccountUrl "https://storageaccount.file.core.windows.net" -BlobName "myBlob"
+PS C:\> Restore-AzWebAppBackup -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -StorageAccountUrl "https://storageaccount.file.core.windows.net" -BlobName "myBlob"
 ```
 
 Restores a backup of the specified app ContosoWebApp that is within resource group Default-Web-WestUS in blob "myBlob" located at https://storageaccount.file.core.windows.net
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

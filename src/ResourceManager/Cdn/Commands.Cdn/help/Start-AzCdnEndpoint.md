@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-Module Name: AzureRM.Cdn
+Module Name: Az.Cdn
 ms.assetid: 6477ADC3-0831-493D-8904-F1D787145DD3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/start-azurermcdnendpoint
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/start-azcdnendpoint
 schema: 2.0.0
 ---
 
-# Start-AzureRmCdnEndpoint
+# Start-AzCdnEndpoint
 
 ## SYNOPSIS
 Starts a CDN endpoint.
@@ -15,18 +15,18 @@ Starts a CDN endpoint.
 
 ### ByFieldsParameterSet (Default)
 ```
-Start-AzureRmCdnEndpoint -EndpointName <String> -ProfileName <String> -ResourceGroupName <String> [-PassThru]
+Start-AzCdnEndpoint -EndpointName <String> -ProfileName <String> -ResourceGroupName <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Start-AzureRmCdnEndpoint -CdnEndpoint <PSEndpoint> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzCdnEndpoint -CdnEndpoint <PSEndpoint> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmCdnEndpoint** cmdlet starts an Azure Content Delivery Network (CDN) endpoint.
+The **Start-AzCdnEndpoint** cmdlet starts an Azure Content Delivery Network (CDN) endpoint.
 
 ## EXAMPLES
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -172,14 +172,14 @@ Parameters: CdnEndpoint (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmCdnEndpoint](./Get-AzureRmCdnEndpoint.md)
+[Get-AzCdnEndpoint](./Get-AzCdnEndpoint.md)
 
-[New-AzureRmCdnEndpoint](./New-AzureRmCdnEndpoint.md)
+[New-AzCdnEndpoint](./New-AzCdnEndpoint.md)
 
-[Remove-AzureRmCdnEndpoint](./Remove-AzureRmCdnEndpoint.md)
+[Remove-AzCdnEndpoint](./Remove-AzCdnEndpoint.md)
 
-[Set-AzureRmCdnEndpoint](./Set-AzureRmCdnEndpoint.md)
+[Set-AzCdnEndpoint](./Set-AzCdnEndpoint.md)
 
-[Stop-AzureRmCdnEndpoint](./Stop-AzureRmCdnEndpoint.md)
+[Stop-AzCdnEndpoint](./Stop-AzCdnEndpoint.md)
 
 

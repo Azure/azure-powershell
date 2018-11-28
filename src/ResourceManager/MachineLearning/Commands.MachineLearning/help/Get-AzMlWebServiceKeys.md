@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-Module Name: AzureRM.MachineLearning
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/get-azurermmlwebservicekeys
+Module Name: Az.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/get-azmlwebservicekeys
 schema: 2.0.0
 ---
 
-# Get-AzureRmMlWebServiceKeys
+# Get-AzMlWebServiceKeys
 
 ## SYNOPSIS
 Retrieves the web service's keys.
@@ -14,13 +14,13 @@ Retrieves the web service's keys.
 
 ### GetByNameAndResourceGroup
 ```
-Get-AzureRmMlWebServiceKeys -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzMlWebServiceKeys -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByInstance
 ```
-Get-AzureRmMlWebServiceKeys -MlWebService <WebService> [-DefaultProfile <IAzureContextContainer>]
+Get-AzMlWebServiceKeys -MlWebService <WebService> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -31,12 +31,12 @@ Gets the access keys for the Azure Machine Learning web service's runtime APIs.
 
 ### Example 1 - Get the keys for a web service specified by resource group and name
 ```
-Get-AzureRmMlWebServiceKeys -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
+Get-AzMlWebServiceKeys -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
 ```
 
 ### Example 2 - Get keys for web service instance
 ```
-Get-AzureRmMlWebServiceKeys -MlWebService $mlService
+Get-AzMlWebServiceKeys -MlWebService $mlService
 ```
 
 $mlService is an object of type Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService.
@@ -47,7 +47,7 @@ $mlService is an object of type Microsoft.Azure.Management.MachineLearning.WebSe
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 2EA28B90-4BAE-45DF-BD2E-60C74F53FB7B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermlogicapprunaction
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azlogicapprunaction
 schema: 2.0.0
 ---
 
-# Get-AzureRmLogicAppRunAction
+# Get-AzLogicAppRunAction
 
 ## SYNOPSIS
 Gets an action from a logic app run.
@@ -14,12 +14,12 @@ Gets an action from a logic app run.
 ## SYNTAX
 
 ```
-Get-AzureRmLogicAppRunAction -ResourceGroupName <String> -Name <String> -RunName <String>
- [-ActionName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzLogicAppRunAction -ResourceGroupName <String> -Name <String> -RunName <String> [-ActionName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmLogicAppRunAction** cmdlet gets an action from a logic app run.
+The **Get-AzLogicAppRunAction** cmdlet gets an action from a logic app run.
 This cmdlet returns a **WorkflowRunAction** objects.
 Specify the logic app, resource group, and run.
 This module supports dynamic parameters.
@@ -31,7 +31,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Get an action from a Logic App run
 ```
-PS C:\>Get-AzureRmLogicAppActionRun -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -RunName "LogicAppRun56" -ActionName "LogicAppAction01"
+PS C:\>Get-AzLogicAppActionRun -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -RunName "LogicAppRun56" -ActionName "LogicAppAction01"
 Code        : NotFound
 EndTime     : 1/13/2016 2:42:56 PM
 Error       : 
@@ -48,7 +48,7 @@ This command gets a specific Logic App action from the logic app named LogicApp0
 
 ### Example 2: Get all the actions from a Logic App run
 ```
-PS C:\>Get-AzureRmLogicAppActionRun -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -RunName "LogicAppRun56"
+PS C:\>Get-AzLogicAppActionRun -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -RunName "LogicAppRun56"
 Code        : NotFound
 EndTime     : 1/13/2016 2:42:56 PM
 Error       : 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -157,8 +157,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmLogicAppRunHistory](./Get-AzureRmLogicAppRunHistory.md)
+[Get-AzLogicAppRunHistory](./Get-AzLogicAppRunHistory.md)
 
-[Stop-AzureRmLogicAppRun](./Stop-AzureRmLogicAppRun.md)
+[Stop-AzLogicAppRun](./Stop-AzLogicAppRun.md)
 
 

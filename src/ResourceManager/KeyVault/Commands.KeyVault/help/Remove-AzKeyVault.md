@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 7A929BA8-02D9-4BBE-AFF3-B8781F8DDAD9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/remove-azurermkeyvault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvault
 schema: 2.0.0
 ---
 
-# Remove-AzureRmKeyVault
+# Remove-AzKeyVault
 
 ## SYNOPSIS
 Deletes a key vault.
@@ -15,42 +15,42 @@ Deletes a key vault.
 
 ### ByAvailableVault (Default)
 ```
-Remove-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [[-Location] <String>] [-Force]
+Remove-AzKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [[-Location] <String>] [-Force]
  [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByDeletedVault
 ```
-Remove-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectByAvailableVault
 ```
-Remove-AzureRmKeyVault [-InputObject] <PSKeyVault> [-Force] [-AsJob] [-PassThru]
+Remove-AzKeyVault [-InputObject] <PSKeyVault> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectByDeletedVault
 ```
-Remove-AzureRmKeyVault [-InputObject] <PSKeyVault> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
+Remove-AzKeyVault [-InputObject] <PSKeyVault> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdByAvailableVault
 ```
-Remove-AzureRmKeyVault [-ResourceId] <String> [[-Location] <String>] [-Force] [-AsJob] [-PassThru]
+Remove-AzKeyVault [-ResourceId] <String> [[-Location] <String>] [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdByDeletedVault
 ```
-Remove-AzureRmKeyVault [-ResourceId] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzKeyVault [-ResourceId] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmKeyVault** cmdlet deletes the specified key vault.
+The **Remove-AzKeyVault** cmdlet deletes the specified key vault.
 It also deletes all keys and secrets contained in that instance.
 Note that although specifying the resource group is optional for this cmdlet, you should so for better performance.
 
@@ -58,7 +58,7 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 
 ### Example 1: Remove a key vault
 ```powershell
-PS C:\> Remove-AzureRmKeyVault -VaultName "Contoso03Vault" -PassThru
+PS C:\> Remove-AzKeyVault -VaultName "Contoso03Vault" -PassThru
 
 True
 ```
@@ -67,7 +67,7 @@ This command removes the key vault named Contoso03Vault from your current subscr
 
 ### Example 2: Remove a key vault from a specified resource group
 ```powershell
-PS C:\> Remove-AzureRmKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14" -PassThru
+PS C:\> Remove-AzKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14" -PassThru
 
 True
 ```
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -290,6 +290,6 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmKeyVault](./Get-AzureRmKeyVault.md)
+[Get-AzKeyVault](./Get-AzKeyVault.md)
 
-[New-AzureRmKeyVault](./New-AzureRmKeyVault.md)
+[New-AzKeyVault](./New-AzKeyVault.md)

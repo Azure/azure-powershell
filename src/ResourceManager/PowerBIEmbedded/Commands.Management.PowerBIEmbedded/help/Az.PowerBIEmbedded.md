@@ -1,54 +1,52 @@
 ---
-Module Name: AzureRM.PowerBIEmbedded
+Module Name: Az.PowerBIEmbedded
 Module Guid: 868389ce-dd36-4f57-a674-0970db085d9a
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.powerbiembedded
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.powerbiembedded
 Help Version: 4.1.4.0
 Locale: en-US
 ---
 
-# AzureRM.PowerBIEmbedded Module
+# Az.PowerBIEmbedded Module
 ## Description
 This topic displays help topics for the Azure Power BI Embedded Cmdlets.
 
-## PowerBI Embedded Capacity Cmdlets
-### [Get-AzureRmPowerBIEmbeddedCapacity](Get-AzureRmPowerBIEmbeddedCapacity.md)
+## Az.PowerBIEmbedded Cmdlets
+### [Get-AzPowerBIEmbeddedCapacity](Get-AzPowerBIEmbeddedCapacity.md)
 Gets the details of a PowerBI Embedded Capacity.
 
-### [New-AzureRmPowerBIEmbeddedCapacity](New-AzureRmPowerBIEmbeddedCapacity.md)
-Creates a new PowerBI Embedded Capacity.
-
-### [Remove-AzureRmPowerBIEmbeddedCapacity](Remove-AzureRmPowerBIEmbeddedCapacity.md)
-Deletes an instance of PowerBI Embedded Capacity.
-
-### [Resume-AzureRmPowerBIEmbeddedCapacity](Resume-AzureRmPowerBIEmbeddedCapacity.md)
-Resumes an instance of PowerBI Embedded Capacity.
-
-### [Suspend-AzureRmPowerBIEmbeddedCapacity](Suspend-AzureRmPowerBIEmbeddedCapacity.md)
-Suspends an instance of PowerBI Embedded Capacity.
-
-### [Test-AzureRmPowerBIEmbeddedCapacity](Test-AzureRmPowerBIEmbeddedCapacity.md)
-Tests the existence of an instance of PowerBI Embedded Capacity.
-
-### [Update-AzureRmPowerBIEmbeddedCapacity](Update-AzureRmPowerBIEmbeddedCapacity.md)
-Modifies an instance of PowerBI Embedded Capacity.
-
-
-## PowerBI Workspace Collection Cmdlets
-### [Get-AzureRmPowerBIWorkspace](Get-AzureRmPowerBIWorkspace.md)
+### [Get-AzPowerBIWorkspace](Get-AzPowerBIWorkspace.md)
 Gets the workspaces in a Power BI workspace collection.
 
-### [Get-AzureRmPowerBIWorkspaceCollection](Get-AzureRmPowerBIWorkspaceCollection.md)
+### [Get-AzPowerBIWorkspaceCollection](Get-AzPowerBIWorkspaceCollection.md)
 Gets Power BI workspace collections.
 
-### [Get-AzureRmPowerBIWorkspaceCollectionAccessKeys](Get-AzureRmPowerBIWorkspaceCollectionAccessKeys.md)
+### [Get-AzPowerBIWorkspaceCollectionAccessKeys](Get-AzPowerBIWorkspaceCollectionAccessKeys.md)
 Gets the current access keys associated with a Power BI workspace collection.
 
-### [New-AzureRmPowerBIWorkspaceCollection](New-AzureRmPowerBIWorkspaceCollection.md)
+### [New-AzPowerBIEmbeddedCapacity](New-AzPowerBIEmbeddedCapacity.md)
+Creates a new PowerBI Embedded Capacity.
+
+### [New-AzPowerBIWorkspaceCollection](New-AzPowerBIWorkspaceCollection.md)
 Creates a Power BI workspace collection.
 
-### [Remove-AzureRmPowerBIWorkspaceCollection](Remove-AzureRmPowerBIWorkspaceCollection.md)
+### [Remove-AzPowerBIEmbeddedCapacity](Remove-AzPowerBIEmbeddedCapacity.md)
+Deletes an instance of PowerBI Embedded Capacity.
+
+### [Remove-AzPowerBIWorkspaceCollection](Remove-AzPowerBIWorkspaceCollection.md)
 Removes a Power BI workspace collection.
 
-### [Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys](Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys.md)
+### [Reset-AzPowerBIWorkspaceCollectionAccessKeys](Reset-AzPowerBIWorkspaceCollectionAccessKeys.md)
 Resets the specified access key.
+
+### [Resume-AzPowerBIEmbeddedCapacity](Resume-AzPowerBIEmbeddedCapacity.md)
+Resumes an instance of PowerBI Embedded Capacity.
+
+### [Suspend-AzPowerBIEmbeddedCapacity](Suspend-AzPowerBIEmbeddedCapacity.md)
+Suspends an instance of PowerBI Embedded Capacity.
+
+### [Test-AzPowerBIEmbeddedCapacity](Test-AzPowerBIEmbeddedCapacity.md)
+Tests the existence of an instance of PowerBI Embedded Capacity.
+
+### [Update-AzPowerBIEmbeddedCapacity](Update-AzPowerBIEmbeddedCapacity.md)
+Modifies  an instance of PowerBI Embedded Capacity.
 

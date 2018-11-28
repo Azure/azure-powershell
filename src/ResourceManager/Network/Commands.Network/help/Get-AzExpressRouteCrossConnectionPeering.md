@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 47C45467-F368-4993-937E-E7E975F400B5
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressroutecrossconnectionpeering
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecrossconnectionpeering
 schema: 2.0.0
 ---
 
-# Get-AzureRmExpressRouteCrossConnectionPeering
+# Get-AzExpressRouteCrossConnectionPeering
 
 ## SYNOPSIS
 Gets an ExpressRoute cross connection peering configuration.
@@ -14,20 +14,20 @@ Gets an ExpressRoute cross connection peering configuration.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCrossConnectionPeering [-Name <String>] -ExpressRouteCrossConnection <PSExpressRouteCrossConnection>
+Get-AzExpressRouteCrossConnectionPeering [-Name <String>] -ExpressRouteCrossConnection <PSExpressRouteCrossConnection>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmExpressRouteCrossConnectionPeering** cmdlet retrieves the configuration of a peering
+The **Get-AzExpressRouteCrossConnectionPeering** cmdlet retrieves the configuration of a peering
 relationship for an ExpressRoute cross connection.
 
 ## EXAMPLES
 
 ### Example 1: Display the peering configuration for an ExpressRoute cross connection
 ```
-$cc = Get-AzureRmExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $RG
-Get-AzureRmExpressRouteCrossConnectionPeering -Name "AzurePrivatePeering" -ExpressRouteCrossConnection $cc
+$cc = Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $RG
+Get-AzExpressRouteCrossConnectionPeering -Name "AzurePrivatePeering" -ExpressRouteCrossConnection $cc
 ```
 
 ## PARAMETERS
@@ -93,10 +93,10 @@ Parameter 'ExpressRouteCrossConnection' accepts value of type 'PSExpressRouteCro
 
 ## RELATED LINKS
 
-[Add-AzureRmExpressRouteCrossConnectionPeering](Add-AzureRmExpressRouteCrossConnectionPeering.md)
+[Add-AzExpressRouteCrossConnectionPeering](Add-AzExpressRouteCrossConnectionPeering.md)
 
-[New-AzureRmExpressRouteCrossConnectionPeering](New-AzureRmExpressRouteCrossConnectionPeering.md)
+[New-AzExpressRouteCrossConnectionPeering](New-AzExpressRouteCrossConnectionPeering.md)
 
-[Remove-AzureRmExpressRouteCrossConnectionPeering](Remove-AzureRmExpressRouteCrossConnectionPeering.md)
+[Remove-AzExpressRouteCrossConnectionPeering](Remove-AzExpressRouteCrossConnectionPeering.md)
 
-[Set-AzureRmExpressRouteCrossConnection](Set-AzureRmExpressRouteCrossConnection.md)
+[Set-AzExpressRouteCrossConnection](Set-AzExpressRouteCrossConnection.md)

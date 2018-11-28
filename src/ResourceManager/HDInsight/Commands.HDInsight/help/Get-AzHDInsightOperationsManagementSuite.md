@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/get-azurermhdinsightoperationsmanagementsuite
+Module Name: Az.HDInsight
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/get-azhdinsightoperationsmanagementsuite
 schema: 2.0.0
 ---
 
-# Get-AzureRmHDInsightOperationsManagementSuite
+# Get-AzHDInsightOperationsManagementSuite
 
 ## SYNOPSIS
 Gets the status of Operations Management Suite (OMS) installation on the cluster.
@@ -13,18 +13,18 @@ Gets the status of Operations Management Suite (OMS) installation on the cluster
 ## SYNTAX
 
 ```
-Get-AzureRmHDInsightOperationsManagementSuite [-Name] <String> [-ResourceGroupName <String>]
+Get-AzHDInsightOperationsManagementSuite [-Name] <String> [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmHDInsightOperationsManagementSuite** cmdlet gets the status of OMS installation in an Azure HDInsight cluster. If OMS is enabled then it will also return the OMS workspace id.
+The **Get-AzHDInsightOperationsManagementSuite** cmdlet gets the status of OMS installation in an Azure HDInsight cluster. If OMS is enabled then it will also return the OMS workspace id.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmHDInsightOMS -Name testcluster
+PS C:\> Get-AzHDInsightOMS -Name testcluster
 
 ClusterMonitoringEnabled
 
@@ -35,7 +35,7 @@ Operations Management Suite (OMS) is enabled on the cluster because the ClusterM
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmHDInsightOMS -Name testcluster -ResourceGroupName testrg
+PS C:\> Get-AzHDInsightOMS -Name testcluster -ResourceGroupName testrg
 
 ClusterMonitoringEnabled
 
@@ -46,7 +46,7 @@ Operations Management Suite (OMS) is enabled on the cluster because the ClusterM
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmHDInsightOMS -Name testcluster
+PS C:\> Get-AzHDInsightOMS -Name testcluster
 
 ClusterMonitoringEnabled
 
@@ -57,7 +57,7 @@ Operations Management Suite (OMS) is disabled on the cluster because the Cluster
 
 ### Example 4
 ```
-PS C:\> Get-AzureRmHDInsightOMS -Name testcluster -ResourceGroupName testrg
+PS C:\> Get-AzHDInsightOMS -Name testcluster -ResourceGroupName testrg
 
 ClusterMonitoringEnabled
 

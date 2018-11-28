@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-Module Name: AzureRM.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/get-azurermcontainerregistrycredential
+Module Name: Az.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/get-azcontainerregistrycredential
 schema: 2.0.0
 ---
 
-# Get-AzureRmContainerRegistryWebhook
+# Get-AzContainerRegistryWebhook
 
 ## SYNOPSIS
 Gets a container registry webhook.
@@ -14,42 +14,42 @@ Gets a container registry webhook.
 
 ### ListWebhookByNameResourceGroupParameterSet (Default)
 ```
-Get-AzureRmContainerRegistryWebhook [-ResourceGroupName] <String> [-RegistryName] <String>
- [-IncludeConfiguration] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContainerRegistryWebhook [-ResourceGroupName] <String> [-RegistryName] <String> [-IncludeConfiguration]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ShowWebhookByNameResourceGroupParameterSet
 ```
-Get-AzureRmContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
+Get-AzContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
  [-IncludeConfiguration] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ShowWebhookByRegistryObjectParameterSet
 ```
-Get-AzureRmContainerRegistryWebhook [-Name] <String> -Registry <PSContainerRegistry> [-IncludeConfiguration]
+Get-AzContainerRegistryWebhook [-Name] <String> -Registry <PSContainerRegistry> [-IncludeConfiguration]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListWebhookByRegistryObjectParameterSet
 ```
-Get-AzureRmContainerRegistryWebhook -Registry <PSContainerRegistry> [-IncludeConfiguration]
+Get-AzContainerRegistryWebhook -Registry <PSContainerRegistry> [-IncludeConfiguration]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmContainerRegistryWebhook [-IncludeConfiguration] -ResourceId <String>
+Get-AzContainerRegistryWebhook [-IncludeConfiguration] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmContainerRegistryWebhook cmdlet gets a specified webhook of container registry or all the webhooks of a container registry.
+The Get-AzContainerRegistryWebhook cmdlet gets a specified webhook of container registry or all the webhooks of a container registry.
 
 ## EXAMPLES
 
 ### Example 1: Get a specified webhook of a container registry
 ```powershell
-PS C:\>Get-AzureRmContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001"
+PS C:\>Get-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001"
 
 Name            Location   Status     Scope           Actions         Provisioni ServiceUri
                                                                       ngState
@@ -61,7 +61,7 @@ Get a specified webhook of a container registry
 
 ### Example 2: Get all the webhooks of a container registry
 ```powershell
-PS C:\>Get-AzureRmContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry"
+PS C:\>Get-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry"
 
 Name            Location   Status     Scope           Actions         Provisioni ServiceUri
                                                                       ngState
@@ -75,7 +75,7 @@ Get all the webhooks of a container registry
 
 ### Example 3: Get a specified webhook of a container registry with configuration details
 ```powershell
-PS C:\>Get-AzureRmContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001" -IncludeConfiguration
+PS C:\>Get-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001" -IncludeConfiguration
 
 Name            Location   Status     Scope           Actions         Provisioni ServiceUri
                                                                       ngState
@@ -91,7 +91,7 @@ Get a specified webhook of a container registry with configuration details
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -210,10 +210,10 @@ Parameters: Registry (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmContainerRegistryWebhook](New-AzureRmContainerRegistryWebhook.md)
+[New-AzContainerRegistryWebhook](New-AzContainerRegistryWebhook.md)
 
-[Update-AzureRmContainerRegistryWebhook](Update-AzureRmContainerRegistryWebhook.md)
+[Update-AzContainerRegistryWebhook](Update-AzContainerRegistryWebhook.md)
 
-[Remove-AzureRmContainerRegistryWebhook](Remove-AzureRmContainerRegistryWebhook.md)
+[Remove-AzContainerRegistryWebhook](Remove-AzContainerRegistryWebhook.md)
 
-[Test-AzureRmContainerRegistryWebhook](Test-AzureRmContainerRegistryWebhook.md)
+[Test-AzContainerRegistryWebhook](Test-AzContainerRegistryWebhook.md)

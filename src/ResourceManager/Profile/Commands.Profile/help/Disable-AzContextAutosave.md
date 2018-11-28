@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/disable-azurermcontextautosave
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/disable-azcontextautosave
 schema: 2.0.0
 ---
 
-# Disable-AzureRmContextAutosave
+# Disable-AzContextAutosave
 
 ## SYNOPSIS
 Turn off autosaving Azure credentials.  Your login information will be forgotten the next time you open a PowerShell window
@@ -13,7 +13,7 @@ Turn off autosaving Azure credentials.  Your login information will be forgotten
 ## SYNTAX
 
 ```
-Disable-AzureRmContextAutosave [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
+Disable-AzContextAutosave [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Turn off autosaving Azure credentials.  Your login information will be forgotten
 
 ### Disable autosaving the context
 ```
-PS C:\> Disable-AzureRmContextAutosave
+PS C:\> Disable-AzContextAutosave
 ```
 
 Disable autosave for the current user.
@@ -35,7 +35,7 @@ Disable autosave for the current user.
 The credentials, tenant and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkusage
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkusage
 schema: 2.0.0
 ---
 
-# Get-AzureRmNetworkUsage
+# Get-AzNetworkUsage
 
 ## SYNOPSIS
 Lists network usages for a subscription
@@ -13,17 +13,17 @@ Lists network usages for a subscription
 ## SYNTAX
 
 ```
-Get-AzureRmNetworkUsage -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkUsage -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmNetworkUsage cmdlet gets limits and current usage for Network resources.
+The Get-AzNetworkUsage cmdlet gets limits and current usage for Network resources.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmNetworkUsage -Location westcentralus
+PS C:\> Get-AzNetworkUsage -Location westcentralus
 
 ResourceType : Virtual Networks
 CurrentValue : 6
@@ -78,7 +78,7 @@ Gets resources usage data in westcentralus region
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

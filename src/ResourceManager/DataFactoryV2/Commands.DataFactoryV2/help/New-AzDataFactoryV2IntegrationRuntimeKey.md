@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/new-azurermdatafactoryv2integrationruntimekey
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/new-azdatafactoryv2integrationruntimekey
 schema: 2.0.0
 ---
 
-# New-AzureRmDataFactoryV2IntegrationRuntimeKey
+# New-AzDataFactoryV2IntegrationRuntimeKey
 
 ## SYNOPSIS
 Regenerate self-hosted integration runtime key.
@@ -14,31 +14,31 @@ Regenerate self-hosted integration runtime key.
 
 ### ByIntegrationRuntimeName (Default)
 ```
-New-AzureRmDataFactoryV2IntegrationRuntimeKey -KeyName <String> [-Force] [-Name] <String>
+New-AzDataFactoryV2IntegrationRuntimeKey -KeyName <String> [-Force] [-Name] <String>
  [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-New-AzureRmDataFactoryV2IntegrationRuntimeKey -KeyName <String> [-Force] [-ResourceId] <String>
+New-AzDataFactoryV2IntegrationRuntimeKey -KeyName <String> [-Force] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-New-AzureRmDataFactoryV2IntegrationRuntimeKey -KeyName <String> [-Force] [-InputObject] <PSIntegrationRuntime>
+New-AzDataFactoryV2IntegrationRuntimeKey -KeyName <String> [-Force] [-InputObject] <PSIntegrationRuntime>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The cmdlet **New-AzureRmDataFactoryV2IntegrationRuntimeKey** regenerates the integration runtime key with the key name specified by 'KeyName' parameter. The previous key will is invalid.
+The cmdlet **New-AzDataFactoryV2IntegrationRuntimeKey** regenerates the integration runtime key with the key name specified by 'KeyName' parameter. The previous key will is invalid.
 
 ## EXAMPLES
 
 ### Example 1: Generate a new key for an integration runtime
 ```
-PS C:\> New-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' -KeyName authKey2
+PS C:\> New-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' -KeyName authKey2
 
 AuthKey1 AuthKey2
 -------- --------
@@ -218,4 +218,4 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2IntegrationRuntimeKey]()
+[Get-AzDataFactoryV2IntegrationRuntimeKey]()

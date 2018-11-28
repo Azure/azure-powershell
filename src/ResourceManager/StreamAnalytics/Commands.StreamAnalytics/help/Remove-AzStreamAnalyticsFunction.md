@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM.StreamAnalytics
+Module Name: Az.StreamAnalytics
 ms.assetid: 75B0776E-32D5-4EE4-B35C-73E13185A4F1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/remove-azurermstreamanalyticsfunction
+online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/remove-azstreamanalyticsfunction
 schema: 2.0.0
 ---
 
-# Remove-AzureRmStreamAnalyticsFunction
+# Remove-AzStreamAnalyticsFunction
 
 ## SYNOPSIS
 Deletes a function from a Stream Analytics job.
@@ -14,18 +14,18 @@ Deletes a function from a Stream Analytics job.
 ## SYNTAX
 
 ```
-Remove-AzureRmStreamAnalyticsFunction [-JobName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Remove-AzStreamAnalyticsFunction [-JobName] <String> [-Name] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmStreamAnalyticsFunction** cmdlet deletes a function asynchronously from an Azure Stream Analytics job.
+The **Remove-AzStreamAnalyticsFunction** cmdlet deletes a function asynchronously from an Azure Stream Analytics job.
 
 ## EXAMPLES
 
 ### Example 1: Remove a Stream Analytics function
 ```
-PS C:\>Remove-AzureRmStreamAnalyticsFunction -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamJob22" -Name "ScoreTweet"
+PS C:\>Remove-AzStreamAnalyticsFunction -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamJob22" -Name "ScoreTweet"
 ```
 
 This command removes the function named ScoreTweet from the job named StreamJob22.
@@ -36,7 +36,7 @@ This command removes the function named ScoreTweet from the job named StreamJob2
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -140,10 +140,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmStreamAnalyticsFunction](./Get-AzureRmStreamAnalyticsFunction.md)
+[Get-AzStreamAnalyticsFunction](./Get-AzStreamAnalyticsFunction.md)
 
-[New-AzureRmStreamAnalyticsFunction](./New-AzureRmStreamAnalyticsFunction.md)
+[New-AzStreamAnalyticsFunction](./New-AzStreamAnalyticsFunction.md)
 
-[Test-AzureRmStreamAnalyticsFunction](./Test-AzureRmStreamAnalyticsFunction.md)
+[Test-AzStreamAnalyticsFunction](./Test-AzStreamAnalyticsFunction.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 86D8965D-D999-48A4-A4EE-9E054E5486EE
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermaduser
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azaduser
 schema: 2.0.0
 ---
 
-# New-AzureRmADUser
+# New-AzADUser
 
 ## SYNOPSIS
 Creates a new active directory user.
@@ -14,9 +14,9 @@ Creates a new active directory user.
 ## SYNTAX
 
 ```
-New-AzureRmADUser -DisplayName <String> -UserPrincipalName <String> -Password <SecureString>
- [-ImmutableId <String>] [-MailNickname <String>] [-ForceChangePasswordNextLogin]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADUser -DisplayName <String> -UserPrincipalName <String> -Password <SecureString> [-ImmutableId <String>]
+ [-MailNickname <String>] [-ForceChangePasswordNextLogin] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ For more information: https://msdn.microsoft.com/en-us/library/azure/ad/graph/ap
 ### Example 1 - Create a new AD user
 ```
 PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
-PS C:\> New-AzureRmADUser -DisplayName "MyDisplayName" -UserPrincipalName "myemail@domain.com" -Password $SecureStringPassword -MailNickname "MyMailNickName"
+PS C:\> New-AzADUser -DisplayName "MyDisplayName" -UserPrincipalName "myemail@domain.com" -Password $SecureStringPassword -MailNickname "MyMailNickName"
 ```
 
 Creates a new AD user with the name "MyDisplayName" and user principal name "myemail@domain.com" in a tenant.
@@ -39,7 +39,7 @@ Creates a new AD user with the name "MyDisplayName" and user principal name "mye
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -195,8 +195,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmADUser](./Get-AzureRmADUser.md)
+[Get-AzADUser](./Get-AzADUser.md)
 
-[Set-AzureRmADUser](./Set-AzureRmADUser.md)
+[Set-AzADUser](./Set-AzADUser.md)
 
-[Remove-AzureRmADUser](./Remove-AzureRmADUser.md)
+[Remove-AzADUser](./Remove-AzADUser.md)

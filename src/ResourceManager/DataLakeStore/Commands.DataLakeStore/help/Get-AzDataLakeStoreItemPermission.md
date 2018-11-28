@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: 476E889F-C763-4EFA-AFD6-B037BA6BA0A1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/get-azdatalakestoreitempermission
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataLakeStoreItemPermission
+# Get-AzDataLakeStoreItemPermission
 
 ## SYNOPSIS
 Gets the permission octal of a file or folder in Data Lake Store.
@@ -14,18 +14,18 @@ Gets the permission octal of a file or folder in Data Lake Store.
 ## SYNTAX
 
 ```
-Get-AzureRmDataLakeStoreItemPermission [-Account] <String> [-Path] <DataLakeStorePathInstance>
+Get-AzDataLakeStoreItemPermission [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataLakeStoreItemPermission** cmdlet gets the the permission octal of a file or folder in Data Lake Store.
+The **Get-AzDataLakeStoreItemPermission** cmdlet gets the the permission octal of a file or folder in Data Lake Store.
 
 ## EXAMPLES
 
 ### Example 1: Set the permission octal for a file
 ```
-PS C:\>Get-AzureRmDataLakeStoreItemPermission -AccountName "ContosoADL" -Path "/file.txt"
+PS C:\>Get-AzDataLakeStoreItemPermission -AccountName "ContosoADL" -Path "/file.txt"
 ```
 
 This command gets the permission octal for a file.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,6 +96,6 @@ The string representation of the ownership octal
 
 ## RELATED LINKS
 
-[Set-AzureRmDataLakeStoreItemPermission](./Set-AzureRmDataLakeStoreItemPermission.md)
+[Set-AzDataLakeStoreItemPermission](./Set-AzDataLakeStoreItemPermission.md)
 
 

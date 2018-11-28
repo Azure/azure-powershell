@@ -1,115 +1,115 @@
 ---
-Module Name: AzureRM.DataLakeAnalytics
+Module Name: Az.DataLakeAnalytics
 Module Guid: eca73aa1-a68f-4ceb-9775-70759316a57b
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datalakeanalytics
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# AzureRM.DataLakeAnalytics Module
+# Az.DataLakeAnalytics Module
 ## Description
 The topics in this section document the Azure PowerShell cmdlets for Azure Data Lake Analytics in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.DataLakeAnalytics namespace.
 
-## AzureRM.DataLakeAnalytics Cmdlets
-### [Add-AzureRmDataLakeAnalyticsDataSource](Add-AzureRmDataLakeAnalyticsDataSource.md)
+## Az.DataLakeAnalytics Cmdlets
+### [Add-AzDataLakeAnalyticsDataSource](Add-AzDataLakeAnalyticsDataSource.md)
 Adds a data source to a Data Lake Analytics account.
 
-### [Add-AzureRmDataLakeAnalyticsFirewallRule](Add-AzureRmDataLakeAnalyticsFirewallRule.md)
+### [Add-AzDataLakeAnalyticsFirewallRule](Add-AzDataLakeAnalyticsFirewallRule.md)
 Adds a firewall rule to a Data Lake Analytics account.
 
-### [Get-AzureRmDataLakeAnalyticsAccount](Get-AzureRmDataLakeAnalyticsAccount.md)
+### [Get-AzDataLakeAnalyticsAccount](Get-AzDataLakeAnalyticsAccount.md)
 Gets information about a Data Lake Analytics account.
 
-### [Get-AzureRmDataLakeAnalyticsCatalogItem](Get-AzureRmDataLakeAnalyticsCatalogItem.md)
+### [Get-AzDataLakeAnalyticsCatalogItem](Get-AzDataLakeAnalyticsCatalogItem.md)
 Gets a Data Lake Analytics catalog item or types of items.
 
-### [Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry](Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry.md)
+### [Get-AzDataLakeAnalyticsCatalogItemAclEntry](Get-AzDataLakeAnalyticsCatalogItemAclEntry.md)
 Gets an entry in the ACL of a catalog or catalog item in Data Lake Analytics.
 
-### [Get-AzureRmDataLakeAnalyticsComputePolicy](Get-AzureRmDataLakeAnalyticsComputePolicy.md)
+### [Get-AzDataLakeAnalyticsComputePolicy](Get-AzDataLakeAnalyticsComputePolicy.md)
 Gets a Data Lake Analytics compute policy or list of compute policies.
 
-### [Get-AzureRmDataLakeAnalyticsDataSource](Get-AzureRmDataLakeAnalyticsDataSource.md)
+### [Get-AzDataLakeAnalyticsDataSource](Get-AzDataLakeAnalyticsDataSource.md)
 Gets a Data Lake Analytics data source.
 
-### [Get-AzureRmDataLakeAnalyticsFirewallRule](Get-AzureRmDataLakeAnalyticsFirewallRule.md)
+### [Get-AzDataLakeAnalyticsFirewallRule](Get-AzDataLakeAnalyticsFirewallRule.md)
 Retrieves a firewall rule or list of firewall rules from a Data Lake Analytics account.
 
-### [Get-AzureRmDataLakeAnalyticsJob](Get-AzureRmDataLakeAnalyticsJob.md)
+### [Get-AzDataLakeAnalyticsJob](Get-AzDataLakeAnalyticsJob.md)
 Gets a Data Lake Analytics job.
 
-### [Get-AzureRmDataLakeAnalyticsJobPipeline](Get-AzureRmDataLakeAnalyticsJobPipeline.md)
+### [Get-AzDataLakeAnalyticsJobPipeline](Get-AzDataLakeAnalyticsJobPipeline.md)
 Gets a Data Lake Analytics Job pipeline or pipelines.
 
-### [Get-AzureRmDataLakeAnalyticsJobRecurrence](Get-AzureRmDataLakeAnalyticsJobRecurrence.md)
+### [Get-AzDataLakeAnalyticsJobRecurrence](Get-AzDataLakeAnalyticsJobRecurrence.md)
 Gets a Data Lake Analytics Job recurrence or recurrences.
 
-### [New-AzureRmDataLakeAnalyticsAccount](New-AzureRmDataLakeAnalyticsAccount.md)
+### [New-AzDataLakeAnalyticsAccount](New-AzDataLakeAnalyticsAccount.md)
 Creates a Data Lake Analytics account.
 
-### [New-AzureRmDataLakeAnalyticsCatalogCredential](New-AzureRmDataLakeAnalyticsCatalogCredential.md)
+### [New-AzDataLakeAnalyticsCatalogCredential](New-AzDataLakeAnalyticsCatalogCredential.md)
 Creates a new Azure Data Lake Analytics catalog credential.
 
-### [New-AzureRmDataLakeAnalyticsCatalogSecret](New-AzureRmDataLakeAnalyticsCatalogSecret.md)
+### [New-AzDataLakeAnalyticsCatalogSecret](New-AzDataLakeAnalyticsCatalogSecret.md)
 Creates a Data Lake Analytics catalog secret.
 
-### [New-AzureRmDataLakeAnalyticsComputePolicy](New-AzureRmDataLakeAnalyticsComputePolicy.md)
+### [New-AzDataLakeAnalyticsComputePolicy](New-AzDataLakeAnalyticsComputePolicy.md)
 Creates a Data Lake Analytics compute policy rule for a specific AAD entity.
 
-### [Remove-AzureRmDataLakeAnalyticsAccount](Remove-AzureRmDataLakeAnalyticsAccount.md)
+### [Remove-AzDataLakeAnalyticsAccount](Remove-AzDataLakeAnalyticsAccount.md)
 Deletes a Data Lake Analytics account.
 
-### [Remove-AzureRmDataLakeAnalyticsCatalogCredential](Remove-AzureRmDataLakeAnalyticsCatalogCredential.md)
+### [Remove-AzDataLakeAnalyticsCatalogCredential](Remove-AzDataLakeAnalyticsCatalogCredential.md)
 Deletes an Azure Data Lake Analytics credential.
 
-### [Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry](Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry.md)
+### [Remove-AzDataLakeAnalyticsCatalogItemAclEntry](Remove-AzDataLakeAnalyticsCatalogItemAclEntry.md)
 Deletes an entry from the ACL of a catalog or catalog item in Data Lake Analytics.
 
-### [Remove-AzureRmDataLakeAnalyticsCatalogSecret](Remove-AzureRmDataLakeAnalyticsCatalogSecret.md)
+### [Remove-AzDataLakeAnalyticsCatalogSecret](Remove-AzDataLakeAnalyticsCatalogSecret.md)
 Deletes a Data Lake Analytics secret.
 
-### [Remove-AzureRmDataLakeAnalyticsComputePolicy](Remove-AzureRmDataLakeAnalyticsComputePolicy.md)
+### [Remove-AzDataLakeAnalyticsComputePolicy](Remove-AzDataLakeAnalyticsComputePolicy.md)
 Removes a specified Azure Data Lake Analytics compute policy
 
-### [Remove-AzureRmDataLakeAnalyticsDataSource](Remove-AzureRmDataLakeAnalyticsDataSource.md)
+### [Remove-AzDataLakeAnalyticsDataSource](Remove-AzDataLakeAnalyticsDataSource.md)
 Removes a data source from a Data Lake Analytics account.
 
-### [Remove-AzureRmDataLakeAnalyticsFirewallRule](Remove-AzureRmDataLakeAnalyticsFirewallRule.md)
+### [Remove-AzDataLakeAnalyticsFirewallRule](Remove-AzDataLakeAnalyticsFirewallRule.md)
 Removes a firewall rule from a Data Lake Analytics account.
 
-### [Set-AzureRmDataLakeAnalyticsAccount](Set-AzureRmDataLakeAnalyticsAccount.md)
+### [Set-AzDataLakeAnalyticsAccount](Set-AzDataLakeAnalyticsAccount.md)
 Modifies a Data Lake Analytics account.
 
-### [Set-AzureRmDataLakeAnalyticsCatalogCredential](Set-AzureRmDataLakeAnalyticsCatalogCredential.md)
+### [Set-AzDataLakeAnalyticsCatalogCredential](Set-AzDataLakeAnalyticsCatalogCredential.md)
 Modifies an Azure Data Lake Analytics catalog credential password.
 
-### [Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry](Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry.md)
+### [Set-AzDataLakeAnalyticsCatalogItemAclEntry](Set-AzDataLakeAnalyticsCatalogItemAclEntry.md)
 Modifies an entry in the ACL of a catalog or catalog item in Data Lake Analytics.
 
-### [Set-AzureRmDataLakeAnalyticsCatalogSecret](Set-AzureRmDataLakeAnalyticsCatalogSecret.md)
+### [Set-AzDataLakeAnalyticsCatalogSecret](Set-AzDataLakeAnalyticsCatalogSecret.md)
 Modifies a Data Lake Analytics catalog secret.
 
-### [Set-AzureRmDataLakeAnalyticsDataSource](Set-AzureRmDataLakeAnalyticsDataSource.md)
+### [Set-AzDataLakeAnalyticsDataSource](Set-AzDataLakeAnalyticsDataSource.md)
 Modifies the details of a data source of a Data Lake Analytics account.
 
-### [Set-AzureRmDataLakeAnalyticsFirewallRule](Set-AzureRmDataLakeAnalyticsFirewallRule.md)
+### [Set-AzDataLakeAnalyticsFirewallRule](Set-AzDataLakeAnalyticsFirewallRule.md)
 Updates a firewall rule in a Data Lake Analytics account.
 
-### [Stop-AzureRmDataLakeAnalyticsJob](Stop-AzureRmDataLakeAnalyticsJob.md)
+### [Stop-AzDataLakeAnalyticsJob](Stop-AzDataLakeAnalyticsJob.md)
 Cancels a job.
 
-### [Submit-AzureRmDataLakeAnalyticsJob](Submit-AzureRmDataLakeAnalyticsJob.md)
+### [Submit-AzDataLakeAnalyticsJob](Submit-AzDataLakeAnalyticsJob.md)
 Submits a job.
 
-### [Test-AzureRmDataLakeAnalyticsAccount](Test-AzureRmDataLakeAnalyticsAccount.md)
+### [Test-AzDataLakeAnalyticsAccount](Test-AzDataLakeAnalyticsAccount.md)
 Checks for the existence of a Data Lake Analytics account.
 
-### [Test-AzureRmDataLakeAnalyticsCatalogItem](Test-AzureRmDataLakeAnalyticsCatalogItem.md)
+### [Test-AzDataLakeAnalyticsCatalogItem](Test-AzDataLakeAnalyticsCatalogItem.md)
 Checks for the existence of a catalog item.
 
-### [Update-AzureRmDataLakeAnalyticsComputePolicy](Update-AzureRmDataLakeAnalyticsComputePolicy.md)
+### [Update-AzDataLakeAnalyticsComputePolicy](Update-AzDataLakeAnalyticsComputePolicy.md)
 Updates a Data Lake Analytics compute policy rule for a specific AAD entity.
 
-### [Wait-AzureRmDataLakeAnalyticsJob](Wait-AzureRmDataLakeAnalyticsJob.md)
+### [Wait-AzDataLakeAnalyticsJob](Wait-AzDataLakeAnalyticsJob.md)
 Waits for a job to complete.
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 8C014335-9622-4F2E-A163-4B0C84531506
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/add-azurermapimanagementusertogroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/add-azapimanagementusertogroup
 schema: 2.0.0
 ---
 
-# Add-AzureRmApiManagementUserToGroup
+# Add-AzApiManagementUserToGroup
 
 ## SYNOPSIS
 Adds a user to a group.
@@ -14,19 +14,19 @@ Adds a user to a group.
 ## SYNTAX
 
 ```
-Add-AzureRmApiManagementUserToGroup -Context <PsApiManagementContext> -GroupId <String> -UserId <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Add-AzApiManagementUserToGroup -Context <PsApiManagementContext> -GroupId <String> -UserId <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmApiManagementUserToGroup** cmdlet adds a user to a group.
+The **Add-AzApiManagementUserToGroup** cmdlet adds a user to a group.
 
 ## EXAMPLES
 
 ### Example 1: Add a user to a group
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Add-AzureRmApiManagementUserToGroup -Context $apimContext -GroupId "0001" -UserId "0123456789"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Add-AzApiManagementUserToGroup -Context $apimContext -GroupId "0001" -UserId "0123456789"
 ```
 
 This command adds an existing user to an existing group.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -130,8 +130,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementUser](./Get-AzureRmApiManagementUser.md)
+[Get-AzApiManagementUser](./Get-AzApiManagementUser.md)
 
-[Remove-AzureRmApiManagementUserFromGroup](./Remove-AzureRmApiManagementUserFromGroup.md)
+[Remove-AzApiManagementUserFromGroup](./Remove-AzApiManagementUserFromGroup.md)
 
 

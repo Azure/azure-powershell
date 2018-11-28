@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 41D63CC1-5E9F-48D3-89DE-0F753C7475F2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlserverdisasterrecoveryconfigurationactivity
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverdisasterrecoveryconfigurationactivity
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlServerDisasterRecoveryConfigurationActivity
+# Get-AzSqlServerDisasterRecoveryConfigurationActivity
 
 ## SYNOPSIS
 Gets activity for a database server system recovery configuration.
@@ -14,13 +14,13 @@ Gets activity for a database server system recovery configuration.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServerDisasterRecoveryConfigurationActivity [-ServerName] <String>
+Get-AzSqlServerDisasterRecoveryConfigurationActivity [-ServerName] <String>
  -ServerDisasterRecoveryConfigurationName <String> [-OperationId <Guid>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlServerDisasterRecoveryConfigurationActivity** cmdlet gets activity for a SQL database server system recovery configuration.
+The **Get-AzSqlServerDisasterRecoveryConfigurationActivity** cmdlet gets activity for a SQL database server system recovery configuration.
 
 ## EXAMPLES
 
@@ -30,7 +30,7 @@ The **Get-AzureRmSqlServerDisasterRecoveryConfigurationActivity** cmdlet gets ac
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

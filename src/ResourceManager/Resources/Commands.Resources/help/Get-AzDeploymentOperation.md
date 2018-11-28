@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermdeploymentoperation
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azdeploymentoperation
 schema: 2.0.0
 ---
 
-# Get-AzureRmDeploymentOperation
+# Get-AzDeploymentOperation
 
 ## SYNOPSIS
 Get deployment operation
@@ -14,37 +14,37 @@ Get deployment operation
 
 ### GetByDeploymentName (Default)
 ```
-Get-AzureRmDeploymentOperation -DeploymentName <String> [-OperationId <String>] [-ApiVersion <String>] [-Pre]
+Get-AzDeploymentOperation -DeploymentName <String> [-OperationId <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByDeploymentObject
 ```
-Get-AzureRmDeploymentOperation -DeploymentObject <PSDeployment> [-ApiVersion <String>] [-Pre]
+Get-AzDeploymentOperation -DeploymentObject <PSDeployment> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDeploymentOperation** cmdlet lists all the operations that were part of a deployment to help you identify and give more information about the exact operations that failed for a particular deployment.
+The **Get-AzDeploymentOperation** cmdlet lists all the operations that were part of a deployment to help you identify and give more information about the exact operations that failed for a particular deployment.
 It can also show the response and the request content for each deployment operation.
 This is the same information provided in the deployment details on the portal.
 
-To get the request and the response content, enable the setting when submitting a deployment through **New-AzureRmDeployment**.
+To get the request and the response content, enable the setting when submitting a deployment through **New-AzDeployment**.
 It can potentially log and expose secrets like passwords used in the resource property or **listKeys** operations that are then returned when you retrieve the deployment operations.
-For more on this setting and how to enable it, see New-AzureRmDeployment and Debugging ARM template deployments
+For more on this setting and how to enable it, see New-AzDeployment and Debugging ARM template deployments
 
 ## EXAMPLES
 
 ### Get deployment operations given a deployment name
 ```
-PS C:\>Get-AzureRmDeploymentOperation -DeploymentName test
+PS C:\>Get-AzDeploymentOperation -DeploymentName test
 ```
 
 Gets deployment operation with name "test" at the current subscription scope.
 
 ### Get a deployment and get its deployment operations
 ```
-PS C:\>Get-AzureRmDeployment -Name "test" | Get-AzureRmDeploymentOperation
+PS C:\>Get-AzDeployment -Name "test" | Get-AzDeploymentOperation
 ```
 
 This command gets the deployment "test" at the current subscription scope and get its deployment operations.
@@ -56,7 +56,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The deployment name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByDeploymentName
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The deployment object.
 
 ```yaml
-Type: PSDeployment
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment
 Parameter Sets: GetByDeploymentObject
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The deployment operation Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByDeploymentName
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

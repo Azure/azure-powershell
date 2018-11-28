@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: C2CC10DE-1D36-4937-8A3E-9776BE80DF9A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementauthorizationserver
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementauthorizationserver
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApiManagementAuthorizationServer
+# Remove-AzApiManagementAuthorizationServer
 
 ## SYNOPSIS
 Removes an authorization server.
@@ -14,12 +14,12 @@ Removes an authorization server.
 ## SYNTAX
 
 ```
-Remove-AzureRmApiManagementAuthorizationServer -Context <PsApiManagementContext> -ServerId <String> [-PassThru]
+Remove-AzApiManagementAuthorizationServer -Context <PsApiManagementContext> -ServerId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmApiManagementAuthorizationServer** cmdlet removes an Azure API Management authorization server.
+The **Remove-AzApiManagementAuthorizationServer** cmdlet removes an Azure API Management authorization server.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -135,10 +135,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementAuthorizationServer](./Get-AzureRmApiManagementAuthorizationServer.md)
+[Get-AzApiManagementAuthorizationServer](./Get-AzApiManagementAuthorizationServer.md)
 
-[New-AzureRmApiManagementAuthorizationServer](./New-AzureRmApiManagementAuthorizationServer.md)
+[New-AzApiManagementAuthorizationServer](./New-AzApiManagementAuthorizationServer.md)
 
-[Set-AzureRmApiManagementAuthorizationServer](./Set-AzureRmApiManagementAuthorizationServer.md)
+[Set-AzApiManagementAuthorizationServer](./Set-AzApiManagementAuthorizationServer.md)
 
 

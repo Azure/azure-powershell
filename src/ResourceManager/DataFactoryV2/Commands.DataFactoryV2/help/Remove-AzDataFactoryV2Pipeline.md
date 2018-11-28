@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactoryv2pipeline
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactoryv2pipeline
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryV2Pipeline
+# Remove-AzDataFactoryV2Pipeline
 
 ## SYNOPSIS
 Removes a pipeline from Data Factory.
@@ -14,30 +14,30 @@ Removes a pipeline from Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmDataFactoryV2Pipeline [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
+Remove-AzDataFactoryV2Pipeline [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzureRmDataFactoryV2Pipeline [-InputObject] <PSPipeline> [-Force]
+Remove-AzDataFactoryV2Pipeline [-InputObject] <PSPipeline> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzureRmDataFactoryV2Pipeline [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzDataFactoryV2Pipeline [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmDataFactoryV2Pipeline cmdlet removes a pipeline from Azure Data Factory.
+The Remove-AzDataFactoryV2Pipeline cmdlet removes a pipeline from Azure Data Factory.
 
 ## EXAMPLES
 
 ### Example 1: Remove a pipeline
 ```
-PS C:\> Remove-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
+PS C:\> Remove-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
           Confirm
           Are you sure you want to remove pipeline 'DPWikisample' in data factory 'WikiADF'?
           [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -206,9 +206,9 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2Pipeline]()
+[Get-AzDataFactoryV2Pipeline]()
 
-[Set-AzureRmDataFactoryV2Pipeline]()
+[Set-AzDataFactoryV2Pipeline]()
 
-[Invoke-AzureRmDataFactoryV2Pipeline]()
+[Invoke-AzDataFactoryV2Pipeline]()
 

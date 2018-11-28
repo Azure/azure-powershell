@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Aks.dll-Help.xml
-Module Name: AzureRM.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.aks/remove-azurermaks
+Module Name: Az.Aks
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/remove-azaks
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAks
+# Remove-AzAks
 
 ## SYNOPSIS
 Delete a managed Kubernetes cluster.
@@ -14,20 +14,20 @@ Delete a managed Kubernetes cluster.
 
 ### GroupNameParameterSet (Default)
 ```
-Remove-AzureRmAks [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob] [-Force]
+Remove-AzAks [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzureRmAks -InputObject <PSKubernetesCluster> [-PassThru] [-AsJob] [-Force]
+Remove-AzAks -InputObject <PSKubernetesCluster> [-PassThru] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Remove-AzureRmAks [-Id] <String> [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAks [-Id] <String> [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Delete a managed Kubernetes cluster.
 
 ### Delete an existing managed Kubernetes cluster
 ```
-PS C:\> Remove-AzureRmAks -ResourceGroupName group -Name myCluster
+PS C:\> Remove-AzAks -ResourceGroupName group -Name myCluster
 ```
 
 ## PARAMETERS
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
-Module Name: AzureRM.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/remove-azurermsearchservice
+Module Name: Az.Search
+online version: https://docs.microsoft.com/en-us/powershell/module/az.search/remove-azsearchservice
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSearchService
+# Remove-AzSearchService
 
 ## SYNOPSIS
 Remove an Azure Search service.
@@ -14,30 +14,30 @@ Remove an Azure Search service.
 
 ### ResourceNameParameterSet (Default)
 ```
-Remove-AzureRmSearchService [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru]
+Remove-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzureRmSearchService [-InputObject] <PSSearchService> [-Force] [-PassThru]
+Remove-AzSearchService [-InputObject] <PSSearchService> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzureRmSearchService [-ResourceId] <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSearchService [-ResourceId] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSearchService** cmdlet removes an Azure Search service with specified paramters.
+The **Remove-AzSearchService** cmdlet removes an Azure Search service with specified paramters.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzureRmSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01"
+PS C:\> Remove-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01"
 
 Confirm
 Are you sure you want to remove Search Service 'pstestazuresearch01'?
@@ -53,7 +53,7 @@ The example removes an Azure Search service.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -203,9 +203,9 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmSearchService](./New-AzureRmSearchService.md)
+[New-AzSearchService](./New-AzSearchService.md)
 
-[Get-AzureRmSearchService](./Get-AzureRmSearchService.md)
+[Get-AzSearchService](./Get-AzSearchService.md)
 
-[Set-AzureRmSearchService](./Set-AzureRmSearchService.md)
+[Set-AzSearchService](./Set-AzSearchService.md)
 

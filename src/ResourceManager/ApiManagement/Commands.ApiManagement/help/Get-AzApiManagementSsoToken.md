@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: A7CABC63-2E9C-474B-A4F0-69F13A16F65A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementssotoken
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementssotoken
 schema: 2.0.0
 ---
 
-# Get-AzureRmApiManagementSsoToken
+# Get-AzApiManagementSsoToken
 
 ## SYNOPSIS
 Gets a link with an SSO token to a deployed management portal of an API Management service.
@@ -14,18 +14,18 @@ Gets a link with an SSO token to a deployed management portal of an API Manageme
 ## SYNTAX
 
 ```
-Get-AzureRmApiManagementSsoToken -ResourceGroupName <String> -Name <String>
+Get-AzApiManagementSsoToken -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApiManagementSsoToken** cmdlet returns a link (URL) containing a single sign-on (SSO) token to a deployed management portal of an API Management service.
+The **Get-AzApiManagementSsoToken** cmdlet returns a link (URL) containing a single sign-on (SSO) token to a deployed management portal of an API Management service.
 
 ## EXAMPLES
 
 ### Example 1: Get the SSO token of an API Management service
 ```
-PS C:\>Get-AzureRmApiManagementSsoToken -ResourceGroupName "Contoso" -Name "ContosoApi"
+PS C:\>Get-AzApiManagementSsoToken -ResourceGroupName "Contoso" -Name "ContosoApi"
 ```
 
 This command gets the SSO token of an API Management service.
@@ -36,7 +36,7 @@ This command gets the SSO token of an API Management service.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,6 +92,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagement](./Get-AzureRmApiManagement.md)
+[Get-AzApiManagement](./Get-AzApiManagement.md)
 
 

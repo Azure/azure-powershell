@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 5AF6F70F-7137-48E2-96ED-2C509042F127
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationvariable
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationvariable
 schema: 2.0.0
 ---
 
-# New-AzureRmAutomationVariable
+# New-AzAutomationVariable
 
 ## SYNOPSIS
 Creates an Automation variable.
@@ -14,13 +14,13 @@ Creates an Automation variable.
 ## SYNTAX
 
 ```
-New-AzureRmAutomationVariable [-Name] <String> -Encrypted <Boolean> [-Description <String>] [-Value <Object>]
+New-AzAutomationVariable [-Name] <String> -Encrypted <Boolean> [-Description <String>] [-Value <Object>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAutomationVariable** cmdlet creates a variable in Azure Automation.
+The **New-AzAutomationVariable** cmdlet creates a variable in Azure Automation.
 To encrypt the variable, specify the *Encrypted* parameter.
 You cannot modify the encrypted state of a variable after creation.
 
@@ -28,18 +28,18 @@ You cannot modify the encrypted state of a variable after creation.
 
 ### Example 1: Create a variable with a simple value
 ```
-PS C:\>New-AzureRmAutomationVariable -AutomationAccountName "Contoso17" -Name "StringVariable22" -Encrypted $False -Value "My String" -ResourceGroupName "ResourceGroup01"
+PS C:\>New-AzAutomationVariable -AutomationAccountName "Contoso17" -Name "StringVariable22" -Encrypted $False -Value "My String" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command creates a variable named StringVariable22 with a string value in the Automation account named Contoso17.
 
 ### Example 2: Create a variable with a complex value
 ```
-PS C:\>$VirtualMachine = Get-AzureVM -ServiceName "VirtualMachine" -Name "VirtualMachine03"
-PS C:\> New-AzureRmAutomationVariable -AutomationAccountName "Contoso17" -Name "ComplexVariable01" -Encrypted $False -Value $VirtualMachine -ResourceGroupName "ResourceGroup01"
+PS C:\>$VirtualMachine = Get-AzVM -ServiceName "VirtualMachine" -Name "VirtualMachine03"
+PS C:\> New-AzAutomationVariable -AutomationAccountName "Contoso17" -Name "ComplexVariable01" -Encrypted $False -Value $VirtualMachine -ResourceGroupName "ResourceGroup01"
 ```
 
-The first command gets a virtual machine by using the Get-AzureVM cmdlet.
+The first command gets a virtual machine by using the Get-AzVM cmdlet.
 The command stores it in the $VirtualMachine variable.
 The second command creates a variable named ComplexVariable01 in the Automation account named Contoso17.
 This command uses a complex object for its value, in this case, the virtual machine in $VirtualMachine.
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -170,10 +170,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationVariable](./Get-AzureRMAutomationVariable.md)
+[Get-AzAutomationVariable](./Get-AzAutomationVariable.md)
 
-[Remove-AzureRmAutomationVariable](./Remove-AzureRMAutomationVariable.md)
+[Remove-AzAutomationVariable](./Remove-AzAutomationVariable.md)
 
-[Set-AzureRmAutomationVariable](./Set-AzureRMAutomationVariable.md)
+[Set-AzAutomationVariable](./Set-AzAutomationVariable.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.PolicyInsights.dll-Help.xml
-Module Name: AzureRM.PolicyInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.policyinsights/stop-azurermpolicyremediation
+Module Name: Az.PolicyInsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.policyinsights/stop-azpolicyremediation
 schema: 2.0.0
 ---
 
-# Stop-AzureRmPolicyRemediation
+# Stop-AzPolicyRemediation
 
 ## SYNOPSIS
 Cancels an in-progress policy remediation.
@@ -14,39 +14,39 @@ Cancels an in-progress policy remediation.
 
 ### ByName (Default)
 ```
-Stop-AzureRmPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
+Stop-AzPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
  [-ResourceGroupName <String>] [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Stop-AzureRmPolicyRemediation -ResourceId <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzPolicyRemediation -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Stop-AzureRmPolicyRemediation -InputObject <PSRemediation> [-AsJob] [-PassThru]
+Stop-AzPolicyRemediation -InputObject <PSRemediation> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmPolicyRemediation** cmdlet cancels an in-progress policy remediation. Active deployments will be canceled and no new deployments will be created.
+The **Stop-AzPolicyRemediation** cmdlet cancels an in-progress policy remediation. Active deployments will be canceled and no new deployments will be created.
 
 ## EXAMPLES
 
 ### Example 1: Cancel a policy remediation at resource group scope
 ```
-PS C:\> Stop-AzureRmPolicyRemediation -ResourceGroupName "myRG" -Name "remediation1"
+PS C:\> Stop-AzPolicyRemediation -ResourceGroupName "myRG" -Name "remediation1"
 ```
 
 This command cancels the remediation named 'remediation1' in resource group 'myRG'.
 
 ### Example 2: Cancel a management group remediation via piping
 ```
-PS C:\> $remediation = Get-AzureRmPolicyRemediation -ManagementGroupName "mg1" -Name "remediation1"
-PS C:\> $remediation | Stop-AzureRmPolicyRemediation
+PS C:\> $remediation = Get-AzPolicyRemediation -ManagementGroupName "mg1" -Name "remediation1"
+PS C:\> $remediation | Stop-AzPolicyRemediation
 ```
 
 This command cancels the remediation named 'remediation1' in management group 'mg1'.
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

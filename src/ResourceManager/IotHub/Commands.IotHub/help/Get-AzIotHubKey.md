@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubkey
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubkey
 schema: 2.0.0
 ---
 
-# Get-AzureRmIotHubKey
+# Get-AzIotHubKey
 
 ## SYNOPSIS
 Gets an IotHub Key.
@@ -13,7 +13,7 @@ Gets an IotHub Key.
 ## SYNTAX
 
 ```
-Get-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [[-KeyName] <String>]
+Get-AzIotHubKey [-ResourceGroupName] <String> [-Name] <String> [[-KeyName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,14 +25,14 @@ You can either list all Keys or filter the list by a specific Key Name.
 
 ### Example 1 Get all Keys
 ```
-PS C:\> Get-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub"
+PS C:\> Get-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets all the Keys for the IotHub named "myiothub"
 
 ### Example 2 Get information for a specific Key
 ```
-PS C:\> Get-AzureRmIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner"
+PS C:\> Get-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner"
 ```
 
 Gets the information for a key named "iothubowner" for the IotHub named "myiothub"
@@ -43,7 +43,7 @@ Gets the information for a key named "iothubowner" for the IotHub named "myiothu
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

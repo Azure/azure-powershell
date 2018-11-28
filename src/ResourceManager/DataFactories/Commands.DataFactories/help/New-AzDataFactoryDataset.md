@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 352A4B94-E433-413B-91D1-6AA347563959
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/new-azurermdatafactorydataset
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/new-azdatafactorydataset
 schema: 2.0.0
 ---
 
-# New-AzureRmDataFactoryDataset
+# New-AzDataFactoryDataset
 
 ## SYNOPSIS
 Creates a dataset in Data Factory.
@@ -15,19 +15,19 @@ Creates a dataset in Data Factory.
 
 ### ByFactoryName (Default)
 ```
-New-AzureRmDataFactoryDataset [-DataFactoryName] <String> [[-Name] <String>] [-File] <String> [-Force]
+New-AzDataFactoryDataset [-DataFactoryName] <String> [[-Name] <String>] [-File] <String> [-Force]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-New-AzureRmDataFactoryDataset [-DataFactory] <PSDataFactory> [[-Name] <String>] [-File] <String> [-Force]
+New-AzDataFactoryDataset [-DataFactory] <PSDataFactory> [[-Name] <String>] [-File] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmDataFactoryDataset** cmdlet creates a dataset in Azure Data Factory.
+The **New-AzDataFactoryDataset** cmdlet creates a dataset in Azure Data Factory.
 If you specify a name for a dataset that already exists, this cmdlet prompts you for confirmation before it replaces the dataset.
 If you specify the *Force* parameter, the cmdlet replaces the existing dataset without confirmation.
 Perform these operations in the following order: 
@@ -42,7 +42,7 @@ If you confirm to overwrite the existing dataset, the dataset definition is also
 
 ### Example 1: Create a dataset
 ```
-PS C:\>New-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
+PS C:\>New-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
 DatasetName         : DAWikipediaClickEvents
 ResourceGroupName : ADF
 DataFactoryName   : WikiADF
@@ -57,7 +57,7 @@ The command bases the dataset on information in the DAWikipediaClickEvents.json 
 
 ### Example 2: View availability for a new dataset
 ```
-PS C:\>$Dataset = New-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
+PS C:\>$Dataset = New-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
 PS C:\> $Dataset.Availability
 AnchorDateTime : 
 Frequency      : Hour
@@ -71,7 +71,7 @@ The second command uses standard dot notation to display details about the Avail
 
 ### Example 3: View location for a new dataset
 ```
-PS C:\>$Dataset = New-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
+PS C:\>$Dataset = New-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
 PS C:\> $Dataset.Location
 BlobPath          : wikidatagateway/wikisampledatain/
 FilenamePrefix    : 
@@ -85,7 +85,7 @@ The second command displays details about the Location property of the dataset.
 
 ### Example 4: View validation rules for a new dataset
 ```
-PS C:\>$Dataset = New-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
+PS C:\>$Dataset = New-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
 PS C:\> $Dataset.Policy.Validation | Format-List $dataset.Location
 BlobPath          : wikidatagateway/wikisampledatain/
 FilenamePrefix    : 
@@ -261,8 +261,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryDataset](./Get-AzureRmDataFactoryDataset.md)
+[Get-AzDataFactoryDataset](./Get-AzDataFactoryDataset.md)
 
-[Remove-AzureRmDataFactoryDataset](./Remove-AzureRmDataFactoryDataset.md)
+[Remove-AzDataFactoryDataset](./Remove-AzDataFactoryDataset.md)
 
 

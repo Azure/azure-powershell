@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: CE32F620-8DB2-4004-8012-F1C4AA235B60
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermvmssconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmssconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmVmssConfig
+# New-AzVmssConfig
 
 ## SYNOPSIS
 Creates a VMSS configuration object.
@@ -15,8 +15,8 @@ Creates a VMSS configuration object.
 
 ### DefaultParameterSet (Default)
 ```
-New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>]
- [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
+New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>] [[-SkuName] <String>]
+ [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
  [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
  [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
  [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-ZoneBalance]
@@ -29,8 +29,8 @@ New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag
 
 ### ExplicitIdentityParameterSet
 ```
-New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>]
- [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
+New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>] [[-SkuName] <String>]
+ [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
  [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
  [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
  [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-ZoneBalance]
@@ -44,8 +44,8 @@ New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag
 
 ### AssignIdentityParameterSet
 ```
-New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>]
- [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
+New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>] [[-SkuName] <String>]
+ [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
  [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
  [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
  [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-ZoneBalance]
@@ -57,32 +57,32 @@ New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag
 ```
 
 ## DESCRIPTION
-The **New-AzureRmVmssConfig** cmdlet creates a configurable local Virtual Manager Scale Set (VMSS)
+The **New-AzVmssConfig** cmdlet creates a configurable local Virtual Manager Scale Set (VMSS)
 object. Other cmdlets are needed to configure the VMSS object. These cmdlets are:
-- Set-AzureRmVmssOsProfile
-- Set-AzureRmVmssStorageProfile
-- Add-AzureRmVmssNetworkInterfaceConfiguration
-- Add-AzureRmVmssExtension
+- Set-AzVmssOsProfile
+- Set-AzVmssStorageProfile
+- Add-AzVmssNetworkInterfaceConfiguration
+- Add-AzVmssExtension
 
 ## EXAMPLES
 
 ### Example 1: Create a VMSS configuration object
 ```
-PS C:\> $VMSS = New-AzureRmVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg `
-            | Add-AzureRmVmssNetworkInterfaceConfiguration -Name "Test" -Primary $True -IPConfiguration $IPCfg `
-            | Set-AzureRmVmssOSProfile -ComputerNamePrefix "Test" -AdminUsername $adminUsername -AdminPassword $AdminPassword `
-            | Set-AzureRmVmssStorageProfile -Name "Test" -OsDiskCreateOption "FromImage" -OsDiskCaching "None" `
+PS C:\> $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name "Test" -Primary $True -IPConfiguration $IPCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix "Test" -AdminUsername $adminUsername -AdminPassword $AdminPassword `
+            | Set-AzVmssStorageProfile -Name "Test" -OsDiskCreateOption "FromImage" -OsDiskCaching "None" `
             -ImageReferenceOffer $ImgRef.Offer -ImageReferenceSku $ImgRef.Skus -ImageReferenceVersion $ImgRef.Version `
             -ImageReferencePublisher $ImgRef.PublisherName -VhdContainer $VHDContainer `
-            | Add-AzureRmVmssAdditionalUnattendContent -ComponentName  $AUCComponentName -Content  $AUCContent -PassName  $AUCPassName -SettingName  $AUCSetting `
-            | Remove-AzureRmVmssAdditionalUnattendContent -ComponentName  $AUCComponentName;
+            | Add-AzVmssAdditionalUnattendContent -ComponentName  $AUCComponentName -Content  $AUCContent -PassName  $AUCPassName -SettingName  $AUCSetting `
+            | Remove-AzVmssAdditionalUnattendContent -ComponentName  $AUCComponentName;
 
-New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $VMSS;
+New-AzVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $VMSS;
 ```
 
 This example creates a VMSS configuration object. The first command uses the
-**New-AzureRmVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the
-variable named $VMSS. The second command uses the **New-AzureRmVmss** cmdlet to create a VMSS that
+**New-AzVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the
+variable named $VMSS. The second command uses the **New-AzVmss** cmdlet to create a VMSS that
 uses the VMSS configuration object created in the first command.
 
 ## PARAMETERS
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 
 ### -Extension
 Specifies the extension information object for the VMSS. You can use the
-**Add-AzureRmVmssExtension** cmdlet to add this object.
+**Add-AzVmssExtension** cmdlet to add this object.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension[]
@@ -296,7 +296,7 @@ Accept wildcard characters: False
 
 ### -NetworkInterfaceConfiguration
 Specifies the network profile object that contains the networking properties for the VMSS configuration.
-You can use the **Add-AzureRmVmssNetworkInterfaceConfiguration** cmdlet to add this object.
+You can use the **Add-AzVmssNetworkInterfaceConfiguration** cmdlet to add this object.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkConfiguration[]
@@ -312,7 +312,7 @@ Accept wildcard characters: False
 
 ### -OsProfile
 Specifies the operating system profile object that contains the operating system properties for the VMSS configuration.
-You can use the **Set-AzureRmVmssOsProfile** cmdlet to set this object.
+You can use the **Set-AzVmssOsProfile** cmdlet to set this object.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSProfile
@@ -510,7 +510,7 @@ Accept wildcard characters: False
 
 ### -StorageProfile
 Specifies the storage profile object that contains the disk properties for the VMSS configuration.
-You can use the **Set-AzureRmVmssStorageProfile** cmdlet to set this object.
+You can use the **Set-AzVmssStorageProfile** cmdlet to set this object.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetStorageProfile
@@ -658,12 +658,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmVmssOsProfile](./Set-AzureRmVmssOsProfile.md)
+[Set-AzVmssOsProfile](./Set-AzVmssOsProfile.md)
 
-[Set-AzureRmVmssStorageProfile](./Set-AzureRmVmssStorageProfile.md)
+[Set-AzVmssStorageProfile](./Set-AzVmssStorageProfile.md)
 
-[Add-AzureRmVmssNetworkInterfaceConfiguration](./Add-AzureRmVmssNetworkInterfaceConfiguration.md)
+[Add-AzVmssNetworkInterfaceConfiguration](./Add-AzVmssNetworkInterfaceConfiguration.md)
 
-[Add-AzureRmVmssExtension](./Add-AzureRmVmssExtension.md)
+[Add-AzVmssExtension](./Add-AzVmssExtension.md)
 
-[New-AzureRmVmss](./New-AzureRmVmss.md)
+[New-AzVmss](./New-AzVmss.md)

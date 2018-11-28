@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 278228EB-0126-4F27-A30F-51DC498C65FE
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermloadbalancerprobeconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azloadbalancerprobeconfig
 schema: 2.0.0
 ---
 
-# Get-AzureRmLoadBalancerProbeConfig
+# Get-AzLoadBalancerProbeConfig
 
 ## SYNOPSIS
 Gets a probe configuration for a load balancer.
@@ -14,19 +14,19 @@ Gets a probe configuration for a load balancer.
 ## SYNTAX
 
 ```
-Get-AzureRmLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
+Get-AzLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmLoadBalancerProbeConfig** cmdlet gets one or more probe configurations for a load balancer.
+The **Get-AzLoadBalancerProbeConfig** cmdlet gets one or more probe configurations for a load balancer.
 
 ## EXAMPLES
 
 ### Example 1: Get the probe configuration of a load balancer
 ```
-PS C:\>$slb = Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> Get-AzureRmLoadBalancerProbeConfig -Name "MyProbe" -LoadBalancer $slb
+PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+PS C:\> Get-AzLoadBalancerProbeConfig -Name "MyProbe" -LoadBalancer $slb
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.
@@ -38,7 +38,7 @@ The second command gets the associated probe configuration named MyProbe from th
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -95,14 +95,14 @@ Parameters: LoadBalancer (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmLoadBalancerProbeConfig](./Add-AzureRmLoadBalancerProbeConfig.md)
+[Add-AzLoadBalancerProbeConfig](./Add-AzLoadBalancerProbeConfig.md)
 
-[Get-AzureRmLoadBalancer](./Get-AzureRmLoadBalancer.md)
+[Get-AzLoadBalancer](./Get-AzLoadBalancer.md)
 
-[New-AzureRmLoadBalancerProbeConfig](./New-AzureRmLoadBalancerProbeConfig.md)
+[New-AzLoadBalancerProbeConfig](./New-AzLoadBalancerProbeConfig.md)
 
-[Remove-AzureRmLoadBalancerProbeConfig](./Remove-AzureRmLoadBalancerProbeConfig.md)
+[Remove-AzLoadBalancerProbeConfig](./Remove-AzLoadBalancerProbeConfig.md)
 
-[Set-AzureRmLoadBalancerProbeConfig](./Set-AzureRmLoadBalancerProbeConfig.md)
+[Set-AzLoadBalancerProbeConfig](./Set-AzLoadBalancerProbeConfig.md)
 
 

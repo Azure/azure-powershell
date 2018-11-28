@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-Module Name: AzureRM.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/get-azurermeventhub
+Module Name: Az.EventHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/get-azeventhub
 schema: 2.0.0
 ---
 
-# Get-AzureRmEventHub
+# Get-AzEventHub
 
 ## SYNOPSIS
 Gets the details of a single Event Hub, or gets a list of Event Hubs.
@@ -13,12 +13,12 @@ Gets the details of a single Event Hub, or gets a list of Event Hubs.
 ## SYNTAX
 
 ```
-Get-AzureRmEventHub [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>] [-MaxCount <Int32>]
+Get-AzEventHub [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>] [-MaxCount <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmEventHub cmdlet returns either the details of an Event Hub, or a list of all Event Hubs in the current namespace.
+The Get-AzEventHub cmdlet returns either the details of an Event Hub, or a list of all Event Hubs in the current namespace.
 If the Event Hub name is provided, the details of a single Event Hub are returned.
 If an Event Hub name is not provided, a list of all Event Hubs in the specified namespace is returned.
 
@@ -26,14 +26,14 @@ If an Event Hub name is not provided, a list of all Event Hubs in the specified 
 
 ### Example 1 - specified EventHub
 ```
-PS C:\> Get-AzureRmEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName
+PS C:\> Get-AzEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName
 ```
 
 Returns the details of the Event Hub \`MyEventHubName\`.
 
 ### Example 2 - List of EventHub in specified Namespace
 ```
-PS C:\> Get-AzureRmEventHub -ResourceGroup MyResourceGroupName -NamespaceName MyNamespaceName
+PS C:\> Get-AzEventHub -ResourceGroup MyResourceGroupName -NamespaceName MyNamespaceName
 ```
 
 Returns a list of Event Hubs in the namespace \`MyNamespaceName\`.
@@ -44,7 +44,7 @@ Returns a list of Event Hubs in the namespace \`MyNamespaceName\`.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

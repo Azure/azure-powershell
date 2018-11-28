@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 7F7D1F05-617C-4EC5-8FF5-D816E9148841
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/start-azurermvmss
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/start-azvmss
 schema: 2.0.0
 ---
 
-# Start-AzureRmVmss
+# Start-AzVmss
 
 ## SYNOPSIS
 Starts the VMSS or a set of virtual machines within the VMSS.
@@ -14,26 +14,26 @@ Starts the VMSS or a set of virtual machines within the VMSS.
 ## SYNTAX
 
 ```
-Start-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-AsJob]
+Start-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmVmss** cmdlet starts all the virtual machines within the Virtual Machine Scale Set (VMSS) or a set of virtual machines.
+The **Start-AzVmss** cmdlet starts all the virtual machines within the Virtual Machine Scale Set (VMSS) or a set of virtual machines.
 You can use the *InstanceId* parameter to select a set of virtual machines.
 
 ## EXAMPLES
 
 ### Example 1: Start a specific set of virtual machines within the VMSS
 ```
-PS C:\> Start-AzureRmVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "ContosoVMSS"-InstanceId "0", "1"
+PS C:\> Start-AzVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "ContosoVMSS"-InstanceId "0", "1"
 ```
 
 This command starts a specific set of virtual machines specified by the instance ID string array that belong to the VMSS named ContosoVMSS.
 
 ### Example 2: Start all virtual machines within the VMSS
 ```
-PS C:\> Start-AzureRmVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "ContosoVMSS"
+PS C:\> Start-AzVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "ContosoVMSS"
 ```
 
 This command starts all virtual machines that belong to the VMSS named ContosoVMSS.
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -163,18 +163,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVmss](./Get-AzureRmVmss.md)
+[Get-AzVmss](./Get-AzVmss.md)
 
-[New-AzureRmVmss](./New-AzureRmVmss.md)
+[New-AzVmss](./New-AzVmss.md)
 
-[Remove-AzureRmVmss](./Remove-AzureRmVmss.md)
+[Remove-AzVmss](./Remove-AzVmss.md)
 
-[Restart-AzureRmVmss](./Restart-AzureRmVmss.md)
+[Restart-AzVmss](./Restart-AzVmss.md)
 
-[Set-AzureRmVmss](./Set-AzureRmVmss.md)
+[Set-AzVmss](./Set-AzVmss.md)
 
-[Stop-AzureRmVmss](./Stop-AzureRmVmss.md)
+[Stop-AzVmss](./Stop-AzVmss.md)
 
-[Update-AzureRmVmss](./Update-AzureRmVmss.md)
+[Update-AzVmss](./Update-AzVmss.md)
 
 

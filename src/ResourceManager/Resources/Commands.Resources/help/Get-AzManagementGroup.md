@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermmanagementgroup/
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azmanagementgroup/
 schema: 2.0.0
 ---
 
-# Get-AzureRmManagementGroup
+# Get-AzManagementGroup
 
 ## SYNOPSIS
 Gets Management Group(s)
@@ -14,23 +14,23 @@ Gets Management Group(s)
 
 ### ListOperation (Default)
 ```
-Get-AzureRmManagementGroup [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzManagementGroup [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetOperation
 ```
-Get-AzureRmManagementGroup [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-Expand]
- [-Recurse] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzManagementGroup [-GroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-Expand] [-Recurse]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRMManagementGroup cmdlet Gets all or a specific Management Group.
+The Get-AzManagementGroup cmdlet Gets all or a specific Management Group.
 
 ## EXAMPLES
 
 ### Example 1: Get all Management Groups
 ```
-PS C:\> Get-AzureRmManagementGroup
+PS C:\> Get-AzManagementGroup
 
 Id          : /providers/Microsoft.Management/managementGroups/TestGroup
 Type        : /providers/Microsoft.Management/managementGroups
@@ -47,7 +47,7 @@ DisplayName : TestGroupChildDisplayName
 
 ### Example 2: Get specific Management Group
 ```
-PS C:\> Get-AzureRmManagementGroup -GroupName TestGroup
+PS C:\> Get-AzManagementGroup -GroupName TestGroup
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -63,7 +63,7 @@ ParentDisplayName : TestGroupParent
 
 ### Example 3: Get specific Management Group and first level of hierarchy
 ```
-PS C:\> $reponse = Get-AzureRmManagementGroup -GroupName TestGroupParent -Expand
+PS C:\> $reponse = Get-AzManagementGroup -GroupName TestGroupParent -Expand
 PS C:\> $response
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent
@@ -91,7 +91,7 @@ With the `Expand` flag, one can navigate through the `Children` array and get de
 
 ### Example 4: Get specific Management Group and all levels of hiearchy
 ```
-PS C:\> $response = Get-AzureRmManagementGroup -GroupName TestGroupParent -Expand -Recurse
+PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
 PS C:\> $response
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent
@@ -129,7 +129,7 @@ Children    :
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

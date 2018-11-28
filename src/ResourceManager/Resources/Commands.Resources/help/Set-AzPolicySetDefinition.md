@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermpolicysetdefinition
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azpolicysetdefinition
 schema: 2.0.0
 ---
 
-# Set-AzureRmPolicySetDefinition
+# Set-AzPolicySetDefinition
 
 ## SYNOPSIS
 Modifies a policy set definition
@@ -14,14 +14,14 @@ Modifies a policy set definition
 
 ### NameParameterSet (Default)
 ```
-Set-AzureRmPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
+Set-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupNameParameterSet
 ```
-Set-AzureRmPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
+Set-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] -ManagementGroupName <String>
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -29,7 +29,7 @@ Set-AzureRmPolicySetDefinition -Name <String> [-DisplayName <String>] [-Descript
 
 ### SubscriptionIdParameterSet
 ```
-Set-AzureRmPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
+Set-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] -SubscriptionId <Guid>
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -37,23 +37,23 @@ Set-AzureRmPolicySetDefinition -Name <String> [-DisplayName <String>] [-Descript
 
 ### IdParameterSet
 ```
-Set-AzureRmPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
+Set-AzPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmPolicySetDefinition** cmdlet modifies a policy definition.
+The **Set-AzPolicySetDefinition** cmdlet modifies a policy definition.
 
 ## EXAMPLES
 
 ### Example 1: Update the description of a policy set definition
 ```
-PS C:\> $PolicySetDefinition = Get-AzureRmPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
-PS C:\> Set-AzureRmPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
+PS C:\> $PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
+PS C:\> Set-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
 ```
 
-The first command gets a policy set definition by using the Get-AzureRmPolicySetDefinition cmdlet.
+The first command gets a policy set definition by using the Get-AzPolicySetDefinition cmdlet.
 The command stores that object in the $PolicySetDefinition variable.
 The second command updates the description of the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

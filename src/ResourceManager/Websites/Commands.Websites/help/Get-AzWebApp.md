@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: A87ED954-9C09-4329-A005-ABFF36C45E6E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebapp
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebapp
 schema: 2.0.0
 ---
 
-# Get-AzureRmWebApp
+# Get-AzWebApp
 
 ## SYNOPSIS
 Gets Azure Web Apps in the specified resource group.
@@ -15,29 +15,29 @@ Gets Azure Web Apps in the specified resource group.
 
 ### S1
 ```
-Get-AzureRmWebApp [[-ResourceGroupName] <String>] [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzWebApp [[-ResourceGroupName] <String>] [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### S2
 ```
-Get-AzureRmWebApp [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContextContainer>]
+Get-AzWebApp [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### S3
 ```
-Get-AzureRmWebApp [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzWebApp [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmWebApp** cmdlet gets information about an Azure Web App.
+The **Get-AzWebApp** cmdlet gets information about an Azure Web App.
 
 ## EXAMPLES
 
 ### Example 1: Get a Web App from a resource group
 ```
-PS C:\>Get-AzureRmWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
+PS C:\>Get-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 
 This command gets the Web App named ContosoSite that belongs to the resource group Default-Web-WestUS.
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -134,14 +134,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmWebApp](./New-AzureRmWebApp.md)
+[New-AzWebApp](./New-AzWebApp.md)
 
-[Remove-AzureRmWebApp](./Remove-AzureRmWebApp.md)
+[Remove-AzWebApp](./Remove-AzWebApp.md)
 
-[Restart-AzureRmWebApp](./Restart-AzureRmWebApp.md)
+[Restart-AzWebApp](./Restart-AzWebApp.md)
 
-[Start-AzureRmWebApp](./Start-AzureRmWebApp.md)
+[Start-AzWebApp](./Start-AzWebApp.md)
 
-[Stop-AzureRmWebApp](./Stop-AzureRmWebApp.md)
+[Stop-AzWebApp](./Stop-AzWebApp.md)
 
 

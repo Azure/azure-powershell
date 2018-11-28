@@ -1,37 +1,37 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/?view=azurermps-6.8.1
+Module Name: Az.Websites
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/?view=azurermps-6.8.1
 schema: 2.0.0
 ---
 
-# Get-AzureRmWebAppContainerContinuousDeploymentUrl
+# Get-AzWebAppContainerContinuousDeploymentUrl
 
 ## SYNOPSIS
-Get-AzureRMWebAppContainerContinuousDeploymentUrl will return container continuous deployment url
+Get-AzWebAppContainerContinuousDeploymentUrl will return container continuous deployment url
 
 ## SYNTAX
 
-### S1
+### S1 (Default)
 ```
-Get-AzureRmWebAppContainerContinuousDeploymentUrl [[-SlotName] <String>] [-ResourceGroupName] <String>
+Get-AzWebAppContainerContinuousDeploymentUrl [[-SlotName] <String>] [-ResourceGroupName] <String>
  [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Get-AzureRmWebAppContainerContinuousDeploymentUrl [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+Get-AzWebAppContainerContinuousDeploymentUrl [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get-AzureRMWebAppContainerContinuousDeploymentUrl will return container continuous deployment url
+Get-AzWebAppContainerContinuousDeploymentUrl will return container continuous deployment url
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmWebAppContainerContinuousDeploymentUrl -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
+PS C:\> Get-AzWebAppContainerContinuousDeploymentUrl -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
 ```
 
 This command will return container continuous deployment url.
@@ -42,7 +42,7 @@ This command will return container continuous deployment url.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

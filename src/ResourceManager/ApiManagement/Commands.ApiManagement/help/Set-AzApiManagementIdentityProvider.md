@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementidentityprovider
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementidentityprovider
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagementIdentityProvider
+# Set-AzApiManagementIdentityProvider
 
 ## SYNOPSIS
 Updates the Configuration of an existing Identity Provider.
@@ -13,7 +13,7 @@ Updates the Configuration of an existing Identity Provider.
 ## SYNTAX
 
 ```
-Set-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext>
+Set-AzApiManagementIdentityProvider -Context <PsApiManagementContext>
  -Type <PsApiManagementIdentityProviderType> [-ClientId <String>] [-ClientSecret <String>]
  [-AllowedTenants <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -26,8 +26,8 @@ Updates the Configuration of an existing Identity Provider.
 
 ### Example 1
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\> Set-AzureRmApiManagementIdentityProvider -Context $apimContext -Type Facebook -ClientSecret "updatedSecret" -PassThru
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\> Set-AzApiManagementIdentityProvider -Context $apimContext -Type Facebook -ClientSecret "updatedSecret" -PassThru
 ```
 
 The cmdlet updates the Client Secret of the Facebook Identity Provider;
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -197,8 +197,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagementIdentityProvider](./New-AzureRmApiManagementIdentityProvider.md)
+[New-AzApiManagementIdentityProvider](./New-AzApiManagementIdentityProvider.md)
 
-[Get-AzureRmApiManagementIdentityProvider](./Get-AzureRmApiManagementIdentityProvider.md)
+[Get-AzApiManagementIdentityProvider](./Get-AzApiManagementIdentityProvider.md)
 
-[Remove-AzureRmApiManagementIdentityProvider](./Remove-AzureRmApiManagementIdentityProvider.md)
+[Remove-AzApiManagementIdentityProvider](./Remove-AzApiManagementIdentityProvider.md)

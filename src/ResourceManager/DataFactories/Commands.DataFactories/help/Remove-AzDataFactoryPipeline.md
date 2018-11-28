@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: E1E0919A-062B-4794-ADE7-E17133A40604
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactorypipeline
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactorypipeline
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryPipeline
+# Remove-AzDataFactoryPipeline
 
 ## SYNOPSIS
 Removes a pipeline from Azure Data Factory.
@@ -15,25 +15,25 @@ Removes a pipeline from Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmDataFactoryPipeline [-Force] [-Name] <String> [-DataFactoryName] <String>
+Remove-AzDataFactoryPipeline [-Force] [-Name] <String> [-DataFactoryName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Remove-AzureRmDataFactoryPipeline [-Force] [-Name] <String> [-DataFactory] <PSDataFactory>
+Remove-AzDataFactoryPipeline [-Force] [-Name] <String> [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDataFactoryPipeline** cmdlet removes a pipeline from Azure Data Factory.
+The **Remove-AzDataFactoryPipeline** cmdlet removes a pipeline from Azure Data Factory.
 
 ## EXAMPLES
 
 ### Example 1: Remove a pipeline
 ```
-PS C:\>Remove-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
+PS C:\>Remove-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
 Confirm
 Are you sure you want to remove pipeline 'DPWikisample' in data factory 'WikiADF'? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -187,14 +187,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryPipeline](./Get-AzureRmDataFactoryPipeline.md)
+[Get-AzDataFactoryPipeline](./Get-AzDataFactoryPipeline.md)
 
-[New-AzureRmDataFactoryPipeline](./New-AzureRmDataFactoryPipeline.md)
+[New-AzDataFactoryPipeline](./New-AzDataFactoryPipeline.md)
 
-[Resume-AzureRmDataFactoryPipeline](./Resume-AzureRmDataFactoryPipeline.md)
+[Resume-AzDataFactoryPipeline](./Resume-AzDataFactoryPipeline.md)
 
-[Set-AzureRmDataFactoryPipelineActivePeriod](./Set-AzureRmDataFactoryPipelineActivePeriod.md)
+[Set-AzDataFactoryPipelineActivePeriod](./Set-AzDataFactoryPipelineActivePeriod.md)
 
-[Suspend-AzureRmDataFactoryPipeline](./Suspend-AzureRmDataFactoryPipeline.md)
+[Suspend-AzDataFactoryPipeline](./Suspend-AzDataFactoryPipeline.md)
 
 

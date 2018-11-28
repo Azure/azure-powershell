@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 692D0B64-95EB-4D36-975F-65674B3B2F8C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlserverauditing
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlserverauditing
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlServerAuditing
+# Remove-AzSqlServerAuditing
 
 ## SYNOPSIS
 Removes the auditing of a SQL server.
@@ -14,12 +14,12 @@ Removes the auditing of a SQL server.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlServerAuditing [-PassThru] -ServerName <String> [-ResourceGroupName] <String>
+Remove-AzSqlServerAuditing [-PassThru] -ServerName <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlServerAuditing** cmdlet removes the auditing of an Azure SQL server.
+The **Remove-AzSqlServerAuditing** cmdlet removes the auditing of an Azure SQL server.
 To use this cmdlet, specify the *ResourceGroupName* and *ServerName* parameters to identify the server.
 After you run this cmdlet, auditing of the databases on the Azure SQL server is not performed.
 If the command succeeds, and you specify the *PassThru* parameter, the cmdlet returns an object that describes the current auditing policy and the Azure SQL server identifiers.
@@ -29,7 +29,7 @@ Server identifiers include the **ResourceGroupName** and **ServerName**.
 
 ### Example 1: Remove the auditing of an Azure SQL server
 ```
-PS C:\>Remove-AzureRmSqlServerAuditing -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>Remove-AzSqlServerAuditing -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
 This command removes the auditing of all the databases located on Server01 in resource group.
@@ -40,7 +40,7 @@ This command removes the auditing of all the databases located on Server01 in re
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -143,9 +143,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlDatabaseAuditingPolicy](./Get-AzureRmSqlDatabaseAuditingPolicy.md)
+[Get-AzSqlDatabaseAuditingPolicy](./Get-AzSqlDatabaseAuditingPolicy.md)
 
-[Set-AzureRmSqlDatabaseAuditingPolicy](./Set-AzureRmSqlDatabaseAuditingPolicy.md)
+[Set-AzSqlDatabaseAuditingPolicy](./Set-AzSqlDatabaseAuditingPolicy.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

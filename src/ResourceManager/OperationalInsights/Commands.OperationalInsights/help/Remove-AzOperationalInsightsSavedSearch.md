@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 ms.assetid: D4A40E83-2969-40A2-AED0-A6073142CAF1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightssavedsearch
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/remove-azoperationalinsightssavedsearch
 schema: 2.0.0
 ---
 
-# Remove-AzureRmOperationalInsightsSavedSearch
+# Remove-AzOperationalInsightsSavedSearch
 
 ## SYNOPSIS
 Removes a saved search from the workspace.
@@ -14,18 +14,18 @@ Removes a saved search from the workspace.
 ## SYNTAX
 
 ```
-Remove-AzureRmOperationalInsightsSavedSearch [-ResourceGroupName] <String> [-WorkspaceName] <String>
+Remove-AzOperationalInsightsSavedSearch [-ResourceGroupName] <String> [-WorkspaceName] <String>
  [-SavedSearchId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmOperationalInsightsSavedSearch** cmdlet removes a saved search from the workspace.
+The **Remove-AzOperationalInsightsSavedSearch** cmdlet removes a saved search from the workspace.
 
 ## EXAMPLES
 
 ### Example 1: Remove a saved search
 ```
-PS C:\>Remove-AzureRmOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -SavedSearchId "ContosoSavedSearchId" -Force
+PS C:\>Remove-AzOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -SavedSearchId "ContosoSavedSearchId" -Force
 ```
 
 This command removes a saved search from the workspace.
@@ -36,7 +36,7 @@ This command removes a saved search from the workspace.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -138,6 +138,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure Operational Insights Cmdlets](./AzureRM.OperationalInsights.md)
+[Azure Operational Insights Cmdlets](./Az.OperationalInsights.md)
 
 

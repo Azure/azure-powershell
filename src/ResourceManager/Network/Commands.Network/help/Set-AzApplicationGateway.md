@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 7C8B47B4-2F6A-45EF-A351-88C8C3F9D0D3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermapplicationgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgateway
 schema: 2.0.0
 ---
 
-# Set-AzureRmApplicationGateway
+# Set-AzApplicationGateway
 
 ## SYNOPSIS
 Updates an application gateway.
@@ -14,18 +14,18 @@ Updates an application gateway.
 ## SYNTAX
 
 ```
-Set-AzureRmApplicationGateway -ApplicationGateway <PSApplicationGateway> [-AsJob]
+Set-AzApplicationGateway -ApplicationGateway <PSApplicationGateway> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApplicationGateway** cmdlet updates an Azure application gateway.
+The **Set-AzApplicationGateway** cmdlet updates an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Update an application gateway
 ```
-PS C:\>$UpdatedAppGw = Set-AzureRmApplicationGateway -ApplicationGateway $AppGw
+PS C:\>$UpdatedAppGw = Set-AzApplicationGateway -ApplicationGateway $AppGw
 ```
 
 This command updates the application gateway with settings in the $AppGw variable and stores the updated gateway in the $UpdatedAppGw variable.
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,6 +93,6 @@ Parameters: ApplicationGateway (ByValue)
 
 ## RELATED LINKS
 
-[Start-AzureRmApplicationGateway](./Start-AzureRmApplicationGateway.md)
+[Start-AzApplicationGateway](./Start-AzApplicationGateway.md)
 
 

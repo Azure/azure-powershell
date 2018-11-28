@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
-Module Name: AzureRM.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor/get-azurermfrontdoorfirewallpolicy
+Module Name: Az.FrontDoor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/get-azfrontdoorfirewallpolicy
 schema: 2.0.0
 ---
 
-# Get-AzureRmFrontDoorFireWallPolicy
+# Get-AzFrontDoorFireWallPolicy
 
 ## SYNOPSIS
 Get WAF policy
@@ -13,18 +13,18 @@ Get WAF policy
 ## SYNTAX
 
 ```
-Get-AzureRmFrontDoorFireWallPolicy -ResourceGroupName <String> [-Name <String>]
+Get-AzFrontDoorFireWallPolicy -ResourceGroupName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmFrontDoorFireWallPolicy** cmdletGet gets WAF policy in a resource group under the current subscription
+The **Get-AzFrontDoorFireWallPolicy** cmdletGet gets WAF policy in a resource group under the current subscription
 
 ## EXAMPLES
 
 ### Example 1: Get a WAF policy called $Name in $resourceGroup
 ```powershell
-PS C:\> Get-AzureRmFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroup
+PS C:\> Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroup
 
 PolicyMode         : Prevention
 PolicyEnabledState : Enabled
@@ -43,7 +43,7 @@ Get a WAF policy called $Name in $resourceGroup
 
 ### Example 2: Get all WAF policy in $resourceGroup
 ```powershell
-PS C:\> Get-AzureRmFrontDoorFireWallPolicy -ResourceGroupName $resourceGroup
+PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroup
 
 PolicyMode         : Prevention
 PolicyEnabledState : Enabled
@@ -78,7 +78,7 @@ Get all WAF policy in $resourceGroup
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -134,6 +134,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmFrontDoorFireWallPolicy](./New-AzureRmFrontDoorFireWallPolicy.md)
-[Set-AzureRmFrontDoorFireWallPolicy](./Set-AzureRmFrontDoorFireWallPolicy.md)
-[Remove-AzureRmFrontDoorFireWallPolicy](./Remove-AzureRmFrontDoorFireWallPolicy.md)
+[New-AzFrontDoorFireWallPolicy](./New-AzFrontDoorFireWallPolicy.md)
+[Set-AzFrontDoorFireWallPolicy](./Set-AzFrontDoorFireWallPolicy.md)
+[Remove-AzFrontDoorFireWallPolicy](./Remove-AzFrontDoorFireWallPolicy.md)

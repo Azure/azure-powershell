@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
-Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/New-AzureRmDataMigrationSyncSelectedDBObject
+Module Name: Az.DataMigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/New-AzDataMigrationSyncSelectedDBObject
 schema: 2.0.0
 ---
 
-# New-AzureRmDataMigrationSyncSelectedDBObject
+# New-AzDataMigrationSyncSelectedDBObject
 
 ## SYNOPSIS
 Creates a database info object specific to the sync scenario to be used for a migration task.
@@ -13,15 +13,14 @@ Creates a database info object specific to the sync scenario to be used for a mi
 ## SYNTAX
 
 ```
-New-AzureRmDataMigrationSyncSelectedDBObject -TargetDatabaseName <String> -SchemaName <String>
- -TableMap <Hashtable> [-MigrationSetting <Hashtable>] [-SourceSetting <Hashtable>]
- [-TargetSetting <Hashtable>] -SourceDatabaseName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzDataMigrationSyncSelectedDBObject -TargetDatabaseName <String> -SchemaName <String> -TableMap <Hashtable>
+ [-MigrationSetting <Hashtable>] [-SourceSetting <Hashtable>] [-TargetSetting <Hashtable>]
+ -SourceDatabaseName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-The New-AzureRmDataMigrationSyncSelectedDB cmdlet creates a database info object specific to the sync scenario which contains information about source and target databases.
+The New-AzDataMigrationSyncSelectedDB cmdlet creates a database info object specific to the sync scenario which contains information about source and target databases.
 
 ## EXAMPLES
 
@@ -31,7 +30,7 @@ PS C:\> $tableMap = New-Object 'system.collections.hashtable'
 	$tableMap.Add("dbo.TestTable1", "dbo.TestTable1")
 	$tableMap.Add("dbo.TestTable2","dbo.TestTable2")
 
-	$selectedDbs = New-AzureRmDmsSyncSelectedDBObject 
+	$selectedDbs = New-AzDmsSyncSelectedDBObject 
 		-TargetDatabaseName DatabaseName `
 		-SchemaName dbo `
 		-TableMap $tableMap `
@@ -46,7 +45,7 @@ This example creates a database metadata object describing the migrating setting
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,7 +92,7 @@ The name of the source database.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named

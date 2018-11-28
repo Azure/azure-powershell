@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 3B5FC8E3-5A02-4F3B-81F0-51DFE47A201B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementtenantaccess
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementtenantaccess
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagementTenantAccess
+# Set-AzApiManagementTenantAccess
 
 ## SYNOPSIS
 Enables or disables tenant access.
@@ -14,19 +14,19 @@ Enables or disables tenant access.
 ## SYNTAX
 
 ```
-Set-AzureRmApiManagementTenantAccess -Context <PsApiManagementContext> -Enabled <Boolean> [-PassThru]
+Set-AzApiManagementTenantAccess -Context <PsApiManagementContext> -Enabled <Boolean> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApiManagementTenantAccess** cmdlet enables or disables tenant access.
+The **Set-AzApiManagementTenantAccess** cmdlet enables or disables tenant access.
 
 ## EXAMPLES
 
 ### Example 1: Enable tenant access
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementTenantAccess -Context $apimContext -Enabled $True
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementTenantAccess -Context $apimContext -Enabled $True
 ```
 
 This command enables tenant access in the specified context.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,6 +111,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementTenantAccess](./Get-AzureRmApiManagementTenantAccess.md)
+[Get-AzApiManagementTenantAccess](./Get-AzApiManagementTenantAccess.md)
 
 

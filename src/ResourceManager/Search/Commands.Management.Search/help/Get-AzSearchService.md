@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
-Module Name: AzureRM.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/get-azurermsearchservice
+Module Name: Az.Search
+online version: https://docs.microsoft.com/en-us/powershell/module/az.search/get-azsearchservice
 schema: 2.0.0
 ---
 
-# Get-AzureRmSearchService
+# Get-AzSearchService
 
 ## SYNOPSIS
 Gets an Azure Search service.
@@ -14,23 +14,23 @@ Gets an Azure Search service.
 
 ### ResourceGroupParameterSet (Default)
 ```
-Get-AzureRmSearchService [-ResourceGroupName] <String> [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSearchService [-ResourceGroupName] <String> [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmSearchService [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSearchService [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSearchService** cmdlet gets the specified Azure Search service.
+The **Get-AzSearchService** cmdlet gets the specified Azure Search service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmSearchService -ResourceGroupName felixwa-01
+PS C:\> Get-AzSearchService -ResourceGroupName felixwa-01
 
 
 ResourceGroupName : felixwa-01
@@ -51,7 +51,7 @@ Get an Azure Search service with specified parameters.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -122,8 +122,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSearchService](./New-AzureRmSearchService.md)
+[New-AzSearchService](./New-AzSearchService.md)
 
-[Set-AzureRmSearchService](./Set-AzureRmSearchService.md)
+[Set-AzSearchService](./Set-AzSearchService.md)
 
-[Remove-AzureRmSearchService](./Remove-AzureRmSearchService.md)
+[Remove-AzSearchService](./Remove-AzSearchService.md)

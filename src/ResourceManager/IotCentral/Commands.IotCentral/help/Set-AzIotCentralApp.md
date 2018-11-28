@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.IotCentral.dll-Help.xml
-Module Name: AzureRM.IotCentral
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iotcentral/set-azurermiotcentralapp
+Module Name: Az.IotCentral
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iotcentral/set-aziotcentralapp
 schema: 2.0.0
 ---
 
-# Set-AzureRmIotCentralApp
+# Set-AzIotCentralApp
 
 ## SYNOPSIS
 Updates the metadata for an IoT Central Application.
@@ -14,19 +14,19 @@ Updates the metadata for an IoT Central Application.
 
 ### ResourceIdParameterSet (Default)
 ```
-Set-AzureRmIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
+Set-AzIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Set-AzureRmIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] -InputObject <PSIotCentralApp> [-AsJob]
+Set-AzIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] -InputObject <PSIotCentralApp> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InteractiveIotCentralParameterSet
 ```
-Set-AzureRmIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] [-AsJob] [-ResourceGroupName] <String>
+Set-AzIotCentralApp [-DisplayName <String>] [-Tag <Hashtable>] [-AsJob] [-ResourceGroupName] <String>
  [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Update the metadata for an IoT Central Application.
 
 ### Example 1 Update Display Name
 ```powershell
-PS C:\> Set-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -DisplayName "My New Custom Display Name"
+PS C:\> Set-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName" -DisplayName "My New Custom Display Name"
 ```
 
 Update the Display name on an existing IoT Central Application.
@@ -64,7 +64,7 @@ ResourceGroupName : MyResourceGroupName
 Run cmdlet as a job in the background.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Custom Display Name of the Iot Central Application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Iot Central Application Input Object.
 
 ```yaml
-Type: PSIotCentralApp
+Type: Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Name of the Iot Central Application Resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InteractiveIotCentralParameterSet
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 Name of the Resource Group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InteractiveIotCentralParameterSet
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 Iot Central Application Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 Iot Central Application Resource Tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -200,7 +200,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

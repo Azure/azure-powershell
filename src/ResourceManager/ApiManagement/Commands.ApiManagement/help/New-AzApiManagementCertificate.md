@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 5CBEDFF8-C441-44CC-B011-5F5AAFA2E5C6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementcertificate
 schema: 2.0.0
 ---
 
-# New-AzureRmApiManagementCertificate
+# New-AzApiManagementCertificate
 
 ## SYNOPSIS
 Creates an API Management certificate to be used during Authentication with Backend.
@@ -15,25 +15,25 @@ Creates an API Management certificate to be used during Authentication with Back
 
 ### LoadFromFile (Default)
 ```
-New-AzureRmApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>]
+New-AzApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>]
  -PfxFilePath <String> -PfxPassword <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Raw
 ```
-New-AzureRmApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>]
- -PfxBytes <Byte[]> -PfxPassword <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>] -PfxBytes <Byte[]>
+ -PfxPassword <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApiManagementCertificate** cmdlet creates an Azure API Management certificate.
+The **New-AzApiManagementCertificate** cmdlet creates an Azure API Management certificate.
 
 ## EXAMPLES
 
 ### Example 1: Create and upload a certificate
 ```
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzureRmApiManagementCertificate -Context $ApiMgmtContext -PfxFilePath "C:\contoso\certificates\apimanagement.pfx" -PfxPassword "1111"
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>New-AzApiManagementCertificate -Context $ApiMgmtContext -PfxFilePath "C:\contoso\certificates\apimanagement.pfx" -PfxPassword "1111"
 ```
 
 This command uploads a certificate to Api Management. This certificate can be used for mutual authentication with backend using policies.
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -152,10 +152,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementCertificate](./Get-AzureRmApiManagementCertificate.md)
+[Get-AzApiManagementCertificate](./Get-AzApiManagementCertificate.md)
 
-[Remove-AzureRmApiManagementCertificate](./Remove-AzureRmApiManagementCertificate.md)
+[Remove-AzApiManagementCertificate](./Remove-AzApiManagementCertificate.md)
 
-[Set-AzureRmApiManagementCertificate](./Set-AzureRmApiManagementCertificate.md)
+[Set-AzApiManagementCertificate](./Set-AzApiManagementCertificate.md)
 
 

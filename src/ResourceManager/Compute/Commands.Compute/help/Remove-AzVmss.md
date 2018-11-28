@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: E6F2EE87-97C4-416A-9AE1-9FBD72062F0F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmss
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmss
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVmss
+# Remove-AzVmss
 
 ## SYNOPSIS
 Removes the VMSS or a virtual machine that is within the VMSS.
@@ -14,12 +14,12 @@ Removes the VMSS or a virtual machine that is within the VMSS.
 ## SYNTAX
 
 ```
-Remove-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-Force]
+Remove-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVmss** cmdlet removes the Virtual Machine Scale Set (VMSS) from Azure.
+The **Remove-AzVmss** cmdlet removes the Virtual Machine Scale Set (VMSS) from Azure.
 This cmdlet can also be used to remove a specific virtual machine inside the VMSS.
 You can use the *InstanceId* parameter to remove a specific virtual machine inside the VMSS.
 
@@ -27,14 +27,14 @@ You can use the *InstanceId* parameter to remove a specific virtual machine insi
 
 ### Example 1: Remove a VMSS
 ```
-PS C:\> Remove-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMScaleSet001"
+PS C:\> Remove-AzVmss -ResourceGroupName "Group001" -VMScaleSetName "VMScaleSet001"
 ```
 
 This command removes the VMSS named VMScaleSet001 that belongs to the resource group named Group001.
 
 ### Example 2: Remove a virtual machine from within a VMSS
 ```
-PS C:\> Remove-AzureRmVmss -ResourceGroupName "Group002" -VMScaleSetName "VMScaleSet002" -InstanceId "3";
+PS C:\> Remove-AzVmss -ResourceGroupName "Group002" -VMScaleSetName "VMScaleSet002" -InstanceId "3";
 ```
 
 This command removes the virtual machine with instance ID 3 from the VMSS named VMScaleSet002 that belongs to the resource group named Group002.
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -180,18 +180,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVmss](./Get-AzureRmVmss.md)
+[Get-AzVmss](./Get-AzVmss.md)
 
-[New-AzureRmVmss](./New-AzureRmVmss.md)
+[New-AzVmss](./New-AzVmss.md)
 
-[Restart-AzureRmVmss](./Restart-AzureRmVmss.md)
+[Restart-AzVmss](./Restart-AzVmss.md)
 
-[Set-AzureRmVmss](./Set-AzureRmVmss.md)
+[Set-AzVmss](./Set-AzVmss.md)
 
-[Start-AzureRmVmss](./Start-AzureRmVmss.md)
+[Start-AzVmss](./Start-AzVmss.md)
 
-[Stop-AzureRmVmss](./Stop-AzureRmVmss.md)
+[Stop-AzVmss](./Stop-AzVmss.md)
 
-[Update-AzureRmVmss](./Update-AzureRmVmss.md)
+[Update-AzVmss](./Update-AzVmss.md)
 
 

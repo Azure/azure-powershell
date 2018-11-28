@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlmanagedinstance
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlmanagedinstance
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlInstance
+# Remove-AzSqlInstance
 
 ## SYNOPSIS
 Removes an Azure SQL Managed Database Instance.
@@ -14,30 +14,30 @@ Removes an Azure SQL Managed Database Instance.
 
 ### RemoveInstanceFromInputParameters (Default)
 ```
-Remove-AzureRmSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Force]
+Remove-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
-Remove-AzureRmSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-Force]
+Remove-AzSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveInstanceFromAzureResourceId
 ```
-Remove-AzureRmSqlInstance [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzSqlInstance [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlInstance** cmdlet removes an Azure SQL Database Managed Instance.
+The **Remove-AzSqlInstance** cmdlet removes an Azure SQL Database Managed Instance.
 
 ## EXAMPLES
 
 ### Example 1: Remove instance
 ```
-PS C:\>Remove-AzureRmSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\>Remove-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes the instance named managedInstance1.
@@ -48,7 +48,7 @@ This command removes the instance named managedInstance1.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 Skip confirmation message for performing the action
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The AzureSqlManagedInstanceModel object to remove
 
 ```yaml
-Type: AzureSqlManagedInstanceModel
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 Parameter Sets: RemoveInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 Aliases: SqlInstance
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 SQL instance name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveInstanceFromInputParameters
 Aliases: InstanceName
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveInstanceFromInputParameters
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The resource id of instance object to remove
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveInstanceFromAzureResourceId
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -154,7 +154,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

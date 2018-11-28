@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/disable-azurermactivitylogalert
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/disable-azactivitylogalert
 schema: 2.0.0
 ---
 
-# Disable-AzureRmActivityLogAlert
+# Disable-AzActivityLogAlert
 
 ## SYNOPSIS
 Disables an activity log alert and sets its tags.
@@ -15,31 +15,31 @@ Disables an activity log alert and sets its tags.
 
 ### DisableByNameAndResourceGroup
 ```
-Disable-AzureRmActivityLogAlert -Name <String> -ResourceGroupName <String>
+Disable-AzActivityLogAlert -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisableByInputObject
 ```
-Disable-AzureRmActivityLogAlert -InputObject <PSActivityLogAlertResource>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Disable-AzActivityLogAlert -InputObject <PSActivityLogAlertResource> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisableByResourceId
 ```
-Disable-AzureRmActivityLogAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Disable-AzActivityLogAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzureRmActivityLogAlert** cmdlet disables and activity log alert and allows setting its tags.
+The **Disable-AzActivityLogAlert** cmdlet disables and activity log alert and allows setting its tags.
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually patching the resource.
 
 ## EXAMPLES
 
 ### Example 1: Disable an activity log alert
 ```
-PS C:\>Disable-AzureRmActivityLogAlert -Name "alert1" -ResourceGroupName "Default-ActivityLogsAlerts"
+PS C:\>Disable-AzActivityLogAlert -Name "alert1" -ResourceGroupName "Default-ActivityLogsAlerts"
 ```
 
 This command disables the activity log alert called alert1 in the resource group Default-ActivityLogsAlerts.
@@ -47,15 +47,15 @@ This command changes the tags property of the activity log alert called alert1 a
 
 ### Example 2: Disable an activity log alert using a PSActivityLogAlertResource object as input
 ```
-PS C:\>$obj = Get-AzureRmActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1"
-PS C:\>Disable-AzureRmActivityLogAlert -InputObject $obj
+PS C:\>$obj = Get-AzActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1"
+PS C:\>Disable-AzActivityLogAlert -InputObject $obj
 ```
 
 This command disables an activity log alert called alert1. For this it uses a PSActivityLogAlertResource object as input argument.
 
 ### Example 3: Disable the ActivityLogAlert using the ResourceId parameter
 ```
-PS C:\>Find-AzureRmResource -ResourceGroupEquals "myResourceGroup" -ResourceNameEquals "myLogAlert" | Disable-AzureRmActivityLogAlert
+PS C:\>Find-AzResource -ResourceGroupEquals "myResourceGroup" -ResourceNameEquals "myLogAlert" | Disable-AzActivityLogAlert
 ```
 
 This command disables the ActivityLogAlert using the ResourceId parameter from the pipe.
@@ -66,7 +66,7 @@ This command disables the ActivityLogAlert using the ResourceId parameter from t
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -185,14 +185,14 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Set-AzureRmActivityLogAlert](./Set-AzureRmActivityLogAlert.md)
+[Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
 
-[Get-AzureRmActivityLogAlert](./Get-AzureRmActivityLogAlert.md)
+[Get-AzActivityLogAlert](./Get-AzActivityLogAlert.md)
 
-[Remove-AzureRmActivityLogAlert](./Remove-AzureRmActivityLogAlert.md)
+[Remove-AzActivityLogAlert](./Remove-AzActivityLogAlert.md)
 
-[New-AzureRmActionGroup](./New-AzureRmActionGroup.md)
+[New-AzActionGroup](./New-AzActionGroup.md)
 
-[New-AzureRmActivityLogAlertCondition](./Get-AzureRmActivityLogAlertCondition.md)
+[New-AzActivityLogAlertCondition](./Get-AzActivityLogAlertCondition.md)
 
-[Enable-AzureRmActivityLogAlert](./Enable-AzureRmActivityLogAlert.md)
+[Enable-AzActivityLogAlert](./Enable-AzActivityLogAlert.md)

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: A7C287C4-E9FD-407A-91BD-EFA17C33FC8B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurermkeyvault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvault
 schema: 2.0.0
 ---
 
-# Get-AzureRmKeyVault
+# Get-AzKeyVault
 
 ## SYNOPSIS
 Gets key vaults.
@@ -15,28 +15,28 @@ Gets key vaults.
 
 ### ListAllVaultsInSubscription (Default)
 ```
-Get-AzureRmKeyVault [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVault [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetVaultByName
 ```
-Get-AzureRmKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>]
+Get-AzKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByDeletedVault
 ```
-Get-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState]
+Get-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListAllDeletedVaultsInSubscription
 ```
-Get-AzureRmKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmKeyVault** cmdlet gets information about the key vaults in a subscription. You can
+The **Get-AzKeyVault** cmdlet gets information about the key vaults in a subscription. You can
 view all key vaults instances in a subscription, or filter your results by a resource group or a
 particular key vault.
 Note that although specifying the resource group is optional for this cmdlet when you get a single
@@ -46,7 +46,7 @@ key vault, you should do so for better performance.
 
 ### Example 1: Get all key vaults in your current subscription
 ```powershell
-PS C:\> Get-AzureRMKeyVault
+PS C:\> Get-AzKeyVault
 
 Vault Name          : myvault1
 Resource Group Name : myrg
@@ -75,7 +75,7 @@ This command gets all the key vaults in your current subscription.
 
 ### Example 2: Get a specific key vault
 ```powershell
-PS C:\> Get-AzureRMKeyVault -VaultName 'myvault'
+PS C:\> Get-AzKeyVault -VaultName 'myvault'
 
 Vault Name                       : myvault
 Resource Group Name              : myrg
@@ -111,7 +111,7 @@ This command gets the key vault named myvault in your current subscription.
 
 ### Example 3: Get key vaults in a resource group
 ```powershell
-PS C:\> Get-AzureRmKeyVault -ResourceGroupName 'myrg1'
+PS C:\> Get-AzKeyVault -ResourceGroupName 'myrg1'
 
 Vault Name          : myvault2
 Resource Group Name : myrg1
@@ -132,7 +132,7 @@ This command gets all the key vaults in the resource group named ContosoPayRollR
 
 ### Example 4: Get all deleted key vaults in your current subscription
 ```powershell
-PS C:\> Get-AzureRmKeyVault -InRemovedState
+PS C:\> Get-AzKeyVault -InRemovedState
 
 Vault Name           : myvault4
 Location             : westus
@@ -149,7 +149,7 @@ This command gets all the deleted key vaults in your current subscription.
 
 ### Example 5: Get a deleted key vault
 ```powershell
-PS C:\> Get-AzureRMKeyVault -VaultName 'myvault4'  -Location 'westus' -InRemovedState
+PS C:\> Get-AzKeyVault -VaultName 'myvault4'  -Location 'westus' -InRemovedState
 
 Vault Name           : myvault4
 Location             : westus
@@ -171,7 +171,7 @@ subscription and in westus region.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -291,6 +291,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmKeyVault](./New-AzureRmKeyVault.md)
+[New-AzKeyVault](./New-AzKeyVault.md)
 
-[Remove-AzureRmKeyVault](./Remove-AzureRmKeyVault.md)
+[Remove-AzKeyVault](./Remove-AzKeyVault.md)

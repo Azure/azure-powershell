@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Subscription.dll-Help.xml
-Module Name: AzureRM.Subscription
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.subscription/new-azurermsubscription
+Module Name: Az.Subscription
+online version: https://docs.microsoft.com/en-us/powershell/module/az.subscription/new-azsubscription
 schema: 2.0.0
 ---
 
-# New-AzureRmSubscription
+# New-AzSubscription
 
 ## SYNOPSIS
 Creates an Azure subscription.
@@ -13,19 +13,19 @@ Creates an Azure subscription.
 ## SYNTAX
 
 ```
-New-AzureRmSubscription -EnrollmentAccountObjectId <String> [[-Name] <String>] -OfferType <String>
+New-AzSubscription -EnrollmentAccountObjectId <String> [[-Name] <String>] -OfferType <String>
  [-OwnerObjectId <String[]>] [-OwnerSignInName <String[]>] [-OwnerApplicationId <String[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSubscription** cmdlet creates an Azure subscription.
+The **New-AzSubscription** cmdlet creates an Azure subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmSubscription -Name "My Subscription" -EnrollmentAccountObjectId ((Get-AzureRmEnrollmentAccount)[0].ObjectId) -OfferType MS-AZR-0017P
+PS C:\> New-AzSubscription -Name "My Subscription" -EnrollmentAccountObjectId ((Get-AzEnrollmentAccount)[0].ObjectId) -OfferType MS-AZR-0017P
 
 Name        : My Subscription
 Id          : 86869d42-1782-4337-98b0-c905fb937d46
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

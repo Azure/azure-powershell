@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 5A0D9326-3A8A-4156-8372-EBA93C1BB4E4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworksecurityruleconfig
 schema: 2.0.0
 ---
 
-# Get-AzureRmNetworkSecurityRuleConfig
+# Get-AzNetworkSecurityRuleConfig
 
 ## SYNOPSIS
 Get a network security rule configuration for a network security group.
@@ -14,27 +14,27 @@ Get a network security rule configuration for a network security group.
 ## SYNTAX
 
 ```
-Get-AzureRmNetworkSecurityRuleConfig [-Name <String>] -NetworkSecurityGroup <PSNetworkSecurityGroup>
- [-DefaultRules] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkSecurityRuleConfig [-Name <String>] -NetworkSecurityGroup <PSNetworkSecurityGroup> [-DefaultRules]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmNetworkSecurityRuleConfig** cmdlet gets a network security rule configuration for an Azure network security group.
+The **Get-AzNetworkSecurityRuleConfig** cmdlet gets a network security rule configuration for an Azure network security group.
 
 ## EXAMPLES
 
 ### 1: Retrieving a network security rule config
 ```
-Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
-    | Get-AzureRmNetworkSecurityRuleConfig -Name AllowInternetOutBound -DefaultRules
+Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
+    | Get-AzNetworkSecurityRuleConfig -Name AllowInternetOutBound -DefaultRules
 ```
 
 This command retrieves the default rule named "AllowInternetOutBound" from Azure network security group named "nsg1" in resource group "rg1"
 
 ### 2: Retrieving a network security rule config using only the name
 ```
-Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
-    | Get-AzureRmNetworkSecurityRuleConfig -Name "rdp-rule"
+Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
+    | Get-AzNetworkSecurityRuleConfig -Name "rdp-rule"
 ```
 
 This command retrieves user defined rule named "rdp-rule" from Azure network security group named "nsg1" in resource group "rg1"
@@ -45,7 +45,7 @@ This command retrieves user defined rule named "rdp-rule" from Azure network sec
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,12 +117,12 @@ Parameters: NetworkSecurityGroup (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmNetworkSecurityRuleConfig](./Add-AzureRmNetworkSecurityRuleConfig.md)
+[Add-AzNetworkSecurityRuleConfig](./Add-AzNetworkSecurityRuleConfig.md)
 
-[New-AzureRmNetworkSecurityRuleConfig](./New-AzureRmNetworkSecurityRuleConfig.md)
+[New-AzNetworkSecurityRuleConfig](./New-AzNetworkSecurityRuleConfig.md)
 
-[Remove-AzureRmNetworkSecurityRuleConfig](./Remove-AzureRmNetworkSecurityRuleConfig.md)
+[Remove-AzNetworkSecurityRuleConfig](./Remove-AzNetworkSecurityRuleConfig.md)
 
-[Set-AzureRmNetworkSecurityRuleConfig](./Set-AzureRmNetworkSecurityRuleConfig.md)
+[Set-AzNetworkSecurityRuleConfig](./Set-AzNetworkSecurityRuleConfig.md)
 
 

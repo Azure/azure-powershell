@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: C7EC21C7-1C7E-49B2-9B33-486532FCDAEC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/remove-azurermalertrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/remove-azalertrule
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAlertRule
+# Remove-AzAlertRule
 
 ## SYNOPSIS
 Removes an alert rule.
@@ -14,12 +14,12 @@ Removes an alert rule.
 ## SYNTAX
 
 ```
-Remove-AzureRmAlertRule -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Remove-AzAlertRule -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmAlertRule** cmdlet removes an alert rule.
+The **Remove-AzAlertRule** cmdlet removes an alert rule.
 You must specify the name of the alert rule and the resource group to which it is assigned.
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
@@ -27,7 +27,7 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 
 ### Example 1: Remove an alert rule
 ```
-PS C:\>Remove-AzureRmAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
+PS C:\>Remove-AzAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 2c6c159b-0e73-4a01-a67b-c32c1a0008a3                                                                                 OK
@@ -41,7 +41,7 @@ This command removes the alert rule named myalert-7da64548-214d-42ca-b12b-b245bb
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -127,12 +127,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmMetricAlertRule](./Add-AzureRmMetricAlertRule.md)
+[Add-AzMetricAlertRule](./Add-AzMetricAlertRule.md)
 
-[Add-AzureRmWebtestAlertRule](./Add-AzureRmWebtestAlertRule.md)
+[Add-AzWebtestAlertRule](./Add-AzWebtestAlertRule.md)
 
-[Get-AzureRmAlertHistory](./Get-AzureRmAlertHistory.md)
+[Get-AzAlertHistory](./Get-AzAlertHistory.md)
 
-[Get-AzureRmAlertRule](./Get-AzureRmAlertRule.md)
+[Get-AzAlertRule](./Get-AzAlertRule.md)
 
 

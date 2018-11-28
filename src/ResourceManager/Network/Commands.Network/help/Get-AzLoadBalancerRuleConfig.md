@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: B2CF11FC-520C-4C14-9A1B-13F06B250B5D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermloadbalancerruleconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azloadbalancerruleconfig
 schema: 2.0.0
 ---
 
-# Get-AzureRmLoadBalancerRuleConfig
+# Get-AzLoadBalancerRuleConfig
 
 ## SYNOPSIS
 Gets the rule configuration for a load balancer.
@@ -14,19 +14,19 @@ Gets the rule configuration for a load balancer.
 ## SYNTAX
 
 ```
-Get-AzureRmLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
+Get-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmLoadBalancerRuleConfig** cmdlet gets one or more rule configurations for a load balancer.
+The **Get-AzLoadBalancerRuleConfig** cmdlet gets one or more rule configurations for a load balancer.
 
 ## EXAMPLES
 
 ### Example 1: Get the rule configuration of a load balancer
 ```
-PS C:\>$slb = Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> Get-AzureRmLoadBalancerRuleConfig -Name "MyLBrulename" -LoadBalancer $slb
+PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+PS C:\> Get-AzLoadBalancerRuleConfig -Name "MyLBrulename" -LoadBalancer $slb
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.
@@ -38,7 +38,7 @@ The second command gets the associated rule configuration named MyLBrulename fro
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -95,12 +95,12 @@ Parameters: LoadBalancer (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmLoadBalancerRuleConfig](./Add-AzureRmLoadBalancerRuleConfig.md)
+[Add-AzLoadBalancerRuleConfig](./Add-AzLoadBalancerRuleConfig.md)
 
-[Get-AzureRmLoadBalancer](./Get-AzureRmLoadBalancer.md)
+[Get-AzLoadBalancer](./Get-AzLoadBalancer.md)
 
-[Remove-AzureRmLoadBalancerRuleConfig](./Remove-AzureRmLoadBalancerRuleConfig.md)
+[Remove-AzLoadBalancerRuleConfig](./Remove-AzLoadBalancerRuleConfig.md)
 
-[Set-AzureRmLoadBalancerRuleConfig](./Set-AzureRmLoadBalancerRuleConfig.md)
+[Set-AzLoadBalancerRuleConfig](./Set-AzLoadBalancerRuleConfig.md)
 
 

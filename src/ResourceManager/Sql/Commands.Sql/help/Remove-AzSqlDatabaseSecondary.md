@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 54E01B3B-FFA5-4E3C-BA5A-A281FF5C9F8B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqldatabasesecondary
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqldatabasesecondary
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlDatabaseSecondary
+# Remove-AzSqlDatabaseSecondary
 
 ## SYNOPSIS
 Terminates data replication between a SQL Database and the specified secondary database.
@@ -14,14 +14,14 @@ Terminates data replication between a SQL Database and the specified secondary d
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> -PartnerResourceGroupName <String>
+Remove-AzSqlDatabaseSecondary [-DatabaseName] <String> -PartnerResourceGroupName <String>
  -PartnerServerName <String> [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlDatabaseSecondary** cmdlet forces termination of a geo-replication link.
-This cmdlet replaces the Stop-AzureSqlDatabaseCopy cmdlet.
+The **Remove-AzSqlDatabaseSecondary** cmdlet forces termination of a geo-replication link.
+This cmdlet replaces the Stop-AzSqlDatabaseCopy cmdlet.
 There is no replication synchronization before termination.
 
 ## EXAMPLES
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -164,8 +164,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlDatabaseSecondary](./New-AzureRmSqlDatabaseSecondary.md)
+[New-AzSqlDatabaseSecondary](./New-AzSqlDatabaseSecondary.md)
 
-[Set-AzureRmSqlDatabaseSecondary](./Set-AzureRmSqlDatabaseSecondary.md)
+[Set-AzSqlDatabaseSecondary](./Set-AzSqlDatabaseSecondary.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

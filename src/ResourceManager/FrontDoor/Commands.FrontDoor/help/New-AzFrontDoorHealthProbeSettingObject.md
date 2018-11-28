@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
-Module Name: AzureRM.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor/new-azurermfrontdoorhealthprobesettingobject
+Module Name: Az.FrontDoor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorhealthprobesettingobject
 schema: 2.0.0
 ---
 
-# New-AzureRmFrontDoorHealthProbeSettingObject
+# New-AzFrontDoorHealthProbeSettingObject
 
 ## SYNOPSIS
 Create a PSHealthProbeSetting object for Front Door creation
@@ -13,7 +13,7 @@ Create a PSHealthProbeSetting object for Front Door creation
 ## SYNTAX
 
 ```
-New-AzureRmFrontDoorHealthProbeSettingObject -Name <String> [-Path <String>] [-Protocol <PSProtocol>]
+New-AzFrontDoorHealthProbeSettingObject -Name <String> [-Path <String>] [-Protocol <PSProtocol>]
  [-IntervalInSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Create a PSHealthProbeSetting object for Front Door creation
 
 ### Example 1
 ```powershell
-PS C:\>  New-AzureRmFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1"
+PS C:\>  New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1"
 
 
 Path              : /
@@ -44,7 +44,7 @@ Create a PSHealthProbeSetting object for Front Door creation
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -134,5 +134,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmFrontDoor](./New-AzureRmFrontDoor.md)
-[Set-AzureRmFrontDoor](./Set-AzureRmFrontDoor.md)
+[New-AzFrontDoor](./New-AzFrontDoor.md)
+[Set-AzFrontDoor](./Set-AzFrontDoor.md)

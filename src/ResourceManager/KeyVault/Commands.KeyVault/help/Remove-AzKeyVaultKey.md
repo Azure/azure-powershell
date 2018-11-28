@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 817BF177-519F-47BA-86CF-4591FB402E2Dl
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/remove-azurekeyvaultkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultkey
 schema: 2.0.0
 ---
 
-# Remove-AzureKeyVaultKey
+# Remove-AzKeyVaultKey
 
 ## SYNOPSIS
 Deletes a key in a key vault.
@@ -15,26 +15,26 @@ Deletes a key in a key vault.
 
 ### ByVaultName (Default)
 ```
-Remove-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState]
+Remove-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzureKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [-Force] [-PassThru] [-InRemovedState]
+Remove-AzKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [-Force] [-PassThru] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureKeyVaultKey cmdlet deletes a key in a key vault.
-If the key was accidentally deleted the key can be recovered using Undo-AzureKeyVaultKeyRemoval by a user with special 'recover' permissions.
+The Remove-AzKeyVaultKey cmdlet deletes a key in a key vault.
+If the key was accidentally deleted the key can be recovered using Undo-AzKeyVaultKeyRemoval by a user with special 'recover' permissions.
 This cmdlet has a value of high for the **ConfirmImpact** property.
 
 ## EXAMPLES
 
 ### Example 1: Remove a key from a key vault
 ```powershell
-PS C:\> Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -PassThru
+PS C:\> Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -PassThru
 
 Vault Name           : contoso
 Name                 : key2
@@ -54,7 +54,7 @@ This command removes the key named ITSoftware from the key vault named Contoso.
 
 ### Example 2: Remove a key without user confirmation
 ```powershell
-PS C:\> Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Force
+PS C:\> Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Force
 ```
 
 This command removes the key named ITSoftware from the key vault named Contoso.
@@ -62,7 +62,7 @@ The command specifies the *Force* parameter, and, therefore, the cmdlet does not
 
 ### Example 3: Purge a deleted key from the key vault permanently
 ```powershell
-PS C:\> Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -InRemovedState
+PS C:\> Remove-AzKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -InRemovedState
 ```
 
 This command removes the key named ITSoftware from the key vault named Contoso permanently.
@@ -70,7 +70,7 @@ Executing this cmdlet requires the 'purge' permission, which must have been prev
 
 ### Example 4: Remove keys by using the pipeline operator
 ```powershell
-PS C:\> Get-AzureKeyVaultKey -VaultName 'Contoso' | Where-Object {$_.Attributes.Enabled -eq $False} | Remove-AzureKeyVaultKey
+PS C:\> Get-AzKeyVaultKey -VaultName 'Contoso' | Where-Object {$_.Attributes.Enabled -eq $False} | Remove-AzKeyVaultKey
 ```
 
 This command gets all the keys in the key vault named Contoso, and passes them to the **Where-Object** cmdlet by using the pipeline operator.
@@ -83,7 +83,7 @@ That cmdlet removes those keys.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -235,11 +235,11 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultKey](./Add-AzureKeyVaultKey.md)
+[Add-AzKeyVaultKey](./Add-AzKeyVaultKey.md)
 
-[Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
+[Get-AzKeyVaultKey](./Get-AzKeyVaultKey.md)
 
-[Set-AzureKeyVaultKeyAttribute](./Set-AzureKeyVaultKeyAttribute.md)
+[Set-AzKeyVaultKeyAttribute](./Set-AzKeyVaultKeyAttribute.md)
 
-[Undo-AzureKeyVaultKeyRemoval](./Undo-AzureKeyVaultKeyRemoval.md)
+[Undo-AzKeyVaultKeyRemoval](./Undo-AzKeyVaultKeyRemoval.md)
 

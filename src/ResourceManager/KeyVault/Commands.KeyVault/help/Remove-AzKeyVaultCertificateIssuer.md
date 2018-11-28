@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: FC14F6BF-BD8F-45E0-9CAA-A937E5E56288
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/remove-azurekeyvaultcertificateissuer
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultcertificateissuer
 schema: 2.0.0
 ---
 
-# Remove-AzureKeyVaultCertificateIssuer
+# Remove-AzKeyVaultCertificateIssuer
 
 ## SYNOPSIS
 Deletes a certificate issuer from a key vault.
@@ -15,24 +15,24 @@ Deletes a certificate issuer from a key vault.
 
 ### Default (Default)
 ```
-Remove-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> [-Force] [-PassThru]
+Remove-AzKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzureKeyVaultCertificateIssuer [-InputObject] <PSKeyVaultCertificateIssuerIdentityItem> [-Force]
+Remove-AzKeyVaultCertificateIssuer [-InputObject] <PSKeyVaultCertificateIssuerIdentityItem> [-Force]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureKeyVaultCertificateIssuer** cmdlet deletes a certificate issuer from a key vault.
+The **Remove-AzKeyVaultCertificateIssuer** cmdlet deletes a certificate issuer from a key vault.
 
 ## EXAMPLES
 
 ### Example 1: Remove a certificate issuer
 ```powershell
-PS C:\> Remove-AzureKeyVaultCertificateIssuer -VaultName "ContosoKV01" -Name "TestIssuer01" -Force
+PS C:\> Remove-AzKeyVaultCertificateIssuer -VaultName "ContosoKV01" -Name "TestIssuer01" -Force
 
 AccountId           :
 ApiKey              :
@@ -50,7 +50,7 @@ This command removes the certificate issuer named TestIssuer01 from the ContosoK
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -185,8 +185,8 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultCertificateIssuer](./Get-AzureKeyVaultCertificateIssuer.md)
+[Get-AzKeyVaultCertificateIssuer](./Get-AzKeyVaultCertificateIssuer.md)
 
-[Set-AzureKeyVaultCertificateIssuer](./Set-AzureKeyVaultCertificateIssuer.md)
+[Set-AzKeyVaultCertificateIssuer](./Set-AzKeyVaultCertificateIssuer.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: CE690DB0-0CD4-4841-B219-C208173D4730
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/get-azurermhdinsightscriptactionhistory
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/get-azhdinsightscriptactionhistory
 schema: 2.0.0
 ---
 
-# Get-AzureRmHDInsightScriptActionHistory
+# Get-AzHDInsightScriptActionHistory
 
 ## SYNOPSIS
 Gets the script action history for a cluster and lists it in reverse chronological order, or gets details of a previously executed script action.
@@ -14,18 +14,18 @@ Gets the script action history for a cluster and lists it in reverse chronologic
 ## SYNTAX
 
 ```
-Get-AzureRmHDInsightScriptActionHistory [-ClusterName] <String> [[-ScriptExecutionId] <Int64>]
+Get-AzHDInsightScriptActionHistory [-ClusterName] <String> [[-ScriptExecutionId] <Int64>]
  [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmHDInsightScriptActionHistory** cmdlet gets the script action history for an Azure HDInsight cluster and lists it in reverse chronological order, or gets details of a previously executed script action.
+The **Get-AzHDInsightScriptActionHistory** cmdlet gets the script action history for an Azure HDInsight cluster and lists it in reverse chronological order, or gets details of a previously executed script action.
 
 ## EXAMPLES
 
 ### Example 1: Get the history of script actions executions for a cluster
 ```
-PS C:\>Get-AzureRmHDInsightScriptActionHistory -ClusterName "your-hadoop-001"
+PS C:\>Get-AzHDInsightScriptActionHistory -ClusterName "your-hadoop-001"
 ```
 
 This command gets the history of script actions for the cluster your-hadoop-001.

@@ -1,23 +1,22 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: E40CAF2F-ED57-4AC1-8B9A-E48042DD8F91
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermexpressroutecircuit
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azexpressroutecircuit
 schema: 2.0.0
 ---
 
-# New-AzureRmExpressRouteCircuit
+# New-AzExpressRouteCircuit
 
 ## SYNOPSIS
 Creates an Azure express route circuit.
 
 ## SYNTAX
 
-### ServiceProvider
+### ServiceProvider (Default)
 ```
-New-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String>
- [-SkuTier <String>] [-SkuFamily <String>] [-ServiceProviderName <String>] [-PeeringLocation <String>]
- [-BandwidthInMbps <Int32>]
+New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String> [-SkuTier <String>]
+ [-SkuFamily <String>] -ServiceProviderName <String> -PeeringLocation <String> -BandwidthInMbps <Int32>
  [-Peering <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]>]
  [-Authorization <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
@@ -26,8 +25,8 @@ New-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Locat
 
 ### ExpressRoutePort
 ```
-New-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String>
- [-SkuTier <String>] [-SkuFamily <String>] [-ExpressRoutePort <PSExpressRoutePort>] [-BandwidthInGbps <Double>]
+New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String> [-SkuTier <String>]
+ [-SkuFamily <String>] -ExpressRoutePort <PSExpressRoutePort> -BandwidthInGbps <Double>
  [-Peering <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]>]
  [-Authorization <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
@@ -35,7 +34,7 @@ New-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Locat
 ```
 
 ## DESCRIPTION
-The **New-AzureRmExpressRouteCircuit** cmdlet creates an Azure express route circuit.
+The **New-AzExpressRouteCircuit** cmdlet creates an Azure express route circuit.
 
 ## EXAMPLES
 
@@ -51,7 +50,7 @@ $parameters = @{
     PeeringLocation='Silicon Valley'
     BandwidthInMbps=200
 }
-New-AzureRmExpressRouteCircuit @parameters
+New-AzExpressRouteCircuit @parameters
 ```
 
 ### Example 2: Create a new ExpressRoute circuit on ExpressRoutePort
@@ -65,7 +64,7 @@ $parameters = @{
     ExpressRoutePort=$PSExpressRoutePort
     BandwidthInGbps=10.0
 }
-New-AzureRmExpressRouteCircuit @parameters
+New-AzExpressRouteCircuit @parameters
 ```
 
 ## PARAMETERS
@@ -120,11 +119,11 @@ Accept wildcard characters: False
 The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
 
 ```yaml
-Type: Double
+Type: System.Double
 Parameter Sets: ExpressRoutePort
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -139,7 +138,7 @@ Type: System.Int32
 Parameter Sets: ServiceProvider
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -150,7 +149,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -165,11 +164,11 @@ Accept wildcard characters: False
 The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
 
 ```yaml
-Type: PSExpressRoutePort
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort
 Parameter Sets: ExpressRoutePort
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -244,7 +243,7 @@ Type: System.String
 Parameter Sets: ServiceProvider
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -268,14 +267,14 @@ Accept wildcard characters: False
 
 ### -ServiceProviderName
 The name of the circuit service provider. This must match a name listed by the
-Get-AzureRmExpressRouteServiceProvider cmdlet.
+Get-AzExpressRouteServiceProvider cmdlet.
 
 ```yaml
 Type: System.String
 Parameter Sets: ServiceProvider
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -388,10 +387,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)
+[Get-AzExpressRouteCircuit](Get-AzExpressRouteCircuit.md)
 
-[Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
+[Move-AzExpressRouteCircuit](Move-AzExpressRouteCircuit.md)
 
-[Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
+[Remove-AzExpressRouteCircuit](Remove-AzExpressRouteCircuit.md)
 
-[Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)
+[Set-AzExpressRouteCircuit](Set-AzExpressRouteCircuit.md)

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: 89ED4231-7616-47D0-BDAA-D849C245DC79
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermappserviceplan
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azappserviceplan
 schema: 2.0.0
 ---
 
-# Get-AzureRmAppServicePlan
+# Get-AzAppServicePlan
 
 ## SYNOPSIS
 Gets an Azure App Service plan in the specified resource group.
@@ -15,30 +15,30 @@ Gets an Azure App Service plan in the specified resource group.
 
 ### S1
 ```
-Get-AzureRmAppServicePlan [[-ResourceGroupName] <String>] [[-Name] <String>]
+Get-AzAppServicePlan [[-ResourceGroupName] <String>] [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Get-AzureRmAppServicePlan [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAppServicePlan [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAppServicePlan** cmdlet gets an Azure App Service plan in the specified resource group.
+The **Get-AzAppServicePlan** cmdlet gets an Azure App Service plan in the specified resource group.
 
 ## EXAMPLES
 
 ### Example 1: Get an App Service plan from a resource group
 ```
-PS C:\>Get-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
+PS C:\>Get-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
 ```
 
 This command gets the App Service plan named ContosoASP that belongs to the resource group named Default-Web-WestUS.
 
 ### Example 2: Get all App Service plans in a location
 ```
-PS C:\>Get-AzureRmAppServicePlan -Location "West US"
+PS C:\>Get-AzAppServicePlan -Location "West US"
 ```
 
 This command gets all App Service plans located in the "West US" region.
@@ -49,7 +49,7 @@ This command gets all App Service plans located in the "West US" region.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -120,10 +120,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAppServicePlan](./New-AzureRmAppServicePlan.md)
+[New-AzAppServicePlan](./New-AzAppServicePlan.md)
 
-[Remove-AzureRmAppServicePlan](./Remove-AzureRmAppServicePlan.md)
+[Remove-AzAppServicePlan](./Remove-AzAppServicePlan.md)
 
-[Set-AzureRmAppServicePlan](./Set-AzureRmAppServicePlan.md)
+[Set-AzAppServicePlan](./Set-AzAppServicePlan.md)
 
 

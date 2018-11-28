@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
-Module Name: AzureRM.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor/new-azurermfrontdoorrulegroupoverrideobject
+Module Name: Az.FrontDoor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorrulegroupoverrideobject
 schema: 2.0.0
 ---
 
-# New-AzureRmFrontDoorRuleGroupOverrideObject
+# New-AzFrontDoorRuleGroupOverrideObject
 
 ## SYNOPSIS
 Create RuleGroupOverride Object for WAF policy creation
@@ -13,7 +13,7 @@ Create RuleGroupOverride Object for WAF policy creation
 ## SYNTAX
 
 ```
-New-AzureRmFrontDoorRuleGroupOverrideObject -Override <PSRuleGroupOverride> -Action <PSAction>
+New-AzFrontDoorRuleGroupOverrideObject -Override <PSRuleGroupOverride> -Action <PSAction>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Create RuleGroupOverride Object for WAF policy creation
 
 ### Example 1
 ```powershell
-PS C:\>  New-AzureRmFrontDoorRuleGroupOverrideObject -Override SqlInjection -Action Block
+PS C:\>  New-AzFrontDoorRuleGroupOverrideObject -Override SqlInjection -Action Block
 
 Action RuleGroupOverride
 ------ -----------------
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -99,4 +99,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmFrontDoorManagedRuleObject](./New-AzureRmFrontDoorManagedRuleObject.md)
+[New-AzFrontDoorManagedRuleObject](./New-AzFrontDoorManagedRuleObject.md)

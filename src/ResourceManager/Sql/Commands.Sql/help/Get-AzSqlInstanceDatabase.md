@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlinstancedatabase
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlinstancedatabase
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlInstanceDatabase
+# Get-AzSqlInstanceDatabase
 
 ## SYNOPSIS
 Returns information about Azure SQL Managed Instance database.
@@ -14,30 +14,30 @@ Returns information about Azure SQL Managed Instance database.
 
 ### GetInstanceDatabaseFromInputParameters (Default)
 ```
-Get-AzureRmSqlInstanceDatabase [[-Name] <String>] [-InstanceName] <String> [-ResourceGroupName] <String>
+Get-AzSqlInstanceDatabase [[-Name] <String>] [-InstanceName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetInstanceDatabaseFromAzureResourceId
 ```
-Get-AzureRmSqlInstanceDatabase [[-Name] <String>] [-InstanceResourceId] <String>
+Get-AzSqlInstanceDatabase [[-Name] <String>] [-InstanceResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetInstanceDatabaseFromInstanceObject
 ```
-Get-AzureRmSqlInstanceDatabase [[-Name] <String>] [-InstanceObject] <AzureSqlManagedInstanceModel>
+Get-AzSqlInstanceDatabase [[-Name] <String>] [-InstanceObject] <AzureSqlManagedInstanceModel>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlInstanceDatabase** cmdlet gets one or more Azure SQL databases from an Azure SQL Database Managed Instance.
+The **Get-AzSqlInstanceDatabase** cmdlet gets one or more Azure SQL databases from an Azure SQL Database Managed Instance.
 
 ## EXAMPLES
 
 ### Example 1: Get all databases on a instance
 ```
-PS C:\>Get-AzureRmSqlInstanceDatabase -InstanceName "managedInstance1" -ResourceGroupName "resourcegroup01"
+PS C:\>Get-AzSqlInstanceDatabase -InstanceName "managedInstance1" -ResourceGroupName "resourcegroup01"
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -81,7 +81,7 @@ This command gets all databases on the instance named managedInstance1.
 
 ### Example 2: Get a database by name on a Managed instance
 ```
-PS C:\>Get-AzureRmSqlInstanceDatabase -Name "managedDatabase1" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\>Get-AzSqlInstanceDatabase -Name "managedDatabase1" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -110,7 +110,7 @@ This command gets a database named managedDatabase1 from a instance named manage
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 The instance name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetInstanceDatabaseFromInputParameters
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 The instance object to use for getting instance database
 
 ```yaml
-Type: AzureSqlManagedInstanceModel
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 Parameter Sets: GetInstanceDatabaseFromInstanceObject
 Aliases: ParentObject
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 The resource id of instance object to get
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetInstanceDatabaseFromAzureResourceId
 Aliases: ParentResourceId
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Instance Database to retrieve.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: InstanceDatabaseName
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetInstanceDatabaseFromInputParameters
 Aliases:
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/remove-azurermservicebusqueue
+Module Name: Az.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusqueue
 schema: 2.0.0
 ---
 
-# Remove-AzureRmServiceBusQueue
+# Remove-AzServiceBusQueue
 
 ## SYNOPSIS
 Removes the queue from the specified Service Bus namespace.
@@ -14,58 +14,58 @@ Removes the queue from the specified Service Bus namespace.
 
 ### QueuePropertiesSet (Default)
 ```
-Remove-AzureRmServiceBusQueue [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PassThru]
+Remove-AzServiceBusQueue [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PassThru]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### QueueInputObjectSet
 ```
-Remove-AzureRmServiceBusQueue [-InputObject] <PSQueueAttributes> [-PassThru] [-AsJob]
+Remove-AzServiceBusQueue [-InputObject] <PSQueueAttributes> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### QueueResourceIdSet
 ```
-Remove-AzureRmServiceBusQueue [-ResourceId] <String> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceBusQueue [-ResourceId] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmServiceBusQueue** cmdlet removes the queue from the specified Service Bus namespace.
+The **Remove-AzServiceBusQueue** cmdlet removes the queue from the specified Service Bus namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1
+PS C:\> Remove-AzServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1
 ```
 
 Removes the Service Bus queue `SB-Queue_exampl1` from the namespace `SB-Example1`.
 
 ### Example 2.1 - InputObject - Using variable:
 ```
-PS C:\> $inputobject = Get-AzureRmServiceBusQueue <params>
-PS C:\> Remove-AzureRmServiceBusQueue -InputObject $inputobject
+PS C:\> $inputobject = Get-AzServiceBusQueue <params>
+PS C:\> Remove-AzServiceBusQueue -InputObject $inputobject
 ```
 
 Removes the Service Bus queue provided in the $inputobject for -InputObject parameter
 
 ### Example 2.1 - InputObject - Using Piping:
 ```
-PS C:\>  Get-AzureRmServiceBusQueue <params> | Remove-AzureRmServiceBusQueue
+PS C:\>  Get-AzServiceBusQueue <params> | Remove-AzServiceBusQueue
 ```
 
 ### Example 3.1 - ResourceId - Using variable:
 ```
-PS c:\> $resourceid = Get-AzureRmServiceBusQueue <params>
-PS C:\> Remove-AzureRmServiceBusQueue -ResourceId $resourceid.Id
+PS c:\> $resourceid = Get-AzServiceBusQueue <params>
+PS C:\> Remove-AzServiceBusQueue -ResourceId $resourceid.Id
 ```
 
 Removes the Service Bus queue provided in the ARM id in $resourceid/string for -ResourceId parameter
 
 ### Example 3.2 - ResourceId - passign as string:
 ```
-PS C:\> Remove-AzureRmServiceBusQueue -ResourceId "/subscriptions/xxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/queues/QueueName"
+PS C:\> Remove-AzServiceBusQueue -ResourceId "/subscriptions/xxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/queues/QueueName"
 ```
 
 ## PARAMETERS
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

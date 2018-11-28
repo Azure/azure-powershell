@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagement
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagement
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagement
+# Set-AzApiManagement
 
 ## SYNOPSIS
 Updates an Azure Api Management service
@@ -13,48 +13,48 @@ Updates an Azure Api Management service
 ## SYNTAX
 
 ```
-Set-AzureRmApiManagement -InputObject <PsApiManagement> [-AssignIdentity] [-AsJob] [-PassThru]
+Set-AzApiManagement -InputObject <PsApiManagement> [-AssignIdentity] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-The **Set-AzureRmApiManagement** cmdlet updates an Azure API Management service.
+The **Set-AzApiManagement** cmdlet updates an Azure API Management service.
 
 ## EXAMPLES
 
 ### Example 1 Get an API Management service and scale it to Premium and Add a region
 ```powershell
-PS C:\> $apim = Get-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
+PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\> $apim.Sku = "Premium"
 PS C:\> $apim.Capacity = 5
 PS C:\> $apim.AddRegion("Central US", "Premium", 3)
-PS C:\>Set-AzureRmApiManagement -ApiManagement $apim
+PS C:\>Set-AzApiManagement -ApiManagement $apim
 ```
 
 This example gets an Api Management instance, scales it to five premium units and then adds an additional three units to the premium region.
 
 ### Example 2: Update deployment (external VNET)
 ```powershell
-PS C:\> $virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-WestUS/providers/Microsoft.Network/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
-PS C:\> $apim = Get-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
+PS C:\> $virtualNetwork = New-AzApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-WestUS/providers/Microsoft.Network/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
+PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\> $apim.VpnType = "External"
 PS C:\> $apim.VirtualNetwork = $virtualNetwork
-PS C:\> Set-AzureRmApiManagement -ApiManagement $apim
+PS C:\> Set-AzApiManagement -ApiManagement $apim
 ```
 
 This command updates an existing API Management deployment and joins to an external *VpnType*.
 
 ### Example 3: Create and initialize an instance of PsApiManagementCustomHostNameConfiguration using an Secret from KeyVault Resource
 ```powershell
-PS C:\>$portal = New-AzureRmApiManagementCustomHostnameConfiguration -Hostname "portal.contoso.com" -HostnameType Portal -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/api-portal-custom-ssl.pfx"
-PS C:\>$proxy1 = New-AzureRmApiManagementCustomHostnameConfiguration -Hostname "gatewayl.contoso.com" -HostnameType Proxy -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/contoso-proxy-custom-ssl.pfx"
-PS C:\>$proxy2 = New-AzureRmApiManagementCustomHostnameConfiguration -Hostname "gatewayl.foobar.com" -HostnameType Proxy -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/foobar-proxy-custom-ssl.pfx"
+PS C:\>$portal = New-AzApiManagementCustomHostnameConfiguration -Hostname "portal.contoso.com" -HostnameType Portal -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/api-portal-custom-ssl.pfx"
+PS C:\>$proxy1 = New-AzApiManagementCustomHostnameConfiguration -Hostname "gatewayl.contoso.com" -HostnameType Proxy -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/contoso-proxy-custom-ssl.pfx"
+PS C:\>$proxy2 = New-AzApiManagementCustomHostnameConfiguration -Hostname "gatewayl.foobar.com" -HostnameType Proxy -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/foobar-proxy-custom-ssl.pfx"
 PS C:\>$proxyCustomConfig = @($proxy1,$proxy2)
-PS C:\>$apim = Get-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
+PS C:\>$apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\>$apim.PortalCustomHostnameConfiguration = $portal
 PS C:\>$apim.ProxyCustomHostnameConfiguration = $proxyCustomConfig 
-PS C:\>Set-AzureRmApiManagement -InputObject $apim -AssignIdentity
+PS C:\>Set-AzApiManagement -InputObject $apim -AssignIdentity
 ```
 
 ## PARAMETERS
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -180,8 +180,8 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagement](./Get-AzureRmApiManagement.md)
+[Get-AzApiManagement](./Get-AzApiManagement.md)
 
-[New-AzureRmApiManagement](./New-AzureRmApiManagement.md)
+[New-AzApiManagement](./New-AzApiManagement.md)
 
-[Remove-AzureRmApiManagement](./Remove-AzureRmApiManagement.md)
+[Remove-AzApiManagement](./Remove-AzApiManagement.md)

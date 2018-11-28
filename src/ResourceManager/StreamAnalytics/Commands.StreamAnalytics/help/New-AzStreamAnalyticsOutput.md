@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM.StreamAnalytics
+Module Name: Az.StreamAnalytics
 ms.assetid: 43B2A4FD-DA74-403A-89D0-40FE9A3E5A7E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsoutput
+online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput
 schema: 2.0.0
 ---
 
-# New-AzureRmStreamAnalyticsOutput
+# New-AzStreamAnalyticsOutput
 
 ## SYNOPSIS
 Creates or updates outputs for a Stream Analytics job.
@@ -14,13 +14,13 @@ Creates or updates outputs for a Stream Analytics job.
 ## SYNTAX
 
 ```
-New-AzureRmStreamAnalyticsOutput [-JobName] <String> [[-Name] <String>] [-File] <String> [-Force]
+New-AzStreamAnalyticsOutput [-JobName] <String> [[-Name] <String>] [-File] <String> [-Force]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmStreamAnalyticsOutput** cmdlet creates an output within a Stream Analytics job or updates an existing output.
+The **New-AzStreamAnalyticsOutput** cmdlet creates an output within a Stream Analytics job or updates an existing output.
 The name of the output can be specified in the .JSON file or on the command line.
 If both are specified, the name on command line must match the name in the file.
 If you specify an output that already exists and do not specify the *Force* parameter, the cmdlet will ask whether or not to replace the existing output.
@@ -30,7 +30,7 @@ If you specify the *Force* parameter and specify an existing output name, the ou
 
 ### EXAMPLE 1: Add an output to a job
 ```
-PS C:\>New-AzureRmStreamAnalyticsOutput -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\Output.json" -JobName "StreamingJob" -Name "Output"
+PS C:\>New-AzStreamAnalyticsOutput -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\Output.json" -JobName "StreamingJob" -Name "Output"
 ```
 
 This command creates a new output called Output in the job called StreamingJob.
@@ -38,7 +38,7 @@ If an existing output with this name is already defined, the cmdlet will ask whe
 
 ### EXAMPLE 2: Replace a job output definition
 ```
-PS C:\>New-AzureRmStreamAnalyticsOutput -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\Output.json" -JobName "StreamingJob" -Name "Output" -Force
+PS C:\>New-AzStreamAnalyticsOutput -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\Output.json" -JobName "StreamingJob" -Name "Output" -Force
 ```
 
 This command replaces the definition for Output in the job called StreamingJob without confirmation.
@@ -49,7 +49,7 @@ This command replaces the definition for Output in the job called StreamingJob w
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -181,10 +181,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmStreamAnalyticsOutput](./Get-AzureRmStreamAnalyticsOutput.md)
+[Get-AzStreamAnalyticsOutput](./Get-AzStreamAnalyticsOutput.md)
 
-[Remove-AzureRmStreamAnalyticsOutput](./Remove-AzureRmStreamAnalyticsOutput.md)
+[Remove-AzStreamAnalyticsOutput](./Remove-AzStreamAnalyticsOutput.md)
 
-[Test-AzureRmStreamAnalyticsOutput](./Test-AzureRmStreamAnalyticsOutput.md)
+[Test-AzStreamAnalyticsOutput](./Test-AzStreamAnalyticsOutput.md)
 
 

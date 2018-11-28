@@ -1,32 +1,32 @@
 ---
 external help file: Microsoft.Azure.Commands.Aks.dll-Help.xml
-Module Name: AzureRM.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.aks/stop-azurermaksdashboard
+Module Name: Az.Aks
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/stop-azaksdashboard
 schema: 2.0.0
 ---
 
-# Stop-AzureRmAksDashboard
+# Stop-AzAksDashboard
 
 ## SYNOPSIS
-Stop the Kubectl SSH tunnel created in Start-AzureRmKubernetesDashboard.
+Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
 
 ## SYNTAX
 
 ```
-Stop-AzureRmAksDashboard [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Stop-AzAksDashboard [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Stop the Kubectl SSH tunnel created in Start-AzureRmKubernetesDashboard.
+Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Stop-AzureRmKubernetesDashboard
+PS C:\> Stop-AzKubernetesDashboard
 ```
 
-Stops the existing SSH tunnel setup by executing Start-AzureRmKubernetesDashboard.
+Stops the existing SSH tunnel setup by executing Start-AzKubernetesDashboard.
 
 ## PARAMETERS
 
@@ -34,7 +34,7 @@ Stops the existing SSH tunnel setup by executing Start-AzureRmKubernetesDashboar
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

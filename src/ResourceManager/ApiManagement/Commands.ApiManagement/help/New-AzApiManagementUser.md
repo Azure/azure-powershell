@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 3C467F64-7525-4420-9AFE-DCB98EF6D203
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementuser
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementuser
 schema: 2.0.0
 ---
 
-# New-AzureRmApiManagementUser
+# New-AzApiManagementUser
 
 ## SYNOPSIS
 Registers a new user.
@@ -14,21 +14,21 @@ Registers a new user.
 ## SYNTAX
 
 ```
-New-AzureRmApiManagementUser -Context <PsApiManagementContext> [-UserId <String>] -FirstName <String>
+New-AzApiManagementUser -Context <PsApiManagementContext> [-UserId <String>] -FirstName <String>
  -LastName <String> -Email <String> -Password <SecureString> [-State <PsApiManagementUserState>]
  [-Note <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApiManagementUser** cmdlet registers a new user.
+The **New-AzApiManagementUser** cmdlet registers a new user.
 
 ## EXAMPLES
 
 ### Example 1: Register a new user
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$securePassword = ConvertTo-SecureString "qwerty" -AsPlainText -Force
-PS C:\>New-AzureRmApiManagementUser -Context $apimContext -FirstName "Patti" -LastName "Fuller" -Email "Patti.Fuller@contoso.com" -Password $securePassword
+PS C:\>New-AzApiManagementUser -Context $apimContext -FirstName "Patti" -LastName "Fuller" -Email "Patti.Fuller@contoso.com" -Password $securePassword
 ```
 
 This command registers a new user named Patti Fuller.
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -201,8 +201,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementUser](./Get-AzureRmApiManagementUser.md)
+[Get-AzApiManagementUser](./Get-AzApiManagementUser.md)
 
-[Set-AzureRmApiManagementUser](./Set-AzureRmApiManagementUser.md)
+[Set-AzApiManagementUser](./Set-AzApiManagementUser.md)
 
 

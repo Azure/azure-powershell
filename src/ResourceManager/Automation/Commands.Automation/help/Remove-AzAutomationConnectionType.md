@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 92B69069-0F98-428A-B05C-BBA09EBC0381
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/remove-azurermautomationconnectiontype
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/remove-azautomationconnectiontype
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAutomationConnectionType
+# Remove-AzAutomationConnectionType
 
 ## SYNOPSIS
 Removes an Automation connection type.
@@ -14,13 +14,13 @@ Removes an Automation connection type.
 ## SYNTAX
 
 ```
-Remove-AzureRmAutomationConnectionType [-Name] <String> [-Force] [-ResourceGroupName] <String>
+Remove-AzAutomationConnectionType [-Name] <String> [-Force] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmAutomationConnectionType** cmdlet removes a connection type from Azure Automation.
+The **Remove-AzAutomationConnectionType** cmdlet removes a connection type from Azure Automation.
 All connections that are associated with the connection type that you delete become unusable.
 Remove them, unless you create a new connection type that meets the following criteria: 
 - The type has the same name as the original connection type. 
@@ -31,7 +31,7 @@ It can have additional fields.
 
 ### Example 1: Remove a connection type
 ```
-PS C:\>Remove-AzureRmAutomationConnectionType -AutomationAccountName "Contoso17" -Name "ContosoConnectionType" -ResourceGroupName "ResourceGroup01"
+PS C:\>Remove-AzAutomationConnectionType -AutomationAccountName "Contoso17" -Name "ContosoConnectionType" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes a connection type named ContosoConnectionType in the Automation account named Contoso17.
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -159,6 +159,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmAutomationConnection](./Remove-AzureRMAutomationConnection.md)
+[Remove-AzAutomationConnection](./Remove-AzAutomationConnection.md)
 
 

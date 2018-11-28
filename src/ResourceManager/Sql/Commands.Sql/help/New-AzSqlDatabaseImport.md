@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: A1327BC6-F090-490E-8DC2-2CC48A21C2C0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqldatabaseimport
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqldatabaseimport
 schema: 2.0.0
 ---
 
-# New-AzureRmSqlDatabaseImport
+# New-AzSqlDatabaseImport
 
 ## SYNOPSIS
 Imports a .bacpac file and create a new database on the server.
@@ -14,7 +14,7 @@ Imports a .bacpac file and create a new database on the server.
 ## SYNTAX
 
 ```
-New-AzureRmSqlDatabaseImport -DatabaseName <String> -Edition <DatabaseEdition> -ServiceObjectiveName <String>
+New-AzSqlDatabaseImport -DatabaseName <String> -Edition <DatabaseEdition> -ServiceObjectiveName <String>
  -DatabaseMaxSizeBytes <Int64> [-ServerName] <String> -StorageKeyType <StorageKeyType> -StorageKey <String>
  -StorageUri <Uri> -AdministratorLogin <String> -AdministratorLoginPassword <SecureString>
  [-AuthenticationType <AuthenticationType>] [-ResourceGroupName] <String>
@@ -22,14 +22,14 @@ New-AzureRmSqlDatabaseImport -DatabaseName <String> -Edition <DatabaseEdition> -
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlDatabaseImport** cmdlet imports a bacpac file from an Azure storage account to a new Azure SQL Database.
+The **New-AzSqlDatabaseImport** cmdlet imports a bacpac file from an Azure storage account to a new Azure SQL Database.
 The get import database status request may be sent to retrieve status information for this request.
 
 ## EXAMPLES
 
 ### Example 1: Create an import request for a bacpac file
 ```
-PS C:\>New-AzureRmSqlDatabaseImport -ResourceGroupName "RG01" -ServerName "Server01" -DatabaseName "Database01" -StorageKeyType "StorageAccessKey" -StorageKey "StorageKey01" -StorageUri "http://account01.blob.core.contoso.net/bacpacs/database01.bacpac" -AdministratorLogin "User" -AdministratorLoginPassword $SecureString -Edition Standard -ServiceObjectiveName S0 -DatabaseMaxSizeBytes 5000000
+PS C:\>New-AzSqlDatabaseImport -ResourceGroupName "RG01" -ServerName "Server01" -DatabaseName "Database01" -StorageKeyType "StorageAccessKey" -StorageKey "StorageKey01" -StorageUri "http://account01.blob.core.contoso.net/bacpacs/database01.bacpac" -AdministratorLogin "User" -AdministratorLoginPassword $SecureString -Edition Standard -ServiceObjectiveName S0 -DatabaseMaxSizeBytes 5000000
 ResourceGroupName          : RG01
 ServerName                 : Server01
 DatabaseName               : Database01
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -314,9 +314,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlDatabaseImportExportStatus](./Get-AzureRmSqlDatabaseImportExportStatus.md)
+[Get-AzSqlDatabaseImportExportStatus](./Get-AzSqlDatabaseImportExportStatus.md)
 
-[New-AzureRmSqlDatabaseExport](./New-AzureRmSqlDatabaseExport.md)
+[New-AzSqlDatabaseExport](./New-AzSqlDatabaseExport.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

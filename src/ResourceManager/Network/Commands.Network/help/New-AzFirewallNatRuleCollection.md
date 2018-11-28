@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: A29E9921-C1B9-42C2-B816-5D4873AC6688
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermfirewallnatrulecollection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallnatrulecollection
 schema: 2.0.0
 ---
 
-# New-AzureRmFirewallNatRuleCollection
+# New-AzFirewallNatRuleCollection
 
 ## SYNOPSIS
 Creates a collection of Firewall NAT rules.
@@ -14,30 +14,30 @@ Creates a collection of Firewall NAT rules.
 ## SYNTAX
 
 ```
-New-AzureRmFirewallNatRuleCollection -Name <String> -Priority <UInt32>
+New-AzFirewallNatRuleCollection -Name <String> -Priority <UInt32>
  -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRule]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmFirewallNatRuleCollection** cmdlet creates a collection of Firewall NAT Rules.
+The **New-AzFirewallNatRuleCollection** cmdlet creates a collection of Firewall NAT Rules.
 
 ## EXAMPLES
 
 ### 1:  Create a collection with one rule
 ```
-$rule1 = New-AzureRmFirewallNatRule -Name "natRule" -Protocol "TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "80" -TranslatedAddress "10.0.0.2" -TranslatedPort "8080"
-New-AzureRmFirewallNatRuleCollection -Name "MyNatRuleCollection" -Priority 1000 -Rule $rule1
+$rule1 = New-AzFirewallNatRule -Name "natRule" -Protocol "TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "80" -TranslatedAddress "10.0.0.2" -TranslatedPort "8080"
+New-AzFirewallNatRuleCollection -Name "MyNatRuleCollection" -Priority 1000 -Rule $rule1
 ```
 
 This example creates a collection with one rule. All traffic that matches the conditions identified in $rule1 will be DNAT'ed to translated address and port.
 
 ### 2:  Add a rule to a rule collection
 ```
-$rule1 = New-AzureRmFirewallNatRule -Name R1 -Protocol "UDP","TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "80" -TranslatedAddress "10.0.0.2" -TranslatedPort "8080"
-$ruleCollection = New-AzureRmFirewallNatRuleCollection -Name "MyNatRuleCollection" -Priority 100 -Rule $rule1
+$rule1 = New-AzFirewallNatRule -Name R1 -Protocol "UDP","TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "80" -TranslatedAddress "10.0.0.2" -TranslatedPort "8080"
+$ruleCollection = New-AzFirewallNatRuleCollection -Name "MyNatRuleCollection" -Priority 100 -Rule $rule1
 
-$rule2 = New-AzureRmFirewallNatRule -Name R2 -Protocol "TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "443" -TranslatedAddress "10.0.0.2" -TranslatedPort "8443"
+$rule2 = New-AzFirewallNatRule -Name R2 -Protocol "TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "443" -TranslatedAddress "10.0.0.2" -TranslatedPort "8443"
 $ruleCollection.AddRule($rule2)
 ```
 
@@ -46,8 +46,8 @@ AddRule on the rule collection object. Each rule name in a given rule collection
 
 ### 3:  Get a rule from a rule collection
 ```
-$rule1 = New-AzureRmFirewallNatRule -Name R1 -Protocol "TCP" -SourceAddress "10.0.0.0/24" -DestinationAddress "10.0.1.0/24" -DestinationPort "443" -TranslatedAddress "10.0.0.2" -TranslatedPort "8443"
-$ruleCollection = New-AzureRmFirewallNatRuleCollection -Name "MyNatRuleCollection" -Priority 100 -Rule $rule1
+$rule1 = New-AzFirewallNatRule -Name R1 -Protocol "TCP" -SourceAddress "10.0.0.0/24" -DestinationAddress "10.0.1.0/24" -DestinationPort "443" -TranslatedAddress "10.0.0.2" -TranslatedPort "8443"
+$ruleCollection = New-AzFirewallNatRuleCollection -Name "MyNatRuleCollection" -Priority 100 -Rule $rule1
 
 $rule=$ruleCollection.GetRuleByName("r1")
 ```
@@ -57,9 +57,9 @@ rule collection object. The rule name for method GetRuleByName is case-insensiti
 
 ### 4:  Remove a rule from a rule collection
 ```
-$rule1 = New-AzureRmFirewallNatRule -Name R1 -Protocol "UDP","TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "80" -TranslatedAddress "10.0.0.2" -TranslatedPort "8080"
-$rule2 = New-AzureRmFirewallNatRule -Name R2 -Protocol "TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "443" -TranslatedAddress "10.0.0.2" -TranslatedPort "8443"
-$ruleCollection = New-AzureRmFirewallNatRuleCollection -Name "MyNatRuleCollection" -Priority 100 -Rule $rule1, $rule2
+$rule1 = New-AzFirewallNatRule -Name R1 -Protocol "UDP","TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "80" -TranslatedAddress "10.0.0.2" -TranslatedPort "8080"
+$rule2 = New-AzFirewallNatRule -Name R2 -Protocol "TCP" -SourceAddress "*" -DestinationAddress "10.0.0.1" -DestinationPort "443" -TranslatedAddress "10.0.0.2" -TranslatedPort "8443"
+$ruleCollection = New-AzFirewallNatRuleCollection -Name "MyNatRuleCollection" -Priority 100 -Rule $rule1, $rule2
 $ruleCollection.RemoveRuleByName("r1")
 ```
 
@@ -72,7 +72,7 @@ RemoveRuleByName on the rule collection object. The rule name for method RemoveR
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -175,8 +175,8 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[New-AzureRmFirewallNatRule](./New-AzureRmFirewallNatRule.md)
+[New-AzFirewallNatRule](./New-AzFirewallNatRule.md)
 
-[New-AzureRmFirewall](./New-AzureRmFirewall.md)
+[New-AzFirewall](./New-AzFirewall.md)
 
-[Get-AzureRmFirewall](./Get-AzureRmFirewall.md)
+[Get-AzFirewall](./Get-AzFirewall.md)

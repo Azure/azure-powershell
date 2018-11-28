@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Aks.dll-Help.xml
-Module Name: AzureRM.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.aks/import-azurermaks
+Module Name: Az.Aks
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/import-azaks
 schema: 2.0.0
 ---
 
-# Import-AzureRmAksCredential
+# Import-AzAksCredential
 
 ## SYNOPSIS
 Import and merge Kubectl config for a managed Kubernetes Cluster.
@@ -14,19 +14,19 @@ Import and merge Kubectl config for a managed Kubernetes Cluster.
 
 ### GroupNameParameterSet (Default)
 ```
-Import-AzureRmAksCredential [-ResourceGroupName] <String> [-Name] <String> [-Admin] [-ConfigPath <String>]
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Import-AzAksCredential [-ResourceGroupName] <String> [-Name] <String> [-Admin] [-ConfigPath <String>] [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Import-AzureRmAksCredential -InputObject <PSKubernetesCluster> [-Admin] [-ConfigPath <String>] [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Import-AzAksCredential -InputObject <PSKubernetesCluster> [-Admin] [-ConfigPath <String>] [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Import-AzureRmAksCredential [-Id] <String> [-Admin] [-ConfigPath <String>] [-Force] [-PassThru]
+Import-AzAksCredential [-Id] <String> [-Admin] [-ConfigPath <String>] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Import and merge Kubectl config for a managed Kubernetes Cluster.
 
 ### Import and merge Kubectl config
 ```
-PS C:\> Import-AzureRmAksCredential -ResourceGroupName group -Name myCluster
+PS C:\> Import-AzAksCredential -ResourceGroupName group -Name myCluster
 ```
 
 ## PARAMETERS
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

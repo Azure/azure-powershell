@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/new-azurermservicebussubscription
+Module Name: Az.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebussubscription
 schema: 2.0.0
 ---
 
-# New-AzureRmServiceBusSubscription
+# New-AzServiceBusSubscription
 
 ## SYNOPSIS
 Creates a subscription to the specified Service Bus topic.
@@ -13,7 +13,7 @@ Creates a subscription to the specified Service Bus topic.
 ## SYNTAX
 
 ```
-New-AzureRmServiceBusSubscription [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
+New-AzServiceBusSubscription [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
  [-Name] <String> [-AutoDeleteOnIdle <String>] [-DefaultMessageTimeToLive <String>]
  [-DeadLetteringOnMessageExpiration <Boolean>] [-DeadLetteringOnFilterEvaluationExceptions]
  [-EnableBatchedOperations <Boolean>] [-LockDuration <String>] [-MaxDeliveryCount <Int32>]
@@ -22,13 +22,13 @@ New-AzureRmServiceBusSubscription [-ResourceGroupName] <String> [-Namespace] <St
 ```
 
 ## DESCRIPTION
-The **New-AzureRmServiceBusSubscription** cmdlet creates a new subscription to the specified Service Bus topic.
+The **New-AzServiceBusSubscription** cmdlet creates a new subscription to the specified Service Bus topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
+PS C:\> New-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 
 Name                                      : SB-TopicSubscription-Example1
 AccessedAt                                : 1/20/2017 3:18:54 AM
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 38D57CE4-6994-4BDA-A50E-28680EF4E568
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermexpressroutecircuitauthorization
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azexpressroutecircuitauthorization
 schema: 2.0.0
 ---
 
-# Remove-AzureRmExpressRouteCircuitAuthorization
+# Remove-AzExpressRouteCircuitAuthorization
 
 ## SYNOPSIS
 Removes an existing ExpressRoute configuration authorization.
@@ -14,18 +14,18 @@ Removes an existing ExpressRoute configuration authorization.
 ## SYNTAX
 
 ```
-Remove-AzureRmExpressRouteCircuitAuthorization [-Name <String>] -ExpressRouteCircuit <PSExpressRouteCircuit>
+Remove-AzExpressRouteCircuitAuthorization [-Name <String>] -ExpressRouteCircuit <PSExpressRouteCircuit>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmExpressRouteCircuitAuthorization** cmdlet removes an authorization assigned to
+The **Remove-AzExpressRouteCircuitAuthorization** cmdlet removes an authorization assigned to
 an ExpressRoute circuit. ExpressRoute circuits connect your on-premises network to Azure by using a
 connectivity provider instead of the public Internet. The owner of an ExpressRoute circuit can
 create as many as 10 authorizations for each circuit; these authorizations generate an
 authorization key that can be used by a virtual network owner to connect his or her network to the
 circuit. There can only be one authorization per virtual network. At any time, however, the circuit
-owner can use **Remove-AzureRmExpressRouteCircuitAuthorization** to remove the authorization
+owner can use **Remove-AzExpressRouteCircuitAuthorization** to remove the authorization
 assigned to a virtual network. When that happens the corresponding virtual network is no longer
 able to use the ExpressRoute circuit to connect to Azure.
 
@@ -33,16 +33,16 @@ able to use the ExpressRoute circuit to connect to Azure.
 
 ### Example 1: Remove a circuit authorization from an ExpressRoute circuit
 ```
-$Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
-Remove-AzureRmExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization" -Circuit $Circuit
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $Circuit
+$Circuit = Get-AzExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
+Remove-AzExpressRouteCircuitAuthorization -Name "ContosoCircuitAuthorization" -Circuit $Circuit
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $Circuit
 ```
 
 This example removes a circuit authorization from an ExpressRoute circuit. The first command uses
-the **Get-AzureRmExpressRouteCircuit** cmdlet to create an object reference to an ExpressRoute
+the **Get-AzExpressRouteCircuit** cmdlet to create an object reference to an ExpressRoute
 circuit named ContosoCircuit and stores the result in the variable named $Circuit.
 The second command marks the circuit authorization ContosoCircuitAuthorization for removal.
-The third command uses the Set-AzureRmExpressRouteCircuit cmdlet to confirm the removal of the
+The third command uses the Set-AzExpressRouteCircuit cmdlet to confirm the removal of the
 ExpressRoute circuit stored in the $Circuit variable.
 
 ## PARAMETERS
@@ -51,7 +51,7 @@ ExpressRoute circuit stored in the $Circuit variable.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -108,12 +108,12 @@ Parameters: ExpressRouteCircuit (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmExpressRouteCircuitAuthorization](./Add-AzureRmExpressRouteCircuitAuthorization.md)
+[Add-AzExpressRouteCircuitAuthorization](./Add-AzExpressRouteCircuitAuthorization.md)
 
-[Get-AzureRmExpressRouteCircuit](./Get-AzureRmExpressRouteCircuit.md)
+[Get-AzExpressRouteCircuit](./Get-AzExpressRouteCircuit.md)
 
-[Get-AzureRmExpressRouteCircuitAuthorization](./Get-AzureRmExpressRouteCircuitAuthorization.md)
+[Get-AzExpressRouteCircuitAuthorization](./Get-AzExpressRouteCircuitAuthorization.md)
 
-[New-AzureRmExpressRouteCircuitAuthorization](./New-AzureRmExpressRouteCircuitAuthorization.md)
+[New-AzExpressRouteCircuitAuthorization](./New-AzExpressRouteCircuitAuthorization.md)
 
-[Set-AzureRmExpressRouteCircuit](./Set-AzureRmExpressRouteCircuit.md)
+[Set-AzExpressRouteCircuit](./Set-AzExpressRouteCircuit.md)

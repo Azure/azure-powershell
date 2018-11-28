@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 15C5D659-472B-41DD-806A-A0A175434EE3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/submit-azurermhdinsightscriptaction
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/submit-azhdinsightscriptaction
 schema: 2.0.0
 ---
 
-# Submit-AzureRmHDInsightScriptAction
+# Submit-AzHDInsightScriptAction
 
 ## SYNOPSIS
 Submits a new script action to an Azure HDInsight cluster.
@@ -14,21 +14,21 @@ Submits a new script action to an Azure HDInsight cluster.
 ## SYNTAX
 
 ```
-Submit-AzureRmHDInsightScriptAction [-ClusterName] <String> [-Name] <String> [-Uri] <Uri>
+Submit-AzHDInsightScriptAction [-ClusterName] <String> [-Name] <String> [-Uri] <Uri>
  [-NodeTypes] <RuntimeScriptActionClusterNodeType[]> [[-Parameters] <String>] [[-ApplicationName] <String>]
  [-PersistOnSuccess] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Submit-AzureRmHDInsightScriptAction** cmdlet submits a new script action to an Azure HDInsight cluster.
+The **Submit-AzHDInsightScriptAction** cmdlet submits a new script action to an Azure HDInsight cluster.
 Use *PersistOnSuccess* to have the script action run each time the cluster is scaled up, as long as the script action initially succeeds.
 
 ## EXAMPLES
 
 ### Example 1: Submit a new script action to a running HDInsight cluster
 ```
-PS C:\>Submit-AzureRmHDInsightScriptAction `
+PS C:\>Submit-AzHDInsightScriptAction `
             -ClusterName "your-hadoop-001" `
             -Name "scriptaction" `
             -Uri "<script action URI>" `
@@ -196,6 +196,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmHDInsightScriptAction](./Add-AzureRmHDInsightScriptAction.md)
+[Add-AzHDInsightScriptAction](./Add-AzHDInsightScriptAction.md)
 
 

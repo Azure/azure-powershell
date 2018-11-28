@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
-Module Name: AzureRM.DeviceProvisioningServices
+Module Name: Az.DeviceProvisioningServices
 online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmIoTDeviceProvisioningServiceAccessPolicy
+# Remove-AzIoTDeviceProvisioningServiceAccessPolicy
 
 ## SYNOPSIS
 Delete a shared access policies in an Azure IoT Hub device provisioning service.
@@ -14,21 +14,21 @@ Delete a shared access policies in an Azure IoT Hub device provisioning service.
 
 ### ResourceSet (Default)
 ```
-Remove-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
+Remove-AzIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
  [-KeyName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Remove-AzureRmIoTDeviceProvisioningServiceAccessPolicy
+Remove-AzIoTDeviceProvisioningServiceAccessPolicy
  [-InputObject] <PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Remove-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceId] <String> [-KeyName] <String> [-PassThru]
+Remove-AzIoTDeviceProvisioningServiceAccessPolicy [-ResourceId] <String> [-KeyName] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" -PassThru
+PS C:\> Remove-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" -PassThru
 
 True
 ```
@@ -48,7 +48,7 @@ Delete shared access policy "mypolicy" in an Azure IoT Hub device provisioning s
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmIoTDpsAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" | Remove-AzureRmIoTDpsAccessPolicy
+PS C:\> Get-AzIoTDpsAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" | Remove-AzIoTDpsAccessPolicy
 ```
 
 Delete shared access policy "mypolicy" in an Azure IoT Hub device provisioning service using pipeline.
@@ -59,7 +59,7 @@ Delete shared access policy "mypolicy" in an Azure IoT Hub device provisioning s
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

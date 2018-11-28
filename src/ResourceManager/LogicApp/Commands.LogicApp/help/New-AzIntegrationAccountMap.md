@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: DF71430C-F33F-409B-A550-CC7285252E91
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/new-azurermintegrationaccountmap
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/new-azintegrationaccountmap
 schema: 2.0.0
 ---
 
-# New-AzureRmIntegrationAccountMap
+# New-AzIntegrationAccountMap
 
 ## SYNOPSIS
 Creates an integration account map.
@@ -14,13 +14,13 @@ Creates an integration account map.
 ## SYNTAX
 
 ```
-New-AzureRmIntegrationAccountMap -ResourceGroupName <String> -Name <String> -MapName <String>
+New-AzIntegrationAccountMap -ResourceGroupName <String> -Name <String> -MapName <String>
  [-MapFilePath <String>] [-MapDefinition <String>] [-MapType <String>] [-ContentType <String>]
  [-Metadata <Object>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmIntegrationAccountMap** cmdlet creates an integration account map.
+The **New-AzIntegrationAccountMap** cmdlet creates an integration account map.
 This cmdlet returns an object that represents the integration account map.
 Specifying the integration account name, resource group name, map name, and map definition.
 Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
@@ -33,7 +33,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Create an integration account map
 ```
-PS C:\>New-AzureRmIntegrationAccountMap -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -MapName "IntegrationAccountMap47" -MapDefinition $MapContent
+PS C:\>New-AzIntegrationAccountMap -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -MapName "IntegrationAccountMap47" -MapDefinition $MapContent
 Id          : /subscriptions/<SusbcriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegartionAccount31/maps/IntegrationAccountMap47
 Name        : IntegrationAccountMap47
 Type        : Microsoft.Logic/integrationAccounts/maps
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -237,10 +237,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmIntegrationAccountMap](./Get-AzureRmIntegrationAccountMap.md)
+[Get-AzIntegrationAccountMap](./Get-AzIntegrationAccountMap.md)
 
-[Remove-AzureRmIntegrationAccountMap](./Remove-AzureRmIntegrationAccountMap.md)
+[Remove-AzIntegrationAccountMap](./Remove-AzIntegrationAccountMap.md)
 
-[Set-AzureRmIntegrationAccountMap](./Set-AzureRmIntegrationAccountMap.md)
+[Set-AzIntegrationAccountMap](./Set-AzIntegrationAccountMap.md)
 
 

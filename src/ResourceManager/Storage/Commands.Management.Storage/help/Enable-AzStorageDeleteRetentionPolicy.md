@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
-Module Name: Azure.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/enable-azurestoragedeleteretentionpolicy
+Module Name: Az.Storage
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/enable-azstoragedeleteretentionpolicy
 schema: 2.0.0
 ---
 
-# Enable-AzureStorageDeleteRetentionPolicy
+# Enable-AzStorageDeleteRetentionPolicy
 
 ## SYNOPSIS
 Enable delete retention policy  for the Azure Storage Blob service.
@@ -13,18 +13,18 @@ Enable delete retention policy  for the Azure Storage Blob service.
 ## SYNTAX
 
 ```
-Enable-AzureStorageDeleteRetentionPolicy [-RetentionDays] <Int32> [-PassThru] [-Context <IStorageContext>]
+Enable-AzStorageDeleteRetentionPolicy [-RetentionDays] <Int32> [-PassThru] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzureStorageDeleteRetentionPolicy** cmdlet enables delete retention policy for the Azure Storage Blob service.
+The **Enable-AzStorageDeleteRetentionPolicy** cmdlet enables delete retention policy for the Azure Storage Blob service.
 
 ## EXAMPLES
 
 ### Example 1: Enable delete retention policy for the Blob service
 ```
-C:\PS>Enable-AzureStorageDeleteRetentionPolicy -RetentionDays 3
+C:\PS>Enable-AzStorageDeleteRetentionPolicy -RetentionDays 3
 ```
 
 This command enables delete retention policy for the Blob service, and set deleted blob retention days to 3.
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
-Module Name: AzureRM.Media
+Module Name: Az.Media
 ms.assetid: 9843D191-CBC4-481A-BD36-D7B2D7917BD9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/get-azurermmediaservice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.media/get-azmediaservice
 schema: 2.0.0
 ---
 
-# Get-AzureRmMediaService
+# Get-AzMediaService
 
 ## SYNOPSIS
 Gets information about a media service.
@@ -15,31 +15,31 @@ Gets information about a media service.
 
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmMediaService [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzMediaService [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### AccountNameParameterSet
 ```
-Get-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String>
+Get-AzMediaService [-ResourceGroupName] <String> [-AccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmMediaService** cmdlet gets information about a media service.
+The **Get-AzMediaService** cmdlet gets information about a media service.
 
 ## EXAMPLES
 
 ### Example 1: Get all media services in a resource group
 ```
-PS C:\>Get-AzureRmMediaService -ResourceGroupName "ResourceGroup001"
+PS C:\>Get-AzMediaService -ResourceGroupName "ResourceGroup001"
 ```
 
 This command gets properties for all media services in the resource group named ResourceGroup001.
 
 ### Example 2: Get media service properties
 ```
-PS C:\>Get-AzureRmMediaService -ResourceGroupName "ResourceGroup002" -AccountName "MediaService1"
+PS C:\>Get-AzMediaService -ResourceGroupName "ResourceGroup002" -AccountName "MediaService1"
 ```
 
 This command gets the properties of the media service named MediaService1 that belongs to the resource group named ResourceGroup002.
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -106,10 +106,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmMediaService](./New-AzureRmMediaService.md)
+[New-AzMediaService](./New-AzMediaService.md)
 
-[Remove-AzureRmMediaService](./Remove-AzureRmMediaService.md)
+[Remove-AzMediaService](./Remove-AzMediaService.md)
 
-[Set-AzureRmMediaService](./Set-AzureRmMediaService.md)
+[Set-AzMediaService](./Set-AzMediaService.md)
 
 

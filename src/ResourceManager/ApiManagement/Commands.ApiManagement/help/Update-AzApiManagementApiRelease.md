@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/update-azurermapimanagementapirelease
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/update-azapimanagementapirelease
 schema: 2.0.0
 ---
 
-# Update-AzureRmApiManagementApiRelease
+# Update-AzApiManagementApiRelease
 
 ## SYNOPSIS
 Updates a particular Api Release.
@@ -14,26 +14,26 @@ Updates a particular Api Release.
 
 ### ExpandedParameter (Default)
 ```
-Update-AzureRmApiManagementApiRelease -Context <PsApiManagementContext> -ReleaseId <String> -ApiId <String>
+Update-AzApiManagementApiRelease -Context <PsApiManagementContext> -ReleaseId <String> -ApiId <String>
  [-Note <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Update-AzureRmApiManagementApiRelease [-Note <String>] -InputObject <PsApiManagementApiRelease> [-PassThru]
+Update-AzApiManagementApiRelease [-Note <String>] -InputObject <PsApiManagementApiRelease> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmApiManagementApiRelease** cmdlet modifies an Azure API Management API Release.
+The **Update-AzApiManagementApiRelease** cmdlet modifies an Azure API Management API Release.
 
 ## EXAMPLES
 
 ### Example 1: Updates an API Release for an API Revision
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Update-AzureRmApiManagementApiRelease -Context $ApiMgmtContext -ApiId "echo-api" -ReleaseId "echo-api-release" -Note "Releasing version 2 of the echo-api to public"
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Update-AzApiManagementApiRelease -Context $ApiMgmtContext -ApiId "echo-api" -ReleaseId "echo-api-release" -Note "Releasing version 2 of the echo-api to public"
 ```
 
 This command updates the `echo-api-release` API Release of the Api `echo-api` with new note.
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -200,6 +200,6 @@ Parameters: Context (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementApiRelease](./Get-AzureRmApiManagementApiRelease.md)
+[Get-AzApiManagementApiRelease](./Get-AzApiManagementApiRelease.md)
 
-[New-AzureRmApiManagementApiRelease](./New-AzureRmApiManagementApiRelease.md)
+[New-AzApiManagementApiRelease](./New-AzApiManagementApiRelease.md)

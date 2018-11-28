@@ -1,33 +1,33 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
-Module Name: Azure.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance
+Module Name: Az.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/restart-azanalysisservicesinstance
 schema: 2.0.0
 ---
 
-# Restart-AzureAnalysisServicesInstance
+# Restart-AzAnalysisServicesInstance
 
 ## SYNOPSIS
-Restarts an instance of Analysis Services server in the currently logged in Environment as specified in Add-AzureAnalysisServicesAccount command
+Restarts an instance of Analysis Services server in the currently logged in Environment as specified in Add-AzAnalysisServicesAccount command
 
 ## SYNTAX
 
 ```
-Restart-AzureAnalysisServicesInstance -Instance <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restart-AzAnalysisServicesInstance -Instance <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Restart-AzureAnalysisServicesInstance cmdlet restarts an instance of Azure Analysis Services server
+The Restart-AzAnalysisServicesInstance cmdlet restarts an instance of Azure Analysis Services server
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>Restart-AzureAnalysisServicesInstance
+PS C:\>Restart-AzAnalysisServicesInstance
 Instance: testserver
 ```
 
-This command will restart the server 'testserver' in the environment specified in the Add-AzureAnalysisServicesAccount command
+This command will restart the server 'testserver' in the environment specified in the Add-AzAnalysisServicesAccount command
 
 ## PARAMETERS
 
@@ -104,6 +104,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-Alias: Restart-AzureAsInstance
+Alias: Restart-AzAsInstance
 
 ## RELATED LINKS

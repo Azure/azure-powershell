@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: FA868206-D8B0-4868-A1D1-D3F96BF3ADCC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/set-azurermwebappslot
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/set-azwebappslot
 schema: 2.0.0
 ---
 
-# Set-AzureRmWebAppSlot
+# Set-AzWebAppSlot
 
 ## SYNOPSIS
 Modifies an Azure Web App slot.
@@ -15,7 +15,7 @@ Modifies an Azure Web App slot.
 
 ### S1
 ```
-Set-AzureRmWebAppSlot [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[]>]
+Set-AzWebAppSlot [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[]>]
  [[-NetFrameworkVersion] <String>] [[-PhpVersion] <String>] [[-RequestTracingEnabled] <Boolean>]
  [[-HttpLoggingEnabled] <Boolean>] [[-DetailedErrorLoggingEnabled] <Boolean>] [[-AppSettings] <Hashtable>]
  [[-ConnectionStrings] <Hashtable>]
@@ -30,7 +30,7 @@ Set-AzureRmWebAppSlot [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[
 
 ### S2
 ```
-Set-AzureRmWebAppSlot [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[]>]
+Set-AzWebAppSlot [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[]>]
  [[-NetFrameworkVersion] <String>] [[-PhpVersion] <String>] [[-RequestTracingEnabled] <Boolean>]
  [[-HttpLoggingEnabled] <Boolean>] [[-DetailedErrorLoggingEnabled] <Boolean>] [[-AppSettings] <Hashtable>]
  [[-ConnectionStrings] <Hashtable>]
@@ -41,13 +41,13 @@ Set-AzureRmWebAppSlot [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmWebApp** cmdlet sets an Azure Web App Slot.
+The **Set-AzWebApp** cmdlet sets an Azure Web App Slot.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001" -HttpLoggingEnabled $true
+PS C:\> Set-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001" -HttpLoggingEnabled $true
 ```
 
 This command sets HttpLoggingEnabled to true for Slot Slot001 pertaining to Web App ContosoWebApp associated with the resource group Default-Web-WestUS
@@ -223,7 +223,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -496,16 +496,16 @@ Parameters: WebApp (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRMWebAppSlot](./Get-AzureRMWebAppSlot.md)
+[Get-AzWebAppSlot](./Get-AzWebAppSlot.md)
 
-[New-AzureRMWebAppSlot](./New-AzureRMWebAppSlot.md)
+[New-AzWebAppSlot](./New-AzWebAppSlot.md)
 
-[Remove-AzureRMWebAppSlot](./Remove-AzureRMWebAppSlot.md)
+[Remove-AzWebAppSlot](./Remove-AzWebAppSlot.md)
 
-[Restart-AzureRMWebAppSlot](./Restart-AzureRMWebAppSlot.md)
+[Restart-AzWebAppSlot](./Restart-AzWebAppSlot.md)
 
-[Start-AzureRMWebAppSlot](./Start-AzureRMWebAppSlot.md)
+[Start-AzWebAppSlot](./Start-AzWebAppSlot.md)
 
-[Stop-AzureRMWebAppSlot](./Stop-AzureRMWebAppSlot.md)
+[Stop-AzWebAppSlot](./Stop-AzWebAppSlot.md)
 
-[Get-AzureRmAppServicePlan](./Get-AzureRmAppServicePlan.md)
+[Get-AzAppServicePlan](./Get-AzAppServicePlan.md)

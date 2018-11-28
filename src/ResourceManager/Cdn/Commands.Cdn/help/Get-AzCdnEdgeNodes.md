@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-Module Name: AzureRM.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdnedgenodes
+Module Name: Az.Cdn
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnedgenodes
 schema: 2.0.0
 ---
 
-# Get-AzureRmCdnEdgeNodes
+# Get-AzCdnEdgeNodes
 
 ## SYNOPSIS
 Gets Azure CDN edgenodes.
@@ -13,7 +13,7 @@ Gets Azure CDN edgenodes.
 ## SYNTAX
 
 ```
-Get-AzureRmCdnEdgeNodes [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCdnEdgeNodes [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +34,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: ECE1F469-E3C3-4294-A288-8BAE851E8599
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactory
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactory
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactory
+# Get-AzDataFactory
 
 ## SYNOPSIS
 Gets information about Data Factories.
@@ -14,12 +14,12 @@ Gets information about Data Factories.
 ## SYNTAX
 
 ```
-Get-AzureRmDataFactory [[-Name] <String>] [-ResourceGroupName] <String>
+Get-AzDataFactory [[-Name] <String>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactory** cmdlet gets information about data factories in an Azure resource group.
+The **Get-AzDataFactory** cmdlet gets information about data factories in an Azure resource group.
 If you specify the name of a data factory, this cmdlet gets information about that data factory.
 If you do not specify a name, this cmdlet gets information about all of the data factories in an Azure resource group.
 
@@ -27,7 +27,7 @@ If you do not specify a name, this cmdlet gets information about all of the data
 
 ### Example 1: Get all data factories
 ```
-PS C:\>Get-AzureRmDataFactory -ResourceGroupName "ADF"
+PS C:\>Get-AzDataFactory -ResourceGroupName "ADF"
 DataFactoryName   : WikiADF
 ResourceGroupName : ADF
 Location          : WestUS
@@ -45,7 +45,7 @@ This command displays information about all data factories in the Azure subscrip
 
 ### Example 2: Get a specific data factory
 ```
-PS C:\>$DataFactory = Get-AzureRmDataFactory -ResourceGroupName "ADF" -Name "WikiADF"
+PS C:\>$DataFactory = Get-AzDataFactory -ResourceGroupName "ADF" -Name "WikiADF"
 DataFactoryName   : WikiADF
 ResourceGroupName : ADF
 Location          : westus
@@ -120,8 +120,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmDataFactory](./New-AzureRmDataFactory.md)
+[New-AzDataFactory](./New-AzDataFactory.md)
 
-[Remove-AzureRmDataFactory](./Remove-AzureRmDataFactory.md)
+[Remove-AzDataFactory](./Remove-AzDataFactory.md)
 
 

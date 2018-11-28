@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: B6487D26-2B6A-4938-B1CD-48EADD8D0C3C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/import-azurermautomationrunbook
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/import-azautomationrunbook
 schema: 2.0.0
 ---
 
-# Import-AzureRmAutomationRunbook
+# Import-AzAutomationRunbook
 
 ## SYNOPSIS
 Imports an Automation runbook.
@@ -14,14 +14,14 @@ Imports an Automation runbook.
 ## SYNTAX
 
 ```
-Import-AzureRmAutomationRunbook [-Path] <String> [-Description <String>] [-Name <String>] [-Tags <IDictionary>]
+Import-AzAutomationRunbook [-Path] <String> [-Description <String>] [-Name <String>] [-Tags <IDictionary>]
  -Type <String> [-LogProgress <Boolean>] [-LogVerbose <Boolean>] [-Published] [-Force]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Import-AzureRmAutomationRunbook** cmdlet imports an Azure Automation runbook. Specify the 
+The **Import-AzAutomationRunbook** cmdlet imports an Azure Automation runbook. Specify the 
 path to a wps_2 script (.ps1) file to import for wps_2 and wps_2 Workflow runbooks,
 (.graphrunbook) file for graphical runbooks, or (.py) file for python 2 runbooks. 
 For wps_2 Workflow runbooks, the script must contain a single wps_2 Workflow definition that matches the name of the file.
@@ -31,7 +31,7 @@ For wps_2 Workflow runbooks, the script must contain a single wps_2 Workflow def
 ### Example 1: Import a runbook from a file
 ```
 PS C:\> $Tags = @{"tag01"="value01"; "tag02"="value02"}
-PS C:\> Import-AzureRmAutomationRunbook -Path .\GraphicalRunbook06.graphrunbook -Tags $Tags -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Type GraphicalPowershell
+PS C:\> Import-AzAutomationRunbook -Path .\GraphicalRunbook06.graphrunbook -Tags $Tags -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Type GraphicalPowershell
 ```
 
 The first command assigns two key/value pairs to the $Tags variable.
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -281,18 +281,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Export-AzureRmAutomationRunbook](./Export-AzureRMAutomationRunbook.md)
+[Export-AzAutomationRunbook](./Export-AzAutomationRunbook.md)
 
-[Get-AzureRmAutomationRunbook](./Get-AzureRMAutomationRunbook.md)
+[Get-AzAutomationRunbook](./Get-AzAutomationRunbook.md)
 
-[New-AzureRmAutomationRunbook](./New-AzureRMAutomationRunbook.md)
+[New-AzAutomationRunbook](./New-AzAutomationRunbook.md)
 
-[New-AzureRmAutomationRunbook](./New-AzureRMAutomationRunbook.md)
+[New-AzAutomationRunbook](./New-AzAutomationRunbook.md)
 
-[Publish-AzureRmAutomationRunbook](./Publish-AzureRMAutomationRunbook.md)
+[Publish-AzAutomationRunbook](./Publish-AzAutomationRunbook.md)
 
-[Remove-AzureRmAutomationRunbook](./Remove-AzureRMAutomationRunbook.md)
+[Remove-AzAutomationRunbook](./Remove-AzAutomationRunbook.md)
 
-[Set-AzureRmAutomationRunbook](./Set-AzureRMAutomationRunbook.md)
+[Set-AzAutomationRunbook](./Set-AzAutomationRunbook.md)
 
-[Start-AzureRmAutomationRunbook](./Start-AzureRMAutomationRunbook.md)
+[Start-AzAutomationRunbook](./Start-AzAutomationRunbook.md)

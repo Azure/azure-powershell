@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/get-azureatalakestorechilditemsummary
+Module Name: Az.DataLakeStore
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/get-azatalakestorechilditemsummary
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataLakeStoreChildItemSummary
+# Get-AzDataLakeStoreChildItemSummary
 
 ## SYNOPSIS
 Gets the summary of total size, files and directories contained in the path specified
@@ -13,18 +13,18 @@ Gets the summary of total size, files and directories contained in the path spec
 ## SYNTAX
 
 ```
-Get-AzureRmDataLakeStoreChildItemSummary [-Account] <String> [-Path] <DataLakeStorePathInstance>
+Get-AzDataLakeStoreChildItemSummary [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [-Concurrency <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataLakeStoreChildItemSummary** retrieves the content summary for a given path. It recursively computes total number of files, directories and total size of all the files under the given path.
+The **Get-AzDataLakeStoreChildItemSummary** retrieves the content summary for a given path. It recursively computes total number of files, directories and total size of all the files under the given path.
 
 ## EXAMPLES
 
 ### Example 1: Get the content summary of a folder
 ```
-PS C:\> Get-AzureRmDataLakeStoreChildItemSummary -Account ContosoADL -Path /a -Concurrency 128
+PS C:\> Get-AzDataLakeStoreChildItemSummary -Account ContosoADL -Path /a -Concurrency 128
 ```
 
 It lists number of total directories, files and their size contained under /a.
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

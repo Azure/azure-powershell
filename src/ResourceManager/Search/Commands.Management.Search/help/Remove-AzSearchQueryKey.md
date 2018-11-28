@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
-Module Name: AzureRM.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/remove-azurermsearchquerykey
+Module Name: Az.Search
+online version: https://docs.microsoft.com/en-us/powershell/module/az.search/remove-azsearchquerykey
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSearchQueryKey
+# Remove-AzSearchQueryKey
 
 ## SYNOPSIS
 Remove the query key from the Azure Search service.
@@ -14,37 +14,37 @@ Remove the query key from the Azure Search service.
 
 ### ResourceNameParameterSet (Default)
 ```
-Remove-AzureRmSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String> -KeyValue <String> [-Force]
+Remove-AzSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String> -KeyValue <String> [-Force]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
-Remove-AzureRmSearchQueryKey [-ParentObject] <PSSearchService> -KeyValue <String> [-Force] [-PassThru]
+Remove-AzSearchQueryKey [-ParentObject] <PSSearchService> -KeyValue <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentResourceIdParameterSet
 ```
-Remove-AzureRmSearchQueryKey [-ParentResourceId] <String> -KeyValue <String> [-Force] [-PassThru]
+Remove-AzSearchQueryKey [-ParentResourceId] <String> -KeyValue <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSearchQueryKey** cmdlet removes the query key from the Azure Search service.
+The **Remove-AzSearchQueryKey** cmdlet removes the query key from the Azure Search service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01"
+PS C:\> Get-AzSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01"
 
 Name         Key                             
 ----         ---                             
              D260F448EA192EBC19D59F7E5670E8BB
 NewQueryKey1 B4C13E3F6FA76100D3488673CFDCD438
 
-PS C:\> Remove-AzureRmSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -KeyValue B4C13E3F6FA76100D3488673CFDCD438
+PS C:\> Remove-AzSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -KeyValue B4C13E3F6FA76100D3488673CFDCD438
 
 Confirm
 Are you sure you want to remove query key 'B4C13E3F6FA76100D3488673CFDCD438'?
@@ -60,7 +60,7 @@ The example removes the query key from the Azure Search service.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -225,6 +225,6 @@ Parameters: ParentObject (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmSearchQueryKey.md](./New-AzureRmSearchQueryKey.md)
+[New-AzSearchQueryKey.md](./New-AzSearchQueryKey.md)
 
-[Get-AzureRmSearchQueryKey.md](./Get-AzureRmSearchQueryKey.md)
+[Get-AzSearchQueryKey.md](./Get-AzSearchQueryKey.md)

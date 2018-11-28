@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/remove-azurermwebappslot
+Module Name: Az.Websites
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/remove-azwebappslot
 schema: 2.0.0
 ---
 
-# Remove-AzureRmWebAppSlot
+# Remove-AzWebAppSlot
 
 ## SYNOPSIS
 
@@ -13,25 +13,25 @@ schema: 2.0.0
 
 ### S1
 ```
-Remove-AzureRmWebAppSlot [-Force] [-AsJob] [-ResourceGroupName] <String> [-Name] <String> [-Slot] <String>
+Remove-AzWebAppSlot [-Force] [-AsJob] [-ResourceGroupName] <String> [-Name] <String> [-Slot] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Remove-AzureRmWebAppSlot [-Force] [-AsJob] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzWebAppSlot [-Force] [-AsJob] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmWebAppSlot** cmdlet removes an Azure Web App Slot provided the resource group and Web App name.
+The **Remove-AzWebAppSlot** cmdlet removes an Azure Web App Slot provided the resource group and Web App name.
 This cmdlet, by default, also removes all slots and metrics.
 
 ## EXAMPLES
 
 ### Example 1: Remove a Web App Slot
 ```
-PS C:\>Remove-AzureRmWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite" -Slot "Slot001"
+PS C:\>Remove-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite" -Slot "Slot001"
 ```
 
 This command removes the Slot named Slot001 associated with Web App ContosoSite that belongs to the resource group named Default-Web-WestUS.
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -192,16 +192,16 @@ Parameters: WebApp (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRMWebAppSlot](./Get-AzureRMWebAppSlot.md)
+[Get-AzWebAppSlot](./Get-AzWebAppSlot.md)
 
-[New-AzureRMWebAppSlot](./New-AzureRMWebAppSlot.md)
+[New-AzWebAppSlot](./New-AzWebAppSlot.md)
 
-[Restart-AzureRMWebAppSlot](./Restart-AzureRMWebAppSlot.md)
+[Restart-AzWebAppSlot](./Restart-AzWebAppSlot.md)
 
-[Set-AzureRMWebAppSlot](./Set-AzureRMWebAppSlot.md)
+[Set-AzWebAppSlot](./Set-AzWebAppSlot.md)
 
-[Start-AzureRMWebAppSlot](./Start-AzureRMWebAppSlot.md)
+[Start-AzWebAppSlot](./Start-AzWebAppSlot.md)
 
-[Stop-AzureRMWebAppSlot](./Stop-AzureRMWebAppSlot.md)
+[Stop-AzWebAppSlot](./Stop-AzWebAppSlot.md)
 
-[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)
+[Get-AzWebApp](./Get-AzWebApp.md)

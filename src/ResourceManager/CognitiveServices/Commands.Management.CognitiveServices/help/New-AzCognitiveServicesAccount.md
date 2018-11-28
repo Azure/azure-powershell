@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
-Module Name: AzureRM.CognitiveServices
+Module Name: Az.CognitiveServices
 ms.assetid: A2B4ACC1-6F53-47DE-A2D4-831E8AC89A5C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount
 schema: 2.0.0
 ---
 
-# New-AzureRmCognitiveServicesAccount
+# New-AzCognitiveServicesAccount
 
 ## SYNOPSIS
 Creates a Cognitive Services account.
@@ -14,20 +14,20 @@ Creates a Cognitive Services account.
 ## SYNTAX
 
 ```
-New-AzureRmCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Type] <String>
+New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Type] <String>
  [-SkuName] <String> [-Location] <String> [-Tag <Hashtable[]>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmCognitiveServicesAccount** cmdlet creates a Cognitive Services account with the
+The **New-AzCognitiveServicesAccount** cmdlet creates a Cognitive Services account with the
 specified type and SKU.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\> New-AzureRmCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Locatio
+PS C:\> New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Locatio
 n 'WestUS'
 
 
@@ -51,7 +51,7 @@ Tags              :
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-Specifies the type of account to create. Use `Get-AzureRmCognitiveServicesAccountType` cmdlet to get current acceptable values.
+Specifies the type of account to create. Use `Get-AzCognitiveServicesAccountType` cmdlet to get current acceptable values.
 
 ```yaml
 Type: System.String
@@ -222,8 +222,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmCognitiveServicesAccount](./Get-AzureRmCognitiveServicesAccount.md)
+[Get-AzCognitiveServicesAccount](./Get-AzCognitiveServicesAccount.md)
 
-[Remove-AzureRmCognitiveServicesAccount](./Remove-AzureRmCognitiveServicesAccount.md)
+[Remove-AzCognitiveServicesAccount](./Remove-AzCognitiveServicesAccount.md)
 
-[Set-AzureRmCognitiveServicesAccount](./Set-AzureRmCognitiveServicesAccount.md)
+[Set-AzCognitiveServicesAccount](./Set-AzCognitiveServicesAccount.md)

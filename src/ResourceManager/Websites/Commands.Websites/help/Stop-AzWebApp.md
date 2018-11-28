@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: A12FFDB1-9849-4150-9716-068BE6EFC681
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/stop-azurermwebapp
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/stop-azwebapp
 schema: 2.0.0
 ---
 
-# Stop-AzureRmWebApp
+# Stop-AzWebApp
 
 ## SYNOPSIS
 Stops an Azure Web App.
@@ -15,23 +15,23 @@ Stops an Azure Web App.
 
 ### S1
 ```
-Stop-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Stop-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### S2
 ```
-Stop-AzureRmWebApp [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Stop-AzWebApp [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmWebApp** cmdlet stops an Azure Web App.
+The **Stop-AzWebApp** cmdlet stops an Azure Web App.
 
 ## EXAMPLES
 
 ### Example 1: Stop a Web App
 ```
-PS C:\>Stop-AzureRmWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
+PS C:\>Stop-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
 ```
 
 This command stops the Web App named ContosoWebApp that belongs to the resource group named Default-Web-WestUS.
@@ -42,7 +42,7 @@ This command stops the Web App named ContosoWebApp that belongs to the resource 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,14 +116,14 @@ Parameters: WebApp (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)
+[Get-AzWebApp](./Get-AzWebApp.md)
 
-[New-AzureRmWebApp](./New-AzureRmWebApp.md)
+[New-AzWebApp](./New-AzWebApp.md)
 
-[Remove-AzureRmWebApp](./Remove-AzureRmWebApp.md)
+[Remove-AzWebApp](./Remove-AzWebApp.md)
 
-[Restart-AzureRmWebApp](./Restart-AzureRmWebApp.md)
+[Restart-AzWebApp](./Restart-AzWebApp.md)
 
-[Start-AzureRmWebApp](./Start-AzureRmWebApp.md)
+[Start-AzWebApp](./Start-AzWebApp.md)
 
 

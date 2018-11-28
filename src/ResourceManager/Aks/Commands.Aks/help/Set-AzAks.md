@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Aks.dll-Help.xml
-Module Name: AzureRM.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.aks/set-azurermaks
+Module Name: Az.Aks
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/set-azaks
 schema: 2.0.0
 ---
 
-# Set-AzureRmAks
+# Set-AzAks
 
 ## SYNOPSIS
 Update or create a managed Kubernetes cluster.
@@ -14,7 +14,7 @@ Update or create a managed Kubernetes cluster.
 
 ### defaultParameterSet (Default)
 ```
-Set-AzureRmAks [-ResourceGroupName] <String> [-Name] <String> [[-ClientIdAndSecret] <PSCredential>]
+Set-AzAks [-ResourceGroupName] <String> [-Name] <String> [[-ClientIdAndSecret] <PSCredential>]
  [-Location <String>] [-AdminUserName <String>] [-DnsNamePrefix <String>] [-KubernetesVersion <String>]
  [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>] [-SshKeyValue <String>] [-AsJob]
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,7 +22,7 @@ Set-AzureRmAks [-ResourceGroupName] <String> [-Name] <String> [[-ClientIdAndSecr
 
 ### InputObjectParameterSet
 ```
-Set-AzureRmAks -InputObject <PSKubernetesCluster> [-Location <String>] [-AdminUserName <String>]
+Set-AzAks -InputObject <PSKubernetesCluster> [-Location <String>] [-AdminUserName <String>]
  [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
  [-NodeVmSize <String>] [-SshKeyValue <String>] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -30,7 +30,7 @@ Set-AzureRmAks -InputObject <PSKubernetesCluster> [-Location <String>] [-AdminUs
 
 ### IdParameterSet
 ```
-Set-AzureRmAks [-Id] <String> [-Location <String>] [-AdminUserName <String>] [-DnsNamePrefix <String>]
+Set-AzAks [-Id] <String> [-Location <String>] [-AdminUserName <String>] [-DnsNamePrefix <String>]
  [-KubernetesVersion <String>] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
  [-SshKeyValue <String>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -43,7 +43,7 @@ Update or create a managed Kubernetes cluster.
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmAks -ResourceGroupName group -Name myCluster | Set-AzureRmAks -NodeCount 5
+PS C:\> Get-AzAks -ResourceGroupName group -Name myCluster | Set-AzAks -NodeCount 5
 ```
 
 Set the number of nodes in the Kubernetes cluster to 5.
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

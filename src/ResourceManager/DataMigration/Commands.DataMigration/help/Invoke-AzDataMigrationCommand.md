@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
-Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/Invoke-AzureRmDataMigrationCommand
+Module Name: Az.DataMigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/Invoke-AzDataMigrationCommand
 schema: 2.0.0
 ---
 
-# Invoke-AzureRmDataMigrationCommand
+# Invoke-AzDataMigrationCommand
 
 ## SYNOPSIS
 Creates a new command to be executed on an existing DMS task.
@@ -13,22 +13,22 @@ Creates a new command to be executed on an existing DMS task.
 ## SYNTAX
 
 ```
-Invoke-AzureRmDataMigrationCommand -CommandType <String> -ResourceGroupName <String> -ServiceName <String>
+Invoke-AzDataMigrationCommand -CommandType <String> -ResourceGroupName <String> -ServiceName <String>
  -ProjectName <String> -TaskName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmDataMigrationCommand cmdlet creates a new command task to be run on an existing migration task.
+The New-AzDataMigrationCommand cmdlet creates a new command task to be run on an existing migration task.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $command = New-AzureRmDmsCommand -CommandType Complete -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName -TaskName $taskName -DatabaseName $output.DatabaseName
+PS C:\> $command = New-AzDmsCommand -CommandType Complete -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName -TaskName $taskName -DatabaseName $output.DatabaseName
 ```
 
-The above examples uses the New-AzureRmDmsCommand cmdlet to create a command for an existing service, project, and task
+The above examples uses the New-AzDmsCommand cmdlet to create a command for an existing service, project, and task
 
 ## PARAMETERS
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

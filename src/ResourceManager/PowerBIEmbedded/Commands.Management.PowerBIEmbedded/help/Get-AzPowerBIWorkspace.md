@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll-Help.xml
-Module Name: AzureRM.PowerBIEmbedded
+Module Name: Az.PowerBIEmbedded
 ms.assetid: 5321FC62-3585-4493-A3D2-22CD82503CA7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.powerbiembedded/get-azurermpowerbiworkspace
+online version: https://docs.microsoft.com/en-us/powershell/module/az.powerbiembedded/get-azpowerbiworkspace
 schema: 2.0.0
 ---
 
-# Get-AzureRmPowerBIWorkspace
+# Get-AzPowerBIWorkspace
 
 ## SYNOPSIS
 Gets the workspaces in a Power BI workspace collection.
@@ -14,18 +14,18 @@ Gets the workspaces in a Power BI workspace collection.
 ## SYNTAX
 
 ```
-Get-AzureRmPowerBIWorkspace [-ResourceGroupName] <String> [-WorkspaceCollectionName] <String>
+Get-AzPowerBIWorkspace [-ResourceGroupName] <String> [-WorkspaceCollectionName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmPowerBIWorkspace** cmdlet gets the workspaces in a Power BI workspace collection.
+The **Get-AzPowerBIWorkspace** cmdlet gets the workspaces in a Power BI workspace collection.
 
 ## EXAMPLES
 
 ### Example 1: Get workspaces of a workspace collection
 ```
-PS C:\>Get-AzureRmPowerBIWorkspace -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11"
+PS C:\>Get-AzPowerBIWorkspace -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11"
 ```
 
 This command gets the workspaces that belong to the workspace collection named WCN11 in the specified resource group.
@@ -36,7 +36,7 @@ This command gets the workspaces that belong to the workspace collection named W
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,6 +92,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmPowerBIWorkspaceCollection](./Get-AzureRmPowerBIWorkspaceCollection.md)
+[Get-AzPowerBIWorkspaceCollection](./Get-AzPowerBIWorkspaceCollection.md)
 
 

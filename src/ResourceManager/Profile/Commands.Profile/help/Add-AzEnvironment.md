@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/add-azurermenvironment
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/add-azenvironment
 schema: 2.0.0
 ---
 
-# Add-AzureRmEnvironment
+# Add-AzEnvironment
 
 ## SYNOPSIS
 Adds endpoints and metadata for an instance of Azure Resource Manager.
@@ -14,7 +14,7 @@ Adds endpoints and metadata for an instance of Azure Resource Manager.
 
 ### Name (Default)
 ```
-Add-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-ServiceEndpoint] <String>]
+Add-AzEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-ServiceEndpoint] <String>]
  [[-ManagementPortalUrl] <String>] [[-StorageEndpoint] <String>] [[-ActiveDirectoryEndpoint] <String>]
  [[-ResourceManagerEndpoint] <String>] [[-GalleryEndpoint] <String>]
  [[-ActiveDirectoryServiceEndpointResourceId] <String>] [[-GraphEndpoint] <String>]
@@ -24,29 +24,30 @@ Add-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-
  [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [-EnableAdfsAuthentication]
  [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
  [[-BatchEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>]
- [[-AzureOperationalInsightsEndpoint] <String>] [-AzureAnalysisServicesEndpointSuffix <String>] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ARMEndpoint
-```
-Add-AzureRmEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpoint] <String>
- [[-AzureKeyVaultDnsSuffix] <String>] [[-AzureKeyVaultServiceEndpointResourceId] <String>]
- [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId] <String>]
- [[-AzureOperationalInsightsEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpoint] <String>]
+ [[-AzureOperationalInsightsEndpoint] <String>] [-AzureAnalysisServicesEndpointSuffix <String>]
  [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
+### ARMEndpoint
+```
+Add-AzEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpoint] <String>
+ [[-AzureKeyVaultDnsSuffix] <String>] [[-AzureKeyVaultServiceEndpointResourceId] <String>]
+ [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId] <String>]
+ [[-AzureOperationalInsightsEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpoint] <String>]
+ [-AzureAnalysisServicesEndpointSuffix <String>] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The Add-AzureRmEnvironment cmdlet adds endpoints and metadata to enable Azure Resource Manager cmdlets to connect with a new instance of Azure Resource Manager.
+The Add-AzEnvironment cmdlet adds endpoints and metadata to enable Azure Resource Manager cmdlets to connect with a new instance of Azure Resource Manager.
 The built-in environments AzureCloud and AzureChinaCloud target existing public instances of Azure Resource Manager.
 
 ## EXAMPLES
 
 ### Example 1: Creating and modifying a new environment
 ```
-PS C:\> Add-AzureRmEnvironment -Name TestEnvironment `
+PS C:\> Add-AzEnvironment -Name TestEnvironment `
         -ActiveDirectoryEndpoint TestADEndpoint `
         -ActiveDirectoryServiceEndpointResourceId TestADApplicationId `
         -ResourceManagerEndpoint TestRMEndpoint `
@@ -57,7 +58,7 @@ Name            Resource Manager Url ActiveDirectory Authority
 ----            -------------------- -------------------------
 TestEnvironment TestRMEndpoint       TestADEndpoint/
 
-PS C:\> Set-AzureRmEnvironment -Name TestEnvironment `
+PS C:\> Set-AzEnvironment -Name TestEnvironment `
         -ActiveDirectoryEndpoint NewTestADEndpoint `
         -GraphEndpoint NewTestGraphEndpoint | Format-List
 
@@ -89,7 +90,7 @@ VersionProfiles                                   : {}
 ExtendedProperties                                : {}
 BatchEndpointResourceId                           :
 
-In this example we are creating a new Azure environment with sample endpoints using Add-AzureRmEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzureRmEnvironment.
+In this example we are creating a new Azure environment with sample endpoints using Add-AzEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzEnvironment.
 ```
 
 ## PARAMETERS
@@ -155,20 +156,19 @@ Accept wildcard characters: False
 ```
 
 ### -AzureAnalysisServicesEndpointSuffix
-Dns Suffix of Azure Analysis Services service endpoints
+The endpoint to use when communicating with the Azure Log Analytics API.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 15
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
 
 ### -AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix
 Dns Suffix of Azure Data Lake Analytics job and catalog services
@@ -186,8 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureDataLakeStoreFileSystemEndpointSuffix
-Dns Suffix of Azure Data Lake Store FileSystem.
-Example: azuredatalake.net
+Dns Suffix of Azure Data Lake Store FileSystem. Example: azuredatalake.net
 
 ```yaml
 Type: System.String
@@ -202,7 +201,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureKeyVaultDnsSuffix
-Specifies the domain name suffix for Key Vault services.
+Dns suffix of Azure Key Vault service. Example is vault-int.azure-int.net
 
 ```yaml
 Type: System.String
@@ -217,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureKeyVaultServiceEndpointResourceId
-Specifies the audience for access tokens that authorize requests for Key Vault services.
+Resource identifier of Azure Key Vault data service that is the recipient of the requested token.
 
 ```yaml
 Type: System.String
@@ -232,7 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureOperationalInsightsEndpoint
-Specifies the endpoint for the Operational Insights query access. 
+The endpoint to use when communicating with the Azure Log Analytics API.
 
 ```yaml
 Type: System.String
@@ -247,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureOperationalInsightsEndpointResourceId
-Specifies the audience for access tokens that authorize requests for Operational Insights services.
+The audience for tokens authenticating with the Azure Log Analytics API.
 
 ```yaml
 Type: System.String
@@ -295,7 +294,7 @@ Accept wildcard characters: False
 The credeetnails, tenant and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -549,9 +548,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRMEnvironment](./Get-AzureRMEnvironment.md)
+[Get-AzEnvironment](./Get-AzEnvironment.md)
 
-[Remove-AzureRMEnvironment](./Remove-AzureRMEnvironment.md)
+[Remove-AzEnvironment](./Remove-AzEnvironment.md)
 
-[Set-AzureRMEnvironment](./Set-AzureRMEnvironment.md)
+[Set-AzEnvironment](./Set-AzEnvironment.md)
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlsyncgroup
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlsyncgroup
 schema: 2.0.0
 ---
 
-# New-AzureRmSqlSyncGroup
+# New-AzSqlSyncGroup
 
 ## SYNOPSIS
 Creates an Azure SQL Database Sync Group.
@@ -13,7 +13,7 @@ Creates an Azure SQL Database Sync Group.
 ## SYNTAX
 
 ```
-New-AzureRmSqlSyncGroup [-Name] <String> -SyncDatabaseName <String> -SyncDatabaseServerName <String>
+New-AzSqlSyncGroup [-Name] <String> -SyncDatabaseName <String> -SyncDatabaseServerName <String>
  -SyncDatabaseResourceGroupName <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
  [-ConflictResolutionPolicy <String>] [-SchemaFile <String>] [-ServerName] <String> [-DatabaseName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -21,14 +21,14 @@ New-AzureRmSqlSyncGroup [-Name] <String> -SyncDatabaseName <String> -SyncDatabas
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlSyncGroup** cmdlet creates an Azure SQL Database Sync Group.
+The **New-AzSqlSyncGroup** cmdlet creates an Azure SQL Database Sync Group.
 
 ## EXAMPLES
 
 ### Example 1: Create a sync group for an Azure SQL Database.
 ```
 PS C:\> $credential = Get-Credential
-PS C:\> New-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" -ConflictResolutionPolicy "HubWin"
+PS C:\> New-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" -ConflictResolutionPolicy "HubWin"
 -DatabaseCredential $credential -IntervalInSeconds 100 -SyncDatabaseServerName "syncDatabaseServer01" -SyncDatabaseName "syncDatabaseName01"
 -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" -Schema ".\schema.json" | Format-List
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -282,9 +282,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmSqlSyncGroup](./Set-AzureRmSqlSyncGroup.md)
+[Set-AzSqlSyncGroup](./Set-AzSqlSyncGroup.md)
 
-[Remove-AzureRmSqlSyncGroup](./Remove-AzureRmSqlSyncGroup.md)
+[Remove-AzSqlSyncGroup](./Remove-AzSqlSyncGroup.md)
 
-[Get-AzureRmSqlSyncGroup](./Get-AzureRmSqlSyncGroup.md)
+[Get-AzSqlSyncGroup](./Get-AzSqlSyncGroup.md)
 

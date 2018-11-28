@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 56550997-21D9-4F85-B23A-677625482547
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/remove-azurermintegrationaccountschema
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/remove-azintegrationaccountschema
 schema: 2.0.0
 ---
 
-# Remove-AzureRmIntegrationAccountSchema
+# Remove-AzIntegrationAccountSchema
 
 ## SYNOPSIS
 Removes an integration account schema.
@@ -14,12 +14,12 @@ Removes an integration account schema.
 ## SYNTAX
 
 ```
-Remove-AzureRmIntegrationAccountSchema -ResourceGroupName <String> -Name <String> -SchemaName <String> [-Force]
+Remove-AzIntegrationAccountSchema -ResourceGroupName <String> -Name <String> -SchemaName <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmIntegrationAccountSchema** cmdlet removes an integration account schema from a resource group.
+The **Remove-AzIntegrationAccountSchema** cmdlet removes an integration account schema from a resource group.
 Specifying the integration account name, resource group name, and schema name.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -30,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Remove an integration account schema
 ```
-PS C:\>Remove-AzureRmIntegrationAccountSchema -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -SchemaName "IntegrationAccountSchema43"
+PS C:\>Remove-AzIntegrationAccountSchema -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -SchemaName "IntegrationAccountSchema43"
 ```
 
 This command removes an integration account schema named IntegrationAccountSchema43.
@@ -41,7 +41,7 @@ This command removes an integration account schema named IntegrationAccountSchem
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -158,10 +158,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmIntegrationAccountSchema](./Get-AzureRmIntegrationAccountSchema.md)
+[Get-AzIntegrationAccountSchema](./Get-AzIntegrationAccountSchema.md)
 
-[New-AzureRmIntegrationAccountSchema](./New-AzureRmIntegrationAccountSchema.md)
+[New-AzIntegrationAccountSchema](./New-AzIntegrationAccountSchema.md)
 
-[Set-AzureRmIntegrationAccountSchema](./Set-AzureRmIntegrationAccountSchema.md)
+[Set-AzIntegrationAccountSchema](./Set-AzIntegrationAccountSchema.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2pipelinerun
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryv2pipelinerun
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryV2PipelineRun
+# Get-AzDataFactoryV2PipelineRun
 
 ## SYNOPSIS
 Gets information about pipeline runs.
@@ -14,38 +14,38 @@ Gets information about pipeline runs.
 
 ### ByFactoryNameByRunId (Default)
 ```
-Get-AzureRmDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryName] <String>
+Get-AzDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-PipelineRunId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObjectByRunId
 ```
-Get-AzureRmDataFactoryV2PipelineRun [-DataFactory] <PSDataFactory> [-PipelineRunId] <String>
+Get-AzDataFactoryV2PipelineRun [-DataFactory] <PSDataFactory> [-PipelineRunId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObjectByPipeline
 ```
-Get-AzureRmDataFactoryV2PipelineRun [-DataFactory] <PSDataFactory> [-LastUpdatedAfter] <DateTime>
+Get-AzDataFactoryV2PipelineRun [-DataFactory] <PSDataFactory> [-LastUpdatedAfter] <DateTime>
  [-LastUpdatedBefore] <DateTime> [[-PipelineName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByFactoryNameByPipeline
 ```
-Get-AzureRmDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryName] <String>
+Get-AzDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-LastUpdatedAfter] <DateTime> [-LastUpdatedBefore] <DateTime> [[-PipelineName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactoryV2PipelineRun** command returns information about runs for the specified pipeline. If PipelineRunId is specified, it shows details for the run with that ID. If the PipelineRunId is not specified, then it shows information about all runs for the specified pipeline that happened between the values of LastUpdatedAfter and LastUpdatedBefore.
+The **Get-AzDataFactoryV2PipelineRun** command returns information about runs for the specified pipeline. If PipelineRunId is specified, it shows details for the run with that ID. If the PipelineRunId is not specified, then it shows information about all runs for the specified pipeline that happened between the values of LastUpdatedAfter and LastUpdatedBefore.
 
 ## EXAMPLES
 
 ### Example 1: Get information for a pipline run
 ```
-PS C:\> Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId "61eb095a-fe23-4591-8a97-fade6c65ca72"
+PS C:\> Get-AzDataFactoryV2PipelineRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId "61eb095a-fe23-4591-8a97-fade6c65ca72"
 
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF
@@ -202,7 +202,7 @@ Parameters: DataFactory (ByValue)
 
 ## RELATED LINKS
 
-[Invoke-AzureRmDataFactoryV2Pipeline]()
+[Invoke-AzDataFactoryV2Pipeline]()
 
-[Get-AzureRmDataFactoryV2ActivityRun]()
+[Get-AzDataFactoryV2ActivityRun]()
 

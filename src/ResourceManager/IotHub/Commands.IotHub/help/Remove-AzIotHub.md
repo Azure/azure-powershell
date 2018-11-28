@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/remove-azurermiothub
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/remove-aziothub
 schema: 2.0.0
 ---
 
-# Remove-AzureRmIotHub
+# Remove-AzIotHub
 
 ## SYNOPSIS
 Deletes an IotHub.
@@ -13,7 +13,7 @@ Deletes an IotHub.
 ## SYNTAX
 
 ```
-Remove-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Remove-AzIotHub [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Deletes an IotHub.
 
 ### Example 1 Remove an IotHub
 ```
-PS C:\> Remove-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub"
+PS C:\> Remove-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Removes an IotHub named "myiothub"
@@ -35,7 +35,7 @@ Removes an IotHub named "myiothub"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

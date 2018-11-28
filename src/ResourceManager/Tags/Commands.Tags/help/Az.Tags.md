@@ -1,22 +1,22 @@
 ---
-Module Name: AzureRM.Tags
+Module Name: Az.Tags
 Module Guid: 59713673-194f-418a-b1f2-ac60db82edf9
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.tags
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.tags
 Help Version: 4.0.0.0
 Locale: en-US
 ---
 
-# AzureRM.Tags Module
+# Az.Tags Module
 ## Description
 This topic displays help topics for the Azure Tag Cmdlets.
 
-## AzureRM.Tags Cmdlets
-### [Get-AzureRmTag](Get-AzureRmTag.md)
+## Az.Tags Cmdlets
+### [Get-AzTag](Get-AzTag.md)
 Gets predefined Azure tags.
 
-### [New-AzureRmTag](New-AzureRmTag.md)
+### [New-AzTag](New-AzTag.md)
 Creates a predefined Azure tag or adds values to an existing tag.
 
-### [Remove-AzureRmTag](Remove-AzureRmTag.md)
+### [Remove-AzTag](Remove-AzTag.md)
 Deletes predefined Azure tags or values.
 

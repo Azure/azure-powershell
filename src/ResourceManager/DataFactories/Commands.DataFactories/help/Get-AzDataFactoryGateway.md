@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: D85FF5ED-23EA-48C7-8E61-D931713E0064
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactorygateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactorygateway
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryGateway
+# Get-AzDataFactoryGateway
 
 ## SYNOPSIS
 Gets information about logical gateways in Azure Data Factory.
@@ -15,18 +15,18 @@ Gets information about logical gateways in Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactoryGateway [-DataFactoryName] <String> [[-Name] <String>] [-ResourceGroupName] <String>
+Get-AzDataFactoryGateway [-DataFactoryName] <String> [[-Name] <String>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactoryGateway [-DataFactory] <PSDataFactory> [[-Name] <String>]
+Get-AzDataFactoryGateway [-DataFactory] <PSDataFactory> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactoryGateway** cmdlet gets information about logical gateways in Azure Data Factory.
+The **Get-AzDataFactoryGateway** cmdlet gets information about logical gateways in Azure Data Factory.
 If you specify the name of a gateway, this cmdlet gets information about that gateway.
 If you do not specify a name, this cmdlet gets information about all gateways for a data factory.
 If you want to add an on-premises Microsoft SQL Server as a linked service to a data factory, you must install a gateway on your on-premises computer.
@@ -35,7 +35,7 @@ If you want to add an on-premises Microsoft SQL Server as a linked service to a 
 
 ### Example 1: Get all logical gateways in a data factory
 ```
-PS C:\>Get-AzureRmDataFactoryGateway -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+PS C:\>Get-AzDataFactoryGateway -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 Name            : gateway1
 Description     : 
 Version         : 1.3.5338.1
@@ -60,7 +60,7 @@ This command gets information about all logical gateways for the data factory na
 
 ### Example 2: Get a specific logical gateway in a data factory
 ```
-PS C:\>Get-AzureRmDataFactoryGateway -ResourceGroupName "ADF" -Name "Gateway01" -DataFactoryName "WikiADF"
+PS C:\>Get-AzDataFactoryGateway -ResourceGroupName "ADF" -Name "Gateway01" -DataFactoryName "WikiADF"
 Name            : Gateway01
 Description     : 
 Version         : 1.3.5338.1
@@ -172,10 +172,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmDataFactoryGateway](./New-AzureRmDataFactoryGateway.md)
+[New-AzDataFactoryGateway](./New-AzDataFactoryGateway.md)
 
-[Remove-AzureRmDataFactoryGateway](./Remove-AzureRmDataFactoryGateway.md)
+[Remove-AzDataFactoryGateway](./Remove-AzDataFactoryGateway.md)
 
-[Set-AzureRmDataFactoryGateway](./Set-AzureRmDataFactoryGateway.md)
+[Set-AzDataFactoryGateway](./Set-AzDataFactoryGateway.md)
 
 

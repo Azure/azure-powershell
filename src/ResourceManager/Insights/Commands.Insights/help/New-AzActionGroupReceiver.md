@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 9830CD16-D797-47EB-BEF5-6CFE3454BCAA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/new-azurermactiongroupreceiver
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azactiongroupreceiver
 schema: 2.0.0
 ---
 
-# New-AzureRmActionGroupReceiver
+# New-AzActionGroupReceiver
 
 ## SYNOPSIS
 Creates an new action group receiver.
@@ -15,44 +15,44 @@ Creates an new action group receiver.
 
 ### NewEmailReceiver (Default)
 ```
-New-AzureRmActionGroupReceiver -Name <String> [-EmailReceiver] -EmailAddress <String>
+New-AzActionGroupReceiver -Name <String> [-EmailReceiver] -EmailAddress <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NewSmsReceiver
 ```
-New-AzureRmActionGroupReceiver -Name <String> [-SmsReceiver] [-CountryCode <String>] -PhoneNumber <String>
+New-AzActionGroupReceiver -Name <String> [-SmsReceiver] [-CountryCode <String>] -PhoneNumber <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NewWebhookReceiver
 ```
-New-AzureRmActionGroupReceiver -Name <String> [-WebhookReceiver] -ServiceUri <String>
+New-AzActionGroupReceiver -Name <String> [-WebhookReceiver] -ServiceUri <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmActionGroupReceiver** cmdlet creates new action group receiver in memory.
+The **New-AzActionGroupReceiver** cmdlet creates new action group receiver in memory.
 
 ## EXAMPLES
 
 ### Example 1: Create a new Email receiver in memory.
 ```
-PS C:\>$emailReceiver = New-AzureRmActionGroupReceiver -Name 'emailReceiver1' -EmailReceiver -EmailAddress 'user1@example.com'
+PS C:\>$emailReceiver = New-AzActionGroupReceiver -Name 'emailReceiver1' -EmailReceiver -EmailAddress 'user1@example.com'
 ```
 
 This command creates a new Email receiver in memory.
 
 ### Example 2: Create a new SMS receiver in memory.
 ```
-PS C:\>$smsReceiver = New-AzureRmActionGroupReceiver -Name 'smsReceiver1' -SmsReceiver -CountryCode '1' -PhoneNumber '5555555555'
+PS C:\>$smsReceiver = New-AzActionGroupReceiver -Name 'smsReceiver1' -SmsReceiver -CountryCode '1' -PhoneNumber '5555555555'
 ```
 
 This command creates a new SMS receiver in memory.
 
 ### Example 3: Create a new webhook receiver in memory.
 ```
-PS C:\>$webhookReceiver = New-AzureRmActionGroupReceiver -Name 'webhookReceiver1' -SMSReceiver -ServiceUri 'http://test.com'
+PS C:\>$webhookReceiver = New-AzActionGroupReceiver -Name 'webhookReceiver1' -SMSReceiver -ServiceUri 'http://test.com'
 ```
 
 This command creates a new webhook receiver in memory.
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -211,6 +211,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmActionGroup](./Set-AzureRmActionGroup.md)
-[Get-AzureRmActionGroup](./Get-AzureRmActionGroup.md)
-[Remove-AzureRmActionGroup](./Remove-AzureRmActionGroup.md)
+[Set-AzActionGroup](./Set-AzActionGroup.md)
+[Get-AzActionGroup](./Get-AzActionGroup.md)
+[Remove-AzActionGroup](./Remove-AzActionGroup.md)

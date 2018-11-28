@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
-Module Name: AzureRM.Security
-online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Set-AzureRmSecurityAutoProvisioningSetting.md
+Module Name: Az.Security
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Set-AzSecurityAutoProvisioningSetting.md
 schema: 2.0.0
 ---
 
-# Set-AzureRmSecurityAutoProvisioningSetting
+# Set-AzSecurityAutoProvisioningSetting
 
 ## SYNOPSIS
 Updates automatic provisioning setting
@@ -14,19 +14,19 @@ Updates automatic provisioning setting
 
 ### SubscriptionLevelResource (Default)
 ```
-Set-AzureRmSecurityAutoProvisioningSetting -Name <String> [-EnableAutoProvision]
+Set-AzSecurityAutoProvisioningSetting -Name <String> [-EnableAutoProvision]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Set-AzureRmSecurityAutoProvisioningSetting [-EnableAutoProvision] -ResourceId <String>
+Set-AzSecurityAutoProvisioningSetting [-EnableAutoProvision] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzureRmSecurityAutoProvisioningSetting -InputObject <PSSecurityAutoProvisioningSetting>
+Set-AzSecurityAutoProvisioningSetting -InputObject <PSSecurityAutoProvisioningSetting>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ The security agent will monitor your VM to create security alerts and monitor th
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzureRmSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+PS C:\> Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
 Id                                                                                                                Name    AutoProvision
 --                                                                                                                ----    -------------
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/autoProvisioningSettings/default default On
@@ -49,7 +49,7 @@ Turns on automatic provisioning setting for a subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzureRmSecurityAutoProvisioningSetting -Name "default"
+PS C:\> Set-AzSecurityAutoProvisioningSetting -Name "default"
 Id                                                                                                                Name 
 --                                                                                                                ---- 
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/autoProvisioningSettings/default de...
@@ -63,7 +63,7 @@ Turns off automatic provisioning setting for a subscription.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 Automatic Provisioning.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SubscriptionLevelResource, ResourceId
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Input Object.
 
 ```yaml
-Type: PSSecurityAutoProvisioningSetting
+Type: Microsoft.Azure.Commands.Security.Models.AutoProvisioningSettings.PSSecurityAutoProvisioningSetting
 Parameter Sets: InputObject
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelResource
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

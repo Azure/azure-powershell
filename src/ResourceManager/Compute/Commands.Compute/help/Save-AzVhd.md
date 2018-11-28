@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 18E1AD70-42A6-47A2-A685-6E218B6DC4BE
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/save-azurermvhd
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/save-azvhd
 schema: 2.0.0
 ---
 
-# Save-AzureRmVhd
+# Save-AzVhd
 
 ## SYNOPSIS
 Saves downloaded .vhd images locally.
@@ -15,20 +15,19 @@ Saves downloaded .vhd images locally.
 
 ### ResourceGroupParameterSetName
 ```
-Save-AzureRmVhd [-ResourceGroupName] <String> [-SourceUri] <Uri> [-LocalFilePath] <FileInfo>
+Save-AzVhd [-ResourceGroupName] <String> [-SourceUri] <Uri> [-LocalFilePath] <FileInfo>
  [[-NumberOfThreads] <Int32>] [-OverWrite] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### StorageKeyParameterSetName
 ```
-Save-AzureRmVhd [-StorageKey] <String> [-SourceUri] <Uri> [-LocalFilePath] <FileInfo>
- [[-NumberOfThreads] <Int32>] [-OverWrite] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Save-AzVhd [-StorageKey] <String> [-SourceUri] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfThreads] <Int32>]
+ [-OverWrite] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Save-AzureRmVhd** cmdlet saves .vhd images from a blob where they are stored to a file.
+The **Save-AzVhd** cmdlet saves .vhd images from a blob where they are stored to a file.
 You can specify the number of downloader threads that the process uses and whether to replace a file that already exists.
 This cmdlet downloads content as it is.
 It does not apply any Virtual Hard Disk (VHD) format conversion.
@@ -37,14 +36,14 @@ It does not apply any Virtual Hard Disk (VHD) format conversion.
 
 ### Example 1: Download an image
 ```
-PS C:\> Save-AzureRmVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -ResourceGroupName "rgname"
+PS C:\> Save-AzVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -ResourceGroupName "rgname"
 ```
 
 This command downloads a .vhd file, and stores it in the local path C:\vhd\Win7Image.vhd.
 
 ### Example 2: Download an image and overwrite the local file
 ```
-PS C:\> Save-AzureRmVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite -ResourceGroupName "rgname"
+PS C:\> Save-AzVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite -ResourceGroupName "rgname"
 ```
 
 This command downloads a .vhd file, and stores it in the local path.
@@ -53,7 +52,7 @@ Therefore, if C:\vhd\Win7Image.vhd already exists, this command replaces it.
 
 ### Example 3: Download an image by using a specified number of threads
 ```
-PS C:\> Save-AzureRmVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32 -ResourceGroupName "rgname"
+PS C:\> Save-AzVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32 -ResourceGroupName "rgname"
 ```
 
 This command downloads a .vhd file, and stores it in the local path.
@@ -62,7 +61,7 @@ Therefore, the cmdlet uses 32 threads for this action.
 
 ### Example 4: Download an image and specify the storage key
 ```
-PS C:\> Save-AzureRmVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -StorageKey "zNvcH0r5vAGmC5AbwEtpcyWCMyBd3eMDbdaa4ua6kwxq6vTZH3Y+sw==" -ResourceGroupName "rgname"
+PS C:\> Save-AzVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -StorageKey "zNvcH0r5vAGmC5AbwEtpcyWCMyBd3eMDbdaa4ua6kwxq6vTZH3Y+sw==" -ResourceGroupName "rgname"
 ```
 
 This command downloads a .vhd file and specifies the storage key.
@@ -88,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -207,6 +206,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmVhd](./Add-AzureRMVhd.md)
+[Add-AzVhd](./Add-AzVhd.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchpoolnodecounts
+Module Name: Az.Batch
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchpoolnodecounts
 schema: 2.0.0
 ---
 
-# Get-AzureBatchPoolNodeCounts
+# Get-AzBatchPoolNodeCounts
 
 ## SYNOPSIS
 Gets Batch node counts per node state grouped by pool id.
@@ -14,38 +14,38 @@ Gets Batch node counts per node state grouped by pool id.
 
 ### AzureBatchPoolNodeCounts (Default)
 ```
-Get-AzureBatchPoolNodeCounts -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
+Get-AzBatchPoolNodeCounts -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### PoolId
 ```
-Get-AzureBatchPoolNodeCounts [-PoolId <String>] -BatchContext <BatchAccountContext>
+Get-AzBatchPoolNodeCounts [-PoolId <String>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentObject
 ```
-Get-AzureBatchPoolNodeCounts [-Pool <PSCloudPool>] -BatchContext <BatchAccountContext>
+Get-AzBatchPoolNodeCounts [-Pool <PSCloudPool>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ODataFilter
 ```
-Get-AzureBatchPoolNodeCounts [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
+Get-AzBatchPoolNodeCounts [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureBatchPoolNodeCounts cmdlet allows customers to get back node counts per node state grouped by pool. Possible node states are creating, idle, leavingPool, offline, preempted, rebooting, reimaging, running, starting, startTaskFailed, unknown, unusable and waitingForStartTask. The cmdlet takes PoolId or Pool parameter to filter only pool with pool id specified. 
+The Get-AzBatchPoolNodeCounts cmdlet allows customers to get back node counts per node state grouped by pool. Possible node states are creating, idle, leavingPool, offline, preempted, rebooting, reimaging, running, starting, startTaskFailed, unknown, unusable and waitingForStartTask. The cmdlet takes PoolId or Pool parameter to filter only pool with pool id specified. 
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-PS C:\> $batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
-PS C:\> Get-AzureBatchPoolNodeCounts -BatchContext $batchContext
+PS C:\> $batchContext = Get-AzBatchAccountKeys -AccountName "contosobatch"
+PS C:\> Get-AzBatchPoolNodeCounts -BatchContext $batchContext
 
 PoolId                         Dedicated                                                    LowPriority
 ------                         ---------                                                    -----------
@@ -58,13 +58,13 @@ List node counts per node state for pools under current batch account context.
 ### Example 2
 
 ```powershell
-PS C:\> Get-AzureBatchPoolNodeCounts -BatchContext $batchContext -PoolId "contosopool1"
+PS C:\> Get-AzBatchPoolNodeCounts -BatchContext $batchContext -PoolId "contosopool1"
 
 PoolId                         Dedicated                                                    LowPriority
 ------                         ---------                                                    -----------
 contosopool1                   Creating: 1, Idle: 1, Rebooting: 1, Running: 5, Total: 8     Total: 0
 
-PS C:\> $poolnodecounts = Get-AzureBatchPoolNodeCounts -BatchContext $batchContext -PoolId "contosopool1"
+PS C:\> $poolnodecounts = Get-AzBatchPoolNodeCounts -BatchContext $batchContext -PoolId "contosopool1"
 PS C:\> $poolnodecounts.Dedicated
 
 Creating            : 1
@@ -82,7 +82,7 @@ Unknown             : 0
 Unusable            : 0
 WaitingForStartTask : 0
 
-PS C:\> Get-AzureBatchPool -Id "contosopool1" -BatchContext $batchContext | Get-AzureBatchPoolNodeCounts -BatchContext $batchContext
+PS C:\> Get-AzBatchPool -Id "contosopool1" -BatchContext $batchContext | Get-AzBatchPoolNodeCounts -BatchContext $batchContext
 
 PoolId                         Dedicated                                                    LowPriority
 ------                         ---------                                                    -----------
@@ -95,8 +95,8 @@ Show node counts per node state for a pool given pool id.
 
 ### -BatchContext
 The BatchAccountContext instance to use when interacting with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service.
-To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service.
+To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.
 When using shared key authentication, the primary access key is used by default.
 To change the key to use, set the BatchAccountContext.KeyInUse property.
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -194,9 +194,9 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys]()
+[Get-AzBatchAccountKeys]()
 
-[Get-AzureBatchJob]()
+[Get-AzBatchJob]()
 
 [Azure Batch Cmdlets]()
 

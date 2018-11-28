@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 0137ECA3-37E1-4064-8A65-A582519E9017
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/new-azurermalertrulewebhook
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azalertrulewebhook
 schema: 2.0.0
 ---
 
-# New-AzureRmAlertRuleWebhook
+# New-AzAlertRuleWebhook
 
 ## SYNOPSIS
 Creates an alert rule webhook.
@@ -14,25 +14,25 @@ Creates an alert rule webhook.
 ## SYNTAX
 
 ```
-New-AzureRmAlertRuleWebhook [-ServiceUri] <String> [[-Property] <Hashtable>]
+New-AzAlertRuleWebhook [-ServiceUri] <String> [[-Property] <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAlertRuleWebhook** cmdlet creates an alert rule webhook.
+The **New-AzAlertRuleWebhook** cmdlet creates an alert rule webhook.
 
 ## EXAMPLES
 
 ### Example 1: Create an alert rule webhook
 ```
-PS C:\>New-AzureRmAlertRuleWebhook -ServiceUri "http://contoso.com"
+PS C:\>New-AzAlertRuleWebhook -ServiceUri "http://contoso.com"
 ```
 
 This command creates an alert rule webhook by specifying only the service URI.
 
 ### Example 2: Create a webhook with one property
 ```
-PS C:\>$Actual = New-AzureRmAlertRuleWebhook -ServiceUri "http://contoso.com" -Properties @{prop1 = 'value1'}
+PS C:\>$Actual = New-AzAlertRuleWebhook -ServiceUri "http://contoso.com" -Properties @{prop1 = 'value1'}
 ```
 
 This command creates an alert rule webhook for Contoso.com that has one property, and then stores it in the $Actual variable.
@@ -43,7 +43,7 @@ This command creates an alert rule webhook for Contoso.com that has one property
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -101,14 +101,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmLogAlertRule](./Add-AzureRmLogAlertRule.md)
+[Add-AzLogAlertRule](./Add-AzLogAlertRule.md)
 
-[Add-AzureRmMetricAlertRule](./Add-AzureRmMetricAlertRule.md)
+[Add-AzMetricAlertRule](./Add-AzMetricAlertRule.md)
 
-[Add-AzureRmWebtestAlertRule](./Add-AzureRmWebtestAlertRule.md)
+[Add-AzWebtestAlertRule](./Add-AzWebtestAlertRule.md)
 
-[New-AzureRmAlertRuleEmail](./New-AzureRmAlertRuleEmail.md)
+[New-AzAlertRuleEmail](./New-AzAlertRuleEmail.md)
 
-[New-AzureRmAutoscaleWebhook](./New-AzureRmAutoscaleWebhook.md)
+[New-AzAutoscaleWebhook](./New-AzAutoscaleWebhook.md)
 
 

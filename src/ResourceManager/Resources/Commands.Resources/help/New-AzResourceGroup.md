@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 0632DAD6-F331-454F-9E7E-2164AB413E77
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermresourcegroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azresourcegroup
 schema: 2.0.0
 ---
 
-# New-AzureRmResourceGroup
+# New-AzResourceGroup
 
 ## SYNOPSIS
 Creates an Azure resource group.
@@ -14,16 +14,16 @@ Creates an Azure resource group.
 ## SYNTAX
 
 ```
-New-AzureRmResourceGroup -Name <String> -Location <String> [-Tag <Hashtable>] [-Force] [-ApiVersion <String>]
+New-AzResourceGroup [-Name] <String> [-Location] <String> [-Tag <Hashtable>] [-Force] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmResourceGroup** cmdlet creates an Azure resource group.
+The **New-AzResourceGroup** cmdlet creates an Azure resource group.
 You can create a resource group by using just a name and location, and then use the
-New-AzureRmResource cmdlet to create resources to add to the resource group.
-To add a deployment to an existing resource group, use the New-AzureRmResourceGroupDeployment
-cmdlet. To add a resource to an existing resource group, use the **New-AzureRmResource** cmdlet. An
+New-AzResource cmdlet to create resources to add to the resource group.
+To add a deployment to an existing resource group, use the New-AzResourceGroupDeployment
+cmdlet. To add a resource to an existing resource group, use the **New-AzResource** cmdlet. An
 Azure resource is a user-managed Azure entity, such as a database server, database, or website. An
 Azure resource group is a collection of Azure resources that are deployed as a unit.
 
@@ -31,23 +31,23 @@ Azure resource group is a collection of Azure resources that are deployed as a u
 
 ### Example 1: Create an empty resource group
 ```
-PS> New-AzureRmResourceGroup -Name RG01 -Location "South Central US"
+PS> New-AzResourceGroup -Name RG01 -Location "South Central US"
 ```
 
 This command creates a resource group that has no resources. You can use the
-**New-AzureRmResource** or **New-AzureRmResourceGroupDeployment** cmdlets to add resources and
+**New-AzResource** or **New-AzResourceGroupDeployment** cmdlets to add resources and
 deployments to this resource group.
 
 ### Example 2: Create an empty resource group using positional parameters
 ```
-PS> New-AzureRmResourceGroup RG01 "South Central US"
+PS> New-AzResourceGroup RG01 "South Central US"
 ```
 
 This command creates a resource group that has no resources.
 
 ### Example 3: Create a resource group with tags
 ```
-PS> New-AzureRmResourceGroup -Name RG01 -Location "South Central US" -Tag @{Empty=$null; Department="Marketing"}
+PS> New-AzResourceGroup -Name RG01 -Location "South Central US" -Tag @{Empty=$null; Department="Marketing"}
 ```
 
 This command creates an empty resource group. This command is the same as the command in Example 1,
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Specifies the location of the resource group. Specify an Azure data center location, such as West
 US or Southeast Asia. You can place a resource group in any location. The resource group does not
 have to be in the same location your Azure subscription or in the same location as its resources.
-To determine which location supports each resource type, use the Get-AzureRmResourceProvider cmdlet
+To determine which location supports each resource type, use the Get-AzResourceProvider cmdlet
 with the *ProviderNamespace* parameter.
 
 ```yaml
@@ -117,7 +117,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -134,7 +134,7 @@ Parameter Sets: (All)
 Aliases: ResourceGroupName
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -160,10 +160,10 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 To add or change a tag, you must replace the collection of tags for the resource group.
 After you assign tags to resources and groups, you can use the *Tag* parameter of
-Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or
+Get-AzResource and Get-AzResourceGroup to search for resources and groups by tag name or
 by name and value. You can use tags to categorize your resources, such as by department or cost
 center, or to track notes or comments about the resources.
-To get your predefined tags, use the Get-AzureRMTag cmdlet.
+To get your predefined tags, use the Get-AzTag cmdlet.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -223,14 +223,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmResourceProvider](./Get-AzureRmResourceProvider.md)
+[Get-AzResourceProvider](./Get-AzResourceProvider.md)
 
-[Get-AzureRmResourceGroup](./Get-AzureRmResourceGroup.md)
+[Get-AzResourceGroup](./Get-AzResourceGroup.md)
 
-[New-AzureRmResource](./New-AzureRmResource.md)
+[New-AzResource](./New-AzResource.md)
 
-[New-AzureRmResourceGroupDeployment](./New-AzureRmResourceGroupDeployment.md)
+[New-AzResourceGroupDeployment](./New-AzResourceGroupDeployment.md)
 
-[Remove-AzureRmResourceGroup](./Remove-AzureRmResourceGroup.md)
+[Remove-AzResourceGroup](./Remove-AzResourceGroup.md)
 
-[Set-AzureRmResourceGroup](./Set-AzureRmResourceGroup.md)
+[Set-AzResourceGroup](./Set-AzResourceGroup.md)

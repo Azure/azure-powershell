@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 8C6D9533-68FD-4AFF-91FB-8307A8C8EAEB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/revoke-azurermhdinsightrdpservicesaccess
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/revoke-azhdinsightrdpservicesaccess
 schema: 2.0.0
 ---
 
-# Revoke-AzureRmHDInsightRdpServicesAccess
+# Revoke-AzHDInsightRdpServicesAccess
 
 ## SYNOPSIS
 Disables RDP access to a Windows cluster.
@@ -14,18 +14,18 @@ Disables RDP access to a Windows cluster.
 ## SYNTAX
 
 ```
-Revoke-AzureRmHDInsightRdpServicesAccess [-ClusterName] <String> [-ResourceGroupName <String>]
+Revoke-AzHDInsightRdpServicesAccess [-ClusterName] <String> [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Revoke-AzureRmHDInsightRdpServicesAccess** cmdlet disables Remote Desktop Protocol (RDP) access to a Windows-based Azure HDInsight cluster.
+The **Revoke-AzHDInsightRdpServicesAccess** cmdlet disables Remote Desktop Protocol (RDP) access to a Windows-based Azure HDInsight cluster.
 
 ## EXAMPLES
 
 ### Example 1: Disable RDP access to a specified cluster
 ```
-PS C:\>Revoke-AzureRmHDInsightRdpServicesAccess -ClusterName "your-hadoop-001"
+PS C:\>Revoke-AzHDInsightRdpServicesAccess -ClusterName "your-hadoop-001"
 ```
 
 This command revokes RDP access to the cluster named your-hadoop-001.
@@ -92,6 +92,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Grant-AzureRmHDInsightRdpServicesAccess](./Grant-AzureRmHDInsightRdpServicesAccess.md)
+[Grant-AzHDInsightRdpServicesAccess](./Grant-AzHDInsightRdpServicesAccess.md)
 
 

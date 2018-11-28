@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/set-azurermservicefabricsetting
+Module Name: Az.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/set-azservicefabricsetting
 schema: 2.0.0
 ---
 
-# Set-AzureRmServiceFabricSetting
+# Set-AzServiceFabricSetting
 
 ## SYNOPSIS
 Add or update one or multiple Service Fabric settings to the cluster.
@@ -14,26 +14,25 @@ Add or update one or multiple Service Fabric settings to the cluster.
 
 ### OneSetting
 ```
-Set-AzureRmServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String> -Section <String>
- -Parameter <String> -Value <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String> -Section <String> -Parameter <String>
+ -Value <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BatchSettings
 ```
-Set-AzureRmServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String>
+Set-AzServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String>
  -SettingsSectionDescription <PSSettingsSectionDescription[]> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use **Set-AzureRmServiceFabricSetting** to add or update Service Fabric settings in a cluster.
+Use **Set-AzServiceFabricSetting** to add or update Service Fabric settings in a cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:\> Set-AzureRmServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -Section 'NamingService' -Parameter 'MaxFileOperationTimeout' -Value 5000
+PS c:\> Set-AzServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -Section 'NamingService' -Parameter 'MaxFileOperationTimeout' -Value 5000
 ```
 
 This command will set 'MaxFileOperationTimeout' to value '5000' under the section 'NamingService'.
@@ -44,7 +43,7 @@ This command will set 'MaxFileOperationTimeout' to value '5000' under the sectio
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

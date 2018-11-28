@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
-Module Name: AzureRM.Security
-online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzureRmJitNetworkAccessPolicy.md
+Module Name: Az.Security
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzJitNetworkAccessPolicy.md
 schema: 2.0.0
 ---
 
-# Get-AzureRmJitNetworkAccessPolicy
+# Get-AzJitNetworkAccessPolicy
 
 ## SYNOPSIS
 Gets the JIT network access policies
@@ -14,24 +14,24 @@ Gets the JIT network access policies
 
 ### SubscriptionScope (Default)
 ```
-Get-AzureRmJitNetworkAccessPolicy [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzJitNetworkAccessPolicy [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
-Get-AzureRmJitNetworkAccessPolicy -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzJitNetworkAccessPolicy -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
 ```
-Get-AzureRmJitNetworkAccessPolicy -ResourceGroupName <String> -Location <String> -Name <String>
+Get-AzJitNetworkAccessPolicy -ResourceGroupName <String> -Location <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzureRmJitNetworkAccessPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzJitNetworkAccessPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ In the policy you can also see the connection request that were made with this p
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmJitNetworkAccessPolicy
+PS C:\> Get-AzJitNetworkAccessPolicy
 Id                : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/jitNetworkAccessPolicies/default
 Name              : default
 Kind              : Basic
@@ -64,7 +64,7 @@ Get all the JIT network access polices on a subscription
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmJitNetworkAccessPolicy -ResourceGroupName "myService1"
+PS C:\> Get-AzJitNetworkAccessPolicy -ResourceGroupName "myService1"
 Id                : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/jitNetworkAccessPolicies/default
 Name              : default
 Kind              : Basic
@@ -84,7 +84,7 @@ Get all the JIT network access polices on the "myService1" resource group
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzureRmJitNetworkAccessPolicy -ResourceGroupName "myService1" -Location "centralus" -Name "default"
+PS C:\> Get-AzJitNetworkAccessPolicy -ResourceGroupName "myService1" -Location "centralus" -Name "default"
 Id                : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/locations/centralus/jitNetworkAccessPolicies/default
 Name              : default
 Kind              : Basic
@@ -101,7 +101,7 @@ Gets a specific JIT network access policy
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource
 Aliases:
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupScope, ResourceGroupLevelResource
 Aliases:
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 

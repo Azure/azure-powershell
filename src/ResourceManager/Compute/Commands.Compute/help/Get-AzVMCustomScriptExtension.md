@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 1017A74D-6420-4E51-A4A4-1AD3AD6D8122
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmcustomscriptextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmcustomscriptextension
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMCustomScriptExtension
+# Get-AzVMCustomScriptExtension
 
 ## SYNOPSIS
 Gets information about a custom script extension.
@@ -14,25 +14,25 @@ Gets information about a custom script extension.
 ## SYNTAX
 
 ```
-Get-AzureRmVMCustomScriptExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Status]
+Get-AzVMCustomScriptExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Status]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMCustomScriptExtension** cmdlet gets information about a custom script Virtual Machine Extension on a virtual machine.
+The **Get-AzVMCustomScriptExtension** cmdlet gets information about a custom script Virtual Machine Extension on a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Get a custom script extension
 ```
-PS C:\> $VMCustomScriptExtension = Get-AzureRmVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoCustomScript"
+PS C:\> $VMCustomScriptExtension = Get-AzVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoCustomScript"
 ```
 
 This command gets the custom script extension named ContosoCustomScript for the virtual machine named VirtualMachine07.
 
 ### Example 2: Get the instance view of a custom script extension
 ```
-PS C:\> $VMCustomScriptExtension = Get-AzureRmVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoCustomScript" -Status
+PS C:\> $VMCustomScriptExtension = Get-AzVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoCustomScript" -Status
 ```
 
 This command gets the instance view of the custom script extension named ContosoCustomScript for the virtual machine named VirtualMachine07.
@@ -43,7 +43,7 @@ This command gets the instance view of the custom script extension named Contoso
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -131,10 +131,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMAccessExtension](./Get-AzureRmVMAccessExtension.md)
+[Get-AzVMAccessExtension](./Get-AzVMAccessExtension.md)
 
-[Get-AzureRmVMExtension](./Get-AzureRmVMExtension.md)
+[Get-AzVMExtension](./Get-AzVMExtension.md)
 
-[Get-AzureRmVMExtensionImage](./Get-AzureRmVMExtensionImage.md)
+[Get-AzVMExtensionImage](./Get-AzVMExtensionImage.md)
 
 

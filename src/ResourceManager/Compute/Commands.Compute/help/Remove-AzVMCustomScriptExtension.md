@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: A65E82D5-706B-4470-A51E-936E381DA78F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmcustomscriptextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmcustomscriptextension
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVMCustomScriptExtension
+# Remove-AzVMCustomScriptExtension
 
 ## SYNOPSIS
 Removes a custom script extension from a virtual machine.
@@ -14,12 +14,12 @@ Removes a custom script extension from a virtual machine.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMCustomScriptExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzVMCustomScriptExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVMCustomScriptExtension** cmdlet removes a custom script Virtual Machine Extension from a virtual machine.
+The **Remove-AzVMCustomScriptExtension** cmdlet removes a custom script Virtual Machine Extension from a virtual machine.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ The **Remove-AzureRmVMCustomScriptExtension** cmdlet removes a custom script Vir
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -146,6 +146,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMCustomScriptExtension](./Get-AzureRmVMCustomScriptExtension.md)
+[Get-AzVMCustomScriptExtension](./Get-AzVMCustomScriptExtension.md)
 
-[Set-AzureRmVMCustomScriptExtension](./Set-AzureRmVMCustomScriptExtension.md)
+[Set-AzVMCustomScriptExtension](./Set-AzVMCustomScriptExtension.md)

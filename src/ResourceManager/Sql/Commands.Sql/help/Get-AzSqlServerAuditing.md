@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlserverauditing
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverauditing
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlServerAuditing
+# Get-AzSqlServerAuditing
 
 ## SYNOPSIS
 Gets the auditing settings of an Azure SQL server.
@@ -14,12 +14,12 @@ Gets the auditing settings of an Azure SQL server.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServerAuditing [-ServerName] <String> [-ResourceGroupName] <String>
+Get-AzSqlServerAuditing [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlServerAuditing** cmdlet gets the blob auditing policy of an Azure SQL server.
+The **Get-AzSqlServerAuditing** cmdlet gets the blob auditing policy of an Azure SQL server.
 Specify the *ResourceGroupName* and *ServerName* parameters to identify the database.
 This cmdlet returns a policy that is used by the Azure SQL databases that are defined in the specified Azure SQL server.
 
@@ -27,7 +27,7 @@ This cmdlet returns a policy that is used by the Azure SQL databases that are de
 
 ### Example 1: Get the auditing settings of an Azure SQL server
 ```
-PS C:\>Get-AzureRmSqlServerAuditing -ResourceGroupName "resourcegroup01" -ServerName "server01"
+PS C:\>Get-AzSqlServerAuditing -ResourceGroupName "resourcegroup01" -ServerName "server01"
 AuditActionGroup             : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
                                 BATCH_COMPLETED_GROUP, ...}
 ResourceGroupName            : resourcegroup01
@@ -46,7 +46,7 @@ PredicateExpression			 : statement <> 'select 1'
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

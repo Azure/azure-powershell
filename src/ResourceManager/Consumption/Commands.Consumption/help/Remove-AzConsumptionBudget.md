@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Consumption.dll-Help.xml
-Module Name: AzureRM.Consumption
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.consumption/remove-azurermconsumptionbudget
+Module Name: Az.Consumption
+online version: https://docs.microsoft.com/en-us/powershell/module/az.consumption/remove-azconsumptionbudget
 schema: 2.0.0
 ---
 
-# Remove-AzureRmConsumptionBudget
+# Remove-AzConsumptionBudget
 
 ## SYNOPSIS
 Remove a budget in either a subscription or a resource group.
@@ -14,36 +14,36 @@ Remove a budget in either a subscription or a resource group.
 
 ### Subscription (Default)
 ```
-Remove-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String>
+Remove-AzConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String>
  [-ResourceGroupName <String>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Piping
 ```
-Remove-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -InputObject <PSBudget> [-PassThru]
+Remove-AzConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -InputObject <PSBudget> [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmConsumptionBudget cmdlet removes a budget in either a subscription or a resource group.
+The Remove-AzConsumptionBudget cmdlet removes a budget in either a subscription or a resource group.
 
 ## EXAMPLES
 
 ### Example 1: Remove a budget with a budget name at subscription level
 ```powershell
-PS C:\> Remove-AzureRmConsumptionBudget -Name PSBudget -PassThru
+PS C:\> Remove-AzConsumptionBudget -Name PSBudget -PassThru
 True
 ```
 
 ### Example 2: Remove a budget with a budget name at resource group level
 ```powershell
-PS C:\> Remove-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -PassThru
+PS C:\> Remove-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -PassThru
 True
 ```
 
 ### Example 3: Remove a budget through piping at subscription level
 ```powershell
-PS C:\> Get-AzureRmConsumptionBudget -Name PSBudget | Remove-AzureRmConsumptionBudget -PassThru
+PS C:\> Get-AzConsumptionBudget -Name PSBudget | Remove-AzConsumptionBudget -PassThru
 True
 ```
 
@@ -53,7 +53,7 @@ True
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

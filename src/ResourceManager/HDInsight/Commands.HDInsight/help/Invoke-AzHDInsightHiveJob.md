@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 3C6DCC81-82F7-4044-AFBC-4EE1BCC306F2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/invoke-azurermhdinsighthivejob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/invoke-azhdinsighthivejob
 schema: 2.0.0
 ---
 
-# Invoke-AzureRmHDInsightHiveJob
+# Invoke-AzHDInsightHiveJob
 
 ## SYNOPSIS
 Submits a Hive query to an HDInsight cluster and retrieves query results in one operation.
@@ -14,15 +14,15 @@ Submits a Hive query to an HDInsight cluster and retrieves query results in one 
 ## SYNTAX
 
 ```
-Invoke-AzureRmHDInsightHiveJob [-Arguments <String[]>] [-Files <String[]>] [-StatusFolder <String>]
+Invoke-AzHDInsightHiveJob [-Arguments <String[]>] [-Files <String[]>] [-StatusFolder <String>]
  [-Defines <Hashtable>] [-File <String>] [-JobName <String>] [-Query <String>] [-RunAsFileJob]
  [-DefaultContainer <String>] [-DefaultStorageAccountName <String>] [-DefaultStorageAccountKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Invoke-AzureRmHDInsightHiveJob** cmdlet submits a Hive query to an Azure HDInsight cluster and retrieves query results in one operation.
-Use the Use-AzureRmHDInsightCluster cmdlet before calling **Invoke-AzureRmHDInsightHiveJob** to specify which cluster will be used for the query.
+The **Invoke-AzHDInsightHiveJob** cmdlet submits a Hive query to an Azure HDInsight cluster and retrieves query results in one operation.
+Use the Use-AzHDInsightCluster cmdlet before calling **Invoke-AzHDInsightHiveJob** to specify which cluster will be used for the query.
 
 ## EXAMPLES
 
@@ -31,7 +31,7 @@ Use the Use-AzureRmHDInsightCluster cmdlet before calling **Invoke-AzureRmHDInsi
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
 PS C:\> $storageAccountName = "yourstorageacct001"
-PS C:\> $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 
 PS C:\> $storageContainer = "container001"
@@ -44,11 +44,11 @@ PS C:\> $clusterCreds = Get-Credential
 PS C:\> $statusFolder = "tempStatusFolder/"
 PS C:\> $query = "SHOW TABLES"
 
-PS C:\> Use-AzureRmHDInsightCluster `
+PS C:\> Use-AzHDInsightCluster `
             -ClusterCredential $clusterCreds `
             -ClusterName $clusterName
 
-PS C:\> Invoke-AzureRmHDInsightHiveJob -StatusFolder $statusFolder `
+PS C:\> Invoke-AzHDInsightHiveJob -StatusFolder $statusFolder `
             -Query $query `
             -DefaultContainer $storageAccountContainer `
             -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
@@ -259,6 +259,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Use-AzureRmHDInsightCluster](./Use-AzureRmHDInsightCluster.md)
+[Use-AzHDInsightCluster](./Use-AzHDInsightCluster.md)
 
 

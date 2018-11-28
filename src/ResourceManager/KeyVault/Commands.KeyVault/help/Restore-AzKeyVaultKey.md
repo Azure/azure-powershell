@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: C4E7ACDF-22FB-4D49-93B3-69E787B7E0CD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/restore-azkeyvaultkey
 schema: 2.0.0
 ---
 
-# Restore-AzureKeyVaultKey
+# Restore-AzKeyVaultKey
 
 ## SYNOPSIS
 Creates a key in a key vault from a backed-up key.
@@ -15,24 +15,24 @@ Creates a key in a key vault from a backed-up key.
 
 ### ByVaultName (Default)
 ```
-Restore-AzureKeyVaultKey [-VaultName] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
+Restore-AzKeyVaultKey [-VaultName] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Restore-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-InputFile] <String>
+Restore-AzKeyVaultKey [-InputObject] <PSKeyVault> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Restore-AzureKeyVaultKey [-ResourceId] <String> [-InputFile] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzKeyVaultKey [-ResourceId] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Restore-AzureKeyVaultKey** cmdlet creates a key in the specified key vault.
+The **Restore-AzKeyVaultKey** cmdlet creates a key in the specified key vault.
 This key is a replica of the backed-up key in the input file and has the same name as the original key.
 If the key vault already has a key by the same name, this cmdlet fails instead of overwriting the original key.
 If the backup contains multiple versions of a key, all versions are restored.
@@ -44,7 +44,7 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 
 ### Example 1: Restore a backed-up key
 ```powershell
-PS C:\> Restore-AzureKeyVaultKey -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+PS C:\> Restore-AzKeyVaultKey -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
 
 Vault Name     : MyKeyVault
 Name           : key1
@@ -67,7 +67,7 @@ This command restores a key, including all of its versions, from the backup file
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -187,11 +187,11 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultKey](./Add-AzureKeyVaultKey.md)
+[Add-AzKeyVaultKey](./Add-AzKeyVaultKey.md)
 
-[Backup-AzureKeyVaultKey](./Backup-AzureKeyVaultKey.md)
+[Backup-AzKeyVaultKey](./Backup-AzKeyVaultKey.md)
 
-[Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
+[Get-AzKeyVaultKey](./Get-AzKeyVaultKey.md)
 
-[Remove-AzureKeyVaultKey](./Remove-AzureKeyVaultKey.md)
+[Remove-AzKeyVaultKey](./Remove-AzKeyVaultKey.md)
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: C7EC21C7-1C7E-49B2-9B33-486532FCDAEC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/remove-azurermactivitylogalert
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/remove-azactivitylogalert
 schema: 2.0.0
 ---
 
-# Remove-AzureRmActivityLogAlert
+# Remove-AzActivityLogAlert
 
 ## SYNOPSIS
 Removes an activity log alert.
@@ -15,24 +15,24 @@ Removes an activity log alert.
 
 ### RemoveByNameAndResourceGroup
 ```
-Remove-AzureRmActivityLogAlert -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzActivityLogAlert -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByInputObject
 ```
-Remove-AzureRmActivityLogAlert -InputObject <PSActivityLogAlertResource>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzActivityLogAlert -InputObject <PSActivityLogAlertResource> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByResourceId
 ```
-Remove-AzureRmActivityLogAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzActivityLogAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmActivityLogAlert** cmdlet removes an activity log alert.
+The **Remove-AzActivityLogAlert** cmdlet removes an activity log alert.
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually patching the resource.
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
@@ -40,7 +40,7 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 
 ### Example 1: Remove an activity log alert
 ```
-PS C:\>Remove-AzureRmActivityLogAlert -ResourceGroup "Default-Web-CentralUS" -Name "myalert"
+PS C:\>Remove-AzActivityLogAlert -ResourceGroup "Default-Web-CentralUS" -Name "myalert"
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 2c6c159b-0e73-4a01-a67b-c32c1a0008a3                                                                                 OK
@@ -50,7 +50,7 @@ Removes an activity log alert using name and resource group name as inputs.
 
 ### Example 2: Remove an activity log alert using a PSActivityLogAlertResource as input
 ```
-PS C:\>Get-AzureRmActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1" | Remove-AzureRmActivityLogAlert 
+PS C:\>Get-AzActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1" | Remove-AzActivityLogAlert 
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 5c371547-80b0-4185-9b95-700b129de9d4                                                                                 OK
@@ -60,7 +60,7 @@ Removes an activity log alert using a PSActivityLogAlertResource as input.
 
 ### Example 3: Remove the ActivityLogAlert using the ResourceId parameter
 ```
-PS C:\>Find-AzureRmResource -ResourceGroupEquals "myResourceGroup" -ResourceNameEquals "myLogAlert" | Remove-AzureRmActivityLogAlert
+PS C:\>Find-AzResource -ResourceGroupEquals "myResourceGroup" -ResourceNameEquals "myLogAlert" | Remove-AzActivityLogAlert
 ```
 
 This command removes the ActivityLogAlert using the ResourceId parameter from the pipe.
@@ -71,7 +71,7 @@ This command removes the ActivityLogAlert using the ResourceId parameter from th
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -190,15 +190,15 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Enable-AzureRmActivityLogAlert](./Enable-AzureRmActivityLogAlert.md)
+[Enable-AzActivityLogAlert](./Enable-AzActivityLogAlert.md)
 
-[Disable-AzureRmActivityLogAlert](./Disable-AzureRmActivityLogAlert.md)
+[Disable-AzActivityLogAlert](./Disable-AzActivityLogAlert.md)
 
-[Set-AzureRmActivityLogAlert](./Set-AzureRmActivityLogAlert.md)
+[Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
 
-[Get-AzureRmActivityLogAlert](./Get-AzureRmActivityLogAlert.md)
+[Get-AzActivityLogAlert](./Get-AzActivityLogAlert.md)
 
-[New-AzureRmActionGroup](./New-AzureRmActionGroup.md)
+[New-AzActionGroup](./New-AzActionGroup.md)
 
-[New-AzureRmActivityLogAlertCondition](./Get-AzureRmActivityLogAlertCondition.md)
+[New-AzActivityLogAlertCondition](./Get-AzActivityLogAlertCondition.md)
 

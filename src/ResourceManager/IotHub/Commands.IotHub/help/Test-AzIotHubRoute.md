@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/test-azurermiothubroute
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/test-aziothubroute
 schema: 2.0.0
 ---
 
-# Test-AzureRmIotHubRoute
+# Test-AzIotHubRoute
 
 ## SYNOPSIS
 Test routes in IoT Hub
@@ -14,48 +14,46 @@ Test routes in IoT Hub
 
 ### ResourceSet (Default)
 ```
-Test-AzureRmIotHubRoute [-Body <String>] [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>]
+Test-AzIotHubRoute [-Body <String>] [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectTestRouteSet
 ```
-Test-AzureRmIotHubRoute [-InputObject] <PSIotHub> [-RouteName] <String> [-Body <String>]
- [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>] [-ShowError]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzIotHubRoute [-InputObject] <PSIotHub> [-RouteName] <String> [-Body <String>] [-AppProperty <Hashtable>]
+ [-SystemProperty <Hashtable>] [-ShowError] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectTestAllRouteSet
 ```
-Test-AzureRmIotHubRoute [-InputObject] <PSIotHub> [-Source] <PSRoutingSource> [-Body <String>]
+Test-AzIotHubRoute [-InputObject] <PSIotHub> [-Source] <PSRoutingSource> [-Body <String>]
  [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### TestRouteSet
 ```
-Test-AzureRmIotHubRoute [-ResourceGroupName] <String> [-Name] <String> [-RouteName] <String> [-Body <String>]
+Test-AzIotHubRoute [-ResourceGroupName] <String> [-Name] <String> [-RouteName] <String> [-Body <String>]
  [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>] [-ShowError]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### TestAllRouteSet
 ```
-Test-AzureRmIotHubRoute [-ResourceGroupName] <String> [-Name] <String> [-Source] <PSRoutingSource>
- [-Body <String>] [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzIotHubRoute [-ResourceGroupName] <String> [-Name] <String> [-Source] <PSRoutingSource> [-Body <String>]
+ [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdTestRouteSet
 ```
-Test-AzureRmIotHubRoute [-ResourceId] <String> [-RouteName] <String> [-Body <String>]
- [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>] [-ShowError]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzIotHubRoute [-ResourceId] <String> [-RouteName] <String> [-Body <String>] [-AppProperty <Hashtable>]
+ [-SystemProperty <Hashtable>] [-ShowError] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdTestAllRouteSet
 ```
-Test-AzureRmIotHubRoute [-ResourceId] <String> [-Source] <PSRoutingSource> [-Body <String>]
+Test-AzIotHubRoute [-ResourceId] <String> [-Source] <PSRoutingSource> [-Body <String>]
  [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -67,7 +65,7 @@ Test a specific route.
 
 ### Example 1
 ```
-PS C:\> Test-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -Source DeviceMessages
+PS C:\> Test-AzIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -Source DeviceMessages
 
 RouteName DataSource     EndpointNames IsEnabled
 --------- ----------     ------------- ---------
@@ -79,7 +77,7 @@ Test all route with source "DeviceMessges".
 
 ### Example 2
 ```
-PS C:\> Test-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1
+PS C:\> Test-AzIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1
 
 Result : true
 ```
@@ -88,7 +86,7 @@ Test a specific route.
 
 ### Example 3
 ```
-PS C:\> Test-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -ShowError
+PS C:\> Test-AzIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -ShowError
 
 ErrorMessage  Severity LocationStartLine LocationStartColumn LocationEndLine LocationEndColumn
 ------------  -------- ----------------- ------------------- --------------- -----------------
@@ -133,7 +131,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

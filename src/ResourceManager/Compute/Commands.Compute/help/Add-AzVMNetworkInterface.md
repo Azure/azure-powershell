@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: BF80D456-DAB1-4B51-B50F-A75C2C66A472
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/add-azurermvmnetworkinterface
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmnetworkinterface
 schema: 2.0.0
 ---
 
-# Add-AzureRmVMNetworkInterface
+# Add-AzVMNetworkInterface
 
 ## SYNOPSIS
 Adds a network interface to a virtual machine.
@@ -15,27 +15,27 @@ Adds a network interface to a virtual machine.
 
 ### GetNicFromNicId (Default)
 ```
-Add-AzureRmVMNetworkInterface [-VM] <PSVirtualMachine> [-Id] <String> [-Primary]
+Add-AzVMNetworkInterface [-VM] <PSVirtualMachine> [-Id] <String> [-Primary]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetNicFromNicObject
 ```
-Add-AzureRmVMNetworkInterface [-VM] <PSVirtualMachine>
+Add-AzVMNetworkInterface [-VM] <PSVirtualMachine>
  [-NetworkInterface] <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmVMNetworkInterface** cmdlet adds a network interface to a virtual machine.
+The **Add-AzVMNetworkInterface** cmdlet adds a network interface to a virtual machine.
 You can add an interface when you create a virtual machine or add one to an existing virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Add a network interface to a new virtual machine
 ```
-PS C:\> $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
-PS C:\> Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id "/subscriptions/46fc8ea4-2de6-4179-8ab1-365da4121af4/resourceGroups/contoso/providers/Microsoft.Network/networkInterfaces/sshNIC"
+PS C:\> $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
+PS C:\> Add-AzVMNetworkInterface -VM $VirtualMachine -Id "/subscriptions/46fc8ea4-2de6-4179-8ab1-365da4121af4/resourceGroups/contoso/providers/Microsoft.Network/networkInterfaces/sshNIC"
 ```
 
 The first command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
@@ -44,12 +44,12 @@ The second command adds a network interface to the virtual machine stored in $Vi
 
 ### Example 2: Add a network interface to an existing virtual machine
 ```
-PS C:\> $VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
-PS C:\> Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id "/subscriptions/46fc8ea4-2de6-4179-8ab1-365da4121af4/resourceGroups/contoso/providers/Microsoft.Network/networkInterfaces/sshNIC"
-PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
+PS C:\> $VirtualMachine = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+PS C:\> Add-AzVMNetworkInterface -VM $VirtualMachine -Id "/subscriptions/46fc8ea4-2de6-4179-8ab1-365da4121af4/resourceGroups/contoso/providers/Microsoft.Network/networkInterfaces/sshNIC"
+PS C:\> Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
-The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzureRmVM** cmdlet.
+The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzVM** cmdlet.
 The command stores the virtual machine in the $VirtualMachine variable.
 The second command adds a network interface to the virtual machine stored in $VirtualMachine.
 The final command updates the state of the virtual machine stored in $VirtualMachine in ResourceGroup11.
@@ -60,7 +60,7 @@ The final command updates the state of the virtual machine stored in $VirtualMac
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 
 ### -Id
 Specifies the ID of a network interface to add to a virtual machine.
-You can use the [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) cmdlet to obtain a network interface.
+You can use the [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) cmdlet to obtain a network interface.
 
 ```yaml
 Type: System.String
@@ -119,8 +119,8 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies a local virtual machine object to which to add a network interface.
-To create a virtual machine, use the **New-AzureRmVMConfig** cmdlet.
-To obtain an existing virtual machine, use the **Get-AzureRmVM** cmdlet.
+To create a virtual machine, use the **New-AzVMConfig** cmdlet.
+To obtain an existing virtual machine, use the **Get-AzVM** cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
@@ -155,8 +155,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmVMConfig](./New-AzureRmVMConfig.md)
+[New-AzVMConfig](./New-AzVMConfig.md)
 
-[Get-AzureRmVM](./Get-AzureRmVM.md)
+[Get-AzVM](./Get-AzVM.md)
 
-[Get-AzureRmAvailabilitySet](./Get-AzureRmAvailabilitySet.md)
+[Get-AzAvailabilitySet](./Get-AzAvailabilitySet.md)

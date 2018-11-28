@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 7EFFFF43-501E-4955-A4EE-2C09B8863B30
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworksecurityruleconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworksecurityruleconfig
 schema: 2.0.0
 ---
 
-# Set-AzureRmNetworkSecurityRuleConfig
+# Set-AzNetworkSecurityRuleConfig
 
 ## SYNOPSIS
 Sets the goal state for a network security rule configuration.
@@ -15,7 +15,7 @@ Sets the goal state for a network security rule configuration.
 
 ### SetByResource (Default)
 ```
-Set-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
+Set-AzNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
  [-Description <String>] [-Protocol <String>]
  [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
  [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
@@ -29,7 +29,7 @@ Set-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNet
 
 ### SetByResourceId
 ```
-Set-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
+Set-AzNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
  [-Description <String>] [-Protocol <String>]
  [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
  [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
@@ -41,19 +41,19 @@ Set-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNet
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmNetworkSecurityRuleConfig** cmdlet sets the goal state for an Azure network security rule configuration.
+The **Set-AzNetworkSecurityRuleConfig** cmdlet sets the goal state for an Azure network security rule configuration.
 
 ## EXAMPLES
 
 ### Example 1: Change the access configuration in a network security rule
 ```
-PS C:\>$nsg = Get-AzureRmNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
-PS C:\> $nsg | Get-AzureRmNetworkSecurityRuleConfig -Name "rdp-rule"
-PS C:\> Set-AzureRmNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurityGroup $nsg -Access "Deny"
+PS C:\>$nsg = Get-AzNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
+PS C:\> $nsg | Get-AzNetworkSecurityRuleConfig -Name "rdp-rule"
+PS C:\> Set-AzNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurityGroup $nsg -Access "Deny"
 ```
 
 The first command gets the network security group named NSG-FrontEnd, and then stores it in the variable $nsg.
-The second command uses the pipeline operator to pass the security group in $nsg to Get-AzureRmNetworkSecurityRuleConfig, which gets the security rule configuration named rdp-rule.
+The second command uses the pipeline operator to pass the security group in $nsg to Get-AzNetworkSecurityRuleConfig, which gets the security rule configuration named rdp-rule.
 The third command changes the access configuration of rdp-rule to Deny.
 
 ## PARAMETERS
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -345,12 +345,12 @@ Parameters: NetworkSecurityGroup (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmNetworkSecurityRuleConfig](./Add-AzureRmNetworkSecurityRuleConfig.md)
+[Add-AzNetworkSecurityRuleConfig](./Add-AzNetworkSecurityRuleConfig.md)
 
-[Get-AzureRmNetworkSecurityRuleConfig](./Get-AzureRmNetworkSecurityRuleConfig.md)
+[Get-AzNetworkSecurityRuleConfig](./Get-AzNetworkSecurityRuleConfig.md)
 
-[New-AzureRmNetworkSecurityRuleConfig](./New-AzureRmNetworkSecurityRuleConfig.md)
+[New-AzNetworkSecurityRuleConfig](./New-AzNetworkSecurityRuleConfig.md)
 
-[Remove-AzureRmNetworkSecurityRuleConfig](./Remove-AzureRmNetworkSecurityRuleConfig.md)
+[Remove-AzNetworkSecurityRuleConfig](./Remove-AzNetworkSecurityRuleConfig.md)
 
 

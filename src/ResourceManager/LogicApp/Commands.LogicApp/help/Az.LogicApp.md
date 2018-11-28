@@ -1,142 +1,142 @@
 ---
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 Module Guid: 8a7d44bb-e747-4265-8f22-b3937961d709
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.logicapp
 Help Version: 4.0.3.0
 Locale: en-US
 ---
 
-# AzureRM.LogicApp Module
+# Az.LogicApp Module
 ## Description
 This topic displays help topics for the Logic Apps cmdlets.
 
-## AzureRM.LogicApp Cmdlets
-### [Get-AzureRmIntegrationAccount](Get-AzureRmIntegrationAccount.md)
+## Az.LogicApp Cmdlets
+### [Get-AzIntegrationAccount](Get-AzIntegrationAccount.md)
 Gets integration accounts.
 
-### [Get-AzureRmIntegrationAccountAgreement](Get-AzureRmIntegrationAccountAgreement.md)
+### [Get-AzIntegrationAccountAgreement](Get-AzIntegrationAccountAgreement.md)
 Gets an integration account agreement.
 
-### [Get-AzureRmIntegrationAccountCallbackUrl](Get-AzureRmIntegrationAccountCallbackUrl.md)
+### [Get-AzIntegrationAccountCallbackUrl](Get-AzIntegrationAccountCallbackUrl.md)
 Gets an integration account callback URL.
 
-### [Get-AzureRmIntegrationAccountCertificate](Get-AzureRmIntegrationAccountCertificate.md)
+### [Get-AzIntegrationAccountCertificate](Get-AzIntegrationAccountCertificate.md)
 Gets integration account certificates from a resource group.
 
-### [Get-AzureRmIntegrationAccountGeneratedIcn](Get-AzureRmIntegrationAccountGeneratedIcn.md)
+### [Get-AzIntegrationAccountGeneratedIcn](Get-AzIntegrationAccountGeneratedIcn.md)
 This cmdlet retrieves the current value of the generated interchange control number per agreement.
 
-### [Get-AzureRmIntegrationAccountMap](Get-AzureRmIntegrationAccountMap.md)
+### [Get-AzIntegrationAccountMap](Get-AzIntegrationAccountMap.md)
 Gets an integration account map.
 
-### [Get-AzureRmIntegrationAccountPartner](Get-AzureRmIntegrationAccountPartner.md)
+### [Get-AzIntegrationAccountPartner](Get-AzIntegrationAccountPartner.md)
 Gets integration account partners.
 
-### [Get-AzureRmIntegrationAccountReceivedIcn](Get-AzureRmIntegrationAccountReceivedIcn.md)
+### [Get-AzIntegrationAccountReceivedIcn](Get-AzIntegrationAccountReceivedIcn.md)
 This cmdlet retrieves a specific received interchange control number per agreement and control number value.
 
-### [Get-AzureRmIntegrationAccountSchema](Get-AzureRmIntegrationAccountSchema.md)
+### [Get-AzIntegrationAccountSchema](Get-AzIntegrationAccountSchema.md)
 Gets integration account schemas.
 
-### [Get-AzureRmLogicApp](Get-AzureRmLogicApp.md)
+### [Get-AzLogicApp](Get-AzLogicApp.md)
 Gets a logic app from a resource group.
 
-### [Get-AzureRmLogicAppRunAction](Get-AzureRmLogicAppRunAction.md)
+### [Get-AzLogicAppRunAction](Get-AzLogicAppRunAction.md)
 Gets an action from a logic app run.
 
-### [Get-AzureRmLogicAppRunHistory](Get-AzureRmLogicAppRunHistory.md)
+### [Get-AzLogicAppRunHistory](Get-AzLogicAppRunHistory.md)
 Gets the run history of a logic app.
 
-### [Get-AzureRmLogicAppTrigger](Get-AzureRmLogicAppTrigger.md)
+### [Get-AzLogicAppTrigger](Get-AzLogicAppTrigger.md)
 Gets the triggers of a logic app.
 
-### [Get-AzureRmLogicAppTriggerCallbackUrl](Get-AzureRmLogicAppTriggerCallbackUrl.md)
+### [Get-AzLogicAppTriggerCallbackUrl](Get-AzLogicAppTriggerCallbackUrl.md)
 Gets a Logic App trigger callback URL.
 
-### [Get-AzureRmLogicAppTriggerHistory](Get-AzureRmLogicAppTriggerHistory.md)
+### [Get-AzLogicAppTriggerHistory](Get-AzLogicAppTriggerHistory.md)
 Gets the history of triggers in a logic app.
 
-### [Get-AzureRmLogicAppUpgradedDefinition](Get-AzureRmLogicAppUpgradedDefinition.md)
+### [Get-AzLogicAppUpgradedDefinition](Get-AzLogicAppUpgradedDefinition.md)
 Gets the upgraded definition for a logic app.
 
-### [New-AzureRmIntegrationAccount](New-AzureRmIntegrationAccount.md)
+### [New-AzIntegrationAccount](New-AzIntegrationAccount.md)
 Creates an integration account.
 
-### [New-AzureRmIntegrationAccountAgreement](New-AzureRmIntegrationAccountAgreement.md)
+### [New-AzIntegrationAccountAgreement](New-AzIntegrationAccountAgreement.md)
 Creates an integration account agreement.
 
-### [New-AzureRmIntegrationAccountCertificate](New-AzureRmIntegrationAccountCertificate.md)
+### [New-AzIntegrationAccountCertificate](New-AzIntegrationAccountCertificate.md)
 Creates an integration account certificate.
 
-### [New-AzureRmIntegrationAccountMap](New-AzureRmIntegrationAccountMap.md)
+### [New-AzIntegrationAccountMap](New-AzIntegrationAccountMap.md)
 Creates an integration account map.
 
-### [New-AzureRmIntegrationAccountPartner](New-AzureRmIntegrationAccountPartner.md)
+### [New-AzIntegrationAccountPartner](New-AzIntegrationAccountPartner.md)
 Creates an integration account partner.
 
-### [New-AzureRmIntegrationAccountSchema](New-AzureRmIntegrationAccountSchema.md)
+### [New-AzIntegrationAccountSchema](New-AzIntegrationAccountSchema.md)
 Creates an integration account schema.
 
-### [New-AzureRmLogicApp](New-AzureRmLogicApp.md)
+### [New-AzLogicApp](New-AzLogicApp.md)
 Creates a logic app in a resource group.
 
-### [Remove-AzureRmIntegrationAccount](Remove-AzureRmIntegrationAccount.md)
+### [Remove-AzIntegrationAccount](Remove-AzIntegrationAccount.md)
 Removes an integration account.
 
-### [Remove-AzureRmIntegrationAccountAgreement](Remove-AzureRmIntegrationAccountAgreement.md)
+### [Remove-AzIntegrationAccountAgreement](Remove-AzIntegrationAccountAgreement.md)
 Removes an integration account agreement.
 
-### [Remove-AzureRmIntegrationAccountCertificate](Remove-AzureRmIntegrationAccountCertificate.md)
+### [Remove-AzIntegrationAccountCertificate](Remove-AzIntegrationAccountCertificate.md)
 Removes an integration account certificate from a resource group.
 
-### [Remove-AzureRmIntegrationAccountMap](Remove-AzureRmIntegrationAccountMap.md)
+### [Remove-AzIntegrationAccountMap](Remove-AzIntegrationAccountMap.md)
 Removes an integration account map.
 
-### [Remove-AzureRmIntegrationAccountPartner](Remove-AzureRmIntegrationAccountPartner.md)
+### [Remove-AzIntegrationAccountPartner](Remove-AzIntegrationAccountPartner.md)
 Removes an integration account partner.
 
-### [Remove-AzureRmIntegrationAccountReceivedIcn](Remove-AzureRmIntegrationAccountReceivedIcn.md)
+### [Remove-AzIntegrationAccountReceivedIcn](Remove-AzIntegrationAccountReceivedIcn.md)
 This cmdlet removes a specific received interchange control number per agreement and control number value.
 
-### [Remove-AzureRmIntegrationAccountSchema](Remove-AzureRmIntegrationAccountSchema.md)
+### [Remove-AzIntegrationAccountSchema](Remove-AzIntegrationAccountSchema.md)
 Removes an integration account schema.
 
-### [Remove-AzureRmLogicApp](Remove-AzureRmLogicApp.md)
+### [Remove-AzLogicApp](Remove-AzLogicApp.md)
 Removes a logic app from a resource group.
 
-### [Set-AzureRmIntegrationAccount](Set-AzureRmIntegrationAccount.md)
+### [Set-AzIntegrationAccount](Set-AzIntegrationAccount.md)
 Modifies an integration account.
 
-### [Set-AzureRmIntegrationAccountAgreement](Set-AzureRmIntegrationAccountAgreement.md)
+### [Set-AzIntegrationAccountAgreement](Set-AzIntegrationAccountAgreement.md)
 Modifies an integration account agreement.
 
-### [Set-AzureRmIntegrationAccountCertificate](Set-AzureRmIntegrationAccountCertificate.md)
+### [Set-AzIntegrationAccountCertificate](Set-AzIntegrationAccountCertificate.md)
 Modifies an integration account certificate.
 
-### [Set-AzureRmIntegrationAccountGeneratedIcn](Set-AzureRmIntegrationAccountGeneratedIcn.md)
+### [Set-AzIntegrationAccountGeneratedIcn](Set-AzIntegrationAccountGeneratedIcn.md)
 Updates the integration account generated interchange control number (ICN) in the Azure resource group.
 
-### [Set-AzureRmIntegrationAccountMap](Set-AzureRmIntegrationAccountMap.md)
+### [Set-AzIntegrationAccountMap](Set-AzIntegrationAccountMap.md)
 Modifies an integration account map.
 
-### [Set-AzureRmIntegrationAccountPartner](Set-AzureRmIntegrationAccountPartner.md)
+### [Set-AzIntegrationAccountPartner](Set-AzIntegrationAccountPartner.md)
 Modifies an integration account partner.
 
-### [Set-AzureRmIntegrationAccountReceivedIcn](Set-AzureRmIntegrationAccountReceivedIcn.md)
+### [Set-AzIntegrationAccountReceivedIcn](Set-AzIntegrationAccountReceivedIcn.md)
 Updates the integration account received interchange control number (ICN) in the Azure resource group.
 
-### [Set-AzureRmIntegrationAccountSchema](Set-AzureRmIntegrationAccountSchema.md)
+### [Set-AzIntegrationAccountSchema](Set-AzIntegrationAccountSchema.md)
 Modifies an integration account schema.
 
-### [Set-AzureRmLogicApp](Set-AzureRmLogicApp.md)
+### [Set-AzLogicApp](Set-AzLogicApp.md)
 Modifies a logic app in a resource group.
 
-### [Start-AzureRmLogicApp](Start-AzureRmLogicApp.md)
+### [Start-AzLogicApp](Start-AzLogicApp.md)
 Runs a logic app in a resource group.
 
-### [Stop-AzureRmLogicAppRun](Stop-AzureRmLogicAppRun.md)
+### [Stop-AzLogicAppRun](Stop-AzLogicAppRun.md)
 Cancels a run of a logic app.
 
-### [Test-AzureRmLogicApp](Test-AzureRmLogicApp.md)
+### [Test-AzLogicApp](Test-AzLogicApp.md)
 Validates a logic app definition.
 

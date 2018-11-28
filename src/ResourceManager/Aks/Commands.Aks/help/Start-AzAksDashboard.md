@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Aks.dll-Help.xml
-Module Name: AzureRM.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.aks/start-azurermaksdashboard
+Module Name: Az.Aks
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/start-azaksdashboard
 schema: 2.0.0
 ---
 
-# Start-AzureRmAksDashboard
+# Start-AzAksDashboard
 
 ## SYNOPSIS
 Create a Kubectl SSH tunnel to the managed cluster's dashboard.
@@ -14,20 +14,20 @@ Create a Kubectl SSH tunnel to the managed cluster's dashboard.
 
 ### GroupNameParameterSet (Default)
 ```
-Start-AzureRmAksDashboard [-ResourceGroupName] <String> [-Name] <String> [-DisableBrowser] [-PassThru]
+Start-AzAksDashboard [-ResourceGroupName] <String> [-Name] <String> [-DisableBrowser] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Start-AzureRmAksDashboard [-InputObject] <PSKubernetesCluster> [-DisableBrowser] [-PassThru]
+Start-AzAksDashboard [-InputObject] <PSKubernetesCluster> [-DisableBrowser] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Start-AzureRmAksDashboard [-Id] <String> [-DisableBrowser] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Start-AzAksDashboard [-Id] <String> [-DisableBrowser] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Create a Kubectl SSH tunnel to the managed cluster's dashboard. The SSH tunnel i
 
 ### Start an SSH tunnel and open a browser to the Kubernetes dashboard
 ```
-PS C:\> Start-AzureRmAksDashboard -ResourceGroupName group -Name myCluster
+PS C:\> Start-AzAksDashboard -ResourceGroupName group -Name myCluster
 ```
 
 ## PARAMETERS
@@ -46,7 +46,7 @@ PS C:\> Start-AzureRmAksDashboard -ResourceGroupName group -Name myCluster
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

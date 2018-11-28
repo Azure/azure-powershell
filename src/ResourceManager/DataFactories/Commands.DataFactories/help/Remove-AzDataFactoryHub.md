@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 4C839730-B494-45BD-B5A1-F93B02AB4B2A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactoryhub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactoryhub
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryHub
+# Remove-AzDataFactoryHub
 
 ## SYNOPSIS
 Removes a hub from Azure Data Factory.
@@ -15,26 +15,26 @@ Removes a hub from Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmDataFactoryHub [-Name] <String> [-Force] [-DataFactoryName] <String>
+Remove-AzDataFactoryHub [-Name] <String> [-Force] [-DataFactoryName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Remove-AzureRmDataFactoryHub [-Name] <String> [-Force] [-DataFactory] <PSDataFactory>
+Remove-AzDataFactoryHub [-Name] <String> [-Force] [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDataFactoryHub** cmdlet removes a hub from Azure Data Factory in the specified Azure resource group and in the specified data factory.
+The **Remove-AzDataFactoryHub** cmdlet removes a hub from Azure Data Factory in the specified Azure resource group and in the specified data factory.
 If you remove a hub, all linked services and pipelines in the hub are also removed.
 
 ## EXAMPLES
 
 ### Example 1: Remove a hub
 ```
-PS C:\>Remove-AzureRmDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "ContosoDataHub"
+PS C:\>Remove-AzDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "ContosoDataHub"
 ```
 
 This command removes the hub named ContosoDataHub from the Azure resource group named ADFResourceGroup and the data factory named ADFDataFactory.
@@ -183,8 +183,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryHub](./Get-AzureRmDataFactoryHub.md)
+[Get-AzDataFactoryHub](./Get-AzDataFactoryHub.md)
 
-[New-AzureRmDataFactoryHub](./New-AzureRmDataFactoryHub.md)
+[New-AzDataFactoryHub](./New-AzDataFactoryHub.md)
 
 

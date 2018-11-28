@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
-Module Name: AzureRM.Media
+Module Name: Az.Media
 ms.assetid: 0FA49058-F3A7-4ED9-93F2-0C84BC130FB7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/set-azurermmediaservice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.media/set-azmediaservice
 schema: 2.0.0
 ---
 
-# Set-AzureRmMediaService
+# Set-AzMediaService
 
 ## SYNOPSIS
 Modifies specified properties of an existing media service.
@@ -14,20 +14,20 @@ Modifies specified properties of an existing media service.
 ## SYNTAX
 
 ```
-Set-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Tag <Hashtable>]
+Set-AzMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Tag <Hashtable>]
  [-StorageAccounts <PSStorageAccount[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmMediaService** cmdlet modifies specified properties of an existing media service.
+The **Set-AzMediaService** cmdlet modifies specified properties of an existing media service.
 
 ## EXAMPLES
 
 ### Example 1: Modify an existing media service
 ```
 PS C:\>$Tags = @{"tag1" = "value1"; "tag2" = "value2"}
-Set-AzureRmMediaService -ResourceGroupName "ResourceGroup123" -AccountName "MediaService001" -Tags $Tags -StorageAccounts $StorageAccounts
+Set-AzMediaService -ResourceGroupName "ResourceGroup123" -AccountName "MediaService001" -Tags $Tags -StorageAccounts $StorageAccounts
 ```
 
 The first command creates a series of tags and stores those tags in the variable named $Tags.
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -161,10 +161,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmMediaService](./Get-AzureRmMediaService.md)
+[Get-AzMediaService](./Get-AzMediaService.md)
 
-[New-AzureRmMediaService](./New-AzureRmMediaService.md)
+[New-AzMediaService](./New-AzMediaService.md)
 
-[Remove-AzureRmMediaService](./Remove-AzureRmMediaService.md)
+[Remove-AzMediaService](./Remove-AzMediaService.md)
 
 

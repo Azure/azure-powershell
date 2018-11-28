@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: AFE90092-8B25-4897-8D3A-3E732CC5CBA6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/get-azurermhdinsightjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/get-azhdinsightjob
 schema: 2.0.0
 ---
 
-# Get-AzureRmHDInsightJob
+# Get-AzHDInsightJob
 
 ## SYNOPSIS
 Gets the list of jobs from a cluster and lists them in reverse chronological order, or retrieves a specific job.
@@ -14,13 +14,13 @@ Gets the list of jobs from a cluster and lists them in reverse chronological ord
 ## SYNTAX
 
 ```
-Get-AzureRmHDInsightJob [-ClusterName] <String> [-HttpCredential] <PSCredential> [[-JobId] <String>]
+Get-AzHDInsightJob [-ClusterName] <String> [-HttpCredential] <PSCredential> [[-JobId] <String>]
  [-NumOfJobs <Int32>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmHDInsightJob** cmdlet gets recent jobs for a specified Azure HDInsight cluster in reverse chronological order, with the most recent job at the top of the list.
+The **Get-AzHDInsightJob** cmdlet gets recent jobs for a specified Azure HDInsight cluster in reverse chronological order, with the most recent job at the top of the list.
 Get a specific job by providing the *JobId* parameter.
 
 ## EXAMPLES
@@ -35,11 +35,11 @@ PS C:\> $clusterCreds = Get-Credential
 PS C:\> $statusFolder = "tempStatusFolder/"
 PS C:\> $query = "SHOW TABLES"
 
-PS C:\> New-AzureRmHDInsightHiveJobDefinition -StatusFolder $statusFolder `
+PS C:\> New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
             -Query $query `
-        | Start-AzureRmHDInsightJob -ClusterName $clusterName `
+        | Start-AzHDInsightJob -ClusterName $clusterName `
             -ClusterCredential $clusterCreds `
-        | Get-AzureRmHDInsightJob -ClusterName $clusterName `
+        | Get-AzHDInsightJob -ClusterName $clusterName `
             -ClusterCredential $clusterCreds
 ```
 
@@ -152,12 +152,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmHDInsightHiveJobDefinition](./New-AzureRmHDInsightHiveJobDefinition.md)
+[New-AzHDInsightHiveJobDefinition](./New-AzHDInsightHiveJobDefinition.md)
 
-[Start-AzureRmHDInsightJob](./Start-AzureRmHDInsightJob.md)
+[Start-AzHDInsightJob](./Start-AzHDInsightJob.md)
 
-[Stop-AzureRmHDInsightJob](./Stop-AzureRmHDInsightJob.md)
+[Stop-AzHDInsightJob](./Stop-AzHDInsightJob.md)
 
-[Wait-AzureRmHDInsightJob](./Wait-AzureRmHDInsightJob.md)
+[Wait-AzHDInsightJob](./Wait-AzHDInsightJob.md)
 
 

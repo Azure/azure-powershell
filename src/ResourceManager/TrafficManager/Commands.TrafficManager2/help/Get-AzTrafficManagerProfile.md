@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM.TrafficManager
+Module Name: Az.TrafficManager
 ms.assetid: 5032D487-3849-4C80-BD14-5B735FC39285
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/get-azurermtrafficmanagerprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/get-aztrafficmanagerprofile
 schema: 2.0.0
 ---
 
-# Get-AzureRmTrafficManagerProfile
+# Get-AzTrafficManagerProfile
 
 ## SYNOPSIS
 Gets a Traffic Manager profile.
@@ -15,27 +15,27 @@ Gets a Traffic Manager profile.
 
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmTrafficManagerProfile [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzTrafficManagerProfile [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### AccountNameParameterSet
 ```
-Get-AzureRmTrafficManagerProfile [-ResourceGroupName] <String> [-Name] <String>
+Get-AzTrafficManagerProfile [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmTrafficManagerProfile** cmdlet gets an Azure Traffic Manager profile, and returns an object that represents that profile.
+The **Get-AzTrafficManagerProfile** cmdlet gets an Azure Traffic Manager profile, and returns an object that represents that profile.
 Specify a profile by its name and resource group name.
 
-You can modify this object locally, and then apply changes to the profile by using the Set-AzureRmTrafficManagerProfile cmdlet.
+You can modify this object locally, and then apply changes to the profile by using the Set-AzTrafficManagerProfile cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Get a profile
 ```
-PS C:\>Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+PS C:\>Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
 ```
 
 This command gets the profile named ContosoProfile in ResourceGroup11.
@@ -46,7 +46,7 @@ This command gets the profile named ContosoProfile in ResourceGroup11.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,20 +111,20 @@ This cmdlet does not accept any input.
 
 ### Microsoft.Azure.Commands.Network.TrafficManagerProfile
 This cmdlet returns a **TrafficManagerProfile** object.
-You can modify this object, and then apply changes to Traffic Manager by using **Set-AzureRmTrafficManagerProfile**.
+You can modify this object, and then apply changes to Traffic Manager by using **Set-AzTrafficManagerProfile**.
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Disable-AzureRmTrafficManagerProfile](./Disable-AzureRmTrafficManagerProfile.md)
+[Disable-AzTrafficManagerProfile](./Disable-AzTrafficManagerProfile.md)
 
-[Enable-AzureRmTrafficManagerProfile](./Enable-AzureRmTrafficManagerProfile.md)
+[Enable-AzTrafficManagerProfile](./Enable-AzTrafficManagerProfile.md)
 
-[New-AzureRmTrafficManagerProfile](./New-AzureRmTrafficManagerProfile.md)
+[New-AzTrafficManagerProfile](./New-AzTrafficManagerProfile.md)
 
-[Remove-AzureRmTrafficManagerProfile](./Remove-AzureRmTrafficManagerProfile.md)
+[Remove-AzTrafficManagerProfile](./Remove-AzTrafficManagerProfile.md)
 
-[Set-AzureRmTrafficManagerProfile](./Set-AzureRmTrafficManagerProfile.md)
+[Set-AzTrafficManagerProfile](./Set-AzTrafficManagerProfile.md)
 
 

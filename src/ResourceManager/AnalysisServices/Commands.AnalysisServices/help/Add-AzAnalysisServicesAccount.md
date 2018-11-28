@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
-Module Name: Azure.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/add-azureanalysisservicesaccount
+Module Name: Az.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/add-azanalysisservicesaccount
 schema: 2.0.0
 ---
 
-# Add-AzureAnalysisServicesAccount
+# Add-AzAnalysisServicesAccount
 
 ## SYNOPSIS
 Adds an authenticated account to use for Azure Analysis Services server cmdlet requests.
@@ -14,30 +14,30 @@ Adds an authenticated account to use for Azure Analysis Services server cmdlet r
 
 ### UserParameterSetName (Default)
 ```
-Add-AzureAnalysisServicesAccount [[-RolloutEnvironment] <String>] [[-Credential] <PSCredential>] [-WhatIf]
+Add-AzAnalysisServicesAccount [[-RolloutEnvironment] <String>] [[-Credential] <PSCredential>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithPasswordParameterSetName
 ```
-Add-AzureAnalysisServicesAccount [-RolloutEnvironment] <String> [-Credential] <PSCredential>
- [-ServicePrincipal] -TenantId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzAnalysisServicesAccount [-RolloutEnvironment] <String> [-Credential] <PSCredential> [-ServicePrincipal]
+ -TenantId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithCertificateParameterSetName
 ```
-Add-AzureAnalysisServicesAccount [-RolloutEnvironment] <String> [-ServicePrincipal] -TenantId <String>
+Add-AzAnalysisServicesAccount [-RolloutEnvironment] <String> [-ServicePrincipal] -TenantId <String>
  -ApplicationId <String> -CertificateThumbprint <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Add-AzureAnalysisServicesAccount cmdlet is used to login to an instance of Azure Analysis Services server
+The Add-AzAnalysisServicesAccount cmdlet is used to login to an instance of Azure Analysis Services server
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>Add-AzureAnalysisServicesAccount
+PS C:\>Add-AzAnalysisServicesAccount
 RolloutEnvironment: westcentralus.asazure.windows.net
 Credential: $UserCredential
 ```
@@ -47,7 +47,7 @@ This example will add the account specified by the $UserCredential variable to t
 ### Example 2
 ```
 PS C:\>$ApplicationCredential = Get-Credential
-PS C:\>Add-AzureAnalysisServicesAccount -RolloutEnvironment 'westcentralus.asazure.windows.net' -ServicePrincipal -Credential $ApplicationCredential -TenantId "xxxx-xxxx-xxxx-xxxx"
+PS C:\>Add-AzAnalysisServicesAccount -RolloutEnvironment 'westcentralus.asazure.windows.net' -ServicePrincipal -Credential $ApplicationCredential -TenantId "xxxx-xxxx-xxxx-xxxx"
 ```
 
 The first command gets the application service principal credentials, and then stores them in the $ApplicationCredential variable.
@@ -55,7 +55,7 @@ The second command add the application service principal account specified by th
 
 ### Example 3
 ```
-PS C:\>Add-AzureAnalysisServicesAccount -RolloutEnvironment 'westcentralus.asazure.windows.net' -ServicePrincipal -ApplicationId "yyyy-yyyy-yyyy-yyyy" -CertificateThumbprint 'zzzzzzzzzzzzzzzz' -TenantId "xxxx-xxxx-xxxx-xxxx"
+PS C:\>Add-AzAnalysisServicesAccount -RolloutEnvironment 'westcentralus.asazure.windows.net' -ServicePrincipal -ApplicationId "yyyy-yyyy-yyyy-yyyy" -CertificateThumbprint 'zzzzzzzzzzzzzzzz' -TenantId "xxxx-xxxx-xxxx-xxxx"
 ```
 
 This example will add the application service principal account specified by the ApplicationId, TenantId and CertificateThumbprint to the westcentralus.asazure.windows.net Analysis Services environment.
@@ -219,6 +219,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureProfile
 
 ## NOTES
-Alias: Login-AzureAsAccount
+Alias: Login-AzAsAccount
 
 ## RELATED LINKS

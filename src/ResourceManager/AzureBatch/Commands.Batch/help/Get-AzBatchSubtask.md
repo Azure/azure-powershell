@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 7D0D8B46-4BF0-47D5-9261-3306AEB9E7DD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchsubtask
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchsubtask
 schema: 2.0.0
 ---
 
-# Get-AzureBatchSubtask
+# Get-AzBatchSubtask
 
 ## SYNOPSIS
 Gets the subtask information of the specified task.
@@ -15,38 +15,38 @@ Gets the subtask information of the specified task.
 
 ### ODataFilter (Default)
 ```
-Get-AzureBatchSubtask [-JobId] <String> [-TaskId] <String> [-MaxCount <Int32>]
- -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBatchSubtask [-JobId] <String> [-TaskId] <String> [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentObject
 ```
-Get-AzureBatchSubtask [[-Task] <PSCloudTask>] [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
+Get-AzBatchSubtask [[-Task] <PSCloudTask>] [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureBatchSubtask** cmdlet retrieves the subtask information about the specified task.
+The **Get-AzBatchSubtask** cmdlet retrieves the subtask information about the specified task.
 Subtasks provide parallel processing for individual tasks, and enable precise monitoring of task execution and progress.
 
 ## EXAMPLES
 
 ### Example 1: Return all subtasks for a specified task
 ```
-PS C:\>$Context = Get-AzureRmBatchAccountKeys -AccountName "contosobatchaccount"
-PS C:\> Get-AzureBatchSubtask -JobId "Job-01" -TaskID "myTask" -BatchContext $Context
+PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "contosobatchaccount"
+PS C:\> Get-AzBatchSubtask -JobId "Job-01" -TaskID "myTask" -BatchContext $Context
 ```
 
 These commands return all the subtasks for the task with the ID myTask.
 To do this, the first command in the example creates an object reference to the account keys for the batch account contosobatchaccount.
 This object reference is stored in a variable named $context.
-The second command then uses that object reference and the **Get-AzureBatchSubtask** cmdlet to return all the subtasks for myTask, a task that runs as part of job Job-01.
+The second command then uses that object reference and the **Get-AzBatchSubtask** cmdlet to return all the subtasks for myTask, a task that runs as part of job Job-01.
 
 ## PARAMETERS
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 
 ### -Task
 Specifies an object reference to the task that contain the subtasks that this cmdlet returns.
-This object reference is created by using the Get-AzureBatchTask cmdlet and storing the returned object in a variable.
+This object reference is created by using the Get-AzBatchTask cmdlet and storing the returned object in a variable.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.Models.PSCloudTask
@@ -159,6 +159,6 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureBatchTask](./Get-AzureBatchTask.md)
+[Get-AzBatchTask](./Get-AzBatchTask.md)
 
 

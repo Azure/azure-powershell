@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.PolicyInsights.dll-Help.xml
-Module Name: AzureRM.PolicyInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.policyinsights/start-azurermpolicyremediation
+Module Name: Az.PolicyInsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.policyinsights/start-azpolicyremediation
 schema: 2.0.0
 ---
 
-# Start-AzureRmPolicyRemediation
+# Start-AzPolicyRemediation
 
 ## SYNOPSIS
 Creates and starts a policy remediation for a policy assignment.
@@ -14,7 +14,7 @@ Creates and starts a policy remediation for a policy assignment.
 
 ### ByName (Default)
 ```
-Start-AzureRmPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
+Start-AzPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
  [-ResourceGroupName <String>] -PolicyAssignmentId <String> [-PolicyDefinitionReferenceId <String>]
  [-LocationFilter <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -22,21 +22,21 @@ Start-AzureRmPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGrou
 
 ### ByResourceId
 ```
-Start-AzureRmPolicyRemediation -ResourceId <String> -PolicyAssignmentId <String>
+Start-AzPolicyRemediation -ResourceId <String> -PolicyAssignmentId <String>
  [-PolicyDefinitionReferenceId <String>] [-LocationFilter <String[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmPolicyRemediation** cmdlet creates a policy remediation for a particular policy assignment. All non-compliant resources at or below the remediation's scope will be remediated. Remediation is only supported for policies with the 'deployIfNotExists' effect.
+The **Start-AzPolicyRemediation** cmdlet creates a policy remediation for a particular policy assignment. All non-compliant resources at or below the remediation's scope will be remediated. Remediation is only supported for policies with the 'deployIfNotExists' effect.
 
 ## EXAMPLES
 
 ### Example 1: Start a remediation at subscription scope
 ```
 PS C:\> $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-PS C:\> Select-AzureRmSubscription -Subscription "My Subscription"
-PS C:\> Start-AzureRmPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1"
+PS C:\> Select-AzSubscription -Subscription "My Subscription"
+PS C:\> Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1"
 ```
 
 This command creates a new policy remediation in subscription 'My Subscription' for the given policy assignment.
@@ -44,7 +44,7 @@ This command creates a new policy remediation in subscription 'My Subscription' 
 ### Example 2: Start a remediation at management group scope with optional filters
 ```
 PS C:\> $policyAssignmentId = "/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Authorization/policyAssignments/pa1"
-PS C:\> Start-AzureRmPolicyRemediation -ManagementGroupName "mg1" -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -LocationFilter "westus","eastus"
+PS C:\> Start-AzPolicyRemediation -ManagementGroupName "mg1" -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -LocationFilter "westus","eastus"
 ```
 
 This command creates a new policy remediation in management group 'mg1' for the given policy assignment. Only resources in the 'westus' or 'eastus' locations will be remediated.
@@ -52,7 +52,7 @@ This command creates a new policy remediation in management group 'mg1' for the 
 ### Example 3: Start a remediation at resource group scope for a policy set definition assignment
 ```
 PS C:\> $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/resourceGroups/myRG/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-PS C:\> Start-AzureRmPolicyRemediation -ResourceGroupName "myRG" -PolicyAssignmentId $policyAssignmentId -PolicyDefinitionReferenceId "0349234412441" -Name "remediation1"
+PS C:\> Start-AzPolicyRemediation -ResourceGroupName "myRG" -PolicyAssignmentId $policyAssignmentId -PolicyDefinitionReferenceId "0349234412441" -Name "remediation1"
 ```
 
 This command creates a new policy remediation in resource group 'myRG' for the given policy assignment. The policy assignment assigns a policy set definition (also known as an initiative). The policy definition reference ID indicates which policy within the initiative should be remediated.
@@ -60,8 +60,8 @@ This command creates a new policy remediation in resource group 'myRG' for the g
 ### Example 4: Start a remediation and wait for it to complete in the background
 ```
 PS C:\> $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-PS C:\> Select-AzureRmSubscription -Subscription f0710c27-9663-4c05-19f8-1b4be01e86a5
-PS C:\> $job = Start-AzureRmPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -AsJob
+PS C:\> Select-AzSubscription -Subscription f0710c27-9663-4c05-19f8-1b4be01e86a5
+PS C:\> $job = Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -AsJob
 PS C:\> $job | Wait-Job
 PS C:\> $remediation = $job | Receive-Job
 ```
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

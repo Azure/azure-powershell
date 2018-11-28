@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: 00CCA9B8-7C57-4FC0-9BD1-5FC16010E820
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/move-azurermdatalakestoreitem
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/move-azdatalakestoreitem
 schema: 2.0.0
 ---
 
-# Move-AzureRmDataLakeStoreItem
+# Move-AzDataLakeStoreItem
 
 ## SYNOPSIS
 Moves or renames a file or folder in Data Lake Store.
@@ -14,19 +14,19 @@ Moves or renames a file or folder in Data Lake Store.
 ## SYNTAX
 
 ```
-Move-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance>
+Move-AzDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [-Destination] <DataLakeStorePathInstance> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Move-AzureRmDataLakeStoreItem** cmdlet moves or renames a file or folder in Data Lake Store.
+The **Move-AzDataLakeStoreItem** cmdlet moves or renames a file or folder in Data Lake Store.
 
 ## EXAMPLES
 
 ### Example 1: Move and rename an item
 ```
-PS C:\>Move-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/Original/Path/File.txt" -Destination "/New/Path/RenamedFile.txt"
+PS C:\>Move-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "/Original/Path/File.txt" -Destination "/New/Path/RenamedFile.txt"
 ```
 
 This command renames the item File.txt to RenamedFile.txt and moves it to a different folder.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -159,16 +159,16 @@ The full path to the moved file or folder.
 
 ## RELATED LINKS
 
-[Get-AzureRmDataLakeStoreItem](./Get-AzureRmDataLakeStoreItem.md)
+[Get-AzDataLakeStoreItem](./Get-AzDataLakeStoreItem.md)
 
-[Export-AzureRmDataLakeStoreItem](./Export-AzureRmDataLakeStoreItem.md)
+[Export-AzDataLakeStoreItem](./Export-AzDataLakeStoreItem.md)
 
-[Import-AzureRmDataLakeStoreItem](./Import-AzureRmDataLakeStoreItem.md)
+[Import-AzDataLakeStoreItem](./Import-AzDataLakeStoreItem.md)
 
-[New-AzureRmDataLakeStoreItem](./New-AzureRmDataLakeStoreItem.md)
+[New-AzDataLakeStoreItem](./New-AzDataLakeStoreItem.md)
 
-[Remove-AzureRmDataLakeStoreItem](./Remove-AzureRmDataLakeStoreItem.md)
+[Remove-AzDataLakeStoreItem](./Remove-AzDataLakeStoreItem.md)
 
-[Test-AzureRmDataLakeStoreItem](./Test-AzureRmDataLakeStoreItem.md)
+[Test-AzDataLakeStoreItem](./Test-AzDataLakeStoreItem.md)
 
 

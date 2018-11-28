@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
-Module Name: AzureRM.Dns
+Module Name: Az.Dns
 ms.assetid: A8E230A0-5057-40BC-81CD-6D397A503A84
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/remove-azurermdnszone
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/remove-azdnszone
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDnsZone
+# Remove-AzDnsZone
 
 ## SYNOPSIS
 Removes a DNS zone from a resource group.
@@ -15,18 +15,18 @@ Removes a DNS zone from a resource group.
 
 ### Fields
 ```
-Remove-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-PassThru]
+Remove-AzDnsZone -Name <String> -ResourceGroupName <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
-Remove-AzureRmDnsZone -Zone <DnsZone> [-Overwrite] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDnsZone -Zone <DnsZone> [-Overwrite] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDnsZone** cmdlet permanently deletes a Domain Name System (DNS) zone from a specified resource group.
+The **Remove-AzDnsZone** cmdlet permanently deletes a Domain Name System (DNS) zone from a specified resource group.
 All record sets contained in the zone are also deleted.
 You can pass a **DnsZone** object using the *Name* parameter or by using the pipeline operator, or alternatively you can specify the *ZoneName* and *ResourceGroupName* parameters.
 You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
@@ -38,7 +38,7 @@ This can be suppressed using the *Overwrite* parameter, which deletes the zone r
 
 ### Example 1: Remove a zone
 ```
-PS C:\>Remove-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
+PS C:\>Remove-AzDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 This command removes the zone named myzone.com from the resource group named MyResourceGroup.
@@ -49,7 +49,7 @@ This command removes the zone named myzone.com from the resource group named MyR
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -195,8 +195,8 @@ If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation
 
 ## RELATED LINKS
 
-[Get-AzureRmDnsZone](./Get-AzureRmDnsZone.md)
+[Get-AzDnsZone](./Get-AzDnsZone.md)
 
-[New-AzureRmDnsZone](./New-AzureRmDnsZone.md)
+[New-AzDnsZone](./New-AzDnsZone.md)
 
-[Set-AzureRmDnsZone](./Set-AzureRmDnsZone.md)
+[Set-AzDnsZone](./Set-AzDnsZone.md)

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermapplicationgatewaycustomerror
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewaycustomerror
 schema: 2.0.0
 ---
 
-# Get-AzureRmApplicationGatewayCustomError
+# Get-AzApplicationGatewayCustomError
 
 ## SYNOPSIS
 Gets custom error(s) from an application gateway.
@@ -13,25 +13,25 @@ Gets custom error(s) from an application gateway.
 ## SYNTAX
 
 ```
-Get-AzureRmApplicationGatewayCustomError [-StatusCode <String>] -ApplicationGateway <PSApplicationGateway>
+Get-AzApplicationGatewayCustomError [-StatusCode <String>] -ApplicationGateway <PSApplicationGateway>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApplicationGatewayCustomError** cmdlet gets custom error(s) from an application gateway.
+The **Get-AzApplicationGatewayCustomError** cmdlet gets custom error(s) from an application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Gets a custom error in an application gateway
 ```powershell
-PS C:\> $ce = Get-AzureRmApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502
+PS C:\> $ce = Get-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502
 ```
 
 This command gets and returns the custom error of http status code 502 from the application gateway $appgw.
 
 ### Example 2: Gets the list of all custom errors in an application gateway
 ```powershell
-PS C:\> $ces = Get-AzureRmApplicationGatewayCustomError -ApplicationGateway $appgw
+PS C:\> $ces = Get-AzApplicationGatewayCustomError -ApplicationGateway $appgw
 ```
 
 This command gets and returns the list of all custom errors from the application gateway $appgw.
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

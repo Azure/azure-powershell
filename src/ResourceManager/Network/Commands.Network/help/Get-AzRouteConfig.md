@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: DBD40431-DD7A-42CB-83AA-568B1065A468
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermrouteconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azrouteconfig
 schema: 2.0.0
 ---
 
-# Get-AzureRmRouteConfig
+# Get-AzRouteConfig
 
 ## SYNOPSIS
 Gets routes from a route table.
@@ -14,19 +14,19 @@ Gets routes from a route table.
 ## SYNTAX
 
 ```
-Get-AzureRmRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRouteConfig** cmdlet gets routes from an Azure route table.
+The **Get-AzRouteConfig** cmdlet gets routes from an Azure route table.
 You can specify a route by name.
 
 ## EXAMPLES
 
 ### Example 1: Get a route table
 ```
-PS C:\>Get-AzureRmRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Get-AzureRmRouteConfig -Name "Route07"
+PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Get-AzRouteConfig -Name "Route07"
 Name              : route07
 Id                : 
 Etag              : 
@@ -36,7 +36,7 @@ NextHopType       : VnetLocal
 NextHopIpAddress  :
 ```
 
-This command gets the route table named RouteTable01 by using the **Get-AzureRmRouteTable** cmdlet.
+This command gets the route table named RouteTable01 by using the **Get-AzRouteTable** cmdlet.
 The command passes that table to the current cmdlet by using the pipeline operator.
 The current cmdlet gets the route named Route07 in the route table named RouteTable01.
 
@@ -46,7 +46,7 @@ The current cmdlet gets the route named Route07 in the route table named RouteTa
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -102,14 +102,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmRouteConfig](./Add-AzureRmRouteConfig.md)
+[Add-AzRouteConfig](./Add-AzRouteConfig.md)
 
-[Get-AzureRmRouteTable](./Get-AzureRmRouteTable.md)
+[Get-AzRouteTable](./Get-AzRouteTable.md)
 
-[New-AzureRmRouteConfig](./New-AzureRmRouteConfig.md)
+[New-AzRouteConfig](./New-AzRouteConfig.md)
 
-[Remove-AzureRmRouteConfig](./Remove-AzureRmRouteConfig.md)
+[Remove-AzRouteConfig](./Remove-AzRouteConfig.md)
 
-[Set-AzureRmRouteConfig](./Set-AzureRmRouteConfig.md)
+[Set-AzRouteConfig](./Set-AzRouteConfig.md)
 
 

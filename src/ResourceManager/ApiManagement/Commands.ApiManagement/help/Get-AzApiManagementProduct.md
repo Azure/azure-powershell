@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: B64E9C13-97A6-4E8B-92DB-EFAF8A48C5B8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementproduct
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementproduct
 schema: 2.0.0
 ---
 
-# Get-AzureRmApiManagementProduct
+# Get-AzApiManagementProduct
 
 ## SYNOPSIS
 Gets a list or a particular product.
@@ -15,39 +15,39 @@ Gets a list or a particular product.
 
 ### GetAllProducts (Default)
 ```
-Get-AzureRmApiManagementProduct -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+Get-AzApiManagementProduct -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByProductId
 ```
-Get-AzureRmApiManagementProduct -Context <PsApiManagementContext> -ProductId <String>
+Get-AzApiManagementProduct -Context <PsApiManagementContext> -ProductId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByTitle
 ```
-Get-AzureRmApiManagementProduct -Context <PsApiManagementContext> [-Title <String>]
+Get-AzApiManagementProduct -Context <PsApiManagementContext> [-Title <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApiManagementProduct** cmdlet gets a list or a particular product.
+The **Get-AzApiManagementProduct** cmdlet gets a list or a particular product.
 
 ## EXAMPLES
 
 ### Example 1: Get all products
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementProduct -Context $apimContext
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementProduct -Context $apimContext
 ```
 
 This command get all API Management products.
 
 ### Example 2: Get a product by ID
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementProduct -Context $apimContext -ProductId "0123456789"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementProduct -Context $apimContext -ProductId "0123456789"
 ```
 
 This command get an API Management product by ID.
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -132,10 +132,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagementProduct](./New-AzureRmApiManagementProduct.md)
+[New-AzApiManagementProduct](./New-AzApiManagementProduct.md)
 
-[Remove-AzureRmApiManagementProduct](./Remove-AzureRmApiManagementProduct.md)
+[Remove-AzApiManagementProduct](./Remove-AzApiManagementProduct.md)
 
-[Set-AzureRmApiManagementProduct](./Set-AzureRmApiManagementProduct.md)
+[Set-AzApiManagementProduct](./Set-AzApiManagementProduct.md)
 
 

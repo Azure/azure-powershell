@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
-Module Name: AzureRM.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/set-azurermsearchservice
+Module Name: Az.Search
+online version: https://docs.microsoft.com/en-us/powershell/module/az.search/set-azsearchservice
 schema: 2.0.0
 ---
 
-# Set-AzureRmSearchService
+# Set-AzSearchService
 
 ## SYNOPSIS
 Update an Azure Search service.
@@ -14,30 +14,30 @@ Update an Azure Search service.
 
 ### ResourceNameParameterSet (Default)
 ```
-Set-AzureRmSearchService [-ResourceGroupName] <String> [-Name] <String> [-PartitionCount <Int32>]
+Set-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-PartitionCount <Int32>]
  [-ReplicaCount <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Set-AzureRmSearchService [-InputObject] <PSSearchService> [-PartitionCount <Int32>] [-ReplicaCount <Int32>]
+Set-AzSearchService [-InputObject] <PSSearchService> [-PartitionCount <Int32>] [-ReplicaCount <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Set-AzureRmSearchService [-ResourceId] <String> [-PartitionCount <Int32>] [-ReplicaCount <Int32>]
+Set-AzSearchService [-ResourceId] <String> [-PartitionCount <Int32>] [-ReplicaCount <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSearchService** cmdlet modifies an Azure Search service.
+The **Set-AzSearchService** cmdlet modifies an Azure Search service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzureRmSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -PartitionCount 2 -ReplicaCount 2
+PS C:\> Set-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -PartitionCount 2 -ReplicaCount 2
 
 
 ResourceGroupName : TestAzureSearchPsGroup
@@ -59,7 +59,7 @@ The example changes partition count and replica count of the Azure Search servic
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -208,8 +208,8 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmSearchService](./New-AzureRmSearchService.md)
+[New-AzSearchService](./New-AzSearchService.md)
 
-[Get-AzureRmSearchService](./Get-AzureRmSearchService.md)
+[Get-AzSearchService](./Get-AzSearchService.md)
 
-[Remove-AzureRmSearchService](./Remove-AzureRmSearchService.md)
+[Remove-AzSearchService](./Remove-AzSearchService.md)

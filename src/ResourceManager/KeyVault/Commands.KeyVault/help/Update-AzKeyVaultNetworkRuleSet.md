@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/update-azurermkeyvaultnetworkruleset
+Module Name: Az.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/update-azkeyvaultnetworkruleset
 schema: 2.0.0
 ---
 
-# Update-AzureRmKeyVaultNetworkRuleSet
+# Update-AzKeyVaultNetworkRuleSet
 
 ## SYNOPSIS
 Updates the network rule set on a key vault.
@@ -14,7 +14,7 @@ Updates the network rule set on a key vault.
 
 ### ByVaultName (Default)
 ```
-Update-AzureRmKeyVaultNetworkRuleSet [-VaultName] <String> [[-ResourceGroupName] <String>]
+Update-AzKeyVaultNetworkRuleSet [-VaultName] <String> [[-ResourceGroupName] <String>]
  [-DefaultAction <PSKeyVaultNetworkRuleDefaultActionEnum>] [-Bypass <PSKeyVaultNetworkRuleBypassEnum>]
  [-IpAddressRange <String[]>] [-VirtualNetworkResourceId <String[]>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,7 +22,7 @@ Update-AzureRmKeyVaultNetworkRuleSet [-VaultName] <String> [[-ResourceGroupName]
 
 ### ByInputObject
 ```
-Update-AzureRmKeyVaultNetworkRuleSet [-InputObject] <PSKeyVault>
+Update-AzKeyVaultNetworkRuleSet [-InputObject] <PSKeyVault>
  [-DefaultAction <PSKeyVaultNetworkRuleDefaultActionEnum>] [-Bypass <PSKeyVaultNetworkRuleBypassEnum>]
  [-IpAddressRange <String[]>] [-VirtualNetworkResourceId <String[]>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -30,23 +30,23 @@ Update-AzureRmKeyVaultNetworkRuleSet [-InputObject] <PSKeyVault>
 
 ### ByResourceId
 ```
-Update-AzureRmKeyVaultNetworkRuleSet [-ResourceId] <String>
+Update-AzKeyVaultNetworkRuleSet [-ResourceId] <String>
  [-DefaultAction <PSKeyVaultNetworkRuleDefaultActionEnum>] [-Bypass <PSKeyVaultNetworkRuleBypassEnum>]
  [-IpAddressRange <String[]>] [-VirtualNetworkResourceId <String[]>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmKeyVaultNetworkRuleSet** command updates the network rules in effect on the specified key vault. 
+The **Update-AzKeyVaultNetworkRuleSet** command updates the network rules in effect on the specified key vault. 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" -ServiceEndpoint Microsoft.KeyVault 
-PS C:\> $virtualNetwork = New-AzureRmVirtualNetwork -Name myVNet -ResourceGroupName myRG -Location westus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
-PS C:\> $myNetworkResId = (Get-AzureRmVirtualNetwork -Name myVNet -ResourceGroupName myRG).Subnets[0].Id
-PS C:\> Update-AzureRmKeyVaultNetworkRuleSet -VaultName 'myVault' -ResourceGroupName myRG -Bypass AzureServices -IpAddressRange "10.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId -PassThru
+PS C:\> $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" -ServiceEndpoint Microsoft.KeyVault 
+PS C:\> $virtualNetwork = New-AzVirtualNetwork -Name myVNet -ResourceGroupName myRG -Location westus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+PS C:\> $myNetworkResId = (Get-AzVirtualNetwork -Name myVNet -ResourceGroupName myRG).Subnets[0].Id
+PS C:\> Update-AzKeyVaultNetworkRuleSet -VaultName 'myVault' -ResourceGroupName myRG -Bypass AzureServices -IpAddressRange "10.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId -PassThru
 
 Vault Name                       : myVault
 Resource Group Name              : myRG
@@ -95,7 +95,7 @@ This command updates the network ruleset on the vault named 'myVault' for the sp
 Specifies bypass of network rule.
 
 ```yaml
-Type: PSKeyVaultNetworkRuleBypassEnum
+Type: System.Nullable`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultNetworkRuleBypassEnum]
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, AzureServices
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Specifies default action of network rule.
 
 ```yaml
-Type: PSKeyVaultNetworkRuleDefaultActionEnum
+Type: System.Nullable`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultNetworkRuleDefaultActionEnum]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Allow, Deny
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 KeyVault object
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 Specifies allowed network IP address range of network rule.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +173,7 @@ This Cmdlet does not return an object by default.
 If this switch is specified, it returns the updated key vault object.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group associated with the key vault whose network rule is being modified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName
 Aliases:
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 KeyVault Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 Specifies the name of a key vault whose network rule is being modified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName
 Aliases:
 
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 Specifies allowed virtual network resource identifier of network rule.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -264,7 +264,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

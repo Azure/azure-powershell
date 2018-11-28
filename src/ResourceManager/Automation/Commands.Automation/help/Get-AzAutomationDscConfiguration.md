@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: BBD37C4B-BB6F-4560-BDEE-F0440EC1938A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationdscconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationdscconfiguration
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationDscConfiguration
+# Get-AzAutomationDscConfiguration
 
 ## SYNOPSIS
 Gets DSC configurations from Automation.
@@ -15,31 +15,31 @@ Gets DSC configurations from Automation.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationDscConfiguration [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationDscConfiguration [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByConfigurationName
 ```
-Get-AzureRmAutomationDscConfiguration [-Name] <String> [-ResourceGroupName] <String>
+Get-AzAutomationDscConfiguration [-Name] <String> [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutomationDscConfiguration** cmdlet gets APS Desired State Configuration (DSC) configurations from Azure Automation.
+The **Get-AzAutomationDscConfiguration** cmdlet gets APS Desired State Configuration (DSC) configurations from Azure Automation.
 
 ## EXAMPLES
 
 ### Example 1: Get all DSC configurations
 ```
-PS C:\>Get-AzureRmAutomationDscConfiguration -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17"
+PS C:\>Get-AzAutomationDscConfiguration -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17"
 ```
 
 This command gets metadata for all DSC configurations in the Automation account named Contoso17.
 
 ### Example 2: Get a DSC configuration by name
 ```
-PS C:\>Get-AzureRmAutomationDscConfiguration -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -Name "ContosoConfiguration"
+PS C:\>Get-AzAutomationDscConfiguration -ResourceGroupName "ResourceGroup03" -AutomationAccountName "Contoso17" -Name "ContosoConfiguration"
 ```
 
 This command gets metadata for a DSC configuration named MyConfiguration in the Automation account named Contoso17.
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -121,8 +121,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Export-AzureRmAutomationDscConfiguration](./Export-AzureRmAutomationDscConfiguration.md)
+[Export-AzAutomationDscConfiguration](./Export-AzAutomationDscConfiguration.md)
 
-[Import-AzureRmAutomationDscConfiguration](./Import-AzureRmAutomationDscConfiguration.md)
+[Import-AzAutomationDscConfiguration](./Import-AzAutomationDscConfiguration.md)
 
 

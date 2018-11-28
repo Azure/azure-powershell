@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 9A6F140C-9F1C-4701-9603-FC6107FCAF92
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmbootdiagnostics
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmbootdiagnostics
 schema: 2.0.0
 ---
 
-# Set-AzureRmVMBootDiagnostics
+# Set-AzVMBootDiagnostics
 
 ## SYNOPSIS
 Modifies boot diagnostics properties of a virtual machine.
@@ -15,28 +15,28 @@ Modifies boot diagnostics properties of a virtual machine.
 
 ### EnableBootDiagnostics
 ```
-Set-AzureRmVMBootDiagnostics [-VM] <PSVirtualMachine> [-Enable] [-ResourceGroupName] <String>
+Set-AzVMBootDiagnostics [-VM] <PSVirtualMachine> [-Enable] [-ResourceGroupName] <String>
  [[-StorageAccountName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DisableBootDiagnostics
 ```
-Set-AzureRmVMBootDiagnostics [-VM] <PSVirtualMachine> [-Disable] [-DefaultProfile <IAzureContextContainer>]
+Set-AzVMBootDiagnostics [-VM] <PSVirtualMachine> [-Disable] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMBootDiagnostics** cmdlet modifies boot diagnostics properties of a virtual machine.
+The **Set-AzVMBootDiagnostics** cmdlet modifies boot diagnostics properties of a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Enable boot diagnostics
 ```
-PS C:\> $VM = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07"
-PS C:\> Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "ResourceGroup11" -StorageAccountName "DiagnosticStorage"
+PS C:\> $VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07"
+PS C:\> Set-AzVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "ResourceGroup11" -StorageAccountName "DiagnosticStorage"
 ```
 
-The first command gets the virtual machine named ContosoVM07 by using **Get-AzureRmVM**.
+The first command gets the virtual machine named ContosoVM07 by using **Get-AzVM**.
 The command stores it in the $VM variable.
 The second command enables boot diagnostics for the virtual machine in $VM.
 Diagnostics data is stored in the specified account.
@@ -47,7 +47,7 @@ Diagnostics data is stored in the specified account.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies the virtual machine for which this cmdlet changes boot diagnostics.
-To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
+To obtain a virtual machine object, use the Get-AzVM cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
@@ -151,8 +151,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVM](./Get-AzureRmVM.md)
+[Get-AzVM](./Get-AzVM.md)
 
-[Get-AzureRmVMBootDiagnosticsData](./Get-AzureRmVMBootDiagnosticsData.md)
+[Get-AzVMBootDiagnosticsData](./Get-AzVMBootDiagnosticsData.md)
 
 

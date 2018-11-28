@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 1EDFCAC4-6A66-4124-8192-B7F0D3C5BCFC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermalerthistory
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azalerthistory
 schema: 2.0.0
 ---
 
-# Get-AzureRmAlertHistory
+# Get-AzAlertHistory
 
 ## SYNOPSIS
 Gets the history of alerts.
@@ -14,18 +14,18 @@ Gets the history of alerts.
 ## SYNTAX
 
 ```
-Get-AzureRmAlertHistory [-ResourceId <String>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>]
+Get-AzAlertHistory [-ResourceId <String>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>]
  [-Caller <String>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAlertHistory** cmdlet gets the history of alerts as they are enabled, disabled, fired, resolved, and so on.
+The **Get-AzAlertHistory** cmdlet gets the history of alerts as they are enabled, disabled, fired, resolved, and so on.
 
 ## EXAMPLES
 
 ### Example 1: Get the alert history
 ```
-PS C:\>Get-AzureRmAlertHistory -StartTime 2015-02-11T11:00:00 -EndTime 2015-02-11T12:00:00 -DetailedOutput
+PS C:\>Get-AzAlertHistory -StartTime 2015-02-11T11:00:00 -EndTime 2015-02-11T12:00:00 -DetailedOutput
 Authorization        : 
 Caller               : Microsoft.Insights/alertRules
 Claims               : 
@@ -167,7 +167,7 @@ This command gets the alert history for the specified time frame for the current
 
 ### Example 2: Get alert history for a specified resource
 ```
-PS C:\>Get-AzureRmAlertHistory -StartTime 2015-02-11T11:00:00 -EndTime 2015-02-11T12:00:00 -ResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d" -DetailedOutput
+PS C:\>Get-AzAlertHistory -StartTime 2015-02-11T11:00:00 -EndTime 2015-02-11T12:00:00 -ResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d" -DetailedOutput
 
 Authorization        : 
 Caller               : Microsoft.Insights/alertRules
@@ -284,7 +284,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -391,14 +391,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmLogAlertRule](./Add-AzureRmLogAlertRule.md)
+[Add-AzLogAlertRule](./Add-AzLogAlertRule.md)
 
-[Add-AzureRmMetricAlertRule](./Add-AzureRmMetricAlertRule.md)
+[Add-AzMetricAlertRule](./Add-AzMetricAlertRule.md)
 
-[Add-AzureRmWebtestAlertRule](./Add-AzureRmWebtestAlertRule.md)
+[Add-AzWebtestAlertRule](./Add-AzWebtestAlertRule.md)
 
-[Get-AzureRmAlertRule](./Get-AzureRmAlertRule.md)
+[Get-AzAlertRule](./Get-AzAlertRule.md)
 
-[Remove-AzureRmAlertRule](./Remove-AzureRmAlertRule.md)
+[Remove-AzAlertRule](./Remove-AzAlertRule.md)
 
 

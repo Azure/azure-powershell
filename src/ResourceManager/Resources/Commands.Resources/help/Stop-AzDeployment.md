@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/stop-azurermdeployment
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/stop-azdeployment
 schema: 2.0.0
 ---
 
-# Stop-AzureRmDeployment
+# Stop-AzDeployment
 
 ## SYNOPSIS
 Cancal a running deployment
@@ -14,27 +14,27 @@ Cancal a running deployment
 
 ### StopByDeploymentName (Default)
 ```
-Stop-AzureRmDeployment [-Name] <String> [-PassThru] [-ApiVersion <String>] [-Pre]
+Stop-AzDeployment [-Name] <String> [-PassThru] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopByDeploymentId
 ```
-Stop-AzureRmDeployment -Id <String> [-PassThru] [-ApiVersion <String>] [-Pre]
+Stop-AzDeployment -Id <String> [-PassThru] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopByInputObject
 ```
-Stop-AzureRmDeployment -InputObject <PSDeployment> [-PassThru] [-ApiVersion <String>] [-Pre]
+Stop-AzDeployment -InputObject <PSDeployment> [-PassThru] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmDeployment** cmdlet cancels a deployment at subscription scope that has started but not completed.
+The **Stop-AzDeployment** cmdlet cancels a deployment at subscription scope that has started but not completed.
 To stop a deployment, the deployment must have an incomplete provisioning state, such as Provisioning, and not a completed state, such as Provisioned or Failed.
 
-To create a deployment at subscription scope, use the New-AzureRmDeployment cmdlet.
+To create a deployment at subscription scope, use the New-AzDeployment cmdlet.
 
 This cmdlet stops only one running deployment. Use the *Name* parameter to stop a specific deployment.
 
@@ -42,14 +42,14 @@ This cmdlet stops only one running deployment. Use the *Name* parameter to stop 
 
 ### Example 1
 ```
-PS C:\>Stop-AzureRmDeployment -Name "deployment01"
+PS C:\>Stop-AzDeployment -Name "deployment01"
 ```
 
 This command cancels a running deployment "deployment01" at the current subscription scope.
 
 ### Example 2
 ```
-PS C:\>Get-AzureRmDeployment -Name "deployment01" | Stop-AzureRmDeployment
+PS C:\>Get-AzDeployment -Name "deployment01" | Stop-AzDeployment
 ```
 
 This command gets the deployment "deployment01" at the current subscription scope and cancels it. 
@@ -61,7 +61,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,7 +92,7 @@ The fully qualified resource Id of the deployment.
 example: /subscriptions/{subId}/providers/Microsoft.Resources/deployments/{deploymentName}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StopByDeploymentId
 Aliases: DeploymentId, ResourceId
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 The deployment object.
 
 ```yaml
-Type: PSDeployment
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment
 Parameter Sets: StopByInputObject
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 The name of the deployment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StopByDeploymentName
 Aliases: DeploymentName
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -183,7 +183,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

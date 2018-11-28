@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
-Module Name: AzureRM.Security
-online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzureRmSecurityWorkspaceSetting.md
+Module Name: Az.Security
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzSecurityWorkspaceSetting.md
 schema: 2.0.0
 ---
 
-# Get-AzureRmSecurityWorkspaceSetting
+# Get-AzSecurityWorkspaceSetting
 
 ## SYNOPSIS
 Gets the configured security workspace settings on a subscription.
@@ -14,18 +14,17 @@ Gets the configured security workspace settings on a subscription.
 
 ### SubscriptionScope (Default)
 ```
-Get-AzureRmSecurityWorkspaceSetting [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityWorkspaceSetting [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
-Get-AzureRmSecurityWorkspaceSetting -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityWorkspaceSetting -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzureRmSecurityWorkspaceSetting -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSecurityWorkspaceSetting -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -36,7 +35,7 @@ This cmdlet lets you discover the configured workspace that will hold the securi
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmSecurityWorkspaceSetting
+PS C:\> Get-AzSecurityWorkspaceSetting
 
 Id                                                                                                         Name    WorkspaceId                                                                                                                               
 --                                                                                                         ----    -----------                                                                                                                               
@@ -51,7 +50,7 @@ Gets the workspace settings for a subscription.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,7 +65,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelResource
 Aliases:
 
@@ -81,7 +80,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 

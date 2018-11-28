@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: A1E19A66-CD70-467E-8C59-1F88453905A4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlelasticpoolrecommendation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlelasticpoolrecommendation
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlElasticPoolRecommendation
+# Get-AzSqlElasticPoolRecommendation
 
 ## SYNOPSIS
 Gets elastic pool recommendations.
@@ -14,12 +14,12 @@ Gets elastic pool recommendations.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlElasticPoolRecommendation [-ServerName] <String> [-ResourceGroupName] <String>
+Get-AzSqlElasticPoolRecommendation [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlElasticPoolRecommendation** cmdlet gets elastic pool recommendations for a server.
+The **Get-AzSqlElasticPoolRecommendation** cmdlet gets elastic pool recommendations for a server.
 These recommendations include the following values:
 - DatabaseCollection. Collection of database names that belong to the pool. 
 - DatabaseDtuMin. Data Transmission Unit (DTU) guarantee for databases in the elastic pool. 
@@ -34,7 +34,7 @@ These recommendations include the following values:
 
 ### Example 1: Get recommendations for a server
 ```
-PS C:\>Get-AzureRmSqlElasticPoolRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>Get-AzSqlElasticPoolRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
 This command gets the elastic pool recommendations for the server named Server01.
@@ -45,7 +45,7 @@ This command gets the elastic pool recommendations for the server named Server01
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

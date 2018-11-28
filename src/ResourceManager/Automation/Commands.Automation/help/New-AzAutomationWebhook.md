@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: E1FC931E-4EB8-4DCA-92BD-8013DDC13219
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationwebhook
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationwebhook
 schema: 2.0.0
 ---
 
-# New-AzureRmAutomationWebhook
+# New-AzAutomationWebhook
 
 ## SYNOPSIS
 Creates a webhook for an Automation runbook.
@@ -14,21 +14,21 @@ Creates a webhook for an Automation runbook.
 ## SYNTAX
 
 ```
-New-AzureRmAutomationWebhook [-Name] <String> [-RunbookName] <String> [-IsEnabled] <Boolean>
+New-AzAutomationWebhook [-Name] <String> [-RunbookName] <String> [-IsEnabled] <Boolean>
  [-ExpiryTime] <DateTimeOffset> [-Parameters <IDictionary>] [-Force] [-RunOn <String>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAutomationWebhook** cmdlet creates a webhook for an Azure Automation runbook.
+The **New-AzAutomationWebhook** cmdlet creates a webhook for an Azure Automation runbook.
 Be sure to save the webhook URL that this cmdlet returns, because it cannot be retrieved again.
 
 ## EXAMPLES
 
 ### Example 1: Create a webhook
 ```
-PS C:\>$Webhook = New-AzureRmAutomationWebhook -Name "Webhook06" -IsEnabled $True -ExpiryTime "10/2/2016" -RunbookName "ContosoRunbook" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Force
+PS C:\>$Webhook = New-AzAutomationWebhook -Name "Webhook06" -IsEnabled $True -ExpiryTime "10/2/2016" -RunbookName "ContosoRunbook" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Force
 ```
 
 This command creates a webhook named Webhook06 for the runbook named ContosoRunbook in the Automation account named AutomationAccount01.
@@ -42,7 +42,7 @@ Therefore, it does not prompt you for confirmation.
 ### Example 2: Create a webhook with parameters
 ```
 PS C:\>$Params = @{"StringParam"="Hello World";"IntegerParam"=32}
-PS C:\> $Webhook = New-AzureRmAutomationWebhook -Name "Webhook11" -Parameters $Params -IsEnabled $True -ExpiryTime "10/2/2016" -RunbookName "ContosoRunbook" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Force
+PS C:\> $Webhook = New-AzAutomationWebhook -Name "Webhook11" -Parameters $Params -IsEnabled $True -ExpiryTime "10/2/2016" -RunbookName "ContosoRunbook" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Force
 ```
 
 The first command creates a dictionary of parameters, and stores them in the $Params variable.
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -255,10 +255,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationWebhook](./Get-AzureRMAutomationWebhook.md)
+[Get-AzAutomationWebhook](./Get-AzAutomationWebhook.md)
 
-[Remove-AzureRmAutomationWebhook](./Remove-AzureRMAutomationWebhook.md)
+[Remove-AzAutomationWebhook](./Remove-AzAutomationWebhook.md)
 
-[Set-AzureRmAutomationWebhook](./Set-AzureRMAutomationWebhook.md)
+[Set-AzAutomationWebhook](./Set-AzAutomationWebhook.md)
 
 

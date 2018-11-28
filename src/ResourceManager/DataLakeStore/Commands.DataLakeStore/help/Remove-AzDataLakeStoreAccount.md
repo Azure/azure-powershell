@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: 585D6C4D-EA80-4E6B-8C36-E7632430431F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/remove-azurermdatalakestoreaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/remove-azdatalakestoreaccount
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataLakeStoreAccount
+# Remove-AzDataLakeStoreAccount
 
 ## SYNOPSIS
 Deletes a Data Lake Store account permanently.
@@ -14,18 +14,18 @@ Deletes a Data Lake Store account permanently.
 ## SYNTAX
 
 ```
-Remove-AzureRmDataLakeStoreAccount [-Name] <String> [[-ResourceGroupName] <String>] [-Force] [-PassThru]
+Remove-AzDataLakeStoreAccount [-Name] <String> [[-ResourceGroupName] <String>] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDataLakeStoreAccount** cmdlet deletes a Data Lake Store account permanently.
+The **Remove-AzDataLakeStoreAccount** cmdlet deletes a Data Lake Store account permanently.
 
 ## EXAMPLES
 
 ### Example 1: Remove a Data Lake Store account
 ```
-PS C:\>Remove-AzureRmDataLakeStoreAccount -Name "ContosoADL"
+PS C:\>Remove-AzDataLakeStoreAccount -Name "ContosoADL"
 ```
 
 This command removes the account named ContosoADL from the Data Lake Store.
@@ -36,7 +36,7 @@ This command removes the account named ContosoADL from the Data Lake Store.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -154,12 +154,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataLakeStoreAccount](./Get-AzureRmDataLakeStoreAccount.md)
+[Get-AzDataLakeStoreAccount](./Get-AzDataLakeStoreAccount.md)
 
-[New-AzureRmDataLakeStoreAccount](./New-AzureRmDataLakeStoreAccount.md)
+[New-AzDataLakeStoreAccount](./New-AzDataLakeStoreAccount.md)
 
-[Set-AzureRmDataLakeStoreAccount](./Set-AzureRmDataLakeStoreAccount.md)
+[Set-AzDataLakeStoreAccount](./Set-AzDataLakeStoreAccount.md)
 
-[Test-AzureRmDataLakeStoreAccount](./Test-AzureRmDataLakeStoreAccount.md)
+[Test-AzDataLakeStoreAccount](./Test-AzDataLakeStoreAccount.md)
 
 

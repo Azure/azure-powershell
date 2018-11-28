@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: B6E35D4D-B2C1-4527-94A6-E7E3488F510B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationrunbook
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationrunbook
 schema: 2.0.0
 ---
 
-# New-AzureRmAutomationRunbook
+# New-AzAutomationRunbook
 
 ## SYNOPSIS
 Creates an Automation runbook.
@@ -14,20 +14,20 @@ Creates an Automation runbook.
 ## SYNTAX
 
 ```
-New-AzureRmAutomationRunbook [-Name] <String> [-Description <String>] [-Tags <IDictionary>] -Type <String>
+New-AzAutomationRunbook [-Name] <String> [-Description <String>] [-Tags <IDictionary>] -Type <String>
  [-LogProgress <Boolean>] [-LogVerbose <Boolean>] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAutomationRunbook** cmdlet creates an empty Azure Automation runbook by using APS.
+The **New-AzAutomationRunbook** cmdlet creates an empty Azure Automation runbook by using APS.
 Specify a name for the runbook.
 
 ## EXAMPLES
 
 ### Example 1: Create a runbook
 ```
-PS C:\>New-AzureRmAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbook02" -ResourceGroupName "ResourceGroup01"
+PS C:\>New-AzAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbook02" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command creates a runbook named Runbook02 in the Azure Automation account named Contoso17.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -198,16 +198,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Export-AzureRmAutomationRunbook](./Export-AzureRMAutomationRunbook.md)
+[Export-AzAutomationRunbook](./Export-AzAutomationRunbook.md)
 
-[Get-AzureRmAutomationRunbook](./Get-AzureRMAutomationRunbook.md)
+[Get-AzAutomationRunbook](./Get-AzAutomationRunbook.md)
 
-[Import-AzureRmAutomationRunbook](./Import-AzureRMAutomationRunbook.md)
+[Import-AzAutomationRunbook](./Import-AzAutomationRunbook.md)
 
-[Publish-AzureRmAutomationRunbook](./Publish-AzureRMAutomationRunbook.md)
+[Publish-AzAutomationRunbook](./Publish-AzAutomationRunbook.md)
 
-[Remove-AzureRmAutomationRunbook](./Remove-AzureRMAutomationRunbook.md)
+[Remove-AzAutomationRunbook](./Remove-AzAutomationRunbook.md)
 
-[Set-AzureRmAutomationRunbook](./Set-AzureRMAutomationRunbook.md)
+[Set-AzAutomationRunbook](./Set-AzAutomationRunbook.md)
 
-[Start-AzureRmAutomationRunbook](./Start-AzureRMAutomationRunbook.md)
+[Start-AzAutomationRunbook](./Start-AzAutomationRunbook.md)

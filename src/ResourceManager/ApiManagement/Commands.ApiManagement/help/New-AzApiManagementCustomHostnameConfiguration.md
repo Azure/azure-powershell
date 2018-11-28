@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementcustomhostnameconfiguration
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementcustomhostnameconfiguration
 schema: 2.0.0
 ---
 
-# New-AzureRmApiManagementCustomHostnameConfiguration
+# New-AzApiManagementCustomHostnameConfiguration
 
 ## SYNOPSIS
 Creates an instance of `PsApiManagementCustomHostNameConfiguration`.
@@ -14,48 +14,46 @@ Creates an instance of `PsApiManagementCustomHostNameConfiguration`.
 
 ### NoChangeCertificate (Default)
 ```
-New-AzureRmApiManagementCustomHostnameConfiguration -Hostname <String>
- -HostnameType <PsApiManagementHostnameType>
+New-AzApiManagementCustomHostnameConfiguration -Hostname <String> -HostnameType <PsApiManagementHostnameType>
  -HostNameCertificateInformation <PsApiManagementCertificateInformation> [-DefaultSslBinding]
  [-NegotiateClientCertificate] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SslCertificateFromFile
 ```
-New-AzureRmApiManagementCustomHostnameConfiguration -Hostname <String>
- -HostnameType <PsApiManagementHostnameType> -PfxPath <String> [-PfxPassword <SecureString>]
- [-DefaultSslBinding] [-NegotiateClientCertificate] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzApiManagementCustomHostnameConfiguration -Hostname <String> -HostnameType <PsApiManagementHostnameType>
+ -PfxPath <String> [-PfxPassword <SecureString>] [-DefaultSslBinding] [-NegotiateClientCertificate]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SslCertificateFromKeyVault
 ```
-New-AzureRmApiManagementCustomHostnameConfiguration -Hostname <String>
- -HostnameType <PsApiManagementHostnameType> -KeyVaultId <String> [-DefaultSslBinding]
- [-NegotiateClientCertificate] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApiManagementCustomHostnameConfiguration -Hostname <String> -HostnameType <PsApiManagementHostnameType>
+ -KeyVaultId <String> [-DefaultSslBinding] [-NegotiateClientCertificate]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApiManagementCustomHostnameConfiguration** cmdlet is a helper command that creates an instance of **PsApiManagementCustomHostNameConfiguration**.
-This command is used with the New-AzureRmApiManagement and Set-AzureRmApiManagement cmdlet.
+The **New-AzApiManagementCustomHostnameConfiguration** cmdlet is a helper command that creates an instance of **PsApiManagementCustomHostNameConfiguration**.
+This command is used with the New-AzApiManagement and Set-AzApiManagement cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Create and initialize an instance of PsApiManagementCustomHostNameConfiguration using an Ssl Certificate from file
 ```powershell
-PS C:\>$portal = New-AzureRmApiManagementCustomHostnameConfiguration -Hostname "portal.contoso.com" -HostnameType Portal -PfxPath "C:\contoso\certificates\apimanagement.pfx" -PfxPassword "1111" -DefaultSslBinding
+PS C:\>$portal = New-AzApiManagementCustomHostnameConfiguration -Hostname "portal.contoso.com" -HostnameType Portal -PfxPath "C:\contoso\certificates\apimanagement.pfx" -PfxPassword "1111" -DefaultSslBinding
 PS C:\>$customConfig = @($portal)
-PS C:\>New-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -CustomHostnameConfiguration $customConfig
+PS C:\>New-AzApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -CustomHostnameConfiguration $customConfig
 ```
 
 This command creates and initializes an instance of **PsApiManagementCustomHostNameConfiguration** for Portal. Then it creates a new ApiManagement service with custom hostname configuration.
 
 ### Example 2: Create and initialize an instance of PsApiManagementCustomHostNameConfiguration using an Secret from KeyVault Resource
 ```powershell
-PS C:\>$portal = New-AzureRmApiManagementCustomHostnameConfiguration -Hostname "portal.contoso.com" -HostnameType Portal -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/api-portal-custom-ssl.pfx"
+PS C:\>$portal = New-AzApiManagementCustomHostnameConfiguration -Hostname "portal.contoso.com" -HostnameType Portal -KeyVaultId "https://apim-test-keyvault.vault.azure.net/secrets/api-portal-custom-ssl.pfx"
 
 PS C:\>$customConfig = @($portal)
-PS C:\>New-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -CustomHostnameConfiguration $customConfig -AssignIdentity
+PS C:\>New-AzApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -CustomHostnameConfiguration $customConfig -AssignIdentity
 ```
 
 This command creates and initializes an instance of **PsApiManagementCustomHostNameConfiguration**.
@@ -66,7 +64,7 @@ This command creates and initializes an instance of **PsApiManagementCustomHostN
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -217,6 +215,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagement](./New-AzureRmApiManagement.md)
+[New-AzApiManagement](./New-AzApiManagement.md)
 
-[Set-AzureRmApiManagement](./Set-AzureRmApiManagement.md)
+[Set-AzApiManagement](./Set-AzApiManagement.md)

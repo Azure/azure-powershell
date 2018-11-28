@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: B656B4C4-97DE-4F9F-937C-E115CB3F0E80
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/new-azurermdatafactoryhub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/new-azdatafactoryhub
 schema: 2.0.0
 ---
 
-# New-AzureRmDataFactoryHub
+# New-AzDataFactoryHub
 
 ## SYNOPSIS
 Creates a hub for an Azure Data Factory.
@@ -15,26 +15,26 @@ Creates a hub for an Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-New-AzureRmDataFactoryHub [-Name] <String> [-File] <String> [-Force] [-DataFactoryName] <String>
+New-AzDataFactoryHub [-Name] <String> [-File] <String> [-Force] [-DataFactoryName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-New-AzureRmDataFactoryHub [-Name] <String> [-File] <String> [-Force] [-DataFactory] <PSDataFactory>
+New-AzDataFactoryHub [-Name] <String> [-File] <String> [-Force] [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmDataFactoryHub** cmdlet creates a hub for Azure Data Factory in the specified Azure resource group and in the specified data factory with the specified file definition.
+The **New-AzDataFactoryHub** cmdlet creates a hub for Azure Data Factory in the specified Azure resource group and in the specified data factory with the specified file definition.
 After you create the hub, you can use it to store and manage linked services in a group, and you can add pipelines to the hub.
 
 ## EXAMPLES
 
 ### Example 1: Create a hub
 ```
-PS C:\>New-AzureRmDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "ContosoDataHub" -File "C:\Hub.json"
+PS C:\>New-AzDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "ContosoDataHub" -File "C:\Hub.json"
 ```
 
 This command creates a hub named ContosoDataHub in the resource group ADFResourceGroup and the data factory named ADFDataFactory.
@@ -198,8 +198,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryHub](./Get-AzureRmDataFactoryHub.md)
+[Get-AzDataFactoryHub](./Get-AzDataFactoryHub.md)
 
-[Remove-AzureRmDataFactoryHub](./Remove-AzureRmDataFactoryHub.md)
+[Remove-AzDataFactoryHub](./Remove-AzDataFactoryHub.md)
 
 

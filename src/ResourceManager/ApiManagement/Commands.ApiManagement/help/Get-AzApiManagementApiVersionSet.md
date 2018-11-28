@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementapiversionset
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementapiversionset
 schema: 2.0.0
 ---
 
-# Get-AzureRmApiManagementApiVersionSet
+# Get-AzApiManagementApiVersionSet
 
 ## SYNOPSIS
 Get the details of the API Version Sets
@@ -13,12 +13,12 @@ Get the details of the API Version Sets
 ## SYNTAX
 
 ```
-Get-AzureRmApiManagementApiVersionSet -Context <PsApiManagementContext> [-ApiVersionSetId <String>]
+Get-AzApiManagementApiVersionSet -Context <PsApiManagementContext> [-ApiVersionSetId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApiManagementApiVersionSet** cmdlet gets the details of the API Version Sets configured in an API Management context.
+The **Get-AzApiManagementApiVersionSet** cmdlet gets the details of the API Version Sets configured in an API Management context.
 
 ## EXAMPLES
 
@@ -26,8 +26,8 @@ The **Get-AzureRmApiManagementApiVersionSet** cmdlet gets the details of the API
 
 ### Example 1: Get all API Version Sets
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementApiVersionSet -Context $ApiMgmtContext
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementApiVersionSet -Context $ApiMgmtContext
 
 ApiVersionSetId   : a93316c8-8b88-46cc-8260-380789a5d598
 Description       :
@@ -65,8 +65,8 @@ This command gets all of the API Version sets for the specified context.
 
 ### Example 2: Get a API Version Set by ID
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementApiVersionSet -Context $ApiMgmtContext -ApiVersionSetId $ApiVersionSetId
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementApiVersionSet -Context $ApiMgmtContext -ApiVersionSetId $ApiVersionSetId
 
 ApiVersionSetId   : 8c441e0e-a0cd-47d8-8d88-f944a83b41bd
 Description       :
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -147,8 +147,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagementApiVersionSet](./New-AzureRmApiManagementApiVersionSet.md)
+[New-AzApiManagementApiVersionSet](./New-AzApiManagementApiVersionSet.md)
 
-[Remove-AzureRmApiManagementApiSet](./Remove-AzureRmApiManagementApiVersionSet.md)
+[Remove-AzApiManagementApiSet](./Remove-AzApiManagementApiVersionSet.md)
 
-[Set-AzureRmApiManagementApiVersionSet](./Set-AzureRmApiManagementApiSet.md)
+[Set-AzApiManagementApiVersionSet](./Set-AzApiManagementApiSet.md)

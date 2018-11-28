@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
-Module Name: AzureRM.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver
+Module Name: Az.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/new-azanalysisservicesserver
 schema: 2.0.0
 ---
 
-# New-AzureRmAnalysisServicesServer
+# New-AzAnalysisServicesServer
 
 ## SYNOPSIS
 Creates a new Analysis Services server
@@ -13,7 +13,7 @@ Creates a new Analysis Services server
 ## SYNTAX
 
 ```
-New-AzureRmAnalysisServicesServer [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+New-AzAnalysisServicesServer [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>]
  [-ReadonlyReplicaCount <Int32>] [-DefaultConnectionMode <String>]
  [-FirewallConfig <PsAzureAnalysisServicesFirewallConfig>] [-GatewayResourceId <String>]
@@ -21,13 +21,13 @@ New-AzureRmAnalysisServicesServer [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-The New-AzureRmAnalysisServicesServer cmdlet creates a new Analysis Services server
+The New-AzAnalysisServicesServer cmdlet creates a new Analysis Services server
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmAnalysisServicesServer -ResourceGroupName "testresourcegroup" -Name "testserver" -Location "West-US" -Sku "S1"
+PS C:\> New-AzAnalysisServicesServer -ResourceGroupName "testresourcegroup" -Name "testserver" -Location "West-US" -Sku "S1"
 ```
 
 Creates a server named testserver in the Azure region West-US and in resource group testresrourcegroup. The sku level for the server will be S1.
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -264,10 +264,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer
 
 ## NOTES
-Alias: New-AzureAs
+Alias: New-AzAs
 
 ## RELATED LINKS
 
-[Get-AzureRmAnalysisServicesServer](./Get-AzureRmAnalysisServicesServer.md)
+[Get-AzAnalysisServicesServer](./Get-AzAnalysisServicesServer.md)
 
-[Remove-AzureRmAnalysisServicesServer](./Remove-AzureRmAnalysisServicesServer.md)
+[Remove-AzAnalysisServicesServer](./Remove-AzAnalysisServicesServer.md)

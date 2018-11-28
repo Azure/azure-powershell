@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Maps.dll-Help.xml
-Module Name: AzureRM.Maps
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.maps/new-azurermmapsaccount
+Module Name: Az.Maps
+online version: https://docs.microsoft.com/en-us/powershell/module/az.maps/new-azmapsaccount
 schema: 2.0.0
 ---
 
-# New-AzureRmMapsAccount
+# New-AzMapsAccount
 
 ## SYNOPSIS
 Creates an Azure Maps account.
@@ -13,18 +13,18 @@ Creates an Azure Maps account.
 ## SYNTAX
 
 ```
-New-AzureRmMapsAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Tag <Hashtable[]>]
+New-AzMapsAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Tag <Hashtable[]>]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmMapsAccount cmdlet creates an Azure Maps account with the specified SKU.
+The New-AzMapsAccount cmdlet creates an Azure Maps account with the specified SKU.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmMapsAccount -ResourceGroupName MyResourceGroup -Name MyAccount -SkuName S0 -Tags @{Name="test";Value="true"}
+PS C:\> New-AzMapsAccount -ResourceGroupName MyResourceGroup -Name MyAccount -SkuName S0 -Tags @{Name="test";Value="true"}
 
 ResourceGroupName AccountName Id
 ----------------- ----------- --
@@ -39,7 +39,7 @@ Creates a new Azure Maps account named MyAccount in the resource group MyResourc
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

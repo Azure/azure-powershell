@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 8FB78A4A-8392-44EE-A907-10FDF756071B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationvariable
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationvariable
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationVariable
+# Get-AzAutomationVariable
 
 ## SYNOPSIS
 Gets an Automation variable.
@@ -15,25 +15,25 @@ Gets an Automation variable.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationVariable [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationVariable [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmAutomationVariable [-Name] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationVariable [-Name] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutomationVariable** cmdlet gets one or more Azure Automation variables.
+The **Get-AzAutomationVariable** cmdlet gets one or more Azure Automation variables.
 To get a specific variable, specify its name.
 
 ## EXAMPLES
 
 ### Example 1: Get a variable
 ```
-PS C:\>$Variable = Get-AzureRmAutomationVariable -AutomationAccountName "Contoso17" -Name "Variable06" -ResourceGroupName "ResourceGroup01"
+PS C:\>$Variable = Get-AzAutomationVariable -AutomationAccountName "Contoso17" -Name "Variable06" -ResourceGroupName "ResourceGroup01"
 PS C:\> $Value = $Variable.value
 ```
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -119,10 +119,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAutomationVariable](./New-AzureRMAutomationVariable.md)
+[New-AzAutomationVariable](./New-AzAutomationVariable.md)
 
-[Remove-AzureRmAutomationVariable](./Remove-AzureRMAutomationVariable.md)
+[Remove-AzAutomationVariable](./Remove-AzAutomationVariable.md)
 
-[Set-AzureRmAutomationVariable](./Set-AzureRMAutomationVariable.md)
+[Set-AzAutomationVariable](./Set-AzAutomationVariable.md)
 
 

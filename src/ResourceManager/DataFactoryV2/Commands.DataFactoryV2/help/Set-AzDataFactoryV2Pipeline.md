@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/set-azurermdatafactoryv2pipeline
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/set-azdatafactoryv2pipeline
 schema: 2.0.0
 ---
 
-# Set-AzureRmDataFactoryV2Pipeline
+# Set-AzDataFactoryV2Pipeline
 
 ## SYNOPSIS
 Creates a pipeline in Data Factory.
@@ -14,19 +14,19 @@ Creates a pipeline in Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Set-AzureRmDataFactoryV2Pipeline [-Name] <String> [-DefinitionFile] <String> [-ResourceGroupName] <String>
+Set-AzDataFactoryV2Pipeline [-Name] <String> [-DefinitionFile] <String> [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzureRmDataFactoryV2Pipeline [-DefinitionFile] <String> [-ResourceId] <String> [-Force]
+Set-AzDataFactoryV2Pipeline [-DefinitionFile] <String> [-ResourceId] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzureRmDataFactoryV2Pipeline cmdlet creates a pipeline in Azure Data Factory.
+The Set-AzDataFactoryV2Pipeline cmdlet creates a pipeline in Azure Data Factory.
 If you specify a name for a pipeline that already exists, the cmdlet prompts you for confirmation before it replaces the pipeline.
 If you specify the Force parameter, the cmdlet replaces the existing pipeline without confirmation.
 Perform these operations in the following order:
@@ -41,7 +41,7 @@ If you confirm to overwrite the existing pipeline, the pipeline definition is al
 
 ### Example 1: Create a pipeline
 ```
-PS C:\> Set-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" -File "C:\DPWikisample.json"
+PS C:\> Set-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" -File "C:\DPWikisample.json"
 
     PipelineName      : DPWikisample
     ResourceGroupName : ADF
@@ -209,8 +209,8 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2Pipeline]()
+[Get-AzDataFactoryV2Pipeline]()
 
-[Remove-AzureRmDataFactoryV2Pipeline]()
+[Remove-AzDataFactoryV2Pipeline]()
 
-[Invoke-AzureRmDataFactoryV2Pipeline]()
+[Invoke-AzDataFactoryV2Pipeline]()

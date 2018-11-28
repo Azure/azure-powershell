@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM.StreamAnalytics
+Module Name: Az.StreamAnalytics
 ms.assetid: 2F3BDDFE-7585-4802-BFA5-D110F846A33E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/remove-azurermstreamanalyticsjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/remove-azstreamanalyticsjob
 schema: 2.0.0
 ---
 
-# Remove-AzureRmStreamAnalyticsJob
+# Remove-AzStreamAnalyticsJob
 
 ## SYNOPSIS
 Removes a Stream Analytics job.
@@ -14,18 +14,18 @@ Removes a Stream Analytics job.
 ## SYNTAX
 
 ```
-Remove-AzureRmStreamAnalyticsJob [-Name] <String> [-ResourceGroupName] <String>
+Remove-AzStreamAnalyticsJob [-Name] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmStreamAnalyticsJob** cmdlet asynchronously deletes a specific Stream Analytics job in Azure.
+The **Remove-AzStreamAnalyticsJob** cmdlet asynchronously deletes a specific Stream Analytics job in Azure.
 
 ## EXAMPLES
 
 ### EXAMPLE 1: Remove a job
 ```
-PS C:\>Remove-AzureRmStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US" -Name "StreamingJob"
+PS C:\>Remove-AzStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US" -Name "StreamingJob"
 ```
 
 This command removes the job StreamingJob.
@@ -36,7 +36,7 @@ This command removes the job StreamingJob.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -123,12 +123,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmStreamAnalyticsJob](./Get-AzureRmStreamAnalyticsJob.md)
+[Get-AzStreamAnalyticsJob](./Get-AzStreamAnalyticsJob.md)
 
-[New-AzureRmStreamAnalyticsJob](./New-AzureRmStreamAnalyticsJob.md)
+[New-AzStreamAnalyticsJob](./New-AzStreamAnalyticsJob.md)
 
-[Start-AzureRmStreamAnalyticsJob](./Start-AzureRmStreamAnalyticsJob.md)
+[Start-AzStreamAnalyticsJob](./Start-AzStreamAnalyticsJob.md)
 
-[Stop-AzureRmStreamAnalyticsJob](./Stop-AzureRmStreamAnalyticsJob.md)
+[Stop-AzStreamAnalyticsJob](./Stop-AzStreamAnalyticsJob.md)
 
 

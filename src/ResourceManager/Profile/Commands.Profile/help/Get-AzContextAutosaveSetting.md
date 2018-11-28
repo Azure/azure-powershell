@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermcontextautosavesetting
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/get-azcontextautosavesetting
 schema: 2.0.0
 ---
 
-# Get-AzureRmContextAutosaveSetting
+# Get-AzContextAutosaveSetting
 
 ## SYNOPSIS
 Display metadata about the context autosave feature, including whether the context is 
@@ -14,8 +14,8 @@ automatically saved, and where saved context and credential information can be f
 ## SYNTAX
 
 ```
-Get-AzureRmContextAutosaveSetting [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContextAutosaveSetting [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ automatically saved, and where saved context and credential information can be f
 
 ### Get context save metadata for the current session
 ```
-PS C:\> Get-AzureRmContextAutosaveSetting
+PS C:\> Get-AzContextAutosaveSetting
 
 Mode             : Process
 ContextDirectory : None
@@ -40,7 +40,7 @@ Get details about whether and wehere the context is saved.  In the above example
 
 ### Get context save metadata for the current user
 ```
-PS C:\> Get-AzureRmContextAutosaveSetting -Scope CurrentUser
+PS C:\> Get-AzContextAutosaveSetting -Scope CurrentUser
 
 Mode             : CurrentUser
 ContextDirectory : C:\Users\contoso\AppData\Roaming\Windows Azure Powershell
@@ -60,7 +60,7 @@ to the default location.
 The credentials, account, tenant and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

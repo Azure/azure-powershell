@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-Module Name: AzureRM.MachineLearning
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/add-azurermmlwebserviceregionalproperty
+Module Name: Az.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/add-azmlwebserviceregionalproperty
 schema: 2.0.0
 ---
 
-# Add-AzureRmMlWebServiceRegionalProperty
+# Add-AzMlWebServiceRegionalProperty
 
 ## SYNOPSIS
 Creates regional web service properties.
@@ -13,7 +13,7 @@ Creates regional web service properties.
 ## SYNTAX
 
 ```
-Add-AzureRmMlWebServiceRegionalProperty -ResourceGroupName <String> -Name <String> -Region <String> [-Force]
+Add-AzMlWebServiceRegionalProperty -ResourceGroupName <String> -Name <String> -Region <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Creates Azure Machine Learning regional properties for an existing web service.
 ### Example 1: Add new regional properties for West Central US
 
 ```
-Add-AzureRmMlWebServiceRegionalProperty -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Region westcentralus
+Add-AzMlWebServiceRegionalProperty -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Region westcentralus
 ```
 
 This example command creates regional property for a  web service in the "West Central US" region.
@@ -36,7 +36,7 @@ This example command creates regional property for a  web service in the "West C
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

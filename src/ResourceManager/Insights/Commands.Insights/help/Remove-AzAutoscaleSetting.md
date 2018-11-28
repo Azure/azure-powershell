@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 6140E973-D7AB-4A28-A4FA-818E08129372
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/remove-azurermautoscalesetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/remove-azautoscalesetting
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAutoscaleSetting
+# Remove-AzAutoscaleSetting
 
 ## SYNOPSIS
 Removes an Autoscale setting.
@@ -14,12 +14,12 @@ Removes an Autoscale setting.
 ## SYNTAX
 
 ```
-Remove-AzureRmAutoscaleSetting -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAutoscaleSetting -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmAutoscaleSetting** cmdlet removes an Autoscale setting.
+The **Remove-AzAutoscaleSetting** cmdlet removes an Autoscale setting.
 You must specify the name of the setting and the name of the resource group to which it is assigned.
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
@@ -31,7 +31,7 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,8 +117,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmAutoscaleSetting](./Add-AzureRmAutoscaleSetting.md)
+[Add-AzAutoscaleSetting](./Add-AzAutoscaleSetting.md)
 
-[Get-AzureRmAutoscaleSetting](./Get-AzureRmAutoscaleSetting.md)
+[Get-AzAutoscaleSetting](./Get-AzAutoscaleSetting.md)
 
 

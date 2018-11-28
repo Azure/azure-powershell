@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermgalleryimageversion
+Module Name: Az.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azgalleryimageversion
 schema: 2.0.0
 ---
 
-# Get-AzureRmGalleryImageVersion
+# Get-AzGalleryImageVersion
 
 ## SYNOPSIS
 Get or list gallery image versions.
@@ -14,14 +14,14 @@ Get or list gallery image versions.
 
 ### DefaultParameter (Default)
 ```
-Get-AzureRmGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
+Get-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
  [-GalleryImageDefinitionName] <String> [[-Name] <String>] [-ExpandReplicationStatus]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
-Get-AzureRmGalleryImageVersion [-ResourceId] <String> [-ExpandReplicationStatus]
+Get-AzGalleryImageVersion [-ResourceId] <String> [-ExpandReplicationStatus]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Get or list gallery image versions.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmGalleryImageVersion -ResourceGroupName $rgname -GalleryName $gallery -ImageDefinitionName $image -GalleryImageVersionName $version
+PS C:\> Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $gallery -ImageDefinitionName $image -GalleryImageVersionName $version
 ```
 
 Get the gallery image version.
@@ -43,7 +43,7 @@ Get the gallery image version.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 14026F0E-4959-4150-A31F-A94BC56ED808
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/set-azurebatchjobschedule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/set-azbatchjobschedule
 schema: 2.0.0
 ---
 
-# Set-AzureBatchJobSchedule
+# Set-AzBatchJobSchedule
 
 ## SYNOPSIS
 Sets a job schedule.
@@ -14,12 +14,12 @@ Sets a job schedule.
 ## SYNTAX
 
 ```
-Set-AzureBatchJobSchedule [-JobSchedule] <PSCloudJobSchedule> -BatchContext <BatchAccountContext>
+Set-AzBatchJobSchedule [-JobSchedule] <PSCloudJobSchedule> -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureBatchJobSchedule** cmdlet sets a job schedule in the Azure Batch service.
+The **Set-AzBatchJobSchedule** cmdlet sets a job schedule in the Azure Batch service.
 
 ## EXAMPLES
 
@@ -27,7 +27,7 @@ The **Set-AzureBatchJobSchedule** cmdlet sets a job schedule in the Azure Batch 
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -45,7 +45,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 
 ### -JobSchedule
 Specifies a **PSCloudJobSchedule** object that represents a job schedule.
-To obtain a **PSCloudJobSchedule** object, use the Get-AzureBatchJobSchedule cmdlet.
+To obtain a **PSCloudJobSchedule** object, use the Get-AzBatchJobSchedule cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.Models.PSCloudJobSchedule
@@ -91,16 +91,16 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Disable-AzureBatchJobSchedule](./Disable-AzureBatchJobSchedule.md)
+[Disable-AzBatchJobSchedule](./Disable-AzBatchJobSchedule.md)
 
-[Enable-AzureBatchJobSchedule](./Enable-AzureBatchJobSchedule.md)
+[Enable-AzBatchJobSchedule](./Enable-AzBatchJobSchedule.md)
 
-[Get-AzureBatchJobSchedule](./Get-AzureBatchJobSchedule.md)
+[Get-AzBatchJobSchedule](./Get-AzBatchJobSchedule.md)
 
-[New-AzureBatchJobSchedule](./New-AzureBatchJobSchedule.md)
+[New-AzBatchJobSchedule](./New-AzBatchJobSchedule.md)
 
-[Remove-AzureBatchJobSchedule](./Remove-AzureBatchJobSchedule.md)
+[Remove-AzBatchJobSchedule](./Remove-AzBatchJobSchedule.md)
 
-[Stop-AzureBatchJobSchedule](./Stop-AzureBatchJobSchedule.md)
+[Stop-AzBatchJobSchedule](./Stop-AzBatchJobSchedule.md)
 
 

@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 6429C564-1995-4D9B-BF9B-963B4F5FB3BD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/set-azurermautomationschedule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationschedule
 schema: 2.0.0
 ---
 
-# Set-AzureRmAutomationSchedule
+# Set-AzAutomationSchedule
 
 ## SYNOPSIS
 Modifies an Automation schedule.
@@ -14,19 +14,19 @@ Modifies an Automation schedule.
 ## SYNTAX
 
 ```
-Set-AzureRmAutomationSchedule [-Name] <String> [-IsEnabled <Boolean>] [-Description <String>]
+Set-AzAutomationSchedule [-Name] <String> [-IsEnabled <Boolean>] [-Description <String>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmAutomationSchedule** cmdlet modifies a schedule in Azure Automation.
+The **Set-AzAutomationSchedule** cmdlet modifies a schedule in Azure Automation.
 
 ## EXAMPLES
 
 ### Example 1: Modify a schedule
 ```
-PS C:\>Set-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -Description "Automation Schedule" -ResourceGroupName "ResourceGroup01"
+PS C:\>Set-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -Description "Automation Schedule" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command modifies the description of the schedule named Schedule01.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -140,10 +140,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationSchedule](./Get-AzureRMAutomationSchedule.md)
+[Get-AzAutomationSchedule](./Get-AzAutomationSchedule.md)
 
-[New-AzureRmAutomationSchedule](./New-AzureRMAutomationSchedule.md)
+[New-AzAutomationSchedule](./New-AzAutomationSchedule.md)
 
-[Remove-AzureRmAutomationSchedule](./Remove-AzureRMAutomationSchedule.md)
+[Remove-AzAutomationSchedule](./Remove-AzAutomationSchedule.md)
 
 

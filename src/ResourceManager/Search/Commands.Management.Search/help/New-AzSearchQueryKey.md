@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
-Module Name: AzureRM.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/new-azurermsearchquerykey
+Module Name: Az.Search
+online version: https://docs.microsoft.com/en-us/powershell/module/az.search/new-azsearchquerykey
 schema: 2.0.0
 ---
 
-# New-AzureRmSearchQueryKey
+# New-AzSearchQueryKey
 
 ## SYNOPSIS
 Create a new query key for the Azure Search service.
@@ -14,30 +14,30 @@ Create a new query key for the Azure Search service.
 
 ### ResourceNameParameterSet (Default)
 ```
-New-AzureRmSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String> -Name <String>
+New-AzSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
-New-AzureRmSearchQueryKey [-ParentObject] <PSSearchService> -Name <String>
+New-AzSearchQueryKey [-ParentObject] <PSSearchService> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentResourceIdParameterSet
 ```
-New-AzureRmSearchQueryKey [-ParentResourceId] <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzSearchQueryKey [-ParentResourceId] <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSearchQueryKey** cmdlet creates a new query key for the Azure Search Service.
+The **New-AzSearchQueryKey** cmdlet creates a new query key for the Azure Search Service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -Name "NewQueryKey1" -Force
+PS C:\> New-AzSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -Name "NewQueryKey1" -Force
 
 Name         Key                             
 ----         ---                             
@@ -52,7 +52,7 @@ The example creates a new query key for the Azure Search service.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -186,6 +186,6 @@ Parameters: ParentObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmSearchQueryKey.md](./Get-AzureRmSearchQueryKey.md)
+[Get-AzSearchQueryKey.md](./Get-AzSearchQueryKey.md)
 
-[Remove-AzureRmSearchQueryKey.md](./Remove-AzureRmSearchQueryKey.md)
+[Remove-AzSearchQueryKey.md](./Remove-AzSearchQueryKey.md)

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 35FAA57F-B2BD-4E43-8238-12F7A8269E4D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/remove-azurekeyvaultcertificatecontact
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultcertificatecontact
 schema: 2.0.0
 ---
 
-# Remove-AzureKeyVaultCertificateContact
+# Remove-AzKeyVaultCertificateContact
 
 ## SYNOPSIS
 Deletes a contact that is registered for certificate notifications from a key vault.
@@ -15,30 +15,30 @@ Deletes a contact that is registered for certificate notifications from a key va
 
 ### ByName (Default)
 ```
-Remove-AzureKeyVaultCertificateContact [-VaultName] <String> [-EmailAddress] <String[]> [-PassThru]
+Remove-AzKeyVaultCertificateContact [-VaultName] <String> [-EmailAddress] <String[]> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObject
 ```
-Remove-AzureKeyVaultCertificateContact [-InputObject] <PSKeyVault> [-EmailAddress] <String[]> [-PassThru]
+Remove-AzKeyVaultCertificateContact [-InputObject] <PSKeyVault> [-EmailAddress] <String[]> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzureKeyVaultCertificateContact [-ResourceId] <String> [-EmailAddress] <String[]> [-PassThru]
+Remove-AzKeyVaultCertificateContact [-ResourceId] <String> [-EmailAddress] <String[]> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureKeyVaultCertificateContact** cmdlet deletes a contact that is registered for certificate notifications from a key vault.
+The **Remove-AzKeyVaultCertificateContact** cmdlet deletes a contact that is registered for certificate notifications from a key vault.
 
 ## EXAMPLES
 
 ### Example 1: Remove a certificate contact
 ```powershell
-PS C:\> Remove-AzureKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+PS C:\> Remove-AzKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com" -PassThru
 
 Email               VaultName
 -----               ---------
@@ -56,7 +56,7 @@ This command removes Patti Fuller as a certificate contact for the Contoso01 key
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -192,7 +192,7 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultCertificateContact](./Add-AzureKeyVaultCertificateContact.md)
+[Add-AzKeyVaultCertificateContact](./Add-AzKeyVaultCertificateContact.md)
 
-[Get-AzureKeyVaultCertificateContact](./Get-AzureKeyVaultCertificateContact.md)
+[Get-AzKeyVaultCertificateContact](./Get-AzKeyVaultCertificateContact.md)
 

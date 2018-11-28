@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/update-azurekeyvaultsecret
+Module Name: Az.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/update-azkeyvaultsecret
 schema: 2.0.0
 ---
 
-# Update-AzureKeyVaultSecret
+# Update-AzKeyVaultSecret
 
 ## SYNOPSIS
 Updates attributes of a secret in a key vault.
@@ -14,20 +14,20 @@ Updates attributes of a secret in a key vault.
 
 ### Default (Default)
 ```
-Update-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
+Update-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Update-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-Version] <String>]
- [-Enable <Boolean>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-Version] <String>] [-Enable <Boolean>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureKeyVaultSecret** cmdlet updates editable attributes of a secret in a key vault.
+The **Update-AzKeyVaultSecret** cmdlet updates editable attributes of a secret in a key vault.
 
 ## EXAMPLES
 
@@ -37,7 +37,7 @@ PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 PS C:\> $Nbf = (Get-Date).ToUniversalTime()
 PS C:\> $Tags = @{ 'Severity' = 'medium'; 'HR' = 'true'}
 PS C:\> $ContentType= 'xml'
-PS C:\> Update-AzureKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Expires $Expires -NotBefore $Nbf -ContentType $ContentType -Enable $True -Tag $Tags -PassThru
+PS C:\> Update-AzKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Expires $Expires -NotBefore $Nbf -ContentType $ContentType -Enable $True -Tag $Tags -PassThru
 
 Vault Name   : ContosoVault
 Name         : HR
@@ -61,7 +61,7 @@ ContosoVault, using the stored variables.
 
 ### Example 2: Delete the tags and content type for a secret
 ```
-PS C:\> Update-AzureKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Version '9EEA45C6EE50490B9C3176A80AC1A0DF' -ContentType '' -Tag -@{}
+PS C:\> Update-AzKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Version '9EEA45C6EE50490B9C3176A80AC1A0DF' -ContentType '' -Tag -@{}
 ```
 
 This command deletes the tags and the content type for the specified version of the secret named HR
@@ -71,27 +71,27 @@ in the key vault named Contoso.
 ```
 PS C:\> $Vault = 'ContosoVault'
 PS C:\> $Prefix = 'IT'
-PS C:\> Get-AzureKeyVaultSecret $Vault | Where-Object {$_.Name -like $Prefix + '*'} | Update-AzureKeyVaultSecret -Enable $False
+PS C:\> Get-AzKeyVaultSecret $Vault | Where-Object {$_.Name -like $Prefix + '*'} | Update-AzKeyVaultSecret -Enable $False
 ```
 
 The first command stores the string value Contoso in the $Vault variable.
 The second command stores the string value IT in the $Prefix variable.
-The third command uses the Get-AzureKeyVaultSecret cmdlet to get the secrets in the specified key
+The third command uses the Get-AzKeyVaultSecret cmdlet to get the secrets in the specified key
 vault, and then passes those secrets to the **Where-Object** cmdlet. The **Where-Object** cmdlet
 filters the secrets for names that begin with the characters IT. The command pipes the secrets that
-match the filter to the Update-AzureKeyVaultSecret cmdlet, which disables them.
+match the filter to the Update-AzKeyVaultSecret cmdlet, which disables them.
 
 ### Example 4: Set the ContentType for all versions of a secret
 ```
 PS C:\> $VaultName = 'ContosoVault'
 PS C:\> $Name = 'HR'
 PS C:\> $ContentType = 'xml'
-PS C:\> Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersions | Update-AzureKeyVaultSecret -ContentType $ContentType
+PS C:\> Get-AzKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersions | Update-AzKeyVaultSecret -ContentType $ContentType
 ```
 
 The first three commands define string variables to use for the *VaultName*, *Name*, and
-*ContentType* parameters. The fourth command uses the Get-AzureKeyVaultKey cmdlet to get the
-specified keys, and pipes the keys to the Update-AzureKeyVaultSecret cmdlet to set their
+*ContentType* parameters. The fourth command uses the Get-AzKeyVaultKey cmdlet to get the
+specified keys, and pipes the keys to the Update-AzKeyVaultSecret cmdlet to set their
 content type to XML.
 
 ## PARAMETERS
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

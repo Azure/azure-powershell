@@ -1,97 +1,97 @@
 ---
-Module Name: AzureRM.Cdn
+Module Name: Az.Cdn
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.cdn
 Help Version: 4.2.2.0
 Locale: en-US
 ---
 
-# AzureRM.Cdn Module
+# Az.Cdn Module
 ## Description
 The topics in this section document the Azure PowerShell cmdlets for Azure Content Delivery Network (CDN) in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.Cdn namespace.
 
-## AzureRM.Cdn Cmdlets
-### [Confirm-AzureRmCdnEndpointProbeURL](Confirm-AzureRmCdnEndpointProbeURL.md)
+## Az.Cdn Cmdlets
+### [Confirm-AzCdnEndpointProbeURL](Confirm-AzCdnEndpointProbeURL.md)
 Validates a probe URL.
 
-### [Disable-AzureRmCdnCustomDomain](Disable-AzureRmCdnCustomDomain.md)
+### [Disable-AzCdnCustomDomain](Disable-AzCdnCustomDomain.md)
 Disables custom HTTPS.
 
-### [Enable-AzureRmCdnCustomDomain](Enable-AzureRmCdnCustomDomain.md)
+### [Enable-AzCdnCustomDomain](Enable-AzCdnCustomDomain.md)
 Enables custom HTTPS.
 
-### [Get-AzureRmCdnCustomDomain](Get-AzureRmCdnCustomDomain.md)
+### [Get-AzCdnCustomDomain](Get-AzCdnCustomDomain.md)
 Gets a CDN custom domain.
 
-### [Get-AzureRmCdnEdgeNodes](Get-AzureRmCdnEdgeNodes.md)
+### [Get-AzCdnEdgeNodes](Get-AzCdnEdgeNodes.md)
 Gets Azure CDN edgenodes.
 
-### [Get-AzureRmCdnEndpoint](Get-AzureRmCdnEndpoint.md)
+### [Get-AzCdnEndpoint](Get-AzCdnEndpoint.md)
 Gets a CDN endpoint.
 
-### [Get-AzureRmCdnEndpointNameAvailability](Get-AzureRmCdnEndpointNameAvailability.md)
+### [Get-AzCdnEndpointNameAvailability](Get-AzCdnEndpointNameAvailability.md)
 Gets availability status of the CDN endpoint.
 
-### [Get-AzureRmCdnEndpointResourceUsage](Get-AzureRmCdnEndpointResourceUsage.md)
+### [Get-AzCdnEndpointResourceUsage](Get-AzCdnEndpointResourceUsage.md)
 Gets the resource usage of a CDN endpoint.
 
-### [Get-AzureRmCdnOrigin](Get-AzureRmCdnOrigin.md)
+### [Get-AzCdnOrigin](Get-AzCdnOrigin.md)
 Gets a CDN origin server.
 
-### [Get-AzureRmCdnProfile](Get-AzureRmCdnProfile.md)
+### [Get-AzCdnProfile](Get-AzCdnProfile.md)
 Gets a CDN profile.
 
-### [Get-AzureRmCdnProfileResourceUsage](Get-AzureRmCdnProfileResourceUsage.md)
+### [Get-AzCdnProfileResourceUsage](Get-AzCdnProfileResourceUsage.md)
 Gets the resource usage of a CDN profile.
 
-### [Get-AzureRmCdnProfileSsoUrl](Get-AzureRmCdnProfileSsoUrl.md)
+### [Get-AzCdnProfileSsoUrl](Get-AzCdnProfileSsoUrl.md)
 Gets the single sign-on URL of a CDN profile.
 
-### [Get-AzureRmCdnProfileSupportedOptimizationType](Get-AzureRmCdnProfileSupportedOptimizationType.md)
+### [Get-AzCdnProfileSupportedOptimizationType](Get-AzCdnProfileSupportedOptimizationType.md)
 Gets the supported optimization types for a CDN profile.
 
-### [Get-AzureRmCdnSubscriptionResourceUsage](Get-AzureRmCdnSubscriptionResourceUsage.md)
+### [Get-AzCdnSubscriptionResourceUsage](Get-AzCdnSubscriptionResourceUsage.md)
 Gets the resource usage for a susbscription.
 
-### [New-AzureRmCdnCustomDomain](New-AzureRmCdnCustomDomain.md)
+### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a custom domain for a CDN endpoint.
 
-### [New-AzureRmCdnEndpoint](New-AzureRmCdnEndpoint.md)
+### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a CDN endpoint.
 
-### [New-AzureRmCdnProfile](New-AzureRmCdnProfile.md)
+### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates a CDN profile.
 
-### [Publish-AzureRmCdnEndpointContent](Publish-AzureRmCdnEndpointContent.md)
+### [Publish-AzCdnEndpointContent](Publish-AzCdnEndpointContent.md)
 Loads content to an endpoint.
 
-### [Remove-AzureRmCdnCustomDomain](Remove-AzureRmCdnCustomDomain.md)
+### [Remove-AzCdnCustomDomain](Remove-AzCdnCustomDomain.md)
 Removes a custom domain.
 
-### [Remove-AzureRmCdnEndpoint](Remove-AzureRmCdnEndpoint.md)
+### [Remove-AzCdnEndpoint](Remove-AzCdnEndpoint.md)
 Removes a CDN endpoint.
 
-### [Remove-AzureRmCdnProfile](Remove-AzureRmCdnProfile.md)
+### [Remove-AzCdnProfile](Remove-AzCdnProfile.md)
 Removes a CDN profile.
 
-### [Set-AzureRmCdnEndpoint](Set-AzureRmCdnEndpoint.md)
+### [Set-AzCdnEndpoint](Set-AzCdnEndpoint.md)
 Updates a CDN endpoint.
 
-### [Set-AzureRmCdnOrigin](Set-AzureRmCdnOrigin.md)
+### [Set-AzCdnOrigin](Set-AzCdnOrigin.md)
 Updates a CDN origin server.
 
-### [Set-AzureRmCdnProfile](Set-AzureRmCdnProfile.md)
+### [Set-AzCdnProfile](Set-AzCdnProfile.md)
 Updates a CDN profile.
 
-### [Start-AzureRmCdnEndpoint](Start-AzureRmCdnEndpoint.md)
+### [Start-AzCdnEndpoint](Start-AzCdnEndpoint.md)
 Starts a CDN endpoint.
 
-### [Stop-AzureRmCdnEndpoint](Stop-AzureRmCdnEndpoint.md)
+### [Stop-AzCdnEndpoint](Stop-AzCdnEndpoint.md)
 Stops the CDN endpoint.
 
-### [Test-AzureRmCdnCustomDomain](Test-AzureRmCdnCustomDomain.md)
+### [Test-AzCdnCustomDomain](Test-AzCdnCustomDomain.md)
 Checks whether a custom domain can be added to an endpoint.
 
-### [Unpublish-AzureRmCdnEndpointContent](Unpublish-AzureRmCdnEndpointContent.md)
+### [Unpublish-AzCdnEndpointContent](Unpublish-AzCdnEndpointContent.md)
 Purges a CDN endpoint.
 

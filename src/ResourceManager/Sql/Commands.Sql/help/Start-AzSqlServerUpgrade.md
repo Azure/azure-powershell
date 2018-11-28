@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 69A26BF3-7FE7-41ED-8C21-C8DC72D09615
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/start-azurermsqlserverupgrade
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/start-azsqlserverupgrade
 schema: 2.0.0
 ---
 
-# Start-AzureRmSqlServerUpgrade
+# Start-AzSqlServerUpgrade
 
 ## SYNOPSIS
 Starts the upgrade of a SQL Database server.
@@ -14,21 +14,21 @@ Starts the upgrade of a SQL Database server.
 ## SYNTAX
 
 ```
-Start-AzureRmSqlServerUpgrade -ServerVersion <String> [-ScheduleUpgradeAfterUtcDateTime <DateTime>]
+Start-AzSqlServerUpgrade -ServerVersion <String> [-ScheduleUpgradeAfterUtcDateTime <DateTime>]
  [-DatabaseCollection <RecommendedDatabaseProperties[]>]
  [-ElasticPoolCollection <UpgradeRecommendedElasticPoolProperties[]>] -ServerName <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmSqlServerUpgrade** cmdlet starts the upgrade of an Azure SQL Database server version 11 to version 12.
-You can monitor the progress of an upgrade by using the Get-AzureRmSqlServerUpgrade cmdlet.
+The **Start-AzSqlServerUpgrade** cmdlet starts the upgrade of an Azure SQL Database server version 11 to version 12.
+You can monitor the progress of an upgrade by using the Get-AzSqlServerUpgrade cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Upgrade a server
 ```
-PS C:\>Start-AzureRmSqlServerUpgrade -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ServerVersion 12.0
+PS C:\>Start-AzSqlServerUpgrade -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ServerVersion 12.0
 ResourceGroupName               : ResourceGroup01
 ServerName                      : Server01
 ServerVersion                   : 12.0
@@ -45,7 +45,7 @@ PS C:\> $DatabaseMap = New-Object -TypeName Microsoft.Azure.Management.Sql.Model
 PS C:\> $DatabaseMap.Name = "contosodb"
 PS C:\> $DatabaseMap.TargetEdition = "Standard"
 PS C:\> $DatabaseMap.TargetServiceLevelObjective = "S0"
-PS C:\> Start-AzureRmSqlServerUpgrade -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ServerVersion 12.0 -ScheduleUpgradeAfterUtcDateTime $ScheduleTime -DatabaseCollection ($DatabaseMap)
+PS C:\> Start-AzSqlServerUpgrade -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ServerVersion 12.0 -ScheduleUpgradeAfterUtcDateTime $ScheduleTime -DatabaseCollection ($DatabaseMap)
 ```
 
 The first command creates a time five minutes in the future by using the Get-Date cmdlet.
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -182,9 +182,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServerUpgrade](./Get-AzureRmSqlServerUpgrade.md)
+[Get-AzSqlServerUpgrade](./Get-AzSqlServerUpgrade.md)
 
-[Stop-AzureRmSqlServerUpgrade](./Stop-AzureRmSqlServerUpgrade.md)
+[Stop-AzSqlServerUpgrade](./Stop-AzSqlServerUpgrade.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

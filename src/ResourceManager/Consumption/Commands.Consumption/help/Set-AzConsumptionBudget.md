@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Consumption.dll-Help.xml
-Module Name: AzureRM.Consumption
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.consumption/set-azurermconsumptionbudget
+Module Name: Az.Consumption
+online version: https://docs.microsoft.com/en-us/powershell/module/az.consumption/set-azconsumptionbudget
 schema: 2.0.0
 ---
 
-# Set-AzureRmConsumptionBudget
+# Set-AzConsumptionBudget
 
 ## SYNOPSIS
 Update a budget in either a subscription or a resource group.
@@ -14,7 +14,7 @@ Update a budget in either a subscription or a resource group.
 
 ### Subscription (Default)
 ```
-Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> [-Amount <Decimal>]
+Set-AzConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> [-Amount <Decimal>]
  [-Category <String>] [-TimeGrain <String>] [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-ResourceGroupName <String>] [-MeterFilter <String[]>] [-ResourceFilter <String[]>]
  [-ResourceGroupFilter <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,7 +22,7 @@ Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <S
 
 ### Notification
 ```
-Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> [-Amount <Decimal>]
+Set-AzConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> [-Amount <Decimal>]
  [-Category <String>] [-TimeGrain <String>] [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-ResourceGroupName <String>] [-MeterFilter <String[]>] [-ResourceFilter <String[]>]
  [-ResourceGroupFilter <String[]>] -NotificationKey <String> [-NotificationEnabled]
@@ -32,29 +32,29 @@ Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <S
 
 ### Piping
 ```
-Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -InputObject <PSBudget>
- [-Amount <Decimal>] [-Category <String>] [-TimeGrain <String>] [-StartDate <DateTime>] [-EndDate <DateTime>]
+Set-AzConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -InputObject <PSBudget> [-Amount <Decimal>]
+ [-Category <String>] [-TimeGrain <String>] [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-MeterFilter <String[]>] [-ResourceFilter <String[]>] [-ResourceGroupFilter <String[]>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Piping and Notification
 ```
-Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -InputObject <PSBudget>
- [-Amount <Decimal>] [-Category <String>] [-TimeGrain <String>] [-StartDate <DateTime>] [-EndDate <DateTime>]
+Set-AzConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -InputObject <PSBudget> [-Amount <Decimal>]
+ [-Category <String>] [-TimeGrain <String>] [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-MeterFilter <String[]>] [-ResourceFilter <String[]>] [-ResourceGroupFilter <String[]>]
  -NotificationKey <String> [-NotificationEnabled] [-NotificationThreshold <Decimal>] [-ContactEmail <String[]>]
  [-ContactGroup <String[]>] [-ContactRole <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzureRmConsumptionBudget cmdlet updates a budget in either a subscription or a resource group.
+The Set-AzConsumptionBudget cmdlet updates a budget in either a subscription or a resource group.
 
 ## EXAMPLES
 
 ### Example 1: Update a budget by a new amount with a budget name at subscription level
 ```powershell
-PS C:\> Set-AzureRmConsumptionBudget -Name PSBudget -Amount 75
+PS C:\> Set-AzConsumptionBudget -Name PSBudget -Amount 75
 Amount:  75		
 Category:  Cost
 CurrentSpend:  null
@@ -68,7 +68,7 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 2: Update a budget with a notification when cost or usage reaches a threshold of 90 percent of amount at subscription level
 ```powershell
-PS C:\> Set-AzureRmConsumptionBudget -Name PSBudget -NotificationKey notificationKey-ps1234 -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
+PS C:\> Set-AzConsumptionBudget -Name PSBudget -NotificationKey notificationKey-ps1234 -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
 Amount:  75		
 Category:  Cost
 CurrentSpend:  null
@@ -87,7 +87,7 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 3: Update a budget by a new amount with a budget name at resource group level
 ```powershell
-PS C:\> Set-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -Amount 75
+PS C:\> Set-AzConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -Amount 75
 Amount:  75		
 Category:  Cost
 CurrentSpend:  null
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvirtualwan
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualwan
 schema: 2.0.0
 ---
 
-# Get-AzureRmVirtualWan
+# Get-AzVirtualWan
 
 ## SYNOPSIS
 Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
@@ -14,12 +14,12 @@ Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
 ### ListBySubscriptionId (Default)
 ```
-Get-AzureRmVirtualWan [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVirtualWan [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByResourceGroupName
 ```
-Get-AzureRmVirtualWan -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzVirtualWan -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -31,9 +31,9 @@ Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 ### Example 1
 
 ```powershell
-PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
-PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
-PS C:\> Get-AzureRmVirtualWan -Name "myVirtualWAN" -ResourceGroupName "testRG"
+PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG" 
+PS C:\> New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
+PS C:\> Get-AzVirtualWan -Name "myVirtualWAN" -ResourceGroupName "testRG"
 
 Name                       : testRG
 Id                         : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
@@ -52,7 +52,7 @@ This command gets the Virtual WAN named myVirtualWAN in the resource group testR
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

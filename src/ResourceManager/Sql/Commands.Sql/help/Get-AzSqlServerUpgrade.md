@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: B3776B0B-FBC8-407A-A8A4-583C346CCF12
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlserverupgrade
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverupgrade
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlServerUpgrade
+# Get-AzSqlServerUpgrade
 
 ## SYNOPSIS
 Gets the status of an Azure SQL Database server upgrade.
@@ -14,18 +14,18 @@ Gets the status of an Azure SQL Database server upgrade.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServerUpgrade -ServerName <String> [-ResourceGroupName] <String>
+Get-AzSqlServerUpgrade -ServerName <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlServerUpgrade** cmdlet gets the status of an Azure SQL Database server upgrade.
+The **Get-AzSqlServerUpgrade** cmdlet gets the status of an Azure SQL Database server upgrade.
 
 ## EXAMPLES
 
 ### Example 1: Get the status of an upgrade
 ```
-PS C:\>Get-AzureRmSqlServerUpgrade -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Format-List
+PS C:\>Get-AzSqlServerUpgrade -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Format-List
 ResourceGroupName               : resourcegroup01
 ServerName                      : server01
 Status                          : Queued
@@ -39,7 +39,7 @@ This command gets the status of an upgrade from the server named Server01 in res
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -126,9 +126,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Start-AzureRmSqlServerUpgrade](./Start-AzureRmSqlServerUpgrade.md)
+[Start-AzSqlServerUpgrade](./Start-AzSqlServerUpgrade.md)
 
-[Stop-AzureRmSqlServerUpgrade](./Stop-AzureRmSqlServerUpgrade.md)
+[Stop-AzSqlServerUpgrade](./Stop-AzSqlServerUpgrade.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

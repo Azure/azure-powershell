@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: D5254218-8B3B-4DE2-9480-D65EE5483018
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmimage
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmimage
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMImage
+# Get-AzVMImage
 
 ## SYNOPSIS
 Gets all the versions of a VMImage.
@@ -15,24 +15,24 @@ Gets all the versions of a VMImage.
 
 ### ListVMImage
 ```
-Get-AzureRmVMImage -Location <String> -PublisherName <String> -Offer <String> -Skus <String>
+Get-AzVMImage -Location <String> -PublisherName <String> -Offer <String> -Skus <String>
  [-FilterExpression <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetVMImageDetail
 ```
-Get-AzureRmVMImage -Location <String> -PublisherName <String> -Offer <String> -Skus <String> -Version <String>
+Get-AzVMImage -Location <String> -PublisherName <String> -Offer <String> -Skus <String> -Version <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMImage** cmdlet gets all the versions of a VMImage.
+The **Get-AzVMImage** cmdlet gets all the versions of a VMImage.
 
 ## EXAMPLES
 
 ### Example 1: Get VMImage objects
 ```
-PS C:\> Get-AzureRmVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter"
+PS C:\> Get-AzVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter"
 ```
 
 This command gets all the versions of VMImage that match the specified values.
@@ -43,7 +43,7 @@ This command gets all the versions of VMImage that match the specified values.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 
 ### -Offer
 Specifies the type of VMImage offer.
-To obtain an image offer, use the Get-AzureRmVMImageOffer cmdlet.
+To obtain an image offer, use the Get-AzVMImageOffer cmdlet.
 
 ```yaml
 Type: System.String
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 
 ### -PublisherName
 Specifies the publisher of a VMImage.
-To obtain an image publisher, use the Get-AzureRmVMImagePublisher cmdlet.
+To obtain an image publisher, use the Get-AzVMImagePublisher cmdlet.
 
 ```yaml
 Type: System.String
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 
 ### -Skus
 Specifies a VMImage SKU.
-To obtain an SKU, use the Get-AzureRmVMImageSku cmdlet.
+To obtain an SKU, use the Get-AzVMImageSku cmdlet.
 
 ```yaml
 Type: System.String
@@ -164,12 +164,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMImageOffer](./Get-AzureRmVMImageOffer.md)
+[Get-AzVMImageOffer](./Get-AzVMImageOffer.md)
 
-[Get-AzureRmVMImagePublisher](./Get-AzureRmVMImagePublisher.md)
+[Get-AzVMImagePublisher](./Get-AzVMImagePublisher.md)
 
-[Get-AzureRmVMImageSku](./Get-AzureRmVMImageSku.md)
+[Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
-[Save-AzureRmVMImage](./Save-AzureRmVMImage.md)
+[Save-AzVMImage](./Save-AzVMImage.md)
 
 

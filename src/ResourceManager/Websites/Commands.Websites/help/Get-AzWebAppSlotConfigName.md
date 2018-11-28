@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: EF2D377C-C000-4BCA-8EB9-58C805FA5C31
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebappslotconfigname
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebappslotconfigname
 schema: 2.0.0
 ---
 
-# Get-AzureRmWebAppSlotConfigName
+# Get-AzWebAppSlotConfigName
 
 ## SYNOPSIS
 Get the list of Web App Slot Config names
@@ -15,24 +15,23 @@ Get the list of Web App Slot Config names
 
 ### S1
 ```
-Get-AzureRmWebAppSlotConfigName [-ResourceGroupName] <String> [-Name] <String>
+Get-AzWebAppSlotConfigName [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Get-AzureRmWebAppSlotConfigName [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzWebAppSlotConfigName [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmWebAppSlotConfigName** cmdlet retrieves the list of App Setting and Connection String names that are currently marked as slot settings
+The **Get-AzWebAppSlotConfigName** cmdlet retrieves the list of App Setting and Connection String names that are currently marked as slot settings
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>Get-AzureRmWebAppSlotConfigName -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
+PS C:\>Get-AzWebAppSlotConfigName -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 
 This command gets App Settings and Connection strings pertaining to the Web App named ContosoSite associated with the resource group Default-Web-WestUS
@@ -43,7 +42,7 @@ This command gets App Settings and Connection strings pertaining to the Web App 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

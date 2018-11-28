@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: 164DC871-0F0C-4E71-A37A-2B85CE65C2C4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/remove-azurermdatalakestoreitem
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/remove-azdatalakestoreitem
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataLakeStoreItem
+# Remove-AzDataLakeStoreItem
 
 ## SYNOPSIS
 Deletes a file or folder in Data Lake Store.
@@ -14,18 +14,18 @@ Deletes a file or folder in Data Lake Store.
 ## SYNTAX
 
 ```
-Remove-AzureRmDataLakeStoreItem [-Account] <String> [-Paths] <DataLakeStorePathInstance[]> [-Recurse] [-Force]
+Remove-AzDataLakeStoreItem [-Account] <String> [-Paths] <DataLakeStorePathInstance[]> [-Recurse] [-Force]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDataLakeStoreItem** cmdlet deletes a file or folder in Data Lake Store.
+The **Remove-AzDataLakeStoreItem** cmdlet deletes a file or folder in Data Lake Store.
 
 ## EXAMPLES
 
 ### Example 1: Remove multiple items
 ```
-PS C:\>Remove-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Paths "/File01.txt","/MyFiles/File.csv"
+PS C:\>Remove-AzDataLakeStoreItem -AccountName "ContosoADL" -Paths "/File01.txt","/MyFiles/File.csv"
 ```
 
 This command removes the files File01.txt and File.csv from the Data Lake Store.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -173,16 +173,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataLakeStoreItem](./Get-AzureRmDataLakeStoreItem.md)
+[Get-AzDataLakeStoreItem](./Get-AzDataLakeStoreItem.md)
 
-[Export-AzureRmDataLakeStoreItem](./Export-AzureRmDataLakeStoreItem.md)
+[Export-AzDataLakeStoreItem](./Export-AzDataLakeStoreItem.md)
 
-[Import-AzureRmDataLakeStoreItem](./Import-AzureRmDataLakeStoreItem.md)
+[Import-AzDataLakeStoreItem](./Import-AzDataLakeStoreItem.md)
 
-[Join-AzureRmDataLakeStoreItem](./Join-AzureRmDataLakeStoreItem.md)
+[Join-AzDataLakeStoreItem](./Join-AzDataLakeStoreItem.md)
 
-[New-AzureRmDataLakeStoreItem](./New-AzureRmDataLakeStoreItem.md)
+[New-AzDataLakeStoreItem](./New-AzDataLakeStoreItem.md)
 
-[Test-AzureRmDataLakeStoreItem](./Test-AzureRmDataLakeStoreItem.md)
+[Test-AzDataLakeStoreItem](./Test-AzDataLakeStoreItem.md)
 
 

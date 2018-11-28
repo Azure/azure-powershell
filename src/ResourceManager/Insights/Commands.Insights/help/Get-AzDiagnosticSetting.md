@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 60B497F6-98A2-4C60-B142-FF5CD123362D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermdiagnosticsetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azdiagnosticsetting
 schema: 2.0.0
 ---
 
-# Get-AzureRmDiagnosticSetting
+# Get-AzDiagnosticSetting
 
 ## SYNOPSIS
 Gets the logged categories and time grains.
@@ -14,19 +14,19 @@ Gets the logged categories and time grains.
 ## SYNTAX
 
 ```
-Get-AzureRmDiagnosticSetting [-ResourceId] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzDiagnosticSetting [-ResourceId] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDiagnosticSetting** cmdlet gets the categories and time grains that are logged for a resource.
+The **Get-AzDiagnosticSetting** cmdlet gets the categories and time grains that are logged for a resource.
 A time grain is the aggregation interval of a metric.
 
 ## EXAMPLES
 
 ### Example 1: Get the status of the logging categories and time grains
 ```
-PS C:\>Get-AzureRmDiagnosticSetting -ResourceId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/ResourceGroups/ContosoRG/providers/microsoft.keyvault/KeyVaults/ContosoKeyVault"
+PS C:\>Get-AzDiagnosticSetting -ResourceId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/ResourceGroups/ContosoRG/providers/microsoft.keyvault/KeyVaults/ContosoKeyVault"
 StorageAccountId   : /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/ResourceGroups/ContosoRG/providers/microsoft.storage/accounts/ContosoStorageAccount
 StorageAccountName : ContosoStorageAccount001
 Metrics
@@ -44,7 +44,7 @@ This command gets the categories and time grains that are logged for an Azure Ke
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -100,5 +100,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmDiagnosticSetting](./Set-AzureRmDiagnosticSetting.md)
-[Remove-AzureRmDiagnosticSetting](./Remove-AzureRmDiagnosticSetting.md)
+[Set-AzDiagnosticSetting](./Set-AzDiagnosticSetting.md)
+[Remove-AzDiagnosticSetting](./Remove-AzDiagnosticSetting.md)

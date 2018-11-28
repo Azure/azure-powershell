@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: B30C2BDD-6DA9-47B5-88FE-3AD43E15A072
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermvmsqlserverkeyvaultcredentialconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmsqlserverkeyvaultcredentialconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmVMSqlServerKeyVaultCredentialConfig
+# New-AzVMSqlServerKeyVaultCredentialConfig
 
 ## SYNOPSIS
 Creates a configuration object for SQL server key vault credential on a virtual machine.
@@ -14,9 +14,9 @@ Creates a configuration object for SQL server key vault credential on a virtual 
 ## SYNTAX
 
 ```
-New-AzureRmVMSqlServerKeyVaultCredentialConfig [-ResourceGroupName] <String> [-Enable]
- [-CredentialName <String>] [-AzureKeyVaultUrl <String>] [-ServicePrincipalName <String>]
- [-ServicePrincipalSecret <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzVMSqlServerKeyVaultCredentialConfig [-ResourceGroupName] <String> [-Enable] [-CredentialName <String>]
+ [-AzureKeyVaultUrl <String>] [-ServicePrincipalName <String>] [-ServicePrincipalSecret <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,6 +26,8 @@ New-AzureRmVMSqlServerKeyVaultCredentialConfig [-ResourceGroupName] <String> [-E
 ## PARAMETERS
 
 ### -AzureKeyVaultUrl
+Azure Key Vault service URL
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: D9CA9515-5C19-4D63-8D4D-0B288E9309E9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/set-azurermintegrationaccountcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/set-azintegrationaccountcertificate
 schema: 2.0.0
 ---
 
-# Set-AzureRmIntegrationAccountCertificate
+# Set-AzIntegrationAccountCertificate
 
 ## SYNOPSIS
 Modifies an integration account certificate.
@@ -14,14 +14,14 @@ Modifies an integration account certificate.
 ## SYNTAX
 
 ```
-Set-AzureRmIntegrationAccountCertificate -ResourceGroupName <String> -Name <String> -CertificateName <String>
+Set-AzIntegrationAccountCertificate -ResourceGroupName <String> -Name <String> -CertificateName <String>
  [-KeyName <String>] [-KeyVersion <String>] [-KeyVaultId <String>] [-PublicCertificateFilePath <String>]
  [-Metadata <Object>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmIntegrationAccountCertificate** cmdlet modifies an integration account certificate.
+The **Set-AzIntegrationAccountCertificate** cmdlet modifies an integration account certificate.
 This cmdlet returns an object that represents the integration account certificate.
 Specifying the integration account name, resource group name, and certificate name.
 This module supports dynamic parameters.
@@ -33,7 +33,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Modify an integration account certificate
 ```
-PS C:\>Set-AzureRmIntegrationAccountCertificate -ResourceGroupName "ResourceGroup11" -Name "IntegartionAccount31" -CertificateName "IntegrationAccountCertificate01" -KeyName "TestKey" -KeyVersion "1.0" -KeyVaultId "/subscriptions/<subscriptionId>/resourcegroups/ResourceGroup11/providers/microsoft.keyvault/vaults/keyvault" -PublicCertificateFilePath "c:\temp\Certificate.cer"
+PS C:\>Set-AzIntegrationAccountCertificate -ResourceGroupName "ResourceGroup11" -Name "IntegartionAccount31" -CertificateName "IntegrationAccountCertificate01" -KeyName "TestKey" -KeyVersion "1.0" -KeyVaultId "/subscriptions/<subscriptionId>/resourcegroups/ResourceGroup11/providers/microsoft.keyvault/vaults/keyvault" -PublicCertificateFilePath "c:\temp\Certificate.cer"
 Id                : /subscriptions/<SusbcriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegartionAccount31/certificates/IntegrationAccountCertificate01
 Name              : IntegrationAccountCertificate01
 Type              : Microsoft.Logic/integrationAccounts/certificates
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -248,10 +248,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmIntegrationAccountCertificate](./Get-AzureRmIntegrationAccountCertificate.md)
+[Get-AzIntegrationAccountCertificate](./Get-AzIntegrationAccountCertificate.md)
 
-[New-AzureRmIntegrationAccountCertificate](./New-AzureRmIntegrationAccountCertificate.md)
+[New-AzIntegrationAccountCertificate](./New-AzIntegrationAccountCertificate.md)
 
-[Remove-AzureRmIntegrationAccountCertificate](./Remove-AzureRmIntegrationAccountCertificate.md)
+[Remove-AzIntegrationAccountCertificate](./Remove-AzIntegrationAccountCertificate.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
-Module Name: AzureRM.DataLakeAnalytics
+Module Name: Az.DataLakeAnalytics
 ms.assetid: A0293D80-5935-4D2C-AF11-2837FEC95760
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/get-azurermdatalakeanalyticsjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticsjob
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataLakeAnalyticsJob
+# Get-AzDataLakeAnalyticsJob
 
 ## SYNOPSIS
 Gets a Data Lake Analytics job.
@@ -15,7 +15,7 @@ Gets a Data Lake Analytics job.
 
 ### GetAllInResourceGroupAndAccount (Default)
 ```
-Get-AzureRmDataLakeAnalyticsJob [-Account] <String> [[-Name] <String>] [[-Submitter] <String>]
+Get-AzDataLakeAnalyticsJob [-Account] <String> [[-Name] <String>] [[-Submitter] <String>]
  [[-SubmittedAfter] <DateTimeOffset>] [[-SubmittedBefore] <DateTimeOffset>] [[-State] <JobState[]>]
  [[-Result] <JobResult[]>] [-Top <Int32>] [-PipelineId <Guid>] [-RecurrenceId <Guid>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -23,26 +23,26 @@ Get-AzureRmDataLakeAnalyticsJob [-Account] <String> [[-Name] <String>] [[-Submit
 
 ### GetBySpecificJobInformation
 ```
-Get-AzureRmDataLakeAnalyticsJob [-Account] <String> [-JobId] <Guid> [[-Include] <ExtendedJobData>]
+Get-AzDataLakeAnalyticsJob [-Account] <String> [-JobId] <Guid> [[-Include] <ExtendedJobData>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataLakeAnalyticsJob** cmdlet gets an Azure Data Lake Analytics job.
+The **Get-AzDataLakeAnalyticsJob** cmdlet gets an Azure Data Lake Analytics job.
 If you do not specify a job, this cmdlet gets all jobs.
 
 ## EXAMPLES
 
 ### Example 1: Get a specified job
 ```
-PS C:\>Get-AzureRmDataLakeAnalyticsJob -Account "contosoadla" -JobId $JobID01
+PS C:\>Get-AzDataLakeAnalyticsJob -Account "contosoadla" -JobId $JobID01
 ```
 
 This command gets the job with the specified ID.
 
 ### Example 2: Get jobs submitted in the past week
 ```
-PS C:\>Get-AzureRmDataLakeAnalyticsJob -Account "contosoadla" -SubmittedAfter (Get-Date).AddDays(-7)
+PS C:\>Get-AzDataLakeAnalyticsJob -Account "contosoadla" -SubmittedAfter (Get-Date).AddDays(-7)
 ```
 
 This command gets jobs submitted in the past week.
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -304,10 +304,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Stop-AzureRmDataLakeAnalyticsJob](./Stop-AzureRmDataLakeAnalyticsJob.md)
+[Stop-AzDataLakeAnalyticsJob](./Stop-AzDataLakeAnalyticsJob.md)
 
-[Submit-AzureRmDataLakeAnalyticsJob](./Submit-AzureRmDataLakeAnalyticsJob.md)
+[Submit-AzDataLakeAnalyticsJob](./Submit-AzDataLakeAnalyticsJob.md)
 
-[Wait-AzureRmDataLakeAnalyticsJob](./Wait-AzureRmDataLakeAnalyticsJob.md)
+[Wait-AzDataLakeAnalyticsJob](./Wait-AzDataLakeAnalyticsJob.md)
 
 

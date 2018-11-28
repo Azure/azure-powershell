@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 0C8C07CA-6720-452F-A952-48C76EBF3BBD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermadserviceprincipal
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadserviceprincipal
 schema: 2.0.0
 ---
 
-# Remove-AzureRmADServicePrincipal
+# Remove-AzADServicePrincipal
 
 ## SYNOPSIS
 Deletes the azure active directory service principal.
@@ -15,37 +15,37 @@ Deletes the azure active directory service principal.
 
 ### ObjectIdParameterSet (Default)
 ```
-Remove-AzureRmADServicePrincipal -ObjectId <Guid> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADServicePrincipal -ObjectId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
-Remove-AzureRmADServicePrincipal -ApplicationId <Guid> [-PassThru] [-Force]
+Remove-AzADServicePrincipal -ApplicationId <Guid> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNParameterSet
 ```
-Remove-AzureRmADServicePrincipal -ServicePrincipalName <String> [-PassThru] [-Force]
+Remove-AzADServicePrincipal -ServicePrincipalName <String> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Remove-AzureRmADServicePrincipal -DisplayName <String> [-PassThru] [-Force]
+Remove-AzADServicePrincipal -DisplayName <String> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzureRmADServicePrincipal -InputObject <PSADServicePrincipal> [-PassThru] [-Force]
+Remove-AzADServicePrincipal -InputObject <PSADServicePrincipal> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectParameterSet
 ```
-Remove-AzureRmADServicePrincipal -ApplicationObject <PSADApplication> [-PassThru] [-Force]
+Remove-AzADServicePrincipal -ApplicationObject <PSADApplication> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ Deletes the azure active directory service principal.
 ### Example 1 - Remove a service principal by object id
 
 ```
-PS C:\> Remove-AzureRmADServicePrincipal -ObjectId 61b5d8ea-fdc6-40a2-8d5b-ad447c678d45
+PS C:\> Remove-AzADServicePrincipal -ObjectId 61b5d8ea-fdc6-40a2-8d5b-ad447c678d45
 ```
 
 Removes the service principal with object id '61b5d8ea-fdc6-40a2-8d5b-ad447c678d45'.
@@ -65,7 +65,7 @@ Removes the service principal with object id '61b5d8ea-fdc6-40a2-8d5b-ad447c678d
 ### Example 2 - Remove a service principal by application id
 
 ```
-PS C:\> Remove-AzureRmADServicePrincipal -ApplicationId 9263469e-d328-4321-8646-3e3e75d20e76
+PS C:\> Remove-AzADServicePrincipal -ApplicationId 9263469e-d328-4321-8646-3e3e75d20e76
 ```
 
 Removes the service principal with application id '9263469e-d328-4321-8646-3e3e75d20e76'.
@@ -73,7 +73,7 @@ Removes the service principal with application id '9263469e-d328-4321-8646-3e3e7
 ### Example 3 - Remove a service principal by SPN
 
 ```
-PS C:\> Remove-AzureRmADServicePrincipal -ServicePrincipalName MyServicePrincipal
+PS C:\> Remove-AzADServicePrincipal -ServicePrincipalName MyServicePrincipal
 ```
 
 Remove the service principal with service principal name "MyServicePrincipal"
@@ -81,18 +81,18 @@ Remove the service principal with service principal name "MyServicePrincipal"
 ### Example 4 - Remove a service principal by piping
 
 ```
-PS C:\> Get-AzureRmADServicePrincipal -ObjectId 61b5d8ea-fdc6-40a2-8d5b-ad447c678d45 | Remove-AzureRmADServicePrincipal
+PS C:\> Get-AzADServicePrincipal -ObjectId 61b5d8ea-fdc6-40a2-8d5b-ad447c678d45 | Remove-AzADServicePrincipal
 ```
 
-Gets the service principal with object id '61b5d8ea-fdc6-40a2-8d5b-ad447c678d45' and pipes that to the Remove-AzureRmADServicePrincipal cmdlet to remove that service principal.
+Gets the service principal with object id '61b5d8ea-fdc6-40a2-8d5b-ad447c678d45' and pipes that to the Remove-AzADServicePrincipal cmdlet to remove that service principal.
 
 ### Example 5 - Remove a service principal by piping an application
 
 ```
-PS C:\> Get-AzureRmApplication -ApplicationId 9263469e-d328-4321-8646-3e3e75d20e76 | Remove-AzureRmADServicePrincipal
+PS C:\> Get-AzApplication -ApplicationId 9263469e-d328-4321-8646-3e3e75d20e76 | Remove-AzADServicePrincipal
 ```
 
-Gets the application with application id '9263469e-d328-4321-8646-3e3e75d20e76' and pipes that to the Remove-AzureRmADServicePrincipal cmdlet to remove the service principal associated with that application.
+Gets the application with application id '9263469e-d328-4321-8646-3e3e75d20e76' and pipes that to the Remove-AzADServicePrincipal cmdlet to remove the service principal associated with that application.
 
 ## PARAMETERS
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -286,12 +286,12 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 ## RELATED LINKS
 
-[New-AzureRmADServicePrincipal](./New-AzureRmADServicePrincipal.md)
+[New-AzADServicePrincipal](./New-AzADServicePrincipal.md)
 
-[Get-AzureRmADServicePrincipal](./Get-AzureRmADServicePrincipal.md)
+[Get-AzADServicePrincipal](./Get-AzADServicePrincipal.md)
 
-[Set-AzureRmADServicePrincipal](./Set-AzureRmADServicePrincipal.md)
+[Set-AzADServicePrincipal](./Set-AzADServicePrincipal.md)
 
-[Remove-AzureRmADApplication](./Remove-AzureRmADApplication.md)
+[Remove-AzADApplication](./Remove-AzADApplication.md)
 
-[Remove-AzureRmADAppCredential](./Remove-AzureRmADAppCredential.md)
+[Remove-AzADAppCredential](./Remove-AzADAppCredential.md)

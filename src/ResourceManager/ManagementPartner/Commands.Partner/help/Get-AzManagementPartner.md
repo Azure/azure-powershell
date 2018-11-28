@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ManagementPartner.dll-Help.xml
-Module Name: AzureRM.ManagementPartner
-online version: https://docs.microsoft.com/en-us/powershell/module/get-azurermmanagementpartner
+Module Name: Az.ManagementPartner
+online version: https://docs.microsoft.com/en-us/powershell/module/get-azmanagementpartner
 schema: 2.0.0
 ---
 
-# Get-AzureRmManagementPartner
+# Get-AzManagementPartner
 
 ## SYNOPSIS
 Gets the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal. 
@@ -13,8 +13,7 @@ Gets the Microsoft Partner Network(MPN) ID of the current authenticated user or 
 ## SYNTAX
 
 ```
-Get-AzureRmManagementPartner [[-PartnerId] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzManagementPartner [[-PartnerId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +23,7 @@ Gets the Microsoft Partner Network(MPN) ID of the current authenticated user or 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmManagementPartner
+PS C:\> Get-AzManagementPartner
 PartnerId   : 4977985
 PartnerName : Test_Test_DPORTest
 TenantId    : 1b1121dd-6900-412a-af73-e8d44f81e1c1
@@ -36,7 +35,7 @@ Get the current management partner id
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmManagementPartner -PartnerId 4977985
+PS C:\> Get-AzManagementPartner -PartnerId 4977985
 PartnerId   : 4977985
 PartnerName : Test_Test_DPORTest
 TenantId    : 1b1121dd-6900-412a-af73-e8d44f81e1c1
@@ -52,7 +51,7 @@ Get the current management partner id using a partner id, if they don't match, i
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,8 +92,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmManagementPartner](./Remove-AzureRmManagementPartner.md)
+[Remove-AzManagementPartner](./Remove-AzManagementPartner.md)
 
-[New-AzureRmManagementPartner](./New-AzureRmManagementPartner.md)
+[New-AzManagementPartner](./New-AzManagementPartner.md)
 
-[Update-AzureRmManagementPartner](./Update-AzureRmManagementPartner.md)
+[Update-AzManagementPartner](./Update-AzManagementPartner.md)

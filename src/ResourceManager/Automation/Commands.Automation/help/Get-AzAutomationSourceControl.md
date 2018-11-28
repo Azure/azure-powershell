@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationsourcecontrol
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationsourcecontrol
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationSourceControl
+# Get-AzAutomationSourceControl
 
 ## SYNOPSIS
 Gets a list of Azure Automation source controls.
@@ -14,18 +14,18 @@ Gets a list of Azure Automation source controls.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationSourceControl [-SourceType <String>] [-ResourceGroupName] <String>
+Get-AzAutomationSourceControl [-SourceType <String>] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmAutomationSourceControl -Name <String> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAutomationSourceControl -Name <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmAutomationSourceControl cmdlet gets Automation source controls.
+The Get-AzAutomationSourceControl cmdlet gets Automation source controls.
 To get a specific source control, specify its name.
 
 ## EXAMPLES
@@ -35,7 +35,7 @@ This command gets an Automation source control named VSTSNative in the account n
 
 
 ```powershell
-PS C:\> Get-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
+PS C:\> Get-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name "VSTSNative" 
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/enable-azurermdatalakestorekeyvault
+Module Name: Az.DataLakeStore
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/enable-azdatalakestorekeyvault
 schema: 2.0.0
 ---
 
-# Enable-AzureRmDataLakeStoreKeyVault
+# Enable-AzDataLakeStoreKeyVault
 
 ## SYNOPSIS
 Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
@@ -13,18 +13,18 @@ Attempts to enable a user managed Key Vault for encryption of the specified Data
 ## SYNTAX
 
 ```
-Enable-AzureRmDataLakeStoreKeyVault [-Account] <String> [-ResourceGroupName <String>]
+Enable-AzDataLakeStoreKeyVault [-Account] <String> [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzureRmDataLakeStoreKeyVault** cmdlet attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
+The **Enable-AzDataLakeStoreKeyVault** cmdlet attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
 
 ## EXAMPLES
 
 ### Example 1: Enable the Key Vault for the ContosoADLS account
 ```
-PS C:\>Enable-AzureRmDataLakeStoreKeyVault -Name "ContosoADLS"
+PS C:\>Enable-AzDataLakeStoreKeyVault -Name "ContosoADLS"
 ```
 
 This command attempts to enable the user managed Key Vault for the Data Lake Store account named ContosoADLS.
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -121,7 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmDataLakeStoreAccount](./New-AzureRmDataLakeStoreAccount.md)
+[New-AzDataLakeStoreAccount](./New-AzDataLakeStoreAccount.md)
 
-[Set-AzureRmDataLakeStoreAccount](./Set-AzureRmDataLakeStoreAccount.md)
+[Set-AzDataLakeStoreAccount](./Set-AzDataLakeStoreAccount.md)
 

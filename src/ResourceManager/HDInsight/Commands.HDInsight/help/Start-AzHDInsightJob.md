@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 0225C7CA-74B4-4ACC-870C-9539DF6ECC47
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/start-azurermhdinsightjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/start-azhdinsightjob
 schema: 2.0.0
 ---
 
-# Start-AzureRmHDInsightJob
+# Start-AzHDInsightJob
 
 ## SYNOPSIS
 Starts a defined Azure HDInsight job on a specified cluster.
@@ -14,13 +14,13 @@ Starts a defined Azure HDInsight job on a specified cluster.
 ## SYNTAX
 
 ```
-Start-AzureRmHDInsightJob [-ClusterName] <String> [-JobDefinition] <AzureHDInsightJobDefinition>
+Start-AzHDInsightJob [-ClusterName] <String> [-JobDefinition] <AzureHDInsightJobDefinition>
  [-HttpCredential] <PSCredential> [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRMHDInsightJob** cmdlet starts a defined Azure HDInsight job on a specified cluster.
+The **Start-AzHDInsightJob** cmdlet starts a defined Azure HDInsight job on a specified cluster.
 This can be a MapReduce job, a Streaming MapReduce job, a Hive job, or a Pig job.
 
 ## EXAMPLES
@@ -35,9 +35,9 @@ PS C:\> $clusterCreds = Get-Credential
 PS C:\> $statusFolder = "tempStatusFolder/"
 PS C:\> $query = "SHOW TABLES"
 
-PS C:\> New-AzureRmHDInsightHiveJobDefinition -StatusFolder $statusFolder `
+PS C:\> New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
             -Query $query `
-        | Start-AzureRmHDInsightJob `
+        | Start-AzHDInsightJob `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds
 ```
@@ -137,12 +137,12 @@ Parameters: JobDefinition (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmHDInsightJob](./Get-AzureRmHDInsightJob.md)
+[Get-AzHDInsightJob](./Get-AzHDInsightJob.md)
 
-[New-AzureRmHDInsightHiveJobDefinition](./New-AzureRmHDInsightHiveJobDefinition.md)
+[New-AzHDInsightHiveJobDefinition](./New-AzHDInsightHiveJobDefinition.md)
 
-[Stop-AzureRmHDInsightJob](./Stop-AzureRmHDInsightJob.md)
+[Stop-AzHDInsightJob](./Stop-AzHDInsightJob.md)
 
-[Wait-AzureRmHDInsightJob](./Wait-AzureRmHDInsightJob.md)
+[Wait-AzHDInsightJob](./Wait-AzHDInsightJob.md)
 
 

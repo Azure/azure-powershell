@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-Module Name: AzureRM.MachineLearning
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/update-azurermmlwebservice
+Module Name: Az.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/update-azmlwebservice
 schema: 2.0.0
 ---
 
-# Update-AzureRmMlWebService
+# Update-AzMlWebService
 
 ## SYNOPSIS
 Updates properties of an existing web service resource.
@@ -14,7 +14,7 @@ Updates properties of an existing web service resource.
 
 ### UpdateFromParameters
 ```
-Update-AzureRmMlWebService -ResourceGroupName <String> -Name <String> [-Title <String>] [-Description <String>]
+Update-AzMlWebService -ResourceGroupName <String> -Name <String> [-Title <String>] [-Description <String>]
  [-IsReadOnly] [-Keys <WebServiceKeys>] [-StorageAccountKey <String>] [-Diagnostics <DiagnosticsConfiguration>]
  [-RealtimeConfiguration <RealtimeConfiguration>] [-Assets <Hashtable>]
  [-Input <ServiceInputOutputSpecification>] [-Output <ServiceInputOutputSpecification>]
@@ -24,12 +24,12 @@ Update-AzureRmMlWebService -ResourceGroupName <String> -Name <String> [-Title <S
 
 ### UpdateFromObject
 ```
-Update-AzureRmMlWebService -ResourceGroupName <String> -Name <String> -ServiceUpdates <WebService> [-Force]
+Update-AzMlWebService -ResourceGroupName <String> -Name <String> -ServiceUpdates <WebService> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Update-AzureRmMlWebService cmdlet allows you to update the non-static properties of a web service.
+The Update-AzMlWebService cmdlet allows you to update the non-static properties of a web service.
 The cmdlet works as a patch operation.
 Pass only the properties that you want modified.
 
@@ -37,7 +37,7 @@ Pass only the properties that you want modified.
 
 ### Example 1: Selective update arguments
 ```
-Update-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Description "new update to description" -Keys @{Primary='changed primary key'} -Diagnostics @{Level='All'}
+Update-AzMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Description "new update to description" -Keys @{Primary='changed primary key'} -Diagnostics @{Level='All'}
 ```
 
 Here, we change the description, primary access key and enable the diagnostics collection for all traces during runtime for the web service.
@@ -46,10 +46,10 @@ Here, we change the description, primary access key and enable the diagnostics c
 ```
 $updates = @{ Properties = @{ Title="New Title"; RealtimeConfiguration = @{ MaxConcurrentCalls=25 }}}
 
-Update-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -ServiceUpdates $updates
+Update-AzMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -ServiceUpdates $updates
 ```
 
-The example first creates a web service definition, that only contains the fields to be updated, and then calls the Update-AzureRmMlWebService to apply them using the ServiceUpdates parameter.
+The example first creates a web service definition, that only contains the fields to be updated, and then calls the Update-AzMlWebService to apply them using the ServiceUpdates parameter.
 
 ## PARAMETERS
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

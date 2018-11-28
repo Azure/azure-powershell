@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 ms.assetid: 1F86CE62-AA01-44FB-A935-484EC51DDE5A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/new-azurermrediscachekey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/new-azrediscachekey
 schema: 2.0.0
 ---
 
-# New-AzureRmRedisCacheKey
+# New-AzRedisCacheKey
 
 ## SYNOPSIS
 Regenerates the access key of a Redis Cache.
@@ -14,18 +14,18 @@ Regenerates the access key of a Redis Cache.
 ## SYNTAX
 
 ```
-New-AzureRmRedisCacheKey [-ResourceGroupName <String>] -Name <String> -KeyType <String> [-Force]
+New-AzRedisCacheKey [-ResourceGroupName <String>] -Name <String> -KeyType <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmRedisCacheKey** cmdlet regenerates the access key of an Azure Redis Cache.
+The **New-AzRedisCacheKey** cmdlet regenerates the access key of an Azure Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1: Regenerate a primary key
 ```
-PS C:\>New-AzureRmRedisCacheKey -ResourceGroupName "ResourceGroup03" -Name "myCache" -KeyType "Primary" -Force
+PS C:\>New-AzRedisCacheKey -ResourceGroupName "ResourceGroup03" -Name "myCache" -KeyType "Primary" -Force
 
           PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
 
@@ -36,7 +36,7 @@ This command regenerates the primary key of a Redis Cache.
 
 ### Example 2: Regenerate a secondary key
 ```
-PS C:\>New-AzureRmRedisCacheKey -ResourceGroupName "ResourceGroup03" -Name "myCache" -KeyType "Secondary" -Force
+PS C:\>New-AzRedisCacheKey -ResourceGroupName "ResourceGroup03" -Name "myCache" -KeyType "Secondary" -Force
           PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
 
           SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
@@ -50,7 +50,7 @@ This command regenerates the secondary key of a Redis Cache.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -169,6 +169,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmRedisCacheKey](./Get-AzureRmRedisCacheKey.md)
+[Get-AzRedisCacheKey](./Get-AzRedisCacheKey.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 663D27A3-0B51-48F5-81D0-8DDBC5A3A33C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/set-azurermdatafactorygateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/set-azdatafactorygateway
 schema: 2.0.0
 ---
 
-# Set-AzureRmDataFactoryGateway
+# Set-AzDataFactoryGateway
 
 ## SYNOPSIS
 Sets the description for a gateway in Azure Data Factory.
@@ -15,24 +15,24 @@ Sets the description for a gateway in Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Set-AzureRmDataFactoryGateway [-DataFactoryName] <String> [-Name] <String> [-Description] <String>
+Set-AzDataFactoryGateway [-DataFactoryName] <String> [-Name] <String> [-Description] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Set-AzureRmDataFactoryGateway [-DataFactory] <PSDataFactory> [-Name] <String> [-Description] <String>
+Set-AzDataFactoryGateway [-DataFactory] <PSDataFactory> [-Name] <String> [-Description] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmDataFactoryGateway** cmdlet sets the description for the specified gateway in Azure Data Factory.
+The **Set-AzDataFactoryGateway** cmdlet sets the description for the specified gateway in Azure Data Factory.
 
 ## EXAMPLES
 
 ### Example 1: Set the description for a gateway
 ```
-PS C:\>Set-AzureRmDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
+PS C:\>Set-AzDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
 Name            : ContosoGateway
 Description     : my gateway
 Version         : 1.3.5338.1
@@ -160,10 +160,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryGateway](./Get-AzureRmDataFactoryGateway.md)
+[Get-AzDataFactoryGateway](./Get-AzDataFactoryGateway.md)
 
-[New-AzureRmDataFactoryGateway](./New-AzureRmDataFactoryGateway.md)
+[New-AzDataFactoryGateway](./New-AzDataFactoryGateway.md)
 
-[Remove-AzureRmDataFactoryGateway](./Remove-AzureRmDataFactoryGateway.md)
+[Remove-AzDataFactoryGateway](./Remove-AzDataFactoryGateway.md)
 
 

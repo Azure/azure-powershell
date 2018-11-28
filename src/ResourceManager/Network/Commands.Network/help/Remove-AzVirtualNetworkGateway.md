@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: A35BB728-A7EF-4ADF-B1A9-25A156434E99
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermvirtualnetworkgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvirtualnetworkgateway
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVirtualNetworkGateway
+# Remove-AzVirtualNetworkGateway
 
 ## SYNOPSIS
 Deletes a Virtual Network Gateway
@@ -14,23 +14,23 @@ Deletes a Virtual Network Gateway
 ## SYNTAX
 
 ```
-Remove-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
+Remove-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Virtual Network Gateway is the object representing your gateway in Azure.
-The **Get-AzureRmVirtualNetworkGateway** cmdlet returns the object of your gateway in Azure based on Name and Resource Group Name.
+The **Get-AzVirtualNetworkGateway** cmdlet returns the object of your gateway in Azure based on Name and Resource Group Name.
 
 ## EXAMPLES
 
 ### 1: Delete a Virtual Network Gateway
 ```
-Remove-AzureRmVirtualNetworkGateway -Name myGateway -ResourceGroupName myRG
+Remove-AzVirtualNetworkGateway -Name myGateway -ResourceGroupName myRG
 ```
 
 Deletes the object of the Virtual Network Gateway with the name "myGateway" within the resource group "myRG"
-Note: You must first delete all connections to the Virtual Network Gateway using the **Remove-AzureRmVirtualNetworkGatewayConnection** cmdlet.
+Note: You must first delete all connections to the Virtual Network Gateway using the **Remove-AzVirtualNetworkGatewayConnection** cmdlet.
 
 ## PARAMETERS
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

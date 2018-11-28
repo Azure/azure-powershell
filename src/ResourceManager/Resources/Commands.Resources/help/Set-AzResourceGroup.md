@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 4E5C059B-36F3-41C8-9FDB-69F5318CF39B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermresourcegroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azresourcegroup
 schema: 2.0.0
 ---
 
-# Set-AzureRmResourceGroup
+# Set-AzResourceGroup
 
 ## SYNOPSIS
 Modifies a resource group.
@@ -15,18 +15,18 @@ Modifies a resource group.
 
 ### SetByResourceGroupName (Default)
 ```
-Set-AzureRmResourceGroup [-Name] <String> [-Tag] <Hashtable> [-ApiVersion <String>] [-Pre]
+Set-AzResourceGroup -Name <String> [-Tag] <Hashtable> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceGroupId
 ```
-Set-AzureRmResourceGroup [-Tag] <Hashtable> [-Id] <String> [-ApiVersion <String>] [-Pre]
+Set-AzResourceGroup [-Tag] <Hashtable> -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmResourceGroup** cmdlet modifies the properties of a resource group.
+The **Set-AzResourceGroup** cmdlet modifies the properties of a resource group.
 You can use this cmdlet to add, change, or delete the Azure tags applied to a resource group.
 Specify the *Name* parameter to identify the resource group and the *Tag* parameter to modify the tags.
 You cannot use this cmdlet to change the name of a resource group.
@@ -35,18 +35,18 @@ You cannot use this cmdlet to change the name of a resource group.
 
 ### Example 1: Apply a tag to a resource group
 ```
-PS C:\>Set-AzureRmResourceGroup -Name "ContosoRG" -Tag @{Department="IT"}
+PS C:\>Set-AzResourceGroup -Name "ContosoRG" -Tag @{Department="IT"}
 ```
 
 This command applies a Department tag with a value of IT to a resource group that has no existing tags.
 
 ### Example 2: Add tags to a resource group
 ```
-PS C:\>$Tags = (Get-AzureRmResourceGroup -Name "ContosoRG").Tags
+PS C:\>$Tags = (Get-AzResourceGroup -Name "ContosoRG").Tags
 PS C:\> $Tags
 PS C:\> $Tags += @{"Status"="Approved"; "FY2016"=$null}
-PS C:\> Set-AzureRmResourceGroup -Name "ContosoRG" -Tag $Tags
-PS C:> (Get-AzureRmResourceGroup -Name "ContosoRG").Tags
+PS C:\> Set-AzResourceGroup -Name "ContosoRG" -Tag $Tags
+PS C:> (Get-AzResourceGroup -Name "ContosoRG").Tags
 ```
 
 This example adds a Status tag with a value of Approved and an FY2016 tag to a resource group that
@@ -57,14 +57,14 @@ Tags property. The command stores the tags in the $Tags variable.
 The second command gets the tags in the $Tags variable.
 The third command uses the += assignment operator to add the Status and FY2016 tags to the array of
 tags in the $Tags variable.
-The fourth command uses the *Tag* parameter of **Set-AzureRmResourceGroup** to apply the tags in
+The fourth command uses the *Tag* parameter of **Set-AzResourceGroup** to apply the tags in
 the $Tags variable to the ContosoRG resource group.
 The fifth command gets all of the tags applied to the ContosoRG resource group. The output shows
 that the resource group has the Department tag and the two new tags, Status and FY2015.
 
 ### Example 3: Delete all tags for a resource group
 ```
-PS C:\>Set-AzureRmResourceGroup -Name "ContosoRG" -Tag @{}
+PS C:\>Set-AzResourceGroup -Name "ContosoRG" -Tag @{}
 ```
 
 This command specifies the *Tag* parameter with an empty hash table value to delete all tags from
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,7 +112,7 @@ Parameter Sets: SetByResourceGroupId
 Aliases: ResourceGroupId, ResourceId
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -127,7 +127,7 @@ Parameter Sets: SetByResourceGroupName
 Aliases: ResourceGroupName
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -152,13 +152,13 @@ Accept wildcard characters: False
 Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 A tag is a name-value pair that you can create and apply to resources and resource groups. After
-you assign tags to resources and groups, you can use the *Tag* parameter of Get-AzureRmResource and
-Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value. You can
+you assign tags to resources and groups, you can use the *Tag* parameter of Get-AzResource and
+Get-AzResourceGroup to search for resources and groups by tag name or name and value. You can
 use tags to categorize your resources, such as by department or cost center, or to track notes or
 comments about the resources.
 To add or change a tag, you must replace the collection of tags for the resource group. To delete a
 tag, enter a hash table with all tags currently applied to the resource group, from
-**Get-AzureRmResourceGroup**, except for the tag you want to delete. To delete all tags from a
+**Get-AzResourceGroup**, except for the tag you want to delete. To delete all tags from a
 resource group, specify an empty hash table: `@{}`.
 
 ```yaml
@@ -188,10 +188,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmResource](./Get-AzureRmResource.md)
+[Get-AzResource](./Get-AzResource.md)
 
-[Get-AzureRmResourceGroup](./Get-AzureRmResourceGroup.md)
+[Get-AzResourceGroup](./Get-AzResourceGroup.md)
 
-[New-AzureRmResourceGroup](./New-AzureRmResourceGroup.md)
+[New-AzResourceGroup](./New-AzResourceGroup.md)
 
-[Remove-AzureRmResourceGroup](./Remove-AzureRmResourceGroup.md)
+[Remove-AzResourceGroup](./Remove-AzResourceGroup.md)

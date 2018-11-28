@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/remove-azurermservicefabricsetting
+Module Name: Az.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/remove-azservicefabricsetting
 schema: 2.0.0
 ---
 
-# Remove-AzureRmServiceFabricSetting
+# Remove-AzServiceFabricSetting
 
 ## SYNOPSIS
 Remove one or multiple Service Fabric setting from the cluster.
@@ -14,25 +14,25 @@ Remove one or multiple Service Fabric setting from the cluster.
 
 ### OneSetting
 ```
-Remove-AzureRmServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String> -Section <String>
+Remove-AzServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String> -Section <String>
  -Parameter <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BatchSettings
 ```
-Remove-AzureRmServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String>
+Remove-AzServiceFabricSetting [-ResourceGroupName] <String> [-Name] <String>
  -SettingsSectionDescription <PSSettingsSectionDescription[]> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use **Remove-AzureRmServiceFabricSetting** to remove Service Fabric settings from the cluster.
+Use **Remove-AzServiceFabricSetting** to remove Service Fabric settings from the cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Remove-AzureRmServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Section 'EseStore' -Parameter 'MaxCursors'
+PS c:> Remove-AzServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Section 'EseStore' -Parameter 'MaxCursors'
 ```
 
 This command will remove settings 'MaxCursors' under 'EseStore' section.
@@ -43,7 +43,7 @@ This command will remove settings 'MaxCursors' under 'EseStore' section.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

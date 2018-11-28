@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 256AA6F4-D856-4713-A0AC-0DA1A145AA5C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqldatabasegeobackup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabasegeobackup
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlDatabaseGeoBackup
+# Get-AzSqlDatabaseGeoBackup
 
 ## SYNOPSIS
 Gets a geo-redundant backup of a database.
@@ -14,12 +14,12 @@ Gets a geo-redundant backup of a database.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlDatabaseGeoBackup [-ServerName] <String> [[-DatabaseName] <String>] [-ResourceGroupName] <String>
+Get-AzSqlDatabaseGeoBackup [-ServerName] <String> [[-DatabaseName] <String>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRMSqlDatabaseGeoBackup** cmdlet gets a specified geo-redundant backup of a SQL database or all available geo-redundant backups on a specified server.
+The **Get-AzSqlDatabaseGeoBackup** cmdlet gets a specified geo-redundant backup of a SQL database or all available geo-redundant backups on a specified server.
 A geo-redundant backup is a restorable resource using data files from a separate geographic location.
 You can use Geo-Restore to restore a geo-redundant backup in the event of a regional outage to recover your database to a new region.
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
@@ -28,14 +28,14 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 
 ### Example 1: Get all geo-redundant backups on a server
 ```
-PS C:\>Get-AzureRMSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer"
+PS C:\>Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer"
 ```
 
 This command gets all available geo-redundant backups on a specified server.
 
 ### Example 2: Get a specified geo-redundant backup
 ```
-PS C:\>Get-AzureRMSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer" -DatabaseName "ContosoDatabase"
+PS C:\>Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer" -DatabaseName "ContosoDatabase"
 ```
 
 This command gets the database geo-redundant backup named ContosoDatabase.
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -152,6 +152,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Recover an Azure SQL Database from an outage](http://go.microsoft.com/fwlink/?LinkId=746882)
 
-[Restore-AzureRmSqlDatabase](./Restore-AzureRmSqlDatabase.md)
+[Restore-AzSqlDatabase](./Restore-AzSqlDatabase.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

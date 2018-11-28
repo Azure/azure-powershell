@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
-Module Name: AzureRM.NotificationHubs
+Module Name: Az.NotificationHubs
 ms.assetid: 8EDDA991-55B6-4151-8619-E13E14599ECD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/new-azurermnotificationhub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/new-aznotificationhub
 schema: 2.0.0
 ---
 
-# New-AzureRmNotificationHub
+# New-AzNotificationHub
 
 ## SYNOPSIS
 Creates a notification hub.
@@ -15,32 +15,32 @@ Creates a notification hub.
 
 ### InputFileParameterSet
 ```
-New-AzureRmNotificationHub [-ResourceGroup] <String> [-Namespace] <String> [-InputFile] <String>
+New-AzNotificationHub [-ResourceGroup] <String> [-Namespace] <String> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NotificationHubParameterSet
 ```
-New-AzureRmNotificationHub [-ResourceGroup] <String> [-Namespace] <String>
+New-AzNotificationHub [-ResourceGroup] <String> [-Namespace] <String>
  [-NotificationHubObj] <NotificationHubAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmNotificationHub** cmdlet creates a notification hub.
+The **New-AzNotificationHub** cmdlet creates a notification hub.
 Notification hubs are used to send push notifications to multiple clients regardless of the platform used by those clients.
 Notification hubs are roughly equivalent to individual apps: each of your apps will typically have its own notification hub.
-The **New-AzureRmNotificationHub** cmdlet provides two ways to create a new notification hub.
+The **New-AzNotificationHub** cmdlet provides two ways to create a new notification hub.
 You can create an instance of the **NotificationHubAttributes** object and then configure that object.
 You can then copy those property values to your new hub by through the *NotificationHubObj* parameter.
 Alternatively, you can create a JSON (JavaScript Object Notation) file containing the relevant configuration values and  then apply those values by using the *InputFile* parameter.
-When used in conjunction with the **New-AzureRmNotificationHub** cmdlet, the preceding JSON sample creates a notification hub named ContosoNotificationHub located on the West US datacenter.
+When used in conjunction with the **New-AzNotificationHub** cmdlet, the preceding JSON sample creates a notification hub named ContosoNotificationHub located on the West US datacenter.
 
 ## EXAMPLES
 
 ### Example 1: Create a notification hub
 ```
-PS C:\>New-AzureRmNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -InputFile "C:\Configurations\InternalHub.json"
+PS C:\>New-AzNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -InputFile "C:\Configurations\InternalHub.json"
 ```
 
 This command creates a notification hub in the namespace ContosoNamespace.
@@ -53,7 +53,7 @@ You do not need to specify a name or any other configuration information for the
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 Specifies the namespace to which the notification hub will be assigned.
 Namespaces provide a way to group and categorize notification hubs.
 Notification hubs must be assigned to an existing namespace.
-The **New-AzureRmNotificationHub** cmdlet cannot create a new namespace.
+The **New-AzNotificationHub** cmdlet cannot create a new namespace.
 
 ```yaml
 Type: System.String
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Specifies the resource group to which the notification hub will be assigned.
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 You must use an existing resource group.
-The **New-AzureRmNotificationHub** cmdlet cannot create a new resource group.
+The **New-AzNotificationHub** cmdlet cannot create a new resource group.
 
 ```yaml
 Type: System.String
@@ -175,10 +175,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNotificationHub](./Get-AzureRmNotificationHub.md)
+[Get-AzNotificationHub](./Get-AzNotificationHub.md)
 
-[Remove-AzureRmNotificationHub](./Remove-AzureRmNotificationHub.md)
+[Remove-AzNotificationHub](./Remove-AzNotificationHub.md)
 
-[Set-AzureRmNotificationHub](./Set-AzureRmNotificationHub.md)
+[Set-AzNotificationHub](./Set-AzNotificationHub.md)
 
 

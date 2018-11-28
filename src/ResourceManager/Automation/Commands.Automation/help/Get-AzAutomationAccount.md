@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: B32A8423-A7AA-418E-A95D-6C18566741AB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationaccount
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationAccount
+# Get-AzAutomationAccount
 
 ## SYNOPSIS
 Gets Automation accounts in a resource group.
@@ -15,32 +15,32 @@ Gets Automation accounts in a resource group.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationAccount [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzAutomationAccount [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByAutomationAccountName
 ```
-Get-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String>
+Get-AzAutomationAccount [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutomationAccount** cmdlet gets Azure Automation accounts in a resource group.
-For more information about Automation accounts, see the New-AzureRmAutomationAccount cmdlet.
+The **Get-AzAutomationAccount** cmdlet gets Azure Automation accounts in a resource group.
+For more information about Automation accounts, see the New-AzAutomationAccount cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Get all accounts
 ```
-PS C:\>Get-AzureRmAutomationAccount -ResourceGroupName "ResourceGroup03"
+PS C:\>Get-AzAutomationAccount -ResourceGroupName "ResourceGroup03"
 ```
 
 This command gets all Automation accounts in the resource group named ResourceGroup03.
 
 ### Example 2: Get an account
 ```
-PS C:\>Get-AzureRmAutomationAccount -ResourceGroupName "ResourceGroup03" -Name "ContosoAutomationAccount"
+PS C:\>Get-AzAutomationAccount -ResourceGroupName "ResourceGroup03" -Name "ContosoAutomationAccount"
 ```
 
 This command gets the Automation account named ContosoAutomationAccount in the resource group named ContosoResourceGroup.
@@ -51,7 +51,7 @@ This command gets the Automation account named ContosoAutomationAccount in the r
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -119,10 +119,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAutomationAccount](./New-AzureRmAutomationAccount.md)
+[New-AzAutomationAccount](./New-AzAutomationAccount.md)
 
-[Remove-AzureRmAutomationAccount](./Remove-AzureRmAutomationAccount.md)
+[Remove-AzAutomationAccount](./Remove-AzAutomationAccount.md)
 
-[Set-AzureRmAutomationAccount](./Set-AzureRmAutomationAccount.md)
+[Set-AzAutomationAccount](./Set-AzAutomationAccount.md)
 
 

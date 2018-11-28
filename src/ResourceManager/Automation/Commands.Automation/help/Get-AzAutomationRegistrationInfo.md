@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 09823BE3-A98B-42EF-B6F4-99F95F2B342E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationregistrationinfo
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationregistrationinfo
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationRegistrationInfo
+# Get-AzAutomationRegistrationInfo
 
 ## SYNOPSIS
 Gets registration information for onboarding a DSC node or hybrid worker to Automation.
@@ -14,18 +14,18 @@ Gets registration information for onboarding a DSC node or hybrid worker to Auto
 ## SYNTAX
 
 ```
-Get-AzureRmAutomationRegistrationInfo [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationRegistrationInfo [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutomationRegistrationInfo** cmdlet gets the endpoint and keys required to onboard a Desired State Configuration (DSC) node or hybrid worker into an Azure Automation account.
+The **Get-AzAutomationRegistrationInfo** cmdlet gets the endpoint and keys required to onboard a Desired State Configuration (DSC) node or hybrid worker into an Azure Automation account.
 
 ## EXAMPLES
 
 ### Example 1: Get registration information
 ```
-PS C:\>Get-AzureRmAutomationRegistrationInfo -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+PS C:\>Get-AzAutomationRegistrationInfo -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 This command gets the registration information for the Automation account named AutomationAccount01 in the Resource Group named ResourceGroup01.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,10 +93,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationAccount](./Get-AzureRmAutomationAccount.md)
+[Get-AzAutomationAccount](./Get-AzAutomationAccount.md)
 
-[Get-AzureRmAutomationDscNode](./Get-AzureRmAutomationDscNode.md)
+[Get-AzAutomationDscNode](./Get-AzAutomationDscNode.md)
 
-[New-AzureRmAutomationKey](./New-AzureRmAutomationKey.md)
+[New-AzAutomationKey](./New-AzAutomationKey.md)
 
 

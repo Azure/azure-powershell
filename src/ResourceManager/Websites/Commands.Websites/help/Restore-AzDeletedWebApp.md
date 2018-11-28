@@ -1,47 +1,48 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/restore-azurermdeletedwebapp
+Module Name: Az.Websites
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/restore-azdeletedwebapp
 schema: 2.0.0
 ---
 
-# Restore-AzureRmDeletedWebApp
+# Restore-AzDeletedWebApp
 
 ## SYNOPSIS
 Restores a deleted web app to a new or existing web app.
 
 ## SYNTAX
 
-### FromDeletedResourceName
+### FromDeletedResourceName (Default)
 ```
-Restore-AzureRmDeletedWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
+Restore-AzDeletedWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
  [-TargetResourceGroupName <String>] [-TargetName <String>] [-TargetSlot <String>]
  [-TargetAppServicePlanName <String>] [-RestoreContentOnly] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromDeletedApp
 ```
-Restore-AzureRmDeletedWebApp [-TargetResourceGroupName <String>] [-TargetName <String>] [-TargetSlot <String>]
+Restore-AzDeletedWebApp [-TargetResourceGroupName <String>] [-TargetName <String>] [-TargetSlot <String>]
  [-TargetAppServicePlanName <String>] [-RestoreContentOnly] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-InputObject] <PSAzureDeletedWebApp> [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-InputObject] <PSAzureDeletedWebApp> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Restore-AzureRmDeletedWebApp** cmdlet restores a deleted web app. The web app specified by TargetResourceGroupName, TargetName, and TargetSlot will be overwritten with the contents and settings of the deleted web app. If the target parameters are not specified, they will automatically be filled with the deleted web app's resource group, name, and slot. If the target web app does not exist, it will automatically be created in the app service plan specified by TargetAppServicePlanName. The RestoreContentOnly switch parameter can be used to restore only the deleted app's files without the app settings.
+The **Restore-AzDeletedWebApp** cmdlet restores a deleted web app. The web app specified by TargetResourceGroupName, TargetName, and TargetSlot will be overwritten with the contents and settings of the deleted web app. If the target parameters are not specified, they will automatically be filled with the deleted web app's resource group, name, and slot. If the target web app does not exist, it will automatically be created in the app service plan specified by TargetAppServicePlanName. The RestoreContentOnly switch parameter can be used to restore only the deleted app's files without the app settings.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Restore-AzureRmDeletedWebApp -ResourceGroupName Default-Web-WestUS -Name ContosoApp -TargetAppServicePlanName ContosoPlan
+PS C:\> Restore-AzDeletedWebApp -ResourceGroupName Default-Web-WestUS -Name ContosoApp -TargetAppServicePlanName ContosoPlan
 ```
 
 Restores a deleted app named ContosoApp belonging to the resource group Default-Web-WestUS. A new app with the same name and resource group will be created in the App Service Plan named ContosoPlan, and the deleted app's files and settings will be restored to it.
 
 ### Example 2
 ```powershell
-PS C:\> Restore-AzureRmDeletedWebApp -ResourceGroupName Default-Web-WestUS -Name ContosoApp -Slot Staging -TargetResourceGroupName Default-Web-EastUS -TargetName ContosoRestore -RestoreContentOnly
+PS C:\> Restore-AzDeletedWebApp -ResourceGroupName Default-Web-WestUS -Name ContosoApp -Slot Staging -TargetResourceGroupName Default-Web-EastUS -TargetName ContosoRestore -RestoreContentOnly
 ```
 
 Restores the Staging slot of a deleted app named ContosoApp belonging to the resource group Default-Web-WestUS. The web app named ContosoRestore belonging to the resource group Default-Web-EastUS will be overwritten. The deleted web app settings will not be restored.
@@ -52,7 +53,7 @@ Restores the Staging slot of a deleted app named ContosoApp belonging to the res
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -82,7 +83,7 @@ Accept wildcard characters: False
 Do the restore without prompting for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +98,7 @@ Accept wildcard characters: False
 The deleted Azure Web App.
 
 ```yaml
-Type: PSAzureDeletedWebApp
+Type: Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.PSAzureDeletedWebApp
 Parameter Sets: FromDeletedApp
 Aliases:
 
@@ -112,7 +113,7 @@ Accept wildcard characters: False
 The name of the deleted Azure Web App.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FromDeletedResourceName
 Aliases:
 
@@ -127,7 +128,7 @@ Accept wildcard characters: False
 The resource group of the deleted Azure Web App.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FromDeletedResourceName
 Aliases:
 
@@ -142,7 +143,7 @@ Accept wildcard characters: False
 Restore the web app's files, but do not restore the settings.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +158,7 @@ Accept wildcard characters: False
 The deleted Azure Web App slot.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FromDeletedResourceName
 Aliases:
 
@@ -172,7 +173,7 @@ Accept wildcard characters: False
 The App Service Plan for the new Azure Web App.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +188,7 @@ Accept wildcard characters: False
 The name of the new Azure Web App.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -202,7 +203,7 @@ Accept wildcard characters: False
 The resource group containing the new Azure Web App.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +218,7 @@ Accept wildcard characters: False
 The name of the new Azure Web App slot.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -228,9 +229,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -244,4 +274,4 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## RELATED LINKS
 
-[Get-AzureRmDeletedWebApp](./Get-AzureRmDeletedWebApp.md)
+[Get-AzDeletedWebApp](./Get-AzDeletedWebApp.md)

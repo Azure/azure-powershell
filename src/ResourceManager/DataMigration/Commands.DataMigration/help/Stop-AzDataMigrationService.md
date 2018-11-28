@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
-Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/Stop-AzureRmDataMigrationService
+Module Name: Az.DataMigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/Stop-AzDataMigrationService
 schema: 2.0.0
 ---
 
-# Stop-AzureRmDataMigrationService
+# Stop-AzDataMigrationService
 
 ## SYNOPSIS
 Stops an instance of the Azure Database Migration Service that is in a running state.
@@ -14,37 +14,37 @@ Stops an instance of the Azure Database Migration Service that is in a running s
 
 ### ComponentNameParameterSet (Default)
 ```
-Stop-AzureRmDataMigrationService -ResourceGroupName <String> -Name <String> [-PassThru]
+Stop-AzDataMigrationService -ResourceGroupName <String> -Name <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
-Stop-AzureRmDataMigrationService [-InputObject] <PSDataMigrationService> [-PassThru]
+Stop-AzDataMigrationService [-InputObject] <PSDataMigrationService> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Stop-AzureRmDataMigrationService [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Stop-AzDataMigrationService [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Stop-AzureRmDataMigrationService cmdlet stops an instance of the Azure Database Migration Service that is in a running state.
+The Stop-AzDataMigrationService cmdlet stops an instance of the Azure Database Migration Service that is in a running state.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Stop-AzureRmDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
+PS C:\> Stop-AzDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
 ```
 
 The above example stops an instance of the Azure Database Migration Service called TestService based on service name passed in as input parameter
 
 ### Example 2
 ```
-PS C:\> Stop-AzureRmDataMigrationService -InputObject $TestService
+PS C:\> Stop-AzDataMigrationService -InputObject $TestService
 ```
 
 The above example stops an instance of the Azure Database Migration Service based on PSDataMigrationService object passed as input parameter.
@@ -55,7 +55,7 @@ The above example stops an instance of the Azure Database Migration Service base
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

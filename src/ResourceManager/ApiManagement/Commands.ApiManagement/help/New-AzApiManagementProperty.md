@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: A91F93D3-B8C7-4328-A049-AB9877C1166C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementproperty
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementproperty
 schema: 2.0.0
 ---
 
-# New-AzureRmApiManagementProperty
+# New-AzApiManagementProperty
 
 ## SYNOPSIS
 Creates a new Property.
@@ -14,20 +14,20 @@ Creates a new Property.
 ## SYNTAX
 
 ```
-New-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-PropertyId <String>] -Name <String>
+New-AzApiManagementProperty -Context <PsApiManagementContext> [-PropertyId <String>] -Name <String>
  -Value <String> [-Secret] [-Tag <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApiManagementProperty** cmdlet creates an Azure API Management **Property**.
+The **New-AzApiManagementProperty** cmdlet creates an Azure API Management **Property**.
 
 ## EXAMPLES
 
 ### Example 1: Create a property that includes tags
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$Tags = 'sdk', 'powershell'
-PS C:\> New-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Property11" -Name "Property Name" -Value "Property Value" -Tags $Tags
+PS C:\> New-AzApiManagementProperty -Context $apimContext -PropertyId "Property11" -Name "Property Name" -Value "Property Value" -Tags $Tags
 ```
 
 The first command assigns two values to the $Tags variable.
@@ -35,8 +35,8 @@ The second command creates a property and assigns the strings in $Tags as tags o
 
 ### Example 2: Create a property that has a secret value
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Property12" -Name "Secret Property -Value "Secret Property Value" -Secret
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>New-AzApiManagementProperty -Context $apimContext -PropertyId "Property12" -Name "Secret Property -Value "Secret Property Value" -Secret
 ```
 
 This command creates a **Property** that has a value that is encrypted.
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -176,8 +176,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmApiManagementProperty](./Remove-AzureRmApiManagementProperty.md)
+[Remove-AzApiManagementProperty](./Remove-AzApiManagementProperty.md)
 
-[Set-AzureRmApiManagementProperty](./Set-AzureRmApiManagementProperty.md)
+[Set-AzApiManagementProperty](./Set-AzApiManagementProperty.md)
 
 

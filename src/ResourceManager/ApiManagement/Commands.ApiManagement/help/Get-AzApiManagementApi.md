@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: B80389B9-E143-4E24-A222-E95F691DA2E9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementapi
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementapi
 schema: 2.0.0
 ---
 
-# Get-AzureRmApiManagementApi
+# Get-AzApiManagementApi
 
 ## SYNOPSIS
 Gets an API.
@@ -15,53 +15,53 @@ Gets an API.
 
 ### GetAllApis (Default)
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+Get-AzApiManagementApi -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByApiId
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
+Get-AzApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByName
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -Name <String>
+Get-AzApiManagementApi -Context <PsApiManagementContext> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByProductId
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ProductId <String>
+Get-AzApiManagementApi -Context <PsApiManagementContext> -ProductId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApiManagementApi** cmdlet gets one or more Azure API Management APIs.
+The **Get-AzApiManagementApi** cmdlet gets one or more Azure API Management APIs.
 
 ## EXAMPLES
 
 ### Example 1: Get all management APIs
 ```
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementApi -Context $ApiMgmtContext
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementApi -Context $ApiMgmtContext
 ```
 
 This command gets all of the APIs for the specified context.
 
 ### Example 2: Get a management API by ID
 ```
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementApi -Context $ApiMgmtContext -ApiId $ApiId
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementApi -Context $ApiMgmtContext -ApiId $ApiId
 ```
 
 This command gets the API with the specified ID.
 
 ### Example 3: Get a management API by name
 ```
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementApi -Context $ApiMgmtContext -Name "EchoApi"
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementApi -Context $ApiMgmtContext -Name "EchoApi"
 ```
 
 This command gets the API with the specified name.
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -175,14 +175,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Export-AzureRmApiManagementApi](./Export-AzureRmApiManagementApi.md)
+[Export-AzApiManagementApi](./Export-AzApiManagementApi.md)
 
-[Import-AzureRmApiManagementApi](./Import-AzureRmApiManagementApi.md)
+[Import-AzApiManagementApi](./Import-AzApiManagementApi.md)
 
-[New-AzureRmApiManagementApi](./New-AzureRmApiManagementApi.md)
+[New-AzApiManagementApi](./New-AzApiManagementApi.md)
 
-[Remove-AzureRmApiManagementApi](./Remove-AzureRmApiManagementApi.md)
+[Remove-AzApiManagementApi](./Remove-AzApiManagementApi.md)
 
-[Set-AzureRmApiManagementApi](./Set-AzureRmApiManagementApi.md)
+[Set-AzApiManagementApi](./Set-AzApiManagementApi.md)
 
 

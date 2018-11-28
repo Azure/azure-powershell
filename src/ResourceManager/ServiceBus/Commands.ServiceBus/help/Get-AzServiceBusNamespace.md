@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebusnamespace
+Module Name: Az.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusnamespace
 schema: 2.0.0
 ---
 
-# Get-AzureRmServiceBusNamespace
+# Get-AzServiceBusNamespace
 
 ## SYNOPSIS
 Gets a description for the specified Service Bus namespace within the resource group.
@@ -13,19 +13,19 @@ Gets a description for the specified Service Bus namespace within the resource g
 ## SYNTAX
 
 ```
-Get-AzureRmServiceBusNamespace [[-ResourceGroupName] <String>] [[-Name] <String>]
+Get-AzServiceBusNamespace [[-ResourceGroupName] <String>] [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmServiceBusNamespace** cmdlet gets a description for the specified Service Bus namespace within the resource group.
+The **Get-AzServiceBusNamespace** cmdlet gets a description for the specified Service Bus namespace within the resource group.
 
 ## EXAMPLES
 
 ### Example 1
 
 ```
-PS C:\> Get-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
+PS C:\> Get-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
 
 Name               : SB-Example1
 Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
@@ -45,7 +45,7 @@ ServiceBusEndpoint : https://SB-Example1.servicebus.windows.net:443/
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

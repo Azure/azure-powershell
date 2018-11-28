@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-Module Name: AzureRM.Cdn
+Module Name: Az.Cdn
 ms.assetid: 2785A8E5-6905-4EDE-BFE1-FF7B1E386A39
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/new-azurermcdnprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdnprofile
 schema: 2.0.0
 ---
 
-# New-AzureRmCdnProfile
+# New-AzCdnProfile
 
 ## SYNOPSIS
 Creates a CDN profile.
@@ -14,12 +14,12 @@ Creates a CDN profile.
 ## SYNTAX
 
 ```
-New-AzureRmCdnProfile -ProfileName <String> -Location <String> -Sku <PSSkuName> -ResourceGroupName <String>
+New-AzCdnProfile -ProfileName <String> -Location <String> -Sku <PSSkuName> -ResourceGroupName <String>
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmCdnProfile** cmdlet creates an Azure Content Delivery Network (CDN) profile.
+The **New-AzCdnProfile** cmdlet creates an Azure Content Delivery Network (CDN) profile.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ The **New-AzureRmCdnProfile** cmdlet creates an Azure Content Delivery Network (
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,7 +92,7 @@ Specifies the SKU of the profile.
 Type: Microsoft.Azure.Commands.Cdn.Models.Profile.PSSkuName
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard_Verizon, Premium_Verizon, Custom_Verizon, Standard_Akamai, Standard_ChinaCdn
+Accepted values: Standard_Verizon, Premium_Verizon, Custom_Verizon, Standard_Akamai, Standard_ChinaCdn, Standard_Microsoft
 
 Required: True
 Position: Named
@@ -162,10 +162,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRMCdnProfile](./Get-AzureRMCdnProfile.md)
+[Get-AzCdnProfile](./Get-AzCdnProfile.md)
 
-[Remove-AzureRmCdnProfile](./Remove-AzureRmCdnProfile.md)
+[Remove-AzCdnProfile](./Remove-AzCdnProfile.md)
 
-[Set-AzureRmCdnProfile](./Set-AzureRmCdnProfile.md)
+[Set-AzCdnProfile](./Set-AzCdnProfile.md)
 
 

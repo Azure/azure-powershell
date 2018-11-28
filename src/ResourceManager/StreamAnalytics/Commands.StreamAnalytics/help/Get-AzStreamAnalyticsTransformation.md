@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM.StreamAnalytics
+Module Name: Az.StreamAnalytics
 ms.assetid: 34E1CC9E-9F81-4DA6-A777-D816B09BDE1B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/get-azurermstreamanalyticstransformation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/get-azstreamanalyticstransformation
 schema: 2.0.0
 ---
 
-# Get-AzureRmStreamAnalyticsTransformation
+# Get-AzStreamAnalyticsTransformation
 
 ## SYNOPSIS
 Gets information about a Stream Analytics job transformation.
@@ -14,18 +14,18 @@ Gets information about a Stream Analytics job transformation.
 ## SYNTAX
 
 ```
-Get-AzureRmStreamAnalyticsTransformation [-JobName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Get-AzStreamAnalyticsTransformation [-JobName] <String> [-Name] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmStreamAnalyticsTransformation** cmdlet gets information about a transformation defined on a Stream Analytics job.
+The **Get-AzStreamAnalyticsTransformation** cmdlet gets information about a transformation defined on a Stream Analytics job.
 
 ## EXAMPLES
 
 ### EXAMPLE 1: Get information about a Stream Analytics transformation
 ```
-PS C:\>Get-AzureRmStreamAnalyticsTransformation -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "StreamingJob"
+PS C:\>Get-AzStreamAnalyticsTransformation -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "StreamingJob"
 ```
 
 This command returns information about the transformation called StreamingJob on the job called StreamingJob.
@@ -36,7 +36,7 @@ This command returns information about the transformation called StreamingJob on
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -107,6 +107,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmStreamAnalyticsTransformation](./New-AzureRmStreamAnalyticsTransformation.md)
+[New-AzStreamAnalyticsTransformation](./New-AzStreamAnalyticsTransformation.md)
 
 

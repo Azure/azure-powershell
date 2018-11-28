@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactoryv2integrationruntime
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactoryv2integrationruntime
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryV2IntegrationRuntime
+# Remove-AzDataFactoryV2IntegrationRuntime
 
 ## SYNOPSIS
 Removes an integration runtime.
@@ -14,32 +14,32 @@ Removes an integration runtime.
 
 ### ByIntegrationRuntimeName (Default)
 ```
-Remove-AzureRmDataFactoryV2IntegrationRuntime [-LinkedDataFactoryName <String>] [-Force] [-Name] <String>
+Remove-AzDataFactoryV2IntegrationRuntime [-LinkedDataFactoryName <String>] [-Force] [-Name] <String>
  [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzureRmDataFactoryV2IntegrationRuntime [-LinkedDataFactoryName <String>] [-Force] [-ResourceId] <String>
+Remove-AzDataFactoryV2IntegrationRuntime [-LinkedDataFactoryName <String>] [-Force] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Remove-AzureRmDataFactoryV2IntegrationRuntime [-LinkedDataFactoryName <String>] [-Force]
+Remove-AzDataFactoryV2IntegrationRuntime [-LinkedDataFactoryName <String>] [-Force]
  [-InputObject] <PSIntegrationRuntime> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmDataFactoryV2IntegrationRuntime cmdlet removes a integration runtime.
+The Remove-AzDataFactoryV2IntegrationRuntime cmdlet removes a integration runtime.
 
 ## EXAMPLES
 
 ### Example 1: Remove a integration runtime
 ```
-PS C:\> Remove-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df' -Name 'test-reserved-ir' -Confirm
+PS C:\> Remove-AzDataFactoryV2IntegrationRuntime  -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df' -Name 'test-reserved-ir' -Confirm
 ```
 
 This command removes the integration runtime named 'test-reserved-ir' from the data factory named 'test-df'.
@@ -216,7 +216,7 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories, c
 
 ## RELATED LINKS
 
-[Set-AzureRmDataFactoryV2IntegrationRuntime]()
+[Set-AzDataFactoryV2IntegrationRuntime]()
 
-[Get-AzureRmDataFactoryV2IntegrationRuntime]()
+[Get-AzDataFactoryV2IntegrationRuntime]()
 

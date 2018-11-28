@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 48D6288A-EBE1-44FD-B871-80A0681BBEA3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlservercommunicationlink
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlservercommunicationlink
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlServerCommunicationLink
+# Remove-AzSqlServerCommunicationLink
 
 ## SYNOPSIS
 Deletes a communication link for elastic database transactions between two servers.
@@ -14,19 +14,19 @@ Deletes a communication link for elastic database transactions between two serve
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlServerCommunicationLink [-LinkName] <String> [-Force] [-ServerName] <String>
+Remove-AzSqlServerCommunicationLink [-LinkName] <String> [-Force] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlServerCommunicationLink** cmdlet deletes a server-to-server communication link for elastic database transactions in Azure SQL Database.
+The **Remove-AzSqlServerCommunicationLink** cmdlet deletes a server-to-server communication link for elastic database transactions in Azure SQL Database.
 
 ## EXAMPLES
 
 ### Example 1: Delete a communication link
 ```
-PS C:\>Remove-AzureRmSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01"
+PS C:\>Remove-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01"
 ```
 
 This command deletes a server-to-server communication link named Link01 on ContosoServer17.
@@ -37,7 +37,7 @@ This command deletes a server-to-server communication link named Link01 on Conto
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -156,8 +156,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServerCommunicationLink](./Get-AzureRmSqlServerCommunicationLink.md)
+[Get-AzSqlServerCommunicationLink](./Get-AzSqlServerCommunicationLink.md)
 
-[New-AzureRmSqlServerCommunicationLink](./New-AzureRmSqlServerCommunicationLink.md)
+[New-AzSqlServerCommunicationLink](./New-AzSqlServerCommunicationLink.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

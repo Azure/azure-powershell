@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Reservations.dll-Help.xml
-Module Name: AzureRM.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.reservations/get-azurermreservationorderid
+Module Name: Az.Reservations
+online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/get-azreservationorderid
 schema: 2.0.0
 ---
 
-# Get-AzureRmReservationOrderId
+# Get-AzReservationOrderId
 
 ## SYNOPSIS
 Get list of applicable `ReservationOrder` Ids.
@@ -13,7 +13,7 @@ Get list of applicable `ReservationOrder` Ids.
 ## SYNTAX
 
 ```
-Get-AzureRmReservationOrderId [-SubscriptionId <Guid>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzReservationOrderId [-SubscriptionId <Guid>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ Get Ids of applicable `ReservationOrder`s that can be applied to this subscripti
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmReservationOrderId
+PS C:\> Get-AzReservationOrderId
 ```
 
 Get applied `ReservationOrder` for default subscription
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmReservationOrderId -SubscriptionId "1111aaaa-b1b2-c0c2-d0d2-00000fffff"
+PS C:\> Get-AzReservationOrderId -SubscriptionId "1111aaaa-b1b2-c0c2-d0d2-00000fffff"
 ```
 
 Get applied `ReservationOrder` for specified subscription
@@ -42,7 +42,7 @@ Get applied `ReservationOrder` for specified subscription
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

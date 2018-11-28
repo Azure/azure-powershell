@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: B407CF77-792B-40F8-87AB-49FB3DCEE646
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqlserverfirewallrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverfirewallrule
 schema: 2.0.0
 ---
 
-# Set-AzureRmSqlServerFirewallRule
+# Set-AzSqlServerFirewallRule
 
 ## SYNOPSIS
 Modifies a firewall rule in Azure SQL Database server.
@@ -14,19 +14,19 @@ Modifies a firewall rule in Azure SQL Database server.
 ## SYNTAX
 
 ```
-Set-AzureRmSqlServerFirewallRule [-FirewallRuleName] <String> -StartIpAddress <String> -EndIpAddress <String>
+Set-AzSqlServerFirewallRule [-FirewallRuleName] <String> -StartIpAddress <String> -EndIpAddress <String>
  [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlServerFirewallRule** cmdlet modifies a firewall rule in an Azure SQL Database server.
+The **Set-AzSqlServerFirewallRule** cmdlet modifies a firewall rule in an Azure SQL Database server.
 
 ## EXAMPLES
 
 ### Example 1: Modify a firewall rule
 ```
-PS C:\>Set-AzureRmSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -FirewallRuleName "Rule01" -StartIpAddress "192.168.0.197" -EndIpAddress "192.168.0.199"
+PS C:\>Set-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -FirewallRuleName "Rule01" -StartIpAddress "192.168.0.197" -EndIpAddress "192.168.0.199"
 ResourceGroupName : ResourceGroup01
 ServerName        : Server01
 StartIpAddress    : 192.168.0.199
@@ -43,7 +43,7 @@ The command modifies the start and end IP addresses.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -175,11 +175,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServerFirewallRule](./Get-AzureRmSqlServerFirewallRule.md)
+[Get-AzSqlServerFirewallRule](./Get-AzSqlServerFirewallRule.md)
 
-[New-AzureRmSqlServerFirewallRule](./New-AzureRmSqlServerFirewallRule.md)
+[New-AzSqlServerFirewallRule](./New-AzSqlServerFirewallRule.md)
 
-[Remove-AzureRmSqlServerFirewallRule](./Remove-AzureRmSqlServerFirewallRule.md)
+[Remove-AzSqlServerFirewallRule](./Remove-AzSqlServerFirewallRule.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 60BED40A-EEA4-4667-93E9-8A9B35037726
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/move-azurermresource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/move-azresource
 schema: 2.0.0
 ---
 
-# Move-AzureRmResource
+# Move-AzResource
 
 ## SYNOPSIS
 Moves a resource to a different resource group or subscription.
@@ -14,25 +14,24 @@ Moves a resource to a different resource group or subscription.
 ## SYNTAX
 
 ```
-Move-AzureRmResource -DestinationResourceGroupName <String> [-DestinationSubscriptionId <Guid>]
+Move-AzResource -DestinationResourceGroupName <String> [-DestinationSubscriptionId <Guid>]
  -ResourceId <String[]> [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Move-AzureRmResource** cmdlet moves existing resources to a different resource group.
+The **Move-AzResource** cmdlet moves existing resources to a different resource group.
 That resource group can be in a different subscription.
 
 ## EXAMPLES
 
 ### Example 1: Move a resource to a resource group
 ```
-PS C:\>$Resource = Get-AzureRmResource -ResourceType "Microsoft.ClassicCompute/storageAccounts" -ResourceName "ContosoStorageAccount"
-PS C:\> Move-AzureRmResource -ResourceId $Resource.ResourceId -DestinationResourceGroupName "ResourceGroup14"
+PS C:\>$Resource = Get-AzResource -ResourceType "Microsoft.ClassicCompute/storageAccounts" -ResourceName "ContosoStorageAccount"
+PS C:\> Move-AzResource -ResourceId $Resource.ResourceId -DestinationResourceGroupName "ResourceGroup14"
 ```
 
-The first command gets a resource named ContosoStorageAccount by using the Get-AzureRmResource cmdlet, and then stores that resource in the $Resource variable.
+The first command gets a resource named ContosoStorageAccount by using the Get-AzResource cmdlet, and then stores that resource in the $Resource variable.
 The second command moves that resource into the resource group named ResourceGroup14.
 The command identifies the resource to move by using the **ResourceId** property of $Resource.
 
@@ -58,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -106,43 +105,6 @@ Forces the command to run without asking for user confirmation.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-The acceptable values for this parameter are:
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: iv
 
 Required: False
 Position: Named
@@ -223,14 +185,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Find-AzureRmResource](./Find-AzureRmResource.md)
+[Find-AzResource](./Find-AzResource.md)
 
-[Get-AzureRmResource](./Get-AzureRmResource.md)
+[Get-AzResource](./Get-AzResource.md)
 
-[New-AzureRmResource](./New-AzureRmResource.md)
+[New-AzResource](./New-AzResource.md)
 
-[Remove-AzureRmResource](./Remove-AzureRmResource.md)
+[Remove-AzResource](./Remove-AzResource.md)
 
-[Set-AzureRmResource](./Set-AzureRmResource.md)
+[Set-AzResource](./Set-AzResource.md)
 
 

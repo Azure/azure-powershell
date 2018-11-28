@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
-Module Name: AzureRM.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor/get-azurermfrontdoor
+Module Name: Az.FrontDoor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/get-azfrontdoor
 schema: 2.0.0
 ---
 
-# Get-AzureRmFrontDoor
+# Get-AzFrontDoor
 
 ## SYNOPSIS
 Get Front Door load balancer
@@ -13,18 +13,18 @@ Get Front Door load balancer
 ## SYNTAX
 
 ```
-Get-AzureRmFrontDoor [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzFrontDoor [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmFrontDoor** cmdletGet gets all existing Front Doors in the current subscription that matches provided information.
+The **Get-AzFrontDoor** cmdletGet gets all existing Front Doors in the current subscription that matches provided information.
 
 ## EXAMPLES
 
 ### Example 1: Get all FrontDoors in the current subscription.
 ```powershell
-PS C:\> Get-AzureRmFrontDoor
+PS C:\> Get-AzFrontDoor
 
 FriendlyName          : frontdoor1
 RoutingRules          : {routingrule1}
@@ -63,7 +63,7 @@ Get all FrontDoors in the current subscription.
 
 ### Example 2: Get all FrontDoors in resource group "rg1" in the current subscription.
 ```powershell
-PS C:\> Get-AzureRmFrontDoor -ResourceGroupName "rg1"
+PS C:\> Get-AzFrontDoor -ResourceGroupName "rg1"
 
 FriendlyName          : frontdoor1
 RoutingRules          : {routingrule1}
@@ -102,7 +102,7 @@ Get all FrontDoors in resource group "rg1" in the current subscription.
 
 ### Example 3: Get the FrontDoors in resource group "rg1" with name "frontDoor1" in the current subscription.
 ```powershell
-PS C:\> Get-AzureRmFrontDoor -ResourceGroupName "rg1" -Name "frontDoor1"
+PS C:\> Get-AzFrontDoor -ResourceGroupName "rg1" -Name "frontDoor1"
 
 FriendlyName          : frontdoor1
 RoutingRules          : {routingrule1}
@@ -129,7 +129,7 @@ Get the FrontDoors in resource group "rg1" with name "frontDoor1" in the current
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -185,6 +185,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmFrontDoor](./New-AzureRmFrontDoor.md)
-[Set-AzureRmFrontDoor](./Set-AzureRmFrontDoor.md)
-[Remove-AzureRmFrontDoor](./Remove-AzureRmFrontDoor.md)
+[New-AzFrontDoor](./New-AzFrontDoor.md)
+[Set-AzFrontDoor](./Set-AzFrontDoor.md)
+[Remove-AzFrontDoor](./Remove-AzFrontDoor.md)

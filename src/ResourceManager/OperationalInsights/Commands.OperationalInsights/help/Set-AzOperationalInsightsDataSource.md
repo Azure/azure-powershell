@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 ms.assetid: 3992E6B5-F794-4C7A-BB59-C8D60E2CD7BC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/set-azurermoperationalinsightsdatasource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/set-azoperationalinsightsdatasource
 schema: 2.0.0
 ---
 
-# Set-AzureRmOperationalInsightsDataSource
+# Set-AzOperationalInsightsDataSource
 
 ## SYNOPSIS
 Updates a data source.
@@ -14,12 +14,12 @@ Updates a data source.
 ## SYNTAX
 
 ```
-Set-AzureRmOperationalInsightsDataSource [-DataSource] <PSDataSource>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzOperationalInsightsDataSource [-DataSource] <PSDataSource> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmOperationalInsightsDataSource** cmdlet updates a data source.
+The **Set-AzOperationalInsightsDataSource** cmdlet updates a data source.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,8 +72,8 @@ Parameters: DataSource (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmOperationalInsightsDataSource](./Get-AzureRmOperationalInsightsDataSource.md)
+[Get-AzOperationalInsightsDataSource](./Get-AzOperationalInsightsDataSource.md)
 
-[Remove-AzureRmOperationalInsightsDataSource](./Remove-AzureRmOperationalInsightsDataSource.md)
+[Remove-AzOperationalInsightsDataSource](./Remove-AzOperationalInsightsDataSource.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 9F9B2691-BB3F-4644-BD95-6D74777D1E99
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermaduser
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azaduser
 schema: 2.0.0
 ---
 
-# Remove-AzureRmADUser
+# Remove-AzADUser
 
 ## SYNOPSIS
 Deletes an active directory user.
@@ -15,31 +15,31 @@ Deletes an active directory user.
 
 ### UPNOrObjectIdParameterSet (Default)
 ```
-Remove-AzureRmADUser -UPNOrObjectId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzADUser -UPNOrObjectId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UPNParameterSet
 ```
-Remove-AzureRmADUser -UserPrincipalName <String> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADUser -UserPrincipalName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Remove-AzureRmADUser -ObjectId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzADUser -ObjectId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Remove-AzureRmADUser -DisplayName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADUser -DisplayName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzureRmADUser -InputObject <PSADUser> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzADUser -InputObject <PSADUser> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ Deletes an active directory user (work/school account also popularly known as or
 ### Example 1 - Remove a user by user principal name
 
 ```
-PS C:\> Remove-AzureRmADUser -UserPrincipalName foo@domain.com
+PS C:\> Remove-AzADUser -UserPrincipalName foo@domain.com
 ```
 
 Removes the user with user principal name "foo@domain.com" from the tenant.
@@ -59,7 +59,7 @@ Removes the user with user principal name "foo@domain.com" from the tenant.
 ### Example 2 - Remove a user by object id
 
 ```
-PS C:\> Remove-AzureRmADUser -ObjectId 7a9582cf-88c4-4319-842b-7a5d60967a69
+PS C:\> Remove-AzADUser -ObjectId 7a9582cf-88c4-4319-842b-7a5d60967a69
 ```
 
 Removes the user with object id '7a9582cf-88c4-4319-842b-7a5d60967a69' from the tenant.
@@ -67,10 +67,10 @@ Removes the user with object id '7a9582cf-88c4-4319-842b-7a5d60967a69' from the 
 ### Example 3 - Remove a user by piping
 
 ```
-PS C:\> Get-AzureRmADUser -ObjectId 7a9582cf-88c4-4319-842b-7a5d60967a69 | Remove-AzureRmADUser
+PS C:\> Get-AzADUser -ObjectId 7a9582cf-88c4-4319-842b-7a5d60967a69 | Remove-AzADUser
 ```
 
-Gets the user with object id '7a9582cf-88c4-4319-842b-7a5d60967a69' and pipes that to the Remove-AzureRmADUser cmdlet to remove the user from the tenant.
+Gets the user with object id '7a9582cf-88c4-4319-842b-7a5d60967a69' and pipes that to the Remove-AzADUser cmdlet to remove the user from the tenant.
 
 ## PARAMETERS
 
@@ -78,7 +78,7 @@ Gets the user with object id '7a9582cf-88c4-4319-842b-7a5d60967a69' and pipes th
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -245,9 +245,9 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmADUser](./New-AzureRmADUser.md)
+[New-AzADUser](./New-AzADUser.md)
 
-[Get-AzureRmADUser](./Get-AzureRmADUser.md)
+[Get-AzADUser](./Get-AzADUser.md)
 
-[Set-AzureRmADUser](./Set-AzureRmADUser.md)
+[Set-AzADUser](./Set-AzADUser.md)
 

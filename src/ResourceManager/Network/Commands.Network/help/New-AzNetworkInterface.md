@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: B2F2082F-4BAA-4FBE-8846-2D436A433570
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworkinterface
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworkinterface
 schema: 2.0.0
 ---
 
-# New-AzureRmNetworkInterface
+# New-AzNetworkInterface
 
 ## SYNOPSIS
 Creates a network interface.
@@ -15,7 +15,7 @@ Creates a network interface.
 
 ### SetByIpConfigurationResource (Default)
 ```
-New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String>
  -IpConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]>
  [-DnsServer <System.Collections.Generic.List`1[System.String]>] [-InternalDnsNameLabel <String>]
  [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-AsJob]
@@ -24,7 +24,7 @@ New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location
 
 ### SetByIpConfigurationResourceId
 ```
-New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String>
  -IpConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]>
  [-NetworkSecurityGroupId <String>] [-NetworkSecurityGroup <PSNetworkSecurityGroup>]
  [-DnsServer <System.Collections.Generic.List`1[System.String]>] [-InternalDnsNameLabel <String>]
@@ -34,7 +34,7 @@ New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location
 
 ### SetByResourceId
 ```
-New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> -SubnetId <String>
+New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> -SubnetId <String>
  [-PublicIpAddressId <String>] [-NetworkSecurityGroupId <String>]
  [-LoadBalancerBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
  [-LoadBalancerInboundNatRuleId <System.Collections.Generic.List`1[System.String]>]
@@ -47,7 +47,7 @@ New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location
 
 ### SetByResource
 ```
-New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> -Subnet <PSSubnet>
+New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> -Subnet <PSSubnet>
  [-PublicIpAddress <PSPublicIpAddress>] [-NetworkSecurityGroup <PSNetworkSecurityGroup>]
  [-LoadBalancerBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]>]
  [-LoadBalancerInboundNatRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]>]
@@ -60,13 +60,13 @@ New-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -Location
 ```
 
 ## DESCRIPTION
-The **New-AzureRmNetworkInterface** cmdlet creates an Azure network interface.
+The **New-AzNetworkInterface** cmdlet creates an Azure network interface.
 
 ## EXAMPLES
 
 ### Example 1: Create an Azure network interface
 ```
-PS C:\>New-AzureRmNetworkInterface -Name "NetworkInterface1" -ResourceGroupName "ResourceGroup1" -Location "centralus" -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Network/virtualNetworks/VirtualNetwork1/subnets/Subnet1" -IpConfigurationName "IPConfiguration1" -DnsServer "8.8.8.8", "8.8.4.4"
+PS C:\>New-AzNetworkInterface -Name "NetworkInterface1" -ResourceGroupName "ResourceGroup1" -Location "centralus" -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Network/virtualNetworks/VirtualNetwork1/subnets/Subnet1" -IpConfigurationName "IPConfiguration1" -DnsServer "8.8.8.8", "8.8.4.4"
 ```
 
 This command creates a network interface named NetworkInterface001 with a dynamically assigned
@@ -76,8 +76,8 @@ created automatically using the name IPConfiguration1.
 
 ### Example 2: Create an Azure network interface using an IP configuration object
 ```
-PS C:\>$IPconfig = New-AzureRmNetworkInterfaceIpConfig -Name "IPConfig1" -PrivateIpAddressVersion IPv4 -PrivateIpAddress "10.0.1.10" -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Network/virtualNetworks/VirtualNetwork1/subnets/Subnet1"
-PS C:\> New-AzureRmNetworkInterface -Name "NetworkInterface1" -ResourceGroupName "ResourceGroup1" -Location "centralus" -IpConfiguration $IPconfig
+PS C:\>$IPconfig = New-AzNetworkInterfaceIpConfig -Name "IPConfig1" -PrivateIpAddressVersion IPv4 -PrivateIpAddress "10.0.1.10" -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Network/virtualNetworks/VirtualNetwork1/subnets/Subnet1"
+PS C:\> New-AzNetworkInterface -Name "NetworkInterface1" -ResourceGroupName "ResourceGroup1" -Location "centralus" -IpConfiguration $IPconfig
 ```
 
 This example creates a new network interface using an IP configuration object. The IP configuration
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -578,8 +578,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNetworkInterface](./Get-AzureRmNetworkInterface.md)
+[Get-AzNetworkInterface](./Get-AzNetworkInterface.md)
 
-[Remove-AzureRmNetworkInterface](./Remove-AzureRmNetworkInterface.md)
+[Remove-AzNetworkInterface](./Remove-AzNetworkInterface.md)
 
-[Set-AzureRmNetworkInterface](./Set-AzureRmNetworkInterface.md)
+[Set-AzNetworkInterface](./Set-AzNetworkInterface.md)

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 230DAE05-C197-451F-A24C-F4A2DAE4AD04
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmssstorageprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmssstorageprofile
 schema: 2.0.0
 ---
 
-# Set-AzureRmVmssStorageProfile
+# Set-AzVmssStorageProfile
 
 ## SYNOPSIS
 Sets the storage profile properties for the VMSS.
@@ -14,7 +14,7 @@ Sets the storage profile properties for the VMSS.
 ## SYNTAX
 
 ```
-Set-AzureRmVmssStorageProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
+Set-AzVmssStorageProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [[-ImageReferencePublisher] <String>] [[-ImageReferenceOffer] <String>] [[-ImageReferenceSku] <String>]
  [[-ImageReferenceVersion] <String>] [[-OsDiskName] <String>] [[-OsDiskCaching] <CachingTypes>]
  [[-OsDiskCreateOption] <String>] [[-OsDiskOsType] <OperatingSystemTypes>] [[-Image] <String>]
@@ -24,13 +24,13 @@ Set-AzureRmVmssStorageProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSe
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVmssStorageProfile** cmdlet sets the storage profile properties for the Virtual Machine Scale Set (VMSS).
+The **Set-AzVmssStorageProfile** cmdlet sets the storage profile properties for the Virtual Machine Scale Set (VMSS).
 
 ## EXAMPLES
 
 ### Example 1: Set the storage profile properties for the VMSS
 ```
-PS C:\> Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet "ContosoVMSS" -Name "Test" -OsDiskCreateOption "FromImage" -OsDiskCaching "None" `
+PS C:\> Set-AzVmssStorageProfile -VirtualMachineScaleSet "ContosoVMSS" -Name "Test" -OsDiskCreateOption "FromImage" -OsDiskCaching "None" `
             -ImageReferenceOffer $ImgRef.Offer -ImageReferenceSku $ImgRef.Skus -ImageReferenceVersion $ImgRef.Version `
             -ImageReferencePublisher $ImgRef.PublisherName -VhdContainer $VhdContainer
 ```
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 
 ### -ImageReferenceOffer
 Specifies the type of virtual machine image (VMImage) offer.
-To obtain an image offer, use the Get-AzureRmVMImageOffer cmdlet.
+To obtain an image offer, use the Get-AzVMImageOffer cmdlet.
 
 ```yaml
 Type: System.String
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 
 ### -ImageReferencePublisher
 Specifies the name of a publisher of a VMImage.
-To obtain a publisher, use the Get-AzureRmVMImagePublisher cmdlet.
+To obtain a publisher, use the Get-AzVMImagePublisher cmdlet.
 
 ```yaml
 Type: System.String
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 
 ### -ImageReferenceSku
 Specifies the VMImage SKU.
-To obtain SKUs, use the Get-AzureRmVMImageSku cmdlet.
+To obtain SKUs, use the Get-AzVMImageSku cmdlet.
 
 ```yaml
 Type: System.String
@@ -299,7 +299,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specifies the VMSS object.
-To obtain the object, use the New-AzureRmVmssConfig object.
+To obtain the object, use the New-AzVmssConfig object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
@@ -368,12 +368,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMImageOffer](./Get-AzureRmVMImageOffer.md)
+[Get-AzVMImageOffer](./Get-AzVMImageOffer.md)
 
-[Get-AzureRmVMImagePublisher](./Get-AzureRmVMImagePublisher.md)
+[Get-AzVMImagePublisher](./Get-AzVMImagePublisher.md)
 
-[Get-AzureRmVMImageSku](./Get-AzureRmVMImageSku.md)
+[Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
-[New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md)
+[New-AzVmssConfig](./New-AzVmssConfig.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 ms.assetid: ACB53C23-99E0-4A0A-A44E-0D3FDB12450B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/new-azrediscachescheduleentry
 schema: 2.0.0
 ---
 
-# New-AzureRmRedisCacheScheduleEntry
+# New-AzRedisCacheScheduleEntry
 
 ## SYNOPSIS
 Creates a schedule entry.
@@ -14,19 +14,19 @@ Creates a schedule entry.
 ## SYNTAX
 
 ```
-New-AzureRmRedisCacheScheduleEntry -DayOfWeek <String> -StartHourUtc <Int32> [-MaintenanceWindow <TimeSpan>]
+New-AzRedisCacheScheduleEntry -DayOfWeek <String> -StartHourUtc <Int32> [-MaintenanceWindow <TimeSpan>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmRedisCacheScheduleEntry** cmdlet creates a **PSScheduleEntry** object.
-Azure Redis Cache patch schedule cmdlets, such as the New-AzureRmRedisCachePatchSchedule cmdlet, require schedule entry objects.
+The **New-AzRedisCacheScheduleEntry** cmdlet creates a **PSScheduleEntry** object.
+Azure Redis Cache patch schedule cmdlets, such as the New-AzRedisCachePatchSchedule cmdlet, require schedule entry objects.
 
 ## EXAMPLES
 
 ### Example 1: Create a schedule entry for weekends
 ```
-PS C:\>New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00"
+PS C:\>New-AzRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00"
 ```
 
 This command creates a **PSScheduleEntry** object that represents a weekend schedule that has the specified start time and window.
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -124,10 +124,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmRedisCachePatchSchedule](./Get-AzureRmRedisCachePatchSchedule.md)
+[Get-AzRedisCachePatchSchedule](./Get-AzRedisCachePatchSchedule.md)
 
-[New-AzureRmRedisCachePatchSchedule](./New-AzureRmRedisCachePatchSchedule.md)
+[New-AzRedisCachePatchSchedule](./New-AzRedisCachePatchSchedule.md)
 
-[Remove-AzureRmRedisCachePatchSchedule](./Remove-AzureRmRedisCachePatchSchedule.md)
+[Remove-AzRedisCachePatchSchedule](./Remove-AzRedisCachePatchSchedule.md)
 
 

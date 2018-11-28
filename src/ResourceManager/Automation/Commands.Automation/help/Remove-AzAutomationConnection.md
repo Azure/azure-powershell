@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: C1C0F69D-6A3F-4523-BB70-27676A3DDCBD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/remove-azurermautomationconnection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/remove-azautomationconnection
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAutomationConnection
+# Remove-AzAutomationConnection
 
 ## SYNOPSIS
 Removes an Automation connection.
@@ -14,19 +14,19 @@ Removes an Automation connection.
 ## SYNTAX
 
 ```
-Remove-AzureRmAutomationConnection [-Name] <String> [-Force] [-ResourceGroupName] <String>
+Remove-AzAutomationConnection [-Name] <String> [-Force] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmAutomationConnection** cmdlet removes a connection from Azure Automation.
+The **Remove-AzAutomationConnection** cmdlet removes a connection from Azure Automation.
 
 ## EXAMPLES
 
 ### Example 1: Remove a connection
 ```
-PS C:\>Remove-AzureRmAutomationConnection -AutomationAccountName "Contoso17" -Name "ContosoConnection" -ResourceGroupName "ResourceGroup01"
+PS C:\>Remove-AzAutomationConnection -AutomationAccountName "Contoso17" -Name "ContosoConnection" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes a certificate named ContosoConnection in the Automation account named Contoso17.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -154,8 +154,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationConnection](./Get-AzureRMAutomationConnection.md)
+[Get-AzAutomationConnection](./Get-AzAutomationConnection.md)
 
-[New-AzureRmAutomationConnection](./New-AzureRMAutomationConnection.md)
+[New-AzAutomationConnection](./New-AzAutomationConnection.md)
 
 

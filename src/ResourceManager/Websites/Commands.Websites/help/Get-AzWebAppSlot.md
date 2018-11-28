@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: 100A5980-31E2-41F9-84D4-2F5F0CB78B8A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebappslot
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebappslot
 schema: 2.0.0
 ---
 
-# Get-AzureRmWebAppSlot
+# Get-AzWebAppSlot
 
 ## SYNOPSIS
 Gets an Azure Web App slot.
@@ -15,24 +15,24 @@ Gets an Azure Web App slot.
 
 ### S1
 ```
-Get-AzureRmWebAppSlot [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
+Get-AzWebAppSlot [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Get-AzureRmWebAppSlot [[-Slot] <String>] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+Get-AzWebAppSlot [[-Slot] <String>] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmWebAppSlot** cmdlet gets information about an Azure Web App Slot.
+The **Get-AzWebAppSlot** cmdlet gets information about an Azure Web App Slot.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard" -Slot "Slot001"
+PS C:\> Get-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard" -Slot "Slot001"
 ```
 
 This command gets the slot named Slot001 from the Web App named WebAppStandard that belongs to the
@@ -44,7 +44,7 @@ resource group Default-Web-WestUS.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -133,16 +133,16 @@ Parameters: WebApp (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRMWebAppSlot](./New-AzureRMWebAppSlot.md)
+[New-AzWebAppSlot](./New-AzWebAppSlot.md)
 
-[Remove-AzureRMWebAppSlot](./Remove-AzureRMWebAppSlot.md)
+[Remove-AzWebAppSlot](./Remove-AzWebAppSlot.md)
 
-[Restart-AzureRMWebAppSlot](./Restart-AzureRMWebAppSlot.md)
+[Restart-AzWebAppSlot](./Restart-AzWebAppSlot.md)
 
-[Set-AzureRMWebAppSlot](./Set-AzureRMWebAppSlot.md)
+[Set-AzWebAppSlot](./Set-AzWebAppSlot.md)
 
-[Start-AzureRMWebAppSlot](./Start-AzureRMWebAppSlot.md)
+[Start-AzWebAppSlot](./Start-AzWebAppSlot.md)
 
-[Stop-AzureRMWebAppSlot](./Stop-AzureRMWebAppSlot.md)
+[Stop-AzWebAppSlot](./Stop-AzWebAppSlot.md)
 
-[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)
+[Get-AzWebApp](./Get-AzWebApp.md)

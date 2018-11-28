@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: E066BBFA-2E03-431D-85D1-99F230B6AC59
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkinterface
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkinterface
 schema: 2.0.0
 ---
 
-# Get-AzureRmNetworkInterface
+# Get-AzNetworkInterface
 
 ## SYNOPSIS
 Gets a network interface.
@@ -15,44 +15,44 @@ Gets a network interface.
 
 ### NoExpandStandAloneNic (Default)
 ```
-Get-AzureRmNetworkInterface [-Name <String>] [-ResourceGroupName <String>]
+Get-AzNetworkInterface [-Name <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExpandStandAloneNic
 ```
-Get-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -ExpandResource <String>
+Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -ExpandResource <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NoExpandScaleSetNic
 ```
-Get-AzureRmNetworkInterface [-Name <String>] -ResourceGroupName <String> [-VirtualMachineScaleSetName <String>]
+Get-AzNetworkInterface [-Name <String>] -ResourceGroupName <String> [-VirtualMachineScaleSetName <String>]
  [-VirtualMachineIndex <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExpandScaleSetNic
 ```
-Get-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> -VirtualMachineScaleSetName <String>
+Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -VirtualMachineScaleSetName <String>
  -VirtualMachineIndex <String> -ExpandResource <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmNetworkInterface** cmdlet gets an Azure network interface or a list of Azure network interfaces in a resource group.
+The **Get-AzNetworkInterface** cmdlet gets an Azure network interface or a list of Azure network interfaces in a resource group.
 
 ## EXAMPLES
 
 ### Example 1: Get all network interfaces
 ```
-PS C:\>Get-AzureRmNetworkInterface
+PS C:\>Get-AzNetworkInterface
 ```
 
 This command gets all network interfaces for the current subscription.
 
 ### Example 2: Get all network interfaces with a specific provisioning state
 ```
-PS C:\>Get-AzureRmNetworkInterface -ResourceGroupName "ResourceGroup1" | Where-Object {$_.ProvisioningState -eq 'Succeeded'}
+PS C:\>Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" | Where-Object {$_.ProvisioningState -eq 'Succeeded'}
 ```
 
 This command gets all network interfaces in the resource group named ResourceGroup1 that has a provisioning state of succeeded.
@@ -63,7 +63,7 @@ This command gets all network interfaces in the resource group named ResourceGro
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -210,10 +210,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmNetworkInterface](./New-AzureRmNetworkInterface.md)
+[New-AzNetworkInterface](./New-AzNetworkInterface.md)
 
-[Remove-AzureRmNetworkInterface](./Remove-AzureRmNetworkInterface.md)
+[Remove-AzNetworkInterface](./Remove-AzNetworkInterface.md)
 
-[Set-AzureRmNetworkInterface](./Set-AzureRmNetworkInterface.md)
+[Set-AzNetworkInterface](./Set-AzNetworkInterface.md)
 
 

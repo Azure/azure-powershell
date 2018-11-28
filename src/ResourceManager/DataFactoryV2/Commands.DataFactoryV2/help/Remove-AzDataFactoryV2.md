@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactoryv2
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactoryv2
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryV2
+# Remove-AzDataFactoryV2
 
 ## SYNOPSIS
 Removes a data factory.
@@ -14,30 +14,30 @@ Removes a data factory.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Force]
+Remove-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Remove-AzureRmDataFactoryV2 [-InputObject] <PSDataFactory> [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzDataFactoryV2 [-InputObject] <PSDataFactory> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzureRmDataFactoryV2 [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzDataFactoryV2 [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmDataFactoryV2 cmdlet removes a data factory.
+The Remove-AzDataFactoryV2 cmdlet removes a data factory.
 
 ## EXAMPLES
 
 ### Example 1: Remove a data factory
 ```
-PS C:\> Remove-AzureRmDataFactoryV2 -Name "WikiADF" -ResourceGroupName "ADF"
+PS C:\> Remove-AzDataFactoryV2 -Name "WikiADF" -ResourceGroupName "ADF"
           Confirm
           Are you sure you want to remove data factory 'WikiADF' in resource group 'ADF'?
           [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -189,6 +189,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2]()
+[Get-AzDataFactoryV2]()
 
-[Set-AzureRmDataFactoryV2]()
+[Set-AzDataFactoryV2]()

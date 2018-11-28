@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 60DA2175-7970-410C-A13C-B1314716AD8A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermvirtualnetworkgatewayipconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvirtualnetworkgatewayipconfig
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVirtualNetworkGatewayIpConfig
+# Remove-AzVirtualNetworkGatewayIpConfig
 
 ## SYNOPSIS
 Removes an IP Configuration from a Virtual Network Gateway
@@ -14,7 +14,7 @@ Removes an IP Configuration from a Virtual Network Gateway
 ## SYNTAX
 
 ```
-Remove-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway <PSVirtualNetworkGateway> -Name <String>
+Remove-AzVirtualNetworkGatewayIpConfig -VirtualNetworkGateway <PSVirtualNetworkGateway> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Removes an IP Configuration from a Virtual Network Gateway
 
 ### Example 1:
 ```
-Remove-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gateway -Name ActiveActive
+Remove-AzVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gateway -Name ActiveActive
 
 Name                   : myGateway
 ResourceGroupName      : myRG
@@ -77,7 +77,7 @@ BgpSettings            : {
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

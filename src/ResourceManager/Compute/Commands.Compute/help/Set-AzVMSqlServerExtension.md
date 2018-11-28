@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: C650E465-7CDE-47F8-B85A-8FA3E1756FAF
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmsqlserverextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmsqlserverextension
 schema: 2.0.0
 ---
 
-# Set-AzureRmVMSqlServerExtension
+# Set-AzVMSqlServerExtension
 
 ## SYNOPSIS
 Sets the Azure SQL Server extension on a virtual machine.
@@ -14,45 +14,45 @@ Sets the Azure SQL Server extension on a virtual machine.
 ## SYNTAX
 
 ```
-Set-AzureRmVMSqlServerExtension [[-Version] <String>] [-ResourceGroupName] <String> [-VMName] <String>
+Set-AzVMSqlServerExtension [[-Version] <String>] [-ResourceGroupName] <String> [-VMName] <String>
  [[-Name] <String>] [[-AutoPatchingSettings] <AutoPatchingSettings>]
  [[-AutoBackupSettings] <AutoBackupSettings>] [[-KeyVaultCredentialSettings] <KeyVaultCredentialSettings>]
  [[-Location] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMSqlServerExtension** cmdlet sets the AzureSQL Server extension on a virtual machine.
+The **Set-AzVMSqlServerExtension** cmdlet sets the AzureSQL Server extension on a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Set automatic patching settings on a virtual machine
 ```
-PS C:\> $AutoPatchingConfig = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
-PS C:\> Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $AutoPatchingConfig | Update-AzureRmVM
+PS C:\> $AutoPatchingConfig = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
+PS C:\> Get-AzVM -ServiceName "Service02" -Name "VirtualMachine11" | Set-AzVMSqlServerExtension -AutoPatchingSettings $AutoPatchingConfig | Update-AzVM
 ```
 
-The first command creates a configuration object by using the **New-AzureVMSqlServerAutoPatchingConfig** cmdlet.
+The first command creates a configuration object by using the **New-AzVMSqlServerAutoPatchingConfig** cmdlet.
 The command stores the configuration in the $AutoPatchingConfig variable.
-The second command gets the virtual machine named VirtualMachine11 on the service named Service02 by using the Get-AzureRmVM cmdlet.
+The second command gets the virtual machine named VirtualMachine11 on the service named Service02 by using the Get-AzVM cmdlet.
 The command passes that object to the current cmdlet by using the pipeline operator.
 The current cmdlet sets the automatic patching settings in $AutoPatchingConfig for the virtual machine.
-The command passes the virtual machine to the Update-AzureRmVM cmdlet.
+The command passes the virtual machine to the Update-AzVM cmdlet.
 
 ### Example 2: Set automatic backup settings on a virtual machine
 ```
-PS C:\> $AutoBackupConfig = New-AzureVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri $StorageUrl -StorageKey $StorageAccountKeySecure
-PS C:\> Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set-AzureRmVMSqlServerExtension -AutoBackupSettings $AutoBackupConfig | Update-AzureRmVM
+PS C:\> $AutoBackupConfig = New-AzVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri $StorageUrl -StorageKey $StorageAccountKeySecure
+PS C:\> Get-AzVM -ServiceName "Service02" -Name "VirtualMachine11" | Set-AzVMSqlServerExtension -AutoBackupSettings $AutoBackupConfig | Update-AzVM
 ```
 
-The first command creates a configuration object by using the **New-AzureVMSqlServerAutoBackupConfig** cmdlet.
+The first command creates a configuration object by using the **New-AzVMSqlServerAutoBackupConfig** cmdlet.
 The command stores the configuration in the $AutoBackupConfig variable.
 The second command gets the virtual machine named VirtualMachine11 on the service named Service02, and then passes it to the current cmdlet.
 The current cmdlet sets the automatic backup settings in $AutoBackupConfig for the virtual machine.
-The command passes the virtual machine to the Update-AzureRmVM cmdlet.
+The command passes the virtual machine to the Update-AzVM cmdlet.
 
 ### Example 3: Disable a SQL Server extension on a virtual machine
 ```
-PS C:\> Get-AzureRmVM -ServiceName "Service03" -Name "VirtualMachine08" | Set-AzureRmVMSqlServerExtension -Disable
+PS C:\> Get-AzVM -ServiceName "Service03" -Name "VirtualMachine08" | Set-AzVMSqlServerExtension -Disable
 ```
 
 This command gets a virtual machine named VirtualMachine08 on Service03, and then passes it to the current cmdlet.
@@ -60,7 +60,7 @@ The command disables SQL Server virtual machine extension on that virtual machin
 
 ### Example 4: Uninstall a SQL Server extension on a specific virtual machine
 ```
-PS C:\> Get-AzureRmVM -ServiceName "Service03" -Name "VirtualMachine08" | Set-AzureRmVMSqlServerExtension -Uninstall
+PS C:\> Get-AzVM -ServiceName "Service03" -Name "VirtualMachine08" | Set-AzVMSqlServerExtension -Uninstall
 ```
 
 This command gets a virtual machine named VirtualMachine08 on Service03, and then passes it to the current cmdlet.
@@ -70,7 +70,7 @@ The command uninstalls a SQL Server virtual machine extension on that virtual ma
 
 ### -AutoBackupSettings
 Specifies the automatic SQL Server backup settings.
-To create an **AutoBackupSettings** object , use the New-AzureVMSqlServerAutoBackupConfig cmdlet.
+To create an **AutoBackupSettings** object , use the New-AzVMSqlServerAutoBackupConfig cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.AutoBackupSettings
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 
 ### -AutoPatchingSettings
 Specifies the automatic SQL Server patching settings.
-To create an **AutoPatchingSettings** object , use the New-AzureVMSqlServerAutoPatchingConfig cmdlet.
+To create an **AutoPatchingSettings** object , use the New-AzVMSqlServerAutoPatchingConfig cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.AutoPatchingSettings
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -224,16 +224,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVM](./Get-AzureRmVM.md)
+[Get-AzVM](./Get-AzVM.md)
 
-[Get-AzureRmVMSqlServerExtension](./Get-AzureRMVMSqlServerExtension.md)
+[Get-AzVMSqlServerExtension](./Get-AzVMSqlServerExtension.md)
 
-[New-AzureVMSqlServerAutoPatchingConfig](./New-AzureVMSqlServerAutoPatchingConfig.md)
+[New-AzVMSqlServerAutoPatchingConfig](./New-AzVMSqlServerAutoPatchingConfig.md)
 
-[New-AzureVMSqlServerAutoBackupConfig](./New-AzureVMSqlServerAutoBackupConfig.md)
+[New-AzVMSqlServerAutoBackupConfig](./New-AzVMSqlServerAutoBackupConfig.md)
 
-[Remove-AzureRmVMSqlServerExtension](./Remove-AzureRMVMSqlServerExtension.md)
+[Remove-AzVMSqlServerExtension](./Remove-AzVMSqlServerExtension.md)
 
-[Update-AzureRmVM](./Update-AzureRmVM.md)
+[Update-AzVM](./Update-AzVM.md)
 
 

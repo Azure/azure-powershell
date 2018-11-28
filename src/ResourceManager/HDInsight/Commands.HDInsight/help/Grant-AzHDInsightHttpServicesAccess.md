@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 3F321D94-2B0B-48CA-9778-8090373F7FE0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/grant-azurermhdinsighthttpservicesaccess
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/grant-azhdinsighthttpservicesaccess
 schema: 2.0.0
 ---
 
-# Grant-AzureRmHDInsightHttpServicesAccess
+# Grant-AzHDInsightHttpServicesAccess
 
 ## SYNOPSIS
 Grants HTTP access to the cluster.
@@ -14,12 +14,12 @@ Grants HTTP access to the cluster.
 ## SYNTAX
 
 ```
-Grant-AzureRmHDInsightHttpServicesAccess [-ClusterName] <String> [-HttpCredential] <PSCredential>
+Grant-AzHDInsightHttpServicesAccess [-ClusterName] <String> [-HttpCredential] <PSCredential>
  [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Grant-AzureRmHDInsightHttpServicesAccess** cmdlet grants HTTP access to an Azure HDInsight cluster using ODBC, Ambari, Oozie and web services.
+The **Grant-AzHDInsightHttpServicesAccess** cmdlet grants HTTP access to an Azure HDInsight cluster using ODBC, Ambari, Oozie and web services.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ PS C:\># Cluster info
 PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $clusterCreds = Get-Credential
 
-PS C:\> Grant-AzureRmHDInsightHttpServicesAccess `
+PS C:\> Grant-AzHDInsightHttpServicesAccess `
             -ClusterName $clusterName `
             -HttpCredential $newClusterCreds
 ```
@@ -113,6 +113,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Revoke-AzureRmHDInsightHttpServicesAccess](./Revoke-AzureRmHDInsightHttpServicesAccess.md)
+[Revoke-AzHDInsightHttpServicesAccess](./Revoke-AzHDInsightHttpServicesAccess.md)
 
 

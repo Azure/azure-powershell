@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM.Storage
+Module Name: Az.Storage
 ms.assetid: FDD2CE98-6C7E-4B95-BA5B-B03B6AC6EAEF
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/new-azurermstorageaccountkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageaccountkey
 schema: 2.0.0
 ---
 
-# New-AzureRmStorageAccountKey
+# New-AzStorageAccountKey
 
 ## SYNOPSIS
 Regenerates a storage key for an Azure Storage account.
@@ -14,18 +14,18 @@ Regenerates a storage key for an Azure Storage account.
 ## SYNTAX
 
 ```
-New-AzureRmStorageAccountKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
+New-AzStorageAccountKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmStorageAccountKey** cmdlet regenerates a storage key for an Azure Storage account.
+The **New-AzStorageAccountKey** cmdlet regenerates a storage key for an Azure Storage account.
 
 ## EXAMPLES
 
 ### Example 1: Regenerate a storage key
 ```
-PS C:\>New-AzureRmStorageKey -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyName "key1"
+PS C:\>New-AzStorageKey -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyName "key1"
 ```
 
 This command regenerates a storage key for the specified Storage account.
@@ -36,7 +36,7 @@ This command regenerates a storage key for the specified Storage account.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,4 +111,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmStorageAccountKey](./Get-AzureRmStorageAccountKey.md)
+[Get-AzStorageAccountKey](./Get-AzStorageAccountKey.md)

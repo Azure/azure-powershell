@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvirtualnetworkusagelist
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetworkusagelist
 schema: 2.0.0
 ---
 
-# Get-AzureRmVirtualNetworkUsageList
+# Get-AzVirtualNetworkUsageList
 
 ## SYNOPSIS
 Gets virtual network current usage.
@@ -13,20 +13,20 @@ Gets virtual network current usage.
 ## SYNTAX
 
 ```
-Get-AzureRmVirtualNetworkUsageList -ResourceGroupName <String> -Name <String>
+Get-AzVirtualNetworkUsageList -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVirtualNetworkUsageList** cmdlet gets per subnet usage for the specified virtual network.
+The **Get-AzVirtualNetworkUsageList** cmdlet gets per subnet usage for the specified virtual network.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmVirtualNetworkUsageList -ResourceGroupName test -Name usagetest
+PS C:\> Get-AzVirtualNetworkUsageList -ResourceGroupName test -Name usagetest
 
-Get-AzureRmVirtualNetworkUsageList -ResourceGroupName test -Name usagetest
+Get-AzVirtualNetworkUsageList -ResourceGroupName test -Name usagetest
 
 Name         : Subnet size and usage
 Id           : /subscriptions/sub1/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/usagetest/subnets/subnet
@@ -49,7 +49,7 @@ Gets per subnet current values of usage for usagetest virtual network.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

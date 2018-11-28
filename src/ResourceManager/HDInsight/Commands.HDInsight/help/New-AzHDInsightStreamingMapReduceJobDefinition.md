@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 17CB76E7-2F91-4EFE-9DA3-F083F02235E1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/new-azurermhdinsightstreamingmapreducejobdefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/new-azhdinsightstreamingmapreducejobdefinition
 schema: 2.0.0
 ---
 
-# New-AzureRmHDInsightStreamingMapReduceJobDefinition
+# New-AzHDInsightStreamingMapReduceJobDefinition
 
 ## SYNOPSIS
 Creates a Streaming MapReduce job object.
@@ -14,14 +14,14 @@ Creates a Streaming MapReduce job object.
 ## SYNTAX
 
 ```
-New-AzureRmHDInsightStreamingMapReduceJobDefinition [-Arguments <String[]>] [-File <String>]
+New-AzHDInsightStreamingMapReduceJobDefinition [-Arguments <String[]>] [-File <String>]
  [-Files <String[]>] [-StatusFolder <String>] [-CommandEnvironment <Hashtable>] [-Defines <Hashtable>]
  -InputPath <String> [-Mapper <String>] [-OutputPath <String>] [-Reducer <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmHDInsightStreamingMapReduceJobDefinition** cmdlet defines a Streaming MapReduce job object for use with an Azure HDInsight cluster.
+The **New-AzHDInsightStreamingMapReduceJobDefinition** cmdlet defines a Streaming MapReduce job object for use with an Azure HDInsight cluster.
 
 ## EXAMPLES
 
@@ -35,9 +35,9 @@ PS C:\>$clusterCreds = Get-Credential
 PS C:\>$statusFolder = "tempStatusFolder/"
 PS C:\>$query = "SHOW TABLES"
 
-PS C:\>New-AzureRmHDInsightStreamingMapReduceJobDefinition -StatusFolder $statusFolder `
+PS C:\>New-AzHDInsightStreamingMapReduceJobDefinition -StatusFolder $statusFolder `
             -Query $query `
-        | Start-AzureRmHDInsightJob `
+        | Start-AzHDInsightJob `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds
 ```
@@ -228,6 +228,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Start-AzureRmHDInsightJob](./Start-AzureRmHDInsightJob.md)
+[Start-AzHDInsightJob](./Start-AzHDInsightJob.md)
 
 

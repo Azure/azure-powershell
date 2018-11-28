@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactoryv2linkedservice
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactoryv2linkedservice
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryV2LinkedService
+# Remove-AzDataFactoryV2LinkedService
 
 ## SYNOPSIS
 Removes a linked service from Data Factory.
@@ -14,31 +14,31 @@ Removes a linked service from Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmDataFactoryV2LinkedService [-Name] <String> [-ResourceGroupName] <String>
+Remove-AzDataFactoryV2LinkedService [-Name] <String> [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzureRmDataFactoryV2LinkedService [-InputObject] <PSLinkedService> [-Force]
+Remove-AzDataFactoryV2LinkedService [-InputObject] <PSLinkedService> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzureRmDataFactoryV2LinkedService [-ResourceId] <String> [-Force]
+Remove-AzDataFactoryV2LinkedService [-ResourceId] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmDataFactoryV2LinkedService cmdlet removes a linked service from Azure Data Factory.
+The Remove-AzDataFactoryV2LinkedService cmdlet removes a linked service from Azure Data Factory.
 
 ## EXAMPLES
 
 ### Example 1: Remove a linked service
 ```
-PS C:\> Remove-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceTest"
+PS C:\> Remove-AzDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceTest"
           Confirm
           Are you sure you want to remove linked service 'LinkedServiceTest' in data factory 'WikiADF'?
           [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -207,7 +207,7 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2LinkedService]()
+[Get-AzDataFactoryV2LinkedService]()
 
-[Set-AzureRmDataFactoryV2LinkedService]()
+[Set-AzDataFactoryV2LinkedService]()
 

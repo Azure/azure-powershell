@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM.Relay
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/get-azurermwcfrelay
+Module Name: Az.Relay
+online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/get-azwcfrelay
 schema: 2.0.0
 ---
 
-# Get-AzureRmWcfRelay
+# Get-AzWcfRelay
 
 ## SYNOPSIS
 Returns a description for the specified WcfRelay.
@@ -13,18 +13,18 @@ Returns a description for the specified WcfRelay.
 ## SYNTAX
 
 ```
-Get-AzureRmWcfRelay [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+Get-AzWcfRelay [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmWcfRelay** cmdlet returns a description of the specified WcfRelay.
+The **Get-AzWcfRelay** cmdlet returns a description of the specified WcfRelay.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1
+PS C:\> Get-AzWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1
 
 RelayType                   : NetTcp
 CreatedAt                   : 4/12/2017 2:23:08 AM
@@ -48,7 +48,7 @@ Returns the description of the WcfRelay.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -105,18 +105,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.PSWcfRelayAttributes
-
 
 ## NOTES
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 63D48BA4-EE80-4740-90B9-0EE05B3F6536
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmssvm
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmssvm
 schema: 2.0.0
 ---
 
-# Get-AzureRmVmssVM
+# Get-AzVmssVM
 
 ## SYNOPSIS
 Gets the properties of a VMSS virtual machine.
@@ -15,18 +15,18 @@ Gets the properties of a VMSS virtual machine.
 
 ### DefaultParameter (Default)
 ```
-Get-AzureRmVmssVM [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [[-InstanceId] <String>]
+Get-AzVmssVM [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [[-InstanceId] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FriendMethod
 ```
-Get-AzureRmVmssVM [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [[-InstanceId] <String>]
+Get-AzVmssVM [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [[-InstanceId] <String>]
  [-InstanceView] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVmssVM** cmdlet gets the model view and instance view of a Virtual Machine Scale Set (VMSS) virtual machine.
+The **Get-AzVmssVM** cmdlet gets the model view and instance view of a Virtual Machine Scale Set (VMSS) virtual machine.
 The model view is the user specified properties of the virtual machine.
 The instance view is the instance level status of the virtual machine.
 Specify the *Status* parameter to get only the instance view of a virtual machine.
@@ -35,7 +35,7 @@ Specify the *Status* parameter to get only the instance view of a virtual machin
 
 ### Example 1: Get the properties of a VMSS virtual machine
 ```
-PS C:\> Get-AzureRmVmssVM -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+PS C:\> Get-AzVmssVM -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command gets the properties of the VMSS virtual machine named VMSS001 that belongs to the resource group named Group001.
@@ -43,7 +43,7 @@ Since the command does not specify the *InstanceView* switch parameter, the cmdl
 
 ### Example 2: Get the model view properties of a VMSS virtual machine
 ```
-PS C:\> Get-AzureRmVmssVM -ResourceGroupName "Group002" -VMScaleSetName "VMSS004" -InstanceId $ID
+PS C:\> Get-AzVmssVM -ResourceGroupName "Group002" -VMScaleSetName "VMSS004" -InstanceId $ID
 ```
 
 This command gets the properties of the VMSS virtual machine named VMSS004 that belongs to the resource group named Group002.
@@ -51,7 +51,7 @@ The command gets the instance ID stored in the variable $ID for which to get the
 
 ### Example 3: Get the instance view properties of a VMSS virtual machine
 ```
-PS C:\> Get-AzureRmVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $ID
+PS C:\> Get-AzVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $ID
 ```
 
 This command gets the properties of the VMSS virtual machine named VMSS004 that belongs to the resource group named Group002.
@@ -64,7 +64,7 @@ The command gets the instance ID stored in the variable $ID for which to get the
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -150,8 +150,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmVmssVM](./Set-AzureRmVmssVM.md)
+[Set-AzVmssVM](./Set-AzVmssVM.md)
 
-[Get-AzureRmVmss](./Get-AzureRmVmss.md)
+[Get-AzVmss](./Get-AzVmss.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Billing.dll-Help.xml
-Module Name: AzureRM.Billing
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.billing/get-azurermbillingperiod
+Module Name: Az.Billing
+online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azbillingperiod
 schema: 2.0.0
 ---
 
-# Get-AzureRmBillingPeriod
+# Get-AzBillingPeriod
 
 ## SYNOPSIS
 Get billing periods of the subscription.
@@ -14,37 +14,37 @@ Get billing periods of the subscription.
 
 ### List (Default)
 ```
-Get-AzureRmBillingPeriod [-MaxCount <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBillingPeriod [-MaxCount <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Single
 ```
-Get-AzureRmBillingPeriod -Name <System.Collections.Generic.List`1[System.String]>
+Get-AzBillingPeriod -Name <System.Collections.Generic.List`1[System.String]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmBillingPeriod** cmdlet gets billing periods of the subscription.
+The **Get-AzBillingPeriod** cmdlet gets billing periods of the subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmBillingPeriod
+PS C:\> Get-AzBillingPeriod
 ```
 
 Get all available billing periods of the subscription.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmBillingPeriod -Name 201704-1
+PS C:\> Get-AzBillingPeriod -Name 201704-1
 ```
 
 Get the billing period of the subscription with the specified name.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmBillingPeriod -MaxCount 2
+PS C:\> Get-AzBillingPeriod -MaxCount 2
 ```
 
 Get at most 2 billing periods of the subscription.
@@ -55,7 +55,7 @@ Get at most 2 billing periods of the subscription.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

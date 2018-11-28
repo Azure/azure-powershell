@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: F8C67F7B-64C5-45E4-A0BF-32212BEBE885
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryactivitywindow
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryactivitywindow
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryActivityWindow
+# Get-AzDataFactoryActivityWindow
 
 ## SYNOPSIS
 Gets information about activity windows associated with a data factory.
@@ -15,7 +15,7 @@ Gets information about activity windows associated with a data factory.
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactoryActivityWindow [-DataFactoryName] <String> [[-DatasetName] <String>]
+Get-AzDataFactoryActivityWindow [-DataFactoryName] <String> [[-DatasetName] <String>]
  [[-PipelineName] <String>] [[-ActivityName] <String>] [-WindowState <String>] [-WindowSubstate <String>]
  [-Filter <String>] [-OrderBy <String>] [-WindowStart <DateTime>] [-WindowEnd <DateTime>]
  [-RunStart <DateTime>] [-RunEnd <DateTime>] [-Top <Int32>] [-ResourceGroupName] <String>
@@ -24,7 +24,7 @@ Get-AzureRmDataFactoryActivityWindow [-DataFactoryName] <String> [[-DatasetName]
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactoryActivityWindow [-DataFactory] <PSDataFactory> [[-DatasetName] <String>]
+Get-AzDataFactoryActivityWindow [-DataFactory] <PSDataFactory> [[-DatasetName] <String>]
  [[-PipelineName] <String>] [[-ActivityName] <String>] [-WindowState <String>] [-WindowSubstate <String>]
  [-Filter <String>] [-OrderBy <String>] [-WindowStart <DateTime>] [-WindowEnd <DateTime>]
  [-RunStart <DateTime>] [-RunEnd <DateTime>] [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>]
@@ -32,13 +32,13 @@ Get-AzureRmDataFactoryActivityWindow [-DataFactory] <PSDataFactory> [[-DatasetNa
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactoryActivityWindow** cmdlet gets information about the activity windows associated with a data factory.
+The **Get-AzDataFactoryActivityWindow** cmdlet gets information about the activity windows associated with a data factory.
 
 ## EXAMPLES
 
 ### Example 1: Get activity windows associated with a data factory
 ```
-PS C:\>Get-AzureRmDataFactoryActivityWindow -DataFactoryName "WikiADF" -ResourceGroupName "ADF" -Top 3
+PS C:\>Get-AzDataFactoryActivityWindow -DataFactoryName "WikiADF" -ResourceGroupName "ADF" -Top 3
 ResourceGroupName : ADF
 DataFactoryName   : WikiADF
 PipelineName      : DP_WikipediaSamplePipeline
@@ -390,6 +390,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure Data Factories Cmdlets](./AzureRM.DataFactories.md)
+[Azure Data Factories Cmdlets](./Az.DataFactories.md)
 
 

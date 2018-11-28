@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 350E19F6-5B1C-4D3F-B4CD-7225CDC984C4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlelasticpool
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlelasticpool
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlElasticPool
+# Get-AzSqlElasticPool
 
 ## SYNOPSIS
 Gets elastic pools and their property values in an Azure SQL Database.
@@ -14,19 +14,19 @@ Gets elastic pools and their property values in an Azure SQL Database.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlElasticPool [[-ElasticPoolName] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+Get-AzSqlElasticPool [[-ElasticPoolName] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlElasticPool** cmdlet gets elastic pools and their property values.
+The **Get-AzSqlElasticPool** cmdlet gets elastic pools and their property values.
 Specify the name of an existing elastic pool to see the property values for only that pool.
 
 ## EXAMPLES
 
 ### Example 1: Get all elastic pools
 ```
-PS C:\>Get-AzureRmSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/server01/elasticPools/elasticpool01
 ResourceGroupName : resourcegroup01
 ServerName        : server01
@@ -60,7 +60,7 @@ This command gets all of the elastic pools on the server named Server01.
 
 ### Example 2: Get a specific elastic pool
 ```
-PS C:\>Get-AzureRmSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool27"
+PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool27"
 ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/server01/elasticPools/elasticpool01
 ResourceGroupName : resourcegroup01
 ServerName        : server01
@@ -80,7 +80,7 @@ This command gets the elastic pool named ElasticPool0127 on the server named Ser
 
 ### Example 3: Get metrics for a Azure SQL Elastic Database Pool
 ```
-PS C:\>Get-AzureRmSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" | Get-Metrics -TimeGrain 0:5:0
+PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" | Get-Metrics -TimeGrain 0:5:0
 DimensionName  : 
 DimensionValue : 
 Name           : cpu_percent
@@ -145,7 +145,7 @@ This command returns metrics for an Azure SQL elastic database pool named Elasti
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -216,10 +216,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlElasticPool](./New-AzureRmSqlElasticPool.md)
+[New-AzSqlElasticPool](./New-AzSqlElasticPool.md)
 
-[Remove-AzureRmSqlElasticPool](./Remove-AzureRmSqlElasticPool.md)
+[Remove-AzSqlElasticPool](./Remove-AzSqlElasticPool.md)
 
-[Set-AzureRmSqlElasticPool](./Set-AzureRmSqlElasticPool.md)
+[Set-AzSqlElasticPool](./Set-AzSqlElasticPool.md)
 
 

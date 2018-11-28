@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 760C03A0-12DB-43C4-A180-B013FA77A513
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/remove-azurermautomationvariable
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/remove-azautomationvariable
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAutomationVariable
+# Remove-AzAutomationVariable
 
 ## SYNOPSIS
 Removes an Automation variable.
@@ -14,19 +14,18 @@ Removes an Automation variable.
 ## SYNTAX
 
 ```
-Remove-AzureRmAutomationVariable [-Name] <String> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzAutomationVariable [-Name] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmAutomationVariable** cmdlet removes a variable from Azure Automation.
+The **Remove-AzAutomationVariable** cmdlet removes a variable from Azure Automation.
 
 ## EXAMPLES
 
 ### Example 1: Remove a variable
 ```
-PS C:\>Remove-AzureRmAutomationVariable -AutomationAccountName "Contoso17" -Name "StringVariable22" -Force -ResourceGroupName "ResourceGroup01"
+PS C:\>Remove-AzAutomationVariable -AutomationAccountName "Contoso17" -Name "StringVariable22" -Force -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes a variable named StringVariable22 in the Automation account named Contoso17.
@@ -54,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -141,10 +140,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationVariable](./Get-AzureRMAutomationVariable.md)
+[Get-AzAutomationVariable](./Get-AzAutomationVariable.md)
 
-[New-AzureRmAutomationVariable](./New-AzureRMAutomationVariable.md)
+[New-AzAutomationVariable](./New-AzAutomationVariable.md)
 
-[Set-AzureRmAutomationVariable](./Set-AzureRMAutomationVariable.md)
+[Set-AzAutomationVariable](./Set-AzAutomationVariable.md)
 
 

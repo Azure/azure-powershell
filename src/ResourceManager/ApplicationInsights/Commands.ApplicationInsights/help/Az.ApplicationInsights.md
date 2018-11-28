@@ -1,49 +1,49 @@
 ---
-Module Name: AzureRM.ApplicationInsights
+Module Name: Az.ApplicationInsights
 Module Guid: da67eaa7-4cb1-4bfa-a194-8bf3faae8ac6
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.applicationinsights
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights
 Help Version: 0.1.2.0
 Locale: en-US
 ---
 
-# AzureRM.ApplicationInsights Module
+# Az.ApplicationInsights Module
 ## Description
 Creates and manages application insights in Azure Resource Manager.
 
-## AzureRM.ApplicationInsights Cmdlets
-### [Get-AzureRmApplicationInsights](Get-AzureRmApplicationInsights.md)
+## Az.ApplicationInsights Cmdlets
+### [Get-AzApplicationInsights](Get-AzApplicationInsights.md)
 Get application insights resources
 
-### [Get-AzureRmApplicationInsightsApiKey](Get-AzureRmApplicationInsightsApiKey.md)
+### [Get-AzApplicationInsightsApiKey](Get-AzApplicationInsightsApiKey.md)
 Get application insights api keys for an application insights resource
 
-### [Get-AzureRmApplicationInsightsContinuousExport](Get-AzureRmApplicationInsightsContinuousExport.md)
+### [Get-AzApplicationInsightsContinuousExport](Get-AzApplicationInsightsContinuousExport.md)
 Get application insights continuous export configuration for an application insights resource
 
-### [New-AzureRmApplicationInsights](New-AzureRmApplicationInsights.md)
+### [New-AzApplicationInsights](New-AzApplicationInsights.md)
 Create a new application insights resource
 
-### [New-AzureRmApplicationInsightsApiKey](New-AzureRmApplicationInsightsApiKey.md)
+### [New-AzApplicationInsightsApiKey](New-AzApplicationInsightsApiKey.md)
 Create an application insights api key for an application insights resource
 
-### [New-AzureRmApplicationInsightsContinuousExport](New-AzureRmApplicationInsightsContinuousExport.md)
+### [New-AzApplicationInsightsContinuousExport](New-AzApplicationInsightsContinuousExport.md)
 Create a new application insights continuous export configuration for an application insights resource
 
-### [Remove-AzureRmApplicationInsights](Remove-AzureRmApplicationInsights.md)
+### [Remove-AzApplicationInsights](Remove-AzApplicationInsights.md)
 Remove an application insights resource
 
-### [Remove-AzureRmApplicationInsightsApiKey](Remove-AzureRmApplicationInsightsApiKey.md)
+### [Remove-AzApplicationInsightsApiKey](Remove-AzApplicationInsightsApiKey.md)
 Remove an application insights api key for an application insights resource
 
-### [Remove-AzureRmApplicationInsightsContinuousExport](Remove-AzureRmApplicationInsightsContinuousExport.md)
+### [Remove-AzApplicationInsightsContinuousExport](Remove-AzApplicationInsightsContinuousExport.md)
 Remove a cotinuous export configuration in an application insights resource
 
-### [Set-AzureRmApplicationInsightsContinuousExport](Set-AzureRmApplicationInsightsContinuousExport.md)
+### [Set-AzApplicationInsightsContinuousExport](Set-AzApplicationInsightsContinuousExport.md)
 Update a continuous export configuration in an applciation insights resource
 
-### [Set-AzureRmApplicationInsightsDailyCap](Set-AzureRmApplicationInsightsDailyCap.md)
+### [Set-AzApplicationInsightsDailyCap](Set-AzApplicationInsightsDailyCap.md)
 Set daily data volume cap for an application insights resource
 
-### [Set-AzureRmApplicationInsightsPricingPlan](Set-AzureRmApplicationInsightsPricingPlan.md)
+### [Set-AzApplicationInsightsPricingPlan](Set-AzApplicationInsightsPricingPlan.md)
 Set pricing plan and daily data volume information for an applicaiton insights resource
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 9EE192A5-4E3F-41ED-A539-8E0A5D5EA4C9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermvmss
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/update-azvmss
 schema: 2.0.0
 ---
 
-# Update-AzureRmVmss
+# Update-AzVmss
 
 ## SYNOPSIS
 Updates the state of a VMSS.
@@ -15,7 +15,7 @@ Updates the state of a VMSS.
 
 ### DefaultParameter (Default)
 ```
-Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
  [-ManagedDiskStorageAccountType <String>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
  [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>]
@@ -33,7 +33,7 @@ Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
 
 ### ExplicitIdentityParameterSet
 ```
-Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>] [-IdentityId <String[]>]
  [-ManagedDiskStorageAccountType <String>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
  [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>]
@@ -51,13 +51,13 @@ Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmVmss** cmdlet updates the state of a Virtual Machine Scale Set (VMSS) to the state of a local VMSS object.
+The **Update-AzVmss** cmdlet updates the state of a Virtual Machine Scale Set (VMSS) to the state of a local VMSS object.
 
 ## EXAMPLES
 
 ### Example 1: Update the state of a VMSS to the state of a local VMSS object.
 ```
-PS C:\> Update-AzureRmVmss -ResourceGroupName "Group001" -Name "VMSS001" -VirtualMachineScaleSet $LocalVMSS
+PS C:\> Update-AzVmss -ResourceGroupName "Group001" -Name "VMSS001" -VirtualMachineScaleSet $LocalVMSS
 ```
 
 This command updates the state of the VMSS named VMSS001 that belongs to the resource group named Group001 to the state of a local VMSS object, $LocalVMSS.
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -257,7 +257,7 @@ Accept wildcard characters: False
 
 ### -ImageReferenceOffer
 Specifies the type of virtual machine image (VMImage) offer.
-To obtain an image offer, use the Get-AzureRmVMImageOffer cmdlet.
+To obtain an image offer, use the Get-AzVMImageOffer cmdlet.
 
 ```yaml
 Type: System.String
@@ -273,7 +273,7 @@ Accept wildcard characters: False
 
 ### -ImageReferencePublisher
 Specifies the name of a publisher of a VMImage.
-To obtain a publisher, use the Get-AzureRmVMImagePublisher cmdlet.
+To obtain a publisher, use the Get-AzVMImagePublisher cmdlet.
 
 ```yaml
 Type: System.String
@@ -289,7 +289,7 @@ Accept wildcard characters: False
 
 ### -ImageReferenceSku
 Specifies the VMImage SKU.
-To obtain SKUs, use the Get-AzureRmVMImageSku cmdlet.
+To obtain SKUs, use the Get-AzVMImageSku cmdlet.
 
 ```yaml
 Type: System.String
@@ -727,7 +727,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specifies a local VMSS object.
-To obtain a VMSS object, use the Get-AzureRmVmss cmdlet.
+To obtain a VMSS object, use the Get-AzVmss cmdlet.
 This virtual machine object contains the updated state for the VMSS.
 
 ```yaml
@@ -806,18 +806,18 @@ Parameters: VirtualMachineScaleSet (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmVmss](./Get-AzureRmVmss.md)
+[Get-AzVmss](./Get-AzVmss.md)
 
-[New-AzureRmVmss](./New-AzureRmVmss.md)
+[New-AzVmss](./New-AzVmss.md)
 
-[Remove-AzureRmVmss](./Remove-AzureRmVmss.md)
+[Remove-AzVmss](./Remove-AzVmss.md)
 
-[Restart-AzureRmVmss](./Restart-AzureRmVmss.md)
+[Restart-AzVmss](./Restart-AzVmss.md)
 
-[Set-AzureRmVmss](./Set-AzureRmVmss.md)
+[Set-AzVmss](./Set-AzVmss.md)
 
-[Start-AzureRmVmss](./Start-AzureRmVmss.md)
+[Start-AzVmss](./Start-AzVmss.md)
 
-[Stop-AzureRmVmss](./Stop-AzureRmVmss.md)
+[Stop-AzVmss](./Stop-AzVmss.md)
 
 

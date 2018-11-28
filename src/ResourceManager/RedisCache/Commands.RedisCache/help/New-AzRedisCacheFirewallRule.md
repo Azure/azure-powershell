@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/new-azurermrediscachefirewallrule
+Module Name: Az.RedisCache
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/new-azrediscachefirewallrule
 schema: 2.0.0
 ---
 
-# New-AzureRmRedisCacheFirewallRule
+# New-AzRedisCacheFirewallRule
 
 ## SYNOPSIS
 Create a firewall rule on a Redis Cache.
@@ -14,20 +14,19 @@ Create a firewall rule on a Redis Cache.
 
 ### NormalParameterSet (Default)
 ```
-New-AzureRmRedisCacheFirewallRule [-ResourceGroupName <String>] -Name <String> -RuleName <String>
- -StartIP <String> -EndIP <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzRedisCacheFirewallRule [-ResourceGroupName <String>] -Name <String> -RuleName <String> -StartIP <String>
+ -EndIP <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RedisCacheAttributesObject
 ```
-New-AzureRmRedisCacheFirewallRule -InputObject <RedisCacheAttributes> -RuleName <String> -StartIP <String>
+New-AzRedisCacheFirewallRule -InputObject <RedisCacheAttributes> -RuleName <String> -StartIP <String>
  -EndIP <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzureRmRedisCacheFirewallRule -ResourceId <String> -RuleName <String> -StartIP <String> -EndIP <String>
+New-AzRedisCacheFirewallRule -ResourceId <String> -RuleName <String> -StartIP <String> -EndIP <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,7 +37,7 @@ Create a firewall rule on a Redis Cache.
 
 ### Example 1: Create a firewall rule
 ```
-PS C:\>New-AzureRmRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone" -StartIP "10.0.0.1" -EndIP "10.0.0.32"
+PS C:\>New-AzRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone" -StartIP "10.0.0.1" -EndIP "10.0.0.32"
 
         ResourceGroupName : myGroup
         Name              : mycache
@@ -57,7 +56,7 @@ This command creates firewall rule named ruleone on Redis Cache named mycache.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -222,14 +221,14 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmRedisCacheFirewallRule](./Get-AzureRmRedisCacheFirewallRule.md)
+[Get-AzRedisCacheFirewallRule](./Get-AzRedisCacheFirewallRule.md)
 
-[Remove-AzureRmRedisCacheFirewallRule](./Remove-AzureRmRedisCacheFirewallRule.md)
+[Remove-AzRedisCacheFirewallRule](./Remove-AzRedisCacheFirewallRule.md)
 
-[Get-AzureRmRedisCache](./Get-AzureRmRedisCache.md)
+[Get-AzRedisCache](./Get-AzRedisCache.md)
 
-[New-AzureRmRedisCache](./New-AzureRmRedisCache.md)
+[New-AzRedisCache](./New-AzRedisCache.md)
 
-[Remove-AzureRmRedisCache](./Remove-AzureRmRedisCache.md)
+[Remove-AzRedisCache](./Remove-AzRedisCache.md)
 
-[Set-AzureRmRedisCache](./Set-AzureRmRedisCache.md)
+[Set-AzRedisCache](./Set-AzRedisCache.md)

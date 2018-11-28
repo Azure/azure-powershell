@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
-Module Name: AzureRM.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/suspend-azurermanalysisservicesserver
+Module Name: Az.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/suspend-azanalysisservicesserver
 schema: 2.0.0
 ---
 
-# Suspend-AzureRmAnalysisServicesServer
+# Suspend-AzAnalysisServicesServer
 
 ## SYNOPSIS
 Suspends an instance of Analysis Services server
@@ -13,18 +13,18 @@ Suspends an instance of Analysis Services server
 ## SYNTAX
 
 ```
-Suspend-AzureRmAnalysisServicesServer [[-ResourceGroupName] <String>] [-Name] <String> [-PassThru]
+Suspend-AzAnalysisServicesServer [[-ResourceGroupName] <String>] [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Suspend-AzureRmAnalysisServicesServer cmdlet suspends an instance of Analysis Services server
+The Suspend-AzAnalysisServicesServer cmdlet suspends an instance of Analysis Services server
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Suspend-AzureRmAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup"
+PS C:\> Suspend-AzAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup"
 ```
 
 This command will suspend an active server named testserver in the resourcegroup testgroup
@@ -35,7 +35,7 @@ This command will suspend an active server named testserver in the resourcegroup
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -133,11 +133,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer
 
 ## NOTES
-Alias: Suspend-AzureAs
+Alias: Suspend-AzAs
 
 ## RELATED LINKS
 
-[Get-AzureRmAnalysisServicesServer](./Get-AzureRmAnalysisServicesServer.md)
+[Get-AzAnalysisServicesServer](./Get-AzAnalysisServicesServer.md)
 
-[Resume-AzureRmAnalysisServicesServer](./Resume-AzureRmAnalysisServicesServer.md)
+[Resume-AzAnalysisServicesServer](./Resume-AzAnalysisServicesServer.md)
 

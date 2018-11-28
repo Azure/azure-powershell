@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 6BF6F9A7-BED3-4CCE-9E0A-46ECBFF55DA9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/new-azurermhdinsightmapreducejobdefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/new-azhdinsightmapreducejobdefinition
 schema: 2.0.0
 ---
 
-# New-AzureRmHDInsightMapReduceJobDefinition
+# New-AzHDInsightMapReduceJobDefinition
 
 ## SYNOPSIS
 Creates a MapReduce job object.
@@ -14,13 +14,13 @@ Creates a MapReduce job object.
 ## SYNTAX
 
 ```
-New-AzureRmHDInsightMapReduceJobDefinition [-Arguments <String[]>] [-Files <String[]>] [-StatusFolder <String>]
+New-AzHDInsightMapReduceJobDefinition [-Arguments <String[]>] [-Files <String[]>] [-StatusFolder <String>]
  -ClassName <String> [-Defines <Hashtable>] -JarFile <String> [-JobName <String>] [-LibJars <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmHDInsightMapReduceJobDefinition** cmdlet defines a new MapReduce job for use with an Azure HDInsight cluster.
+The **New-AzHDInsightMapReduceJobDefinition** cmdlet defines a new MapReduce job for use with an Azure HDInsight cluster.
 
 ## EXAMPLES
 
@@ -30,10 +30,10 @@ PS C:\># Cluster info
 PS C:\>$clusterName = "your-hadoop-001"
 PS C:\>$clusterCreds = Get-Credential
 
-PS C:\>New-AzureRmHDInsightMapReduceJobDefinition -StatusFolder $statusFolder `
+PS C:\>New-AzHDInsightMapReduceJobDefinition -StatusFolder $statusFolder `
             -ClassName $className `
             -JarFile $jarFilePath `
-        | Start-AzureRmHDInsightJob `
+        | Start-AzHDInsightJob `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds
 ```
@@ -193,6 +193,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Start-AzureRmHDInsightJob](./Start-AzureRmHDInsightJob.md)
+[Start-AzHDInsightJob](./Start-AzHDInsightJob.md)
 
 

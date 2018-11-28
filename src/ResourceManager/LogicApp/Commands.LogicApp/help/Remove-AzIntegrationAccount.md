@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 607FBE75-727D-4388-9504-94AD31BCDBBF
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/remove-azurermintegrationaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/remove-azintegrationaccount
 schema: 2.0.0
 ---
 
-# Remove-AzureRmIntegrationAccount
+# Remove-AzIntegrationAccount
 
 ## SYNOPSIS
 Removes an integration account.
@@ -14,12 +14,12 @@ Removes an integration account.
 ## SYNTAX
 
 ```
-Remove-AzureRmIntegrationAccount -ResourceGroupName <String> -Name <String> [-Force]
+Remove-AzIntegrationAccount -ResourceGroupName <String> -Name <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmIntegrationAccount** cmdlet removes an integration account from a resource group.
+The **Remove-AzIntegrationAccount** cmdlet removes an integration account from a resource group.
 Specify the integration account name and resource group name.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -30,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Remove an integration account
 ```
-PS C:\>Remove-AzureRmIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Force
+PS C:\>Remove-AzIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Force
 ```
 
 This command removes an integration account named IntegrationAccount31.
@@ -41,7 +41,7 @@ This command removes an integration account named IntegrationAccount31.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -143,10 +143,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmIntegrationAccount](./New-AzureRmIntegrationAccount.md)
+[New-AzIntegrationAccount](./New-AzIntegrationAccount.md)
 
-[Set-AzureRmIntegrationAccount](./Set-AzureRmIntegrationAccount.md)
+[Set-AzIntegrationAccount](./Set-AzIntegrationAccount.md)
 
-[Get-AzureRmIntegrationAccount](./Get-AzureRmIntegrationAccount.md)
+[Get-AzIntegrationAccount](./Get-AzIntegrationAccount.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlsyncagentkey
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlsyncagentkey
 schema: 2.0.0
 ---
 
-# New-AzureRmSqlSyncAgentKey
+# New-AzSqlSyncAgentKey
 
 ## SYNOPSIS
 Creates an Azure SQL Sync Agent Key.
@@ -13,18 +13,18 @@ Creates an Azure SQL Sync Agent Key.
 ## SYNTAX
 
 ```
-New-AzureRmSqlSyncAgentKey [-ServerName] <String> [-SyncAgentName] <String> [-ResourceGroupName] <String>
+New-AzSqlSyncAgentKey [-ServerName] <String> [-SyncAgentName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlSyncAgentKey** cmdlet creates an Azure SQL Sync Agent key.
+The **New-AzSqlSyncAgentKey** cmdlet creates an Azure SQL Sync Agent key.
 
 ## EXAMPLES
 
 ### Example 1: Create a sync agent key for an Azure SQL sync agent.
 ```
-PS C:\> New-AzureRmSqlSyncAgentKey -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SyncAgentName "SyncAgent01"
+PS C:\> New-AzSqlSyncAgentKey -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SyncAgentName "SyncAgent01"
 SyncAgentKey                  : Key
 ```
 
@@ -36,7 +36,7 @@ This command creates a sync agent key for an Azure SQL Sync Agent.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

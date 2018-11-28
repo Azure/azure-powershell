@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/start-azurermautomationsourcecontrolsyncjob
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/start-azautomationsourcecontrolsyncjob
 schema: 2.0.0
 ---
 
-# Start-AzureRmAutomationSourceControlSyncJob
+# Start-AzAutomationSourceControlSyncJob
 
 ## SYNOPSIS
 Starts an Azure Automation source control sync job.
@@ -13,19 +13,19 @@ Starts an Azure Automation source control sync job.
 ## SYNTAX
 
 ```
-Start-AzureRmAutomationSourceControlSyncJob -SourceControlName <String> [-JobId <Guid>]
+Start-AzAutomationSourceControlSyncJob -SourceControlName <String> [-JobId <Guid>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Start-AzureRmAutomationSourceControlSyncJob cmdlet starts a Azure Automation souce control sync job for the given source control name.
+The Start-AzAutomationSourceControlSyncJob cmdlet starts a Azure Automation souce control sync job for the given source control name.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Start-AzureRmAutomationSourceControlSyncJob -ResourceGroupName "rg1" `
+PS C:\> Start-AzAutomationSourceControlSyncJob -ResourceGroupName "rg1" `
                                                     -AutomationAccountName "devAccount" `
                                                     -Name "VSTSNative"
 
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 70C96DFC-F265-4792-AE62-DD224A4EE237
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermintegrationaccountagreement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azintegrationaccountagreement
 schema: 2.0.0
 ---
 
-# Get-AzureRmIntegrationAccountAgreement
+# Get-AzIntegrationAccountAgreement
 
 ## SYNOPSIS
 Gets an integration account agreement.
@@ -14,12 +14,12 @@ Gets an integration account agreement.
 ## SYNTAX
 
 ```
-Get-AzureRmIntegrationAccountAgreement [-ResourceGroupName <String>] [-Name <String>] [-AgreementName <String>]
+Get-AzIntegrationAccountAgreement [-ResourceGroupName <String>] [-Name <String>] [-AgreementName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmIntegrationAccountAgreement** cmdlet gets an integration account agreement from an Azure resource group.
+The **Get-AzIntegrationAccountAgreement** cmdlet gets an integration account agreement from an Azure resource group.
 Specify the integration account name, resource group name, and agreement name.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -30,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Get an integration account agreement
 ```
-PS C:\>Get-AzureRmIntegrationAccountAgreement -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -AgreementName "IntegrationAccountAgreement06"
+PS C:\>Get-AzIntegrationAccountAgreement -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -AgreementName "IntegrationAccountAgreement06"
 Id                     : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/TestIntegrationAccount/agreements/IntegrationAccount31
 Name                   : IntegrationAccount31
 Type                   : Microsoft.Logic/integrationAccounts/agreements
@@ -52,7 +52,7 @@ This command gets an integration account agreement named IntegrationAccountAgree
 
 ### Example 2: Get integration account agreements by resource group name
 ```
-PS C:\>Get-AzureRmIntegrationAccountAgreement -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
+PS C:\>Get-AzIntegrationAccountAgreement -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
 Id                     : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/TestIntegrationAccount/agreements/IntegrationAccount31
 Name                   : IntegrationAccount31
 Type                   : Microsoft.Logic/integrationAccounts/agreements
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -149,10 +149,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmIntegrationAccountAgreement](./New-AzureRmIntegrationAccountAgreement.md)
+[New-AzIntegrationAccountAgreement](./New-AzIntegrationAccountAgreement.md)
 
-[Remove-AzureRmIntegrationAccountAgreement](./Remove-AzureRmIntegrationAccountAgreement.md)
+[Remove-AzIntegrationAccountAgreement](./Remove-AzIntegrationAccountAgreement.md)
 
-[Set-AzureRmIntegrationAccountAgreement](./Set-AzureRmIntegrationAccountAgreement.md)
+[Set-AzIntegrationAccountAgreement](./Set-AzIntegrationAccountAgreement.md)
 
 

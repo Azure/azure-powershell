@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: F1A2861F-14EF-4F67-8452-31FD498528BB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/set-azurermautomationcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationcertificate
 schema: 2.0.0
 ---
 
-# Set-AzureRmAutomationCertificate
+# Set-AzAutomationCertificate
 
 ## SYNOPSIS
 Modifies the configuration of an Automation certificate.
@@ -14,20 +14,20 @@ Modifies the configuration of an Automation certificate.
 ## SYNTAX
 
 ```
-Set-AzureRmAutomationCertificate [-Name] <String> [-Description <String>] [-Password <SecureString>]
+Set-AzAutomationCertificate [-Name] <String> [-Description <String>] [-Password <SecureString>]
  [-Path <String>] [-Exportable <Boolean>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmAutomationCertificate** cmdlet modifies the configuration of a certificate in Azure Automation.
+The **Set-AzAutomationCertificate** cmdlet modifies the configuration of a certificate in Azure Automation.
 
 ## EXAMPLES
 
 ### Example 1: Modify a certificate
 ```
 PS C:\>$Password = ConvertTo-SecureString -String "Password" -AsPlainText -Force
-PS C:\> Set-AzureAutomationCertificate -AutomationAccountName "Contos17" -Name "ContosoCertificate" -Path "./cert.pfx" -Password $Password -ResourceGroupName "ResourceGroup01"
+PS C:\> Set-AzAutomationCertificate -AutomationAccountName "Contos17" -Name "ContosoCertificate" -Path "./cert.pfx" -Password $Password -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command converts a plain text password to be a secure string by using the ConvertTo-SecureString cmdlet.
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -178,10 +178,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationCertificate](./Get-AzureRMAutomationCertificate.md)
+[Get-AzAutomationCertificate](./Get-AzAutomationCertificate.md)
 
-[New-AzureRmAutomationCertificate](./New-AzureRMAutomationCertificate.md)
+[New-AzAutomationCertificate](./New-AzAutomationCertificate.md)
 
-[Remove-AzureRmAutomationCertificate](./Remove-AzureRMAutomationCertificate.md)
+[Remove-AzAutomationCertificate](./Remove-AzAutomationCertificate.md)
 
 

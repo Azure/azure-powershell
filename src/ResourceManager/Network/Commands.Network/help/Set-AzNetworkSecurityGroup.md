@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 9F69DAEF-F2ED-449B-B75F-FCA7ED73D98F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworksecuritygroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworksecuritygroup
 schema: 2.0.0
 ---
 
-# Set-AzureRmNetworkSecurityGroup
+# Set-AzNetworkSecurityGroup
 
 ## SYNOPSIS
 Sets the goal state for a network security group.
@@ -14,22 +14,22 @@ Sets the goal state for a network security group.
 ## SYNTAX
 
 ```
-Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup <PSNetworkSecurityGroup> [-AsJob]
+Set-AzNetworkSecurityGroup -NetworkSecurityGroup <PSNetworkSecurityGroup> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmNetworkSecurityGroup** cmdlet sets the goal state for an Azure network security group.
+The **Set-AzNetworkSecurityGroup** cmdlet sets the goal state for an Azure network security group.
 
 ## EXAMPLES
 
 ### Example 1: Set the goal state for a network security group
 ```
-PS C:\>Get-AzureRmNetworkSecurityGroup -Name "Nsg1" -ResourceGroupName "Rg1" | Add-AzureRmNetworkSecurityRuleConfig -Name "Rdp-Rule" -Description "Allow RDP" -Access "Allow" -Protocol "Tcp" -Direction "Inbound" -Priority 100 -SourceAddressPrefix "Internet" -SourcePortRange "*" -DestinationAddressPrefix "*" -DestinationPortRange "3389" | Set-AzureRmNetworkSecurityGroup
+PS C:\>Get-AzNetworkSecurityGroup -Name "Nsg1" -ResourceGroupName "Rg1" | Add-AzNetworkSecurityRuleConfig -Name "Rdp-Rule" -Description "Allow RDP" -Access "Allow" -Protocol "Tcp" -Direction "Inbound" -Priority 100 -SourceAddressPrefix "Internet" -SourcePortRange "*" -DestinationAddressPrefix "*" -DestinationPortRange "3389" | Set-AzNetworkSecurityGroup
 ```
 
-This command gets the Azure network security group named Nsg1, and adds a network security rule named Rdp-Rule to allow Internet traffic on port 3389 to the retrieved network security group object using Add-AzureRmNetworkSecurityRuleConfig.
-The command persists the modified Azure network security group using **Set-AzureRmNetworkSecurityGroup**.
+This command gets the Azure network security group named Nsg1, and adds a network security rule named Rdp-Rule to allow Internet traffic on port 3389 to the retrieved network security group object using Add-AzNetworkSecurityRuleConfig.
+The command persists the modified Azure network security group using **Set-AzNetworkSecurityGroup**.
 
 ## PARAMETERS
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -124,10 +124,10 @@ Parameters: NetworkSecurityGroup (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmNetworkSecurityGroup](./Get-AzureRmNetworkSecurityGroup.md)
+[Get-AzNetworkSecurityGroup](./Get-AzNetworkSecurityGroup.md)
 
-[New-AzureRmNetworkSecurityGroup](./New-AzureRmNetworkSecurityGroup.md)
+[New-AzNetworkSecurityGroup](./New-AzNetworkSecurityGroup.md)
 
-[Remove-AzureRmNetworkSecurityGroup](./Remove-AzureRmNetworkSecurityGroup.md)
+[Remove-AzNetworkSecurityGroup](./Remove-AzNetworkSecurityGroup.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 674A11E4-36B9-4075-9F4E-952BD9FF07A7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/new-azurermautoscalewebhook
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azautoscalewebhook
 schema: 2.0.0
 ---
 
-# New-AzureRmAutoscaleWebhook
+# New-AzAutoscaleWebhook
 
 ## SYNOPSIS
 Creates an Autoscale webhook.
@@ -14,12 +14,12 @@ Creates an Autoscale webhook.
 ## SYNTAX
 
 ```
-New-AzureRmAutoscaleWebhook [-ServiceUri] <String> [[-Property] <Hashtable>]
+New-AzAutoscaleWebhook [-ServiceUri] <String> [[-Property] <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAutoscaleWebhook** cmdlet creates an Autoscale webhook.
+The **New-AzAutoscaleWebhook** cmdlet creates an Autoscale webhook.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ The **New-AzureRmAutoscaleWebhook** cmdlet creates an Autoscale webhook.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,6 +87,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAlertRuleWebhook](./New-AzureRmAlertRuleWebhook.md)
+[New-AzAlertRuleWebhook](./New-AzAlertRuleWebhook.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
-Module Name: AzureRM.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/new-azurermsearchadminkey
+Module Name: Az.Search
+online version: https://docs.microsoft.com/en-us/powershell/module/az.search/new-azsearchadminkey
 schema: 2.0.0
 ---
 
-# New-AzureRmSearchAdminKey
+# New-AzSearchAdminKey
 
 ## SYNOPSIS
 Regenerates an admin key of the Azure Search service.
@@ -14,30 +14,30 @@ Regenerates an admin key of the Azure Search service.
 
 ### ResourceNameParameterSet (Default)
 ```
-New-AzureRmSearchAdminKey [-ResourceGroupName] <String> [-ServiceName] <String> -KeyKind <PSSearchAdminKeyKind>
+New-AzSearchAdminKey [-ResourceGroupName] <String> [-ServiceName] <String> -KeyKind <PSSearchAdminKeyKind>
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
-New-AzureRmSearchAdminKey [-ParentObject] <PSSearchService> -KeyKind <PSSearchAdminKeyKind> [-Force]
+New-AzSearchAdminKey [-ParentObject] <PSSearchService> -KeyKind <PSSearchAdminKeyKind> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentResourceIdParameterSet
 ```
-New-AzureRmSearchAdminKey [-ParentResourceId] <String> -KeyKind <PSSearchAdminKeyKind> [-Force]
+New-AzSearchAdminKey [-ParentResourceId] <String> -KeyKind <PSSearchAdminKeyKind> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSearchAdminKey** cmdlet regenerates an admin key of the Azure Search service.
+The **New-AzSearchAdminKey** cmdlet regenerates an admin key of the Azure Search service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmSearchAdminKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -KeyKind Primary
+PS C:\> New-AzSearchAdminKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -KeyKind Primary
 
 Confirm
 Are you sure you want to regenerate 'Primary' key for Search Service 'pstestazuresearch01'?
@@ -56,7 +56,7 @@ The example regenerates Primary key of the Azure Search Service.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -207,4 +207,4 @@ Parameters: ParentObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmSearchAdminKeyPair](./Get-AzureRmSearchAdminKeyPair.md)
+[Get-AzSearchAdminKeyPair](./Get-AzSearchAdminKeyPair.md)

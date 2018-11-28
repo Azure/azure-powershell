@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: AFDE5ECD-29AB-4C91-98BF-1B8C9C3BB079
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurermbatchaccountkeys
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchaccountkeys
 schema: 2.0.0
 ---
 
-# Get-AzureRmBatchAccountKeys
+# Get-AzBatchAccountKeys
 
 ## SYNOPSIS
 Gets the keys of a Batch account.
@@ -14,12 +14,12 @@ Gets the keys of a Batch account.
 ## SYNTAX
 
 ```
-Get-AzureRmBatchAccountKeys [-AccountName] <String> [-ResourceGroupName <String>]
+Get-AzBatchAccountKeys [-AccountName] <String> [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmBatchAccountKeys** cmdlet gets the keys of an Azure Batch account in the current subscription.
+The **Get-AzBatchAccountKeys** cmdlet gets the keys of an Azure Batch account in the current subscription.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,8 +85,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmBatchAccountKey](./New-AzureRmBatchAccountKey.md)
+[New-AzBatchAccountKey](./New-AzBatchAccountKey.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

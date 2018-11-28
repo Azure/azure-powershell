@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/test-azurermdeployment
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azdeployment
 schema: 2.0.0
 ---
 
-# Test-AzureRmDeployment
+# Test-AzDeployment
 
 ## SYNOPSIS
 Validates a deployment.
@@ -14,60 +14,60 @@ Validates a deployment.
 
 ### ByTemplateFileWithNoParameters (Default)
 ```
-Test-AzureRmDeployment -Location <String> -TemplateFile <String> [-ApiVersion <String>] [-Pre]
+Test-AzDeployment -Location <String> -TemplateFile <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterObject
 ```
-Test-AzureRmDeployment -Location <String> -TemplateParameterObject <Hashtable> -TemplateFile <String>
+Test-AzDeployment -Location <String> -TemplateParameterObject <Hashtable> -TemplateFile <String>
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterObject
 ```
-Test-AzureRmDeployment -Location <String> -TemplateParameterObject <Hashtable> -TemplateUri <String>
+Test-AzDeployment -Location <String> -TemplateParameterObject <Hashtable> -TemplateUri <String>
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterFile
 ```
-Test-AzureRmDeployment -Location <String> -TemplateParameterFile <String> -TemplateFile <String>
+Test-AzDeployment -Location <String> -TemplateParameterFile <String> -TemplateFile <String>
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterFile
 ```
-Test-AzureRmDeployment -Location <String> -TemplateParameterFile <String> -TemplateUri <String>
+Test-AzDeployment -Location <String> -TemplateParameterFile <String> -TemplateUri <String>
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterUri
 ```
-Test-AzureRmDeployment -Location <String> -TemplateParameterUri <String> -TemplateFile <String>
+Test-AzDeployment -Location <String> -TemplateParameterUri <String> -TemplateFile <String>
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterUri
 ```
-Test-AzureRmDeployment -Location <String> -TemplateParameterUri <String> -TemplateUri <String>
+Test-AzDeployment -Location <String> -TemplateParameterUri <String> -TemplateUri <String>
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
 ```
-Test-AzureRmDeployment -Location <String> -TemplateUri <String> [-ApiVersion <String>] [-Pre]
+Test-AzDeployment -Location <String> -TemplateUri <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzureRmDeployment** cmdlet determines whether a deployment template and its parameter values are valid.
+The **Test-AzDeployment** cmdlet determines whether a deployment template and its parameter values are valid.
 
 ## EXAMPLES
 
 ### Example 1: Test deployment with a custom template and parameter file
 ```
-PS C:\>Test-AzureRmDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\EngineeringSite.json" -TemplateParameterFile "D:\Azure\Templates\EngSiteParms.json"
+PS C:\>Test-AzDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\EngineeringSite.json" -TemplateParameterFile "D:\Azure\Templates\EngSiteParms.json"
 ```
 
 This command tests a deployment at the current subscription scope using the given template file and parameters file.
@@ -79,7 +79,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The location to store deployment data.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 Local path to the template file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateFileWithNoParameters, ByTemplateFileAndParameterObject, ByTemplateFileAndParameterFile, ByTemplateFileAndParameterUri
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 A file that has the template parameters.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile
 Aliases:
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 A hash table which represents the parameters.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject
 Aliases:
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 Uri to the template parameter file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri
 Aliases:
 
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 Uri to the template file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateUriAndParameterObject, ByTemplateUriAndParameterFile, ByTemplateUriAndParameterUri, ByTemplateUriWithNoParameters
 Aliases:
 

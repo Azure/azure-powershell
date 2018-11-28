@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
-Module Name: AzureRM.EventGrid
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridtopic
+Module Name: Az.EventGrid
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/get-azeventgridtopic
 schema: 2.0.0
 ---
 
-# Get-AzureRmEventGridTopic
+# Get-AzEventGridTopic
 
 ## SYNOPSIS
 Gets the details of an Event Grid topic, or gets a list of all Event Grid topics in the current Azure subscription.
@@ -14,24 +14,23 @@ Gets the details of an Event Grid topic, or gets a list of all Event Grid topics
 
 ### ResourceGroupNameParameterSet (Default)
 ```
-Get-AzureRmEventGridTopic [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzEventGridTopic [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### TopicNameParameterSet
 ```
-Get-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-Get-AzureRmEventGridTopic [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzEventGridTopic [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmEventGridTopic cmdlet gets either the details of a specified Event Grid Topic, or a list of all Event Grid topics in the current Azure subscription.
+The Get-AzEventGridTopic cmdlet gets either the details of a specified Event Grid Topic, or a list of all Event Grid topics in the current Azure subscription.
 If the topic name is provided, the details of a single Event Grid Topic is returned.
 If the topic name is not provided, a list of topics is returned.
 
@@ -39,28 +38,28 @@ If the topic name is not provided, a list of topics is returned.
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1
+PS C:\> Get-AzEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1
 ```
 
 Gets the details of Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/topics/Topic1"
+PS C:\> Get-AzEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/topics/Topic1"
 ```
 
 Gets the details of Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmEventGridTopic -ResourceGroup MyResourceGroupName
+PS C:\> Get-AzEventGridTopic -ResourceGroup MyResourceGroupName
 ```
 
 List all the Event Grid topics in resource group \`MyResourceGroupName\`.
 
 ### Example 4
 ```
-PS C:\> Get-AzureRmEventGridTopic
+PS C:\> Get-AzEventGridTopic
 ```
 
 List all the Event Grid topics in the subscription.
@@ -71,7 +70,7 @@ List all the Event Grid topics in the subscription.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 8C5D29AD-0B15-4CD4-8637-86ABD19F41C8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlcapability
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlcapability
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlCapability
+# Get-AzSqlCapability
 
 ## SYNOPSIS
 Gets SQL Database capabilities for the current subscription.
@@ -15,26 +15,26 @@ Gets SQL Database capabilities for the current subscription.
 
 ### FilterResults (Default)
 ```
-Get-AzureRmSqlCapability [-LocationName] <String> [-ServerVersionName <String>] [-EditionName <String>]
+Get-AzSqlCapability [-LocationName] <String> [-ServerVersionName <String>] [-EditionName <String>]
  [-ServiceObjectiveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DefaultResults
 ```
-Get-AzureRmSqlCapability [-LocationName] <String> [-Defaults] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzSqlCapability [-LocationName] <String> [-Defaults] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlCapability** cmdlet gets the Azure SQL Database capabilities available on the current subscription for a region.
+The **Get-AzSqlCapability** cmdlet gets the Azure SQL Database capabilities available on the current subscription for a region.
 If you specify the *ServerVersionName*, *EditionName*, or *ServiceObjectiveName* parameters, this cmdlet returns the specified values and their predecessors.
 
 ## EXAMPLES
 
 ### Example 1: Get capabilities for the current subscription for a region
 ```
-PS C:\>Get-AzureRmSqlCapability -LocationName "Central US"
+PS C:\>Get-AzSqlCapability -LocationName "Central US"
 Location                : Central US
 Status                  : Available
 SupportedServerVersions : {12.0, 2.0}
@@ -44,7 +44,7 @@ This command returns the capabilities for SQL Database instances on the current 
 
 ### Example 2: Get default capabilities for the current subscription for a region
 ```
-PS C:\>Get-AzureRmSqlCapability -LocationName "Central US" -Defaults
+PS C:\>Get-AzSqlCapability -LocationName "Central US" -Defaults
 Location        : Central US
 Status          : Available
 ExpandedDetails : Version: 2.0 (Default) -> Edition: Standard (Default) -> Service Objective: S0 (Default)
@@ -54,7 +54,7 @@ This command returns the default capabilities for SQL Databases on the current s
 
 ### Example 3: Get details for a service objective
 ```
-PS C:\>Get-AzureRmSqlCapability -LocationName "Central US" -ServiceObjectiveName "S1"
+PS C:\>Get-AzSqlCapability -LocationName "Central US" -ServiceObjectiveName "S1"
 Location        : Central US
 Status          : Available
 ExpandedDetails : Version: 12.0 (Available) -> Edition: Standard (Default) -> Service Objective: S1 (Available) 
@@ -69,7 +69,7 @@ This command gets default capabilities for SQL Databases for the specified servi
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/stop-azurermservicebusmigration
+Module Name: Az.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/stop-azservicebusmigration
 schema: 2.0.0
 ---
 
-# Stop-AzureRmServiceBusMigration
+# Stop-AzServiceBusMigration
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
@@ -14,30 +14,30 @@ schema: 2.0.0
 
 ### MigrationConfigurationPropertiesSet (Default)
 ```
-Stop-AzureRmServiceBusMigration [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+Stop-AzServiceBusMigration [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NamespaceInputObjectSet
 ```
-Stop-AzureRmServiceBusMigration [-InputObject] <PSServiceBusDRConfigurationAttributes> [-PassThru]
+Stop-AzServiceBusMigration [-InputObject] <PSServiceBusDRConfigurationAttributes> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NamespaceResourceIdParameterSet
 ```
-Stop-AzureRmServiceBusMigration [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Stop-AzServiceBusMigration [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmServiceBusMigration** cmdlets  tremitates the Migration between Standard to premium namespace
+The **Stop-AzServiceBusMigration** cmdlets  tremitates the Migration between Standard to premium namespace
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Stop-AzureRmServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation
+PS C:\> Stop-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation
 ```
 
 cmdlet termitates the migration between Standard namespace and Premium namespace provided while creating the migration configuration.
@@ -48,7 +48,7 @@ cmdlet termitates the migration between Standard namespace and Premium namespace
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

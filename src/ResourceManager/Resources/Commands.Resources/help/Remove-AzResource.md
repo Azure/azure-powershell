@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: A262DFD1-8B90-462C-A4E2-ABA0F51173FA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermresource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azresource
 schema: 2.0.0
 ---
 
-# Remove-AzureRmResource
+# Remove-AzResource
 
 ## SYNOPSIS
 Removes a resource.
@@ -15,13 +15,13 @@ Removes a resource.
 
 ### ByResourceId (Default)
 ```
-Remove-AzureRmResource [-AsJob] -ResourceId <String> [-ODataQuery <String>] [-Force] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzResource [-AsJob] -ResourceId <String> [-ODataQuery <String>] [-Force] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BySubscriptionLevel
 ```
-Remove-AzureRmResource [-AsJob] -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
+Remove-AzResource [-AsJob] -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
  [-ExtensionResourceType <String>] [-ODataQuery <String>] [-ResourceGroupName <String>] [-Force]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -29,19 +29,19 @@ Remove-AzureRmResource [-AsJob] -ResourceName <String> -ResourceType <String> [-
 
 ### ByTenantLevel
 ```
-Remove-AzureRmResource [-AsJob] -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
+Remove-AzResource [-AsJob] -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
  [-ExtensionResourceType <String>] [-ODataQuery <String>] [-TenantLevel] [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmResource** cmdlet removes an Azure resource.
+The **Remove-AzResource** cmdlet removes an Azure resource.
 
 ## EXAMPLES
 
 ### Example 1: Remove a website resource
 ```
-PS C:\>Remove-AzureRmResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup11/providers/Microsoft.Web/sites/ContosoSite" -Force
+PS C:\>Remove-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup11/providers/Microsoft.Web/sites/ContosoSite" -Force
 ```
 
 This command removes the website resource named ContosoSite.
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -305,14 +305,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Find-AzureRmResource](./Find-AzureRmResource.md)
+[Find-AzResource](./Find-AzResource.md)
 
-[Get-AzureRmResource](./Get-AzureRmResource.md)
+[Get-AzResource](./Get-AzResource.md)
 
-[Move-AzureRmResource](./Move-AzureRmResource.md)
+[Move-AzResource](./Move-AzResource.md)
 
-[New-AzureRmResource](./New-AzureRmResource.md)
+[New-AzResource](./New-AzResource.md)
 
-[Set-AzureRmResource](./Set-AzureRmResource.md)
+[Set-AzResource](./Set-AzResource.md)
 
 

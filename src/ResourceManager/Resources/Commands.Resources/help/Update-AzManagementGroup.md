@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/update-azurermmanagementgroup/
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azmanagementgroup/
 schema: 2.0.0
 ---
 
-# Update-AzureRmManagementGroup
+# Update-AzManagementGroup
 
 ## SYNOPSIS
 Updates a Management Group
@@ -14,38 +14,37 @@ Updates a Management Group
 
 ### GroupOperations (Default)
 ```
-Update-AzureRmManagementGroup -GroupName <String> [-DisplayName <String>] [-ParentId <String>]
+Update-AzManagementGroup -GroupName <String> [-DisplayName <String>] [-ParentId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentAndManagementGroupObject
 ```
-Update-AzureRmManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>]
+Update-AzManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>]
  [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ManagementGroupObject
 ```
-Update-AzureRmManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>] [-ParentId <String>]
+Update-AzManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>] [-ParentId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentGroupObject
 ```
-Update-AzureRmManagementGroup -GroupName <String> [-DisplayName <String>]
- [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzManagementGroup -GroupName <String> [-DisplayName <String>] [-DefaultProfile <IAzureContextContainer>]
+ -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureRMManagementGroup** cmdlet updates the **ParentId** or **DisplayName** for a Management Group.
+The **Update-AzManagementGroup** cmdlet updates the **ParentId** or **DisplayName** for a Management Group.
 
 ## EXAMPLES
 
 ### Example 1: Update a Management Group's Display Name
 ```
-PS C:\> Update-AzureRMManagementGroup -Group "TestGroup" -DisplayName "New Display Name"
+PS C:\> Update-AzManagementGroup -Group "TestGroup" -DisplayName "New Display Name"
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -61,7 +60,7 @@ ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 
 ### Example 2: Update a Management Group's Parent
 ```
-PS C:\> Update-AzureRMManagementGroup -Group "TestGroup" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
+PS C:\> Update-AzManagementGroup -Group "TestGroup" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -77,7 +76,7 @@ ParentDisplayName : TestGroupParent
 
 ### Example 3: Update a Management Group by piping PSManagementGroup Object
 ```
-PS C:\> Get-AzureRmManagementGroup -GroupName "TestGroup" | Update-AzureRMManagementGroup -DisplayName "TestDisplayName" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
+PS C:\> Get-AzManagementGroup -GroupName "TestGroup" | Update-AzManagementGroup -DisplayName "TestDisplayName" -ParentId "/providers/Microsoft.Management/managementGroups/TestGroupParent"
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -93,8 +92,8 @@ ParentDisplayName : TestGroupParent
 
 ### Example 4: Update a Management Group's parent using the ParentObject
 ```
-PS C:\> $parentObject = Get-AzureRmManagementGroup -GroupName "TestGroupParent"
-PS C:\> Update-AzureRmManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
+PS C:\> $parentObject = Get-AzManagementGroup -GroupName "TestGroupParent"
+PS C:\> Update-AzManagementGroup -GroupName "TestGroup" -ParentObject $parentObject
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroup
 Type              : /providers/Microsoft.Management/managementGroups
@@ -114,7 +113,7 @@ ParentDisplayName : TestGroupParent
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 329EF130-5CC9-4BFF-8561-DE5274018B09
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementsubscription
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementsubscription
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApiManagementSubscription
+# Remove-AzApiManagementSubscription
 
 ## SYNOPSIS
 Deletes an existing subscription.
@@ -14,19 +14,19 @@ Deletes an existing subscription.
 ## SYNTAX
 
 ```
-Remove-AzureRmApiManagementSubscription -Context <PsApiManagementContext> -SubscriptionId <String> [-PassThru]
+Remove-AzApiManagementSubscription -Context <PsApiManagementContext> -SubscriptionId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmApiManagementSubscription** cmdlet deletes an existing subscription.
+The **Remove-AzApiManagementSubscription** cmdlet deletes an existing subscription.
 
 ## EXAMPLES
 
 ### Example 1: Delete a subscription
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzureRmApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789" -Force
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789" -Force
 ```
 
 This command deletes an existing subscription.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -143,10 +143,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementSubscription](./Get-AzureRmApiManagementSubscription.md)
+[Get-AzApiManagementSubscription](./Get-AzApiManagementSubscription.md)
 
-[New-AzureRmApiManagementSubscription](./New-AzureRmApiManagementSubscription.md)
+[New-AzApiManagementSubscription](./New-AzApiManagementSubscription.md)
 
-[Set-AzureRmApiManagementSubscription](./Set-AzureRmApiManagementSubscription.md)
+[Set-AzApiManagementSubscription](./Set-AzApiManagementSubscription.md)
 
 

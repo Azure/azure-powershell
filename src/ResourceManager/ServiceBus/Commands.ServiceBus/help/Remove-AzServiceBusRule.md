@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/remove-azurermservicebusrule
+Module Name: Az.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusrule
 schema: 2.0.0
 ---
 
-# Remove-AzureRmServiceBusRule
+# Remove-AzServiceBusRule
 
 ## SYNOPSIS
 Removes the speficied rule of a given subscription .
@@ -14,51 +14,51 @@ Removes the speficied rule of a given subscription .
 
 ### RulePropertiesSet (Default)
 ```
-Remove-AzureRmServiceBusRule [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
+Remove-AzServiceBusRule [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
  [-Subscription] <String> [-Name] <String> [-PassThru] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RuleResourceIdSet
 ```
-Remove-AzureRmServiceBusRule [-InputObject] <PSTopicAttributes> [-ResourceId] <String> [-PassThru] [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceBusRule [-InputObject] <PSTopicAttributes> [-ResourceId] <String> [-PassThru] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmServiceBusRule** cmdlet removes the rule of a subscription of given topic.
+The **Remove-AzServiceBusRule** cmdlet removes the rule of a subscription of given topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -Name SBRule
+PS C:\> Remove-AzServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -Name SBRule
 ```
 
 Removes the rule `SBRule` of subscription `SBSubscription` of specified topic `SBTopic`.
 
 ### Example 2.1 - InputObject - Using Variable:
 ```
-PS C:\> $inputobject = Get-AzureRmServiceBusRule <params>
-PS C:\> Remove-AzureRmServiceBusRule -InputObject $inputobject
+PS C:\> $inputobject = Get-AzServiceBusRule <params>
+PS C:\> Remove-AzServiceBusRule -InputObject $inputobject
 ```
 
 Removes the rule provided through $inputobject for -InputObject parameter
 
 ### Example 2.2 - InputObject - Using Piping:
 ```
-PS C:\> Get-AzureRmServiceBusRule <params> | Remove-AzureRmServiceBusRule
+PS C:\> Get-AzServiceBusRule <params> | Remove-AzServiceBusRule
 ```
 
 ### Example 3.1 - ResourceId - Using Variable
 ```
-PS C:\> $resourceid = Get-AzureRmServiceBusRule <params>
-PS C:\> Remove-AzureRmServiceBusRule -ResourceId $resourceid.Id
+PS C:\> $resourceid = Get-AzServiceBusRule <params>
+PS C:\> Remove-AzServiceBusRule -ResourceId $resourceid.Id
 ```
 
 ### Example 3.1 - ResourceId - Using string value
 ```
-PS C:\> Remove-AzureRmServiceBusRule -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName/subscriptions/SubscriptionName/rules/RuleName"
+PS C:\> Remove-AzServiceBusRule -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName/subscriptions/SubscriptionName/rules/RuleName"
 ```
 
 Removes the rule provided through ARM Id in $resourceid/string for -ResourceId parameter 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

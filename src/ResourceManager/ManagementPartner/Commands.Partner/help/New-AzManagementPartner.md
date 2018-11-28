@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ManagementPartner.dll-Help.xml
-Module Name: AzureRM.ManagementPartner
+Module Name: Az.ManagementPartner
 online version: http://go.microsoft.com/fwlink/?LinkID=393044
 schema: 2.0.0
 ---
 
-# New-AzureRmManagementPartner
+# New-AzManagementPartner
 
 ## SYNOPSIS
 Associates a Microsoft Partner Network(MPN) ID to the current authenticated user or service principal.
@@ -13,8 +13,8 @@ Associates a Microsoft Partner Network(MPN) ID to the current authenticated user
 ## SYNTAX
 
 ```
-New-AzureRmManagementPartner [-PartnerId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzManagementPartner [-PartnerId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Associates a Microsoft Partner Network(MPN) ID to the current authenticated user
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmManagementPartner -PartnerId 4977985
+PS C:\> New-AzManagementPartner -PartnerId 4977985
 PartnerId   : 4977985
 PartnerName : Test_Test_DPORTest
 TenantId    : 1b1121dd-6900-412a-af73-e8d44f81e1c1
@@ -40,7 +40,7 @@ Add a management partner
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,8 +112,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmManagementPartner](./Remove-AzureRmManagementPartner.md)
+[Remove-AzManagementPartner](./Remove-AzManagementPartner.md)
 
-[Get-AzureRmManagementPartner](./Get-AzureRmManagementPartner.md)
+[Get-AzManagementPartner](./Get-AzManagementPartner.md)
 
-[Update-AzureRmManagementPartner](./Update-AzureRmManagementPartner.md)
+[Update-AzManagementPartner](./Update-AzManagementPartner.md)

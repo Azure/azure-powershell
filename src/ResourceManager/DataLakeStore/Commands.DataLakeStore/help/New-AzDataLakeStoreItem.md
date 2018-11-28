@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: A8222AB8-0003-4AC6-8114-294ABE8054CE
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/new-azurermdatalakestoreitem
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/new-azdatalakestoreitem
 schema: 2.0.0
 ---
 
-# New-AzureRmDataLakeStoreItem
+# New-AzDataLakeStoreItem
 
 ## SYNOPSIS
 Creates a new file or folder in Data Lake Store.
@@ -14,20 +14,20 @@ Creates a new file or folder in Data Lake Store.
 ## SYNTAX
 
 ```
-New-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-Value] <Object>]
+New-AzDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-Value] <Object>]
  [[-Encoding] <FileSystemCmdletProviderEncoding>] [-Folder] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmDataLakeStoreItem** cmdlet creates a new file or folder in Data Lake Store.
+The **New-AzDataLakeStoreItem** cmdlet creates a new file or folder in Data Lake Store.
 
 ## EXAMPLES
 
 ### Example 1: Create a new file and a new folder
 ```
-PS C:\>New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFile.txt"
-PS C:\> New-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFolder" -Folder
+PS C:\>New-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFile.txt"
+PS C:\> New-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "/NewFolder" -Folder
 ```
 
 The first command creates the file NewFile.txt for the specified account.
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -207,16 +207,16 @@ The full path to the created file or folder.
 
 ## RELATED LINKS
 
-[Get-AzureRmDataLakeStoreItem](./Get-AzureRmDataLakeStoreItem.md)
+[Get-AzDataLakeStoreItem](./Get-AzDataLakeStoreItem.md)
 
-[Export-AzureRmDataLakeStoreItem](./Export-AzureRmDataLakeStoreItem.md)
+[Export-AzDataLakeStoreItem](./Export-AzDataLakeStoreItem.md)
 
-[Import-AzureRmDataLakeStoreItem](./Import-AzureRmDataLakeStoreItem.md)
+[Import-AzDataLakeStoreItem](./Import-AzDataLakeStoreItem.md)
 
-[New-AzureRmDataLakeStoreItem](./New-AzureRmDataLakeStoreItem.md)
+[New-AzDataLakeStoreItem](./New-AzDataLakeStoreItem.md)
 
-[Remove-AzureRmDataLakeStoreItem](./Remove-AzureRmDataLakeStoreItem.md)
+[Remove-AzDataLakeStoreItem](./Remove-AzDataLakeStoreItem.md)
 
-[Test-AzureRmDataLakeStoreItem](./Test-AzureRmDataLakeStoreItem.md)
+[Test-AzDataLakeStoreItem](./Test-AzDataLakeStoreItem.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerInstance.dll-Help.xml
-Module Name: AzureRM.ContainerInstance
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance/new-azurermcontainergroup
+Module Name: Az.ContainerInstance
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance/new-azcontainergroup
 schema: 2.0.0
 ---
 
-# New-AzureRmContainerGroup
+# New-AzContainerGroup
 
 ## SYNOPSIS
 Creates a container group.
@@ -14,32 +14,31 @@ Creates a container group.
 
 ### CreateContainerGroupBaseParamSet (Default)
 ```
-New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
+New-AzContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
  [-RegistryCredential <PSCredential>] [-Location <String>] [-OsType <String>] [-RestartPolicy <String>]
  [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>] [-DnsNameLabel <String>] [-Port <Int32[]>]
- [-Command <String>] [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>] [-Tag <Hashtable>]
+ [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateContainerGroupWithAzureFileMountParamSet
 ```
-New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
+New-AzContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
  [-RegistryCredential <PSCredential>] -AzureFileVolumeShareName <String>
  -AzureFileVolumeAccountCredential <PSCredential> -AzureFileVolumeMountPath <String> [-Location <String>]
  [-OsType <String>] [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>]
- [-DnsNameLabel <String>] [-Port <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>]
- [-RegistryServerDomain <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DnsNameLabel <String>] [-Port <Int32[]>] [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmContainerGroup** cmdlets creates a container group.
+The **New-AzContainerGroup** cmdlets creates a container group.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmContainerGroup -ResourceGroupName demo -Name mycontainer -Image nginx -OsType Linux -IpAddressType Public -Port @(8000)
+PS C:\> New-AzContainerGroup -ResourceGroupName demo -Name mycontainer -Image nginx -OsType Linux -IpAddressType Public -Port @(8000)
 
 ResourceGroupName        : demo
 Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
@@ -63,7 +62,7 @@ This commands creates a container group using latest nginx image and requests a 
 
 ### Example 2
 ```
-PS C:\> New-AzureRmContainerGroup -ResourceGroupName demo -Name mycontainer -Image alpine -OsType Linux -Command "/bin/sh -c myscript.sh" -EnvironmentVariable @{"env1"="value1";"env2"="value2"}
+PS C:\> New-AzContainerGroup -ResourceGroupName demo -Name mycontainer -Image alpine -OsType Linux -Command "/bin/sh -c myscript.sh" -EnvironmentVariable @{"env1"="value1";"env2"="value2"}
 
 ResourceGroupName        : demo
 Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
@@ -87,7 +86,7 @@ This commands creates a container group and runs a custom script inside the cont
 
 ### Example 3: Creates a run-to-completion container group.
 ```
-PS C:\> New-AzureRmContainerGroup -ResourceGroupName demo -Name mycontainer -Image alpine -OsType Linux -Command "echo hello" -RestartPolicy Never
+PS C:\> New-AzContainerGroup -ResourceGroupName demo -Name mycontainer -Image alpine -OsType Linux -Command "echo hello" -RestartPolicy Never
 
 ResourceGroupName        : demo
 Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
@@ -113,7 +112,7 @@ This commands creates a container group which prints out 'hello' and stops.
 ```
 PS C:\> $secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
 PS C:\> $mycred = New-Object System.Management.Automation.PSCredential ("myacr", $secpasswd)
-PS C:\> New-AzureRmContainerGroup -ResourceGroupName demo -Name mycontainer -Image myacr.azurecr.io/nginx:latest -IpAddressType Public -RegistryCredential $mycred
+PS C:\> New-AzContainerGroup -ResourceGroupName demo -Name mycontainer -Image myacr.azurecr.io/nginx:latest -IpAddressType Public -RegistryCredential $mycred
 
 ResourceGroupName        : demo
 Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
@@ -139,7 +138,7 @@ This commands creates a container group using a nginx image in Azure Container R
 ```
 PS C:\> $secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
 PS C:\> $mycred = New-Object System.Management.Automation.PSCredential ("username", $secpasswd)
-PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image myserver.com/myimage:latest -RegistryServer myserver.com -RegistryCredential $mycred
+PS C:\> New-AzContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image myserver.com/myimage:latest -RegistryServer myserver.com -RegistryCredential $mycred
 
 ResourceGroupName        : demo
 Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
@@ -165,7 +164,7 @@ This commands creates a container group using a custom image from a custom conta
 ```
 PS C:\> $secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
 PS C:\> $mycred = New-Object System.Management.Automation.PSCredential ("username", $secpasswd)
-PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image alpine -AzureFileVolumeShareName myshare -AzureFileVolumeAccountKey $mycred -AzureFileVolumeMountPath /mnt/azfile
+PS C:\> New-AzContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image alpine -AzFileVolumeShareName myshare -AzFileVolumeAccountKey $mycred -AzFileVolumeMountPath /mnt/azfile
 
 ResourceGroupName        : demo
 Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
@@ -234,21 +233,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Command
-The command to run in the container.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Cpu
 The required CPU cores.
 Default: 1
@@ -269,7 +253,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

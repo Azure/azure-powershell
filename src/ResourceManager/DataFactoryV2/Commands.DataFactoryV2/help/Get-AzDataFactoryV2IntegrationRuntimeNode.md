@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2integrationruntimenode
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryv2integrationruntimenode
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryV2IntegrationRuntimeNode
+# Get-AzDataFactoryV2IntegrationRuntimeNode
 
 ## SYNOPSIS
 Gets an integration runtime node infomation.
@@ -14,31 +14,31 @@ Gets an integration runtime node infomation.
 
 ### ByIntegrationRuntimeName (Default)
 ```
-Get-AzureRmDataFactoryV2IntegrationRuntimeNode -Name <String> [-IpAddress] [-IntegrationRuntimeName] <String>
+Get-AzDataFactoryV2IntegrationRuntimeNode -Name <String> [-IpAddress] [-IntegrationRuntimeName] <String>
  [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzureRmDataFactoryV2IntegrationRuntimeNode -Name <String> [-IpAddress] [-ResourceId] <String>
+Get-AzDataFactoryV2IntegrationRuntimeNode -Name <String> [-IpAddress] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Get-AzureRmDataFactoryV2IntegrationRuntimeNode -Name <String> [-IpAddress]
+Get-AzDataFactoryV2IntegrationRuntimeNode -Name <String> [-IpAddress]
  [-InputObject] <PSIntegrationRuntime> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactoryV2IntegrationRuntimeNode** cmdlet gets the detail information of an integration runtime node.
+The **Get-AzDataFactoryV2IntegrationRuntimeNode** cmdlet gets the detail information of an integration runtime node.
 
 ## EXAMPLES
 
 ### Example 1: Gets the detail information of an integration runtime node.
 ```
-PS C:\> Get-AzureRmDataFactoryV2IntegrationRuntimeNode -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2'  -IntegrationRuntimeName 'test-selfhost-ir' -Name 'Node_1'
+PS C:\> Get-AzDataFactoryV2IntegrationRuntimeNode -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2'  -IntegrationRuntimeName 'test-selfhost-ir' -Name 'Node_1'
 
 ResourceGroupName      : rg-test-dfv2
 DataFactoryName        : test-df-eu2
@@ -68,7 +68,7 @@ The cmdlet gets information of node named 'Node_1' in self-hosted integration ru
 
 ### Example 2: Gets the detail information of an integration runtime node together with IP address.
 ```
-PS C:\> Get-AzureRmDataFactoryV2IntegrationRuntimeNode -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2'  -IntegrationRuntimeName 'test-selfhost-ir' -Name 'Node_1' -IpAddress
+PS C:\> Get-AzDataFactoryV2IntegrationRuntimeNode -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2'  -IntegrationRuntimeName 'test-selfhost-ir' -Name 'Node_1' -IpAddress
 
 ResourceGroupName      : rg-test-dfv2
 DataFactoryName        : test-df-eu2
@@ -239,4 +239,4 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories, c
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2IntegrationRuntime]()
+[Get-AzDataFactoryV2IntegrationRuntime]()

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationsecuritygroup
 schema: 2.0.0
 ---
 
-# Get-AzureRmApplicationSecurityGroup
+# Get-AzApplicationSecurityGroup
 
 ## SYNOPSIS
 Gets an application security group.
@@ -13,32 +13,32 @@ Gets an application security group.
 ## SYNTAX
 
 ```
-Get-AzureRmApplicationSecurityGroup [-ResourceGroupName <String>] [-Name <String>]
+Get-AzApplicationSecurityGroup [-ResourceGroupName <String>] [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApplicationSecurityGroup** cmdlet gets an application security group.
+The **Get-AzApplicationSecurityGroup** cmdlet gets an application security group.
 
 ## EXAMPLES
 
 ### Example 1: Retrieve all application security groups.
 ```
-PS C:\> Get-AzureRmApplicationSecurityGroup
+PS C:\> Get-AzApplicationSecurityGroup
 ```
 
 The command above returns the all application security groups in the subscription.
 
 ### Example 2: Retrieve application security groups in a resource group.
 ```
-PS C:\> Get-AzureRmApplicationSecurityGroup -ResourceGroupName MyResourceGroup
+PS C:\> Get-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup
 ```
 
 The command above returns all application security groups that belong to the resource group MyResourceGroup.
 
 ### Example 3: Retrieve a specific application security group.
 ```
-PS C:\> Get-AzureRmApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name MyApplicationSecurityGroup
+PS C:\> Get-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name MyApplicationSecurityGroup
 ```
 
 The command above returns the application security group MyApplicationSecurityGroup under the resource group MyResourceGroup.
@@ -49,7 +49,7 @@ The command above returns the application security group MyApplicationSecurityGr
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -105,10 +105,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApplicationSecurityGroup](./New-AzureRmApplicationSecurityGroup.md)
+[New-AzApplicationSecurityGroup](./New-AzApplicationSecurityGroup.md)
 
-[Remove-AzureRmApplicationSecurityGroup](./Remove-AzureRmApplicationSecurityGroup.md)
+[Remove-AzApplicationSecurityGroup](./Remove-AzApplicationSecurityGroup.md)
 
-[Get-AzureRmNetworkSecurityRuleConfig](./Get-AzureRmNetworkSecurityRuleConfig.md)
+[Get-AzNetworkSecurityRuleConfig](./Get-AzNetworkSecurityRuleConfig.md)
 
-[Get-AzureRmNetworkInterfaceIpConfig](./Get-AzureRmNetworkInterfaceIpConfig.md)
+[Get-AzNetworkInterfaceIpConfig](./Get-AzNetworkInterfaceIpConfig.md)

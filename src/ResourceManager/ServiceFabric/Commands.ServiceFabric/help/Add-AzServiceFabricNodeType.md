@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/add-azurermservicefabricnodetype
+Module Name: Az.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/add-azservicefabricnodetype
 schema: 2.0.0
 ---
 
-# Add-AzureRmServiceFabricNodeType
+# Add-AzServiceFabricNodeType
 
 ## SYNOPSIS
 Add a new node type to the existing cluster.
@@ -13,7 +13,7 @@ Add a new node type to the existing cluster.
 ## SYNTAX
 
 ```
-Add-AzureRmServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -Capacity <Int32>
+Add-AzServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -Capacity <Int32>
  -VmUserName <String> -VmPassword <SecureString> [-VmSku <String>] [-Tier <String>]
  [-DurabilityLevel <DurabilityLevel>] -NodeType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -27,7 +27,7 @@ Add a new node type to a existing cluster.
 ### Example 1
 ```
 PS c:\> $pwd = ConvertTo-SecureString -String 'Password$123456' -AsPlainText -Force
-PS C:\> Add-AzureRmServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'n2' -Capacity 5 -VmUserName 'adminName' -VmPassword $pwd
+PS C:\> Add-AzServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeType 'n2' -Capacity 5 -VmUserName 'adminName' -VmPassword $pwd
 ```
 
 This command will add a new NodeType 'n2' with capacity of 5, and the vm admin name is 'adminName'.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 77CDEE77-FD5D-4C2D-B027-FF1F6FF6618E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermapplicationgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgateway
 schema: 2.0.0
 ---
 
-# Get-AzureRmApplicationGateway
+# Get-AzApplicationGateway
 
 ## SYNOPSIS
 Gets an application gateway.
@@ -14,32 +14,32 @@ Gets an application gateway.
 ## SYNTAX
 
 ```
-Get-AzureRmApplicationGateway [-Name <String>] [-ResourceGroupName <String>]
+Get-AzApplicationGateway [-Name <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApplicationGateway** cmdlet gets an application gateway.
+The **Get-AzApplicationGateway** cmdlet gets an application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Get a specified application gateway
 ```
-PS C:\>$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
 
 ### Example 2: Get a list of application gateways in a resource group
 ```
-PS C:\>$AppGwList = Get-AzureRmApplicationGateway -ResourceGroupName "ResourceGroup01"
+PS C:\>$AppGwList = Get-AzApplicationGateway -ResourceGroupName "ResourceGroup01"
 ```
 
 This command gets a list of all the application gateways in the resource group named ResourceGroup01 and stores it in the $AppGwList variable.
 
 ### Example 3: Get a list of application gateways in a subscription
 ```
-PS C:\>$AppGwList = Get-AzureRmApplicationGateway
+PS C:\>$AppGwList = Get-AzApplicationGateway
 ```
 
 This command gets a list of all the application gateways in the subscription and stores it in the $AppGwList variable.
@@ -50,7 +50,7 @@ This command gets a list of all the application gateways in the subscription and
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -106,6 +106,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Stop-AzureRmApplicationGateway](./Stop-AzureRmApplicationGateway.md)
+[Stop-AzApplicationGateway](./Stop-AzApplicationGateway.md)
 
 

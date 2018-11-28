@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 6AB09621-488B-4A16-92D9-9C47EB87DA95
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermresourceprovider
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourceprovider
 schema: 2.0.0
 ---
 
-# Get-AzureRmResourceProvider
+# Get-AzResourceProvider
 
 ## SYNOPSIS
 Gets a resource provider.
@@ -15,18 +15,18 @@ Gets a resource provider.
 
 ### ListAvailable (Default)
 ```
-Get-AzureRmResourceProvider [-Location <String>] [-ListAvailable] [-ApiVersion <String>] [-Pre]
+Get-AzResourceProvider [-Location <String>] [-ListAvailable] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IndividualProvider
 ```
-Get-AzureRmResourceProvider -ProviderNamespace <String[]> [-Location <String>] [-ApiVersion <String>] [-Pre]
+Get-AzResourceProvider -ProviderNamespace <String[]> [-Location <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmResourceProvider** cmdlet gets an Azure resource provider.
+The **Get-AzResourceProvider** cmdlet gets an Azure resource provider.
 
 ## EXAMPLES
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -134,8 +134,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Register-AzureRmResourceProvider](./Register-AzureRmResourceProvider.md)
+[Register-AzResourceProvider](./Register-AzResourceProvider.md)
 
-[Unregister-AzureRmResourceProvider](./Unregister-AzureRmResourceProvider.md)
+[Unregister-AzResourceProvider](./Unregister-AzResourceProvider.md)
 
 

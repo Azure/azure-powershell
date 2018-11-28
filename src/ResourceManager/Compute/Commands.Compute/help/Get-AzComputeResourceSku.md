@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermcomputeresourcesku
+Module Name: Az.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku
 schema: 2.0.0
 ---
 
-# Get-AzureRmComputeResourceSku
+# Get-AzComputeResourceSku
 
 ## SYNOPSIS
 List all compute resource Skus
@@ -13,7 +13,7 @@ List all compute resource Skus
 ## SYNTAX
 
 ```
-Get-AzureRmComputeResourceSku [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzComputeResourceSku [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ List all compute resource Skus
 
 ### Example 1
 ```
-PS C:\> PS C:\> Get-AzureRmComputeResourceSku | where {$_.Locations.Contains("westus")};
+PS C:\> PS C:\> Get-AzComputeResourceSku | where {$_.Locations.Contains("westus")};
 ```
 
 List all compute resource skus in West US region
@@ -34,7 +34,7 @@ List all compute resource skus in West US region
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

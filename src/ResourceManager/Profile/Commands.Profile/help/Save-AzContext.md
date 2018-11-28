@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/save-azurermcontext
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/save-azcontext
 schema: 2.0.0
 ---
 
-# Save-AzureRmContext
+# Save-AzContext
 
 ## SYNOPSIS
 Saves the current authentication information for use in other PowerShell sessions.
@@ -13,26 +13,26 @@ Saves the current authentication information for use in other PowerShell session
 ## SYNTAX
 
 ```
-Save-AzureRmContext [[-Profile] <AzureRmProfile>] [-Path] <String> [-Force]
+Save-AzContext [[-Profile] <AzureRmProfile>] [-Path] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Save-AzureRmContext cmdlet saves the current authentication information for use in other PowerShell sessions.
+The Save-AzContext cmdlet saves the current authentication information for use in other PowerShell sessions.
 
 ## EXAMPLES
 
 ### Example 1: Saving the current session's context
 ```
-PS C:\> Connect-AzureRmAccount
-PS C:\> Save-AzureRmContext -Path C:\test.json
+PS C:\> Connect-AzAccount
+PS C:\> Save-AzContext -Path C:\test.json
 ```
 
 This example saves the current session's Azure context to the JSON file provided.
 
 ### Example 2: Saving a given context
 ```
-PS C:\> Save-AzureRmContext -Profile (Connect-AzureRmAccount) -Path C:\test.json
+PS C:\> Save-AzContext -Profile (Connect-AzAccount) -Path C:\test.json
 ```
 
 This example saves the Azure context that is passed through to the cmdlet to the JSON file provided.
@@ -43,7 +43,7 @@ This example saves the Azure context that is passed through to the cmdlet to the
 The credentials, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

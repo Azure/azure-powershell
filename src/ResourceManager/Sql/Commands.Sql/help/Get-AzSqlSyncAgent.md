@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlsyncagent
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlsyncagent
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlSyncAgent
+# Get-AzSqlSyncAgent
 
 ## SYNOPSIS
 Returns information about Azure SQL Sync Agents.
@@ -13,19 +13,19 @@ Returns information about Azure SQL Sync Agents.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlSyncAgent [[-Name] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+Get-AzSqlSyncAgent [[-Name] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlSyncAgent** cmdlet returns information about one or more Azure SQL Sync Agents.
+The **Get-AzSqlSyncAgent** cmdlet returns information about one or more Azure SQL Sync Agents.
 Specify the name of a sync agent to see information for only that sync agent.
 
 ## EXAMPLES
 
 ### Example 1: Get all instances of Azure SQL Sync Agent assigned to an Azure SQL Server
 ```
-PS C:\>Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Format-List
+PS C:\>Get-AzSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -55,7 +55,7 @@ This command gets information about all the Azure SQL Sync Agents assigned to an
 
 ### Example 2: Get information about an Azure SQL Sync Agent
 ```
-PS C:\>Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "SyncAgent01" | Format-List
+PS C:\>Get-AzSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "SyncAgent01" | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -77,7 +77,7 @@ This command gets information about the Azure SQL Database Sync Agent with name 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -148,7 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmSqlSyncAgent](./Remove-AzureRmSqlSyncAgent.md)
+[Remove-AzSqlSyncAgent](./Remove-AzSqlSyncAgent.md)
 
-[New-AzureRmSqlSyncAgent](./New-AzureRmSqlSyncAgent.md)
+[New-AzSqlSyncAgent](./New-AzSqlSyncAgent.md)
 

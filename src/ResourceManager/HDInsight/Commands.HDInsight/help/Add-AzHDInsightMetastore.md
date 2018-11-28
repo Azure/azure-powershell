@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 8BD3B8BD-DC87-4A94-9FCA-611D11D5E065
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/add-azurermhdinsightmetastore
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightmetastore
 schema: 2.0.0
 ---
 
-# Add-AzureRmHDInsightMetastore
+# Add-AzHDInsightMetastore
 
 ## SYNOPSIS
 Adds a SQL Database to serve as a Hive or Oozie metastore to a cluster configuration object.
@@ -14,13 +14,13 @@ Adds a SQL Database to serve as a Hive or Oozie metastore to a cluster configura
 ## SYNTAX
 
 ```
-Add-AzureRmHDInsightMetastore [-Config] <AzureHDInsightConfig> [-MetastoreType] <AzureHDInsightMetastoreType>
+Add-AzHDInsightMetastore [-Config] <AzureHDInsightConfig> [-MetastoreType] <AzureHDInsightMetastoreType>
  [-SqlAzureServerName] <String> [-DatabaseName] <String> [-Credential] <PSCredential>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmHDInsightMetastore** cmdlet adds a Hive or Oozie metastore to the HDInsight configuration object created by the New-AzureRmHDInsightClusterConfig cmdlet.
+The **Add-AzHDInsightMetastore** cmdlet adds a Hive or Oozie metastore to the HDInsight configuration object created by the New-AzHDInsightClusterConfig cmdlet.
 A metastore is a SQL Database that can used to store metadata for Hive, Oozie, or both.
 
 ## EXAMPLES
@@ -30,7 +30,7 @@ A metastore is a SQL Database that can used to store metadata for Hive, Oozie, o
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
 PS C:\> $storageAccountName = "yourstorageacct001"
-PS C:\> $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 
 PS C:\> $storageContainer = "container001"
@@ -42,7 +42,7 @@ PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $clusterCreds = Get-Credential
 
 # If the cluster's resource group doesn't exist yet, run:
-#   New-AzureRmResourceGroup -Name $clusterResourceGroupName -Location $location
+#   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
 # Hive metastore info
 PS C:\> $hiveSqlServer = "your-sqlserver-001"
@@ -55,18 +55,18 @@ PS C:\> $oozieDb = "your-sqldb-002"
 PS C:\> $oozieCreds = Get-Credential
 
 # Create the cluster
-PS C:\> New-AzureRmHDInsightClusterConfig  `
-            | Add-AzureRmHDInsightMetastore `
+PS C:\> New-AzHDInsightClusterConfig  `
+            | Add-AzHDInsightMetastore `
                 -SqlAzureServerName "$oozieSqlServer.database.contoso.net" `
                 -DatabaseName $oozieDb `
                 -Credential $oozieCreds `
                 -MetastoreType OozieMetastore `
-            | Add-AzureRmHDInsightMetastore `
+            | Add-AzHDInsightMetastore `
                 -SqlAzureServerName "$hiveSqlServer.database.contoso.net" `
                 -DatabaseName $hiveDb `
                 -Credential $hiveCreds `
                 -MetastoreType HiveMetastore `
-            | New-AzureRmHDInsightCluster `
+            | New-AzHDInsightCluster `
                 -ClusterType Hadoop `
                 -OSType Windows `
                 -ClusterSizeInNodes 4 `
@@ -85,7 +85,7 @@ This command adds a SQL database metastore to the cluster named your-hadoop-001.
 
 ### -Config
 Specifies the HDInsight cluster configuration object that this cmdlet modifies.
-This object is created by the **New-AzureRmHDInsightClusterConfig** cmdlet.
+This object is created by the **New-AzHDInsightClusterConfig** cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
@@ -192,6 +192,6 @@ Parameters: Config (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmHDInsightClusterConfig](./New-AzureRmHDInsightClusterConfig.md)
+[New-AzHDInsightClusterConfig](./New-AzHDInsightClusterConfig.md)
 
 

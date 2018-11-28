@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/remove-azurermrediscachefirewallrule
+Module Name: Az.RedisCache
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/remove-azrediscachefirewallrule
 schema: 2.0.0
 ---
 
-# Remove-AzureRmRedisCacheFirewallRule
+# Remove-AzRedisCacheFirewallRule
 
 ## SYNOPSIS
 Remove a firewall rule from a Redis Cache.
@@ -14,13 +14,13 @@ Remove a firewall rule from a Redis Cache.
 
 ### NormalParameterSet (Default)
 ```
-Remove-AzureRmRedisCacheFirewallRule [-ResourceGroupName <String>] -Name <String> -RuleName <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzRedisCacheFirewallRule [-ResourceGroupName <String>] -Name <String> -RuleName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PSRedisFirewallRuleObject
 ```
-Remove-AzureRmRedisCacheFirewallRule -InputObject <PSRedisFirewallRule> [-PassThru]
+Remove-AzRedisCacheFirewallRule -InputObject <PSRedisFirewallRule> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Remove a firewall rule from a Redis Cache.
 
 ### Example 1: Remove a single firewall rule
 ```
-PS C:\>Remove-AzureRmRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone" -PassThru
+PS C:\>Remove-AzRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone" -PassThru
 True
 ```
 
@@ -43,7 +43,7 @@ This command removes a firewall rule named ruleone from Redis Cache named mycach
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -178,14 +178,14 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmRedisCacheFirewallRule](./New-AzureRmRedisCacheFirewallRule.md)
+[New-AzRedisCacheFirewallRule](./New-AzRedisCacheFirewallRule.md)
 
-[Get-AzureRmRedisCacheFirewallRule](./Get-AzureRmRedisCacheFirewallRule.md)
+[Get-AzRedisCacheFirewallRule](./Get-AzRedisCacheFirewallRule.md)
 
-[Get-AzureRmRedisCache](./Get-AzureRmRedisCache.md)
+[Get-AzRedisCache](./Get-AzRedisCache.md)
 
-[New-AzureRmRedisCache](./New-AzureRmRedisCache.md)
+[New-AzRedisCache](./New-AzRedisCache.md)
 
-[Remove-AzureRmRedisCache](./Remove-AzureRmRedisCache.md)
+[Remove-AzRedisCache](./Remove-AzRedisCache.md)
 
-[Set-AzureRmRedisCache](./Set-AzureRmRedisCache.md)
+[Set-AzRedisCache](./Set-AzRedisCache.md)

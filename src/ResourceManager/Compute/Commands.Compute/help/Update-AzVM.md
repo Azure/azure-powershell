@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 38917534-49C6-47EA-B815-240F794EE655
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermvm
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/update-azvm
 schema: 2.0.0
 ---
 
-# Update-AzureRmVM
+# Update-AzVM
 
 ## SYNOPSIS
 Updates the state of an Azure virtual machine.
@@ -15,21 +15,21 @@ Updates the state of an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Update-AzureRmVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>]
+Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>]
  [-OsDiskWriteAccelerator <Boolean>] [-UltraSSDEnabled <Boolean>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AssignIdentityParameterSet
 ```
-Update-AzureRmVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-AssignIdentity]
+Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-AssignIdentity]
  [-OsDiskWriteAccelerator <Boolean>] [-UltraSSDEnabled <Boolean>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
 ```
-Update-AzureRmVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>]
+Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>]
  -IdentityType <ResourceIdentityType> [-IdentityId <String[]>] [-OsDiskWriteAccelerator <Boolean>]
  [-UltraSSDEnabled <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -37,24 +37,24 @@ Update-AzureRmVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Has
 
 ### IdParameterSetName
 ```
-Update-AzureRmVM [-Id] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-OsDiskWriteAccelerator <Boolean>]
+Update-AzVM [-Id] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-OsDiskWriteAccelerator <Boolean>]
  [-UltraSSDEnabled <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmVM** cmdlet updates the state of an Azure virtual machine to the state of a virtual machine object.
+The **Update-AzVM** cmdlet updates the state of an Azure virtual machine to the state of a virtual machine object.
 
 ## EXAMPLES
 
 ### Example 1: Update a virtual machine
 ```
-PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
+PS C:\> Update-AzVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
 This command updates the virtual machine, $VirtualMachine, in ResourceGroup11.
 The command updates it by using the virtual machine object stored in the $VirtualMachine variable.
-To obtain a virtual machine object, use the **Get-AzureRmVM** cmdlet.
+To obtain a virtual machine object, use the **Get-AzVM** cmdlet.
 
 ## PARAMETERS
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -215,7 +215,7 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies a local virtual machine object.
-To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
+To obtain a virtual machine object, use the Get-AzVM cmdlet.
 This virtual machine object contains the updated state for the virtual machine.
 
 ```yaml
@@ -278,18 +278,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVM](./Get-AzureRmVM.md)
+[Get-AzVM](./Get-AzVM.md)
 
-[New-AzureRmVM](./New-AzureRmVM.md)
+[New-AzVM](./New-AzVM.md)
 
-[Remove-AzureRmVM](./Remove-AzureRmVM.md)
+[Remove-AzVM](./Remove-AzVM.md)
 
-[Restart-AzureRmVM](./Restart-AzureRmVM.md)
+[Restart-AzVM](./Restart-AzVM.md)
 
-[Start-AzureRmVM](./Start-AzureRmVM.md)
+[Start-AzVM](./Start-AzVM.md)
 
-[Stop-AzureRmVM](./Stop-AzureRmVM.md)
+[Stop-AzVM](./Stop-AzVM.md)
 
-[New-AzureRmVMConfig](./New-AzureRmVMConfig.md)
+[New-AzVMConfig](./New-AzVMConfig.md)
 
 

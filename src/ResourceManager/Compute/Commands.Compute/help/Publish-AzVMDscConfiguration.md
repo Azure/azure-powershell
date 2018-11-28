@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: FB9ACBA2-081E-4876-A21A-F5BA11CBEDA2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/publish-azurermvmdscconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/publish-azvmdscconfiguration
 schema: 2.0.0
 ---
 
-# Publish-AzureRmVMDscConfiguration
+# Publish-AzVMDscConfiguration
 
 ## SYNOPSIS
 Uploads a DSC script to Azure blob storage.
@@ -15,7 +15,7 @@ Uploads a DSC script to Azure blob storage.
 
 ### UploadArchive (Default)
 ```
-Publish-AzureRmVMDscConfiguration [-ResourceGroupName] <String> [-ConfigurationPath] <String>
+Publish-AzVMDscConfiguration [-ResourceGroupName] <String> [-ConfigurationPath] <String>
  [[-ContainerName] <String>] [-StorageAccountName] <String> [-StorageEndpointSuffix <String>] [-Force]
  [-SkipDependencyDetection] [-ConfigurationDataPath <String>] [-AdditionalPath <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -23,47 +23,47 @@ Publish-AzureRmVMDscConfiguration [-ResourceGroupName] <String> [-ConfigurationP
 
 ### CreateArchive
 ```
-Publish-AzureRmVMDscConfiguration [-ConfigurationPath] <String> [[-OutputArchivePath] <String>] [-Force]
+Publish-AzVMDscConfiguration [-ConfigurationPath] <String> [[-OutputArchivePath] <String>] [-Force]
  [-SkipDependencyDetection] [-ConfigurationDataPath <String>] [-AdditionalPath <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Publish-AzureRmVMDscConfiguration** cmdlet uploads a Desired State Configuration (DSC) script to Azure blob storage, which later can be applied to Azure virtual machines using the Set-AzureRmVMDscExtension cmdlet.
+The **Publish-AzVMDscConfiguration** cmdlet uploads a Desired State Configuration (DSC) script to Azure blob storage, which later can be applied to Azure virtual machines using the Set-AzVMDscExtension cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Create a .zip package an upload it to Azure storage
 ```
-PS C:\> Publish-AzureRmVMDscConfiguration ".\MyConfiguration.ps1"
+PS C:\> Publish-AzVMDscConfiguration ".\MyConfiguration.ps1"
 ```
 
 This command creates a .zip package for the given script and any dependent resource modules and uploads it to Azure storage.
 
 ### Example 2: Create a .zip package and store it to a local file
 ```
-PS C:\> Publish-AzureRmVMDscConfiguration ".\MyConfiguration.ps1" -OutputArchivePath ".\MyConfiguration.ps1.zip"
+PS C:\> Publish-AzVMDscConfiguration ".\MyConfiguration.ps1" -OutputArchivePath ".\MyConfiguration.ps1.zip"
 ```
 
 This command creates a .zip package for the given script and any dependent resource modules and stores it in the local file that is named .\MyConfiguration.ps1.zip.
 
 ### Example 3: Add configuration to the archive and then upload it to storage
 ```
-PS C:\> Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -SkipDependencyDetection
+PS C:\> Publish-AzVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -SkipDependencyDetection
 ```
 
 This command adds configuration named Sample.ps1 to the configuration archive to upload to Azure storage and skips dependent resource modules.
 
 ### Example 4: Add configuration and configuration data to the archive and then upload it to storage
 ```
-PS C:\> Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -ConfigurationDataPath "C:\SampleData.psd1"
+PS C:\> Publish-AzVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -ConfigurationDataPath "C:\SampleData.psd1"
 ```
 
 This command adds configuration named Sample.ps1 and configuration data named SampleData.psd1 to the configuration archive to upload to Azure storage.
 
 ### Example 5: Add configuration, configuration data, and additional content to the archive and then upload it to storage
 ```
-PS C:\> Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPath @("C:\ContentDir1", "C:\File.txt") -ConfigurationDataPath "C:\SampleData.psd1"
+PS C:\> Publish-AzVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPath @("C:\ContentDir1", "C:\File.txt") -ConfigurationDataPath "C:\SampleData.psd1"
 ```
 
 This command adds configuration named Sample.ps1, configuration data SampleData.psd1, and additional content to configuration archive to upload to Azure storage.
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 ### -ConfigurationDataPath
 Specifies the path of a .psd1 file that specifies the data for the configuration.
 This is added to the configuration archive and then passed to the configuration function.
-It gets overwritten by the configuration data path provided through the Set-AzureRmVMDscExtension cmdlet
+It gets overwritten by the configuration data path provided through the Set-AzVMDscExtension cmdlet
 
 ```yaml
 Type: System.String
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -288,10 +288,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMDscExtension](./Get-AzureRmVMDscExtension.md)
+[Get-AzVMDscExtension](./Get-AzVMDscExtension.md)
 
-[Remove-AzureRmVMDscExtension](./Remove-AzureRmVMDscExtension.md)
+[Remove-AzVMDscExtension](./Remove-AzVMDscExtension.md)
 
-[Set-AzureRmVMDscExtension](./Set-AzureRmVMDscExtension.md)
+[Set-AzVMDscExtension](./Set-AzVMDscExtension.md)
 
 

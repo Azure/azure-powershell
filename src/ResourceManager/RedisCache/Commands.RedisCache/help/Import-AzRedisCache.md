@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 ms.assetid: BC00DEF9-6A93-4DF5-8E5B-C488551BA1D1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/import-azurermrediscache
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/import-azrediscache
 schema: 2.0.0
 ---
 
-# Import-AzureRmRedisCache
+# Import-AzRedisCache
 
 ## SYNOPSIS
 Imports data from blobs to Azure Redis Cache.
@@ -14,18 +14,18 @@ Imports data from blobs to Azure Redis Cache.
 ## SYNTAX
 
 ```
-Import-AzureRmRedisCache [-ResourceGroupName <String>] -Name <String> -Files <String[]> [-Format <String>]
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Import-AzRedisCache [-ResourceGroupName <String>] -Name <String> -Files <String[]> [-Format <String>] [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Import-AzureRmRedisCache** cmdlet imports data from blobs into Azure Redis Cache.
+The **Import-AzRedisCache** cmdlet imports data from blobs into Azure Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1: Import data
 ```
-PS C:\>Import-AzureRmRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -Files @("https://mystorageaccount.blob.core.windows.net/container22/blobname?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd") -Force
+PS C:\>Import-AzRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -Files @("https://mystorageaccount.blob.core.windows.net/container22/blobname?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd") -Force
 ```
 
 This command imports data from the blob that is specified by the SAS URL into Azure Redis Cache.
@@ -36,7 +36,7 @@ This command imports data from the blob that is specified by the SAS URL into Az
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -49,9 +49,9 @@ Accept wildcard characters: False
 
 ### -Files
 Specifies the SAS URLs of blobs whose content this cmdlet imports into the cache. You can generate the SAS URLs using the following PowerShell commands:
-$storageAccountContext = New-AzureStorageContext -StorageAccountName "storageName" -StorageAccountKey "key"
-$sasKeyForBlob = New-AzureStorageBlobSASToken -Container "containerName" -blob "blobName" -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-15) -ExpiryTime ([System.DateTime]::Now).AddHours(5) -Context $storageAccountContext -FullUri
-Import-AzureRmRedisCache -ResourceGroupName "ResourceGroupName" -Name "cacheName" -Files ($sasKeyForBlob) -Force
+$storageAccountContext = New-AzStorageContext -StorageAccountName "storageName" -StorageAccountKey "key"
+$sasKeyForBlob = New-AzStorageBlobSASToken -Container "containerName" -blob "blobName" -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-15) -ExpiryTime ([System.DateTime]::Now).AddHours(5) -Context $storageAccountContext -FullUri
+Import-AzRedisCache -ResourceGroupName "ResourceGroupName" -Name "cacheName" -Files ($sasKeyForBlob) -Force
 
 ```yaml
 Type: System.String[]
@@ -191,14 +191,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Export-AzureRmRedisCache](./Export-AzureRmRedisCache.md)
+[Export-AzRedisCache](./Export-AzRedisCache.md)
 
-[New-AzureRmRedisCache](./New-AzureRmRedisCache.md)
+[New-AzRedisCache](./New-AzRedisCache.md)
 
-[Remove-AzureRmRedisCache](./Remove-AzureRmRedisCache.md)
+[Remove-AzRedisCache](./Remove-AzRedisCache.md)
 
-[Reset-AzureRmRedisCache](./Reset-AzureRmRedisCache.md)
+[Reset-AzRedisCache](./Reset-AzRedisCache.md)
 
-[Set-AzureRmRedisCache](./Set-AzureRmRedisCache.md)
+[Set-AzRedisCache](./Set-AzRedisCache.md)
 
 

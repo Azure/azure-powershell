@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 5FDD6C6A-9F6A-44C3-B332-B528F648DFDB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/set-azurermintegrationaccountagreement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/set-azintegrationaccountagreement
 schema: 2.0.0
 ---
 
-# Set-AzureRmIntegrationAccountAgreement
+# Set-AzIntegrationAccountAgreement
 
 ## SYNOPSIS
 Modifies an integration account agreement.
@@ -14,7 +14,7 @@ Modifies an integration account agreement.
 ## SYNTAX
 
 ```
-Set-AzureRmIntegrationAccountAgreement -ResourceGroupName <String> -Name <String> -AgreementName <String>
+Set-AzIntegrationAccountAgreement -ResourceGroupName <String> -Name <String> -AgreementName <String>
  [-AgreementType <String>] [-GuestPartner <String>] [-HostPartner <String>] [-GuestIdentityQualifier <String>]
  [-GuestIdentityQualifierValue <String>] [-HostIdentityQualifier <String>]
  [-HostIdentityQualifierValue <String>] [-AgreementContent <String>] [-AgreementContentFilePath <String>]
@@ -23,7 +23,7 @@ Set-AzureRmIntegrationAccountAgreement -ResourceGroupName <String> -Name <String
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmIntegrationAccountAgreement** cmdlet modifies an integration account agreement.
+The **Set-AzIntegrationAccountAgreement** cmdlet modifies an integration account agreement.
 This cmdlet returns an object that represents the integration account agreement.
 Specify the integration account name, resource group name, and agreement name.
 Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
@@ -36,7 +36,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Update an integration account agreement
 ```
-PS C:\>Set-AzureRmIntegrationAccountAgreement -Name "IntegrationAccount31"-ResourceGroupName "ResourceGroup11" -AgreementName "IntegrationAccountAgreement06" -AgreementType "X12" -GuestPartner "GuestPartner" -HostPartner "HostPartner" -GuestIdentityQualifier "BB" -HostIdentityQualifier "AA" -AgreementContentFilePath "C:\temp\AgreementContent.json"
+PS C:\>Set-AzIntegrationAccountAgreement -Name "IntegrationAccount31"-ResourceGroupName "ResourceGroup11" -AgreementName "IntegrationAccountAgreement06" -AgreementType "X12" -GuestPartner "GuestPartner" -HostPartner "HostPartner" -GuestIdentityQualifier "BB" -HostIdentityQualifier "AA" -AgreementContentFilePath "C:\temp\AgreementContent.json"
 Id                     : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/agreements/IntegrationAccountAgreement06
 Name                   : IntegrationAccountAgreement06
 Type                   : Microsoft.Logic/integrationAccounts/agreements
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -334,10 +334,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmIntegrationAccountAgreement](./Get-AzureRmIntegrationAccountAgreement.md)
+[Get-AzIntegrationAccountAgreement](./Get-AzIntegrationAccountAgreement.md)
 
-[New-AzureRmIntegrationAccountAgreement](./New-AzureRmIntegrationAccountAgreement.md)
+[New-AzIntegrationAccountAgreement](./New-AzIntegrationAccountAgreement.md)
 
-[Remove-AzureRmIntegrationAccountAgreement](./Remove-AzureRmIntegrationAccountAgreement.md)
+[Remove-AzIntegrationAccountAgreement](./Remove-AzIntegrationAccountAgreement.md)
 
 

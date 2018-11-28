@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlserverdnsalias
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverdnsalias
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlServerDnsAlias
+# Get-AzSqlServerDnsAlias
 
 ## SYNOPSIS
 Gets or lists Azure SQL Server DNS Alias.
@@ -13,7 +13,7 @@ Gets or lists Azure SQL Server DNS Alias.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServerDnsAlias [-Name <String>] -ServerName <String> [-ResourceGroupName] <String>
+Get-AzSqlServerDnsAlias [-Name <String>] -ServerName <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Get the specific Azure SQL Server DNS Alias or lists all Server DNS Aliases for 
 
 ### Example 1
 ```
-PS C:\> $serverDNSAliases = Get-AzureRmSqlServerDNSAlias -ServerName servername -ResourceGroupName rgname
+PS C:\> $serverDNSAliases = Get-AzSqlServerDNSAlias -ServerName servername -ResourceGroupName rgname
 
 ResourceGroupName  ServerName   DnsAliasName
 -----------------  ----------   ------------------
@@ -36,7 +36,7 @@ Lists all Server DNS Aliases for the specific server
 
 ### Example 2
 ```
-PS C:\> $serverDNSAliases = Get-AzureRmSqlServerDNSAlias -DnsAliasName dnsaliasname -ServerName servername -ResourceGroupName rgname
+PS C:\> $serverDNSAliases = Get-AzSqlServerDNSAlias -DnsAliasName dnsaliasname -ServerName servername -ResourceGroupName rgname
 
 ResourceGroupName  ServerName   DnsAliasName
 -----------------  ----------   ------------------
@@ -51,7 +51,7 @@ Gets Server DNS Alias specified by server and alias name
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

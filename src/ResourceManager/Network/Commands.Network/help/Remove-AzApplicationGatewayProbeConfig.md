@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermapplicationgatewayprobeconfig
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azapplicationgatewayprobeconfig
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApplicationGatewayProbeConfig
+# Remove-AzApplicationGatewayProbeConfig
 
 ## SYNOPSIS
 Removes a health probe from an existing application gateway.
@@ -13,18 +13,18 @@ Removes a health probe from an existing application gateway.
 ## SYNTAX
 
 ```
-Remove-AzureRmApplicationGatewayProbeConfig -Name <String> -ApplicationGateway <PSApplicationGateway>
+Remove-AzApplicationGatewayProbeConfig -Name <String> -ApplicationGateway <PSApplicationGateway>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmApplicationGatewayProbeConfig cmdlet removes a heath probe from an existing application gateway.
+The Remove-AzApplicationGatewayProbeConfig cmdlet removes a heath probe from an existing application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Remove a health probe from an existing application gateway
 ```
-PS C:\>$Gateway = Remove-AzureRmApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe04"
+PS C:\>$Gateway = Remove-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe04"
 ```
 
 This command removes the health probe named Probe04 from the application gateway named Gateway.
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,11 +94,11 @@ Parameters: ApplicationGateway (ByValue)
 
 [Remove a probe from an existing application gateway](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#remove-a-probe-from-an-existing-application-gateway)
 
-[Add-AzureRmApplicationGatewayProbeConfig]()
+[Add-AzApplicationGatewayProbeConfig]()
 
-[Get-AzureRmApplicationGatewayProbeConfig]()
+[Get-AzApplicationGatewayProbeConfig]()
 
-[New-AzureRmApplicationGatewayProbeConfig]()
+[New-AzApplicationGatewayProbeConfig]()
 
-[Set-AzureRmApplicationGatewayProbeConfig]()
+[Set-AzApplicationGatewayProbeConfig]()
 

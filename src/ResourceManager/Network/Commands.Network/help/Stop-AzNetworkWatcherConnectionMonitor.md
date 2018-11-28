@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/stop-azurermapplicationgateway
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/stop-azapplicationgateway
 schema: 2.0.0
 ---
 
-# Stop-AzureRmNetworkWatcherConnectionMonitor
+# Stop-AzNetworkWatcherConnectionMonitor
 
 ## SYNOPSIS
 Stop a connection monitor
@@ -14,43 +14,42 @@ Stop a connection monitor
 
 ### SetByName (Default)
 ```
-Stop-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String>
- -Name <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Stop-AzNetworkWatcherConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String> -Name <String>
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
-Stop-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> -Name <String> [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> -Name <String> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByLocation
 ```
-Stop-AzureRmNetworkWatcherConnectionMonitor -Location <String> -Name <String> [-PassThru] [-AsJob]
+Stop-AzNetworkWatcherConnectionMonitor -Location <String> -Name <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-Stop-AzureRmNetworkWatcherConnectionMonitor -ResourceId <String> [-PassThru] [-AsJob]
+Stop-AzNetworkWatcherConnectionMonitor -ResourceId <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObject
 ```
-Stop-AzureRmNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResult> [-PassThru] [-AsJob]
+Stop-AzNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResult> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Stop-AzureRmNetworkWatcherConnectionMonitor cmdlet stops the specified connection monitor.
+The Stop-AzNetworkWatcherConnectionMonitor cmdlet stops the specified connection monitor.
 
 ## EXAMPLES
 
 ### Example 1: Stop a connection monitor
 ```
-PS C:\> Stop-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name cm
+PS C:\> Stop-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name cm
 ```
 
 In this example we stop connection monitor specified by name and network watcher
@@ -76,7 +75,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -260,56 +259,56 @@ Keywords: azure, azurerm, arm, resource, connectivity, management, manager, netw
 
 ## RELATED LINKS
 
-[New-AzureRmNetworkWatcher]()
+[New-AzNetworkWatcher]()
 
-[Get-AzureRmNetworkWatcher]()
+[Get-AzNetworkWatcher]()
 
-[Remove-AzureRmNetworkWatcher]()
+[Remove-AzNetworkWatcher]()
 
-[Get-AzureRmNetworkWatcherNextHop]()
+[Get-AzNetworkWatcherNextHop]()
 
-[Get-AzureRmNetworkWatcherSecurityGroupView]()
+[Get-AzNetworkWatcherSecurityGroupView]()
 
-[Get-AzureRmNetworkWatcherTopology]()
+[Get-AzNetworkWatcherTopology]()
 
-[Get-AzureRmNetworkWatcherTroubleshootingResult]()
+[Get-AzNetworkWatcherTroubleshootingResult]()
 
-[New-AzureRmNetworkWatcherPacketCapture]()
+[New-AzNetworkWatcherPacketCapture]()
 
-[New-AzureRmPacketCaptureFilterConfig]()
+[New-AzPacketCaptureFilterConfig]()
 
-[Get-AzureRmNetworkWatcherPacketCapture]()
+[Get-AzNetworkWatcherPacketCapture]()
 
-[Remove-AzureRmNetworkWatcherPacketCapture]()
+[Remove-AzNetworkWatcherPacketCapture]()
 
-[Stop-AzureRmNetworkWatcherPacketCapture]()
+[Stop-AzNetworkWatcherPacketCapture]()
 
-[Get-AzureRmNetworkWatcherConnectionMonitor]()
+[Get-AzNetworkWatcherConnectionMonitor]()
 
-[Get-AzureRmNetworkWatcherConnectionMonitorReport]()
+[Get-AzNetworkWatcherConnectionMonitorReport]()
 
-[Remove-AzureRmNetworkWatcherConnectionMonitor]()
+[Remove-AzNetworkWatcherConnectionMonitor]()
 
-[Set-AzureRmNetworkWatcherConnectionMonitor]()
+[Set-AzNetworkWatcherConnectionMonitor]()
 
-[Stop-AzureRmNetworkWatcherConnectionMonitor]()
+[Stop-AzNetworkWatcherConnectionMonitor]()
 
-[New-AzureRmNetworkWatcherConnectionMonitor]()
+[New-AzNetworkWatcherConnectionMonitor]()
 
-[New-AzureRmNetworkWatcherProtocolConfiguration]()
+[New-AzNetworkWatcherProtocolConfiguration]()
 
-[Test-AzureRmNetworkWatcherIPFlow]()
+[Test-AzNetworkWatcherIPFlow]()
 
-[Test-AzureRmNetworkWatcherConnectivity]()
+[Test-AzNetworkWatcherConnectivity]()
 
-[Start-AzureRmNetworkWatcherResourceTroubleshooting]()
+[Start-AzNetworkWatcherResourceTroubleshooting]()
 
-[Start-AzureRmNetworkWatcherConnectionMonitor]()
+[Start-AzNetworkWatcherConnectionMonitor]()
 
-[Set-AzureRmNetworkWatcherConfigFlowLog]()
+[Set-AzNetworkWatcherConfigFlowLog]()
 
-[Get-AzureRMNetworkWatcherReachabilityReport]()
+[Get-AzNetworkWatcherReachabilityReport]()
 
-[Get-AzureRmNetworkWatcherReachabilityProvidersList]()
+[Get-AzNetworkWatcherReachabilityProvidersList]()
 
-[Get-AzureRmNetworkWatcherFlowLogStatus]()
+[Get-AzNetworkWatcherFlowLogStatus]()

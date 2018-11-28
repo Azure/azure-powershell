@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: B1897EFC-0184-4A8B-B8E4-203CC8E3B179
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/set-azurermautomationaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationaccount
 schema: 2.0.0
 ---
 
-# Set-AzureRmAutomationAccount
+# Set-AzAutomationAccount
 
 ## SYNOPSIS
 Modifies an Automation account.
@@ -14,20 +14,20 @@ Modifies an Automation account.
 ## SYNTAX
 
 ```
-Set-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Plan <String>]
- [-Tags <IDictionary>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Plan <String>] [-Tags <IDictionary>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmAutomationAccount** cmdlet modifies an Azure Automation account.
-For more information about Automation accounts, see the New-AzureRmAutomationAccount cmdlet.
+The **Set-AzAutomationAccount** cmdlet modifies an Azure Automation account.
+For more information about Automation accounts, see the New-AzAutomationAccount cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Set the tags for an Automation account
 ```
 PS C:\>$Tags = @{"tag01"="value01";"tag02"="value02"}
-PS C:\> Set-AzureRmAutomationAccount -Name "AutomationAccount01" -ResourceGroupName "ResourceGroup01" -Tags $Tags
+PS C:\> Set-AzAutomationAccount -Name "AutomationAccount01" -ResourceGroupName "ResourceGroup01" -Tags $Tags
 ```
 
 The first command assigns two key/value pairs to the $Tags variable.
@@ -35,7 +35,7 @@ The second command sets tags in $Tags for the Automation account named Automatio
 
 ### Example 2: Change the plan for an Automation account
 ```
-PS C:\>Set-AzureRmAutomationAccount -Name "AutomationAccount01" -ResourceGroupName "ResourceGroup01" -Plan Basic
+PS C:\>Set-AzAutomationAccount -Name "AutomationAccount01" -ResourceGroupName "ResourceGroup01" -Plan Basic
 ```
 
 This command changes the plan to Basic for the Automation account named AutomationAccount01.
@@ -46,7 +46,7 @@ This command changes the plan to Basic for the Automation account named Automati
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -139,8 +139,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationAccount](./Get-AzureRmAutomationAccount.md)
+[Get-AzAutomationAccount](./Get-AzAutomationAccount.md)
 
-[New-AzureRmAutomationAccount](./New-AzureRmAutomationAccount.md)
+[New-AzAutomationAccount](./New-AzAutomationAccount.md)
 
-[Remove-AzureRmAutomationAccount](./Remove-AzureRmAutomationAccount.md)
+[Remove-AzAutomationAccount](./Remove-AzAutomationAccount.md)

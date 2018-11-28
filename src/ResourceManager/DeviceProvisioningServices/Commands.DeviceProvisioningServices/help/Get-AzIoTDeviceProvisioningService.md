@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
-Module Name: AzureRM.DeviceProvisioningServices
+Module Name: Az.DeviceProvisioningServices
 online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmIoTDeviceProvisioningService
+# Get-AzIoTDeviceProvisioningService
 
 ## SYNOPSIS
 List all or show details of Azure IoT Hub device provisioning services.
@@ -14,13 +14,13 @@ List all or show details of Azure IoT Hub device provisioning services.
 
 ### ListIotDpsByResourceGroup (Default)
 ```
-Get-AzureRmIoTDeviceProvisioningService [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIoTDeviceProvisioningService [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetIotDpsByName
 ```
-Get-AzureRmIoTDeviceProvisioningService -ResourceGroupName <String> [-Name] <String>
+Get-AzIoTDeviceProvisioningService -ResourceGroupName <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmIoTDeviceProvisioningService
+PS C:\> Get-AzIoTDeviceProvisioningService
 
 ResourceGroupName	Name		Location	ServiceOperationsHostName					IotHubs	AllocationPolicy	Tags	State
 -----------------	----		--------	-------------------------					------- ----------------	----	-----	
@@ -44,7 +44,7 @@ List all Azure IoT Hub device provisioning services in a subscription.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup"
+PS C:\> Get-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup"
 
 ResourceGroupName	Name		Location	ServiceOperationsHostName					IotHubs	AllocationPolicy	Tags	State
 -----------------	----		--------	-------------------------					------- ----------------	----	-----
@@ -56,7 +56,7 @@ List all Azure IoT Hub device provisioning services in the resource group 'myres
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps"
+PS C:\> Get-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps"
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
@@ -80,7 +80,7 @@ Show details of an Azure IoT Hub device provisioning service 'myiotdps'.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

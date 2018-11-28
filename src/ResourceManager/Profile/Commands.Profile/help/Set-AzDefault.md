@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/set-azurermdefault
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/set-azdefault
 schema: 2.0.0
 ---
 
-# Set-AzureRmDefault
+# Set-AzDefault
 
 ## SYNOPSIS
 Sets a default in the current context
@@ -13,18 +13,18 @@ Sets a default in the current context
 ## SYNTAX
 
 ```
-Set-AzureRmDefault [-ResourceGroupName <String>] [-Force] [-Scope <ContextModificationScope>]
+Set-AzDefault [-ResourceGroupName <String>] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzureRmDefault cmdlet adds or changes the defaults in the current context.
+The Set-AzDefault cmdlet adds or changes the defaults in the current context.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmDefault -ResourceGroupName myResourceGroup
+PS C:\> Set-AzDefault -ResourceGroupName myResourceGroup
 
 Id         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup
 Name       : myResourceGroup
@@ -42,7 +42,7 @@ This command sets the default resource group to the resource group specified by 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

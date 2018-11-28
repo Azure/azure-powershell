@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 4ED47646-542B-4983-B46B-B603BE33D499
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/new-azurermhdinsightsqoopjobdefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/new-azhdinsightsqoopjobdefinition
 schema: 2.0.0
 ---
 
-# New-AzureRmHDInsightSqoopJobDefinition
+# New-AzHDInsightSqoopJobDefinition
 
 ## SYNOPSIS
 Creates a Sqoop job object.
@@ -14,12 +14,12 @@ Creates a Sqoop job object.
 ## SYNTAX
 
 ```
-New-AzureRmHDInsightSqoopJobDefinition [-Files <String[]>] [-StatusFolder <String>] [-File <String>]
+New-AzHDInsightSqoopJobDefinition [-Files <String[]>] [-StatusFolder <String>] [-File <String>]
  [-Command <String>] [-LibDir <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmHDInsightSqoopJobDefinition** cmdlet defines a Sqoop job object for use with an Azure HDInsight cluster.
+The **New-AzHDInsightSqoopJobDefinition** cmdlet defines a Sqoop job object for use with an Azure HDInsight cluster.
 
 ## EXAMPLES
 
@@ -29,9 +29,9 @@ PS C:\># Cluster info
 PS C:\>$clusterName = "your-hadoop-001"
 PS C:\>$clusterCreds = Get-Credential
 
-PS C:\>New-AzureRmHDInsightSqoopJobDefinition -StatusFolder $statusFolder `
+PS C:\>New-AzHDInsightSqoopJobDefinition -StatusFolder $statusFolder `
             -Command $sqoopCommand `
-        | Start-AzureRmHDInsightJob -ClusterName $clusterName `
+        | Start-AzHDInsightJob -ClusterName $clusterName `
             -ClusterCredential $clusterCreds
 ```
 
@@ -146,6 +146,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Start-AzureRmHDInsightJob](./Start-AzureRmHDInsightJob.md)
+[Start-AzHDInsightJob](./Start-AzHDInsightJob.md)
 
 

@@ -1,76 +1,76 @@
 ---
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 Module Guid: 820628d7-6938-488a-8760-43373a5ffce6
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.rediscache
 Help Version: 4.1.2.0
 Locale: en-US
 ---
 
-# AzureRM.RedisCache Module
+# Az.RedisCache Module
 ## Description
 This topic displays help topics for the Azure Redis Cache cmdlets.
 
-## AzureRM.RedisCache Cmdlets
-### [Export-AzureRmRedisCache](Export-AzureRmRedisCache.md)
+## Az.RedisCache Cmdlets
+### [Export-AzRedisCache](Export-AzRedisCache.md)
 Exports data from Azure Redis Cache to a container.
 
-### [Get-AzureRmRedisCache](Get-AzureRmRedisCache.md)
+### [Get-AzRedisCache](Get-AzRedisCache.md)
 Gets a Redis Cache.
 
-### [Get-AzureRmRedisCacheFirewallRule](Get-AzureRmRedisCacheFirewallRule.md)
+### [Get-AzRedisCacheFirewallRule](Get-AzRedisCacheFirewallRule.md)
 Get firewall rules set on Redis Cache.
 
-### [Get-AzureRmRedisCacheKey](Get-AzureRmRedisCacheKey.md)
+### [Get-AzRedisCacheKey](Get-AzRedisCacheKey.md)
 Gets the access keys for a Redis Cache.
 
-### [Get-AzureRmRedisCacheLink](Get-AzureRmRedisCacheLink.md)
+### [Get-AzRedisCacheLink](Get-AzRedisCacheLink.md)
 Get geo replication link for Redis Cache.
 
-### [Get-AzureRmRedisCachePatchSchedule](Get-AzureRmRedisCachePatchSchedule.md)
+### [Get-AzRedisCachePatchSchedule](Get-AzRedisCachePatchSchedule.md)
 Gets a patch schedule.
 
-### [Import-AzureRmRedisCache](Import-AzureRmRedisCache.md)
+### [Import-AzRedisCache](Import-AzRedisCache.md)
 Imports data from blobs to Azure Redis Cache.
 
-### [New-AzureRmRedisCache](New-AzureRmRedisCache.md)
+### [New-AzRedisCache](New-AzRedisCache.md)
 Creates a Redis Cache.
 
-### [New-AzureRmRedisCacheFirewallRule](New-AzureRmRedisCacheFirewallRule.md)
+### [New-AzRedisCacheFirewallRule](New-AzRedisCacheFirewallRule.md)
 Create a firewall rule on a Redis Cache.
 
-### [New-AzureRmRedisCacheKey](New-AzureRmRedisCacheKey.md)
+### [New-AzRedisCacheKey](New-AzRedisCacheKey.md)
 Regenerates the access key of a Redis Cache.
 
-### [New-AzureRmRedisCacheLink](New-AzureRmRedisCacheLink.md)
+### [New-AzRedisCacheLink](New-AzRedisCacheLink.md)
 Create a geo replication link between two Redis Caches.
 
-### [New-AzureRmRedisCachePatchSchedule](New-AzureRmRedisCachePatchSchedule.md)
+### [New-AzRedisCachePatchSchedule](New-AzRedisCachePatchSchedule.md)
 Adds a patch schedule.
 
-### [New-AzureRmRedisCacheScheduleEntry](New-AzureRmRedisCacheScheduleEntry.md)
+### [New-AzRedisCacheScheduleEntry](New-AzRedisCacheScheduleEntry.md)
 Creates a schedule entry.
 
-### [Remove-AzureRmRedisCache](Remove-AzureRmRedisCache.md)
+### [Remove-AzRedisCache](Remove-AzRedisCache.md)
 Removes a Redis Cache.
 
-### [Remove-AzureRmRedisCacheDiagnostics](Remove-AzureRmRedisCacheDiagnostics.md)
+### [Remove-AzRedisCacheDiagnostics](Remove-AzRedisCacheDiagnostics.md)
 Disables diagnostics on an Azure Redis Cache.
 
-### [Remove-AzureRmRedisCacheFirewallRule](Remove-AzureRmRedisCacheFirewallRule.md)
+### [Remove-AzRedisCacheFirewallRule](Remove-AzRedisCacheFirewallRule.md)
 Remove a firewall rule from a Redis Cache.
 
-### [Remove-AzureRmRedisCacheLink](Remove-AzureRmRedisCacheLink.md)
+### [Remove-AzRedisCacheLink](Remove-AzRedisCacheLink.md)
 Remove a geo replication link between two Redis Caches.
 
-### [Remove-AzureRmRedisCachePatchSchedule](Remove-AzureRmRedisCachePatchSchedule.md)
+### [Remove-AzRedisCachePatchSchedule](Remove-AzRedisCachePatchSchedule.md)
 Removes the patch schedule.
 
-### [Reset-AzureRmRedisCache](Reset-AzureRmRedisCache.md)
+### [Reset-AzRedisCache](Reset-AzRedisCache.md)
 Restarts nodes of a cache.
 
-### [Set-AzureRmRedisCache](Set-AzureRmRedisCache.md)
+### [Set-AzRedisCache](Set-AzRedisCache.md)
 Modifies a Redis Cache.
 
-### [Set-AzureRmRedisCacheDiagnostics](Set-AzureRmRedisCacheDiagnostics.md)
+### [Set-AzRedisCacheDiagnostics](Set-AzRedisCacheDiagnostics.md)
 Enables diagnostics on an Azure Redis Cache.
 

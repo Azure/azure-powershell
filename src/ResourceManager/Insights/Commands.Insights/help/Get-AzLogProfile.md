@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 019EFD94-4087-45F6-812D-FBDFE1B2E48A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermlogprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azlogprofile
 schema: 2.0.0
 ---
 
-# Get-AzureRmLogProfile
+# Get-AzLogProfile
 
 ## SYNOPSIS
 Gets a log profile.
@@ -14,11 +14,11 @@ Gets a log profile.
 ## SYNTAX
 
 ```
-Get-AzureRmLogProfile [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzLogProfile [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmLogProfile** cmdlet gets a log profile.
+The **Get-AzLogProfile** cmdlet gets a log profile.
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ The **Get-AzureRmLogProfile** cmdlet gets a log profile.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,8 +69,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmLogProfile](./Add-AzureRmLogProfile.md)
+[Add-AzLogProfile](./Add-AzLogProfile.md)
 
-[Remove-AzureRmLogProfile](./Remove-AzureRmLogProfile.md)
+[Remove-AzLogProfile](./Remove-AzLogProfile.md)
 
 

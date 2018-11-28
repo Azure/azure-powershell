@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: 84C861B2-DCB3-47F0-8589-BB3172C6E1EC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/reset-azurermwebapppublishingprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/reset-azwebapppublishingprofile
 schema: 2.0.0
 ---
 
-# Reset-AzureRmWebAppPublishingProfile
+# Reset-AzWebAppPublishingProfile
 
 ## SYNOPSIS
 
@@ -14,24 +14,24 @@ schema: 2.0.0
 
 ### S1
 ```
-Reset-AzureRmWebAppPublishingProfile [-ResourceGroupName] <String> [-Name] <String>
+Reset-AzWebAppPublishingProfile [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Reset-AzureRmWebAppPublishingProfile [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+Reset-AzWebAppPublishingProfile [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Reset-AzureRmWebAppPublishingProfile** cmdlet resets the publishing profile for the specified Web App.
+The **Reset-AzWebAppPublishingProfile** cmdlet resets the publishing profile for the specified Web App.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\> Reset-AzureRmWebAppSlotPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
+PS C:\> Reset-AzWebAppSlotPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
 ```
 
 This command resets the publishing profile for the Web App ContosoWebApp associated with the resource group Default-Web-WestUS.
@@ -42,7 +42,7 @@ This command resets the publishing profile for the Web App ContosoWebApp associa
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

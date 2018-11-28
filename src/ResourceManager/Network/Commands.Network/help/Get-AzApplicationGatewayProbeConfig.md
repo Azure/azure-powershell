@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermapplicationgatewayprobeconfig
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayprobeconfig
 schema: 2.0.0
 ---
 
-# Get-AzureRmApplicationGatewayProbeConfig
+# Get-AzApplicationGatewayProbeConfig
 
 ## SYNOPSIS
 Gets an existing health probe configuration from an Application Gateway.
@@ -13,18 +13,18 @@ Gets an existing health probe configuration from an Application Gateway.
 ## SYNTAX
 
 ```
-Get-AzureRmApplicationGatewayProbeConfig [-Name <String>] -ApplicationGateway <PSApplicationGateway>
+Get-AzApplicationGatewayProbeConfig [-Name <String>] -ApplicationGateway <PSApplicationGateway>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmApplicationGatewayProbeConfig cmdlet gets an existing health probe configuration from an Application Gateway.
+The Get-AzApplicationGatewayProbeConfig cmdlet gets an existing health probe configuration from an Application Gateway.
 
 ## EXAMPLES
 
 ### Example 1: Get an existing probe from an application gateway
 ```
-PS C:\>Get-AzureRmApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe02"
+PS C:\>Get-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe02"
 ```
 
 This command gets the health probe named Probe02 from the application gateway named Gateway.
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,11 +94,11 @@ Parameters: ApplicationGateway (ByValue)
 
 [Add a probe to an existing application gateway](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#add-a-probe-to-an-existing-application-gateway)
 
-[Add-AzureRmApplicationGatewayProbeConfig]()
+[Add-AzApplicationGatewayProbeConfig]()
 
-[New-AzureRmApplicationGatewayProbeConfig]()
+[New-AzApplicationGatewayProbeConfig]()
 
-[Remove-AzureRmApplicationGatewayProbeConfig]()
+[Remove-AzApplicationGatewayProbeConfig]()
 
-[Set-AzureRmApplicationGatewayProbeConfig]()
+[Set-AzApplicationGatewayProbeConfig]()
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-Module Name: AzureRM.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/remove-azurermeventhubnamespace
+Module Name: Az.EventHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/remove-azeventhubnamespace
 schema: 2.0.0
 ---
 
-# Remove-AzureRmEventHubNamespace
+# Remove-AzEventHubNamespace
 
 ## SYNOPSIS
 Removes the specified Event Hubs namespace.
@@ -14,59 +14,59 @@ Removes the specified Event Hubs namespace.
 
 ### NamespaceParameterSet (Default)
 ```
-Remove-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob]
+Remove-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NamespaceInputObjectSet
 ```
-Remove-AzureRmEventHubNamespace [-InputObject] <PSNamespaceAttributes> [-PassThru] [-AsJob]
+Remove-AzEventHubNamespace [-InputObject] <PSNamespaceAttributes> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NamespaceResourceIdParameterSet
 ```
-Remove-AzureRmEventHubNamespace [-ResourceId] <String> [-PassThru] [-AsJob]
+Remove-AzEventHubNamespace [-ResourceId] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmEventHubNamespace cmdlet removes and deletes the specified Event Hubs namespace.
+The Remove-AzEventHubNamespace cmdlet removes and deletes the specified Event Hubs namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName
+PS C:\> Remove-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName
 ```
 
 Removes the Event Hubs namespace \`MyNamespaceName\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2.1 - InputObject - Using Variable:
 ```
-PS C:\> $inputObject = Get-AzureRmEventHubNamespace <params> 
-PS C:\> Remove-AzureRmEventHubNamespace -InputObject $inputObject
+PS C:\> $inputObject = Get-AzEventHubNamespace <params> 
+PS C:\> Remove-AzEventHubNamespace -InputObject $inputObject
 ```
 
 ### Example 2.1 - InputObject - Using Piping:
 ```
-PS C:\> Get-AzureRmEventHubNamespace <params> | Remove-AzureRmEventHubNamespace
+PS C:\> Get-AzEventHubNamespace <params> | Remove-AzEventHubNamespace
 ```
 
 ### Example 3.1 - ResourceId - Using Variable
 ```
-PS C:\> $resourceid = Get-AzureRmEventHubNamespace <params>
-PS C:\> Remove-AzureRmEventHubNamespace -ResourceId $resourceid.Id
+PS C:\> $resourceid = Get-AzEventHubNamespace <params>
+PS C:\> Remove-AzEventHubNamespace -ResourceId $resourceid.Id
 ```
 
 ### Example 3.2 - ResourceId - Using Piping:
 ```
-PS C:\> Get-AzureRmResource -ResourceType Microsoft.EventHub/Namespaces | Remove-AzureRmEventHubNamespace
+PS C:\> Get-AzResource -ResourceType Microsoft.EventHub/Namespaces | Remove-AzEventHubNamespace
 ```
 
 ### Example 3.3 - ResourceId - Using String:
 ```
-PS C:\> Remove-AzureRmEventHubNamespace -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName"
+PS C:\> Remove-AzEventHubNamespace -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName"
 ```
 
 ## PARAMETERS
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

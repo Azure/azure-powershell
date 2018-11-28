@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 32CF9BF7-519F-4B5D-9F2B-3CC556A77A48
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/start-azurermautomationdscnodeconfigurationdeployment
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/start-azautomationdscnodeconfigurationdeployment
 schema: 2.0.0
 ---
 
-# Start-AzureRmAutomationDscNodeConfigurationDeployment
+# Start-AzAutomationDscNodeConfigurationDeployment
 
 ## SYNOPSIS
 Deploys a DSC Node configuration in Automation.
@@ -15,22 +15,20 @@ Deploys a DSC Node configuration in Automation.
 
 ### ByAll (Default)
 ```
-Start-AzureRmAutomationDscNodeConfigurationDeployment [-NodeConfigurationName] <String>
- [-NodeName] <String[][]> [-Schedule <Schedule>] [-Force] [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Start-AzAutomationDscNodeConfigurationDeployment [-NodeConfigurationName] <String> [-NodeName] <String[][]>
+ [-Schedule <Schedule>] [-Force] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Start-AzureRmAutomationDscNodeConfigurationDeployment [-NodeConfigurationName] <String>
- [-NodeName] <String[][]> -InputObject <NodeConfigurationDeployment> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Start-AzAutomationDscNodeConfigurationDeployment [-NodeConfigurationName] <String> [-NodeName] <String[][]>
+ -InputObject <NodeConfigurationDeployment> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmAutomationDscNodeConfigurationDeployment** cmdlet deployes a Desired State Configuration (DSC) node configuration in Azure Automation.
+The **Start-AzAutomationDscNodeConfigurationDeployment** cmdlet deployes a Desired State Configuration (DSC) node configuration in Azure Automation.
 
 ## EXAMPLES
 
@@ -39,7 +37,7 @@ The **Start-AzureRmAutomationDscNodeConfigurationDeployment** cmdlet deployes a 
 PS C:\> $pilot = @("WebServerPilot1", "WebServerPilot2")
 PS C:\> $prod = @("WebServerProd1", "WebServerProd2")
 PS C:\> $nodes = @($pilot, $prod)
-PS C:\> Start-AzureRmAutomationDscNodeConfigurationDeployment `
+PS C:\> Start-AzAutomationDscNodeConfigurationDeployment `
             -NodeConfigurationName "Config01.Node1" `
             -AutomationAccountName "Contoso01"  `
             -ResourceGroupName "ResourceGroup01" `
@@ -64,7 +62,7 @@ The above command deploys the DSC node configuration named "Config01.Node1" to t
 
 ### Example 2: Schedule an Azure DSC node configuration deployment in Automation
 ```
-PS C:\> $sched = New-AzureRmAutomationSchedule -AutomationAccountName "Contoso01" `
+PS C:\> $sched = New-AzAutomationSchedule -AutomationAccountName "Contoso01" `
             -ResourceGroupName "ResourceGroup01" `
             -Name "TestSchedule" `
             -StartTime "23:00" `
@@ -72,7 +70,7 @@ PS C:\> $sched = New-AzureRmAutomationSchedule -AutomationAccountName "Contoso01
 PS C:\> $pilot = @("WebServerPilot1", "WebServerPilot2")
 PS C:\> $prod = @("WebServerProd1", "WebServerProd2")
 PS C:\> $nodes = @($pilot, $prod)
-PS C:\> Start-AzureRmAutomationDscNodeConfigurationDeployment `
+PS C:\> Start-AzAutomationDscNodeConfigurationDeployment `
             -NodeConfigurationName "Config01.Node1" `
             -AutomationAccountName "Contoso01"  `
             -ResourceGroupName "ResourceGroup01" `
@@ -117,7 +115,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -279,14 +277,14 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Start-AzureRmAutomationDscCompilationJob](./Start-AzureRmAutomationDscCompilationJob.md)
+[Start-AzAutomationDscCompilationJob](./Start-AzAutomationDscCompilationJob.md)
 
-[Import-AzureRmAutomationDscNodeConfiguration](./Import-AzureRmAutomationDscNodeConfiguration.md)
+[Import-AzAutomationDscNodeConfiguration](./Import-AzAutomationDscNodeConfiguration.md)
 
-[Stop-AzureRmAutomationDscNodeConfigurationDeployment](./Stop-AzureRmAutomationDscNodeConfigurationDeployment.md)
+[Stop-AzAutomationDscNodeConfigurationDeployment](./Stop-AzAutomationDscNodeConfigurationDeployment.md)
 
-[Get-AzureRmAutomationDscNodeConfigurationDeployment](./Get-AzureRmAutomationDscNodeConfigurationDeployment.md)
+[Get-AzAutomationDscNodeConfigurationDeployment](./Get-AzAutomationDscNodeConfigurationDeployment.md)
 
-[Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule](./Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule.md)
+[Get-AzAutomationDscNodeConfigurationDeploymentSchedule](./Get-AzAutomationDscNodeConfigurationDeploymentSchedule.md)
 
-[New-AzureRmAutomationSchedule](./New-AzureRmAutomationSchedule.md)
+[New-AzAutomationSchedule](./New-AzAutomationSchedule.md)

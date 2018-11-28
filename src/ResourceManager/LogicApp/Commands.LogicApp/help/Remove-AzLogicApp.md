@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 39D1576D-7042-4A62-AB41-0B5131C150D5
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/remove-azurermlogicapp
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/remove-azlogicapp
 schema: 2.0.0
 ---
 
-# Remove-AzureRmLogicApp
+# Remove-AzLogicApp
 
 ## SYNOPSIS
 Removes a logic app from a resource group.
@@ -14,12 +14,12 @@ Removes a logic app from a resource group.
 ## SYNTAX
 
 ```
-Remove-AzureRmLogicApp -ResourceGroupName <String> -Name <String> [-Force]
+Remove-AzLogicApp -ResourceGroupName <String> -Name <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmLogicApp** cmdlet removes a logic app from a resource group by using the Logic Apps feature.
+The **Remove-AzLogicApp** cmdlet removes a logic app from a resource group by using the Logic Apps feature.
 Specify the logic app and resource group.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -30,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Remove a logic app
 ```
-PS C:\>Remove-AzureRmLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03" -Force
+PS C:\>Remove-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03" -Force
 ```
 
 This command removes a logic app from a resource group.
@@ -42,7 +42,7 @@ The command includes the *Force* parameter, which prevents the command from prom
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -144,12 +144,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmLogicApp](./Get-AzureRmLogicApp.md)
+[Get-AzLogicApp](./Get-AzLogicApp.md)
 
-[New-AzureRmLogicApp](./New-AzureRmLogicApp.md)
+[New-AzLogicApp](./New-AzLogicApp.md)
 
-[Set-AzureRmLogicApp](./Set-AzureRmLogicApp.md)
+[Set-AzLogicApp](./Set-AzLogicApp.md)
 
-[Start-AzureRmLogicApp](./Start-AzureRmLogicApp.md)
+[Start-AzLogicApp](./Start-AzLogicApp.md)
 
 

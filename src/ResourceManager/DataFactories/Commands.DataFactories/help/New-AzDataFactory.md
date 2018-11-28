@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 7B18FA1B-F616-4479-B2F0-620FC0E3E962
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/new-azurermdatafactory
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/new-azdatafactory
 schema: 2.0.0
 ---
 
-# New-AzureRmDataFactory
+# New-AzDataFactory
 
 ## SYNOPSIS
 Creates a data factory.
@@ -14,13 +14,13 @@ Creates a data factory.
 ## SYNTAX
 
 ```
-New-AzureRmDataFactory [-Name] <String> [-Location] <String> [[-Tag] <Hashtable>] [-Force]
+New-AzDataFactory [-Name] <String> [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmDataFactory** cmdlet creates a data factory with the specified resource group name and location.
+The **New-AzDataFactory** cmdlet creates a data factory with the specified resource group name and location.
 Perform these operations in the following order: 
 - Create a data factory. 
 - Create linked services. 
@@ -31,7 +31,7 @@ Perform these operations in the following order:
 
 ### Example 1: Create a data factory
 ```
-PS C:\>New-AzureRmDataFactory -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"
+PS C:\>New-AzDataFactory -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"
 DataFactoryName   : WikiADF
 ResourceGroupName : ADF
 Location          : WestUS
@@ -184,8 +184,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactory](./Get-AzureRmDataFactory.md)
+[Get-AzDataFactory](./Get-AzDataFactory.md)
 
-[Remove-AzureRmDataFactory](./Remove-AzureRmDataFactory.md)
+[Remove-AzDataFactory](./Remove-AzDataFactory.md)
 
 

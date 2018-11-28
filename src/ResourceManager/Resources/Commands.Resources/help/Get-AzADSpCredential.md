@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 7690143F-5F09-4739-9F66-B2ACDF8305F4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermadspcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadspcredential
 schema: 2.0.0
 ---
 
-# Get-AzureRmADSpCredential
+# Get-AzADSpCredential
 
 ## SYNOPSIS
 Retrieves a list of credentials associated with a service principal.
@@ -15,28 +15,28 @@ Retrieves a list of credentials associated with a service principal.
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzureRmADSpCredential -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzADSpCredential -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SPNParameterSet
 ```
-Get-AzureRmADSpCredential -ServicePrincipalName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzADSpCredential -ServicePrincipalName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzureRmADSpCredential -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzADSpCredential -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SPNObjectParameterSet
 ```
-Get-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmADSpCredential cmdlet can be used to retrieve a list of credentials associated with a service principal.
+The Get-AzADSpCredential cmdlet can be used to retrieve a list of credentials associated with a service principal.
 This command will retrieve all of the credential properties (but not the credential value) associated with the service principal.
 
 ## EXAMPLES
@@ -44,7 +44,7 @@ This command will retrieve all of the credential properties (but not the credent
 ### Example 1 - List credentials by SPN
 
 ```
-PS C:\> Get-AzureRmADSpCredential -ServicePrincipalName http://test12345
+PS C:\> Get-AzADSpCredential -ServicePrincipalName http://test12345
 ```
 
 Returns a list of credentials associated with the service principal with SPN 'http://test12345'.
@@ -52,7 +52,7 @@ Returns a list of credentials associated with the service principal with SPN 'ht
 ### Example 2 - List credentials by object id
 
 ```
-PS C:\> Get-AzureRmADSpCredential -ObjectId 58e28616-99cc-4da4-b705-7672130e1047
+PS C:\> Get-AzADSpCredential -ObjectId 58e28616-99cc-4da4-b705-7672130e1047
 ```
 
 Returns a list of credentials associated with the service principal with object id "58e28616-99cc-4da4-b705-7672130e1047".
@@ -60,10 +60,10 @@ Returns a list of credentials associated with the service principal with object 
 ### Example 3 - List credentials by piping
 
 ```
-PS C:\> Get-AzureRmADServicePrincipal -ObjectId 58e28616-99cc-4da4-b705-7672130e1047 | Get-AzureRmADSpCredential
+PS C:\> Get-AzADServicePrincipal -ObjectId 58e28616-99cc-4da4-b705-7672130e1047 | Get-AzADSpCredential
 ```
 
-Gets the service principal with object id "58e28616-99cc-4da4-b705-7672130e1047" and pipes it to the Get-AzureRmADSpCredential cmdlet to list all credentials for that service principal.
+Gets the service principal with object id "58e28616-99cc-4da4-b705-7672130e1047" and pipes it to the Get-AzADSpCredential cmdlet to list all credentials for that service principal.
 
 ## PARAMETERS
 
@@ -71,7 +71,7 @@ Gets the service principal with object id "58e28616-99cc-4da4-b705-7672130e1047"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -162,9 +162,9 @@ Parameters: ServicePrincipalObject (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmADSpCredential](./New-AzureRmADSpCredential.md)
+[New-AzADSpCredential](./New-AzADSpCredential.md)
 
-[Remove-AzureRmADSpCredential](./Remove-AzureRmADSpCredential.md)
+[Remove-AzADSpCredential](./Remove-AzADSpCredential.md)
 
-[Get-AzureRmADServicePrincipal](./Get-AzureRmADServicePrincipal.md)
+[Get-AzADServicePrincipal](./Get-AzADServicePrincipal.md)
 

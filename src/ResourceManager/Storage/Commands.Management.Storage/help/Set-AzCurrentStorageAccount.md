@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM.Storage
+Module Name: Az.Storage
 ms.assetid: 15973FE8-16C1-4B71-A3A8-6D6F67A96FDF
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermcurrentstorageaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azcurrentstorageaccount
 schema: 2.0.0
 ---
 
-# Set-AzureRmCurrentStorageAccount
+# Set-AzCurrentStorageAccount
 
 ## SYNOPSIS
 Modifies the current Storage account of the specified subscription.
@@ -15,25 +15,25 @@ Modifies the current Storage account of the specified subscription.
 
 ### UsingResourceGroupAndNameParameterSet (Default)
 ```
-Set-AzureRmCurrentStorageAccount -ResourceGroupName <String> -Name <String>
+Set-AzCurrentStorageAccount -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### UsingStorageContext
 ```
-Set-AzureRmCurrentStorageAccount -Context <IStorageContext> [-DefaultProfile <IAzureContextContainer>]
+Set-AzCurrentStorageAccount -Context <IStorageContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmCurrentStorageAccount** cmdlet modifies the current Azure Storage account of the specified Azure subscription in Azure PowerShell.
+The **Set-AzCurrentStorageAccount** cmdlet modifies the current Azure Storage account of the specified Azure subscription in Azure PowerShell.
 The current Storage account is used as the default when you access Storage without specifying a Storage account name.
 
 ## EXAMPLES
 
 ### Example 1: Set the current Storage account
 ```
-PS C:\>Set-AzureRmCurrentStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
+PS C:\>Set-AzCurrentStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
 ```
 
 This command sets the default Storage account for the specified subscription.
@@ -42,7 +42,7 @@ This command sets the default Storage account for the specified subscription.
 
 ### -Context
 Specifies an **AzureStorageContext** object for the current Storage account.
-To obtain a storage context object, use the New-AzureStorageContext cmdlet.
+To obtain a storage context object, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -118,6 +118,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmStorageAccount](./Set-AzureRmStorageAccount.md)
+[Set-AzStorageAccount](./Set-AzStorageAccount.md)
 
 

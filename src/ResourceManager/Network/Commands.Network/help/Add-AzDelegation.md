@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermdelegation
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azdelegation
 schema: 2.0.0
 ---
 
-# Add-AzureRmDelegation
+# Add-AzDelegation
 
 ## SYNOPSIS
 Adds a delegation to a subnet.
@@ -13,21 +13,21 @@ Adds a delegation to a subnet.
 ## SYNTAX
 
 ```
-Add-AzureRmDelegation -Name <String> -ServiceName <String> -Subnet <PSSubnet>
+Add-AzDelegation -Name <String> -ServiceName <String> -Subnet <PSSubnet>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmDelegation** cmdlet adds a service delegation to an Azure subnet.
+The **Add-AzDelegation** cmdlet adds a service delegation to an Azure subnet.
 
 ## EXAMPLES
 
 ### 1: Adding a delegation
 ```powershell
-PS C:\> $vnet = Get-AzureRmVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
-PS C:\> $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet
-PS C:\> $subnet = Add-AzureRmDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers" -Subnet $subnet
-PS C:\> Set-AzureRmVirtualNetwork $vnet
+PS C:\> $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
+PS C:\> $subnet = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet
+PS C:\> $subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers" -Subnet $subnet
+PS C:\> Set-AzVirtualNetwork $vnet
 ```
 
 The first command retrieves the virtual network on which the subnet lies. The second command isolates out the subnet of interest - the one which you want to delegate. The third command adds a delegation to the subnet. This particular example would be useful when you want to enable SQL to create interface endpoints in this subnet. The final command sends the updated subnet to the server to actually update your subnet.
@@ -38,7 +38,7 @@ The first command retrieves the virtual network on which the subnet lies. The se
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -53,14 +53,14 @@ Accept wildcard characters: False
 The name of the delegation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The name of the service to which the subnet should be delegated
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The subnet
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: (All)
 Aliases:
 
@@ -95,8 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -111,6 +110,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## NOTES
 
 ## RELATED LINKS
-[Get-AzureRmVirtualNetwork](./Get-AzureRmVirtualNetwork.md)
-[Get-AzureRmVirtualNetworkSubnetConfig](./Get-AzureRmVirtualNetworkSubnetConfig.md)
-[Set-AzureRmVirtualNetwork](./Set-AzureRmVirtualNetwork.md)
+
+[Get-AzVirtualNetwork](./Get-AzVirtualNetwork.md)
+[Get-AzVirtualNetworkSubnetConfig](./Get-AzVirtualNetworkSubnetConfig.md)
+[Set-AzVirtualNetwork](./Set-AzVirtualNetwork.md)

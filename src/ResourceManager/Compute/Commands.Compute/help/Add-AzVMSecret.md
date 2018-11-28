@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 5008F83F-AF3E-47CF-99A3-55129E654128
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/add-azurermvmsecret
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmsecret
 schema: 2.0.0
 ---
 
-# Add-AzureRmVMSecret
+# Add-AzVMSecret
 
 ## SYNOPSIS
 Adds a secret to a virtual machine.
@@ -14,28 +14,28 @@ Adds a secret to a virtual machine.
 ## SYNTAX
 
 ```
-Add-AzureRmVMSecret [-VM] <PSVirtualMachine> [[-SourceVaultId] <String>] [[-CertificateStore] <String>]
+Add-AzVMSecret [-VM] <PSVirtualMachine> [[-SourceVaultId] <String>] [[-CertificateStore] <String>]
  [[-CertificateUrl] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmVMSecret** cmdlet adds a secret to a virtual machine.
+The **Add-AzVMSecret** cmdlet adds a secret to a virtual machine.
 This value lets you add a certificate to the virtual machine.
 The secret must be stored in a Key Vault.
 For more information about Key Vault, see [What is Azure Key Vault?](https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/).
-For more information about the cmdlets, see [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or the [Set-AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret) cmdlet.
+For more information about the cmdlets, see [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or the [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Add a secret to a virtual machine
 ```
-PS C:\> $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
+PS C:\> $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
 PS C:\> $Credential = Get-Credential
-PS C:\> $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine  -Windows -ComputerName "Contoso26" -Credential $Credential
+PS C:\> $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine  -Windows -ComputerName "Contoso26" -Credential $Credential
 PS C:\> $SourceVaultId = "/subscriptions/46f8cea4-2de6-4179-8ab1-365da4211af4/resourceGroups/vault/providers/Microsoft.KeyVault/vaults/keyvault"
 PS C:\> $CertificateStore01 = "My"
 PS C:\> $CertificateUrl01 = "https://contosovault.vault.azure.net/secrets/514ceb769c984379a7e0230bdd703272"
-PS C:\> $VirtualMachine = Add-AzureRmVMSecret -VM $VirtualMachine -SourceVaultId $SourceVaultId -CertificateStore $CertificateStore01 -CertificateUrl $CertificateUrl01
+PS C:\> $VirtualMachine = Add-AzVMSecret -VM $VirtualMachine -SourceVaultId $SourceVaultId -CertificateStore $CertificateStore01 -CertificateUrl $CertificateUrl01
 ```
 
 The first command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
@@ -43,7 +43,7 @@ The command assigns a name and size to the virtual machine.
 The second command creates a credential object by using the Get-Credential cmdlet, and then stores the result in the $Credential variable.
 The command prompts you for a user name and password.
 For more information, type `Get-Help Get-Credential`.
-The third command uses the **Set-AzureRmVMOperatingSystem** cmdlet to configure the virtual machine stored in $VirtualMachine.
+The third command uses the **Set-AzVMOperatingSystem** cmdlet to configure the virtual machine stored in $VirtualMachine.
 The fourth command assigns a source vault ID to the $SourceVaultId variable for later use.
 The command assumes that the $SubscriptionId variable has an appropriate value.
 The fifth command assigns a value to the $CertificateStore01 variable for later use.
@@ -51,7 +51,7 @@ The sixth command assigns a URL for a certificate store.
 The seventh command adds a secret to the virtual machine stored in $VirtualMachine.
 The SourceVaultId parameter specifies the Key Vault.
 The command specifies the name of the certificate store and the URL of the certificate.
-You can run the **Add-AzureRmVMSecret** repeatedly to add secrets for other certificates.
+You can run the **Add-AzVMSecret** repeatedly to add secrets for other certificates.
 
 ## PARAMETERS
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -128,8 +128,8 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies the virtual machine object that this cmdlet modifies.
-To obtain a virtual machine object, use the [Get-AzureRmVM](./Get-AzureRmVM.md) cmdlet.
-You can use the [New-AzureRmVMConfig](./New-AzureRmVMConfig.md) cmdlet to create a virtual machine object.
+To obtain a virtual machine object, use the [Get-AzVM](./Get-AzVM.md) cmdlet.
+You can use the [New-AzVMConfig](./New-AzVMConfig.md) cmdlet to create a virtual machine object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
@@ -160,8 +160,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVM](./Get-AzureRmVM.md)
+[Get-AzVM](./Get-AzVM.md)
 
-[New-AzureRmVMConfig](./New-AzureRmVMConfig.md)
+[New-AzVMConfig](./New-AzVMConfig.md)
 
-[Set-AzureRmVMOperatingSystem](./Set-AzureRmVMOperatingSystem.md)
+[Set-AzVMOperatingSystem](./Set-AzVMOperatingSystem.md)

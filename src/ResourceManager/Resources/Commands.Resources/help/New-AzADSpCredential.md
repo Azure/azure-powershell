@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 063BAA79-484D-48CF-9170-3808813752BD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermadspcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadspcredential
 schema: 2.0.0
 ---
 
-# New-AzureRmADSpCredential
+# New-AzADSpCredential
 
 ## SYNOPSIS
 Adds a credential to an existing service principal.
@@ -15,44 +15,43 @@ Adds a credential to an existing service principal.
 
 ### SpObjectIdWithPasswordParameterSet (Default)
 ```
-New-AzureRmADSpCredential -ObjectId <Guid> [-Password <SecureString>] [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADSpCredential -ObjectId <Guid> [-Password <SecureString>] [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SpObjectIdWithCertValueParameterSet
 ```
-New-AzureRmADSpCredential -ObjectId <Guid> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
+New-AzADSpCredential -ObjectId <Guid> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithCertValueParameterSet
 ```
-New-AzureRmADSpCredential -ServicePrincipalName <String> -CertValue <String> [-StartDate <DateTime>]
+New-AzADSpCredential -ServicePrincipalName <String> -CertValue <String> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithPasswordParameterSet
 ```
-New-AzureRmADSpCredential -ServicePrincipalName <String> [-Password <SecureString>] [-StartDate <DateTime>]
+New-AzADSpCredential -ServicePrincipalName <String> [-Password <SecureString>] [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectWithCertValueParameterSet
 ```
-New-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> -CertValue <String>
- [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> -CertValue <String> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectWithPasswordParameterSet
 ```
-New-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-Password <SecureString>]
+New-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-Password <SecureString>]
  [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmADSpCredential cmdlet can be used to add a new credential or to roll credentials for a service principal.
+The New-AzADSpCredential cmdlet can be used to add a new credential or to roll credentials for a service principal.
 The service principal is identified by supplying either the object id or service principal name.
 
 ## EXAMPLES
@@ -60,7 +59,7 @@ The service principal is identified by supplying either the object id or service
 ### Example 1 - Create a new service principal credential using a generated password
 
 ```
-PS C:\> New-AzureRmADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476
+PS C:\> New-AzADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476
 
 Secret    : System.Security.SecureString
 StartDate : 11/12/2018 9:36:05 PM
@@ -78,7 +77,7 @@ PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Cert
 PS C:\> $cer.Import("C:\myapp.cer") 
 PS C:\> $binCert = $cer.GetRawCertData() 
 PS C:\> $credValue = [System.Convert]::ToBase64String($binCert)
-PS C:\> New-AzureRmADSpCredential -ServicePrincipalName "http://test123" -CertValue $credValue -StartDate $cer.GetEffectiveDateString() -EndDate $cer.GetExpirationDateString()
+PS C:\> New-AzADSpCredential -ServicePrincipalName "http://test123" -CertValue $credValue -StartDate $cer.GetEffectiveDateString() -EndDate $cer.GetExpirationDateString()
 ```
 
 The supplied base64 encoded public X509 certificate ("myapp.cer") is added to the existing service principal using its SPN.
@@ -86,7 +85,7 @@ The supplied base64 encoded public X509 certificate ("myapp.cer") is added to th
 ### Example 3 - Create a new service principal credential using piping
 
 ```
-PS C:\> Get-AzureRmADServicePrincipal -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 | New-AzureRmADSpCredential
+PS C:\> Get-AzADServicePrincipal -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 | New-AzADSpCredential
 
 Secret    : System.Security.SecureString
 StartDate : 11/12/2018 9:36:05 PM
@@ -95,7 +94,7 @@ KeyId     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type      : Password
 ```
 
-Gets the service principal with object id '1f99cf81-0146-4f4e-beae-2007d0668476' and pipes that to the New-AzureRmADSpCredential to create a new service principal credential for that service principal with a generated password.
+Gets the service principal with object id '1f99cf81-0146-4f4e-beae-2007d0668476' and pipes that to the New-AzADSpCredential to create a new service principal credential for that service principal with a generated password.
 
 ## PARAMETERS
 
@@ -131,7 +130,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -305,11 +304,11 @@ Parameters: ServicePrincipalObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmADSpCredential](./Get-AzureRmADSpCredential.md)
+[Get-AzADSpCredential](./Get-AzADSpCredential.md)
 
-[Remove-AzureRmADSpCredential](./Remove-AzureRmADSpCredential.md)
+[Remove-AzADSpCredential](./Remove-AzADSpCredential.md)
 
-[Get-AzureRmADServicePrincipal](./Get-AzureRmADServicePrincipal.md)
+[Get-AzADServicePrincipal](./Get-AzADServicePrincipal.md)
 
 
 

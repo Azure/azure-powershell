@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 92E876FE-AA7B-43AA-915F-D02AC5CEF0CA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/use-azurermhdinsightcluster
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/use-azhdinsightcluster
 schema: 2.0.0
 ---
 
-# Use-AzureRmHDInsightCluster
+# Use-AzHDInsightCluster
 
 ## SYNOPSIS
 Selects a cluster to be used with the Invoke-RmAzureHDInsightHiveJob cmdlet.
@@ -14,12 +14,12 @@ Selects a cluster to be used with the Invoke-RmAzureHDInsightHiveJob cmdlet.
 ## SYNTAX
 
 ```
-Use-AzureRmHDInsightCluster [-ClusterName] <String> [-HttpCredential] <PSCredential>
+Use-AzHDInsightCluster [-ClusterName] <String> [-HttpCredential] <PSCredential>
  [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Use-AzureRmHDInsightCluster** cmdlet selects the Azure HDInsight cluster for the Invoke-AzureRmHDInsightHiveJob cmdlet to use to submit Hive jobs.
+The **Use-AzHDInsightCluster** cmdlet selects the Azure HDInsight cluster for the Invoke-AzHDInsightHiveJob cmdlet to use to submit Hive jobs.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ PS C:\># Cluster info
 PS C:\>$clusterName = "your-hadoop-001"
 PS C:\>$clusterCreds = Get-Credential
 
-PS C:\>Use-AzureRmHDInsightCluster `
+PS C:\>Use-AzHDInsightCluster `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds
 ```
@@ -113,8 +113,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmHDInsightCluster](./Get-AzureRmHDInsightCluster.md)
+[Get-AzHDInsightCluster](./Get-AzHDInsightCluster.md)
 
-[Remove-AzureRmHDInsightCluster](./Remove-AzureRmHDInsightCluster.md)
+[Remove-AzHDInsightCluster](./Remove-AzHDInsightCluster.md)
 
 

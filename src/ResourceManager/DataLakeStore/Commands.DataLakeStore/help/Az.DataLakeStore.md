@@ -1,139 +1,139 @@
 ---
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 Module Guid: 90dfd814-abce-4e1f-99b6-fe16760c079a
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# AzureRM.DataLakeStore Module
+# Az.DataLakeStore Module
 ## Description
 The topics in this section document the Azure PowerShell cmdlets for Azure Data Lake Store in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.DataLakeStore namespace.
 
-## AzureRM.DataLakeStore Cmdlets
-### [Add-AzureRmDataLakeStoreFirewallRule](Add-AzureRmDataLakeStoreFirewallRule.md)
+## Az.DataLakeStore Cmdlets
+### [Add-AzDataLakeStoreFirewallRule](Add-AzDataLakeStoreFirewallRule.md)
 Adds a firewall rule to the specified Data Lake Store account.
 
-### [Add-AzureRmDataLakeStoreItemContent](Add-AzureRmDataLakeStoreItemContent.md)
+### [Add-AzDataLakeStoreItemContent](Add-AzDataLakeStoreItemContent.md)
 Adds content to an item in a Data Lake Store.
 
-### [Add-AzureRmDataLakeStoreTrustedIdProvider](Add-AzureRmDataLakeStoreTrustedIdProvider.md)
+### [Add-AzDataLakeStoreTrustedIdProvider](Add-AzDataLakeStoreTrustedIdProvider.md)
 Adds a trusted identity provider to the specified Data Lake Store account.
 
-### [Add-AzureRmDataLakeStoreVirtualNetworkRule](Add-AzureRmDataLakeStoreVirtualNetworkRule.md)
+### [Add-AzDataLakeStoreVirtualNetworkRule](Add-AzDataLakeStoreVirtualNetworkRule.md)
 Adds a virtual network rule to the specified Data Lake Store account.
 
-### [Enable-AzureRmDataLakeStoreKeyVault](Enable-AzureRmDataLakeStoreKeyVault.md)
+### [Enable-AzDataLakeStoreKeyVault](Enable-AzDataLakeStoreKeyVault.md)
 Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
 
-### [Export-AzureRmDataLakeStoreChildItemProperties](Export-AzureRmDataLakeStoreChildItemProperties.md)
+### [Export-AzDataLakeStoreChildItemProperties](Export-AzDataLakeStoreChildItemProperties.md)
 Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a ouput path
 
-### [Export-AzureRmDataLakeStoreItem](Export-AzureRmDataLakeStoreItem.md)
+### [Export-AzDataLakeStoreItem](Export-AzDataLakeStoreItem.md)
 Downloads a file from Data Lake Store.
 
-### [Get-AzureRmDataLakeStoreAccount](Get-AzureRmDataLakeStoreAccount.md)
+### [Get-AzDataLakeStoreAccount](Get-AzDataLakeStoreAccount.md)
 Gets details of a Data Lake Store account.
 
-### [Get-AzureRmDataLakeStoreChildItem](Get-AzureRmDataLakeStoreChildItem.md)
+### [Get-AzDataLakeStoreChildItem](Get-AzDataLakeStoreChildItem.md)
 Gets the list of items in a folder in Data Lake Store.
 
-### [Get-AzureRmDataLakeStoreChildItemSummary](Get-AzureRmDataLakeStoreChildItemSummary.md)
+### [Get-AzDataLakeStoreChildItemSummary](Get-AzDataLakeStoreChildItemSummary.md)
 Gets the summary of total size, files and directories contained in the path specified
 
-### [Get-AzureRmDataLakeStoreFirewallRule](Get-AzureRmDataLakeStoreFirewallRule.md)
+### [Get-AzDataLakeStoreFirewallRule](Get-AzDataLakeStoreFirewallRule.md)
 Gets the specified firewall rules in the specified Data Lake Store.
 If no firewall rule is specified, then lists all firewall rules for the account.
 
-### [Get-AzureRmDataLakeStoreItem](Get-AzureRmDataLakeStoreItem.md)
+### [Get-AzDataLakeStoreItem](Get-AzDataLakeStoreItem.md)
 Gets the details of a file or folder in Data Lake Store.
 
-### [Get-AzureRmDataLakeStoreItemAclEntry](Get-AzureRmDataLakeStoreItemAclEntry.md)
+### [Get-AzDataLakeStoreItemAclEntry](Get-AzDataLakeStoreItemAclEntry.md)
 Gets an entry in the ACL of a file or folder in Data Lake Store.
 
-### [Get-AzureRmDataLakeStoreItemContent](Get-AzureRmDataLakeStoreItemContent.md)
+### [Get-AzDataLakeStoreItemContent](Get-AzDataLakeStoreItemContent.md)
 Gets the contents of a file in Data Lake Store.
 
-### [Get-AzureRmDataLakeStoreItemOwner](Get-AzureRmDataLakeStoreItemOwner.md)
+### [Get-AzDataLakeStoreItemOwner](Get-AzDataLakeStoreItemOwner.md)
 Gets the owner of a file or folder in Data Lake Store.
 
-### [Get-AzureRmDataLakeStoreItemPermission](Get-AzureRmDataLakeStoreItemPermission.md)
+### [Get-AzDataLakeStoreItemPermission](Get-AzDataLakeStoreItemPermission.md)
 Gets the permission octal of a file or folder in Data Lake Store.
 
-### [Get-AzureRmDataLakeStoreTrustedIdProvider](Get-AzureRmDataLakeStoreTrustedIdProvider.md)
+### [Get-AzDataLakeStoreTrustedIdProvider](Get-AzDataLakeStoreTrustedIdProvider.md)
 Gets the specified trusted identity provider in the specified Data Lake Store.
 If no provider is specified, then lists all providers for the account.
 
-### [Get-AzureRmDataLakeStoreVirtualNetworkRule](Get-AzureRmDataLakeStoreVirtualNetworkRule.md)
+### [Get-AzDataLakeStoreVirtualNetworkRule](Get-AzDataLakeStoreVirtualNetworkRule.md)
 Gets the specified virtual network rules in the specified Data Lake Store.
 If no virtual network rule is specified, then lists all virtual network rules for the account.
 
-### [Import-AzureRmDataLakeStoreItem](Import-AzureRmDataLakeStoreItem.md)
+### [Import-AzDataLakeStoreItem](Import-AzDataLakeStoreItem.md)
 Uploads a local file or directory to a Data Lake Store.
 
-### [Join-AzureRmDataLakeStoreItem](Join-AzureRmDataLakeStoreItem.md)
+### [Join-AzDataLakeStoreItem](Join-AzDataLakeStoreItem.md)
 Joins one or more files to create one file in Data Lake Store.
 
-### [Move-AzureRmDataLakeStoreItem](Move-AzureRmDataLakeStoreItem.md)
+### [Move-AzDataLakeStoreItem](Move-AzDataLakeStoreItem.md)
 Moves or renames a file or folder in Data Lake Store.
 
-### [New-AzureRmDataLakeStoreAccount](New-AzureRmDataLakeStoreAccount.md)
+### [New-AzDataLakeStoreAccount](New-AzDataLakeStoreAccount.md)
 Creates a new Data Lake Store account.
 
-### [New-AzureRmDataLakeStoreItem](New-AzureRmDataLakeStoreItem.md)
+### [New-AzDataLakeStoreItem](New-AzDataLakeStoreItem.md)
 Creates a new file or folder in Data Lake Store.
 
-### [Remove-AzureRmDataLakeStoreAccount](Remove-AzureRmDataLakeStoreAccount.md)
+### [Remove-AzDataLakeStoreAccount](Remove-AzDataLakeStoreAccount.md)
 Deletes a Data Lake Store account permanently.
 
-### [Remove-AzureRmDataLakeStoreFirewallRule](Remove-AzureRmDataLakeStoreFirewallRule.md)
+### [Remove-AzDataLakeStoreFirewallRule](Remove-AzDataLakeStoreFirewallRule.md)
 Removes the specified firewall rule in the specified Data Lake Store.
 
-### [Remove-AzureRmDataLakeStoreItem](Remove-AzureRmDataLakeStoreItem.md)
+### [Remove-AzDataLakeStoreItem](Remove-AzDataLakeStoreItem.md)
 Deletes a file or folder in Data Lake Store.
 
-### [Remove-AzureRmDataLakeStoreItemAcl](Remove-AzureRmDataLakeStoreItemAcl.md)
+### [Remove-AzDataLakeStoreItemAcl](Remove-AzDataLakeStoreItemAcl.md)
 Clears the ACL of a file or folder in Data Lake Store.
 
-### [Remove-AzureRmDataLakeStoreItemAclEntry](Remove-AzureRmDataLakeStoreItemAclEntry.md)
+### [Remove-AzDataLakeStoreItemAclEntry](Remove-AzDataLakeStoreItemAclEntry.md)
 Removes an entry from the ACL of a file or folder in Data Lake Store.
 
-### [Remove-AzureRmDataLakeStoreTrustedIdProvider](Remove-AzureRmDataLakeStoreTrustedIdProvider.md)
+### [Remove-AzDataLakeStoreTrustedIdProvider](Remove-AzDataLakeStoreTrustedIdProvider.md)
 Removes the specified trusted identity provider in the specified Data Lake Store.
 
-### [Remove-AzureRmDataLakeStoreVirtualNetworkRule](Remove-AzureRmDataLakeStoreVirtualNetworkRule.md)
+### [Remove-AzDataLakeStoreVirtualNetworkRule](Remove-AzDataLakeStoreVirtualNetworkRule.md)
 Removes the specified virtual network rule in the specified Data Lake Store.
 
-### [Set-AzureRmDataLakeStoreAccount](Set-AzureRmDataLakeStoreAccount.md)
+### [Set-AzDataLakeStoreAccount](Set-AzDataLakeStoreAccount.md)
 Modifies a Data Lake Store account.
 
-### [Set-AzureRmDataLakeStoreFirewallRule](Set-AzureRmDataLakeStoreFirewallRule.md)
+### [Set-AzDataLakeStoreFirewallRule](Set-AzDataLakeStoreFirewallRule.md)
 Modifies the specified firewall rule in the specified Data Lake Store.
 
-### [Set-AzureRmDataLakeStoreItemAcl](Set-AzureRmDataLakeStoreItemAcl.md)
+### [Set-AzDataLakeStoreItemAcl](Set-AzDataLakeStoreItemAcl.md)
 Modifies the ACL of a file or folder in Data Lake Store.
 
-### [Set-AzureRmDataLakeStoreItemAclEntry](Set-AzureRmDataLakeStoreItemAclEntry.md)
+### [Set-AzDataLakeStoreItemAclEntry](Set-AzDataLakeStoreItemAclEntry.md)
 Modifies an entry in the ACL of a file or folder in Data Lake Store.
 
-### [Set-AzureRmDataLakeStoreItemExpiry](Set-AzureRmDataLakeStoreItemExpiry.md)
+### [Set-AzDataLakeStoreItemExpiry](Set-AzDataLakeStoreItemExpiry.md)
 Sets or removes the expire time for a file in an Azure Data Lake Store account.
 
-### [Set-AzureRmDataLakeStoreItemOwner](Set-AzureRmDataLakeStoreItemOwner.md)
+### [Set-AzDataLakeStoreItemOwner](Set-AzDataLakeStoreItemOwner.md)
 Modifies the owner of a file or folder in Data Lake Store.
 
-### [Set-AzureRmDataLakeStoreItemPermission](Set-AzureRmDataLakeStoreItemPermission.md)
+### [Set-AzDataLakeStoreItemPermission](Set-AzDataLakeStoreItemPermission.md)
 Modifies the permission octal of a file or folder in Data Lake Store.
 
-### [Set-AzureRmDataLakeStoreTrustedIdProvider](Set-AzureRmDataLakeStoreTrustedIdProvider.md)
+### [Set-AzDataLakeStoreTrustedIdProvider](Set-AzDataLakeStoreTrustedIdProvider.md)
 Modifies the specified trusted identity provider in the specified Data Lake Store.
 
-### [Set-AzureRmDataLakeStoreVirtualNetworkRule](Set-AzureRmDataLakeStoreVirtualNetworkRule.md)
+### [Set-AzDataLakeStoreVirtualNetworkRule](Set-AzDataLakeStoreVirtualNetworkRule.md)
 Modifies the specified virtual network rule in the specified Data Lake Store.
 
-### [Test-AzureRmDataLakeStoreAccount](Test-AzureRmDataLakeStoreAccount.md)
+### [Test-AzDataLakeStoreAccount](Test-AzDataLakeStoreAccount.md)
 Tests the existence of a Data Lake Store account.
 
-### [Test-AzureRmDataLakeStoreItem](Test-AzureRmDataLakeStoreItem.md)
+### [Test-AzDataLakeStoreItem](Test-AzDataLakeStoreItem.md)
 Tests the existence of a file or folder in Data Lake Store.
 

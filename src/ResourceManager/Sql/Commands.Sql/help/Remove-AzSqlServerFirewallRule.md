@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 251A4546-AC23-4880-B197-773B1B814607
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlserverfirewallrule
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlServerFirewallRule
+# Remove-AzSqlServerFirewallRule
 
 ## SYNOPSIS
 Deletes a firewall rule from a SQL Database server.
@@ -14,19 +14,19 @@ Deletes a firewall rule from a SQL Database server.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlServerFirewallRule [-FirewallRuleName] <String> [-Force] [-ServerName] <String>
+Remove-AzSqlServerFirewallRule [-FirewallRuleName] <String> [-Force] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlServerFirewallRule** cmdlet deletes a firewall rule from the specified Azure SQL Database server.
+The **Remove-AzSqlServerFirewallRule** cmdlet deletes a firewall rule from the specified Azure SQL Database server.
 
 ## EXAMPLES
 
 ### Example 1: Delete a rule
 ```
-PS C:\>Remove-AzureRmSqlServerFirewallRule -FirewallRuleName "Rule01" -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>Remove-AzSqlServerFirewallRule -FirewallRuleName "Rule01" -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
 This command deletes a firewall rule named Rule01 on the server named Server01.
@@ -37,7 +37,7 @@ This command deletes a firewall rule named Rule01 on the server named Server01.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -154,11 +154,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServerFirewallRule](./Get-AzureRmSqlServerFirewallRule.md)
+[Get-AzSqlServerFirewallRule](./Get-AzSqlServerFirewallRule.md)
 
-[New-AzureRmSqlServerFirewallRule](./New-AzureRmSqlServerFirewallRule.md)
+[New-AzSqlServerFirewallRule](./New-AzSqlServerFirewallRule.md)
 
-[Set-AzureRmSqlServerFirewallRule](./Set-AzureRmSqlServerFirewallRule.md)
+[Set-AzSqlServerFirewallRule](./Set-AzSqlServerFirewallRule.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

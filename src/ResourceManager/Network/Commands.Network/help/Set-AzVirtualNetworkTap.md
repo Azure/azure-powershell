@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermvirtualnetworktap
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetworktap
 schema: 2.0.0
 ---
 
-# Set-AzureRmVirtualNetworkTap
+# Set-AzVirtualNetworkTap
 
 ## SYNOPSIS
 Sets the goal state for a virtual network tap.
@@ -13,20 +13,20 @@ Sets the goal state for a virtual network tap.
 ## SYNTAX
 
 ```
-Set-AzureRmVirtualNetworkTap -VirtualNetworkTap <PSVirtualNetworkTap> [-AsJob]
+Set-AzVirtualNetworkTap -VirtualNetworkTap <PSVirtualNetworkTap> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVirtualNetworkTap** sets the goal state for an Azure virtual network tap.
+The **Set-AzVirtualNetworkTap** sets the goal state for an Azure virtual network tap.
 
 ## EXAMPLES
 
 ### Example 1: Configure a Virtual network tap
 ```
-PS C:\>$vTap = Get-AzureRmVirtualNetworkTap -ResourceGroupName "ResourceGroup1" -Name "VirtualTap1"
+PS C:\>$vTap = Get-AzVirtualNetworkTap -ResourceGroupName "ResourceGroup1" -Name "VirtualTap1"
 PS C:\>$vTap.DestinationNetworkInterfaceIPConfiguration = $newDestinationNic.IpConfigurations[0]
-PS C:\>Set-AzureRmVirtualNetworkTap -VirtualNetworkTap $vTap
+PS C:\>Set-AzVirtualNetworkTap -VirtualNetworkTap $vTap
 ```
 
 The command updates the Destination IpConfiguration and updates the Virtual network tap.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

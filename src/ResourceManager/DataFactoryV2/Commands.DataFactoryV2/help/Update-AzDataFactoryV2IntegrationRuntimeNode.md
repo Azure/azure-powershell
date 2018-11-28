@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/update-azurermdatafactoryv2integrationruntimenode
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/update-azdatafactoryv2integrationruntimenode
 schema: 2.0.0
 ---
 
-# Update-AzureRmDataFactoryV2IntegrationRuntimeNode
+# Update-AzDataFactoryV2IntegrationRuntimeNode
 
 ## SYNOPSIS
 Updates self-hosted integration runtime node.
@@ -14,32 +14,32 @@ Updates self-hosted integration runtime node.
 
 ### ByIntegrationRuntimeName (Default)
 ```
-Update-AzureRmDataFactoryV2IntegrationRuntimeNode -Name <String> -ConcurrentJobsLimit <Int32>
+Update-AzDataFactoryV2IntegrationRuntimeNode -Name <String> -ConcurrentJobsLimit <Int32>
  [-IntegrationRuntimeName] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzureRmDataFactoryV2IntegrationRuntimeNode -Name <String> -ConcurrentJobsLimit <Int32>
+Update-AzDataFactoryV2IntegrationRuntimeNode -Name <String> -ConcurrentJobsLimit <Int32>
  [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Update-AzureRmDataFactoryV2IntegrationRuntimeNode -Name <String> -ConcurrentJobsLimit <Int32>
+Update-AzDataFactoryV2IntegrationRuntimeNode -Name <String> -ConcurrentJobsLimit <Int32>
  [-InputObject] <PSIntegrationRuntime> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmDataFactoryV2IntegrationRuntimeNode** cmdlet updates properties of self-hosted integration runtime node in a data factory. Currently only supports updating 'ConcurrentJobsLimit'.
+The **Update-AzDataFactoryV2IntegrationRuntimeNode** cmdlet updates properties of self-hosted integration runtime node in a data factory. Currently only supports updating 'ConcurrentJobsLimit'.
 
 ## EXAMPLES
 
 ### Example 1: Updates self-hosted integration runtime node
 ```
-PS C:\> Update-AzureRmDataFactoryV2IntegrationRuntimeNode `
+PS C:\> Update-AzDataFactoryV2IntegrationRuntimeNode `
     -ResourceGroupName 'rg-test-dfv2' `
     -DataFactoryName 'test-df-eu2' `
     -IntegrationRuntimeName 'test-selfhost-ir' `
@@ -222,6 +222,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories, c
 
 ## RELATED LINKS
 
-[Set-AzureRmDataFactoryV2IntegrationRuntime]()
-[Get-AzureRmDataFactoryV2IntegrationRuntime]()
+[Set-AzDataFactoryV2IntegrationRuntime]()
+[Get-AzDataFactoryV2IntegrationRuntime]()
 

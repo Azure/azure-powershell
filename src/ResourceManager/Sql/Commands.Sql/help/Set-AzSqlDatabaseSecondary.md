@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: F9703508-DD4D-4D25-A7CA-7E3432B5DCA9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqldatabasesecondary
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabasesecondary
 schema: 2.0.0
 ---
 
-# Set-AzureRmSqlDatabaseSecondary
+# Set-AzSqlDatabaseSecondary
 
 ## SYNOPSIS
 Switches a secondary database to be primary in order to initiate failover.
@@ -15,20 +15,20 @@ Switches a secondary database to be primary in order to initiate failover.
 
 ### NoOptionsSet (Default)
 ```
-Set-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> -PartnerResourceGroupName <String> [-AsJob]
+Set-AzSqlDatabaseSecondary [-DatabaseName] <String> -PartnerResourceGroupName <String> [-AsJob]
  [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFailoverParams
 ```
-Set-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> -PartnerResourceGroupName <String> [-Failover]
+Set-AzSqlDatabaseSecondary [-DatabaseName] <String> -PartnerResourceGroupName <String> [-Failover]
  [-AllowDataLoss] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlDatabaseSecondary** cmdlet switches a secondary database to be primary in order to initiate failover.
+The **Set-AzSqlDatabaseSecondary** cmdlet switches a secondary database to be primary in order to initiate failover.
 This cmdlet is designed as a general configuration command, but is currently limited to initiating failover.
 Specify the *AllowDataLoss* parameter to initiate a force failover during an outage.
 You do not have to specify this parameter when you perform a planned operation, such as recovery drill.
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -204,8 +204,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlDatabaseSecondary](./New-AzureRmSqlDatabaseSecondary.md)
+[New-AzSqlDatabaseSecondary](./New-AzSqlDatabaseSecondary.md)
 
-[Remove-AzureRmSqlDatabaseSecondary](./Remove-AzureRmSqlDatabaseSecondary.md)
+[Remove-AzSqlDatabaseSecondary](./Remove-AzSqlDatabaseSecondary.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

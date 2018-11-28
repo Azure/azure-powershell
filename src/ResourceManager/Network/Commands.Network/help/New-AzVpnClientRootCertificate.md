@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: C54AC64C-DA21-443E-8CFE-6CCAC6152C2B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermvpnclientrootcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvpnclientrootcertificate
 schema: 2.0.0
 ---
 
-# New-AzureRmVpnClientRootCertificate
+# New-AzVpnClientRootCertificate
 
 ## SYNOPSIS
 Creates a new VPN client root certificate.
@@ -14,20 +14,20 @@ Creates a new VPN client root certificate.
 ## SYNTAX
 
 ```
-New-AzureRmVpnClientRootCertificate -Name <String> -PublicCertData <String>
+New-AzVpnClientRootCertificate -Name <String> -PublicCertData <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmVpnClientRootCertificate** cmdlet creates a new VPN root certificate for use on a virtual network gateway.
+The **New-AzVpnClientRootCertificate** cmdlet creates a new VPN root certificate for use on a virtual network gateway.
 Root certificates are X.509 certificates that identify your Root Certification Authority: all other certificates used on the gateway trust the root certificate.
 This cmdlet creates a stand-alone certificate that is not assigned to a virtual gateway.
-Instead, the certificate created by **New-AzureRmVpnClientRootCertificate** is used in conjunction with the New-AzureRmVirtualNetworkGateway cmdlet when creating a new gateway.
+Instead, the certificate created by **New-AzVpnClientRootCertificate** is used in conjunction with the New-AzVirtualNetworkGateway cmdlet when creating a new gateway.
 For example, suppose you create a new certificate and store it in a variable named $Certificate.
 You can then use that certificate object when creating a new virtual gateway.
 For instance,
-`New-AzureRmVirtualNetworkGateway -Name "ContosoVirtualGateway" -ResourceGroupName "ContosoResourceGroup" -Location "West US" -GatewayType "VPN" -IpConfigurations $Ipconfig  -VPNType "RouteBased" -VpnClientRootCertificates $Certificate`
-For more information, see the documentation for the New-AzureRmVirtualNetworkGateway cmdlet.
+`New-AzVirtualNetworkGateway -Name "ContosoVirtualGateway" -ResourceGroupName "ContosoResourceGroup" -Location "West US" -GatewayType "VPN" -IpConfigurations $Ipconfig  -VPNType "RouteBased" -VpnClientRootCertificates $Certificate`
+For more information, see the documentation for the New-AzVirtualNetworkGateway cmdlet.
 
 ## EXAMPLES
 
@@ -35,14 +35,14 @@ For more information, see the documentation for the New-AzureRmVirtualNetworkGat
 ```
 PS C:\> $Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
 PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
-PS C:\> $Certificate = New-AzureRmVpnClientRootCertificate -PublicCertData $CertificateText -Name "ContosoClientRootCertificate"
+PS C:\> $Certificate = New-AzVpnClientRootCertificate -PublicCertData $CertificateText -Name "ContosoClientRootCertificate"
 ```
 
 This example creates a client root certificate and store the certificate object in a variable named $Certificate.
-This variable can then be used by the **New-AzureRmVirtualNetworkGateway** cmdlet to add a root certificate to a new virtual network gateway.
+This variable can then be used by the **New-AzVirtualNetworkGateway** cmdlet to add a root certificate to a new virtual network gateway.
 The first command uses the **Get-Content** cmdlet to get a previously exported text representation of the root certificate; that text data is stored in a variable named $Text.
 The second command then uses a for loop to extract all the text except for the first line and the last line, storing the extracted text in a variable named $CertificateText.
-The third command uses the **New-AzureRmVpnClientRootCertificate** cmdlet to create the certificate, storing the created object in a variable named $Certificate.
+The third command uses the **New-AzVpnClientRootCertificate** cmdlet to create the certificate, storing the created object in a variable named $Certificate.
 
 ## PARAMETERS
 
@@ -50,7 +50,7 @@ The third command uses the **New-AzureRmVpnClientRootCertificate** cmdlet to cre
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -115,10 +115,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmVpnClientRootCertificate](./Add-AzureRmVpnClientRootCertificate.md)
+[Add-AzVpnClientRootCertificate](./Add-AzVpnClientRootCertificate.md)
 
-[Get-AzureRmVpnClientRootCertificate](./Get-AzureRmVpnClientRootCertificate.md)
+[Get-AzVpnClientRootCertificate](./Get-AzVpnClientRootCertificate.md)
 
-[Remove-AzureRmVpnClientRootCertificate](./Remove-AzureRmVpnClientRootCertificate.md)
+[Remove-AzVpnClientRootCertificate](./Remove-AzVpnClientRootCertificate.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 98367100-4FFD-46F6-8974-603B32533626
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/import-azurermapimanagementhostnamecertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/import-azapimanagementhostnamecertificate
 schema: 2.0.0
 ---
 
-# Import-AzureRmApiManagementHostnameCertificate
+# Import-AzApiManagementHostnameCertificate
 
 ## SYNOPSIS
 Imports a certificate in a PFX format for an API Management Service.
@@ -14,20 +14,20 @@ Imports a certificate in a PFX format for an API Management Service.
 ## SYNTAX
 
 ```
-Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName <String> -Name <String>
+Import-AzApiManagementHostnameCertificate -ResourceGroupName <String> -Name <String>
  -HostnameType <PsApiManagementHostnameType> -PfxPath <String> -PfxPassword <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Import-AzureRmApiManagementHostnameCertificate** cmdlet imports a certificate in a PFX format for an API Management Service.
+The **Import-AzApiManagementHostnameCertificate** cmdlet imports a certificate in a PFX format for an API Management Service.
 The certificate is to be used for custom hostnames configuration.
 
 ## EXAMPLES
 
 ### Example 1: Import a API Management hostname certificate
 ```powershell
-PS C:\>Import-AzureRmApiManagementHostnameCertificate -Name "ContosoApi" -ResourceGroupName Contoso -HostnameType "Proxy" -PfxPath "C:\proxycert.pfx" -PfxPassword "CertSecret"
+PS C:\>Import-AzApiManagementHostnameCertificate -Name "ContosoApi" -ResourceGroupName Contoso -HostnameType "Proxy" -PfxPath "C:\proxycert.pfx" -PfxPassword "CertSecret"
 ```
 
 This command imports a certificate for a proxy custom hostname.
@@ -38,7 +38,7 @@ This command imports a certificate for a proxy custom hostname.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -161,8 +161,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagementHostnameConfiguration](./New-AzureRmApiManagementHostnameConfiguration.md)
+[New-AzApiManagementHostnameConfiguration](./New-AzApiManagementHostnameConfiguration.md)
 
-[Set-AzureRmApiManagementHostnames](./Set-AzureRmApiManagementHostnames.md)
+[Set-AzApiManagementHostnames](./Set-AzApiManagementHostnames.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-Module Name: AzureRM.Cdn
+Module Name: Az.Cdn
 ms.assetid: 1A84AF77-1AEF-4FD0-9FAA-D195B361FCEB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/set-azurermcdnendpoint
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/set-azcdnendpoint
 schema: 2.0.0
 ---
 
-# Set-AzureRmCdnEndpoint
+# Set-AzCdnEndpoint
 
 ## SYNOPSIS
 Updates a CDN endpoint.
@@ -14,12 +14,12 @@ Updates a CDN endpoint.
 ## SYNTAX
 
 ```
-Set-AzureRmCdnEndpoint -CdnEndpoint <PSEndpoint> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzCdnEndpoint -CdnEndpoint <PSEndpoint> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmCdnEndpoint** cmdlet updates an Azure Content Delivery Network (CDN) endpoint.
+The **Set-AzCdnEndpoint** cmdlet updates an Azure Content Delivery Network (CDN) endpoint.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -102,14 +102,14 @@ Parameters: CdnEndpoint (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmCdnEndpoint](./Get-AzureRmCdnEndpoint.md)
+[Get-AzCdnEndpoint](./Get-AzCdnEndpoint.md)
 
-[New-AzureRmCdnEndpoint](./New-AzureRmCdnEndpoint.md)
+[New-AzCdnEndpoint](./New-AzCdnEndpoint.md)
 
-[Remove-AzureRmCdnEndpoint](./Remove-AzureRmCdnEndpoint.md)
+[Remove-AzCdnEndpoint](./Remove-AzCdnEndpoint.md)
 
-[Start-AzureRmCdnEndpoint](./Start-AzureRmCdnEndpoint.md)
+[Start-AzCdnEndpoint](./Start-AzCdnEndpoint.md)
 
-[Stop-AzureRmCdnEndpoint](./Stop-AzureRmCdnEndpoint.md)
+[Stop-AzCdnEndpoint](./Stop-AzCdnEndpoint.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-Module Name: AzureRM.MachineLearning
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/remove-azurermmlcommitmentplan
+Module Name: Az.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/remove-azmlcommitmentplan
 schema: 2.0.0
 ---
 
-# Remove-AzureRmMlCommitmentPlan
+# Remove-AzMlCommitmentPlan
 
 ## SYNOPSIS
 Deletes a commitment plan.
@@ -14,13 +14,13 @@ Deletes a commitment plan.
 
 ### RemoveByNameAndResourceGroup
 ```
-Remove-AzureRmMlCommitmentPlan -ResourceGroupName <String> -Name <String> [-Force]
+Remove-AzMlCommitmentPlan -ResourceGroupName <String> -Name <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByObject
 ```
-Remove-AzureRmMlCommitmentPlan -MlCommitmentPlan <CommitmentPlan> [-Force]
+Remove-AzMlCommitmentPlan -MlCommitmentPlan <CommitmentPlan> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Deletes an Azure Machine Learning commitment plan. Note that commitment plans wh
 
 ### Example 1: Delete a commitment plan
 ```
-Remove-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
+Remove-AzMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
 ```
 
 ## PARAMETERS
@@ -40,7 +40,7 @@ Remove-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCom
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,52 +1,52 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 7740AC3B-F643-4F8D-8DC5-ACBF59323BD8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermroledefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroledefinition
 schema: 2.0.0
 ---
 
-# Get-AzureRmRoleDefinition
+# Get-AzRoleDefinition
 
 ## SYNOPSIS
 Lists all Azure RBAC roles that are available for assignment.
 
 ## SYNTAX
 
-### RoleDefinitionNameParameterSet
+### RoleDefinitionNameParameterSet (Default)
 ```
-Get-AzureRmRoleDefinition [[-Name] <String>] [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzRoleDefinition [[-Name] <String>] [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### RoleDefinitionIdParameterSet
 ```
-Get-AzureRmRoleDefinition -Id <Guid> [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzRoleDefinition -Id <Guid> [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### RoleDefinitionCustomParameterSet
 ```
-Get-AzureRmRoleDefinition [-Scope <String>] [-Custom] [-DefaultProfile <IAzureContextContainer>]
+Get-AzRoleDefinition [-Scope <String>] [-Custom] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use the Get-AzureRmRoleDefinition command with a particular role name to view its details.
+Use the Get-AzRoleDefinition command with a particular role name to view its details.
 To inspect individual operations that a role grants access to, review the Actions and NotActions properties of the role.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmRoleDefinition -Name Reader
+PS C:\> Get-AzRoleDefinition -Name Reader
 ```
 
 Get the Reader role definition
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmRoleDefinition
+PS C:\> Get-AzRoleDefinition
 ```
 
 Lists all RBAC role definitions
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -151,11 +151,11 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 ## RELATED LINKS
 
-[New-AzureRmRoleAssignment](./New-AzureRmRoleAssignment.md)
+[New-AzRoleAssignment](./New-AzRoleAssignment.md)
 
-[Get-AzureRmRoleAssignment](./Get-AzureRmRoleAssignment.md)
+[Get-AzRoleAssignment](./Get-AzRoleAssignment.md)
 
-[New-AzureRmRoleDefinition](./New-AzureRmRoleDefinition.md)
+[New-AzRoleDefinition](./New-AzRoleDefinition.md)
 
-[Remove-AzureRmRoleDefinition](./Remove-AzureRmRoleDefinition.md)
+[Remove-AzRoleDefinition](./Remove-AzRoleDefinition.md)
 

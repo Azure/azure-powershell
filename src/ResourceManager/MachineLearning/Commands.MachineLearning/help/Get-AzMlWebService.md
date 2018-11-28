@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-Module Name: AzureRM.MachineLearning
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/get-azurermmlwebservice
+Module Name: Az.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/get-azmlwebservice
 schema: 2.0.0
 ---
 
-# Get-AzureRmMlWebService
+# Get-AzMlWebService
 
 ## SYNOPSIS
 Retrieves the summary information for one or more web services.
@@ -13,7 +13,7 @@ Retrieves the summary information for one or more web services.
 ## SYNTAX
 
 ```
-Get-AzureRmMlWebService [-ResourceGroupName <String>] [-Name <String>] [-Region <String>]
+Get-AzMlWebService [-ResourceGroupName <String>] [-Name <String>] [-Region <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,17 +25,17 @@ Depending on the paramenters passed, the cmdlet returns the defintion for a spec
 
 ### Example 1: Get details of specific web service
 ```
-Get-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
+Get-AzMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
 ```
 
 ### Example 2: Get all web service resources in current subscription
 ```
-Get-AzureRmMlWebService
+Get-AzMlWebService
 ```
 
 ### Example 3: Get all web services in the current subscription and given resource group
 ```
-Get-AzureRmMlWebService -ResourceGroupName "myresourcegroup"
+Get-AzMlWebService -ResourceGroupName "myresourcegroup"
 ```
 
 ## PARAMETERS
@@ -44,7 +44,7 @@ Get-AzureRmMlWebService -ResourceGroupName "myresourcegroup"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

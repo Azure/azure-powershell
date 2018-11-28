@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: EC8C915A-A0BC-41DE-9DBF-3617536E3D1A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermcontainerserviceconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azcontainerserviceconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmContainerServiceConfig
+# New-AzContainerServiceConfig
 
 ## SYNOPSIS
 Creates a local configuration object for a container service.
@@ -14,7 +14,7 @@ Creates a local configuration object for a container service.
 ## SYNTAX
 
 ```
-New-AzureRmContainerServiceConfig [[-Location] <String>] [[-Tag] <Hashtable>]
+New-AzContainerServiceConfig [[-Location] <String>] [[-Tag] <Hashtable>]
  [[-OrchestratorType] <ContainerServiceOrchestratorTypes>] [[-MasterCount] <Int32>]
  [[-MasterDnsPrefix] <String>] [[-AgentPoolProfile] <ContainerServiceAgentPoolProfile[]>]
  [[-WindowsProfileAdminUsername] <String>] [[-WindowsProfileAdminPassword] <String>]
@@ -25,22 +25,22 @@ New-AzureRmContainerServiceConfig [[-Location] <String>] [[-Tag] <Hashtable>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmContainerServiceConfig** cmdlet creates a local configuration object for a container service.
-Provide this object to the New-AzureRmContainerService cmdlet to create a container service.
+The **New-AzContainerServiceConfig** cmdlet creates a local configuration object for a container service.
+Provide this object to the New-AzContainerService cmdlet to create a container service.
 
 ## EXAMPLES
 
 ### Example 1: Create a container service configuration
 ```
-PS C:\> $Container = New-AzureRmContainerServiceConfig -Location "Australia Southeast" -OrchestratorType "DCOS" -MasterDnsPrefix "MasterResourceGroup17" -AdminUsername "AcsLinuxAdmin" -SshPublicKey "<ssh-key>"
-PS C:\> $Container | Add-AzureRmContainerServiceAgentPoolProfile -Name "AgentPool01" -VmSize "Standard_A1" -DnsPrefix "APResourceGroup17"
+PS C:\> $Container = New-AzContainerServiceConfig -Location "Australia Southeast" -OrchestratorType "DCOS" -MasterDnsPrefix "MasterResourceGroup17" -AdminUsername "AcsLinuxAdmin" -SshPublicKey "<ssh-key>"
+PS C:\> $Container | Add-AzContainerServiceAgentPoolProfile -Name "AgentPool01" -VmSize "Standard_A1" -DnsPrefix "APResourceGroup17"
 ```
 
 This command creates a container, and then stores it in the $Container variable.
 The command specifies various settings for the container service configuration. The command passes
-the configuration object to the Add-AzureRmContainerServiceAgentPoolProfile cmdlet by using the
+the configuration object to the Add-AzContainerServiceAgentPoolProfile cmdlet by using the
 pipeline operator. That cmdlet adds an agent pool profile.
-Specify the object in $Container for the *ContainerService* parameter of **New-AzureRmContainerService**.
+Specify the object in $Container for the *ContainerService* parameter of **New-AzContainerService**.
 
 ## PARAMETERS
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 
 ### -AgentPoolProfile
 Specifies an array of agent pool profile objects for the container service.
-Add a profile by using the Add-AzureRmContainerServiceAgentPoolProfile cmdlet.
+Add a profile by using the Add-AzContainerServiceAgentPoolProfile cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.ContainerServiceAgentPoolProfile[]
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -330,6 +330,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmContainerServiceAgentPoolProfile](./Add-AzureRmContainerServiceAgentPoolProfile.md)
+[Add-AzContainerServiceAgentPoolProfile](./Add-AzContainerServiceAgentPoolProfile.md)
 
-[New-AzureRmContainerService](./New-AzureRmContainerService.md)
+[New-AzContainerService](./New-AzContainerService.md)

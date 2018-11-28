@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: C0E1D4DF-232F-49C6-BE4C-05C8E8038329
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermfirewallnetworkrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallnetworkrule
 schema: 2.0.0
 ---
 
-# New-AzureRmFirewallNetworkRule
+# New-AzFirewallNetworkRule
 
 ## SYNOPSIS
 Creates a Firewall Network Rule.
@@ -14,7 +14,7 @@ Creates a Firewall Network Rule.
 ## SYNTAX
 
 ```
-New-AzureRmFirewallNetworkRule -Name <String> [-Description <String>]
+New-AzFirewallNetworkRule -Name <String> [-Description <String>]
  -SourceAddress <System.Collections.Generic.List`1[System.String]>
  -DestinationAddress <System.Collections.Generic.List`1[System.String]>
  -DestinationPort <System.Collections.Generic.List`1[System.String]>
@@ -23,27 +23,27 @@ New-AzureRmFirewallNetworkRule -Name <String> [-Description <String>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmFirewallNetworkRule** cmdlet creates an network rule for Azure Firewall.
+The **New-AzFirewallNetworkRule** cmdlet creates an network rule for Azure Firewall.
 
 ## EXAMPLES
 
 ### 1:  Create a rule for all TCP traffic
 ```
-$rule = New-AzureRmFirewallNetworkRule -Name "all-tcp-traffic" -Description "Rule for all TCP traffic" -Protocol TCP -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
+$rule = New-AzFirewallNetworkRule -Name "all-tcp-traffic" -Description "Rule for all TCP traffic" -Protocol TCP -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
 ```
 
 This example creates a rule for all TCP traffic. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
 
 ### 2:  Create a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040
 ```
-$rule = New-AzureRmFirewallNetworkRule -Name "partial-tcp-rule" -Description "Rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040" -Protocol TCP -SourceAddress "10.0.0.0" -DestinationAddress "60.1.5.0" -DestinationPort "4040"
+$rule = New-AzFirewallNetworkRule -Name "partial-tcp-rule" -Description "Rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040" -Protocol TCP -SourceAddress "10.0.0.0" -DestinationAddress "60.1.5.0" -DestinationPort "4040"
 ```
 
 This example creates a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
 
 ### 3: Create a rule for all TCP and ICMP traffic from any source to 10.0.0.0/16
 ```
-$rule = New-AzureRmFirewallNetworkRule -Name "tcp-and-icmp-rule" -Description "Rule for all TCP and ICMP traffic from any source to 10.0.0.0/16" -Protocol TCP,ICMP -SourceAddress * -DestinationAddress "10.0.0.0/16" -DestinationPort *
+$rule = New-AzFirewallNetworkRule -Name "tcp-and-icmp-rule" -Description "Rule for all TCP and ICMP traffic from any source to 10.0.0.0/16" -Protocol TCP,ICMP -SourceAddress * -DestinationAddress "10.0.0.0/16" -DestinationPort *
 ```
 
 This example creates a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
@@ -54,7 +54,7 @@ This example creates a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040. 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Specifies an optional description of this rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 Specifies the name of this network rule. The name must be unique inside a rule collection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -132,6 +132,7 @@ Specifies the type of traffic to be filtered by this rule. Possible values are T
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
+Accepted values: Any, TCP, UDP, ICMP
 
 Required: True
 Position: Named
@@ -159,7 +160,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -175,7 +176,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -202,8 +203,8 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[New-AzureRmFirewallNetworkRuleCollection](./New-AzureRmFirewallNetworkRuleCollection.md)
+[New-AzFirewallNetworkRuleCollection](./New-AzFirewallNetworkRuleCollection.md)
 
-[New-AzureRmFirewall](./New-AzureRmFirewall.md)
+[New-AzFirewall](./New-AzFirewall.md)
 
-[Get-AzureRmFirewall](./Get-AzureRmFirewall.md)
+[Get-AzFirewall](./Get-AzFirewall.md)

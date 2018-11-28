@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/remove-azurermenvironment
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/remove-azenvironment
 schema: 2.0.0
 ---
 
-# Remove-AzureRmEnvironment
+# Remove-AzEnvironment
 
 ## SYNOPSIS
 Removes endpoints and metadata for connecting to a given Azure instance.
@@ -13,18 +13,18 @@ Removes endpoints and metadata for connecting to a given Azure instance.
 ## SYNTAX
 
 ```
-Remove-AzureRmEnvironment [-Name] <String> [-Scope <ContextModificationScope>]
+Remove-AzEnvironment [-Name] <String> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmEnvironment cmdlet removes endpoints and metadata information for connecting to a given Azure instance.
+The Remove-AzEnvironment cmdlet removes endpoints and metadata information for connecting to a given Azure instance.
 
 ## EXAMPLES
 
 ### Example 1: Creating and removing a test environment
 ```
-PS C:\> Add-AzureRmEnvironment -Name TestEnvironment `
+PS C:\> Add-AzEnvironment -Name TestEnvironment `
         -ActiveDirectoryEndpoint TestADEndpoint `
         -ActiveDirectoryServiceEndpointResourceId TestADApplicationId `
         -ResourceManagerEndpoint TestRMEndpoint `
@@ -35,14 +35,14 @@ Name            Resource Manager Url ActiveDirectory Authority
 ----            -------------------- -------------------------
 TestEnvironment TestRMEndpoint       TestADEndpoint/
 
-PS C:\> Remove-AzureRmEnvironment -Name TestEnvironment
+PS C:\> Remove-AzEnvironment -Name TestEnvironment
 
 Name            Resource Manager Url ActiveDirectory Authority
 ----            -------------------- -------------------------
 TestEnvironment TestRMEndpoint       TestADEndpoint/
 ```
 
-This example shows how to create an environment using Add-AzureRmEnvironment, and then how to delete the environment using Remove-AzureRmEnvironment.
+This example shows how to create an environment using Add-AzEnvironment, and then how to delete the environment using Remove-AzEnvironment.
 
 ## PARAMETERS
 
@@ -50,7 +50,7 @@ This example shows how to create an environment using Add-AzureRmEnvironment, an
 The credentials, tenant and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -137,9 +137,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRMEnvironment](./Add-AzureRMEnvironment.md)
+[Add-AzEnvironment](./Add-AzEnvironment.md)
 
-[Get-AzureRMEnvironment](./Get-AzureRMEnvironment.md)
+[Get-AzEnvironment](./Get-AzEnvironment.md)
 
-[Set-AzureRMEnvironment](./Set-AzureRMEnvironment.md)
+[Set-AzEnvironment](./Set-AzEnvironment.md)
 

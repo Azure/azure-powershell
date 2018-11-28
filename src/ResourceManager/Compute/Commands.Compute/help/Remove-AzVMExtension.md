@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 6C40A7BA-6BE2-464A-84E4-9021935A5BF6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmextension
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVMExtension
+# Remove-AzVMExtension
 
 ## SYNOPSIS
 Removes an extension from a virtual machine.
@@ -14,18 +14,18 @@ Removes an extension from a virtual machine.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Force]
+Remove-AzVMExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVMExtension** cmdlet removes an extension from the Virtual Machine Extensions of a virtual machine.
+The **Remove-AzVMExtension** cmdlet removes an extension from the Virtual Machine Extensions of a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Remove an extension from a virtual machine
 ```
-PS C:\> Remove-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Name "ContosoTest" -VMName "VirtualMachine22"
+PS C:\> Remove-AzVMExtension -ResourceGroupName "ResourceGroup11" -Name "ContosoTest" -VMName "VirtualMachine22"
 ```
 
 This command removes the extension named ContosoTest from the virtual machine named VirtualMachine22 in ResourceGroup11.
@@ -36,7 +36,7 @@ This command removes the extension named ContosoTest from the virtual machine na
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -153,8 +153,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMExtension](./Get-AzureRmVMExtension.md)
+[Get-AzVMExtension](./Get-AzVMExtension.md)
 
-[Set-AzureRmVMExtension](./Set-AzureRmVMExtension.md)
+[Set-AzVMExtension](./Set-AzVMExtension.md)
 
 

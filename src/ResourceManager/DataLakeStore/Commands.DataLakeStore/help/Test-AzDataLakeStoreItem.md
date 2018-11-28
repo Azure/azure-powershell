@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: 0937A390-6AC2-4611-AA6C-99936AC0ABFD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/test-azurermdatalakestoreitem
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/test-azdatalakestoreitem
 schema: 2.0.0
 ---
 
-# Test-AzureRmDataLakeStoreItem
+# Test-AzDataLakeStoreItem
 
 ## SYNOPSIS
 Tests the existence of a file or folder in Data Lake Store.
@@ -14,18 +14,18 @@ Tests the existence of a file or folder in Data Lake Store.
 ## SYNTAX
 
 ```
-Test-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-PathType] <PathType>]
+Test-AzDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-PathType] <PathType>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzureRmDataLakeStoreItem** cmdlet tests the existence of a file or folder in Data Lake Store.
+The **Test-AzDataLakeStoreItem** cmdlet tests the existence of a file or folder in Data Lake Store.
 
 ## EXAMPLES
 
 ### Example 1: Test a file
 ```
-PS C:\>Test-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/MyFiles/Test.csv"
+PS C:\>Test-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "/MyFiles/Test.csv"
 ```
 
 This command tests whether the file Test.csv exists in the ContosoADL account.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,16 +116,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Export-AzureRmDataLakeStoreItem](./Export-AzureRmDataLakeStoreItem.md)
+[Export-AzDataLakeStoreItem](./Export-AzDataLakeStoreItem.md)
 
-[Get-AzureRmDataLakeStoreItem](./Get-AzureRmDataLakeStoreItem.md)
+[Get-AzDataLakeStoreItem](./Get-AzDataLakeStoreItem.md)
 
-[Import-AzureRmDataLakeStoreItem](./Import-AzureRmDataLakeStoreItem.md)
+[Import-AzDataLakeStoreItem](./Import-AzDataLakeStoreItem.md)
 
-[Join-AzureRmDataLakeStoreItem](./Join-AzureRmDataLakeStoreItem.md)
+[Join-AzDataLakeStoreItem](./Join-AzDataLakeStoreItem.md)
 
-[Move-AzureRmDataLakeStoreItem](./Move-AzureRmDataLakeStoreItem.md)
+[Move-AzDataLakeStoreItem](./Move-AzDataLakeStoreItem.md)
 
-[Remove-AzureRmDataLakeStoreItem](./Remove-AzureRmDataLakeStoreItem.md)
+[Remove-AzDataLakeStoreItem](./Remove-AzDataLakeStoreItem.md)
 
 

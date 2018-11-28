@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Maps.dll-Help.xml
-Module Name: AzureRM.Maps
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.maps/remove-azurermmapsaccount
+Module Name: Az.Maps
+online version: https://docs.microsoft.com/en-us/powershell/module/az.maps/remove-azmapsaccount
 schema: 2.0.0
 ---
 
-# Remove-AzureRmMapsAccount
+# Remove-AzMapsAccount
 
 ## SYNOPSIS
 Deletes an Azure Maps account.
@@ -14,30 +14,30 @@ Deletes an Azure Maps account.
 
 ### NameParameterSet (Default)
 ```
-Remove-AzureRmMapsAccount [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+Remove-AzMapsAccount [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzureRmMapsAccount [-InputObject <PSMapsAccount>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzMapsAccount [-InputObject <PSMapsAccount>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzureRmMapsAccount [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzMapsAccount [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmMapsAccount cmdlet deletes the specified Azure Maps account.
+The Remove-AzMapsAccount cmdlet deletes the specified Azure Maps account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzureRmMapsAccount -ResourceGroupName MyResourceGroup -Name MyAccount
+PS C:\> Remove-AzMapsAccount -ResourceGroupName MyResourceGroup -Name MyAccount
 
 Confirm
 Are you sure you want to perform this action?
@@ -49,7 +49,7 @@ Deletes the account MyAccount from the resource group MyResourceGroup.
 
 ### Example 2
 ```
-PS C:\> Remove-AzureRmMapsAccount -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount
+PS C:\> Remove-AzMapsAccount -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount
 
 Confirm
 Are you sure you want to perform this action?
@@ -65,7 +65,7 @@ Deletes the specified Azure Maps Account.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Maps Account piped from Get-AzureRmMapsAccount.
+Maps Account piped from Get-AzMapsAccount.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Maps.Models.PSMapsAccount

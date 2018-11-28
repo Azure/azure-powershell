@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
-Module Name: AzureRM.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor/remove-azurermfrontdoor
+Module Name: Az.FrontDoor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/remove-azfrontdoor
 schema: 2.0.0
 ---
 
-# Remove-AzureRmFrontDoor
+# Remove-AzFrontDoor
 
 ## SYNOPSIS
 Remove Front Door load balancer
@@ -14,51 +14,51 @@ Remove Front Door load balancer
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzureRmFrontDoor -ResourceGroupName <String> -Name <String> [-PassThru]
+Remove-AzFrontDoor -ResourceGroupName <String> -Name <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzureRmFrontDoor -InputObject <PSFrontDoor> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzFrontDoor -InputObject <PSFrontDoor> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzureRmFrontDoor -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzFrontDoor -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmFrontDoor** cmdlet removes a Front Door load balancer under the current subscription
+The **Remove-AzFrontDoor** cmdlet removes a Front Door load balancer under the current subscription
 
 ## EXAMPLES
 
 ### Example 1: Remove "frontdoor1" in resource group "rg1" under the current subscription.
 ```powershell
-PS C:\> Remove-AzureRmFrontDoor -Name "frontdoor1" -ResourceGroupName "rg1"
+PS C:\> Remove-AzFrontDoor -Name "frontdoor1" -ResourceGroupName "rg1"
 ```
 
 Remove "frontdoor1" in resource group "rg1" under the current subscription.
 
 ### Example 2: Remove all FrontDoors in resource group "rg1" under the current subscription.
 ```powershell
-PS C:\> Get-AzureRmFrontDoor -ResourceGroupName "rg1" | Remove-AzureRmFrontDoor
+PS C:\> Get-AzFrontDoor -ResourceGroupName "rg1" | Remove-AzFrontDoor
 ```
 
 Remove all FrontDoors in resource group "rg1" under the current subscription.
 
 ### Example 3: Remove all FrontDoors under the current subscription.
 ```powershell
-PS C:\> Get-AzureRmFrontDoor | Remove-AzureRmFrontDoor
+PS C:\> Get-AzFrontDoor | Remove-AzFrontDoor
 ```
 
 Remove all FrontDoors under the current subscription.
 
 ### Example 4: Remove all FrontDoors with name "frontdoor1" under the current subscription.
 ```powershell
-PS C:\> Remove-AzureRmFrontDoor -Name "frontdoor1" | Remove-AzureRmFrontDoor
+PS C:\> Remove-AzFrontDoor -Name "frontdoor1" | Remove-AzFrontDoor
 ```
 
 Remove all FrontDoors with name "frontdoor1" under the current subscription.
@@ -69,7 +69,7 @@ Remove all FrontDoors with name "frontdoor1" under the current subscription.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -205,5 +205,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmFrontDoor](./New-AzureRmFrontDoor.md)
-[Get-AzureRmFrontDoor](./Get-AzureRmFrontDoor.md)
+[New-AzFrontDoor](./New-AzFrontDoor.md)
+[Get-AzFrontDoor](./Get-AzFrontDoor.md)

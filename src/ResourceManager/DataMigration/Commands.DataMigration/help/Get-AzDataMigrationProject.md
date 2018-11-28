@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
-Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/Get-AzureRmDataMigrationProject
+Module Name: Az.DataMigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/Get-AzDataMigrationProject
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataMigrationProject
+# Get-AzDataMigrationProject
 
 ## SYNOPSIS
 Retrieves the properties of an Azure Database Migration project.
@@ -14,37 +14,37 @@ Retrieves the properties of an Azure Database Migration project.
 
 ### ComponentNameParameterSet (Default)
 ```
-Get-AzureRmDataMigrationProject -ResourceGroupName <String> -ServiceName <String> [-Name <String>]
+Get-AzDataMigrationProject -ResourceGroupName <String> -ServiceName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
-Get-AzureRmDataMigrationProject [-InputObject] <PSDataMigrationService> [-Name <String>]
+Get-AzDataMigrationProject [-InputObject] <PSDataMigrationService> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmDataMigrationProject [-ResourceId] <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataMigrationProject [-ResourceId] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDataMigrationProject cmdlet retrieves the properties of an Azure Database Migration project.
+The Get-AzDataMigrationProject cmdlet retrieves the properties of an Azure Database Migration project.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmDataMigrationProject -ServiceName testService -Name testProject -ResourceGroup testResourceGroup
+PS C:\> Get-AzDataMigrationProject -ServiceName testService -Name testProject -ResourceGroup testResourceGroup
 ```
 
 The above example retrieves  Azure Database Migration project named TestProject in the resource group called testResourceGroup and under service called testService
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmDataMigrationProject -InputObject $myService
+PS C:\> Get-AzDataMigrationProject -InputObject $myService
 ```
 
 The above example retrieves the  Azure Database Migration project based on PSProject object input parameter passed in. 
@@ -55,7 +55,7 @@ The above example retrieves the  Azure Database Migration project based on PSPro
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

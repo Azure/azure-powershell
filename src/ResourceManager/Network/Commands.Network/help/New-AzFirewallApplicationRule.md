@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: C0E1D4DF-232F-49C6-BE4C-05C8E8038329
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermfirewallapplicationrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallapplicationrule
 schema: 2.0.0
 ---
 
-# New-AzureRmFirewallApplicationRule
+# New-AzFirewallApplicationRule
 
 ## SYNOPSIS
 Creates a Firewall Application Rule.
@@ -15,7 +15,7 @@ Creates a Firewall Application Rule.
 
 ### TargetFqdn (Default)
 ```
-New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
+New-AzFirewallApplicationRule -Name <String> [-Description <String>]
  [-SourceAddress <System.Collections.Generic.List`1[System.String]>]
  -TargetFqdn <System.Collections.Generic.List`1[System.String]>
  -Protocol <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
@@ -24,27 +24,27 @@ New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
 
 ### FqdnTag
 ```
-New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
+New-AzFirewallApplicationRule -Name <String> [-Description <String>]
  [-SourceAddress <System.Collections.Generic.List`1[System.String]>]
  -FqdnTag <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmFirewallApplicationRule** cmdlet creates an application rule for Azure Firewall.
+The **New-AzFirewallApplicationRule** cmdlet creates an application rule for Azure Firewall.
 
 ## EXAMPLES
 
 ### 1:  Create a rule to allow all HTTPS traffic from 10.0.0.0
 ```
-New-AzureRmFirewallApplicationRule -Name "https-rule" -Protocol "https:443" -TargetFqdn "*" -SourceAddress "10.0.0.0"
+New-AzFirewallApplicationRule -Name "https-rule" -Protocol "https:443" -TargetFqdn "*" -SourceAddress "10.0.0.0"
 ```
 
 This example creates a rule which will allow all HTTPS traffic on port 443 from 10.0.0.0.
 
 ### 2:  Create a rule to allow WindowsUpdate for 10.0.0.0/24 subnet
 ```
-New-AzureRmFirewallApplicationRule -Name "windows-update-rule" -FqdnTag WindowsUpdate -SourceAddress "10.0.0.0/24"
+New-AzFirewallApplicationRule -Name "windows-update-rule" -FqdnTag WindowsUpdate -SourceAddress "10.0.0.0/24"
 ```
 
 This example creates a rule which will allow traffic for Windows Updates for 10.0.0.0/24 domain.
@@ -55,7 +55,7 @@ This example creates a rule which will allow traffic for Windows Updates for 10.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -FqdnTag
-Specifies a list of FQDN Tags for this rule. The available tags can be retrieved using [Get-AzureRmFirewallFqdnTag](./Get-AzureRmFirewallFqdnTag.md) cmdlet.
+Specifies a list of FQDN Tags for this rule. The available tags can be retrieved using [Get-AzFirewallFqdnTag](./Get-AzFirewallFqdnTag.md) cmdlet.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
@@ -206,10 +206,10 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[New-AzureRmFirewallApplicationRuleCollection](./New-AzureRmFirewallApplicationRuleCollection.md)
+[New-AzFirewallApplicationRuleCollection](./New-AzFirewallApplicationRuleCollection.md)
 
-[New-AzureRmFirewall](./New-AzureRmFirewall.md)
+[New-AzFirewall](./New-AzFirewall.md)
 
-[Get-AzureRmFirewall](./Get-AzureRmFirewall.md)
+[Get-AzFirewall](./Get-AzFirewall.md)
 
-[Get-AzureRmFirewallFqdnTag](./Get-AzureRmFirewallFqdnTag.md)
+[Get-AzFirewallFqdnTag](./Get-AzFirewallFqdnTag.md)

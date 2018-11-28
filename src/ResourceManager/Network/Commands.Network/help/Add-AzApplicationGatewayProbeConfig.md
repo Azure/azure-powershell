@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermapplicationgatewayprobeconfig
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azapplicationgatewayprobeconfig
 schema: 2.0.0
 ---
 
-# Add-AzureRmApplicationGatewayProbeConfig
+# Add-AzApplicationGatewayProbeConfig
 
 ## SYNOPSIS
 Adds a health probe to an Application Gateway.
@@ -13,7 +13,7 @@ Adds a health probe to an Application Gateway.
 ## SYNTAX
 
 ```
-Add-AzureRmApplicationGatewayProbeConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
+Add-AzApplicationGatewayProbeConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
  -Protocol <String> [-HostName <String>] -Path <String> -Interval <Int32> -Timeout <Int32>
  -UnhealthyThreshold <Int32> [-PickHostNameFromBackendHttpSettings] [-MinServers <Int32>]
  [-Match <PSApplicationGatewayProbeHealthResponseMatch>] [-DefaultProfile <IAzureContextContainer>]
@@ -21,13 +21,13 @@ Add-AzureRmApplicationGatewayProbeConfig -ApplicationGateway <PSApplicationGatew
 ```
 
 ## DESCRIPTION
-The Add-AzureRmApplicationGatewayProbeConfig cmdlet adds a health probe to an Application Gateway.
+The Add-AzApplicationGatewayProbeConfig cmdlet adds a health probe to an Application Gateway.
 
 ## EXAMPLES
 
 ### Example 1: Add a health probe to an application gateway
 ```
-PS C:\>$Probe = Add-AzureRmApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe01" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
+PS C:\>$Probe = Add-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe01" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
 ```
 
 This command adds a health probe named Probe01 for the application gateway named Gateway.
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -246,11 +246,11 @@ Parameters: ApplicationGateway (ByValue)
 
 [Add a probe to an existing application gateway](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#add-a-probe-to-an-existing-application-gateway)
 
-[Get-AzureRmApplicationGatewayProbeConfig]()
+[Get-AzApplicationGatewayProbeConfig]()
 
-[New-AzureRmApplicationGatewayProbeConfig]()
+[New-AzApplicationGatewayProbeConfig]()
 
-[Remove-AzureRmApplicationGatewayProbeConfig]()
+[Remove-AzApplicationGatewayProbeConfig]()
 
-[Set-AzureRmApplicationGatewayProbeConfig]()
+[Set-AzApplicationGatewayProbeConfig]()
 

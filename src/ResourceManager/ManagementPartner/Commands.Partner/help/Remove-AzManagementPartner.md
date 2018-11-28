@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ManagementPartner.dll-Help.xml
-Module Name: AzureRM.ManagementPartner
+Module Name: Az.ManagementPartner
 online version: http://go.microsoft.com/fwlink/?LinkID=393045
 schema: 2.0.0
 ---
 
-# Remove-AzureRmManagementPartner
+# Remove-AzManagementPartner
 
 ## SYNOPSIS
 Delete the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal.
@@ -13,7 +13,7 @@ Delete the Microsoft Partner Network(MPN) ID of the current authenticated user o
 ## SYNTAX
 
 ```
-Remove-AzureRmManagementPartner [-PartnerId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzManagementPartner [-PartnerId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Delete the Microsoft Partner Network(MPN) ID of the current authenticated user o
 
 ### Example 1
 ```powershell
-PS C:\>Remove-AzureRmManagementPartner -PartnerId 123457 -PassThru
+PS C:\>Remove-AzManagementPartner -PartnerId 123457 -PassThru
 true
 ```
 
@@ -36,7 +36,7 @@ Remove management partner
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -123,8 +123,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmManagementPartner](./New-AzureRmManagementPartner.md)
+[New-AzManagementPartner](./New-AzManagementPartner.md)
 
-[Get-AzureRmManagementPartner](./Get-AzureRmManagementPartner.md)
+[Get-AzManagementPartner](./Get-AzManagementPartner.md)
 
-[Update-AzureRmManagementPartner](./Update-AzureRmManagementPartner.md)
+[Update-AzManagementPartner](./Update-AzManagementPartner.md)

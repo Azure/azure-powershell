@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: C8B91455-C1A7-43BD-9E63-A20E2694371F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermloadbalancerprobeconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azloadbalancerprobeconfig
 schema: 2.0.0
 ---
 
-# Set-AzureRmLoadBalancerProbeConfig
+# Set-AzLoadBalancerProbeConfig
 
 ## SYNOPSIS
 Sets the goal state for a probe configuration.
@@ -14,26 +14,26 @@ Sets the goal state for a probe configuration.
 ## SYNTAX
 
 ```
-Set-AzureRmLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
- -Port <Int32> -IntervalInSeconds <Int32> -ProbeCount <Int32> [-RequestPath <String>]
+Set-AzLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>] -Port <Int32>
+ -IntervalInSeconds <Int32> -ProbeCount <Int32> [-RequestPath <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmLoadBalancerProbeConfig** cmdlet sets the goal state for a probe configuration.
+The **Set-AzLoadBalancerProbeConfig** cmdlet sets the goal state for a probe configuration.
 
 ## EXAMPLES
 
 ### Example 1: Modify the probe configuration on a load balancer
 ```
-PS C:\>$slb = Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> $slb | Add-AzureRmLoadBalancerProbeConfig -Name "NewProbe" -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -RequestPath "healthcheck.aspx" 
-PS C:\> $slb | Set-AzureRmLoadBalancerProbeConfig -Name "NewProbe" -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+PS C:\> $slb | Add-AzLoadBalancerProbeConfig -Name "NewProbe" -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -RequestPath "healthcheck.aspx" 
+PS C:\> $slb | Set-AzLoadBalancerProbeConfig -Name "NewProbe" -Port 80 -IntervalInSeconds 15 -ProbeCount 2
 ```
 
 The first command gets the loadbalancer named MyLoadBalancer, and then stores it in the $slb variable.
-The second command uses the pipeline operator to pass the load balancer in $slb to Add-AzureRmLoadBalancerProbeConfig, which adds a new probe configuration to it.
-The third command passes the load balancer to **Set-AzureRmLoadBalancerProbeConfig**, which sets the new configuration.
+The second command uses the pipeline operator to pass the load balancer in $slb to Add-AzLoadBalancerProbeConfig, which adds a new probe configuration to it.
+The third command passes the load balancer to **Set-AzLoadBalancerProbeConfig**, which sets the new configuration.
 Note that it is necessary to specify several of the same parameters that were specified in the previous command because they are required by the current cmdlet.
 
 ## PARAMETERS
@@ -42,7 +42,7 @@ Note that it is necessary to specify several of the same parameters that were sp
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -206,14 +206,14 @@ Parameters: LoadBalancer (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmLoadBalancerProbeConfig](./Add-AzureRmLoadBalancerProbeConfig.md)
+[Add-AzLoadBalancerProbeConfig](./Add-AzLoadBalancerProbeConfig.md)
 
-[Get-AzureRmLoadBalancer](./Get-AzureRmLoadBalancer.md)
+[Get-AzLoadBalancer](./Get-AzLoadBalancer.md)
 
-[Get-AzureRmLoadBalancerProbeConfig](./Get-AzureRmLoadBalancerProbeConfig.md)
+[Get-AzLoadBalancerProbeConfig](./Get-AzLoadBalancerProbeConfig.md)
 
-[New-AzureRmLoadBalancerProbeConfig](./New-AzureRmLoadBalancerProbeConfig.md)
+[New-AzLoadBalancerProbeConfig](./New-AzLoadBalancerProbeConfig.md)
 
-[Remove-AzureRmLoadBalancerProbeConfig](./Remove-AzureRmLoadBalancerProbeConfig.md)
+[Remove-AzLoadBalancerProbeConfig](./Remove-AzLoadBalancerProbeConfig.md)
 
 

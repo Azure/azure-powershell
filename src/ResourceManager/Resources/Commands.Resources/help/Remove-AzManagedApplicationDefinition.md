@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermmanagedapplicationdefinition
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azmanagedapplicationdefinition
 schema: 2.0.0
 ---
 
-# Remove-AzureRmManagedApplicationDefinition
+# Remove-AzManagedApplicationDefinition
 
 ## SYNOPSIS
 Removes a managed application definition
@@ -14,29 +14,29 @@ Removes a managed application definition
 
 ### RemoveByNameAndResourceGroup (Default)
 ```
-Remove-AzureRmManagedApplicationDefinition -Name <String> -ResourceGroupName <String> [-Force]
+Remove-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> [-Force]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RemoveById
 ```
-Remove-AzureRmManagedApplicationDefinition -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
+Remove-AzManagedApplicationDefinition -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmManagedApplicationDefinition** cmdlet removes a managed application definition
+The **Remove-AzManagedApplicationDefinition** cmdlet removes a managed application definition
 
 ## EXAMPLES
 
 ### Example 1: Remove managed application definition by resource ID
 ```
-PS C:\>$ApplicationDefinition = Get-AzureRmManagedApplicationDefinition -Name "myAppDef" -ResourceGroupName "myRG"
-PS C:\>Remove-AzureRmManagedApplicationDefinition -Id $ApplicationDefinition.ResourceId -Force
+PS C:\>$ApplicationDefinition = Get-AzManagedApplicationDefinition -Name "myAppDef" -ResourceGroupName "myRG"
+PS C:\>Remove-AzManagedApplicationDefinition -Id $ApplicationDefinition.ResourceId -Force
 ```
 
-The first command gets a managed application definition named myAppDef by using the Get-AzureRmManagedApplicationDefinition cmdlet.
+The first command gets a managed application definition named myAppDef by using the Get-AzManagedApplicationDefinition cmdlet.
 The command stores it in the $ApplicationDefinition variable.
 The second command removes the managed application definition identified by the **ResourceId** property of $ApplicationDefinition.
 
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,133 +1,133 @@
 ---
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 Module Guid: e827799a-7abf-4538-a61f-94dc52a48bd4
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights
 Help Version: 4.3.2.0
 Locale: en-US
 ---
 
-# AzureRM.OperationalInsights Module
+# Az.OperationalInsights Module
 ## Description
 This topic displays help topics for the Azure Operational Insights Cmdlets.
 
-## AzureRM.OperationalInsights Cmdlets
-### [Disable-AzureRmOperationalInsightsIISLogCollection](Disable-AzureRmOperationalInsightsIISLogCollection.md)
+## Az.OperationalInsights Cmdlets
+### [Disable-AzOperationalInsightsIISLogCollection](Disable-AzOperationalInsightsIISLogCollection.md)
 Stops collection of IIS logs from computers.
 
-### [Disable-AzureRmOperationalInsightsLinuxCustomLogCollection](Disable-AzureRmOperationalInsightsLinuxCustomLogCollection.md)
+### [Disable-AzOperationalInsightsLinuxCustomLogCollection](Disable-AzOperationalInsightsLinuxCustomLogCollection.md)
 Stops collection of custom logs from Linux computers.
 
-### [Disable-AzureRmOperationalInsightsLinuxPerformanceCollection](Disable-AzureRmOperationalInsightsLinuxPerformanceCollection.md)
+### [Disable-AzOperationalInsightsLinuxPerformanceCollection](Disable-AzOperationalInsightsLinuxPerformanceCollection.md)
 Stops collection of performance counters from Linux computers.
 
-### [Disable-AzureRmOperationalInsightsLinuxSyslogCollection](Disable-AzureRmOperationalInsightsLinuxSyslogCollection.md)
+### [Disable-AzOperationalInsightsLinuxSyslogCollection](Disable-AzOperationalInsightsLinuxSyslogCollection.md)
 Stops collection of syslog data from Linux computers.
 
-### [Enable-AzureRmOperationalInsightsIISLogCollection](Enable-AzureRmOperationalInsightsIISLogCollection.md)
+### [Enable-AzOperationalInsightsIISLogCollection](Enable-AzOperationalInsightsIISLogCollection.md)
 Starts collection of IIS logs from computers in a workspace.
 
-### [Enable-AzureRmOperationalInsightsLinuxCustomLogCollection](Enable-AzureRmOperationalInsightsLinuxCustomLogCollection.md)
+### [Enable-AzOperationalInsightsLinuxCustomLogCollection](Enable-AzOperationalInsightsLinuxCustomLogCollection.md)
 Starts collection of custom logs from Linux computers.
 
-### [Enable-AzureRmOperationalInsightsLinuxPerformanceCollection](Enable-AzureRmOperationalInsightsLinuxPerformanceCollection.md)
+### [Enable-AzOperationalInsightsLinuxPerformanceCollection](Enable-AzOperationalInsightsLinuxPerformanceCollection.md)
 Starts collection of performance counters from Linux computers.
 
-### [Enable-AzureRmOperationalInsightsLinuxSyslogCollection](Enable-AzureRmOperationalInsightsLinuxSyslogCollection.md)
+### [Enable-AzOperationalInsightsLinuxSyslogCollection](Enable-AzOperationalInsightsLinuxSyslogCollection.md)
 Starts collection of syslog data from Linux computers.
 
-### [Get-AzureRmOperationalInsightsDataSource](Get-AzureRmOperationalInsightsDataSource.md)
+### [Get-AzOperationalInsightsDataSource](Get-AzOperationalInsightsDataSource.md)
 Get datasources under Azure Log Analytics workspace.
 
-### [Get-AzureRmOperationalInsightsIntelligencePacks](Get-AzureRmOperationalInsightsIntelligencePacks.md)
+### [Get-AzOperationalInsightsIntelligencePacks](Get-AzOperationalInsightsIntelligencePacks.md)
 Gets the available Intelligence Packs.
 
-### [Get-AzureRmOperationalInsightsLinkTargets](Get-AzureRmOperationalInsightsLinkTargets.md)
+### [Get-AzOperationalInsightsLinkTargets](Get-AzOperationalInsightsLinkTargets.md)
 Gets accounts that are not associated with a subscription.
 
-### [Get-AzureRmOperationalInsightsSavedSearch](Get-AzureRmOperationalInsightsSavedSearch.md)
+### [Get-AzOperationalInsightsSavedSearch](Get-AzOperationalInsightsSavedSearch.md)
 Returns all of the saved searches for a specified workspace.
 
-### [Get-AzureRmOperationalInsightsSavedSearchResults](Get-AzureRmOperationalInsightsSavedSearchResults.md)
+### [Get-AzOperationalInsightsSavedSearchResults](Get-AzOperationalInsightsSavedSearchResults.md)
 Returns the results from a query.
 
-### [Get-AzureRmOperationalInsightsSchema](Get-AzureRmOperationalInsightsSchema.md)
+### [Get-AzOperationalInsightsSchema](Get-AzOperationalInsightsSchema.md)
 Returns the schema associated with a workspace.
 
-### [Get-AzureRmOperationalInsightsSearchResults](Get-AzureRmOperationalInsightsSearchResults.md)
+### [Get-AzOperationalInsightsSearchResults](Get-AzOperationalInsightsSearchResults.md)
 Returns search results based on the specified parameters.
 
-### [Get-AzureRmOperationalInsightsStorageInsight](Get-AzureRmOperationalInsightsStorageInsight.md)
+### [Get-AzOperationalInsightsStorageInsight](Get-AzOperationalInsightsStorageInsight.md)
 Gets information about a Storage Insight.
 
-### [Get-AzureRmOperationalInsightsWorkspace](Get-AzureRmOperationalInsightsWorkspace.md)
+### [Get-AzOperationalInsightsWorkspace](Get-AzOperationalInsightsWorkspace.md)
 Gets information about a workspace.
 
-### [Get-AzureRmOperationalInsightsWorkspaceManagementGroups](Get-AzureRmOperationalInsightsWorkspaceManagementGroups.md)
+### [Get-AzOperationalInsightsWorkspaceManagementGroups](Get-AzOperationalInsightsWorkspaceManagementGroups.md)
 Gets details of management groups connected to a workspace.
 
-### [Get-AzureRmOperationalInsightsWorkspaceSharedKeys](Get-AzureRmOperationalInsightsWorkspaceSharedKeys.md)
+### [Get-AzOperationalInsightsWorkspaceSharedKeys](Get-AzOperationalInsightsWorkspaceSharedKeys.md)
 Gets the shared keys for a workspace.
 
-### [Get-AzureRmOperationalInsightsWorkspaceUsage](Get-AzureRmOperationalInsightsWorkspaceUsage.md)
+### [Get-AzOperationalInsightsWorkspaceUsage](Get-AzOperationalInsightsWorkspaceUsage.md)
 Gets the usage data for a workspace.
 
-### [Invoke-AzureRmOperationalInsightsQuery](Invoke-AzureRmOperationalInsightsQuery.md)
+### [Invoke-AzOperationalInsightsQuery](Invoke-AzOperationalInsightsQuery.md)
 Returns search results based on the specified parameters.
 
-### [New-AzureRmOperationalInsightsAzureActivityLogDataSource](New-AzureRmOperationalInsightsAzureActivityLogDataSource.md)
+### [New-AzOperationalInsightsAzureActivityLogDataSource](New-AzOperationalInsightsAzureActivityLogDataSource.md)
 Collect Azure Activity log from given subscription.
 
-### [New-AzureRmOperationalInsightsComputerGroup](New-AzureRmOperationalInsightsComputerGroup.md)
+### [New-AzOperationalInsightsComputerGroup](New-AzOperationalInsightsComputerGroup.md)
 Creates a computer group.
 
-### [New-AzureRmOperationalInsightsCustomLogDataSource](New-AzureRmOperationalInsightsCustomLogDataSource.md)
+### [New-AzOperationalInsightsCustomLogDataSource](New-AzOperationalInsightsCustomLogDataSource.md)
 Defines a custom log collection policy.
 
-### [New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource](New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource.md)
+### [New-AzOperationalInsightsLinuxPerformanceObjectDataSource](New-AzOperationalInsightsLinuxPerformanceObjectDataSource.md)
 Adds performance counters to all Linux computers in a workspace.
 
-### [New-AzureRmOperationalInsightsLinuxSyslogDataSource](New-AzureRmOperationalInsightsLinuxSyslogDataSource.md)
+### [New-AzOperationalInsightsLinuxSyslogDataSource](New-AzOperationalInsightsLinuxSyslogDataSource.md)
 Adds a data source to Linux computers.
 
-### [New-AzureRmOperationalInsightsSavedSearch](New-AzureRmOperationalInsightsSavedSearch.md)
+### [New-AzOperationalInsightsSavedSearch](New-AzOperationalInsightsSavedSearch.md)
 Creates a new saved search with the specified parameters.
 
-### [New-AzureRmOperationalInsightsStorageInsight](New-AzureRmOperationalInsightsStorageInsight.md)
+### [New-AzOperationalInsightsStorageInsight](New-AzOperationalInsightsStorageInsight.md)
 Creates a Storage Insight inside a workspace.
 
-### [New-AzureRmOperationalInsightsWindowsEventDataSource](New-AzureRmOperationalInsightsWindowsEventDataSource.md)
+### [New-AzOperationalInsightsWindowsEventDataSource](New-AzOperationalInsightsWindowsEventDataSource.md)
 Collects event logs from computers that run the Windows operating system.
 
-### [New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource](New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource.md)
+### [New-AzOperationalInsightsWindowsPerformanceCounterDataSource](New-AzOperationalInsightsWindowsPerformanceCounterDataSource.md)
 Adds Windows performance counter data source for connected computers that run the Windows operating system.
 
-### [New-AzureRmOperationalInsightsWorkspace](New-AzureRmOperationalInsightsWorkspace.md)
+### [New-AzOperationalInsightsWorkspace](New-AzOperationalInsightsWorkspace.md)
 Creates a workspace.
 
-### [Remove-AzureRmOperationalInsightsDataSource](Remove-AzureRmOperationalInsightsDataSource.md)
+### [Remove-AzOperationalInsightsDataSource](Remove-AzOperationalInsightsDataSource.md)
 Deletes a data source.
 
-### [Remove-AzureRmOperationalInsightsSavedSearch](Remove-AzureRmOperationalInsightsSavedSearch.md)
+### [Remove-AzOperationalInsightsSavedSearch](Remove-AzOperationalInsightsSavedSearch.md)
 Removes a saved search from the workspace.
 
-### [Remove-AzureRmOperationalInsightsStorageInsight](Remove-AzureRmOperationalInsightsStorageInsight.md)
+### [Remove-AzOperationalInsightsStorageInsight](Remove-AzOperationalInsightsStorageInsight.md)
 Removes a Storage Insight.
 
-### [Remove-AzureRmOperationalInsightsWorkspace](Remove-AzureRmOperationalInsightsWorkspace.md)
+### [Remove-AzOperationalInsightsWorkspace](Remove-AzOperationalInsightsWorkspace.md)
 Removes a workspace.
 
-### [Set-AzureRmOperationalInsightsDataSource](Set-AzureRmOperationalInsightsDataSource.md)
+### [Set-AzOperationalInsightsDataSource](Set-AzOperationalInsightsDataSource.md)
 Updates a data source.
 
-### [Set-AzureRmOperationalInsightsIntelligencePack](Set-AzureRmOperationalInsightsIntelligencePack.md)
+### [Set-AzOperationalInsightsIntelligencePack](Set-AzOperationalInsightsIntelligencePack.md)
 Enables or disables the specified Intelligence Pack.
 
-### [Set-AzureRmOperationalInsightsSavedSearch](Set-AzureRmOperationalInsightsSavedSearch.md)
+### [Set-AzOperationalInsightsSavedSearch](Set-AzOperationalInsightsSavedSearch.md)
 Updates a saved search that already exists.
 
-### [Set-AzureRmOperationalInsightsStorageInsight](Set-AzureRmOperationalInsightsStorageInsight.md)
+### [Set-AzOperationalInsightsStorageInsight](Set-AzOperationalInsightsStorageInsight.md)
 Updates a Storage Insight.
 
-### [Set-AzureRmOperationalInsightsWorkspace](Set-AzureRmOperationalInsightsWorkspace.md)
+### [Set-AzOperationalInsightsWorkspace](Set-AzOperationalInsightsWorkspace.md)
 Updates a workspace.
 

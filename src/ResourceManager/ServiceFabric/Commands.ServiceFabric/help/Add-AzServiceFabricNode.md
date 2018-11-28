@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/add-azurermservicefabricnode
+Module Name: Az.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/add-azservicefabricnode
 schema: 2.0.0
 ---
 
-# Add-AzureRmServiceFabricNode
+# Add-AzServiceFabricNode
 
 ## SYNOPSIS
 Add nodes to the specific node type in the cluster.
@@ -13,18 +13,18 @@ Add nodes to the specific node type in the cluster.
 ## SYNTAX
 
 ```
-Add-AzureRmServiceFabricNode -NumberOfNodesToAdd <Int32> [-ResourceGroupName] <String> [-Name] <String>
+Add-AzServiceFabricNode -NumberOfNodesToAdd <Int32> [-ResourceGroupName] <String> [-Name] <String>
  -NodeType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. You just need to specify the number of nodes you want to add to a node type.
+Use **Add-AzServiceFabricNode** to add nodes to the specific node type. You just need to specify the number of nodes you want to add to a node type.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeTypeName 'nt1'
+PS c:> Add-AzServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeTypeName 'nt1'
 ```
 
 This command will add 2 nodes to the node type 'n1'.
@@ -35,7 +35,7 @@ This command will add 2 nodes to the node type 'n1'.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -155,4 +155,4 @@ Parameters: NodeType (ByValue)
 
 ## RELATED LINKS
 
-[Remove-AzureRmServiceFabricNode](./Remove-AzureRmServiceFabricNode.md)
+[Remove-AzServiceFabricNode](./Remove-AzServiceFabricNode.md)

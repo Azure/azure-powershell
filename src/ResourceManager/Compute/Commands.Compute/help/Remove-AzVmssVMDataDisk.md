@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmssvmdatadisk
+Module Name: Az.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmssvmdatadisk
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVmssVMDataDisk
+# Remove-AzVmssVMDataDisk
 
 ## SYNOPSIS
 Removes a data disk from a virtual machine scale set VM
@@ -13,20 +13,20 @@ Removes a data disk from a virtual machine scale set VM
 ## SYNTAX
 
 ```
-Remove-AzureRmVmssVMDataDisk [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [-Lun] <Int32>
+Remove-AzVmssVMDataDisk [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [-Lun] <Int32>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVmssVMDataDisk** cmdlet removes a data disk from a VM scale set VM
+The **Remove-AzVmssVMDataDisk** cmdlet removes a data disk from a VM scale set VM
 
 ## EXAMPLES
 
 ### Example 1: Remove a data disk from a VM scale set VM
 ```powershell
-PS C:\> $VmssVM = Get-AzureRmVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0 
-PS C:\> Remove-AzureRmVmssVMDataDisk -VM $VirtualMachine -Lun 0
-PS C:\> Update-AzureRmVmssVM -VirtualMachineScaleSetVM $VmssVM
+PS C:\> $VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0 
+PS C:\> Remove-AzVmssVMDataDisk -VM $VirtualMachine -Lun 0
+PS C:\> Update-AzVmssVM -VirtualMachineScaleSetVM $VmssVM
 ```
 
 The first command getsan existing Vmss VM given by the resource group name, the vmss name and the instance ID.
@@ -39,7 +39,7 @@ The final command updates the Vmss VM with removed data disk.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,7 +76,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

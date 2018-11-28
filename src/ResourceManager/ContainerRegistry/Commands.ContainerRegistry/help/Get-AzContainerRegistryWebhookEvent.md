@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-Module Name: AzureRM.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/get-azurermcontainerregistrycredential
+Module Name: Az.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/get-azcontainerregistrycredential
 schema: 2.0.0
 ---
 
-# Get-AzureRmContainerRegistryWebhookEvent
+# Get-AzContainerRegistryWebhookEvent
 
 ## SYNOPSIS
 Gets events of a container registry webhook.
@@ -14,30 +14,30 @@ Gets events of a container registry webhook.
 
 ### ListWebhookEventsByNameResourceGroupParameterSet (Default)
 ```
-Get-AzureRmContainerRegistryWebhookEvent [-WebhookName] <String> [-ResourceGroupName] <String>
+Get-AzContainerRegistryWebhookEvent [-WebhookName] <String> [-ResourceGroupName] <String>
  [-RegistryName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListWebhookEventsByWebhookObjectParameterSet
 ```
-Get-AzureRmContainerRegistryWebhookEvent -Webhook <PSContainerRegistryWebhook>
+Get-AzContainerRegistryWebhookEvent -Webhook <PSContainerRegistryWebhook>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmContainerRegistryWebhookEvent -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzContainerRegistryWebhookEvent -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmContainerRegistryWebhookEvent cmdlet lists all the events of a webhook.
+The Get-AzContainerRegistryWebhookEvent cmdlet lists all the events of a webhook.
 
 ## EXAMPLES
 
 ### Example 1: Gets all the events of a webhook.
 ```powershell
-PS C:\>Get-AzureRmContainerRegistryWebhookEvent -ResourceGroupName mattacrtest001 -RegistryName premium001 -Name webhook001
+PS C:\>Get-AzContainerRegistryWebhookEvent -ResourceGroupName mattacrtest001 -RegistryName premium001 -Name webhook001
 
    Webhook service Uri: http://www.bing.com/
 
@@ -62,7 +62,7 @@ Gets all the events of a webhook.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -163,13 +163,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmContainerRegistryWebhook](New-AzureRmContainerRegistryWebhook.md)
+[New-AzContainerRegistryWebhook](New-AzContainerRegistryWebhook.md)
 
-[Get-AzureRmContainerRegistryWebhook](Get-AzureRmContainerRegistryWebhook.md)
+[Get-AzContainerRegistryWebhook](Get-AzContainerRegistryWebhook.md)
 
-[Update-AzureRmContainerRegistryWebhook](Update-AzureRmContainerRegistryWebhook.md)
+[Update-AzContainerRegistryWebhook](Update-AzContainerRegistryWebhook.md)
 
-[Remove-AzureRmContainerRegistryWebhook](Remove-AzureRmContainerRegistryWebhook.md)
+[Remove-AzContainerRegistryWebhook](Remove-AzContainerRegistryWebhook.md)
 
-[Test-AzureRmContainerRegistryWebhook](Test-AzureRmContainerRegistryWebhook.md)
+[Test-AzContainerRegistryWebhook](Test-AzContainerRegistryWebhook.md)
 

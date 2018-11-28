@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 463DDBA8-0F93-483D-A4B6-3B055968CDE8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetworkpeering
 schema: 2.0.0
 ---
 
-# Get-AzureRmVirtualNetworkPeering
+# Get-AzVirtualNetworkPeering
 
 ## SYNOPSIS
 Gets the virtual network peering.
@@ -14,12 +14,12 @@ Gets the virtual network peering.
 ## SYNTAX
 
 ```
-Get-AzureRmVirtualNetworkPeering -VirtualNetworkName <String> -ResourceGroupName <String> [-Name <String>]
+Get-AzVirtualNetworkPeering -VirtualNetworkName <String> -ResourceGroupName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVirtualNetworkPeering** cmdlet gets the virtual network peering.
+The **Get-AzVirtualNetworkPeering** cmdlet gets the virtual network peering.
 
 ## EXAMPLES
 
@@ -27,7 +27,7 @@ The **Get-AzureRmVirtualNetworkPeering** cmdlet gets the virtual network peering
 ```
 # Get virtual network peering named myVnet1TomyVnet2 located in myVirtualNetwork in the resource group named myResourceGroup.
 
-Get-AzureRmVirtualNetworkPeering -Name "myVnet1TomyVnet2" -VirtualNetwork "myVnet" -ResourceGroupName "myResourceGroup"
+Get-AzVirtualNetworkPeering -Name "myVnet1TomyVnet2" -VirtualNetwork "myVnet" -ResourceGroupName "myResourceGroup"
 ```
 
 ## PARAMETERS
@@ -36,7 +36,7 @@ Get-AzureRmVirtualNetworkPeering -Name "myVnet1TomyVnet2" -VirtualNetwork "myVne
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -107,10 +107,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmVirtualNetworkPeering](./Add-AzureRmVirtualNetworkPeering.md)
+[Add-AzVirtualNetworkPeering](./Add-AzVirtualNetworkPeering.md)
 
-[Remove-AzureRmVirtualNetworkPeering](./Remove-AzureRmVirtualNetworkPeering.md)
+[Remove-AzVirtualNetworkPeering](./Remove-AzVirtualNetworkPeering.md)
 
-[Set-AzureRmVirtualNetworkPeering](./Set-AzureRmVirtualNetworkPeering.md)
+[Set-AzVirtualNetworkPeering](./Set-AzVirtualNetworkPeering.md)
 
 

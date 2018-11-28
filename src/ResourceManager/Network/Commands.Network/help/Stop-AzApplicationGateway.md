@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 2C9609E8-0D8B-471B-9F0E-672BF55C3A0E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/stop-azurermapplicationgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/stop-azapplicationgateway
 schema: 2.0.0
 ---
 
-# Stop-AzureRmApplicationGateway
+# Stop-AzApplicationGateway
 
 ## SYNOPSIS
 Stops an application gateway
@@ -14,18 +14,18 @@ Stops an application gateway
 ## SYNTAX
 
 ```
-Stop-AzureRmApplicationGateway -ApplicationGateway <PSApplicationGateway> [-AsJob]
+Stop-AzApplicationGateway -ApplicationGateway <PSApplicationGateway> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmApplicationGateway** cmdlet stops an application gateway.
+The **Stop-AzApplicationGateway** cmdlet stops an application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Stop an application gateway
 ```
-PS C:\>Stop-AzureRmApplicationGateway -ApplicationGateway $AppGw
+PS C:\>Stop-AzApplicationGateway -ApplicationGateway $AppGw
 ```
 
 This command stops the application gateway stored in the $AppGw variable.
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,14 +93,14 @@ Parameters: ApplicationGateway (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmApplicationGateway](./Get-AzureRmApplicationGateway.md)
+[Get-AzApplicationGateway](./Get-AzApplicationGateway.md)
 
-[New-AzureRmApplicationGateway](./New-AzureRmApplicationGateway.md)
+[New-AzApplicationGateway](./New-AzApplicationGateway.md)
 
-[Remove-AzureRmApplicationGateway](./Remove-AzureRmApplicationGateway.md)
+[Remove-AzApplicationGateway](./Remove-AzApplicationGateway.md)
 
-[Set-AzureRmApplicationGateway](./Set-AzureRmApplicationGateway.md)
+[Set-AzApplicationGateway](./Set-AzApplicationGateway.md)
 
-[Start-AzureRmApplicationGateway](./Start-AzureRmApplicationGateway.md)
+[Start-AzApplicationGateway](./Start-AzApplicationGateway.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: CD582654-1B0C-4960-9E18-454F857B56E7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagement
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApiManagement
+# Remove-AzApiManagement
 
 ## SYNOPSIS
 Removes an API Management service.
@@ -14,18 +14,18 @@ Removes an API Management service.
 ## SYNTAX
 
 ```
-Remove-AzureRmApiManagement -ResourceGroupName <String> -Name <String> [-PassThru]
+Remove-AzApiManagement -ResourceGroupName <String> -Name <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmApiManagement** cmdlet removes an Azure API Management service.
+The **Remove-AzApiManagement** cmdlet removes an Azure API Management service.
 
 ## EXAMPLES
 
 ### Example 1: Remove an API Management service
 ```
-PS C:\>Remove-AzureRmApiManagement -ResourceGroupName "ContosoGroup02" -Name "ContosoApi"
+PS C:\>Remove-AzApiManagement -ResourceGroupName "ContosoGroup02" -Name "ContosoApi"
 ```
 
 This command removes the API Management service named ContosoApi.
@@ -36,7 +36,7 @@ This command removes the API Management service named ContosoApi.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -138,12 +138,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Backup-AzureRmApiManagement](./Backup-AzureRmApiManagement.md)
+[Backup-AzApiManagement](./Backup-AzApiManagement.md)
 
-[Get-AzureRmApiManagement](./Get-AzureRmApiManagement.md)
+[Get-AzApiManagement](./Get-AzApiManagement.md)
 
-[New-AzureRmApiManagement](./New-AzureRmApiManagement.md)
+[New-AzApiManagement](./New-AzApiManagement.md)
 
-[Restore-AzureRmApiManagement](./Restore-AzureRmApiManagement.md)
+[Restore-AzApiManagement](./Restore-AzApiManagement.md)
 
 

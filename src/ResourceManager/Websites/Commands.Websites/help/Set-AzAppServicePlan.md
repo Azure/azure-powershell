@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: 32D45795-FBCD-4157-BF45-41BD1F61782E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/set-azurermappserviceplan
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/set-azappserviceplan
 schema: 2.0.0
 ---
 
-# Set-AzureRmAppServicePlan
+# Set-AzAppServicePlan
 
 ## SYNOPSIS
 Sets an Azure App Service plan.
@@ -15,25 +15,25 @@ Sets an Azure App Service plan.
 
 ### S1
 ```
-Set-AzureRmAppServicePlan [[-AdminSiteName] <String>] [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
+Set-AzAppServicePlan [[-AdminSiteName] <String>] [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
  [[-WorkerSize] <String>] [-PerSiteScaling <Boolean>] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Set-AzureRmAppServicePlan [-AsJob] [-AppServicePlan] <PSAppServicePlan>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzAppServicePlan [-AsJob] [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmAppServicePlan** cmdlet sets an Azure App Service plan.
+The **Set-AzAppServicePlan** cmdlet sets an Azure App Service plan.
 
 ## EXAMPLES
 
 ### 1: Modify an App Service plan
 ```
-PS C:\>Set-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" -PerSiteScaling $true
+PS C:\>Set-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" -PerSiteScaling $true
 ```
 
 This command sets the PerSiteScaling option to true on the App Service plan named ContosoASP 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -207,16 +207,16 @@ Parameters: AppServicePlan (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)
+[Get-AzWebApp](./Get-AzWebApp.md)
 
-[New-AzureRmWebApp](./New-AzureRmWebApp.md)
+[New-AzWebApp](./New-AzWebApp.md)
 
-[Remove-AzureRmWebApp](./Remove-AzureRmWebApp.md)
+[Remove-AzWebApp](./Remove-AzWebApp.md)
 
-[Restart-AzureRmWebApp](./Restart-AzureRmWebApp.md)
+[Restart-AzWebApp](./Restart-AzWebApp.md)
 
-[Start-AzureRmWebApp](./Start-AzureRmWebApp.md)
+[Start-AzWebApp](./Start-AzWebApp.md)
 
-[Stop-AzureRmWebApp](./Stop-AzureRmWebApp.md)
+[Stop-AzWebApp](./Stop-AzWebApp.md)
 
 

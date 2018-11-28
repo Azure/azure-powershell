@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewaytrustedrootcertificate
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewaytrustedrootcertificate
 schema: 2.0.0
 ---
 
-# New-AzureRmApplicationGatewayTrustedRootCertificate
+# New-AzApplicationGatewayTrustedRootCertificate
 
 ## SYNOPSIS
 Creates a Trusted Root Certificate for an application gateway.
@@ -13,19 +13,19 @@ Creates a Trusted Root Certificate for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayTrustedRootCertificate -Name <String> -CertificateFile <String>
+New-AzApplicationGatewayTrustedRootCertificate -Name <String> -CertificateFile <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApplicationGatewayTrustedRootCertificate** cmdlet creates a Trusted Root Certificate for an Azure application gateway.
+The **New-AzApplicationGatewayTrustedRootCertificate** cmdlet creates a Trusted Root Certificate for an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\> $certFilePath = ".\rootCA.cer"
-PS C:\> $trc = New-AzureRmApplicationGatewayTrustedRootCertificate -Name "trc1" --CertificateFile $certFilePath
+PS C:\> $trc = New-AzApplicationGatewayTrustedRootCertificate -Name "trc1" --CertificateFile $certFilePath
 ```
 
 This command creates a Trusted Root Certificate named List "trc1" and stores the result in the variable named $trc.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 3308F901-4C9F-424D-8BEB-877A6038B246
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/stop-azurermlogicapprun
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/stop-azlogicapprun
 schema: 2.0.0
 ---
 
-# Stop-AzureRmLogicAppRun
+# Stop-AzLogicAppRun
 
 ## SYNOPSIS
 Cancels a run of a logic app.
@@ -14,12 +14,12 @@ Cancels a run of a logic app.
 ## SYNTAX
 
 ```
-Stop-AzureRmLogicAppRun -ResourceGroupName <String> -Name <String> -RunName <String> [-Force]
+Stop-AzLogicAppRun -ResourceGroupName <String> -Name <String> -RunName <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmLogicAppRun** cmdlet cancels a run of a logic app.
+The **Stop-AzLogicAppRun** cmdlet cancels a run of a logic app.
 Specify the logic app, resource group, and run.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -30,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Cancel a run of a logic app
 ```
-PS C:\>Stop-AzureRmLogicAppRun -ResourceGroupName "ResourceGroup11" -Name "LogicApp03" -RunName "08587489104702792076" -Force
+PS C:\>Stop-AzLogicAppRun -ResourceGroupName "ResourceGroup11" -Name "LogicApp03" -RunName "08587489104702792076" -Force
 ```
 
 This command cancels a run of the logic app named LogicApp03.
@@ -41,7 +41,7 @@ This command cancels a run of the logic app named LogicApp03.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -158,6 +158,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Start-AzureRmLogicApp](./Start-AzureRmLogicApp.md)
+[Start-AzLogicApp](./Start-AzLogicApp.md)
 
 

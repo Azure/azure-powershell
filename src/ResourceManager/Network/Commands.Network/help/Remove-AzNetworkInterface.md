@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: C83A0465-45EF-4FCC-B706-D5DF819664F0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermnetworkinterface
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznetworkinterface
 schema: 2.0.0
 ---
 
-# Remove-AzureRmNetworkInterface
+# Remove-AzNetworkInterface
 
 ## SYNOPSIS
 Removes a network interface.
@@ -14,18 +14,18 @@ Removes a network interface.
 ## SYNTAX
 
 ```
-Remove-AzureRmNetworkInterface -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
+Remove-AzNetworkInterface -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmNetworkInterface** cmdlet removes an Azure network interface.
+The **Remove-AzNetworkInterface** cmdlet removes an Azure network interface.
 
 ## EXAMPLES
 
 ### Example 1: Remove a network interface
 ```
-PS C:\>Remove-AzureRmNetworkInterface -Name "NetworkInterface1" -ResourceGroup "ResourceGroup1"
+PS C:\>Remove-AzNetworkInterface -Name "NetworkInterface1" -ResourceGroup "ResourceGroup1"
 ```
 
 This command removes the network interface NetworkInterface1 in resource group ResourceGroup1.
@@ -33,7 +33,7 @@ Because the *Force* parameter is not used, the user will be prompted to confirm 
 
 ### Example 2: Remove a network interface
 ```
-PS C:\>Get-AzureRmNetworkInterface -ResourceGroupName "ResourceGroup1" | Remove-AzureRmNetworkInterface -Force
+PS C:\>Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" | Remove-AzNetworkInterface -Force
 ```
 
 This command removes all network interfaces in resource group ResourceGroup1.
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -178,10 +178,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNetworkInterface](./Get-AzureRmNetworkInterface.md)
+[Get-AzNetworkInterface](./Get-AzNetworkInterface.md)
 
-[New-AzureRmNetworkInterface](./New-AzureRmNetworkInterface.md)
+[New-AzNetworkInterface](./New-AzNetworkInterface.md)
 
-[Set-AzureRmNetworkInterface](./Set-AzureRmNetworkInterface.md)
+[Set-AzNetworkInterface](./Set-AzNetworkInterface.md)
 
 

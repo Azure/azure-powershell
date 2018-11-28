@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 223FBBA6-4405-4B7A-BA63-5F2434A2A50D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementproduct
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementproduct
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagementProduct
+# Set-AzApiManagementProduct
 
 ## SYNOPSIS
 Sets the API Management product details.
@@ -14,21 +14,21 @@ Sets the API Management product details.
 ## SYNTAX
 
 ```
-Set-AzureRmApiManagementProduct -Context <PsApiManagementContext> -ProductId <String> [-Title <String>]
+Set-AzApiManagementProduct -Context <PsApiManagementContext> -ProductId <String> [-Title <String>]
  [-Description <String>] [-LegalTerms <String>] [-SubscriptionRequired <Boolean>] [-ApprovalRequired <Boolean>]
  [-SubscriptionsLimit <Int32>] [-State <PsApiManagementProductState>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApiManagementProduct** cmdlet sets the API Management product details.
+The **Set-AzApiManagementProduct** cmdlet sets the API Management product details.
 
 ## EXAMPLES
 
 ### Example 1: Update the product details
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementProduct -Context $apimContext -ProductId "0123456789" -Title "Starter" -Description "Starter Product" -LegalTerms "Free for all" -SubscriptionRequired $True -State "NotPublished"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementProduct -Context $apimContext -ProductId "0123456789" -Title "Starter" -Description "Starter Product" -LegalTerms "Free for all" -SubscriptionRequired $True -State "NotPublished"
 ```
 
 This command updates the API Management product details, requires a subscription, and then unpublishes.
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -232,10 +232,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementProduct](./Get-AzureRmApiManagementProduct.md)
+[Get-AzApiManagementProduct](./Get-AzApiManagementProduct.md)
 
-[New-AzureRmApiManagementProduct](./New-AzureRmApiManagementProduct.md)
+[New-AzApiManagementProduct](./New-AzApiManagementProduct.md)
 
-[Remove-AzureRmApiManagementProduct](./Remove-AzureRmApiManagementProduct.md)
+[Remove-AzApiManagementProduct](./Remove-AzApiManagementProduct.md)
 
 

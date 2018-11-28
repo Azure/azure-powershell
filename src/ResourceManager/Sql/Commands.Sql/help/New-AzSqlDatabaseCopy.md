@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: CED38886-2DC9-450E-91FF-8209602C76CD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqldatabasecopy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqldatabasecopy
 schema: 2.0.0
 ---
 
-# New-AzureRmSqlDatabaseCopy
+# New-AzSqlDatabaseCopy
 
 ## SYNOPSIS
 Creates a copy of a SQL Database that uses the snapshot at the current time.
@@ -15,26 +15,25 @@ Creates a copy of a SQL Database that uses the snapshot at the current time.
 
 ### DtuBasedDatabase (Default)
 ```
-New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-ServiceObjectiveName <String>]
- [-ElasticPoolName <String>] [-Tags <Hashtable>] [-CopyResourceGroupName <String>] [-CopyServerName <String>]
- -CopyDatabaseName <String> [-AsJob] [-LicenseType <String>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzSqlDatabaseCopy [-DatabaseName] <String> [-ServiceObjectiveName <String>] [-ElasticPoolName <String>]
+ [-Tags <Hashtable>] [-CopyResourceGroupName <String>] [-CopyServerName <String>] -CopyDatabaseName <String>
+ [-AsJob] [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
 ```
-New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyResourceGroupName <String>]
+New-AzSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyResourceGroupName <String>]
  [-CopyServerName <String>] -CopyDatabaseName <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
  [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlDatabaseCopy** cmdlet creates a copy of an Azure SQL Database that uses the
-snapshot of the data at the current time. Use this cmdlet instead of the Start-AzureSqlDatabaseCopy
+The **New-AzSqlDatabaseCopy** cmdlet creates a copy of an Azure SQL Database that uses the
+snapshot of the data at the current time. Use this cmdlet instead of the Start-AzSqlDatabaseCopy
 cmdlet to create a one-time database copy. This cmdlet returns the **Database** object of the copy.
-Note: Use the New-AzureRmSqlDatabaseSecondary cmdlet to configure geo-replication for a database.
+Note: Use the New-AzSqlDatabaseSecondary cmdlet to configure geo-replication for a database.
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -135,7 +134,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -298,6 +297,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlDatabaseSecondary](./New-AzureRmSqlDatabaseSecondary.md)
+[New-AzSqlDatabaseSecondary](./New-AzSqlDatabaseSecondary.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

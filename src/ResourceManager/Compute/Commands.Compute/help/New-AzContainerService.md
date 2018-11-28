@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 522F5305-CDF6-41F2-803B-9EEA9E927668
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermcontainerservice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azcontainerservice
 schema: 2.0.0
 ---
 
-# New-AzureRmContainerService
+# New-AzContainerService
 
 ## SYNOPSIS
 Creates a container service.
@@ -14,28 +14,27 @@ Creates a container service.
 ## SYNTAX
 
 ```
-New-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String>
- [-ContainerService] <PSContainerService> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzContainerService [-ResourceGroupName] <String> [-Name] <String> [-ContainerService] <PSContainerService>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmContainerService** cmdlet creates a container service.
-Specify a container service object that you can create by using the New-AzureRmContainerServiceConfig cmdlet.
+The **New-AzContainerService** cmdlet creates a container service.
+Specify a container service object that you can create by using the New-AzContainerServiceConfig cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Create a container service
 ```
-PS C:\> New-AzureRMResourceGroup -Name "ResourceGroup17" -Location "Australia Southeast" -Force
-PS C:\> $Container = New-AzureRmContainerServiceConfig -Location "Australia Southeast" -OrchestratorType "DCOS" -MasterDnsPrefix "MasterResourceGroup17" -AdminUsername "AcsLinuxAdmin" -SshPublicKey "<ssh-key>" | Add-AzureRmContainerServiceAgentPoolProfile -Name "AgentPool01" -VmSize "Standard_A1" -DnsPrefix "APResourceGroup17"
-PS C:\> New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17" -ContainerService $Container
+PS C:\> New-AzResourceGroup -Name "ResourceGroup17" -Location "Australia Southeast" -Force
+PS C:\> $Container = New-AzContainerServiceConfig -Location "Australia Southeast" -OrchestratorType "DCOS" -MasterDnsPrefix "MasterResourceGroup17" -AdminUsername "AcsLinuxAdmin" -SshPublicKey "<ssh-key>" | Add-AzContainerServiceAgentPoolProfile -Name "AgentPool01" -VmSize "Standard_A1" -DnsPrefix "APResourceGroup17"
+PS C:\> New-AzContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17" -ContainerService $Container
 ```
 
 The first command creates a resource group named ResourceGroup17 at the specified location.
-For more information, see the New-AzureRmResourceGroup cmdlet.
+For more information, see the New-AzResourceGroup cmdlet.
 The second command creates a container, and then stores it in the $Container variable.
-For more information, see the New-AzureRmContainerServiceConfig cmdlet.
+For more information, see the New-AzContainerServiceConfig cmdlet.
 The final command creates a container service for the container stored in $Container.
 The service is named csResourceGroup17.
 
@@ -58,7 +57,7 @@ Accept wildcard characters: False
 
 ### -ContainerService
 Specifies a container service object that contains the properties for the new service.
-To obtain a **ContainerService** object, use the New-AzureRmContainerServiceConfig cmdlet.
+To obtain a **ContainerService** object, use the New-AzContainerServiceConfig cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService
@@ -76,7 +75,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -166,12 +165,12 @@ Parameters: ContainerService (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmContainerService](./Get-AzureRmContainerService.md)
+[Get-AzContainerService](./Get-AzContainerService.md)
 
-[New-AzureRmContainerServiceConfig](./New-AzureRmContainerServiceConfig.md)
+[New-AzContainerServiceConfig](./New-AzContainerServiceConfig.md)
 
-[Remove-AzureRmContainerService](./Remove-AzureRmContainerService.md)
+[Remove-AzContainerService](./Remove-AzContainerService.md)
 
-[Update-AzureRmContainerService](./Update-AzureRmContainerService.md)
+[Update-AzContainerService](./Update-AzContainerService.md)
 
 

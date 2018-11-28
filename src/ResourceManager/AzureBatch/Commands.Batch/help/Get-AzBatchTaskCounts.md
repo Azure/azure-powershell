@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchtaskcounts
+Module Name: Az.Batch
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchtaskcounts
 schema: 2.0.0
 ---
 
-# Get-AzureBatchTaskCounts
+# Get-AzBatchTaskCounts
 
 ## SYNOPSIS
 Gets the task counts for the specified job.
@@ -14,18 +14,18 @@ Gets the task counts for the specified job.
 
 ### Id
 ```
-Get-AzureBatchTaskCounts [-JobId] <String> -BatchContext <BatchAccountContext>
+Get-AzBatchTaskCounts [-JobId] <String> -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentObject
 ```
-Get-AzureBatchTaskCounts [[-Job] <PSCloudJob>] -BatchContext <BatchAccountContext>
+Get-AzBatchTaskCounts [[-Job] <PSCloudJob>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureBatchTaskCounts** cmdlet gets the Azure Batch tasks count for a Batch job.
+The **Get-AzBatchTaskCounts** cmdlet gets the Azure Batch tasks count for a Batch job.
 Specify a job by either the *JobId* parameter or the *Job* parameter.
 Task counts provide a count of the tasks by active, running or completed task state, and a count of tasks which succeeded or failed. Tasks in the preparing state are counted as running. If the validationStatus is unvalidated, then the Batch service has not been able to check state counts against the task states as reported in the List Tasks API. The validationStatus may be unvalidated if the job contains more than 200,000 tasks.
 
@@ -33,7 +33,7 @@ Task counts provide a count of the tasks by active, running or completed task st
 
 ### Example 1: Get task counts by ID
 ```
-PS C:\> Get-AzureBatchTaskCounts -JobId "Job01" -Id "Task03" -BatchContext $Context
+PS C:\> Get-AzBatchTaskCounts -JobId "Job01" -Id "Task03" -BatchContext $Context
 Active              : 1
 Completed           : 0
 Failed              : 0
@@ -43,14 +43,14 @@ ValidationStatus    : Validated
 ```
 
 This command gets the task counts for job Job01.
-Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.
+Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
 
 ## PARAMETERS
 
 ### -BatchContext
 The BatchAccountContext instance to use when interacting with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service.
-To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service.
+To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.
 When using shared key authentication, the primary access key is used by default.
 To change the key to use, set the BatchAccountContext.KeyInUse property.
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 
 ### -Job
 Specifies the job that contains tasks that this cmdlet gets.
-To obtain a **PSCloudJob** object, use the Get-AzureBatchJob cmdlet.
+To obtain a **PSCloudJob** object, use the Get-AzBatchJob cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.Models.PSCloudJob
@@ -133,8 +133,8 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchJob](./Get-AzureBatchJob.md)
+[Get-AzBatchJob](./Get-AzBatchJob.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)

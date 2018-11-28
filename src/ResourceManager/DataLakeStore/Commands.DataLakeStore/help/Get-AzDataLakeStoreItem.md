@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: ECA70C6C-E0B0-445D-BCAD-041625FAC632
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitem
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/get-azdatalakestoreitem
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataLakeStoreItem
+# Get-AzDataLakeStoreItem
 
 ## SYNOPSIS
 Gets the details of a file or folder in Data Lake Store.
@@ -14,18 +14,18 @@ Gets the details of a file or folder in Data Lake Store.
 ## SYNTAX
 
 ```
-Get-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance>
+Get-AzDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataLakeStoreItem** cmdlet gets the details of a file or folder in Data Lake Store.
+The **Get-AzDataLakeStoreItem** cmdlet gets the details of a file or folder in Data Lake Store.
 
 ## EXAMPLES
 
 ### Example 1: Get details of a file from the Data Lake Store
 ```
-PS C:\>Get-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "/MyFiles/Test.csv"
+PS C:\>Get-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "/MyFiles/Test.csv"
 ```
 
 This command gets the details of the file Test.csv from the Data Lake Store.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,20 +94,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Export-AzureRmDataLakeStoreItem](./Export-AzureRmDataLakeStoreItem.md)
+[Export-AzDataLakeStoreItem](./Export-AzDataLakeStoreItem.md)
 
-[Get-AzureRmDataLakeStoreChildItem](./Get-AzureRmDataLakeStoreChildItem.md)
+[Get-AzDataLakeStoreChildItem](./Get-AzDataLakeStoreChildItem.md)
 
-[Import-AzureRmDataLakeStoreItem](./Import-AzureRmDataLakeStoreItem.md)
+[Import-AzDataLakeStoreItem](./Import-AzDataLakeStoreItem.md)
 
-[Join-AzureRmDataLakeStoreItem](./Join-AzureRmDataLakeStoreItem.md)
+[Join-AzDataLakeStoreItem](./Join-AzDataLakeStoreItem.md)
 
-[Move-AzureRmDataLakeStoreItem](./Move-AzureRmDataLakeStoreItem.md)
+[Move-AzDataLakeStoreItem](./Move-AzDataLakeStoreItem.md)
 
-[New-AzureRmDataLakeStoreItem](./New-AzureRmDataLakeStoreItem.md)
+[New-AzDataLakeStoreItem](./New-AzDataLakeStoreItem.md)
 
-[Remove-AzureRmDataLakeStoreItem](./Remove-AzureRmDataLakeStoreItem.md)
+[Remove-AzDataLakeStoreItem](./Remove-AzDataLakeStoreItem.md)
 
-[Test-AzureRmDataLakeStoreItem](./Test-AzureRmDataLakeStoreItem.md)
+[Test-AzDataLakeStoreItem](./Test-AzDataLakeStoreItem.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 52664E45-7EAB-41C9-BF78-304F10BFC51A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlservercommunicationlink
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlservercommunicationlink
 schema: 2.0.0
 ---
 
-# New-AzureRmSqlServerCommunicationLink
+# New-AzSqlServerCommunicationLink
 
 ## SYNOPSIS
 Creates a communication link for elastic database transactions between two SQL Database servers.
@@ -14,13 +14,13 @@ Creates a communication link for elastic database transactions between two SQL D
 ## SYNTAX
 
 ```
-New-AzureRmSqlServerCommunicationLink -LinkName <String> -PartnerServer <String> [-AsJob]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzSqlServerCommunicationLink -LinkName <String> -PartnerServer <String> [-AsJob] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlServerCommunicationLink** cmdlet creates a communication link for elastic database transactions between two logical servers in Azure SQL Database.
+The **New-AzSqlServerCommunicationLink** cmdlet creates a communication link for elastic database transactions between two logical servers in Azure SQL Database.
 Elastic database transactions can span databases in either of the paired servers.
 You can create more than one link on a server.
 Therefore, elastic database transactions can span across a larger number of servers.
@@ -29,7 +29,7 @@ Therefore, elastic database transactions can span across a larger number of serv
 
 ### Example 1: Create a communication link
 ```
-PS C:\>New-AzureRmSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01" -PartnerServer "ContosoServer02"
+PS C:\>New-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01" -PartnerServer "ContosoServer02"
 ```
 
 This command creates a link named Link01 between ContosoServer17 and ContosoServer02.
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -173,8 +173,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServerCommunicationLink](./Get-AzureRmSqlServerCommunicationLink.md)
+[Get-AzSqlServerCommunicationLink](./Get-AzSqlServerCommunicationLink.md)
 
-[Remove-AzureRmSqlServerCommunicationLink](./Remove-AzureRmSqlServerCommunicationLink.md)
+[Remove-AzSqlServerCommunicationLink](./Remove-AzSqlServerCommunicationLink.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

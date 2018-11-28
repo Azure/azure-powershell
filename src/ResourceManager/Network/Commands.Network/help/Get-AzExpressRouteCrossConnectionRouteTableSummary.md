@@ -1,12 +1,12 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 2C603E0E-A19F-4EA6-B918-945007BE22FF
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressroutecrossconnectionroutetablesummary
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecrossconnectionroutetablesummary
 schema: 2.0.0
 ---
 
-# Get-AzureRmExpressRouteCrossConnectionRouteTableSummary
+# Get-AzExpressRouteCrossConnectionRouteTableSummary
 
 ## SYNOPSIS
 Gets a route table summary of an ExpressRoute cross connection.
@@ -14,13 +14,13 @@ Gets a route table summary of an ExpressRoute cross connection.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCrossConnectionRouteTableSummary -ResourceGroupName <String> -ExpressRouteCrossConnectionName <String>
+Get-AzExpressRouteCrossConnectionRouteTableSummary -ResourceGroupName <String> -ExpressRouteCrossConnectionName <String>
  [-PeeringType <String>] -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmExpressRouteCrossConnectionRouteTableSummary** cmdlet retrieves a summary of BGP neighbor
+The **Get-AzExpressRouteCrossConnectionRouteTableSummary** cmdlet retrieves a summary of BGP neighbor
 information for a particular routing context. This information is useful to determine for how long
 a routing context has been established and the number of route prefixes advertised by the peering
 router.
@@ -29,7 +29,7 @@ router.
 
 ### Example 1: Display the route summary for the primary path
 ```
-Get-AzureRmExpressRouteCrossConnectionRouteTableSummary -ResourceGroupName $RG -ExpressRouteCrossConnectionName $CrossConnectionName -DevicePath 'Primary'
+Get-AzExpressRouteCrossConnectionRouteTableSummary -ResourceGroupName $RG -ExpressRouteCrossConnectionName $CrossConnectionName -DevicePath 'Primary'
 ```
 
 ## PARAMETERS
@@ -128,6 +128,6 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[Get-AzureRmExpressRouteCrossConnectionARPTable](Get-AzureRmExpressRouteCrossConnectionARPTable.md)
+[Get-AzExpressRouteCrossConnectionARPTable](Get-AzExpressRouteCrossConnectionARPTable.md)
 
-[Get-AzureRmExpressRouteCrossConnectionRouteTable](Get-AzureRmExpressRouteCrossConnectionRouteTable.md)
+[Get-AzExpressRouteCrossConnectionRouteTable](Get-AzExpressRouteCrossConnectionRouteTable.md)

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkprofile
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworkprofile
 schema: 2.0.0
 ---
 
-# Set-AzureRmNetworkProfile
+# Set-AzNetworkProfile
 
 ## SYNOPSIS
 Sets the goal state for an existing network profile
@@ -13,24 +13,24 @@ Sets the goal state for an existing network profile
 ## SYNTAX
 
 ```
-Set-AzureRmNetworkProfile -NetworkProfile <PSNetworkProfile> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkProfile -NetworkProfile <PSNetworkProfile> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmPublicIpPrefix** cmdlet sets the goal state for a network profile.
+The **Set-AzPublicIpPrefix** cmdlet sets the goal state for a network profile.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$networkProfile = Get-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
+$networkProfile = Get-AzNetworkProfile -Name np1 -ResourceGroupName rg1
 
 $networkProfile.Tags = "TestTag"
 
-$networkProfile.ContainerNetworkInterfaceConfigurations = New-AzureRmNetworkProfileContainerNicConfig -Name cnicconfig1
+$networkProfile.ContainerNetworkInterfaceConfigurations = New-AzNetworkProfileContainerNicConfig -Name cnicconfig1
 
-$networkProfile | Set-AzureRmNetworkProfile
+$networkProfile | Set-AzNetworkProfile
 ```
 
 The first command gets an existing network profile. The second command updates a tag and the third adds a network interface configuration on the network profile. The fourth command updates the network profile.
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

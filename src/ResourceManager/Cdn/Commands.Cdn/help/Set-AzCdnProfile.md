@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-Module Name: AzureRM.Cdn
+Module Name: Az.Cdn
 ms.assetid: 863DD160-4443-4D50-804E-089255F3EA4E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/set-azurermcdnprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/set-azcdnprofile
 schema: 2.0.0
 ---
 
-# Set-AzureRmCdnProfile
+# Set-AzCdnProfile
 
 ## SYNOPSIS
 Updates a CDN profile.
@@ -14,12 +14,12 @@ Updates a CDN profile.
 ## SYNTAX
 
 ```
-Set-AzureRmCdnProfile -CdnProfile <PSProfile> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Set-AzCdnProfile -CdnProfile <PSProfile> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmCdnProfile** cmdlet updates an Azure Content Delivery Network (CDN) profile.
+The **Set-AzCdnProfile** cmdlet updates an Azure Content Delivery Network (CDN) profile.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -102,10 +102,10 @@ Parameters: CdnProfile (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRMCdnProfile](./Get-AzureRMCdnProfile.md)
+[Get-AzCdnProfile](./Get-AzCdnProfile.md)
 
-[New-AzureRmCdnProfile](./New-AzureRmCdnProfile.md)
+[New-AzCdnProfile](./New-AzCdnProfile.md)
 
-[Remove-AzureRmCdnProfile](./Remove-AzureRmCdnProfile.md)
+[Remove-AzCdnProfile](./Remove-AzCdnProfile.md)
 
 

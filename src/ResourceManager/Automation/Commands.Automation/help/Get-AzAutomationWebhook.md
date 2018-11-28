@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: A0A956E9-6C4F-4432-A39F-A180CD519C04
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationwebhook
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationwebhook
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationWebhook
+# Get-AzAutomationWebhook
 
 ## SYNOPSIS
 Gets webhooks from Automation.
@@ -15,31 +15,31 @@ Gets webhooks from Automation.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationWebhook [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationWebhook [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmAutomationWebhook -Name <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationWebhook -Name <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByRunbookName
 ```
-Get-AzureRmAutomationWebhook -RunbookName <String> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAutomationWebhook -RunbookName <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutomationWebhook** cmdlet gets webhooks.
+The **Get-AzAutomationWebhook** cmdlet gets webhooks.
 To get specific webhooks, specify a webhook name or specify the name of an Azure Automation runbook to get the webhooks connected to it.
 
 ## EXAMPLES
 
 ### Example 1: Get all webhooks for a runbook
 ```
-PS C:\>Get-AzureRmAutomationWebhook -RunbookName "Runbook03" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+PS C:\>Get-AzAutomationWebhook -RunbookName "Runbook03" -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 This command gets all webhooks for a runbook named Runbook03 in the Automation account named AutomationAccount01 in the resource group named ResourceGroup01.
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -136,10 +136,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAutomationWebhook](./New-AzureRMAutomationWebhook.md)
+[New-AzAutomationWebhook](./New-AzAutomationWebhook.md)
 
-[Remove-AzureRmAutomationWebhook](./Remove-AzureRMAutomationWebhook.md)
+[Remove-AzAutomationWebhook](./Remove-AzAutomationWebhook.md)
 
-[Set-AzureRmAutomationWebhook](./Set-AzureRMAutomationWebhook.md)
+[Set-AzAutomationWebhook](./Set-AzAutomationWebhook.md)
 
 

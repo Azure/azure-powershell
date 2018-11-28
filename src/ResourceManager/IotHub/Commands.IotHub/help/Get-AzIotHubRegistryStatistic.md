@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubregistrystatistic
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubregistrystatistic
 schema: 2.0.0
 ---
 
-# Get-AzureRmIotHubRegistryStatistic
+# Get-AzIotHubRegistryStatistic
 
 ## SYNOPSIS
 Gets the RegistryStatistics for an IotHub.
@@ -13,7 +13,7 @@ Gets the RegistryStatistics for an IotHub.
 ## SYNTAX
 
 ```
-Get-AzureRmIotHubRegistryStatistic [-ResourceGroupName] <String> [-Name] <String>
+Get-AzIotHubRegistryStatistic [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ This provides information about the number of total, enabled and disabled device
 
 ### Example 1 Get the RegistryStatistics
 ```
-PS C:\> Get-AzureRmIotHubRegistryStatistic -ResourceGroupName "myresourcegroup" -Name "myiothub"
+PS C:\> Get-AzIotHubRegistryStatistic -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets the RegistryStatictics for the IotHub named "myiothub"
@@ -36,7 +36,7 @@ Gets the RegistryStatictics for the IotHub named "myiothub"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

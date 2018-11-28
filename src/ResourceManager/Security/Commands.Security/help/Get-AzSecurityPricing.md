@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
-Module Name: AzureRM.Security
-online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzureRmSecurityPricing.md
+Module Name: Az.Security
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzSecurityPricing.md
 schema: 2.0.0
 ---
 
-# Get-AzureRmSecurityPricing
+# Get-AzSecurityPricing
 
 ## SYNOPSIS
 Gets the pricing tier data for Azure Security Center for a scope.
@@ -14,29 +14,29 @@ Gets the pricing tier data for Azure Security Center for a scope.
 
 ### SubscriptionScope (Default)
 ```
-Get-AzureRmSecurityPricing [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityPricing [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
 ```
-Get-AzureRmSecurityPricing -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityPricing -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
-Get-AzureRmSecurityPricing -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSecurityPricing -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
-Get-AzureRmSecurityPricing -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityPricing -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzureRmSecurityPricing -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityPricing -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +48,7 @@ Resource Group pricing tier will override the subscription pricing tier.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmSecurityPricing
+PS C:\> Get-AzSecurityPricing
 Id                                                                                                                             Name       PricingTier
 --                                                                                                                             ----       -----------
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/default                              default    Standard
@@ -59,7 +59,7 @@ Gets all the configured pricing tiers for the subscription and the resource grou
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmSecurityPricing -ResourceGroupName "myService1"
+PS C:\> Get-AzSecurityPricing -ResourceGroupName "myService1"
 Id                                                                                                                             Name       PricingTier
 --                                                                                                                             ----       -----------
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/pricings/myService1 myService1 Standard
@@ -73,7 +73,7 @@ Gets the configured pricing tier for the "myService1" resource gorup.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource, SubscriptionLevelResource
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource, ResourceGroupScope
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 

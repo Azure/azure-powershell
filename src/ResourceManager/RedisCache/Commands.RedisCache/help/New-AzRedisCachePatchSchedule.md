@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 ms.assetid: F7FAFF52-5E07-4D88-B48F-BC70C43E8691
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/new-azurermrediscachepatchschedule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/new-azrediscachepatchschedule
 schema: 2.0.0
 ---
 
-# New-AzureRmRedisCachePatchSchedule
+# New-AzRedisCachePatchSchedule
 
 ## SYNOPSIS
 Adds a patch schedule.
@@ -14,22 +14,22 @@ Adds a patch schedule.
 ## SYNTAX
 
 ```
-New-AzureRmRedisCachePatchSchedule [-ResourceGroupName <String>] -Name <String> -Entries <PSScheduleEntry[]>
+New-AzRedisCachePatchSchedule [-ResourceGroupName <String>] -Name <String> -Entries <PSScheduleEntry[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmRedisCachePatchSchedule** cmdlet adds a patch schedule to a cache in Azure Redis Cache.
+The **New-AzRedisCachePatchSchedule** cmdlet adds a patch schedule to a cache in Azure Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1: Create and add a patch schedule on a cache
 ```
-PS C:\>New-AzureRmRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -Entries @(New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00")
+PS C:\>New-AzRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -Entries @(New-AzRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00")
 ```
 
 This command adds a patch schedule to the cache named RedisCache06.
-The Entries parameter takes as its value a command that uses **New-AzureRmRedisCacheScheduleEntry** to create a schedule.
+The Entries parameter takes as its value a command that uses **New-AzRedisCacheScheduleEntry** to create a schedule.
 
 ## PARAMETERS
 
@@ -37,7 +37,7 @@ The Entries parameter takes as its value a command that uses **New-AzureRmRedisC
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 
 ### -Entries
 Specifies an array of schedules that this cmdlet sets on a cache. 
-To obtain a **PSScheduleEntry** object, use the New-AzureRmRedisCacheScheduleEntry cmdlet.
+To obtain a **PSScheduleEntry** object, use the New-AzRedisCacheScheduleEntry cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[]
@@ -142,10 +142,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmRedisCachePatchSchedule](./Get-AzureRmRedisCachePatchSchedule.md)
+[Get-AzRedisCachePatchSchedule](./Get-AzRedisCachePatchSchedule.md)
 
-[New-AzureRmRedisCacheScheduleEntry](./New-AzureRmRedisCacheScheduleEntry.md)
+[New-AzRedisCacheScheduleEntry](./New-AzRedisCacheScheduleEntry.md)
 
-[Remove-AzureRmRedisCachePatchSchedule](./Remove-AzureRmRedisCachePatchSchedule.md)
+[Remove-AzRedisCachePatchSchedule](./Remove-AzRedisCachePatchSchedule.md)
 
 

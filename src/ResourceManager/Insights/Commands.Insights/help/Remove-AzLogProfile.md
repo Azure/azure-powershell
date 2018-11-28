@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: DDA137FD-4EB3-4FB7-A202-978922038AFC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/remove-azurermlogprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/remove-azlogprofile
 schema: 2.0.0
 ---
 
-# Remove-AzureRmLogProfile
+# Remove-AzLogProfile
 
 ## SYNOPSIS
 Removes a log profile.
@@ -14,12 +14,12 @@ Removes a log profile.
 ## SYNTAX
 
 ```
-Remove-AzureRmLogProfile -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzLogProfile -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmLogProfile** cmdlet removes a log profile.
+The **Remove-AzLogProfile** cmdlet removes a log profile.
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
@@ -30,7 +30,7 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,8 +116,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmLogProfile](./Add-AzureRmLogProfile.md)
+[Add-AzLogProfile](./Add-AzLogProfile.md)
 
-[Get-AzureRmLogProfile](./Get-AzureRmLogProfile.md)
+[Get-AzLogProfile](./Get-AzLogProfile.md)
 
 

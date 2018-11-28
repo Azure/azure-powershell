@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2integrationruntime
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryv2integrationruntime
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryV2IntegrationRuntime
+# Get-AzDataFactoryV2IntegrationRuntime
 
 ## SYNOPSIS
 Gets information about integration runtime resources.
@@ -14,24 +14,24 @@ Gets information about integration runtime resources.
 
 ### ByIntegrationRuntimeName (Default)
 ```
-Get-AzureRmDataFactoryV2IntegrationRuntime [[-Name] <String>] [-Status] [-ResourceGroupName] <String>
+Get-AzDataFactoryV2IntegrationRuntime [[-Name] <String>] [-Status] [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzureRmDataFactoryV2IntegrationRuntime [-Status] [-ResourceId] <String>
+Get-AzDataFactoryV2IntegrationRuntime [-Status] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Get-AzureRmDataFactoryV2IntegrationRuntime [-Status] [-InputObject] <PSIntegrationRuntime>
+Get-AzDataFactoryV2IntegrationRuntime [-Status] [-InputObject] <PSIntegrationRuntime>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDataFactoryV2IntegrationRuntime cmdlet gets information about integration runtimes in a data factory.
+The Get-AzDataFactoryV2IntegrationRuntime cmdlet gets information about integration runtimes in a data factory.
 If you specify the name of an integration runtime, this cmdlet gets information about that integration runtime.
 If you do not specify a name, this cmdlet gets information about all of the integration runtimes in a data factory.
 
@@ -39,7 +39,7 @@ If you do not specify a name, this cmdlet gets information about all of the inte
 
 ### Example 1: List all integration runtimes in a data factory
 ```
-PS C:\> Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2
+PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2
 
 	ResourceGroupName DataFactoryName Name                   Description
 	----------------- --------------- ----                   -----------
@@ -52,7 +52,7 @@ List all integration runtimes in the data factory named 'test-df-eu2'.
 
 ### Example 2: Get managed dedicated integration runtime
 ```
-PS C:\> Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-dedicated-ir
+PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-dedicated-ir
 
 	Location                     : West US
 	NodeSize                     : Standard_D1_v2
@@ -75,7 +75,7 @@ This command displays information about the integration runtime named 'test-dedi
 
 ### Example 3: Get managed dedicated integration runtime with detail status
 ```
-PS C:\> Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-dedicated-ir -Status
+PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-dedicated-ir -Status
 
 	CreateTime                   : 
 	Nodes                        : 
@@ -102,7 +102,7 @@ This command displays information about the integration runtime named 'test-dedi
 
 ### Example 4: Get self-hosted integration runtime
 ```
-PS C:\> Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-selfhost-ir
+PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFactoryName test-df-eu2 -Name test-selfhost-ir
 
 	ResourceGroupName DataFactoryName Name                 Description
 	----------------- --------------- ----                 -----------
@@ -243,6 +243,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories, c
 
 ## RELATED LINKS
 
-[Set-AzureRmDataFactoryV2IntegrationRuntime]()
+[Set-AzDataFactoryV2IntegrationRuntime]()
 
-[Remove-AzureRmDataFactoryV2IntegrationRuntime]()
+[Remove-AzDataFactoryV2IntegrationRuntime]()

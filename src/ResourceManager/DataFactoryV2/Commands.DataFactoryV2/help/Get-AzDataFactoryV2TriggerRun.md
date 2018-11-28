@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2triggerrun
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryv2triggerrun
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryV2TriggerRun
+# Get-AzDataFactoryV2TriggerRun
 
 ## SYNOPSIS
 Returns information about trigger runs.
@@ -14,26 +14,26 @@ Returns information about trigger runs.
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactoryV2TriggerRun [-Name] <String> [-TriggerRunStartedAfter] <DateTime>
+Get-AzDataFactoryV2TriggerRun [-Name] <String> [-TriggerRunStartedAfter] <DateTime>
  [-TriggerRunStartedBefore] <DateTime> [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactoryV2TriggerRun [-Name] <String> [-TriggerRunStartedAfter] <DateTime>
+Get-AzDataFactoryV2TriggerRun [-Name] <String> [-TriggerRunStartedAfter] <DateTime>
  [-TriggerRunStartedBefore] <DateTime> [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactoryV2TriggerRun** command returns detailed information about trigger runs for the specified trigger in the given timeframe.
+The **Get-AzDataFactoryV2TriggerRun** command returns detailed information about trigger runs for the specified trigger in the given timeframe.
 
 ## EXAMPLES
 
 ### Example 1: Get information about trigger run
 ```
-PS C:\> Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "WikiTrigger" -TriggerRunStartedAfter "2017-09-01" -TriggerRunStartedBefore "2019-09-30"
+PS C:\> Get-AzDataFactoryV2TriggerRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "WikiTrigger" -TriggerRunStartedAfter "2017-09-01" -TriggerRunStartedBefore "2019-09-30"
 
     ResourceGroupName   : ADF
     DataFactoryName     : WikiADF
@@ -171,7 +171,7 @@ Parameters: DataFactory (ByValue)
 
 ## RELATED LINKS
 
-[Start-AzureRmDataFactoryV2Trigger]()
+[Start-AzDataFactoryV2Trigger]()
 
-[Stop-AzureRmDataFactoryV2Trigger]()
+[Stop-AzDataFactoryV2Trigger]()
 

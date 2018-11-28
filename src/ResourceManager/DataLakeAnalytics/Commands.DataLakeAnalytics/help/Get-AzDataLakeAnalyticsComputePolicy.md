@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
-Module Name: AzureRM.DataLakeAnalytics
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/get-azurermdatalakeanalyticscomputepolicy
+Module Name: Az.DataLakeAnalytics
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticscomputepolicy
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataLakeAnalyticsComputePolicy
+# Get-AzDataLakeAnalyticsComputePolicy
 
 ## SYNOPSIS
 Gets a Data Lake Analytics compute policy or list of compute policies.
@@ -13,25 +13,25 @@ Gets a Data Lake Analytics compute policy or list of compute policies.
 ## SYNTAX
 
 ```
-Get-AzureRmDataLakeAnalyticsComputePolicy [-ResourceGroupName <String>] [-Account] <String> [[-Name] <String>]
+Get-AzDataLakeAnalyticsComputePolicy [-ResourceGroupName <String>] [-Account] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataLakeAnalyticsComputePolicy** gets a specified Azure Data Lake Analytics compute policy or a list of policies.
+The **Get-AzDataLakeAnalyticsComputePolicy** gets a specified Azure Data Lake Analytics compute policy or a list of policies.
 
 ## EXAMPLES
 
 ### Example 1: Get a specified compute policy
 ```
-PS C:\>Get-AzureRmDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name myPolicy
+PS C:\>Get-AzDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name myPolicy
 ```
 
 This command gets the specified compute policy with name 'myPolicy' in account 'contosoadla'.
 
 ### Example 2: Get a list of all compute policies in the account
 ```
-PS C:\>Get-AzureRmDataLakeAnalyticsComputePolicy -AccountName "contosoadla"
+PS C:\>Get-AzDataLakeAnalyticsComputePolicy -AccountName "contosoadla"
 ```
 
 This command gets a list of all compute policies in the account "contosoadla"
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

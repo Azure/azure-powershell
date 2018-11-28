@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
-Module Name: AzureRM.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/invoke-azurermstoragesynccompatibilitycheck
+Module Name: Az.StorageSync
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storagesync/invoke-azstoragesynccompatibilitycheck
 schema: 2.0.0
 ---
 
-# Invoke-AzureRmStorageSyncCompatibilityCheck
+# Invoke-AzStorageSyncCompatibilityCheck
 
 ## SYNOPSIS
 Checks for potential compatibility issues between your system and Azure File Sync.
@@ -14,18 +14,18 @@ Checks for potential compatibility issues between your system and Azure File Syn
 
 ### PathBased (Default)
 ```
-Invoke-AzureRmStorageSyncCompatibilityCheck [-Path] <String> [-Credential <PSCredential>] [-SkipSystemChecks]
+Invoke-AzStorageSyncCompatibilityCheck [-Path] <String> [-Credential <PSCredential>] [-SkipSystemChecks]
  [-SkipNamespaceChecks] [-Quiet] [<CommonParameters>]
 ```
 
 ### ComputerNameBased
 ```
-Invoke-AzureRmStorageSyncCompatibilityCheck [-Credential <PSCredential>] [-ComputerName] <String>
+Invoke-AzStorageSyncCompatibilityCheck [-Credential <PSCredential>] [-ComputerName] <String>
  [-SkipSystemChecks] [-Quiet] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Invoke-AzureRmStorageSyncCompatibilityCheck** cmdlet checks for potential compatibility issues between your system and Azure File Sync. Given a local or remote path, it performs a set of validations on the system and file namespace, and then returns any compatibility issues it finds.
+The **Invoke-AzStorageSyncCompatibilityCheck** cmdlet checks for potential compatibility issues between your system and Azure File Sync. Given a local or remote path, it performs a set of validations on the system and file namespace, and then returns any compatibility issues it finds.
 System checks:
 - OS compatibility
 File namespace checks:
@@ -40,21 +40,21 @@ File namespace checks:
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzureRmStorageSyncCompatibilityCheck C:\DATA
+PS C:\> Invoke-AzStorageSyncCompatibilityCheck C:\DATA
 ```
 
 This command checks the compatibility of the system and also of files and folders in C:\DATA.
 
 ### Example 2
 ```powershell
-PS C:\> Invoke-AzureRmStorageSyncCompatibilityCheck C:\DATA -SkipSystemChecks
+PS C:\> Invoke-AzStorageSyncCompatibilityCheck C:\DATA -SkipSystemChecks
 ```
 
 This command checks the compatibility of files and folders in C:\DATA, but does not perform a system compatibility check.
 
 ### Example 3
 ```powershell
-PS C:\> $errors = Invoke-AzureRmStorageSyncCompatibilityCheck C:\DATA
+PS C:\> $errors = Invoke-AzStorageSyncCompatibilityCheck C:\DATA
 PS C:\> $errors | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results
 ```
 

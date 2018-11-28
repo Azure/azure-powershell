@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
-Module Name: AzureRM.Dns
+Module Name: Az.Dns
 ms.assetid: 505562A4-30BC-44E7-94EF-579763B8D794
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/remove-azurermdnsrecordset
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/remove-azdnsrecordset
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDnsRecordSet
+# Remove-AzDnsRecordSet
 
 ## SYNOPSIS
 Deletes a record set.
@@ -15,25 +15,24 @@ Deletes a record set.
 
 ### Fields
 ```
-Remove-AzureRmDnsRecordSet -Name <String> -RecordType <RecordType> -ZoneName <String>
- -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzDnsRecordSet -Name <String> -RecordType <RecordType> -ZoneName <String> -ResourceGroupName <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Mixed
 ```
-Remove-AzureRmDnsRecordSet -Name <String> -RecordType <RecordType> -Zone <DnsZone> [-PassThru]
+Remove-AzDnsRecordSet -Name <String> -RecordType <RecordType> -Zone <DnsZone> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
-Remove-AzureRmDnsRecordSet -RecordSet <DnsRecordSet> [-Overwrite] [-PassThru]
+Remove-AzDnsRecordSet -RecordSet <DnsRecordSet> [-Overwrite] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDnsRecordSet** cmdlet deletes the specified record set from the specified zone.
+The **Remove-AzDnsRecordSet** cmdlet deletes the specified record set from the specified zone.
 You cannot delete SOA or name server (NS) records that are automatically created at the zone apex.
 You can pass a **RecordSet** object to this cmdlet by using the pipeline operator or as a parameter.
 To identify a record set by name and type without using a **RecordSet** object, you must pass the zone as a **DnsZone** object to this cmdlet by using the pipeline operator or as a parameter, or alternatively you can specify the *ZoneName* and *ResourceGroupName* parameters.
@@ -46,22 +45,22 @@ You can suppress this by using the *Overwrite* parameter, which deletes the reco
 
 ### Example 1: Remove a record set
 ```
-PS C:\> $RecordSet = Get-AzureRmDnsRecordSet -Name "www" -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
-PS C:\> Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
+PS C:\> $RecordSet = Get-AzDnsRecordSet -Name "www" -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
+PS C:\> Remove-AzDnsRecordSet -RecordSet $RecordSet
 ```
 
 The first command gets the specified record set, and then stores it in the $RecordSet variable.The second command removes the record set in $RecordSet.
 
 ### Example 2: Remove a record set and suppress all confirmation
 ```
-PS C:\> $RecordSet = Get-AzureRmDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup"
-PS C:\> Remove-AzureRmDnsRecordSet -RecordSet $RecordSet -Confirm:$False -Overwrite
+PS C:\> $RecordSet = Get-AzDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup"
+PS C:\> Remove-AzDnsRecordSet -RecordSet $RecordSet -Confirm:$False -Overwrite
 
 # Alternatively, the record set can be removed as follows.  In this case,
 # because the record set is specified by name rather than by object, the
 # Overwrite parameter is not applicable.
 
-PS C:\> Remove-AzureRmDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Confirm:$False
+PS C:\> Remove-AzDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Confirm:$False
 ```
 
 The first command gets the specified record set.
@@ -74,7 +73,7 @@ Confirmation prompts are suppressed.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -286,8 +285,8 @@ If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation
 
 ## RELATED LINKS
 
-[Get-AzureRmDnsRecordSet](./Get-AzureRmDnsRecordSet.md)
+[Get-AzDnsRecordSet](./Get-AzDnsRecordSet.md)
 
-[New-AzureRmDnsRecordSet](./New-AzureRmDnsRecordSet.md)
+[New-AzDnsRecordSet](./New-AzDnsRecordSet.md)
 
-[Set-AzureRmDnsRecordSet](./Set-AzureRmDnsRecordSet.md)
+[Set-AzDnsRecordSet](./Set-AzDnsRecordSet.md)

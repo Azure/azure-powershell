@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM.Storage
+Module Name: Az.Storage
 ms.assetid: E53D5040-C1E8-4DC1-8371-F41C00B666E3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/get-azurermstorageaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageaccount
 schema: 2.0.0
 ---
 
-# Get-AzureRmStorageAccount
+# Get-AzStorageAccount
 
 ## SYNOPSIS
 Gets a Storage account.
@@ -15,38 +15,38 @@ Gets a Storage account.
 
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmStorageAccount [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzStorageAccount [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### AccountNameParameterSet
 ```
-Get-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmStorageAccount** cmdlet gets a specified Storage account or all of the Storage accounts in a resource group or the subscription.
+The **Get-AzStorageAccount** cmdlet gets a specified Storage account or all of the Storage accounts in a resource group or the subscription.
 
 ## EXAMPLES
 
 ### Example 1: Get a specified Storage account
 ```
-PS C:\>Get-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
+PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
 ```
 
 This command gets the specified Storage account.
 
 ### Example 2: Get all Storage accounts in a resource group
 ```
-PS C:\>Get-AzureRmStorageAccount -ResourceGroupName "RG01"
+PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01"
 ```
 
 This command gets all of the Storage accounts in a resource group.
 
 ### Example 3:  Get all Storage accounts in the subscription
 ```
-PS C:\>Get-AzureRmStorageAccount
+PS C:\>Get-AzStorageAccount
 ```
 
 This command gets all of the Storage accounts in the subscription.
@@ -57,7 +57,7 @@ This command gets all of the Storage accounts in the subscription.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -125,10 +125,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmStorageAccount](./New-AzureRmStorageAccount.md)
+[New-AzStorageAccount](./New-AzStorageAccount.md)
 
-[Remove-AzureRmStorageAccount](./Remove-AzureRmStorageAccount.md)
+[Remove-AzStorageAccount](./Remove-AzStorageAccount.md)
 
-[Set-AzureRmStorageAccount](./Set-AzureRmStorageAccount.md)
+[Set-AzStorageAccount](./Set-AzStorageAccount.md)
 
 

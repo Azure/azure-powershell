@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
-Module Name: AzureRM.CognitiveServices
+Module Name: Az.CognitiveServices
 ms.assetid: 87A79215-5688-474D-822A-6B84B3D10E3F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/remove-azcognitiveservicesaccount
 schema: 2.0.0
 ---
 
-# Remove-AzureRmCognitiveServicesAccount
+# Remove-AzCognitiveServicesAccount
 
 ## SYNOPSIS
 Deletes a Cognitive Services account.
@@ -14,12 +14,12 @@ Deletes a Cognitive Services account.
 ## SYNTAX
 
 ```
-Remove-AzureRmCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Force]
+Remove-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmCognitiveServicesAccount** cmdlet deletes the specified Cognitive Services account.
+The **Remove-AzCognitiveServicesAccount** cmdlet deletes the specified Cognitive Services account.
 
 ## EXAMPLES
 
@@ -27,7 +27,7 @@ The **Remove-AzureRmCognitiveServicesAccount** cmdlet deletes the specified Cogn
 This command doesn't return anything.
 
 ```powershell
-PS C:\> Remove-AzureRmCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis
+PS C:\> Remove-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis
 PS C:\>
 ```
 
@@ -37,7 +37,7 @@ PS C:\>
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -139,10 +139,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmCognitiveServicesAccount](./Get-AzureRmCognitiveServicesAccount.md)
+[Get-AzCognitiveServicesAccount](./Get-AzCognitiveServicesAccount.md)
 
-[New-AzureRmCognitiveServicesAccount](./New-AzureRmCognitiveServicesAccount.md)
+[New-AzCognitiveServicesAccount](./New-AzCognitiveServicesAccount.md)
 
-[Set-AzureRmCognitiveServicesAccount](./Set-AzureRmCognitiveServicesAccount.md)
+[Set-AzCognitiveServicesAccount](./Set-AzCognitiveServicesAccount.md)
 
 

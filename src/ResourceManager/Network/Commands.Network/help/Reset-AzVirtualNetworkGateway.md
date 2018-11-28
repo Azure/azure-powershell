@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 443F6492-EFA7-4417-943A-3A8D47F8C83C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/reset-azurermvirtualnetworkgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/reset-azvirtualnetworkgateway
 schema: 2.0.0
 ---
 
-# Reset-AzureRmVirtualNetworkGateway
+# Reset-AzVirtualNetworkGateway
 
 ## SYNOPSIS
 Resets the Virtual Network Gateway
@@ -14,8 +14,8 @@ Resets the Virtual Network Gateway
 ## SYNTAX
 
 ```
-Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-GatewayVip <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Reset-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-GatewayVip <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,8 +25,8 @@ Resets the Virtual Network Gateway
 
 ### Example 1:
 ```
-$Gateway = Get-AzureRmVirtualNetworkGateway -Name "ContosoVirtualGateway"
-Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway
+$Gateway = Get-AzVirtualNetworkGateway -Name "ContosoVirtualGateway"
+Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway
 ```
 
 ## PARAMETERS
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -108,14 +108,14 @@ Parameters: GatewayVip (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmVirtualNetworkGateway](./Get-AzureRmVirtualNetworkGateway.md)
+[Get-AzVirtualNetworkGateway](./Get-AzVirtualNetworkGateway.md)
 
-[New-AzureRmVirtualNetworkGateway](./New-AzureRmVirtualNetworkGateway.md)
+[New-AzVirtualNetworkGateway](./New-AzVirtualNetworkGateway.md)
 
-[Remove-AzureRmVirtualNetworkGateway](./Remove-AzureRmVirtualNetworkGateway.md)
+[Remove-AzVirtualNetworkGateway](./Remove-AzVirtualNetworkGateway.md)
 
-[Resize-AzureRmVirtualNetworkGateway](./Resize-AzureRmVirtualNetworkGateway.md)
+[Resize-AzVirtualNetworkGateway](./Resize-AzVirtualNetworkGateway.md)
 
-[Set-AzureRmVirtualNetworkGateway](./Set-AzureRmVirtualNetworkGateway.md)
+[Set-AzVirtualNetworkGateway](./Set-AzVirtualNetworkGateway.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 2CED21D6-4BEF-423B-A04A-5B812CEB975D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/remove-azurermbatchapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchapplication
 schema: 2.0.0
 ---
 
-# Remove-AzureRmBatchApplication
+# Remove-AzBatchApplication
 
 ## SYNOPSIS
 Deletes an application from a Batch account.
@@ -14,18 +14,18 @@ Deletes an application from a Batch account.
 ## SYNTAX
 
 ```
-Remove-AzureRmBatchApplication [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationId] <String>
+Remove-AzBatchApplication [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmBatchApplication** cmdlet deletes an application from an Azure Batch account.
+The **Remove-AzBatchApplication** cmdlet deletes an application from an Azure Batch account.
 
 ## EXAMPLES
 
 ### Example 1: Delete an application from a Batch account
 ```
-PS C:\>Remove-AzureRmBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "Litware"
+PS C:\>Remove-AzBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "Litware"
 ```
 
 This command deletes the Litware application from the ContosoBatch account.
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -108,16 +108,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchApplication](./Get-AzureRmBatchApplication.md)
+[Get-AzBatchApplication](./Get-AzBatchApplication.md)
 
-[Get-AzureRmBatchApplicationPackage](./Get-AzureRmBatchApplicationPackage.md)
+[Get-AzBatchApplicationPackage](./Get-AzBatchApplicationPackage.md)
 
-[New-AzureRmBatchApplication](./New-AzureRmBatchApplication.md)
+[New-AzBatchApplication](./New-AzBatchApplication.md)
 
-[New-AzureRmBatchApplicationPackage](./New-AzureRmBatchApplicationPackage.md)
+[New-AzBatchApplicationPackage](./New-AzBatchApplicationPackage.md)
 
-[Remove-AzureRmBatchApplicationPackage](./Remove-AzureRmBatchApplicationPackage.md)
+[Remove-AzBatchApplicationPackage](./Remove-AzBatchApplicationPackage.md)
 
-[Set-AzureRmBatchApplication](./Set-AzureRmBatchApplication.md)
+[Set-AzBatchApplication](./Set-AzBatchApplication.md)
 
 

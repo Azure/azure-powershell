@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.PolicyInsights.dll-Help.xml
-Module Name: AzureRM.PolicyInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.policyinsights/remove-azurermpolicyremediation
+Module Name: Az.PolicyInsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.policyinsights/remove-azpolicyremediation
 schema: 2.0.0
 ---
 
-# Remove-AzureRmPolicyRemediation
+# Remove-AzPolicyRemediation
 
 ## SYNOPSIS
 Deletes a policy remediation.
@@ -14,46 +14,46 @@ Deletes a policy remediation.
 
 ### ByName (Default)
 ```
-Remove-AzureRmPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
+Remove-AzPolicyRemediation -Name <String> [-Scope <String>] [-ManagementGroupName <String>]
  [-ResourceGroupName <String>] [-AllowStop] [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzureRmPolicyRemediation -ResourceId <String> [-AllowStop] [-AsJob] [-PassThru]
+Remove-AzPolicyRemediation -ResourceId <String> [-AllowStop] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzureRmPolicyRemediation -InputObject <PSRemediation> [-AllowStop] [-AsJob] [-PassThru]
+Remove-AzPolicyRemediation -InputObject <PSRemediation> [-AllowStop] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmPolicyRemediation** cmdlet deletes a policy remediation.
+The **Remove-AzPolicyRemediation** cmdlet deletes a policy remediation.
 
 ## EXAMPLES
 
 ### Example 1: Delete a policy remediation at resource group scope
 ```
-PS C:\> Remove-AzureRmPolicyRemediation -ResourceGroupName "myRG" -Name "remediation1"
+PS C:\> Remove-AzPolicyRemediation -ResourceGroupName "myRG" -Name "remediation1"
 ```
 
 This command deletes the remediation named 'remediation1' in resource group 'myRG'.
 
 ### Example 2: Delete a management group remediation via piping
 ```
-PS C:\> $remediation = Get-AzureRmPolicyRemediation -ManagementGroupName "mg1" -Name "remediation1"
-PS C:\> $remediation | Remove-AzureRmPolicyRemediation -Confirm
+PS C:\> $remediation = Get-AzPolicyRemediation -ManagementGroupName "mg1" -Name "remediation1"
+PS C:\> $remediation | Remove-AzPolicyRemediation -Confirm
 ```
 
 This command deletes the remediation named 'remediation1' from management group 'mg1'. A confirmation prompt will be presented before deleting the resource.
 
 ### Example 3: Cancel and delete a policy remediation
 ```
-PS C:\> Remove-AzureRmPolicyRemediation -ResourceGroupName "myRG" -Name "remediation1" -AllowStop
+PS C:\> Remove-AzPolicyRemediation -ResourceGroupName "myRG" -Name "remediation1" -AllowStop
 ```
 
 This command deletes the remediation named 'remediation1' in resource group 'myRG'. If the remediation is in-progress it will be canceled before being deleted.
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

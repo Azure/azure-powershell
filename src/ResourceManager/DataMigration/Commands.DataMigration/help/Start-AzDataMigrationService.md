@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
-Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/Start-AzureRmDataMigrationService
+Module Name: Az.DataMigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/Start-AzDataMigrationService
 schema: 2.0.0
 ---
 
-# Start-AzureRmDataMigrationService
+# Start-AzDataMigrationService
 
 ## SYNOPSIS
 Starts an instance of the Azure Database Migration Service in a stopped state. 
@@ -14,37 +14,37 @@ Starts an instance of the Azure Database Migration Service in a stopped state.
 
 ### ComponentNameParameterSet (Default)
 ```
-Start-AzureRmDataMigrationService -ResourceGroupName <String> -Name <String> [-PassThru]
+Start-AzDataMigrationService -ResourceGroupName <String> -Name <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
-Start-AzureRmDataMigrationService [-InputObject] <PSDataMigrationService> [-PassThru]
+Start-AzDataMigrationService [-InputObject] <PSDataMigrationService> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Start-AzureRmDataMigrationService [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Start-AzDataMigrationService [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Start-AzureRmDataMigrationService cmdlet starts an instance of the Azure Database Migration Service in a stopped state. 
+The Start-AzDataMigrationService cmdlet starts an instance of the Azure Database Migration Service in a stopped state. 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Start-AzureRmDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
+PS C:\> Start-AzDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
 ```
 
 The above example starts an Azure Database Migration Service instance named Test Service in a stopped state based on service name passed in as input
 
 ### Example 2
 ```
-PS C:\> Start-AzureRmDataMigrationService -InputObject $TestService
+PS C:\> Start-AzDataMigrationService -InputObject $TestService
 ```
 
 The above example starts an Azure Database Migration Service instance based on PSDataMigrationService passed in as input parameter
@@ -55,7 +55,7 @@ The above example starts an Azure Database Migration Service instance based on P
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

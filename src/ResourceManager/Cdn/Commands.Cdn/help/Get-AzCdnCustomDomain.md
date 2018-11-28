@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-Module Name: AzureRM.Cdn
+Module Name: Az.Cdn
 ms.assetid: 53246003-D1E9-4863-94E9-8E0BF1272134
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdncustomdomain
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdncustomdomain
 schema: 2.0.0
 ---
 
-# Get-AzureRmCdnCustomDomain
+# Get-AzCdnCustomDomain
 
 ## SYNOPSIS
 Gets a CDN custom domain.
@@ -15,18 +15,18 @@ Gets a CDN custom domain.
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzureRmCdnCustomDomain [-CustomDomainName <String>] -EndpointName <String> -ProfileName <String>
+Get-AzCdnCustomDomain [-CustomDomainName <String>] -EndpointName <String> -ProfileName <String>
  -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Get-AzureRmCdnCustomDomain [-CustomDomainName <String>] -CdnEndpoint <PSEndpoint>
+Get-AzCdnCustomDomain [-CustomDomainName <String>] -CdnEndpoint <PSEndpoint>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmCdnCustomDomain** cmdlet gets an Azure Content Delivery Network (CDN) custom domain and its related settings.
+The **Get-AzCdnCustomDomain** cmdlet gets an Azure Content Delivery Network (CDN) custom domain and its related settings.
 
 ## EXAMPLES
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -139,8 +139,8 @@ Parameters: CdnEndpoint (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmCdnCustomDomain](./New-AzureRmCdnCustomDomain.md)
+[New-AzCdnCustomDomain](./New-AzCdnCustomDomain.md)
 
-[Remove-AzureRmCdnCustomDomain](./Remove-AzureRmCdnCustomDomain.md)
+[Remove-AzCdnCustomDomain](./Remove-AzCdnCustomDomain.md)
 
 

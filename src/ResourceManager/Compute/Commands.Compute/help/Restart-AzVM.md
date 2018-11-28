@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: EF155949-5766-4BC4-9C8A-2B97E8EA032D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/restart-azurermvm
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/restart-azvm
 schema: 2.0.0
 ---
 
-# Restart-AzureRmVM
+# Restart-AzVM
 
 ## SYNOPSIS
 Restarts an Azure virtual machine.
@@ -15,36 +15,36 @@ Restarts an Azure virtual machine.
 
 ### RestartResourceGroupNameParameterSetName (Default)
 ```
-Restart-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restart-AzVM [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PerformMaintenanceResourceGroupNameParameterSetName
 ```
-Restart-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-PerformMaintenance] [-AsJob]
+Restart-AzVM [-ResourceGroupName] <String> [-Name] <String> [-PerformMaintenance] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartIdParameterSetName
 ```
-Restart-AzureRmVM [-Id] <String> [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Restart-AzVM [-Id] <String> [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### PerformMaintenanceIdParameterSetName
 ```
-Restart-AzureRmVM [-Id] <String> [-Name] <String> [-PerformMaintenance] [-AsJob]
+Restart-AzVM [-Id] <String> [-Name] <String> [-PerformMaintenance] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Restart-AzureRmVM** cmdlet restarts an Azure virtual machine.
+The **Restart-AzVM** cmdlet restarts an Azure virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Restart a virtual machine
 ```
-PS C:\> Restart-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+PS C:\> Restart-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command restarts the virtual machine named VirtualMachine07 in ResourceGroup11.
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -188,16 +188,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVM](./Get-AzureRmVM.md)
+[Get-AzVM](./Get-AzVM.md)
 
-[New-AzureRmVM](./New-AzureRmVM.md)
+[New-AzVM](./New-AzVM.md)
 
-[Remove-AzureRmVM](./Remove-AzureRmVM.md)
+[Remove-AzVM](./Remove-AzVM.md)
 
-[Start-AzureRmVM](./Start-AzureRmVM.md)
+[Start-AzVM](./Start-AzVM.md)
 
-[Stop-AzureRmVM](./Stop-AzureRmVM.md)
+[Stop-AzVM](./Stop-AzVM.md)
 
-[Update-AzureRmVM](./Update-AzureRmVM.md)
+[Update-AzVM](./Update-AzVM.md)
 
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Reservations.dll-Help.xml
-Module Name: AzureRM.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.reservations/split-azurermreservation
+Module Name: Az.Reservations
+online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/split-azreservation
 schema: 2.0.0
 ---
 
-# Split-AzureRmReservation
+# Split-AzReservation
 
 ## SYNOPSIS
 Split a `Reservation`.
@@ -14,14 +14,14 @@ Split a `Reservation`.
 
 ### CommandLine (Default)
 ```
-Split-AzureRmReservation -ReservationOrderId <Guid> -ReservationId <Guid> -Quantity <Int32[]>
+Split-AzReservation -ReservationOrderId <Guid> -ReservationId <Guid> -Quantity <Int32[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
-Split-AzureRmReservation -Quantity <Int32[]> -Reservation <PSReservation>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Split-AzReservation -Quantity <Int32[]> -Reservation <PSReservation> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +31,7 @@ Split a `Reservation` into two `Reservation`s with specified quantity distributi
 
 ### Example 1
 ```
-PS C:\> Split-AzureRmReservation -ReservationOrderId "00000000-ffff-ffff-0000-00000fffff" -ReservationId "11111111-1111-1111-1111-1111111111" -Quantities 2,3
+PS C:\> Split-AzReservation -ReservationOrderId "00000000-ffff-ffff-0000-00000fffff" -ReservationId "11111111-1111-1111-1111-1111111111" -Quantities 2,3
 ```
 
 Split the specified `Reservation` into two `Reservation`s with the corresponding quantities
@@ -42,7 +42,7 @@ Split the specified `Reservation` into two `Reservation`s with the corresponding
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

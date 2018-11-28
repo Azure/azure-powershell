@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 9DBD5ADF-C30E-4D1A-A4CB-4D70C21088F3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermfirewall
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azfirewall
 schema: 2.0.0
 ---
 
-# Remove-AzureRmFirewall
+# Remove-AzFirewall
 
 ## SYNOPSIS
 Remove a Firewall.
@@ -14,20 +14,20 @@ Remove a Firewall.
 ## SYNTAX
 
 ```
-Remove-AzureRmFirewall -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
+Remove-AzFirewall -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmFirewall** cmdlet removes an Azure Firewall.
+The **Remove-AzFirewall** cmdlet removes an Azure Firewall.
 
 ## EXAMPLES
 
 ### 1: Create and delete a Firewall
 ```
-New-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName" -Location centralus 
+New-AzFirewall -Name "azFw" -ResourceGroupName "rgName" -Location centralus 
 
-Remove-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+Remove-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
 Confirm
 Are you sure you want to remove resource 'azFw'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
@@ -37,9 +37,9 @@ This example creates a Firewall and then deletes it. To suppress the prompt when
 
 ### 2: Deallocate the Firewall, then delete the Firewall
 ```
-$firewall=Get-AzureRmFirewall -ResourceGroupName rgName -Name azFw
+$firewall=Get-AzFirewall -ResourceGroupName rgName -Name azFw
 $firewall.Deallocate()
-Remove-AzureRmFirewall -ResourceGroupName rgName -Name azFw
+Remove-AzFirewall -ResourceGroupName rgName -Name azFw
 Confirm
 Are you sure you want to remove resource 'azFw'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
@@ -55,7 +55,7 @@ To suppress the prompt when deleting the Firewall, use the -Force flag.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 Specifies the name of the firewall that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -116,7 +116,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the firewall that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -162,7 +162,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -187,8 +187,8 @@ Type 'PSAzureFirewall' is accepted from the pipeline
 
 ## RELATED LINKS
 
-[Get-AzureRmFirewall](./Get-AzureRmFirewall.md)
+[Get-AzFirewall](./Get-AzFirewall.md)
 
-[New-AzureRmFirewall](./New-AzureRmFirewall.md)
+[New-AzFirewall](./New-AzFirewall.md)
 
-[Set-AzureRmFirewall](./Set-AzureRmFirewall.md)
+[Set-AzFirewall](./Set-AzFirewall.md)

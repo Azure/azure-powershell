@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
-Module Name: AzureRM.MachineLearningCompute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/new-azurermmlopcluster
+Module Name: Az.MachineLearningCompute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearningcompute/new-azmlopcluster
 schema: 2.0.0
 ---
 
-# New-AzureRmMlOpCluster
+# New-AzMlOpCluster
 
 ## SYNOPSIS
 Creates a new operationalization cluster.
@@ -14,13 +14,13 @@ Creates a new operationalization cluster.
 
 ### CreateWithInputObject
 ```
-New-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> -InputObject <PSOperationalizationCluster>
+New-AzMlOpCluster -ResourceGroupName <String> -Name <String> -InputObject <PSOperationalizationCluster>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateWithParameters
 ```
-New-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> -Location <String> -ClusterType <String>
+New-AzMlOpCluster -ResourceGroupName <String> -Name <String> -Location <String> -ClusterType <String>
  [-OrchestratorType <String>] [-ClientId <String>] [-Secret <String>] [-Description <String>]
  [-MasterCount <Int32>] [-AgentCount <Int32>] [-AgentVmSize <String>]
  [-GlobalServiceConfigurationETag <String>] [-SslStatus <String>] [-SslCertificate <String>] [-SslKey <String>]
@@ -36,14 +36,14 @@ Creates a new operationalization cluster. This will create a cluster object, a c
 
 ### Example 1
 ```
-PS C:\> New-AzureRmMlOpCluster -ResourceGroupName my-group -Name my-cluster -Location "East US 2" -ClusterType "ACS" -OrchestratorType "Kubernetes" -ClientId "abc" -Secret "xyz"
+PS C:\> New-AzMlOpCluster -ResourceGroupName my-group -Name my-cluster -Location "East US 2" -ClusterType "ACS" -OrchestratorType "Kubernetes" -ClientId "abc" -Secret "xyz"
 ```
 
 Creates a new operationalization cluster with azure container service and Kubernetes as the orchestrator.
 
 ### Example 2
 ```
-PS C:\> New-AzureRmMlOpCluster -ResourceGroupName my-group -Name my-cluster -Location "East US 2" -ClusterType "Local"
+PS C:\> New-AzMlOpCluster -ResourceGroupName my-group -Name my-cluster -Location "East US 2" -ClusterType "Local"
 ```
 
 Creates a new operationalization cluster locally. This creates an azure container registry, application insights, and storage account, but does not create a container service.
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

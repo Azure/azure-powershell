@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 3DFFD0F2-6CD8-4FBE-B15C-8505CBF8F44E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/remove-azurebatchcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchcertificate
 schema: 2.0.0
 ---
 
-# Remove-AzureBatchCertificate
+# Remove-AzBatchCertificate
 
 ## SYNOPSIS
 Deletes a certificate from an account.
@@ -14,29 +14,29 @@ Deletes a certificate from an account.
 ## SYNTAX
 
 ```
-Remove-AzureBatchCertificate [-ThumbprintAlgorithm] <String> [-Thumbprint] <String>
+Remove-AzBatchCertificate [-ThumbprintAlgorithm] <String> [-Thumbprint] <String>
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureBatchCertificate** cmdlet removes a certificate from the specified Azure Batch account.
+The **Remove-AzBatchCertificate** cmdlet removes a certificate from the specified Azure Batch account.
 
 ## EXAMPLES
 
 ### Example 1: Remove a certificate
 ```
-PS C:\>Remove-AzureBatchCertificate -ThumbprintAlgorithm "sha1" -Thumbprint "c1e494a415149c5f211c4778b52f2e834a07247c" -BatchContext $Context
+PS C:\>Remove-AzBatchCertificate -ThumbprintAlgorithm "sha1" -Thumbprint "c1e494a415149c5f211c4778b52f2e834a07247c" -BatchContext $Context
 ```
 
 This command removes the certificate that has the specified thumbprint.
 
 ### Example 2:Remove all active certificates
 ```
-PS C:\>Get-AzureBatchCertificate -Filter "state eq 'active'" -BatchContext $Context | Remove-AzureBatchCertificate -Force -BatchContext $Context
+PS C:\>Get-AzBatchCertificate -Filter "state eq 'active'" -BatchContext $Context | Remove-AzBatchCertificate -Force -BatchContext $Context
 ```
 
-This command gets all certificates that are active by using the Get-AzureBatchCertificate cmdlet.
+This command gets all certificates that are active by using the Get-AzBatchCertificate cmdlet.
 The command passes the active certificates to the current cmdlet by using the pipeline operator.
 That cmdlet removes each certificate.
 The command specifies the *Force* parameter.
@@ -46,7 +46,7 @@ Therefore, the command does not prompt you for confirmation.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -155,14 +155,14 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureBatchCertificate](./Get-AzureBatchCertificate.md)
+[Get-AzBatchCertificate](./Get-AzBatchCertificate.md)
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[New-AzureBatchCertificate](./New-AzureBatchCertificate.md)
+[New-AzBatchCertificate](./New-AzBatchCertificate.md)
 
-[Stop-AzureBatchCertificateDeletion](./Stop-AzureBatchCertificateDeletion.md)
+[Stop-AzBatchCertificateDeletion](./Stop-AzBatchCertificateDeletion.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

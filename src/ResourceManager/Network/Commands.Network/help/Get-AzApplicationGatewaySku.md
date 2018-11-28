@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: F01CB88A-49E7-41D8-B4E7-F1A4DCDC6B84
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermapplicationgatewaysku
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewaysku
 schema: 2.0.0
 ---
 
-# Get-AzureRmApplicationGatewaySku
+# Get-AzApplicationGatewaySku
 
 ## SYNOPSIS
 Gets the SKU of an application gateway.
@@ -14,19 +14,19 @@ Gets the SKU of an application gateway.
 ## SYNTAX
 
 ```
-Get-AzureRmApplicationGatewaySku -ApplicationGateway <PSApplicationGateway>
+Get-AzApplicationGatewaySku -ApplicationGateway <PSApplicationGateway>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApplicationGatewaySku** cmdlet gets the stock keeping unit (SKU) of an application gateway.
+The **Get-AzApplicationGatewaySku** cmdlet gets the stock keeping unit (SKU) of an application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Get an application gateway SKU
 ```
-PS C:\>$AppGW = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $SKU = Get-AzureRmApplicationGatewaySku -ApplicationGateway $AppGW
+PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $SKU = Get-AzApplicationGatewaySku -ApplicationGateway $AppGW
 ```
 
 The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,8 +80,8 @@ Parameters: ApplicationGateway (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmApplicationGatewaySku](./New-AzureRmApplicationGatewaySku.md)
+[New-AzApplicationGatewaySku](./New-AzApplicationGatewaySku.md)
 
-[Set-AzureRmApplicationGatewaySku](./Set-AzureRmApplicationGatewaySku.md)
+[Set-AzApplicationGatewaySku](./Set-AzApplicationGatewaySku.md)
 
 

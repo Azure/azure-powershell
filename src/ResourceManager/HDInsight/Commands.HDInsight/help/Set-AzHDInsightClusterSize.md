@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: A9A8C4B9-6346-4186-9D73-3A56437BFB2F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/set-azhdinsightclustersize
 schema: 2.0.0
 ---
 
-# Set-AzureRmHDInsightClusterSize
+# Set-AzHDInsightClusterSize
 
 ## SYNOPSIS
 Sets the number of Worker nodes in a specified cluster.
@@ -14,18 +14,18 @@ Sets the number of Worker nodes in a specified cluster.
 ## SYNTAX
 
 ```
-Set-AzureRmHDInsightClusterSize [-ClusterName] <String> [-TargetInstanceCount] <Int32>
+Set-AzHDInsightClusterSize [-ClusterName] <String> [-TargetInstanceCount] <Int32>
  [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmHDInsightClusterSize** cmdlet sets the number of Worker nodes in a specified Azure HDInsight cluster.
+The **Set-AzHDInsightClusterSize** cmdlet sets the number of Worker nodes in a specified Azure HDInsight cluster.
 
 ## EXAMPLES
 
 ### Example 1: Set the size of a specified cluster
 ```
-PS C:\>Set-AzureRmHDInsightClusterSize -ClusterName "your-hadoop-001" -TargetInstanceCount 6
+PS C:\>Set-AzHDInsightClusterSize -ClusterName "your-hadoop-001" -TargetInstanceCount 6
 ```
 
 This command sets the size of the cluster named your-hadoop-001.

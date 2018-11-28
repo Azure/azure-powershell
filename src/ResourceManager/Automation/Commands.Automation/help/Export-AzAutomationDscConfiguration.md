@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 595D3304-3331-4F44-BA57-AE090FB8A132
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/export-azurermautomationdscconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/export-azautomationdscconfiguration
 schema: 2.0.0
 ---
 
-# Export-AzureRmAutomationDscConfiguration
+# Export-AzAutomationDscConfiguration
 
 ## SYNOPSIS
 Exports a DSC configuration from Automation to a local file.
@@ -14,20 +14,20 @@ Exports a DSC configuration from Automation to a local file.
 ## SYNTAX
 
 ```
-Export-AzureRmAutomationDscConfiguration -Name <String> [-Slot <String>] [-OutputFolder <String>] [-Force]
+Export-AzAutomationDscConfiguration -Name <String> [-Slot <String>] [-OutputFolder <String>] [-Force]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Export-AzureRmAutomationDscConfiguration** cmdlet exports an APS Desired State Configuration (DSC) configuration from Azure Automation to a local file.
+The **Export-AzAutomationDscConfiguration** cmdlet exports an APS Desired State Configuration (DSC) configuration from Azure Automation to a local file.
 The exported file has a .ps1 file name extension.
 
 ## EXAMPLES
 
 ### Example 1: Export the published version of a DSC configuration
 ```
-PS C:\>Export-AzureRmAutomationDscConfiguration -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Name "Configuration01" -Slot Published -OutputFolder "C:\Users\PattiFuller\Desktop"
+PS C:\>Export-AzAutomationDscConfiguration -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Name "Configuration01" -Slot Published -OutputFolder "C:\Users\PattiFuller\Desktop"
 ```
 
 This command exports the published version of a DSC configuration in Automation to the specified folder, which is the desktop.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -190,8 +190,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationDscConfiguration](./Get-AzureRmAutomationDscConfiguration.md)
+[Get-AzAutomationDscConfiguration](./Get-AzAutomationDscConfiguration.md)
 
-[Import-AzureRmAutomationDscConfiguration](./Import-AzureRmAutomationDscConfiguration.md)
+[Import-AzAutomationDscConfiguration](./Import-AzAutomationDscConfiguration.md)
 
 

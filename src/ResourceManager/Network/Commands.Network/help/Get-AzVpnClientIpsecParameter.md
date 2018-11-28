@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvpnclientipsecparameter
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvpnclientipsecparameter
 schema: 2.0.0
 ---
 
-# Get-AzureRmVpnClientIpsecParameter
+# Get-AzVpnClientIpsecParameter
 
 ## SYNOPSIS
 Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site connections.
@@ -13,19 +13,19 @@ Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site c
 ## SYNTAX
 
 ```
-Get-AzureRmVpnClientIpsecParameter [-Name <String>] -ResourceGroupName <String>
+Get-AzVpnClientIpsecParameter [-Name <String>] -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Virtual Network Gateway is the object representing your gateway in Azure.
-The **Get-AzureRmVpnClientIpsecParameter** cmdlet returns the object of your vpn ipsec parameters set on gateway in Azure based on Gateway Name and Resource Group Name.
+The **Get-AzVpnClientIpsecParameter** cmdlet returns the object of your vpn ipsec parameters set on gateway in Azure based on Gateway Name and Resource Group Name.
 
 ## EXAMPLES
 
 ### 1: Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site connections.
 ```
-PS C:\> $VpnClientIPsecParameters = Get-AzureRmVpnClientIpsecParameter -Name myGateway -ResourceGroupName myRG
+PS C:\> $VpnClientIPsecParameters = Get-AzVpnClientIpsecParameter -Name myGateway -ResourceGroupName myRG
 ```
 
 Returns the object of the vpn ipsec parameters set on the Virtual Network Gateway with the name "myGateway" within the resource group "myRG"
@@ -36,7 +36,7 @@ Returns the object of the vpn ipsec parameters set on the Virtual Network Gatewa
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

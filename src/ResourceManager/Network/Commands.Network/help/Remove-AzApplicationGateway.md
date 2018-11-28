@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: E9390015-FD5C-4015-BA81-3445ADF8F8BF
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermapplicationgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azapplicationgateway
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApplicationGateway
+# Remove-AzApplicationGateway
 
 ## SYNOPSIS
 Removes an application gateway.
@@ -14,18 +14,18 @@ Removes an application gateway.
 ## SYNTAX
 
 ```
-Remove-AzureRmApplicationGateway -Name <String> -ResourceGroupName <String> [-Force] [-PassThru]
+Remove-AzApplicationGateway -Name <String> -ResourceGroupName <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmApplicationGateway** cmdlet removes an application gateway.
+The **Remove-AzApplicationGateway** cmdlet removes an application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Remove a specified application gateway
 ```
-PS C:\>Remove-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\>Remove-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01.
@@ -36,7 +36,7 @@ This command removes the application gateway named ApplicationGateway01 in the r
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -156,6 +156,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmApplicationGateway](./Set-AzureRmApplicationGateway.md)
+[Set-AzApplicationGateway](./Set-AzApplicationGateway.md)
 
 

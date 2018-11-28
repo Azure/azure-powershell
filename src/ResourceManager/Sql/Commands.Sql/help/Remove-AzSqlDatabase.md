@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: B396388D-F91C-4BC9-A211-ABFF5DFC1693
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqldatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqldatabase
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlDatabase
+# Remove-AzSqlDatabase
 
 ## SYNOPSIS
 Removes an Azure SQL database.
@@ -14,20 +14,19 @@ Removes an Azure SQL database.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlDatabase [-DatabaseName] <String> [-Force] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzSqlDatabase [-DatabaseName] <String> [-Force] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlDatabase** cmdlet removes an Azure SQL database.
+The **Remove-AzSqlDatabase** cmdlet removes an Azure SQL database.
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
 
 ### Example 1: Remove a database from an Azure SQL server
 ```
-PS C:\>Remove-AzureRmSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+PS C:\>Remove-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 This command removes the database named Database01 from server Server01.
@@ -53,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -155,15 +154,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlDatabase](./Get-AzureRmSqlDatabase.md)
+[Get-AzSqlDatabase](./Get-AzSqlDatabase.md)
 
-[New-AzureRmSqlDatabase](./New-AzureRmSqlDatabase.md)
+[New-AzSqlDatabase](./New-AzSqlDatabase.md)
 
-[Resume-AzureRmSqlDatabase](./Resume-AzureRmSqlDatabase.md)
+[Resume-AzSqlDatabase](./Resume-AzSqlDatabase.md)
 
-[Set-AzureRmSqlDatabase](./Set-AzureRmSqlDatabase.md)
+[Set-AzSqlDatabase](./Set-AzSqlDatabase.md)
 
-[Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
+[Suspend-AzSqlDatabase](./Suspend-AzSqlDatabase.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
-Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/New-AzureRmDataMigrationFileShare
+Module Name: Az.DataMigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/New-AzDataMigrationFileShare
 schema: 2.0.0
 ---
 
-# New-AzureRmDataMigrationFileShare
+# New-AzDataMigrationFileShare
 
 ## SYNOPSIS
 Creates the FileShare object for the Azure Database Migration Service, which specifies the local network share to take the source database backups to.
@@ -13,18 +13,18 @@ Creates the FileShare object for the Azure Database Migration Service, which spe
 ## SYNTAX
 
 ```
-New-AzureRmDataMigrationFileShare -Path <String> -Credential <PSCredential>
+New-AzDataMigrationFileShare -Path <String> -Credential <PSCredential>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmDataMigrationFileShare cmdlet creates the FileShare object that specifies the local network share that Azure Database Migration Service can take source database backups to. The service account running source SQL Server instance must have write privileges on this network share.
+The New-AzDataMigrationFileShare cmdlet creates the FileShare object that specifies the local network share that Azure Database Migration Service can take source database backups to. The service account running source SQL Server instance must have write privileges on this network share.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmDmsFileShare -Path $fileSharePath -Credential $fileShareCred
+PS C:\> New-AzDmsFileShare -Path $fileSharePath -Credential $fileShareCred
 
 UserName    Password     Path
 --------    --------     ----
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

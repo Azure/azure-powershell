@@ -1,106 +1,106 @@
 ---
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 Module Guid: e3c0f6bc-fe96-41a0-88f4-5e490a91f05d
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datafactories
 Help Version: 4.2.2.0
 Locale: en-US
 ---
 
-# AzureRM.DataFactories Module
+# Az.DataFactories Module
 ## Description
 The cmdlets in the Azure Data Factory module enable you to manage data factories in Windows PowerShell.
 
-## AzureRM.DataFactories Cmdlets
-### [Get-AzureRmDataFactory](Get-AzureRmDataFactory.md)
+## Az.DataFactories Cmdlets
+### [Get-AzDataFactory](Get-AzDataFactory.md)
 Gets information about Data Factories.
 
-### [Get-AzureRmDataFactoryActivityWindow](Get-AzureRmDataFactoryActivityWindow.md)
+### [Get-AzDataFactoryActivityWindow](Get-AzDataFactoryActivityWindow.md)
 Gets information about activity windows associated with a data factory.
 
-### [Get-AzureRmDataFactoryDataset](Get-AzureRmDataFactoryDataset.md)
+### [Get-AzDataFactoryDataset](Get-AzDataFactoryDataset.md)
 Gets information about datasets in Azure Data Factory.
 
-### [Get-AzureRmDataFactoryGateway](Get-AzureRmDataFactoryGateway.md)
+### [Get-AzDataFactoryGateway](Get-AzDataFactoryGateway.md)
 Gets information about logical gateways in Azure Data Factory.
 
-### [Get-AzureRmDataFactoryGatewayAuthKey](Get-AzureRmDataFactoryGatewayAuthKey.md)
+### [Get-AzDataFactoryGatewayAuthKey](Get-AzDataFactoryGatewayAuthKey.md)
 Gets gateway auth key for an Azure Data Factory.
 
-### [Get-AzureRmDataFactoryHub](Get-AzureRmDataFactoryHub.md)
+### [Get-AzDataFactoryHub](Get-AzDataFactoryHub.md)
 Gets information about hubs in Azure Data Factory.
 
-### [Get-AzureRmDataFactoryLinkedService](Get-AzureRmDataFactoryLinkedService.md)
+### [Get-AzDataFactoryLinkedService](Get-AzDataFactoryLinkedService.md)
 Gets information about linked services in Azure Data Factory.
 
-### [Get-AzureRmDataFactoryPipeline](Get-AzureRmDataFactoryPipeline.md)
+### [Get-AzDataFactoryPipeline](Get-AzDataFactoryPipeline.md)
 Gets information about pipelines in Azure Data Factory.
 
-### [Get-AzureRmDataFactoryRun](Get-AzureRmDataFactoryRun.md)
+### [Get-AzDataFactoryRun](Get-AzDataFactoryRun.md)
 Gets runs for a data slice of a dataset in Azure Data Factory.
 
-### [Get-AzureRmDataFactorySlice](Get-AzureRmDataFactorySlice.md)
+### [Get-AzDataFactorySlice](Get-AzDataFactorySlice.md)
 Gets data slices for a dataset in Azure Data Factory.
 
-### [New-AzureRmDataFactory](New-AzureRmDataFactory.md)
+### [New-AzDataFactory](New-AzDataFactory.md)
 Creates a data factory.
 
-### [New-AzureRmDataFactoryDataset](New-AzureRmDataFactoryDataset.md)
+### [New-AzDataFactoryDataset](New-AzDataFactoryDataset.md)
 Creates a dataset in Data Factory.
 
-### [New-AzureRmDataFactoryEncryptValue](New-AzureRmDataFactoryEncryptValue.md)
+### [New-AzDataFactoryEncryptValue](New-AzDataFactoryEncryptValue.md)
 Encrypts sensitive data.
 
-### [New-AzureRmDataFactoryGateway](New-AzureRmDataFactoryGateway.md)
+### [New-AzDataFactoryGateway](New-AzDataFactoryGateway.md)
 Creates a gateway for an Azure Data Factory.
 
-### [New-AzureRmDataFactoryGatewayAuthKey](New-AzureRmDataFactoryGatewayAuthKey.md)
+### [New-AzDataFactoryGatewayAuthKey](New-AzDataFactoryGatewayAuthKey.md)
 Creates auth key for an Azure Data Factory Gateway.
 
-### [New-AzureRmDataFactoryGatewayKey](New-AzureRmDataFactoryGatewayKey.md)
-Creates a gateway key for an Azure Data Factory. This cmdlet is deprecated, and you should use **New-AzureRmDataFactoryGatewayAuthKey** instead.
+### [New-AzDataFactoryGatewayKey](New-AzDataFactoryGatewayKey.md)
+Creates a gateway key for an Azure Data Factory. This cmdlet is deprecated, and you should use **New-AzDataFactoryGatewayAuthKey** instead.
 
-### [New-AzureRmDataFactoryHub](New-AzureRmDataFactoryHub.md)
+### [New-AzDataFactoryHub](New-AzDataFactoryHub.md)
 Creates a hub for an Azure Data Factory.
 
-### [New-AzureRmDataFactoryLinkedService](New-AzureRmDataFactoryLinkedService.md)
+### [New-AzDataFactoryLinkedService](New-AzDataFactoryLinkedService.md)
 Links a data store or a cloud service to an Azure Data Factory.
 
-### [New-AzureRmDataFactoryPipeline](New-AzureRmDataFactoryPipeline.md)
+### [New-AzDataFactoryPipeline](New-AzDataFactoryPipeline.md)
 Creates a pipeline in Data Factory.
 
-### [Remove-AzureRmDataFactory](Remove-AzureRmDataFactory.md)
+### [Remove-AzDataFactory](Remove-AzDataFactory.md)
 Removes a data factory.
 
-### [Remove-AzureRmDataFactoryDataset](Remove-AzureRmDataFactoryDataset.md)
+### [Remove-AzDataFactoryDataset](Remove-AzDataFactoryDataset.md)
 Removes a dataset from Azure Data Factory.
 
-### [Remove-AzureRmDataFactoryGateway](Remove-AzureRmDataFactoryGateway.md)
+### [Remove-AzDataFactoryGateway](Remove-AzDataFactoryGateway.md)
 Removes a gateway from Azure Data Factory.
 
-### [Remove-AzureRmDataFactoryHub](Remove-AzureRmDataFactoryHub.md)
+### [Remove-AzDataFactoryHub](Remove-AzDataFactoryHub.md)
 Removes a hub from Azure Data Factory.
 
-### [Remove-AzureRmDataFactoryLinkedService](Remove-AzureRmDataFactoryLinkedService.md)
+### [Remove-AzDataFactoryLinkedService](Remove-AzDataFactoryLinkedService.md)
 Removes a linked service from Azure Data Factory.
 
-### [Remove-AzureRmDataFactoryPipeline](Remove-AzureRmDataFactoryPipeline.md)
+### [Remove-AzDataFactoryPipeline](Remove-AzDataFactoryPipeline.md)
 Removes a pipeline from Azure Data Factory.
 
-### [Resume-AzureRmDataFactoryPipeline](Resume-AzureRmDataFactoryPipeline.md)
+### [Resume-AzDataFactoryPipeline](Resume-AzDataFactoryPipeline.md)
 Resumes a suspended pipeline in Data Factory.
 
-### [Save-AzureRmDataFactoryLog](Save-AzureRmDataFactoryLog.md)
+### [Save-AzDataFactoryLog](Save-AzDataFactoryLog.md)
 Downloads log files from Azure HDInsight processing.
 
-### [Set-AzureRmDataFactoryGateway](Set-AzureRmDataFactoryGateway.md)
+### [Set-AzDataFactoryGateway](Set-AzDataFactoryGateway.md)
 Sets the description for a gateway in Azure Data Factory.
 
-### [Set-AzureRmDataFactoryPipelineActivePeriod](Set-AzureRmDataFactoryPipelineActivePeriod.md)
+### [Set-AzDataFactoryPipelineActivePeriod](Set-AzDataFactoryPipelineActivePeriod.md)
 Configures the active period for data slices.
 
-### [Set-AzureRmDataFactorySliceStatus](Set-AzureRmDataFactorySliceStatus.md)
+### [Set-AzDataFactorySliceStatus](Set-AzDataFactorySliceStatus.md)
 Sets the status of slices for a dataset in Azure Data Factory.
 
-### [Suspend-AzureRmDataFactoryPipeline](Suspend-AzureRmDataFactoryPipeline.md)
+### [Suspend-AzDataFactoryPipeline](Suspend-AzDataFactoryPipeline.md)
 Suspends a pipeline in Azure Data Factory.
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 5B17A241-BF36-48A6-BC29-4C32C08F5F94
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermresourcegroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourcegroup
 schema: 2.0.0
 ---
 
-# Get-AzureRmResourceGroup
+# Get-AzResourceGroup
 
 ## SYNOPSIS
 Gets resource groups.
@@ -15,55 +15,55 @@ Gets resource groups.
 
 ### GetByResourceGroupName (Default)
 ```
-Get-AzureRmResourceGroup [-Name <String>] [-Location <String>] [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre]
+Get-AzResourceGroup [[-Name] <String>] [[-Location] <String>] [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceGroupId
 ```
-Get-AzureRmResourceGroup [-Location <String>] [-Id <String>] [-ApiVersion <String>] [-Pre]
+Get-AzResourceGroup [[-Location] <String>] [-Id <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmResourceGroup** cmdlet gets Azure resource groups in the current subscription.
+The **Get-AzResourceGroup** cmdlet gets Azure resource groups in the current subscription.
 You can get all resource groups, or specify a resource group by name or by other properties.
 By default, this cmdlet gets all resource groups in the current subscription.
-For more information about Azure resources and Azure resource groups, see the New-AzureRmResourceGroup cmdlet.
+For more information about Azure resources and Azure resource groups, see the New-AzResourceGroup cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Get a resource group by name
 ```
-PS C:\>Get-AzureRmResourceGroup -Name "EngineerBlog"
+PS C:\>Get-AzResourceGroup -Name "EngineerBlog"
 ```
 
 This command gets the Azure resource group in your subscription named EngineerBlog.
 
 ### Example 2: Get all tags of a resource group
 ```
-PS C:\>(Get-AzureRmResourceGroup -Name "ContosoRG").Tags
+PS C:\>(Get-AzResourceGroup -Name "ContosoRG").Tags
 ```
 
 This command gets the resource group named ContosoRG, and displays the tags associated with that group.
 
 ### Example 3: Show the Resource groups by location
 ```
-PS C:\> Get-AzureRmResourceGroup |
+PS C:\> Get-AzResourceGroup |
   Sort Location,ResourceGroupName |
   Format-Table -GroupBy Location ResourceGroupName,ProvisioningState,Tags
 ```
 
 ### Example 4: Show the names of all the Resource groups in a particular location
 ```
-PS C:\> Get-AzureRmResourceGroup -Location westus2 |
+PS C:\> Get-AzResourceGroup -Location westus2 |
    Sort ResourceGroupName | 
    Format-Wide ResourceGroupName -Column 4
 ```
 
 ### Example 5: Show the Resource groups whose names begin with WebServer
 ```
-PS C:\> Get-AzureRmResourceGroup | Where ResourceGroupName -like WebServer*
+PS C:\> Get-AzResourceGroup | Where ResourceGroupName -like WebServer*
 ```
 
 ## PARAMETERS
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -124,7 +124,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -139,7 +139,7 @@ Parameter Sets: GetByResourceGroupName
 Aliases: ResourceGroupName
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -190,10 +190,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmResourceGroup](./New-AzureRmResourceGroup.md)
+[New-AzResourceGroup](./New-AzResourceGroup.md)
 
-[Remove-AzureRmResourceGroup](./Remove-AzureRmResourceGroup.md)
+[Remove-AzResourceGroup](./Remove-AzResourceGroup.md)
 
-[Set-AzureRmResourceGroup](./Set-AzureRmResourceGroup.md)
+[Set-AzResourceGroup](./Set-AzResourceGroup.md)
 
 

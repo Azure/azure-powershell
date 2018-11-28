@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermdeployment
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azdeployment
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDeployment
+# Remove-AzDeployment
 
 ## SYNOPSIS
 Removes a deployment and any associated operations
@@ -14,37 +14,37 @@ Removes a deployment and any associated operations
 
 ### RemoveByDeploymentName (Default)
 ```
-Remove-AzureRmDeployment [-Name] <String> [-AsJob] [-PassThru] [-ApiVersion <String>] [-Pre]
+Remove-AzDeployment [-Name] <String> [-AsJob] [-PassThru] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByDeploymentId
 ```
-Remove-AzureRmDeployment -Id <String> [-AsJob] [-PassThru] [-ApiVersion <String>] [-Pre]
+Remove-AzDeployment -Id <String> [-AsJob] [-PassThru] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByInputObject
 ```
-Remove-AzureRmDeployment -InputObject <PSDeployment> [-AsJob] [-PassThru] [-ApiVersion <String>] [-Pre]
+Remove-AzDeployment -InputObject <PSDeployment> [-AsJob] [-PassThru] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDeployment** cmdlet removes an Azure deployment at subscription scope and any associated operations.
+The **Remove-AzDeployment** cmdlet removes an Azure deployment at subscription scope and any associated operations.
 
 ## EXAMPLES
 
 ### Example 1: Remove a deployment with a given name
 ```
-PS C:\>Remove-AzureRmDeployment -Name "RolesDeployment"
+PS C:\>Remove-AzDeployment -Name "RolesDeployment"
 ```
 
 This command removes the deployment "RolesDeployment" at the current subscription scope.
 
 ### Example 2: Get a deployment and remove it
 ```
-PS C:\>Get-AzureRmDeployment -Name "RolesDeployment" | Remove-AzureRmDeployment
+PS C:\>Get-AzDeployment -Name "RolesDeployment" | Remove-AzDeployment
 ```
 
 This command gets the deployment "RolesDeployment" at the current subscription scope and removes it.
@@ -56,7 +56,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -102,7 +102,7 @@ The fully qualified resource Id of the deployment.
 example: /subscriptions/{subId}/providers/Microsoft.Resources/deployments/{deploymentName}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByDeploymentId
 Aliases: DeploymentId, ResourceId
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 The deployment object.
 
 ```yaml
-Type: PSDeployment
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment
 Parameter Sets: RemoveByInputObject
 Aliases:
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 The name of the deployment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByDeploymentName
 Aliases: DeploymentName
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -193,7 +193,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

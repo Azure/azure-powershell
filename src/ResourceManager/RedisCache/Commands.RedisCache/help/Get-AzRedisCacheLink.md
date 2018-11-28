@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/get-azurermrediscachelink
+Module Name: Az.RedisCache
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/get-azrediscachelink
 schema: 2.0.0
 ---
 
-# Get-AzureRmRedisCacheLink
+# Get-AzRedisCacheLink
 
 ## SYNOPSIS
 Get geo replication link for Redis Cache.
@@ -14,24 +14,24 @@ Get geo replication link for Redis Cache.
 
 ### AllLinksForCache (Default)
 ```
-Get-AzureRmRedisCacheLink -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRedisCacheLink -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AllLinksForPrimaryCache
 ```
-Get-AzureRmRedisCacheLink -PrimaryServerName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzRedisCacheLink -PrimaryServerName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### SingleLink
 ```
-Get-AzureRmRedisCacheLink -PrimaryServerName <String> -SecondaryServerName <String>
+Get-AzRedisCacheLink -PrimaryServerName <String> -SecondaryServerName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AllLinksForSecondaryCache
 ```
-Get-AzureRmRedisCacheLink -SecondaryServerName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzRedisCacheLink -SecondaryServerName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ There are four different ways to get geo-replication link detail. Either provide
 
 ### Example 1: Get using parameter set AllLinksForCache
 ```
-PS C:\>Get-AzureRmRedisCacheLink -Name "mycache1"
+PS C:\>Get-AzRedisCacheLink -Name "mycache1"
 
         PrimaryServerName   : mycache1
         SecondaryServerName : mycache2
@@ -53,7 +53,7 @@ This command gets all geo-replication links for Redis Cache named mycache1.
 
 ### Example 2: Get using parameter set AllLinksForPrimaryCache
 ```
-PS C:\>Get-AzureRmRedisCacheLink -PrimaryServerName "mycache1"
+PS C:\>Get-AzRedisCacheLink -PrimaryServerName "mycache1"
 
         PrimaryServerName   : mycache1
         SecondaryServerName : mycache2
@@ -64,7 +64,7 @@ This command gets geo-replication links where Redis Cache named mycache1 is prim
 
 ### Example 3: Get using parameter set AllLinksForSecondaryCache
 ```
-PS C:\>Get-AzureRmRedisCacheLink -SecondaryServerName "mycache2"
+PS C:\>Get-AzRedisCacheLink -SecondaryServerName "mycache2"
 
         PrimaryServerName   : mycache1
         SecondaryServerName : mycache2
@@ -75,7 +75,7 @@ This command gets geo-replication links where Redis Cache named mycache2 is seco
 
 ### Example 4: Get using parameter set SingleLink
 ```
-PS C:\>Get-AzureRmRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
+PS C:\>Get-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
 
         PrimaryServerName   : mycache1
         SecondaryServerName : mycache2
@@ -90,7 +90,7 @@ This command gets a single geo-replication links where Redis Cache named mycache
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -161,14 +161,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmRedisCacheLink](./New-AzureRmRedisCacheLink.md)
+[New-AzRedisCacheLink](./New-AzRedisCacheLink.md)
 
-[Remove-AzureRmRedisCacheLink](./Remove-AzureRmRedisCacheLink.md)
+[Remove-AzRedisCacheLink](./Remove-AzRedisCacheLink.md)
 
-[Get-AzureRmRedisCache](./Get-AzureRmRedisCache.md)
+[Get-AzRedisCache](./Get-AzRedisCache.md)
 
-[New-AzureRmRedisCache](./New-AzureRmRedisCache.md)
+[New-AzRedisCache](./New-AzRedisCache.md)
 
-[Remove-AzureRmRedisCache](./Remove-AzureRmRedisCache.md)
+[Remove-AzRedisCache](./Remove-AzRedisCache.md)
 
-[Set-AzureRmRedisCache](./Set-AzureRmRedisCache.md)
+[Set-AzRedisCache](./Set-AzRedisCache.md)

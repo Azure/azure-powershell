@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 75483BC7-440A-437B-9EDE-D270D87CF3C5
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/set-azurebatchjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/set-azbatchjob
 schema: 2.0.0
 ---
 
-# Set-AzureBatchJob
+# Set-AzBatchJob
 
 ## SYNOPSIS
 Updates a Batch job.
@@ -14,25 +14,25 @@ Updates a Batch job.
 ## SYNTAX
 
 ```
-Set-AzureBatchJob [-Job] <PSCloudJob> -BatchContext <BatchAccountContext>
+Set-AzBatchJob [-Job] <PSCloudJob> -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureBatchJob** cmdlet updates an Azure Batch job.
-Use the Get-AzureBatchJob cmdlet to get a **PSCloudJob** object.
+The **Set-AzBatchJob** cmdlet updates an Azure Batch job.
+Use the Get-AzBatchJob cmdlet to get a **PSCloudJob** object.
 Modify the properties of that object, and then use the current cmdlet to commit your changes to the Batch service.
 
 ## EXAMPLES
 
 ### Example 1: Update a job
 ```
-PS C:\>$Job = Get-AzureBatchJob -Id "Job17" -BatchContext $Context
+PS C:\>$Job = Get-AzBatchJob -Id "Job17" -BatchContext $Context
 PS C:\> $Job.Priority = 1
-PS C:\> Set-AzureBatchJob -Job $Job -BatchContext $Context
+PS C:\> Set-AzBatchJob -Job $Job -BatchContext $Context
 ```
 
-The first command gets a pool by using **Get-AzureBatchJob**, and then stores it in the $Job variable.
+The first command gets a pool by using **Get-AzBatchJob**, and then stores it in the $Job variable.
 The second command modifies the priority specification on the $Job object.
 The final command updates the Batch service to match the local object in $Job.
 
@@ -40,7 +40,7 @@ The final command updates the Batch service to match the local object in $Job.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -103,20 +103,20 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Disable-AzureBatchJob](./Disable-AzureBatchJob.md)
+[Disable-AzBatchJob](./Disable-AzBatchJob.md)
 
-[Enable-AzureBatchJob](./Enable-AzureBatchJob.md)
+[Enable-AzBatchJob](./Enable-AzBatchJob.md)
 
-[Get-AzureBatchJob](./Get-AzureBatchJob.md)
+[Get-AzBatchJob](./Get-AzBatchJob.md)
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[New-AzureBatchJob](./New-AzureBatchJob.md)
+[New-AzBatchJob](./New-AzBatchJob.md)
 
-[Remove-AzureBatchJob](./Remove-AzureBatchJob.md)
+[Remove-AzBatchJob](./Remove-AzBatchJob.md)
 
-[Stop-AzureBatchJob](./Stop-AzureBatchJob.md)
+[Stop-AzBatchJob](./Stop-AzBatchJob.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

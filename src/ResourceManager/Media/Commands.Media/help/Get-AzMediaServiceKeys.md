@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
-Module Name: AzureRM.Media
+Module Name: Az.Media
 ms.assetid: 2099938F-5325-416C-AE10-6813546A1055
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/get-azurermmediaservicekeys
+online version: https://docs.microsoft.com/en-us/powershell/module/az.media/get-azmediaservicekeys
 schema: 2.0.0
 ---
 
-# Get-AzureRmMediaServiceKeys
+# Get-AzMediaServiceKeys
 
 ## SYNOPSIS
 Gets key information for accessing the REST endpoint associated with the media service.
@@ -14,18 +14,18 @@ Gets key information for accessing the REST endpoint associated with the media s
 ## SYNTAX
 
 ```
-Get-AzureRmMediaServiceKeys [-ResourceGroupName] <String> [-AccountName] <String>
+Get-AzMediaServiceKeys [-ResourceGroupName] <String> [-AccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmMediaServiceKeys** cmdlet gets key information for accessing the Representational State Transfer (REST) endpoint associated with the Azure media service.
+The **Get-AzMediaServiceKeys** cmdlet gets key information for accessing the Representational State Transfer (REST) endpoint associated with the Azure media service.
 
 ## EXAMPLES
 
 ### Example 1: Get the key information for accessing the media service
 ```
-PS C:\>Get-AzureRmMediaServiceKeys -ResourceGroupName "ResourceGroup001" -AccountName "MediaService001"
+PS C:\>Get-AzMediaServiceKeys -ResourceGroupName "ResourceGroup001" -AccountName "MediaService001"
 ```
 
 This command gets the key information for accessing the media service named MediaService001 that belongs to the resource group named ResourceGroup001.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,6 +92,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmMediaServiceKey](./Set-AzureRmMediaServiceKey.md)
+[Set-AzMediaServiceKey](./Set-AzMediaServiceKey.md)
 
 

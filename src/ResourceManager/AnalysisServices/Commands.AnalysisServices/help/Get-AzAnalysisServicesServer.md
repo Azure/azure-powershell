@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
-Module Name: AzureRM.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/get-azurermanalysisservicesserver
+Module Name: Az.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/get-azanalysisservicesserver
 schema: 2.0.0
 ---
 
-# Get-AzureRmAnalysisServicesServer
+# Get-AzAnalysisServicesServer
 
 ## SYNOPSIS
 Gets the details of an Analysis Services server.
@@ -13,25 +13,25 @@ Gets the details of an Analysis Services server.
 ## SYNTAX
 
 ```
-Get-AzureRmAnalysisServicesServer [[-ResourceGroupName] <String>] [[-Name] <String>]
+Get-AzAnalysisServicesServer [[-ResourceGroupName] <String>] [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmAnalysisServicesServer cmdlet gets the details of an Analysis Services server.
+The Get-AzAnalysisServicesServer cmdlet gets the details of an Analysis Services server.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>Get-AzureRmAnalysisServicesServer -ResourceGroupName "ResourceGroup03"
+PS C:\>Get-AzAnalysisServicesServer -ResourceGroupName "ResourceGroup03"
 ```
 
 This command gets all Azure Analysis Services servers in the resource group named ResourceGroup03.
 
 ### Example 2: Get a server
 ```
-PS C:\>Get-AzureRmAnalysisServicesServer -ResourceGroupName "ResourceGroup03" -Name "testserver"
+PS C:\>Get-AzAnalysisServicesServer -ResourceGroupName "ResourceGroup03" -Name "testserver"
 ```
 
 This command gets the Azure Analysis Services server named testserver in the resource group named ResourceGroup03.
@@ -42,7 +42,7 @@ This command gets the Azure Analysis Services server named testserver in the res
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -95,10 +95,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer
 
 ## NOTES
-Alias: Get-AzureAs
+Alias: Get-AzAs
 
 ## RELATED LINKS
 
-[New-AzureRmAnalysisServicesServer ](./New-AzureRmAnalysisServicesServer .md)
+[New-AzAnalysisServicesServer ](./New-AzAnalysisServicesServer .md)
 
-[Remove-AzureRmAnalysisServicesServer ](./Remove-AzureRmAnalysisServicesServer .md)
+[Remove-AzAnalysisServicesServer ](./Remove-AzAnalysisServicesServer .md)

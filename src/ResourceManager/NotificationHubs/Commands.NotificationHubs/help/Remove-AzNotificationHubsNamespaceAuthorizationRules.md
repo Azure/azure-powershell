@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
-Module Name: AzureRM.NotificationHubs
+Module Name: Az.NotificationHubs
 ms.assetid: 860AB403-3F99-45FA-8E6A-8C9872C121E8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/remove-azurermnotificationhubsnamespaceauthorizationrules
+online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/remove-aznotificationhubsnamespaceauthorizationrules
 schema: 2.0.0
 ---
 
-# Remove-AzureRmNotificationHubsNamespaceAuthorizationRules
+# Remove-AzNotificationHubsNamespaceAuthorizationRules
 
 ## SYNOPSIS
 Removes an authorization rule from a notification hub namespace.
@@ -14,13 +14,13 @@ Removes an authorization rule from a notification hub namespace.
 ## SYNTAX
 
 ```
-Remove-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] <String> [-Namespace] <String>
+Remove-AzNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] <String> [-Namespace] <String>
  [-AuthorizationRule] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmNotificationHubsNamespaceAuthorizationRules** cmdlet removes a Shared Access Signature (SAS) authorization rule from a notification hub namespace.
+The **Remove-AzNotificationHubsNamespaceAuthorizationRules** cmdlet removes a Shared Access Signature (SAS) authorization rule from a notification hub namespace.
 Authorization rules manage access to a namespace.
 This is done by through the creation of links, as URIs, based on different permission levels.
 Permission levels can be of the following: 
@@ -35,7 +35,7 @@ Removing an authorization rule also removes the corresponding user permission.
 
 ### Example 1: Remove an authorization rule from a namespace
 ```
-PS C:\>Remove-AzureRmNotificationHubNamespaceAuthorizationRules -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -AuthorizationRule "ListenRule"
+PS C:\>Remove-AzNotificationHubNamespaceAuthorizationRules -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -AuthorizationRule "ListenRule"
 ```
 
 This command removes the authorization rule named ListenRule from the namespace named ContosoNamespace.
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -165,10 +165,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNotificationHubsNamespaceAuthorizationRules](./Get-AzureRmNotificationHubsNamespaceAuthorizationRules.md)
+[Get-AzNotificationHubsNamespaceAuthorizationRules](./Get-AzNotificationHubsNamespaceAuthorizationRules.md)
 
-[New-AzureRmNotificationHubsNamespaceAuthorizationRules](./New-AzureRmNotificationHubsNamespaceAuthorizationRules.md)
+[New-AzNotificationHubsNamespaceAuthorizationRules](./New-AzNotificationHubsNamespaceAuthorizationRules.md)
 
-[Set-AzureRmNotificationHubsNamespaceAuthorizationRules](./Set-AzureRmNotificationHubsNamespaceAuthorizationRules.md)
+[Set-AzNotificationHubsNamespaceAuthorizationRules](./Set-AzNotificationHubsNamespaceAuthorizationRules.md)
 
 

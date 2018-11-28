@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: DE2441FC-9504-4F3F-AEAF-37EDCD9B7275
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/resize-azvirtualnetworkgateway
 schema: 2.0.0
 ---
 
-# Resize-AzureRmVirtualNetworkGateway
+# Resize-AzVirtualNetworkGateway
 
 ## SYNOPSIS
 Resizes an existing virtual network gateway.
@@ -14,12 +14,12 @@ Resizes an existing virtual network gateway.
 ## SYNTAX
 
 ```
-Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> -GatewaySku <String>
+Resize-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> -GatewaySku <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Resize-AzureRmVirtualNetworkGateway** cmdlet enables you to change the stock-keeping unit (SKU) for a virtual network gateway.
+The **Resize-AzVirtualNetworkGateway** cmdlet enables you to change the stock-keeping unit (SKU) for a virtual network gateway.
 SKUs determine the capabilities of a gateway, including such things as throughput and the maximum number of IP tunnels that are allowed.
 Azure supports Basic, Standard, High-Performance, VpnGw1, VpnGw2, VpnGw3, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ SKUs (sometimes referred to as Small, Medium, and Large SKUs).
 For detailed information about the capabilities of each SKU type, see https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-about-vpngateways/.
@@ -30,13 +30,13 @@ For more information, see https://azure.microsoft.com/en-us/pricing/details/vpn-
 
 ### Example 1: Change the size of a virtual network gateway
 ```
-PS C:\>$Gateway = Get-AzureRmVirtualNetworkGateway -Name "ContosoVirtualGateway"
-PS C:\> Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway -GatewaySku "Basic"
+PS C:\>$Gateway = Get-AzVirtualNetworkGateway -Name "ContosoVirtualGateway"
+PS C:\> Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -GatewaySku "Basic"
 ```
 
 This example changes the size of a virtual network gateway named ContosoVirtualGateway.
 The first command creates an object reference to ContosoVirtualGateway; this object reference is stored in a variable named $Gateway.
-The second command then uses the **Resize-AzureRmVirtualNetworkGateway** cmdlet to set the *GatewaySku* property to Basic.
+The second command then uses the **Resize-AzVirtualNetworkGateway** cmdlet to set the *GatewaySku* property to Basic.
 
 ## PARAMETERS
 
@@ -44,7 +44,7 @@ The second command then uses the **Resize-AzureRmVirtualNetworkGateway** cmdlet 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 
 ### -VirtualNetworkGateway
 Specifies an object reference to the virtual network gateway to be resized.
-You can create this object reference by using the Get-AzureRmVirtualNetworkGateway and specifying the name of the gateway.
+You can create this object reference by using the Get-AzVirtualNetworkGateway and specifying the name of the gateway.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
@@ -119,10 +119,10 @@ You cannot resize from Basic/Standard/HighPerformance SKUs to the new VpnGw1/Vpn
 
 ## RELATED LINKS
 
-[Get-AzureRmVpnClientPackage](./Get-AzureRmVpnClientPackage.md)
+[Get-AzVpnClientPackage](./Get-AzVpnClientPackage.md)
 
-[Get-AzureRmVirtualNetworkGateway](./Get-AzureRmVirtualNetworkGateway.md)
+[Get-AzVirtualNetworkGateway](./Get-AzVirtualNetworkGateway.md)
 
-[Set-AzureRmVirtualNetworkGatewayVpnClientConfig](./Set-AzureRmVirtualNetworkGatewayVpnClientConfig.md)
+[Set-AzVirtualNetworkGatewayVpnClientConfig](./Set-AzVirtualNetworkGatewayVpnClientConfig.md)
 
 

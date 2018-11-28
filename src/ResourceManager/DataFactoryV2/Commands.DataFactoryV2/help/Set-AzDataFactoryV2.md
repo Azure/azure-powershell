@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/set-azurermdatafactoryv2
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/set-azdatafactoryv2
 schema: 2.0.0
 ---
 
-# Set-AzureRmDataFactoryV2
+# Set-AzDataFactoryV2
 
 ## SYNOPSIS
 Creates a data factory.
@@ -13,13 +13,13 @@ Creates a data factory.
 ## SYNTAX
 
 ```
-Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-Tag] <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmDataFactoryV2** cmdlet creates a data factory with the specified resource group name and location.
+The **Set-AzDataFactoryV2** cmdlet creates a data factory with the specified resource group name and location.
 Perform these operations in the following order:
         -- Create a data factory.
         -- Create linked services.
@@ -30,7 +30,7 @@ Perform these operations in the following order:
 
 ### Example 1: Create a data factory
 ```
-PS C:\> Set-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"
+PS C:\> Set-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"
 
     DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
@@ -183,6 +183,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2]()
+[Get-AzDataFactoryV2]()
 
-[Remove-AzureRmDataFactoryV2]()
+[Remove-AzDataFactoryV2]()

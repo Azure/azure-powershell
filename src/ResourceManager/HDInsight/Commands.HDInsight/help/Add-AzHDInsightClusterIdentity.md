@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: A40AB6AB-D3CB-4A6C-B614-0B22085759DA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/add-azurermhdinsightclusteridentity
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightclusteridentity
 schema: 2.0.0
 ---
 
-# Add-AzureRmHDInsightClusterIdentity
+# Add-AzHDInsightClusterIdentity
 
 ## SYNOPSIS
 Adds a cluster identity to a cluster configuration object.
@@ -15,20 +15,20 @@ Adds a cluster identity to a cluster configuration object.
 
 ### CertificateFilePath (Default)
 ```
-Add-AzureRmHDInsightClusterIdentity [-Config] <AzureHDInsightConfig> [-ObjectId] <Guid>
+Add-AzHDInsightClusterIdentity [-Config] <AzureHDInsightConfig> [-ObjectId] <Guid>
  [-CertificateFilePath] <String> [-CertificatePassword] <String> [[-AadTenantId] <Guid>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFileContents
 ```
-Add-AzureRmHDInsightClusterIdentity [-Config] <AzureHDInsightConfig> [-ObjectId] <Guid>
+Add-AzHDInsightClusterIdentity [-Config] <AzureHDInsightConfig> [-ObjectId] <Guid>
  [-CertificateFileContents] <Byte[]> [-CertificatePassword] <String> [[-AadTenantId] <Guid>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmHDInsightClusterIdentity** cmdlet adds a cluster identity to the Azure HDInsight configuration object created by the New-AzureRmHDInsightClusterConfig cmdlet.
+The **Add-AzHDInsightClusterIdentity** cmdlet adds a cluster identity to the Azure HDInsight configuration object created by the New-AzHDInsightClusterConfig cmdlet.
 
 ## EXAMPLES
 
@@ -37,7 +37,7 @@ The **Add-AzureRmHDInsightClusterIdentity** cmdlet adds a cluster identity to th
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
 PS C:\> $storageAccountName = "yourstorageacct001"
-PS C:\> $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value 
+PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value 
 PS C:\> $storageContainer = "container001"
 
 # Cluster configuration info
@@ -47,22 +47,22 @@ PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $clusterCreds = Get-Credential
 
 # If the cluster's resource group doesn't exist yet, run:
-#   New-AzureRmResourceGroup -Name $clusterResourceGroupName -Location $location
+#   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
 # Cluster Identity values
-PS C:\> $tenantId = (Get-AzureRmContext).Tenant.TenantId
+PS C:\> $tenantId = (Get-AzContext).Tenant.TenantId
 PS C:\> $objectId = "<Azure AD Service Principal Object ID>"
 PS C:\> $certificateFilePath = "<Path to Azure AD Service Principal Certificate>"
 PS C:\> $certificatePassword = "<Password for Azure AD Service Principal Certificate>"
 
 # Create the cluster
-PS C:\> New-AzureRmHDInsightClusterConfig `
-            | Add-AzureRmHDInsightClusterIdentity `
+PS C:\> New-AzHDInsightClusterConfig `
+            | Add-AzHDInsightClusterIdentity `
                 -AadTenantId $tenantId `
                 -ObjectId $objectId `
                 -CertificateFilePath $certificateFilePath `
                 -CertificatePassword $certificatePassword `
-            | New-AzureRmHDInsightCluster `
+            | New-AzHDInsightCluster `
                 -ClusterType Hadoop `
                 -OSType Windows `
                 -ClusterSizeInNodes 4 `
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 
 ### -Config
 Specifies the HDInsight cluster configuration object that this cmdlet modifies.
-This object is created by the New-AzureRmHDInsightClusterConfig cmdlet.
+This object is created by the New-AzHDInsightClusterConfig cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
@@ -207,6 +207,6 @@ Parameters: ObjectId (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmHDInsightClusterConfig](./New-AzureRmHDInsightClusterConfig.md)
+[New-AzHDInsightClusterConfig](./New-AzHDInsightClusterConfig.md)
 
 

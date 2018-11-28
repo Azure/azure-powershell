@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 15634C76-6B34-4E2B-9354-86155827F200
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementcontext
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementcontext
 schema: 2.0.0
 ---
 
-# New-AzureRmApiManagementContext
+# New-AzApiManagementContext
 
 ## SYNOPSIS
 Creates an instance of PsAzureApiManagementContext.
@@ -14,19 +14,19 @@ Creates an instance of PsAzureApiManagementContext.
 ## SYNTAX
 
 ```
-New-AzureRmApiManagementContext -ResourceGroupName <String> -ServiceName <String>
+New-AzApiManagementContext -ResourceGroupName <String> -ServiceName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApiManagementContext** cmdlet creates an instance of **PsAzureApiManagementContext**.
+The **New-AzApiManagementContext** cmdlet creates an instance of **PsAzureApiManagementContext**.
 The context is used for all of the API Management service cmdlets.
 
 ## EXAMPLES
 
 ### Example 1: Create a PsApiManagementContext instance
 ```
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "ContosoResources" -ServiceName "Contoso"
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "ContosoResources" -ServiceName "Contoso"
 ```
 
 This command creates an instance of **PsApiManagementContext**.
@@ -37,7 +37,7 @@ This command creates an instance of **PsApiManagementContext**.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

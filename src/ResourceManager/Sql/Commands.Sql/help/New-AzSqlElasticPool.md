@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 009899E5-83BF-4A3F-877E-70C16D5CD1AC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlelasticpool
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlelasticpool
 schema: 2.0.0
 ---
 
-# New-AzureRmSqlElasticPool
+# New-AzSqlElasticPool
 
 ## SYNOPSIS
 Creates an elastic database pool for a SQL Database.
@@ -15,7 +15,7 @@ Creates an elastic database pool for a SQL Database.
 
 ### DtuBasedPool (Default)
 ```
-New-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <String>] [-Dtu <Int32>] [-StorageMB <Int32>]
+New-AzSqlElasticPool [-ElasticPoolName] <String> [-Edition <String>] [-Dtu <Int32>] [-StorageMB <Int32>]
  [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant]
  [-LicenseType <String>] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -23,21 +23,21 @@ New-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <String>] [-Dtu 
 
 ### VcoreBasedPool
 ```
-New-AzureRmSqlElasticPool [-ElasticPoolName] <String> -Edition <String> [-StorageMB <Int32>] -VCore <Int32>
+New-AzSqlElasticPool [-ElasticPoolName] <String> -Edition <String> [-StorageMB <Int32>] -VCore <Int32>
  -ComputeGeneration <String> [-DatabaseVCoreMin <Double>] [-DatabaseVCoreMax <Double>] [-Tags <Hashtable>]
  [-ZoneRedundant] [-LicenseType <String>] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlElasticPool** cmdlet creates an elastic database pool for an Azure SQL Database.
+The **New-AzSqlElasticPool** cmdlet creates an elastic database pool for an Azure SQL Database.
 Several parameters (*-Dtu, -DatabaseDtuMin, and -DatabaseDtuMax*) require the value being set is from the list of valid values for that parameter. For example, -DatabaseDtuMax for a Standard 100 eDTU pool can only be set to 10, 20, 50, or 100.  For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
 
 ## EXAMPLES
 
 ### Example 1: Create an elastic pool
 ```
-PS C:\>New-AzureRmSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
+PS C:\>New-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/server01/elasticPools/elasticpool01
 ResourceGroupName : resourcegroup01
 ServerName        : server01
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -401,14 +401,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlElasticPool](./Get-AzureRmSqlElasticPool.md)
+[Get-AzSqlElasticPool](./Get-AzSqlElasticPool.md)
 
-[Get-AzureRmSqlElasticPoolActivity](./Get-AzureRmSqlElasticPoolActivity.md)
+[Get-AzSqlElasticPoolActivity](./Get-AzSqlElasticPoolActivity.md)
 
-[Get-AzureRmSqlElasticPoolDatabase](./Get-AzureRmSqlElasticPoolDatabase.md)
+[Get-AzSqlElasticPoolDatabase](./Get-AzSqlElasticPoolDatabase.md)
 
-[Remove-AzureRmSqlElasticPool](./Remove-AzureRmSqlElasticPool.md)
+[Remove-AzSqlElasticPool](./Remove-AzSqlElasticPool.md)
 
-[Set-AzureRmSqlElasticPool](./Set-AzureRmSqlElasticPool.md)
+[Set-AzSqlElasticPool](./Set-AzSqlElasticPool.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

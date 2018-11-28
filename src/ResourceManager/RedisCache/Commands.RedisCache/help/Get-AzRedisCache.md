@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 ms.assetid: 8EF45FCE-5475-4A18-BFB0-C016E239612E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/get-azurermrediscache
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/get-azrediscache
 schema: 2.0.0
 ---
 
-# Get-AzureRmRedisCache
+# Get-AzRedisCache
 
 ## SYNOPSIS
 Gets a Redis Cache.
@@ -14,19 +14,19 @@ Gets a Redis Cache.
 ## SYNTAX
 
 ```
-Get-AzureRmRedisCache [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzRedisCache [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRedisCache** cmdlet gets the specified Azure Redis Cache.
+The **Get-AzRedisCache** cmdlet gets the specified Azure Redis Cache.
 If you specify no parameters, this operation gets every Redis Cache for the current subscription.
 
 ## EXAMPLES
 
 ### Example 1: Get a Redis Cache by name
 ```
-PS C:\>Get-AzureRmRedisCache -Name "myexists"
+PS C:\>Get-AzRedisCache -Name "myexists"
 
         ResourceGroupName  : myGroup
         Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
@@ -50,7 +50,7 @@ This command gets the Redis Cache named myexists.
 
 ### Example 2: Get every Redis Cache in a resource group
 ```
-PS C:\>Get-AzureRmRedisCache -ResourceGroupName "myGroup"
+PS C:\>Get-AzRedisCache -ResourceGroupName "myGroup"
 
         ResourceGroupName  : myGroup
         Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
@@ -91,7 +91,7 @@ This command gets every Redis Cache in the specified resource group.
 
 ### Example 3: Get every Redis Cache in the current subscription
 ```
-PS C:\>Get-AzureRmRedisCache
+PS C:\>Get-AzRedisCache
 
         ResourceGroupName  : myGroup
         Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
@@ -153,7 +153,7 @@ This command gets every Redis Cache in the current subscription.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -211,10 +211,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmRedisCache](./New-AzureRmRedisCache.md)
+[New-AzRedisCache](./New-AzRedisCache.md)
 
-[Remove-AzureRmRedisCache](./Remove-AzureRmRedisCache.md)
+[Remove-AzRedisCache](./Remove-AzRedisCache.md)
 
-[Set-AzureRmRedisCache](./Set-AzureRmRedisCache.md)
+[Set-AzRedisCache](./Set-AzRedisCache.md)
 
 

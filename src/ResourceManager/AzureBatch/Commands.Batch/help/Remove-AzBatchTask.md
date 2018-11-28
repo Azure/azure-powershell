@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: D79AEF8C-F0DC-40F8-9EEE-A2BB6AE5C4BF
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/remove-azurebatchtask
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchtask
 schema: 2.0.0
 ---
 
-# Remove-AzureBatchTask
+# Remove-AzBatchTask
 
 ## SYNOPSIS
 Deletes a Batch task.
@@ -15,37 +15,37 @@ Deletes a Batch task.
 
 ### Id
 ```
-Remove-AzureBatchTask [-JobId] <String> [-Id] <String> [-Force] -BatchContext <BatchAccountContext>
+Remove-AzBatchTask [-JobId] <String> [-Id] <String> [-Force] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzureBatchTask [-InputObject] <PSCloudTask> [-Force] -BatchContext <BatchAccountContext>
+Remove-AzBatchTask [-InputObject] <PSCloudTask> [-Force] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureBatchTask** cmdlet deletes an Azure Batch task.
+The **Remove-AzBatchTask** cmdlet deletes an Azure Batch task.
 This cmdlet prompts you for confirmation, unless you specify the *Force* parameter.
 
 ## EXAMPLES
 
 ### Example 1: Delete a Batch task by ID
 ```
-PS C:\>Remove-AzureBatchTask -JobId "Job-000001" -Id "Task23" -BatchContext $Context
+PS C:\>Remove-AzBatchTask -JobId "Job-000001" -Id "Task23" -BatchContext $Context
 ```
 
 This command deletes a task that has the ID Task23 under the job that has the ID Job-000001.
 The command prompts you for confirmation.
-Use the **Get-AzureRmBatchAccountKeys** cmdlet to assign a context to the $Context variable.
+Use the **Get-AzBatchAccountKeys** cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Delete a Batch task by using the pipeline without confirmation
 ```
-PS C:\>Get-AzureBatchTask -JobId "Job-000001" -Id "Task26" -BatchContext $Context | Remove-AzureBatchTask -Force -BatchContext $Context
+PS C:\>Get-AzBatchTask -JobId "Job-000001" -Id "Task26" -BatchContext $Context | Remove-AzBatchTask -Force -BatchContext $Context
 ```
 
-This command gets the Batch task that has the ID Task26 in the job that has the ID Job-000001 by using the **Get-AzureBatchTask** cmdlet.
+This command gets the Batch task that has the ID Task26 in the job that has the ID Job-000001 by using the **Get-AzBatchTask** cmdlet.
 The command passes that task to the current cmdlet by using the pipeline operator.
 The command deletes that task.
 This command specifies the *Force* parameter.
@@ -55,7 +55,7 @@ Therefore, the command does not prompt you for confirmation.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Specifies the task that this cmdlet deletes.
-To obtain a **PSCloudTask** object, use  the Get-AzureBatchTask cmdlet.
+To obtain a **PSCloudTask** object, use  the Get-AzBatchTask cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.Models.PSCloudTask
@@ -198,16 +198,16 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchTask](./Get-AzureBatchTask.md)
+[Get-AzBatchTask](./Get-AzBatchTask.md)
 
-[New-AzureBatchTask](./New-AzureBatchTask.md)
+[New-AzBatchTask](./New-AzBatchTask.md)
 
-[Remove-AzureBatchTask](./Remove-AzureBatchTask.md)
+[Remove-AzBatchTask](./Remove-AzBatchTask.md)
 
-[Stop-AzureBatchTask](./Stop-AzureBatchTask.md)
+[Stop-AzBatchTask](./Stop-AzBatchTask.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

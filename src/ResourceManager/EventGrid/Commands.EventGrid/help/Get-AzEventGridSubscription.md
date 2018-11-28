@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
-Module Name: AzureRM.EventGrid
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridsubscription
+Module Name: Az.EventGrid
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/get-azeventgridsubscription
 schema: 2.0.0
 ---
 
-# Get-AzureRmEventGridSubscription
+# Get-AzEventGridSubscription
 
 ## SYNOPSIS
 Gets the details of an event subscription, or gets a list of all event subscriptions in the current Azure subscription.
@@ -14,32 +14,31 @@ Gets the details of an event subscription, or gets a list of all event subscript
 
 ### EventSubscriptionTopicNameParameterSet (Default)
 ```
-Get-AzureRmEventGridSubscription [[-EventSubscriptionName] <String>] [[-ResourceGroupName] <String>]
+Get-AzEventGridSubscription [[-EventSubscriptionName] <String>] [[-ResourceGroupName] <String>]
  [[-TopicName] <String>] [-IncludeFullEndpointUrl] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-Get-AzureRmEventGridSubscription [[-EventSubscriptionName] <String>] [-ResourceId] <String>
+Get-AzEventGridSubscription [[-EventSubscriptionName] <String>] [-ResourceId] <String>
  [-IncludeFullEndpointUrl] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### EventSubscriptionTopicTypeNameParameterSet
 ```
-Get-AzureRmEventGridSubscription [[-ResourceGroupName] <String>] [[-TopicTypeName] <String>]
- [[-Location] <String>] [-IncludeFullEndpointUrl] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzEventGridSubscription [[-ResourceGroupName] <String>] [[-TopicTypeName] <String>] [[-Location] <String>]
+ [-IncludeFullEndpointUrl] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### EventSubscriptionInputObjectSet
 ```
-Get-AzureRmEventGridSubscription [-InputObject] <PSTopic> [-DefaultProfile <IAzureContextContainer>]
+Get-AzEventGridSubscription [-InputObject] <PSTopic> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmEventGridSubscription cmdlet gets either the details of a specified Event Grid subscription, or a list of all Event Grid subscriptions in the current Azure subscription or resource group.
+The Get-AzEventGridSubscription cmdlet gets either the details of a specified Event Grid subscription, or a list of all Event Grid subscriptions in the current Azure subscription or resource group.
 If the event subscription name is provided, the details of a single Event Grid subscription is returned.
 If the event subscription name is not provided, a list of all event subscriptions is returned.
 
@@ -47,77 +46,77 @@ If the event subscription name is not provided, a list of all event subscription
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmEventGridSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 -EventSubscriptionName EventSubscription1
+PS C:\> Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 -EventSubscriptionName EventSubscription1
 ```
 
 Gets the details of event subscription \`EventSubscription1\` created for topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmEventGridSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 -EventSubscriptionName EventSubscription1 -IncludeFullEndpointUrl
+PS C:\> Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 -EventSubscriptionName EventSubscription1 -IncludeFullEndpointUrl
 ```
 
 Gets the details of event subscription \`EventSubscription1\` created for topic \`Topic1\` in resource group \`MyResourceGroupName\`, including the full endpoint URL if it is a webhook based event subscription.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmEventGridSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1
+PS C:\> Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1
 ```
 
 Get a list of all the event subscriptions created for topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 4
 ```
-PS C:\> Get-AzureRmEventGridSubscription -ResourceGroupName MyResourceGroupName -EventSubscriptionName EventSubscription1
+PS C:\> Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -EventSubscriptionName EventSubscription1
 ```
 
 Gets the details of event subscription \`EventSubscription1\` created for resource group \`MyResourceGroupName\`.
 
 ### Example 5
 ```
-PS C:\> Get-AzureRmEventGridSubscription -EventSubscriptionName EventSubscription1
+PS C:\> Get-AzEventGridSubscription -EventSubscriptionName EventSubscription1
 ```
 
 Gets the details of event subscription \`EventSubscription1\` created for the currently selected Azure subscription.
 
 ### Example 6
 ```
-PS C:\> Get-AzureRmEventGridSubscription -ResourceGroupName MyResourceGroupName
+PS C:\> Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName
 ```
 
 Gets the list of all global event subscriptions created under the resource group \`MyResourceGroupName\`.
 
 ### Example 7
 ```
-PS C:\> Get-AzureRmEventGridSubscription
+PS C:\> Get-AzEventGridSubscription
 ```
 
 Gets the list of all global event subscriptions created under the currently selected Azure subscription.
 
 ### Example 8
 ```
-PS C:\> Get-AzureRmEventGridSubscription -ResourceGroupName MyResourceGroupName -Location westus2
+PS C:\> Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -Location westus2
 ```
 
 Gets the list of all regional event subscriptions created under resource group \`MyResourceGroupName\` in the specified location \`westus2\`.
 
 ### Example 9
 ```
-PS C:\> Get-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$namespaceName"
+PS C:\> Get-AzEventGridSubscription -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$namespaceName"
 ```
 
 Gets the list of all event subscriptions created for the specified EventHub namespace.
 
 ### Example 10
 ```
-PS C:\> Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.EventHub.Namespaces" -Location $location
+PS C:\> Get-AzEventGridSubscription -TopicTypeName "Microsoft.EventHub.Namespaces" -Location $location
 ```
 
 Gets the list of all event subscriptions created for the specified topic type (EventHub namespaces) in the specified location.
 
 ### Example 11
 ```
-PS C:\> Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups" -ResourceGroupName MyResourceGroupName
+PS C:\> Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups" -ResourceGroupName MyResourceGroupName
 ```
 
 Gets the list of all event subscriptions created for the specific resource group.
@@ -128,7 +127,7 @@ Gets the list of all event subscriptions created for the specific resource group
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/get-azureatalakestorechilditemproperties
+Module Name: Az.DataLakeStore
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/get-azatalakestorechilditemproperties
 schema: 2.0.0
 ---
 
-# Export-AzureRmDataLakeStoreChildItemProperties
+# Export-AzDataLakeStoreChildItemProperties
 
 ## SYNOPSIS
 Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a ouput path
@@ -14,7 +14,7 @@ Exports the properties (Disk usage and Acl) for the entire tree from the specifi
 
 ### GetDiskUsage
 ```
-Export-AzureRmDataLakeStoreChildItemProperties [-Account] <String> [-Path] <DataLakeStorePathInstance>
+Export-AzDataLakeStoreChildItemProperties [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [-OutputPath] <String> [-SaveToAdl] [-IncludeFile] [-MaximumDepth <Int32>] [-Concurrency <Int32>]
  [-GetDiskUsage] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -22,7 +22,7 @@ Export-AzureRmDataLakeStoreChildItemProperties [-Account] <String> [-Path] <Data
 
 ### GetAllProperties
 ```
-Export-AzureRmDataLakeStoreChildItemProperties [-Account] <String> [-Path] <DataLakeStorePathInstance>
+Export-AzDataLakeStoreChildItemProperties [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [-OutputPath] <String> [-SaveToAdl] [-IncludeFile] [-MaximumDepth <Int32>] [-Concurrency <Int32>]
  [-GetDiskUsage] [-GetAcl] [-HideConsistentAcl] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -30,20 +30,20 @@ Export-AzureRmDataLakeStoreChildItemProperties [-Account] <String> [-Path] <Data
 
 ### GetAclDump
 ```
-Export-AzureRmDataLakeStoreChildItemProperties [-Account] <String> [-Path] <DataLakeStorePathInstance>
+Export-AzDataLakeStoreChildItemProperties [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [-OutputPath] <String> [-SaveToAdl] [-IncludeFile] [-MaximumDepth <Int32>] [-Concurrency <Int32>] [-GetAcl]
  [-HideConsistentAcl] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Export-AzureRmDataLakeStoreChildItemProperties** is used to report the ADLS space usage or/and ACL usage for the given directory and it's sub directories and files.
+The **Export-AzDataLakeStoreChildItemProperties** is used to report the ADLS space usage or/and ACL usage for the given directory and it's sub directories and files.
 
 ## EXAMPLES
 
 ### Example 1: Get the disk usage and ACL usage for all subdirectories and files
 ```
-PS C:\> Export-AzureRmDataLakeStoreChildItemProperties -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -GetDiskUsage -IncludeFile
+PS C:\> Export-AzDataLakeStoreChildItemProperties -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -GetDiskUsage -IncludeFile
 ```
 
 Get the disk usage and ACL usage for all subdirectories and files under /a. IncludeFile ensures the usage is reported for files also
@@ -52,9 +52,9 @@ Get the disk usage and ACL usage for all subdirectories and files under /a. Incl
 ```
 PS C:\> $fullAcl="user:contoso-userid:--x|user::rwx|other::---|group::rwx"
 PS C:\> $newFullAcl = $fullAcl.Split("{|}");
-PS C:\> Set-AzureRmDataLakeStoreItemAcl -Account ContosoADL -Path /a -Acl $newFullAcl -Recurse -Debug
+PS C:\> Set-AzDataLakeStoreItemAcl -Account ContosoADL -Path /a -Acl $newFullAcl -Recurse -Debug
 
-PS C:\> Export-AzureRmDataLakeStoreChildItemProperties -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -HideConsistentAcl -IncludeFile
+PS C:\> Export-AzDataLakeStoreChildItemProperties -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -HideConsistentAcl -IncludeFile
 ```
 
 Get the ACL usage for all subdirectories and files under /a. IncludeFile ensures the usage is reported for files also. HideconsistentAcl in this case will show the Acl of /a, not it's children since all of the children has same acl as /a. This flag skips the acl ouput of subtree if all it's acls are same as the root.
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

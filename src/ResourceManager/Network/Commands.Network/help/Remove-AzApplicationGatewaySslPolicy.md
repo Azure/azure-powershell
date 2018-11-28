@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: A308E4DD-49FA-4905-94A7-CEA3AAEC3959
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermapplicationgatewaysslpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azapplicationgatewaysslpolicy
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApplicationGatewaySslPolicy
+# Remove-AzApplicationGatewaySslPolicy
 
 ## SYNOPSIS
 Removes an SSL policy from an Azure application gateway.
@@ -14,19 +14,19 @@ Removes an SSL policy from an Azure application gateway.
 ## SYNTAX
 
 ```
-Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGateway <PSApplicationGateway> [-Force]
+Remove-AzApplicationGatewaySslPolicy -ApplicationGateway <PSApplicationGateway> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmApplicationGatewaySslPolicy cmdlet removes SSL policy from an Azure application gateway.
+The Remove-AzApplicationGatewaySslPolicy cmdlet removes SSL policy from an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Remove an SSL policy from an application gateway
 ```
-PS C:\>$AppGW = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $AppGW = Remove-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $AppGW
+PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $AppGW = Remove-AzApplicationGatewaySslPolicy -ApplicationGateway $AppGW
 ```
 
 This command removes the SSL policy from the application gateway named ApplicationGateway01.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -126,9 +126,9 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 ## RELATED LINKS
 
-[Set-AzureRmApplicationGatewaySslPolicy](./Set-AzureRmApplicationGatewaySslPolicy.md)
+[Set-AzApplicationGatewaySslPolicy](./Set-AzApplicationGatewaySslPolicy.md)
 
-[New-AzureRmApplicationGatewaySslPolicy](./New-AzureRmApplicationGatewaySslPolicy.md)
+[New-AzApplicationGatewaySslPolicy](./New-AzApplicationGatewaySslPolicy.md)
 
-[Get-AzureRmApplicationGatewaySslPolicy](./Get-AzureRmApplicationGatewaySslPolicy.md)
+[Get-AzApplicationGatewaySslPolicy](./Get-AzApplicationGatewaySslPolicy.md)
 

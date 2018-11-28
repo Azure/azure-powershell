@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermpolicysetdefinition
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azpolicysetdefinition
 schema: 2.0.0
 ---
 
-# Get-AzureRmPolicySetDefinition
+# Get-AzPolicySetDefinition
 
 ## SYNOPSIS
 Gets policy set definitions.
@@ -14,69 +14,69 @@ Gets policy set definitions.
 
 ### NameParameterSet (Default)
 ```
-Get-AzureRmPolicySetDefinition [-Name <String>] [-ApiVersion <String>] [-Pre]
+Get-AzPolicySetDefinition [-Name <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ManagementGroupNameParameterSet
 ```
-Get-AzureRmPolicySetDefinition [-Name <String>] -ManagementGroupName <String> [-ApiVersion <String>] [-Pre]
+Get-AzPolicySetDefinition [-Name <String>] -ManagementGroupName <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionIdParameterSet
 ```
-Get-AzureRmPolicySetDefinition [-Name <String>] -SubscriptionId <Guid> [-ApiVersion <String>] [-Pre]
+Get-AzPolicySetDefinition [-Name <String>] -SubscriptionId <Guid> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Get-AzureRmPolicySetDefinition -Id <String> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicySetDefinition -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### BuiltinFilterParameterSet
 ```
-Get-AzureRmPolicySetDefinition [-ManagementGroupName <String>] [-SubscriptionId <Guid>] [-Builtin]
+Get-AzPolicySetDefinition [-ManagementGroupName <String>] [-SubscriptionId <Guid>] [-Builtin]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CustomFilterParameterSet
 ```
-Get-AzureRmPolicySetDefinition [-ManagementGroupName <String>] [-SubscriptionId <Guid>] [-Custom]
+Get-AzPolicySetDefinition [-ManagementGroupName <String>] [-SubscriptionId <Guid>] [-Custom]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmPolicySetDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
+The **Get-AzPolicySetDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
 
 ## EXAMPLES
 
 ### Example 1: Get all policy set definitions
 ```
-PS C:\> Get-AzureRmPolicySetDefinition
+PS C:\> Get-AzPolicySetDefinition
 ```
 
 This command gets all the policy set definitions.
 
 ### Example 2: Get policy set definition from current subscription by name
 ```
-PS C:\> Get-AzureRmPolicySetDefinition -Name 'VMPolicySetDefinition'
+PS C:\> Get-AzPolicySetDefinition -Name 'VMPolicySetDefinition'
 ```
 
 This command gets the policy set definition named VMPolicySetDefinition from the current default subscription.
 
 ### Example 3: Get policy set definition from subscription by name
 ```
-PS C:\> Get-AzureRmPolicySetDefinition -Name 'VMPolicySetDefinition' -subscriptionId '3bf44b72-c631-427a-b8c8-53e2595398ca'
+PS C:\> Get-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -subscriptionId '3bf44b72-c631-427a-b8c8-53e2595398ca'
 ```
 
 This command gets the policy definition named VMPolicySetDefinition from the subscription with ID 3bf44b72-c631-427a-b8c8-53e2595398ca.
 
 ### Example 4: Get all custom policy set definitions from management group
 ```
-PS C:\> Get-AzureRmPolicySetDefinition -ManagementGroupName 'Dept42' -Custom
+PS C:\> Get-AzPolicySetDefinition -ManagementGroupName 'Dept42' -Custom
 ```
 
 This command gets all custom policy set definitions from the management group named Dept42.
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

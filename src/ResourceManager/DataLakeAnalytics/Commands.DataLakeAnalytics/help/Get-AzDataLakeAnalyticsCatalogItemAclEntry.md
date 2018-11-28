@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
-Module Name: AzureRM.DataLakeAnalytics
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/get-azurermdatalakeanalyticscatalogitemaclentry
+Module Name: Az.DataLakeAnalytics
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticscatalogitemaclentry
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry
+# Get-AzDataLakeAnalyticsCatalogItemAclEntry
 
 ## SYNOPSIS
 Gets an entry in the ACL of a catalog or catalog item in Data Lake Analytics.
@@ -14,48 +14,48 @@ Gets an entry in the ACL of a catalog or catalog item in Data Lake Analytics.
 
 ### GetCatalogAclEntry (Default)
 ```
-Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetCatalogAclEntryForUserOwner
 ```
-Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-UserOwner]
+Get-AzDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-UserOwner]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetCatalogAclEntryForGroupOwner
 ```
-Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-GroupOwner]
+Get-AzDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-GroupOwner]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetCatalogItemAclEntry
 ```
-Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> -ItemType <String>
- -Path <CatalogPathInstance> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> -ItemType <String> -Path <CatalogPathInstance>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetCatalogItemAclEntryForUserOwner
 ```
-Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-UserOwner] -ItemType <String>
+Get-AzDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-UserOwner] -ItemType <String>
  -Path <CatalogPathInstance> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetCatalogItemAclEntryForGroupOwner
 ```
-Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-GroupOwner] -ItemType <String>
+Get-AzDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-GroupOwner] -ItemType <String>
  -Path <CatalogPathInstance> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry** cmdlet gets a list of entries (ACEs) in the access control list (ACL) of a catalog or catalog item in Data Lake Analytics.
+The **Get-AzDataLakeAnalyticsCatalogItemAclEntry** cmdlet gets a list of entries (ACEs) in the access control list (ACL) of a catalog or catalog item in Data Lake Analytics.
 
 ## EXAMPLES
 
 ### Example 1: Get the ACL for a catalog
 ```powershell
-PS C:\> Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla"
+PS C:\> Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla"
 
 Type  Id                                   Permissions
 ----  --                                   -----------
@@ -68,7 +68,7 @@ This command gets the ACL for the catalog of the specified Data Lake Analytics a
 
 ### Example 2: Get the ACL entry of user owner for a catalog
 ```powershell
-PS C:\> Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner
+PS C:\> Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner
 
 Type      Id                                   Permissions
 ----      --                                   -----------
@@ -79,7 +79,7 @@ This command gets ACL entry of the user owner for the catalog of the specified D
 
 ### Example 3: Get the ACL entry of group owner for a catalog
 ```powershell
-PS C:\> Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -GroupOwner
+PS C:\> Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -GroupOwner
 
 Type       Id                                   Permissions
 ----       --                                   -----------
@@ -90,7 +90,7 @@ This command gets ACL entry of the group owner for the catalog of the specified 
 
 ### Example 4: Get the ACL for a database
 ```powershell
-PS C:\> Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -ItemType Database -Path "databaseName"
+PS C:\> Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -ItemType Database -Path "databaseName"
 
 Type  Id                                   Permissions
 ----  --                                   -----------
@@ -103,7 +103,7 @@ This command gets the ACL for the database of the specified Data Lake Analytics 
 
 ### Example 5: Get the ACL entry of user owner for a database
 ```powershell
-PS C:\> Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner -ItemType Database -Path "databaseName"
+PS C:\> Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner -ItemType Database -Path "databaseName"
 
 Type      Id                                   Permissions
 ----      --                                   -----------
@@ -114,7 +114,7 @@ This command gets the ACL entry of the user owner for the database of the specif
 
 ### Example 6: Get the ACL entry of group owner for a database
 ```powershell
-PS C:\> Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -GroupOwner -ItemType Database -Path "databaseName"
+PS C:\> Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -GroupOwner -ItemType Database -Path "databaseName"
 
 Type       Id                                   Permissions
 ----       --                                   -----------
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -237,6 +237,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [U-SQL now offers database level access control](https://github.com/Azure/AzureDataLake/blob/master/docs/Release_Notes/2016/2016_08_01/USQL_Release_Notes_2016_08_01.md#u-sql-now-offers-database-level-access-control)
 
-[Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry](Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry.md)
+[Remove-AzDataLakeAnalyticsCatalogItemAclEntry](Remove-AzDataLakeAnalyticsCatalogItemAclEntry.md)
 
-[Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry](Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry.md)
+[Set-AzDataLakeAnalyticsCatalogItemAclEntry](Set-AzDataLakeAnalyticsCatalogItemAclEntry.md)

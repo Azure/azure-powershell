@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: C3DD193E-B8FE-468D-BEE7-00C3D99B469E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azresourcegroupdeployment
 schema: 2.0.0
 ---
 
-# Remove-AzureRmResourceGroupDeployment
+# Remove-AzResourceGroupDeployment
 
 ## SYNOPSIS
 Removes a resource group deployment and any associated operations.
@@ -15,18 +15,18 @@ Removes a resource group deployment and any associated operations.
 
 ### RemoveByResourceGroupName (Default)
 ```
-Remove-AzureRmResourceGroupDeployment -ResourceGroupName <String> -Name <String> [-ApiVersion <String>] [-Pre]
+Remove-AzResourceGroupDeployment [-ResourceGroupName] <String> [-Name] <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByResourceGroupDeploymentId
 ```
-Remove-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
+Remove-AzResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmResourceGroupDeployment** cmdlet removes an Azure resource group deployment and any associated operations.
+The **Remove-AzResourceGroupDeployment** cmdlet removes an Azure resource group deployment and any associated operations.
 
 ## EXAMPLES
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,7 +87,7 @@ Parameter Sets: RemoveByResourceGroupName
 Aliases: DeploymentName
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -117,7 +117,7 @@ Parameter Sets: RemoveByResourceGroupName
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -167,12 +167,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmResourceGroupDeployment](./Get-AzureRmResourceGroupDeployment.md)
+[Get-AzResourceGroupDeployment](./Get-AzResourceGroupDeployment.md)
 
-[New-AzureRmResourceGroupDeployment](./New-AzureRmResourceGroupDeployment.md)
+[New-AzResourceGroupDeployment](./New-AzResourceGroupDeployment.md)
 
-[Stop-AzureRmResourceGroupDeployment](./Stop-AzureRmResourceGroupDeployment.md)
+[Stop-AzResourceGroupDeployment](./Stop-AzResourceGroupDeployment.md)
 
-[Test-AzureRmResourceGroupDeployment](./Test-AzureRmResourceGroupDeployment.md)
+[Test-AzResourceGroupDeployment](./Test-AzResourceGroupDeployment.md)
 
 

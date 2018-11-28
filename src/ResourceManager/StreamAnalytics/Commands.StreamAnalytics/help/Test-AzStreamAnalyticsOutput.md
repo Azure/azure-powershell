@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM.StreamAnalytics
+Module Name: Az.StreamAnalytics
 ms.assetid: F57C53E2-2873-441F-90E6-E6100418D519
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/test-azurermstreamanalyticsoutput
+online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/test-azstreamanalyticsoutput
 schema: 2.0.0
 ---
 
-# Test-AzureRmStreamAnalyticsOutput
+# Test-AzStreamAnalyticsOutput
 
 ## SYNOPSIS
 Tests the connection status of an output.
@@ -14,18 +14,18 @@ Tests the connection status of an output.
 ## SYNTAX
 
 ```
-Test-AzureRmStreamAnalyticsOutput [-JobName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Test-AzStreamAnalyticsOutput [-JobName] <String> [-Name] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzureRmStreamAnalyticsOutput** cmdlet tests the ability of Stream Analytics to connect to an output.
+The **Test-AzStreamAnalyticsOutput** cmdlet tests the ability of Stream Analytics to connect to an output.
 
 ## EXAMPLES
 
 ### EXAMPLE 1: Test the connection status of an output
 ```
-PS C:\>Test-AzureRmStreamAnalyticsOutput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "Output"
+PS C:\>Test-AzStreamAnalyticsOutput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "Output"
 ```
 
 This tests the connection status of the output Output in StreamingJob.
@@ -36,7 +36,7 @@ This tests the connection status of the output Output in StreamingJob.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -107,10 +107,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmStreamAnalyticsOutput](./Get-AzureRmStreamAnalyticsOutput.md)
+[Get-AzStreamAnalyticsOutput](./Get-AzStreamAnalyticsOutput.md)
 
-[New-AzureRmStreamAnalyticsOutput](./New-AzureRmStreamAnalyticsOutput.md)
+[New-AzStreamAnalyticsOutput](./New-AzStreamAnalyticsOutput.md)
 
-[Remove-AzureRmStreamAnalyticsOutput](./Remove-AzureRmStreamAnalyticsOutput.md)
+[Remove-AzStreamAnalyticsOutput](./Remove-AzStreamAnalyticsOutput.md)
 
 

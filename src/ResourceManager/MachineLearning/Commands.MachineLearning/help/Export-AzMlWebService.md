@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-Module Name: AzureRM.MachineLearning
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/export-azurermmlwebservice
+Module Name: Az.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/export-azmlwebservice
 schema: 2.0.0
 ---
 
-# Export-AzureRmMlWebService
+# Export-AzMlWebService
 
 ## SYNOPSIS
 Exports the web service definition object as a JSON formatted string.
@@ -14,13 +14,13 @@ Exports the web service definition object as a JSON formatted string.
 
 ### ExportToFile
 ```
-Export-AzureRmMlWebService -WebService <WebService> -OutputFile <String> [-Force]
+Export-AzMlWebService -WebService <WebService> -OutputFile <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExportToJSON
 ```
-Export-AzureRmMlWebService -WebService <WebService> [-ToJsonString] [-Force]
+Export-AzMlWebService -WebService <WebService> [-ToJsonString] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,12 +32,12 @@ You can return the string immediately or save it to a file.
 
 ### Example 1: Export as string
 ```
-Export-AzureRmMlWebService -WebService $svc -ToJsonString
+Export-AzMlWebService -WebService $svc -ToJsonString
 ```
 
 ### Example 2: Export to file
 ```
-Export-AzureRmMlWebService -WebService $svc -OutputFile "C:\mlservice.json"
+Export-AzMlWebService -WebService $svc -OutputFile "C:\mlservice.json"
 ```
 
 ## PARAMETERS
@@ -46,7 +46,7 @@ Export-AzureRmMlWebService -WebService $svc -OutputFile "C:\mlservice.json"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

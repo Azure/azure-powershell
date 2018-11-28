@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermgallery
+Module Name: Az.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azgallery
 schema: 2.0.0
 ---
 
-# Get-AzureRmGallery
+# Get-AzGallery
 
 ## SYNOPSIS
 Get or list galleries.
@@ -14,13 +14,13 @@ Get or list galleries.
 
 ### DefaultParameter (Default)
 ```
-Get-AzureRmGallery [[-ResourceGroupName] <String>] [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzGallery [[-ResourceGroupName] <String>] [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
-Get-AzureRmGallery [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzGallery [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ Get or list galleries.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmGallery -ResourceGroupName $rgname -GalleryName $galleryName
+PS C:\> Get-AzGallery -ResourceGroupName $rgname -GalleryName $galleryName
 
 ResourceGroupName : rg1
 Description       : Gallery created by Powershell.
@@ -52,7 +52,7 @@ Get the gallery.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

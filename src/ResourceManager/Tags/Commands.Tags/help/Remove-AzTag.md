@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Tags.dll-Help.xml
-Module Name: AzureRM.Tags
+Module Name: Az.Tags
 ms.assetid: 66B25541-0FA5-46CF-90D8-FE9527BE11C6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.tags/remove-azurermtag
+online version: https://docs.microsoft.com/en-us/powershell/module/az.tags/remove-aztag
 schema: 2.0.0
 ---
 
-# Remove-AzureRmTag
+# Remove-AzTag
 
 ## SYNOPSIS
 Deletes predefined Azure tags or values.
@@ -14,16 +14,16 @@ Deletes predefined Azure tags or values.
 ## SYNTAX
 
 ```
-Remove-AzureRmTag [-Name] <String> [[-Value] <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzTag [-Name] <String> [[-Value] <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmTag** cmdlet deletes predefined Azure tags and values from your subscription.
+The **Remove-AzTag** cmdlet deletes predefined Azure tags and values from your subscription.
 To delete particular values from a predefined tag, use the *Value* parameter.
-By default, **Remove-AzureRmTag** deletes the specified tag and all of its values.You cannot delete a tag or value that is currently applied to a resource or resource group.
-Before using **Remove-AzureRmTag**, use the *Tag* parameter of the Set-AzureRMResourceGroup cmdlet to delete the tag or values from the resource or resource group.
-The Azure Tags module that **Remove-AzureRmTag** is part of can help you manage your predefined Azure tags.
+By default, **Remove-AzTag** deletes the specified tag and all of its values.You cannot delete a tag or value that is currently applied to a resource or resource group.
+Before using **Remove-AzTag**, use the *Tag* parameter of the Set-AzResourceGroup cmdlet to delete the tag or values from the resource or resource group.
+The Azure Tags module that **Remove-AzTag** is part of can help you manage your predefined Azure tags.
 An Azure tag is a name-value pair that you can use to categorize your Azure resources and resource groups, such as by department or cost center, or to track notes or comments about the resources and groups.
 You can define and apply tags in a single step, but predefined tags let you establish standard, consistent, predictable names and values for the tags in your subscription.
 
@@ -31,7 +31,7 @@ You can define and apply tags in a single step, but predefined tags let you esta
 
 ### Example 1: Delete a predefined tag
 ```
-PS C:\>Remove-AzureRmTag -Name "Department"
+PS C:\>Remove-AzTag -Name "Department"
 ```
 
 This command deletes the predefined tag named Department and all of its resources.
@@ -39,7 +39,7 @@ If the tag has been applied to any resources or resource groups, the command fai
 
 ### Example 2: Delete a value from a predefined tag
 ```
-PS C:\>Remove-AzureRmTag -Name "Department" -Value "HumanResources" -PassThru
+PS C:\>Remove-AzTag -Name "Department" -Value "HumanResources" -PassThru
 Name:   Department
 Count:  14
 Values: 
@@ -61,7 +61,7 @@ If the value has been applied to any resources or resource groups, the command f
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 
 ### -Name
 Specifies the name of the tag to be deleted.
-By default, **Remove-AzureRmTag** removes the specified tag and all of its values.
+By default, **Remove-AzTag** removes the specified tag and all of its values.
 To delete selected values, but not delete the tag, use the *Value* parameter.
 
 ```yaml
@@ -169,8 +169,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmTag](./Get-AzureRmTag.md)
+[Get-AzTag](./Get-AzTag.md)
 
-[New-AzureRmTag](./New-AzureRmTag.md)
+[New-AzTag](./New-AzTag.md)
 
 

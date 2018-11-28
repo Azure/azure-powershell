@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 6F9BAB0B-7DC7-4672-B2B5-8B139D652DDD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azloadbalancerprobeconfig
 schema: 2.0.0
 ---
 
-# Add-AzureRmLoadBalancerProbeConfig
+# Add-AzLoadBalancerProbeConfig
 
 ## SYNOPSIS
 Adds a probe configuration to a load balancer.
@@ -14,22 +14,22 @@ Adds a probe configuration to a load balancer.
 ## SYNTAX
 
 ```
-Add-AzureRmLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
- -Port <Int32> -IntervalInSeconds <Int32> -ProbeCount <Int32> [-RequestPath <String>]
+Add-AzLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>] -Port <Int32>
+ -IntervalInSeconds <Int32> -ProbeCount <Int32> [-RequestPath <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmLoadBalancerProbeConfig** cmdlet adds a probe configuration to an Azure load balancer.
+The **Add-AzLoadBalancerProbeConfig** cmdlet adds a probe configuration to an Azure load balancer.
 
 ## EXAMPLES
 
 ### Example 1 Add a probe configuration to a load balancer
 ```
-PS C:\>Get-AzureRmLoadBalancer -Name "myLb" -ResourceGroupName "myRg" | Add-AzureRmLoadBalancerProbeConfig -Name "probeName" -RequestPath healthcheck2.aspx -Protocol http -Port 81 -IntervalInSeconds 16 -ProbeCount 3 | Set-AzureRmLoadBalancer
+PS C:\>Get-AzLoadBalancer -Name "myLb" -ResourceGroupName "myRg" | Add-AzLoadBalancerProbeConfig -Name "probeName" -RequestPath healthcheck2.aspx -Protocol http -Port 81 -IntervalInSeconds 16 -ProbeCount 3 | Set-AzLoadBalancer
 ```
 
-This command gets the load balancer named myLb, adds the specified probe configuration to it, and then uses the **Set-AzureRmLoadBalancer** cmdlet to update the load balancer.
+This command gets the load balancer named myLb, adds the specified probe configuration to it, and then uses the **Set-AzLoadBalancer** cmdlet to update the load balancer.
 
 ## PARAMETERS
 
@@ -37,7 +37,7 @@ This command gets the load balancer named myLb, adds the specified probe configu
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -201,14 +201,14 @@ Parameters: LoadBalancer (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmLoadBalancerProbeConfig](./Get-AzureRmLoadBalancerProbeConfig.md)
+[Get-AzLoadBalancerProbeConfig](./Get-AzLoadBalancerProbeConfig.md)
 
-[New-AzureRmLoadBalancerProbeConfig](./New-AzureRmLoadBalancerProbeConfig.md)
+[New-AzLoadBalancerProbeConfig](./New-AzLoadBalancerProbeConfig.md)
 
-[Remove-AzureRmLoadBalancerProbeConfig](./Remove-AzureRmLoadBalancerProbeConfig.md)
+[Remove-AzLoadBalancerProbeConfig](./Remove-AzLoadBalancerProbeConfig.md)
 
-[Set-AzureRmLoadBalancer](./Set-AzureRmLoadBalancer.md)
+[Set-AzLoadBalancer](./Set-AzLoadBalancer.md)
 
-[Set-AzureRmLoadBalancerProbeConfig](./Set-AzureRmLoadBalancerProbeConfig.md)
+[Set-AzLoadBalancerProbeConfig](./Set-AzLoadBalancerProbeConfig.md)
 
 

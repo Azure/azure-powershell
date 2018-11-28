@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
-Module Name: Azure.Storage
+Module Name: Az.Storage
 ms.assetid: 10D5B7E0-242B-4DC0-A527-8F6388E72E0A
-online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azstoragecontainerstoredaccesspolicy
 schema: 2.0.0
 ---
 
-# Get-AzureStorageContainerStoredAccessPolicy
+# Get-AzStorageContainerStoredAccessPolicy
 
 ## SYNOPSIS
 Gets the stored access policy or policies for an Azure storage container.
@@ -14,26 +14,26 @@ Gets the stored access policy or policies for an Azure storage container.
 ## SYNTAX
 
 ```
-Get-AzureStorageContainerStoredAccessPolicy [-Container] <String> [[-Policy] <String>]
+Get-AzStorageContainerStoredAccessPolicy [-Container] <String> [[-Policy] <String>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageContainerStoredAccessPolicy** cmdlet lists the stored access policy or policies for an Azure storage container.
+The **Get-AzStorageContainerStoredAccessPolicy** cmdlet lists the stored access policy or policies for an Azure storage container.
 
 ## EXAMPLES
 
 ### Example 1: Get a stored access policy in a storage container
 ```
-PS C:\>Get-AzureStorageContainerStoredAccessPolicy -Container "Container07" -Policy "Policy22"
+PS C:\>Get-AzStorageContainerStoredAccessPolicy -Container "Container07" -Policy "Policy22"
 ```
 
 This command gets the access policy named Policy22 in the storage container named Container07.
 
 ### Example 2: Get all the stored access policies in a storage container
 ```
-PS C:\>Get-AzureStorageContainerStoredAccessPolicy -Container "Container07"
+PS C:\>Get-AzStorageContainerStoredAccessPolicy -Container "Container07"
 ```
 
 This command gets all access policies in the storage container named Container07.
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -169,10 +169,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageContainerStoredAccessPolicy](./New-AzureStorageContainerStoredAccessPolicy.md)
+[New-AzStorageContainerStoredAccessPolicy](./New-AzStorageContainerStoredAccessPolicy.md)
 
-[Remove-AzureStorageContainerStoredAccessPolicy](./Remove-AzureStorageContainerStoredAccessPolicy.md)
+[Remove-AzStorageContainerStoredAccessPolicy](./Remove-AzStorageContainerStoredAccessPolicy.md)
 
-[Set-AzureStorageContainerStoredAccessPolicy](./Set-AzureStorageContainerStoredAccessPolicy.md)
+[Set-AzStorageContainerStoredAccessPolicy](./Set-AzStorageContainerStoredAccessPolicy.md)
 
 

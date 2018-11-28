@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: DBA02017-8372-4A91-A4F1-985777DEDAB9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/remove-azurebatchnodefile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchnodefile
 schema: 2.0.0
 ---
 
-# Remove-AzureBatchNodeFile
+# Remove-AzBatchNodeFile
 
 ## SYNOPSIS
 Deletes a node file for a task or compute node.
@@ -15,33 +15,32 @@ Deletes a node file for a task or compute node.
 
 ### Task
 ```
-Remove-AzureBatchNodeFile -JobId <String> -TaskId <String> -Path <String> [-Force] [-Recursive]
+Remove-AzBatchNodeFile -JobId <String> -TaskId <String> -Path <String> [-Force] [-Recursive]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ComputeNode
 ```
-Remove-AzureBatchNodeFile [-PoolId] <String> [-ComputeNodeId] <String> -Path <String> [-Force] [-Recursive]
+Remove-AzBatchNodeFile [-PoolId] <String> [-ComputeNodeId] <String> -Path <String> [-Force] [-Recursive]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzureBatchNodeFile [[-InputObject] <PSNodeFile>] [-Force] [-Recursive]
- -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzBatchNodeFile [[-InputObject] <PSNodeFile>] [-Force] [-Recursive] -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureBatchNodeFile** cmdlet deletes an Azure Batch node file for a task or compute node.
+The **Remove-AzBatchNodeFile** cmdlet deletes an Azure Batch node file for a task or compute node.
 
 ## EXAMPLES
 
 ### Example 1: Delete a file assocated with a task
 ```
-PS C:\>Remove-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Path "wd\testFile.txt" -BatchContext $Context
+PS C:\>Remove-AzBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Path "wd\testFile.txt" -BatchContext $Context
 ```
 
 This command deletes the node file that is named wd\testFile.txt.
@@ -49,17 +48,17 @@ That file is associated with the task that has the ID Task26 under the job Job-0
 
 ### Example 2: Delete a file from a compute node
 ```
-PS C:\>Remove-AzureBatchNodeFile -PoolId "Pool07" -ComputeNodeId "tvm-2316545714_1-20150725t213220z" -Path "startup\testFile.txt" -BatchContext $Context
+PS C:\>Remove-AzBatchNodeFile -PoolId "Pool07" -ComputeNodeId "tvm-2316545714_1-20150725t213220z" -Path "startup\testFile.txt" -BatchContext $Context
 ```
 
 This command deletes the node file that is named startup\testFile.txt from the specified compute node in the pool that has the ID Pool07.
 
 ### Example 3: Remove a file by using the pipeline
 ```
-PS C:\>Get-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Path "wd\testFile2.txt" -BatchContext $Context | Remove-AzureBatchNodeFile -Force -BatchContext $Context
+PS C:\>Get-AzBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Path "wd\testFile2.txt" -BatchContext $Context | Remove-AzBatchNodeFile -Force -BatchContext $Context
 ```
 
-This command gets the node file by using **Get-AzureBatchNodeFile**.
+This command gets the node file by using **Get-AzBatchNodeFile**.
 That file is associated with the task that has the ID Task26 under the job Job-000001.
 The command passes that file to the current cmdlet by using the pipeline.
 The current cmdlet removes the node file.
@@ -70,7 +69,7 @@ Therefore, the command does not prompt you for confirmation.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -103,7 +102,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -131,7 +130,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Specifies **PSNodeFile** object that represent the node file that this cmdlet deletes.
-To obtain a **PSNodeFile**, use the Get-AzureBatchNodeFile cmdlet.
+To obtain a **PSNodeFile**, use the Get-AzBatchNodeFile cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.Models.PSNodeFile
@@ -273,10 +272,10 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchNodeFile](./Get-AzureBatchNodeFile.md)
+[Get-AzBatchNodeFile](./Get-AzBatchNodeFile.md)
 
-[Get-AzureBatchNodeFileContent](./Get-AzureBatchNodeFileContent.md)
+[Get-AzBatchNodeFileContent](./Get-AzBatchNodeFileContent.md)
 
 

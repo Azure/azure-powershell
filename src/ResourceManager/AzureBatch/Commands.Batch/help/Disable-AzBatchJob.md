@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: C831F934-7513-4882-A155-816E56CD9807
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/disable-azurebatchjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/disable-azbatchjob
 schema: 2.0.0
 ---
 
-# Disable-AzureBatchJob
+# Disable-AzBatchJob
 
 ## SYNOPSIS
 Disables a Batch job.
@@ -14,12 +14,12 @@ Disables a Batch job.
 ## SYNTAX
 
 ```
-Disable-AzureBatchJob [-Id] <String> [-DisableJobOption] <DisableJobOption> -BatchContext <BatchAccountContext>
+Disable-AzBatchJob [-Id] <String> [-DisableJobOption] <DisableJobOption> -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzureBatchJob** cmdlet disables an Azure Batch job.
+The **Disable-AzBatchJob** cmdlet disables an Azure Batch job.
 After you enable a job, new tasks can run.
 Disabled jobs do not run new tasks.
 You can enable a disabled job later.
@@ -28,18 +28,18 @@ You can enable a disabled job later.
 
 ### Example 1: Disable a Batch job
 ```
-PS C:\>Disable-AzureBatchJob -Id "Job-000001" -DisableJobOption "Terminate" -BatchContext $Context
+PS C:\>Disable-AzBatchJob -Id "Job-000001" -DisableJobOption "Terminate" -BatchContext $Context
 ```
 
 This command disables the job that has the ID Job-000001.
 The command terminates active tasks for the job.
-Use the **Get-AzureRmBatchAccountKeys** cmdlet to assign a context to the $Context variable.
+Use the **Get-AzBatchAccountKeys** cmdlet to assign a context to the $Context variable.
 
 ## PARAMETERS
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -121,18 +121,18 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Enable-AzureBatchJob](./Enable-AzureBatchJob.md)
+[Enable-AzBatchJob](./Enable-AzBatchJob.md)
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchJob](./Get-AzureBatchJob.md)
+[Get-AzBatchJob](./Get-AzBatchJob.md)
 
-[New-AzureBatchJob](./New-AzureBatchJob.md)
+[New-AzBatchJob](./New-AzBatchJob.md)
 
-[Remove-AzureBatchJob](./Remove-AzureBatchJob.md)
+[Remove-AzBatchJob](./Remove-AzBatchJob.md)
 
-[Stop-AzureBatchJob](./Stop-AzureBatchJob.md)
+[Stop-AzBatchJob](./Stop-AzBatchJob.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

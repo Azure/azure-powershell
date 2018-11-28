@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 93005775-3AB9-43C5-B353-45B82124ADB7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementauthorizationserver
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementauthorizationserver
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagementAuthorizationServer
+# Set-AzApiManagementAuthorizationServer
 
 ## SYNOPSIS
 Modifies an authorization server.
@@ -14,7 +14,7 @@ Modifies an authorization server.
 ## SYNTAX
 
 ```
-Set-AzureRmApiManagementAuthorizationServer -Context <PsApiManagementContext> -ServerId <String> -Name <String>
+Set-AzApiManagementAuthorizationServer -Context <PsApiManagementContext> -ServerId <String> -Name <String>
  [-Description <String>] -ClientRegistrationPageUrl <String> -AuthorizationEndpointUrl <String>
  -TokenEndpointUrl <String> -ClientId <String> [-ClientSecret <String>]
  [-AuthorizationRequestMethods <PsApiManagementAuthorizationRequestMethod[]>]
@@ -26,14 +26,14 @@ Set-AzureRmApiManagementAuthorizationServer -Context <PsApiManagementContext> -S
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApiManagementAuthorizationServer** cmdlet modifies Azure API Management authorization server details.
+The **Set-AzApiManagementAuthorizationServer** cmdlet modifies Azure API Management authorization server details.
 
 ## EXAMPLES
 
 ### Example 1: Modify an authorization server
 ```
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementAuthrizarionServer -Context $ApiMgmtContext -ServerId 0123456789 -Name "Contoso OAuth2 server" -ClientRegistrationPageUrl "https://contoso/signupv2" -AuthorizationEndpointUrl "https://contoso/authv2" -TokenEndpointUrl "https://contoso/tokenv2" -ClientId "clientid" -ClientSecret "e041ed1b660b4eadbad5a29d066e6e88" -AuthorizationRequestMethods @('Get') -GrantTypes @( 'AuthorizationCode', 'Implicit', 'ClientCredentials') -ClientAuthenticationMethods @('Basic') -TokenBodyParameters @{'par1'='val1'} -AccessTokenSendingMethods @('AuthorizationHeader')
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementAuthrizarionServer -Context $ApiMgmtContext -ServerId 0123456789 -Name "Contoso OAuth2 server" -ClientRegistrationPageUrl "https://contoso/signupv2" -AuthorizationEndpointUrl "https://contoso/authv2" -TokenEndpointUrl "https://contoso/tokenv2" -ClientId "clientid" -ClientSecret "e041ed1b660b4eadbad5a29d066e6e88" -AuthorizationRequestMethods @('Get') -GrantTypes @( 'AuthorizationCode', 'Implicit', 'ClientCredentials') -ClientAuthenticationMethods @('Basic') -TokenBodyParameters @{'par1'='val1'} -AccessTokenSendingMethods @('AuthorizationHeader')
 ```
 
 This command modifies the specified API Management authorization server.
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -386,10 +386,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementAuthorizationServer](./Get-AzureRmApiManagementAuthorizationServer.md)
+[Get-AzApiManagementAuthorizationServer](./Get-AzApiManagementAuthorizationServer.md)
 
-[New-AzureRmApiManagementAuthorizationServer](./New-AzureRmApiManagementAuthorizationServer.md)
+[New-AzApiManagementAuthorizationServer](./New-AzApiManagementAuthorizationServer.md)
 
-[Remove-AzureRmApiManagementAuthorizationServer](./Remove-AzureRmApiManagementAuthorizationServer.md)
+[Remove-AzApiManagementAuthorizationServer](./Remove-AzApiManagementAuthorizationServer.md)
 
 

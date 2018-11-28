@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
-Module Name: AzureRM.Security
-online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzureRmSecurityTask.md
+Module Name: Az.Security
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzSecurityTask.md
 schema: 2.0.0
 ---
 
-# Get-AzureRmSecurityTask
+# Get-AzSecurityTask
 
 ## SYNOPSIS
 Gets the security tasks that Azure Security Center recommends you to do in order to strengthen your security posture.
@@ -14,29 +14,28 @@ Gets the security tasks that Azure Security Center recommends you to do in order
 
 ### SubscriptionScope (Default)
 ```
-Get-AzureRmSecurityTask [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityTask [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
-Get-AzureRmSecurityTask -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityTask -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
 ```
-Get-AzureRmSecurityTask -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSecurityTask -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
-Get-AzureRmSecurityTask -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityTask -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzureRmSecurityTask -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityTask -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +46,7 @@ This cmdlet lets you discover the security tasks that Azure Security Center reco
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmSecurityTask
+PS C:\> Get-AzSecurityTask
 Id                                                                                                                                              Name                                 RecommendationType                                  ResourceId
 --                                                                                                                                              ----                                 ------------------                                  ----------
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/locations/centralus/tasks/08357a1e-c534-756f-cbb9-7b45e73f3137 08357a1e-c534-756f-cbb9-7b45e73f3137 Subscription has machines with failed baseline rule /subscriptions/48...
@@ -60,7 +59,7 @@ Gets all the security tasks that were discovered on resources inside a subscript
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmSecurityTask -ResourceGroupName "myService1"
+PS C:\> Get-AzSecurityTask -ResourceGroupName "myService1"
 
 Id                                                                                                                                                                        Name                                 RecommendationType                   ResourceI
                                                                                                                                                                                                                                                     d        
@@ -82,7 +81,7 @@ Gets all the security tasks that were discovered on resources inside a resource 
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzureRmSecurityTask -ResourceGroupName "myService1" -Name "22ef553d-f13a-5227-ee4c-7cc861d28c96"
+PS C:\> Get-AzSecurityTask -ResourceGroupName "myService1" -Name "22ef553d-f13a-5227-ee4c-7cc861d28c96"
 
 Id                                                                                                                                                                        Name                                 RecommendationType              ResourceId    
 --                                                                                                                                                                        ----                                 ------------------              ----------    
@@ -97,7 +96,7 @@ Gets a specific security task.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,7 +111,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource, SubscriptionLevelResource
 Aliases:
 
@@ -127,7 +126,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupScope, ResourceGroupLevelResource
 Aliases:
 
@@ -142,7 +141,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 

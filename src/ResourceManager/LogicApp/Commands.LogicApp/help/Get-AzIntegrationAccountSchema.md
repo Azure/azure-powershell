@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 6C16B04B-459A-4B2C-B7DF-AC4D16FF7281
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermintegrationaccountschema
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azintegrationaccountschema
 schema: 2.0.0
 ---
 
-# Get-AzureRmIntegrationAccountSchema
+# Get-AzIntegrationAccountSchema
 
 ## SYNOPSIS
 Gets integration account schemas.
@@ -14,12 +14,12 @@ Gets integration account schemas.
 ## SYNTAX
 
 ```
-Get-AzureRmIntegrationAccountSchema [-ResourceGroupName <String>] [-Name <String>] [-SchemaName <String>]
+Get-AzIntegrationAccountSchema [-ResourceGroupName <String>] [-Name <String>] [-SchemaName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmIntegrationAccountSchema** cmdlet gets integration account schemas.
+The **Get-AzIntegrationAccountSchema** cmdlet gets integration account schemas.
 Specifying the integration account name, resource group name, and schema name.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -30,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Get an integration account schema
 ```
-PS C:\>Get-AzureRmIntegrationAccountSchema -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -SchemaName "IntegrationAccountSchema43"
+PS C:\>Get-AzIntegrationAccountSchema -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -SchemaName "IntegrationAccountSchema43"
 Id                   : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/schemas/IntegrationAccountSchema43
 Name                 : IntegrationAccountSchema43
 Type                 : Microsoft.Logic/integrationAccounts/schemas
@@ -48,7 +48,7 @@ This command gets the integration account schema named IntegrationAccountSchema4
 
 ### Example 2: Get integration account schemas for a resource group
 ```
-PS C:\>Get-AzureRmIntegrationAccountSchema -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
+PS C:\>Get-AzIntegrationAccountSchema -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
 Id                   : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/schemas/IntegrationAccountSchema43
 Name                 : IntegrationAccountSchema43
 Type                 : Microsoft.Logic/integrationAccounts/schemas
@@ -70,7 +70,7 @@ This command gets the integration account schemas for the resource group named R
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -143,10 +143,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmIntegrationAccountSchema](./New-AzureRmIntegrationAccountSchema.md)
+[New-AzIntegrationAccountSchema](./New-AzIntegrationAccountSchema.md)
 
-[Remove-AzureRmIntegrationAccountSchema](./Remove-AzureRmIntegrationAccountSchema.md)
+[Remove-AzIntegrationAccountSchema](./Remove-AzIntegrationAccountSchema.md)
 
-[Set-AzureRmIntegrationAccountSchema](./Set-AzureRmIntegrationAccountSchema.md)
+[Set-AzIntegrationAccountSchema](./Set-AzIntegrationAccountSchema.md)
 
 

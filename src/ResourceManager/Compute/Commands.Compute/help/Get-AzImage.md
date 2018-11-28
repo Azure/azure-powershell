@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermimage
+Module Name: Az.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azimage
 schema: 2.0.0
 ---
 
-# Get-AzureRmImage
+# Get-AzImage
 
 ## SYNOPSIS
 Gets the properties of an image.
@@ -13,32 +13,32 @@ Gets the properties of an image.
 ## SYNTAX
 
 ```
-Get-AzureRmImage [[-ResourceGroupName] <String>] [[-ImageName] <String>] [[-Expand] <String>]
+Get-AzImage [[-ResourceGroupName] <String>] [[-ImageName] <String>] [[-Expand] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmImage** cmdlet gets the properties of an image.
+The **Get-AzImage** cmdlet gets the properties of an image.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01'
+PS C:\> Get-AzImage -ResourceGroupName 'ResourceGroup01' -ImageName 'Image01'
 ```
 
 This command gets the properties of the image named 'Image01' in the resource group 'ResourceGroup01'.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmImage -ResourceGroupName 'ResourceGroup01'
+PS C:\> Get-AzImage -ResourceGroupName 'ResourceGroup01'
 ```
 
 This command gets the properties of all images in the resource group 'ResourceGroup01'.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmImage
+PS C:\> Get-AzImage
 ```
 
 This command gets the properties of all images under the subscription.
@@ -49,7 +49,7 @@ This command gets the properties of all images under the subscription.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

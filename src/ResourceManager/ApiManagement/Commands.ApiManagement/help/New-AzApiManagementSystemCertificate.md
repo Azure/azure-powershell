@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementsystemcertificate
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementsystemcertificate
 schema: 2.0.0
 ---
 
-# New-AzureRmApiManagementSystemCertificate
+# New-AzApiManagementSystemCertificate
 
 ## SYNOPSIS
 Creates an instance of `PsApiManagementSystemCertificate`. The certificate can be issued by private CA's and will be installed on the API Management service into `CertificateAuthority` or `Root` store.
@@ -13,21 +13,21 @@ Creates an instance of `PsApiManagementSystemCertificate`. The certificate can b
 ## SYNTAX
 
 ```
-New-AzureRmApiManagementSystemCertificate -StoreName <String> -PfxPath <String> [-PfxPassword <SecureString>]
+New-AzApiManagementSystemCertificate -StoreName <String> -PfxPath <String> [-PfxPassword <SecureString>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApiManagementSystemCertificate** cmdlet is a helper command that creates an instance of **PsApiManagementSystemCertificate**.
-This command is used with the New-AzureRmApiManagement and Set-AzureRmApiManagement cmdlet.
+The **New-AzApiManagementSystemCertificate** cmdlet is a helper command that creates an instance of **PsApiManagementSystemCertificate**.
+This command is used with the New-AzApiManagement and Set-AzApiManagement cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Create and initialize an instance of PsApiManagementSystemCertificate using an Ssl Certificate from file
 ```powershell
-PS C:\>$rootCa = New-AzureRmApiManagementSystemCertificate -StoreName "Root" -PfxPath "C:\contoso\certificates\privateCa.cer"
+PS C:\>$rootCa = New-AzApiManagementSystemCertificate -StoreName "Root" -PfxPath "C:\contoso\certificates\privateCa.cer"
 PS C:\>$systemCert = @($rootCa)
-PS C:\>New-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -SystemCertificateConfiguration $systemCert
+PS C:\>New-AzApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -SystemCertificateConfiguration $systemCert
 ```
 
 This command creates and initializes an instance of **PsApiManagementSystemCertificate** with a root CA certificate. It then creates and API Management service which installs the CA cert to the Root store.
@@ -38,7 +38,7 @@ This command creates and initializes an instance of **PsApiManagementSystemCerti
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,6 +112,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagement](./New-AzureRmApiManagement.md)
+[New-AzApiManagement](./New-AzApiManagement.md)
 
-[Set-AzureRmApiManagement](./Set-AzureRmApiManagement.md)
+[Set-AzApiManagement](./Set-AzApiManagement.md)

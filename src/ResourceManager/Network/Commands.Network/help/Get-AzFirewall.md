@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 91D58F60-F22A-454A-B04C-E5AEF33E9D06
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermfirewall
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azfirewall
 schema: 2.0.0
 ---
 
-# Get-AzureRmFirewall
+# Get-AzFirewall
 
 ## SYNOPSIS
 Gets a Azure Firewall.
@@ -14,34 +14,34 @@ Gets a Azure Firewall.
 ## SYNTAX
 
 ```
-Get-AzureRmFirewall [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzFirewall [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmFirewall** cmdlet gets one or more Firewalls in a resource group.
+The **Get-AzFirewall** cmdlet gets one or more Firewalls in a resource group.
 
 ## EXAMPLES
 
 ### 1:  Retrieve all Firewalls in a resource group
 ```
-Get-AzureRmFirewall -ResourceGroupName rgName
+Get-AzFirewall -ResourceGroupName rgName
 ```
 
 This example retrieves all Firewalls in resource group "rgName".
 
 ### 2:  Retrieve a Firewall by name
 ```
-Get-AzureRmFirewall -ResourceGroupName rgName -Name azFw
+Get-AzFirewall -ResourceGroupName rgName -Name azFw
 ```
 
 This example retrieves Firewall named "azFw" in resource group "rgName".
 
 ### 3:  Retrieve a firewall and then add a application rule collection to the Firewall
 ```
-$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
-$appRule = New-AzureRmFirewallApplicationRule -Name R1 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" -SourceAddress "10.0.0.0"
-$appRuleCollection = New-AzureRmFirewallApplicationRuleCollection -Name "MyAppRuleCollection" -Priority 100 -Rule $appRule -ActionType "Allow"
+$azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
+$appRule = New-AzFirewallApplicationRule -Name R1 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" -SourceAddress "10.0.0.0"
+$appRuleCollection = New-AzFirewallApplicationRuleCollection -Name "MyAppRuleCollection" -Priority 100 -Rule $appRule -ActionType "Allow"
 $azFw.AddApplicationRuleCollection($appRuleCollection)
 ```
 
@@ -49,9 +49,9 @@ This example retrieves a firewall, then adds a application rule collection to th
 
 ### 4:  Retrieve a firewall and then add a network rule collection to the Firewall
 ```
-$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
-$netRule = New-AzureRmFirewallNetworkRule -Name "all-udp-traffic" -Description "Rule for all UDP traffic" -Protocol "Udp" -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
-$netRuleCollection = New-AzureRmFirewallNetworkRuleCollection -Name "MyNetworkRuleCollection" -Priority 100 -Rule $netRule -ActionType "Allow"
+$azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
+$netRule = New-AzFirewallNetworkRule -Name "all-udp-traffic" -Description "Rule for all UDP traffic" -Protocol "Udp" -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
+$netRuleCollection = New-AzFirewallNetworkRuleCollection -Name "MyNetworkRuleCollection" -Priority 100 -Rule $netRule -ActionType "Allow"
 $azFw.AddNetworkRuleCollection($netRuleCollection)
 ```
 
@@ -59,7 +59,7 @@ This example retrieves a firewall, then adds a network rule collection to the fi
 
 ### 5:  Retrieve a firewall and then retrieve a application rule collection by name from the Firewall
 ```
-$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+$azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
 $getAppRc=$azFw.GetApplicationRuleCollectionByName("MyAppRuleCollection")
 ```
 
@@ -68,7 +68,7 @@ firewall object. The rule collection name for method GetApplicationRuleCollectio
 
 ### 6:  Retrieve a firewall and then retrieve a network rule collection by name from the Firewall
 ```
-$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+$azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
 $getNetRc=$azFw.GetNetworkRuleCollectionByName("MyNetworkRuleCollection")
 ```
 
@@ -77,7 +77,7 @@ firewall object. The rule collection name for method GetNetworkRuleCollectionByN
 
 ### 7:  Retrieve a firewall and then remove a application rule collection by name from the Firewall
 ```
-$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+$azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
 $azFw.RemoveApplicationRuleCollectionByName("MyAppRuleCollection")
 ```
 
@@ -86,7 +86,7 @@ firewall object. The rule collection name for method RemoveApplicationRuleCollec
 
 ### 8:  Retrieve a firewall and then remove a network rule collection by name from the Firewall
 ```
-$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+$azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
 $azFw.RemoveNetworkRuleCollectionByName("MyNetworkRuleCollection")
 ```
 
@@ -95,9 +95,9 @@ firewall object. The rule collection name for method RemoveNetworkRuleCollection
 
 ### 9:  Retrieve a firewall and then allocate the firewall
 ```
-$vnet=Get-AzureRmVirtualNetwork -Name "vnet" -ResourceGroupName "rgName"
-$publicIp=Get-AzureRmPublicIpAddress -Name "firewallpip" -ResourceGroupName "rgName"
-$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+$vnet=Get-AzVirtualNetwork -Name "vnet" -ResourceGroupName "rgName"
+$publicIp=Get-AzPublicIpAddress -Name "firewallpip" -ResourceGroupName "rgName"
+$azFw=Get-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
 $azFw.Allocate($vnet, $publicIp)
 ```
 
@@ -110,7 +110,7 @@ This example retrieves a firewall and calls Allocate on the firewall to start th
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 Specifies the name of the Firewall that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that Firewall belongs to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -167,8 +167,8 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[New-AzureRmFirewall](./New-AzureRmFirewall.md)
+[New-AzFirewall](./New-AzFirewall.md)
 
-[Remove-AzureRmFirewall](./Remove-AzureRmFirewall.md)
+[Remove-AzFirewall](./Remove-AzFirewall.md)
 
-[Set-AzureRmFirewall](./Set-AzureRmFirewall.md)
+[Set-AzFirewall](./Set-AzFirewall.md)

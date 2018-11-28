@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 5224BDF5-D492-4160-893E-4BB5F76C22F3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactorypipeline
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactorypipeline
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryPipeline
+# Get-AzDataFactoryPipeline
 
 ## SYNOPSIS
 Gets information about pipelines in Azure Data Factory.
@@ -15,18 +15,18 @@ Gets information about pipelines in Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactoryPipeline [[-Name] <String>] [-DataFactoryName] <String> [-ResourceGroupName] <String>
+Get-AzDataFactoryPipeline [[-Name] <String>] [-DataFactoryName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactoryPipeline [[-Name] <String>] [-DataFactory] <PSDataFactory>
+Get-AzDataFactoryPipeline [[-Name] <String>] [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactoryPipeline** cmdlet gets information about pipelines in Azure Data Factory.
+The **Get-AzDataFactoryPipeline** cmdlet gets information about pipelines in Azure Data Factory.
 If you specify the name of a pipeline, this cmdlet gets information about that pipeline.
 If you do not specify a name, this cmdlet gets information about all the pipelines in the data factory.
 
@@ -34,7 +34,7 @@ If you do not specify a name, this cmdlet gets information about all the pipelin
 
 ### Example 1: Get information about all pipelines
 ```
-PS C:\>Get-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+PS C:\>Get-AzDataFactoryPipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 ```
 
 This command gets information about all pipelines in the data factory named WikiADF.
@@ -43,7 +43,7 @@ The second one uses a **DataFactory** object as a parameter.
 
 ### Example 2: Get information about a specific pipeline
 ```
-PS C:\>Get-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" | Format-List
+PS C:\>Get-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" | Format-List
 PipelineName      : DPWikisample
 ResourceGroupName : ADF
 DataFactoryName   : WikiADF
@@ -57,7 +57,7 @@ For more information, type `Get-Help Format-List`.
 
 ### Example 3: Get the properties for a specific pipeline
 ```
-PS C:\> (Get-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Properties
+PS C:\> (Get-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Properties
 Activities  : {WikiHiveActivity, BlobToSqlCopyActivity}
 Description : DP Wikipedia Sample Pipelines
 End         : 6/6/2014 8:00:00 AM
@@ -70,7 +70,7 @@ This command gets information for the pipeline named DPWikisample in the data fa
 
 ### Example 4: Get the activities for a specific pipeline
 ```
-PS C:\>(Get-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF").Properties.Activities
+PS C:\>(Get-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF").Properties.Activities
 Transformation    : Microsoft.DataFactories.HDInsightActivityProperties
 Description       : 
 Inputs            : {DAWikipediaClickEvents}
@@ -92,7 +92,7 @@ This command gets information for the pipeline named DPWikisample in the data fa
 
 ### Example 5: Get the runtime information for a specific pipeline
 ```
-PS C:\>(Get-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF").Properties.RuntimeInfo
+PS C:\>(Get-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF").Properties.RuntimeInfo
 DeploymentTime
 --------------
 6/5/2014 10:36:46 PM
@@ -102,7 +102,7 @@ This command gets information for the pipeline named DPWikisample in the data fa
 
 ### Example 6: Get information about inputs for the first activity
 ```
-PS C:\>(Get-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Properties.Activities[0].Inputs | Format-List
+PS C:\>(Get-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Properties.Activities[0].Inputs | Format-List
 EndTime   : 
 Length    : 
 Name      : DAWikipediaClickEvents
@@ -210,14 +210,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmDataFactoryPipeline](./New-AzureRmDataFactoryPipeline.md)
+[New-AzDataFactoryPipeline](./New-AzDataFactoryPipeline.md)
 
-[Remove-AzureRmDataFactoryPipeline](./Remove-AzureRmDataFactoryPipeline.md)
+[Remove-AzDataFactoryPipeline](./Remove-AzDataFactoryPipeline.md)
 
-[Resume-AzureRmDataFactoryPipeline](./Resume-AzureRmDataFactoryPipeline.md)
+[Resume-AzDataFactoryPipeline](./Resume-AzDataFactoryPipeline.md)
 
-[Set-AzureRmDataFactoryPipelineActivePeriod](./Set-AzureRmDataFactoryPipelineActivePeriod.md)
+[Set-AzDataFactoryPipelineActivePeriod](./Set-AzDataFactoryPipelineActivePeriod.md)
 
-[Suspend-AzureRmDataFactoryPipeline](./Suspend-AzureRmDataFactoryPipeline.md)
+[Suspend-AzDataFactoryPipeline](./Suspend-AzDataFactoryPipeline.md)
 
 

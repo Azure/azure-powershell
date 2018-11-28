@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/remove-azurermservicebustopic
+Module Name: Az.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebustopic
 schema: 2.0.0
 ---
 
-# Remove-AzureRmServiceBusTopic
+# Remove-AzServiceBusTopic
 
 ## SYNOPSIS
 Removes the topic from the specified Service Bus namespace.
@@ -14,54 +14,54 @@ Removes the topic from the specified Service Bus namespace.
 
 ### TopicPropertiesSet (Default)
 ```
-Remove-AzureRmServiceBusTopic [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PassThru]
+Remove-AzServiceBusTopic [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PassThru]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TopicInputObjectSet
 ```
-Remove-AzureRmServiceBusTopic [-InputObject] <PSTopicAttributes> [-PassThru] [-AsJob]
+Remove-AzServiceBusTopic [-InputObject] <PSTopicAttributes> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TopicResourceIdSet
 ```
-Remove-AzureRmServiceBusTopic [-ResourceId] <String> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceBusTopic [-ResourceId] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmServiceBusTopic** cmdlet removes the topic from the specified Service Bus namespace.
+The **Remove-AzServiceBusTopic** cmdlet removes the topic from the specified Service Bus namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
+PS C:\> Remove-AzServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
 
 Removes the topic `SB-Topic_exampl1` from the namespace `SB-Example1`.
 
 ### Example 2.1 - InputObject - Using Variable:
 ```
-PS C:\> $inputobject = Get-AzureRmServiceBusTopic <parmas>
-PS C:\> Remove-AzureRmServiceBusTopic -InputObject $inputobject
+PS C:\> $inputobject = Get-AzServiceBusTopic <parmas>
+PS C:\> Remove-AzServiceBusTopic -InputObject $inputobject
 ```
 
 ### Example 2.2 - InputObject - Using Piping:
 ```
-PS C:\> Get-AzureRmServiceBusTopic <parmas> | Remove-AzureRmServiceBusTopic
+PS C:\> Get-AzServiceBusTopic <parmas> | Remove-AzServiceBusTopic
 ```
 
 ### Example 3.1 - ResourceId Using Variable:
 ```
-PS C:\> $resourceid = Get-AzureRmServiceBusTopic <params>
-PS C:\> Remove-AzureRmServiceBusTopic -ResourceId $resourceid.Id
+PS C:\> $resourceid = Get-AzServiceBusTopic <params>
+PS C:\> Remove-AzServiceBusTopic -ResourceId $resourceid.Id
 ```
 
 ### Example 3.2 - ResourceId Using String value
 ```
-PS C:\> Remove-AzureRmServiceBusTopic -ResourceId "/subscriptions/xxxx-xxxxx-xxxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName"
+PS C:\> Remove-AzServiceBusTopic -ResourceId "/subscriptions/xxxx-xxxxx-xxxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName"
 ```
 
 ## PARAMETERS
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

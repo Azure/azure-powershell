@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: DC870E11-2129-4906-8357-D9BC1CF2E08E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermlocation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azlocation
 schema: 2.0.0
 ---
 
-# Get-AzureRmLocation
+# Get-AzLocation
 
 ## SYNOPSIS
 Gets all locations and the supported resource providers for each location.
@@ -14,18 +14,17 @@ Gets all locations and the supported resource providers for each location.
 ## SYNTAX
 
 ```
-Get-AzureRmLocation [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzLocation [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmLocation** cmdlet gets all locations and the supported resource providers for each location.
+The **Get-AzLocation** cmdlet gets all locations and the supported resource providers for each location.
 
 ## EXAMPLES
 
 ### Example 1: Get all locations and the supported resource providers
 ```
-PS C:\>Get-AzureRmLocation
+PS C:\>Get-AzLocation
 ```
 
 This command gets all locations and the supported resource providers for each location.
@@ -52,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

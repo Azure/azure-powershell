@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SignalR.dll-Help.xml
-Module Name: AzureRM.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.signalr/new-azurermsignalr
+Module Name: Az.SignalR
+online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/new-azsignalr
 schema: 2.0.0
 ---
 
-# New-AzureRmSignalR
+# New-AzSignalR
 
 ## SYNOPSIS
 Create a SignalR service.
@@ -13,7 +13,7 @@ Create a SignalR service.
 ## SYNTAX
 
 ```
-New-AzureRmSignalR [-ResourceGroupName <String>] [-Name] <String> [-Location <String>] [-Sku <String>]
+New-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Location <String>] [-Sku <String>]
  [-UnitCount <Int32>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -21,7 +21,7 @@ New-AzureRmSignalR [-ResourceGroupName <String>] [-Name] <String> [-Location <St
 ## DESCRIPTION
 Create a SignalR service.
 The following values will be used for the parameters if not specified:
-* `ResourceGroupName`: the default resource group set by `Set-AzureRmDefault -ResourceGroupName`.
+* `ResourceGroupName`: the default resource group set by `Set-AzDefault -ResourceGroupName`.
 * `Location`: the location of the resource group
 * `Sku`: `Standard_S1`
 
@@ -29,7 +29,7 @@ The following values will be used for the parameters if not specified:
 
 ### Create a SignalR serivce
 ```powershell
-PS C:\> New-AzureRmSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr1 -Location eastus -Sku Standard_S1
+PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr1 -Location eastus -Sku Standard_S1
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 87E7FA51-427E-4DB8-A6A2-D8638FD3DB8B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/new-azurebatchjobschedule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/new-azbatchjobschedule
 schema: 2.0.0
 ---
 
-# New-AzureBatchJobSchedule
+# New-AzBatchJobSchedule
 
 ## SYNOPSIS
 Creates a job schedule in the Batch service.
@@ -14,13 +14,13 @@ Creates a job schedule in the Batch service.
 ## SYNTAX
 
 ```
-New-AzureBatchJobSchedule [-Id] <String> [-DisplayName <String>] -Schedule <PSSchedule>
+New-AzBatchJobSchedule [-Id] <String> [-DisplayName <String>] -Schedule <PSSchedule>
  -JobSpecification <PSJobSpecification> [-Metadata <IDictionary>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureBatchJobSchedule** cmdlet creates a job schedule in the Azure Batch service.
+The **New-AzBatchJobSchedule** cmdlet creates a job schedule in the Azure Batch service.
 The *BatchAccountContext* parameter specifies the account in which this cmdlet creates the schedule.
 
 ## EXAMPLES
@@ -32,7 +32,7 @@ PS C:\> $Schedule.RecurrenceInterval = [TimeSpan]::FromDays(1)
 PS C:\> $JobSpecification = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSJobSpecification"
 PS C:\> $JobSpecification.PoolInformation = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSPoolInformation"
 PS C:\> $JobSpecification.PoolInformation.PoolId = "ContosoPool06"
-PS C:\> New-AzureBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -JobSpecification $JobSpecification -BatchContext $Context
+PS C:\> New-AzBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -JobSpecification $JobSpecification -BatchContext $Context
 ```
 
 This example creates a job schedule.
@@ -42,13 +42,13 @@ The commands store these objects in the $Schedule and $JobSpecification variable
 The final command creates a job schedule that has the ID JobSchedule17.
 This schedule creates jobs with a recurrence interval of one day.
 The jobs run on the pool that has the ID ContosoPool06, as specified in the fifth command.
-Use the **Get-AzureRmBatchAccountKeys** cmdlet to assign a context to the $Context variable.
+Use the **Get-AzBatchAccountKeys** cmdlet to assign a context to the $Context variable.
 
 ## PARAMETERS
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -172,18 +172,18 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Disable-AzureBatchJobSchedule](./Disable-AzureBatchJobSchedule.md)
+[Disable-AzBatchJobSchedule](./Disable-AzBatchJobSchedule.md)
 
-[Enable-AzureBatchJobSchedule](./Enable-AzureBatchJobSchedule.md)
+[Enable-AzBatchJobSchedule](./Enable-AzBatchJobSchedule.md)
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchJobSchedule](./Get-AzureBatchJobSchedule.md)
+[Get-AzBatchJobSchedule](./Get-AzBatchJobSchedule.md)
 
-[Remove-AzureBatchJobSchedule](./Remove-AzureBatchJobSchedule.md)
+[Remove-AzBatchJobSchedule](./Remove-AzBatchJobSchedule.md)
 
-[Stop-AzureBatchJobSchedule](./Stop-AzureBatchJobSchedule.md)
+[Stop-AzBatchJobSchedule](./Stop-AzBatchJobSchedule.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

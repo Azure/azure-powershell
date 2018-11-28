@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
-Module Name: AzureRM.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/get-azurermsearchadminkeypair
+Module Name: Az.Search
+online version: https://docs.microsoft.com/en-us/powershell/module/az.search/get-azsearchadminkeypair
 schema: 2.0.0
 ---
 
-# Get-AzureRmSearchAdminKeyPair
+# Get-AzSearchAdminKeyPair
 
 ## SYNOPSIS
 Gets admin key pair of the Azure Search service.
@@ -14,30 +14,30 @@ Gets admin key pair of the Azure Search service.
 
 ### ResourceNameParameterSet (Default)
 ```
-Get-AzureRmSearchAdminKeyPair [-ResourceGroupName] <String> [-ServiceName] <String>
+Get-AzSearchAdminKeyPair [-ResourceGroupName] <String> [-ServiceName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
-Get-AzureRmSearchAdminKeyPair [-ParentObject] <PSSearchService> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSearchAdminKeyPair [-ParentObject] <PSSearchService> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ParentResourceIdParameterSet
 ```
-Get-AzureRmSearchAdminKeyPair [-ParentResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSearchAdminKeyPair [-ParentResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSearchAdminKeyPair** cmdlet gets the admin key pair of the Azure Search service.
+The **Get-AzSearchAdminKeyPair** cmdlet gets the admin key pair of the Azure Search service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmSearchAdminKeyPair -ResourceGroupName felixwa-01 -ServiceName felixwa-basic-search
+PS C:\> Get-AzSearchAdminKeyPair -ResourceGroupName felixwa-01 -ServiceName felixwa-basic-search
 
 Primary                          Secondary                       
 -------                          ---------                       
@@ -52,7 +52,7 @@ The example gets admin key pair of the Azure Search service.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -141,4 +141,4 @@ Parameters: ParentObject (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmSearchAdminKey](./New-AzureRmSearchAdminKey.md)
+[New-AzSearchAdminKey](./New-AzSearchAdminKey.md)

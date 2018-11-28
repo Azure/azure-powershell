@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 633FB5C9-BEB3-42A3-AF4F-A54CC3F9E0F7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworksecurityruleconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmNetworkSecurityRuleConfig
+# New-AzNetworkSecurityRuleConfig
 
 ## SYNOPSIS
 Creates a network security rule configuration.
@@ -15,7 +15,7 @@ Creates a network security rule configuration.
 
 ### SetByResource (Default)
 ```
-New-AzureRmNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protocol <String>]
+New-AzNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protocol <String>]
  [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
  [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
  [-SourceAddressPrefix <System.Collections.Generic.List`1[System.String]>]
@@ -28,7 +28,7 @@ New-AzureRmNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Pr
 
 ### SetByResourceId
 ```
-New-AzureRmNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protocol <String>]
+New-AzNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Protocol <String>]
  [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
  [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
  [-SourceAddressPrefix <System.Collections.Generic.List`1[System.String]>]
@@ -39,13 +39,13 @@ New-AzureRmNetworkSecurityRuleConfig -Name <String> [-Description <String>] [-Pr
 ```
 
 ## DESCRIPTION
-The **New-AzureRmNetworkSecurityRuleConfig** cmdlet creates an Azure network security rule configuration for a network security group.
+The **New-AzNetworkSecurityRuleConfig** cmdlet creates an Azure network security rule configuration for a network security group.
 
 ## EXAMPLES
 
 ### 1: Create a network security rule to allow RDP
 ```
-$rule1 = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" 
+$rule1 = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" 
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix 
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
 ```
@@ -54,7 +54,7 @@ This command creates a security rule allowing access from the Internet to port 3
 
 ### 2: Create a network security rule that allows HTTP
 ```
-$rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" 
+$rule2 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" 
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix 
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
 ```
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -333,12 +333,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmNetworkSecurityRuleConfig](./Add-AzureRmNetworkSecurityRuleConfig.md)
+[Add-AzNetworkSecurityRuleConfig](./Add-AzNetworkSecurityRuleConfig.md)
 
-[Get-AzureRmNetworkSecurityRuleConfig](./Get-AzureRmNetworkSecurityRuleConfig.md)
+[Get-AzNetworkSecurityRuleConfig](./Get-AzNetworkSecurityRuleConfig.md)
 
-[Remove-AzureRmNetworkSecurityRuleConfig](./Remove-AzureRmNetworkSecurityRuleConfig.md)
+[Remove-AzNetworkSecurityRuleConfig](./Remove-AzNetworkSecurityRuleConfig.md)
 
-[Set-AzureRmNetworkSecurityRuleConfig](./Set-AzureRmNetworkSecurityRuleConfig.md)
+[Set-AzNetworkSecurityRuleConfig](./Set-AzNetworkSecurityRuleConfig.md)
 
 

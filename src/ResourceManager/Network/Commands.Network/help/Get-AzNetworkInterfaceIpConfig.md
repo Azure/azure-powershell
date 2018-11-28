@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 1B39809C-90DA-4ECB-B949-D4A9A54ED982
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkinterfaceipconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
-# Get-AzureRmNetworkInterfaceIpConfig
+# Get-AzNetworkInterfaceIpConfig
 
 ## SYNOPSIS
 Gets a network interface IP configuration for a network interface.
@@ -14,19 +14,19 @@ Gets a network interface IP configuration for a network interface.
 ## SYNTAX
 
 ```
-Get-AzureRmNetworkInterfaceIpConfig [-Name <String>] -NetworkInterface <PSNetworkInterface>
+Get-AzNetworkInterfaceIpConfig [-Name <String>] -NetworkInterface <PSNetworkInterface>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmNetworkInterfaceIPConfig** cmdlet gets a network interface IP configuration from an Azure network interface.
+The **Get-AzNetworkInterfaceIPConfig** cmdlet gets a network interface IP configuration from an Azure network interface.
 
 ## EXAMPLES
 
 ### 1: Get an IP configuration of a network interface
 ```
-$nic1 = Get-AzureRmNetworkInterface -Name mynic -ResourceGroupName $myrg
-Get-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -NetworkInterface $nic1
+$nic1 = Get-AzNetworkInterface -Name mynic -ResourceGroupName $myrg
+Get-AzNetworkInterfaceIpConfig -Name ipconfig1 -NetworkInterface $nic1
 ```
 
 The first command gets an existing network interface called mynic and stores it in the variable $nic1. The second
@@ -39,7 +39,7 @@ The first command gets an existing network interface called mynic and stores it 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -97,12 +97,12 @@ Parameters: NetworkInterface (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmNetworkInterfaceIpConfig](./Add-AzureRmNetworkInterfaceIpConfig.md)
+[Add-AzNetworkInterfaceIpConfig](./Add-AzNetworkInterfaceIpConfig.md)
 
-[New-AzureRmNetworkInterfaceIpConfig](./New-AzureRmNetworkInterfaceIpConfig.md)
+[New-AzNetworkInterfaceIpConfig](./New-AzNetworkInterfaceIpConfig.md)
 
-[Remove-AzureRmNetworkInterfaceIpConfig](./Remove-AzureRmNetworkInterfaceIpConfig.md)
+[Remove-AzNetworkInterfaceIpConfig](./Remove-AzNetworkInterfaceIpConfig.md)
 
-[Set-AzureRmNetworkInterfaceIpConfig](./Set-AzureRmNetworkInterfaceIpConfig.md)
+[Set-AzNetworkInterfaceIpConfig](./Set-AzNetworkInterfaceIpConfig.md)
 
 

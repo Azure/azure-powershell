@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/add-azurermaccount
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/add-azaccount
 schema: 2.0.0
 ---
 
-# Connect-AzureRmAccount
+# Connect-AzAccount
 
 ## SYNOPSIS
 Connect to Azure with an authenticated account for use with Azure Resource Manager cmdlet requests.
@@ -14,40 +14,38 @@ Connect to Azure with an authenticated account for use with Azure Resource Manag
 
 ### UserWithSubscriptionId (Default)
 ```
-Connect-AzureRmAccount [-Environment <String>] [[-Credential] <PSCredential>] [-TenantId <String>]
- [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-Subscription <String>] [-ContextName <String>]
+ [-SkipContextPopulation] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
 ```
-Connect-AzureRmAccount [-Environment <String>] [-Credential] <PSCredential> [-ServicePrincipal]
- -TenantId <String> [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
+Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-ServicePrincipal] -Tenant <String>
+ [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
  [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ServicePrincipalCertificateWithSubscriptionId
 ```
-Connect-AzureRmAccount [-Environment <String>] -CertificateThumbprint <String> -ApplicationId <String>
- [-ServicePrincipal] -TenantId <String> [-Subscription <String>] [-ContextName <String>]
- [-SkipContextPopulation] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Connect-AzAccount [-Environment <String>] -CertificateThumbprint <String> -ApplicationId <String>
+ [-ServicePrincipal] -Tenant <String> [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation]
+ [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccessTokenWithSubscriptionId
 ```
-Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] -AccessToken <String>
- [-GraphAccessToken <String>] [-KeyVaultAccessToken <String>] -AccountId <String> [-Subscription <String>]
- [-ContextName <String>] [-SkipValidation] [-SkipContextPopulation] [-Force]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Connect-AzAccount [-Environment <String>] [-Tenant <String>] -AccessToken <String> [-GraphAccessToken <String>]
+ [-KeyVaultAccessToken <String>] -AccountId <String> [-Subscription <String>] [-ContextName <String>]
+ [-SkipValidation] [-SkipContextPopulation] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagedServiceLogin
 ```
-Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] [-AccountId <String>] [-Identity]
+Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-AccountId <String>] [-Identity]
  [-ManagedServicePort <Int32>] [-ManagedServiceHostName <String>] [-ManagedServiceSecret <SecureString>]
  [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
  [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -55,17 +53,17 @@ Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] [-AccountId 
 ```
 
 ## DESCRIPTION
-The Connect-AzureRmAccount cmdlet connects to Azure with an authenticated account for use with Azure Resource Manager cmdlet requests.
+The Connect-AzAccount cmdlet connects to Azure with an authenticated account for use with Azure Resource Manager cmdlet requests.
 You can use this authenticated account only with Azure Resource Manager cmdlets.
-To add an authenticated account for use with Service Management cmdlets, use the Add-AzureAccount or the Import-AzurePublishSettingsFile cmdlet.
-If no context is found for the current user, this command will populate the user's context list with a context for each of their (first 25) subscriptions. The list of contexts created for the user can be found by running "Get-AzureRmContext -ListAvailable". To skip this context population, you can run this command with the "-SkipContextPopulation" switch parameter.
-After executing this cmdlet, you can disconnect from an Azure account using Disconnect-AzureRmAccount.
+To add an authenticated account for use with Service Management cmdlets, use the Add-AzAccount or the Import-AzPublishSettingsFile cmdlet.
+If no context is found for the current user, this command will populate the user's context list with a context for each of their (first 25) subscriptions. The list of contexts created for the user can be found by running "Get-AzContext -ListAvailable". To skip this context population, you can run this command with the "-SkipContextPopulation" switch parameter.
+After executing this cmdlet, you can disconnect from an Azure account using Disconnect-AzAccount.
 
 ## EXAMPLES
 
 ### Example 1: Use an interactive login to connect to an Azure account
 ```powershell
-PS C:\> Connect-AzureRmAccount
+PS C:\> Connect-AzAccount
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
@@ -79,7 +77,7 @@ If multi-factor authentication is enabled for your credentials, you must log in 
 ### Example 2: Connect to an Azure account using organizational ID credentials
 ```powershell
 PS C:\> $Credential = Get-Credential
-PS C:\> Connect-AzureRmAccount -Credential $Credential
+PS C:\> Connect-AzAccount -Credential $Credential
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
@@ -95,7 +93,7 @@ You cannot use multi-factor authentication or Microsoft account credentials to r
 ```powershell
 PS C:\> $Credential = Get-Credential
 
-PS C:\> Connect-AzureRmAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
+PS C:\> Connect-AzAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 xxxx-xxxx-xxxx-xxxx    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
@@ -107,7 +105,7 @@ The ServicePrincipal switch parameter indicates that the account authenticates a
 
 ### Example 4: Use an interactive login to connect to an account for a specific tenant and subscription
 ```powershell
-PS C:\> Connect-AzureRmAccount -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
+PS C:\> Connect-AzAccount -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
@@ -117,7 +115,7 @@ This command connects to an Azure account and configured AzureRM PowerShell to r
 
 ### Example 5: Add an Account Using Managed Service Identity Login
 ```powershell
-PS C:\> Connect-AzureRmAccount -MSI
+PS C:\> Connect-AzAccount -MSI
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
@@ -135,7 +133,7 @@ VirtualMachine with an assigned Managed Service Identity, this will allow the co
 PS C:\> $Thumbprint = "0SZTNJ34TCCMUJ5MJZGR8XQD3S0RVHJBA33Z8ZXV"
 PS C:\> $TenantId = "4cd76576-b611-43d0-8f2b-adcb139531bf"
 PS C:\> $ApplicationId = "3794a65a-e4e4-493d-ac1d-f04308d712dd"
-PS C:\> Connect-AzureRmAccount -CertificateThumbprint $Thumbprint -ApplicationId $ApplicationId -Tenant $TenantId -ServicePrincipal
+PS C:\> Connect-AzAccount -CertificateThumbprint $Thumbprint -ApplicationId $ApplicationId -Tenant $TenantId -ServicePrincipal
 
 Account             SubscriptionName TenantId            Environment
 -------             ---------------- --------            -----------
@@ -246,23 +244,11 @@ The PSCredential object provides the user ID and password for organizational ID 
 
 ```yaml
 Type: System.Management.Automation.PSCredential
-Parameter Sets: UserWithSubscriptionId
-Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Management.Automation.PSCredential
 Parameter Sets: ServicePrincipalWithSubscriptionId
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -272,7 +258,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -424,10 +410,10 @@ Indicates that this account authenticates by providing service principal credent
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
+Parameter Sets: ServicePrincipalWithSubscriptionId
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -436,10 +422,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ServicePrincipalWithSubscriptionId
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -491,13 +477,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -TenantId
-Optional domain name or tenant ID. Domain name will not work in all sign-in situations. For Cloud Solution Provider (CSP) sign-in, tenant ID is required.
+### -Tenant
+Optional tenant name or ID
 
 ```yaml
 Type: System.String
 Parameter Sets: UserWithSubscriptionId, AccessTokenWithSubscriptionId, ManagedServiceLogin
-Aliases: Domain
+Aliases: Domain, TenantId
 
 Required: False
 Position: Named
@@ -509,7 +495,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId
-Aliases: Domain
+Aliases: Domain, TenantId
 
 Required: True
 Position: Named

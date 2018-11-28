@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmsecret
+Module Name: Az.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmsecret
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVMSecret
+# Remove-AzVMSecret
 
 ## SYNOPSIS
 Removes (a) secret(s) from a virtual machine object
@@ -13,18 +13,18 @@ Removes (a) secret(s) from a virtual machine object
 ## SYNTAX
 
 ```
-Remove-AzureRmVMSecret [-VM] <PSVirtualMachine> [[-SourceVaultId] <String[]>]
+Remove-AzVMSecret [-VM] <PSVirtualMachine> [[-SourceVaultId] <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmVMSecret cmdlet removes (a) secret(s) from a virtual machine object.
+The Remove-AzVMSecret cmdlet removes (a) secret(s) from a virtual machine object.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmVM -ResourceGroupName "rg1" -Name "vm1" | Remove-AzureRmVMSecret | Update-AzureRmVM
+PS C:\> Get-AzVM -ResourceGroupName "rg1" -Name "vm1" | Remove-AzVMSecret | Update-AzVM
 ```
 
 Removes all secrets from a virtual machine "vm1" in resource group "rg1" and update the VM
@@ -35,7 +35,7 @@ Removes all secrets from a virtual machine "vm1" in resource group "rg1" and upd
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies the virtual machine from which this cmdlet removes (a) secret(s).
-To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
+To obtain a virtual machine object, use the Get-AzVM cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine

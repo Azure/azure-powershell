@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
-Module Name: AzureRM.Media
+Module Name: Az.Media
 ms.assetid: F395E192-80FA-421D-A389-8C5C0C2267E4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/sync-azurermmediaservicestoragekeys
+online version: https://docs.microsoft.com/en-us/powershell/module/az.media/sync-azmediaservicestoragekeys
 schema: 2.0.0
 ---
 
-# Sync-AzureRmMediaServiceStorageKeys
+# Sync-AzMediaServiceStorageKeys
 
 ## SYNOPSIS
 Synchronizes storage account keys for a storage account associated with the media service.
@@ -14,23 +14,23 @@ Synchronizes storage account keys for a storage account associated with the medi
 ## SYNTAX
 
 ```
-Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] <String> [-AccountName] <String>
+Sync-AzMediaServiceStorageKeys [-ResourceGroupName] <String> [-AccountName] <String>
  [-StorageAccountId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Sync-AzureRmMediaServiceStorageKeys** cmdlet synchronizes storage account keys for a storage account associated with the media service.
+The **Sync-AzMediaServiceStorageKeys** cmdlet synchronizes storage account keys for a storage account associated with the media service.
 
 ## EXAMPLES
 
 ### Example 1: Synchronize storage account keys for a storage account associated with the media service
 ```
-PS C:\>$StorageAccount = Get-AzureRmStorageAccount -ResourceGroupName "ResourceGroup001" -Name "Storage135"
-PS C:\> Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName "ResourceGroup001" -AccoutName "MediasService001" -StorageAccoutId $StorageAccount.Id
+PS C:\>$StorageAccount = Get-AzStorageAccount -ResourceGroupName "ResourceGroup001" -Name "Storage135"
+PS C:\> Sync-AzMediaServiceStorageKeys -ResourceGroupName "ResourceGroup001" -AccoutName "MediasService001" -StorageAccoutId $StorageAccount.Id
 ```
 
-The first command uses the Get-AzureRmStorageAccount cmdlet to get the storage account named Storage135 that belongs to ResourceGroup001 and stores the result in the variable named $StorageAccount.
+The first command uses the Get-AzStorageAccount cmdlet to get the storage account named Storage135 that belongs to ResourceGroup001 and stores the result in the variable named $StorageAccount.
 The second command synchronizes the storage account keys for the media service named MediaService001 using the **Id** property contained in the $StorageAccount variable.
 
 ## PARAMETERS
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 3E736E85-0488-4D10-BEA1-4F9B8DA54C4B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/stop-azurebatchpoolresize
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/stop-azbatchpoolresize
 schema: 2.0.0
 ---
 
-# Stop-AzureBatchPoolResize
+# Stop-AzBatchPoolResize
 
 ## SYNOPSIS
 Stops a pool resize operation.
@@ -14,30 +14,30 @@ Stops a pool resize operation.
 ## SYNTAX
 
 ```
-Stop-AzureBatchPoolResize [-Id] <String> -BatchContext <BatchAccountContext>
+Stop-AzBatchPoolResize [-Id] <String> -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureBatchPoolResize** cmdlet stops an Azure Batch resize operation on a pool.
+The **Stop-AzBatchPoolResize** cmdlet stops an Azure Batch resize operation on a pool.
 
 ## EXAMPLES
 
 ### Example 1: Stop resizing a pool
 ```
-PS C:\>Stop-AzureBatchPoolResize -Id "ContosoPool06" -BatchContext $Context
+PS C:\>Stop-AzBatchPoolResize -Id "ContosoPool06" -BatchContext $Context
 ```
 
 This command stops a resize operation on the pool that has the ID ContosoPool06.
-Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.
+Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Stop resizing a pool by using the pipeline
 ```
-PS C:\>Get-AzureBatchPool -Id "ContosoPool06" -BatchContext $Context | Stop-AzureBatchPoolResize -BatchContext $Context
+PS C:\>Get-AzBatchPool -Id "ContosoPool06" -BatchContext $Context | Stop-AzBatchPoolResize -BatchContext $Context
 ```
 
 This command stops resizing a pool by using the pipeline operator.
-The command gets the pool that has the ID ContosoPool06 by using the Get-AzureBatchPool cmdlet.
+The command gets the pool that has the ID ContosoPool06 by using the Get-AzBatchPool cmdlet.
 The command passes that pool object to the current cmdlet.
 The command stops the resize operation on that pool.
 
@@ -45,7 +45,7 @@ The command stops the resize operation on that pool.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -107,12 +107,12 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchPool](./Get-AzureBatchPool.md)
+[Get-AzBatchPool](./Get-AzBatchPool.md)
 
-[Start-AzureBatchPoolResize](./Start-AzureBatchPoolResize.md)
+[Start-AzBatchPoolResize](./Start-AzBatchPoolResize.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

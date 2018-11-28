@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: DAEF11C1-281B-4BED-9283-2296E0B57018
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlserveradvisor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserveradvisor
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlServerAdvisor
+# Get-AzSqlServerAdvisor
 
 ## SYNOPSIS
 Gets one or more Advisors for an Azure SQL Server.
@@ -14,18 +14,18 @@ Gets one or more Advisors for an Azure SQL Server.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServerAdvisor [-AdvisorName <String>] [-ExpandRecommendedActions] -ServerName <String>
+Get-AzSqlServerAdvisor [-AdvisorName <String>] [-ExpandRecommendedActions] -ServerName <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlServerAdvisor** cmdlet gets one or more Azure SQL Server Advisors for an Azure SQL Server.
+The **Get-AzSqlServerAdvisor** cmdlet gets one or more Azure SQL Server Advisors for an Azure SQL Server.
 
 ## EXAMPLES
 
 ### Example 1: List all the advisors for the server
 ```
-PS C:\> Get-AzureRmSqlServerAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east"
+PS C:\> Get-AzSqlServerAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east"
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
 AdvisorName                    : CreateIndex
@@ -70,7 +70,7 @@ This command gets a list of all the advisors for the server named wi-runner-aust
 
 ### Example 2: Get a single advisor for the server
 ```
-PS C:\> Get-AzureRmSqlServerAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName "CreateIndex"
+PS C:\> Get-AzSqlServerAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName "CreateIndex"
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
 AdvisorName                    : CreateIndex
@@ -86,7 +86,7 @@ This command gets the advisor named CreateIndex for the server named wi-runner-a
 
 ### Example 3: List all the advisors with their recommended actions included in the response
 ```
-PS C:\>Get-AzureRmSqlServerAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -ExpandRecommendedActions
+PS C:\>Get-AzSqlServerAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -ExpandRecommendedActions
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
 AdvisorName                    : CreateIndex
@@ -138,7 +138,7 @@ Since the command uses the *ExpandRecommendedActions* parameter, the cmdlet gets
 
 ### Example 4: Get a single advisor with its recommended actions included in the response
 ```
-PS C:\> Get-AzureRmSqlServerAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName "CreateIndex" -ExpandRecommendedActions
+PS C:\> Get-AzSqlServerAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName "CreateIndex" -ExpandRecommendedActions
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
 AdvisorName                    : CreateIndex
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -250,13 +250,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlElasticPoolAdvisor](./Get-AzureRmSqlElasticPoolAdvisor.md)
+[Get-AzSqlElasticPoolAdvisor](./Get-AzSqlElasticPoolAdvisor.md)
 
-[Get-AzureRmSqlDatabaseAdvisor](./Get-AzureRmSqlDatabaseAdvisor.md)
+[Get-AzSqlDatabaseAdvisor](./Get-AzSqlDatabaseAdvisor.md)
 
-[Get-AzureRmSqlServerRecommendedAction](./Get-AzureRmSqlServerRecommendedAction.md)
+[Get-AzSqlServerRecommendedAction](./Get-AzSqlServerRecommendedAction.md)
 
-[Set-AzureRmSqlServerAdvisorAutoExecuteStatus](./Set-AzureRmSqlServerAdvisorAutoExecuteStatus.md)
+[Set-AzSqlServerAdvisorAutoExecuteStatus](./Set-AzSqlServerAdvisorAutoExecuteStatus.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 9C755BE8-0624-4CF7-AE7C-34DAF44678E8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/disable-azurebatchautoscale
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/disable-azbatchautoscale
 schema: 2.0.0
 ---
 
-# Disable-AzureBatchAutoScale
+# Disable-AzBatchAutoScale
 
 ## SYNOPSIS
 Disables automatic scaling of a pool.
@@ -14,18 +14,18 @@ Disables automatic scaling of a pool.
 ## SYNTAX
 
 ```
-Disable-AzureBatchAutoScale [-Id] <String> -BatchContext <BatchAccountContext>
+Disable-AzBatchAutoScale [-Id] <String> -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzureBatchAutoScale** cmdlet disables automatic scaling of the specified pool.
+The **Disable-AzBatchAutoScale** cmdlet disables automatic scaling of the specified pool.
 
 ## EXAMPLES
 
 ### Example 1: Disable automatic scaling of a pool
 ```
-PS C:\>Disable-AzureBatchAutoScale -Id "MyPool" -BatchContext $Context
+PS C:\>Disable-AzBatchAutoScale -Id "MyPool" -BatchContext $Context
 ```
 
 This command disables automatic scaling for the pool named MyPool.
@@ -34,7 +34,7 @@ This command disables automatic scaling for the pool named MyPool.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,10 +96,10 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Enable-AzureBatchAutoScale](./Enable-AzureBatchAutoScale.md)
+[Enable-AzBatchAutoScale](./Enable-AzBatchAutoScale.md)
 
-[Test-AzureBatchAutoScale](./Test-AzureBatchAutoScale.md)
+[Test-AzBatchAutoScale](./Test-AzBatchAutoScale.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

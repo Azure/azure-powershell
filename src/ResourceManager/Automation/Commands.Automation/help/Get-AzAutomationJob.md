@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: BD32B909-296B-4E46-A24F-6E2BD4B9764B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationjob
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationJob
+# Get-AzAutomationJob
 
 ## SYNOPSIS
 Gets Automation runbook jobs.
@@ -15,46 +15,46 @@ Gets Automation runbook jobs.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationJob [-Status <String>] [-StartTime <DateTimeOffset>] [-EndTime <DateTimeOffset>]
+Get-AzAutomationJob [-Status <String>] [-StartTime <DateTimeOffset>] [-EndTime <DateTimeOffset>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByJobId
 ```
-Get-AzureRmAutomationJob -Id <Guid> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationJob -Id <Guid> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByRunbookName
 ```
-Get-AzureRmAutomationJob -RunbookName <String> [-Status <String>] [-StartTime <DateTimeOffset>]
+Get-AzAutomationJob -RunbookName <String> [-Status <String>] [-StartTime <DateTimeOffset>]
  [-EndTime <DateTimeOffset>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutomationJob** cmdlet gets runbook jobs in Azure Automation.
+The **Get-AzAutomationJob** cmdlet gets runbook jobs in Azure Automation.
 
 ## EXAMPLES
 
 ### Example 1: Get a specific runbook job
 ```
-PS C:\>Get-AzureRmAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b647
+PS C:\>Get-AzAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b647
 ```
 
 This command gets the job that has the specified GUID.
 
 ### Example 2: Get all jobs for a runbook
 ```
-PS C:\>Get-AzureRmAutomationJob -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -RunbookName "Runbook02"
+PS C:\>Get-AzAutomationJob -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -RunbookName "Runbook02"
 ```
 
 This command gets all jobs associated with a runbook named Runbook02.
 
 ### Example 3: Get all running jobs
 ```
-PS C:\>Get-AzureRmAutomationJob -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Status "Running"
+PS C:\>Get-AzAutomationJob -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Status "Running"
 ```
 
 This command gets all running jobs in the Automation account named Contoso17.
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -215,12 +215,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationJobOutput](./Get-AzureRMAutomationJobOutput.md)
+[Get-AzAutomationJobOutput](./Get-AzAutomationJobOutput.md)
 
-[Resume-AzureRmAutomationJob](./Resume-AzureRMAutomationJob.md)
+[Resume-AzAutomationJob](./Resume-AzAutomationJob.md)
 
-[Stop-AzureRmAutomationJob](./Stop-AzureRMAutomationJob.md)
+[Stop-AzAutomationJob](./Stop-AzAutomationJob.md)
 
-[Suspend-AzureRmAutomationJob](./Suspend-AzureRMAutomationJob.md)
+[Suspend-AzAutomationJob](./Suspend-AzAutomationJob.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
-Module Name: Azure.Storage
+Module Name: Az.Storage
 ms.assetid: 42C669B6-B621-454C-B897-262E1C8E76E3
-online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragequeuesastoken
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azstoragequeuesastoken
 schema: 2.0.0
 ---
 
-# New-AzureStorageQueueSASToken
+# New-AzStorageQueueSASToken
 
 ## SYNOPSIS
 Generates a shared access signature token for an Azure storage queue.
@@ -15,26 +15,26 @@ Generates a shared access signature token for an Azure storage queue.
 
 ### SasPolicy
 ```
-New-AzureStorageQueueSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
+New-AzStorageQueueSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
-New-AzureStorageQueueSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
+New-AzStorageQueueSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureStorageQueueSASToken** cmdlet generates shared access signature token for an Azure storage queue.
+The **New-AzStorageQueueSASToken** cmdlet generates shared access signature token for an Azure storage queue.
 
 ## EXAMPLES
 
 ### Example 1: Generate a queue SAS token with full permission
 ```
-PS C:\>New-AzureStorageQueueSASToken -Name "Test" -Permission raup
+PS C:\>New-AzStorageQueueSASToken -Name "Test" -Permission raup
 ```
 
 This example generates a queue SAS token with full permission.
@@ -43,7 +43,7 @@ This example generates a queue SAS token with full permission.
 
 ### -Context
 Specifies the Azure storage context.
-You can create it by New-AzureStorageContext cmdlet.
+You can create it by New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

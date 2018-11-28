@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 14620FBD-4B10-4366-94F7-891BC01B893F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlelasticpooldatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlelasticpooldatabase
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlElasticPoolDatabase
+# Get-AzSqlElasticPoolDatabase
 
 ## SYNOPSIS
 Gets elastic databases in an elastic pool and their property values.
@@ -14,20 +14,20 @@ Gets elastic databases in an elastic pool and their property values.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlElasticPoolDatabase [-ElasticPoolName] <String> [-DatabaseName <String>] [-ServerName] <String>
+Get-AzSqlElasticPoolDatabase [-ElasticPoolName] <String> [-DatabaseName <String>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlElasticPoolDatabase** cmdlet gets elastic databases in an elastic pool and their property values.
+The **Get-AzSqlElasticPoolDatabase** cmdlet gets elastic databases in an elastic pool and their property values.
 You can specify the name of an elastic database in Azure SQL Database to see the property values for only that database.
 
 ## EXAMPLES
 
 ### Example 1: Get all databases in an elastic pool
 ```
-PS C:\>Get-AzureRmSqlElasticPoolDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
+PS C:\>Get-AzSqlElasticPoolDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
 ```
 
 This command gets all databases in an elastic pool named ElasticPool01.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -155,13 +155,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlElasticPool](./Get-AzureRmSqlElasticPool.md)
+[Get-AzSqlElasticPool](./Get-AzSqlElasticPool.md)
 
-[Get-AzureRmSqlElasticPoolActivity](./Get-AzureRmSqlElasticPoolActivity.md)
+[Get-AzSqlElasticPoolActivity](./Get-AzSqlElasticPoolActivity.md)
 
-[New-AzureRmSqlElasticPool](./New-AzureRmSqlElasticPool.md)
+[New-AzSqlElasticPool](./New-AzSqlElasticPool.md)
 
-[Remove-AzureRmSqlElasticPool](./Remove-AzureRmSqlElasticPool.md)
+[Remove-AzSqlElasticPool](./Remove-AzSqlElasticPool.md)
 
-[Set-AzureRmSqlElasticPool](./Set-AzureRmSqlElasticPool.md)
+[Set-AzSqlElasticPool](./Set-AzSqlElasticPool.md)
 

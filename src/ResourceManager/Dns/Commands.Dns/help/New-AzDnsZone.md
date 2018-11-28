@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
-Module Name: AzureRM.Dns
+Module Name: Az.Dns
 ms.assetid: B78F3E8B-C7D2-458C-AB23-06F584FE97E0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/new-azurermdnszone
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/new-azdnszone
 schema: 2.0.0
 ---
 
-# New-AzureRmDnsZone
+# New-AzDnsZone
 
 ## SYNOPSIS
 Creates a new DNS zone.
@@ -15,7 +15,7 @@ Creates a new DNS zone.
 
 ### Ids (Default)
 ```
-New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
+New-AzDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
  [-RegistrationVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
  [-ResolutionVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -23,16 +23,16 @@ New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneTy
 
 ### Objects
 ```
-New-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
+New-AzDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
  [-RegistrationVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]>]
  [-ResolutionVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmDnsZone** cmdlet creates a new Domain Name System (DNS) zone in the specified
+The **New-AzDnsZone** cmdlet creates a new Domain Name System (DNS) zone in the specified
 resource group. You must specify a unique DNS zone name for the *Name* parameter or the cmdlet will
-return an error. After the zone is created, use the New-AzureRmDnsRecordSet cmdlet to create record
+return an error. After the zone is created, use the New-AzDnsRecordSet cmdlet to create record
 sets in the zone.
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control
 whether the cmdlet prompts you for confirmation.
@@ -41,7 +41,7 @@ whether the cmdlet prompts you for confirmation.
 
 ### Example 1: Create a DNS zone
 ```
-PS C:\>$Zone = New-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
+PS C:\>$Zone = New-AzDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 This command creates a new DNS zone named myzone.com in the specified resource group, and then
@@ -50,7 +50,7 @@ stores it in the $Zone variable.
 ### Example 2: Create a Private DNS zone by specifying virtual network IDs
 ```
 PS C:\>$ResVirtualNetworkId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testresgroup/providers/Microsoft.Network/virtualNetworks/resvnet"
-PS C:\>$Zone = New-AzureRmDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetworkId @($ResVirtualNetworkId)
+PS C:\>$Zone = New-AzDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetworkId @($ResVirtualNetworkId)
 ```
 
 This command creates a new Private DNS zone named myprivatezone.com in the specified resource group with
@@ -58,8 +58,8 @@ an associated resolution virtual network (specifying its ID), and then stores it
 
 ### Example 3: Create a Private DNS zone by specifying virtual network objects
 ```
-PS C:\>$ResVirtualNetwork = Get-AzureRmVirtualNetwork -Name "resvnet" -ResourceGroupName "testresgroup"
-PS C:\>$Zone = New-AzureRmDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetwork @($ResVirtualNetwork)
+PS C:\>$ResVirtualNetwork = Get-AzVirtualNetwork -Name "resvnet" -ResourceGroupName "testresgroup"
+PS C:\>$Zone = New-AzDnsZone -Name "myprivatezone.com" -ResourceGroupName "MyResourceGroup" -ZoneType Private -ResolutionVirtualNetwork @($ResVirtualNetwork)
 ```
 
 This command creates a new Private DNS zone named myprivatezone.com in the specified resource group with
@@ -72,7 +72,7 @@ in the $Zone variable.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -262,8 +262,8 @@ If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation
 
 ## RELATED LINKS
 
-[Get-AzureRmDnsZone](./Get-AzureRmDnsZone.md)
+[Get-AzDnsZone](./Get-AzDnsZone.md)
 
-[New-AzureRmDnsRecordSet](./New-AzureRmDnsRecordSet.md)
+[New-AzDnsRecordSet](./New-AzDnsRecordSet.md)
 
-[Remove-AzureRmDnsZone](./Remove-AzureRmDnsZone.md)
+[Remove-AzDnsZone](./Remove-AzDnsZone.md)

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: A935ABAC-6C60-4AE3-9434-B9BCC1182A34
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementlogger
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementlogger
 schema: 2.0.0
 ---
 
-# Get-AzureRmApiManagementLogger
+# Get-AzApiManagementLogger
 
 ## SYNOPSIS
 Gets API Management Logger objects.
@@ -15,33 +15,33 @@ Gets API Management Logger objects.
 
 ### GetAllLoggers (Default)
 ```
-Get-AzureRmApiManagementLogger -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+Get-AzApiManagementLogger -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByLoggerId
 ```
-Get-AzureRmApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String>
+Get-AzApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApiManagementLogger** cmdlet gets an Azure API Management **Logger** or all the loggers.
+The **Get-AzApiManagementLogger** cmdlet gets an Azure API Management **Logger** or all the loggers.
 
 ## EXAMPLES
 
 ### Example 1: Get all loggers
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementLogger -Context $apimContext
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementLogger -Context $apimContext
 ```
 
 This command gets all the loggers for the specified context.
 
 ### Example 2: Get a specific logger
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementLogger -Context $apimContext -LoggerId "Logger123"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementLogger -Context $apimContext -LoggerId "Logger123"
 ```
 
 This command removes a logger that has the ID Logger123.
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -110,10 +110,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagementLogger](./New-AzureRmApiManagementLogger.md)
+[New-AzApiManagementLogger](./New-AzApiManagementLogger.md)
 
-[Remove-AzureRmApiManagementLogger](./Remove-AzureRmApiManagementLogger.md)
+[Remove-AzApiManagementLogger](./Remove-AzApiManagementLogger.md)
 
-[Set-AzureRmApiManagementLogger](./Set-AzureRmApiManagementLogger.md)
+[Set-AzApiManagementLogger](./Set-AzApiManagementLogger.md)
 
 

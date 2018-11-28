@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: C44AD23A-E575-418C-BE90-323B44D6D2E8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermexpressroutecircuitpeeringconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azexpressroutecircuitpeeringconfig
 schema: 2.0.0
 ---
 
-# Add-AzureRmExpressRouteCircuitPeeringConfig
+# Add-AzExpressRouteCircuitPeeringConfig
 
 ## SYNOPSIS
 Adds a peering configuration to an ExpressRoute circuit.
@@ -15,7 +15,7 @@ Adds a peering configuration to an ExpressRoute circuit.
 
 ### SetByResource (Default)
 ```
-Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
+Add-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
  -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
@@ -26,7 +26,7 @@ Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
 
 ### MicrosoftPeeringConfigRoutFilterId
 ```
-Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
+Add-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
  -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
@@ -37,7 +37,7 @@ Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
 
 ### MicrosoftPeeringConfigRoutFilter
 ```
-Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
+Add-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
  -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
@@ -47,17 +47,17 @@ Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmExpressRouteCircuitPeeringConfig** cmdlet adds a peering configuration to an
+The **Add-AzExpressRouteCircuitPeeringConfig** cmdlet adds a peering configuration to an
 ExpressRoute circuit. ExpressRoute circuits connect your on-premises network to the Microsoft cloud
 by using a connectivity provider instead of the public Internet. Note that, after running
-**Add-AzureRmExpressRouteCircuitPeeringConfig**, you must call the Set-AzureRmExpressRouteCircuit
+**Add-AzExpressRouteCircuitPeeringConfig**, you must call the Set-AzExpressRouteCircuit
 cmdlet to activate the configuration.
 
 ## EXAMPLES
 
 ### Example 1: Add a peer to an existing ExpressRoute circuit
 ```
-$circuit = Get-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
+$circuit = Get-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
 $parameters = @{
     Name = 'AzurePrivatePeering'
     Circuit = $circuit
@@ -67,8 +67,8 @@ $parameters = @{
     SecondaryPeerAddressPrefix = '10.6.2.0/30'
     VlanId  = 200
 }
-Add-AzureRmExpressRouteCircuitPeeringConfig @parameters
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
+Add-AzExpressRouteCircuitPeeringConfig @parameters
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
 ```
 
 ## PARAMETERS
@@ -77,7 +77,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 
 ### -ExpressRouteCircuit
 The ExpressRoute circuit being modified. This is Azure object returned by the
-**Get-AzureRmExpressRouteCircuit** cmdlet.
+**Get-AzExpressRouteCircuit** cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
@@ -348,10 +348,10 @@ Parameters: ExpressRouteCircuit (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)
+[Get-AzExpressRouteCircuit](Get-AzExpressRouteCircuit.md)
 
-[New-AzureRmExpressRouteCircuitPeeringConfig](New-AzureRmExpressRouteCircuitPeeringConfig.md)
+[New-AzExpressRouteCircuitPeeringConfig](New-AzExpressRouteCircuitPeeringConfig.md)
 
-[Remove-AzureRmExpressRouteCircuitPeeringConfig](Remove-AzureRmExpressRouteCircuitPeeringConfig.md)
+[Remove-AzExpressRouteCircuitPeeringConfig](Remove-AzExpressRouteCircuitPeeringConfig.md)
 
-[Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)
+[Set-AzExpressRouteCircuit](Set-AzExpressRouteCircuit.md)

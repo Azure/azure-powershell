@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Reservations.dll-Help.xml
-Module Name: AzureRM.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.reservations/get-azurermreservationcatalog
+Module Name: Az.Reservations
+online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/get-azreservationcatalog
 schema: 2.0.0
 ---
 
-# Get-AzureRmReservationCatalog
+# Get-AzReservationCatalog
 
 ## SYNOPSIS
 Get the catalog of available reservations
@@ -13,7 +13,7 @@ Get the catalog of available reservations
 ## SYNTAX
 
 ```
-Get-AzureRmReservationCatalog [-SubscriptionId <Guid>] -ReservedResourceType <String> [-Location <String>]
+Get-AzReservationCatalog [-SubscriptionId <Guid>] -ReservedResourceType <String> [-Location <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ Get the regions and skus that are available for Reserved Instance purchase for t
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmReservationCatalog -ReservedResourceType VirtualMachines -Location westus
+PS C:\> Get-AzReservationCatalog -ReservedResourceType VirtualMachines -Location westus
 ```
 
 Get the VirtualMachines catalog in westus for the default subscription
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmReservationCatalog -SubscriptionId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservedResourceType SuseLinux
+PS C:\> Get-AzReservationCatalog -SubscriptionId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservedResourceType SuseLinux
 ```
 
 Get the SuseLinux catalog for the specified subscription
@@ -42,7 +42,7 @@ Get the SuseLinux catalog for the specified subscription
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

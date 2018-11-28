@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
-Module Name: AzureRM.DataLakeAnalytics
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/get-azurermdatalakeanalyticsfirewallrule
+Module Name: Az.DataLakeAnalytics
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticsfirewallrule
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataLakeAnalyticsFirewallRule
+# Get-AzDataLakeAnalyticsFirewallRule
 
 ## SYNOPSIS
 Retrieves a firewall rule or list of firewall rules from a Data Lake Analytics account.
@@ -13,25 +13,25 @@ Retrieves a firewall rule or list of firewall rules from a Data Lake Analytics a
 ## SYNTAX
 
 ```
-Get-AzureRmDataLakeAnalyticsFirewallRule [-Account] <String> [[-Name] <String>] [[-ResourceGroupName] <String>]
+Get-AzDataLakeAnalyticsFirewallRule [-Account] <String> [[-Name] <String>] [[-ResourceGroupName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataLakeAnalyticsFirewallRule** cmdlet retrieves a firewall rule or list of firewall rules from an Azure Data Lake Analytics account.
+The **Get-AzDataLakeAnalyticsFirewallRule** cmdlet retrieves a firewall rule or list of firewall rules from an Azure Data Lake Analytics account.
 
 ## EXAMPLES
 
 ### Example 1: Get a firewall rule
 ```
-PS C:\>Get-AzureRmDataLakeAnalyticsFirewallRule -Account "ContosoAdlAcct" -Name "My firewall rule"
+PS C:\>Get-AzDataLakeAnalyticsFirewallRule -Account "ContosoAdlAcct" -Name "My firewall rule"
 ```
 
 This command gets the firewall rule named "my firewall rule" from account "ContosoAdlAcct"
 
 ### Example 2: List all firewall rules
 ```
-PS C:\>Get-AzureRmDataLakeAnalyticsFirewallRule -Account "ContosoAdlAcct"
+PS C:\>Get-AzDataLakeAnalyticsFirewallRule -Account "ContosoAdlAcct"
 ```
 
 This command gets all firewall rules from account "ContosoAdlAcct"
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

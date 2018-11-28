@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 6E967F9C-949E-4485-9B57-FC4F523D5DC9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermrouteconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azrouteconfig
 schema: 2.0.0
 ---
 
-# Set-AzureRmRouteConfig
+# Set-AzRouteConfig
 
 ## SYNOPSIS
 Sets the goal state for a route.
@@ -14,19 +14,19 @@ Sets the goal state for a route.
 ## SYNTAX
 
 ```
-Set-AzureRmRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-AddressPrefix <String>]
- [-NextHopType <String>] [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
+ [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmRouteConfig** cmdlet sets the goal state for an Azure route.
+The **Set-AzRouteConfig** cmdlet sets the goal state for an Azure route.
 
 ## EXAMPLES
 
 ### Example 1: Modify a route
 ```
-PS C:\>Get-AzureRmRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Set-AzureRmRouteConfig -Name "Route02" -AddressPrefix 10.4.0.0/16 -NextHopType VnetLocal | Set-AzureRmRouteTable
+PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Set-AzRouteConfig -Name "Route02" -AddressPrefix 10.4.0.0/16 -NextHopType VnetLocal | Set-AzRouteTable
 Name              : Routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
@@ -60,9 +60,9 @@ Routes            : [
 Subnets           : []
 ```
 
-This command gets the route table named RouteTable01 by using the Get-AzureRmRouteTable cmdlet.
+This command gets the route table named RouteTable01 by using the Get-AzRouteTable cmdlet.
 The command passes that table to the current cmdlet by using the pipeline operator.
-The current cmdlet modifies the route named Route02, and then passes the result to the **Set-AzureRmRouteTable** cmdlet, which updates the table to reflect your changes.
+The current cmdlet modifies the route named Route02, and then passes the result to the **Set-AzRouteTable** cmdlet, which updates the table to reflect your changes.
 
 ## PARAMETERS
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -217,12 +217,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmRouteConfig](./Add-AzureRmRouteConfig.md)
+[Add-AzRouteConfig](./Add-AzRouteConfig.md)
 
-[Get-AzureRmRouteConfig](./Get-AzureRmRouteConfig.md)
+[Get-AzRouteConfig](./Get-AzRouteConfig.md)
 
-[New-AzureRmRouteConfig](./New-AzureRmRouteConfig.md)
+[New-AzRouteConfig](./New-AzRouteConfig.md)
 
-[Remove-AzureRmRouteConfig](./Remove-AzureRmRouteConfig.md)
+[Remove-AzRouteConfig](./Remove-AzRouteConfig.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 34985F06-4D8D-463B-B113-972666D18485
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/remove-azurekeyvaultcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultcertificate
 schema: 2.0.0
 ---
 
-# Remove-AzureKeyVaultCertificate
+# Remove-AzKeyVaultCertificate
 
 ## SYNOPSIS
 Removes a certificate from a key vault.
@@ -15,24 +15,24 @@ Removes a certificate from a key vault.
 
 ### ByVaultNameAndName (Default)
 ```
-Remove-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-InRemovedState] [-Force] [-PassThru]
+Remove-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-InRemovedState] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObject
 ```
-Remove-AzureKeyVaultCertificate [-InputObject] <PSKeyVaultCertificateIdentityItem> [-InRemovedState] [-Force]
+Remove-AzKeyVaultCertificate [-InputObject] <PSKeyVaultCertificateIdentityItem> [-InRemovedState] [-Force]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureKeyVaultCertificate** cmdlet removes a certificate from a key vault.
+The **Remove-AzKeyVaultCertificate** cmdlet removes a certificate from a key vault.
 
 ## EXAMPLES
 
 ### Example 1: Remove a certificate
 ```powershell
-PS C:\> Remove-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "SelfSigned01" -PassThru -Force
+PS C:\> Remove-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "SelfSigned01" -PassThru -Force
 
 Certificate        : [Subject]
                        CN=contoso.com
@@ -76,7 +76,7 @@ Therefore, the cmdlet does not prompt you for confirmation.
 
 ### Example 2: Purge the deleted certificate from the key vault permanently
 ```powershell
-PS C:\> Remove-AzureKeyVaultCertificate -VaultName 'Contoso' -Name 'MyCert' -InRemovedState
+PS C:\> Remove-AzKeyVaultCertificate -VaultName 'Contoso' -Name 'MyCert' -InRemovedState
 ```
 
 This command permanently removes the certificate named 'MyCert' from the key vault named 'Contoso'.
@@ -88,7 +88,7 @@ Executing this cmdlet requires the 'purge' permission, which must have been prev
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -240,10 +240,10 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultCertificate](./Add-AzureKeyVaultCertificate.md)
+[Add-AzKeyVaultCertificate](./Add-AzKeyVaultCertificate.md)
 
-[Get-AzureKeyVaultCertificate](./Get-AzureKeyVaultCertificate.md)
+[Get-AzKeyVaultCertificate](./Get-AzKeyVaultCertificate.md)
 
-[Import-AzureKeyVaultCertificate](./Import-AzureKeyVaultCertificate.md)
+[Import-AzKeyVaultCertificate](./Import-AzKeyVaultCertificate.md)
 
-[Undo-AzureKeyVaultCertificateRemoval](./Undo-AzureKeyVaultCertificateRemoval.md)
+[Undo-AzKeyVaultCertificateRemoval](./Undo-AzKeyVaultCertificateRemoval.md)

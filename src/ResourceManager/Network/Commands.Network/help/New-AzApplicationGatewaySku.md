@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 48C33FAF-83C1-4725-AD2A-CF48D0718182
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewaysku
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewaysku
 schema: 2.0.0
 ---
 
-# New-AzureRmApplicationGatewaySku
+# New-AzApplicationGatewaySku
 
 ## SYNOPSIS
 Creates a SKU for an application gateway.
@@ -14,18 +14,18 @@ Creates a SKU for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewaySku -Name <String> -Tier <String> [-Capacity <Int32>]
+New-AzApplicationGatewaySku -Name <String> -Tier <String> [-Capacity <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApplicationGatewaySku** cmdlet creates a stock keeping unit (SKU) for an Azure application gateway.
+The **New-AzApplicationGatewaySku** cmdlet creates a stock keeping unit (SKU) for an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Create a SKU for an Azure application gateway
 ```
-PS C:\>$SKU = New-AzureRmApplicationGatewaySku -Name "Standard_Small" -Tier "Standard" -Capacity 2
+PS C:\>$SKU = New-AzApplicationGatewaySku -Name "Standard_Small" -Tier "Standard" -Capacity 2
 ```
 
 This command creates a SKU named Standard_Small for an Azure application gateway and stores the result in the variable named $SKU.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -118,8 +118,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApplicationGatewaySku](./Get-AzureRmApplicationGatewaySku.md)
+[Get-AzApplicationGatewaySku](./Get-AzApplicationGatewaySku.md)
 
-[Set-AzureRmApplicationGatewaySku](./Set-AzureRmApplicationGatewaySku.md)
+[Set-AzApplicationGatewaySku](./Set-AzApplicationGatewaySku.md)
 
 

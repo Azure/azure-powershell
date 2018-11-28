@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 ms.assetid: C0BEC701-8CE2-4B19-9F04-D32A42D9249E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/get-azurermrediscachekey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/get-azrediscachekey
 schema: 2.0.0
 ---
 
-# Get-AzureRmRedisCacheKey
+# Get-AzRedisCacheKey
 
 ## SYNOPSIS
 Gets the access keys for a Redis Cache.
@@ -14,18 +14,18 @@ Gets the access keys for a Redis Cache.
 ## SYNTAX
 
 ```
-Get-AzureRmRedisCacheKey [-ResourceGroupName <String>] -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRedisCacheKey [-ResourceGroupName <String>] -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRedisCacheKey** cmdlet gets the access keys for an Azure Redis Cache.
+The **Get-AzRedisCacheKey** cmdlet gets the access keys for an Azure Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1: Get the access keys for a Redis Cache
 ```
-PS C:\>Get-AzureRmRedisCacheKey -ResourceGroupName "MyResourceGroup" -Name "MyCacheKey"
+PS C:\>Get-AzRedisCacheKey -ResourceGroupName "MyResourceGroup" -Name "MyCacheKey"
 PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
 SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
 ```
@@ -38,7 +38,7 @@ This command gets the access keys named MyCacheKey.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,6 +94,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmRedisCacheKey](./New-AzureRmRedisCacheKey.md)
+[New-AzRedisCacheKey](./New-AzRedisCacheKey.md)
 
 

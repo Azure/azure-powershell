@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-Module Name: AzureRM.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/update-azurermcontainerregistrycredential
+Module Name: Az.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/update-azcontainerregistrycredential
 schema: 2.0.0
 ---
 
-# Update-AzureRmContainerRegistryCredential
+# Update-AzContainerRegistryCredential
 
 ## SYNOPSIS
 Regenerates a login credential for a container registry.
@@ -14,31 +14,31 @@ Regenerates a login credential for a container registry.
 
 ### NameResourceGroupParameterSet (Default)
 ```
-Update-AzureRmContainerRegistryCredential [-ResourceGroupName] <String> [-Name] <String>
+Update-AzContainerRegistryCredential [-ResourceGroupName] <String> [-Name] <String>
  -PasswordName <PasswordName> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RegistryObjectParameterSet
 ```
-Update-AzureRmContainerRegistryCredential -Registry <PSContainerRegistry> -PasswordName <PasswordName>
+Update-AzContainerRegistryCredential -Registry <PSContainerRegistry> -PasswordName <PasswordName>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Update-AzureRmContainerRegistryCredential -PasswordName <PasswordName> -ResourceId <String>
+Update-AzContainerRegistryCredential -PasswordName <PasswordName> -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Update-AzureRmContainerRegistryCredential cmdlet regenerates a login credential for a container registry.
+The Update-AzContainerRegistryCredential cmdlet regenerates a login credential for a container registry.
 
 ## EXAMPLES
 
 ### Example 1: Regenerate a login credential for a container registry
 ```powershell
-PS C:\>Update-AzureRmContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -PasswordName "Password"
+PS C:\>Update-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -PasswordName "Password"
 
 Username   Password                         Password2
 --------   --------                         ---------
@@ -54,7 +54,7 @@ Admin user has to be enabled for the container registry \`MyRegistry\` to regene
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -191,9 +191,9 @@ Parameters: Registry (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmContainerRegistry](New-AzureRmContainerRegistry.md)
+[New-AzContainerRegistry](New-AzContainerRegistry.md)
 
-[Update-AzureRmContainerRegistry](Update-AzureRmContainerRegistry.md)
+[Update-AzContainerRegistry](Update-AzContainerRegistry.md)
 
-[Get-AzureRmContainerRegistryCredential](Get-AzureRmContainerRegistryCredential.md)
+[Get-AzContainerRegistryCredential](Get-AzContainerRegistryCredential.md)
 

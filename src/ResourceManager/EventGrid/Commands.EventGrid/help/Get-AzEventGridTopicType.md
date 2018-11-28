@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
-Module Name: AzureRM.EventGrid
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridtopictype
+Module Name: Az.EventGrid
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/get-azeventgridtopictype
 schema: 2.0.0
 ---
 
-# Get-AzureRmEventGridTopicType
+# Get-AzEventGridTopicType
 
 ## SYNOPSIS
 Gets the details about the topic types supported by Azure Event Grid.
@@ -13,8 +13,8 @@ Gets the details about the topic types supported by Azure Event Grid.
 ## SYNTAX
 
 ```
-Get-AzureRmEventGridTopicType [[-Name] <String>] [-IncludeEventTypeData]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridTopicType [[-Name] <String>] [-IncludeEventTypeData] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,21 +27,21 @@ If IncludeEventTypes is specified, information about event types supported by ea
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmEventGridTopicType
+PS C:\> Get-AzEventGridTopicType
 ```
 
 Gets a list of the topic types.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmEventGridTopicType -Name "Microsoft.Storage.StorageAccounts"
+PS C:\> Get-AzEventGridTopicType -Name "Microsoft.Storage.StorageAccounts"
 ```
 
 Gets information about the StorageAccounts topic type.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmEventGridTopicType -Name "Microsoft.Storage.StorageAccounts" -IncludeEventTypeData
+PS C:\> Get-AzEventGridTopicType -Name "Microsoft.Storage.StorageAccounts" -IncludeEventTypeData
 ```
 
 Gets information about the StorageAccounts topic type, including the event types supported by StorageAccounts.
@@ -52,7 +52,7 @@ Gets information about the StorageAccounts topic type, including the event types
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

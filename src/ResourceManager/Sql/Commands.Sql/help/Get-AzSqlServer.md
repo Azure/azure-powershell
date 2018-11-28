@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: C39ACCAC-2BFF-48D0-95EA-D5B402D74D46
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlserver
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserver
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlServer
+# Get-AzSqlServer
 
 ## SYNOPSIS
 Returns information about SQL Database servers.
@@ -14,19 +14,19 @@ Returns information about SQL Database servers.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServer [[-ResourceGroupName] <String>] [[-ServerName] <String>]
+Get-AzSqlServer [[-ResourceGroupName] <String>] [[-ServerName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlServer** cmdlet returns information about one or more Azure SQL Database servers.
+The **Get-AzSqlServer** cmdlet returns information about one or more Azure SQL Database servers.
 Specify the name of a server to see information for only that server.
 
 ## EXAMPLES
 
 ### Example 1: Get all instances of SQL Server assigned to a resource group
 ```
-PS C:\>Get-AzureRmSqlServer -ResourceGroupName "ResourceGroup01"
+PS C:\>Get-AzSqlServer -ResourceGroupName "ResourceGroup01"
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
@@ -52,7 +52,7 @@ This command gets information about all the Azure SQL Database servers assigned 
 
 ### Example 2: Get information about an Azure SQL Database server
 ```
-PS C:\>Get-AzureRmSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
@@ -68,7 +68,7 @@ This command gets information about the Azure SQL Database server named Server01
 
 ### Example 3: Get all instances of SQL Server in the subscription
 ```
-PS C:\>Get-AzureRmResourceGroup | Get-AzureRmSqlServer
+PS C:\>Get-AzResourceGroup | Get-AzSqlServer
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
@@ -108,7 +108,7 @@ This command gets information about all the Azure SQL Database servers in the cu
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -195,11 +195,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlServer](./New-AzureRmSqlServer.md)
+[New-AzSqlServer](./New-AzSqlServer.md)
 
-[Remove-AzureRmSqlServer](./Remove-AzureRmSqlServer.md)
+[Remove-AzSqlServer](./Remove-AzSqlServer.md)
 
-[Set-AzureRmSqlServer](./Set-AzureRmSqlServer.md)
+[Set-AzSqlServer](./Set-AzSqlServer.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 08D1D6AC-D064-4E2D-9C22-0B65E7BE4DA7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/remove-azurermhdinsightpersistedscriptaction
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/remove-azhdinsightpersistedscriptaction
 schema: 2.0.0
 ---
 
-# Remove-AzureRmHDInsightPersistedScriptAction
+# Remove-AzHDInsightPersistedScriptAction
 
 ## SYNOPSIS
 Removes an persisted script action from an HDInsight cluster.
@@ -14,19 +14,19 @@ Removes an persisted script action from an HDInsight cluster.
 ## SYNTAX
 
 ```
-Remove-AzureRmHDInsightPersistedScriptAction [-ClusterName] <String> [-Name] <String>
+Remove-AzHDInsightPersistedScriptAction [-ClusterName] <String> [-Name] <String>
  [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmHDInsightPersistedScriptAction** cmdlet removes a persisted script action from the specified Azure HDInsight cluster's list of persisted script actions.
+The **Remove-AzHDInsightPersistedScriptAction** cmdlet removes a persisted script action from the specified Azure HDInsight cluster's list of persisted script actions.
 The removed script will no longer be executed when the cluster is scaled up.
 
 ## EXAMPLES
 
 ### Example 1: Remove a script action from the list of persisted script actions on a cluster
 ```
-PS C:\>Remove-AzureRmHDInsightPersistedScriptAction `
+PS C:\>Remove-AzHDInsightPersistedScriptAction `
             -ClusterName "your-hadoop-001" `
             -Name "Scriptaction"
 ```
@@ -110,8 +110,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmHDInsightPersistedScriptAction](./Get-AzureRmHDInsightPersistedScriptAction.md)
+[Get-AzHDInsightPersistedScriptAction](./Get-AzHDInsightPersistedScriptAction.md)
 
-[Set-AzureRmHDInsightPersistedScriptAction](./Set-AzureRmHDInsightPersistedScriptAction.md)
+[Set-AzHDInsightPersistedScriptAction](./Set-AzHDInsightPersistedScriptAction.md)
 
 

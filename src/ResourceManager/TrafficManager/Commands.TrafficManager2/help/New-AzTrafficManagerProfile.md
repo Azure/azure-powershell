@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM.TrafficManager
+Module Name: Az.TrafficManager
 ms.assetid: DE31891A-0EF7-44D7-B955-A3279D27CC21
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile
 schema: 2.0.0
 ---
 
-# New-AzureRmTrafficManagerProfile
+# New-AzTrafficManagerProfile
 
 ## SYNOPSIS
 Creates a Traffic Manager profile.
@@ -14,7 +14,7 @@ Creates a Traffic Manager profile.
 ## SYNTAX
 
 ```
-New-AzureRmTrafficManagerProfile -Name <String> -ResourceGroupName <String> [-ProfileStatus <String>]
+New-AzTrafficManagerProfile -Name <String> -ResourceGroupName <String> [-ProfileStatus <String>]
  -RelativeDnsName <String> -Ttl <UInt32> -TrafficRoutingMethod <String> -MonitorProtocol <String>
  -MonitorPort <UInt32> [-MonitorPath <String>] [-MonitorIntervalInSeconds <Int32>]
  [-MonitorTimeoutInSeconds <Int32>] [-MonitorToleratedNumberOfFailures <Int32>] [-MaxReturn <Int64>]
@@ -25,20 +25,20 @@ New-AzureRmTrafficManagerProfile -Name <String> -ResourceGroupName <String> [-Pr
 ```
 
 ## DESCRIPTION
-The **New-AzureRmTrafficManagerProfile** cmdlet creates an Azure Traffic Manager profile.
+The **New-AzTrafficManagerProfile** cmdlet creates an Azure Traffic Manager profile.
 Specify the *Name* parameter and required settings.
 This cmdlet returns a local object that represents the new profile.
 
 This cmdlet does not configure Traffic Manager endpoints.
-You can update the local profile object by using the Add-AzureRmTrafficManagerEndpointConfig cmdlet.
-Then upload changes to Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet.
-Alternatively, you can add endpoints by using the New-AzureRmTrafficManagerEndpoint cmdlet.
+You can update the local profile object by using the Add-AzTrafficManagerEndpointConfig cmdlet.
+Then upload changes to Traffic Manager by using the Set-AzTrafficManagerProfile cmdlet.
+Alternatively, you can add endpoints by using the New-AzTrafficManagerEndpoint cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Create a profile
 ```
-PS C:\>New-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" -ProfileStatus Enabled -TrafficRoutingMethod Performance -RelativeDnsName "contosoapp" -TTL 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/default.aspx"
+PS C:\>New-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" -ProfileStatus Enabled -TrafficRoutingMethod Performance -RelativeDnsName "contosoapp" -TTL 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/default.aspx"
 ```
 
 This command creates an Azure Traffic Manager profile named ContosoProfile in resource group ResourceGroup11.
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -299,7 +299,7 @@ Valid values are:
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Performance, Weighted, Priority, Geographic
+Accepted values: Performance, Weighted, Priority, Geographic, Subnet, MultiValue
 
 Required: True
 Position: Named
@@ -340,16 +340,16 @@ This cmdlet returns a new TrafficManagerProfile object.
 
 ## RELATED LINKS
 
-[Add-AzureRmTrafficManagerEndpointConfig](./Add-AzureRmTrafficManagerEndpointConfig.md)
+[Add-AzTrafficManagerEndpointConfig](./Add-AzTrafficManagerEndpointConfig.md)
 
-[Disable-AzureRmTrafficManagerProfile](./Disable-AzureRmTrafficManagerProfile.md)
+[Disable-AzTrafficManagerProfile](./Disable-AzTrafficManagerProfile.md)
 
-[Enable-AzureRmTrafficManagerProfile](./Enable-AzureRmTrafficManagerProfile.md)
+[Enable-AzTrafficManagerProfile](./Enable-AzTrafficManagerProfile.md)
 
-[Get-AzureRmTrafficManagerProfile](./Get-AzureRmTrafficManagerProfile.md)
+[Get-AzTrafficManagerProfile](./Get-AzTrafficManagerProfile.md)
 
-[Remove-AzureRmTrafficManagerProfile](./Remove-AzureRmTrafficManagerProfile.md)
+[Remove-AzTrafficManagerProfile](./Remove-AzTrafficManagerProfile.md)
 
-[Set-AzureRmTrafficManagerProfile](./Set-AzureRmTrafficManagerProfile.md)
+[Set-AzTrafficManagerProfile](./Set-AzTrafficManagerProfile.md)
 
 

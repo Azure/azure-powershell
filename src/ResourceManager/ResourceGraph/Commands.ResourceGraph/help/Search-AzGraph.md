@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceGraph.dll-Help.xml
-Module Name: AzureRM.ResourceGraph
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resourcegraph/search-azurermgraph
+Module Name: Az.ResourceGraph
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcegraph/search-azgraph
 schema: 2.0.0
 ---
 
-# Search-AzureRmGraph
+# Search-AzGraph
 
 ## SYNOPSIS
 Queries the resources managed by Azure Resource Manager.
@@ -13,7 +13,7 @@ Queries the resources managed by Azure Resource Manager.
 ## SYNTAX
 
 ```
-Search-AzureRmGraph [-Query] <String> [-Subscription <String[]>] [-First <Int32>] [-Skip <Int32>]
+Search-AzGraph [-Query] <String> [-Subscription <String[]>] [-First <Int32>] [-Skip <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Learn more about the query syntax here: https://aka.ms/resource-graph/learntoque
 
 ### Example 1
 ```powershell
-PS C:\> Search-AzureRmGraph "project id, name, type, location, tags" -First 3
+PS C:\> Search-AzGraph "project id, name, type, location, tags" -First 3
 
 
 id         : /subscriptions/1ef51df4-f8a9-4b69-9919-1ef51df4eff6/resourceGroups/Service-INT-a/providers/Microsoft.Compute/virtualMachineScaleSets/nt
@@ -44,7 +44,7 @@ Simple resources query requesting a subset of resource fields.
 
 ### Example 2
 ```powershell
-PS C:\> Search-AzureRmGraph "project id, name, type, location | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location | top 3 by count_"
+PS C:\> Search-AzGraph "project id, name, type, location | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location | top 3 by count_"
 
 location      count_
 --------      ------
@@ -61,7 +61,7 @@ A complex query on resources featuring field selection, filtering and summarizin
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -134,8 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: 90630395-8747-4446-A879-323274811956
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/import-azurermdatalakestoreitem
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/import-azdatalakestoreitem
 schema: 2.0.0
 ---
 
-# Import-AzureRmDataLakeStoreItem
+# Import-AzDataLakeStoreItem
 
 ## SYNOPSIS
 Uploads a local file or directory to a Data Lake Store.
@@ -15,27 +15,27 @@ Uploads a local file or directory to a Data Lake Store.
 
 ### NoDiagnosticLogging (Default)
 ```
-Import-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
+Import-AzDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
  [-Recurse] [-Resume] [-ForceBinary] [-Force] [-Concurrency <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IncludeDiagnosticLogging
 ```
-Import-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
+Import-AzDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
  [-Recurse] [-Resume] [-ForceBinary] [-Force] [-Concurrency <Int32>] [-DiagnosticLogLevel <LogLevel>]
  -DiagnosticLogPath <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Import-AzureRmDataLakeStoreItem** cmdlet uploads a local file or directory to a Data Lake Store.
+The **Import-AzDataLakeStoreItem** cmdlet uploads a local file or directory to a Data Lake Store.
 
 ## EXAMPLES
 
 ### Example 1: Upload a file
 ```
-PS C:\>Import-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "C:\SrcFile.csv" -Destination "/MyFiles/File.csv" -Concurrency 4
+PS C:\>Import-AzDataLakeStoreItem -AccountName "ContosoADL" -Path "C:\SrcFile.csv" -Destination "/MyFiles/File.csv" -Concurrency 4
 ```
 
 This command uploads the file SrcFile.csv and adds it to the MyFiles folder in the Data Lake Store as File.csv with a concurrency of 4.
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -263,18 +263,18 @@ The full path in the Data Lake Store account to the uploaded file or folder.
 
 ## RELATED LINKS
 
-[Get-AzureRmDataLakeStoreItem](./Get-AzureRmDataLakeStoreItem.md)
+[Get-AzDataLakeStoreItem](./Get-AzDataLakeStoreItem.md)
 
-[Export-AzureRmDataLakeStoreItem](./Export-AzureRmDataLakeStoreItem.md)
+[Export-AzDataLakeStoreItem](./Export-AzDataLakeStoreItem.md)
 
-[Join-AzureRmDataLakeStoreItem](./Join-AzureRmDataLakeStoreItem.md)
+[Join-AzDataLakeStoreItem](./Join-AzDataLakeStoreItem.md)
 
-[Move-AzureRmDataLakeStoreItem](./Move-AzureRmDataLakeStoreItem.md)
+[Move-AzDataLakeStoreItem](./Move-AzDataLakeStoreItem.md)
 
-[New-AzureRmDataLakeStoreItem](./New-AzureRmDataLakeStoreItem.md)
+[New-AzDataLakeStoreItem](./New-AzDataLakeStoreItem.md)
 
-[Remove-AzureRmDataLakeStoreItem](./Remove-AzureRmDataLakeStoreItem.md)
+[Remove-AzDataLakeStoreItem](./Remove-AzDataLakeStoreItem.md)
 
-[Test-AzureRmDataLakeStoreItem](./Test-AzureRmDataLakeStoreItem.md)
+[Test-AzDataLakeStoreItem](./Test-AzDataLakeStoreItem.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 91FFBEE9-A488-49ED-8C6C-2DE891CE0749
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/new-azurermintegrationaccountschema
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/new-azintegrationaccountschema
 schema: 2.0.0
 ---
 
-# New-AzureRmIntegrationAccountSchema
+# New-AzIntegrationAccountSchema
 
 ## SYNOPSIS
 Creates an integration account schema.
@@ -14,13 +14,13 @@ Creates an integration account schema.
 ## SYNTAX
 
 ```
-New-AzureRmIntegrationAccountSchema -ResourceGroupName <String> -Name <String> -SchemaName <String>
+New-AzIntegrationAccountSchema -ResourceGroupName <String> -Name <String> -SchemaName <String>
  [-SchemaFilePath <String>] [-SchemaDefinition <String>] [-SchemaType <String>] [-ContentType <String>]
  [-Metadata <Object>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmIntegrationAccountSchema** cmdlet creates an integration account schema.
+The **New-AzIntegrationAccountSchema** cmdlet creates an integration account schema.
 This cmdlet returns an object that represents the integration account schema.
 Specify the integration account name, resource group name, schema name, and schema definition.
 Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
@@ -33,7 +33,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Create the integration account schema
 ```
-PS C:\>New-AzureRmIntegrationAccountSchema -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -SchemaName "IntegrationAccountSchema1" -SchemaFilePath "c:\temp\schema1"
+PS C:\>New-AzIntegrationAccountSchema -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -SchemaName "IntegrationAccountSchema1" -SchemaFilePath "c:\temp\schema1"
 Id          : /subscriptions/<SusbcriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/schemas/IntegrationAccountSchema1
 Name        : IntegrationAccountSchema1
 Type        : Microsoft.Logic/integrationAccounts/schemas
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -235,10 +235,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmIntegrationAccountSchema](./Get-AzureRmIntegrationAccountSchema.md)
+[Get-AzIntegrationAccountSchema](./Get-AzIntegrationAccountSchema.md)
 
-[Remove-AzureRmIntegrationAccountSchema](./Remove-AzureRmIntegrationAccountSchema.md)
+[Remove-AzIntegrationAccountSchema](./Remove-AzIntegrationAccountSchema.md)
 
-[Set-AzureRmIntegrationAccountSchema](./Set-AzureRmIntegrationAccountSchema.md)
+[Set-AzIntegrationAccountSchema](./Set-AzIntegrationAccountSchema.md)
 
 

@@ -1,121 +1,121 @@
 ---
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 Module Guid: 698c387c-bd6b-41c6-82ce-721f1ef39548
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.insights
 Help Version: 4.0.4.0
 Locale: en-US
 ---
 
-# AzureRM.Insights Module
+# Az.Insights Module
 ## Description
 This topic displays help topics for the Azure Insights Cmdlets.
 
-## AzureRM.Insights Cmdlets
-### [Add-AzureRmAutoscaleSetting](Add-AzureRmAutoscaleSetting.md)
+## Az.Insights Cmdlets
+### [Add-AzAutoscaleSetting](Add-AzAutoscaleSetting.md)
 Creates an Autoscale setting.
 
-### [Add-AzureRmLogProfile](Add-AzureRmLogProfile.md)
+### [Add-AzLogProfile](Add-AzLogProfile.md)
 Creates a new activity log profile. This profile is used to either archive the activity log to an Azure storage account or stream it to an Azure event hub in the same subscription. 
 
-### [Add-AzureRmMetricAlertRule](Add-AzureRmMetricAlertRule.md)
+### [Add-AzMetricAlertRule](Add-AzMetricAlertRule.md)
 Adds or updates a metric-based alert rule.
 
-### [Add-AzureRmWebtestAlertRule](Add-AzureRmWebtestAlertRule.md)
+### [Add-AzWebtestAlertRule](Add-AzWebtestAlertRule.md)
 Adds or updates a webtest alert rule.
 
-### [Disable-AzureRmActivityLogAlert](Disable-AzureRmActivityLogAlert.md)
+### [Disable-AzActivityLogAlert](Disable-AzActivityLogAlert.md)
 Disables an activity log alert and sets its tags.
 
-### [Enable-AzureRmActivityLogAlert](Enable-AzureRmActivityLogAlert.md)
+### [Enable-AzActivityLogAlert](Enable-AzActivityLogAlert.md)
 Enables an activity log alert and sets its Tags.
 
-### [Get-AzureRmActionGroup](Get-AzureRmActionGroup.md)
+### [Get-AzActionGroup](Get-AzActionGroup.md)
 Gets action group(s).
 
-### [Get-AzureRmActivityLogAlert](Get-AzureRmActivityLogAlert.md)
+### [Get-AzActivityLogAlert](Get-AzActivityLogAlert.md)
 Gets one or more activity log alert resources.
 
-### [Get-AzureRmAlertHistory](Get-AzureRmAlertHistory.md)
+### [Get-AzAlertHistory](Get-AzAlertHistory.md)
 Gets the history of alerts.
 
-### [Get-AzureRmAlertRule](Get-AzureRmAlertRule.md)
+### [Get-AzAlertRule](Get-AzAlertRule.md)
 Gets alert rules.
 
-### [Get-AzureRmAutoscaleHistory](Get-AzureRmAutoscaleHistory.md)
+### [Get-AzAutoscaleHistory](Get-AzAutoscaleHistory.md)
 Gets the Autoscale history.
 
-### [Get-AzureRmAutoscaleSetting](Get-AzureRmAutoscaleSetting.md)
+### [Get-AzAutoscaleSetting](Get-AzAutoscaleSetting.md)
 Gets Autoscale settings.
 
-### [Get-AzureRmDiagnosticSetting](Get-AzureRmDiagnosticSetting.md)
+### [Get-AzDiagnosticSetting](Get-AzDiagnosticSetting.md)
 Gets the logged categories and time grains.
 
-### [Get-AzureRmLog](Get-AzureRmLog.md)
+### [Get-AzLog](Get-AzLog.md)
 Gets a log of events.
 
-### [Get-AzureRmLogProfile](Get-AzureRmLogProfile.md)
+### [Get-AzLogProfile](Get-AzLogProfile.md)
 Gets a log profile.
 
-### [Get-AzureRmMetric](Get-AzureRmMetric.md)
+### [Get-AzMetric](Get-AzMetric.md)
 Gets the metric values of a resource.
 
-### [Get-AzureRmMetricDefinition](Get-AzureRmMetricDefinition.md)
+### [Get-AzMetricDefinition](Get-AzMetricDefinition.md)
 Gets metric definitions.
 
-### [New-AzureRmActionGroup](New-AzureRmActionGroup.md)
+### [New-AzActionGroup](New-AzActionGroup.md)
 Creates an ActionGroup reference object in memory.
 
-### [New-AzureRmActionGroupReceiver](New-AzureRmActionGroupReceiver.md)
+### [New-AzActionGroupReceiver](New-AzActionGroupReceiver.md)
 Creates an new action group receiver.
 
-### [New-AzureRmActivityLogAlertCondition](New-AzureRmActivityLogAlertCondition.md)
+### [New-AzActivityLogAlertCondition](New-AzActivityLogAlertCondition.md)
 Creates an new activity log alert condition object in memory.
 
-### [New-AzureRmAlertRuleEmail](New-AzureRmAlertRuleEmail.md)
+### [New-AzAlertRuleEmail](New-AzAlertRuleEmail.md)
 Creates an email action for an alert rule.
 
-### [New-AzureRmAlertRuleWebhook](New-AzureRmAlertRuleWebhook.md)
+### [New-AzAlertRuleWebhook](New-AzAlertRuleWebhook.md)
 Creates an alert rule webhook.
 
-### [New-AzureRmAutoscaleNotification](New-AzureRmAutoscaleNotification.md)
+### [New-AzAutoscaleNotification](New-AzAutoscaleNotification.md)
 Creates an Autoscale email notification.
 
-### [New-AzureRmAutoscaleProfile](New-AzureRmAutoscaleProfile.md)
+### [New-AzAutoscaleProfile](New-AzAutoscaleProfile.md)
 Creates an Autoscale profile.
 
-### [New-AzureRmAutoscaleRule](New-AzureRmAutoscaleRule.md)
+### [New-AzAutoscaleRule](New-AzAutoscaleRule.md)
 Creates an Autoscale rule.
 
-### [New-AzureRmAutoscaleWebhook](New-AzureRmAutoscaleWebhook.md)
+### [New-AzAutoscaleWebhook](New-AzAutoscaleWebhook.md)
 Creates an Autoscale webhook.
 
-### [New-AzureRmMetricFilter](New-AzureRmMetricFilter.md)
+### [New-AzMetricFilter](New-AzMetricFilter.md)
 Creates a metric dimension filter that can be used to query metrics.
 
-### [Remove-AzureRmActionGroup](Remove-AzureRmActionGroup.md)
+### [Remove-AzActionGroup](Remove-AzActionGroup.md)
 Removes an action group.
 
-### [Remove-AzureRmActivityLogAlert](Remove-AzureRmActivityLogAlert.md)
+### [Remove-AzActivityLogAlert](Remove-AzActivityLogAlert.md)
 Removes an activity log alert.
 
-### [Remove-AzureRmAlertRule](Remove-AzureRmAlertRule.md)
+### [Remove-AzAlertRule](Remove-AzAlertRule.md)
 Removes an alert rule.
 
-### [Remove-AzureRmAutoscaleSetting](Remove-AzureRmAutoscaleSetting.md)
+### [Remove-AzAutoscaleSetting](Remove-AzAutoscaleSetting.md)
 Removes an Autoscale setting.
 
-### [Remove-AzureRmDiagnosticSetting](Remove-AzureRmDiagnosticSetting.md)
+### [Remove-AzDiagnosticSetting](Remove-AzDiagnosticSetting.md)
 Remove a diagnostic setting for the a resource.
 
-### [Remove-AzureRmLogProfile](Remove-AzureRmLogProfile.md)
+### [Remove-AzLogProfile](Remove-AzLogProfile.md)
 Removes a log profile.
 
-### [Set-AzureRmActionGroup](Set-AzureRmActionGroup.md)
+### [Set-AzActionGroup](Set-AzActionGroup.md)
 Creates a new or updates an existing action group.
 
-### [Set-AzureRmActivityLogAlert](Set-AzureRmActivityLogAlert.md)
+### [Set-AzActivityLogAlert](Set-AzActivityLogAlert.md)
 Creates a new or sets an existing activity log alert.
 
-### [Set-AzureRmDiagnosticSetting](Set-AzureRmDiagnosticSetting.md)
+### [Set-AzDiagnosticSetting](Set-AzDiagnosticSetting.md)
 Sets the logs and metrics settings for the resource.
 

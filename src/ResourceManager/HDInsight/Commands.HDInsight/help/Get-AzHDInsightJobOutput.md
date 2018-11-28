@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 5871C962-27D7-4EC8-927E-D4CAE5F23C58
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/get-azurermhdinsightjoboutput
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/get-azhdinsightjoboutput
 schema: 2.0.0
 ---
 
-# Get-AzureRmHDInsightJobOutput
+# Get-AzHDInsightJobOutput
 
 ## SYNOPSIS
 Gets the log output for a job from the storage account associated with a specified cluster.
@@ -14,14 +14,14 @@ Gets the log output for a job from the storage account associated with a specifi
 ## SYNTAX
 
 ```
-Get-AzureRmHDInsightJobOutput [-ClusterName] <String> [-JobId] <String> [[-DefaultContainer] <String>]
+Get-AzHDInsightJobOutput [-ClusterName] <String> [-JobId] <String> [[-DefaultContainer] <String>]
  [[-DefaultStorageAccountName] <String>] [[-DefaultStorageAccountKey] <String>]
  [-HttpCredential] <PSCredential> [-ResourceGroupName <String>] [-DisplayOutputType <JobDisplayOutputType>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmHDInsightJobOutput** cmdlet gets the log output for a job from the Storage account associated with an Azure HDInsight cluster.
+The **Get-AzHDInsightJobOutput** cmdlet gets the log output for a job from the Storage account associated with an Azure HDInsight cluster.
 
 ## EXAMPLES
 
@@ -35,12 +35,12 @@ PS C:\> $clusterCreds = Get-Credential
 PS C:\> $statusFolder = "<status folder>"
 PS C:\> $query = "<query here>"
 
-PS C:\> New-AzureRmHDInsightHiveJobDefinition -StatusFolder $statusFolder `
+PS C:\> New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
             -Query $query `
-        | Start-AzureRmHDInsightJob `
+        | Start-AzHDInsightJob `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds `
-        | Get-AzureRmHDInsightJobOutput `
+        | Get-AzHDInsightJobOutput `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds
 ```
@@ -203,8 +203,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmHDInsightHiveJobDefinition](./New-AzureRmHDInsightHiveJobDefinition.md)
+[New-AzHDInsightHiveJobDefinition](./New-AzHDInsightHiveJobDefinition.md)
 
-[Start-AzureRmHDInsightJob](./Start-AzureRmHDInsightJob.md)
+[Start-AzHDInsightJob](./Start-AzHDInsightJob.md)
 
 

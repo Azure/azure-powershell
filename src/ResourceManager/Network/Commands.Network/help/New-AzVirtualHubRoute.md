@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermvirtualhubroute
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualhubroute
 schema: 2.0.0
 ---
 
-# New-AzureRmVirtualHubRoute
+# New-AzVirtualHubRoute
 
 ## SYNOPSIS
 Creates an Azure Virtual Hub Route object.
@@ -13,7 +13,7 @@ Creates an Azure Virtual Hub Route object.
 ## SYNTAX
 
 ```
-New-AzureRmVirtualHubRoute -AddressPrefix <String[]> -NextHopIpAddress <String>
+New-AzVirtualHubRoute -AddressPrefix <String[]> -NextHopIpAddress <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

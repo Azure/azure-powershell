@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Tags.dll-Help.xml
-Module Name: AzureRM.Tags
+Module Name: Az.Tags
 ms.assetid: 726E01DD-D73C-4D4B-8FC0-52767927367C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.tags/get-azurermtag
+online version: https://docs.microsoft.com/en-us/powershell/module/az.tags/get-aztag
 schema: 2.0.0
 ---
 
-# Get-AzureRmTag
+# Get-AzTag
 
 ## SYNOPSIS
 Gets predefined Azure tags.
@@ -14,25 +14,25 @@ Gets predefined Azure tags.
 ## SYNTAX
 
 ```
-Get-AzureRmTag [[-Name] <String>] [-Detailed] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzTag [[-Name] <String>] [-Detailed] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmTag** cmdlet gets predefined Azure tags in your subscription.
+The **Get-AzTag** cmdlet gets predefined Azure tags in your subscription.
 This cmdlet returns basic information about the tags or detailed information about tags and their values.
 All output objects include a Count property that represents the number of resources and resource groups to which the tags and values have been applied.
-The Azure Tags module that **Get-AzureRMTag** is a part of can help you manage predefined Azure tags.
+The Azure Tags module that **Get-AzTag** is a part of can help you manage predefined Azure tags.
 An Azure tag is a name-value pair that you can use to categorize your Azure resources and resource groups, such as by department or cost center, or to track notes or comments about the resources and groups.
 You can define and apply tags in a single step, but predefined tags let you establish standard, consistent, predictable names and values for the tags in your subscription.
-To create a predefined tag, use the New-AzureRmTag cmdlet.
-To apply a predefined tag to a resource group, use the *Tag* parameter of the New-AzureRmTag cmdlet.
-To search resource groups for a specific tag name or name and value, use the *Tag* parameter of the Get-AzureRMResourceGroup cmdlet.
+To create a predefined tag, use the New-AzTag cmdlet.
+To apply a predefined tag to a resource group, use the *Tag* parameter of the New-AzTag cmdlet.
+To search resource groups for a specific tag name or name and value, use the *Tag* parameter of the Get-AzResourceGroup cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Get all predefined tags
 ```
-PS C:\>Get-AzureRmTag
+PS C:\>Get-AzTag
 
 Name      Count
 ========  =====
@@ -47,7 +47,7 @@ The Count property shows how many times the tag has been applied to resources an
 
 ### Example 2: Get a tag by name
 ```
-PS C:\>Get-AzureRmTag -Name "Department"
+PS C:\>Get-AzTag -Name "Department"
 
 Name:   Department
 Count:  5
@@ -65,7 +65,7 @@ The Count property shows how many times the tag and each of its values has been 
 
 ### Example 3: Get values of all tags
 ```
-PS C:\>Get-AzureRmTag -Detailed
+PS C:\>Get-AzTag -Detailed
 
 Name:   Department
 Count:  5
@@ -103,7 +103,7 @@ Using the *Detailed* parameter is the equivalent of using the *Name* parameter f
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 
 ### -Name
 Specifies the name of the tag to get.
-By default, **Get-AzureRmTag** gets basic information about all predefined tags in the subscription.
+By default, **Get-AzTag** gets basic information about all predefined tags in the subscription.
 When you specify the *Name* parameter, the *Detailed* parameter has no effect.
 
 ```yaml
@@ -163,8 +163,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmTag](./New-AzureRmTag.md)
+[New-AzTag](./New-AzTag.md)
 
-[Remove-AzureRmTag](./Remove-AzureRmTag.md)
+[Remove-AzTag](./Remove-AzTag.md)
 
 

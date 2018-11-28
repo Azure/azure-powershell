@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 ms.assetid: 26B1921E-6052-471B-B5B6-F2853536A425
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/enable-azurermoperationalinsightsiislogcollection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/enable-azoperationalinsightsiislogcollection
 schema: 2.0.0
 ---
 
-# Enable-AzureRmOperationalInsightsIISLogCollection
+# Enable-AzOperationalInsightsIISLogCollection
 
 ## SYNOPSIS
 Starts collection of IIS logs from computers in a workspace.
@@ -15,18 +15,18 @@ Starts collection of IIS logs from computers in a workspace.
 
 ### ByWorkspaceName (Default)
 ```
-Enable-AzureRmOperationalInsightsIISLogCollection [-ResourceGroupName] <String> [-WorkspaceName] <String>
+Enable-AzOperationalInsightsIISLogCollection [-ResourceGroupName] <String> [-WorkspaceName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
-Enable-AzureRmOperationalInsightsIISLogCollection [-Workspace] <PSWorkspace>
+Enable-AzOperationalInsightsIISLogCollection [-Workspace] <PSWorkspace>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzureRmOperationalInsightsIISLogCollection** cmdlet starts collection of Internet Information Services (IIS) logs from connected computers in a workspace.
+The **Enable-AzOperationalInsightsIISLogCollection** cmdlet starts collection of Internet Information Services (IIS) logs from connected computers in a workspace.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ The **Enable-AzureRmOperationalInsightsIISLogCollection** cmdlet starts collecti
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -141,6 +141,6 @@ Parameters: Workspace (ByValue)
 
 ## RELATED LINKS
 
-[Disable-AzureRmOperationalInsightsIISLogCollection](./Disable-AzureRmOperationalInsightsIISLogCollection.md)
+[Disable-AzOperationalInsightsIISLogCollection](./Disable-AzOperationalInsightsIISLogCollection.md)
 
 

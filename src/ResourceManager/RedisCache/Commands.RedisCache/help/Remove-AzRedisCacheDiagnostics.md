@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 ms.assetid: BCF989AE-A718-4AFE-B7C0-8B148468D4EE
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/remove-azurermrediscachediagnostics
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/remove-azrediscachediagnostics
 schema: 2.0.0
 ---
 
-# Remove-AzureRmRedisCacheDiagnostics
+# Remove-AzRedisCacheDiagnostics
 
 ## SYNOPSIS
 Disables diagnostics on an Azure Redis Cache.
@@ -14,18 +14,18 @@ Disables diagnostics on an Azure Redis Cache.
 ## SYNTAX
 
 ```
-Remove-AzureRmRedisCacheDiagnostics [-ResourceGroupName <String>] -Name <String>
+Remove-AzRedisCacheDiagnostics [-ResourceGroupName <String>] -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRedisCacheDiagnostics** cmdlet disables diagnostics on an Azure Redis Cache.
+The **Remove-AzRedisCacheDiagnostics** cmdlet disables diagnostics on an Azure Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1: Disable diagnostics
 ```
-PS C:\>Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName "ContosoResourceGroup" -Name "PeakCache" -Force
+PS C:\>Remove-AzRedisCacheDiagnostics -ResourceGroupName "ContosoResourceGroup" -Name "PeakCache" -Force
 ```
 
 This command disables diagnostics on specified Azure Redis Cache.
@@ -37,7 +37,7 @@ This disables diagnostics for all Azure Redis Caches in the same region for the 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -125,6 +125,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmRedisCacheDiagnostics](./Set-AzureRmRedisCacheDiagnostics.md)
+[Set-AzRedisCacheDiagnostics](./Set-AzRedisCacheDiagnostics.md)
 
 

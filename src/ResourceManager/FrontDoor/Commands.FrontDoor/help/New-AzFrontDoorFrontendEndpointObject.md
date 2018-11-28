@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
-Module Name: AzureRM.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor/new-azurermfrontdoorfrontendendpointobject
+Module Name: Az.FrontDoor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorfrontendendpointobject
 schema: 2.0.0
 ---
 
-# New-AzureRmFrontDoorFrontendEndpointObject
+# New-AzFrontDoorFrontendEndpointObject
 
 ## SYNOPSIS
 Create a PSFrontendEndpoint Object for Front Door creation
@@ -13,7 +13,7 @@ Create a PSFrontendEndpoint Object for Front Door creation
 ## SYNTAX
 
 ```
-New-AzureRmFrontDoorFrontendEndpointObject -Name <String> -HostName <String>
+New-AzFrontDoorFrontendEndpointObject -Name <String> -HostName <String>
  [-SessionAffinityEnabledState <PSEnabledState>] [-SessionAffinityTtlInSeconds <Int32>]
  [-WebApplicationFirewallPolicyLink <String>] [-CertificateSource <PSCertificateSource>]
  [-ProtocolType <PSProtocolType>] [-Vault <String>] [-SecretName <String>] [-SecretVersion <String>]
@@ -27,7 +27,7 @@ Create a PSFrontendEndpoint Object for Front Door creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
+PS C:\> New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
 
 
 HostName                         : frontdoor5.azurefd.net
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -255,5 +255,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmFrontDoor](./New-AzureRmFrontDoor.md)
-[Set-AzureRmFrontDoor](./Set-AzureRmFrontDoor.md)
+[New-AzFrontDoor](./New-AzFrontDoor.md)
+[Set-AzFrontDoor](./Set-AzFrontDoor.md)

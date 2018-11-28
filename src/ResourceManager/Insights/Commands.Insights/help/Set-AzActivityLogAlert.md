@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 7436F31F-9DCB-4365-BA6D-41BDB5D7FCB6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/set-azurermactivitylogalert
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/set-azactivitylogalert
 schema: 2.0.0
 ---
 
-# Set-AzureRmActivityLogAlert
+# Set-AzActivityLogAlert
 
 ## SYNOPSIS
 Creates a new or sets an existing activity log alert.
@@ -15,7 +15,7 @@ Creates a new or sets an existing activity log alert.
 
 ### SetByNameAndResourceGroup
 ```
-Set-AzureRmActivityLogAlert -Location <String> -Name <String> -ResourceGroupName <String>
+Set-AzActivityLogAlert -Location <String> -Name <String> -ResourceGroupName <String>
  -Scope <System.Collections.Generic.List`1[System.String]>
  -Condition <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]>
  -Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]>
@@ -26,7 +26,7 @@ Set-AzureRmActivityLogAlert -Location <String> -Name <String> -ResourceGroupName
 
 ### SetByResourceId
 ```
-Set-AzureRmActivityLogAlert [-Location <String>] [-Scope <System.Collections.Generic.List`1[System.String]>]
+Set-AzActivityLogAlert [-Location <String>] [-Scope <System.Collections.Generic.List`1[System.String]>]
  [-Condition <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]>]
  [-Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]>]
  [-DisableAlert] [-Description <String>]
@@ -36,7 +36,7 @@ Set-AzureRmActivityLogAlert [-Location <String>] [-Scope <System.Collections.Gen
 
 ### SetByInputObject
 ```
-Set-AzureRmActivityLogAlert [-Scope <System.Collections.Generic.List`1[System.String]>]
+Set-AzActivityLogAlert [-Scope <System.Collections.Generic.List`1[System.String]>]
  [-Condition <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]>]
  [-Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]>]
  [-Description <String>] [-Tag <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
@@ -45,10 +45,10 @@ Set-AzureRmActivityLogAlert [-Scope <System.Collections.Generic.List`1[System.St
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmActivityLogAlert** cmdlet creates a new or sets an existing activity log alert.
+The **Set-AzActivityLogAlert** cmdlet creates a new or sets an existing activity log alert.
 For tags, conditions, and actions the objects must be created in advance and passed as parameters in this call as a comma separated (see the example below).
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating/modifying the resource.
-**NOTE**: This cmdlet and its related ones replaces the deprecated (November 2017) **Add-AzureRmLogAlertRule**.
+**NOTE**: This cmdlet and its related ones replaces the deprecated (November 2017) **Add-AzLogAlertRule**.
 
 ## EXAMPLES
 
@@ -57,12 +57,12 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 PS C:\>$location = 'Global'
 PS C:\>$alertName = 'myAlert'
 PS C:\>$resourceGroupName = 'theResourceGroupName'
-PS C:\>$condition1 = New-AzureRmActivityLogAlertCondition -Field 'field1' -Equals 'equals1'
-PS C:\>$condition2 = New-AzureRmActivityLogAlertCondition -Field 'field2' -Equals 'equals2'
+PS C:\>$condition1 = New-AzActivityLogAlertCondition -Field 'field1' -Equals 'equals1'
+PS C:\>$condition2 = New-AzActivityLogAlertCondition -Field 'field2' -Equals 'equals2'
 PS C:\>$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 PS C:\>$dict.Add('key1', 'value1')
-PS C:\>$actionGrp1 = New-AzureRmActionGroup -ActionGroupId 'actiongr1' -WebhookProperties $dict
-PS C:\>Set-AzureRmActivityLogAlert -Location $location -Name $alertName -ResourceGroupName $resourceGroupName -Scope 'scope1','scope2' -Action $actionGrp1 -Condition $condition1, $condition2
+PS C:\>$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProperties $dict
+PS C:\>Set-AzActivityLogAlert -Location $location -Name $alertName -ResourceGroupName $resourceGroupName -Scope 'scope1','scope2' -Action $actionGrp1 -Condition $condition1, $condition2
 ```
 
 The first four commands create leaf condition and and action group.
@@ -73,12 +73,12 @@ The final command creates an Activity Log Alert using the condition and the acti
 PS C:\>$location = 'Global'
 PS C:\>$alertName = 'myAlert'
 PS C:\>$resourceGroupName = 'theResourceGroupName'
-PS C:\>$condition1 = New-AzureRmActivityLogAlertCondition -Field 'field1' -Equals 'equals1'
-PS C:\>$condition2 = New-AzureRmActivityLogAlertCondition -Field 'field2' -Equals 'equals2'
+PS C:\>$condition1 = New-AzActivityLogAlertCondition -Field 'field1' -Equals 'equals1'
+PS C:\>$condition2 = New-AzActivityLogAlertCondition -Field 'field2' -Equals 'equals2'
 PS C:\>$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 PS C:\>$dict.Add('key1', 'value1')
-PS C:\>$actionGrp1 = New-AzureRmActionGroup -ActionGroupId 'actiongr1' -WebhookProperties $dict
-PS C:\>Set-AzureRmActivityLogAlert -Location $location -Name $alertName -ResourceGroupName $resourceGroupName -Scope 'scope1','scope2' -Action $actionGrp1 -Condition $condition1, $condition2 -DisableAlert
+PS C:\>$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProperties $dict
+PS C:\>Set-AzActivityLogAlert -Location $location -Name $alertName -ResourceGroupName $resourceGroupName -Scope 'scope1','scope2' -Action $actionGrp1 -Condition $condition1, $condition2 -DisableAlert
 ```
 
 The first four commands create leaf condition and and action group.
@@ -86,11 +86,11 @@ The final command creates an Activity Log Alert using the condition and the acti
 
 ### Example 3: Set an activity log alert based using a value from the pipe or the InputObject parameter
 ```
-PS C:\>Get-AzureRmActivityLogAlert -Name $alertName -ResourceGroupName $resourceGroupName | Set-AzureRmActivityLogAlert
-PS C:\>$alert = Get-AzureRmActivityLogAlert -Name $alertName -ResourceGroupName $resourceGroupName
+PS C:\>Get-AzActivityLogAlert -Name $alertName -ResourceGroupName $resourceGroupName | Set-AzActivityLogAlert
+PS C:\>$alert = Get-AzActivityLogAlert -Name $alertName -ResourceGroupName $resourceGroupName
 PS C:\>$alert.Description = 'Changing the description'
 PS C:\>$alert.Enabled = $false
-PS C:\>Set-AzureRmActivityLogAlert -InputObject $alert
+PS C:\>Set-AzActivityLogAlert -InputObject $alert
 ```
 
 The first command is similar to a nop, it sets the alert with the same values it already contained
@@ -98,7 +98,7 @@ The rest of the commands retrieve the alert rule, change the description and dis
 
 ### Example 4: Set an activity log alert based using the ResourceId value from the pipe
 ```
-PS C:\>Find-AzureRmResource -ResourceGroupEquals "myResourceGroup" -ResourceNameEquals "myLogAlert" | Set-AzureRmActivityLogAlert -DisableAlert
+PS C:\>Find-AzResource -ResourceGroupEquals "myResourceGroup" -ResourceNameEquals "myLogAlert" | Set-AzActivityLogAlert -DisableAlert
 ```
 
 If the given log alert rule exists this command disables it.
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -450,14 +450,14 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Enable-AzureRmActivityLogAlert](./Enable-AzureRmActivityLogAlert.md)
+[Enable-AzActivityLogAlert](./Enable-AzActivityLogAlert.md)
 
-[Disable-AzureRmActivityLogAlert](./Disable-AzureRmActivityLogAlert.md)
+[Disable-AzActivityLogAlert](./Disable-AzActivityLogAlert.md)
 
-[Get-AzureRmActivityLogAlert](./Get-AzureRmActivityLogAlert.md)
+[Get-AzActivityLogAlert](./Get-AzActivityLogAlert.md)
 
-[Remove-AzureRmActivityLogAlert](./Remove-AzureRmActivityLogAlert.md)
+[Remove-AzActivityLogAlert](./Remove-AzActivityLogAlert.md)
 
-[New-AzureRmActionGroup](./New-AzureRmActionGroup.md)
+[New-AzActionGroup](./New-AzActionGroup.md)
 
-[New-AzureRmActivityLogAlertCondition](./Get-AzureRmActivityLogAlertCondition.md)
+[New-AzActivityLogAlertCondition](./Get-AzActivityLogAlertCondition.md)

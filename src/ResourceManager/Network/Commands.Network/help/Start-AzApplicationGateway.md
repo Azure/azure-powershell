@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 95731734-EDCA-432A-A7BF-94D1E3725FB2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/start-azurermapplicationgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/start-azapplicationgateway
 schema: 2.0.0
 ---
 
-# Start-AzureRmApplicationGateway
+# Start-AzApplicationGateway
 
 ## SYNOPSIS
 Starts an application gateway.
@@ -14,18 +14,18 @@ Starts an application gateway.
 ## SYNTAX
 
 ```
-Start-AzureRmApplicationGateway -ApplicationGateway <PSApplicationGateway>
+Start-AzApplicationGateway -ApplicationGateway <PSApplicationGateway>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmApplicationGateway** cmdlet starts an Azure application gateway
+The **Start-AzApplicationGateway** cmdlet starts an Azure application gateway
 
 ## EXAMPLES
 
 ### Example1: Start an application gateway
 ```
-PS C:\>$AppGw = Start-AzureRmApplicationGateway -ApplicationGateway $AppGw
+PS C:\>$AppGw = Start-AzApplicationGateway -ApplicationGateway $AppGw
 ```
 
 This command starts the application gateway stored in the $AppGw variable.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,6 +78,6 @@ Parameters: ApplicationGateway (ByValue)
 
 ## RELATED LINKS
 
-[Stop-AzureRmApplicationGateway](./Stop-AzureRmApplicationGateway.md)
+[Stop-AzApplicationGateway](./Stop-AzApplicationGateway.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 17653793-3CE1-465F-87F7-20B4B8F56193
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurermbatchapplicationpackage
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchapplicationpackage
 schema: 2.0.0
 ---
 
-# Get-AzureRmBatchApplicationPackage
+# Get-AzBatchApplicationPackage
 
 ## SYNOPSIS
 Gets information about an application package in a Batch account.
@@ -14,19 +14,18 @@ Gets information about an application package in a Batch account.
 ## SYNTAX
 
 ```
-Get-AzureRmBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String>
- [-ApplicationId] <String> [-ApplicationVersion] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationId] <String>
+ [-ApplicationVersion] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmBatchApplicationPackage** cmdlet gets information about an application package in an Azure Batch account.
+The **Get-AzBatchApplicationPackage** cmdlet gets information about an application package in an Azure Batch account.
 
 ## EXAMPLES
 
 ### Example 1: Get details of an application package in a Batch account
 ```
-PS C:\>Get-AzureRmBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "Litware" -ApplicationVersion "1.0"
+PS C:\>Get-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "Litware" -ApplicationVersion "1.0"
 Format             : zip
 State              : Active
 Version            : 1.0
@@ -89,7 +88,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -130,16 +129,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchApplication](./Get-AzureRmBatchApplication.md)
+[Get-AzBatchApplication](./Get-AzBatchApplication.md)
 
-[New-AzureRmBatchApplication](./New-AzureRmBatchApplication.md)
+[New-AzBatchApplication](./New-AzBatchApplication.md)
 
-[New-AzureRmBatchApplicationPackage](./New-AzureRmBatchApplicationPackage.md)
+[New-AzBatchApplicationPackage](./New-AzBatchApplicationPackage.md)
 
-[Remove-AzureRmBatchApplication](./Remove-AzureRmBatchApplication.md)
+[Remove-AzBatchApplication](./Remove-AzBatchApplication.md)
 
-[Remove-AzureRmBatchApplicationPackage](./Remove-AzureRmBatchApplicationPackage.md)
+[Remove-AzBatchApplicationPackage](./Remove-AzBatchApplicationPackage.md)
 
-[Set-AzureRmBatchApplication](./Set-AzureRmBatchApplication.md)
+[Set-AzBatchApplication](./Set-AzBatchApplication.md)
 
 

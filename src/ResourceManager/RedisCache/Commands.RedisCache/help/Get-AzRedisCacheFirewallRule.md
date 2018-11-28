@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/get-azurermrediscachefirewallrule
+Module Name: Az.RedisCache
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/get-azrediscachefirewallrule
 schema: 2.0.0
 ---
 
-# Get-AzureRmRedisCacheFirewallRule
+# Get-AzRedisCacheFirewallRule
 
 ## SYNOPSIS
 Get firewall rules set on Redis Cache.
@@ -13,18 +13,18 @@ Get firewall rules set on Redis Cache.
 ## SYNTAX
 
 ```
-Get-AzureRmRedisCacheFirewallRule [-ResourceGroupName <String>] -Name <String> [-RuleName <String>]
+Get-AzRedisCacheFirewallRule [-ResourceGroupName <String>] -Name <String> [-RuleName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-If **RuleName** parameter if provided, **Get-AzureRmRedisCacheFirewallRule** cmdlet gets detail about the specified firewall rule on Azure Redis Cache. If only **Name** is specified this operation gets all firewall rules available on that Redis Cache.
+If **RuleName** parameter if provided, **Get-AzRedisCacheFirewallRule** cmdlet gets detail about the specified firewall rule on Azure Redis Cache. If only **Name** is specified this operation gets all firewall rules available on that Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1: Get a single firewall rule
 ```
-PS C:\>Get-AzureRmRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone"
+PS C:\>Get-AzRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone"
 
         ResourceGroupName : myGroup
         Name              : mycache
@@ -39,7 +39,7 @@ This command gets firewall rule named ruleone from Redis Cache named mycache.
 
 ### Example 2: Get all firewall rules
 ```
-PS C:\>Get-AzureRmRedisCacheFirewallRule -Name "mycache"
+PS C:\>Get-AzRedisCacheFirewallRule -Name "mycache"
 
         ResourceGroupName : myGroup
         Name              : mycache
@@ -66,7 +66,7 @@ This command gets all firewall rules from Redis Cache named mycache.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -137,14 +137,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmRedisCacheFirewallRule](./New-AzureRmRedisCacheFirewallRule.md)
+[New-AzRedisCacheFirewallRule](./New-AzRedisCacheFirewallRule.md)
 
-[Remove-AzureRmRedisCacheFirewallRule](./Remove-AzureRmRedisCacheFirewallRule.md)
+[Remove-AzRedisCacheFirewallRule](./Remove-AzRedisCacheFirewallRule.md)
 
-[Get-AzureRmRedisCache](./Get-AzureRmRedisCache.md)
+[Get-AzRedisCache](./Get-AzRedisCache.md)
 
-[New-AzureRmRedisCache](./New-AzureRmRedisCache.md)
+[New-AzRedisCache](./New-AzRedisCache.md)
 
-[Remove-AzureRmRedisCache](./Remove-AzureRmRedisCache.md)
+[Remove-AzRedisCache](./Remove-AzRedisCache.md)
 
-[Set-AzureRmRedisCache](./Set-AzureRmRedisCache.md)
+[Set-AzRedisCache](./Set-AzRedisCache.md)

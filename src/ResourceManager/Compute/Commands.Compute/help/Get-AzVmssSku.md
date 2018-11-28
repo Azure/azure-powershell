@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: BB6AFC7D-7E74-4D39-B336-A011B98D0682
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmsssku
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmsssku
 schema: 2.0.0
 ---
 
-# Get-AzureRmVmssSku
+# Get-AzVmssSku
 
 ## SYNOPSIS
 Gets the available SKUs for the VMSS.
@@ -14,18 +14,18 @@ Gets the available SKUs for the VMSS.
 ## SYNTAX
 
 ```
-Get-AzureRmVmssSku [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+Get-AzVmssSku [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVmssSku** cmdlet gets the available SKUs for the Virtual Machine Scale Set (VMSS).
+The **Get-AzVmssSku** cmdlet gets the available SKUs for the Virtual Machine Scale Set (VMSS).
 
 ## EXAMPLES
 
 ### Example 1: Get all available SKUs from the VMSS
 ```
-PS C:\> Get-AzureRmVmssSku -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"
+PS C:\> Get-AzVmssSku -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"
 ```
 
 This command gets all the available SKUs from the VMSS named ContosoVMSS that belongs to the resource group named ContosoGroup.
@@ -36,7 +36,7 @@ This command gets all the available SKUs from the VMSS named ContosoVMSS that be
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,6 +92,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVmss](./Get-AzureRmVmss.md)
+[Get-AzVmss](./Get-AzVmss.md)
 
 

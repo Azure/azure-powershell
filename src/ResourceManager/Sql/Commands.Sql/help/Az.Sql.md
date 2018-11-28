@@ -1,516 +1,516 @@
 ---
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.sql
 Help Version: 4.4.0.0
 Locale: en-US
 ---
 
-# AzureRM.Sql Module
+# Az.Sql Module
 ## Description
 This topic displays help topics for the Azure SQL Database Cmdlets.
 
-## AzureRM.Sql Cmdlets
-### [Add-AzureRmSqlDatabaseToFailoverGroup](Add-AzureRmSqlDatabaseToFailoverGroup.md)
+## Az.Sql Cmdlets
+### [Add-AzSqlDatabaseToFailoverGroup](Add-AzSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
 
-### [Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate.md)
+### [Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given managed instance
 
-### [Add-AzureRmSqlServerKeyVaultKey](Add-AzureRmSqlServerKeyVaultKey.md)
+### [Add-AzSqlServerKeyVaultKey](Add-AzSqlServerKeyVaultKey.md)
 Adds a Key Vault key to a SQL server.
 
-### [Add-AzureRmSqlServerTransparentDataEncryptionCertificate](Add-AzureRmSqlServerTransparentDataEncryptionCertificate.md)
+### [Add-AzSqlServerTransparentDataEncryptionCertificate](Add-AzSqlServerTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given SQL Server instance
 
-### [Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+### [Clear-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline](Clear-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Clears the vulnerability assessment rule baseline.
 
-### [Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+### [Clear-AzSqlDatabaseVulnerabilityAssessmentSettings](Clear-AzSqlDatabaseVulnerabilityAssessmentSettings.md)
 Clears the vulnerability assessment settings of a database.
 
-### [Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan](Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan.md)
+### [Convert-AzSqlDatabaseVulnerabilityAssessmentScan](Convert-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
 
-### [Disable-AzureRmSqlServerAdvancedThreatProtection](Disable-AzureRmSqlServerAdvancedThreatProtection.md)
+### [Disable-AzSqlServerAdvancedThreatProtection](Disable-AzSqlServerAdvancedThreatProtection.md)
 Disables Advanced Threat Protection on a server.
 
-### [Enable-AzureRmSqlServerAdvancedThreatProtection](Enable-AzureRmSqlServerAdvancedThreatProtection.md)
+### [Enable-AzSqlServerAdvancedThreatProtection](Enable-AzSqlServerAdvancedThreatProtection.md)
 Enables Advanced Threat Protection on a server.
 
-### [Get-AzureRmSqlCapability](Get-AzureRmSqlCapability.md)
+### [Get-AzSqlCapability](Get-AzSqlCapability.md)
 Gets SQL Database capabilities for the current subscription.
 
-### [Get-AzureRmSqlDatabase](Get-AzureRmSqlDatabase.md)
+### [Get-AzSqlDatabase](Get-AzSqlDatabase.md)
 Gets one or more databases.
 
-### [Get-AzureRmSqlDatabaseActivity](Get-AzureRmSqlDatabaseActivity.md)
+### [Get-AzSqlDatabaseActivity](Get-AzSqlDatabaseActivity.md)
 Gets the status of database operations.
 
-### [Get-AzureRmSqlDatabaseAdvisor](Get-AzureRmSqlDatabaseAdvisor.md)
+### [Get-AzSqlDatabaseAdvisor](Get-AzSqlDatabaseAdvisor.md)
 Gets one or more Advisors for an Azure SQL Database.
 
-### [Get-AzureRmSqlDatabaseAuditing](Get-AzureRmSqlDatabaseAuditing.md)
+### [Get-AzSqlDatabaseAuditing](Get-AzSqlDatabaseAuditing.md)
 Gets the auditing settings of an Azure SQL database.
 
-### [Get-AzureRmSqlDatabaseAuditingPolicy](Get-AzureRmSqlDatabaseAuditingPolicy.md)
+### [Get-AzSqlDatabaseAuditingPolicy](Get-AzSqlDatabaseAuditingPolicy.md)
 Gets the auditing policy of a database.
 
-### [Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy.md)
+### [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Gets a database long term retention policy.
 
-### [Get-AzureRmSqlDatabaseDataMaskingPolicy](Get-AzureRmSqlDatabaseDataMaskingPolicy.md)
+### [Get-AzSqlDatabaseDataMaskingPolicy](Get-AzSqlDatabaseDataMaskingPolicy.md)
 Gets the data masking policy for a database.
 
-### [Get-AzureRmSqlDatabaseDataMaskingRule](Get-AzureRmSqlDatabaseDataMaskingRule.md)
+### [Get-AzSqlDatabaseDataMaskingRule](Get-AzSqlDatabaseDataMaskingRule.md)
 Gets the data masking rules from a database.
 
-### [Get-AzureRmSqlDatabaseExpanded](Get-AzureRmSqlDatabaseExpanded.md)
+### [Get-AzSqlDatabaseExpanded](Get-AzSqlDatabaseExpanded.md)
 Gets a database and its expanded property values.
 
-### [Get-AzureRmSqlDatabaseFailoverGroup](Get-AzureRmSqlDatabaseFailoverGroup.md)
+### [Get-AzSqlDatabaseFailoverGroup](Get-AzSqlDatabaseFailoverGroup.md)
 Gets or lists Azure SQL Database Failover Groups.
 
-### [Get-AzureRmSqlDatabaseGeoBackup](Get-AzureRmSqlDatabaseGeoBackup.md)
+### [Get-AzSqlDatabaseGeoBackup](Get-AzSqlDatabaseGeoBackup.md)
 Gets a geo-redundant backup of a database.
 
-### [Get-AzureRmSqlDatabaseGeoBackupPolicy](Get-AzureRmSqlDatabaseGeoBackupPolicy.md)
+### [Get-AzSqlDatabaseGeoBackupPolicy](Get-AzSqlDatabaseGeoBackupPolicy.md)
 Gets a database geo backup policy.
 
-### [Get-AzureRmSqlDatabaseImportExportStatus](Get-AzureRmSqlDatabaseImportExportStatus.md)
+### [Get-AzSqlDatabaseImportExportStatus](Get-AzSqlDatabaseImportExportStatus.md)
 Gets the details of an import or export of an Azure SQL Database.
 
-### [Get-AzureRmSqlDatabaseIndexRecommendations](Get-AzureRmSqlDatabaseIndexRecommendations.md)
+### [Get-AzSqlDatabaseIndexRecommendations](Get-AzSqlDatabaseIndexRecommendations.md)
 Gets the recommended index operations for a server or database.
 
-### [Get-AzureRmSqlDatabaseLongTermRetentionBackup](Get-AzureRmSqlDatabaseLongTermRetentionBackup.md)
+### [Get-AzSqlDatabaseLongTermRetentionBackup](Get-AzSqlDatabaseLongTermRetentionBackup.md)
 Gets one or more long term retention backups.
 
-### [Get-AzureRmSqlDatabaseRecommendedAction](Get-AzureRmSqlDatabaseRecommendedAction.md)
+### [Get-AzSqlDatabaseRecommendedAction](Get-AzSqlDatabaseRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Database Advisor.
 
-### [Get-AzureRmSqlDatabaseReplicationLink](Get-AzureRmSqlDatabaseReplicationLink.md)
+### [Get-AzSqlDatabaseReplicationLink](Get-AzSqlDatabaseReplicationLink.md)
 Gets the geo-replication links between an Azure SQL Database and a resource group or SQL Server.
 
-### [Get-AzureRmSqlDatabaseRestorePoints](Get-AzureRmSqlDatabaseRestorePoints.md)
+### [Get-AzSqlDatabaseRestorePoints](Get-AzSqlDatabaseRestorePoints.md)
 Retrieves the distinct restore points from which a SQL Data Warehouse can be restored.
 
-### [Get-AzureRmSqlDatabaseSecureConnectionPolicy](Get-AzureRmSqlDatabaseSecureConnectionPolicy.md)
+### [Get-AzSqlDatabaseSecureConnectionPolicy](Get-AzSqlDatabaseSecureConnectionPolicy.md)
 Gets the secure connection policy for a database.
 
-### [Get-AzureRmSqlDatabaseThreatDetectionPolicy](Get-AzureRmSqlDatabaseThreatDetectionPolicy.md)
+### [Get-AzSqlDatabaseThreatDetectionPolicy](Get-AzSqlDatabaseThreatDetectionPolicy.md)
 Gets the threat detection policy for a database.
 
-### [Get-AzureRmSqlDatabaseTransparentDataEncryption](Get-AzureRmSqlDatabaseTransparentDataEncryption.md)
+### [Get-AzSqlDatabaseTransparentDataEncryption](Get-AzSqlDatabaseTransparentDataEncryption.md)
 Gets the TDE state for a database.
 
-### [Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity](Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity.md)
+### [Get-AzSqlDatabaseTransparentDataEncryptionActivity](Get-AzSqlDatabaseTransparentDataEncryptionActivity.md)
 Gets the progress of a TDE scan of a database.
 
-### [Get-AzureRmSqlDatabaseUpgradeHint](Get-AzureRmSqlDatabaseUpgradeHint.md)
+### [Get-AzSqlDatabaseUpgradeHint](Get-AzSqlDatabaseUpgradeHint.md)
 Gets pricing tier hints for a database.
 
-### [Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+### [Get-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline](Get-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Gets the vulnerability assessment rule baseline.
 
-### [Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord](Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord.md)
+### [Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord](Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord.md)
 Gets all vulnerability assessment scan record(s) associated with a given database.
 
-### [Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+### [Get-AzSqlDatabaseVulnerabilityAssessmentSettings](Get-AzSqlDatabaseVulnerabilityAssessmentSettings.md)
 Gets the vulnerability assessment settings of a database.
 
-### [Get-AzureRmSqlDeletedDatabaseBackup](Get-AzureRmSqlDeletedDatabaseBackup.md)
+### [Get-AzSqlDeletedDatabaseBackup](Get-AzSqlDeletedDatabaseBackup.md)
 Gets a deleted database that you can restore.
 
-### [Get-AzureRmSqlElasticPool](Get-AzureRmSqlElasticPool.md)
+### [Get-AzSqlElasticPool](Get-AzSqlElasticPool.md)
 Gets elastic pools and their property values in an Azure SQL Database.
 
-### [Get-AzureRmSqlElasticPoolActivity](Get-AzureRmSqlElasticPoolActivity.md)
+### [Get-AzSqlElasticPoolActivity](Get-AzSqlElasticPoolActivity.md)
 Gets the status of operations on an elastic pool.
 
-### [Get-AzureRmSqlElasticPoolAdvisor](Get-AzureRmSqlElasticPoolAdvisor.md)
+### [Get-AzSqlElasticPoolAdvisor](Get-AzSqlElasticPoolAdvisor.md)
 Gets one or more Advisors for an Azure SQL Elastic Pool.
 
-### [Get-AzureRmSqlElasticPoolDatabase](Get-AzureRmSqlElasticPoolDatabase.md)
+### [Get-AzSqlElasticPoolDatabase](Get-AzSqlElasticPoolDatabase.md)
 Gets elastic databases in an elastic pool and their property values.
 
-### [Get-AzureRmSqlElasticPoolRecommendation](Get-AzureRmSqlElasticPoolRecommendation.md)
+### [Get-AzSqlElasticPoolRecommendation](Get-AzSqlElasticPoolRecommendation.md)
 Gets elastic pool recommendations.
 
-### [Get-AzureRmSqlElasticPoolRecommendedAction](Get-AzureRmSqlElasticPoolRecommendedAction.md)
+### [Get-AzSqlElasticPoolRecommendedAction](Get-AzSqlElasticPoolRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Elastic Pool Advisor.
 
-### [Get-AzureRmSqlInstance](Get-AzureRmSqlInstance.md)
+### [Get-AzSqlInstance](Get-AzSqlInstance.md)
 Returns information about Azure SQL Managed Database Instance.
 
-### [Get-AzureRmSqlInstanceDatabase](Get-AzureRmSqlInstanceDatabase.md)
+### [Get-AzSqlInstanceDatabase](Get-AzSqlInstanceDatabase.md)
 Returns information about Azure SQL Managed Instance database.
 
-### [Get-AzureRmSqlServer](Get-AzureRmSqlServer.md)
+### [Get-AzSqlServer](Get-AzSqlServer.md)
 Returns information about SQL Database servers.
 
-### [Get-AzureRmSqlServerActiveDirectoryAdministrator](Get-AzureRmSqlServerActiveDirectoryAdministrator.md)
+### [Get-AzSqlServerActiveDirectoryAdministrator](Get-AzSqlServerActiveDirectoryAdministrator.md)
 Gets information about an Azure AD administrator for SQL Server.
 
-### [Get-AzureRmSqlServerAdvancedThreatProtectionPolicy](Get-AzureRmSqlServerAdvancedThreatProtectionPolicy.md)
+### [Get-AzSqlServerAdvancedThreatProtectionPolicy](Get-AzSqlServerAdvancedThreatProtectionPolicy.md)
 Gets Advanced Threat Protection policy of a server.
 
-### [Get-AzureRmSqlServerAdvisor](Get-AzureRmSqlServerAdvisor.md)
+### [Get-AzSqlServerAdvisor](Get-AzSqlServerAdvisor.md)
 Gets one or more Advisors for an Azure SQL Server.
 
-### [Get-AzureRmSqlServerAuditing](Get-AzureRmSqlServerAuditing.md)
+### [Get-AzSqlServerAuditing](Get-AzSqlServerAuditing.md)
 Gets the auditing settings of an Azure SQL server.
 
-### [Get-AzureRmSqlServerAuditingPolicy](Get-AzureRmSqlServerAuditingPolicy.md)
+### [Get-AzSqlServerAuditingPolicy](Get-AzSqlServerAuditingPolicy.md)
 Gets the auditing policy of a SQL server.
 
-### [Get-AzureRmSqlServerBackupLongTermRetentionVault](Get-AzureRmSqlServerBackupLongTermRetentionVault.md)
+### [Get-AzSqlServerBackupLongTermRetentionVault](Get-AzSqlServerBackupLongTermRetentionVault.md)
 Gets a server long term retention vault.
 
-### [Get-AzureRmSqlServerCommunicationLink](Get-AzureRmSqlServerCommunicationLink.md)
+### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
 Gets communication links for elastic database transactions between database servers.
 
-### [Get-AzureRmSqlServerDisasterRecoveryConfiguration](Get-AzureRmSqlServerDisasterRecoveryConfiguration.md)
+### [Get-AzSqlServerDisasterRecoveryConfiguration](Get-AzSqlServerDisasterRecoveryConfiguration.md)
 Gets a database server system recovery configuration.
 
-### [Get-AzureRmSqlServerDisasterRecoveryConfigurationActivity](Get-AzureRmSqlServerDisasterRecoveryConfigurationActivity.md)
+### [Get-AzSqlServerDisasterRecoveryConfigurationActivity](Get-AzSqlServerDisasterRecoveryConfigurationActivity.md)
 Gets activity for a database server system recovery configuration.
 
-### [Get-AzureRmSqlServerDnsAlias](Get-AzureRmSqlServerDnsAlias.md)
+### [Get-AzSqlServerDnsAlias](Get-AzSqlServerDnsAlias.md)
 Gets or lists Azure SQL Server DNS Alias.
 
-### [Get-AzureRmSqlServerFirewallRule](Get-AzureRmSqlServerFirewallRule.md)
+### [Get-AzSqlServerFirewallRule](Get-AzSqlServerFirewallRule.md)
 Gets firewall rules for a SQL Database server.
 
-### [Get-AzureRmSqlServerKeyVaultKey](Get-AzureRmSqlServerKeyVaultKey.md)
+### [Get-AzSqlServerKeyVaultKey](Get-AzSqlServerKeyVaultKey.md)
 Gets a SQL server's Key Vault keys.
 
-### [Get-AzureRmSqlServerRecommendedAction](Get-AzureRmSqlServerRecommendedAction.md)
+### [Get-AzSqlServerRecommendedAction](Get-AzSqlServerRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Server Advisor.
 
-### [Get-AzureRmSqlServerServiceObjective](Get-AzureRmSqlServerServiceObjective.md)
+### [Get-AzSqlServerServiceObjective](Get-AzSqlServerServiceObjective.md)
 Gets service objectives for an Azure SQL Database server.
 
-### [Get-AzureRmSqlServerThreatDetectionPolicy](Get-AzureRmSqlServerThreatDetectionPolicy.md)
+### [Get-AzSqlServerThreatDetectionPolicy](Get-AzSqlServerThreatDetectionPolicy.md)
 Gets the threat detection policy for a server.
 
-### [Get-AzureRmSqlServerTransparentDataEncryptionProtector](Get-AzureRmSqlServerTransparentDataEncryptionProtector.md)
+### [Get-AzSqlServerTransparentDataEncryptionProtector](Get-AzSqlServerTransparentDataEncryptionProtector.md)
 Gets the Transparent Data Encryption (TDE) protector
 
-### [Get-AzureRmSqlServerUpgrade](Get-AzureRmSqlServerUpgrade.md)
+### [Get-AzSqlServerUpgrade](Get-AzSqlServerUpgrade.md)
 Gets the status of an Azure SQL Database server upgrade.
 
-### [Get-AzureRmSqlServerUpgradeHint](Get-AzureRmSqlServerUpgradeHint.md)
+### [Get-AzSqlServerUpgradeHint](Get-AzSqlServerUpgradeHint.md)
 Gets pricing tier hints for upgrading an Azure SQL Database server.
 
-### [Get-AzureRmSqlServerVirtualNetworkRule](Get-AzureRmSqlServerVirtualNetworkRule.md)
+### [Get-AzSqlServerVirtualNetworkRule](Get-AzSqlServerVirtualNetworkRule.md)
 Gets or lists Azure SQL Server Virtual Network Rule.
 
-### [Get-AzureRmSqlSyncAgent](Get-AzureRmSqlSyncAgent.md)
+### [Get-AzSqlSyncAgent](Get-AzSqlSyncAgent.md)
 Returns information about Azure SQL Sync Agents.
 
-### [Get-AzureRmSqlSyncAgentLinkedDatabase](Get-AzureRmSqlSyncAgentLinkedDatabase.md)
+### [Get-AzSqlSyncAgentLinkedDatabase](Get-AzSqlSyncAgentLinkedDatabase.md)
 Returns information about SQL Server databases linked by a sync agent.
 
-### [Get-AzureRmSqlSyncGroup](Get-AzureRmSqlSyncGroup.md)
+### [Get-AzSqlSyncGroup](Get-AzSqlSyncGroup.md)
 Returns information about Azure SQL Database Sync Groups.
 
-### [Get-AzureRmSqlSyncGroupLog](Get-AzureRmSqlSyncGroupLog.md)
+### [Get-AzSqlSyncGroupLog](Get-AzSqlSyncGroupLog.md)
 Returns the logs of an Azure SQL Database Sync Group.
 
-### [Get-AzureRmSqlSyncMember](Get-AzureRmSqlSyncMember.md)
+### [Get-AzSqlSyncMember](Get-AzSqlSyncMember.md)
 Returns information about Azure SQL Database Sync Members.
 
-### [Get-AzureRmSqlSyncSchema](Get-AzureRmSqlSyncSchema.md)
+### [Get-AzSqlSyncSchema](Get-AzSqlSyncSchema.md)
 Returns information about the sync schema of a member database or a hub database.
 
-### [New-AzureRmSqlDatabase](New-AzureRmSqlDatabase.md)
+### [New-AzSqlDatabase](New-AzSqlDatabase.md)
 Creates a database or an elastic database.
 
-### [New-AzureRmSqlDatabaseCopy](New-AzureRmSqlDatabaseCopy.md)
+### [New-AzSqlDatabaseCopy](New-AzSqlDatabaseCopy.md)
 Creates a copy of a SQL Database that uses the snapshot at the current time.
 
-### [New-AzureRmSqlDatabaseDataMaskingRule](New-AzureRmSqlDatabaseDataMaskingRule.md)
+### [New-AzSqlDatabaseDataMaskingRule](New-AzSqlDatabaseDataMaskingRule.md)
 Creates a data masking rule for a database.
 
-### [New-AzureRmSqlDatabaseExport](New-AzureRmSqlDatabaseExport.md)
+### [New-AzSqlDatabaseExport](New-AzSqlDatabaseExport.md)
 Exports an Azure SQL Database as a .bacpac file to a storage account.
 
-### [New-AzureRmSqlDatabaseFailoverGroup](New-AzureRmSqlDatabaseFailoverGroup.md)
+### [New-AzSqlDatabaseFailoverGroup](New-AzSqlDatabaseFailoverGroup.md)
 This command creates a new Azure SQL Database Failover Group.
 
-### [New-AzureRmSqlDatabaseImport](New-AzureRmSqlDatabaseImport.md)
+### [New-AzSqlDatabaseImport](New-AzSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
 
-### [New-AzureRmSqlDatabaseRestorePoint](New-AzureRmSqlDatabaseRestorePoint.md)
+### [New-AzSqlDatabaseRestorePoint](New-AzSqlDatabaseRestorePoint.md)
 Creates a new restore point from which a SQL Database can be restored.
 
-### [New-AzureRmSqlDatabaseSecondary](New-AzureRmSqlDatabaseSecondary.md)
+### [New-AzSqlDatabaseSecondary](New-AzSqlDatabaseSecondary.md)
 Creates a secondary database for an existing database and starts data replication.
 
-### [New-AzureRmSqlElasticPool](New-AzureRmSqlElasticPool.md)
+### [New-AzSqlElasticPool](New-AzSqlElasticPool.md)
 Creates an elastic database pool for a SQL Database.
 
-### [New-AzureRmSqlInstance](New-AzureRmSqlInstance.md)
+### [New-AzSqlInstance](New-AzSqlInstance.md)
 Creates an Azure SQL Database Managed Instance.
 
-### [New-AzureRmSqlInstanceDatabase](New-AzureRmSqlInstanceDatabase.md)
+### [New-AzSqlInstanceDatabase](New-AzSqlInstanceDatabase.md)
 Creates an Azure SQL Managed Instance database.
 
-### [New-AzureRmSqlServer](New-AzureRmSqlServer.md)
+### [New-AzSqlServer](New-AzSqlServer.md)
 Creates a SQL Database server.
 
-### [New-AzureRmSqlServerCommunicationLink](New-AzureRmSqlServerCommunicationLink.md)
+### [New-AzSqlServerCommunicationLink](New-AzSqlServerCommunicationLink.md)
 Creates a communication link for elastic database transactions between two SQL Database servers.
 
-### [New-AzureRmSqlServerDisasterRecoveryConfiguration](New-AzureRmSqlServerDisasterRecoveryConfiguration.md)
+### [New-AzSqlServerDisasterRecoveryConfiguration](New-AzSqlServerDisasterRecoveryConfiguration.md)
 Creates a database server system recovery configuration.
 
-### [New-AzureRmSqlServerDnsAlias](New-AzureRmSqlServerDnsAlias.md)
+### [New-AzSqlServerDnsAlias](New-AzSqlServerDnsAlias.md)
 This command creates a new Azure SQL Server DNS Alias.
 
-### [New-AzureRmSqlServerFirewallRule](New-AzureRmSqlServerFirewallRule.md)
+### [New-AzSqlServerFirewallRule](New-AzSqlServerFirewallRule.md)
 Creates a firewall rule for a SQL Database server.
 
-### [New-AzureRmSqlServerVirtualNetworkRule](New-AzureRmSqlServerVirtualNetworkRule.md)
+### [New-AzSqlServerVirtualNetworkRule](New-AzSqlServerVirtualNetworkRule.md)
 Creates an Azure SQL Server Virtual Network Rule. 
 
-### [New-AzureRmSqlSyncAgent](New-AzureRmSqlSyncAgent.md)
+### [New-AzSqlSyncAgent](New-AzSqlSyncAgent.md)
 Creates an Azure SQL Sync Agent.
 
-### [New-AzureRmSqlSyncAgentKey](New-AzureRmSqlSyncAgentKey.md)
+### [New-AzSqlSyncAgentKey](New-AzSqlSyncAgentKey.md)
 Creates an Azure SQL Sync Agent Key.
 
-### [New-AzureRmSqlSyncGroup](New-AzureRmSqlSyncGroup.md)
+### [New-AzSqlSyncGroup](New-AzSqlSyncGroup.md)
 Creates an Azure SQL Database Sync Group.
 
-### [New-AzureRmSqlSyncMember](New-AzureRmSqlSyncMember.md)
+### [New-AzSqlSyncMember](New-AzSqlSyncMember.md)
 Creates an Azure SQL Database Sync Member.
 
-### [Remove-AzureRmSqlDatabase](Remove-AzureRmSqlDatabase.md)
+### [Remove-AzSqlDatabase](Remove-AzSqlDatabase.md)
 Removes an Azure SQL database.
 
-### [Remove-AzureRmSqlDatabaseAuditing](Remove-AzureRmSqlDatabaseAuditing.md)
+### [Remove-AzSqlDatabaseAuditing](Remove-AzSqlDatabaseAuditing.md)
 Removes the auditing of a database.
 
-### [Remove-AzureRmSqlDatabaseDataMaskingRule](Remove-AzureRmSqlDatabaseDataMaskingRule.md)
+### [Remove-AzSqlDatabaseDataMaskingRule](Remove-AzSqlDatabaseDataMaskingRule.md)
 Removes a data masking rule from a database.
 
-### [Remove-AzureRmSqlDatabaseFailoverGroup](Remove-AzureRmSqlDatabaseFailoverGroup.md)
+### [Remove-AzSqlDatabaseFailoverGroup](Remove-AzSqlDatabaseFailoverGroup.md)
 Removes an Azure SQL Database Failover Group.
 
-### [Remove-AzureRmSqlDatabaseFromFailoverGroup](Remove-AzureRmSqlDatabaseFromFailoverGroup.md)
+### [Remove-AzSqlDatabaseFromFailoverGroup](Remove-AzSqlDatabaseFromFailoverGroup.md)
 Removes one or more databases from an Azure SQL Database Failover Group.
 
-### [Remove-AzureRmSqlDatabaseLongTermRetentionBackup](Remove-AzureRmSqlDatabaseLongTermRetentionBackup.md)
+### [Remove-AzSqlDatabaseLongTermRetentionBackup](Remove-AzSqlDatabaseLongTermRetentionBackup.md)
 Deletes a long term retention backup.
 
-### [Remove-AzureRmSqlDatabaseRestorePoint](Remove-AzureRmSqlDatabaseRestorePoint.md)
+### [Remove-AzSqlDatabaseRestorePoint](Remove-AzSqlDatabaseRestorePoint.md)
 Removes given restore point from a SQL Database.
 
-### [Remove-AzureRmSqlDatabaseSecondary](Remove-AzureRmSqlDatabaseSecondary.md)
+### [Remove-AzSqlDatabaseSecondary](Remove-AzSqlDatabaseSecondary.md)
 Terminates data replication between a SQL Database and the specified secondary database.
 
-### [Remove-AzureRmSqlDatabaseThreatDetectionPolicy](Remove-AzureRmSqlDatabaseThreatDetectionPolicy.md)
+### [Remove-AzSqlDatabaseThreatDetectionPolicy](Remove-AzSqlDatabaseThreatDetectionPolicy.md)
 Removes the threat detection policy from a database.
 
-### [Remove-AzureRmSqlElasticPool](Remove-AzureRmSqlElasticPool.md)
+### [Remove-AzSqlElasticPool](Remove-AzSqlElasticPool.md)
 Deletes an elastic database pool.
 
-### [Remove-AzureRmSqlInstance](Remove-AzureRmSqlInstance.md)
+### [Remove-AzSqlInstance](Remove-AzSqlInstance.md)
 Removes an Azure SQL Managed Database Instance.
 
-### [Remove-AzureRmSqlInstanceDatabase](Remove-AzureRmSqlInstanceDatabase.md)
+### [Remove-AzSqlInstanceDatabase](Remove-AzSqlInstanceDatabase.md)
 Removes an Azure SQL Managed Instance database.
 
-### [Remove-AzureRmSqlServer](Remove-AzureRmSqlServer.md)
+### [Remove-AzSqlServer](Remove-AzSqlServer.md)
 Removes an Azure SQL Database server.
 
-### [Remove-AzureRmSqlServerActiveDirectoryAdministrator](Remove-AzureRmSqlServerActiveDirectoryAdministrator.md)
+### [Remove-AzSqlServerActiveDirectoryAdministrator](Remove-AzSqlServerActiveDirectoryAdministrator.md)
 Removes an Azure AD administrator for SQL Server.
 
-### [Remove-AzureRmSqlServerAuditing](Remove-AzureRmSqlServerAuditing.md)
+### [Remove-AzSqlServerAuditing](Remove-AzSqlServerAuditing.md)
 Removes the auditing of a SQL server.
 
-### [Remove-AzureRmSqlServerCommunicationLink](Remove-AzureRmSqlServerCommunicationLink.md)
+### [Remove-AzSqlServerCommunicationLink](Remove-AzSqlServerCommunicationLink.md)
 Deletes a communication link for elastic database transactions between two servers.
 
-### [Remove-AzureRmSqlServerDisasterRecoveryConfiguration](Remove-AzureRmSqlServerDisasterRecoveryConfiguration.md)
+### [Remove-AzSqlServerDisasterRecoveryConfiguration](Remove-AzSqlServerDisasterRecoveryConfiguration.md)
 Removes a SQL database server system recovery configuration.
 
-### [Remove-AzureRmSqlServerDnsAlias](Remove-AzureRmSqlServerDnsAlias.md)
+### [Remove-AzSqlServerDnsAlias](Remove-AzSqlServerDnsAlias.md)
 Removes Azure SQL Server DNS Alias.
 
-### [Remove-AzureRmSqlServerFirewallRule](Remove-AzureRmSqlServerFirewallRule.md)
+### [Remove-AzSqlServerFirewallRule](Remove-AzSqlServerFirewallRule.md)
 Deletes a firewall rule from a SQL Database server.
 
-### [Remove-AzureRmSqlServerKeyVaultKey](Remove-AzureRmSqlServerKeyVaultKey.md)
+### [Remove-AzSqlServerKeyVaultKey](Remove-AzSqlServerKeyVaultKey.md)
 Removes a Key Vault key from a SQL server.
 
-### [Remove-AzureRmSqlServerThreatDetectionPolicy](Remove-AzureRmSqlServerThreatDetectionPolicy.md)
+### [Remove-AzSqlServerThreatDetectionPolicy](Remove-AzSqlServerThreatDetectionPolicy.md)
 Removes the threat detection policy from a server.
 
-### [Remove-AzureRmSqlServerVirtualNetworkRule](Remove-AzureRmSqlServerVirtualNetworkRule.md)
+### [Remove-AzSqlServerVirtualNetworkRule](Remove-AzSqlServerVirtualNetworkRule.md)
 Deletes an Azure SQL Server Virtual Network Rule.
 
-### [Remove-AzureRmSqlSyncAgent](Remove-AzureRmSqlSyncAgent.md)
+### [Remove-AzSqlSyncAgent](Remove-AzSqlSyncAgent.md)
 Removes an Azure SQL Sync Agent.
 
-### [Remove-AzureRmSqlSyncGroup](Remove-AzureRmSqlSyncGroup.md)
+### [Remove-AzSqlSyncGroup](Remove-AzSqlSyncGroup.md)
 Removes an Azure SQL Database Sync Group.
 
-### [Remove-AzureRmSqlSyncMember](Remove-AzureRmSqlSyncMember.md)
+### [Remove-AzSqlSyncMember](Remove-AzSqlSyncMember.md)
 Removes an Azure SQL Database Sync Member.
 
-### [Restore-AzureRmSqlDatabase](Restore-AzureRmSqlDatabase.md)
+### [Restore-AzSqlDatabase](Restore-AzSqlDatabase.md)
 Restores a SQL database.
 
-### [Restore-AzureRmSqlInstanceDatabase](Restore-AzureRmSqlInstanceDatabase.md)
+### [Restore-AzSqlInstanceDatabase](Restore-AzSqlInstanceDatabase.md)
 Restores an Azure SQL Managed Instance database.
 
-### [Resume-AzureRmSqlDatabase](Resume-AzureRmSqlDatabase.md)
+### [Resume-AzSqlDatabase](Resume-AzSqlDatabase.md)
 Resumes a SQL Data Warehouse database.
 
-### [Set-AzureRmSqlDatabase](Set-AzureRmSqlDatabase.md)
+### [Set-AzSqlDatabase](Set-AzSqlDatabase.md)
 Sets properties for a database, or moves an existing database into an elastic pool.
 
-### [Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus](Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus.md)
+### [Set-AzSqlDatabaseAdvisorAutoExecuteStatus](Set-AzSqlDatabaseAdvisorAutoExecuteStatus.md)
 Modifies auto execute status of an Azure SQL Database Advisor.
 
-### [Set-AzureRmSqlDatabaseAuditing](Set-AzureRmSqlDatabaseAuditing.md)
+### [Set-AzSqlDatabaseAuditing](Set-AzSqlDatabaseAuditing.md)
 Changes the auditing settings for an Azure SQL database.
 
-### [Set-AzureRmSqlDatabaseAuditingPolicy](Set-AzureRmSqlDatabaseAuditingPolicy.md)
+### [Set-AzSqlDatabaseAuditingPolicy](Set-AzSqlDatabaseAuditingPolicy.md)
 Sets the auditing policy for a database.
 
-### [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy.md)
+### [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Sets a server long term retention policy.
 
-### [Set-AzureRmSqlDatabaseDataMaskingPolicy](Set-AzureRmSqlDatabaseDataMaskingPolicy.md)
+### [Set-AzSqlDatabaseDataMaskingPolicy](Set-AzSqlDatabaseDataMaskingPolicy.md)
 Sets data masking for a database.
 
-### [Set-AzureRmSqlDatabaseDataMaskingRule](Set-AzureRmSqlDatabaseDataMaskingRule.md)
+### [Set-AzSqlDatabaseDataMaskingRule](Set-AzSqlDatabaseDataMaskingRule.md)
 Sets the properties of a data masking rule for a database.
 
-### [Set-AzureRmSqlDatabaseFailoverGroup](Set-AzureRmSqlDatabaseFailoverGroup.md)
+### [Set-AzSqlDatabaseFailoverGroup](Set-AzSqlDatabaseFailoverGroup.md)
 Modifies the configuration of an Azure SQL Database Failover Group.
 
-### [Set-AzureRmSqlDatabaseGeoBackupPolicy](Set-AzureRmSqlDatabaseGeoBackupPolicy.md)
+### [Set-AzSqlDatabaseGeoBackupPolicy](Set-AzSqlDatabaseGeoBackupPolicy.md)
 Sets a database geo backup policy.
 
-### [Set-AzureRmSqlDatabaseRecommendedActionState](Set-AzureRmSqlDatabaseRecommendedActionState.md)
+### [Set-AzSqlDatabaseRecommendedActionState](Set-AzSqlDatabaseRecommendedActionState.md)
 Updates the state of an Azure SQL Database recommended action.
 
-### [Set-AzureRmSqlDatabaseSecondary](Set-AzureRmSqlDatabaseSecondary.md)
+### [Set-AzSqlDatabaseSecondary](Set-AzSqlDatabaseSecondary.md)
 Switches a secondary database to be primary in order to initiate failover.
 
-### [Set-AzureRmSqlDatabaseThreatDetectionPolicy](Set-AzureRmSqlDatabaseThreatDetectionPolicy.md)
+### [Set-AzSqlDatabaseThreatDetectionPolicy](Set-AzSqlDatabaseThreatDetectionPolicy.md)
 Sets a threat detection policy on a database.
 
-### [Set-AzureRmSqlDatabaseTransparentDataEncryption](Set-AzureRmSqlDatabaseTransparentDataEncryption.md)
+### [Set-AzSqlDatabaseTransparentDataEncryption](Set-AzSqlDatabaseTransparentDataEncryption.md)
 Modifies TDE property for a database.
 
-### [Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+### [Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
-### [Set-AzureRmSqlElasticPool](Set-AzureRmSqlElasticPool.md)
+### [Set-AzSqlElasticPool](Set-AzSqlElasticPool.md)
 Modifies properties of an elastic database pool in Azure SQL Database.
 
-### [Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus](Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus.md)
+### [Set-AzSqlElasticPoolAdvisorAutoExecuteStatus](Set-AzSqlElasticPoolAdvisorAutoExecuteStatus.md)
 Updates auto execute status of an Azure SQL Elastic Pool Advisor.
 
-### [Set-AzureRmSqlElasticPoolRecommendedActionState](Set-AzureRmSqlElasticPoolRecommendedActionState.md)
+### [Set-AzSqlElasticPoolRecommendedActionState](Set-AzSqlElasticPoolRecommendedActionState.md)
 Updates the state of an Azure SQL Elastic Pool recommended action.
 
-### [Set-AzureRmSqlInstance](Set-AzureRmSqlInstance.md)
+### [Set-AzSqlInstance](Set-AzSqlInstance.md)
 Sets properties for an Azure SQL Database Managed Instance.
 
-### [Set-AzureRmSqlServer](Set-AzureRmSqlServer.md)
+### [Set-AzSqlServer](Set-AzSqlServer.md)
 Modifies properties of a SQL Database server.
 
-### [Set-AzureRmSqlServerActiveDirectoryAdministrator](Set-AzureRmSqlServerActiveDirectoryAdministrator.md)
+### [Set-AzSqlServerActiveDirectoryAdministrator](Set-AzSqlServerActiveDirectoryAdministrator.md)
 Provisions an Azure AD administrator for SQL Server.
 
-### [Set-AzureRmSqlServerAdvisorAutoExecuteStatus](Set-AzureRmSqlServerAdvisorAutoExecuteStatus.md)
+### [Set-AzSqlServerAdvisorAutoExecuteStatus](Set-AzSqlServerAdvisorAutoExecuteStatus.md)
 Updates the auto execute status of an Azure SQL Server Advisor.
 
-### [Set-AzureRmSqlServerAuditing](Set-AzureRmSqlServerAuditing.md)
+### [Set-AzSqlServerAuditing](Set-AzSqlServerAuditing.md)
 Changes the auditing settings of an Azure SQL server.
 
-### [Set-AzureRmSqlServerAuditingPolicy](Set-AzureRmSqlServerAuditingPolicy.md)
+### [Set-AzSqlServerAuditingPolicy](Set-AzSqlServerAuditingPolicy.md)
 Changes the auditing policy of a SQL Database server.
 
-### [Set-AzureRmSqlServerBackupLongTermRetentionVault](Set-AzureRmSqlServerBackupLongTermRetentionVault.md)
+### [Set-AzSqlServerBackupLongTermRetentionVault](Set-AzSqlServerBackupLongTermRetentionVault.md)
 Sets a server long term retention vault.
 
-### [Set-AzureRmSqlServerDisasterRecoveryConfiguration](Set-AzureRmSqlServerDisasterRecoveryConfiguration.md)
+### [Set-AzSqlServerDisasterRecoveryConfiguration](Set-AzSqlServerDisasterRecoveryConfiguration.md)
 Modifies a database server recovery configuration.
 
-### [Set-AzureRmSqlServerDnsAlias](Set-AzureRmSqlServerDnsAlias.md)
+### [Set-AzSqlServerDnsAlias](Set-AzSqlServerDnsAlias.md)
 Modifies the server to which Azure SQL Server DNS Alias is pointing
 
-### [Set-AzureRmSqlServerFirewallRule](Set-AzureRmSqlServerFirewallRule.md)
+### [Set-AzSqlServerFirewallRule](Set-AzSqlServerFirewallRule.md)
 Modifies a firewall rule in Azure SQL Database server.
 
-### [Set-AzureRmSqlServerRecommendedActionState](Set-AzureRmSqlServerRecommendedActionState.md)
+### [Set-AzSqlServerRecommendedActionState](Set-AzSqlServerRecommendedActionState.md)
 Updates the state of an Azure SQL Server recommended action.
 
-### [Set-AzureRmSqlServerThreatDetectionPolicy](Set-AzureRmSqlServerThreatDetectionPolicy.md)
+### [Set-AzSqlServerThreatDetectionPolicy](Set-AzSqlServerThreatDetectionPolicy.md)
 Sets a threat detection policy on a server.
 
-### [Set-AzureRmSqlServerTransparentDataEncryptionProtector](Set-AzureRmSqlServerTransparentDataEncryptionProtector.md)
+### [Set-AzSqlServerTransparentDataEncryptionProtector](Set-AzSqlServerTransparentDataEncryptionProtector.md)
 Sets the Transparent Data Encryption (TDE) protector for a SQL server.
 
-### [Set-AzureRmSqlServerVirtualNetworkRule](Set-AzureRmSqlServerVirtualNetworkRule.md)
+### [Set-AzSqlServerVirtualNetworkRule](Set-AzSqlServerVirtualNetworkRule.md)
 Modifies the configuration of an Azure SQL Server Virtual Network Rule.
 
-### [Start-AzureRmSqlDatabaseExecuteIndexRecommendation](Start-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
+### [Start-AzSqlDatabaseExecuteIndexRecommendation](Start-AzSqlDatabaseExecuteIndexRecommendation.md)
 Starts the workflow that runs a recommended index operation.
 
-### [Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan](Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan.md)
+### [Start-AzSqlDatabaseVulnerabilityAssessmentScan](Start-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
 
-### [Start-AzureRmSqlServerUpgrade](Start-AzureRmSqlServerUpgrade.md)
+### [Start-AzSqlServerUpgrade](Start-AzSqlServerUpgrade.md)
 Starts the upgrade of a SQL Database server.
 
-### [Start-AzureRmSqlSyncGroupSync](Start-AzureRmSqlSyncGroupSync.md)
+### [Start-AzSqlSyncGroupSync](Start-AzSqlSyncGroupSync.md)
 Starts a sync group synchronization.
 
-### [Stop-AzureRmSqlDatabaseActivity](Stop-AzureRmSqlDatabaseActivity.md)
+### [Stop-AzSqlDatabaseActivity](Stop-AzSqlDatabaseActivity.md)
 Cancels the asynchronous updates operation on the database.
 
-### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
+### [Stop-AzSqlDatabaseExecuteIndexRecommendation](Stop-AzSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
 
-### [Stop-AzureRmSqlElasticPoolActivity](Stop-AzureRmSqlElasticPoolActivity.md)
+### [Stop-AzSqlElasticPoolActivity](Stop-AzSqlElasticPoolActivity.md)
 Cancels the asynchronous update operation on an elastic pool.
 
-### [Stop-AzureRmSqlServerUpgrade](Stop-AzureRmSqlServerUpgrade.md)
+### [Stop-AzSqlServerUpgrade](Stop-AzSqlServerUpgrade.md)
 Stops the upgrade of a SQL Database server.
 
-### [Stop-AzureRmSqlSyncGroupSync](Stop-AzureRmSqlSyncGroupSync.md)
+### [Stop-AzSqlSyncGroupSync](Stop-AzSqlSyncGroupSync.md)
 Stops a sync group synchronization.
 
-### [Suspend-AzureRmSqlDatabase](Suspend-AzureRmSqlDatabase.md)
+### [Suspend-AzSqlDatabase](Suspend-AzSqlDatabase.md)
 Suspends a SQL Data Warehouse database.
 
-### [Switch-AzureRmSqlDatabaseFailoverGroup](Switch-AzureRmSqlDatabaseFailoverGroup.md)
+### [Switch-AzSqlDatabaseFailoverGroup](Switch-AzSqlDatabaseFailoverGroup.md)
 Executes a failover of an Azure SQL Database Failover Group.
 
-### [Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+### [Update-AzSqlDatabaseVulnerabilityAssessmentSettings](Update-AzSqlDatabaseVulnerabilityAssessmentSettings.md)
 Updates the vulnerability assessment settings of a database.
 
-### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
+### [Update-AzSqlSyncGroup](Update-AzSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.
 
-### [Update-AzureRmSqlSyncMember](Update-AzureRmSqlSyncMember.md)
+### [Update-AzSqlSyncMember](Update-AzSqlSyncMember.md)
 Updates an Azure SQL Database Sync Member.
 
-### [Update-AzureRmSqlSyncSchema](Update-AzureRmSqlSyncSchema.md)
+### [Update-AzSqlSyncSchema](Update-AzSqlSyncSchema.md)
 Update the sync schema for a sync member database or a sync hub database.
 It will get the the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
 If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
 
-### [Use-AzureRmSqlServerAuditingPolicy](Use-AzureRmSqlServerAuditingPolicy.md)
+### [Use-AzSqlServerAuditingPolicy](Use-AzSqlServerAuditingPolicy.md)
 Specifies that a database uses the auditing policy of its host server.
 

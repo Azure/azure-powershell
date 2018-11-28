@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 2B5FC268-4888-4AEB-B125-7263CF2E4DCD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/new-azurermintegrationaccountpartner
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/new-azintegrationaccountpartner
 schema: 2.0.0
 ---
 
-# New-AzureRmIntegrationAccountPartner
+# New-AzIntegrationAccountPartner
 
 ## SYNOPSIS
 Creates an integration account partner.
@@ -14,13 +14,13 @@ Creates an integration account partner.
 ## SYNTAX
 
 ```
-New-AzureRmIntegrationAccountPartner -ResourceGroupName <String> -Name <String> -PartnerName <String>
+New-AzIntegrationAccountPartner -ResourceGroupName <String> -Name <String> -PartnerName <String>
  [-PartnerType <String>] -BusinessIdentities <Object> [-Metadata <Object>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmIntegrationAccountPartner** cmdlet creates an integration account partner.
+The **New-AzIntegrationAccountPartner** cmdlet creates an integration account partner.
 This cmdlet returns an object that represents the integration account partner.
 Specify the integration account name, resource group name, partner name, and partner identities.
 Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
@@ -33,7 +33,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Create an integration account partner
 ```
-PS C:\>New-AzureRmIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -PartnerName "IntegrationAccountPartner22" -PartnerType "B2B" -BusinessIdentities $BusinessIdentities
+PS C:\>New-AzIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -PartnerName "IntegrationAccountPartner22" -PartnerType "B2B" -BusinessIdentities $BusinessIdentities
 Id                 : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/partners/IntegrationAccountPartner1
 Name               : IntegrationAccountPartner1
 Type               : Microsoft.Logic/integrationAccounts/partners
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -202,10 +202,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmIntegrationAccountPartner](./Get-AzureRmIntegrationAccountPartner.md)
+[Get-AzIntegrationAccountPartner](./Get-AzIntegrationAccountPartner.md)
 
-[Remove-AzureRmIntegrationAccountPartner](./Remove-AzureRmIntegrationAccountPartner.md)
+[Remove-AzIntegrationAccountPartner](./Remove-AzIntegrationAccountPartner.md)
 
-[Set-AzureRmIntegrationAccountPartner](./Set-AzureRmIntegrationAccountPartner.md)
+[Set-AzIntegrationAccountPartner](./Set-AzIntegrationAccountPartner.md)
 
 

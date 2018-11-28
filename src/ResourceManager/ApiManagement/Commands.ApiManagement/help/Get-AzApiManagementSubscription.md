@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 227EF8A2-E04A-4F6B-B66E-E77F1276A7E4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementsubscription
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementsubscription
 schema: 2.0.0
 ---
 
-# Get-AzureRmApiManagementSubscription
+# Get-AzApiManagementSubscription
 
 ## SYNOPSIS
 Gets subscriptions.
@@ -15,61 +15,61 @@ Gets subscriptions.
 
 ### GetAllSubscriptions (Default)
 ```
-Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApiManagementSubscription -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetBySubscriptionId
 ```
-Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-SubscriptionId <String>]
+Get-AzApiManagementSubscription -Context <PsApiManagementContext> [-SubscriptionId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByUserId
 ```
-Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-UserId <String>]
+Get-AzApiManagementSubscription -Context <PsApiManagementContext> [-UserId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByProductId
 ```
-Get-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-ProductId <String>]
+Get-AzApiManagementSubscription -Context <PsApiManagementContext> [-ProductId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApiManagementSubscription** cmdlet gets a specified subscription, or all subscriptions, if no subscription is specified.
+The **Get-AzApiManagementSubscription** cmdlet gets a specified subscription, or all subscriptions, if no subscription is specified.
 
 ## EXAMPLES
 
 ### Example 1: Get all subscriptions
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementSubscription -Context $apimContext
 ```
 
 This command gets all subscriptions.
 
 ### Example 2: Get a subscription with a specified ID
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789"
 ```
 
 This command gets a subscription by ID.
 
 ### Example 3: Get all subscriptions for a user
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext -UserId "777"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementSubscription -Context $apimContext -UserId "777"
 ```
 
 This command gets a user's subscriptions.
 
 ### Example 4: Get all subscriptions for a product
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementSubscription -Context $apimContext -ProductId "999"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementSubscription -Context $apimContext -ProductId "999"
 ```
 
 This command gets all subscriptions for the product.
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -171,10 +171,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagementSubscription](./New-AzureRmApiManagementSubscription.md)
+[New-AzApiManagementSubscription](./New-AzApiManagementSubscription.md)
 
-[Remove-AzureRmApiManagementSubscription](./Remove-AzureRmApiManagementSubscription.md)
+[Remove-AzApiManagementSubscription](./Remove-AzApiManagementSubscription.md)
 
-[Set-AzureRmApiManagementSubscription](./Set-AzureRmApiManagementSubscription.md)
+[Set-AzApiManagementSubscription](./Set-AzApiManagementSubscription.md)
 
 

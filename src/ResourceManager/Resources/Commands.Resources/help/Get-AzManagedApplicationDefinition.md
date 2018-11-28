@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermmanagedapplicationdefinition
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azmanagedapplicationdefinition
 schema: 2.0.0
 ---
 
-# Get-AzureRmManagedApplicationDefinition
+# Get-AzManagedApplicationDefinition
 
 ## SYNOPSIS
 Gets managed application definitions
@@ -14,31 +14,31 @@ Gets managed application definitions
 
 ### GetByNameAndResourceGroup (Default)
 ```
-Get-AzureRmManagedApplicationDefinition [-Name <String>] -ResourceGroupName <String> [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzManagedApplicationDefinition [-Name <String>] -ResourceGroupName <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetById
 ```
-Get-AzureRmManagedApplicationDefinition -Id <String> [-ApiVersion <String>] [-Pre]
+Get-AzManagedApplicationDefinition -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmManagedApplicationDefinition** cmdlet gets managed application definitions
+The **Get-AzManagedApplicationDefinition** cmdlet gets managed application definitions
 
 ## EXAMPLES
 
 ### Example 1: Get all managed application definitions under a resource group
 ```
-PS C:\>Get-AzureRmManagedApplicationDefinition -ResourceGroupName "MyRG"
+PS C:\>Get-AzManagedApplicationDefinition -ResourceGroupName "MyRG"
 ```
 
 This command gets the managed application definitions under resource group "MyRG"
 
 ### Example 2: Get a managed application definition
 ```
-PS C:\>Get-AzureRmManagedApplicationDefinition -ResourceGroupName "MyRG" -Name "myManagedAppDef"
+PS C:\>Get-AzManagedApplicationDefinition -ResourceGroupName "MyRG" -Name "myManagedAppDef"
 ```
 
 This command gets the managed application definition "myManagedAppDef" under resource group "MyRG"
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

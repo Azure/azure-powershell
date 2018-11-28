@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll-Help.xml
-Module Name: AzureRM.PowerBIEmbedded
+Module Name: Az.PowerBIEmbedded
 ms.assetid: 3FED0088-47DA-4565-B9F0-DACF9B2DC0C7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.powerbiembedded/get-azurermpowerbiworkspacecollectionaccesskeys
+online version: https://docs.microsoft.com/en-us/powershell/module/az.powerbiembedded/get-azpowerbiworkspacecollectionaccesskeys
 schema: 2.0.0
 ---
 
-# Get-AzureRmPowerBIWorkspaceCollectionAccessKeys
+# Get-AzPowerBIWorkspaceCollectionAccessKeys
 
 ## SYNOPSIS
 Gets the current access keys associated with a Power BI workspace collection.
@@ -14,18 +14,18 @@ Gets the current access keys associated with a Power BI workspace collection.
 ## SYNTAX
 
 ```
-Get-AzureRmPowerBIWorkspaceCollectionAccessKeys [-ResourceGroupName] <String>
- [-WorkspaceCollectionName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPowerBIWorkspaceCollectionAccessKeys [-ResourceGroupName] <String> [-WorkspaceCollectionName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmPowerBIWorkspaceCollectionAccessKeys** cmdlet gets the current access keys associated with a Power BI workspace collection.
+The **Get-AzPowerBIWorkspaceCollectionAccessKeys** cmdlet gets the current access keys associated with a Power BI workspace collection.
 
 ## EXAMPLES
 
 ### Example 1: Get access keys
 ```
-PS C:\>Get-AzureRmPowerBIWorkspaceCollectionAccessKeys -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11"
+PS C:\>Get-AzPowerBIWorkspaceCollectionAccessKeys -ResourceGroupName "ResourceGroup17" -WorkspaceCollectionName "WCN11"
 ```
 
 This command gets access keys for the workspace collection named WCN11 in the specified resource group.
@@ -36,7 +36,7 @@ This command gets access keys for the workspace collection named WCN11 in the sp
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,6 +92,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys](./Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys.md)
+[Reset-AzPowerBIWorkspaceCollectionAccessKeys](./Reset-AzPowerBIWorkspaceCollectionAccessKeys.md)
 
 

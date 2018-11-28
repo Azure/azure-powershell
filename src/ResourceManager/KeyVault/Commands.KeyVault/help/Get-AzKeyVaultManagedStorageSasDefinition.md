@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultmanagedstoragesasdefinition
+Module Name: Az.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultmanagedstoragesasdefinition
 schema: 2.0.0
 ---
 
-# Get-AzureKeyVaultManagedStorageSasDefinition
+# Get-AzKeyVaultManagedStorageSasDefinition
 
 ## SYNOPSIS
 Gets Key Vault managed Storage SAS Definitions.
@@ -14,13 +14,13 @@ Gets Key Vault managed Storage SAS Definitions.
 
 ### ByDefinitionName (Default)
 ```
-Get-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [[-Name] <String>]
+Get-AzKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [[-Name] <String>]
  [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Get-AzureKeyVaultManagedStorageSasDefinition [-InputObject] <PSKeyVaultManagedStorageAccountIdentityItem>
+Get-AzKeyVaultManagedStorageSasDefinition [-InputObject] <PSKeyVaultManagedStorageAccountIdentityItem>
  [[-Name] <String>] [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Gets a Key Vault managed Storage SAS Definition if the name of the definition is
 
 ### Example 1: List all Key Vault managed Storage SAS Definitions
 ```powershell
-PS C:\> Get-AzureKeyVaultManagedStorageSasDefinition -VaultName 'myvault' -AccountName 'mystorageaccount'
+PS C:\> Get-AzKeyVaultManagedStorageSasDefinition -VaultName 'myvault' -AccountName 'mystorageaccount'
 
 Id          : https://myvault.vault.azure.net:443/storage/mystorageaccount/sas/accountsas
 Vault Name  : myvault
@@ -47,7 +47,7 @@ Lists all the SAS definitions associated with Key Vault managed Storage Account 
 
 ### Example 2: Get a Key Vault managed Storage Account
 ```powershell
-PS C:\> Get-AzureKeyVaultManagedStorageSasDefinition -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'accountsas'
+PS C:\> Get-AzKeyVaultManagedStorageSasDefinition -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'accountsas'
 
 Id          : https://myvault.vault.azure.net:443/storage/mystorageaccount/sas/accountsas
 Secret Id   : https://myvault.vault.azure.net/secrets/mystorageaccount-accountsas
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

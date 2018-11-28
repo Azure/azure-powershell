@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/restore-azurekeyvaultmanagedstorageaccount
+Module Name: Az.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/restore-azkeyvaultmanagedstorageaccount
 schema: 2.0.0
 ---
 
-# Restore-AzureKeyVaultManagedStorageAccount
+# Restore-AzKeyVaultManagedStorageAccount
 
 ## SYNOPSIS
 Restores a managed storage account in a key vault from a backup file.
@@ -14,24 +14,24 @@ Restores a managed storage account in a key vault from a backup file.
 
 ### ByVaultName (Default)
 ```
-Restore-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [-InputFile] <String>
+Restore-AzKeyVaultManagedStorageAccount [-VaultName] <String> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Restore-AzureKeyVaultManagedStorageAccount [-InputObject] <PSKeyVault> [-InputFile] <String>
+Restore-AzKeyVaultManagedStorageAccount [-InputObject] <PSKeyVault> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Restore-AzureKeyVaultManagedStorageAccount [-ResourceId] <String> [-InputFile] <String>
+Restore-AzKeyVaultManagedStorageAccount [-ResourceId] <String> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Restore-AzureKeyVaultManagedStorageAccount** cmdlet creates a managed storage account in the specified key vault from a backup file.
+The **Restore-AzKeyVaultManagedStorageAccount** cmdlet creates a managed storage account in the specified key vault from a backup file.
 This managed storage account is a replica of the backed-up managed storage account in the input file and has the same name as the original.
 If the key vault already contains a managed storage account by the same name, this cmdlet fails instead of overwriting the original.
 The key vault that you restore the managed storage account into can be different from the key vault that you backed up the managed storage account from.
@@ -42,7 +42,7 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 
 ### Example 1: Restore a backed-up managed storage account
 ```powershell
-PS C:\> Restore-AzureKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+PS C:\> Restore-AzKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
 
 Id                  : https://mykeyvault.vault.azure.net:443/storage/mystorageaccount
 Vault Name          : MyKeyVault
@@ -66,7 +66,7 @@ This command restores a managed storage account, including all of its versions, 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermmanagedapplicationdefinition
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azmanagedapplicationdefinition
 schema: 2.0.0
 ---
 
-# New-AzureRmManagedApplicationDefinition
+# New-AzManagedApplicationDefinition
 
 ## SYNOPSIS
 Creates a managed application definition.
@@ -13,7 +13,7 @@ Creates a managed application definition.
 ## SYNTAX
 
 ```
-New-AzureRmManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -DisplayName <String>
+New-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -DisplayName <String>
  -Description <String> -Location <String> -LockLevel <ApplicationLockLevel> [-PackageFileUri <String>]
  [-CreateUiDefinition <String>] [-MainTemplate <String>] -Authorization <String[]> [-Tag <Hashtable>]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -21,13 +21,13 @@ New-AzureRmManagedApplicationDefinition -Name <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-The **New-AzureRmManagedApplicationDefinition** cmdlet creates a managed application definition.
+The **New-AzManagedApplicationDefinition** cmdlet creates a managed application definition.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS> New-AzureRmManagedApplicationDefinition -Name myAppDef -ResourceGroupName myRG -DisplayName test -Description "sample description" -Location westus -LockLevel ReadOnly -PackageFileUri https://sample.blob.core.windows.net/files/myPackage.zip -Authorization <principalId:roleDefinitionId>
+PS> New-AzManagedApplicationDefinition -Name myAppDef -ResourceGroupName myRG -DisplayName test -Description "sample description" -Location westus -LockLevel ReadOnly -PackageFileUri https://sample.blob.core.windows.net/files/myPackage.zip -Authorization <principalId:roleDefinitionId>
 ```
 
 This command creates a managed application definition
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

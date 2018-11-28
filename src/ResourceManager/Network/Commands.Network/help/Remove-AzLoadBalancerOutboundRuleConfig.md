@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermloadbalanceroutboundruleconfig
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azloadbalanceroutboundruleconfig
 schema: 2.0.0
 ---
 
-# Remove-AzureRmLoadBalancerOutboundRuleConfig
+# Remove-AzLoadBalancerOutboundRuleConfig
 
 ## SYNOPSIS
 Removes an outbound rule configuration from a load balancer.
@@ -13,20 +13,20 @@ Removes an outbound rule configuration from a load balancer.
 ## SYNTAX
 
 ```
-Remove-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+Remove-AzLoadBalancerOutboundRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmLoadBalancerOutboundRuleConfig** cmdlet removes an outbound rule configuration from an Azure load balancer.
+The **Remove-AzLoadBalancerOutboundRuleConfig** cmdlet removes an outbound rule configuration from an Azure load balancer.
 
 ## EXAMPLES
 
 ### Example 1: Delete an outbound rule from an Azure load balancer
 ```powershell
-PS C:\>$slb = Get-AzureRmLoadBalancer -ResourceGroupName "MyResourceGroup" -Name "MyLoadBalancer"
-PS C:\>Remove-AzureRmLoadBalancerOutboundRuleConfig -Name "RuleName" -LoadBalancer $slb
-PS C:\>Set-AzureRmLoadBalancer -LoadBalancer $slb
+PS C:\>$slb = Get-AzLoadBalancer -ResourceGroupName "MyResourceGroup" -Name "MyLoadBalancer"
+PS C:\>Remove-AzLoadBalancerOutboundRuleConfig -Name "RuleName" -LoadBalancer $slb
+PS C:\>Set-AzLoadBalancer -LoadBalancer $slb
 ```
 
 The first command gets the load balancer that is associated with the outbound rule configuration you want to remove, and then stores it in the $slb variable.
@@ -39,7 +39,7 @@ The third command updates the load balancer.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

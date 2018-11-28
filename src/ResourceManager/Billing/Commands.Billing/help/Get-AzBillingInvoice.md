@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Billing.dll-Help.xml
-Module Name: AzureRM.Billing
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.billing/get-azurermbillinginvoice
+Module Name: Az.Billing
+online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azbillinginvoice
 schema: 2.0.0
 ---
 
-# Get-AzureRmBillingInvoice
+# Get-AzBillingInvoice
 
 ## SYNOPSIS
 Get billing invoices of the subscription.
@@ -14,50 +14,50 @@ Get billing invoices of the subscription.
 
 ### List (Default)
 ```
-Get-AzureRmBillingInvoice [-MaxCount <Int32>] [-GenerateDownloadUrl] [-DefaultProfile <IAzureContextContainer>]
+Get-AzBillingInvoice [-MaxCount <Int32>] [-GenerateDownloadUrl] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### Latest
 ```
-Get-AzureRmBillingInvoice [-Latest] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBillingInvoice [-Latest] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Single
 ```
-Get-AzureRmBillingInvoice -Name <System.Collections.Generic.List`1[System.String]>
+Get-AzBillingInvoice -Name <System.Collections.Generic.List`1[System.String]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmBillingInvoice** cmdlet gets billing invoices of the subscription. 
+The **Get-AzBillingInvoice** cmdlet gets billing invoices of the subscription. 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmBillingInvoice -Latest
+PS C:\> Get-AzBillingInvoice -Latest
 ```
 
 Get the latest invoice of the subscription.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmBillingInvoice -Name 2017-02-18-432543543
+PS C:\> Get-AzBillingInvoice -Name 2017-02-18-432543543
 ```
 
 Get the invoice of the subscription with the specified name.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmBillingInvoice
+PS C:\> Get-AzBillingInvoice
 ```
 
 Get all available invoices of the subscription in reverse chronological order beginning with the most recent invoice without download Url. 
 
 ### Example 4
 ```
-PS C:\> Get-AzureRmBillingInvoice -GenerateDownloadUrl -MaxCount 10
+PS C:\> Get-AzBillingInvoice -GenerateDownloadUrl -MaxCount 10
 ```
 
 Get most recent 10 invoices of the subscription and include the download Url in the result.
@@ -68,7 +68,7 @@ Get most recent 10 invoices of the subscription and include the download Url in 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 ms.assetid: 66DD5919-B6B7-4FE5-B45B-937013549882
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/enable-azurermoperationalinsightslinuxsyslogcollection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/enable-azoperationalinsightslinuxsyslogcollection
 schema: 2.0.0
 ---
 
-# Enable-AzureRmOperationalInsightsLinuxSyslogCollection
+# Enable-AzOperationalInsightsLinuxSyslogCollection
 
 ## SYNOPSIS
 Starts collection of syslog data from Linux computers.
@@ -15,18 +15,18 @@ Starts collection of syslog data from Linux computers.
 
 ### ByWorkspaceName (Default)
 ```
-Enable-AzureRmOperationalInsightsLinuxSyslogCollection [-ResourceGroupName] <String> [-WorkspaceName] <String>
+Enable-AzOperationalInsightsLinuxSyslogCollection [-ResourceGroupName] <String> [-WorkspaceName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
-Enable-AzureRmOperationalInsightsLinuxSyslogCollection [-Workspace] <PSWorkspace>
+Enable-AzOperationalInsightsLinuxSyslogCollection [-Workspace] <PSWorkspace>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzureRmOperationalInsightsLinuxSyslogCollection** cmdlet starts collection of syslog data from connected Linux computers in a workspace.
+The **Enable-AzOperationalInsightsLinuxSyslogCollection** cmdlet starts collection of syslog data from connected Linux computers in a workspace.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ The **Enable-AzureRmOperationalInsightsLinuxSyslogCollection** cmdlet starts col
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -142,8 +142,8 @@ Parameters: Workspace (ByValue)
 
 ## RELATED LINKS
 
-[Disable-AzureRmOperationalInsightsLinuxSyslogCollection](./Disable-AzureRmOperationalInsightsLinuxSyslogCollection.md)
+[Disable-AzOperationalInsightsLinuxSyslogCollection](./Disable-AzOperationalInsightsLinuxSyslogCollection.md)
 
-[New-AzureRmOperationalInsightsLinuxSyslogDataSource](./New-AzureRmOperationalInsightsLinuxSyslogDataSource.md)
+[New-AzOperationalInsightsLinuxSyslogDataSource](./New-AzOperationalInsightsLinuxSyslogDataSource.md)
 
 

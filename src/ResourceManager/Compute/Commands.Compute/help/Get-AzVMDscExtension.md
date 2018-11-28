@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 5B7A1BE6-F5F5-4968-BE32-7743D0E25FE3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmdscextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmdscextension
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMDscExtension
+# Get-AzVMDscExtension
 
 ## SYNOPSIS
 Gets the settings of the DSC extension on a particular virtual machine.
@@ -14,18 +14,18 @@ Gets the settings of the DSC extension on a particular virtual machine.
 ## SYNTAX
 
 ```
-Get-AzureRmVMDscExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
+Get-AzVMDscExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMDscExtension** cmdlet gets the settings of the Desired State Configuration (DSC) extension on a particular virtual machine.
+The **Get-AzVMDscExtension** cmdlet gets the settings of the Desired State Configuration (DSC) extension on a particular virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Get the settings of a DSC extension
 ```
-PS C:\> Get-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup002" -VMName "VM07" -Name "DSC"
+PS C:\> Get-AzVMDscExtension -ResourceGroupName "ResourceGroup002" -VMName "VM07" -Name "DSC"
 ```
 
 This command gets the settings of extension named DSC on the virtual machine named VM07.
@@ -36,7 +36,7 @@ This command gets the settings of extension named DSC on the virtual machine nam
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -49,8 +49,8 @@ Accept wildcard characters: False
 
 ### -Name
 Specifies the name of the Azure Resource Manager resource that represents the extension.
-The Set-AzureRmVMDscExtension cmdlet sets this name to Microsoft.Powershell.DSC, which is the same value that is used by **Get-AzureRmVMDscExtension**.
-Specify this parameter only if you changed the default name in the **Set-AzureRmVMDscExtension** cmdlet or used a different resource name in a Resource Manager template.
+The Set-AzVMDscExtension cmdlet sets this name to Microsoft.Powershell.DSC, which is the same value that is used by **Get-AzVMDscExtension**.
+Specify this parameter only if you changed the default name in the **Set-AzVMDscExtension** cmdlet or used a different resource name in a Resource Manager template.
 
 ```yaml
 Type: System.String
@@ -126,8 +126,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmVMDscExtension](./Remove-AzureRmVMDscExtension.md)
+[Remove-AzVMDscExtension](./Remove-AzVMDscExtension.md)
 
-[Set-AzureRmVMDscExtension](./Set-AzureRmVMDscExtension.md)
+[Set-AzVMDscExtension](./Set-AzVMDscExtension.md)
 
 

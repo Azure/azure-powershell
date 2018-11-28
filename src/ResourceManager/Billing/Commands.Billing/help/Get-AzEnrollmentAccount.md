@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Billing.dll-Help.xml
-Module Name: AzureRM.Billing
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.billing/get-azurermenrollmentaccount
+Module Name: Az.Billing
+online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azenrollmentaccount
 schema: 2.0.0
 ---
 
-# Get-AzureRmEnrollmentAccount
+# Get-AzEnrollmentAccount
 
 ## SYNOPSIS
 Get enrollment accounts.
@@ -14,23 +14,22 @@ Get enrollment accounts.
 
 ### List (Default)
 ```
-Get-AzureRmEnrollmentAccount [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEnrollmentAccount [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Single
 ```
-Get-AzureRmEnrollmentAccount [-ObjectId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzEnrollmentAccount [-ObjectId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmEnrollmentAccount** cmdlet gets enrollment accounts.
+The **Get-AzEnrollmentAccount** cmdlet gets enrollment accounts.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmEnrollmentAccount
+PS C:\> Get-AzEnrollmentAccount
 
 ObjectId                             PrincipalName
 --------                             -------------
@@ -42,7 +41,7 @@ Get all available enrollment accounts.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmEnrollmentAccount -ObjectId dbd8453d-071f-4fb4-8e01-c99f5b067649
+PS C:\> Get-AzEnrollmentAccount -ObjectId dbd8453d-071f-4fb4-8e01-c99f5b067649
 
 ObjectId                             PrincipalName
 --------                             -------------
@@ -57,7 +56,7 @@ Get the enrollment account with the specified object id.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

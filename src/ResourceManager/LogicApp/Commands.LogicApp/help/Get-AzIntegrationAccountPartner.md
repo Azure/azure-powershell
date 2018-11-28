@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 6E84E26F-8150-41F8-8823-CEED05619A75
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermintegrationaccountpartner
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azintegrationaccountpartner
 schema: 2.0.0
 ---
 
-# Get-AzureRmIntegrationAccountPartner
+# Get-AzIntegrationAccountPartner
 
 ## SYNOPSIS
 Gets integration account partners.
@@ -14,12 +14,12 @@ Gets integration account partners.
 ## SYNTAX
 
 ```
-Get-AzureRmIntegrationAccountPartner [-ResourceGroupName <String>] [-Name <String>] [-PartnerName <String>]
+Get-AzIntegrationAccountPartner [-ResourceGroupName <String>] [-Name <String>] [-PartnerName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmIntegrationAccountPartner** cmdlet gets integration account partners from a resource group.
+The **Get-AzIntegrationAccountPartner** cmdlet gets integration account partners from a resource group.
 Specify the integration account name, resource group name, and partner name.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -30,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Get an integration account partner
 ```
-PS C:\>Get-AzureRmIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -PartnerName "IntegrationAccountPartner22"
+PS C:\>Get-AzIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -PartnerName "IntegrationAccountPartner22"
 Id                 : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/TestIntegrationAccount/partners/IntegrationAccountPartner31
 Name               : IntegrationAccountPartner31
 Type               : Microsoft.Logic/integrationAccounts/partners
@@ -45,7 +45,7 @@ This command gets the integration account partner named IntegrationAccountPartne
 
 ### Example 2: Get an integration account partners by using an integration account name
 ```
-PS C:\>Get-AzureRmIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
+PS C:\>Get-AzIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
 Id                 : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/TestIntegrationAccount/partners/IntegrationAccountPartner31
 Name               : IntegrationAccountPartner31
 Type               : Microsoft.Logic/integrationAccounts/partners
@@ -64,7 +64,7 @@ This command gets the integration account partners for the integration account n
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -135,10 +135,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmIntegrationAccountPartner](./New-AzureRmIntegrationAccountPartner.md)
+[New-AzIntegrationAccountPartner](./New-AzIntegrationAccountPartner.md)
 
-[Remove-AzureRmIntegrationAccountPartner](./Remove-AzureRmIntegrationAccountPartner.md)
+[Remove-AzIntegrationAccountPartner](./Remove-AzIntegrationAccountPartner.md)
 
-[Set-AzureRmIntegrationAccountPartner](./Set-AzureRmIntegrationAccountPartner.md)
+[Set-AzIntegrationAccountPartner](./Set-AzIntegrationAccountPartner.md)
 
 

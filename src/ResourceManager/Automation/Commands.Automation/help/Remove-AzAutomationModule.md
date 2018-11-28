@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 5F45A12C-BB50-4732-BE80-188491DEF8B5
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/remove-azurermautomationmodule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/remove-azautomationmodule
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAutomationModule
+# Remove-AzAutomationModule
 
 ## SYNOPSIS
 Removes a module from Automation.
@@ -14,19 +14,19 @@ Removes a module from Automation.
 ## SYNTAX
 
 ```
-Remove-AzureRmAutomationModule [-Name] <String> [-Force] [-ResourceGroupName] <String>
+Remove-AzAutomationModule [-Name] <String> [-Force] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmAutomationModule** cmdlet removes a module from an Automation account in Azure Automation.
+The **Remove-AzAutomationModule** cmdlet removes a module from an Automation account in Azure Automation.
 
 ## EXAMPLES
 
 ### Example 1: Remove a module
 ```
-PS C:\>Remove-AzureRmAutomationModule -AutomationAccountName "Contoso17" -Name "ContosoModule" -ResourceGroupName "ResourceGroup01"
+PS C:\>Remove-AzAutomationModule -AutomationAccountName "Contoso17" -Name "ContosoModule" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes a module named ContosoModule from the Automation account named Contoso17.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -154,10 +154,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationModule](./Get-AzureRmAutomationModule.md)
+[Get-AzAutomationModule](./Get-AzAutomationModule.md)
 
-[New-AzureRmAutomationModule](./New-AzureRmAutomationModule.md)
+[New-AzAutomationModule](./New-AzAutomationModule.md)
 
-[Set-AzureRmAutomationModule](./Set-AzureRmAutomationModule.md)
+[Set-AzAutomationModule](./Set-AzAutomationModule.md)
 
 

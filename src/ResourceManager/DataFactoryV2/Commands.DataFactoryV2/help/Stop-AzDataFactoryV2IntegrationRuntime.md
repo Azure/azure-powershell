@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/stop-azurermdatafactoryv2integrationruntime
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/stop-azdatafactoryv2integrationruntime
 schema: 2.0.0
 ---
 
-# Stop-AzureRmDataFactoryV2IntegrationRuntime
+# Stop-AzDataFactoryV2IntegrationRuntime
 
 ## SYNOPSIS
 Stops a managed dedicated integration runtime.
@@ -14,34 +14,34 @@ Stops a managed dedicated integration runtime.
 
 ### ByIntegrationRuntimeName (Default)
 ```
-Stop-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-Name] <String> [-ResourceGroupName] <String>
+Stop-AzDataFactoryV2IntegrationRuntime [-Force] [-Name] <String> [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Stop-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-ResourceId] <String>
+Stop-AzDataFactoryV2IntegrationRuntime [-Force] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Stop-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-InputObject] <PSIntegrationRuntime>
+Stop-AzDataFactoryV2IntegrationRuntime [-Force] [-InputObject] <PSIntegrationRuntime>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmDataFactoryV2IntegrationRuntime** cmdlet stops a managed dedicated integration runtime in 'Started' state, which was started by the Start-AzureRmDataFactoryV2IntegrationRuntime cmdlet. The resources are released and the state transfers to 'Stopped'.
+The **Stop-AzDataFactoryV2IntegrationRuntime** cmdlet stops a managed dedicated integration runtime in 'Started' state, which was started by the Start-AzDataFactoryV2IntegrationRuntime cmdlet. The resources are released and the state transfers to 'Stopped'.
 
 ## EXAMPLES
 
 ### Example 1: Stop a managed integration runtime that is in 'Started' state.
 ```
-PS C:\> Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df' -Name 'test-reserlved-ir'
+PS C:\> Stop-AzDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df' -Name 'test-reserlved-ir'
 ```
 
-The managed integration runtime 'test-reserlved-ir' is in 'Started' state. After running Stop-AzureRmDataFactoryV2IntegrationRuntime cmdlet, the resources are released and the state transfers to 'Stopped'.
+The managed integration runtime 'test-reserlved-ir' is in 'Started' state. After running Stop-AzDataFactoryV2IntegrationRuntime cmdlet, the resources are released and the state transfers to 'Stopped'.
 
 ## PARAMETERS
 
@@ -199,4 +199,4 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories, c
 
 ## RELATED LINKS
 
-[Start-AzureRmDataFactoryV2IntegrationRuntime]()
+[Start-AzDataFactoryV2IntegrationRuntime]()

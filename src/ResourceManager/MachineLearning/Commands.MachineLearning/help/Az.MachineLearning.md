@@ -1,58 +1,58 @@
 ---
-Module Name: AzureRM.MachineLearning
+Module Name: Az.MachineLearning
 Module Guid: bb030259-49f9-46ef-806f-2a3f5a2e018e
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# AzureRM.MachineLearning Module
+# Az.MachineLearning Module
 ## Description
 Machine Learning Web Services cmdlets for Azure Resource Manager
 
-## AzureRM.MachineLearning Cmdlets
-### [Add-AzureRmMlWebServiceRegionalProperty](Add-AzureRmMlWebServiceRegionalProperty.md)
+## Az.MachineLearning Cmdlets
+### [Add-AzMlWebServiceRegionalProperty](Add-AzMlWebServiceRegionalProperty.md)
 Creates regional web service properties.
 
-### [Export-AzureRmMlWebService](Export-AzureRmMlWebService.md)
+### [Export-AzMlWebService](Export-AzMlWebService.md)
 Exports the web service definition object as a JSON formatted string.
 
-### [Get-AzureRmMlCommitmentAssociation](Get-AzureRmMlCommitmentAssociation.md)
+### [Get-AzMlCommitmentAssociation](Get-AzMlCommitmentAssociation.md)
 Retrieves the summary information for one or more commitment associations.
 
-### [Get-AzureRmMlCommitmentPlan](Get-AzureRmMlCommitmentPlan.md)
+### [Get-AzMlCommitmentPlan](Get-AzMlCommitmentPlan.md)
 Retrieves the summary information for one or more commitment plans.
 
-### [Get-AzureRmMlCommitmentPlanUsageHistory](Get-AzureRmMlCommitmentPlanUsageHistory.md)
+### [Get-AzMlCommitmentPlanUsageHistory](Get-AzMlCommitmentPlanUsageHistory.md)
 Retrieves usage history information for a specified commitment plan.
 
-### [Get-AzureRmMlWebService](Get-AzureRmMlWebService.md)
+### [Get-AzMlWebService](Get-AzMlWebService.md)
 Retrieves the summary information for one or more web services.
 
-### [Get-AzureRmMlWebServiceKeys](Get-AzureRmMlWebServiceKeys.md)
+### [Get-AzMlWebServiceKeys](Get-AzMlWebServiceKeys.md)
 Retrieves the web service's keys.
 
-### [Import-AzureRmMlWebService](Import-AzureRmMlWebService.md)
+### [Import-AzMlWebService](Import-AzMlWebService.md)
 Imports a JSON object into a web service definition.
 
-### [Move-AzureRmMlCommitmentAssociation](Move-AzureRmMlCommitmentAssociation.md)
+### [Move-AzMlCommitmentAssociation](Move-AzMlCommitmentAssociation.md)
 Moves a commitment association from one commitment plan to another.
 
-### [New-AzureRmMlCommitmentPlan](New-AzureRmMlCommitmentPlan.md)
+### [New-AzMlCommitmentPlan](New-AzMlCommitmentPlan.md)
 Creates a new commitment plan.
 
-### [New-AzureRmMlWebService](New-AzureRmMlWebService.md)
+### [New-AzMlWebService](New-AzMlWebService.md)
 Creates a new web service.
 
-### [Remove-AzureRmMlCommitmentPlan](Remove-AzureRmMlCommitmentPlan.md)
+### [Remove-AzMlCommitmentPlan](Remove-AzMlCommitmentPlan.md)
 Deletes a commitment plan.
 
-### [Remove-AzureRmMlWebService](Remove-AzureRmMlWebService.md)
+### [Remove-AzMlWebService](Remove-AzMlWebService.md)
 Deletes a web service.
 
-### [Update-AzureRmMlCommitmentPlan](Update-AzureRmMlCommitmentPlan.md)
+### [Update-AzMlCommitmentPlan](Update-AzMlCommitmentPlan.md)
 Updates properties of an existing commitment plan resource.
 
-### [Update-AzureRmMlWebService](Update-AzureRmMlWebService.md)
+### [Update-AzMlWebService](Update-AzMlWebService.md)
 Updates properties of an existing web service resource.
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 4C2C77F7-ECE4-4106-8AF1-256A496A977B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/set-azurekeyvaultcertificateissuer
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/set-azkeyvaultcertificateissuer
 schema: 2.0.0
 ---
 
-# Set-AzureKeyVaultCertificateIssuer
+# Set-AzKeyVaultCertificateIssuer
 
 ## SYNOPSIS
 Sets a certificate issuer in a key vault.
@@ -15,7 +15,7 @@ Sets a certificate issuer in a key vault.
 
 ### Expanded (Default)
 ```
-Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> -IssuerProvider <String>
+Set-AzKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> -IssuerProvider <String>
  [-AccountId <String>] [-ApiKey <SecureString>]
  [-OrganizationDetails <PSKeyVaultCertificateOrganizationDetails>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -23,22 +23,22 @@ Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> -Issue
 
 ### ByValue
 ```
-Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String>
+Set-AzKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String>
  -InputObject <PSKeyVaultCertificateIssuerIdentityItem> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzureKeyVaultCertificateIssuer cmdlet sets a certificate issuer in a key vault.
+The Set-AzKeyVaultCertificateIssuer cmdlet sets a certificate issuer in a key vault.
 
 ## EXAMPLES
 
 ### Example 1: Set a certificate issuer
 ```powershell
-PS C:\> $AdminDetails = New-AzureKeyVaultCertificateAdministratorDetails -FirstName user -LastName name -EmailAddress username@microsoft.com
-PS C:\> $OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -AdministrationDetails $AdminDetails
+PS C:\> $AdminDetails = New-AzKeyVaultCertificateAdministratorDetails -FirstName user -LastName name -EmailAddress username@microsoft.com
+PS C:\> $OrgDetails = New-AzKeyVaultCertificateOrganizationDetails -AdministrationDetails $AdminDetails
 PS C:\> $Password = ConvertTo-SecureString -String P@ssw0rd -AsPlainText -Force
-PS C:\> Set-AzureKeyVaultCertificateIssuer -VaultName "Contosokv01" -Name "TestIssuer01" -IssuerProvider "Test" -AccountId "555" -ApiKey $Password -OrganizationDetails $OrgDetails -PassThru
+PS C:\> Set-AzKeyVaultCertificateIssuer -VaultName "Contosokv01" -Name "TestIssuer01" -IssuerProvider "Test" -AccountId "555" -ApiKey $Password -OrganizationDetails $OrgDetails -PassThru
 
 AccountId           : 555
 ApiKey              :
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -238,7 +238,7 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultCertificateIssuer](./Get-AzureKeyVaultCertificateIssuer.md)
+[Get-AzKeyVaultCertificateIssuer](./Get-AzKeyVaultCertificateIssuer.md)
 
-[Remove-AzureKeyVaultCertificateIssuer](./Remove-AzureKeyVaultCertificateIssuer.md)
+[Remove-AzKeyVaultCertificateIssuer](./Remove-AzKeyVaultCertificateIssuer.md)
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/remove-azurermrediscachelink
+Module Name: Az.RedisCache
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/remove-azrediscachelink
 schema: 2.0.0
 ---
 
-# Remove-AzureRmRedisCacheLink
+# Remove-AzRedisCacheLink
 
 ## SYNOPSIS
 Remove a geo replication link between two Redis Caches.
@@ -13,7 +13,7 @@ Remove a geo replication link between two Redis Caches.
 ## SYNTAX
 
 ```
-Remove-AzureRmRedisCacheLink -PrimaryServerName <String> -SecondaryServerName <String> [-PassThru]
+Remove-AzRedisCacheLink -PrimaryServerName <String> -SecondaryServerName <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Remove a geo replication link between two Redis Caches.
 
 ### Example 1: Remove a geo replication link
 ```
-PS C:\>Remove-AzureRmRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
+PS C:\>Remove-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache2"
 ```
 
 This command removes a geo-replication links where Redis Cache named mycache1 is primary and Redis Cache named mycache2 is secondary.
@@ -35,7 +35,7 @@ This command removes a geo-replication links where Redis Cache named mycache1 is
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -137,14 +137,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmRedisCacheLink](./New-AzureRmRedisCacheLink.md)
+[New-AzRedisCacheLink](./New-AzRedisCacheLink.md)
 
-[Get-AzureRmRedisCacheLink](./Get-AzureRmRedisCacheLink.md)
+[Get-AzRedisCacheLink](./Get-AzRedisCacheLink.md)
 
-[Get-AzureRmRedisCache](./Get-AzureRmRedisCache.md)
+[Get-AzRedisCache](./Get-AzRedisCache.md)
 
-[New-AzureRmRedisCache](./New-AzureRmRedisCache.md)
+[New-AzRedisCache](./New-AzRedisCache.md)
 
-[Remove-AzureRmRedisCache](./Remove-AzureRmRedisCache.md)
+[Remove-AzRedisCache](./Remove-AzRedisCache.md)
 
-[Set-AzureRmRedisCache](./Set-AzureRmRedisCache.md)
+[Set-AzRedisCache](./Set-AzRedisCache.md)

@@ -1,12 +1,12 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: F0370845-13D9-4FB5-B30E-826A22EBC5E0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressroutecrossconnectionarptable
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecrossconnectionarptable
 schema: 2.0.0
 ---
 
-# Get-AzureRmExpressRouteCrossConnectionARPTable
+# Get-AzExpressRouteCrossConnectionARPTable
 
 ## SYNOPSIS
 Gets the ARP table from an ExpressRoute cross connection.
@@ -14,13 +14,13 @@ Gets the ARP table from an ExpressRoute cross connection.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCrossConnectionARPTable -ResourceGroupName <String> -ExpressRouteCrossConnectionName <String>
+Get-AzExpressRouteCrossConnectionARPTable -ResourceGroupName <String> -ExpressRouteCrossConnectionName <String>
  [-PeeringType <String>] -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmExpressRouteCrossConnectionARPTable** cmdlet retrieves the ARP table from both interfaces
+The **Get-AzExpressRouteCrossConnectionARPTable** cmdlet retrieves the ARP table from both interfaces
 of an ExpressRoute cross connection. The ARP table provides a mapping of the IPv4 address to MAC address for
 a particular peering. You can use the ARP table to validate layer 2 configuration and connectivity.
 
@@ -28,7 +28,7 @@ a particular peering. You can use the ARP table to validate layer 2 configuratio
 
 ### Example 1: Display the ARP table for an ExpressRoute peer
 ```
-Get-AzureRmExpressRouteCrossConnectionARPTable -ResourceGroupName $RG -ExpressRouteCrossConnectionName $CrossConnectionName -PeeringType MicrosoftPeering -DevicePath Primary
+Get-AzExpressRouteCrossConnectionARPTable -ResourceGroupName $RG -ExpressRouteCrossConnectionName $CrossConnectionName -PeeringType MicrosoftPeering -DevicePath Primary
 ```
 
 ## PARAMETERS
@@ -127,6 +127,6 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[Get-AzureRmExpressRouteCrossConnectionRouteTable](Get-AzureRmExpressRouteCrossConnectionRouteTable.md)
+[Get-AzExpressRouteCrossConnectionRouteTable](Get-AzExpressRouteCrossConnectionRouteTable.md)
 
-[Get-AzureRmExpressRouteCrossConnectionRouteTableSummary](Get-AzureRmExpressRouteCrossConnectionRouteTableSummary.md)
+[Get-AzExpressRouteCrossConnectionRouteTableSummary](Get-AzExpressRouteCrossConnectionRouteTableSummary.md)

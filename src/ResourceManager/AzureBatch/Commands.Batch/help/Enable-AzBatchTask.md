@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 67FB5D02-4F4B-4119-B3AC-0D205247253E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/enable-azurebatchtask
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/enable-azbatchtask
 schema: 2.0.0
 ---
 
-# Enable-AzureBatchTask
+# Enable-AzBatchTask
 
 ## SYNOPSIS
 Reactivates a task.
@@ -15,35 +15,35 @@ Reactivates a task.
 
 ### Id
 ```
-Enable-AzureBatchTask [-JobId] <String> [-Id] <String> -BatchContext <BatchAccountContext>
+Enable-AzBatchTask [-JobId] <String> [-Id] <String> -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Enable-AzureBatchTask [-Task] <PSCloudTask> -BatchContext <BatchAccountContext>
+Enable-AzBatchTask [-Task] <PSCloudTask> -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzureBatchTask** cmdlet reactivates a task.
+The **Enable-AzBatchTask** cmdlet reactivates a task.
 If a task has exhausted its retry count, this cmdlet nevertheless enables it to run.
 
 ## EXAMPLES
 
 ### Example 1: Reactivate a task
 ```
-PS C:\>Enable-AzureBatchTask -JobId "Job7" -Id "Task2" -BatchContext $Context
+PS C:\>Enable-AzBatchTask -JobId "Job7" -Id "Task2" -BatchContext $Context
 ```
 
 This command reactivates the task Task2 in job Job7.
 
 ### Example 2: Reactivate a task by using the pipeline
 ```
-PS C:\>Get-AzureBatchTask -JobId "Job8" -Id "Task3" -BatchContext $Context | Enable-AzureBatchTask -BatchContext $Context
+PS C:\>Get-AzBatchTask -JobId "Job8" -Id "Task3" -BatchContext $Context | Enable-AzBatchTask -BatchContext $Context
 ```
 
-This command gets the Batch task that has the ID Task3 in the job that has the ID Job8 by using the Get-AzureBatchTask cmdlet.
+This command gets the Batch task that has the ID Task3 in the job that has the ID Job8 by using the Get-AzBatchTask cmdlet.
 The command passes that task to the current cmdlet by using the pipeline operator.
 The command reactivates that task.
 
@@ -51,7 +51,7 @@ The command reactivates that task.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 
 ### -Task
 Specifies the task that this cmdlet reactivates.
-To obtain a **PSCloudTask** object, use the Get-AzureBatchTask cmdlet.
+To obtain a **PSCloudTask** object, use the Get-AzBatchTask cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.Models.PSCloudTask
@@ -178,16 +178,16 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchTask](./Get-AzureBatchTask.md)
+[Get-AzBatchTask](./Get-AzBatchTask.md)
 
-[New-AzureBatchTask](./New-AzureBatchTask.md)
+[New-AzBatchTask](./New-AzBatchTask.md)
 
-[Remove-AzureBatchTask](./Remove-AzureBatchTask.md)
+[Remove-AzBatchTask](./Remove-AzBatchTask.md)
 
-[Set-AzureBatchTask](./Set-AzureBatchTask.md)
+[Set-AzBatchTask](./Set-AzBatchTask.md)
 
-[Stop-AzureBatchTask](./Stop-AzureBatchTask.md)
+[Stop-AzBatchTask](./Stop-AzBatchTask.md)
 
 

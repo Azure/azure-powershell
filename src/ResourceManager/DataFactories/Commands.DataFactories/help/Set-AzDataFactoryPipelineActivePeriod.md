@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: D853A91F-95E7-4C36-AC0F-2C10DFCF68F8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/set-azurermdatafactorypipelineactiveperiod
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/set-azdatafactorypipelineactiveperiod
 schema: 2.0.0
 ---
 
-# Set-AzureRmDataFactoryPipelineActivePeriod
+# Set-AzDataFactoryPipelineActivePeriod
 
 ## SYNOPSIS
 Configures the active period for data slices.
@@ -15,7 +15,7 @@ Configures the active period for data slices.
 
 ### ByFactoryName (Default)
 ```
-Set-AzureRmDataFactoryPipelineActivePeriod [-PipelineName] <String> [-DataFactoryName] <String>
+Set-AzDataFactoryPipelineActivePeriod [-PipelineName] <String> [-DataFactoryName] <String>
  [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime>] [-AutoResolve] [-ForceRecalculate]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,14 +23,14 @@ Set-AzureRmDataFactoryPipelineActivePeriod [-PipelineName] <String> [-DataFactor
 
 ### ByFactoryObject
 ```
-Set-AzureRmDataFactoryPipelineActivePeriod [-PipelineName] <String> [-DataFactory] <PSDataFactory>
+Set-AzDataFactoryPipelineActivePeriod [-PipelineName] <String> [-DataFactory] <PSDataFactory>
  [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime>] [-AutoResolve] [-ForceRecalculate]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmDataFactoryPipelineActivePeriod** cmdlet configures the active period for the data slices that are processed by a pipeline in Azure Data Factory.
-If you use the Set-AzureRmDataFactorySliceStatus cmdlet to modify the status of slices for a dataset, make sure that the start time and end time for a slice are in the active period of the pipeline.
+The **Set-AzDataFactoryPipelineActivePeriod** cmdlet configures the active period for the data slices that are processed by a pipeline in Azure Data Factory.
+If you use the Set-AzDataFactorySliceStatus cmdlet to modify the status of slices for a dataset, make sure that the start time and end time for a slice are in the active period of the pipeline.
 After you create a pipeline, you can specify the period in which data processing occurs.
 Specifying the active period for a pipeline defines the time duration in which the data slices are processed based on the **Availability** properties that were defined for each Data Factory dataset.
 
@@ -38,7 +38,7 @@ Specifying the active period for a pipeline defines the time duration in which t
 
 ### Example 1: Configure the active period
 ```
-PS C:\>Set-AzureRmDataFactoryPipelineActivePeriod -ResourceGroupName "ADF" -PipelineName "DPWikisample" -DataFactoryName "WikiADF" -StartDateTime 2014-05-21T16:00:00Z -EndDateTime 2014-05-22T16:00:00Z
+PS C:\>Set-AzDataFactoryPipelineActivePeriod -ResourceGroupName "ADF" -PipelineName "DPWikisample" -DataFactoryName "WikiADF" -StartDateTime 2014-05-21T16:00:00Z -EndDateTime 2014-05-22T16:00:00Z
 Confirm
 Are you sure you want to set pipeline 'DPWikisample' active period from '05/21/2014 16:00:00' to
 '05/22/2014 16:00:00'? 
@@ -250,8 +250,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmDataFactoryPipeline](./New-AzureRmDataFactoryPipeline.md)
+[New-AzDataFactoryPipeline](./New-AzDataFactoryPipeline.md)
 
-[Set-AzureRmDataFactorySliceStatus](./Set-AzureRmDataFactorySliceStatus.md)
+[Set-AzDataFactorySliceStatus](./Set-AzDataFactorySliceStatus.md)
 
 

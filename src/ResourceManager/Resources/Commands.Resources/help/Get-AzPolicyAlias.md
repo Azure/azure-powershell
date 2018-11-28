@@ -1,27 +1,27 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRm.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermpolicyalias
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azpolicyalias
 schema: 2.0.0
 ---
 
-# Get-AzureRmPolicyAlias
+# Get-AzPolicyAlias
 
 ## SYNOPSIS
-Get-AzureRmPolicyAlias retrieves and outputs Azure provider resource types that have aliases defined and match the
+Get-AzPolicyAlias retrieves and outputs Azure provider resource types that have aliases defined and match the
 given parameter values. If no parameters are provided, all provider resource types that contain an alias will be output.
 The -ListAvailable switch modifies this behavior by listing all matching resource types including those without aliases.
 
 ## SYNTAX
 
 ```
-Get-AzureRmPolicyAlias [-NamespaceMatch <String>] [-ResourceTypeMatch <String>] [-AliasMatch <String>]
+Get-AzPolicyAlias [-NamespaceMatch <String>] [-ResourceTypeMatch <String>] [-AliasMatch <String>]
  [-PathMatch <String>] [-ApiVersionMatch <String>] [-LocationMatch <String>] [-ListAvailable]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmPolicyAlias** cmdlet gets a listing of policy aliases.
+The **Get-AzPolicyAlias** cmdlet gets a listing of policy aliases.
 Policy aliases are used by Azure Policy to refer to resource type properties.
 Parameters are provided that limit items in the listing by matching various properties of the resource type or its aliases.
 A given match value matches if the target string contains it using case insensitive comparison.
@@ -30,7 +30,7 @@ A given match value matches if the target string contains it using case insensit
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmPolicyAlias
+PS C:\> Get-AzPolicyAlias
 
 Namespace                     ResourceType                                   Aliases
 ---------                     ------------                                   -------
@@ -52,7 +52,7 @@ Lists all provider resource types that have an alias.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmPolicyAlias -ListAvailable
+PS C:\> Get-AzPolicyAlias -ListAvailable
 
 Namespace                                ResourceType                                                        Aliases
 ---------                                ------------                                                        -------
@@ -73,7 +73,7 @@ Lists all provider resource types, including those without aliases.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzureRmPolicyAlias -NamespaceMatch 'compute'
+PS C:\> Get-AzPolicyAlias -NamespaceMatch 'compute'
 
 Namespace         ResourceType                       Aliases
 ---------         ------------                       -------
@@ -91,7 +91,7 @@ Lists all provider resource types whose namespace matches 'compute' and contain 
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzureRmPolicyAlias -ResourceTypeMatch 'virtual'
+PS C:\> Get-AzPolicyAlias -ResourceTypeMatch 'virtual'
 
 Namespace         ResourceType                           Aliases
 ---------         ------------                           -------
@@ -113,7 +113,7 @@ Lists all provider resource types whose resource type matches 'virtual' and cont
 
 ### Example 5
 ```powershell
-PS C:\> Get-AzureRmPolicyAlias -ResourceTypeMatch 'virtual' -ListAvailable
+PS C:\> Get-AzPolicyAlias -ResourceTypeMatch 'virtual' -ListAvailable
 
 Namespace                    ResourceType                                               Aliases
 ---------                    ------------                                               -------
@@ -135,7 +135,7 @@ Lists all provider resource types whose resource type matches 'virtual', includi
 
 ### Example 6
 ```powershell
-PS C:\> Get-AzureRmPolicyAlias -NamespaceMatch 'compute' -ResourceTypeMatch 'virtual'
+PS C:\> Get-AzPolicyAlias -NamespaceMatch 'compute' -ResourceTypeMatch 'virtual'
 
 Namespace         ResourceType                       Aliases
 ---------         ------------                       -------
@@ -153,7 +153,7 @@ Note: -NamespaceMatch and -ResourceTypeMatch provide exclusive matches, whereas 
 
 ### Example 7
 ```powershell
-PS C:\> Get-AzureRmPolicyAlias -AliasMatch 'virtual'
+PS C:\> Get-AzPolicyAlias -AliasMatch 'virtual'
 
 Namespace            ResourceType                           Aliases
 ---------            ------------                           -------
@@ -179,7 +179,7 @@ Lists all provider resource types that contain an alias matching 'virtual'.
 
 ### Example 8
 ```powershell
-PS C:\> Get-AzureRmPolicyAlias -AliasMatch 'virtual' -PathMatch 'network'
+PS C:\> Get-AzPolicyAlias -AliasMatch 'virtual' -PathMatch 'network'
 
 Namespace            ResourceType                           Aliases
 ---------            ------------                           -------
@@ -207,7 +207,7 @@ Lists all provider resource types that contain an alias matching 'virtual' or an
 
 ### Example 9
 ```powershell
-PS C:\> Get-AzureRmPolicyAlias -ApiVersionMatch 'alpha'
+PS C:\> Get-AzPolicyAlias -ApiVersionMatch 'alpha'
 
 Namespace          ResourceType        Aliases
 ---------          ------------        -------
@@ -227,8 +227,10 @@ Lists all provider resource types with alpha api version or containing an alias 
 
 ### -AliasMatch
 Includes in the output items with aliases whose name matches this value.
+
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Alias
 
@@ -241,8 +243,10 @@ Accept wildcard characters: False
 
 ### -ApiVersion
 When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.
+
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -255,8 +259,10 @@ Accept wildcard characters: False
 
 ### -ApiVersionMatch
 Includes in the output items whose resource types or aliases have a matching api version.
+
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -269,8 +275,10 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -283,8 +291,10 @@ Accept wildcard characters: False
 
 ### -ListAvailable
 Includes in the output matching items with and without aliases.
+
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: ShowAll
 
@@ -297,8 +307,10 @@ Accept wildcard characters: False
 
 ### -LocationMatch
 Includes in the output items whose resource types have a matching location.
+
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Location
 
@@ -311,8 +323,10 @@ Accept wildcard characters: False
 
 ### -NamespaceMatch
 Limits the output to items whose namespace matches this value.
+
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name, Namespace
 
@@ -325,8 +339,10 @@ Accept wildcard characters: False
 
 ### -PathMatch
 Includes in the output items with aliases containing a path that matches this value.
+
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Path
 
@@ -339,8 +355,10 @@ Accept wildcard characters: False
 
 ### -Pre
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -353,8 +371,10 @@ Accept wildcard characters: False
 
 ### -ResourceTypeMatch
 Limits the output to items whose resource type matches this value.
+
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceType, Resource
 
@@ -376,8 +396,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-* To expand the Aliases or any other property, pipe the output to `select -ExpandProperty <property>`. For example: `Get-AzureRmPolicyAlias -NamespaceMatch 'Microsoft.Cache' -ApiVersionMatch 'alpha' | select -ExpandProperty Aliases | select -Property Name -ExpandProperty Paths`
+* To expand the Aliases or any other property, pipe the output to `select -ExpandProperty <property>`. For example: `Get-AzPolicyAlias -NamespaceMatch 'Microsoft.Cache' -ApiVersionMatch 'alpha' | select -ExpandProperty Aliases | select -Property Name -ExpandProperty Paths`
 
-* Additional properties are available in the output and can be displayed by piping the output to `Format-List`. For example: `Get-AzureRmPolicyAlias -NamespaceMatch 'Web' -ResourceTypeMatch site -PathMatch cert | Format-List`
+* Additional properties are available in the output and can be displayed by piping the output to `Format-List`. For example: `Get-AzPolicyAlias -NamespaceMatch 'Web' -ResourceTypeMatch site -PathMatch cert | Format-List`
 
 ## RELATED LINKS

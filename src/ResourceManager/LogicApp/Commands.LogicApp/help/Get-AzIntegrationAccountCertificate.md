@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: C0086E73-CCB1-4B75-B367-C79E17738122
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermintegrationaccountcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azintegrationaccountcertificate
 schema: 2.0.0
 ---
 
-# Get-AzureRmIntegrationAccountCertificate
+# Get-AzIntegrationAccountCertificate
 
 ## SYNOPSIS
 Gets integration account certificates from a resource group.
@@ -14,12 +14,12 @@ Gets integration account certificates from a resource group.
 ## SYNTAX
 
 ```
-Get-AzureRmIntegrationAccountCertificate [-ResourceGroupName <String>] [-Name <String>]
- [-CertificateName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIntegrationAccountCertificate [-ResourceGroupName <String>] [-Name <String>] [-CertificateName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmIntegrationAccountCertificate** cmdlet gets integration account certificates from a resource group.
+The **Get-AzIntegrationAccountCertificate** cmdlet gets integration account certificates from a resource group.
 Specify the integration account name, resource group name, and certificate name.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -30,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Get an integration account certificate
 ```
-PS C:\>Get-AzureRmIntegrationAccountCertificate -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -CertificateName "IntegrationAccountCertificate01"
+PS C:\>Get-AzIntegrationAccountCertificate -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -CertificateName "IntegrationAccountCertificate01"
 Id                : /subscriptions/<SusbcriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegartionAccount31/certificates/IntegrationAccountCertificate01
 Name              : IntegrationAccountCertificate01
 Type              : Microsoft.Logic/integrationAccounts/certificates
@@ -49,7 +49,7 @@ This command gets the integration account certificate named IntegrationAccountCe
 
 ### Example 2: Get integration account certificates by integration account name
 ```
-PS C:\>Get-AzureRmIntegrationAccountCertificate -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
+PS C:\>Get-AzIntegrationAccountCertificate -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
 Id                : /subscriptions/<SusbcriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegartionAccount31/certificates/IntegrationAccountCertificate01
 Name              : IntegrationAccountCertificate01
 Type              : Microsoft.Logic/integrationAccounts/certificates
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -143,10 +143,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmIntegrationAccountCertificate](./New-AzureRmIntegrationAccountCertificate.md)
+[New-AzIntegrationAccountCertificate](./New-AzIntegrationAccountCertificate.md)
 
-[Remove-AzureRmIntegrationAccountCertificate](./Remove-AzureRmIntegrationAccountCertificate.md)
+[Remove-AzIntegrationAccountCertificate](./Remove-AzIntegrationAccountCertificate.md)
 
-[Set-AzureRmIntegrationAccountCertificate](./Set-AzureRmIntegrationAccountCertificate.md)
+[Set-AzIntegrationAccountCertificate](./Set-AzIntegrationAccountCertificate.md)
 
 

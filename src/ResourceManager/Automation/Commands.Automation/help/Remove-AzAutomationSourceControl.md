@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/remove-azurermautomationsourcecontrol
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/remove-azautomationsourcecontrol
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAutomationSourceControl
+# Remove-AzAutomationSourceControl
 
 ## SYNOPSIS
 Removes an Azure Automation source control.
@@ -13,13 +13,13 @@ Removes an Azure Automation source control.
 ## SYNTAX
 
 ```
-Remove-AzureRmAutomationSourceControl [-Name] <String> [-PassThru] [-ResourceGroupName] <String>
+Remove-AzAutomationSourceControl [-Name] <String> [-PassThru] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmAutomationSourceControl cmdlet removes a source control from Azure Automation.
+The Remove-AzAutomationSourceControl cmdlet removes a source control from Azure Automation.
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ This command removes the Automation source control named VSTSNative in the accou
 This command specifies the *Force* parameter. Therefore, it does not prompt you for confirmation.
 
 ```powershell
-PS C:\> Remove-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
+PS C:\> Remove-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                               -AutomationAccountName "devAccount" `
                                               -Name "VSTSNative" `
                                               -Force
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

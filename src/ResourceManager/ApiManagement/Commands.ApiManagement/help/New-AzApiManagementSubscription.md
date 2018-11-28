@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: B85BF332-503D-41CB-A3B7-221B85B9BE30
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementsubscription
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementsubscription
 schema: 2.0.0
 ---
 
-# New-AzureRmApiManagementSubscription
+# New-AzApiManagementSubscription
 
 ## SYNOPSIS
 Creates a subscription.
@@ -14,20 +14,20 @@ Creates a subscription.
 ## SYNTAX
 
 ```
-New-AzureRmApiManagementSubscription -Context <PsApiManagementContext> [-SubscriptionId <String>]
- -Name <String> -UserId <String> -ProductId <String> [-PrimaryKey <String>] [-SecondaryKey <String>]
+New-AzApiManagementSubscription -Context <PsApiManagementContext> [-SubscriptionId <String>] -Name <String>
+ -UserId <String> -ProductId <String> [-PrimaryKey <String>] [-SecondaryKey <String>]
  [-State <PsApiManagementSubscriptionState>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApiManagementSubscription** cmdlet creates a subscription.
+The **New-AzApiManagementSubscription** cmdlet creates a subscription.
 
 ## EXAMPLES
 
 ### Example 1: Subscribe a user to a product
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzureRmApiManagementSubscription -Context $apimContext -UserId "777" -ProductId "999"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>New-AzApiManagementSubscription -Context $apimContext -UserId "777" -ProductId "999"
 ```
 
 This command subscribes an existing user to a product.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -195,10 +195,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementSubscription](./Get-AzureRmApiManagementSubscription.md)
+[Get-AzApiManagementSubscription](./Get-AzApiManagementSubscription.md)
 
-[Remove-AzureRmApiManagementSubscription](./Remove-AzureRmApiManagementSubscription.md)
+[Remove-AzApiManagementSubscription](./Remove-AzApiManagementSubscription.md)
 
-[Set-AzureRmApiManagementSubscription](./Set-AzureRmApiManagementSubscription.md)
+[Set-AzApiManagementSubscription](./Set-AzApiManagementSubscription.md)
 
 

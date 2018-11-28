@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.PolicyInsights.dll-Help.xml
-Module Name: AzureRM.PolicyInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.policyinsights/get-azurermpolicystate
+Module Name: Az.PolicyInsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.policyinsights/get-azpolicystate
 schema: 2.0.0
 ---
 
-# Get-AzureRmPolicyState
+# Get-AzPolicyState
 
 ## SYNOPSIS
 Gets policy compliance states for resources.
@@ -14,59 +14,58 @@ Gets policy compliance states for resources.
 
 ### SubscriptionScope (Default)
 ```
-Get-AzureRmPolicyState [-All] [-SubscriptionId <String>] [-Top <Int32>] [-OrderBy <String>] [-Select <String>]
+Get-AzPolicyState [-All] [-SubscriptionId <String>] [-Top <Int32>] [-OrderBy <String>] [-Select <String>]
  [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-Apply <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ManagementGroupScope
 ```
-Get-AzureRmPolicyState [-All] -ManagementGroupName <String> [-Top <Int32>] [-OrderBy <String>]
- [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-Apply <String>]
+Get-AzPolicyState [-All] -ManagementGroupName <String> [-Top <Int32>] [-OrderBy <String>] [-Select <String>]
+ [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-Apply <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
-Get-AzureRmPolicyState [-All] [-SubscriptionId <String>] -ResourceGroupName <String> [-Top <Int32>]
+Get-AzPolicyState [-All] [-SubscriptionId <String>] -ResourceGroupName <String> [-Top <Int32>]
  [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
  [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceScope
 ```
-Get-AzureRmPolicyState [-All] -ResourceId <String> [-Top <Int32>] [-OrderBy <String>] [-Select <String>]
+Get-AzPolicyState [-All] -ResourceId <String> [-Top <Int32>] [-OrderBy <String>] [-Select <String>]
  [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-Apply <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PolicySetDefinitionScope
 ```
-Get-AzureRmPolicyState [-All] [-SubscriptionId <String>] -PolicySetDefinitionName <String> [-Top <Int32>]
+Get-AzPolicyState [-All] [-SubscriptionId <String>] -PolicySetDefinitionName <String> [-Top <Int32>]
  [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
  [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PolicyDefinitionScope
 ```
-Get-AzureRmPolicyState [-All] [-SubscriptionId <String>] -PolicyDefinitionName <String> [-Top <Int32>]
+Get-AzPolicyState [-All] [-SubscriptionId <String>] -PolicyDefinitionName <String> [-Top <Int32>]
  [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
  [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionLevelPolicyAssignmentScope
 ```
-Get-AzureRmPolicyState [-All] [-SubscriptionId <String>] -PolicyAssignmentName <String> [-Top <Int32>]
+Get-AzPolicyState [-All] [-SubscriptionId <String>] -PolicyAssignmentName <String> [-Top <Int32>]
  [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
  [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelPolicyAssignmentScope
 ```
-Get-AzureRmPolicyState [-All] [-SubscriptionId <String>] -ResourceGroupName <String>
- -PolicyAssignmentName <String> [-Top <Int32>] [-OrderBy <String>] [-Select <String>] [-From <DateTime>]
- [-To <DateTime>] [-Filter <String>] [-Apply <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzPolicyState [-All] [-SubscriptionId <String>] -ResourceGroupName <String> -PolicyAssignmentName <String>
+ [-Top <Int32>] [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
+ [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,105 +75,105 @@ Gets policy compliance states for resources. Policy state records can be queried
 
 ### Example 1: Get latest policy states in current subscription scope
 ```powershell
-PS C:\> Get-AzureRmPolicyState
+PS C:\> Get-AzPolicyState
 ```
 
 Gets latest policy state records generated in the last day for all resources within the subscription in current session context.
 
 ### Example 2: Get latest policy states in the specified subscription scope
 ```powershell
-PS C:\> Get-AzureRmPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5"
+PS C:\> Get-AzPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5"
 ```
 
 Gets latest policy state records generated in the last day for all resources within the specified subscription.
 
 ### Example 3: Get all policy states in current subscription scope
 ```powershell
-PS C:\> Get-AzureRmPolicyState -All
+PS C:\> Get-AzPolicyState -All
 ```
 
 Gets all historical policy state records (including latest) generated in the last day for all resources within the subscription in current session context.
 
 ### Example 4: Get latest policy states in management group scope
 ```powershell
-PS C:\> Get-AzureRmPolicyState -ManagementGroupName "myManagementGroup"
+PS C:\> Get-AzPolicyState -ManagementGroupName "myManagementGroup"
 ```
 
 Gets latest policy state records generated in the last day for all resources within the specified management group.
 
 ### Example 5: Get latest policy states in resource group scope in current subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyState -ResourceGroupName "myResourceGroup"
+PS C:\> Get-AzPolicyState -ResourceGroupName "myResourceGroup"
 ```
 
 Gets latest policy state records generated in the last day for all resources within the specified resource group (in the subscription in current session context).
 
 ### Example 6: Get latest policy states in resource group scope in the specified subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5" -ResourceGroupName "myResourceGroup"
+PS C:\> Get-AzPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5" -ResourceGroupName "myResourceGroup"
 ```
 
 Gets latest policy state records generated in the last day for all resources within the specified resource group (in the specified subscription).
 
 ### Example 7: Get latest policy states for a resource
 ```powershell
-PS C:\> Get-AzureRmPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myns1/eventhubs/eh1/consumergroups/cg1"
+PS C:\> Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myns1/eventhubs/eh1/consumergroups/cg1"
 ```
 
 Gets latest policy state records generated in the last day for the specified resource.
 
 ### Example 8: Get latest policy states for a policy set definition in current subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyState -PolicySetDefinitionName "fff58873-fff8-fff5-fffc-fffbe7c9d697"
+PS C:\> Get-AzPolicyState -PolicySetDefinitionName "fff58873-fff8-fff5-fffc-fffbe7c9d697"
 ```
 
 Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy set definition (that exists in the subscription in current session context).
 
 ### Example 9: Get latest policy states for a policy set definition in the specified subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5" -PolicySetDefinitionName "fff58873-fff8-fff5-fffc-fffbe7c9d697"
+PS C:\> Get-AzPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5" -PolicySetDefinitionName "fff58873-fff8-fff5-fffc-fffbe7c9d697"
 ```
 
 Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy set definition (that exists in the specified subscription).
 
 ### Example 10: Get latest policy states for a policy definition in current subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyState -PolicyDefinitionName "fff58873-fff8-fff5-fffc-fffbe7c9d697"
+PS C:\> Get-AzPolicyState -PolicyDefinitionName "fff58873-fff8-fff5-fffc-fffbe7c9d697"
 ```
 
 Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy definition (that exists in the subscription in current session context).
 
 ### Example 11: Get latest policy states for a policy definition in the specified subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5" -PolicyDefinitionName "fff58873-fff8-fff5-fffc-fffbe7c9d697"
+PS C:\> Get-AzPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5" -PolicyDefinitionName "fff58873-fff8-fff5-fffc-fffbe7c9d697"
 ```
 
 Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy definition (that exists in the specified subscription).
 
 ### Example 12: Get latest policy states for a policy assignment in current subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyState -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
+PS C:\> Get-AzPolicyState -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
 ```
 
 Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists in the subscription in current session context).
 
 ### Example 13: Get latest policy states for a policy assignment in the specified subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
+PS C:\> Get-AzPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
 ```
 
 Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists in the specified subscription).
 
 ### Example 14: Get latest policy states for a policy assignment in the specified resource group in the current subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyState -ResourceGroupName "myResourceGroup" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
+PS C:\> Get-AzPolicyState -ResourceGroupName "myResourceGroup" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
 ```
 
 Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists in the resource group in the subscription in current session context).
 
 ### Example 15: Get latest policy states in current subscription scope, with OrderBy, Top and Select query options
 ```powershell
-PS C:\> Get-AzureRmPolicyState -OrderBy "Timestamp desc, PolicyAssignmentName asc" -Top 5 -Select "Timestamp, ResourceId, PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionId, IsCompliant"
+PS C:\> Get-AzPolicyState -OrderBy "Timestamp desc, PolicyAssignmentName asc" -Top 5 -Select "Timestamp, ResourceId, PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionId, IsCompliant"
 ```
 
 Gets latest policy state records generated in the last day for all resources within the subscription in current session context. 
@@ -183,14 +182,14 @@ It also selects to list only a subset of the columns for each record.
 
 ### Example 16: Get latest policy states in current subscription scope, with From and To query options
 ```powershell
-PS C:\> Get-AzureRmPolicyState -From "2018-03-08 00:00:00Z" -To "2018-03-15 00:00:00Z"
+PS C:\> Get-AzPolicyState -From "2018-03-08 00:00:00Z" -To "2018-03-15 00:00:00Z"
 ```
 
 Gets latest policy state records generated within the date range specified for all resources within the subscription in current session context.
 
 ### Example 17: Get latest policy states in current subscription scope, with Filter query option
 ```powershell
-PS C:\> Get-AzureRmPolicyState -Filter "(PolicyDefinitionAction eq 'deny' or PolicyDefinitionAction eq 'audit') and IsCompliant eq false and ResourceLocation ne 'eastus'"
+PS C:\> Get-AzPolicyState -Filter "(PolicyDefinitionAction eq 'deny' or PolicyDefinitionAction eq 'audit') and IsCompliant eq false and ResourceLocation ne 'eastus'"
 ```
 
 Gets latest policy state records generated in the last day for all resources within the subscription in current session context.
@@ -198,7 +197,7 @@ The command limits the results returned by filtering based on policy definition 
 
 ### Example 18: Get latest policy states in current subscription scope, with Apply specifying row count aggregation
 ```powershell
-PS C:\> Get-AzureRmPolicyState -Apply "aggregate(`$count as NumberOfRecords)"
+PS C:\> Get-AzPolicyState -Apply "aggregate(`$count as NumberOfRecords)"
 ```
 
 Gets the number of latest policy state records generated in the last day for all resources within the subscription in current session context.
@@ -206,7 +205,7 @@ The command returns the count of the policy state records only, which is returne
 
 ### Example 19: Get latest policy states in current subscription scope, with Apply specifying grouping with aggregation
 ```powershell
-PS C:\> Get-AzureRmPolicyState -Filter "IsCompliant eq false" -Apply "groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId), aggregate(`$count as NumStates))" -OrderBy "NumStates desc" -Top 5
+PS C:\> Get-AzPolicyState -Filter "IsCompliant eq false" -Apply "groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId), aggregate(`$count as NumStates))" -OrderBy "NumStates desc" -Top 5
 ```
 
 Gets latest policy state records generated in the last day for all resources within the subscription in current session context. 
@@ -216,7 +215,7 @@ It orders the results by the count aggregation in descending order, and takes on
 
 ### Example 20: Get latest policy states in current subscription scope, with Apply specifying grouping without aggregation
 ```powershell
-PS C:\> Get-AzureRmPolicyState -Filter "IsCompliant eq false" -Apply "groupby((ResourceId))"
+PS C:\> Get-AzPolicyState -Filter "IsCompliant eq false" -Apply "groupby((ResourceId))"
 ```
 
 Gets latest policy state records generated in the last day for all resources within the subscription in current session context. 
@@ -226,7 +225,7 @@ This generates the list of all resources within the subscription that are non-co
 
 ### Example 21: Get latest policy states in current subscription scope, with Apply specifying multiple groupings
 ```powershell
-PS C:\> Get-AzureRmPolicyState -Filter "IsCompliant eq false" -Apply "groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId, ResourceId))/groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId), aggregate(`$count as NumNonCompliantResources))" -OrderBy "NumNonCompliantResources desc" -Top 5
+PS C:\> Get-AzPolicyState -Filter "IsCompliant eq false" -Apply "groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId, ResourceId))/groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId), aggregate(`$count as NumNonCompliantResources))" -OrderBy "NumNonCompliantResources desc" -Top 5
 ```
 
 Gets latest policy state records generated in the last day for all resources within the subscription in current session context. 
@@ -272,7 +271,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -498,4 +497,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmPolicyStateSummary](./Get-AzureRmPolicyStateSummary.md)
+[Get-AzPolicyStateSummary](./Get-AzPolicyStateSummary.md)

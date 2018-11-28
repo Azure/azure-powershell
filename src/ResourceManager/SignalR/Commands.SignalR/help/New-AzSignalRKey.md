@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SignalR.dll-Help.xml
-Module Name: AzureRM.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.signalr/new-azurermsignalrkey
+Module Name: Az.SignalR
+online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/new-azsignalrkey
 schema: 2.0.0
 ---
 
-# New-AzureRmSignalRKey
+# New-AzSignalRKey
 
 ## SYNOPSIS
 Regenerate an access key for a SignalR service.
@@ -14,19 +14,19 @@ Regenerate an access key for a SignalR service.
 
 ### ResourceGroupParameterSet (Default)
 ```
-New-AzureRmSignalRKey [-ResourceGroupName <String>] [-Name] <String> [-KeyType] <String> [-PassThru]
+New-AzSignalRKey [-ResourceGroupName <String>] [-Name] <String> [-KeyType] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzureRmSignalRKey -ResourceId <String> [-KeyType] <String> [-PassThru]
+New-AzSignalRKey -ResourceId <String> [-KeyType] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-New-AzureRmSignalRKey -InputObject <PSSignalRResource> [-KeyType] <String> [-PassThru]
+New-AzSignalRKey -InputObject <PSSignalRResource> [-KeyType] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Regenerate an access key for a SignalR service.
 
 ### Regenerate the primary key
 ```powershell
-PS C:\> New-AzureRmSignalRKey -ResourceGroupName myResourceGroup -Name mysignalr1 -KeyType Primary -PassThru
+PS C:\> New-AzSignalRKey -ResourceGroupName myResourceGroup -Name mysignalr1 -KeyType Primary -PassThru
 
 True
 ```
@@ -48,7 +48,7 @@ True
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

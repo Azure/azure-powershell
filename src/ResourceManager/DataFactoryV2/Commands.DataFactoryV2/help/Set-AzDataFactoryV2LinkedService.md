@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/set-azurermdatafactoryv2linkedservice
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/set-azdatafactoryv2linkedservice
 schema: 2.0.0
 ---
 
-# Set-AzureRmDataFactoryV2LinkedService
+# Set-AzDataFactoryV2LinkedService
 
 ## SYNOPSIS
 Links a data store or a cloud service to Data Factory.
@@ -14,19 +14,19 @@ Links a data store or a cloud service to Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Set-AzureRmDataFactoryV2LinkedService [-Name] <String> [-DefinitionFile] <String> [-ResourceGroupName] <String>
+Set-AzDataFactoryV2LinkedService [-Name] <String> [-DefinitionFile] <String> [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzureRmDataFactoryV2LinkedService [-DefinitionFile] <String> [-ResourceId] <String> [-Force]
+Set-AzDataFactoryV2LinkedService [-DefinitionFile] <String> [-ResourceId] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzureRmDataFactoryV2LinkedService cmdlet links a data store or a cloud service to Azure Data Factory.
+The Set-AzDataFactoryV2LinkedService cmdlet links a data store or a cloud service to Azure Data Factory.
 If you specify a name for a linked service that already exists, this cmdlet prompts you for confirmation before it replaces the linked service.
 If you specify the Force parameter, the cmdlet replaces the existing linked service without confirmation.
 Perform these operations in the following order:
@@ -39,7 +39,7 @@ Perform these operations in the following order:
 
 ### Example 1: Create a linked service
 ```
-PS C:\> Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData" -File "C:\\samples\\WikiSample\\LinkedServiceCuratedWikiData.json" | Format-List
+PS C:\> Set-AzDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData" -File "C:\\samples\\WikiSample\\LinkedServiceCuratedWikiData.json" | Format-List
 
     LinkedServiceName : LinkedServiceCuratedWikiData
     ResourceGroupName : ADF
@@ -208,6 +208,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2LinkedService]()
+[Get-AzDataFactoryV2LinkedService]()
 
-[Remove-AzureRmDataFactoryV2LinkedService]()
+[Remove-AzDataFactoryV2LinkedService]()

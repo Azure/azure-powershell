@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermroutefilterruleconfig
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azroutefilterruleconfig
 schema: 2.0.0
 ---
 
-# Add-AzureRmRouteFilterRuleConfig
+# Add-AzRouteFilterRuleConfig
 
 ## SYNOPSIS
 Adds a route filter rule to a route filter.
@@ -13,23 +13,23 @@ Adds a route filter rule to a route filter.
 ## SYNTAX
 
 ```
-Add-AzureRmRouteFilterRuleConfig -RouteFilter <PSRouteFilter> [-Force] -Name <String> -Access <String>
+Add-AzRouteFilterRuleConfig -RouteFilter <PSRouteFilter> [-Force] -Name <String> -Access <String>
  -RouteFilterRuleType <String> -CommunityList <System.Collections.Generic.List`1[System.String]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Add-AzureRmRouteFilterRuleConfig cmdlet adds a route filter rule to an Azure route filter.
+The Add-AzRouteFilterRuleConfig cmdlet adds a route filter rule to an Azure route filter.
 
 ## EXAMPLES
 
 ### Example 1: Add a route filter rule to a route filter
 ```
-PS C:\>$RouteFilter = Get-AzureRmRouteFilter -ResourceGroupName "ResourceGroup11" -Name "routefilter01"
-					  PS C:\> Add-AzureRmRouteFilterRuleConfig -Name "rule13" -Access Allow -RouteFilterRuleType Community -RouteFilter $RouteFilter
+PS C:\>$RouteFilter = Get-AzRouteFilter -ResourceGroupName "ResourceGroup11" -Name "routefilter01"
+					  PS C:\> Add-AzRouteFilterRuleConfig -Name "rule13" -Access Allow -RouteFilterRuleType Community -RouteFilter $RouteFilter
 ```
 
-The first command gets a route filter named routefilter01 by using the Get-AzureRmRouteFilter cmdlet.
+The first command gets a route filter named routefilter01 by using the Get-AzRouteFilter cmdlet.
 The command stores the filter in the $RouteFilter variable.
 
 ## PARAMETERS
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -189,15 +189,15 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 ## RELATED LINKS
 
-[Get-AzureRmRouteFilterRuleConfig](./Get-AzureRmRouteFilterRuleConfig.md)
+[Get-AzRouteFilterRuleConfig](./Get-AzRouteFilterRuleConfig.md)
 
-[Get-AzureRmRouteFilter](./Get-AzureRmRouteFilter.md)
+[Get-AzRouteFilter](./Get-AzRouteFilter.md)
 
-[New-AzureRmRouteFilterRuleConfigConfig](./New-AzureRmRouteFilterRuleConfigConfig.md)
+[New-AzRouteFilterRuleConfigConfig](./New-AzRouteFilterRuleConfigConfig.md)
 
-[Remove-AzureRmRouteFilterRuleConfigConfig](./Remove-AzureRmRouteFilterRuleConfigConfig.md)
+[Remove-AzRouteFilterRuleConfigConfig](./Remove-AzRouteFilterRuleConfigConfig.md)
 
-[Set-AzureRmRouteFilterRuleConfigConfig](./Set-AzureRmRouteFilterRuleConfigConfig.md)
+[Set-AzRouteFilterRuleConfigConfig](./Set-AzRouteFilterRuleConfigConfig.md)
 
-[Set-AzureRmRouteFilter](./Set-AzureRmRouteFilter.md)
+[Set-AzRouteFilter](./Set-AzRouteFilter.md)
 

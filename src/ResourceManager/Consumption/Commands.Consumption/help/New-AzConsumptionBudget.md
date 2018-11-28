@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Consumption.dll-Help.xml
-Module Name: AzureRM.Consumption
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.consumption/new-azurermconsumptionbudget
+Module Name: Az.Consumption
+online version: https://docs.microsoft.com/en-us/powershell/module/az.consumption/new-azconsumptionbudget
 schema: 2.0.0
 ---
 
-# New-AzureRmConsumptionBudget
+# New-AzConsumptionBudget
 
 ## SYNOPSIS
 Create a budget in either a subscription or a resource group.
@@ -14,7 +14,7 @@ Create a budget in either a subscription or a resource group.
 
 ### Subscription (Default)
 ```
-New-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> -Amount <Decimal>
+New-AzConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> -Amount <Decimal>
  -Category <String> -TimeGrain <String> -StartDate <DateTime> [-EndDate <DateTime>]
  [-ResourceGroupName <String>] [-MeterFilter <String[]>] [-ResourceFilter <String[]>]
  [-ResourceGroupFilter <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,7 +22,7 @@ New-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <S
 
 ### Notification
 ```
-New-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> -Amount <Decimal>
+New-AzConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> -Amount <Decimal>
  -Category <String> -TimeGrain <String> -StartDate <DateTime> [-EndDate <DateTime>]
  [-ResourceGroupName <String>] [-MeterFilter <String[]>] [-ResourceFilter <String[]>]
  [-ResourceGroupFilter <String[]>] -NotificationKey <String> [-NotificationEnabled]
@@ -31,13 +31,13 @@ New-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <S
 ```
 
 ## DESCRIPTION
-The New-AzureRmConsumptionBudget cmdlet creates a budget in either a subscription or a resource group.
+The New-AzConsumptionBudget cmdlet creates a budget in either a subscription or a resource group.
 
 ## EXAMPLES
 
 ### Example 1: Create a cost budget with a budget name at subscription level
 ```powershell
-PS C:\> New-AzureRmConsumptionBudget -Amount 60 -Name PSBudget -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+PS C:\> New-AzConsumptionBudget -Amount 60 -Name PSBudget -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null
@@ -51,7 +51,7 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 2: Create a cost budget with a budget name at resource group level
 ```powershell
-PS C:\> New-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Amount 60 -Name PSBudgetRG -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+PS C:\> New-AzConsumptionBudget -ResourceGroupName RGBudgets -Amount 60 -Name PSBudgetRG -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
 Amount:  60		
 Category:  Cost
 CurrentSpend:  null
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

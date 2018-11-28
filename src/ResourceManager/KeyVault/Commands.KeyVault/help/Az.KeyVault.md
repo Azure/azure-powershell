@@ -1,175 +1,184 @@
 ---
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 Module Guid: D48CF693-4125-4D2D-8790-1514F44CE325
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.keyvault
 Help Version: 4.0.0.0
 Locale: en-US
 ---
 
-# AzureRM.KeyVault Module
+# Az.KeyVault Module
 ## Description
 This topic displays help topics for the Azure Key Vault Cmdlets.
 
-## AzureRM.KeyVault Cmdlets
-### [Add-AzureKeyVaultCertificate](Add-AzureKeyVaultCertificate.md)
+## Az.KeyVault Cmdlets
+### [Add-AzKeyVaultCertificate](Add-AzKeyVaultCertificate.md)
 Adds a certificate to a key vault.
 
-### [Add-AzureKeyVaultCertificateContact](Add-AzureKeyVaultCertificateContact.md)
+### [Add-AzKeyVaultCertificateContact](Add-AzKeyVaultCertificateContact.md)
 Adds a contact for certificate notifications.
 
-### [Add-AzureKeyVaultKey](Add-AzureKeyVaultKey.md)
+### [Add-AzKeyVaultKey](Add-AzKeyVaultKey.md)
 Creates a key in a key vault or imports a key into a key vault.
 
-### [Add-AzureKeyVaultManagedStorageAccount](Add-AzureKeyVaultManagedStorageAccount.md)
+### [Add-AzKeyVaultManagedStorageAccount](Add-AzKeyVaultManagedStorageAccount.md)
 Adds an existing Azure Storage Account to the specified key vault for its keys to be managed by the Key Vault service.
 
-### [Backup-AzureKeyVaultCertificate](Backup-AzureKeyVaultCertificate.md)
+### [Add-AzKeyVaultNetworkRule](Add-AzKeyVaultNetworkRule.md)
+Adds a rule meant to restrict access to a key vault based on the client's internet address.
+
+### [Backup-AzKeyVaultCertificate](Backup-AzKeyVaultCertificate.md)
 Backs up a certificate in a key vault.
 
-### [Backup-AzureKeyVaultKey](Backup-AzureKeyVaultKey.md)
+### [Backup-AzKeyVaultKey](Backup-AzKeyVaultKey.md)
 Backs up a key in a key vault.
 
-### [Backup-AzureKeyVaultManagedStorageAccount](Backup-AzureKeyVaultManagedStorageAccount.md)
+### [Backup-AzKeyVaultManagedStorageAccount](Backup-AzKeyVaultManagedStorageAccount.md)
 Backs up a KeyVault-managed storage account.
 
-### [Backup-AzureKeyVaultSecret](Backup-AzureKeyVaultSecret.md)
+### [Backup-AzKeyVaultSecret](Backup-AzKeyVaultSecret.md)
 Backs up a secret in a key vault.
 
-### [Get-AzureKeyVaultCertificate](Get-AzureKeyVaultCertificate.md)
-Gets a certificate from a key vault.
-
-### [Get-AzureKeyVaultCertificateContact](Get-AzureKeyVaultCertificateContact.md)
-Gets contacts that are registered for certificate notifications for a key vault.
-
-### [Get-AzureKeyVaultCertificateIssuer](Get-AzureKeyVaultCertificateIssuer.md)
-Gets a certificate issuer for a key vault.
-
-### [Get-AzureKeyVaultCertificateOperation](Get-AzureKeyVaultCertificateOperation.md)
-Gets the status of a certificate operation.
-
-### [Get-AzureKeyVaultCertificatePolicy](Get-AzureKeyVaultCertificatePolicy.md)
-Gets the policy for a certificate in a key vault.
-
-### [Get-AzureKeyVaultKey](Get-AzureKeyVaultKey.md)
-Gets Key Vault keys.
-
-### [Get-AzureKeyVaultManagedStorageAccount](Get-AzureKeyVaultManagedStorageAccount.md)
-Gets Key Vault managed Azure Storage Accounts.
-
-### [Get-AzureKeyVaultManagedStorageSasDefinition](Get-AzureKeyVaultManagedStorageSasDefinition.md)
-Gets Key Vault managed Storage SAS Definitions.
-
-### [Get-AzureKeyVaultSecret](Get-AzureKeyVaultSecret.md)
-Gets the secrets in a key vault.
-
-### [Get-AzureRmKeyVault](Get-AzureRmKeyVault.md)
+### [Get-AzKeyVault](Get-AzKeyVault.md)
 Gets key vaults.
 
-### [Import-AzureKeyVaultCertificate](Import-AzureKeyVaultCertificate.md)
+### [Get-AzKeyVaultCertificate](Get-AzKeyVaultCertificate.md)
+Gets a certificate from a key vault.
+
+### [Get-AzKeyVaultCertificateContact](Get-AzKeyVaultCertificateContact.md)
+Gets contacts that are registered for certificate notifications for a key vault.
+
+### [Get-AzKeyVaultCertificateIssuer](Get-AzKeyVaultCertificateIssuer.md)
+Gets a certificate issuer for a key vault.
+
+### [Get-AzKeyVaultCertificateOperation](Get-AzKeyVaultCertificateOperation.md)
+Gets the status of a certificate operation.
+
+### [Get-AzKeyVaultCertificatePolicy](Get-AzKeyVaultCertificatePolicy.md)
+Gets the policy for a certificate in a key vault.
+
+### [Get-AzKeyVaultKey](Get-AzKeyVaultKey.md)
+Gets Key Vault keys.
+
+### [Get-AzKeyVaultManagedStorageAccount](Get-AzKeyVaultManagedStorageAccount.md)
+Gets Key Vault managed Azure Storage Accounts.
+
+### [Get-AzKeyVaultManagedStorageSasDefinition](Get-AzKeyVaultManagedStorageSasDefinition.md)
+Gets Key Vault managed Storage SAS Definitions.
+
+### [Get-AzKeyVaultSecret](Get-AzKeyVaultSecret.md)
+Gets the secrets in a key vault.
+
+### [Import-AzKeyVaultCertificate](Import-AzKeyVaultCertificate.md)
 Imports a certificate to a key vault.
 
-### [New-AzureKeyVaultCertificateAdministratorDetails](New-AzureKeyVaultCertificateAdministratorDetails.md)
-Creates an in-memory certificate administrator details object.
-
-### [New-AzureKeyVaultCertificateOrganizationDetails](New-AzureKeyVaultCertificateOrganizationDetails.md)
-Creates an in-memory certificate organization details object.
-
-### [New-AzureKeyVaultCertificatePolicy](New-AzureKeyVaultCertificatePolicy.md)
-Creates an in-memory certificate policy object.
-
-### [New-AzureRmKeyVault](New-AzureRmKeyVault.md)
+### [New-AzKeyVault](New-AzKeyVault.md)
 Creates a key vault.
 
-### [Remove-AzureKeyVaultCertificate](Remove-AzureKeyVaultCertificate.md)
-Removes a certificate from a key vault.
+### [New-AzKeyVaultCertificateAdministratorDetails](New-AzKeyVaultCertificateAdministratorDetails.md)
+Creates an in-memory certificate administrator details object.
 
-### [Remove-AzureKeyVaultCertificateContact](Remove-AzureKeyVaultCertificateContact.md)
-Deletes a contact that is registered for certificate notifications from a key vault.
+### [New-AzKeyVaultCertificateOrganizationDetails](New-AzKeyVaultCertificateOrganizationDetails.md)
+Creates an in-memory certificate organization details object.
 
-### [Remove-AzureKeyVaultCertificateIssuer](Remove-AzureKeyVaultCertificateIssuer.md)
-Deletes a certificate issuer from a key vault.
+### [New-AzKeyVaultCertificatePolicy](New-AzKeyVaultCertificatePolicy.md)
+Creates an in-memory certificate policy object.
 
-### [Remove-AzureKeyVaultCertificateOperation](Remove-AzureKeyVaultCertificateOperation.md)
-Deletes a certificate operation from a key vault.
-
-### [Remove-AzureKeyVaultKey](Remove-AzureKeyVaultKey.md)
-Deletes a key in a key vault.
-
-### [Remove-AzureKeyVaultManagedStorageAccount](Remove-AzureKeyVaultManagedStorageAccount.md)
-Removes a Key Vault managed Azure Storage Account and all associated SAS definitions.
-
-### [Remove-AzureKeyVaultManagedStorageSasDefinition](Remove-AzureKeyVaultManagedStorageSasDefinition.md)
-Removes a Key Vault managed Azure Storage SAS definitions.
-
-### [Remove-AzureKeyVaultSecret](Remove-AzureKeyVaultSecret.md)
-Deletes a secret in a key vault.
-
-### [Remove-AzureRmKeyVault](Remove-AzureRmKeyVault.md)
+### [Remove-AzKeyVault](Remove-AzKeyVault.md)
 Deletes a key vault.
 
-### [Remove-AzureRmKeyVaultAccessPolicy](Remove-AzureRmKeyVaultAccessPolicy.md)
+### [Remove-AzKeyVaultAccessPolicy](Remove-AzKeyVaultAccessPolicy.md)
 Removes all permissions for a user or application from a key vault.
 
-### [Restore-AzureKeyVaultCertificate](Restore-AzureKeyVaultCertificate.md)
+### [Remove-AzKeyVaultCertificate](Remove-AzKeyVaultCertificate.md)
+Removes a certificate from a key vault.
+
+### [Remove-AzKeyVaultCertificateContact](Remove-AzKeyVaultCertificateContact.md)
+Deletes a contact that is registered for certificate notifications from a key vault.
+
+### [Remove-AzKeyVaultCertificateIssuer](Remove-AzKeyVaultCertificateIssuer.md)
+Deletes a certificate issuer from a key vault.
+
+### [Remove-AzKeyVaultCertificateOperation](Remove-AzKeyVaultCertificateOperation.md)
+Deletes a certificate operation from a key vault.
+
+### [Remove-AzKeyVaultKey](Remove-AzKeyVaultKey.md)
+Deletes a key in a key vault.
+
+### [Remove-AzKeyVaultManagedStorageAccount](Remove-AzKeyVaultManagedStorageAccount.md)
+Removes a Key Vault managed Azure Storage Account and all associated SAS definitions.
+
+### [Remove-AzKeyVaultManagedStorageSasDefinition](Remove-AzKeyVaultManagedStorageSasDefinition.md)
+Removes a Key Vault managed Azure Storage SAS definitions.
+
+### [Remove-AzKeyVaultNetworkRule](Remove-AzKeyVaultNetworkRule.md)
+Removes a network rule from a key vault.
+
+### [Remove-AzKeyVaultSecret](Remove-AzKeyVaultSecret.md)
+Deletes a secret in a key vault.
+
+### [Restore-AzKeyVaultCertificate](Restore-AzKeyVaultCertificate.md)
 Restores a certificate in a key vault from a backup file.
 
-### [Restore-AzureKeyVaultKey](Restore-AzureKeyVaultKey.md)
+### [Restore-AzKeyVaultKey](Restore-AzKeyVaultKey.md)
 Creates a key in a key vault from a backed-up key.
 
-### [Restore-AzureKeyVaultManagedStorageAccount](Restore-AzureKeyVaultManagedStorageAccount.md)
+### [Restore-AzKeyVaultManagedStorageAccount](Restore-AzKeyVaultManagedStorageAccount.md)
 Restores a managed storage account in a key vault from a backup file.
 
-### [Restore-AzureKeyVaultSecret](Restore-AzureKeyVaultSecret.md)
+### [Restore-AzKeyVaultSecret](Restore-AzKeyVaultSecret.md)
 Creates a secret in a key vault from a backed-up secret.
 
-### [Set-AzureKeyVaultCertificateIssuer](Set-AzureKeyVaultCertificateIssuer.md)
-Sets a certificate issuer in a key vault.
-
-### [Set-AzureKeyVaultCertificatePolicy](Set-AzureKeyVaultCertificatePolicy.md)
-Creates or updates the policy for a certificate in a key vault.
-
-### [Set-AzureKeyVaultManagedStorageSasDefinition](Set-AzureKeyVaultManagedStorageSasDefinition.md)
-Sets a Shared Access Signature (SAS) definition with Key Vault for a given Key Vault managed Azure Storage Account.
-
-### [Set-AzureKeyVaultSecret](Set-AzureKeyVaultSecret.md)
-Creates or updates a secret in a key vault.
-
-### [Set-AzureRmKeyVaultAccessPolicy](Set-AzureRmKeyVaultAccessPolicy.md)
+### [Set-AzKeyVaultAccessPolicy](Set-AzKeyVaultAccessPolicy.md)
 Grants or modifies existing permissions for a user, application, or security group to perform operations with a key vault.
 
-### [Stop-AzureKeyVaultCertificateOperation](Stop-AzureKeyVaultCertificateOperation.md)
+### [Set-AzKeyVaultCertificateIssuer](Set-AzKeyVaultCertificateIssuer.md)
+Sets a certificate issuer in a key vault.
+
+### [Set-AzKeyVaultCertificatePolicy](Set-AzKeyVaultCertificatePolicy.md)
+Creates or updates the policy for a certificate in a key vault.
+
+### [Set-AzKeyVaultManagedStorageSasDefinition](Set-AzKeyVaultManagedStorageSasDefinition.md)
+Sets a Shared Access Signature (SAS) definition with Key Vault for a given Key Vault managed Azure Storage Account.
+
+### [Set-AzKeyVaultSecret](Set-AzKeyVaultSecret.md)
+Creates or updates a secret in a key vault.
+
+### [Stop-AzKeyVaultCertificateOperation](Stop-AzKeyVaultCertificateOperation.md)
 Cancels a certificate operation in key vault.
 
-### [Undo-AzureKeyVaultCertificateRemoval](Undo-AzureKeyVaultCertificateRemoval.md)
+### [Undo-AzKeyVaultCertificateRemoval](Undo-AzKeyVaultCertificateRemoval.md)
 Recovers a deleted certificate in a key vault into an active state.
 
-### [Undo-AzureKeyVaultKeyRemoval](Undo-AzureKeyVaultKeyRemoval.md)
+### [Undo-AzKeyVaultKeyRemoval](Undo-AzKeyVaultKeyRemoval.md)
 Recovers a deleted key in a key vault into an active state.
 
-### [Undo-AzureKeyVaultManagedStorageAccountRemoval](Undo-AzureKeyVaultManagedStorageAccountRemoval.md)
+### [Undo-AzKeyVaultManagedStorageAccountRemoval](Undo-AzKeyVaultManagedStorageAccountRemoval.md)
 Recovers a previously deleted KeyVault-managed storage account.
 
-### [Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval](Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval.md)
+### [Undo-AzKeyVaultManagedStorageSasDefinitionRemoval](Undo-AzKeyVaultManagedStorageSasDefinitionRemoval.md)
 Recovers a previously deleted KeyVault-managed storage SAS definition.
 
-### [Undo-AzureKeyVaultSecretRemoval](Undo-AzureKeyVaultSecretRemoval.md)
-Recovers a deleted secret in a key vault into an active state.
-
-### [Undo-AzureRmKeyVaultRemoval](Undo-AzureRmKeyVaultRemoval.md)
+### [Undo-AzKeyVaultRemoval](Undo-AzKeyVaultRemoval.md)
 Recovers a deleted key vault into an active state.
 
-### [Update-AzureKeyVaultCertificate](Update-AzureKeyVaultCertificate.md)
+### [Undo-AzKeyVaultSecretRemoval](Undo-AzKeyVaultSecretRemoval.md)
+Recovers a deleted secret in a key vault into an active state.
+
+### [Update-AzKeyVaultCertificate](Update-AzKeyVaultCertificate.md)
 Modifies editable attributes of a certificate.
 
-### [Update-AzureKeyVaultKey](Update-AzureKeyVaultKey.md)
+### [Update-AzKeyVaultKey](Update-AzKeyVaultKey.md)
 Updates the attributes of a key in a key vault.
 
-### [Update-AzureKeyVaultManagedStorageAccount](Update-AzureKeyVaultManagedStorageAccount.md)
+### [Update-AzKeyVaultManagedStorageAccount](Update-AzKeyVaultManagedStorageAccount.md)
 Update editable attributes of a Key Vault managed Azure Storage Account.
 
-### [Update-AzureKeyVaultManagedStorageAccountKey](Update-AzureKeyVaultManagedStorageAccountKey.md)
+### [Update-AzKeyVaultManagedStorageAccountKey](Update-AzKeyVaultManagedStorageAccountKey.md)
 Regenerates the specified key of Key Vault managed Azure Storage Account.
 
-### [Update-AzureKeyVaultSecret](Update-AzureKeyVaultSecret.md)
+### [Update-AzKeyVaultNetworkRuleSet](Update-AzKeyVaultNetworkRuleSet.md)
+Updates the network rule set on a key vault.
+
+### [Update-AzKeyVaultSecret](Update-AzKeyVaultSecret.md)
 Updates attributes of a secret in a key vault.
 

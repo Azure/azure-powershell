@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
-Module Name: AzureRM.NotificationHubs
+Module Name: Az.NotificationHubs
 ms.assetid: 9805B3F1-C6BB-4A0F-A7C3-1DD1ACB75CDA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/get-azurermnotificationhubsnamespace
+online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/get-aznotificationhubsnamespace
 schema: 2.0.0
 ---
 
-# Get-AzureRmNotificationHubsNamespace
+# Get-AzNotificationHubsNamespace
 
 ## SYNOPSIS
 Gets information about a notification hub namespace.
@@ -14,39 +14,39 @@ Gets information about a notification hub namespace.
 ## SYNTAX
 
 ```
-Get-AzureRmNotificationHubsNamespace [[-ResourceGroup] <String>] [[-Namespace] <String>]
+Get-AzNotificationHubsNamespace [[-ResourceGroup] <String>] [[-Namespace] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**The Get-AzureRmNotificationHubsNamespace** cmdlet gets information about notification hub namespaces.
+**The Get-AzNotificationHubsNamespace** cmdlet gets information about notification hub namespaces.
 This cmdlet provides you the option of getting information for all your namespaces, information about the namespaces assigned to a specified resource group; or for returning information about a specific namespace.
 Namespaces are logical containers that help you organize and manage your notification hubs.
 You must have at least one notification hub namespace: all notification hubs must be assigned to a namespace.
 A single namespace can house multiple hubs which means that you might only need one namespace in your organization.
 However, you can also have multiple namespaces to better organize your hubs, or to give specific individuals permission to manage a selected subset of hubs.
-The **Get-AzureRmNotificationHubsNamespace** cmdlet returns basic information about the namespace itself.
-To get information about the authorization rules associated with a namespace use Get-AzureRmNotificationHubsNamespaceAuthorizationRules.
+The **Get-AzNotificationHubsNamespace** cmdlet returns basic information about the namespace itself.
+To get information about the authorization rules associated with a namespace use Get-AzNotificationHubsNamespaceAuthorizationRules.
 
 ## EXAMPLES
 
 ### Example 1: Get information for all notification hub namespaces
 ```
-PS C:\>Get-AzureRmNotificationHubsNamespace
+PS C:\>Get-AzNotificationHubsNamespace
 ```
 
 This command returns information for all your notification hub namespaces.
 
 ### Example 2: Get information for a single notification hub namespace
 ```
-PS C:\>Get-AzureRmNotificationHubsNamespace -Namespace "ContosoNamespace"
+PS C:\>Get-AzNotificationHubsNamespace -Namespace "ContosoNamespace"
 ```
 
 This command gets information for a single notification hub namespace: ContosoNamespace.
 
 ### Example 3: Get information for all notification hubs assigned to a specific namespace
 ```
-PS C:\>Get-AzureRmNotificationHubsNamespace -ResourceGroup "ContosoNotificationsGroup"
+PS C:\>Get-AzNotificationHubsNamespace -ResourceGroup "ContosoNotificationsGroup"
 ```
 
 This command gets information for all notification hub namespaces assigned to the resource group ContosoNotificationsGroup.
@@ -57,7 +57,7 @@ This command gets information for all notification hub namespaces assigned to th
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -115,12 +115,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNotificationHubsNamespaceAuthorizationRules](./Get-AzureRmNotificationHubsNamespaceAuthorizationRules.md)
+[Get-AzNotificationHubsNamespaceAuthorizationRules](./Get-AzNotificationHubsNamespaceAuthorizationRules.md)
 
-[New-AzureRmNotificationHubsNamespace](./New-AzureRmNotificationHubsNamespace.md)
+[New-AzNotificationHubsNamespace](./New-AzNotificationHubsNamespace.md)
 
-[Remove-AzureRmNotificationHubsNamespace](./Remove-AzureRmNotificationHubsNamespace.md)
+[Remove-AzNotificationHubsNamespace](./Remove-AzNotificationHubsNamespace.md)
 
-[Set-AzureRmNotificationHubsNamespace](./Set-AzureRmNotificationHubsNamespace.md)
+[Set-AzNotificationHubsNamespace](./Set-AzNotificationHubsNamespace.md)
 
 

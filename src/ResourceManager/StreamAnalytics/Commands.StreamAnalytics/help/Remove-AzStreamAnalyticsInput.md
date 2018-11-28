@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM.StreamAnalytics
+Module Name: Az.StreamAnalytics
 ms.assetid: 1449F64F-A8F9-4E8E-B62B-17DEF3A0FB30
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/remove-azurermstreamanalyticsinput
+online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/remove-azstreamanalyticsinput
 schema: 2.0.0
 ---
 
-# Remove-AzureRmStreamAnalyticsInput
+# Remove-AzStreamAnalyticsInput
 
 ## SYNOPSIS
 Deletes an input from a Stream Analytics job.
@@ -14,18 +14,18 @@ Deletes an input from a Stream Analytics job.
 ## SYNTAX
 
 ```
-Remove-AzureRmStreamAnalyticsInput [-JobName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Remove-AzStreamAnalyticsInput [-JobName] <String> [-Name] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmStreamAnalyticsInput** cmdlet asynchronously deletes an input from a Stream Analytics job in Azure.
+The **Remove-AzStreamAnalyticsInput** cmdlet asynchronously deletes an input from a Stream Analytics job in Azure.
 
 ## EXAMPLES
 
 ### EXAMPLE 1: Remove an input stream from a job
 ```
-PS C:\>Remove-AzureRmStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "EventStream"
+PS C:\>Remove-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "EventStream"
 ```
 
 This command removes the input EventStream from StreamingJob.
@@ -36,7 +36,7 @@ This command removes the input EventStream from StreamingJob.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -138,10 +138,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmStreamAnalyticsInput](./New-AzureRmStreamAnalyticsInput.md)
+[New-AzStreamAnalyticsInput](./New-AzStreamAnalyticsInput.md)
 
-[Get-AzureRmStreamAnalyticsInput](./Get-AzureRmStreamAnalyticsInput.md)
+[Get-AzStreamAnalyticsInput](./Get-AzStreamAnalyticsInput.md)
 
-[Test-AzureRmStreamAnalyticsInput](./Test-AzureRmStreamAnalyticsInput.md)
+[Test-AzStreamAnalyticsInput](./Test-AzStreamAnalyticsInput.md)
 
 

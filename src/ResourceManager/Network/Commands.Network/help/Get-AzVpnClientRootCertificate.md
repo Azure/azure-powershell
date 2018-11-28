@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 16754F70-9619-4F68-86E9-5C8B27812707
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvpnclientrootcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvpnclientrootcertificate
 schema: 2.0.0
 ---
 
-# Get-AzureRmVpnClientRootCertificate
+# Get-AzVpnClientRootCertificate
 
 ## SYNOPSIS
 Gets information about VPN root certificates.
@@ -14,29 +14,28 @@ Gets information about VPN root certificates.
 ## SYNTAX
 
 ```
-Get-AzureRmVpnClientRootCertificate [-VpnClientRootCertificateName <String>]
- -VirtualNetworkGatewayName <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzVpnClientRootCertificate [-VpnClientRootCertificateName <String>] -VirtualNetworkGatewayName <String>
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVpnClientRootCertificate** cmdlet returns information about the root certificates assigned to a virtual network gateway.
+The **Get-AzVpnClientRootCertificate** cmdlet returns information about the root certificates assigned to a virtual network gateway.
 Root certificates are X.509 certificates that identify your Root Certification Authority: all other certificates used on the gateway trust the root certificate.
-By default, **Get-AzureRmVpnClientRootCertificate** returns information about all the root certificates assigned to a gateway.
+By default, **Get-AzVpnClientRootCertificate** returns information about all the root certificates assigned to a gateway.
 (Gateways can have more than one root certificate.) However, by including the **VpnClientRootCertificateName** parameter you can limit the returned data to a specific certificate.
 
 ## EXAMPLES
 
 ### Example 1: Get information about all root certificates
 ```
-PS C:\>Get-AzureRmVpnClientRootCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup"
+PS C:\>Get-AzVpnClientRootCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup"
 ```
 
 This command gets information about all the root certificates assigned to a virtual network gateway named ContosoVirtualNetwork.
 
 ### Example 2: Get information about specific root certificates
 ```
-PS C:\>Get-AzureRmVpnClientRootCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRootCertificateName "ContosoRootClientCertificate"
+PS C:\>Get-AzVpnClientRootCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName "ContosoResourceGroup" -VpnClientRootCertificateName "ContosoRootClientCertificate"
 ```
 
 This command is a variation of the command shown in Example 1.
@@ -48,7 +47,7 @@ In this case, however, the *VpnClientRootCertificateName* parameter is included 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -120,10 +119,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmVpnClientRootCertificate](./Add-AzureRmVpnClientRootCertificate.md)
+[Add-AzVpnClientRootCertificate](./Add-AzVpnClientRootCertificate.md)
 
-[New-AzureRmVpnClientRootCertificate](./New-AzureRmVpnClientRootCertificate.md)
+[New-AzVpnClientRootCertificate](./New-AzVpnClientRootCertificate.md)
 
-[Remove-AzureRmVpnClientRootCertificate](./Remove-AzureRmVpnClientRootCertificate.md)
+[Remove-AzVpnClientRootCertificate](./Remove-AzVpnClientRootCertificate.md)
 
 

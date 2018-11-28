@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM.TrafficManager
+Module Name: Az.TrafficManager
 ms.assetid: 2CE84C3A-EFC0-47FA-ACE5-687380D90A7D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/enable-azurermtrafficmanagerprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/enable-aztrafficmanagerprofile
 schema: 2.0.0
 ---
 
-# Enable-AzureRmTrafficManagerProfile
+# Enable-AzTrafficManagerProfile
 
 ## SYNOPSIS
 Enables a Traffic Manager profile.
@@ -15,18 +15,18 @@ Enables a Traffic Manager profile.
 
 ### Fields
 ```
-Enable-AzureRmTrafficManagerProfile -Name <String> -ResourceGroupName <String>
+Enable-AzTrafficManagerProfile -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Object
 ```
-Enable-AzureRmTrafficManagerProfile -TrafficManagerProfile <TrafficManagerProfile>
+Enable-AzTrafficManagerProfile -TrafficManagerProfile <TrafficManagerProfile>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzureRmTrafficManagerProfile** cmdlet enables an Azure Traffic Manager profile.
+The **Enable-AzTrafficManagerProfile** cmdlet enables an Azure Traffic Manager profile.
 You can specify the profile object by using the pipeline or as a parameter value.
 Alternatively, you can specify the profile by using the *Name* and *ResourceGroupName* parameters.
 
@@ -34,18 +34,18 @@ Alternatively, you can specify the profile by using the *Name* and *ResourceGrou
 
 ### Example 1: Enable a profile specified by name
 ```
-PS C:\>Enable-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+PS C:\>Enable-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
 ```
 
 This command enables the profile named ContosoProfile in ResourceGroup11.
 
 ### Example 2: Enable a profile by using the pipeline
 ```
-PS C:\>Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" | Enable-AzureRmTrafficManagerProfile
+PS C:\>Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" | Enable-AzTrafficManagerProfile
 ```
 
 This command gets the profile named ContosoProfile in ResourceGroup11.
-The command then passes that profile to the **Enable-AzureRmTrafficManagerProfile** cmdlet by using the pipeline operator.
+The command then passes that profile to the **Enable-AzTrafficManagerProfile** cmdlet by using the pipeline operator.
 That cmdlet enables that profile.
 
 ## PARAMETERS
@@ -54,7 +54,7 @@ That cmdlet enables that profile.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 
 ### -TrafficManagerProfile
 Specifies a **TrafficManagerProfile** object to enable.
-To obtain a **TrafficManagerProfile** object, use the Get-AzureRmTrafficManagerProfile cmdlet.
+To obtain a **TrafficManagerProfile** object, use the Get-AzTrafficManagerProfile cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
@@ -128,14 +128,14 @@ This cmdlet accepts a **TrafficManagerProfile** object.
 
 ## RELATED LINKS
 
-[Disable-AzureRmTrafficManagerProfile](./Disable-AzureRmTrafficManagerProfile.md)
+[Disable-AzTrafficManagerProfile](./Disable-AzTrafficManagerProfile.md)
 
-[Get-AzureRmTrafficManagerProfile](./Get-AzureRmTrafficManagerProfile.md)
+[Get-AzTrafficManagerProfile](./Get-AzTrafficManagerProfile.md)
 
-[New-AzureRmTrafficManagerProfile](./New-AzureRmTrafficManagerProfile.md)
+[New-AzTrafficManagerProfile](./New-AzTrafficManagerProfile.md)
 
-[Remove-AzureRmTrafficManagerProfile](./Remove-AzureRmTrafficManagerProfile.md)
+[Remove-AzTrafficManagerProfile](./Remove-AzTrafficManagerProfile.md)
 
-[Set-AzureRmTrafficManagerProfile](./Set-AzureRmTrafficManagerProfile.md)
+[Set-AzTrafficManagerProfile](./Set-AzTrafficManagerProfile.md)
 
 

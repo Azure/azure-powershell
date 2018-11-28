@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 2A3B7343-9AA0-4505-AEDE-31C0C5B98694
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermexpressroutecrossconnection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azexpressroutecrossconnection
 schema: 2.0.0
 ---
 
-# Set-AzureRmExpressRouteCrossConnection
+# Set-AzExpressRouteCrossConnection
 
 ## SYNOPSIS
 Modifies an ExpressRoute cross connection.
@@ -14,20 +14,20 @@ Modifies an ExpressRoute cross connection.
 ## SYNTAX
 
 ```
-Set-AzureRmExpressRouteCrossConnection -ExpressRouteCrossConnection <PSExpressRouteCrossConnection> [-AsJob]
+Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection <PSExpressRouteCrossConnection> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmExpressRouteCrossConnection** cmdlet saves the modified ExpressRoute cross connection to Azure.
+The **Set-AzExpressRouteCrossConnection** cmdlet saves the modified ExpressRoute cross connection to Azure.
 
 ## EXAMPLES
 
 ### Example 1: Change the Service Provider Provisioning State of an ExpressRoute cross connection
 ```
-$cc = Get-AzureRmExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
+$cc = Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
 $cc.ServiceProviderProvisioningState = 'Provisioned'
-Set-AzureRmExpressRouteCrossConnection -ExpressRouteCrossConnection $cc
+Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection $cc
 ```
 
 ## PARAMETERS
@@ -93,4 +93,4 @@ Parameter 'ExpressRouteCrossConnection' accepts value of type 'PSExpressRouteCro
 
 ## RELATED LINKS
 
-[Get-AzureRmExpressRouteCrossConnection](./Get-AzureRmExpressRouteCrossConnection.md)
+[Get-AzExpressRouteCrossConnection](./Get-AzExpressRouteCrossConnection.md)

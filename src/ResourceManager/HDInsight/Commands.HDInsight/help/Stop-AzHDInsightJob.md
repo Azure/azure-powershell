@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: FD27C755-9AAF-42DA-8425-1661C92B6C68
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/stop-azurermhdinsightjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/stop-azhdinsightjob
 schema: 2.0.0
 ---
 
-# Stop-AzureRmHDInsightJob
+# Stop-AzHDInsightJob
 
 ## SYNOPSIS
 Stops a specified running job on a cluster.
@@ -14,12 +14,12 @@ Stops a specified running job on a cluster.
 ## SYNTAX
 
 ```
-Stop-AzureRmHDInsightJob [-ClusterName] <String> [-JobId] <String> [-HttpCredential] <PSCredential>
+Stop-AzHDInsightJob [-ClusterName] <String> [-JobId] <String> [-HttpCredential] <PSCredential>
  [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmHDInsightJob** cmdlet stops a specified running job on an Azure HDInsight cluster.
+The **Stop-AzHDInsightJob** cmdlet stops a specified running job on an Azure HDInsight cluster.
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ The **Stop-AzureRmHDInsightJob** cmdlet stops a specified running job on an Azur
 PS C:\># Cluster info
 PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $clusterCreds = Get-Credential
-PS C:\> Stop-AzureRmHDInsightJob `
+PS C:\> Stop-AzHDInsightJob `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds `
             -JobId $jobId
@@ -129,10 +129,10 @@ Parameters: JobId (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmHDInsightJob](./Get-AzureRmHDInsightJob.md)
+[Get-AzHDInsightJob](./Get-AzHDInsightJob.md)
 
-[Start-AzureRmHDInsightJob](./Start-AzureRmHDInsightJob.md)
+[Start-AzHDInsightJob](./Start-AzHDInsightJob.md)
 
-[Wait-AzureRmHDInsightJob](./Wait-AzureRmHDInsightJob.md)
+[Wait-AzHDInsightJob](./Wait-AzHDInsightJob.md)
 
 

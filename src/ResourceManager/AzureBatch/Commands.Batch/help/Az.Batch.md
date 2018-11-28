@@ -1,226 +1,226 @@
 ---
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 Module Guid: a8f00f40-1c1a-49b5-9db3-24076b75c3cf
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.batch
 Help Version: 4.0.0.0
 Locale: en-US
 ---
 
-# AzureRM.Batch Module
+# Az.Batch Module
 ## Description
 The Azure Batch cmdlets in the Azure module enable you to manage Microsoft Azure Batch services in Azure PowerShell.
 
-## AzureRM.Batch Cmdlets
-### [Disable-AzureBatchAutoScale](Disable-AzureBatchAutoScale.md)
+## Az.Batch Cmdlets
+### [Disable-AzBatchAutoScale](Disable-AzBatchAutoScale.md)
 Disables automatic scaling of a pool.
 
-### [Disable-AzureBatchComputeNodeScheduling](Disable-AzureBatchComputeNodeScheduling.md)
+### [Disable-AzBatchComputeNodeScheduling](Disable-AzBatchComputeNodeScheduling.md)
 Disables task scheduling on the specified compute node.
 
-### [Disable-AzureBatchJob](Disable-AzureBatchJob.md)
+### [Disable-AzBatchJob](Disable-AzBatchJob.md)
 Disables a Batch job.
 
-### [Disable-AzureBatchJobSchedule](Disable-AzureBatchJobSchedule.md)
+### [Disable-AzBatchJobSchedule](Disable-AzBatchJobSchedule.md)
 Disables a Batch job schedule.
 
-### [Enable-AzureBatchAutoScale](Enable-AzureBatchAutoScale.md)
+### [Enable-AzBatchAutoScale](Enable-AzBatchAutoScale.md)
 Enables automatic scaling of a pool.
 
-### [Enable-AzureBatchComputeNodeScheduling](Enable-AzureBatchComputeNodeScheduling.md)
+### [Enable-AzBatchComputeNodeScheduling](Enable-AzBatchComputeNodeScheduling.md)
 Enables task scheduling on the specified compute node.
 
-### [Enable-AzureBatchJob](Enable-AzureBatchJob.md)
+### [Enable-AzBatchJob](Enable-AzBatchJob.md)
 Enables a Batch job.
 
-### [Enable-AzureBatchJobSchedule](Enable-AzureBatchJobSchedule.md)
+### [Enable-AzBatchJobSchedule](Enable-AzBatchJobSchedule.md)
 Enables a Batch job schedule.
 
-### [Enable-AzureBatchTask](Enable-AzureBatchTask.md)
+### [Enable-AzBatchTask](Enable-AzBatchTask.md)
 Reactivates a task.
 
-### [Get-AzureBatchCertificate](Get-AzureBatchCertificate.md)
-Gets the certificates in a Batch account.
-
-### [Get-AzureBatchComputeNode](Get-AzureBatchComputeNode.md)
-Gets Batch compute nodes from a pool.
-
-### [Get-AzureBatchJob](Get-AzureBatchJob.md)
-Gets Batch jobs for a Batch account or job schedule.
-
-### [Get-AzureBatchJobPreparationAndReleaseTaskStatus](Get-AzureBatchJobPreparationAndReleaseTaskStatus.md)
-Gets Batch job preparation and release task status.
-
-### [Get-AzureBatchJobSchedule](Get-AzureBatchJobSchedule.md)
-Gets Batch job schedules.
-
-### [Get-AzureBatchJobStatistics](Get-AzureBatchJobStatistics.md)
-Gets job summary statistics for a Batch account.
-
-### [Get-AzureBatchNodeAgentSku](Get-AzureBatchNodeAgentSku.md)
-Gets Batch node agent SKUs available in a Batch account.
-
-### [Get-AzureBatchNodeFile](Get-AzureBatchNodeFile.md)
-Gets the properties of Batch node files.
-
-### [Get-AzureBatchNodeFileContent](Get-AzureBatchNodeFileContent.md)
-Gets a Batch node file.
-
-### [Get-AzureBatchPool](Get-AzureBatchPool.md)
-Gets Batch pools under the specified Batch account.
-
-### [Get-AzureBatchPoolNodeCounts](Get-AzureBatchPoolNodeCounts.md)
-Gets Batch node counts per node state grouped by pool id.
-
-### [Get-AzureBatchPoolStatistics](Get-AzureBatchPoolStatistics.md)
-Gets pool summary statistics for a Batch account.
-
-### [Get-AzureBatchPoolUsageMetrics](Get-AzureBatchPoolUsageMetrics.md)
-Gets pool usage metrics for a Batch account.
-
-### [Get-AzureBatchRemoteDesktopProtocolFile](Get-AzureBatchRemoteDesktopProtocolFile.md)
-Gets an RDP file from a compute node.
-
-### [Get-AzureBatchRemoteLoginSettings](Get-AzureBatchRemoteLoginSettings.md)
-Gets remote logon settings for a compute node.
-
-### [Get-AzureBatchSubtask](Get-AzureBatchSubtask.md)
-Gets the subtask information of the specified task.
-
-### [Get-AzureBatchTask](Get-AzureBatchTask.md)
-Gets the Batch tasks for a job.
-
-### [Get-AzureBatchTaskCounts](Get-AzureBatchTaskCounts.md)
-Gets the task counts for the specified job.
-
-### [Get-AzureRmBatchAccount](Get-AzureRmBatchAccount.md)
+### [Get-AzBatchAccount](Get-AzBatchAccount.md)
 Gets a Batch account in the current subscription.
 
-### [Get-AzureRmBatchAccountKeys](Get-AzureRmBatchAccountKeys.md)
+### [Get-AzBatchAccountKeys](Get-AzBatchAccountKeys.md)
 Gets the keys of a Batch account.
 
-### [Get-AzureRmBatchApplication](Get-AzureRmBatchApplication.md)
+### [Get-AzBatchApplication](Get-AzBatchApplication.md)
 Gets information about the specified application.
 
-### [Get-AzureRmBatchApplicationPackage](Get-AzureRmBatchApplicationPackage.md)
+### [Get-AzBatchApplicationPackage](Get-AzBatchApplicationPackage.md)
 Gets information about an application package in a Batch account.
 
-### [Get-AzureRmBatchLocationQuotas](Get-AzureRmBatchLocationQuotas.md)
+### [Get-AzBatchCertificate](Get-AzBatchCertificate.md)
+Gets the certificates in a Batch account.
+
+### [Get-AzBatchComputeNode](Get-AzBatchComputeNode.md)
+Gets Batch compute nodes from a pool.
+
+### [Get-AzBatchJob](Get-AzBatchJob.md)
+Gets Batch jobs for a Batch account or job schedule.
+
+### [Get-AzBatchJobPreparationAndReleaseTaskStatus](Get-AzBatchJobPreparationAndReleaseTaskStatus.md)
+Gets Batch job preparation and release task status.
+
+### [Get-AzBatchJobSchedule](Get-AzBatchJobSchedule.md)
+Gets Batch job schedules.
+
+### [Get-AzBatchJobStatistics](Get-AzBatchJobStatistics.md)
+Gets job summary statistics for a Batch account.
+
+### [Get-AzBatchLocationQuotas](Get-AzBatchLocationQuotas.md)
 Gets the Batch service quotas for your subscription at the given location.
 
-### [New-AzureBatchCertificate](New-AzureBatchCertificate.md)
-Adds a certificate to the specified Batch account.
+### [Get-AzBatchNodeAgentSku](Get-AzBatchNodeAgentSku.md)
+Gets Batch node agent SKUs available in a Batch account.
 
-### [New-AzureBatchComputeNodeUser](New-AzureBatchComputeNodeUser.md)
-Creates a user account on a Batch compute node.
+### [Get-AzBatchNodeFile](Get-AzBatchNodeFile.md)
+Gets the properties of Batch node files.
 
-### [New-AzureBatchJob](New-AzureBatchJob.md)
-Creates a job in the Batch service.
+### [Get-AzBatchNodeFileContent](Get-AzBatchNodeFileContent.md)
+Gets a Batch node file.
 
-### [New-AzureBatchJobSchedule](New-AzureBatchJobSchedule.md)
-Creates a job schedule in the Batch service.
+### [Get-AzBatchPool](Get-AzBatchPool.md)
+Gets Batch pools under the specified Batch account.
 
-### [New-AzureBatchPool](New-AzureBatchPool.md)
-Creates a pool in the Batch service.
+### [Get-AzBatchPoolNodeCounts](Get-AzBatchPoolNodeCounts.md)
+Gets Batch node counts per node state grouped by pool id.
 
-### [New-AzureBatchTask](New-AzureBatchTask.md)
-Creates a Batch task under a job.
+### [Get-AzBatchPoolStatistics](Get-AzBatchPoolStatistics.md)
+Gets pool summary statistics for a Batch account.
 
-### [New-AzureRmBatchAccount](New-AzureRmBatchAccount.md)
+### [Get-AzBatchPoolUsageMetrics](Get-AzBatchPoolUsageMetrics.md)
+Gets pool usage metrics for a Batch account.
+
+### [Get-AzBatchRemoteDesktopProtocolFile](Get-AzBatchRemoteDesktopProtocolFile.md)
+Gets an RDP file from a compute node.
+
+### [Get-AzBatchRemoteLoginSettings](Get-AzBatchRemoteLoginSettings.md)
+Gets remote logon settings for a compute node.
+
+### [Get-AzBatchSubtask](Get-AzBatchSubtask.md)
+Gets the subtask information of the specified task.
+
+### [Get-AzBatchTask](Get-AzBatchTask.md)
+Gets the Batch tasks for a job.
+
+### [Get-AzBatchTaskCounts](Get-AzBatchTaskCounts.md)
+Gets the task counts for the specified job.
+
+### [New-AzBatchAccount](New-AzBatchAccount.md)
 Creates a Batch account.
 
-### [New-AzureRmBatchAccountKey](New-AzureRmBatchAccountKey.md)
+### [New-AzBatchAccountKey](New-AzBatchAccountKey.md)
 Regenerates a key of a Batch account.
 
-### [New-AzureRmBatchApplication](New-AzureRmBatchApplication.md)
+### [New-AzBatchApplication](New-AzBatchApplication.md)
 Adds an application to the specified Batch account.
 
-### [New-AzureRmBatchApplicationPackage](New-AzureRmBatchApplicationPackage.md)
+### [New-AzBatchApplicationPackage](New-AzBatchApplicationPackage.md)
 Creates an application package in a Batch account.
 
-### [Remove-AzureBatchCertificate](Remove-AzureBatchCertificate.md)
-Deletes a certificate from an account.
+### [New-AzBatchCertificate](New-AzBatchCertificate.md)
+Adds a certificate to the specified Batch account.
 
-### [Remove-AzureBatchComputeNode](Remove-AzureBatchComputeNode.md)
-Removes compute nodes from a pool.
+### [New-AzBatchComputeNodeUser](New-AzBatchComputeNodeUser.md)
+Creates a user account on a Batch compute node.
 
-### [Remove-AzureBatchComputeNodeUser](Remove-AzureBatchComputeNodeUser.md)
-Deletes a user account from a Batch compute node.
+### [New-AzBatchJob](New-AzBatchJob.md)
+Creates a job in the Batch service.
 
-### [Remove-AzureBatchJob](Remove-AzureBatchJob.md)
-Deletes a Batch job.
+### [New-AzBatchJobSchedule](New-AzBatchJobSchedule.md)
+Creates a job schedule in the Batch service.
 
-### [Remove-AzureBatchJobSchedule](Remove-AzureBatchJobSchedule.md)
-Removes a Batch job schedule.
+### [New-AzBatchPool](New-AzBatchPool.md)
+Creates a pool in the Batch service.
 
-### [Remove-AzureBatchNodeFile](Remove-AzureBatchNodeFile.md)
-Deletes a node file for a task or compute node.
+### [New-AzBatchTask](New-AzBatchTask.md)
+Creates a Batch task under a job.
 
-### [Remove-AzureBatchPool](Remove-AzureBatchPool.md)
-Deletes the specified Batch pool.
-
-### [Remove-AzureBatchTask](Remove-AzureBatchTask.md)
-Deletes a Batch task.
-
-### [Remove-AzureRmBatchAccount](Remove-AzureRmBatchAccount.md)
+### [Remove-AzBatchAccount](Remove-AzBatchAccount.md)
 Removes a Batch account.
 
-### [Remove-AzureRmBatchApplication](Remove-AzureRmBatchApplication.md)
+### [Remove-AzBatchApplication](Remove-AzBatchApplication.md)
 Deletes an application from a Batch account.
 
-### [Remove-AzureRmBatchApplicationPackage](Remove-AzureRmBatchApplicationPackage.md)
+### [Remove-AzBatchApplicationPackage](Remove-AzBatchApplicationPackage.md)
 Deletes an application package record and the binary file.
 
-### [Reset-AzureBatchComputeNode](Reset-AzureBatchComputeNode.md)
+### [Remove-AzBatchCertificate](Remove-AzBatchCertificate.md)
+Deletes a certificate from an account.
+
+### [Remove-AzBatchComputeNode](Remove-AzBatchComputeNode.md)
+Removes compute nodes from a pool.
+
+### [Remove-AzBatchComputeNodeUser](Remove-AzBatchComputeNodeUser.md)
+Deletes a user account from a Batch compute node.
+
+### [Remove-AzBatchJob](Remove-AzBatchJob.md)
+Deletes a Batch job.
+
+### [Remove-AzBatchJobSchedule](Remove-AzBatchJobSchedule.md)
+Removes a Batch job schedule.
+
+### [Remove-AzBatchNodeFile](Remove-AzBatchNodeFile.md)
+Deletes a node file for a task or compute node.
+
+### [Remove-AzBatchPool](Remove-AzBatchPool.md)
+Deletes the specified Batch pool.
+
+### [Remove-AzBatchTask](Remove-AzBatchTask.md)
+Deletes a Batch task.
+
+### [Reset-AzBatchComputeNode](Reset-AzBatchComputeNode.md)
 Reinstalls the operating system on the specified compute node.
 
-### [Restart-AzureBatchComputeNode](Restart-AzureBatchComputeNode.md)
+### [Restart-AzBatchComputeNode](Restart-AzBatchComputeNode.md)
 Reboots the specified compute node.
 
-### [Set-AzureBatchComputeNodeUser](Set-AzureBatchComputeNodeUser.md)
-Modifies properties of an account on a Batch compute node.
-
-### [Set-AzureBatchJob](Set-AzureBatchJob.md)
-Updates a Batch job.
-
-### [Set-AzureBatchJobSchedule](Set-AzureBatchJobSchedule.md)
-Sets a job schedule.
-
-### [Set-AzureBatchPool](Set-AzureBatchPool.md)
-Updates the properties of a pool.
-
-### [Set-AzureBatchPoolOSVersion](Set-AzureBatchPoolOSVersion.md)
-Changes the operating system version of the specified pool.
-
-### [Set-AzureBatchTask](Set-AzureBatchTask.md)
-Updates the properties of a task.
-
-### [Set-AzureRmBatchAccount](Set-AzureRmBatchAccount.md)
+### [Set-AzBatchAccount](Set-AzBatchAccount.md)
 Updates a Batch account.
 
-### [Set-AzureRmBatchApplication](Set-AzureRmBatchApplication.md)
+### [Set-AzBatchApplication](Set-AzBatchApplication.md)
 Updates settings for the specified application.
 
-### [Start-AzureBatchComputeNodeServiceLogUpload](Start-AzureBatchComputeNodeServiceLogUpload.md)
+### [Set-AzBatchComputeNodeUser](Set-AzBatchComputeNodeUser.md)
+Modifies properties of an account on a Batch compute node.
+
+### [Set-AzBatchJob](Set-AzBatchJob.md)
+Updates a Batch job.
+
+### [Set-AzBatchJobSchedule](Set-AzBatchJobSchedule.md)
+Sets a job schedule.
+
+### [Set-AzBatchPool](Set-AzBatchPool.md)
+Updates the properties of a pool.
+
+### [Set-AzBatchPoolOSVersion](Set-AzBatchPoolOSVersion.md)
+Changes the operating system version of the specified pool.
+
+### [Set-AzBatchTask](Set-AzBatchTask.md)
+Updates the properties of a task.
+
+### [Start-AzBatchComputeNodeServiceLogUpload](Start-AzBatchComputeNodeServiceLogUpload.md)
 Upload compute node service log files to an Azure Storage container.
 
-### [Start-AzureBatchPoolResize](Start-AzureBatchPoolResize.md)
+### [Start-AzBatchPoolResize](Start-AzBatchPoolResize.md)
 Starts to resize a pool.
 
-### [Stop-AzureBatchCertificateDeletion](Stop-AzureBatchCertificateDeletion.md)
+### [Stop-AzBatchCertificateDeletion](Stop-AzBatchCertificateDeletion.md)
 Cancels a failed deletion of a certificate.
 
-### [Stop-AzureBatchJob](Stop-AzureBatchJob.md)
+### [Stop-AzBatchJob](Stop-AzBatchJob.md)
 Stops a Batch job.
 
-### [Stop-AzureBatchJobSchedule](Stop-AzureBatchJobSchedule.md)
+### [Stop-AzBatchJobSchedule](Stop-AzBatchJobSchedule.md)
 Stops a Batch job schedule.
 
-### [Stop-AzureBatchPoolResize](Stop-AzureBatchPoolResize.md)
+### [Stop-AzBatchPoolResize](Stop-AzBatchPoolResize.md)
 Stops a pool resize operation.
 
-### [Stop-AzureBatchTask](Stop-AzureBatchTask.md)
+### [Stop-AzBatchTask](Stop-AzBatchTask.md)
 Stops a Batch task.
 
-### [Test-AzureBatchAutoScale](Test-AzureBatchAutoScale.md)
+### [Test-AzBatchAutoScale](Test-AzBatchAutoScale.md)
 Gets the result of an automatic scaling formula on a pool.
 

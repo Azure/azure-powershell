@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/update-azurermdatafactoryv2integrationruntime
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/update-azdatafactoryv2integrationruntime
 schema: 2.0.0
 ---
 
-# Update-AzureRmDataFactoryV2IntegrationRuntime
+# Update-AzDataFactoryV2IntegrationRuntime
 
 ## SYNOPSIS
 Updates an integration runtime.
@@ -14,33 +14,33 @@ Updates an integration runtime.
 
 ### ByIntegrationRuntimeName (Default)
 ```
-Update-AzureRmDataFactoryV2IntegrationRuntime [-AutoUpdate <String>] [-AutoUpdateDelayOffset <TimeSpan>]
+Update-AzDataFactoryV2IntegrationRuntime [-AutoUpdate <String>] [-AutoUpdateDelayOffset <TimeSpan>]
  [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzureRmDataFactoryV2IntegrationRuntime [-AutoUpdate <String>] [-AutoUpdateDelayOffset <TimeSpan>]
+Update-AzDataFactoryV2IntegrationRuntime [-AutoUpdate <String>] [-AutoUpdateDelayOffset <TimeSpan>]
  [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Update-AzureRmDataFactoryV2IntegrationRuntime [-AutoUpdate <String>] [-AutoUpdateDelayOffset <TimeSpan>]
+Update-AzDataFactoryV2IntegrationRuntime [-AutoUpdate <String>] [-AutoUpdateDelayOffset <TimeSpan>]
  [-InputObject] <PSIntegrationRuntime> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmDataFactoryV2IntegrationRuntime** cmdlet updates integration runtime properties. Currently the cmdlet only supports updating 'AutoUpdate' and 'AutoUpdateDelayOffset' for self-hosted integration runtime.
+The **Update-AzDataFactoryV2IntegrationRuntime** cmdlet updates integration runtime properties. Currently the cmdlet only supports updating 'AutoUpdate' and 'AutoUpdateDelayOffset' for self-hosted integration runtime.
 
 ## EXAMPLES
 
 ### Example 1: Updates an integration runtime
 ```
 PS C:\> $ts = New-TimeSpan -Hours 3
-PS C:\> Update-AzureRmDataFactoryV2IntegrationRuntime `
+PS C:\> Update-AzDataFactoryV2IntegrationRuntime `
     -ResourceGroupName 'rg-test-dfv2' `
     -DataFactoryName 'test-df-eu2' `
     -Name 'test-selfhost-ir' `
@@ -241,6 +241,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories, c
 
 ## RELATED LINKS
 
-[Set-AzureRmDataFactoryV2IntegrationRuntime]()
-[Get-AzureRmDataFactoryV2IntegrationRuntime]()
+[Set-AzDataFactoryV2IntegrationRuntime]()
+[Get-AzDataFactoryV2IntegrationRuntime]()
 

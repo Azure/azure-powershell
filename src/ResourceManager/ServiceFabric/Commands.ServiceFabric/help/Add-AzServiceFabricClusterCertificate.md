@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate
+Module Name: Az.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/add-azservicefabricclustercertificate
 schema: 2.0.0
 ---
 
-# Add-AzureRmServiceFabricClusterCertificate
+# Add-AzServiceFabricClusterCertificate
 
 ## SYNOPSIS
 Add a secondary cluster certificate to the cluster.
@@ -14,14 +14,13 @@ Add a secondary cluster certificate to the cluster.
 
 ### ByExistingKeyVault
 ```
-Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
- -SecretIdentifier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Add-AzServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String> -SecretIdentifier <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
 ```
-Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
+Add-AzServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
  [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] [-CertificateOutputFolder <String>]
  [-CertificatePassword <SecureString>] -CertificateSubjectName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -29,21 +28,21 @@ Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name]
 
 ### ByExistingPfxAndVaultName
 ```
-Add-AzureRmServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
+Add-AzServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
  [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] -CertificateFile <String>
  [-CertificatePassword <SecureString>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use **Add-AzureRmServiceFabricClusterCertificate** to add a secondary cluster certificate, either from an existing Azure key vault or creating a new Azure key vault using an existing certificate provided or from a new self-signed certificate created. 
+Use **Add-AzServiceFabricClusterCertificate** to add a secondary cluster certificate, either from an existing Azure key vault or creating a new Azure key vault using an existing certificate provided or from a new self-signed certificate created. 
 It will override the secondary cluster if there is any.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-Add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' 
+Add-AzServiceFabricClusterCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' 
 -SecretIdentifier 'https://contoso03vault.vault.azure.net/secrets/contoso03vaultrg/7f7de9131c034172b9df37ccc549524f'
 ```
 
@@ -52,7 +51,7 @@ This command will add a certificate in the existing Azure key vault as a seconda
 ### Example 2
 ```
 PS c:\> $pwd = ConvertTo-SecureString -String "123" -AsPlainText -Force
-PS c:\> add-AzureRmServiceFabricClusterCertificate -ResourceGroupName 'Group2' -Name 'Contoso02SFCluster'  -CertificateSubjectName 'Contoso.com' 
+PS c:\> add-AzServiceFabricClusterCertificate -ResourceGroupName 'Group2' -Name 'Contoso02SFCluster'  -CertificateSubjectName 'Contoso.com' 
 -CertificateOutputFolder 'c:\test' -CertificatePassword $pwd
 ```
 
@@ -124,7 +123,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -259,8 +258,8 @@ Parameters: CertificatePassword (ByValue)
 
 ## RELATED LINKS
 
-[Remove-AzureRmServiceFabricClusterCertificate](./Remove-AzureRmServiceFabricClusterCertificate.md)
+[Remove-AzServiceFabricClusterCertificate](./Remove-AzServiceFabricClusterCertificate.md)
 
-[New-AzureRmServiceFabricCluster](./New-AzureRmServiceFabricCluster.md)
+[New-AzServiceFabricCluster](./New-AzServiceFabricCluster.md)
 
-[Add-AzureRmServiceFabricApplicationCertificate](./Add-AzureRmServiceFabricApplicationCertificate.md)
+[Add-AzServiceFabricApplicationCertificate](./Add-AzServiceFabricApplicationCertificate.md)

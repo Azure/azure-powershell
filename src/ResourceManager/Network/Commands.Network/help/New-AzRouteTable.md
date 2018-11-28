@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 6A278F91-C078-4DD4-82D0-2E4FA549A089
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermroutetable
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azroutetable
 schema: 2.0.0
 ---
 
-# New-AzureRmRouteTable
+# New-AzRouteTable
 
 ## SYNOPSIS
 Creates a route table.
@@ -14,21 +14,21 @@ Creates a route table.
 ## SYNTAX
 
 ```
-New-AzureRmRouteTable -ResourceGroupName <String> -Name <String> [-DisableBgpRoutePropagation]
- -Location <String> [-Tag <Hashtable>]
+New-AzRouteTable -ResourceGroupName <String> -Name <String> [-DisableBgpRoutePropagation] -Location <String>
+ [-Tag <Hashtable>]
  [-Route <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]>] [-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmRouteTable** cmdlet creates an Azure route table.
+The **New-AzRouteTable** cmdlet creates an Azure route table.
 
 ## EXAMPLES
 
 ### Example 1: Create a route table that contains a route
 ```
-PS C:\>$Route = New-AzureRmRouteConfig -Name "Route07" -AddressPrefix 10.1.0.0/16 -NextHopType "VnetLocal"
-PS C:\> New-AzureRmRouteTable -Name "RouteTable01" -ResourceGroupName "ResourceGroup11" -Location "EASTUS" -Route $Route
+PS C:\>$Route = New-AzRouteConfig -Name "Route07" -AddressPrefix 10.1.0.0/16 -NextHopType "VnetLocal"
+PS C:\> New-AzRouteTable -Name "RouteTable01" -ResourceGroupName "ResourceGroup11" -Location "EASTUS" -Route $Route
 Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
@@ -52,7 +52,7 @@ Routes            : [
 Subnets           : []
 ```
 
-The first command creates a route named Route07 by using the New-AzureRmRouteConfig cmdlet, and
+The first command creates a route named Route07 by using the New-AzRouteConfig cmdlet, and
 then stores it in the $Route variable. This route forwards packets to the local virtual network.
 The second command creates a route table named RouteTable01, and adds the route stored in $Route to
 the new table. The command specifies the resource group to which the table belongs and the location
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -247,10 +247,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmRouteTable](./Get-AzureRmRouteTable.md)
+[Get-AzRouteTable](./Get-AzRouteTable.md)
 
-[New-AzureRmRouteConfig](./New-AzureRmRouteConfig.md)
+[New-AzRouteConfig](./New-AzRouteConfig.md)
 
-[Remove-AzureRmRouteTable](./Remove-AzureRmRouteTable.md)
+[Remove-AzRouteTable](./Remove-AzRouteTable.md)
 
-[Set-AzureRmRouteTable](./Set-AzureRmRouteTable.md)
+[Set-AzRouteTable](./Set-AzRouteTable.md)

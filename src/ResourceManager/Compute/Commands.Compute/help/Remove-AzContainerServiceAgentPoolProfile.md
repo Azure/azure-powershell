@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: ED37B17D-C513-422A-89EA-A6AF1C9A5FEE
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermcontainerserviceagentpoolprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azcontainerserviceagentpoolprofile
 schema: 2.0.0
 ---
 
-# Remove-AzureRmContainerServiceAgentPoolProfile
+# Remove-AzContainerServiceAgentPoolProfile
 
 ## SYNOPSIS
 Removes an agent pool profile from a container service.
@@ -14,22 +14,22 @@ Removes an agent pool profile from a container service.
 ## SYNTAX
 
 ```
-Remove-AzureRmContainerServiceAgentPoolProfile [-ContainerService] <PSContainerService> [-Name] <String>
+Remove-AzContainerServiceAgentPoolProfile [-ContainerService] <PSContainerService> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmContainerServiceAgentPoolProfile** cmdlet removes an agent pool profile from a container service.
+The **Remove-AzContainerServiceAgentPoolProfile** cmdlet removes an agent pool profile from a container service.
 
 ## EXAMPLES
 
 ### Example 1: Remove a profile from a container service
 ```
-PS C:\> $Container = Get-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17" 
-PS C:\> Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Container -Name "AgentPool01"
+PS C:\> $Container = Get-AzContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17" 
+PS C:\> Remove-AzContainerServiceAgentPoolProfile -ContainerService $Container -Name "AgentPool01"
 ```
 
-The first command gets a container service named CSResourceGroup17 by using the Get-AzureRmContainerService cmdlet.
+The first command gets a container service named CSResourceGroup17 by using the Get-AzContainerService cmdlet.
 The command stores the service in the $Container variable.
 The second command removes the profile named AgentPool01 from the container service in $Container.
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -127,8 +127,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmContainerServiceAgentPoolProfile](./Add-AzureRmContainerServiceAgentPoolProfile.md)
+[Add-AzContainerServiceAgentPoolProfile](./Add-AzContainerServiceAgentPoolProfile.md)
 
-[Get-AzureRmContainerService](./Get-AzureRmContainerService.md)
+[Get-AzContainerService](./Get-AzContainerService.md)
 
 

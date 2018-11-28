@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 98AD1C84-B147-48EB-94B5-8D77B531F6F8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementlogger
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementlogger
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApiManagementLogger
+# Remove-AzApiManagementLogger
 
 ## SYNOPSIS
 Removes an API Management Logger.
@@ -14,19 +14,19 @@ Removes an API Management Logger.
 ## SYNTAX
 
 ```
-Remove-AzureRmApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String> [-PassThru]
+Remove-AzApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmApiManagementLogger** cmdlet removes an Azure API Management **Logger**.
+The **Remove-AzApiManagementLogger** cmdlet removes an Azure API Management **Logger**.
 
 ## EXAMPLES
 
 ### Example 1: Remove a logger
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzureRmApiManagementLogger -Context $apimContext -LoggerId "Logger123" -Force
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzApiManagementLogger -Context $apimContext -LoggerId "Logger123" -Force
 ```
 
 This command removes a logger that has the ID Logger123.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -143,10 +143,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementLogger](./Get-AzureRmApiManagementLogger.md)
+[Get-AzApiManagementLogger](./Get-AzApiManagementLogger.md)
 
-[New-AzureRmApiManagementLogger](./New-AzureRmApiManagementLogger.md)
+[New-AzApiManagementLogger](./New-AzApiManagementLogger.md)
 
-[Set-AzureRmApiManagementLogger](./Set-AzureRmApiManagementLogger.md)
+[Set-AzApiManagementLogger](./Set-AzApiManagementLogger.md)
 
 

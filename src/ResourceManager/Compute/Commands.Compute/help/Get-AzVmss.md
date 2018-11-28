@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: FC6BC096-DBC4-48DA-A366-B87EB18A0496
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmss
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmss
 schema: 2.0.0
 ---
 
-# Get-AzureRmVmss
+# Get-AzVmss
 
 ## SYNOPSIS
 Gets the properties of a VMSS.
@@ -15,24 +15,24 @@ Gets the properties of a VMSS.
 
 ### DefaultParameter (Default)
 ```
-Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>]
+Get-AzVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FriendMethod
 ```
-Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-InstanceView]
+Get-AzVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-InstanceView]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### OSUpgradeHistoryMethodParameter
 ```
-Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-OSUpgradeHistory]
+Get-AzVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-OSUpgradeHistory]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVmss** cmdlet gets the model and instance view of a Virtual Machine Scale Set (VMSS).
+The **Get-AzVmss** cmdlet gets the model and instance view of a Virtual Machine Scale Set (VMSS).
 The model view is the user specified properties of the virtual machine scale set.
 The instance view is the instance level status of the virtual machine scale set.
 Specify the *InstanceView* parameter to get only the instance view of a virtual machine scale set.
@@ -41,7 +41,7 @@ Specify the *InstanceView* parameter to get only the instance view of a virtual 
 
 ### Example 1: Get the properties of a VMSS
 ```
-PS C:\> Get-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+PS C:\> Get-AzVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command gets the properties of the VMSS named VMSS001 that belongs to the resource group named Group001.
@@ -53,7 +53,7 @@ Since the command does not specify the *InstanceView* switch parameter, the cmdl
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -139,18 +139,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmVmss](./New-AzureRmVmss.md)
+[New-AzVmss](./New-AzVmss.md)
 
-[Remove-AzureRmVmss](./Remove-AzureRmVmss.md)
+[Remove-AzVmss](./Remove-AzVmss.md)
 
-[Restart-AzureRmVmss](./Restart-AzureRmVmss.md)
+[Restart-AzVmss](./Restart-AzVmss.md)
 
-[Set-AzureRmVmss](./Set-AzureRmVmss.md)
+[Set-AzVmss](./Set-AzVmss.md)
 
-[Start-AzureRmVmss](./Start-AzureRmVmss.md)
+[Start-AzVmss](./Start-AzVmss.md)
 
-[Stop-AzureRmVmss](./Stop-AzureRmVmss.md)
+[Stop-AzVmss](./Stop-AzVmss.md)
 
-[Update-AzureRmVmss](./Update-AzureRmVmss.md)
+[Update-AzVmss](./Update-AzVmss.md)
 
 

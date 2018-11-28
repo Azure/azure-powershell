@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 ms.assetid: 438F549D-1AF6-49FE-83AC-B45BAB701AB6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresults
 schema: 2.0.0
 ---
 
-# Get-AzureRmOperationalInsightsSearchResults
+# Get-AzOperationalInsightsSearchResults
 
 ## SYNOPSIS
 Returns search results based on the specified parameters.
@@ -14,14 +14,13 @@ Returns search results based on the specified parameters.
 ## SYNTAX
 
 ```
-Get-AzureRmOperationalInsightsSearchResults [-ResourceGroupName] <String> [-WorkspaceName] <String>
- [[-Top] <Int64>] [[-PreHighlight] <String>] [[-PostHighlight] <String>] [[-Query] <String>]
- [[-Start] <DateTime>] [[-End] <DateTime>] [[-Id] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzOperationalInsightsSearchResults [-ResourceGroupName] <String> [-WorkspaceName] <String> [[-Top] <Int64>]
+ [[-PreHighlight] <String>] [[-PostHighlight] <String>] [[-Query] <String>] [[-Start] <DateTime>]
+ [[-End] <DateTime>] [[-Id] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmOperationalInsightsSearchResults** cmdlet returns the search results based on the specified parameters.
+The **Get-AzOperationalInsightsSearchResults** cmdlet returns the search results based on the specified parameters.
 You can access the status of the search in the Metadata property of the returned object.
 If the status is Pending, then the search has not completed, and the results will be from the archive.
 You can retrieve the results of the search from the Value property of the returned object.
@@ -30,14 +29,14 @@ You can retrieve the results of the search from the Value property of the return
 
 ### Example 1: Get search results using a query
 ```
-PS C:\>Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Query "Type=Event" -Top 100
+PS C:\>Get-AzOperationalInsightsSearchResults -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Query "Type=Event" -Top 100
 ```
 
 This command gets all search results by using a query.
 
 ### Example 2: Get search results using an ID
 ```
-PS C:\>Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Id "ContosoSearchId"
+PS C:\>Get-AzOperationalInsightsSearchResults -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Id "ContosoSearchId"
 ```
 
 This command gets search results by using an ID.
@@ -55,7 +54,7 @@ $wrkspace = "ContosoWorkspace"
 $query = "Type=Event"
 
 # Get Initial response
-$response = Get-AzureRmOperationalInsightsSearchResults -WorkspaceName $wrkspace -ResourceGroupName $resGroup -Query $query -Top 15000
+$response = Get-AzOperationalInsightsSearchResults -WorkspaceName $wrkspace -ResourceGroupName $resGroup -Query $query -Top 15000
 $elapsedTime = $(get-date) - $script:StartTime
 Write-Host "Elapsed: " $elapsedTime "Status: " $response.Metadata.Status
 
@@ -65,7 +64,7 @@ $reqId = $reqIdParts[$reqIdParts.Count -1]
 
 # Poll if pending
 while($response.Metadata.Status -eq "Pending" -and $error.Count -eq 0) {
-    $response = Get-AzureRmOperationalInsightsSearchResults -WorkspaceName $wrkspace -ResourceGroupName $resGroup -Id $reqId
+    $response = Get-AzOperationalInsightsSearchResults -WorkspaceName $wrkspace -ResourceGroupName $resGroup -Id $reqId
     $elapsedTime = $(get-date) - $script:StartTime
     Write-Host "Elapsed: " $elapsedTime "Status: " $response.Metadata.Status
 }
@@ -82,7 +81,7 @@ This script starts a search and waits until it completes before displaying the r
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -243,6 +242,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmOperationalInsightsSavedSearchResults](./Get-AzureRmOperationalInsightsSavedSearchResults.md)
+[Get-AzOperationalInsightsSavedSearchResults](./Get-AzOperationalInsightsSavedSearchResults.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: B5B5F494-D912-40D0-99E2-A62FAACA3EC9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/new-azurermautoscalenotification
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azautoscalenotification
 schema: 2.0.0
 ---
 
-# New-AzureRmAutoscaleNotification
+# New-AzAutoscaleNotification
 
 ## SYNOPSIS
 Creates an Autoscale email notification.
@@ -14,26 +14,26 @@ Creates an Autoscale email notification.
 ## SYNTAX
 
 ```
-New-AzureRmAutoscaleNotification [[-Webhook] <WebhookNotification[]>] [[-CustomEmail] <String[]>]
+New-AzAutoscaleNotification [[-Webhook] <WebhookNotification[]>] [[-CustomEmail] <String[]>]
  [-SendEmailToSubscriptionAdministrator] [-SendEmailToSubscriptionCoAdministrator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAutoscaleNotification** cmdlet creates an email notification for Autoscale.
+The **New-AzAutoscaleNotification** cmdlet creates an email notification for Autoscale.
 
 ## EXAMPLES
 
 ### Example 1: Create an Autoscale email notification
 ```
-PS C:\>New-AzureRmAutoscaleNotification -CustomEmails "pattif@contoso.com, davidchew@contoso.net"
+PS C:\>New-AzAutoscaleNotification -CustomEmails "pattif@contoso.com, davidchew@contoso.net"
 ```
 
 This command creates an Autosacale email notification for two specified addresses.
 
 ### Example 2: Create an Autoscale email notification for the subscription administrator
 ```
-PS C:\>New-AzureRmAutoscaleNotification -SendEmailToSubscriptionAdministrator
+PS C:\>New-AzAutoscaleNotification -SendEmailToSubscriptionAdministrator
 ```
 
 This command creates an Autosacale email notification for the subscription administrator.
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -134,6 +134,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAutoscaleWebhook](./New-AzureRmAutoscaleWebhook.md)
+[New-AzAutoscaleWebhook](./New-AzAutoscaleWebhook.md)
 
 

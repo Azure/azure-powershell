@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: B9153CA9-06D1-4EF3-9863-D649C2EBAEAA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermvpnclientrootcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azvpnclientrootcertificate
 schema: 2.0.0
 ---
 
-# Add-AzureRmVpnClientRootCertificate
+# Add-AzVpnClientRootCertificate
 
 ## SYNOPSIS
 Adds a VPN client root certificate.
@@ -14,13 +14,13 @@ Adds a VPN client root certificate.
 ## SYNTAX
 
 ```
-Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName <String> -VirtualNetworkGatewayName <String>
+Add-AzVpnClientRootCertificate -VpnClientRootCertificateName <String> -VirtualNetworkGatewayName <String>
  -ResourceGroupName <String> -PublicCertData <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmVpnClientRootCertificate** cmdlet adds a root certificate to a virtual network gateway.
+The **Add-AzVpnClientRootCertificate** cmdlet adds a root certificate to a virtual network gateway.
 Root certificates are X.509 certificates that identify your Root Certification Authority.
 By design, all certificates used on the gateway trust the root certificate.
 This cmdlet assigns an existing certificate as a gateway root certificate.
@@ -35,14 +35,14 @@ Multiple root certificates are often deployed by organizations that include user
 ```
 PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
 PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
-PS C:\> Add-AzureRmVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway" -VpnClientRootCertificateName "ContosoClientRootCertificate"
+PS C:\> Add-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway" -VpnClientRootCertificateName "ContosoClientRootCertificate"
 ```
 
 This example adds a client root certificate to a virtual gateway named ContosoVirtualGateway.
 The first command uses the **Get-Content** cmdlet to get a previously-exported text representation of the root certificate and stores that text data the variable named $Text.
 The second command then uses a for loop to extract all the text except for the first line and the last line.
 The extracted text is stored in a variable named $CertificateText.
-The third command then uses the text stored in $CertificateText with the **Add-AzureRmVpnClientRootCertificate** cmdlet to add the root certificate to the gateway.
+The third command then uses the text stored in $CertificateText with the **Add-AzVpnClientRootCertificate** cmdlet to add the root certificate to the gateway.
 
 ## PARAMETERS
 
@@ -50,7 +50,7 @@ The third command then uses the text stored in $CertificateText with the **Add-A
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -145,10 +145,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVpnClientRootCertificate](./Get-AzureRmVpnClientRootCertificate.md)
+[Get-AzVpnClientRootCertificate](./Get-AzVpnClientRootCertificate.md)
 
-[New-AzureRmVpnClientRootCertificate](./New-AzureRmVpnClientRootCertificate.md)
+[New-AzVpnClientRootCertificate](./New-AzVpnClientRootCertificate.md)
 
-[Remove-AzureRmVpnClientRootCertificate](./Remove-AzureRmVpnClientRootCertificate.md)
+[Remove-AzVpnClientRootCertificate](./Remove-AzVpnClientRootCertificate.md)
 
 

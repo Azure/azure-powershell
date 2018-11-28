@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 20CB842B-F7A9-4052-85D9-0DF9586D5FEA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermresourcegroupdeployment
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourcegroupdeployment
 schema: 2.0.0
 ---
 
-# Get-AzureRmResourceGroupDeployment
+# Get-AzResourceGroupDeployment
 
 ## SYNOPSIS
 Gets the deployments in a resource group.
@@ -15,32 +15,32 @@ Gets the deployments in a resource group.
 
 ### GetByResourceGroupDeploymentName (Default)
 ```
-Get-AzureRmResourceGroupDeployment [-ResourceGroupName] <String> [[-Name] <String>] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzResourceGroupDeployment [-ResourceGroupName] <String> [[-Name] <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceGroupDeploymentId
 ```
-Get-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
+Get-AzResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmResourceGroupDeployment** cmdlet gets the deployments in an Azure resource group.
+The **Get-AzResourceGroupDeployment** cmdlet gets the deployments in an Azure resource group.
 Specify the *Name* or *Id* parameter to filter the results.
-By default, **Get-AzureRmResourceGroupDeployment** gets all deployments for a specified resource group.
+By default, **Get-AzResourceGroupDeployment** gets all deployments for a specified resource group.
 An Azure resource is a user-managed Azure entity, such as a database server, database, or web site.
 An Azure resource group is a collection of Azure resources that are deployed as a unit.
 A deployment is the operation that makes the resources in the resource group available for use.
-For more information about Azure resources and Azure resource groups, see the New-AzureRmResourceGroup cmdlet.
+For more information about Azure resources and Azure resource groups, see the New-AzResourceGroup cmdlet.
 You can use this cmdlet for tracking.
-For debugging, use this cmdlet with the Get-AzureRmLog cmdlet.
+For debugging, use this cmdlet with the Get-AzLog cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Get all deployments for a resource group
 ```
-PS C:\>Get-AzureRmResourceGroupDeployment -ResourceGroupName "ContosoLabsRG"
+PS C:\>Get-AzResourceGroupDeployment -ResourceGroupName "ContosoLabsRG"
 ```
 
 This command gets all deployments for the ContosoLabsRG resource group.
@@ -48,19 +48,19 @@ The output shows a deployment for a WordPress blog that used a gallery template.
 
 ### Example 2: Get a deployment by name
 ```
-PS C:\>Get-AzureRmResourceGroupDeployment -ResourceGroupName "ContosoLabsRG" -Name "DeployWebsite01"
+PS C:\>Get-AzResourceGroupDeployment -ResourceGroupName "ContosoLabsRG" -Name "DeployWebsite01"
 ```
 
 This command gets the DeployWebsite01 deployment of the ContosoLabsRG resource group.
-You can assign a name to a deployment when you create it by using the **New-AzureRmResourceGroup** or **New-AzureRmResourceGroupDeployment** cmdlets.
+You can assign a name to a deployment when you create it by using the **New-AzResourceGroup** or **New-AzResourceGroupDeployment** cmdlets.
 If you do not assign a name, the cmdlets provide a default name based on the template that is used to create the deployment.
 
 ### Example 3: Get the deployments of all resource groups
 ```
-PS C:\>Get-AzureRmResourceGroup | Get-AzureRmResourceGroupDeployment | Format-Table ResourceGroupName, DeploymentName, ProvisioningState
+PS C:\>Get-AzResourceGroup | Get-AzResourceGroupDeployment | Format-Table ResourceGroupName, DeploymentName, ProvisioningState
 ```
 
-This command gets all resource groups in your subscription by using the Get-AzureRmResourceGroup cmdlet.
+This command gets all resource groups in your subscription by using the Get-AzResourceGroup cmdlet.
 The command passes the resource groups to the current cmdlet by using the pipeline operator.
 The current cmdlet gets all deployments of all resource groups in the subscription, and passes the results to the Format-Table cmdlet to display their **ResourceGroupName**, **DeploymentName**, and **ProvisioningState** property values.
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -176,16 +176,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmResourceGroup](./Get-AzureRmResourceGroup.md)
+[Get-AzResourceGroup](./Get-AzResourceGroup.md)
 
-[New-AzureRmResourceGroup](./New-AzureRmResourceGroup.md)
+[New-AzResourceGroup](./New-AzResourceGroup.md)
 
-[New-AzureRmResourceGroupDeployment](./New-AzureRmResourceGroupDeployment.md)
+[New-AzResourceGroupDeployment](./New-AzResourceGroupDeployment.md)
 
-[Remove-AzureRmResourceGroupDeployment](./Remove-AzureRmResourceGroupDeployment.md)
+[Remove-AzResourceGroupDeployment](./Remove-AzResourceGroupDeployment.md)
 
-[Stop-AzureRmResourceGroupDeployment](./Stop-AzureRmResourceGroupDeployment.md)
+[Stop-AzResourceGroupDeployment](./Stop-AzResourceGroupDeployment.md)
 
-[Test-AzureRmResourceGroupDeployment](./Test-AzureRmResourceGroupDeployment.md)
+[Test-AzResourceGroupDeployment](./Test-AzResourceGroupDeployment.md)
 
 

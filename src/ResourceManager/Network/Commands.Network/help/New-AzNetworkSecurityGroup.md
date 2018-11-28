@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: A420B3E7-2FE9-4D0B-803E-AC28E5F23C59
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworksecuritygroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworksecuritygroup
 schema: 2.0.0
 ---
 
-# New-AzureRmNetworkSecurityGroup
+# New-AzNetworkSecurityGroup
 
 ## SYNOPSIS
 Creates a network security group.
@@ -14,35 +14,35 @@ Creates a network security group.
 ## SYNTAX
 
 ```
-New-AzureRmNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String>
  [-SecurityRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmNetworkSecurityGroup** cmdlet creates an Azure network security group.
+The **New-AzNetworkSecurityGroup** cmdlet creates an Azure network security group.
 
 ## EXAMPLES
 
 ### 1: Create a new network securtiy group
 ```
-New-AzureRmNetworkSecurityGroup -Name "nsg1" -ResourceGroupName "rg1"  -Location  "westus"
+New-AzNetworkSecurityGroup -Name "nsg1" -ResourceGroupName "rg1"  -Location  "westus"
 ```
 
 This command ceates a new Azure network security group named "nsg1" in resource group "rg1" in location "westus".
 
 ### 2: Create a detailed network security group
 ```
-$rule1 = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP"
+$rule1 = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP"
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
 
-$rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP"
+$rule2 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP"
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
 
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name
     "NSG-FrontEnd" -SecurityRules $rule1,$rule2
 ```
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -224,8 +224,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNetworkSecurityGroup](./Get-AzureRmNetworkSecurityGroup.md)
+[Get-AzNetworkSecurityGroup](./Get-AzNetworkSecurityGroup.md)
 
-[Remove-AzureRmNetworkSecurityGroup](./Remove-AzureRmNetworkSecurityGroup.md)
+[Remove-AzNetworkSecurityGroup](./Remove-AzNetworkSecurityGroup.md)
 
-[Set-AzureRmNetworkSecurityGroup](./Set-AzureRmNetworkSecurityGroup.md)
+[Set-AzNetworkSecurityGroup](./Set-AzNetworkSecurityGroup.md)

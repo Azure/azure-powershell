@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 7311F66C-3370-4436-8030-6D98D42C3112
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmimagepublisher
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmimagepublisher
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMImagePublisher
+# Get-AzVMImagePublisher
 
 ## SYNOPSIS
 Gets the VMImage publishers.
@@ -14,17 +14,17 @@ Gets the VMImage publishers.
 ## SYNTAX
 
 ```
-Get-AzureRmVMImagePublisher -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVMImagePublisher -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMImagePublisher** cmdlet gets the VMImage publishers.
+The **Get-AzVMImagePublisher** cmdlet gets the VMImage publishers.
 
 ## EXAMPLES
 
 ### Example 1: Get VMImage publishers for a region
 ```
-PS C:\> Get-AzureRmVMImagePublisher -Location "Central US"
+PS C:\> Get-AzVMImagePublisher -Location "Central US"
 ```
 
 This command gets the publishers of VMImage instances for the Central US region within your Azure profile.
@@ -35,7 +35,7 @@ This command gets the publishers of VMImage instances for the Central US region 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,12 +76,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMImage](./Get-AzureRmVMImage.md)
+[Get-AzVMImage](./Get-AzVMImage.md)
 
-[Get-AzureRmVMImageOffer](./Get-AzureRmVMImageOffer.md)
+[Get-AzVMImageOffer](./Get-AzVMImageOffer.md)
 
-[Get-AzureRmVMImageSku](./Get-AzureRmVMImageSku.md)
+[Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
-[Save-AzureRmVMImage](./Save-AzureRmVMImage.md)
+[Save-AzVMImage](./Save-AzVMImage.md)
 
 

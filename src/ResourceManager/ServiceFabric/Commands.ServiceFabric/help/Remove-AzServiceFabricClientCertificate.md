@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/remove-azurermservicefabricclientcertificate
+Module Name: Az.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/remove-azservicefabricclientcertificate
 schema: 2.0.0
 ---
 
-# Remove-AzureRmServiceFabricClientCertificate
+# Remove-AzServiceFabricClientCertificate
 
 ## SYNOPSIS
 Remove a client certificate(s) or certificate subject(s) name(s) from being used for client authentication to the cluster.
@@ -14,39 +14,39 @@ Remove a client certificate(s) or certificate subject(s) name(s) from being used
 
 ### SingleUpdateWithCommonName
 ```
-Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
- -CommonName <String> -IssuerThumbprint <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String> -CommonName <String>
+ -IssuerThumbprint <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SingleUpdateWithThumbprint
 ```
-Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
- -Thumbprint <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String> -Thumbprint <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MultipleUpdatesWithCommonName
 ```
-Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
+Remove-AzServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
  -ClientCertificateCommonName <PSClientCertificateCommonName[]> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MultipleUpdatesWithThumbprint
 ```
-Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
+Remove-AzServiceFabricClientCertificate [-ResourceGroupName] <String> [-Name] <String>
  [-AdminClientThumbprint <String[]>] [-ReadonlyClientThumbprint <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use **Remove-AzureRmServiceFabricClientCertificate** to remove a client certificate(s) or certificate subject(s) name(s) from being used for client authentication to the cluster.
+Use **Remove-AzServiceFabricClientCertificate** to remove a client certificate(s) or certificate subject(s) name(s) from being used for client authentication to the cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Remove-AzureRmServiceFabricClientCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Thumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A
+PS c:> Remove-AzServiceFabricClientCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Thumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A
 ```
 
 This command will remove client certificate with thumbprint '5F3660C715EBBDA31DB1FFDCF508302348DE8E7A' from the cluster.
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -240,4 +240,4 @@ Parameters: ClientCertificateCommonName (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmServiceFabricClientCertificate](./Add-AzureRmServiceFabricClientCertificate.md)
+[Add-AzServiceFabricClientCertificate](./Add-AzServiceFabricClientCertificate.md)

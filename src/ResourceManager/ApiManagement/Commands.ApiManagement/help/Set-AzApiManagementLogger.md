@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 5B4ADD38-FA22-4C25-9B9C-FD7861883811
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementlogger
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementlogger
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagementLogger
+# Set-AzApiManagementLogger
 
 ## SYNOPSIS
 Modifies an API Management Logger.
@@ -15,27 +15,26 @@ Modifies an API Management Logger.
 
 ### EventHubLoggerSet (Default)
 ```
-Set-AzureRmApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String> [-Name <String>]
+Set-AzApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String> [-Name <String>]
  [-ConnectionString <String>] [-Description <String>] [-IsBuffered] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ApplicationInsightsLoggerSet
 ```
-Set-AzureRmApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String>
- [-InstrumentationKey <String>] [-Description <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String> [-InstrumentationKey <String>]
+ [-Description <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApiManagementLogger** cmdlet modifies settings of an Azure API Management **Logger**.
+The **Set-AzApiManagementLogger** cmdlet modifies settings of an Azure API Management **Logger**.
 
 ## EXAMPLES
 
 ### Example 1: Modify EventHub logger
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementLogger -Context $apimContext -LoggerId "Logger123" -Name "ContosoSdkEventHub" -ConnectionString "Endpoint=sb://ContosoSdkEventHubs.servicebus.windows.net/;SharedAccessKeyName=SendKey;SharedAccessKey=<key>" -Description "updated SDK event hub logger" -PassThru
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementLogger -Context $apimContext -LoggerId "Logger123" -Name "ContosoSdkEventHub" -ConnectionString "Endpoint=sb://ContosoSdkEventHubs.servicebus.windows.net/;SharedAccessKeyName=SendKey;SharedAccessKey=<key>" -Description "updated SDK event hub logger" -PassThru
 ```
 
 This command modifies a logger that has the ID Logger123.
@@ -76,7 +75,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -197,10 +196,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementLogger](./Get-AzureRmApiManagementLogger.md)
+[Get-AzApiManagementLogger](./Get-AzApiManagementLogger.md)
 
-[New-AzureRmApiManagementLogger](./New-AzureRmApiManagementLogger.md)
+[New-AzApiManagementLogger](./New-AzApiManagementLogger.md)
 
-[Remove-AzureRmApiManagementLogger](./Remove-AzureRmApiManagementLogger.md)
+[Remove-AzApiManagementLogger](./Remove-AzApiManagementLogger.md)
 
 

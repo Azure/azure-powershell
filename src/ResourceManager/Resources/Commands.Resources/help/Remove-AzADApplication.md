@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: C791C593-F7D5-4961-97F9-E4909813FFE7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermadapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadapplication
 schema: 2.0.0
 ---
 
-# Remove-AzureRmADApplication
+# Remove-AzADApplication
 
 ## SYNOPSIS
 Deletes the azure active directory application.
@@ -15,25 +15,25 @@ Deletes the azure active directory application.
 
 ### ObjectIdParameterSet (Default)
 ```
-Remove-AzureRmADApplication -ObjectId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzADApplication -ObjectId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
-Remove-AzureRmADApplication -ApplicationId <Guid> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADApplication -ApplicationId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationDisplayNameParameterSet
 ```
-Remove-AzureRmADApplication -DisplayName <String> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADApplication -DisplayName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzureRmADApplication -InputObject <PSADApplication> [-PassThru] [-Force]
+Remove-AzADApplication -InputObject <PSADApplication> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ Deletes the azure active directory application.
 ### Example 1 - Remove application by object id
 
 ```
-PS C:\> Remove-AzureRmADApplication -ObjectId b4cd1619-80b3-4cfb-9f8f-9f2333425738
+PS C:\> Remove-AzADApplication -ObjectId b4cd1619-80b3-4cfb-9f8f-9f2333425738
 ```
 
 Removes the application with object id 'b4cd1619-80b3-4cfb-9f8f-9f2333425738' from the tenant.
@@ -53,7 +53,7 @@ Removes the application with object id 'b4cd1619-80b3-4cfb-9f8f-9f2333425738' fr
 ### Example 2 - Remove application by application id
 
 ```
-PS C:\> Remove-AzureRmADApplication -ApplicationId f9c5ea4f-28f0-401a-a491-491a037fa346
+PS C:\> Remove-AzADApplication -ApplicationId f9c5ea4f-28f0-401a-a491-491a037fa346
 ```
 
 Removes the application with application id 'f9c5ea4f-28f0-401a-a491-491a037fa346' from the tenant.
@@ -61,10 +61,10 @@ Removes the application with application id 'f9c5ea4f-28f0-401a-a491-491a037fa34
 ### Example 3 - Remove application by piping
 
 ```
-PS C:\> Get-AzureRmADApplication -ObjectId b4cd1619-80b3-4cfb-9f8f-9f2333425738 | Remove-AzureRmADApplication
+PS C:\> Get-AzADApplication -ObjectId b4cd1619-80b3-4cfb-9f8f-9f2333425738 | Remove-AzADApplication
 ```
 
-Gets the application with object id 'b4cd1619-80b3-4cfb-9f8f-9f2333425738' and pipes that to the Remove-AzureRmADApplication cmdlet to remove the application from the tenant.
+Gets the application with object id 'b4cd1619-80b3-4cfb-9f8f-9f2333425738' and pipes that to the Remove-AzADApplication cmdlet to remove the application from the tenant.
 
 ## PARAMETERS
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -225,11 +225,11 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 ## RELATED LINKS
 
-[New-AzureRmADApplication](./New-AzureRmADApplication.md)
+[New-AzADApplication](./New-AzADApplication.md)
 
-[Get-AzureRmADApplication](./Get-AzureRmADApplication.md)
+[Get-AzADApplication](./Get-AzADApplication.md)
 
-[Set-AzureRmADApplication](./Set-AzureRmADApplication.md)
+[Set-AzADApplication](./Set-AzADApplication.md)
 
-[Remove-AzureRmADAppCredential](./Remove-AzureRmADAppCredential.md)
+[Remove-AzADAppCredential](./Remove-AzADAppCredential.md)
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 664CF009-FC52-4F1B-933B-3DEBD05AC8C5
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementapi
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementapi
 schema: 2.0.0
 ---
 
-# New-AzureRmApiManagementApi
+# New-AzApiManagementApi
 
 ## SYNOPSIS
 Creates an API.
@@ -14,7 +14,7 @@ Creates an API.
 ## SYNTAX
 
 ```
-New-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>] -Name <String>
+New-AzApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>] -Name <String>
  [-Description <String>] -ServiceUrl <String> -Path <String> -Protocols <PsApiManagementSchema[]>
  [-AuthorizationServerId <String>] [-AuthorizationScope <String>] [-SubscriptionKeyHeaderName <String>]
  [-SubscriptionKeyQueryParamName <String>] [-ProductIds <String[]>] [-DefaultProfile <IAzureContextContainer>]
@@ -22,14 +22,14 @@ New-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>] 
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApiManagementApi** cmdlet creates an Azure API Management API.
+The **New-AzApiManagementApi** cmdlet creates an Azure API Management API.
 
 ## EXAMPLES
 
 ### Example 1: Create an API
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzureRmApiManagementApi -Context $ApiMgmtContext -Name "Echo api" -ServiceUrl "https://contoso.com/apis/echo" -Protocols @("http", "https") -Path "testapi"
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>New-AzApiManagementApi -Context $ApiMgmtContext -Name "Echo api" -ServiceUrl "https://contoso.com/apis/echo" -Protocols @("http", "https") -Path "testapi"
 ```
 
 This command creates an API named EchoApi with the specified URL.
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -267,14 +267,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Export-AzureRmApiManagementApi](./Export-AzureRmApiManagementApi.md)
+[Export-AzApiManagementApi](./Export-AzApiManagementApi.md)
 
-[Get-AzureRmApiManagementApi](./Get-AzureRmApiManagementApi.md)
+[Get-AzApiManagementApi](./Get-AzApiManagementApi.md)
 
-[Import-AzureRmApiManagementApi](./Import-AzureRmApiManagementApi.md)
+[Import-AzApiManagementApi](./Import-AzApiManagementApi.md)
 
-[Remove-AzureRmApiManagementApi](./Remove-AzureRmApiManagementApi.md)
+[Remove-AzApiManagementApi](./Remove-AzApiManagementApi.md)
 
-[Set-AzureRmApiManagementApi](./Set-AzureRmApiManagementApi.md)
+[Set-AzApiManagementApi](./Set-AzApiManagementApi.md)
 
 

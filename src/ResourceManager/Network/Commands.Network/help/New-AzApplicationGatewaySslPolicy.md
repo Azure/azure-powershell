@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 98FA4E95-CAC5-4FBD-AA84-113BE9ED7FEA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewaysslpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewaysslpolicy
 schema: 2.0.0
 ---
 
-# New-AzureRmApplicationGatewaySslPolicy
+# New-AzApplicationGatewaySslPolicy
 
 ## SYNOPSIS
 Creates an SSL policy for an application gateway.
@@ -14,21 +14,20 @@ Creates an SSL policy for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewaySslPolicy
- [-DisabledSslProtocols <System.Collections.Generic.List`1[System.String]>] [-PolicyType <String>]
- [-PolicyName <String>] [-CipherSuite <System.Collections.Generic.List`1[System.String]>]
- [-MinProtocolVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzApplicationGatewaySslPolicy [-DisabledSslProtocols <System.Collections.Generic.List`1[System.String]>]
+ [-PolicyType <String>] [-PolicyName <String>]
+ [-CipherSuite <System.Collections.Generic.List`1[System.String]>] [-MinProtocolVersion <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApplicationGatewaySslPolicy** cmdlet creates an SSL policy for an application gateway.
+The **New-AzApplicationGatewaySslPolicy** cmdlet creates an SSL policy for an application gateway.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+PS C:\>$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 ```
 
 This command creates a custom policy.
@@ -54,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -179,8 +178,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApplicationGatewaySslPolicy](./Get-AzureRmApplicationGatewaySslPolicy.md)
+[Get-AzApplicationGatewaySslPolicy](./Get-AzApplicationGatewaySslPolicy.md)
 
-[Set-AzureRmApplicationGatewaySslPolicy](./Set-AzureRmApplicationGatewaySslPolicy.md)
+[Set-AzApplicationGatewaySslPolicy](./Set-AzApplicationGatewaySslPolicy.md)
 
 

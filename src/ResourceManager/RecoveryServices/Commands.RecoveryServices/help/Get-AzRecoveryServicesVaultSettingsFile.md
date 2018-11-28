@@ -1,47 +1,47 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
-Module Name: AzureRM.RecoveryServices
+Module Name: Az.RecoveryServices
 ms.assetid: 56074606-28A6-4F91-A56C-4C8A9A31543F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvaultsettingsfile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesvaultsettingsfile
 schema: 2.0.0
 ---
 
-# Get-AzureRmRecoveryServicesVaultSettingsFile
+# Get-AzRecoveryServicesVaultSettingsFile
 
 ## SYNOPSIS
 Gets the Azure Site Recovery vault settings file.
 
 ## SYNTAX
 
-### ForSite
+### ForSiteWithCertificate
 ```
-Get-AzureRmRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> -SiteIdentifier <String>
- -SiteFriendlyName <String> [[-Path] <String>] [-SiteRecovery] [-DefaultProfile <IAzureContextContainer>]
+Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] -SiteIdentifier <String>
+ -Certificate <String> -SiteFriendlyName <String> [-SiteRecovery] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### ByDefault
+### ByDefaultWithCertificate
 ```
-Get-AzureRmRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] [-SiteRecovery]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] -Certificate <String>
+ [-SiteRecovery] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ForBackupVaultType
+### ForBackupVaultTypeWithCertificate
 ```
-Get-AzureRmRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] [-Backup]
+Get-AzRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] -Certificate <String> [-Backup]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRecoveryServicesVaultSettingsFile** cmdlet gets the settings file for an Azure Site Recovery vault.
+The **Get-AzRecoveryServicesVaultSettingsFile** cmdlet gets the settings file for an Azure Site Recovery vault.
 
 ## EXAMPLES
 
 ### Example 1: Register a Windows Server or DPM machine for Azure Backup
 ```
-PS C:\> $Vault01 = Get-AzureRmRecoveryServicesVault -Name "TestVault"
+PS C:\> $Vault01 = Get-AzRecoveryServicesVault -Name "TestVault"
 PS C:\> $CredsPath = "C:\Downloads"
-PS C:\> $Credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -Vault $Vault01 -Path $CredsPath
+PS C:\> $Credsfilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault01 -Path $CredsPath
 ```
 
 The first command gets the vault named TestVault, and then stores it in the $Vault01 variable.
@@ -50,14 +50,14 @@ The last command gets the vault credentials file for $Vault01 using the credenti
 
 ### Example 2:
 ```
-PS C:\> $Credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -SiteIdentifier -Vault $Vault01
+PS C:\> $Credsfilename = Get-AzRecoveryServicesVaultSettingsFile -SiteIdentifier -Vault $Vault01
 ```
 
 The command gets the vault credentials file for $Vault01 of vault type siteRecovery.
 
 ### Example 3: Register a Windows Server or DPM machine for Azure Backup
 ```
-PS C:\> $Credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -SiteIdentifier -Vault $Vault01
+PS C:\> $Credsfilename = Get-AzRecoveryServicesVaultSettingsFile -SiteIdentifier -Vault $Vault01
 ```
 
 The command gets the vault credentials file for $Vault01.
@@ -69,7 +69,22 @@ Indicates the vault credentials file is applicable to Azure Backup.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ForBackupVaultType
+Parameter Sets: ForBackupVaultTypeWithCertificate
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Certificate
+{{Fill Certificate Description}}
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -83,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,7 +131,7 @@ Use this parameter if you are downloading the vault credentials for a Hyper-V si
 
 ```yaml
 Type: System.String
-Parameter Sets: ForSite
+Parameter Sets: ForSiteWithCertificate
 Aliases:
 
 Required: True
@@ -132,7 +147,7 @@ Use this parameter if you are downloading the vault credentials for a Hyper-V si
 
 ```yaml
 Type: System.String
-Parameter Sets: ForSite
+Parameter Sets: ForSiteWithCertificate
 Aliases:
 
 Required: True
@@ -147,7 +162,7 @@ Indicates the vault credentials file is applicable to Azure Site Recovery.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ForSite, ByDefault
+Parameter Sets: ForSiteWithCertificate, ByDefaultWithCertificate
 Aliases:
 
 Required: False
@@ -188,10 +203,10 @@ Parameters: Vault (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmRecoveryServicesVault](./Get-AzureRmRecoveryServicesVault.md)
+[Get-AzRecoveryServicesVault](./Get-AzRecoveryServicesVault.md)
 
-[New-AzureRmRecoveryServicesVault](./New-AzureRmRecoveryServicesVault.md)
+[New-AzRecoveryServicesVault](./New-AzRecoveryServicesVault.md)
 
-[Remove-AzureRmRecoveryServicesVault](./Remove-AzureRmRecoveryServicesVault.md)
+[Remove-AzRecoveryServicesVault](./Remove-AzRecoveryServicesVault.md)
 
 

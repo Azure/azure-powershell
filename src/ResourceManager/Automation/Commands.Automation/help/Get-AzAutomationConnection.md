@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: D12007E8-8693-45B9-8919-CF8A4BA63AAA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationconnection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationconnection
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationConnection
+# Get-AzAutomationConnection
 
 ## SYNOPSIS
 Gets an Automation connection.
@@ -15,24 +15,24 @@ Gets an Automation connection.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationConnection [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationConnection [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByConnectionName
 ```
-Get-AzureRmAutomationConnection [-Name] <String> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAutomationConnection [-Name] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByConnectionTypeName
 ```
-Get-AzureRmAutomationConnection [-ConnectionTypeName] <String> [-ResourceGroupName] <String>
+Get-AzAutomationConnection [-ConnectionTypeName] <String> [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutomationConnection** cmdlet gets one or more Azure Automation connections.
+The **Get-AzAutomationConnection** cmdlet gets one or more Azure Automation connections.
 By default, this cmdlet retrieves all connections.
 Specify the name of a connection to get a specific connection.
 Specify the connection type name to get all connections of a specific type.
@@ -41,14 +41,14 @@ Specify the connection type name to get all connections of a specific type.
 
 ### Example 1: Get all connections
 ```
-PS C:\>Get-AzureRmAutomationConnection -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17"
+PS C:\>Get-AzAutomationConnection -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17"
 ```
 
 This command gets metadata for all connections in the Automation account named Contoso17.
 
 ### Example 2: Get all connections of a type
 ```
-PS C:\>Get-AzureRmAutomationConnection -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17" -ConnectionTypeName "SqlServer"
+PS C:\>Get-AzAutomationConnection -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17" -ConnectionTypeName "SqlServer"
 ```
 
 This command gets metadata for connections in the Automation account named Contoso17.
@@ -56,7 +56,7 @@ This command gets connections of the type SqlServer.
 
 ### Example 3: Get a connection
 ```
-PS C:\>Get-AzureRmAutomationConnection -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17" -Name "ContosoConnection"
+PS C:\>Get-AzAutomationConnection -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17" -Name "ContosoConnection"
 ```
 
 This command gets metadata for the connection named ContosoConnection.
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -153,8 +153,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAutomationConnection](./New-AzureRMAutomationConnection.md)
+[New-AzAutomationConnection](./New-AzAutomationConnection.md)
 
-[Remove-AzureRmAutomationConnection](./Remove-AzureRMAutomationConnection.md)
+[Remove-AzAutomationConnection](./Remove-AzAutomationConnection.md)
 
 

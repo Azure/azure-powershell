@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
-Module Name: AzureRM.CognitiveServices
+Module Name: Az.CognitiveServices
 ms.assetid: 73B1EB7E-568E-44E8-993A-91678B7D8AEE
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountkey
 schema: 2.0.0
 ---
 
-# Get-AzureRmCognitiveServicesAccountKey
+# Get-AzCognitiveServicesAccountKey
 
 ## SYNOPSIS
 Gets the API keys for an account.
@@ -14,21 +14,21 @@ Gets the API keys for an account.
 ## SYNTAX
 
 ```
-Get-AzureRmCognitiveServicesAccountKey [-ResourceGroupName] <String> [-Name] <String>
+Get-AzCognitiveServicesAccountKey [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmCognitiveServicesAccountKey** cmdlet gets the API keys for a provisioned Cognitive Services account.
+The **Get-AzCognitiveServicesAccountKey** cmdlet gets the API keys for a provisioned Cognitive Services account.
 A Cognitive Services account has two API keys: Key1 and Key2.
 The keys enable interaction with the Cognitive Services account endpoint.
-Use New-AzureRmCognitiveServicesAccountKey to regenerate a key.
+Use New-AzCognitiveServicesAccountKey to regenerate a key.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmCognitiveServicesAccountKey -ResourceGroupName cognitive-services-resource-group -name myluis
+PS C:\> Get-AzCognitiveServicesAccountKey -ResourceGroupName cognitive-services-resource-group -name myluis
 
 Key1                             Key2
 ----                             ----
@@ -41,7 +41,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,6 +98,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmCognitiveServicesAccountKey](./New-AzureRmCognitiveServicesAccountKey.md)
+[New-AzCognitiveServicesAccountKey](./New-AzCognitiveServicesAccountKey.md)
 
 

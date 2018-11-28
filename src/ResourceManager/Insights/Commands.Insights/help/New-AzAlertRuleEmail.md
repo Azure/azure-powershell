@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: B1000C10-265E-4465-B167-F1251470BE3E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/new-azurermalertruleemail
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azalertruleemail
 schema: 2.0.0
 ---
 
-# New-AzureRmAlertRuleEmail
+# New-AzAlertRuleEmail
 
 ## SYNOPSIS
 Creates an email action for an alert rule.
@@ -14,32 +14,32 @@ Creates an email action for an alert rule.
 ## SYNTAX
 
 ```
-New-AzureRmAlertRuleEmail [[-CustomEmail] <String[]>] [-SendToServiceOwner]
+New-AzAlertRuleEmail [[-CustomEmail] <String[]>] [-SendToServiceOwner]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAlertRuleEmail** cmdlet creates an e-mail action for an alert rule.
+The **New-AzAlertRuleEmail** cmdlet creates an e-mail action for an alert rule.
 
 ## EXAMPLES
 
 ### Example 1: Create an alert rule email action for service owners
 ```
-PS C:\>New-AzureRmAlertRuleEmail -SendToServiceOwners
+PS C:\>New-AzAlertRuleEmail -SendToServiceOwners
 ```
 
 This command creates an alert rule email action to send for its service owners when an alert rule is fired.
 
 ### Example 2: Create an alert rule email action for non-service owners
 ```
-PS C:\>New-AzureRmAlertRuleEmail -CustomEmails pattif@contoso.com,davidchew@contoso.net
+PS C:\>New-AzAlertRuleEmail -CustomEmails pattif@contoso.com,davidchew@contoso.net
 ```
 
 This command creates an alert rule email action for the specified email addresses, but not for the service owners.
 
 ### Example 3: Create an alert rule email action for service owners and non-service owners
 ```
-PS C:\>New-AzureRmAlertRuleEmail -CustomEmails pattif@contoso.net -SendToServiceOwners
+PS C:\>New-AzAlertRuleEmail -CustomEmails pattif@contoso.net -SendToServiceOwners
 ```
 
 This command creates an alert rule email action for the specified address and for its service owners.
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -108,12 +108,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmLogAlertRule](./Add-AzureRmLogAlertRule.md)
+[Add-AzLogAlertRule](./Add-AzLogAlertRule.md)
 
-[Add-AzureRmMetricAlertRule](./Add-AzureRmMetricAlertRule.md)
+[Add-AzMetricAlertRule](./Add-AzMetricAlertRule.md)
 
-[Add-AzureRmWebtestAlertRule](./Add-AzureRmWebtestAlertRule.md)
+[Add-AzWebtestAlertRule](./Add-AzWebtestAlertRule.md)
 
-[New-AzureRmAlertRuleWebhook](./New-AzureRmAlertRuleWebhook.md)
+[New-AzAlertRuleWebhook](./New-AzAlertRuleWebhook.md)
 
 

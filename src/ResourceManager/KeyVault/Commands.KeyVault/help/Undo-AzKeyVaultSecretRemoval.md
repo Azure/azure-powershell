@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/undo-azurekeyvaultsecretremoval
+Module Name: Az.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/undo-azkeyvaultsecretremoval
 schema: 2.0.0
 ---
 
-# Undo-AzureKeyVaultSecretRemoval
+# Undo-AzKeyVaultSecretRemoval
 
 ## SYNOPSIS
 Recovers a deleted secret in a key vault into an active state.
@@ -14,18 +14,18 @@ Recovers a deleted secret in a key vault into an active state.
 
 ### Default (Default)
 ```
-Undo-AzureKeyVaultSecretRemoval [-VaultName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Undo-AzKeyVaultSecretRemoval [-VaultName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Undo-AzureKeyVaultSecretRemoval [-InputObject] <PSDeletedKeyVaultSecretIdentityItem>
+Undo-AzKeyVaultSecretRemoval [-InputObject] <PSDeletedKeyVaultSecretIdentityItem>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Undo-AzureKeyVaultSecretRemoval** cmdlet will recover a previously deleted secret.
+The **Undo-AzKeyVaultSecretRemoval** cmdlet will recover a previously deleted secret.
 The recovered secret will be active and can be used for all normal secret operations.
 Caller needs to have 'recover' permission in order to perform this operation.
 
@@ -33,7 +33,7 @@ Caller needs to have 'recover' permission in order to perform this operation.
 
 ### Example 1
 ```powershell
-PS C:\> Undo-AzureKeyVaultSecretRemoval -VaultName 'MyKeyVault' -Name 'MySecret'
+PS C:\> Undo-AzKeyVaultSecretRemoval -VaultName 'MyKeyVault' -Name 'MySecret'
 
 Vault Name   : MyKeyVault
 Name         : MySecret
@@ -56,7 +56,7 @@ This command will recover the secret 'MySecret' that was previously deleted, int
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -161,8 +161,8 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Remove-AzureKeyVaultSecret](./Remove-AzureKeyVaultSecret.md)
+[Remove-AzKeyVaultSecret](./Remove-AzKeyVaultSecret.md)
 
-[Add-AzureKeyVaultSecret](./Add-AzureKeyVaultSecret.md)
+[Add-AzKeyVaultSecret](./Add-AzKeyVaultSecret.md)
 
-[Get-AzureKeyVaultSecret](./Get-AzureKeyVaultSecret.md)
+[Get-AzKeyVaultSecret](./Get-AzKeyVaultSecret.md)

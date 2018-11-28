@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 23893EAE-47F3-45AA-AEB2-354FB8316C25
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/set-azurebatchpool
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/set-azbatchpool
 schema: 2.0.0
 ---
 
-# Set-AzureBatchPool
+# Set-AzBatchPool
 
 ## SYNOPSIS
 Updates the properties of a pool.
@@ -14,27 +14,27 @@ Updates the properties of a pool.
 ## SYNTAX
 
 ```
-Set-AzureBatchPool [-Pool] <PSCloudPool> -BatchContext <BatchAccountContext>
+Set-AzBatchPool [-Pool] <PSCloudPool> -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureBatchPool** cmdlet updates the properties of a pool in the Azure Batch service.
-Use the Get-AzureBatchPool cmdlet to get a **PSCloudPool** object.
+The **Set-AzBatchPool** cmdlet updates the properties of a pool in the Azure Batch service.
+Use the Get-AzBatchPool cmdlet to get a **PSCloudPool** object.
 Modify the properties of that object, and then use the current cmdlet to commit your changes to the Batch service.
 
 ## EXAMPLES
 
 ### Example 1: Update a pool
 ```
-PS C:\>$Pool = Get-AzureBatchPool "ContosoPool" -BatchContext $Context
+PS C:\>$Pool = Get-AzBatchPool "ContosoPool" -BatchContext $Context
 PS C:\> $StartTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
 PS C:\> $StartTask.CommandLine = "cmd /c echo example"
 PS C:\> $Pool.StartTask = $StartTask
-PS C:\> Set-AzureBatchPool -Pool $Pool -BatchContext $Context
+PS C:\> Set-AzBatchPool -Pool $Pool -BatchContext $Context
 ```
 
-The first command gets a pool by using **Get-AzureBatchPool**, and then stores it in the $Pool variable.
+The first command gets a pool by using **Get-AzBatchPool**, and then stores it in the $Pool variable.
 The next three commands modify the start task specification on the $Pool object.
 The final command updates the Batch service to match the local object in $Pool.
 
@@ -42,7 +42,7 @@ The final command updates the Batch service to match the local object in $Pool.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -105,14 +105,14 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureBatchPool](./Get-AzureBatchPool.md)
+[Get-AzBatchPool](./Get-AzBatchPool.md)
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[New-AzureBatchPool](./New-AzureBatchPool.md)
+[New-AzBatchPool](./New-AzBatchPool.md)
 
-[Remove-AzureBatchPool](./Remove-AzureBatchPool.md)
+[Remove-AzBatchPool](./Remove-AzBatchPool.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

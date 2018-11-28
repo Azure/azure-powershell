@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: A90564B5-57D7-48EB-976D-38C03D930289
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/add-azurermmetricalertrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/add-azmetricalertrule
 schema: 2.0.0
 ---
 
-# Add-AzureRmMetricAlertRule
+# Add-AzMetricAlertRule
 
 ## SYNOPSIS
 Adds or updates a metric-based alert rule.
@@ -14,7 +14,7 @@ Adds or updates a metric-based alert rule.
 ## SYNTAX
 
 ```
-Add-AzureRmMetricAlertRule -WindowSize <TimeSpan> -Operator <ConditionOperator> -Threshold <Double>
+Add-AzMetricAlertRule -WindowSize <TimeSpan> -Operator <ConditionOperator> -Threshold <Double>
  -TargetResourceId <String> -MetricName <String> -TimeAggregationOperator <TimeAggregationOperator>
  -Location <String> [-Description <String>] [-DisableRule] -ResourceGroupName <String> -Name <String>
  [-Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]>]
@@ -22,7 +22,7 @@ Add-AzureRmMetricAlertRule -WindowSize <TimeSpan> -Operator <ConditionOperator> 
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmMetricAlertRule** cmdlet adds or updates a metric-based alert rule.
+The **Add-AzMetricAlertRule** cmdlet adds or updates a metric-based alert rule.
 The added rule is associated with a resource group and has a name.
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
@@ -30,7 +30,7 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 
 ### Example 1: Add a metric alert rule to a website
 ```
-PS C:\>Add-AzureRMMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup "Default-Web-EastUS" -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName "Requests" -Description "Pura Vida" -TimeAggregationOperator Total
+PS C:\>Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup "Default-Web-EastUS" -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName "Requests" -Description "Pura Vida" -TimeAggregationOperator Total
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 33574ccf-0b01-43b4-aa97-87e6bbcf1c11                                                                         Created
@@ -40,7 +40,7 @@ This command creates a metric alert rule for a website.
 
 ### Example 2: Disable a rule
 ```
-PS C:\>Add-AzureRMMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup Default-Web-EastUS -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName "Requests" -TimeAggregationOperator Total 
+PS C:\>Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup Default-Web-EastUS -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName "Requests" -TimeAggregationOperator Total 
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 96c489f1-8529-46e1-a76d-2c1463ca3116                                                                                 OK
@@ -52,7 +52,7 @@ If the rule exists, then it just disables it.
 
 ### Example 3: Add a rule with actions
 ```
-PS C:\>Add-AzureRmMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup "Default-Web-EastUS" -Operator GreaterThan -Threshold 1 -TargetResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/mywebsite" -MetricName "Requests" -TimeAggregationOperator Total
+PS C:\>Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup "Default-Web-EastUS" -Operator GreaterThan -Threshold 1 -TargetResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/mywebsite" -MetricName "Requests" -TimeAggregationOperator Total
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 9a5bc388-c7ac-4dc6-aa70-f4bc29c2c712                                                                                 OK
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -323,18 +323,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmActivityLogAlert](./Set-AzureRmActivityLogAlert.md)
+[Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
 
-[Add-AzureRmWebtestAlertRule](./Add-AzureRmWebtestAlertRule.md)
+[Add-AzWebtestAlertRule](./Add-AzWebtestAlertRule.md)
 
-[Get-AzureRmAlertHistory](./Get-AzureRmAlertHistory.md)
+[Get-AzAlertHistory](./Get-AzAlertHistory.md)
 
-[Get-AzureRmAlertRule](./Get-AzureRmAlertRule.md)
+[Get-AzAlertRule](./Get-AzAlertRule.md)
 
-[New-AzureRmAlertRuleEmail](./New-AzureRmAlertRuleEmail.md)
+[New-AzAlertRuleEmail](./New-AzAlertRuleEmail.md)
 
-[New-AzureRmAlertRuleWebhook](./New-AzureRmAlertRuleWebhook.md)
+[New-AzAlertRuleWebhook](./New-AzAlertRuleWebhook.md)
 
-[Remove-AzureRmAlertRule](./Remove-AzureRmAlertRule.md)
+[Remove-AzAlertRule](./Remove-AzAlertRule.md)
 
 

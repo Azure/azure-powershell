@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 774848C9-47A1-4C43-B6FA-B3C0C3C76470
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/add-azurermhdinsightcomponentversion
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightcomponentversion
 schema: 2.0.0
 ---
 
-# Add-AzureRmHDInsightComponentVersion
+# Add-AzHDInsightComponentVersion
 
 ## SYNOPSIS
 Adds a version for a service running in a cluster to a cluster configuration object.
@@ -14,13 +14,13 @@ Adds a version for a service running in a cluster to a cluster configuration obj
 ## SYNTAX
 
 ```
-Add-AzureRmHDInsightComponentVersion [-Config] <AzureHDInsightConfig> [-ComponentName] <String>
+Add-AzHDInsightComponentVersion [-Config] <AzureHDInsightConfig> [-ComponentName] <String>
  [-ComponentVersion] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Add-AzureRmHDInsightComponentVersion cmdlet adds a version for a service running in a cluster to the Azure HDInsight configuration object created by the New-AzureRmHDInsightClusterConfig cmdlet.
+The Add-AzHDInsightComponentVersion cmdlet adds a version for a service running in a cluster to the Azure HDInsight configuration object created by the New-AzHDInsightClusterConfig cmdlet.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ The Add-AzureRmHDInsightComponentVersion cmdlet adds a version for a service run
 PS C:\> # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountName = "yourstorageacct001"
-        $storageAccountKey = Get-AzureStorageAccountKey `
+        $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
             -Name $storageAccountName | %{ $_.Key1 }
         $storageContainer = "container001"
@@ -42,14 +42,14 @@ PS C:\> # Primary storage account info
         $sshClusterCreds = Get-Credential
 
         # If the cluster's resource group doesn't exist yet, run:
-        #   New-AzureRmResourceGroup -Name $clusterResourceGroupName -Location $location
+        #   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
         # Create the cluster
-        New-AzureRmHDInsightClusterConfig `
-            | Add-AzureRmHDInsightComponentVersion `
+        New-AzHDInsightClusterConfig `
+            | Add-AzHDInsightComponentVersion `
                 -ComponentName "Spark" `
                 -ComponentVersion "2.0" `
-            | New-AzureRmHDInsightCluster `
+            | New-AzHDInsightCluster `
                 -ClusterType Spark `
                 -OSType Linux `
                 -ClusterSizeInNodes 4 `

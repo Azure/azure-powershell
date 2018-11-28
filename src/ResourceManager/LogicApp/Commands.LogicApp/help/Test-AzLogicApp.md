@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 929F4593-2A71-49B9-87F8-F24FA9F6E314
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/test-azurermlogicapp
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/test-azlogicapp
 schema: 2.0.0
 ---
 
-# Test-AzureRmLogicApp
+# Test-AzLogicApp
 
 ## SYNOPSIS
 Validates a logic app definition.
@@ -15,20 +15,20 @@ Validates a logic app definition.
 
 ### LogicAppWithDefinitionParameterSet
 ```
-Test-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
+Test-AzLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
  [-Definition <Object>] [-IntegrationAccountId <String>] [-Parameters <Object>] [-ParameterFilePath <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LogicAppWithDefinitionFileParameterSet
 ```
-Test-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
+Test-AzLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
  [-DefinitionFilePath <String>] [-IntegrationAccountId <String>] [-Parameters <Object>]
  [-ParameterFilePath <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzureRmLogicApp** cmdlet validates a logic app definition in a resource group.
+The **Test-AzLogicApp** cmdlet validates a logic app definition in a resource group.
 Specify the logic app name, resource group name, location, state, integration account ID, or parameters.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -39,7 +39,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Validate a logic app by using file paths
 ```
-PS C:\>Test-AzureRmLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp01" -Location "westus" -State "Enabled" -DefinitionFilePath "d:\workflows\Definition.json" -ParameterFilePath "d:\workflows\Parameters.json"
+PS C:\>Test-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp01" -Location "westus" -State "Enabled" -DefinitionFilePath "d:\workflows\Definition.json" -ParameterFilePath "d:\workflows\Parameters.json"
 ```
 
 This command validates a logic app named LogicApp01 in the specified resource group.
@@ -47,7 +47,7 @@ The command specifies definition and parameter file paths.
 
 ### Example 2: Validate a logic app by using objects
 ```
-PS C:\>Test-AzureRmLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp01" -Location "westus" -State "Enabled" -Definition [IO.File]::ReadAllText("d:\Workflows\Definition.json") -Parameters @{name1="value1", name2="value2"}
+PS C:\>Test-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp01" -Location "westus" -State "Enabled" -Definition [IO.File]::ReadAllText("d:\Workflows\Definition.json") -Parameters @{name1="value1", name2="value2"}
 ```
 
 This command validates a logic app named LogicApp01 in the specified resource group.
@@ -59,7 +59,7 @@ The command specifies definition and parameter objects.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -225,14 +225,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmLogicApp](./Get-AzureRmLogicApp.md)
+[Get-AzLogicApp](./Get-AzLogicApp.md)
 
-[New-AzureRmLogicApp](./New-AzureRmLogicApp.md)
+[New-AzLogicApp](./New-AzLogicApp.md)
 
-[Remove-AzureRmLogicApp](./Remove-AzureRmLogicApp.md)
+[Remove-AzLogicApp](./Remove-AzLogicApp.md)
 
-[Set-AzureRmLogicApp](./Set-AzureRmLogicApp.md)
+[Set-AzLogicApp](./Set-AzLogicApp.md)
 
-[Start-AzureRmLogicApp](./Start-AzureRmLogicApp.md)
+[Start-AzLogicApp](./Start-AzLogicApp.md)
 
 

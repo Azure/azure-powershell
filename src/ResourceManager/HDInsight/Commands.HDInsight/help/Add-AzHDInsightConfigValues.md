@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 4C3CF283-DD4F-4D2A-ABEC-84AC7B005D6A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/add-azurermhdinsightconfigvalues
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightconfigvalues
 schema: 2.0.0
 ---
 
-# Add-AzureRmHDInsightConfigValues
+# Add-AzHDInsightConfigValues
 
 ## SYNOPSIS
 Adds a Hadoop configuration value customization and/or a Hive shared library customization to a cluster configuration object.
@@ -15,7 +15,7 @@ Adds a Hadoop configuration value customization and/or a Hive shared library cus
 
 ### Spark1
 ```
-Add-AzureRmHDInsightConfigValues [-Config] <AzureHDInsightConfig> [-Core <Hashtable>] [-HiveSite <Hashtable>]
+Add-AzHDInsightConfigValues [-Config] <AzureHDInsightConfig> [-Core <Hashtable>] [-HiveSite <Hashtable>]
  [-HiveEnv <Hashtable>] [-OozieSite <Hashtable>] [-OozieEnv <Hashtable>] [-WebHCat <Hashtable>]
  [-HBaseSite <Hashtable>] [-HBaseEnv <Hashtable>] [-Storm <Hashtable>] [-Yarn <Hashtable>]
  [-MapRed <Hashtable>] [-Tez <Hashtable>] [-Hdfs <Hashtable>] [-RServer <Hashtable>]
@@ -25,7 +25,7 @@ Add-AzureRmHDInsightConfigValues [-Config] <AzureHDInsightConfig> [-Core <Hashta
 
 ### Spark2
 ```
-Add-AzureRmHDInsightConfigValues [-Config] <AzureHDInsightConfig> [-Core <Hashtable>] [-HiveSite <Hashtable>]
+Add-AzHDInsightConfigValues [-Config] <AzureHDInsightConfig> [-Core <Hashtable>] [-HiveSite <Hashtable>]
  [-HiveEnv <Hashtable>] [-OozieSite <Hashtable>] [-OozieEnv <Hashtable>] [-WebHCat <Hashtable>]
  [-HBaseSite <Hashtable>] [-HBaseEnv <Hashtable>] [-Storm <Hashtable>] [-Yarn <Hashtable>]
  [-MapRed <Hashtable>] [-Tez <Hashtable>] [-Hdfs <Hashtable>] [-RServer <Hashtable>]
@@ -34,7 +34,7 @@ Add-AzureRmHDInsightConfigValues [-Config] <AzureHDInsightConfig> [-Core <Hashta
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmHDInsightConfigValues** cmdlet adds a Hadoop configuration value customization, such as core-site.xml or hive-site.xml, and/or a Hive shared library customization to the HDInsight configuration object created by the New-AzureRmHDInsightClusterConfig cmdlet.
+The **Add-AzHDInsightConfigValues** cmdlet adds a Hadoop configuration value customization, such as core-site.xml or hive-site.xml, and/or a Hive shared library customization to the HDInsight configuration object created by the New-AzHDInsightClusterConfig cmdlet.
 
 ## EXAMPLES
 
@@ -43,7 +43,7 @@ The **Add-AzureRmHDInsightConfigValues** cmdlet adds a Hadoop configuration valu
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
 PS C:\> $storageAccountName = "yourstorageacct001"
-PS C:\> $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 PS C:\> $storageContainer = "container001"
 
@@ -54,18 +54,18 @@ PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $clusterCreds = Get-Credential
 
 # If the cluster's resource group doesn't exist yet, run:
-#   New-AzureRmResourceGroup -Name $clusterResourceGroupName -Location $location
+#   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
 # Config values
 PS C:\> $coreConfigs = @{"io.file.buffer.size"="300000"}
 PS C:\> $mapRedConfigs = @{"mapred.map.max.attempts"="2"}
 
 # Create the cluster
-PS C:\> New-AzureRmHDInsightClusterConfig `
-            | Add-AzureRmHDInsightConfigValues `
+PS C:\> New-AzHDInsightClusterConfig `
+            | Add-AzHDInsightConfigValues `
                 -Core $coreConfigs `
                 -MapRed $mapRedConfigs `
-            | New-AzureRmHDInsightCluster `
+            | New-AzHDInsightCluster `
                 -ClusterType Hadoop `
                 -OSType Windows `
                 -ClusterSizeInNodes 4 `
@@ -84,7 +84,7 @@ This command adds a Hadoop configuration value to the cluster named your-hadoop-
 
 ### -Config
 Specifies the HDInsight cluster configuration object that this cmdlet modifies.
-This object is created by the New-AzureRmHDInsightClusterConfig cmdlet.
+This object is created by the New-AzHDInsightClusterConfig cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
@@ -399,6 +399,6 @@ Parameters: Config (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmHDInsightClusterConfig](./New-AzureRmHDInsightClusterConfig.md)
+[New-AzHDInsightClusterConfig](./New-AzHDInsightClusterConfig.md)
 
 

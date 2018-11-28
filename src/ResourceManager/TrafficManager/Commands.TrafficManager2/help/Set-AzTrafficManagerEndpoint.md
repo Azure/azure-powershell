@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM.TrafficManager
+Module Name: Az.TrafficManager
 ms.assetid: 5287D4DB-2709-4A3C-97D5-DB494CEEFD18
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/set-azurermtrafficmanagerendpoint
+online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint
 schema: 2.0.0
 ---
 
-# Set-AzureRmTrafficManagerEndpoint
+# Set-AzTrafficManagerEndpoint
 
 ## SYNOPSIS
 Updates a Traffic Manager endpoint.
@@ -14,28 +14,28 @@ Updates a Traffic Manager endpoint.
 ## SYNTAX
 
 ```
-Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint <TrafficManagerEndpoint>
+Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint <TrafficManagerEndpoint>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmTrafficManagerEndpoint** cmdlet updates an endpoint in Azure Traffic Manager.
+The **Set-AzTrafficManagerEndpoint** cmdlet updates an endpoint in Azure Traffic Manager.
 This cmdlet updates the settings from a local endpoint object.
 You can specify the endpoint object either by using the *TrafficManagerEndpoint* parameter or by using the pipeline.
 
-You can obtain a local object that represents an endpoint by using the Get-AzureRmTrafficManagerEndpoint cmdlet.
-Modify the object locally and then use **Set-AzureRmTrafficManagerEndpoint** to commit your changes.
+You can obtain a local object that represents an endpoint by using the Get-AzTrafficManagerEndpoint cmdlet.
+Modify the object locally and then use **Set-AzTrafficManagerEndpoint** to commit your changes.
 
 ## EXAMPLES
 
 ### Example 1: Update an endpoint
 ```
-PS C:\>$TrafficManagerEndpoint = Get-AzureRmTrafficManagerEndpoint -Name "endpoint1" -Type AzureEndpoints -ProfileName "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+PS C:\>$TrafficManagerEndpoint = Get-AzTrafficManagerEndpoint -Name "endpoint1" -Type AzureEndpoints -ProfileName "ContosoProfile" -ResourceGroupName "ResourceGroup11"
 PS C:\> $TrafficManagerEndpoint.Weight = 20
-PS C:\> Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
+PS C:\> Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 ```
 
-The first command gets an Azure Traffic Manager endpoint by using the **Get-AzureRmTrafficManagerEndpoint** cmdlet.
+The first command gets an Azure Traffic Manager endpoint by using the **Get-AzTrafficManagerEndpoint** cmdlet.
 The command stores the endpoint locally in the $TrafficManagerEndpoint variable.
 
 The second command changes that endpoint locally.
@@ -49,7 +49,7 @@ The third command updates the endpoint in Traffic Manager to match the local val
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

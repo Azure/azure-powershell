@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 7320B832-50FD-48AE-9089-445318F3B08A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermavailabilityset
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azavailabilityset
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAvailabilitySet
+# Remove-AzAvailabilitySet
 
 ## SYNOPSIS
 Removes an availability set from Azure.
@@ -14,18 +14,18 @@ Removes an availability set from Azure.
 ## SYNTAX
 
 ```
-Remove-AzureRmAvailabilitySet [-ResourceGroupName] <String> [[-Name] <String>] [-Force] [-AsJob]
+Remove-AzAvailabilitySet [-ResourceGroupName] <String> [[-Name] <String>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmAvailabilitySet** cmdlet removes an availability set from Azure.
+The **Remove-AzAvailabilitySet** cmdlet removes an availability set from Azure.
 
 ## EXAMPLES
 
 ### Example 1: Remove an availability set
 ```
-PS C:\> Remove-AzureRmAvailabilitySet -Name "AvailabilitySet03" -ResourceGroupName "ResourceGroup11"
+PS C:\> Remove-AzAvailabilitySet -Name "AvailabilitySet03" -ResourceGroupName "ResourceGroup11"
 ```
 
 This command removes an availability set named AvailablitySet03 in the resource group named ResourceGroup11.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -153,8 +153,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAvailabilitySet](./Get-AzureRmAvailabilitySet.md)
+[Get-AzAvailabilitySet](./Get-AzAvailabilitySet.md)
 
-[New-AzureRmAvailabilitySet](./New-AzureRmAvailabilitySet.md)
+[New-AzAvailabilitySet](./New-AzAvailabilitySet.md)
 
 

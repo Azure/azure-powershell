@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: C2C608E5-3351-4D01-8533-9668B2E9F1D1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermresource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresource
 schema: 2.0.0
 ---
 
-# Get-AzureRmResource
+# Get-AzResource
 
 ## SYNOPSIS
 
@@ -16,34 +16,34 @@ Gets resources.
 
 ### ByTagNameValueParameterSet (Default)
 ```
-Get-AzureRmResource [[-Name] <String>] [-ResourceType <String>] [-ODataQuery <String>]
- [-ResourceGroupName <String>] [-TagName <String>] [-TagValue <String>] [-ExpandProperties]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzResource [-Name <String>] [-ResourceType <String>] [-ODataQuery <String>] [-ResourceGroupName <String>]
+ [-TagName <String>] [-TagValue <String>] [-ExpandProperties] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzureRmResource -ResourceId <String> [-ExpandProperties] [-ApiVersion <String>] [-Pre]
+Get-AzResource -ResourceId <String> [-ExpandProperties] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTagObjectParameterSet
 ```
-Get-AzureRmResource [[-Name] <String>] [-ResourceType <String>] [-ODataQuery <String>]
- [-ResourceGroupName <String>] -Tag <Hashtable> [-ExpandProperties] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzResource [-Name <String>] [-ResourceType <String>] [-ODataQuery <String>] [-ResourceGroupName <String>]
+ -Tag <Hashtable> [-ExpandProperties] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-The **Get-AzureRmResource** cmdlet gets Azure resources.
+The **Get-AzResource** cmdlet gets Azure resources.
 
 ## EXAMPLES
 
 ### Example 1: Get all resources in the current subscription
 
 ```
-PS C:\> Get-AzureRmResource | ft
+PS C:\> Get-AzResource | ft
 
 Name    ResourceGroupName  ResourceType                            Location
 ----    -----------------  ------------                            --------
@@ -63,7 +63,7 @@ This command gets all of the resources in the current subscription.
 ### Example 2: Get all resources in a resource group
 
 ```
-PS C:\> Get-AzureRmResource -ResourceGroupName testRG | ft
+PS C:\> Get-AzResource -ResourceGroupName testRG | ft
 
 Name   ResourceGroupName ResourceType                            Location
 ----   ----------------- ------------                            --------
@@ -80,7 +80,7 @@ This command gets all of the resources in the resource group "testRG".
 ### Example 3: Get all resources whose resource group matches the provided wildcard
 
 ```
-PS C:\> Get-AzureRmResource -ResourceGroupName other* | ft
+PS C:\> Get-AzResource -ResourceGroupName other* | ft
 
 Name    ResourceGroupName  ResourceType                      Location
 ----    -----------------  ------------                      --------
@@ -94,7 +94,7 @@ This command gets all of the resources whose resource group they belong in being
 ### Example 4: Get all resources with a given name
 
 ```
-PS C:\> Get-AzureRmResource -Name testVM | fl
+PS C:\> Get-AzResource -Name testVM | fl
 
 Name              : testVM
 ResourceGroupName : testRG
@@ -108,7 +108,7 @@ This command gets all of the resources whose resource name is "testVM".
 ### Example 5: Get all resources whose name matches the provided wildcard
 
 ```
-PS C:\> Get-AzureRmResource -Name test* | ft
+PS C:\> Get-AzResource -Name test* | ft
 
 Name    ResourceGroupName  ResourceType                      Location
 ----    -----------------  ------------                      --------
@@ -122,7 +122,7 @@ This command gets all of the resources whose resource name begins with "test".
 ### Example 6: Get all resources of a given resource type
 
 ```
-PS C:\> Get-AzureRmResource -ResourceType Microsoft.Compute/virtualMachines | ft
+PS C:\> Get-AzResource -ResourceType Microsoft.Compute/virtualMachines | ft
 
 Name    ResourceGroupName  ResourceType                      Location
 ----    -----------------  ------------                      --------
@@ -135,7 +135,7 @@ This command gets all of the resources in the current subscriptions that are vir
 ### Example 7: Get a resource by resource id
 
 ```
-PS C:\> Get-AzureRmResource -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM
+PS C:\> Get-AzResource -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM
 
 Name              : testVM
 ResourceGroupName : testRG
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -201,7 +201,7 @@ Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
 Aliases: ResourceName
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -283,7 +283,7 @@ Accept wildcard characters: False
 
 ### -Tag
 
-Gets resources that have the specified Azure tag. Enter a hash table with a Name key or Name and Value keys. Wildcard characters are not supported.A "tag" is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. To add a tag to a resource, use the Tag parameter of the New-AzureRmResource or Set-AzureRmResource cmdlets. To create a predefined tag, use the New-AzureRmTag cmdlet. For help with hash tables in Windows PowerShell, run 'Get-Help about_Hashtables'.
+Gets resources that have the specified Azure tag. Enter a hash table with a Name key or Name and Value keys. Wildcard characters are not supported.A "tag" is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. To add a tag to a resource, use the Tag parameter of the New-AzResource or Set-AzResource cmdlets. To create a predefined tag, use the New-AzTag cmdlet. For help with hash tables in Windows PowerShell, run 'Get-Help about_Hashtables'.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -342,12 +342,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Find-AzureRmResource](./Find-AzureRmResource.md)
+[Find-AzResource](./Find-AzResource.md)
 
-[Move-AzureRmResource](./Move-AzureRmResource.md)
+[Move-AzResource](./Move-AzResource.md)
 
-[New-AzureRmResource](./New-AzureRmResource.md)
+[New-AzResource](./New-AzResource.md)
 
-[Remove-AzureRmResource](./Remove-AzureRmResource.md)
+[Remove-AzResource](./Remove-AzResource.md)
 
-[Set-AzureRmResource](./Set-AzureRmResource.md)
+[Set-AzResource](./Set-AzResource.md)

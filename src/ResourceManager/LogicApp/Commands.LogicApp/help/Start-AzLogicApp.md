@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 50C359FC-D98C-4C2C-87EE-BE9A25C3EDC6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/start-azurermlogicapp
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/start-azlogicapp
 schema: 2.0.0
 ---
 
-# Start-AzureRmLogicApp
+# Start-AzLogicApp
 
 ## SYNOPSIS
 Runs a logic app in a resource group.
@@ -14,12 +14,12 @@ Runs a logic app in a resource group.
 ## SYNTAX
 
 ```
-Start-AzureRmLogicApp -ResourceGroupName <String> -Name <String> [-Parameters <Object>] -TriggerName <String>
+Start-AzLogicApp -ResourceGroupName <String> -Name <String> [-Parameters <Object>] -TriggerName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmLogicApp** cmdlet runs a logic app by using the Logic Apps feature.
+The **Start-AzLogicApp** cmdlet runs a logic app by using the Logic Apps feature.
 Specify a name, resource group, and trigger.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -30,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Run a logic app
 ```
-PS C:\>Start-AzureRmLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03" -TriggerName "Trigger22"
+PS C:\>Start-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp03" -TriggerName "Trigger22"
 ```
 
 This command runs the logic app in the resource group named ResourceGroup11.
@@ -41,7 +41,7 @@ This command runs the logic app in the resource group named ResourceGroup11.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -159,16 +159,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmLogicApp](./Get-AzureRmLogicApp.md)
+[Get-AzLogicApp](./Get-AzLogicApp.md)
 
-[Get-AzureRmLogicAppRunHistory](./Get-AzureRmLogicAppRunHistory.md)
+[Get-AzLogicAppRunHistory](./Get-AzLogicAppRunHistory.md)
 
-[New-AzureRmLogicApp](./New-AzureRmLogicApp.md)
+[New-AzLogicApp](./New-AzLogicApp.md)
 
-[Remove-AzureRmLogicApp](./Remove-AzureRmLogicApp.md)
+[Remove-AzLogicApp](./Remove-AzLogicApp.md)
 
-[Set-AzureRmLogicApp](./Set-AzureRmLogicApp.md)
+[Set-AzLogicApp](./Set-AzLogicApp.md)
 
-[Stop-AzureRmLogicAppRun](./Stop-AzureRmLogicAppRun.md)
+[Stop-AzLogicAppRun](./Stop-AzLogicAppRun.md)
 
 

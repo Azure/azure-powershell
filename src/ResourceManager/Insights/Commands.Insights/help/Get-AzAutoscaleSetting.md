@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 989CE245-FD1D-4E1D-90A2-2D7DA3975D0B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermautoscalesetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azautoscalesetting
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutoscaleSetting
+# Get-AzAutoscaleSetting
 
 ## SYNOPSIS
 Gets Autoscale settings.
@@ -14,18 +14,18 @@ Gets Autoscale settings.
 ## SYNTAX
 
 ```
-Get-AzureRmAutoscaleSetting -ResourceGroupName <String> [-Name <String>] [-DetailedOutput]
+Get-AzAutoscaleSetting -ResourceGroupName <String> [-Name <String>] [-DetailedOutput]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutoscaleSetting** cmdlet gets all Autoscale settings associated with a resource group or a specified Autoscale setting.
+The **Get-AzAutoscaleSetting** cmdlet gets all Autoscale settings associated with a resource group or a specified Autoscale setting.
 
 ## EXAMPLES
 
 ### Example 1: Get Autoscale settings
 ```
-PS C:\>Get-AzureRmAutoscaleSetting -ResourceGroup "Default-Web-EastUS" -DetailedOutput
+PS C:\>Get-AzAutoscaleSetting -ResourceGroup "Default-Web-EastUS" -DetailedOutput
 resourceId : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft. 
              insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS
 Location   : East US
@@ -114,7 +114,7 @@ This command gets the Autoscale settings assigned to the resource group Default-
 
 ### Example 2: Get an Autoscale setting by name
 ```
-PS C:\>Get-AzureRmAutoscaleSetting -ResourceGroupName "Default-Web-EastUS" -Name "DefaultServerFarm-Default-Web-EastUS" -DetailedOutput
+PS C:\>Get-AzAutoscaleSetting -ResourceGroupName "Default-Web-EastUS" -Name "DefaultServerFarm-Default-Web-EastUS" -DetailedOutput
 resourceId : /subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft. 
              insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS
 Location   : East US
@@ -206,7 +206,7 @@ This command gets the Autoscale setting named DefaultServerFarm-Default-Web-East
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -279,8 +279,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmAutoscaleSetting](./Add-AzureRmAutoscaleSetting.md)
+[Add-AzAutoscaleSetting](./Add-AzAutoscaleSetting.md)
 
-[Remove-AzureRmAutoscaleSetting](./Remove-AzureRmAutoscaleSetting.md)
+[Remove-AzAutoscaleSetting](./Remove-AzAutoscaleSetting.md)
 
 

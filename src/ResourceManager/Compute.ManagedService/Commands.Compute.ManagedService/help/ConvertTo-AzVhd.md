@@ -1,11 +1,11 @@
 ---
-external help file: AzureRM.Compute.ManagedService-help.xml
-Module Name: AzureRM.Compute.ManagedService
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute.managedservice/convertto-azurermvhd
+external help file: Az.Compute.ManagedService-help.xml
+Module Name: Az.Compute.ManagedService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute.managedservice/convertto-azvhd
 schema: 2.0.0
 ---
 
-# ConvertTo-AzureRmVhd
+# ConvertTo-AzVhd
 
 ## SYNOPSIS
 Convert Hyper-V VM to Azure supported virtual hard disk files
@@ -13,7 +13,7 @@ Convert Hyper-V VM to Azure supported virtual hard disk files
 ## SYNTAX
 
 ```
-ConvertTo-AzureRmVhd -HyperVVMName <String> -ExportPath <String> [-HyperVServer <String>] [-Force] [-AsJob]
+ConvertTo-AzVhd -HyperVVMName <String> -ExportPath <String> [-HyperVServer <String>] [-Force] [-AsJob]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Convert Hyper-V VM to Azure supported virtual hard disk files
 
 ### Example 1
 ```
-PS C:\> ConvertTo-AzureRmVhd -HyperVVMName 'test' -ExportPath '.';
+PS C:\> ConvertTo-AzVhd -HyperVVMName 'test' -ExportPath '.';
 .\test\Virtual Hard Disks\Converted\os.vhd
 .\test\Virtual Hard Disks\Converted\disk.vhd
 ```

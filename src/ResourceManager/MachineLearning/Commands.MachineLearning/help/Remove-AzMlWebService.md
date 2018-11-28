@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-Module Name: AzureRM.MachineLearning
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/remove-azurermmlwebservice
+Module Name: Az.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/remove-azmlwebservice
 schema: 2.0.0
 ---
 
-# Remove-AzureRmMlWebService
+# Remove-AzMlWebService
 
 ## SYNOPSIS
 Deletes a web service.
@@ -14,14 +14,14 @@ Deletes a web service.
 
 ### RemoveByNameAndResourceGroup
 ```
-Remove-AzureRmMlWebService -ResourceGroupName <String> -Name <String> [-Force]
+Remove-AzMlWebService -ResourceGroupName <String> -Name <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByObject
 ```
-Remove-AzureRmMlWebService -MlWebService <WebService> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzMlWebService -MlWebService <WebService> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +31,7 @@ Deletes a Azure Machine Learning web service referenced by resource group and na
 
 ### Example 1
 ```
-Remove-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
+Remove-AzMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
 ```
 
 ## PARAMETERS
@@ -40,7 +40,7 @@ Remove-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebserv
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

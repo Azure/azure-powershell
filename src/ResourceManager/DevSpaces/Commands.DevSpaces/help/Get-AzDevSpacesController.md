@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DevSpaces.dll-Help.xml
-Module Name: AzureRM.DevSpaces
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.devspaces/get-azureevspacescontroller
+Module Name: Az.DevSpaces
+online version: https://docs.microsoft.com/en-us/powershell/module/az.devspaces/get-azevspacescontroller
 schema: 2.0.0
 ---
 
-# Get-AzureRmDevSpacesController
+# Get-AzDevSpacesController
 
 ## SYNOPSIS
 Get or list Azure DevSpaces controller.
@@ -14,13 +14,13 @@ Get or list Azure DevSpaces controller.
 
 ### ListDevSpacesControllerParameterSet (Default)
 ```
-Get-AzureRmDevSpacesController [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzDevSpacesController [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### DevSpacesControllerNameParameterSet
 ```
-Get-AzureRmDevSpacesController [-ResourceGroupName] <String> [-Name] <String>
+Get-AzDevSpacesController [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get or list Azure DevSpaces controller.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmDevSpacesController
+PS C:\> Get-AzDevSpacesController
 
 Name        Resource Group  Location  Provisioning State
 ----------  --------------  --------  ------------------
@@ -42,7 +42,7 @@ List all controllers in a subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmDevSpacesController --ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName
+PS C:\> Get-AzDevSpacesController --ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName
 
 Name        Resource Group  Location  Provisioning State
 ----------  --------------  --------  ------------------
@@ -57,7 +57,7 @@ Get a DevSpaces controllers in a subscription.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

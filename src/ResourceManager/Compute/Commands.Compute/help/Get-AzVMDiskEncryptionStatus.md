@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: E6F91D2E-6481-44C2-AF21-F62947C3D78C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmdiskencryptionstatus
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMDiskEncryptionStatus
+# Get-AzVMDiskEncryptionStatus
 
 ## SYNOPSIS
 Gets the encryption status of the virtual machine.
@@ -14,13 +14,13 @@ Gets the encryption status of the virtual machine.
 ## SYNTAX
 
 ```
-Get-AzureRmVMDiskEncryptionStatus [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
+Get-AzVMDiskEncryptionStatus [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
  [-ExtensionType <String>] [-ExtensionPublisherName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMDiskEncryptionStatus** cmdlet gets the encryption status of the virtual machine.
+The **Get-AzVMDiskEncryptionStatus** cmdlet gets the encryption status of the virtual machine.
 It displays the encryption status of the operating system and data volumes.
 In addition to encryption status, it also displays the encryption secret URL, key encryption key URL, resource IDs of the **KeyVaults** where the encryption key and key encryption key for operating system volume are present.
 
@@ -28,7 +28,7 @@ In addition to encryption status, it also displays the encryption secret URL, ke
 
 ### Example 1: Get the encryption status of a virtual machine
 ```
-PS C:\> Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName "MyResourceGroup001" -VMName "VM001"
+PS C:\> Get-AzVmDiskEncryptionStatus -ResourceGroupName "MyResourceGroup001" -VMName "VM001"
 ```
 
 This command gets the encryption status of the virtual machine named VM001.
@@ -39,7 +39,7 @@ This command gets the encryption status of the virtual machine named VM001.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -138,8 +138,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmVMDiskEncryptionExtension](./Remove-AzureRmVMDiskEncryptionExtension.md)
+[Remove-AzVMDiskEncryptionExtension](./Remove-AzVMDiskEncryptionExtension.md)
 
-[Set-AzureRmVMDiskEncryptionExtension](./Set-AzureRmVMDiskEncryptionExtension.md)
+[Set-AzVMDiskEncryptionExtension](./Set-AzVMDiskEncryptionExtension.md)
 
 

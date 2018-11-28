@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
-Module Name: AzureRM.NotificationHubs
+Module Name: Az.NotificationHubs
 ms.assetid: F7BBEF57-0DC2-4EFF-9AA2-119B3BD19AE6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/set-azurermnotificationhub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/set-aznotificationhub
 schema: 2.0.0
 ---
 
-# Set-AzureRmNotificationHub
+# Set-AzNotificationHub
 
 ## SYNOPSIS
 Sets property values for a notification hub.
@@ -15,19 +15,19 @@ Sets property values for a notification hub.
 
 ### InputFileParameterSet
 ```
-Set-AzureRmNotificationHub [-ResourceGroup] <String> [-Namespace] <String> [-InputFile] <String> [-Force]
+Set-AzNotificationHub [-ResourceGroup] <String> [-Namespace] <String> [-InputFile] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NotificationHubParameterSet
 ```
-Set-AzureRmNotificationHub [-ResourceGroup] <String> [-Namespace] <String>
+Set-AzNotificationHub [-ResourceGroup] <String> [-Namespace] <String>
  [-NotificationHubObj] <NotificationHubAttributes> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmNotificationHub** cmdlet modifies the property values of a notification hub.
+The **Set-AzNotificationHub** cmdlet modifies the property values of a notification hub.
 You can modify a notification hub property value in two ways.
 For one, you can create an instance of the **NotificationHubAttributes** object and then configure that object with the property values you want the new hub to possess.
 This can be done through the .NET Framework.
@@ -38,13 +38,13 @@ A JSON file is a text file that uses syntax similar to the following:
     "Name": "ContosoNotificationHub",  
     "Location": "West US",  
 }
-When used in conjunction with the **Set-AzureRmNotificationHub** cmdlet, the preceding JSON sample sets the Location value of a notification hub named ContosoNotificationHub to West US.
+When used in conjunction with the **Set-AzNotificationHub** cmdlet, the preceding JSON sample sets the Location value of a notification hub named ContosoNotificationHub to West US.
 
 ## EXAMPLES
 
 ### Example 1: Modify the property values for a notification hub
 ```
-PS C:\>Set-AzureRmNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -InputFile "C:\Configuration\Hubs.json"
+PS C:\>Set-AzNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -InputFile "C:\Configuration\Hubs.json"
 ```
 
 This command modifies the property values for a notification hub found in the ContosoNamespace namespace and assigned it to the resource group ContosoNotificationsGroup.
@@ -57,7 +57,7 @@ Instead, that information is contained in the input file C:\Configuration\Hubs.j
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -190,10 +190,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNotificationHub](./Get-AzureRmNotificationHub.md)
+[Get-AzNotificationHub](./Get-AzNotificationHub.md)
 
-[New-AzureRmNotificationHub](./New-AzureRmNotificationHub.md)
+[New-AzNotificationHub](./New-AzNotificationHub.md)
 
-[Remove-AzureRmNotificationHub](./Remove-AzureRmNotificationHub.md)
+[Remove-AzNotificationHub](./Remove-AzNotificationHub.md)
 
 

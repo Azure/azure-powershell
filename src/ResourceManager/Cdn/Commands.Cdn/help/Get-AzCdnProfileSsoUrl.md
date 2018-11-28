@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-Module Name: AzureRM.Cdn
+Module Name: Az.Cdn
 ms.assetid: 93D5E2D9-FB89-4311-8E8E-44CBFAFC98A9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdnprofilessourl
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnprofilessourl
 schema: 2.0.0
 ---
 
-# Get-AzureRmCdnProfileSsoUrl
+# Get-AzCdnProfileSsoUrl
 
 ## SYNOPSIS
 Gets the single sign-on URL of a CDN profile.
@@ -15,18 +15,17 @@ Gets the single sign-on URL of a CDN profile.
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzureRmCdnProfileSsoUrl -ProfileName <String> -ResourceGroupName <String>
+Get-AzCdnProfileSsoUrl -ProfileName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Get-AzureRmCdnProfileSsoUrl -CdnProfile <PSProfile> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzCdnProfileSsoUrl -CdnProfile <PSProfile> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmCdnProfileSsoUrl** cmdlet gets the single sign-on URL of the Azure Content Delivery Network (CDN) profile.
+The **Get-AzCdnProfileSsoUrl** cmdlet gets the single sign-on URL of the Azure Content Delivery Network (CDN) profile.
 This URL lets users conntect to a supplementary portal and use additional features of  CDN.
 
 ## EXAMPLES
@@ -52,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -109,6 +108,6 @@ Parameters: CdnProfile (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRMCdnProfile](./Get-AzureRMCdnProfile.md)
+[Get-AzCdnProfile](./Get-AzCdnProfile.md)
 
 

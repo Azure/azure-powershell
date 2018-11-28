@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/update-azurermsqlsyncgroup
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/update-azsqlsyncgroup
 schema: 2.0.0
 ---
 
-# Update-AzureRmSqlSyncGroup
+# Update-AzSqlSyncGroup
 
 ## SYNOPSIS
 Updates an Azure SQL Database Sync Group.
@@ -13,20 +13,20 @@ Updates an Azure SQL Database Sync Group.
 ## SYNTAX
 
 ```
-Update-AzureRmSqlSyncGroup [-Name] <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
+Update-AzSqlSyncGroup [-Name] <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
  [-SchemaFile <String>] [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmSqlSyncGroup** cmdlet modifies properties of an Azure SQL Database Sync Group.
+The **Update-AzSqlSyncGroup** cmdlet modifies properties of an Azure SQL Database Sync Group.
 
 ## EXAMPLES
 
 ### Example 1: Update a sync group for an Azure SQL Database.
 ```
 PS C:\> $credential = Get-Credential
-PS C:\> Update-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01"
+PS C:\> Update-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01"
 -DatabaseCredential $credential -IntervalInSeconds 100 -Schema ".\schema.json" | Format-List
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
 ResourceGroupName           : ResourceGroup01
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -218,9 +218,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlSyncGroup](./New-AzureRmSqlSyncGroup.md)
+[New-AzSqlSyncGroup](./New-AzSqlSyncGroup.md)
 
-[Remove-AzureRmSqlSyncGroup](./Remove-AzureRmSqlSyncGroup.md)
+[Remove-AzSqlSyncGroup](./Remove-AzSqlSyncGroup.md)
 
-[Get-AzureRmSqlSyncGroup](./Get-AzureRmSqlSyncGroup.md)
+[Get-AzSqlSyncGroup](./Get-AzSqlSyncGroup.md)
 

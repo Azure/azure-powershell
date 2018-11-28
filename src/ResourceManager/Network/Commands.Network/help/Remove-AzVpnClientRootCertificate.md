@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 5D857FF6-A27D-4031-948D-8A69D24B4AD4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermvpnclientrootcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvpnclientrootcertificate
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVpnClientRootCertificate
+# Remove-AzVpnClientRootCertificate
 
 ## SYNOPSIS
 Removes an existing VPN client root certificate.
@@ -14,16 +14,16 @@ Removes an existing VPN client root certificate.
 ## SYNTAX
 
 ```
-Remove-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName <String>
- -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -PublicCertData <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzVpnClientRootCertificate -VpnClientRootCertificateName <String> -VirtualNetworkGatewayName <String>
+ -ResourceGroupName <String> -PublicCertData <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVpnClientRootCertificate** cmdlet removes the specified root certificate from a virtual network gateway.
+The **Remove-AzVpnClientRootCertificate** cmdlet removes the specified root certificate from a virtual network gateway.
 Root certificates are X.509 certificates that identify your Root Certification Authority: all other certificates used on the gateway trust the root certificate.
 If you remove a root certificate computers that use the certificate for authentication purposes will no longer be able to connect to the gateway.
-When you use **Remove-AzureRmVpnClientRootCertificate**, you must supply both the certificate name and a text representation of the certificate data.
+When you use **Remove-AzVpnClientRootCertificate**, you must supply both the certificate name and a text representation of the certificate data.
 For more information about the text representation of a certificate see the *PublicCertData* parameter description.
 
 ## EXAMPLES
@@ -32,14 +32,14 @@ For more information about the text representation of a certificate see the *Pub
 ```
 PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
 PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
-PS C:\> Remove-AzureRmVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway"-VpnClientRootCertificateName "ContosoRootCertificate"
+PS C:\> Remove-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway"-VpnClientRootCertificateName "ContosoRootCertificate"
 ```
 
 This example removes a client root certificate named ContosoRootCertificate from the virtual network gateway ContosoVirtualGateway.
 The first command uses the **Get-Content** cmdlet to get a previously-exported text representation of the certificate; this text representation is stored in a variable named $Text.
 The second command then uses a for loop to extract all the text in $Text except for the first line and the last line.
 This extracted text is stored in a variable named $CertificateText.
-The third command uses the information stored in the $CertificateText variable along with the **Remove-AzureRmVpnClientRootCertificate** cmdlet to remove the certificate from the gateway.
+The third command uses the information stored in the $CertificateText variable along with the **Remove-AzVpnClientRootCertificate** cmdlet to remove the certificate from the gateway.
 
 ## PARAMETERS
 
@@ -47,7 +47,7 @@ The third command uses the information stored in the $CertificateText variable a
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -143,10 +143,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmVpnClientRootCertificate](./Add-AzureRmVpnClientRootCertificate.md)
+[Add-AzVpnClientRootCertificate](./Add-AzVpnClientRootCertificate.md)
 
-[Get-AzureRmVpnClientRootCertificate](./Get-AzureRmVpnClientRootCertificate.md)
+[Get-AzVpnClientRootCertificate](./Get-AzVpnClientRootCertificate.md)
 
-[New-AzureRmVpnClientRootCertificate](./New-AzureRmVpnClientRootCertificate.md)
+[New-AzVpnClientRootCertificate](./New-AzVpnClientRootCertificate.md)
 
 

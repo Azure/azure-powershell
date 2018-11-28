@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/invoke-azurermoperationalinsightsquery
+Module Name: Az.OperationalInsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/invoke-azoperationalinsightsquery
 schema: 2.0.0
 ---
 
-# Invoke-AzureRmOperationalInsightsQuery
+# Invoke-AzOperationalInsightsQuery
 
 ## SYNOPSIS
 Returns search results based on the specified parameters.
@@ -14,20 +14,19 @@ Returns search results based on the specified parameters.
 
 ### ByWorkspaceId (Default)
 ```
-Invoke-AzureRmOperationalInsightsQuery -WorkspaceId <String> -Query <String> [-Timespan <TimeSpan>]
- [-Wait <Int32>] [-IncludeRender] [-IncludeStatistics] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Invoke-AzOperationalInsightsQuery -WorkspaceId <String> -Query <String> [-Timespan <TimeSpan>] [-Wait <Int32>]
+ [-IncludeRender] [-IncludeStatistics] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
-Invoke-AzureRmOperationalInsightsQuery -Workspace <PSWorkspace> -Query <String> [-Timespan <TimeSpan>]
+Invoke-AzOperationalInsightsQuery -Workspace <PSWorkspace> -Query <String> [-Timespan <TimeSpan>]
  [-Wait <Int32>] [-IncludeRender] [-IncludeStatistics] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Invoke-AzureRmOperationalInsightsQuery** cmdlet returns the search results based on the specified parameters.
+The **Invoke-AzOperationalInsightsQuery** cmdlet returns the search results based on the specified parameters.
 You can access the status of the search in the Metadata property of the returned object.
 If the status is Pending, then the search has not completed, and the results will be from the archive.
 You can retrieve the results of the search from the Value property of the returned object.
@@ -36,7 +35,7 @@ You can retrieve the results of the search from the Value property of the return
 
 ### Example 1: Get search results using a query
 ```
-PS C:\> $queryResults = Invoke-AzureRmOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
+PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
 PS C:\> $queryResults.Results
 ...
 ```
@@ -45,7 +44,7 @@ Once invoked, $queryResults.Results will contain all of the resulting rows from 
 
 ### Example 2: Convert $results.Result IEnumberable to an array
 ```
-PS C:\> $queryResults = Invoke-AzureRmOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
+PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
 PS C:\> $resultsArray = [System.Linq.Enumerable]::ToArray($results.Results)
 ...
 ```
@@ -54,7 +53,7 @@ Some queries can result in very large data sets being returned. Because of this,
 
 ### Example 3: Get search results using a query over a specific timeframe
 ```
-PS C:\> $queryResults = Invoke-AzureRmOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -Timespan (New-TimeSpan -Hours 24)
+PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -Timespan (New-TimeSpan -Hours 24)
 PS C:\> $queryResults.Results
 ...
 ```
@@ -63,7 +62,7 @@ The results from this query will be limited to the past 24 hours.
 
 ### Example 4: Include render & statistics in query result
 ```
-PS C:\> $queryResults = Invoke-AzureRmOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -IncludeRender -IncludeStatistics
+PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -IncludeRender -IncludeStatistics
 PS C:\> $queryResults.Results
 ...
 PS C:\> $queryResults.Render
@@ -95,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

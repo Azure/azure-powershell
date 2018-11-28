@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM.Storage
+Module Name: Az.Storage
 ms.assetid: 11AAA319-DDBB-4156-9BE7-4DE8B80A904C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/get-azurermstorageusage
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageusage
 schema: 2.0.0
 ---
 
-# Get-AzureRmStorageUsage
+# Get-AzStorageUsage
 
 ## SYNOPSIS
 Gets the Storage resource usage of the current subscription.
@@ -14,17 +14,17 @@ Gets the Storage resource usage of the current subscription.
 ## SYNTAX
 
 ```
-Get-AzureRmStorageUsage [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzStorageUsage [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmStorageUsage** cmdlet gets the resource usage for Azure Storage for the current subscription.
+The **Get-AzStorageUsage** cmdlet gets the resource usage for Azure Storage for the current subscription.
 
 ## EXAMPLES
 
 ### Example 1: Get the storage resources usage
 ```
-PS C:\>Get-AzureRmStorageUsage
+PS C:\>Get-AzStorageUsage
 ```
 
 This command gets the Storage resources usage of the current subscription.
@@ -32,7 +32,7 @@ This command gets the Storage resources usage of the current subscription.
 
 ### Example 2: Get the storage resources usage of specified location
 ```
-PS C:\>Get-AzureRmStorageUsage -Location 'West US'
+PS C:\>Get-AzStorageUsage -Location 'West US'
 
 LocalizedName : Storage Accounts
 Name          : StorageAccounts
@@ -49,7 +49,7 @@ This command gets the Storage resources usage of of specified location under the
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,6 +91,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure Storage Manager Cmdlets](./AzureRM.Storage.md)
+[Azure Storage Manager Cmdlets](./Az.Storage.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 3B042D79-658F-41F0-BD4D-9955F2E71CA1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/stop-azurekeyvaultcertificateoperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/stop-azkeyvaultcertificateoperation
 schema: 2.0.0
 ---
 
-# Stop-AzureKeyVaultCertificateOperation
+# Stop-AzKeyVaultCertificateOperation
 
 ## SYNOPSIS
 Cancels a certificate operation in key vault.
@@ -15,24 +15,24 @@ Cancels a certificate operation in key vault.
 
 ### Default (Default)
 ```
-Stop-AzureKeyVaultCertificateOperation [-VaultName] <String> [-Name] <String> [-Force]
+Stop-AzKeyVaultCertificateOperation [-VaultName] <String> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Stop-AzureKeyVaultCertificateOperation [-InputObject] <PSKeyVaultCertificateOperation> [-Force]
+Stop-AzKeyVaultCertificateOperation [-InputObject] <PSKeyVaultCertificateOperation> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureKeyVaultCertificateOperation** cmdlet cancels a certificate operation in the Azure Key Vault service.
+The **Stop-AzKeyVaultCertificateOperation** cmdlet cancels a certificate operation in the Azure Key Vault service.
 
 ## EXAMPLES
 
 ### Example 1: Cancel a certificate operation
 ```powershell
-PS C:\> Stop-AzureKeyVaultCertificateOperation -VaultName "Contoso01" -Name "TestCert02" -Force
+PS C:\> Stop-AzKeyVaultCertificateOperation -VaultName "Contoso01" -Name "TestCert02" -Force
 
 Status                    : inProgress
 CancellationRequested     : True
@@ -54,7 +54,7 @@ This command cancels the TestCert02 certificate operation.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -173,7 +173,7 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultCertificateOperation](./Get-AzureKeyVaultCertificateOperation.md)
+[Get-AzKeyVaultCertificateOperation](./Get-AzKeyVaultCertificateOperation.md)
 
-[Remove-AzureKeyVaultCertificateOperation](./Remove-AzureKeyVaultCertificateOperation.md)
+[Remove-AzKeyVaultCertificateOperation](./Remove-AzKeyVaultCertificateOperation.md)
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: C48E204D-D7EC-4EFD-ADC5-C6F593313B9B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermvirtualnetwork
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvirtualnetwork
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVirtualNetwork
+# Remove-AzVirtualNetwork
 
 ## SYNOPSIS
 Removes a virtual network.
@@ -14,27 +14,27 @@ Removes a virtual network.
 ## SYNTAX
 
 ```
-Remove-AzureRmVirtualNetwork -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
+Remove-AzVirtualNetwork -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVirtualNetwork** cmdlet removes an Azure virtual network.
+The **Remove-AzVirtualNetwork** cmdlet removes an Azure virtual network.
 
 ## EXAMPLES
 
 ### 1: Create and delete a virtual network
 ```
-New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
-    $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet 
+New-AzResourceGroup -Name TestResourceGroup -Location centralus
+    $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet 
     -AddressPrefix "10.0.1.0/24"
-    $backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix 
+    $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix 
     "10.0.2.0/24"
 
-New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup 
+New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup 
     -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet
     
-Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup
+Remove-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup
 ```
 
 This example creates a virtual network in a resource group and then immediately deletes it. To suppress the prompt when deleting the virtual network, use the -Force flag.
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -178,10 +178,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVirtualNetwork](./Get-AzureRmVirtualNetwork.md)
+[Get-AzVirtualNetwork](./Get-AzVirtualNetwork.md)
 
-[New-AzureRmVirtualNetwork](./New-AzureRmVirtualNetwork.md)
+[New-AzVirtualNetwork](./New-AzVirtualNetwork.md)
 
-[Set-AzureRmVirtualNetwork](./Set-AzureRmVirtualNetwork.md)
+[Set-AzVirtualNetwork](./Set-AzVirtualNetwork.md)
 
 

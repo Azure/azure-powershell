@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 4A6816DB-0E46-44F0-8AE9-180B1C4AAB22
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/set-azurermactiongroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/set-azactiongroup
 schema: 2.0.0
 ---
 
-# Set-AzureRmActionGroup
+# Set-AzActionGroup
 
 ## SYNOPSIS
 Creates a new or updates an existing action group.
@@ -15,7 +15,7 @@ Creates a new or updates an existing action group.
 
 ### ByPropertyName (Default)
 ```
-Set-AzureRmActionGroup -ResourceGroupName <String> -Name <String> -ShortName <String>
+Set-AzActionGroup -ResourceGroupName <String> -Name <String> -ShortName <String>
  -Receiver <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]>
  [-DisableGroup] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -23,7 +23,7 @@ Set-AzureRmActionGroup -ResourceGroupName <String> -Name <String> -ShortName <St
 
 ### ByResourceId
 ```
-Set-AzureRmActionGroup -ShortName <String>
+Set-AzActionGroup -ShortName <String>
  -Receiver <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]>
  [-DisableGroup] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -31,22 +31,22 @@ Set-AzureRmActionGroup -ShortName <String>
 
 ### ByInputObject
 ```
-Set-AzureRmActionGroup [-ShortName <String>] [-DisableGroup]
+Set-AzActionGroup [-ShortName <String>] [-DisableGroup]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  -InputObject <PSActionGroupResource> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmActionGroup** cmdlet creates a new or updates an existing action group
+The **Set-AzActionGroup** cmdlet creates a new or updates an existing action group
 
 ## EXAMPLES
 
 ### Example 1: Create an Action Group
 ```
-PS C:\>$email1 = New-AzureRmActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
-PS C:\>$sms1 = New-AzureRmActionGroupReceiver -Name 'user2' -SmsReceiver -CountryCode '1' -PhoneNumber '5555555555'
-PS C:\>Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$sms1
+PS C:\>$email1 = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+PS C:\>$sms1 = New-AzActionGroupReceiver -Name 'user2' -SmsReceiver -CountryCode '1' -PhoneNumber '5555555555'
+PS C:\>Set-AzActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$sms1
 ```
 
 The first two commands create two receivers.
@@ -58,7 +58,7 @@ The final command creates an Action Group including the two receivers.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -279,6 +279,6 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmActionGroup](./Get-AzureRmActionGroup.md)
-[Remove-AzureRmActionGroup](./Remove-AzureRmActionGroup.md)
-[New-AzureRmActionGroupReceiver](./AzureRmActionGroupReceiver.md)
+[Get-AzActionGroup](./Get-AzActionGroup.md)
+[Remove-AzActionGroup](./Remove-AzActionGroup.md)
+[New-AzActionGroupReceiver](./AzureRmActionGroupReceiver.md)

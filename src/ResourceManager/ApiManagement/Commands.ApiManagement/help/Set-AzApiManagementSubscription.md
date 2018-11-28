@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 52115C49-0229-4F2C-B7B0-02FC52C1D32D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementsubscription
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementsubscription
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagementSubscription
+# Set-AzApiManagementSubscription
 
 ## SYNOPSIS
 Sets existing subscription details.
@@ -14,21 +14,21 @@ Sets existing subscription details.
 ## SYNTAX
 
 ```
-Set-AzureRmApiManagementSubscription -Context <PsApiManagementContext> -SubscriptionId <String>
- [-Name <String>] [-PrimaryKey <String>] [-SecondaryKey <String>] [-State <PsApiManagementSubscriptionState>]
+Set-AzApiManagementSubscription -Context <PsApiManagementContext> -SubscriptionId <String> [-Name <String>]
+ [-PrimaryKey <String>] [-SecondaryKey <String>] [-State <PsApiManagementSubscriptionState>]
  [-ExpiresOn <DateTime>] [-StateComment <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApiManagementSubscription** cmdlet sets existing subscription details.
+The **Set-AzApiManagementSubscription** cmdlet sets existing subscription details.
 
 ## EXAMPLES
 
 ### Example 1: Set the state and primary and secondary keys for a subscription
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementSubscription -Context $apimContext -SubscriptionId -0123456789 -PrimaryKey "80450f7d0b6d481382113073f67822c1" -SecondaryKey "97d6112c3a8f48d5bf0266b7a09a761c" -State "Active"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementSubscription -Context $apimContext -SubscriptionId -0123456789 -PrimaryKey "80450f7d0b6d481382113073f67822c1" -SecondaryKey "97d6112c3a8f48d5bf0266b7a09a761c" -State "Active"
 ```
 
 This command sets the primary and secondary keys for a subscription and activates it.
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -216,10 +216,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementSubscription](./Get-AzureRmApiManagementSubscription.md)
+[Get-AzApiManagementSubscription](./Get-AzApiManagementSubscription.md)
 
-[New-AzureRmApiManagementSubscription](./New-AzureRmApiManagementSubscription.md)
+[New-AzApiManagementSubscription](./New-AzApiManagementSubscription.md)
 
-[Remove-AzureRmApiManagementSubscription](./Remove-AzureRmApiManagementSubscription.md)
+[Remove-AzApiManagementSubscription](./Remove-AzApiManagementSubscription.md)
 
 

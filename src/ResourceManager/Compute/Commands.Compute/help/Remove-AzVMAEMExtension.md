@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: B1CD5302-9BF0-460E-98FE-F60DFE072848
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmaemextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmaemextension
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVMAEMExtension
+# Remove-AzVMAEMExtension
 
 ## SYNOPSIS
 Removes the AEM extension from a virtual machine.
@@ -14,18 +14,18 @@ Removes the AEM extension from a virtual machine.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
+Remove-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
  [[-OSType] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVMAEMExtension** cmdlet removes the Azure Enhanced Monitoring (AEM) extension from a virtual machine.
+The **Remove-AzVMAEMExtension** cmdlet removes the Azure Enhanced Monitoring (AEM) extension from a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Remove the AEM extension
 ```
-PS C:\> Remove-AzureRmVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
+PS C:\> Remove-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
 ```
 
 This command removes the AEM extension for the virtual machine named contoso-server.
@@ -36,7 +36,7 @@ This command removes the AEM extension for the virtual machine named contoso-ser
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -126,10 +126,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMAEMExtension](./Get-AzureRmVMAEMExtension.md)
+[Get-AzVMAEMExtension](./Get-AzVMAEMExtension.md)
 
-[Set-AzureRmVMAEMExtension](./Set-AzureRmVMAEMExtension.md)
+[Set-AzVMAEMExtension](./Set-AzVMAEMExtension.md)
 
-[Test-AzureRmVMAEMExtension](./Test-AzureRmVMAEMExtension.md)
+[Test-AzVMAEMExtension](./Test-AzVMAEMExtension.md)
 
 

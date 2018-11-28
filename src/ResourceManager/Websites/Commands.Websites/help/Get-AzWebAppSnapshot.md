@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebappsnapshot
+Module Name: Az.Websites
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebappsnapshot
 schema: 2.0.0
 ---
 
-# Get-AzureRmWebAppSnapshot
+# Get-AzWebAppSnapshot
 
 ## SYNOPSIS
 Gets the snapshots available for a web app.
@@ -14,23 +14,23 @@ Gets the snapshots available for a web app.
 
 ### FromResourceName
 ```
-Get-AzureRmWebAppSnapshot [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
+Get-AzWebAppSnapshot [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromWebApp
 ```
-Get-AzureRmWebAppSnapshot [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzWebAppSnapshot [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmWebAppSnapshot** cmdlet returns all snapshots for a web app. Snapshots are automatic backups of a web app's files and settings. A snapshot can be restored with the **Restore-AzureRmWebAppSnapshot** cmdlet.
+The **Get-AzWebAppSnapshot** cmdlet returns all snapshots for a web app. Snapshots are automatic backups of a web app's files and settings. A snapshot can be restored with the **Restore-AzWebAppSnapshot** cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmWebAppSnapshot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoApp" -Slot "Staging"
+PS C:\> Get-AzWebAppSnapshot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoApp" -Slot "Staging"
 ```
 
 Get the snapshots for a web app named "ConstosoApp" with a slot named "Staging" in the "Default-Web-WestUS" resource group
@@ -41,7 +41,7 @@ Get the snapshots for a web app named "ConstosoApp" with a slot named "Staging" 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

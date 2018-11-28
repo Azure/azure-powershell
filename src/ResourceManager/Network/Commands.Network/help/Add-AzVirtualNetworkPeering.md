@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 13901193-8C68-4969-ADCD-2E82EA714354
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azvirtualnetworkpeering
 schema: 2.0.0
 ---
 
-# Add-AzureRmVirtualNetworkPeering
+# Add-AzVirtualNetworkPeering
 
 ## SYNOPSIS
 Creates a peering between two virtual networks.
@@ -14,13 +14,13 @@ Creates a peering between two virtual networks.
 ## SYNTAX
 
 ```
-Add-AzureRmVirtualNetworkPeering -Name <String> -VirtualNetwork <PSVirtualNetwork>
- -RemoteVirtualNetworkId <String> [-BlockVirtualNetworkAccess] [-AllowForwardedTraffic] [-AllowGatewayTransit]
- [-UseRemoteGateways] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Add-AzVirtualNetworkPeering -Name <String> -VirtualNetwork <PSVirtualNetwork> -RemoteVirtualNetworkId <String>
+ [-BlockVirtualNetworkAccess] [-AllowForwardedTraffic] [-AllowGatewayTransit] [-UseRemoteGateways] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmVirtualNetworkPeering** cmdlet creates a peering between two virtual networks.
+The **Add-AzVirtualNetworkPeering** cmdlet creates a peering between two virtual networks.
 
 ## EXAMPLES
 
@@ -31,19 +31,19 @@ $rgName='myResourceGroup'
 $location='eastus'
 
 # Create a resource group.
-New-AzureRmResourceGroup -Name $rgName  -Location $location
+New-AzResourceGroup -Name $rgName  -Location $location
 
 # Create virtual network 1.
-$vnet1 = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet1' -AddressPrefix '10.0.0.0/16' -Location $location
+$vnet1 = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet1' -AddressPrefix '10.0.0.0/16' -Location $location
 
 # Create virtual network 2.
-$vnet2 = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location $location
+$vnet2 = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location $location
 
 # Peer VNet1 to VNet2.
-Add-AzureRmVirtualNetworkPeering -Name myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
+Add-AzVirtualNetworkPeering -Name myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
 
 # Peer VNet2 to VNet1.
-Add-AzureRmVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
+Add-AzVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
 ```
 
 Note that a peering link must be created from vnet1 to vnet2 and vice versa in order for peering to work.
@@ -54,19 +54,19 @@ Note that a peering link must be created from vnet1 to vnet2 and vice versa in o
 $rgName='myResourceGroup'
 
 # Create a resource group.
-New-AzureRmResourceGroup -Name $rgName  -Location westcentralus
+New-AzResourceGroup -Name $rgName  -Location westcentralus
 
 # Create virtual network 1.
-$vnet1 = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet1' -AddressPrefix '10.0.0.0/16' -Location westcentralus
+$vnet1 = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet1' -AddressPrefix '10.0.0.0/16' -Location westcentralus
 
 # Create virtual network 2.
-$vnet2 = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location candacentral
+$vnet2 = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'myVnet2' -AddressPrefix '10.1.0.0/16' -Location candacentral
 
 # Peer VNet1 to VNet2.
-Add-AzureRmVirtualNetworkPeering -Name myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
+Add-AzVirtualNetworkPeering -Name myVnet1ToMyVnet2' -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
 
 # Peer VNet2 to VNet1.
-Add-AzureRmVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
+Add-AzVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
 ```
 
 Here 'myVnet1' in US West Central is peered with 'myVnet2' in Canada Central.
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -227,12 +227,12 @@ Parameters: RemoteVirtualNetworkId (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmVirtualNetwork](./Get-AzureRmVirtualNetwork.md)
+[Get-AzVirtualNetwork](./Get-AzVirtualNetwork.md)
 
-[Get-AzureRmVirtualNetworkPeering](./Get-AzureRmVirtualNetworkPeering.md)
+[Get-AzVirtualNetworkPeering](./Get-AzVirtualNetworkPeering.md)
 
-[Remove-AzureRmVirtualNetworkPeering](./Remove-AzureRmVirtualNetworkPeering.md)
+[Remove-AzVirtualNetworkPeering](./Remove-AzVirtualNetworkPeering.md)
 
-[Set-AzureRmVirtualNetworkPeering](./Set-AzureRmVirtualNetworkPeering.md)
+[Set-AzVirtualNetworkPeering](./Set-AzVirtualNetworkPeering.md)
 
 

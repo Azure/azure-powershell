@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
-Module Name: AzureRM.Media
+Module Name: Az.Media
 ms.assetid: 5CEA7323-4CF7-42B2-BA94-BB3C8F73D2E9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/new-azurermmediaservice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.media/new-azmediaservice
 schema: 2.0.0
 ---
 
-# New-AzureRmMediaService
+# New-AzMediaService
 
 ## SYNOPSIS
 Creates a media service if the media service already exists, all its properties are updated with the input provided.
@@ -15,20 +15,20 @@ Creates a media service if the media service already exists, all its properties 
 
 ### StorageAccountIdParamSet
 ```
-New-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Location] <String>
+New-AzMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Location] <String>
  [-StorageAccountId] <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### StorageAccountsParamSet
 ```
-New-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Location] <String>
+New-AzMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Location] <String>
  [-StorageAccounts] <PSStorageAccount[]> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmMediaService** cmdlet creates a media service.
+The **New-AzMediaService** cmdlet creates a media service.
 If the media service already exists, this cmdlet update its properties.
 
 ## EXAMPLES
@@ -49,13 +49,13 @@ $Tags = @{"tag1" = "value1"; "tag2" = "value2"}
 $MediaServiceName = "MediaService1"
 
 # Resource Group
-PS C:\> New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+PS C:\> New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 # Storage
-$StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -Location $Location -Type $StorageType
+$StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -Location $Location -Type $StorageType
 
 # Media Service
-PS C:\> New-AzureRmMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccountId $StorageAccount.Id -Tags $Tags
+PS C:\> New-AzMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccountId $StorageAccount.Id -Tags $Tags
 ```
 
 This example shows how to  create a media service with specifying primary storage account only.
@@ -79,22 +79,22 @@ $Tags = @{"tag1" = "value1"; "tag2" = "value2"}
 $MediaServiceName = "MediaService1"
 
 # Resource Group
-PS C:\> New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+PS C:\> New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 # Storage
-$StorageAccount1 = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName1 -Location $Location -Type $StorageType
+$StorageAccount1 = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName1 -Location $Location -Type $StorageType
 
 
-$StorageAccount2 = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName2 -Location $Location -Type $StorageType
+$StorageAccount2 = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName2 -Location $Location -Type $StorageType
 
 # Media Service
 
 ## Setup the storage configuration object.
-PS C:\> $PrimaryStorageAccount = New-AzureRmMediaServiceStorageConfig -StorageAccountId $StorageAccount1.Id -IsPrimary
-PS C:\> $SecondaryStorageAccount = New-AzureRmMediaServiceStorageConfig -StorageAccountId $StorageAccount2.Id
+PS C:\> $PrimaryStorageAccount = New-AzMediaServiceStorageConfig -StorageAccountId $StorageAccount1.Id -IsPrimary
+PS C:\> $SecondaryStorageAccount = New-AzMediaServiceStorageConfig -StorageAccountId $StorageAccount2.Id
 PS C:\> $StorageAccounts = @($PrimaryStorageAccount, $SecondaryStorageAccount)
 
-## Create a media service.New-AzureRmMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccounts $StorageAccounts -Tags $Tags
+## Create a media service.New-AzMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccounts $StorageAccounts -Tags $Tags
 ```
 
 This example shows how to create a media service with multiple storage accounts.
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -255,10 +255,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmMediaService](./Get-AzureRmMediaService.md)
+[Get-AzMediaService](./Get-AzMediaService.md)
 
-[Remove-AzureRmMediaService](./Remove-AzureRmMediaService.md)
+[Remove-AzMediaService](./Remove-AzMediaService.md)
 
-[Set-AzureRmMediaService](./Set-AzureRmMediaService.md)
+[Set-AzMediaService](./Set-AzMediaService.md)
 
 

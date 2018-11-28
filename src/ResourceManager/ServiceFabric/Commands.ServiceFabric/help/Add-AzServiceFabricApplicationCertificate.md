@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/add-azurermservicefabricapplicationcertificate
+Module Name: Az.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/add-azservicefabricapplicationcertificate
 schema: 2.0.0
 ---
 
-# Add-AzureRmServiceFabricApplicationCertificate
+# Add-AzServiceFabricApplicationCertificate
 
 ## SYNOPSIS
 Add a new certificate to the Virtual Machine Scale Set(s) that make up the cluster. The certificate is intended to be used as an application certificate.
@@ -14,14 +14,14 @@ Add a new certificate to the Virtual Machine Scale Set(s) that make up the clust
 
 ### ByExistingKeyVault
 ```
-Add-AzureRmServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] <String>
+Add-AzServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] <String>
  -SecretIdentifier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
 ```
-Add-AzureRmServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] <String>
+Add-AzServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] <String>
  [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] [-CertificateOutputFolder <String>]
  [-CertificatePassword <SecureString>] -CertificateSubjectName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -29,21 +29,21 @@ Add-AzureRmServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-N
 
 ### ByExistingPfxAndVaultName
 ```
-Add-AzureRmServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] <String>
+Add-AzServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] <String>
  [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] -CertificateFile <String>
  [-CertificatePassword <SecureString>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use **Add-AzureRmServiceFabricApplicationCertificate** to install a certificate to all nodes in the cluster. 
+Use **Add-AzServiceFabricApplicationCertificate** to install a certificate to all nodes in the cluster. 
 You can specify a certificate you already have or have the system generate a new one for you, and upload it to a new or existing Azure key vault.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -SecretIdentifier 'https://contoso03vault.vault.azure.net/secrets/contoso03vaultrg/7f7de9131c034172b9df37ccc549524f'
+PS c:> Add-AzServiceFabricApplicationCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -SecretIdentifier 'https://contoso03vault.vault.azure.net/secrets/contoso03vaultrg/7f7de9131c034172b9df37ccc549524f'
 ```
 
 This command will add a certificate from existing Azure key vault to all node types of the cluster.
@@ -51,7 +51,7 @@ This command will add a certificate from existing Azure key vault to all node ty
 ### Example 2
 ```
 PS c:\> $pwd = ConvertTo-SecureString -String '123' -AsPlainText -Force
-PS C:\> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group2' -Name 'Contoso02SFCluster' -KeyVaultName 'Contoso02Vault' -KeyVaultResouceGroupName 'Contoso02VaultRg'
+PS C:\> Add-AzServiceFabricApplicationCertificate -ResourceGroupName 'Group2' -Name 'Contoso02SFCluster' -KeyVaultName 'Contoso02Vault' -KeyVaultResouceGroupName 'Contoso02VaultRg'
         -CertificateSubjectName 'cn=Contoso.com' -CertificateOutputFolder 'c:\test' -CertificatePassword $pwd
 ```
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -258,6 +258,6 @@ Parameters: CertificatePassword (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmServiceFabricClusterCertificate](./Add-AzureRmServiceFabricClusterCertificate.md)
+[Add-AzServiceFabricClusterCertificate](./Add-AzServiceFabricClusterCertificate.md)
 
-[New-AzureRmServiceFabricCluster](./New-AzureRmServiceFabricCluster.md)
+[New-AzServiceFabricCluster](./New-AzServiceFabricCluster.md)

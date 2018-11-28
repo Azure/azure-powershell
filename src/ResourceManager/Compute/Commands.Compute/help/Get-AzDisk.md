@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermdisk
+Module Name: Az.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azdisk
 schema: 2.0.0
 ---
 
-# Get-AzureRmDisk
+# Get-AzDisk
 
 ## SYNOPSIS
 Gets the properties of a Managed disk.
@@ -13,32 +13,32 @@ Gets the properties of a Managed disk.
 ## SYNTAX
 
 ```
-Get-AzureRmDisk [[-ResourceGroupName] <String>] [[-DiskName] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDisk [[-ResourceGroupName] <String>] [[-DiskName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDisk** cmdlet gets the properties of a Managed disk.
+The **Get-AzDisk** cmdlet gets the properties of a Managed disk.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01'
+PS C:\> Get-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01'
 ```
 
 This command gets the properties of the disk named 'Disk01' in the resource group 'ResourceGroup01'.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmDisk -ResourceGroupName 'ResourceGroup01'
+PS C:\> Get-AzDisk -ResourceGroupName 'ResourceGroup01'
 ```
 
 This command gets the properties of all disks in the resource group 'ResourceGroup01'.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmDisk
+PS C:\> Get-AzDisk
 ```
 
 This command gets the properties of all disks under the subscription.
@@ -49,7 +49,7 @@ This command gets the properties of all disks under the subscription.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

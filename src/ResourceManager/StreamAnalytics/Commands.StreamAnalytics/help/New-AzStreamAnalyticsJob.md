@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM.StreamAnalytics
+Module Name: Az.StreamAnalytics
 ms.assetid: F281B351-F7C7-47D1-9745-FFE4BAA840FD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/new-azstreamanalyticsjob
 schema: 2.0.0
 ---
 
-# New-AzureRmStreamAnalyticsJob
+# New-AzStreamAnalyticsJob
 
 ## SYNOPSIS
 Creates or updates a Stream Analytics job.
@@ -14,12 +14,12 @@ Creates or updates a Stream Analytics job.
 ## SYNTAX
 
 ```
-New-AzureRmStreamAnalyticsJob [[-Name] <String>] [-File] <String> [-Force] [-ResourceGroupName] <String>
+New-AzStreamAnalyticsJob [[-Name] <String>] [-File] <String> [-Force] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmStreamAnalyticsJob** cmdlet creates a new Stream Analytics job in Azure or updates the definition of an existing specified job.
+The **New-AzStreamAnalyticsJob** cmdlet creates a new Stream Analytics job in Azure or updates the definition of an existing specified job.
 The name of the job can be specified in the .JSON file or on the command line.
 If both are specified, the name on command line must match the name in the file.
 If you specify a job name that already exists and do not specify the *Force* parameter, the cmdlet will ask whether or not to replace the existing job.
@@ -29,7 +29,7 @@ If you specify the *Force* parameter and specify an existing job name, the job d
 
 ### EXAMPLE 1: Create a job
 ```
-PS C:\>New-AzureRmStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\JobDefinition.json"
+PS C:\>New-AzStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\JobDefinition.json"
 ```
 
 This command creates a job from the definition in JobDefinition.json.
@@ -37,7 +37,7 @@ If an existing job with the specified name in the job definition file is already
 
 ### EXAMPLE 2: Replace a job definition
 ```
-PS C:\>New-AzureRmStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\JobDefinition.json" -Name "StreamingJob" -Force
+PS C:\>New-AzStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\JobDefinition.json" -Name "StreamingJob" -Force
 ```
 
 This command replaces the job definition for StreamingJob without confirmation.
@@ -48,7 +48,7 @@ This command replaces the job definition for StreamingJob without confirmation.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -165,14 +165,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmStreamAnalyticsJob](./Get-AzureRmStreamAnalyticsJob.md)
+[Get-AzStreamAnalyticsJob](./Get-AzStreamAnalyticsJob.md)
 
-[Remove-AzureRmStreamAnalyticsJob](./Remove-AzureRmStreamAnalyticsJob.md)
+[Remove-AzStreamAnalyticsJob](./Remove-AzStreamAnalyticsJob.md)
 
-[Start-AzureRmStreamAnalyticsJob](./Start-AzureRmStreamAnalyticsJob.md)
+[Start-AzStreamAnalyticsJob](./Start-AzStreamAnalyticsJob.md)
 
-[Stop-AzureRmStreamAnalyticsJob](./Stop-AzureRmStreamAnalyticsJob.md)
+[Stop-AzStreamAnalyticsJob](./Stop-AzStreamAnalyticsJob.md)
 
-[Stop-AzureRmStreamAnalyticsJob](./Stop-AzureRmStreamAnalyticsJob.md)
+[Stop-AzStreamAnalyticsJob](./Stop-AzStreamAnalyticsJob.md)
 
 

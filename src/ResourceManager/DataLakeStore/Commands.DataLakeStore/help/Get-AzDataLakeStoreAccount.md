@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: 234D579E-B62D-4D70-8D2E-22AC0D9AC513
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/get-azdatalakestoreaccount
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataLakeStoreAccount
+# Get-AzDataLakeStoreAccount
 
 ## SYNOPSIS
 Gets details of a Data Lake Store account.
@@ -15,29 +15,29 @@ Gets details of a Data Lake Store account.
 
 ### GetAllInSubscription (Default)
 ```
-Get-AzureRmDataLakeStoreAccount [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataLakeStoreAccount [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceGroup
 ```
-Get-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataLakeStoreAccount [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetBySpecificAccount
 ```
-Get-AzureRmDataLakeStoreAccount [[-ResourceGroupName] <String>] [-Name] <String>
+Get-AzDataLakeStoreAccount [[-ResourceGroupName] <String>] [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataLakeStoreAccount** cmdlet gets details of a Data Lake Store account.
+The **Get-AzDataLakeStoreAccount** cmdlet gets details of a Data Lake Store account.
 
 ## EXAMPLES
 
 ### Example 1: Get a Data Lake Store account
 ```
-PS C:\>Get-AzureRmDataLakeStoreAccount -Name "ContosoADL"
+PS C:\>Get-AzDataLakeStoreAccount -Name "ContosoADL"
 ```
 
 This command gets the account named ContosoADL.
@@ -48,7 +48,7 @@ This command gets the account named ContosoADL.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,12 +116,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmDataLakeStoreAccount](./New-AzureRmDataLakeStoreAccount.md)
+[New-AzDataLakeStoreAccount](./New-AzDataLakeStoreAccount.md)
 
-[Remove-AzureRmDataLakeStoreAccount](./Remove-AzureRmDataLakeStoreAccount.md)
+[Remove-AzDataLakeStoreAccount](./Remove-AzDataLakeStoreAccount.md)
 
-[Set-AzureRmDataLakeStoreAccount](./Set-AzureRmDataLakeStoreAccount.md)
+[Set-AzDataLakeStoreAccount](./Set-AzDataLakeStoreAccount.md)
 
-[Test-AzureRmDataLakeStoreAccount](./Test-AzureRmDataLakeStoreAccount.md)
+[Test-AzDataLakeStoreAccount](./Test-AzDataLakeStoreAccount.md)
 
 

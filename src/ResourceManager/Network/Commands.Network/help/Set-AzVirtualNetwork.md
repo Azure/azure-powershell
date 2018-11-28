@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 93D8A341-540A-43F1-8C62-28323EAA58E0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermvirtualnetwork
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetwork
 schema: 2.0.0
 ---
 
-# Set-AzureRmVirtualNetwork
+# Set-AzVirtualNetwork
 
 ## SYNOPSIS
 Sets the goal state for a virtual network.
@@ -14,30 +14,30 @@ Sets the goal state for a virtual network.
 ## SYNTAX
 
 ```
-Set-AzureRmVirtualNetwork -VirtualNetwork <PSVirtualNetwork> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzVirtualNetwork -VirtualNetwork <PSVirtualNetwork> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVirtualNetwork** cmdlet sets the goal state for an Azure virtual network.
+The **Set-AzVirtualNetwork** cmdlet sets the goal state for an Azure virtual network.
 
 ## EXAMPLES
 
 ### 1: Creates a virtual network and removes one of its subnets
 ```
-New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
-    $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" ## Create resource group
-$backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.0.2.0/24" ## Create backend subnet
+New-AzResourceGroup -Name TestResourceGroup -Location centralus
+    $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" ## Create resource group
+$backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.0.2.0/24" ## Create backend subnet
 
-$virtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName 
+$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName 
     TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet ## Create virtual network
 
-Remove-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork $virtualNetwork ## Remove subnet from in memory representation of virtual network
+Remove-AzVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork $virtualNetwork ## Remove subnet from in memory representation of virtual network
 
-$virtualNetwork | Set-AzureRmVirtualNetwork ## Remove subnet from virtual network
+$virtualNetwork | Set-AzVirtualNetwork ## Remove subnet from virtual network
 ```
 
-This example creates a virtual network called TestResourceGroup with two subnets: frontendSubnet and backendSubnet. Then it removes backendSubnet subnet from the in-memory representation of the virtual network. The Set-AzureRmVirtualNetwork cmdlet is then used to write the modified virtual network state on the service side. When the Set-AzureRmVirtualNetwork cmdlet is executed, the backendSubnet is removed.
+This example creates a virtual network called TestResourceGroup with two subnets: frontendSubnet and backendSubnet. Then it removes backendSubnet subnet from the in-memory representation of the virtual network. The Set-AzVirtualNetwork cmdlet is then used to write the modified virtual network state on the service side. When the Set-AzVirtualNetwork cmdlet is executed, the backendSubnet is removed.
 
 ## PARAMETERS
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -102,12 +102,12 @@ Parameters: VirtualNetwork (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmVirtualNetwork](./Get-AzureRmVirtualNetwork.md)
+[Get-AzVirtualNetwork](./Get-AzVirtualNetwork.md)
 
-[Get-AzureRmVirtualNetwork](./Get-AzureRmVirtualNetwork.md)
+[Get-AzVirtualNetwork](./Get-AzVirtualNetwork.md)
 
-[New-AzureRmVirtualNetwork](./New-AzureRmVirtualNetwork.md)
+[New-AzVirtualNetwork](./New-AzVirtualNetwork.md)
 
-[Remove-AzureRmVirtualNetwork](./Remove-AzureRmVirtualNetwork.md)
+[Remove-AzVirtualNetwork](./Remove-AzVirtualNetwork.md)
 
 

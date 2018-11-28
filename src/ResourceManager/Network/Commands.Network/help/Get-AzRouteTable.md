@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 4F487FCA-930D-4D56-8D28-7693312E1A01
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermroutetable
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azroutetable
 schema: 2.0.0
 ---
 
-# Get-AzureRmRouteTable
+# Get-AzRouteTable
 
 ## SYNOPSIS
 Gets route tables.
@@ -15,25 +15,25 @@ Gets route tables.
 
 ### NoExpand (Default)
 ```
-Get-AzureRmRouteTable [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzRouteTable [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### Expand
 ```
-Get-AzureRmRouteTable -ResourceGroupName <String> -Name <String> -ExpandResource <String>
+Get-AzRouteTable -ResourceGroupName <String> -Name <String> -ExpandResource <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRouteTable** cmdlet gets Azure route tables.
+The **Get-AzRouteTable** cmdlet gets Azure route tables.
 You can get a single route table, or get all the route tables in a resource group or in your subscription.
 
 ## EXAMPLES
 
 ### Example 1: Get a route table
 ```
-PS C:\>Get-AzureRmRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
+PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01"
 Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
@@ -65,7 +65,7 @@ This command gets the route table named RouteTable01 in the resource group named
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -158,10 +158,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmRouteTable](./New-AzureRmRouteTable.md)
+[New-AzRouteTable](./New-AzRouteTable.md)
 
-[Remove-AzureRmRouteTable](./Remove-AzureRmRouteTable.md)
+[Remove-AzRouteTable](./Remove-AzRouteTable.md)
 
-[Set-AzureRmRouteTable](./Set-AzureRmRouteTable.md)
+[Set-AzRouteTable](./Set-AzRouteTable.md)
 
 

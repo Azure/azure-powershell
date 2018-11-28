@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewayprobehealthresponsematch
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayprobehealthresponsematch
 schema: 2.0.0
 ---
 
-# New-AzureRmApplicationGatewayProbeHealthResponseMatch
+# New-AzApplicationGatewayProbeHealthResponseMatch
 
 ## SYNOPSIS
 Creates a health probe response match used by Health Probe for an application gateway.
@@ -13,19 +13,19 @@ Creates a health probe response match used by Health Probe for an application ga
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayProbeHealthResponseMatch [-Body <String>]
+New-AzApplicationGatewayProbeHealthResponseMatch [-Body <String>]
  [-StatusCode <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**The Add-AzureRmApplicationGatewayProbeHealthResponseMatch** cmdlet creates a health probe response match used by Health Probe for an application gateway.
+**The Add-AzApplicationGatewayProbeHealthResponseMatch** cmdlet creates a health probe response match used by Health Probe for an application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>$responsematch = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "helloworld" -StatusCode "200-399","503"
+PS C:\>$responsematch = New-AzApplicationGatewayProbeHealthResponseMatch -Body "helloworld" -StatusCode "200-399","503"
 ```
 
 This command creates a health response match which can be passed to ProbeConfig as a parameter.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: E1461540-DEAE-43C3-83DF-7DF3FE8D4EC0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactorygateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactorygateway
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryGateway
+# Remove-AzDataFactoryGateway
 
 ## SYNOPSIS
 Removes a gateway from Azure Data Factory.
@@ -15,25 +15,25 @@ Removes a gateway from Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmDataFactoryGateway [-DataFactoryName] <String> [-Name] <String> [-Force]
+Remove-AzDataFactoryGateway [-DataFactoryName] <String> [-Name] <String> [-Force]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Remove-AzureRmDataFactoryGateway [-DataFactory] <PSDataFactory> [-Name] <String> [-Force]
+Remove-AzDataFactoryGateway [-DataFactory] <PSDataFactory> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDataFactoryGateway** cmdlet removes the specified gateway from Azure Data Factory.
+The **Remove-AzDataFactoryGateway** cmdlet removes the specified gateway from Azure Data Factory.
 
 ## EXAMPLES
 
 ### Example 1: Remove a gateway
 ```
-PS C:\>Remove-AzureRmDataFactoryGateway -Name "ContosoGateway" -DataFactoryName "WikiADF" -ResourceGroupName "ADF"
+PS C:\>Remove-AzDataFactoryGateway -Name "ContosoGateway" -DataFactoryName "WikiADF" -ResourceGroupName "ADF"
 Confirm
 Are you sure you want to remove gateway 'ContosoGateway' in data factory 'WikiADF'? 
  [Y] Yes  [N] No  [S] Suspend  [?] Help (default is Y): Y
@@ -186,10 +186,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryGateway](./Get-AzureRmDataFactoryGateway.md)
+[Get-AzDataFactoryGateway](./Get-AzDataFactoryGateway.md)
 
-[New-AzureRmDataFactoryGateway](./New-AzureRmDataFactoryGateway.md)
+[New-AzDataFactoryGateway](./New-AzDataFactoryGateway.md)
 
-[Set-AzureRmDataFactoryGateway](./Set-AzureRmDataFactoryGateway.md)
+[Set-AzDataFactoryGateway](./Set-AzDataFactoryGateway.md)
 
 

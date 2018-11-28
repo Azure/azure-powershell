@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: A4C605DD-9B2E-4EE9-BD1F-1352D605C33F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/new-azurermactiongroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azactiongroup
 schema: 2.0.0
 ---
 
-# New-AzureRmActionGroup
+# New-AzActionGroup
 
 ## SYNOPSIS
 Creates an ActionGroup reference object in memory.
@@ -14,13 +14,13 @@ Creates an ActionGroup reference object in memory.
 ## SYNTAX
 
 ```
-New-AzureRmActionGroup -ActionGroupId <String>
+New-AzActionGroup -ActionGroupId <String>
  [-WebhookProperty <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmActionGroup** cmdlet creates an action group reference object in memory.
+The **New-AzActionGroup** cmdlet creates an action group reference object in memory.
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ The **New-AzureRmActionGroup** cmdlet creates an action group reference object i
 ```
 PS C:\>$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 PS C:\>$dict.Add('key1', 'value1')
-PS C:\>$actionGrp1 = New-AzureRmActionGroup -ActionGroupId 'actiongr1' -WebhookProperties $dict
+PS C:\>$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProperties $dict
 ```
 
 ## PARAMETERS
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -95,15 +95,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmActivityLogAlert](./Set-AzureRmActivityLogAlert.md)
+[Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
 
-[Enable-AzureRmActivityLogAlert](./Enable-AzureRmActivityLogAlert.md)
+[Enable-AzActivityLogAlert](./Enable-AzActivityLogAlert.md)
 
-[Disable-AzureRmActivityLogAlert](./Disable-AzureRmActivityLogAlert.md)
+[Disable-AzActivityLogAlert](./Disable-AzActivityLogAlert.md)
 
-[Get-AzureRmActivityLogAlert](./Get-AzureRmActivityLogAlert.md)
+[Get-AzActivityLogAlert](./Get-AzActivityLogAlert.md)
 
-[Remove-AzureRmActivityLogAlert](./Remove-AzureRmActivityLogAlert.md)
+[Remove-AzActivityLogAlert](./Remove-AzActivityLogAlert.md)
 
-[New-AzureRmActivityLogAlertCondition](./Get-AzureRmActivityLogAlertCondition.md)
+[New-AzActivityLogAlertCondition](./Get-AzActivityLogAlertCondition.md)
 

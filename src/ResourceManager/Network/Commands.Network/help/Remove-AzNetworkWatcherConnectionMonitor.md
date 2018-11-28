@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermnetworkwatcher
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznetworkwatcher
 schema: 2.0.0
 ---
 
-# Remove-AzureRmNetworkWatcherConnectionMonitor
+# Remove-AzNetworkWatcherConnectionMonitor
 
 ## SYNOPSIS
 Remove connection monitor.
@@ -14,43 +14,43 @@ Remove connection monitor.
 
 ### SetByName (Default)
 ```
-Remove-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String>
+Remove-AzNetworkWatcherConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String>
  -Name <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
-Remove-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> -Name <String> [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> -Name <String> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByLocation
 ```
-Remove-AzureRmNetworkWatcherConnectionMonitor -Location <String> -Name <String> [-PassThru] [-AsJob]
+Remove-AzNetworkWatcherConnectionMonitor -Location <String> -Name <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-Remove-AzureRmNetworkWatcherConnectionMonitor -ResourceId <String> [-PassThru] [-AsJob]
+Remove-AzNetworkWatcherConnectionMonitor -ResourceId <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObject
 ```
-Remove-AzureRmNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResult> [-PassThru] [-AsJob]
+Remove-AzNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResult> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The remove-AzureRmNetworkWatcherConnectionMonitor cmdlet removes the specified connection monitor.
+The remove-AzNetworkWatcherConnectionMonitor cmdlet removes the specified connection monitor.
 
 ## EXAMPLES
 
 ### Example 1: Remove the specified connection monitor
 ```
-PS C:\> Remove-AzureRmNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm
+PS C:\> Remove-AzNetworkWatcherConnectionMonitor -Location centraluseuap -Name cm
 ```
 
 In this example we delete the connection monitor specified by location and name.
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -260,56 +260,56 @@ Keywords: azure, azurerm, arm, resource, connectivity, management, manager, netw
 
 ## RELATED LINKS
 
-[New-AzureRmNetworkWatcher]()
+[New-AzNetworkWatcher]()
 
-[Get-AzureRmNetworkWatcher]()
+[Get-AzNetworkWatcher]()
 
-[Remove-AzureRmNetworkWatcher]()
+[Remove-AzNetworkWatcher]()
 
-[Get-AzureRmNetworkWatcherNextHop]()
+[Get-AzNetworkWatcherNextHop]()
 
-[Get-AzureRmNetworkWatcherSecurityGroupView]()
+[Get-AzNetworkWatcherSecurityGroupView]()
 
-[Get-AzureRmNetworkWatcherTopology]()
+[Get-AzNetworkWatcherTopology]()
 
-[Get-AzureRmNetworkWatcherTroubleshootingResult]()
+[Get-AzNetworkWatcherTroubleshootingResult]()
 
-[New-AzureRmNetworkWatcherPacketCapture]()
+[New-AzNetworkWatcherPacketCapture]()
 
-[New-AzureRmPacketCaptureFilterConfig]()
+[New-AzPacketCaptureFilterConfig]()
 
-[Get-AzureRmNetworkWatcherPacketCapture]()
+[Get-AzNetworkWatcherPacketCapture]()
 
-[Remove-AzureRmNetworkWatcherPacketCapture]()
+[Remove-AzNetworkWatcherPacketCapture]()
 
-[Stop-AzureRmNetworkWatcherPacketCapture]()
+[Stop-AzNetworkWatcherPacketCapture]()
 
-[Get-AzureRmNetworkWatcherConnectionMonitor]()
+[Get-AzNetworkWatcherConnectionMonitor]()
 
-[Get-AzureRmNetworkWatcherConnectionMonitorReport]()
+[Get-AzNetworkWatcherConnectionMonitorReport]()
 
-[Remove-AzureRmNetworkWatcherConnectionMonitor]()
+[Remove-AzNetworkWatcherConnectionMonitor]()
 
-[Set-AzureRmNetworkWatcherConnectionMonitor]()
+[Set-AzNetworkWatcherConnectionMonitor]()
 
-[Stop-AzureRmNetworkWatcherConnectionMonitor]()
+[Stop-AzNetworkWatcherConnectionMonitor]()
 
-[New-AzureRmNetworkWatcherConnectionMonitor]()
+[New-AzNetworkWatcherConnectionMonitor]()
 
-[New-AzureRmNetworkWatcherProtocolConfiguration]()
+[New-AzNetworkWatcherProtocolConfiguration]()
 
-[Test-AzureRmNetworkWatcherIPFlow]()
+[Test-AzNetworkWatcherIPFlow]()
 
-[Test-AzureRmNetworkWatcherConnectivity]()
+[Test-AzNetworkWatcherConnectivity]()
 
-[Start-AzureRmNetworkWatcherResourceTroubleshooting]()
+[Start-AzNetworkWatcherResourceTroubleshooting]()
 
-[Start-AzureRmNetworkWatcherConnectionMonitor]()
+[Start-AzNetworkWatcherConnectionMonitor]()
 
-[Set-AzureRmNetworkWatcherConfigFlowLog]()
+[Set-AzNetworkWatcherConfigFlowLog]()
 
-[Get-AzureRMNetworkWatcherReachabilityReport]()
+[Get-AzNetworkWatcherReachabilityReport]()
 
-[Get-AzureRmNetworkWatcherReachabilityProvidersList]()
+[Get-AzNetworkWatcherReachabilityProvidersList]()
 
-[Get-AzureRmNetworkWatcherFlowLogStatus]()
+[Get-AzNetworkWatcherFlowLogStatus]()

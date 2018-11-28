@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: A16C2084-30A4-4AB8-AE22-28CC6E74FD48
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvm
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvm
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVM
+# Remove-AzVM
 
 ## SYNOPSIS
 Removes a virtual machine from Azure.
@@ -15,24 +15,24 @@ Removes a virtual machine from Azure.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Remove-AzureRmVM [-Name] <String> [-Force] [-ResourceGroupName] <String> [-AsJob]
+Remove-AzVM [-Name] <String> [-Force] [-ResourceGroupName] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Remove-AzureRmVM [-Name] <String> [-Force] [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzVM [-Name] <String> [-Force] [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVM** cmdlet removes a virtual machine from Azure.
+The **Remove-AzVM** cmdlet removes a virtual machine from Azure.
 
 ## EXAMPLES
 
 ### Example 1: Remove a virtual machine
 ```
-PS C:\> Remove-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+PS C:\> Remove-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command removes the virtual machine named VirtualMachine07 in the resource group ResourceGroup11.
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -175,16 +175,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVM](./Get-AzureRmVM.md)
+[Get-AzVM](./Get-AzVM.md)
 
-[New-AzureRmVM](./New-AzureRmVM.md)
+[New-AzVM](./New-AzVM.md)
 
-[Restart-AzureRmVM](./Restart-AzureRmVM.md)
+[Restart-AzVM](./Restart-AzVM.md)
 
-[Start-AzureRmVM](./Start-AzureRmVM.md)
+[Start-AzVM](./Start-AzVM.md)
 
-[Stop-AzureRmVM](./Stop-AzureRmVM.md)
+[Stop-AzVM](./Stop-AzVM.md)
 
-[Update-AzureRmVM](./Update-AzureRmVM.md)
+[Update-AzVM](./Update-AzVM.md)
 
 

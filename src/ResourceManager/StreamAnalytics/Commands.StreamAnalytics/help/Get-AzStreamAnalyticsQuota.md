@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM.StreamAnalytics
+Module Name: Az.StreamAnalytics
 ms.assetid: ECD0950F-2490-49E2-85E6-5FA2A59364E6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/get-azurermstreamanalyticsquota
+online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/get-azstreamanalyticsquota
 schema: 2.0.0
 ---
 
-# Get-AzureRmStreamAnalyticsQuota
+# Get-AzStreamAnalyticsQuota
 
 ## SYNOPSIS
 Gets information about the Streaming Unit quota for a region.
@@ -14,18 +14,17 @@ Gets information about the Streaming Unit quota for a region.
 ## SYNTAX
 
 ```
-Get-AzureRmStreamAnalyticsQuota [-Location] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzStreamAnalyticsQuota [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmStreamAnalyticsQuota** cmdlet gets information about the Streaming Unit quota for a region.
+The **Get-AzStreamAnalyticsQuota** cmdlet gets information about the Streaming Unit quota for a region.
 
 ## EXAMPLES
 
 ### EXAMPLE 1: Get information about the Streaming Unit quota for a region
 ```
-PS C:\>Get-AzureRmStreamAnalyticsQuota -Location "West US"
+PS C:\>Get-AzStreamAnalyticsQuota -Location "West US"
 ```
 
 This command returns information about Streaming Unit quota and usage in the West US region.
@@ -36,7 +35,7 @@ This command returns information about Streaming Unit quota and usage in the Wes
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,6 +77,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure Stream Analytics Cmdlets](./AzureRM.StreamAnalytics.md)
+[Azure Stream Analytics Cmdlets](./Az.StreamAnalytics.md)
 
 

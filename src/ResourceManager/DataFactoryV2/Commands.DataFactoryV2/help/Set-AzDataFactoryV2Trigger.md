@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/set-azurermdatafactoryv2trigger
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/set-azdatafactoryv2trigger
 schema: 2.0.0
 ---
 
-# Set-AzureRmDataFactoryV2Trigger
+# Set-AzDataFactoryV2Trigger
 
 ## SYNOPSIS
 Creates a trigger in a data factory.
@@ -14,25 +14,25 @@ Creates a trigger in a data factory.
 
 ### ByFactoryName (Default)
 ```
-Set-AzureRmDataFactoryV2Trigger [-Name] <String> [-DefinitionFile] <String> [-ResourceGroupName] <String>
+Set-AzDataFactoryV2Trigger [-Name] <String> [-DefinitionFile] <String> [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzureRmDataFactoryV2Trigger [-DefinitionFile] <String> [-ResourceId] <String> [-Force]
+Set-AzDataFactoryV2Trigger [-DefinitionFile] <String> [-ResourceId] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmDataFactoryV2Trigger** cmdlet creates a trigger in a data factory. If you specify a name for a trigger that already exists, the cmdlet prompts for confirmation before replacing the trigger. If you specify the _Force_ parameter, the cmdlet replaces the existing trigger without prompting for confirmation. Triggers are created in the 'Stopped' state, meaning that they don't immediately begin invoking pipelines that they reference.
+The **Set-AzDataFactoryV2Trigger** cmdlet creates a trigger in a data factory. If you specify a name for a trigger that already exists, the cmdlet prompts for confirmation before replacing the trigger. If you specify the _Force_ parameter, the cmdlet replaces the existing trigger without prompting for confirmation. Triggers are created in the 'Stopped' state, meaning that they don't immediately begin invoking pipelines that they reference.
 
 ## EXAMPLES
 
 ### Example 1: Create a trigger
 ```
-PS C:\> Set-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "ScheduledTrigger" -DefinitionFile ".\scheduledTrigger.json"
+PS C:\> Set-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "ScheduledTrigger" -DefinitionFile ".\scheduledTrigger.json"
 
     TriggerName       : ScheduledTrigger
     ResourceGroupName : ADF
@@ -41,7 +41,7 @@ PS C:\> Set-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryNam
     RuntimeState      : Stopped
 ```
 
-Create a new trigger called "ScheduledTrigger" in the data factory "WikiADF". The trigger is created in the 'Stopped' state, meaning that it doesn't immediately start. A trigger can be started using the `Start-AzureRmDataFactoryV2Trigger` cmdlet.
+Create a new trigger called "ScheduledTrigger" in the data factory "WikiADF". The trigger is created in the 'Stopped' state, meaning that it doesn't immediately start. A trigger can be started using the `Start-AzDataFactoryV2Trigger` cmdlet.
 
 ## PARAMETERS
 
@@ -195,10 +195,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2Trigger]()
+[Get-AzDataFactoryV2Trigger]()
 
-[Start-AzureRmDataFactoryV2Trigger]()
+[Start-AzDataFactoryV2Trigger]()
 
-[Stop-AzureRmDataFactoryV2Trigger]()
+[Stop-AzDataFactoryV2Trigger]()
 
-[Remove-AzureRmDataFactoryV2Trigger]()
+[Remove-AzDataFactoryV2Trigger]()

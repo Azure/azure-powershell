@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2trigger
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryv2trigger
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryV2Trigger
+# Get-AzDataFactoryV2Trigger
 
 ## SYNOPSIS
 Gets information about triggers in a data factory.
@@ -14,30 +14,30 @@ Gets information about triggers in a data factory.
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactoryV2Trigger [[-Name] <String>] [-ResourceGroupName] <String> [-DataFactoryName] <String>
+Get-AzDataFactoryV2Trigger [[-Name] <String>] [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactoryV2Trigger [[-Name] <String>] [-DataFactory] <PSDataFactory>
+Get-AzDataFactoryV2Trigger [[-Name] <String>] [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzureRmDataFactoryV2Trigger [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataFactoryV2Trigger [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactoryV2Trigger** cmdlet gets information about triggers in a data factory. If you specify the name of a trigger, the cmdlet gets information about that trigger. If you do not specify a name, the cmdlet gets information about all triggers in the data factory.
+The **Get-AzDataFactoryV2Trigger** cmdlet gets information about triggers in a data factory. If you specify the name of a trigger, the cmdlet gets information about that trigger. If you do not specify a name, the cmdlet gets information about all triggers in the data factory.
 
 ## EXAMPLES
 
 ### Example 1: Get information about a specific trigger
 ```
-PS C:\> Get-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+PS C:\> Get-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 
     TriggerName       : ScheduledTrigger
     ResourceGroupName : ADF
@@ -56,7 +56,7 @@ Gets a list of all triggers that have been created in the data factory "WikiADF"
 
 ### Example 2: Get information about all triggers
 ```
-Get-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
+Get-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
 
     TriggerName       : ScheduledTrigger
     ResourceGroupName : ADF
@@ -177,10 +177,10 @@ Parameters: DataFactory (ByValue)
 
 ## RELATED LINKS
 
-[Set-AzureRmDataFactoryV2Trigger]()
+[Set-AzDataFactoryV2Trigger]()
 
-[Start-AzureRmDataFactoryV2Trigger]()
+[Start-AzDataFactoryV2Trigger]()
 
-[Stop-AzureRmDataFactoryV2Trigger]()
+[Stop-AzDataFactoryV2Trigger]()
 
-[Remove-AzureRmDataFactoryV2Trigger]()
+[Remove-AzDataFactoryV2Trigger]()

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2pipeline
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryv2pipeline
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryV2Pipeline
+# Get-AzDataFactoryV2Pipeline
 
 ## SYNOPSIS
 Gets information about pipelines in Data Factory.
@@ -14,24 +14,24 @@ Gets information about pipelines in Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactoryV2Pipeline [[-Name] <String>] [-ResourceGroupName] <String> [-DataFactoryName] <String>
+Get-AzDataFactoryV2Pipeline [[-Name] <String>] [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactoryV2Pipeline [[-Name] <String>] [-DataFactory] <PSDataFactory>
+Get-AzDataFactoryV2Pipeline [[-Name] <String>] [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzureRmDataFactoryV2Pipeline [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataFactoryV2Pipeline [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDataFactoryV2Pipeline cmdlet gets information about pipelines in Azure Data Factory.
+The Get-AzDataFactoryV2Pipeline cmdlet gets information about pipelines in Azure Data Factory.
 If you specify the name of a pipeline, this cmdlet gets information about that pipeline.
 If you do not specify a name, this cmdlet gets information about all the pipelines in the data factory.
 
@@ -39,7 +39,7 @@ If you do not specify a name, this cmdlet gets information about all the pipelin
 
 ### Example 1: Get information about all pipelines
 ```
-PS C:\> Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" 
+PS C:\> Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" 
 
     PipelineName      : DPWikisample
     ResourceGroupName : ADF
@@ -60,7 +60,7 @@ The second one uses a DataFactory object as a parameter.
 
 ### Example 2: Get information about a specific pipeline
 ```
-PS C:\> Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" | Format-List
+PS C:\> Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" | Format-List
 
     PipelineName      : DPWikisample
     ResourceGroupName : ADF
@@ -76,7 +76,7 @@ For more information, type Get-Help Format-List.
 
 ### Example 3: Get the properties for a specific pipeline
 ```
-PS C:\> (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Activities
+PS C:\> (Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Activities
 
     Source                          : Microsoft.Azure.Management.DataFactory.Models.BlobSource
     Sink                            : Microsoft.Azure.Management.DataFactory.Models.BlobSink
@@ -117,7 +117,7 @@ This command gets information for the pipeline named DPWikisample in the data fa
 
 ### Example 6: Get information about inputs for the first activity
 ```
-PS C:\> (Get-AzureRmDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Activities[0].Inputs | Format-List
+PS C:\> (Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Activities[0].Inputs | Format-List
 
     ReferenceName : dsIn
     Parameters    :
@@ -240,8 +240,8 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Set-AzureRmDataFactoryV2Pipeline]()
+[Set-AzDataFactoryV2Pipeline]()
 
-[Remove-AzureRmDataFactoryV2Pipeline]()
+[Remove-AzDataFactoryV2Pipeline]()
 
-[Invoke-AzureRmDataFactoryV2Pipeline]()
+[Invoke-AzDataFactoryV2Pipeline]()

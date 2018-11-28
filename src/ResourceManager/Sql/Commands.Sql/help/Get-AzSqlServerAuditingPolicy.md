@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 40674DC7-E35F-4C9F-8CE0-D1C6F524C9FB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlserverauditingpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverauditingpolicy
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlServerAuditingPolicy
+# Get-AzSqlServerAuditingPolicy
 
 ## SYNOPSIS
 Gets the auditing policy of a SQL server.
@@ -14,12 +14,12 @@ Gets the auditing policy of a SQL server.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServerAuditingPolicy -ServerName <String> [-ResourceGroupName] <String>
+Get-AzSqlServerAuditingPolicy -ServerName <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlServerAuditingPolicy** cmdlet gets the auditing policy of an Azure SQL server.
+The **Get-AzSqlServerAuditingPolicy** cmdlet gets the auditing policy of an Azure SQL server.
 Specify the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database.
 This cmdlet returns a policy that is used by the Azure SQL databases that are both defined in the specified Azure SQL server and use its auditing policy.
 
@@ -27,7 +27,7 @@ This cmdlet returns a policy that is used by the Azure SQL databases that are bo
 
 ### Example 1: Get the auditing policy of an Azure SQL server with Table auditing defined on it
 ```
-PS C:\>Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName "resourcegroup01" -ServerName "server01"
+PS C:\>Get-AzSqlServerAuditingPolicy -ResourceGroupName "resourcegroup01" -ServerName "server01"
 EventType              : {PlainSQL_Success, PlainSQL_Failure, ParameterizedSQL_Success, ParameterizedSQL_Failure...} 
 TableIdentifier        : MyAuditTableName
 FullAuditLogsTableName : SQLDBAuditLogsMyAuditTableName
@@ -42,7 +42,7 @@ RetentionInDays        : 0
 
 ### Example 2: Get the auditing policy of an Azure SQL server with Blob auditing defined on it
 ```
-PS C:\>Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName "resourcegroup01" -ServerName "server01"
+PS C:\>Get-AzSqlServerAuditingPolicy -ResourceGroupName "resourcegroup01" -ServerName "server01"
 AuditActionGroup       : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
                           BATCH_COMPLETED_GROUP, ...} 
 ResourceGroupName      : resourcegroup01
@@ -60,7 +60,7 @@ RetentionInDays        : 0
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -147,9 +147,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmSqlServerAuditingPolicy](./Set-AzureRmSqlServerAuditingPolicy.md)
+[Set-AzSqlServerAuditingPolicy](./Set-AzSqlServerAuditingPolicy.md)
 
-[Use-AzureRmSqlServerAuditingPolicy](./Use-AzureRmSqlServerAuditingPolicy.md)
+[Use-AzSqlServerAuditingPolicy](./Use-AzSqlServerAuditingPolicy.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

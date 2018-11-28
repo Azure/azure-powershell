@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 973E1E53-983F-45A7-A7CF-18A8D96EC4E6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermvpnclientrevokedcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvpnclientrevokedcertificate
 schema: 2.0.0
 ---
 
-# New-AzureRmVpnClientRevokedCertificate
+# New-AzVpnClientRevokedCertificate
 
 ## SYNOPSIS
 Creates a new VPN client-revocation certificate.
@@ -14,30 +14,30 @@ Creates a new VPN client-revocation certificate.
 ## SYNTAX
 
 ```
-New-AzureRmVpnClientRevokedCertificate -Name <String> -Thumbprint <String>
+New-AzVpnClientRevokedCertificate -Name <String> -Thumbprint <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmVpnClientRevokedCertificate** cmdlet creates a new virtual private network (VPN) client-revocation certificate for use on a virtual network gateway.
+The **New-AzVpnClientRevokedCertificate** cmdlet creates a new virtual private network (VPN) client-revocation certificate for use on a virtual network gateway.
 Client-revocation certificates prevent client computers from using the specified certificate for authentication.
 This cmdlet creates a stand-alone certificate that is not assigned to a virtual gateway.
-Instead, the certificate created by **New-AzureRmVpnClientRevokedCertificate** is used in conjunction with the New-AzureRmVirtualNetworkGateway cmdlet when it creates a new gateway.
+Instead, the certificate created by **New-AzVpnClientRevokedCertificate** is used in conjunction with the New-AzVirtualNetworkGateway cmdlet when it creates a new gateway.
 For instance, suppose you create a new certificate and store it in a variable named $Certificate.
 You can then use that certificate object when you create a new virtual gateway.
 For instance,
-`New-AzureRmVirtualNetworkGateway -Name "ContosoVirtualGateway" -ResourceGroupName "ContosoResourceGroup" -Location "West US" -GatewayType "VPN" -IpConfigurations $Ipconfig  -VPNType "RouteBased" -VpnClientRevokedCertificates $Certificate`
-For more information, see the documentation for the New-AzureRmVirtualNetworkGateway cmdlet.
+`New-AzVirtualNetworkGateway -Name "ContosoVirtualGateway" -ResourceGroupName "ContosoResourceGroup" -Location "West US" -GatewayType "VPN" -IpConfigurations $Ipconfig  -VPNType "RouteBased" -VpnClientRevokedCertificates $Certificate`
+For more information, see the documentation for the New-AzVirtualNetworkGateway cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Create a new client-revoked certificate
 ```
-PS C:\>$Certificate = New-AzureRmVpnClientRevokedCertificate -Name "ContosoClientRevokedCertificate" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
+PS C:\>$Certificate = New-AzVpnClientRevokedCertificate -Name "ContosoClientRevokedCertificate" -Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
 ```
 
 This command creates a new client-revoked certificate and stores the certificate object in a variable named $Certificate.
-This variable can then be used by the **New-AzureRmVirtualNetworkGateway** cmdlet to add the certificate to a new virtual network gateway.
+This variable can then be used by the **New-AzVirtualNetworkGateway** cmdlet to add the certificate to a new virtual network gateway.
 
 ## PARAMETERS
 
@@ -45,7 +45,7 @@ This variable can then be used by the **New-AzureRmVirtualNetworkGateway** cmdle
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -104,10 +104,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmVpnClientRevokedCertificate](./Add-AzureRmVpnClientRevokedCertificate.md)
+[Add-AzVpnClientRevokedCertificate](./Add-AzVpnClientRevokedCertificate.md)
 
-[Get-AzureRmVpnClientRevokedCertificate](./Get-AzureRmVpnClientRevokedCertificate.md)
+[Get-AzVpnClientRevokedCertificate](./Get-AzVpnClientRevokedCertificate.md)
 
-[Remove-AzureRmVpnClientRevokedCertificate](./Remove-AzureRmVpnClientRevokedCertificate.md)
+[Remove-AzVpnClientRevokedCertificate](./Remove-AzVpnClientRevokedCertificate.md)
 
 

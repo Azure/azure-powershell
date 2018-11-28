@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/update-azurermdatafactoryv2
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/update-azdatafactoryv2
 schema: 2.0.0
 ---
 
-# Update-AzureRmDataFactoryV2
+# Update-AzDataFactoryV2
 
 ## SYNOPSIS
 Updates the properties of a data factory.
@@ -14,30 +14,30 @@ Updates the properties of a data factory.
 
 ### ByFactoryName (Default)
 ```
-Update-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
+Update-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Update-AzureRmDataFactoryV2 [-InputObject] <PSDataFactory> [-Tag <Hashtable>]
+Update-AzDataFactoryV2 [-InputObject] <PSDataFactory> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzureRmDataFactoryV2 [-ResourceId] <String> [-Tag <Hashtable>]
+Update-AzDataFactoryV2 [-ResourceId] <String> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmDataFactoryV2** cmdlet updates tags or identity properties of a data factory.
+The **Update-AzDataFactoryV2** cmdlet updates tags or identity properties of a data factory.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Update-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Tag @{myNewTagName = "myTagValue"}
+PS C:\> Update-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Tag @{myNewTagName = "myTagValue"}
 
 Confirm
 Are you sure you want to update properties of the data factory 'WikiADF' in resource group 'ADF'?

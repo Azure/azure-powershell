@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: A39A415A-B403-48D3-AF80-CF7CFE382577
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurermbatchlocationquotas
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchlocationquotas
 schema: 2.0.0
 ---
 
-# Get-AzureRmBatchLocationQuotas
+# Get-AzBatchLocationQuotas
 
 ## SYNOPSIS
 Gets the Batch service quotas for your subscription at the given location.
@@ -14,8 +14,7 @@ Gets the Batch service quotas for your subscription at the given location.
 ## SYNTAX
 
 ```
-Get-AzureRmBatchLocationQuotas [-Location] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzBatchLocationQuotas [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +24,7 @@ Gets the Batch service quotas for the specified subscription at the given locati
 
 ### Example 1: Get the Batch service quotas for the subscription in the West US region
 ```
-PS C:\>Get-AzureRmBatchLocationQuotas -Location "westus"
+PS C:\>Get-AzBatchLocationQuotas -Location "westus"
           AccountQuota Location
           ------------ --------
           1            westus
@@ -40,7 +39,7 @@ The return value indicates that this subscription can create only one Batch acco
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/enable-azurermcontextautosave
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/enable-azcontextautosave
 schema: 2.0.0
 ---
 
-# Enable-AzureRmContextAutosave
+# Enable-AzContextAutosave
 
 ## SYNOPSIS
 Allow the azure credential, account and subscription information to be saved and automatically loaded when you open a PowerShell window. 
@@ -13,7 +13,7 @@ Allow the azure credential, account and subscription information to be saved and
 ## SYNTAX
 
 ```
-Enable-AzureRmContextAutosave [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
+Enable-AzContextAutosave [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Allow the azure credential, account and subscription information to be saved and
 
 ### Enable autosaving credentials for the current user
 ```
-PS C:\> Enable-AzureRmContextAutosave
+PS C:\> Enable-AzContextAutosave
 ```
 
 Turn on credential autosave for the current user.  Whenever a powershell window is opened, your current context will be remembered without logging in.
@@ -35,7 +35,7 @@ Turn on credential autosave for the current user.  Whenever a powershell window 
 The credentials, tenant and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

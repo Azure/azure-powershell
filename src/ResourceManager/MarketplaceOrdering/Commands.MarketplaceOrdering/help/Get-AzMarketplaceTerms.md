@@ -1,30 +1,30 @@
 ---
 external help file: Microsoft.Azure.Commands.MarketplaceOrdering.dll-Help.xml
-Module Name: AzureRM.MarketplaceOrdering
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.marketplaceordering/get-azurermmarketplaceterms
+Module Name: Az.MarketplaceOrdering
+online version: https://docs.microsoft.com/en-us/powershell/module/az.marketplaceordering/get-azmarketplaceterms
 schema: 2.0.0
 ---
 
-# Get-AzureRmMarketplaceTerms
+# Get-AzMarketplaceTerms
 
 ## SYNOPSIS
-Get the agreement terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). The terms object which is returned by this command should be passed to Set-AzureRmMarketplaceTerms to accept the legal terms.
+Get the agreement terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). The terms object which is returned by this command should be passed to Set-AzMarketplaceTerms to accept the legal terms.
 
 ## SYNTAX
 
 ```
-Get-AzureRmMarketplaceTerms -Publisher <String> -Product <String> -Name <String>
+Get-AzMarketplaceTerms -Publisher <String> -Product <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmMarketplaceTerms** cmdlet returns terms for given publisher id(Publisher), offer id(Product) and plan id(Name) tuple.
+The **Get-AzMarketplaceTerms** cmdlet returns terms for given publisher id(Publisher), offer id(Product) and plan id(Name) tuple.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
+PS C:\> Get-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
 Publisher         : microsoft-ads
 Product           : windows-data-science-vm
 Plan              : windows2016
@@ -41,7 +41,7 @@ RetrieveDatetime  : <RetrieveDatetime>
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

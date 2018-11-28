@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressrouteport
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressrouteport
 schema: 2.0.0
 ---
 
-# Get-AzureRmExpressRoutePort
+# Get-AzExpressRoutePort
 
 ## SYNOPSIS
 Gets an Azure ExpressRoutePort resource.
@@ -14,18 +14,17 @@ Gets an Azure ExpressRoutePort resource.
 
 ### ResourceNameParameterSet (Default)
 ```
-Get-AzureRmExpressRoutePort [-ResourceGroupName <String>] [-Name <String>]
+Get-AzExpressRoutePort [-ResourceGroupName <String>] [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmExpressRoutePort -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzExpressRoutePort -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmExpressRoutePort** cmdlet is used to retrieve an ExpressRoutePort object
+The **Get-AzExpressRoutePort** cmdlet is used to retrieve an ExpressRoutePort object
 from your subscription. The expressrouteport object returned can be used as input to other cmdlets that
 operate on ExpressRoutePort.
 
@@ -33,14 +32,14 @@ operate on ExpressRoutePort.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmExpressRoutePort -Name $PortName -ResourceGroupName $rg
+PS C:\> Get-AzExpressRoutePort -Name $PortName -ResourceGroupName $rg
 ```
 
 Gets the ExpressRoutePort object with name $PortName in resource group $rg in your subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmExpressRoutePort -ResourceId $id
+PS C:\> Get-AzExpressRoutePort -ResourceId $id
 ```
 
 Gets the ExpressRoutePort object with ResourceId $id. 
@@ -51,7 +50,7 @@ Gets the ExpressRoutePort object with ResourceId $id.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

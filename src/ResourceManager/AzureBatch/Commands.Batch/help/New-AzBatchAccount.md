@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 82C7B128-8818-4390-B1A5-CB40AC9D53CA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/new-azurermbatchaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/new-azbatchaccount
 schema: 2.0.0
 ---
 
-# New-AzureRmBatchAccount
+# New-AzBatchAccount
 
 ## SYNOPSIS
 Creates a Batch account.
@@ -14,19 +14,19 @@ Creates a Batch account.
 ## SYNTAX
 
 ```
-New-AzureRmBatchAccount [-AccountName] <String> [-Location] <String> [-ResourceGroupName] <String>
+New-AzBatchAccount [-AccountName] <String> [-Location] <String> [-ResourceGroupName] <String>
  [[-AutoStorageAccountId] <String>] [-PoolAllocationMode <PoolAllocationMode>] [-KeyVaultId <String>]
  [-KeyVaultUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmBatchAccount** cmdlet creates an Azure Batch account for the specified resource group and location.
+The **New-AzBatchAccount** cmdlet creates an Azure Batch account for the specified resource group and location.
 
 ## EXAMPLES
 
 ### Example 1: Create a Batch account
 ```
-PS C:\>New-AzureRmBatchAccount -AccountName "pfuller" -ResourceGroupName "ResourceGroup03" -Location "WestUS"
+PS C:\>New-AzBatchAccount -AccountName "pfuller" -ResourceGroupName "ResourceGroup03" -Location "WestUS"
 AccountName                  : pfuller
 Location                     : westus
 ResourceGroupName            : ResourceGroup03
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -199,10 +199,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccount](./Get-AzureRmBatchAccount.md)
+[Get-AzBatchAccount](./Get-AzBatchAccount.md)
 
-[Remove-AzureRmBatchAccount](./Remove-AzureRmBatchAccount.md)
+[Remove-AzBatchAccount](./Remove-AzBatchAccount.md)
 
-[Set-AzureRmBatchAccount](./Set-AzureRmBatchAccount.md)
+[Set-AzBatchAccount](./Set-AzBatchAccount.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlsyncmember
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlsyncmember
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlSyncMember
+# Get-AzSqlSyncMember
 
 ## SYNOPSIS
 Returns information about Azure SQL Database Sync Members.
@@ -13,20 +13,19 @@ Returns information about Azure SQL Database Sync Members.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlSyncMember [-Name <String>] [-SyncGroupName] <String> [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSqlSyncMember [-Name <String>] [-SyncGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlSyncMember** cmdlet returns information about one or more Azure SQL Database Sync Members.
+The **Get-AzSqlSyncMember** cmdlet returns information about one or more Azure SQL Database Sync Members.
 Specify the name of a sync member to see information for only that sync member.
 
 ## EXAMPLES
 
 ### Example 1: Get all instances of Azure SQL Sync Member assigned to a sync group
 ```
-PS C:\>Get-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" | Format-List
+PS C:\>Get-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -64,7 +63,7 @@ This command gets information about all the Azure SQL Database Sync Member assig
 
 ### Example 2: Get information about an Azure SQL Database Sync Member
 ```
-PS C:\>Get-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" | Format-List
+PS C:\>Get-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -105,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -191,9 +190,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlSyncMember](./New-AzureRmSqlSyncMember.md)
+[New-AzSqlSyncMember](./New-AzSqlSyncMember.md)
 
-[Update-AzureRmSqlSyncMember](./Update-AzureRmSqlSyncMember.md)
+[Update-AzSqlSyncMember](./Update-AzSqlSyncMember.md)
 
-[Remove-AzureRmSqlSyncMember](./Remove-AzureRmSqlSyncMember.md)
+[Remove-AzSqlSyncMember](./Remove-AzSqlSyncMember.md)
 

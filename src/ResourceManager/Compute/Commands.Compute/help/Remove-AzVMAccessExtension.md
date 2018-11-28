@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 22C490C2-0135-4375-897E-7224DBBE13A7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmaccessextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmaccessextension
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVMAccessExtension
+# Remove-AzVMAccessExtension
 
 ## SYNOPSIS
 Removes the VMAccess extension from a virtual machine.
@@ -14,12 +14,12 @@ Removes the VMAccess extension from a virtual machine.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMAccessExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Force]
+Remove-AzVMAccessExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVMAccessExtension** cmdlet removes the Virtual Machine Access (VMAccess) Virtual Machine Extension from a virtual machine.
+The **Remove-AzVMAccessExtension** cmdlet removes the Virtual Machine Access (VMAccess) Virtual Machine Extension from a virtual machine.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ The **Remove-AzureRmVMAccessExtension** cmdlet removes the Virtual Machine Acces
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -147,8 +147,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMAccessExtension](./Get-AzureRmVMAccessExtension.md)
+[Get-AzVMAccessExtension](./Get-AzVMAccessExtension.md)
 
-[Set-AzureRmVMAccessExtension](./Set-AzureRmVMAccessExtension.md)
+[Set-AzVMAccessExtension](./Set-AzVMAccessExtension.md)
 
-[Remove-AzureRmVMExtension](./Remove-AzureRmVMExtension.md)
+[Remove-AzVMExtension](./Remove-AzVMExtension.md)

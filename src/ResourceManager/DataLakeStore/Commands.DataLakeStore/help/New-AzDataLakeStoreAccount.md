@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: 58AAA284-45A3-4360-B321-FBE0A3F5D7A9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/new-azurermdatalakestoreaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/new-azdatalakestoreaccount
 schema: 2.0.0
 ---
 
-# New-AzureRmDataLakeStoreAccount
+# New-AzDataLakeStoreAccount
 
 ## SYNOPSIS
 Creates a new Data Lake Store account.
@@ -15,7 +15,7 @@ Creates a new Data Lake Store account.
 
 ### UserOrSystemAssignedEncryption (Default)
 ```
-New-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+New-AzDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-DefaultGroup] <String>] [[-Tag] <Hashtable>] [[-Encryption] <EncryptionConfigType>]
  [[-KeyVaultId] <String>] [[-KeyName] <String>] [[-KeyVersion] <String>] [-Tier <TierType>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -23,19 +23,19 @@ New-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [
 
 ### DisableEncryption
 ```
-New-AzureRmDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+New-AzDataLakeStoreAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-DefaultGroup] <String>] [[-Tag] <Hashtable>] [-DisableEncryption] [-Tier <TierType>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmDataLakeStoreAccount** cmdlet creates a new Data Lake Store account.
+The **New-AzDataLakeStoreAccount** cmdlet creates a new Data Lake Store account.
 
 ## EXAMPLES
 
 ### Example 1: Create an account
 ```
-PS C:\>New-AzureRmDataLakeStoreAccount -Name "ContosoADL" -ResourceGroupName "ContosoOrg" -Location "East US 2"
+PS C:\>New-AzDataLakeStoreAccount -Name "ContosoADL" -ResourceGroupName "ContosoOrg" -Location "East US 2"
 ```
 
 This command creates a Data Lake Store account named ContosoADL for the East US 2 location.
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -242,12 +242,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataLakeStoreAccount](./Get-AzureRmDataLakeStoreAccount.md)
+[Get-AzDataLakeStoreAccount](./Get-AzDataLakeStoreAccount.md)
 
-[Remove-AzureRmDataLakeStoreAccount](./Remove-AzureRmDataLakeStoreAccount.md)
+[Remove-AzDataLakeStoreAccount](./Remove-AzDataLakeStoreAccount.md)
 
-[Set-AzureRmDataLakeStoreAccount](./Set-AzureRmDataLakeStoreAccount.md)
+[Set-AzDataLakeStoreAccount](./Set-AzDataLakeStoreAccount.md)
 
-[Test-AzureRmDataLakeStoreAccount](./Test-AzureRmDataLakeStoreAccount.md)
+[Test-AzDataLakeStoreAccount](./Test-AzDataLakeStoreAccount.md)
 
 

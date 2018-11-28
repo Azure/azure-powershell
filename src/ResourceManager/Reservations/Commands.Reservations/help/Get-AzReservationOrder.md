@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Reservations.dll-Help.xml
-Module Name: AzureRM.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.reservations/get-azurermreservationorder
+Module Name: Az.Reservations
+online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/get-azreservationorder
 schema: 2.0.0
 ---
 
-# Get-AzureRmReservationOrder
+# Get-AzReservationOrder
 
 ## SYNOPSIS
 Get `ReservationOrder`
@@ -13,7 +13,7 @@ Get `ReservationOrder`
 ## SYNTAX
 
 ```
-Get-AzureRmReservationOrder [-ReservationOrderId <Guid>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzReservationOrder [-ReservationOrderId <Guid>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ List of all the `ReservationOrder`s that the user has access to in the current t
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmReservationOrder
+PS C:\> Get-AzReservationOrder
 ```
 
 List all `ReservationOrder` that the user has access to in the current tenant
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmReservationOrder -ReservationOrderId "00000000-ffff-ffff-0000-00000fffff"
+PS C:\> Get-AzReservationOrder -ReservationOrderId "00000000-ffff-ffff-0000-00000fffff"
 ```
 
 Get `ReservationOrder` with the specified ReservationOrderId
@@ -42,7 +42,7 @@ Get `ReservationOrder` with the specified ReservationOrderId
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

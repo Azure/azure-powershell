@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: D93666EC-C252-4E3B-B311-50B6EEA6D4BF
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmaccessextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmaccessextension
 schema: 2.0.0
 ---
 
-# Set-AzureRmVMAccessExtension
+# Set-AzVMAccessExtension
 
 ## SYNOPSIS
 Adds the VMAccess extension to a virtual machine.
@@ -14,19 +14,19 @@ Adds the VMAccess extension to a virtual machine.
 ## SYNTAX
 
 ```
-Set-AzureRmVMAccessExtension [-Credential <PSCredential>] [-ResourceGroupName] <String> [-VMName] <String>
+Set-AzVMAccessExtension [-Credential <PSCredential>] [-ResourceGroupName] <String> [-VMName] <String>
  [-Name <String>] [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion]
  [-ForceRerun <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMAccessExtension** cmdlet adds the Virtual Machine Access (VMAccess) Virtual Machine VMAccess Extension to a virtual machine. VMAccess Extension can be used to set a temporary password and this should be immediately changed it after logging into the machine. This is not supported on Windows Domain Controllers.
+The **Set-AzVMAccessExtension** cmdlet adds the Virtual Machine Access (VMAccess) Virtual Machine VMAccess Extension to a virtual machine. VMAccess Extension can be used to set a temporary password and this should be immediately changed it after logging into the machine. This is not supported on Windows Domain Controllers.
 
 ## EXAMPLES
 
 ### Example 1: Add a VMAccess extension
 ```
-PS C:\> Set-AzureRmVMAccessExtension -ResourceGroupName "ResrouceGroup11" -Location "Central US" -VMName "VirtualMachine07" -Name "ContosoTest" -TypeHandlerVersion "2.0" -UserName "PFuller" -Password "Password"
+PS C:\> Set-AzVMAccessExtension -ResourceGroupName "ResrouceGroup11" -Location "Central US" -VMName "VirtualMachine07" -Name "ContosoTest" -TypeHandlerVersion "2.0" -UserName "PFuller" -Password "Password"
 ```
 
 This command adds a VMAccess extension for the virtual machine named VirtualMachine07 in ResrouceGroup11.
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 
 ### -TypeHandlerVersion
 Specifies the version of the extension to use for this virtual machine.
-To obtain the version, run the Get-AzureRmVMExtensionImage cmdlet with a value of Microsoft.Compute for the *PublisherName* parameter and VMAccessAgent for the *Type* parameter. The typeHandlerVersion must be 2.0 or greater, as version 1 is deprecated.
+To obtain the version, run the Get-AzVMExtensionImage cmdlet with a value of Microsoft.Compute for the *PublisherName* parameter and VMAccessAgent for the *Type* parameter. The typeHandlerVersion must be 2.0 or greater, as version 1 is deprecated.
 
 ```yaml
 Type: System.String
@@ -224,12 +224,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMAccessExtension](./Get-AzureRmVMAccessExtension.md)
+[Get-AzVMAccessExtension](./Get-AzVMAccessExtension.md)
 
-[Remove-AzureRmVMAccessExtension](./Remove-AzureRmVMAccessExtension.md)
+[Remove-AzVMAccessExtension](./Remove-AzVMAccessExtension.md)
 
-[Set-AzureRmVMExtension](./Set-AzureRmVMExtension.md)
+[Set-AzVMExtension](./Set-AzVMExtension.md)
 
-[Get-AzureRmVMExtensionImage](./Get-AzureRmVMExtensionImage.md)
+[Get-AzVMExtensionImage](./Get-AzVMExtensionImage.md)
 
 

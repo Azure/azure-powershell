@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Reservations.dll-Help.xml
-Module Name: AzureRM.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.reservations/merge-azurermreservation
+Module Name: Az.Reservations
+online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/merge-azreservation
 schema: 2.0.0
 ---
 
-# Merge-AzureRmReservation
+# Merge-AzReservation
 
 ## SYNOPSIS
 Merges two `Reservation`s.
@@ -14,13 +14,13 @@ Merges two `Reservation`s.
 
 ### CommandLine (Default)
 ```
-Merge-AzureRmReservation -ReservationOrderId <Guid> -ReservationId <Guid[]>
+Merge-AzReservation -ReservationOrderId <Guid> -ReservationId <Guid[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
-Merge-AzureRmReservation -Reservation <PSReservation[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Merge-AzReservation -Reservation <PSReservation[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Merge the specified `Reservation`s into a new `Reservation`. The two `Reservatio
 
 ### Example 1
 ```
-PS C:\> Merge-AzureRmReservation -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservationId "11111111-1111-1111-1111-1111111111","11111111-0000-0000-0000-1111111111"
+PS C:\> Merge-AzReservation -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservationId "11111111-1111-1111-1111-1111111111","11111111-0000-0000-0000-1111111111"
 ```
 
 Merge the two specified `Reservation`s into one `Reservation`
@@ -42,7 +42,7 @@ Merge the two specified `Reservation`s into one `Reservation`
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

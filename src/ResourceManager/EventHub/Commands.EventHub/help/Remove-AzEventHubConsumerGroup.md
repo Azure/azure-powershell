@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-Module Name: AzureRM.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/remove-azurermeventhubconsumergroup
+Module Name: Az.EventHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/remove-azeventhubconsumergroup
 schema: 2.0.0
 ---
 
-# Remove-AzureRmEventHubConsumerGroup
+# Remove-AzEventHubConsumerGroup
 
 ## SYNOPSIS
 Deletes the specified Event Hubs consumer group.
@@ -14,55 +14,55 @@ Deletes the specified Event Hubs consumer group.
 
 ### ConsumergroupPropertiesSet (Default)
 ```
-Remove-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-Namespace] <String> [-EventHub] <String>
+Remove-AzEventHubConsumerGroup [-ResourceGroupName] <String> [-Namespace] <String> [-EventHub] <String>
  [-Name] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ConsumergroupInputObjectSet
 ```
-Remove-AzureRmEventHubConsumerGroup [-InputObject] <PSConsumerGroupAttributes> [-PassThru] [-AsJob]
+Remove-AzEventHubConsumerGroup [-InputObject] <PSConsumerGroupAttributes> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ConsumergroupResourceIdParameterSet
 ```
-Remove-AzureRmEventHubConsumerGroup [-ResourceId] <String> [-PassThru] [-AsJob]
+Remove-AzEventHubConsumerGroup [-ResourceId] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmEventHubConsumerGroup cmdlet removes and deletes the specified consumer group from the given Event Hub.
+The Remove-AzEventHubConsumerGroup cmdlet removes and deletes the specified consumer group from the given Event Hub.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyConsumerGroupName
+PS C:\> Remove-AzEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyConsumerGroupName
 ```
 
 Deletes the consumer group \`MyConsumerGroupName\` from the Event Hub \`MyEventHubName\`, scoped to the \`MyNamespaceName\` namespace.
 
 ### Example 2.1 - InputObject - Using Variable
 ```
-PS C:\> $inputobject = Get-AzureRmEventHubConsumerGroup <params>
-PS C:\> Remove-AzureRmEventHubConsumerGroup -InputObject $inputobject
+PS C:\> $inputobject = Get-AzEventHubConsumerGroup <params>
+PS C:\> Remove-AzEventHubConsumerGroup -InputObject $inputobject
 ```
 
 ### Example 2.2 - InputObject - Using Piping
 ```
-PS C:\> Get-AzureRmEventHubConsumerGroup <params> | Remove-AzureRmEventHubConsumerGroup
+PS C:\> Get-AzEventHubConsumerGroup <params> | Remove-AzEventHubConsumerGroup
 ```
 
 ### Example 3.1 - ResourceId Using Vairable
 ```
-PS C:\> $resourceid = Get-AzureRmEventHubConsumerGroup <params>
-PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceId $resourceid.Id
+PS C:\> $resourceid = Get-AzEventHubConsumerGroup <params>
+PS C:\> Remove-AzEventHubConsumerGroup -ResourceId $resourceid.Id
 ```
 
 ### Example 3.2 - ResourceId Using string
 ```
-PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceId "/subscriptions/xxx-xxxx-xxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName/consumergroups/ConsumerGroupName"
+PS C:\> Remove-AzEventHubConsumerGroup -ResourceId "/subscriptions/xxx-xxxx-xxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName/consumergroups/ConsumerGroupName"
 ```
 
 ## PARAMETERS
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

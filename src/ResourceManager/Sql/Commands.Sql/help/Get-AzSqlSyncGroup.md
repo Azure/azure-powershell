@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlsyncgroup
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlsyncgroup
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlSyncGroup
+# Get-AzSqlSyncGroup
 
 ## SYNOPSIS
 Returns information about Azure SQL Database Sync Groups.
@@ -13,19 +13,19 @@ Returns information about Azure SQL Database Sync Groups.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlSyncGroup [[-Name] <String>] [-ServerName] <String> [-DatabaseName] <String>
+Get-AzSqlSyncGroup [[-Name] <String>] [-ServerName] <String> [-DatabaseName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlSyncGroup** cmdlet returns information about one or more Azure SQL Database Sync Groups.
+The **Get-AzSqlSyncGroup** cmdlet returns information about one or more Azure SQL Database Sync Groups.
 Specify the name of a sync group to see information for only that sync group.
 
 ## EXAMPLES
 
 ### Example 1: Get all instances of Azure SQL Sync Group assigned to an Azure SQL Database
 ```
-PS C:\>Get-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Format-List
+PS C:\>Get-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Format-List
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -59,7 +59,7 @@ This command gets information about all the Azure SQL Database Sync Groups assig
 
 ### Example 2: Get information about an Azure SQL Database Sync Group
 ```
-PS C:\>Get-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" | Format-List
+PS C:\>Get-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" | Format-List
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup02}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -169,9 +169,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlSyncGroup](./New-AzureRmSqlSyncGroup.md)
+[New-AzSqlSyncGroup](./New-AzSqlSyncGroup.md)
 
-[Update-AzureRmSqlSyncGroup](./Update-AzureRmSqlSyncGroup.md)
+[Update-AzSqlSyncGroup](./Update-AzSqlSyncGroup.md)
 
-[Remove-AzureRmSqlSyncGroup](./Remove-AzureRmSqlSyncGroup.md)
+[Remove-AzSqlSyncGroup](./Remove-AzSqlSyncGroup.md)
 

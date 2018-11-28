@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 8CD2BE3E-2FA1-4EAB-BC01-B1E1E3203FF1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/new-azdatafactorylinkedservice
 schema: 2.0.0
 ---
 
-# New-AzureRmDataFactoryLinkedService
+# New-AzDataFactoryLinkedService
 
 ## SYNOPSIS
 Links a data store or a cloud service to an Azure Data Factory.
@@ -15,19 +15,19 @@ Links a data store or a cloud service to an Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-New-AzureRmDataFactoryLinkedService [-DataFactoryName] <String> [[-Name] <String>] [-File] <String> [-Force]
+New-AzDataFactoryLinkedService [-DataFactoryName] <String> [[-Name] <String>] [-File] <String> [-Force]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-New-AzureRmDataFactoryLinkedService [-DataFactory] <PSDataFactory> [[-Name] <String>] [-File] <String> [-Force]
+New-AzDataFactoryLinkedService [-DataFactory] <PSDataFactory> [[-Name] <String>] [-File] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmDataFactoryLinkedService** cmdlet links a data store or a cloud service to Azure Data Factory.
+The **New-AzDataFactoryLinkedService** cmdlet links a data store or a cloud service to Azure Data Factory.
 If you specify a name for a linked service that already exists, this cmdlet prompts you for confirmation before it replaces the linked service.
 If you specify the *Force* parameter, the cmdlet replaces the existing linked service without confirmation.
 Perform these operations in the following order: 
@@ -40,7 +40,7 @@ Perform these operations in the following order:
 
 ### Example 1: Create a linked service
 ```
-PS C:\>New-AzureRmDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData" -File "C:\\samples\\WikiSample\\LinkedServiceCuratedWikiData.json" | Format-List
+PS C:\>New-AzDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData" -File "C:\\samples\\WikiSample\\LinkedServiceCuratedWikiData.json" | Format-List
 LinkedServiceName : LinkedServiceCuratedWikiData
 ResourceGroupName : ADF
 DataFactoryName   : WikiADF
@@ -212,8 +212,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryLinkedService](./Get-AzureRmDataFactoryLinkedService.md)
+[Get-AzDataFactoryLinkedService](./Get-AzDataFactoryLinkedService.md)
 
-[Remove-AzureRmDataFactoryLinkedService](./Remove-AzureRmDataFactoryLinkedService.md)
+[Remove-AzDataFactoryLinkedService](./Remove-AzDataFactoryLinkedService.md)
 
 

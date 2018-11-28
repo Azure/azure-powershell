@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-Module Name: AzureRM.Cdn
+Module Name: Az.Cdn
 ms.assetid: 3A4F8442-1268-44BC-91ED-47C03CD20C47
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/remove-azurermcdnprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/remove-azcdnprofile
 schema: 2.0.0
 ---
 
-# Remove-AzureRmCdnProfile
+# Remove-AzCdnProfile
 
 ## SYNOPSIS
 Removes a CDN profile.
@@ -15,18 +15,18 @@ Removes a CDN profile.
 
 ### ByFieldsParameterSet
 ```
-Remove-AzureRmCdnProfile -ProfileName <String> -ResourceGroupName <String> [-PassThru] [-Force]
+Remove-AzCdnProfile -ProfileName <String> -ResourceGroupName <String> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzureRmCdnProfile -CdnProfile <PSProfile> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzCdnProfile -CdnProfile <PSProfile> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmCdnProfile** cmdlet removes a Azure Content Delivery Network (CDN) profile.
+The **Remove-AzCdnProfile** cmdlet removes a Azure Content Delivery Network (CDN) profile.
 
 ## EXAMPLES
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -172,10 +172,10 @@ Parameters: CdnProfile (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRMCdnProfile](./Get-AzureRMCdnProfile.md)
+[Get-AzCdnProfile](./Get-AzCdnProfile.md)
 
-[New-AzureRmCdnProfile](./New-AzureRmCdnProfile.md)
+[New-AzCdnProfile](./New-AzCdnProfile.md)
 
-[Set-AzureRmCdnProfile](./Set-AzureRmCdnProfile.md)
+[Set-AzCdnProfile](./Set-AzCdnProfile.md)
 
 

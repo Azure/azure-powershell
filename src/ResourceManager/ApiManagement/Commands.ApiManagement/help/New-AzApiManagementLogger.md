@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 17D53F56-6E3B-491E-8776-5EBE109FBE3C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementlogger
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementlogger
 schema: 2.0.0
 ---
 
-# New-AzureRmApiManagementLogger
+# New-AzApiManagementLogger
 
 ## SYNOPSIS
 Creates an API Management Logger.
@@ -15,27 +15,26 @@ Creates an API Management Logger.
 
 ### EventHubLoggerSet (Default)
 ```
-New-AzureRmApiManagementLogger -Context <PsApiManagementContext> [-LoggerId <String>] -Name <String>
+New-AzApiManagementLogger -Context <PsApiManagementContext> [-LoggerId <String>] -Name <String>
  -ConnectionString <String> [-Description <String>] [-IsBuffered <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ApplicationInsightsLoggerSet
 ```
-New-AzureRmApiManagementLogger -Context <PsApiManagementContext> [-LoggerId <String>]
- -InstrumentationKey <String> [-Description <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzApiManagementLogger -Context <PsApiManagementContext> [-LoggerId <String>] -InstrumentationKey <String>
+ [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApiManagementLogger** cmdlet creates an Azure API Management **Logger**.
+The **New-AzApiManagementLogger** cmdlet creates an Azure API Management **Logger**.
 
 ## EXAMPLES
 
 ### Example 1: Create a logger
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzureRmApiManagementLogger -Context $apimContext -LoggerId "Logger123" -Name "ContosoSdkEventHub" -ConnectionString "Endpoint=sb://ContosoSdkEventHubs.servicebus.windows.net/;SharedAccessKeyName=SendKey;SharedAccessKey=<key>" -Description "SDK event hub logger"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>New-AzApiManagementLogger -Context $apimContext -LoggerId "Logger123" -Name "ContosoSdkEventHub" -ConnectionString "Endpoint=sb://ContosoSdkEventHubs.servicebus.windows.net/;SharedAccessKeyName=SendKey;SharedAccessKey=<key>" -Description "SDK event hub logger"
 ```
 
 This command creates a logger named ContosoSdkEventHub by using the specified connection string.
@@ -78,7 +77,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -186,10 +185,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementLogger](./Get-AzureRmApiManagementLogger.md)
+[Get-AzApiManagementLogger](./Get-AzApiManagementLogger.md)
 
-[Remove-AzureRmApiManagementLogger](./Remove-AzureRmApiManagementLogger.md)
+[Remove-AzApiManagementLogger](./Remove-AzApiManagementLogger.md)
 
-[Set-AzureRmApiManagementLogger](./Set-AzureRmApiManagementLogger.md)
+[Set-AzApiManagementLogger](./Set-AzApiManagementLogger.md)
 
 

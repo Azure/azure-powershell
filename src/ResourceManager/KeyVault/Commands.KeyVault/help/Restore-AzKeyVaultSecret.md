@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 70DB088D-4AF5-406B-8D66-118A0F766041
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/restore-azkeyvaultsecret
 schema: 2.0.0
 ---
 
-# Restore-AzureKeyVaultSecret
+# Restore-AzKeyVaultSecret
 
 ## SYNOPSIS
 Creates a secret in a key vault from a backed-up secret.
@@ -15,24 +15,24 @@ Creates a secret in a key vault from a backed-up secret.
 
 ### ByVaultName (Default)
 ```
-Restore-AzureKeyVaultSecret [-VaultName] <String> [-InputFile] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzKeyVaultSecret [-VaultName] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Restore-AzureKeyVaultSecret [-InputObject] <PSKeyVault> [-InputFile] <String>
+Restore-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Restore-AzureKeyVaultSecret [-ResourceId] <String> [-InputFile] <String>
+Restore-AzKeyVaultSecret [-ResourceId] <String> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Restore-AzureKeyVaultSecret** cmdlet creates a secret in the specified key vault.
+The **Restore-AzKeyVaultSecret** cmdlet creates a secret in the specified key vault.
 This secret is a replica of the backed-up secret in the input file and has the same name as the original secret.
 If the key vault already has a secret by the same name, this cmdlet fails instead of overwriting the original secret.
 If the backup contains multiple versions of a secret, all versions are restored.
@@ -44,7 +44,7 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 
 ### Example 1: Restore a backed-up secret
 ```powershell
-PS C:\> Restore-AzureKeyVaultSecret -VaultName 'contoso' -InputFile "C:\Backup.blob"
+PS C:\> Restore-AzKeyVaultSecret -VaultName 'contoso' -InputFile "C:\Backup.blob"
 
 Vault Name   : contoso
 Name         : secret1
@@ -67,7 +67,7 @@ This command restores a secret, including all of its versions, from the backup f
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -187,11 +187,11 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Set-AzureKeyVaultSecret](./Set-AzureKeyVaultSecret.md)
+[Set-AzKeyVaultSecret](./Set-AzKeyVaultSecret.md)
 
-[Backup-AzureKeyVaultSecret](./Backup-AzureKeyVaultSecret.md)
+[Backup-AzKeyVaultSecret](./Backup-AzKeyVaultSecret.md)
 
-[Get-AzureKeyVaultSecret](./Get-AzureKeyVaultSecret.md)
+[Get-AzKeyVaultSecret](./Get-AzKeyVaultSecret.md)
 
-[Remove-AzureKeyVaultSecret](./Remove-AzureKeyVaultSecret.md)
+[Remove-AzKeyVaultSecret](./Remove-AzKeyVaultSecret.md)
 

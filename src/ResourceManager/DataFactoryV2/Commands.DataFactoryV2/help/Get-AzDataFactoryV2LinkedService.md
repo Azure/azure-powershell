@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2linkedservice
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryv2linkedservice
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryV2LinkedService
+# Get-AzDataFactoryV2LinkedService
 
 ## SYNOPSIS
 Gets information about linked services in Data Factory.
@@ -14,24 +14,24 @@ Gets information about linked services in Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactoryV2LinkedService [[-Name] <String>] [-ResourceGroupName] <String>
+Get-AzDataFactoryV2LinkedService [[-Name] <String>] [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactoryV2LinkedService [[-Name] <String>] [-DataFactory] <PSDataFactory>
+Get-AzDataFactoryV2LinkedService [[-Name] <String>] [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzureRmDataFactoryV2LinkedService [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataFactoryV2LinkedService [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDataFactoryV2LinkedService cmdlet gets information about linked services in Azure Data Factory.
+The Get-AzDataFactoryV2LinkedService cmdlet gets information about linked services in Azure Data Factory.
 If you specify the name of a linked service, this cmdlet gets information about that linked service.
 If you do not specify a name, this cmdlet gets information about all the linked services in the data factory.
 
@@ -39,7 +39,7 @@ If you do not specify a name, this cmdlet gets information about all the linked 
 
 ### Example 1: Get information about all linked services
 ```
-PS C:\> Get-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" | Format-List
+PS C:\> Get-AzDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" | Format-List
 
     LinkedServiceName : LinkedServiceCuratedWikiData
     ResourceGroupName : ADF
@@ -64,7 +64,7 @@ You can use either one of the following ways:
 
 ### Example 2: Get information about a specific linked service
 ```
-PS C:\> Get-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData"
+PS C:\> Get-AzDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData"
 
     LinkedServiceName : LinkedServiceCuratedWikiData
     ResourceGroupName : ADF
@@ -76,10 +76,10 @@ This command gets information about the linked service named LinkedServiceCurate
 
 ### Example 3: Get information about a specific linked service by specifying the DataFactory parameter
 ```
-PS C:\>$DataFactory = Get-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "ContosoFactory"PS C:\> Get-AzureRmDataFactoryV2LinkedService -DataFactory $DataFactory | Format-Table -Property LinkedServiceName, DataFactoryName, ResourceGroupName
+PS C:\>$DataFactory = Get-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "ContosoFactory"PS C:\> Get-AzDataFactoryV2LinkedService -DataFactory $DataFactory | Format-Table -Property LinkedServiceName, DataFactoryName, ResourceGroupName
 ```
 
-The first command uses the Get-AzureRmDataFactoryV2 cmdlet to get the data factory named ContosoFactory, and then stores it in the $DataFactory variable.
+The first command uses the Get-AzDataFactoryV2 cmdlet to get the data factory named ContosoFactory, and then stores it in the $DataFactory variable.
 The second command gets information about the linked service for the data factory stored in $DataFactory, and then passes that information to the Format-Table cmdlet by using the pipeline operator.
 The Format-Table cmdlet formats the output as a dataset with the specified properties as dataset columns.
 
@@ -197,6 +197,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Set-AzureRmDataFactoryV2LinkedService]()
+[Set-AzDataFactoryV2LinkedService]()
 
-[Remove-AzureRmDataFactoryV2LinkedService]()
+[Remove-AzDataFactoryV2LinkedService]()

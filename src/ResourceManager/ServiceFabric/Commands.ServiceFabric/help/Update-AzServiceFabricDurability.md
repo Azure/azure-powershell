@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/update-azurermservicefabricdurability
+Module Name: Az.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/update-azservicefabricdurability
 schema: 2.0.0
 ---
 
-# Update-AzureRmServiceFabricDurability
+# Update-AzServiceFabricDurability
 
 ## SYNOPSIS
 Update the durability tier or VmSku of a node type in the cluster.
@@ -13,19 +13,19 @@ Update the durability tier or VmSku of a node type in the cluster.
 ## SYNTAX
 
 ```
-Update-AzureRmServiceFabricDurability [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
+Update-AzServiceFabricDurability [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
  -DurabilityLevel <DurabilityLevel> [-Sku <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use **Update-AzureRmServiceFabricDurability** to update durability or SKU of the cluster.
+Use **Update-AzServiceFabricDurability** to update durability or SKU of the cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Update-AzureRmServiceFabricDurability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -DurabilityLevel Silver -NodeType nt1
+PS c:> Update-AzServiceFabricDurability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -DurabilityLevel Silver -NodeType nt1
 ```
 
 This command changes durability tier of the NodeType 'nt1' to silver.
@@ -36,7 +36,7 @@ This command changes durability tier of the NodeType 'nt1' to silver.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

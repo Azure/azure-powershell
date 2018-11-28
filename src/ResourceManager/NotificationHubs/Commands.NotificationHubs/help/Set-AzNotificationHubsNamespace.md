@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
-Module Name: AzureRM.NotificationHubs
+Module Name: Az.NotificationHubs
 ms.assetid: 1B2AA717-ECD6-4CC0-AB6D-A199AF21A4A5
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/set-azurermnotificationhubsnamespace
+online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/set-aznotificationhubsnamespace
 schema: 2.0.0
 ---
 
-# Set-AzureRmNotificationHubsNamespace
+# Set-AzNotificationHubsNamespace
 
 ## SYNOPSIS
 Sets property values for a notification hub namespace.
@@ -14,13 +14,13 @@ Sets property values for a notification hub namespace.
 ## SYNTAX
 
 ```
-Set-AzureRmNotificationHubsNamespace [-ResourceGroup] <String> [-Namespace] <String> [-Location] <String>
+Set-AzNotificationHubsNamespace [-ResourceGroup] <String> [-Namespace] <String> [-Location] <String>
  [[-State] <NamespaceState>] [[-Critical] <Boolean>] [[-Tag] <Hashtable>] [[-SkuTier] <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmNotificationHubsNamespace** cmdlet sets the property values of an existing notification hub namespace.
+The **Set-AzNotificationHubsNamespace** cmdlet sets the property values of an existing notification hub namespace.
 Namespaces are logical containers that help you organize and manage your notification hubs.
 You must have at least one notification hub namespace.
 Additionally, all notification hubs must have an assigned namespace.
@@ -35,14 +35,14 @@ To remove a critical namespace you must first remove the Critical tag.
 
 ### Example 1: Disable a namespace
 ```
-PS C:\>Set-AzureRmNotificationHubsNamespace -Namespace "ContosoPartners" -Location "West US" -ResourceGroup "ContosoNotificationsGroup" -State "Disabled"
+PS C:\>Set-AzNotificationHubsNamespace -Namespace "ContosoPartners" -Location "West US" -ResourceGroup "ContosoNotificationsGroup" -State "Disabled"
 ```
 
 This command disables the namespace named ContosoPartners located in the West US datacenter and assigned to the ContosoNotificationsGroup resource group.
 
 ### Example 2: Enable a namespace
 ```
-PS C:\>Set-AzureRmNotificationHubsNamespace -Namespace "ContosoPartners" -Location "West US" -ResourceGroup "ContosoNotificationsGroup" -State "Active"
+PS C:\>Set-AzNotificationHubsNamespace -Namespace "ContosoPartners" -Location "West US" -ResourceGroup "ContosoNotificationsGroup" -State "Active"
 ```
 
 This command enables the namespace named ContosoPartners located in the West US datacenter and assigned to the ContosoNotificationsGroup resource group.
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 Specifies the display name of the datacenter that hosts the namespace.
 Although you can set this parameter to any valid Azure location, for optimal performance you should use a datacenter located near the majority of your users.
 To get an up-to-date list of Azure locations run the following command:
-`Get-AzureLocation | Select-Object DisplayName`
+`Get-AzLocation | Select-Object DisplayName`
 
 ```yaml
 Type: System.String
@@ -252,10 +252,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNotificationHubsNamespace](./Get-AzureRmNotificationHubsNamespace.md)
+[Get-AzNotificationHubsNamespace](./Get-AzNotificationHubsNamespace.md)
 
-[New-AzureRmNotificationHubsNamespace](./New-AzureRmNotificationHubsNamespace.md)
+[New-AzNotificationHubsNamespace](./New-AzNotificationHubsNamespace.md)
 
-[Remove-AzureRmNotificationHubsNamespace](./Remove-AzureRmNotificationHubsNamespace.md)
+[Remove-AzNotificationHubsNamespace](./Remove-AzNotificationHubsNamespace.md)
 
 

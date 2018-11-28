@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: A837077C-0A79-431C-93D2-799B2134EE69
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermalertrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azalertrule
 schema: 2.0.0
 ---
 
-# Get-AzureRmAlertRule
+# Get-AzAlertRule
 
 ## SYNOPSIS
 Gets alert rules.
@@ -15,30 +15,30 @@ Gets alert rules.
 
 ### GetByResourceGroup
 ```
-Get-AzureRmAlertRule -ResourceGroupName <String> [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>]
+Get-AzAlertRule -ResourceGroupName <String> [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByName
 ```
-Get-AzureRmAlertRule -ResourceGroupName <String> -Name <String> [-DetailedOutput]
+Get-AzAlertRule -ResourceGroupName <String> -Name <String> [-DetailedOutput]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceUri
 ```
-Get-AzureRmAlertRule -ResourceGroupName <String> -TargetResourceId <String> [-DetailedOutput]
+Get-AzAlertRule -ResourceGroupName <String> -TargetResourceId <String> [-DetailedOutput]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAlertRule** cmdlet gets an alert rule by its name or URI, or all alert rules from a specified resource group.
+The **Get-AzAlertRule** cmdlet gets an alert rule by its name or URI, or all alert rules from a specified resource group.
 
 ## EXAMPLES
 
 ### Example 1: Get alert rules for a resource group
 ```
-PS C:\>Get-AzureRmAlertRule -ResourceGroup "Default-Web-CentralUS"
+PS C:\>Get-AzAlertRule -ResourceGroup "Default-Web-CentralUS"
 ```
 
 This command gets all of the alert rules for the resource group named Default-Web-CentralUS.
@@ -46,7 +46,7 @@ The output does not contain details about the rules because the *DetailedOutput*
 
 ### Example 2: Get an alert rule by name
 ```
-PS C:\>Get-AzureRmAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
+PS C:\>Get-AzAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
 ```
 
 This command gets the alert rule named myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8.
@@ -54,7 +54,7 @@ Because the *DetailedOutput* parameter is not specified, the output contains onl
 
 ### Example 3: Get an alert rule by name with detailed output
 ```
-PS C:\>Get-AzureRmAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8" -DetailedOutput
+PS C:\>Get-AzAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8" -DetailedOutput
 ```
 
 This command gets the alert rule named myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8.
@@ -66,7 +66,7 @@ The *DetailedOutput* parameter is specified, so the output is detailed.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -154,14 +154,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmLogAlertRule](./Add-AzureRmLogAlertRule.md)
+[Add-AzLogAlertRule](./Add-AzLogAlertRule.md)
 
-[Add-AzureRmMetricAlertRule](./Add-AzureRmMetricAlertRule.md)
+[Add-AzMetricAlertRule](./Add-AzMetricAlertRule.md)
 
-[Add-AzureRmWebtestAlertRule](./Add-AzureRmWebtestAlertRule.md)
+[Add-AzWebtestAlertRule](./Add-AzWebtestAlertRule.md)
 
-[Get-AzureRmAlertHistory](./Get-AzureRmAlertHistory.md)
+[Get-AzAlertHistory](./Get-AzAlertHistory.md)
 
-[Remove-AzureRmAlertRule](./Remove-AzureRmAlertRule.md)
+[Remove-AzAlertRule](./Remove-AzAlertRule.md)
 
 

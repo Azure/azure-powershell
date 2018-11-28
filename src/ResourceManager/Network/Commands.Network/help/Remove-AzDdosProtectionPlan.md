@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azuredosprotectionplan
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azdosprotectionplan
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDdosProtectionPlan
+# Remove-AzDdosProtectionPlan
 
 ## SYNOPSIS
 Removes a DDoS protection plan.
@@ -13,28 +13,28 @@ Removes a DDoS protection plan.
 ## SYNTAX
 
 ```
-Remove-AzureRmDdosProtectionPlan -ResourceGroupName <String> -Name <String> [-PassThru]
+Remove-AzDdosProtectionPlan -ResourceGroupName <String> -Name <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmDdosProtectionPlan cmdlet removes a DDoS protection plan.
+The Remove-AzDdosProtectionPlan cmdlet removes a DDoS protection plan.
 
 ## EXAMPLES
 
 ### Example 1: Remove an empty DDoS protection plan
 ```
-D:\> Remove-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlan
+D:\> Remove-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlan
 ```
 
 In this case, we remove a DDoS protection plan as specified.
 
 ### Example 2: Remove a DDoS protection plan associated with a virtual network
 ```
-D:\> $vnet = Get-AzureRmVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName
+D:\> $vnet = Get-AzVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName
 D:\> $vnet.DdosProtectionPlan = $null
 D:\> $vnet.EnableDdosProtection = $false
-D:\> $vnet | Set-AzureRmVirtualNetwork
+D:\> $vnet | Set-AzVirtualNetwork
 
 
 Name                   : VnetName
@@ -73,12 +73,12 @@ DdosProtectionPlan     : null
 EnableVmProtection     : false
 
 
-D:\> Remove-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlan
+D:\> Remove-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlan
 ```
 
 DDoS protection plans cannot be deleted if they are associated with a virtual network. So the first step is to disassociate both objects. Here, we get the most updated version of the virtual network associated with the plan, and we set the property **DdosProtectionPlan** to an empty value and the flag **EnableDdosProtection** (this flag cannot be true without a plan).
-Then, we persist the new state by piping the local variable into **Set-AzureRmVirtualNetwork**. At this point, the plan is no longer associated with the virtual network.
-If this is the last one associated with the plan, we can remove the DDoS protection plan by using the command Remove-AzureRmDdosProtectionPlan.
+Then, we persist the new state by piping the local variable into **Set-AzVirtualNetwork**. At this point, the plan is no longer associated with the virtual network.
+If this is the last one associated with the plan, we can remove the DDoS protection plan by using the command Remove-AzDdosProtectionPlan.
 
 ## PARAMETERS
 
@@ -86,7 +86,7 @@ If this is the last one associated with the plan, we can remove the DDoS protect
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -189,12 +189,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmDdosProtectionPlan](./New-AzureRmDdosProtectionPlan.md)
+[New-AzDdosProtectionPlan](./New-AzDdosProtectionPlan.md)
 
-[Get-AzureRmDdosProtectionPlan](./Get-AzureRmDdosProtectionPlan.md)
+[Get-AzDdosProtectionPlan](./Get-AzDdosProtectionPlan.md)
 
-[New-AzureRmVirtualNetwork](./New-AzureRmVirtualNetwork.md)
+[New-AzVirtualNetwork](./New-AzVirtualNetwork.md)
 
-[Set-AzureRmVirtualNetwork](./Set-AzureRmVirtualNetwork.md)
+[Set-AzVirtualNetwork](./Set-AzVirtualNetwork.md)
 
-[Get-AzureRmVirtualNetwork](./Get-AzureRmVirtualNetwork.md)
+[Get-AzVirtualNetwork](./Get-AzVirtualNetwork.md)

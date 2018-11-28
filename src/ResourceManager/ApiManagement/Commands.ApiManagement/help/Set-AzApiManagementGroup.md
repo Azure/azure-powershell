@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 66D543C0-34F0-47B1-943A-415DECF2155C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementgroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementgroup
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagementGroup
+# Set-AzApiManagementGroup
 
 ## SYNOPSIS
 Configures an API management group.
@@ -14,19 +14,19 @@ Configures an API management group.
 ## SYNTAX
 
 ```
-Set-AzureRmApiManagementGroup -Context <PsApiManagementContext> -GroupId <String> [-Name <String>]
+Set-AzApiManagementGroup -Context <PsApiManagementContext> -GroupId <String> [-Name <String>]
  [-Description <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApiManagementGroup** cmdlet configures an API management group.
+The **Set-AzApiManagementGroup** cmdlet configures an API management group.
 
 ## EXAMPLES
 
 ### Example 1: Configure a management group
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementGroup -Context $apimContext -Description "Updated Management Group" -Name "Group0001"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementGroup -Context $apimContext -Description "Updated Management Group" -Name "Group0001"
 ```
 
 This command configures a management group named Group0001.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -142,10 +142,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementGroup](./Get-AzureRmApiManagementGroup.md)
+[Get-AzApiManagementGroup](./Get-AzApiManagementGroup.md)
 
-[New-AzureRmApiManagementGroup](./New-AzureRmApiManagementGroup.md)
+[New-AzApiManagementGroup](./New-AzApiManagementGroup.md)
 
-[Remove-AzureRmApiManagementGroup](./Remove-AzureRmApiManagementGroup.md)
+[Remove-AzApiManagementGroup](./Remove-AzApiManagementGroup.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 2D882B33-2B62-4785-AF8F-5F4644E9504D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermroledefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azroledefinition
 schema: 2.0.0
 ---
 
-# Remove-AzureRmRoleDefinition
+# Remove-AzRoleDefinition
 
 ## SYNOPSIS
 Deletes a custom role in Azure RBAC.
@@ -17,26 +17,26 @@ Delete will fail if there are existing role assignments made to the custom role.
 
 ### RoleDefinitionIdParameterSet (Default)
 ```
-Remove-AzureRmRoleDefinition -Id <Guid> [-Scope <String>] [-Force] [-PassThru]
+Remove-AzRoleDefinition -Id <Guid> [-Scope <String>] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RoleDefinitionNameParameterSet
 ```
-Remove-AzureRmRoleDefinition [-Name] <String> [-Scope <String>] [-Force] [-PassThru]
+Remove-AzRoleDefinition [-Name] <String> [-Scope <String>] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzureRmRoleDefinition -InputObject <PSRoleDefinition> [-Force] [-PassThru]
+Remove-AzRoleDefinition -InputObject <PSRoleDefinition> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmRoleDefinition cmdlet deletes a custom role in Azure Role-Based Access Control.
+The Remove-AzRoleDefinition cmdlet deletes a custom role in Azure Role-Based Access Control.
         Provide the Id parameter of an existing custom role to delete that custom role.
-By default, Remove-AzureRmRoleDefinition prompts you for confirmation.
+By default, Remove-AzRoleDefinition prompts you for confirmation.
 To suppress the prompt, use the Force parameter.
 If there are existing role assignments made to the custom role to be deleted, the delete will fail.
 
@@ -44,12 +44,12 @@ If there are existing role assignments made to the custom role to be deleted, th
 
 ### Example 1
 ```
-Get-AzureRmRoleDefinition -Name "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
+Get-AzRoleDefinition -Name "Virtual Machine Operator" | Remove-AzRoleDefinition
 ```
 
 ### Example 2
 ```
-Remove-AzureRmRoleDefinition -Id "52a6cc13-ff92-47a8-a39b-2a8205c3087e"
+Remove-AzRoleDefinition -Id "52a6cc13-ff92-47a8-a39b-2a8205c3087e"
 ```
 
 ## PARAMETERS
@@ -58,7 +58,7 @@ Remove-AzureRmRoleDefinition -Id "52a6cc13-ff92-47a8-a39b-2a8205c3087e"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -206,9 +206,9 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 ## RELATED LINKS
 
-[New-AzureRmRoleDefinition](./New-AzureRmRoleDefinition.md)
+[New-AzRoleDefinition](./New-AzRoleDefinition.md)
 
-[Get-AzureRmRoleDefinition](./Get-AzureRmRoleDefinition.md)
+[Get-AzRoleDefinition](./Get-AzRoleDefinition.md)
 
-[Set-AzureRmRoleDefinition](./Set-AzureRmRoleDefinition.md)
+[Set-AzRoleDefinition](./Set-AzRoleDefinition.md)
 

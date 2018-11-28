@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
-Module Name: AzureRM.Security
-online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Set-AzureRmSecurityPricing.md
+Module Name: Az.Security
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Set-AzSecurityPricing.md
 schema: 2.0.0
 ---
 
-# Set-AzureRmSecurityPricing
+# Set-AzSecurityPricing
 
 ## SYNOPSIS
 Sets the pricing of Azure Security Center tier for a scope.
@@ -14,20 +14,20 @@ Sets the pricing of Azure Security Center tier for a scope.
 
 ### SubscriptionLevelResource (Default)
 ```
-Set-AzureRmSecurityPricing -Name <String> -PricingTier <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSecurityPricing -Name <String> -PricingTier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
 ```
-Set-AzureRmSecurityPricing -ResourceGroupName <String> -Name <String> -PricingTier <String>
+Set-AzSecurityPricing -ResourceGroupName <String> -Name <String> -PricingTier <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzureRmSecurityPricing -InputObject <PSAddPricingInputObject> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSecurityPricing -InputObject <PSSecurityPricing> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Sets the pricing of Azure Security Center tier for a scope.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzureRmSecurityPricing -Name "default" -PricingTier "Standard"
+PS C:\> Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
 Id                                                                                                 Name    PricingTier
 --                                                                                                 ----    -----------
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/default default Standard
@@ -47,7 +47,7 @@ Sets the subscription Azure Security Center pricing tier to "Standard"
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzureRmSecurityPricing -Name "myService1" -ResourceGroupName "myService1" -PricingTier "Standard"
+PS C:\> Set-AzSecurityPricing -Name "myService1" -ResourceGroupName "myService1" -PricingTier "Standard"
 
 Id                                                                                                                     
 --                                                                                                                     
@@ -62,7 +62,7 @@ Sets the "myService1" resource group Azure Security Center pricing tier to "Stan
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 Input Object.
 
 ```yaml
-Type: PSAddPricingInputObject
+Type: Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing
 Parameter Sets: InputObject
 Aliases:
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource
 Aliases:
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 Pricing Tier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource
 Aliases:
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

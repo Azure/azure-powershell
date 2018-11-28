@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype
+Module Name: Az.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/remove-azservicefabricnodetype
 schema: 2.0.0
 ---
 
-# Remove-AzureRmServiceFabricNodeType
+# Remove-AzServiceFabricNodeType
 
 ## SYNOPSIS
 Remove a complete node type from a cluster.
@@ -13,18 +13,18 @@ Remove a complete node type from a cluster.
 ## SYNTAX
 
 ```
-Remove-AzureRmServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
+Remove-AzServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use the **Remove-AzureRmServiceFabricNodeType** to remove all nodes from a specific node type and the node type from a cluster. This command cannot be used to delete the primary node type.
+Use the **Remove-AzServiceFabricNodeType** to remove all nodes from a specific node type and the node type from a cluster. This command cannot be used to delete the primary node type.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Remove-AzureRmServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1'
+PS c:> Remove-AzServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1'
 ```
 
 This command will remove NodeType 'nt1' from the cluster.
@@ -35,7 +35,7 @@ This command will remove NodeType 'nt1' from the cluster.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

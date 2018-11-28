@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: BF6AA8D4-D624-4BE1-A393-1A43909450C4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermavailabilityset
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azavailabilityset
 schema: 2.0.0
 ---
 
-# New-AzureRmAvailabilitySet
+# New-AzAvailabilitySet
 
 ## SYNOPSIS
 Creates an Azure availability set.
@@ -14,19 +14,19 @@ Creates an Azure availability set.
 ## SYNTAX
 
 ```
-New-AzureRmAvailabilitySet [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+New-AzAvailabilitySet [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-PlatformUpdateDomainCount] <Int32>] [[-PlatformFaultDomainCount] <Int32>] [[-Sku] <String>]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAvailabilitySet** cmdlet creates an Azure availability set.
+The **New-AzAvailabilitySet** cmdlet creates an Azure availability set.
 
 ## EXAMPLES
 
 ### Example 1: Create an availability set
 ```
-PS C:\> New-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" -Location "West US"
+PS C:\> New-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" -Location "West US"
 ```
 
 This command creates an availability set named AvailablitySet03 in the resource group named ResourceGroup11.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -188,8 +188,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAvailabilitySet](./Get-AzureRmAvailabilitySet.md)
+[Get-AzAvailabilitySet](./Get-AzAvailabilitySet.md)
 
-[Remove-AzureRmAvailabilitySet](./Remove-AzureRmAvailabilitySet.md)
+[Remove-AzAvailabilitySet](./Remove-AzAvailabilitySet.md)
 
 

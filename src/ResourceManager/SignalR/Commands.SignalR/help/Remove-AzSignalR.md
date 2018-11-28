@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SignalR.dll-Help.xml
-Module Name: AzureRM.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.signalr/new-azurermsignalr
+Module Name: Az.SignalR
+online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/new-azsignalr
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSignalR
+# Remove-AzSignalR
 
 ## SYNOPSIS
 Remove a SignalR service.
@@ -14,19 +14,19 @@ Remove a SignalR service.
 
 ### ResourceGroupParameterSet (Default)
 ```
-Remove-AzureRmSignalR [-ResourceGroupName <String>] [-Name] <String> [-AsJob] [-PassThru]
+Remove-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzureRmSignalR -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSignalR -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzureRmSignalR -InputObject <PSSignalRResource> [-AsJob] [-PassThru]
+Remove-AzSignalR -InputObject <PSSignalRResource> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,14 +37,14 @@ Remove a SignalR service.
 
 ### Remove a SignalR service
 ```powershell
-PS C:\> Remove-AzureRmSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
+PS C:\> Remove-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
 
 True
 ```
 
 ### Remove all SignalR service from pipe
 ```powershell
-PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup | Remove-AzureRmSignalR
+PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup | Remove-AzSignalR
 ```
 
 ## PARAMETERS
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

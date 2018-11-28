@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApplicationInsights.dll-Help.xml
-Module Name: AzureRM.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.applicationinsights/get-azurermapplicationinsightsapikey
+Module Name: Az.ApplicationInsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/get-azapplicationinsightsapikey
 schema: 2.0.0
 ---
 
-# Get-AzureRmApplicationInsightsApiKey
+# Get-AzApplicationInsightsApiKey
 
 ## SYNOPSIS
 Get application insights api keys for an application insights resource
@@ -14,19 +14,19 @@ Get application insights api keys for an application insights resource
 
 ### ComponentNameParameterSet (Default)
 ```
-Get-AzureRmApplicationInsightsApiKey [-ResourceGroupName] <String> [-Name] <String> [[-ApiKeyId] <String>]
+Get-AzApplicationInsightsApiKey [-ResourceGroupName] <String> [-Name] <String> [[-ApiKeyId] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
-Get-AzureRmApplicationInsightsApiKey [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
+Get-AzApplicationInsightsApiKey [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
  [[-ApiKeyId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmApplicationInsightsApiKey [-ResourceId] <String> [[-ApiKeyId] <String>]
+Get-AzApplicationInsightsApiKey [-ResourceId] <String> [[-ApiKeyId] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Get application insights api keys for an application insights resource
 
 ### Example 1 Get Api Keys for an application insights resource
 ```
-PS C:\>  Get-AzureRmApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test"
+PS C:\>  Get-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test"
 
 Id                                   Description Permissions                       CreatedDate                   ApiKey
 --                                   ----------- -----------                       -----------                   ------
@@ -50,7 +50,7 @@ Get application insights api keys for resource "test" in resource group "testGro
 
 ### Example 2 Get specific API key for an application insights resource
 ```
-PS C:\>  Get-AzureRmApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test"  -ApiKeyId 
+PS C:\>  Get-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test"  -ApiKeyId 
 7c4c61dc-b392-4aa4-992f-ee92b84e5dee
 ApiKey      :
 CreatedDate : Wed, 18 Oct 2017 23:36:40 GMT
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

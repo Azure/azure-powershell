@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 44D877F1-D066-4C9C-A797-05EF03785B54
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchpool
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchpool
 schema: 2.0.0
 ---
 
-# Get-AzureBatchPool
+# Get-AzBatchPool
 
 ## SYNOPSIS
 Gets Batch pools under the specified Batch account.
@@ -15,25 +15,25 @@ Gets Batch pools under the specified Batch account.
 
 ### ODataFilter (Default)
 ```
-Get-AzureBatchPool [-Filter <String>] [-MaxCount <Int32>] [-Select <String>] [-Expand <String>]
+Get-AzBatchPool [-Filter <String>] [-MaxCount <Int32>] [-Select <String>] [-Expand <String>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Get-AzureBatchPool [[-Id] <String>] [-Select <String>] [-Expand <String>] -BatchContext <BatchAccountContext>
+Get-AzBatchPool [[-Id] <String>] [-Select <String>] [-Expand <String>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureBatchPool** cmdlet gets the Azure Batch pools under the Batch account specified with the *BatchContext* parameter.
+The **Get-AzBatchPool** cmdlet gets the Azure Batch pools under the Batch account specified with the *BatchContext* parameter.
 You can use the *Id* parameter to get a single pool, or you can use the *Filter* parameter to get the pools that match an Open Data Protocol (OData) filter.
 
 ## EXAMPLES
 
 ### Example 1: Get a pool by ID
 ```
-PS C:\>Get-AzureBatchPool -Id "MyPool" -BatchContext $Context
+PS C:\>Get-AzBatchPool -Id "MyPool" -BatchContext $Context
 AllocationState                      : Resizing
 AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
 AutoScaleEnabled                     : False
@@ -68,7 +68,7 @@ This command gets the pool with ID MyPool.
 
 ### Example 2: Get all pools using an OData filter
 ```
-PS C:\>Get-AzureBatchPool -Filter "startswith(id,'My')" -BatchContext $Context
+PS C:\>Get-AzBatchPool -Filter "startswith(id,'My')" -BatchContext $Context
 AllocationState                      : Resizing
 AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
 AutoScaleEnabled                     : False
@@ -105,7 +105,7 @@ This command gets the pools whose IDs start with My by using the *Filter* parame
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -233,12 +233,12 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[New-AzureBatchPool](./New-AzureBatchPool.md)
+[New-AzBatchPool](./New-AzBatchPool.md)
 
-[Remove-AzureBatchPool](./Remove-AzureBatchPool.md)
+[Remove-AzBatchPool](./Remove-AzBatchPool.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

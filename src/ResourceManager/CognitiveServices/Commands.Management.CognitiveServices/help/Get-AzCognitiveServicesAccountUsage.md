@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
-Module Name: AzureRM.CognitiveServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage
+Module Name: Az.CognitiveServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountusage
 schema: 2.0.0
 ---
 
-# Get-AzureRmCognitiveServicesAccountUsage
+# Get-AzCognitiveServicesAccountUsage
 
 ## SYNOPSIS
 Get current usages for a Cognitive Services account.
@@ -14,30 +14,30 @@ Get current usages for a Cognitive Services account.
 
 ### ResourceNameParameterSet (Default)
 ```
-Get-AzureRmCognitiveServicesAccountUsage [-ResourceGroupName] <String> [-Name] <String>
+Get-AzCognitiveServicesAccountUsage [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Get-AzureRmCognitiveServicesAccountUsage [-InputObject] <PSCognitiveServicesAccount>
+Get-AzCognitiveServicesAccountUsage [-InputObject] <PSCognitiveServicesAccount>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmCognitiveServicesAccountUsage [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzCognitiveServicesAccountUsage [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmCognitiveServicesAccountUsage** cmdlet gets current usages for a Cognitive Services account.
+The **Get-AzCognitiveServicesAccountUsage** cmdlet gets current usages for a Cognitive Services account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
+PS C:\> Get-AzCognitiveServicesAccountUsage -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
 
 CurrentValue  : 0
 Name          : CustomVision.Prediction.Transactions
@@ -50,9 +50,9 @@ NextResetTime : 0001-01-01T00:00:00Z
 
 ### Example 2
 ```powershell
-PS C:\GitHub> $acc = Get-AzureRmCognitiveServicesAccount -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
+PS C:\GitHub> $acc = Get-AzCognitiveServicesAccount -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
 
-PS C:\GitHub> Get-AzureRmCognitiveServicesAccountUsage -InputObject $acc
+PS C:\GitHub> Get-AzCognitiveServicesAccountUsage -InputObject $acc
 
 
 CurrentValue  : 0
@@ -66,9 +66,9 @@ NextResetTime : 0001-01-01T00:00:00Z
 
 ### Example 3
 ```powershell
-PS C:\GitHub> $acc = Get-AzureRmCognitiveServicesAccount -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
+PS C:\GitHub> $acc = Get-AzCognitiveServicesAccount -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
 
-PS C:\GitHub> Get-AzureRmCognitiveServicesAccountUsage -ResourceId $acc.Id
+PS C:\GitHub> Get-AzCognitiveServicesAccountUsage -ResourceId $acc.Id
 
 
 CurrentValue  : 0
@@ -86,7 +86,7 @@ NextResetTime : 0001-01-01T00:00:00Z
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

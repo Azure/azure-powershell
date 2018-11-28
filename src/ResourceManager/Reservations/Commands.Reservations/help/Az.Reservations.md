@@ -1,37 +1,37 @@
 ---
-Module Name: AzureRM.Reservations
+Module Name: Az.Reservations
 Module Guid: 43d3b085-6323-4ac4-a7c3-81d75ea036e5
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.reservations
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.reservations
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# AzureRM.Reservations Module
+# Az.Reservations Module
 ## Description
 The topics in this section document the Azure PowerShell cmdlets for Azure Reservations in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.Reservations namespace.
 
-## AzureRM.Reservations Cmdlets
-### [Get-AzureRmReservation](Get-AzureRmReservation.md)
+## Az.Reservations Cmdlets
+### [Get-AzReservation](Get-AzReservation.md)
 Get `Reservation`s in a given reservation Order
 
-### [Get-AzureRmReservationCatalog](Get-AzureRmReservationCatalog.md)
+### [Get-AzReservationCatalog](Get-AzReservationCatalog.md)
 Get the catalog of available reservations
 
-### [Get-AzureRmReservationHistory](Get-AzureRmReservationHistory.md)
+### [Get-AzReservationHistory](Get-AzReservationHistory.md)
 Get `Reservation` revision history.
 
-### [Get-AzureRmReservationOrder](Get-AzureRmReservationOrder.md)
+### [Get-AzReservationOrder](Get-AzReservationOrder.md)
 Get `ReservationOrder`
 
-### [Get-AzureRmReservationOrderId](Get-AzureRmReservationOrderId.md)
+### [Get-AzReservationOrderId](Get-AzReservationOrderId.md)
 Get list of applicable `ReservationOrder` Ids.
 
-### [Merge-AzureRmReservation](Merge-AzureRmReservation.md)
+### [Merge-AzReservation](Merge-AzReservation.md)
 Merges two `Reservation`s.
 
-### [Split-AzureRmReservation](Split-AzureRmReservation.md)
+### [Split-AzReservation](Split-AzReservation.md)
 Split a `Reservation`.
 
-### [Update-AzureRmReservation](Update-AzureRmReservation.md)
+### [Update-AzReservation](Update-AzReservation.md)
 Update a `Reservation`.
 

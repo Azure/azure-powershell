@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermsubscription
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/get-azsubscription
 schema: 2.0.0
 ---
 
-# Get-AzureRmSubscription
+# Get-AzSubscription
 
 ## SYNOPSIS
 Get subscriptions that the current account can access.
@@ -14,18 +14,18 @@ Get subscriptions that the current account can access.
 
 ### ListByIdInTenant (Default)
 ```
-Get-AzureRmSubscription [-SubscriptionId <String>] [-TenantId <String>] [-AsJob]
+Get-AzSubscription [-SubscriptionId <String>] [-TenantId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByNameInTenant
 ```
-Get-AzureRmSubscription [-SubscriptionName <String>] [-TenantId <String>] [-AsJob]
+Get-AzSubscription [-SubscriptionName <String>] [-TenantId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmSubscription cmdlet gets the subscription ID, subscription
+The Get-AzSubscription cmdlet gets the subscription ID, subscription
 name, and home tenant for subscriptions that the current account can
 access.
 
@@ -33,7 +33,7 @@ access.
 
 ### Example 1: Get all subscriptions in all tenants
 ```
-PS C:\>Get-AzureRmSubscription
+PS C:\>Get-AzSubscription
 
 Name                               Id                      TenantId                        State
 ----                               --                      --------                        -----
@@ -47,7 +47,7 @@ the current account.
 
 ### Example 2: Get all subscriptions for a specific tenant
 ```
-PS C:\>Get-AzureRmSubscription -TenantId "xxxx-xxxx-xxxx-xxxx"
+PS C:\>Get-AzSubscription -TenantId "xxxx-xxxx-xxxx-xxxx"
 
 Name                               Id                      TenantId                        State
 ----                               --                      --------                        -----
@@ -60,7 +60,7 @@ current account.
 
 ### Example 3: Get all subscriptions in the current tenant
 ```
-PS C:\>Get-AzureRmSubscription
+PS C:\>Get-AzSubscription
 
 Name                               Id                      TenantId                        State
 ----                               --                      --------                        -----
@@ -73,7 +73,7 @@ authorized for the current user.
 
 ### Example 4: Change the current context to use a specific subscription
 ```
-PS C:\>Get-AzureRmSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx" -TenantId "yyyy-yyyy-yyyy-yyyy" | Set-AzureRmContext
+PS C:\>Get-AzSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx" -TenantId "yyyy-yyyy-yyyy-yyyy" | Set-AzContext
 
 Name                                     Account             SubscriptionName    Environment         TenantId
 ----                                     -------             ----------------    -----------         --------
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 The credentials, tenant and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

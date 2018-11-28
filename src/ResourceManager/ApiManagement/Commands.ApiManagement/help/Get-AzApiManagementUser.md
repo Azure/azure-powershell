@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 638B2BF6-23F8-4038-B20B-1CFABFDBF5D3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementuser
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementuser
 schema: 2.0.0
 ---
 
-# Get-AzureRmApiManagementUser
+# Get-AzApiManagementUser
 
 ## SYNOPSIS
 Gets a user or users.
@@ -15,64 +15,64 @@ Gets a user or users.
 
 ### GeAllUsers (Default)
 ```
-Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+Get-AzApiManagementUser -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByUserId
 ```
-Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-UserId <String>]
+Get-AzApiManagementUser -Context <PsApiManagementContext> [-UserId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByUser
 ```
-Get-AzureRmApiManagementUser -Context <PsApiManagementContext> [-FirstName <String>] [-LastName <String>]
+Get-AzApiManagementUser -Context <PsApiManagementContext> [-FirstName <String>] [-LastName <String>]
  [-State <PsApiManagementUserState>] [-Email <String>] [-GroupId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApiManagementUser** cmdlet gets a specified user, or all users, if no user is specified.
+The **Get-AzApiManagementUser** cmdlet gets a specified user, or all users, if no user is specified.
 
 ## EXAMPLES
 
 ### Example 1: Get all users
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementUser -Context $apimContext
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementUser -Context $apimContext
 ```
 
 This command gets all users.
 
 ### Example 2: Get a user by ID
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -UserId "0123456789"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementUser -Context $apimContext -UserId "0123456789"
 ```
 
 This command gets a user by ID.
 
 ### Example: Get users by last name
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -LastName "Fuller"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementUser -Context $apimContext -LastName "Fuller"
 ```
 
 This command gets users that have a specified last name, Fuller.
 
 ### Example 4: Get a user by email address
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -Email "user@contoso.com"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementUser -Context $apimContext -Email "user@contoso.com"
 ```
 
 This command gets the user that has the specified email address.
 
 ### Example 5: Get all users within a group
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementUser -Context $apimContext -GroupId "0001"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementUser -Context $apimContext -GroupId "0001"
 ```
 
 This command gets all users within the specified group.
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -231,10 +231,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagementUser](./New-AzureRmApiManagementUser.md)
+[New-AzApiManagementUser](./New-AzApiManagementUser.md)
 
-[Remove-AzureRmApiManagementUser](./Remove-AzureRmApiManagementUser.md)
+[Remove-AzApiManagementUser](./Remove-AzApiManagementUser.md)
 
-[Set-AzureRmApiManagementUser](./Set-AzureRmApiManagementUser.md)
+[Set-AzApiManagementUser](./Set-AzApiManagementUser.md)
 
 

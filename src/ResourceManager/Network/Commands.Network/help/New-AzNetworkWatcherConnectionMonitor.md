@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworkwatcher
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworkwatcher
 schema: 2.0.0
 ---
 
-# New-AzureRmNetworkWatcherConnectionMonitor
+# New-AzNetworkWatcherConnectionMonitor
 
 ## SYNOPSIS
 Creates a connection monitor.
@@ -14,8 +14,8 @@ Creates a connection monitor.
 
 ### SetByName (Default)
 ```
-New-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String>
- -Name <String> -SourceResourceId <String> [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>]
+New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String> -Name <String>
+ -SourceResourceId <String> [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>]
  [-DestinationResourceId <String>] [-DestinationAddress <String>] [-DestinationPort <Int32>] [-ConfigureOnly]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,7 +23,7 @@ New-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcherName <String> -Resourc
 
 ### SetByResource
 ```
-New-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> -Name <String>
+New-AzNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> -Name <String>
  -SourceResourceId <String> [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>]
  [-DestinationResourceId <String>] [-DestinationAddress <String>] [-DestinationPort <Int32>] [-ConfigureOnly]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -32,20 +32,20 @@ New-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> -N
 
 ### SetByLocation
 ```
-New-AzureRmNetworkWatcherConnectionMonitor -Location <String> -Name <String> -SourceResourceId <String>
+New-AzNetworkWatcherConnectionMonitor -Location <String> -Name <String> -SourceResourceId <String>
  [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-DestinationResourceId <String>]
  [-DestinationAddress <String>] [-DestinationPort <Int32>] [-ConfigureOnly] [-Tag <Hashtable>] [-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmNetworkWatcherConnectionMonitor cmdlet rcreates a connection monitor for a specified source and destination.
+The New-AzNetworkWatcherConnectionMonitor cmdlet rcreates a connection monitor for a specified source and destination.
 
 ## EXAMPLES
 
 ### Example 1: Create a connection monitor for a vm and internet destination
 ```
-PS C:\> New-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name cm -SourceResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/RgCentralUSEUAP/providers/Microsoft.Compute/virtualMachines/vm -DestinationAddress bing.com -DestinationPort 80
+PS C:\> New-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name cm -SourceResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/RgCentralUSEUAP/providers/Microsoft.Compute/virtualMachines/vm -DestinationAddress bing.com -DestinationPort 80
 
 Name                        : cm
 Id                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGro
@@ -72,7 +72,7 @@ Type                        : Microsoft.Network/networkWatchers/connectionMonito
 Tags                        : {}
 ```
 
-The New-AzureRmNetworkWatcherConnectionMonitor cmdlet creates a connection monitor for a specified source and destination.
+The New-AzNetworkWatcherConnectionMonitor cmdlet creates a connection monitor for a specified source and destination.
 
 ## PARAMETERS
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -364,56 +364,56 @@ Keywords: azure, azurerm, arm, resource, connectivity, management, manager, netw
 
 ## RELATED LINKS
 
-[New-AzureRmNetworkWatcher]()
+[New-AzNetworkWatcher]()
 
-[Get-AzureRmNetworkWatcher]()
+[Get-AzNetworkWatcher]()
 
-[Remove-AzureRmNetworkWatcher]()
+[Remove-AzNetworkWatcher]()
 
-[Get-AzureRmNetworkWatcherNextHop]()
+[Get-AzNetworkWatcherNextHop]()
 
-[Get-AzureRmNetworkWatcherSecurityGroupView]()
+[Get-AzNetworkWatcherSecurityGroupView]()
 
-[Get-AzureRmNetworkWatcherTopology]()
+[Get-AzNetworkWatcherTopology]()
 
-[Get-AzureRmNetworkWatcherTroubleshootingResult]()
+[Get-AzNetworkWatcherTroubleshootingResult]()
 
-[New-AzureRmNetworkWatcherPacketCapture]()
+[New-AzNetworkWatcherPacketCapture]()
 
-[New-AzureRmPacketCaptureFilterConfig]()
+[New-AzPacketCaptureFilterConfig]()
 
-[Get-AzureRmNetworkWatcherPacketCapture]()
+[Get-AzNetworkWatcherPacketCapture]()
 
-[Remove-AzureRmNetworkWatcherPacketCapture]()
+[Remove-AzNetworkWatcherPacketCapture]()
 
-[Stop-AzureRmNetworkWatcherPacketCapture]()
+[Stop-AzNetworkWatcherPacketCapture]()
 
-[Get-AzureRmNetworkWatcherConnectionMonitor]()
+[Get-AzNetworkWatcherConnectionMonitor]()
 
-[Get-AzureRmNetworkWatcherConnectionMonitorReport]()
+[Get-AzNetworkWatcherConnectionMonitorReport]()
 
-[Remove-AzureRmNetworkWatcherConnectionMonitor]()
+[Remove-AzNetworkWatcherConnectionMonitor]()
 
-[Set-AzureRmNetworkWatcherConnectionMonitor]()
+[Set-AzNetworkWatcherConnectionMonitor]()
 
-[Stop-AzureRmNetworkWatcherConnectionMonitor]()
+[Stop-AzNetworkWatcherConnectionMonitor]()
 
-[New-AzureRmNetworkWatcherConnectionMonitor]()
+[New-AzNetworkWatcherConnectionMonitor]()
 
-[New-AzureRmNetworkWatcherProtocolConfiguration]()
+[New-AzNetworkWatcherProtocolConfiguration]()
 
-[Test-AzureRmNetworkWatcherIPFlow]()
+[Test-AzNetworkWatcherIPFlow]()
 
-[Test-AzureRmNetworkWatcherConnectivity]()
+[Test-AzNetworkWatcherConnectivity]()
 
-[Start-AzureRmNetworkWatcherResourceTroubleshooting]()
+[Start-AzNetworkWatcherResourceTroubleshooting]()
 
-[Start-AzureRmNetworkWatcherConnectionMonitor]()
+[Start-AzNetworkWatcherConnectionMonitor]()
 
-[Set-AzureRmNetworkWatcherConfigFlowLog]()
+[Set-AzNetworkWatcherConfigFlowLog]()
 
-[Get-AzureRMNetworkWatcherReachabilityReport]()
+[Get-AzNetworkWatcherReachabilityReport]()
 
-[Get-AzureRmNetworkWatcherReachabilityProvidersList]()
+[Get-AzNetworkWatcherReachabilityProvidersList]()
 
-[Get-AzureRmNetworkWatcherFlowLogStatus]()
+[Get-AzNetworkWatcherFlowLogStatus]()

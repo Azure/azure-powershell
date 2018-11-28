@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
-Module Name: AzureRM.NotificationHubs
+Module Name: Az.NotificationHubs
 ms.assetid: 2CCDF339-9D6E-4B0C-9201-BE641C8827F6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/get-azurermnotificationhubpnscredentials
+online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/get-aznotificationhubpnscredentials
 schema: 2.0.0
 ---
 
-# Get-AzureRmNotificationHubPNSCredentials
+# Get-AzNotificationHubPNSCredentials
 
 ## SYNOPSIS
 Gets the PNS credentials for a notification hub.
@@ -14,12 +14,12 @@ Gets the PNS credentials for a notification hub.
 ## SYNTAX
 
 ```
-Get-AzureRmNotificationHubPNSCredentials [-ResourceGroup] <String> [-Namespace] <String>
- [-NotificationHub] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNotificationHubPNSCredentials [-ResourceGroup] <String> [-Namespace] <String> [-NotificationHub] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmNotificationHubPNSCredentials** cmdlet gets the platform notification service (PNS) credentials for a notification hub.
+The **Get-AzNotificationHubPNSCredentials** cmdlet gets the platform notification service (PNS) credentials for a notification hub.
 Each notification hub has a single set of PNS credentials.
 These credentials are applied to individual push notification services such as, but not limited to; the iOS push notification service, the Android push notification service, and Windows Phone 8.
 
@@ -27,7 +27,7 @@ These credentials are applied to individual push notification services such as, 
 
 ### Example 1: Get PNS credentials for a specific notification hub
 ```
-PS C:\>Get-AzureRmNotificationHubPNSCredentials -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -NotificationHub "ContosoInternalHub"
+PS C:\>Get-AzNotificationHubPNSCredentials -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -NotificationHub "ContosoInternalHub"
 ```
 
 This command gets the PNS credentials for the notification hub named ContosoInternalHub that belongs to the resource group named ContosoNotificationsGroup.
@@ -38,7 +38,7 @@ This command gets the PNS credentials for the notification hub named ContosoInte
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,6 +112,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNotificationHub](./Get-AzureRmNotificationHub.md)
+[Get-AzNotificationHub](./Get-AzNotificationHub.md)
 
 

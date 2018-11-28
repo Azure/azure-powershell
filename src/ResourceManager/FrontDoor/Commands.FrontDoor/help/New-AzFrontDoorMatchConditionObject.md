@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
-Module Name: AzureRM.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor/new-azurermfrontdoormatchconditionobject
+Module Name: Az.FrontDoor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject
 schema: 2.0.0
 ---
 
-# New-AzureRmFrontDoorMatchConditionObject
+# New-AzFrontDoorMatchConditionObject
 
 ## SYNOPSIS
 Create MatchCondition Object for WAF policy creation
@@ -13,9 +13,9 @@ Create MatchCondition Object for WAF policy creation
 ## SYNTAX
 
 ```
-New-AzureRmFrontDoorMatchConditionObject -MatchVariable <PSMatchVariable>
- -OperatorProperty <PSOperatorProperty> -MatchValue <String[]> [-Selector <String>]
- [-NegateCondition <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorMatchConditionObject -MatchVariable <PSMatchVariable> -OperatorProperty <PSOperatorProperty>
+ -MatchValue <String[]> [-Selector <String>] [-NegateCondition <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Create MatchCondition Object for WAF policy creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
+PS C:\> New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
 
 
 MatchVariable    : RequestHeader
@@ -43,7 +43,7 @@ Create a MatchCondition object
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -149,4 +149,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmFrontDoorCustomRuleObject](./New-AzureRmFrontDoorCustomRuleObject.md)
+[New-AzFrontDoorCustomRuleObject](./New-AzFrontDoorCustomRuleObject.md)

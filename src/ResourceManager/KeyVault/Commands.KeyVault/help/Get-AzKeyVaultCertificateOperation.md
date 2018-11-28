@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 0743C43D-2A1F-4950-B0F3-1FED4014EEC5
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultcertificateoperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultcertificateoperation
 schema: 2.0.0
 ---
 
-# Get-AzureKeyVaultCertificateOperation
+# Get-AzKeyVaultCertificateOperation
 
 ## SYNOPSIS
 Gets the status of a certificate operation.
@@ -15,24 +15,24 @@ Gets the status of a certificate operation.
 
 ### ByName (Default)
 ```
-Get-AzureKeyVaultCertificateOperation [-VaultName] <String> [-Name] <String>
+Get-AzKeyVaultCertificateOperation [-VaultName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Get-AzureKeyVaultCertificateOperation [-InputObject] <PSKeyVaultCertificateIdentityItem>
+Get-AzKeyVaultCertificateOperation [-InputObject] <PSKeyVaultCertificateIdentityItem>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureKeyVaultCertificateOperation** cmdlet gets the status of a certificate operation.
+The **Get-AzKeyVaultCertificateOperation** cmdlet gets the status of a certificate operation.
 
 ## EXAMPLES
 
 ### Example 1: Get the status of a certificate operation
 ```powershell
-PS C:\> Get-AzureKeyVaultCertificateOperation -VaultName "contosoKV01" -Name "TestCert01"
+PS C:\> Get-AzKeyVaultCertificateOperation -VaultName "contosoKV01" -Name "TestCert01"
 
 Id                        : https://contosoKV01.vault.azure.net/certificates/TestCert01/pending
 Status                    : inProgress
@@ -62,7 +62,7 @@ This command gets the status of the certificate operation for TestCert01 on the 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -134,7 +134,7 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Remove-AzureKeyVaultCertificateOperation](./Remove-AzureKeyVaultCertificateOperation.md)
+[Remove-AzKeyVaultCertificateOperation](./Remove-AzKeyVaultCertificateOperation.md)
 
-[Stop-AzureKeyVaultCertificateOperation](./Stop-AzureKeyVaultCertificateOperation.md)
+[Stop-AzKeyVaultCertificateOperation](./Stop-AzKeyVaultCertificateOperation.md)
 

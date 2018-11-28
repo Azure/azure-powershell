@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 4FCC7D8B-A46E-4E5B-8BE2-F62B3D3E715D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqlserverauditingpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverauditingpolicy
 schema: 2.0.0
 ---
 
-# Set-AzureRmSqlServerAuditingPolicy
+# Set-AzSqlServerAuditingPolicy
 
 ## SYNOPSIS
 Changes the auditing policy of a SQL Database server.
@@ -14,14 +14,14 @@ Changes the auditing policy of a SQL Database server.
 ## SYNTAX
 
 ```
-Set-AzureRmSqlServerAuditingPolicy [-AuditType <AuditType>] [-AuditActionGroup <AuditActionGroups[]>]
- [-PassThru] [-EventType <String[]>] [-StorageAccountName <String>] [-StorageKeyType <String>]
- [-RetentionInDays <UInt32>] [-TableIdentifier <String>] -ServerName <String> [-ResourceGroupName] <String>
+Set-AzSqlServerAuditingPolicy [-AuditType <AuditType>] [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
+ [-EventType <String[]>] [-StorageAccountName <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>]
+ [-TableIdentifier <String>] -ServerName <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlServerAuditingPolicy** cmdlet changes the auditing policy of an Azure SQL Database server.
+The **Set-AzSqlServerAuditingPolicy** cmdlet changes the auditing policy of an Azure SQL Database server.
 Specify the *ResourceGroupName* and *ServerName* parameters to identify the server, the *StorageAccountName* parameter to specify the storage account for the audit logs, and the *StorageKeyType* parameter to define the storage keys to use.
 You can also define retention for the audit logs table by setting the value of the *RetentionInDays* and *TableIdentifier* parameters to define the period and the seed for the audit log table names.
 Specify the *EventType* parameter to define which event types to audit.
@@ -33,14 +33,14 @@ Server identifiers include **ResourceGroupName** and **ServerName**.
 
 ### Example 1: Set the auditing policy of an Azure SQL server use Table auditing
 ```
-PS C:\>Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -AuditType Table -StorageAccountName "Storage22"
+PS C:\>Set-AzSqlServerAuditingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -AuditType Table -StorageAccountName "Storage22"
 ```
 
 This command sets the auditing policy of the server named Server01 to use a storage account named Storage22.
 
 ### Example 2: Set the storage account key of an existing auditing policy of an Azure SQL server
 ```
-PS C:\>Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountKey Secondary
+PS C:\>Set-AzSqlServerAuditingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountKey Secondary
 ```
 
 This command sets the auditing policy of the server named Server01 to use the secondary key.
@@ -48,12 +48,12 @@ The command does not modify the storage account name.
 
 ### Example 3: Set the auditing policy of an Azure SQL server to use a specific event type
 ```
-PS C:\>Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EventType Login_Failure
+PS C:\>Set-AzSqlServerAuditingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EventType Login_Failure
 ```
 
 ### Example 4: Set the auditing policy of a database to use Blob auditing
 ```
-PS C:\>Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -AuditType Blob -StorageAccountName "Storage31" -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+PS C:\>Set-AzSqlDatabaseAuditingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -AuditType Blob -StorageAccountName "Storage31" -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 ```
 
 This command sets the auditing policy of the server named Server01 to use the Login_Failure event type.
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -301,9 +301,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServerAuditingPolicy](./Get-AzureRmSqlServerAuditingPolicy.md)
+[Get-AzSqlServerAuditingPolicy](./Get-AzSqlServerAuditingPolicy.md)
 
-[Use-AzureRmSqlServerAuditingPolicy](./Use-AzureRmSqlServerAuditingPolicy.md)
+[Use-AzSqlServerAuditingPolicy](./Use-AzSqlServerAuditingPolicy.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

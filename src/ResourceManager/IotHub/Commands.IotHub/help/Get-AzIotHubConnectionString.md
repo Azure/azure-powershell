@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubconnectionstring
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubconnectionstring
 schema: 2.0.0
 ---
 
-# Get-AzureRmIotHubConnectionString
+# Get-AzIotHubConnectionString
 
 ## SYNOPSIS
 Gets the IotHub connectionstrings.
@@ -13,7 +13,7 @@ Gets the IotHub connectionstrings.
 ## SYNTAX
 
 ```
-Get-AzureRmIotHubConnectionString [-ResourceGroupName] <String> [-Name] <String> [[-KeyName] <String>]
+Get-AzIotHubConnectionString [-ResourceGroupName] <String> [-Name] <String> [[-KeyName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,14 +25,14 @@ You can either get connectionstrings for all the keys or filter them by a specif
 
 ### Example 1 Get All IotHub connectionstrings
 ```
-PS C:\> Get-AzureRmIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub"
+PS C:\> Get-AzIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets the connectionstrings for all keys for the iothub named "myiothub"
 
 ### Example 2 Get the IotHub connectionstrings for a specific key
 ```
-PS C:\> Get-AzureRmIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "mykey"
+PS C:\> Get-AzIotHubConnectionString -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "mykey"
 ```
 
 Gets the connectionstrings for the key named "mykey" for the iothub named "myiothub"
@@ -43,7 +43,7 @@ Gets the connectionstrings for the key named "mykey" for the iothub named "myiot
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

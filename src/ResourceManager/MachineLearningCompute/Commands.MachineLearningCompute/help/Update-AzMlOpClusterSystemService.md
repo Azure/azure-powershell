@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
-Module Name: AzureRM.MachineLearningCompute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/update-azurermmlopclustersystemservice
+Module Name: Az.MachineLearningCompute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearningcompute/update-azmlopclustersystemservice
 schema: 2.0.0
 ---
 
-# Update-AzureRmMlOpClusterSystemService
+# Update-AzMlOpClusterSystemService
 
 ## SYNOPSIS
 Starts an update on the operationalization cluster's system services.
@@ -14,20 +14,20 @@ Starts an update on the operationalization cluster's system services.
 
 ### StartUpdateWithNameAndResourceGroup
 ```
-Update-AzureRmMlOpClusterSystemService -ResourceGroupName <String> -Name <String>
+Update-AzMlOpClusterSystemService -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StartUpdateWithInputObject
 ```
-Update-AzureRmMlOpClusterSystemService -InputObject <PSOperationalizationCluster>
+Update-AzMlOpClusterSystemService -InputObject <PSOperationalizationCluster>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StartUpdateWithResourceId
 ```
-Update-AzureRmMlOpClusterSystemService -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzMlOpClusterSystemService -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ The system services can be updated independently from the operationalization clu
 
 ### Example 1
 ```
-PS C:\> Update-AzureRmMlOpClusterSystemService -ResourceGroupName my-group -Name my-cluster
+PS C:\> Update-AzMlOpClusterSystemService -ResourceGroupName my-group -Name my-cluster
 ```
 
 Starts a system services update on the specified cluster. 
@@ -48,7 +48,7 @@ Starts a system services update on the specified cluster.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 5C0C437D-7237-4B40-A254-1B55916F1C71
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementproperty
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementproperty
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagementProperty
+# Set-AzApiManagementProperty
 
 ## SYNOPSIS
 Modifies an API Management Property.
@@ -14,21 +14,21 @@ Modifies an API Management Property.
 ## SYNTAX
 
 ```
-Set-AzureRmApiManagementProperty -Context <PsApiManagementContext> -PropertyId <String> [-Name <String>]
+Set-AzApiManagementProperty -Context <PsApiManagementContext> -PropertyId <String> [-Name <String>]
  [-Value <String>] [-Secret <Boolean>] [-Tag <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApiManagementProperty** cmdlet modifies an Azure API Management Property.
+The **Set-AzApiManagementProperty** cmdlet modifies an Azure API Management Property.
 
 ## EXAMPLES
 
 ### Example 1: Change the tags on a property
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$Tags = 'sdk', 'powershell'
-PS C:\> Set-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Property11" -Tags $Tags -PassThru
+PS C:\> Set-AzApiManagementProperty -Context $apimContext -PropertyId "Property11" -Tags $Tags -PassThru
 ```
 
 The first command assigns two values to the $Tags variable.
@@ -37,8 +37,8 @@ The command assigns the strings in $Tags as tags on the property.
 
 ### Example 2: Modify a property to have a secret value
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Property12" -Secret $True -PassThru
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementProperty -Context $apimContext -PropertyId "Property12" -Secret $True -PassThru
 ```
 
 This command changes the property to be Encrypted.
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -193,10 +193,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementProperty](./Get-AzureRmApiManagementProperty.md)
+[Get-AzApiManagementProperty](./Get-AzApiManagementProperty.md)
 
-[New-AzureRmApiManagementProperty](./New-AzureRmApiManagementProperty.md)
+[New-AzApiManagementProperty](./New-AzApiManagementProperty.md)
 
-[Remove-AzureRmApiManagementProperty](./Remove-AzureRmApiManagementProperty.md)
+[Remove-AzApiManagementProperty](./Remove-AzApiManagementProperty.md)
 
 

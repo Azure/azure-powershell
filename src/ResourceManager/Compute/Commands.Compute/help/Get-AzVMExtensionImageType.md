@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 45F35BDD-969E-4521-9E8D-3499A15434A6
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmextensionimagetype
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmextensionimagetype
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMExtensionImageType
+# Get-AzVMExtensionImageType
 
 ## SYNOPSIS
 Gets the type of an Azure extension.
@@ -14,18 +14,18 @@ Gets the type of an Azure extension.
 ## SYNTAX
 
 ```
-Get-AzureRmVMExtensionImageType -Location <String> -PublisherName <String>
+Get-AzVMExtensionImageType -Location <String> -PublisherName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMExtensionImageType** cmdlet gets the type of an Azure extension.
+The **Get-AzVMExtensionImageType** cmdlet gets the type of an Azure extension.
 
 ## EXAMPLES
 
 ### Example 1: Get an extension image type
 ```
-PS C:\> Get-AzureRmVMExtensionImageType -Location "Central US" -PublisherName "Fabrikam"
+PS C:\> Get-AzVMExtensionImageType -Location "Central US" -PublisherName "Fabrikam"
 ```
 
 This command gets the extension image type for the specified publisher and location.
@@ -36,7 +36,7 @@ This command gets the extension image type for the specified publisher and locat
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 
 ### -PublisherName
 Specifies the name of a publisher of an extension.
-To obtain an extension publisher, use the Get-AzureRmVMImagePublisher cmdlet.
+To obtain an extension publisher, use the Get-AzVMImagePublisher cmdlet.
 This cmdlet gets the type for an extension from the publisher that this parameter specifies.
 
 ```yaml
@@ -95,8 +95,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMExtensionImage](./Get-AzureRmVMExtensionImage.md)
+[Get-AzVMExtensionImage](./Get-AzVMExtensionImage.md)
 
-[Get-AzureRmVMImagePublisher](./Get-AzureRmVMImagePublisher.md)
+[Get-AzVMImagePublisher](./Get-AzVMImagePublisher.md)
 
 

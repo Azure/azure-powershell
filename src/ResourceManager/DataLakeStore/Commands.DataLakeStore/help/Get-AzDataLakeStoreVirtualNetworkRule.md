@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/get-azurermdatalakestorevirtualnetworkrule
+Module Name: Az.DataLakeStore
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/get-azdatalakestorevirtualnetworkrule
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataLakeStoreVirtualNetworkRule
+# Get-AzDataLakeStoreVirtualNetworkRule
 
 ## SYNOPSIS
 Gets the specified virtual network rules in the specified Data Lake Store.
@@ -14,19 +14,19 @@ If no virtual network rule is specified, then lists all virtual network rules fo
 ## SYNTAX
 
 ```
-Get-AzureRmDataLakeStoreVirtualNetworkRule [-Account] <String> [-Name <String>]
+Get-AzDataLakeStoreVirtualNetworkRule [-Account] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDataLakeStoreVirtualNetworkRule cmdlet gets the specified virtual network rules in the specified Data Lake Store.
+The Get-AzDataLakeStoreVirtualNetworkRule cmdlet gets the specified virtual network rules in the specified Data Lake Store.
 If no virtual network rule is specified, then lists all virtual network rules for the account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET"
+PS C:\> Get-AzDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET"
 
 ResourceGroupName                :
 AccountName                      :
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

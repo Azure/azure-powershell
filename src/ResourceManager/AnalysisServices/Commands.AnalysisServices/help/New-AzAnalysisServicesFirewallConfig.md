@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
-Module Name: AzureRM.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesfirewallconfig
+Module Name: Az.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/new-azanalysisservicesfirewallconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmAnalysisServicesFirewallConfig
+# New-AzAnalysisServicesFirewallConfig
 
 ## SYNOPSIS
 Creates a new Analysis Services firewall config 
@@ -13,21 +13,21 @@ Creates a new Analysis Services firewall config
 ## SYNTAX
 
 ```
-New-AzureRmAnalysisServicesFirewallConfig [-EnablePowerBIService]
+New-AzAnalysisServicesFirewallConfig [-EnablePowerBIService]
  [-FirewallRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmAnalysisServicesFirewallConfig creates a new firewall config object
+The New-AzAnalysisServicesFirewallConfig creates a new firewall config object
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $rule1 = New-AzureRmAnalysisServicesFirewallRule -FirewallRuleName rule1 -RangeStart 0.0.0.0 -RangeEnd 255.255.255.255
-PS C:\> $rule2 = New-AzureRmAnalysisServicesFirewallRule -FirewallRuleName rule2 -RangeStart 6.6.6.6 -RangeEnd 7.7.7.7
-PS C:\> $config = New-AzureRmAnalysisServicesFirewallConfig -EnablePowerBIService -FirewallRule $rule1,$rule2
+PS C:\> $rule1 = New-AzAnalysisServicesFirewallRule -FirewallRuleName rule1 -RangeStart 0.0.0.0 -RangeEnd 255.255.255.255
+PS C:\> $rule2 = New-AzAnalysisServicesFirewallRule -FirewallRuleName rule2 -RangeStart 6.6.6.6 -RangeEnd 7.7.7.7
+PS C:\> $config = New-AzAnalysisServicesFirewallConfig -EnablePowerBIService -FirewallRule $rule1,$rule2
 ```
 
 Creates a firewall config object with two rules while also enabling access from Power BI service.
@@ -38,7 +38,7 @@ Creates a firewall config object with two rules while also enabling access from 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,4 +94,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAnalysisServicesFirewallRule](./New-AzureRmAnalysisServicesFirewallRule.md)
+[New-AzAnalysisServicesFirewallRule](./New-AzAnalysisServicesFirewallRule.md)

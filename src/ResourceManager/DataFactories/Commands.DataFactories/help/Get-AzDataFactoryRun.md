@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 7100B5F0-A07B-4305-BF80-1F52647A03AB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryrun
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryrun
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryRun
+# Get-AzDataFactoryRun
 
 ## SYNOPSIS
 Gets runs for a data slice of a dataset in Azure Data Factory.
@@ -15,24 +15,24 @@ Gets runs for a data slice of a dataset in Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactoryRun [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime>
+Get-AzDataFactoryRun [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactoryRun [-DataFactory] <PSDataFactory> [-DatasetName] <String> [-StartDateTime] <DateTime>
+Get-AzDataFactoryRun [-DataFactory] <PSDataFactory> [-DatasetName] <String> [-StartDateTime] <DateTime>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactoryRun** cmdlet gets the runs for a data slice of a dataset in Azure Data Factory.
+The **Get-AzDataFactoryRun** cmdlet gets the runs for a data slice of a dataset in Azure Data Factory.
 A dataset in a data factory is composed of slices over the time axis.
 The width of a slice is determined by the schedule, either hourly or daily.
 A run is a unit of processing for a slice.
 There could be one or more runs for a slice in case of retries or in case you rerun your slice due to failures.
 A slice is identified by its start time.
-To obtain the start time of a slice, use the Get-AzureRmDataFactorySlice cmdlet.
+To obtain the start time of a slice, use the Get-AzDataFactorySlice cmdlet.
 For example, to get a run for the following slice, use the start time 2015-04-02T20:00:00.
 ResourceGroupName  : ADF
 DataFactoryName : SPDataFactory0924
@@ -47,7 +47,7 @@ LatencyStatus :
 
 ### Example 1: Get a dataset
 ```
-PS C:\>Get-AzureRmDataFactoryRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00Z
+PS C:\>Get-AzDataFactoryRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00Z
 Id                  : a7c4913c-9623-49b3-ae1e-3e45e2b68819
 ResourceGroupName   : ADF
 DataFactoryName     : WikiADF
@@ -191,6 +191,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactorySlice](./Get-AzureRmDataFactorySlice.md)
+[Get-AzDataFactorySlice](./Get-AzDataFactorySlice.md)
 
 

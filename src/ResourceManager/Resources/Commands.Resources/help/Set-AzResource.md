@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: A00160B9-831F-4A20-8D9D-9E89BC4F5C91
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/set-azurermresource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azresource
 schema: 2.0.0
 ---
 
-# Set-AzureRmResource
+# Set-AzResource
 
 ## SYNOPSIS
 Modifies a resource.
@@ -15,7 +15,7 @@ Modifies a resource.
 
 ### ByResourceId (Default)
 ```
-Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
+Set-AzResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
  [-Tag <Hashtable>] [-UsePatchSemantics] [-AsJob] -ResourceId <String> [-ODataQuery <String>] [-Force]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,7 +23,7 @@ Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>
 
 ### ByInputObject
 ```
-Set-AzureRmResource -InputObject <PSResource> [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>]
+Set-AzResource -InputObject <PSResource> [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>]
  [-Sku <Hashtable>] [-Tag <Hashtable>] [-UsePatchSemantics] [-AsJob] [-ODataQuery <String>] [-Force]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -31,7 +31,7 @@ Set-AzureRmResource -InputObject <PSResource> [-Kind <String>] [-Properties <PSO
 
 ### BySubscriptionLevel
 ```
-Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
+Set-AzResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
  [-Tag <Hashtable>] [-UsePatchSemantics] [-AsJob] -ResourceName <String> -ResourceType <String>
  [-ExtensionResourceName <String>] [-ExtensionResourceType <String>] [-ODataQuery <String>]
  [-ResourceGroupName <String>] [-Force] [-ApiVersion <String>] [-Pre]
@@ -40,7 +40,7 @@ Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>
 
 ### ByTenantLevel
 ```
-Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
+Set-AzResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
  [-Tag <Hashtable>] [-UsePatchSemantics] [-AsJob] -ResourceName <String> -ResourceType <String>
  [-ExtensionResourceName <String>] [-ExtensionResourceType <String>] [-ODataQuery <String>] [-TenantLevel]
  [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -48,27 +48,27 @@ Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmResource** cmdlet modifies an existing Azure resource.
+The **Set-AzResource** cmdlet modifies an existing Azure resource.
 Specify a resource to modify by name and type or by ID.
 
 ## EXAMPLES
 
 ### Example 1: Modify a resource
 ```
-PS C:\> $Resource = Get-AzureRmResource -ResourceType Microsoft.Web/sites -ResourceGroupName ResourceGroup11 -ResourceName ContosoSite
+PS C:\> $Resource = Get-AzResource -ResourceType Microsoft.Web/sites -ResourceGroupName ResourceGroup11 -ResourceName ContosoSite
 PS C:\> $Resource.Properties.Enabled = "False"
-PS C:\> $Resource | Set-AzureRmResource -Force
+PS C:\> $Resource | Set-AzResource -Force
 ```
 
-The first command gets the resource named ContosoSite by using the Get-AzureRmResource cmdlet, and then stores it in the $Resource variable.
+The first command gets the resource named ContosoSite by using the Get-AzResource cmdlet, and then stores it in the $Resource variable.
 The second command modifies a property of $Resource.
 The final command updates the resource to match $Resource.
 
 ### Example 2: Modify all resources in a given resource group
 ```
-PS C:\> $Resource = Get-AzureRmResource -ResourceGroupName testrg
+PS C:\> $Resource = Get-AzResource -ResourceGroupName testrg
 PS C:\> $Resource | ForEach-Object { $_.Tags.Add("testkey", "testval") }
-PS C:\> $Resource | Set-AzureRmResource -Force
+PS C:\> $Resource | Set-AzResource -Force
 
 Name              : kv-test
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.KeyVault/vaults/kv-test
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -458,12 +458,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Find-AzureRmResource](./Find-AzureRmResource.md)
+[Find-AzResource](./Find-AzResource.md)
 
-[Get-AzureRmResource](./Get-AzureRmResource.md)
+[Get-AzResource](./Get-AzResource.md)
 
-[Move-AzureRmResource](./Move-AzureRmResource.md)
+[Move-AzResource](./Move-AzResource.md)
 
-[New-AzureRmResource](./New-AzureRmResource.md)
+[New-AzResource](./New-AzResource.md)
 
-[Remove-AzureRmResource](./Remove-AzureRmResource.md)
+[Remove-AzResource](./Remove-AzResource.md)

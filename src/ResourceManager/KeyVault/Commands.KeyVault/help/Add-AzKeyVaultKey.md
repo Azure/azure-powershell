@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 846F781C-73A3-4BBE-ABD9-897371109FBE
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/add-azurekeyvaultkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/add-azkeyvaultkey
 schema: 2.0.0
 ---
 
-# Add-AzureKeyVaultKey
+# Add-AzKeyVaultKey
 
 ## SYNOPSIS
 Creates a key in a key vault or imports a key into a key vault.
@@ -15,14 +15,14 @@ Creates a key in a key vault or imports a key into a key vault.
 
 ### InteractiveCreate (Default)
 ```
-Add-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> -Destination <String> [-Disable]
- [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
+Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -Destination <String> [-Disable] [-KeyOps <String[]>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InteractiveImport
 ```
-Add-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String>
+Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -30,14 +30,14 @@ Add-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String
 
 ### InputObjectCreate
 ```
-Add-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -Destination <String> [-Disable]
+Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -Destination <String> [-Disable]
  [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectImport
 ```
-Add-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <String>
+Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -45,21 +45,21 @@ Add-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <
 
 ### ResourceIdCreate
 ```
-Add-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> -Destination <String> [-Disable]
- [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
+Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -Destination <String> [-Disable] [-KeyOps <String[]>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdImport
 ```
-Add-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> -KeyFilePath <String>
+Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureKeyVaultKey** cmdlet creates a key in a key vault in Azure Key Vault, or imports a key into a key vault.
+The **Add-AzKeyVaultKey** cmdlet creates a key in a key vault in Azure Key Vault, or imports a key into a key vault.
 Use this cmdlet to add keys by using any of the following methods:
 - Create a key in a hardware security module (HSM) in the Key Vault service.
 - Create a key in software in the Key Vault service.
@@ -77,7 +77,7 @@ package (a file with a .byok file name extension) by using the Azure Key Vault B
 more information, see
 [How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](http://go.microsoft.com/fwlink/?LinkId=522252).
 As a best practice, back up your key after it is created or updated, by using the
-Backup-AzureKeyVaultKey cmdlet. There is no undelete functionality, so if you accidentally delete
+Backup-AzKeyVaultKey cmdlet. There is no undelete functionality, so if you accidentally delete
 your key or delete it and then change your mind, the key is not recoverable unless you have a
 backup of it that you can restore.
 
@@ -85,7 +85,7 @@ backup of it that you can restore.
 
 ### Example 1: Create a key
 ```powershell
-PS C:\> Add-AzureKeyVaultKey -VaultName 'contoso' -Name 'ITSoftware' -Destination 'Software'
+PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITSoftware' -Destination 'Software'
 
 Vault Name     : contoso
 Name           : ITSoftware
@@ -104,7 +104,7 @@ This command creates a software-protected key named ITSoftware in the key vault 
 
 ### Example 2: Create an HSM-protected key
 ```powershell
-PS C:\> Add-AzureKeyVaultKey -VaultName 'contoso' -Name 'ITHsm' -Destination 'HSM'
+PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITHsm' -Destination 'HSM'
 
 Vault Name     : contoso
 Name           : ITHsm
@@ -127,7 +127,7 @@ PS C:\> $KeyOperations = 'decrypt', 'verify'
 PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 PS C:\> $NotBefore = (Get-Date).ToUniversalTime()
 PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = "true"}
-PS C:\> Add-AzureKeyVaultKey -VaultName 'contoso' -Name 'ITHsmNonDefault' -Destination 'HSM' -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations -Disable -Tag $Tags
+PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITHsmNonDefault' -Destination 'HSM' -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations -Disable -Tag $Tags
 
 Vault Name     : contoso
 Name           : ITHsmNonDefault
@@ -153,12 +153,12 @@ specifies current UTC time. The command stores that date in the $NotBefore varia
 The final command creates a key named ITHsmNonDefault that is an HSM-protected key. The command
 specifies values for allowed key operations stored $KeyOperations. The command specifies times for
 the *Expires* and *NotBefore* parameters created in the previous commands, and tags for high
-severity and IT. The new key is disabled. You can enable it by using the **Set-AzureKeyVaultKey**
+severity and IT. The new key is disabled. You can enable it by using the **Set-AzKeyVaultKey**
 cmdlet.
 
 ### Example 4: Import an HSM-protected key
 ```powershell
-PS C:\> Add-AzureKeyVaultKey -VaultName 'contoso' -Name 'ITByok' -KeyFilePath 'C:\Contoso\ITByok.byok' -Destination 'HSM'
+PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITByok' -KeyFilePath 'C:\Contoso\ITByok.byok' -Destination 'HSM'
 
 Vault Name     : contoso
 Name           : ITByok
@@ -182,7 +182,7 @@ For more information, see
 ### Example 5: Import a software-protected key
 ```powershell
 PS C:\> $Password = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
-PS C:\> Add-AzureKeyVaultKey -VaultName 'contoso' -Name 'ITPfx' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password
+PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfx' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password
 
 Vault Name     : contoso
 Name           : ITPfx
@@ -208,7 +208,7 @@ location for the key and the password stored in $Password.
 PS C:\> $Password = ConvertTo-SecureString -String 'password' -AsPlainText -Force
 PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 PS C:\> $Tags = @{ 'Severity' = 'high'; 'Accounting' = "true" }
-PS C:\> Add-AzureKeyVaultKey -VaultName 'contoso' -Name 'ITPfxToHSM' -Destination 'HSM' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password -Expires $Expires -Tag $Tags
+PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfxToHSM' -Destination 'HSM' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password -Expires $Expires -Tag $Tags
 
 Vault Name     : contoso
 Name           : ITPfxToHSM
@@ -240,7 +240,7 @@ stored in $tags.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -549,10 +549,10 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Backup-AzureKeyVaultKey](./Backup-AzureKeyVaultKey.md)
+[Backup-AzKeyVaultKey](./Backup-AzKeyVaultKey.md)
 
-[Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
+[Get-AzKeyVaultKey](./Get-AzKeyVaultKey.md)
 
-[Remove-AzureKeyVaultKey](./Remove-AzureKeyVaultKey.md)
+[Remove-AzKeyVaultKey](./Remove-AzKeyVaultKey.md)
 
-[Set-AzureKeyVaultKeyAttribute](./Set-AzureKeyVaultKeyAttribute.md)
+[Set-AzKeyVaultKeyAttribute](./Set-AzKeyVaultKeyAttribute.md)

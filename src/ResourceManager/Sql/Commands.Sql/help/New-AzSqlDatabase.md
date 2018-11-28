@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: D2DB7821-A7D2-4017-8522-78793DDE040E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqldatabase
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqldatabase
 schema: 2.0.0
 ---
 
-# New-AzureRmSqlDatabase
+# New-AzSqlDatabase
 
 ## SYNOPSIS
 Creates a database or an elastic database.
@@ -15,7 +15,7 @@ Creates a database or an elastic database.
 
 ### DtuBasedDatabase (Default)
 ```
-New-AzureRmSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
+New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
  [-MaxSizeBytes <Int64>] [-Edition <String>] [-RequestedServiceObjectiveName <String>]
  [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-SampleName <String>]
  [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
@@ -24,7 +24,7 @@ New-AzureRmSqlDatabase -DatabaseName <String> [-CollationName <String>] [-Catalo
 
 ### VcoreBasedDatabase
 ```
-New-AzureRmSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
+New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
  [-MaxSizeBytes <Int64>] -Edition <String> [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>]
  [-SampleName <String>] [-ZoneRedundant] [-AsJob] -VCore <Int32> -ComputeGeneration <String>
  [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
@@ -32,14 +32,14 @@ New-AzureRmSqlDatabase -DatabaseName <String> [-CollationName <String>] [-Catalo
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlDatabase** cmdlet creates an Azure SQL database.
+The **New-AzSqlDatabase** cmdlet creates an Azure SQL database.
 You can also create an elastic database by setting the *ElasticPoolName* parameter to an existing elastic pool.
 
 ## EXAMPLES
 
 ### Example 1: Create a database on a specified server
 ```
-PS C:\>New-AzureRmSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+PS C:\>New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ResourceGroupName             : ResourceGroup01
 ServerName                    : Server01
 DatabaseName                  : Database01
@@ -65,7 +65,7 @@ This command creates a database named Database01 on server Server01.
 
 ### Example 2: Create an elastic database on a specified server
 ```
-PS C:\>New-AzureRmSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -ElasticPoolName "ElasticPool01"
+PS C:\>New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -ElasticPoolName "ElasticPool01"
 ResourceGroupName             : ResourceGroup01
 ServerName                    : Server01
 DatabaseName                  : Database02
@@ -91,7 +91,7 @@ This command creates a database named Database02 in the elastic pool named Elast
 
 ### Example 3: Create an Vcore database on a specified server
 ```
-PS C:\>New-AzureRmSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database03" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen4"
+PS C:\>New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database03" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen4"
 ResourceGroupName             : ResourceGroup01
 ServerName                    : Server01
 DatabaseName                  : Database03
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -456,19 +456,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlDatabase](./Get-AzureRmSqlDatabase.md)
+[Get-AzSqlDatabase](./Get-AzSqlDatabase.md)
 
-[New-AzureRmSqlElasticPool](./New-AzureRmSqlElasticPool.md)
+[New-AzSqlElasticPool](./New-AzSqlElasticPool.md)
 
-[New-AzureRmSqlServer](./New-AzureRmSqlServer.md)
+[New-AzSqlServer](./New-AzSqlServer.md)
 
-[Remove-AzureRmSqlDatabase](./Remove-AzureRmSqlDatabase.md)
+[Remove-AzSqlDatabase](./Remove-AzSqlDatabase.md)
 
-[Resume-AzureRmSqlDatabase](./Resume-AzureRmSqlDatabase.md)
+[Resume-AzSqlDatabase](./Resume-AzSqlDatabase.md)
 
-[Set-AzureRmSqlDatabase](./Set-AzureRmSqlDatabase.md)
+[Set-AzSqlDatabase](./Set-AzSqlDatabase.md)
 
-[Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
+[Suspend-AzSqlDatabase](./Suspend-AzSqlDatabase.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

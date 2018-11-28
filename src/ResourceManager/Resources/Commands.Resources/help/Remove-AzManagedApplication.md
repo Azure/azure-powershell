@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermmanagedapplication
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azmanagedapplication
 schema: 2.0.0
 ---
 
-# Remove-AzureRmManagedApplication
+# Remove-AzManagedApplication
 
 ## SYNOPSIS
 Removes a managed application
@@ -14,28 +14,28 @@ Removes a managed application
 
 ### RemoveByNameAndResourceGroup (Default)
 ```
-Remove-AzureRmManagedApplication -Name <String> -ResourceGroupName <String> [-Force] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzManagedApplication -Name <String> -ResourceGroupName <String> [-Force] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveById
 ```
-Remove-AzureRmManagedApplication -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
+Remove-AzManagedApplication -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmManagedApplication** cmdlet removes a managed application
+The **Remove-AzManagedApplication** cmdlet removes a managed application
 
 ## EXAMPLES
 
 ### Example 1: Remove managed application by resource ID
 ```
-PS C:\>$Application = Get-AzureRmManagedApplication -Name "myApp" -ResourceGroupName "myRG"
-PS C:\>Remove-AzureRmManagedApplication -Id $Application.ResourceId -Force
+PS C:\>$Application = Get-AzManagedApplication -Name "myApp" -ResourceGroupName "myRG"
+PS C:\>Remove-AzManagedApplication -Id $Application.ResourceId -Force
 ```
 
-The first command gets a managed application named myApp by using the Get-AzureRmManagedApplication cmdlet.
+The first command gets a managed application named myApp by using the Get-AzManagedApplication cmdlet.
 The command stores it in the $Application variable.
 The second command removes the managed application identified by the **ResourceId** property of $Application.
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

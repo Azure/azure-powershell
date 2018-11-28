@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlservertransparentdataencryptionprotector
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlServerTransparentDataEncryptionProtector
+# Get-AzSqlServerTransparentDataEncryptionProtector
 
 ## SYNOPSIS
 Gets the Transparent Data Encryption (TDE) protector
@@ -13,18 +13,18 @@ Gets the Transparent Data Encryption (TDE) protector
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServerTransparentDataEncryptionProtector [-ServerName] <String> [-ResourceGroupName] <String>
+Get-AzSqlServerTransparentDataEncryptionProtector [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmSqlServerTransparentDataEncryptionProtector cmdlet gets information about the TDE protector.
+The Get-AzSqlServerTransparentDataEncryptionProtector cmdlet gets information about the TDE protector.
 
 ## EXAMPLES
 
 ### Example 1: Get the Transparent Data Encryption (TDE) protector
 ```
-PS C:\> Get-AzureRmSqlServerTransparentDataEncryptionProtector -ServerName 'ContosoServer' -ResourceGroup 'ContosoResourceGroup'
+PS C:\> Get-AzSqlServerTransparentDataEncryptionProtector -ServerName 'ContosoServer' -ResourceGroup 'ContosoResourceGroup'
 ```
 
 This command gets the TDE protector for the server named ContosoServer in resource group named ContosoResourceGroup.
@@ -38,7 +38,7 @@ ContosoResourceGroup ContosoServer ServiceManaged ServiceManaged
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

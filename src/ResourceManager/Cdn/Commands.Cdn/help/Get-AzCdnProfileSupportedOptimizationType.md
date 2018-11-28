@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-Module Name: AzureRM.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdnprofilesupportedoptimizationtype
+Module Name: Az.Cdn
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnprofilesupportedoptimizationtype
 schema: 2.0.0
 ---
 
-# Get-AzureRmCdnProfileSupportedOptimizationType
+# Get-AzCdnProfileSupportedOptimizationType
 
 ## SYNOPSIS
 Gets the supported optimization types for a CDN profile.
@@ -14,24 +14,24 @@ Gets the supported optimization types for a CDN profile.
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzureRmCdnProfileSupportedOptimizationType -ProfileName <String> -ResourceGroupName <String>
+Get-AzCdnProfileSupportedOptimizationType -ProfileName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Get-AzureRmCdnProfileSupportedOptimizationType -CdnProfile <PSProfile>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCdnProfileSupportedOptimizationType -CdnProfile <PSProfile> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmCdnProfileSupportedOptimizationType** cmdlet gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values.
+The **Get-AzCdnProfileSupportedOptimizationType** cmdlet gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmCdnProfileSupportedOptimizationType -ProfileName $profileName -ResourceGroupName $resourceGroupName
+PS C:\> Get-AzCdnProfileSupportedOptimizationType -ProfileName $profileName -ResourceGroupName $resourceGroupName
 OptimizationType: GeneralWebDelivery
 OptimizationType: DynamicSiteAcceleration
 ```
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

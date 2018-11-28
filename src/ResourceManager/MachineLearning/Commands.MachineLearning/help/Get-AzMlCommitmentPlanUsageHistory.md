@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-Module Name: AzureRM.MachineLearning
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/get-azurermmlcommitmentplanusagehistory
+Module Name: Az.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/get-azmlcommitmentplanusagehistory
 schema: 2.0.0
 ---
 
-# Get-AzureRmMlCommitmentPlanUsageHistory
+# Get-AzMlCommitmentPlanUsageHistory
 
 ## SYNOPSIS
 Retrieves usage history information for a specified commitment plan.
@@ -13,7 +13,7 @@ Retrieves usage history information for a specified commitment plan.
 ## SYNTAX
 
 ```
-Get-AzureRmMlCommitmentPlanUsageHistory -ResourceGroupName <String> -Name <String>
+Get-AzMlCommitmentPlanUsageHistory -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Retrieves usage history information for a specified commitment plan, including r
 
 ### Example 1: Get usage history for a specific commitment plan
 ```
-Get-AzureRmMlCommitmentPlanUsageHistory -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
+Get-AzMlCommitmentPlanUsageHistory -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
 ```
 
 ## PARAMETERS
@@ -33,7 +33,7 @@ Get-AzureRmMlCommitmentPlanUsageHistory -ResourceGroupName "MyResourceGroup" -Na
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

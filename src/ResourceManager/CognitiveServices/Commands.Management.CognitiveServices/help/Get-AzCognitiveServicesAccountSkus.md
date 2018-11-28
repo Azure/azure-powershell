@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
-Module Name: AzureRM.CognitiveServices
+Module Name: Az.CognitiveServices
 ms.assetid: 386F09F0-2EEC-4B55-825C-F2E88D3B60AA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountskus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountskus
 schema: 2.0.0
 ---
 
-# Get-AzureRmCognitiveServicesAccountSkus
+# Get-AzCognitiveServicesAccountSkus
 
 ## SYNOPSIS
 Gets the available SKUs for an account.
@@ -15,18 +15,18 @@ Gets the available SKUs for an account.
 
 ### GetSkusWithAccount (Default)
 ```
-Get-AzureRmCognitiveServicesAccountSkus [-ResourceGroupName] <String> [-Name] <String>
+Get-AzCognitiveServicesAccountSkus [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetSkusWithFilter
 ```
-Get-AzureRmCognitiveServicesAccountSkus [-Type <String>] [-Location <String>]
+Get-AzCognitiveServicesAccountSkus [-Type <String>] [-Location <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmCognitiveServicesAccountSkus** cmdlet gets the available SKUs for a Cognitive Services account.
+The **Get-AzCognitiveServicesAccountSkus** cmdlet gets the available SKUs for a Cognitive Services account.
 The SKU is the tier plan for an account.
 It defines the price, call limit, and rate for the account.
 The F0 SKU is a free tier.
@@ -36,7 +36,7 @@ Paid tiers include S0, S1, S2, and so on.
 
 ### Example 1
 ```powershell
-PS C:\> (Get-AzureRmCognitiveServicesAccountSkus -ResourceGroupName cognitive-services-resource-group -Name myluis).Value | Select-Object -E
+PS C:\> (Get-AzCognitiveServicesAccountSkus -ResourceGroupName cognitive-services-resource-group -Name myluis).Value | Select-Object -E
 xpandProperty Sku;
 
 Name     Tier
@@ -51,7 +51,7 @@ S0   Standard
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

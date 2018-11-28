@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerInstance.dll-Help.xml
-Module Name: AzureRM.ContainerInstance
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance/get-azurermcontainerinstancelog
+Module Name: Az.ContainerInstance
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance/get-azcontainerinstancelog
 schema: 2.0.0
 ---
 
-# Get-AzureRmContainerInstanceLog
+# Get-AzContainerInstanceLog
 
 ## SYNOPSIS
 Get the logs of a container instance in a container group.
@@ -14,30 +14,30 @@ Get the logs of a container instance in a container group.
 
 ### GetContainerInstanceLogByNamesParamSet (Default)
 ```
-Get-AzureRmContainerInstanceLog [-ResourceGroupName] <String> -ContainerGroupName <String> [-Name <String>]
+Get-AzContainerInstanceLog [-ResourceGroupName] <String> -ContainerGroupName <String> [-Name <String>]
  [-Tail <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetContainerInstanceLogByPSContainerGroupParamSet
 ```
-Get-AzureRmContainerInstanceLog -InputContainerGroup <PSContainerGroup> [-Name <String>] [-Tail <Int32>]
+Get-AzContainerInstanceLog -InputContainerGroup <PSContainerGroup> [-Name <String>] [-Tail <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetContainerInstanceLogByResourceIdParamSet
 ```
-Get-AzureRmContainerInstanceLog -ResourceId <String> [-Name <String>] [-Tail <Int32>]
+Get-AzContainerInstanceLog -ResourceId <String> [-Name <String>] [-Tail <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmContainerInstanceLog** cmdlet gets the logs of a container in a container group.
+The **Get-AzContainerInstanceLog** cmdlet gets the logs of a container in a container group.
 
 ## EXAMPLES
 
 ### Example 1: Get the tail log of a container instance
 ```
-PS C:\> Get-AzureRmContainerInstanceLog -ResourceGroupName demo -ContainerGroupName mycontainer -Name container1
+PS C:\> Get-AzContainerInstanceLog -ResourceGroupName demo -ContainerGroupName mycontainer -Name container1
 
 Log line 1.
 Log line 2.
@@ -49,7 +49,7 @@ Get the log from `container1` in container group `mycontainer`. By default, it w
 
 ### Example 2: Get the tail log of a container instance that has the same name as the container group
 ```
-PS C:\> Get-AzureRmContainerInstanceLog -ResourceGroupName demo -ContainerGroupName mycontainer
+PS C:\> Get-AzContainerInstanceLog -ResourceGroupName demo -ContainerGroupName mycontainer
 
 Log line 1.
 Log line 2.
@@ -61,7 +61,7 @@ Get the log from `mycontainer` in container group `mycontainer`. By default, it 
 
 ### Example 3: Get the tail 2 lines of log of a container instance
 ```
-PS C:\> Get-AzureRmContainerInstanceLog -ResourceGroupName demo -ContainerGroupName mycontainer -Name container1 -Tail 2
+PS C:\> Get-AzContainerInstanceLog -ResourceGroupName demo -ContainerGroupName mycontainer -Name container1 -Tail 2
 
 Log line 3.
 Log line 4.
@@ -71,7 +71,7 @@ Get the tail 2 lines of log from `container1` in container group `mycontainer`.
 
 ### Example 4: Get the tail log of a container instance in a piped in container group
 ```
-PS C:\> Get-AzureRmContainerGroup -ResourceGroupName demo -Name mycontainer | Get-AzureRmContainerInstanceLog
+PS C:\> Get-AzContainerGroup -ResourceGroupName demo -Name mycontainer | Get-AzContainerInstanceLog
 
 Log line 1.
 Log line 2.
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

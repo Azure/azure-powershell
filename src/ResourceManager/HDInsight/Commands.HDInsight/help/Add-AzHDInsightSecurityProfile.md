@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: FB37494B-4035-45B7-88AB-DF33CEEF0D0A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/add-azurermhdinsightsecurityprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightsecurityprofile
 schema: 2.0.0
 ---
 
-# Add-AzureRmHDInsightSecurityProfile
+# Add-AzHDInsightSecurityProfile
 
 ## SYNOPSIS
 Adds a security profileto a cluster configuration object.
@@ -14,7 +14,7 @@ Adds a security profileto a cluster configuration object.
 ## SYNTAX
 
 ```
-Add-AzureRmHDInsightSecurityProfile [-Config] <AzureHDInsightConfig> -Domain <String>
+Add-AzHDInsightSecurityProfile [-Config] <AzureHDInsightConfig> -Domain <String>
  -DomainUserCredential <PSCredential> -OrganizationalUnitDN <String> -LdapsUrls <String[]>
  [-ClusterUsersGroupDNs <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 
 ### -Config
 Specifies the HDInsight cluster configuration object that this cmdlet modifies.
-This object is created by the New-AzureRmHDInsightClusterConfig cmdlet.
+This object is created by the New-AzHDInsightClusterConfig cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig

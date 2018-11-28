@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementapirevision
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementapirevision
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagementApiRevision
+# Set-AzApiManagementApiRevision
 
 ## SYNOPSIS
 Modifies an API Revision
@@ -14,7 +14,7 @@ Modifies an API Revision
 
 ### ExpandedParameter (Default)
 ```
-Set-AzureRmApiManagementApiRevision -ApiRevision <String> -Context <PsApiManagementContext> -ApiId <String>
+Set-AzApiManagementApiRevision -ApiRevision <String> -Context <PsApiManagementContext> -ApiId <String>
  -Name <String> [-Description <String>] -ServiceUrl <String> [-Path <String>]
  -Protocols <PsApiManagementSchema[]> [-AuthorizationServerId <String>] [-AuthorizationScope <String>]
  [-SubscriptionKeyHeaderName <String>] [-SubscriptionKeyQueryParamName <String>] [-PassThru]
@@ -23,21 +23,21 @@ Set-AzureRmApiManagementApiRevision -ApiRevision <String> -Context <PsApiManagem
 
 ### ByInputObject
 ```
-Set-AzureRmApiManagementApiRevision -InputObject <PsApiManagementApi> -Name <String> [-Description <String>]
+Set-AzApiManagementApiRevision -InputObject <PsApiManagementApi> -Name <String> [-Description <String>]
  -ServiceUrl <String> [-Path <String>] -Protocols <PsApiManagementSchema[]> [-AuthorizationServerId <String>]
  [-AuthorizationScope <String>] [-SubscriptionKeyHeaderName <String>] [-SubscriptionKeyQueryParamName <String>]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApiManagementApiRevision** cmdlet modifies an Azure API Management API Revision.
+The **Set-AzApiManagementApiRevision** cmdlet modifies an Azure API Management API Revision.
 
 ## EXAMPLES
 
 ### Example 1 Modify an API Revision
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementApiRevision -Context $ApiMgmtContext -ApiId "echo-api" -ApiRevision "2" -Name "EchoApi" -ServiceUrl "https://contoso.com/apis/echo" -Protocols @('https') -Description "Responds with what was sent" -Path "echo"
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementApiRevision -Context $ApiMgmtContext -ApiId "echo-api" -ApiRevision "2" -Name "EchoApi" -ServiceUrl "https://contoso.com/apis/echo" -Protocols @('https') -Description "Responds with what was sent" -Path "echo"
 ```
 
 The cmdlet updates the `2` revision of the API `echo-api` with a new description, protocol and path.
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -350,8 +350,8 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementApiRevision](./Get-AzureRmApiManagementApiRevision.md)
+[Get-AzApiManagementApiRevision](./Get-AzApiManagementApiRevision.md)
 
-[New-AzureRmApiManagementApiRevision](./New-AzureRmApiManagementApiRevision.md)
+[New-AzApiManagementApiRevision](./New-AzApiManagementApiRevision.md)
 
-[Remove-AzureRmApiManagementApiRevision](./Remove-AzureRmApiManagementApiRevision.md)
+[Remove-AzApiManagementApiRevision](./Remove-AzApiManagementApiRevision.md)

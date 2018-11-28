@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 6FFE1B64-C80B-423D-A043-55C90A224752
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewaysslcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewaysslcertificate
 schema: 2.0.0
 ---
 
-# New-AzureRmApplicationGatewaySslCertificate
+# New-AzApplicationGatewaySslCertificate
 
 ## SYNOPSIS
 Creates an SSL certificate for an Azure application gateway.
@@ -14,19 +14,19 @@ Creates an SSL certificate for an Azure application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewaySslCertificate -Name <String> -CertificateFile <String> -Password <SecureString>
+New-AzApplicationGatewaySslCertificate -Name <String> -CertificateFile <String> -Password <SecureString>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApplicationGatewaySslCertificate** cmdlet creates an SSL certificate for an Azure application gateway.
+The **New-AzApplicationGatewaySslCertificate** cmdlet creates an SSL certificate for an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1: Create an SSL certificate for an Azure application gateway.
 ```
 PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
-PS C:\> $cert = New-AzureRmApplicationGatewaySslCertificate -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
+PS C:\> $cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 
 This command creates a SSL certificate named Cert01 for the default application gateway and stores the result in the variable named $Cert.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -108,12 +108,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmApplicationGatewaySslCertificate](./Add-AzureRmApplicationGatewaySslCertificate.md)
+[Add-AzApplicationGatewaySslCertificate](./Add-AzApplicationGatewaySslCertificate.md)
 
-[Get-AzureRmApplicationGatewaySslCertificate](./Get-AzureRmApplicationGatewaySslCertificate.md)
+[Get-AzApplicationGatewaySslCertificate](./Get-AzApplicationGatewaySslCertificate.md)
 
-[Remove-AzureRmApplicationGatewaySslCertificate](./Remove-AzureRmApplicationGatewaySslCertificate.md)
+[Remove-AzApplicationGatewaySslCertificate](./Remove-AzApplicationGatewaySslCertificate.md)
 
-[Set-AzureRmApplicationGatewaySslCertificate](./Set-AzureRmApplicationGatewaySslCertificate.md)
+[Set-AzApplicationGatewaySslCertificate](./Set-AzApplicationGatewaySslCertificate.md)
 
 

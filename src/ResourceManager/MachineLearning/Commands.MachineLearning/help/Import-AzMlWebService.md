@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-Module Name: AzureRM.MachineLearning
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/import-azurermmlwebservice
+Module Name: Az.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/import-azmlwebservice
 schema: 2.0.0
 ---
 
-# Import-AzureRmMlWebService
+# Import-AzMlWebService
 
 ## SYNOPSIS
 Imports a JSON object into a web service definition.
@@ -14,27 +14,27 @@ Imports a JSON object into a web service definition.
 
 ### ImportFromJSONFile
 ```
-Import-AzureRmMlWebService -InputFile <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Import-AzMlWebService -InputFile <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ImportFromJSONString.
 ```
-Import-AzureRmMlWebService -JsonString <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Import-AzMlWebService -JsonString <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Import-AzureRmMlWebService cmdlet imports , specified either directly or in a referenced file, and creates a web service definition object that can be passed to the New-AzureRmMlWebService cmdlet.
+The Import-AzMlWebService cmdlet imports , specified either directly or in a referenced file, and creates a web service definition object that can be passed to the New-AzMlWebService cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Import from string
 ```
-Import-AzureRmMlWebService -JsonString $jsonDefinition
+Import-AzMlWebService -JsonString $jsonDefinition
 ```
 
 ### Example 2: Import from file path
 ```
-Import-AzureRmMlWebService -InputFile "C:\mlservice.json"
+Import-AzMlWebService -InputFile "C:\mlservice.json"
 ```
 
 ## PARAMETERS
@@ -43,7 +43,7 @@ Import-AzureRmMlWebService -InputFile "C:\mlservice.json"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

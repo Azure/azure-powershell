@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 677E19F2-CC6C-4C16-B1FD-3A15D0FF1ECA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/wait-azurermhdinsightjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/wait-azhdinsightjob
 schema: 2.0.0
 ---
 
-# Wait-AzureRmHDInsightJob
+# Wait-AzHDInsightJob
 
 ## SYNOPSIS
 Waits for the completion or failure of a specified job.
@@ -14,13 +14,13 @@ Waits for the completion or failure of a specified job.
 ## SYNTAX
 
 ```
-Wait-AzureRmHDInsightJob [-ClusterName] <String> [-JobId] <String> [-HttpCredential] <PSCredential>
+Wait-AzHDInsightJob [-ClusterName] <String> [-JobId] <String> [-HttpCredential] <PSCredential>
  [-ResourceGroupName <String>] [-TimeoutInSeconds <Int32>] [-WaitIntervalInSeconds <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Wait-AzureRmHDInsightJob** cmdlet awaits the completion or failure of an Azure HDInsight job.
+The **Wait-AzHDInsightJob** cmdlet awaits the completion or failure of an Azure HDInsight job.
 
 ## EXAMPLES
 
@@ -35,12 +35,12 @@ PS C:\> $clusterCreds = Get-Credential
 PS C:\> $statusFolder = "tempStatusFolder/"
 PS C:\> $query = "SHOW TABLES"
 
-PS C:\> New-AzureRmHDInsightHiveJobDefinition -StatusFolder $statusFolder `
+PS C:\> New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
             -Query $query `
-        | Start-AzureRmHDInsightJob -ResourceGroupName $clusterResourceGroupName `
+        | Start-AzHDInsightJob -ResourceGroupName $clusterResourceGroupName `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds `
-        | Wait-AzureRmHDInsightJob -ResourceGroupName $clusterResourceGroupName `
+        | Wait-AzHDInsightJob -ResourceGroupName $clusterResourceGroupName `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds
 ```
@@ -170,10 +170,10 @@ Parameters: JobId (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmHDInsightJob](./Get-AzureRmHDInsightJob.md)
+[Get-AzHDInsightJob](./Get-AzHDInsightJob.md)
 
-[Start-AzureRmHDInsightJob](./Start-AzureRmHDInsightJob.md)
+[Start-AzHDInsightJob](./Start-AzHDInsightJob.md)
 
-[Stop-AzureRmHDInsightJob](./Stop-AzureRmHDInsightJob.md)
+[Stop-AzHDInsightJob](./Stop-AzHDInsightJob.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
-Module Name: AzureRM.Media
+Module Name: Az.Media
 ms.assetid: 4D64CA4D-1066-4D3E-9317-60D37D9DE2BB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/new-azurermmediaservicestorageconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.media/new-azmediaservicestorageconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmMediaServiceStorageConfig
+# New-AzMediaServiceStorageConfig
 
 ## SYNOPSIS
 Create a storage account configuration for the media service cmdlets.
@@ -14,24 +14,24 @@ Create a storage account configuration for the media service cmdlets.
 ## SYNTAX
 
 ```
-New-AzureRmMediaServiceStorageConfig [-DefaultProfile <IAzureContextContainer>] [-StorageAccountId] <String>
+New-AzMediaServiceStorageConfig [-DefaultProfile <IAzureContextContainer>] [-StorageAccountId] <String>
  [-IsPrimary] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmMediaServiceStorageConfig** cmdlet creates a storage account configuration for the media service cmdlets.
+The **New-AzMediaServiceStorageConfig** cmdlet creates a storage account configuration for the media service cmdlets.
 
 ## EXAMPLES
 
 ### Example 1: Create a storage account configuration for the media service cmdlets
 ```
 PS C:\>
-$StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name "Storage1" -Location "East US" -Type "Standard_GRS"
+$StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name "Storage1" -Location "East US" -Type "Standard_GRS"
 
-PS C:\> New-AzureRmMediaServiceStorageConfig -StorageAccountId $StorageAccount.Id -IsPrimary
+PS C:\> New-AzMediaServiceStorageConfig -StorageAccountId $StorageAccount.Id -IsPrimary
 ```
 
-The first command creates a storage account object by using **the New-AzureRmStorageAccount** cmdlet.
+The first command creates a storage account object by using **the New-AzStorageAccount** cmdlet.
 The command names this storage account Storage1 and the type is named Standard_GRS and stores the result in the variable named $StorageAccount.
 The second command creates a storage configuration object as the primary storage account associated with the media service using the storage account ID information stored in the $StorageAccount variable.
 
@@ -41,7 +41,7 @@ The second command creates a storage configuration object as the primary storage
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -128,6 +128,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Sync-AzureRmMediaServiceStorageKeys](./Sync-AzureRmMediaServiceStorageKeys.md)
+[Sync-AzMediaServiceStorageKeys](./Sync-AzMediaServiceStorageKeys.md)
 
 

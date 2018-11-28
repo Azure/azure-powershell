@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermtenant
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/get-aztenant
 schema: 2.0.0
 ---
 
-# Get-AzureRmTenant
+# Get-AzTenant
 
 ## SYNOPSIS
 Gets tenants that are authorized for the current user.
@@ -13,18 +13,18 @@ Gets tenants that are authorized for the current user.
 ## SYNTAX
 
 ```
-Get-AzureRmTenant [[-TenantId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzTenant [[-TenantId] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmTenant cmdlet gets tenants authorized for the current user.
+The Get-AzTenant cmdlet gets tenants authorized for the current user.
 
 ## EXAMPLES
 
 ### Example 1: Getting all tenants
 ```
-PS C:\> Connect-AzureRmAccount
-PS C:\> Get-AzureRmTenant
+PS C:\> Connect-AzAccount
+PS C:\> Get-AzTenant
 
 Id                                   Directory
 --                                   ---------
@@ -36,8 +36,8 @@ This example shows how to get all of the authorized tenants of an Azure account.
 
 ### Example 2: Getting a specific tenant
 ```
-PS C:\> Connect-AzureRmAccount
-PS C:\> Get-AzureRmTenant -TenantId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+PS C:\> Connect-AzAccount
+PS C:\> Get-AzTenant -TenantId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 Id                                   Directory
 --                                   ---------
@@ -52,7 +52,7 @@ This example shows how to get a specific authorized tenant of an Azure account.
 The credentials, tenant and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

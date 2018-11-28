@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: 0EB5C25C-D0A1-4444-AEA2-C963D5069CFC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/set-azurermdatalakestoreaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/set-azdatalakestoreaccount
 schema: 2.0.0
 ---
 
-# Set-AzureRmDataLakeStoreAccount
+# Set-AzDataLakeStoreAccount
 
 ## SYNOPSIS
 Modifies a Data Lake Store account.
@@ -14,20 +14,20 @@ Modifies a Data Lake Store account.
 ## SYNTAX
 
 ```
-Set-AzureRmDataLakeStoreAccount [-Name] <String> [[-DefaultGroup] <String>] [[-Tag] <Hashtable>]
+Set-AzDataLakeStoreAccount [-Name] <String> [[-DefaultGroup] <String>] [[-Tag] <Hashtable>]
  [[-TrustedIdProviderState] <TrustedIdProviderState>] [[-FirewallState] <FirewallState>]
  [[-ResourceGroupName] <String>] [-Tier <TierType>] [-AllowAzureIpState <FirewallAllowAzureIpsState>]
  [-KeyVersion <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmDataLakeStoreAccount** cmdlet modifies a Data Lake Store account.
+The **Set-AzDataLakeStoreAccount** cmdlet modifies a Data Lake Store account.
 
 ## EXAMPLES
 
 ### Example 1: Add a tag to an account
 ```
-PS C:\>Set-AzureRmDataLakeStoreAccount -Name "ContosoADL" -Tags @{"stage"="production"}
+PS C:\>Set-AzDataLakeStoreAccount -Name "ContosoADL" -Tags @{"stage"="production"}
 ```
 
 This command adds the specified tag to the Data Lake Store account named ContosoADL.
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -214,12 +214,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataLakeStoreAccount](./Get-AzureRmDataLakeStoreAccount.md)
+[Get-AzDataLakeStoreAccount](./Get-AzDataLakeStoreAccount.md)
 
-[New-AzureRmDataLakeStoreAccount](./New-AzureRmDataLakeStoreAccount.md)
+[New-AzDataLakeStoreAccount](./New-AzDataLakeStoreAccount.md)
 
-[Remove-AzureRmDataLakeStoreAccount](./Remove-AzureRmDataLakeStoreAccount.md)
+[Remove-AzDataLakeStoreAccount](./Remove-AzDataLakeStoreAccount.md)
 
-[Test-AzureRmDataLakeStoreAccount](./Test-AzureRmDataLakeStoreAccount.md)
+[Test-AzDataLakeStoreAccount](./Test-AzDataLakeStoreAccount.md)
 
 

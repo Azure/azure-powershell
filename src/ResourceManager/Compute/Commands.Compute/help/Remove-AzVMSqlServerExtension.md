@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: B02CEAC8-C838-4890-8C21-9897CA39EF45
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmsqlserverextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmsqlserverextension
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVMSqlServerExtension
+# Remove-AzVMSqlServerExtension
 
 ## SYNOPSIS
 Removes a SQL Server extension from a virtual machine.
@@ -14,18 +14,18 @@ Removes a SQL Server extension from a virtual machine.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMSqlServerExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String>
+Remove-AzVMSqlServerExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVMSqlServerExtension** cmdlet removes an AzureSQL Server extension from a virtual machine.
+The **Remove-AzVMSqlServerExtension** cmdlet removes an AzureSQL Server extension from a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Remove a SQL Server extension
 ```
-PS C:\> Remove-AzureRMVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" -Name "SqlIaaSAgent"
+PS C:\> Remove-AzVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" -Name "SqlIaaSAgent"
 ```
 
 This command removes a SQL Server extension from the virtual machine named ContosoVM22.
@@ -36,7 +36,7 @@ This command removes a SQL Server extension from the virtual machine named Conto
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -107,8 +107,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMSqlServerExtension](./Get-AzureRMVMSqlServerExtension.md)
+[Get-AzVMSqlServerExtension](./Get-AzVMSqlServerExtension.md)
 
-[Set-AzureRmVMSqlServerExtension](./Set-AzureRMVMSqlServerExtension.md)
+[Set-AzVMSqlServerExtension](./Set-AzVMSqlServerExtension.md)
 
 

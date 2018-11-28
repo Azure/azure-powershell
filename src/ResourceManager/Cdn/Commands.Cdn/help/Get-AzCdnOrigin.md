@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-Module Name: AzureRM.Cdn
+Module Name: Az.Cdn
 ms.assetid: 91919242-59ED-4938-A3A3-23A66F85FBC1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdnorigin
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnorigin
 schema: 2.0.0
 ---
 
-# Get-AzureRmCdnOrigin
+# Get-AzCdnOrigin
 
 ## SYNOPSIS
 Gets a CDN origin server.
@@ -15,18 +15,18 @@ Gets a CDN origin server.
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzureRmCdnOrigin [-OriginName <String>] -EndpointName <String> -ProfileName <String>
- -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCdnOrigin [-OriginName <String>] -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Get-AzureRmCdnOrigin [-OriginName <String>] -CdnEndpoint <PSEndpoint>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCdnOrigin [-OriginName <String>] -CdnEndpoint <PSEndpoint> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmCdnOrigin** cmdlet gets an Azure Content Delivery Network (CDN) origin server and its configuration data.
+The **Get-AzCdnOrigin** cmdlet gets an Azure Content Delivery Network (CDN) origin server and its configuration data.
 
 ## EXAMPLES
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -138,6 +138,6 @@ Parameters: CdnEndpoint (ByValue)
 
 ## RELATED LINKS
 
-[Set-AzureRmCdnOrigin](./Set-AzureRmCdnOrigin.md)
+[Set-AzCdnOrigin](./Set-AzCdnOrigin.md)
 
 

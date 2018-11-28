@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermenvironment
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/get-azenvironment
 schema: 2.0.0
 ---
 
-# Get-AzureRmEnvironment
+# Get-AzEnvironment
 
 ## SYNOPSIS
 Get endpoints and metadata for an instance of Azure services.
@@ -13,17 +13,17 @@ Get endpoints and metadata for an instance of Azure services.
 ## SYNTAX
 
 ```
-Get-AzureRmEnvironment [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEnvironment [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmEnvironment cmdlet gets endpoints and metadata for an instance of Azure services.
+The Get-AzEnvironment cmdlet gets endpoints and metadata for an instance of Azure services.
 
 ## EXAMPLES
 
 ### Example 1: Getting the AzureCloud environment
 ```
-PS C:\> Get-AzureRmEnvironment AzureCloud
+PS C:\> Get-AzEnvironment AzureCloud
 
 Name       Resource Manager Url          ActiveDirectory Authority
 ----       --------------------          -------------------------
@@ -34,7 +34,7 @@ This example shows how to get the endpoints and metadata for the AzureCloud (def
 
 ### Example 2: Getting the AzureChinaCloud environment
 ```
-PS C:\> Get-AzureRmEnvironment AzureChinaCloud | Format-List
+PS C:\> Get-AzEnvironment AzureChinaCloud | Format-List
 
 Name                                              : AzureChinaCloud
 EnableAdfsAuthentication                          : False
@@ -61,7 +61,7 @@ This example shows how to get the endpoints and metadata for the AzureChinaCloud
 
 ### Example 3: Getting the AzureUSGovernment environment
 ```
-PS C:\> Get-AzureRmEnvironment AzureUSGovernment
+PS C:\> Get-AzEnvironment AzureUSGovernment
 
 Name              Resource Manager Url                  ActiveDirectory Authority
 ----              --------------------                  -------------------------
@@ -76,7 +76,7 @@ This example shows how to get the endpoints and metadata for the AzureUSGovernme
 The credentials, account, tenant and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,9 +117,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRMEnvironment](./Add-AzureRMEnvironment.md)
+[Add-AzEnvironment](./Add-AzEnvironment.md)
 
-[Remove-AzureRMEnvironment](./Remove-AzureRMEnvironment.md)
+[Remove-AzEnvironment](./Remove-AzEnvironment.md)
 
-[Set-AzureRMEnvironment](./Set-AzureRMEnvironment.md)
+[Set-AzEnvironment](./Set-AzEnvironment.md)
 

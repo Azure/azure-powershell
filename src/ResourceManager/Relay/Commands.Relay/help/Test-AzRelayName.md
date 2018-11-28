@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM.Relay
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/test-azurermrelayname
+Module Name: Az.Relay
+online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/test-azrelayname
 schema: 2.0.0
 ---
 
-# Test-AzureRmRelayName
+# Test-AzRelayName
 
 ## SYNOPSIS
 Checks the Availability of the given NameSpace Name
@@ -13,17 +13,17 @@ Checks the Availability of the given NameSpace Name
 ## SYNTAX
 
 ```
-Test-AzureRmRelayName [-Namespace] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzRelayName [-Namespace] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzureRmRelayName** Cmdlet Check Availability of the NameSpace Name
+The **Test-AzRelayName** Cmdlet Check Availability of the NameSpace Name
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Test-AzureRmRelayName -Namespace TestingtheAvailability
+PS C:\> Test-AzRelayName -Namespace TestingtheAvailability
 
 NameAvailable Reason Message
 ------------- ------ -------
@@ -32,7 +32,7 @@ NameAvailable Reason Message
 
 ### Example 2
 ```
-PS C:\> Test-AzureRmRelayName -Namespace Testi
+PS C:\> Test-AzRelayName -Namespace Testi
 
 NameAvailable      Reason Message
 -------------      ------ -------
@@ -41,7 +41,7 @@ NameAvailable      Reason Message
 
 ### Example 3
 ```
-PS C:\> Test-AzureRmRelayName -Namespace Test123
+PS C:\> Test-AzRelayName -Namespace Test123
 
 NameAvailable    Reason Message
 -------------    ------ -------
@@ -56,7 +56,7 @@ Returns the status on availability of the namespace name
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,18 +83,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.PSCheckNameAvailabilityResultAttributes
-
 
 ## NOTES
 

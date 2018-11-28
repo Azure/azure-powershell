@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 00236BC2-61D8-49C2-91BE-923C567153F3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermpublicipaddress
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azpublicipaddress
 schema: 2.0.0
 ---
 
-# Remove-AzureRmPublicIpAddress
+# Remove-AzPublicIpAddress
 
 ## SYNOPSIS
 Removes a public IP address.
@@ -14,18 +14,18 @@ Removes a public IP address.
 ## SYNTAX
 
 ```
-Remove-AzureRmPublicIpAddress -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
+Remove-AzPublicIpAddress -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmPublicIpAddress** cmdlet removes an Azure public IP address.
+The **Remove-AzPublicIpAddress** cmdlet removes an Azure public IP address.
 
 ## EXAMPLES
 
 ### 1: Remove a public IP address resource
 ```
-Remove-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+Remove-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
 
 This command removes the public IP address resource named $publicIpName in the resource group $rgName.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -169,10 +169,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmPublicIpAddress](./Get-AzureRmPublicIpAddress.md)
+[Get-AzPublicIpAddress](./Get-AzPublicIpAddress.md)
 
-[New-AzureRmPublicIpAddress](./New-AzureRmPublicIpAddress.md)
+[New-AzPublicIpAddress](./New-AzPublicIpAddress.md)
 
-[Set-AzureRmPublicIpAddress](./Set-AzureRmPublicIpAddress.md)
+[Set-AzPublicIpAddress](./Set-AzPublicIpAddress.md)
 
 

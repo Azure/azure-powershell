@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 98CB62E1-0A18-4207-81FA-07CC60310896
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermfirewallfqdntag
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azfirewallfqdntag
 schema: 2.0.0
 ---
 
-# Get-AzureRmFirewallFqdnTag
+# Get-AzFirewallFqdnTag
 
 ## SYNOPSIS
 Gets the available Azure Firewall Fqdn Tags.
@@ -14,25 +14,25 @@ Gets the available Azure Firewall Fqdn Tags.
 ## SYNTAX
 
 ```
-Get-AzureRmFirewallFqdnTag [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzFirewallFqdnTag [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmFirewallFqdnTag** cmdlet gets the list of FQDN Tags which can be used for Azure Firewall Application Rules
+The **Get-AzFirewallFqdnTag** cmdlet gets the list of FQDN Tags which can be used for Azure Firewall Application Rules
 
 ## EXAMPLES
 
 ### 1:  Retrieve all available FQDN Tags
 ```
-Get-AzureRmFirewallFqdnTag
+Get-AzFirewallFqdnTag
 ```
 
 This example retrieves all available FQDN Tags.
 
 ### 2:  Use first available FQDN Tag in an Application Rule
 ```
-$fqdnTags = Get-AzureRmFirewallFqdnTag
-New-AzureRmFirewallApplicationRule -Name AR -SourceAddress * -FqdnTag $fqdnTags[0].FqdnTagName
+$fqdnTags = Get-AzFirewallFqdnTag
+New-AzFirewallApplicationRule -Name AR -SourceAddress * -FqdnTag $fqdnTags[0].FqdnTagName
 ```
 
 This example creates a Firewall Application Rule using the first available FQDN Tag
@@ -43,7 +43,7 @@ This example creates a Firewall Application Rule using the first available FQDN 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,6 +70,6 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[New-AzureRmFirewallApplicationRule](./New-AzureRmFirewallApplicationRule.md)
+[New-AzFirewallApplicationRule](./New-AzFirewallApplicationRule.md)
 
-[New-AzureRmFirewall](./New-AzureRmFirewall.md)
+[New-AzFirewall](./New-AzFirewall.md)

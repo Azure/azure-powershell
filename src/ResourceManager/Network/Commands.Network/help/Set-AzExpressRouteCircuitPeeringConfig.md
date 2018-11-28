@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 6C0281EC-4D23-4BD0-A268-4C278ABC7B1A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermexpressroutecircuitpeeringconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azexpressroutecircuitpeeringconfig
 schema: 2.0.0
 ---
 
-# Set-AzureRmExpressRouteCircuitPeeringConfig
+# Set-AzExpressRouteCircuitPeeringConfig
 
 ## SYNOPSIS
 Saves a modified ExpressRoute peering configuration.
@@ -15,7 +15,7 @@ Saves a modified ExpressRoute peering configuration.
 
 ### SetByResource (Default)
 ```
-Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
+Set-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
  -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
@@ -26,7 +26,7 @@ Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
 
 ### MicrosoftPeeringConfigRoutFilterId
 ```
-Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
+Set-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
  -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
@@ -37,7 +37,7 @@ Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
 
 ### MicrosoftPeeringConfigRoutFilter
 ```
-Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
+Set-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
  -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
@@ -47,14 +47,14 @@ Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmExpressRouteCircuitPeeringConfig** cmdlets saves a modified ExpressRoute peering
+The **Set-AzExpressRouteCircuitPeeringConfig** cmdlets saves a modified ExpressRoute peering
 configuration back to Azure.
 
 ## EXAMPLES
 
 ### Example 1: Change an existing peering configuration
 ```
-$circuit = Get-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
+$circuit = Get-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
 $parameters = @{
     Name = 'AzurePrivatePeering'
     Circuit = $circuit
@@ -64,8 +64,8 @@ $parameters = @{
     SecondaryPeerAddressPrefix = '10.6.2.0/30'
     VlanId  = 201
 }
-Set-AzureRmExpressRouteCircuitPeeringConfig @parameters
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
+Set-AzExpressRouteCircuitPeeringConfig @parameters
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
 ```
 
 ## PARAMETERS
@@ -74,7 +74,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -344,10 +344,10 @@ Parameters: ExpressRouteCircuit (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmExpressRouteCircuitPeeringConfig](Add-AzureRmExpressRouteCircuitPeeringConfig.md)
+[Add-AzExpressRouteCircuitPeeringConfig](Add-AzExpressRouteCircuitPeeringConfig.md)
 
-[Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)
+[Get-AzExpressRouteCircuit](Get-AzExpressRouteCircuit.md)
 
-[New-AzureRmExpressRouteCircuitPeeringConfig](New-AzureRmExpressRouteCircuitPeeringConfig.md)
+[New-AzExpressRouteCircuitPeeringConfig](New-AzExpressRouteCircuitPeeringConfig.md)
 
-[Remove-AzureRmExpressRouteCircuitPeeringConfig](Remove-AzureRmExpressRouteCircuitPeeringConfig.md)
+[Remove-AzExpressRouteCircuitPeeringConfig](Remove-AzExpressRouteCircuitPeeringConfig.md)

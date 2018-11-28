@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermmanagementgroupsubscription/
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azmanagementgroupsubscription/
 schema: 2.0.0
 ---
 
-# Remove-AzureRmManagementGroupSubscription
+# Remove-AzManagementGroupSubscription
 
 ## SYNOPSIS
 Removes a Subscription from a Management Group.
@@ -13,18 +13,18 @@ Removes a Subscription from a Management Group.
 ## SYNTAX
 
 ```
-Remove-AzureRmManagementGroupSubscription [-GroupName] <String> [-SubscriptionId] <Guid> [-PassThru]
+Remove-AzManagementGroupSubscription [-GroupName] <String> [-SubscriptionId] <Guid> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmManagementGroupSubscription** cmdlet removes a Subscription from a Management Group.
+The **Remove-AzManagementGroupSubscription** cmdlet removes a Subscription from a Management Group.
 
 ## EXAMPLES
 
 ### Example 1 - Remove Subscription from a Management Group
 ```
-PS C:\> Remove-AzureRmManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 2120692d-35c3-44c8-81f5-631fa7351726
+PS C:\> Remove-AzManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 2120692d-35c3-44c8-81f5-631fa7351726
 ```
 
 ## PARAMETERS
@@ -33,7 +33,7 @@ PS C:\> Remove-AzureRmManagementGroupSubscription -GroupName "TestGroup" -Subscr
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementidentityprovider
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementidentityprovider
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApiManagementIdentityProvider
+# Remove-AzApiManagementIdentityProvider
 
 ## SYNOPSIS
 Removes an existing Identity Provider Configuration.
@@ -13,7 +13,7 @@ Removes an existing Identity Provider Configuration.
 ## SYNTAX
 
 ```
-Remove-AzureRmApiManagementIdentityProvider -Context <PsApiManagementContext>
+Remove-AzApiManagementIdentityProvider -Context <PsApiManagementContext>
  -Type <PsApiManagementIdentityProviderType> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -25,8 +25,8 @@ Removes an existing Identity Provider Configuration.
 
 ### Removes the Facebook identity provider settings from ApiManagement service
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzureRmApiManagementIdentityProvider -Context $apimContext -Type 'Facebook' -PassThru
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzApiManagementIdentityProvider -Context $apimContext -Type 'Facebook' -PassThru
 ```
 
 Deletes configuration related to Facebook Identity provider configuration.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -145,9 +145,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagementIdentityProvider](./New-AzureRmApiManagementIdentityProvider.md)
+[New-AzApiManagementIdentityProvider](./New-AzApiManagementIdentityProvider.md)
 
-[Get-AzureRmApiManagementIdentityProvider](./Get-AzureRmApiManagementIdentityProvider.md)
+[Get-AzApiManagementIdentityProvider](./Get-AzApiManagementIdentityProvider.md)
 
-[Set-AzureRmApiManagementIdentityProvider](./Set-AzureRmApiManagementIdentityProvider.md)
+[Set-AzApiManagementIdentityProvider](./Set-AzApiManagementIdentityProvider.md)
 

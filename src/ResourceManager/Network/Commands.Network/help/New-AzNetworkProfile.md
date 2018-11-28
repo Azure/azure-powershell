@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworkprofile
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworkprofile
 schema: 2.0.0
 ---
 
-# New-AzureRmNetworkProfile
+# New-AzNetworkProfile
 
 ## SYNOPSIS
 Creates a new network profile.
@@ -13,19 +13,19 @@ Creates a new network profile.
 ## SYNTAX
 
 ```
-New-AzureRmNetworkProfile -ResourceGroupName <String> -Name <String> [-Location <String>] [-Tag <Hashtable>]
+New-AzNetworkProfile -ResourceGroupName <String> -Name <String> [-Location <String>] [-Tag <Hashtable>]
  [-ContainerNicConfig <PSContainerNetworkInterfaceConfiguration[]>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmNetworkProfile** cmdlet creates a new network profile top level resource.
+The **New-AzNetworkProfile** cmdlet creates a new network profile top level resource.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$networkProfile = New-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1 -Location westus
+$networkProfile = New-AzNetworkProfile -Name np1 -ResourceGroupName rg1 -Location westus
 ```
 
 This creates a new network profile top level resource
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

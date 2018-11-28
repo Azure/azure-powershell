@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 691AC991-3249-487C-A0DF-C579ED7D00E7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/new-azurermhdinsightcluster
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/new-azhdinsightcluster
 schema: 2.0.0
 ---
 
-# New-AzureRmHDInsightCluster
+# New-AzHDInsightCluster
 
 ## SYNOPSIS
 Creates an Azure HDInsight cluster in the specified resource group for the current subscription.
@@ -15,7 +15,7 @@ Creates an Azure HDInsight cluster in the specified resource group for the curre
 
 ### Default (Default)
 ```
-New-AzureRmHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
+New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-DefaultStorageAccountName] <String>]
  [[-DefaultStorageAccountKey] <String>] [-DefaultStorageAccountType <StorageType>]
  [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
@@ -36,7 +36,7 @@ New-AzureRmHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [
 
 ### CertificateFilePath
 ```
-New-AzureRmHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
+New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-DefaultStorageAccountName] <String>]
  [[-DefaultStorageAccountKey] <String>] [-DefaultStorageAccountType <StorageType>]
  [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
@@ -57,7 +57,7 @@ New-AzureRmHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [
 
 ### CertificateFileContents
 ```
-New-AzureRmHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
+New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-DefaultStorageAccountName] <String>]
  [[-DefaultStorageAccountKey] <String>] [-DefaultStorageAccountType <StorageType>]
  [-Config <AzureHDInsightConfig>] [-OozieMetastore <AzureHDInsightMetastore>]
@@ -77,7 +77,7 @@ New-AzureRmHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [
 ```
 
 ## DESCRIPTION
-The New-AzureHDInsightCluster creates an Azure HDInsight cluster by using the specified parameters or by using a configuration object that is created by using the New-AzureRmHDInsightClusterConfig cmdlet.
+The New-AzHDInsightCluster creates an Azure HDInsight cluster by using the specified parameters or by using a configuration object that is created by using the New-AzHDInsightClusterConfig cmdlet.
 
 ## EXAMPLES
 
@@ -86,7 +86,7 @@ The New-AzureHDInsightCluster creates an Azure HDInsight cluster by using the sp
 PS C:\&gt; # Primary storage account info
         $storageAccountResourceGroupName = "Group"
         $storageAccountName = "yourstorageacct001"
-        $storageAccountKey = Get-AzureStorageAccountKey `
+        $storageAccountKey = Get-AzStorageAccountKey `
             -ResourceGroupName $storageAccountResourceGroupName `
             -Name $storageAccountName | %{ $_.Key1 }
         $storageContainer = "container002"
@@ -98,10 +98,10 @@ PS C:\&gt; # Primary storage account info
         $clusterCreds = Get-Credential
 
         # If the cluster's resource group doesn't exist yet, run:
-        #   New-AzureRMResourceGroup -Name $clusterResourceGroupName -Location $location
+        #   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
         # Create the cluster
-        New-AzureRmHDInsightCluster `
+        New-AzHDInsightCluster `
             -ClusterType Hadoop `
             -OSType Windows `
             -ClusterSizeInNodes 4 `
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 
 ### -AdditionalStorageAccounts
 Specifies the additional Azure Storage accounts for the cluster.
-You can alternatively use the Add-AzureRmHDInsightStorage cmdlet.
+You can alternatively use the Add-AzHDInsightStorage cmdlet.
 
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
@@ -275,7 +275,7 @@ Accept wildcard characters: False
 
 ### -Config
 Specifies the cluster object to be used to create the cluster.
-This object can be created by using the New-AzureRmHDInsightClusterConfig cmdlet.
+This object can be created by using the New-AzHDInsightClusterConfig cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
@@ -291,7 +291,7 @@ Accept wildcard characters: False
 
 ### -Configurations
 Specifies the configurations of this HDInsight cluster.
-You can alternatively use the Add-AzureRmHDInsightConfigValues cmdlet.
+You can alternatively use the Add-AzHDInsightConfigValues cmdlet.
 
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.String,System.String]]
@@ -322,7 +322,7 @@ Accept wildcard characters: False
 
 ### -DefaultStorageAccountKey
 Specifies the account key for the default Azure Storage account that the HDInsight cluster will use.
-You can alternatively use the Set-AzureRmHDInsightDefaultStorage cmdlet.
+You can alternatively use the Set-AzHDInsightDefaultStorage cmdlet.
 
 ```yaml
 Type: System.String
@@ -338,7 +338,7 @@ Accept wildcard characters: False
 
 ### -DefaultStorageAccountName
 Specifies the name of the default Azure Storage account that the HDInsight cluster will use.
-You can alternatively use the Set-AzureRmHDInsightDefaultStorage cmdlet.
+You can alternatively use the Set-AzHDInsightDefaultStorage cmdlet.
 
 ```yaml
 Type: System.String
@@ -370,7 +370,7 @@ Accept wildcard characters: False
 
 ### -DefaultStorageContainer
 Specifies the name of the default container in the default Azure storage account that the HDInsight cluster will use.
-You can alternatively use the Set-AzureRmHDInsightDefaultStorage cmdlet.
+You can alternatively use the Set-AzHDInsightDefaultStorage cmdlet.
 
 ```yaml
 Type: System.String
@@ -415,7 +415,7 @@ Accept wildcard characters: False
 ```
 
 ### -EdgeNodeSize
-Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.
+Specifies the size of the virtual machine for the edge node. Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.
 
 ```yaml
 Type: System.String
@@ -431,7 +431,7 @@ Accept wildcard characters: False
 
 ### -HeadNodeSize
 Specifies the size of the virtual machine for the Head node.
-Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page.
+Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page.
 
 ```yaml
 Type: System.String
@@ -447,7 +447,7 @@ Accept wildcard characters: False
 
 ### -HiveMetastore
 Specifies the SQL Database to store Hive metadata.
-You can alternatively use the Add-AzureRmHDInsightMetastore cmdlet.
+You can alternatively use the Add-AzHDInsightMetastore cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore
@@ -509,7 +509,7 @@ Accept wildcard characters: False
 
 ### -OozieMetastore
 Specifies the SQL Database to store Oozie metadata.
-You can alternatively use the Add-AzureRmHDInsightMetastore cmdlet.
+You can alternatively use the Add-AzHDInsightMetastore cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore
@@ -588,7 +588,7 @@ Accept wildcard characters: False
 
 ### -ScriptActions
 Specifies the script actions to run on the cluster at the end of cluster creation.
-You can alternatively use Add-AzureRmHDInsightScriptAction.
+You can alternatively use Add-AzHDInsightScriptAction.
 
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType,System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightScriptAction]]
@@ -605,7 +605,7 @@ Accept wildcard characters: False
 
 ### -SecurityProfile
 Specifies the security related properties used to create a secure cluster.
-You can alternatively use the Add-AzureRmHDInsightSecurityProfile cmdlet.
+You can alternatively use the Add-AzHDInsightSecurityProfile cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile
@@ -698,7 +698,7 @@ Accept wildcard characters: False
 
 ### -WorkerNodeSize
 Specifies the size of the virtual machine for the Worker node.
-Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page.
+Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page.
 
 ```yaml
 Type: System.String
@@ -714,7 +714,7 @@ Accept wildcard characters: False
 
 ### -ZookeeperNodeSize
 Specifies the size of the virtual machine for the Zookeeper node.
-Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page.
+Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page.
 This parameter is valid only for HBase or Storm clusters.
 
 ```yaml
@@ -746,5 +746,5 @@ Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight,
 
 ## RELATED LINKS
 
-[New-AzureRmHDInsightClusterConfig](./New-AzureRmHDInsightClusterConfig.md)
+[New-AzHDInsightClusterConfig](./New-AzHDInsightClusterConfig.md)
 

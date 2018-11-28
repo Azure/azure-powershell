@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlinstancedatabase
 schema: 2.0.0
 ---
 
-# New-AzureRmSqlInstanceDatabase
+# New-AzSqlInstanceDatabase
 
 ## SYNOPSIS
 Creates an Azure SQL Managed Instance database.
@@ -14,33 +14,33 @@ Creates an Azure SQL Managed Instance database.
 
 ### CreateNewInstanceDatabaseFromInputParameters (Default)
 ```
-New-AzureRmSqlInstanceDatabase [-Name] <String> [-InstanceName] <String> [-ResourceGroupName] <String>
+New-AzSqlInstanceDatabase [-Name] <String> [-InstanceName] <String> [-ResourceGroupName] <String>
  [-Collation <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateNewInstanceDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
-New-AzureRmSqlInstanceDatabase [-Name] <String> [-Collation <String>] [-Tag <Hashtable>]
+New-AzSqlInstanceDatabase [-Name] <String> [-Collation <String>] [-Tag <Hashtable>]
  [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateNewInstanceDatabaseFromAzureSqlInstanceResourceId
 ```
-New-AzureRmSqlInstanceDatabase [-Name] <String> [-Collation <String>] [-Tag <Hashtable>]
+New-AzSqlInstanceDatabase [-Name] <String> [-Collation <String>] [-Tag <Hashtable>]
  [-InstanceResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlInstanceDatabase** cmdlet creates an Azure SQL Managed instance database.
+The **New-AzSqlInstanceDatabase** cmdlet creates an Azure SQL Managed instance database.
 
 ## EXAMPLES
 
 ### Example 1: Create a database on a specified instance
 ```
-PS C:\>New-AzureRmSqlInstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\>New-AzSqlInstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -69,7 +69,7 @@ This command creates a instance database named Database01 on instance managedIns
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 The collation of the Azure SQL Instance Database collation to use.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 The instance name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateNewInstanceDatabaseFromInputParameters
 Aliases:
 
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 The instance object
 
 ```yaml
-Type: AzureSqlManagedInstanceModel
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 Parameter Sets: CreateNewInstanceDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition
 Aliases: ParentObject
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 The instance resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateNewInstanceDatabaseFromAzureSqlInstanceResourceId
 Aliases: ParentResourceId
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Instance Database to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: InstanceDatabaseName
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateNewInstanceDatabaseFromInputParameters
 Aliases:
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 The tags to associate with the Azure Sql Instance Database
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -220,7 +220,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

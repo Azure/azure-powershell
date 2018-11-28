@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: FB5E4ED2-8EF3-462F-A053-7EC82C767E8D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementvirtualnetwork
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementvirtualnetwork
 schema: 2.0.0
 ---
 
-# New-AzureRmApiManagementVirtualNetwork
+# New-AzApiManagementVirtualNetwork
 
 ## SYNOPSIS
 Creates an instance of PsApiManagementVirtualNetwork.
@@ -14,13 +14,13 @@ Creates an instance of PsApiManagementVirtualNetwork.
 ## SYNTAX
 
 ```
-New-AzureRmApiManagementVirtualNetwork -Location <String> -SubnetResourceId <String>
+New-AzApiManagementVirtualNetwork -Location <String> -SubnetResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApiManagementVirtualNetwork** cmdlet is a helper command to create an instance of **PsApiManagementVirtualNetwork**.
-This command is used with **Update-AzureRmApiManagementDeployment** cmdlet.
+The **New-AzApiManagementVirtualNetwork** cmdlet is a helper command to create an instance of **PsApiManagementVirtualNetwork**.
+This command is used with **Update-AzApiManagementDeployment** cmdlet.
 
 ## EXAMPLES
 
@@ -28,22 +28,22 @@ This command is used with **Update-AzureRmApiManagementDeployment** cmdlet.
 ```
 PS C:\>$vnetName = "myvnet"
 PS C:\>$subnetName = "default"
-PS C:\>$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-PS C:\>$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+PS C:\>$subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+PS C:\>$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
 # Create a Virtual Network Object
-PS C:\>$virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location $location -SubnetResourceId $vnet.Subnets[0].Id
+PS C:\>$virtualNetwork = New-AzApiManagementVirtualNetwork -Location $location -SubnetResourceId $vnet.Subnets[0].Id
 
 # Get the service
-PS C:\>$service = Get-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName    
+PS C:\>$service = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName    
 PS C:\>$service.VirtualNetwork = $virtualNetwork
 PS C:\>$service.VpnType = "External"
 
 # Update the Deployment with Virtual Network
-PS C:\>Update-AzureRmApiManagementDeployment -ApiManagement $service
+PS C:\>Update-AzApiManagementDeployment -ApiManagement $service
 ```
 
-This example creates a virtual network and then calls the **Update-AzureRmApiManagementDeployment** cmdlet.
+This example creates a virtual network and then calls the **Update-AzApiManagementDeployment** cmdlet.
 
 ## PARAMETERS
 
@@ -51,7 +51,7 @@ This example creates a virtual network and then calls the **Update-AzureRmApiMan
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ### -Location
 Specifies the location amongst the supported region for Api Management service.
 To obtain valid locations, use the cmdlet
-Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
+Get-AzResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
 Type: System.String
@@ -109,5 +109,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Update-AzureRmApiManagementDeployment](./Update-AzureRmApiManagementDeployment.md)
+[Update-AzApiManagementDeployment](./Update-AzApiManagementDeployment.md)
 

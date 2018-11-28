@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationsecuritygroup
 schema: 2.0.0
 ---
 
-# New-AzureRmApplicationSecurityGroup
+# New-AzApplicationSecurityGroup
 
 ## SYNOPSIS
 Creates an application security group.
@@ -13,19 +13,18 @@ Creates an application security group.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationSecurityGroup -ResourceGroupName <String> -Name <String> -Location <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzApplicationSecurityGroup -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApplicationSecurityGroup** cmdlet creates an application security group.
+The **New-AzApplicationSecurityGroup** cmdlet creates an application security group.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmApplicationSecurityGroup -ResourceGroupName "MyResourceGroup" -Name "MyApplicationSecurityGroup" -Location "West US"
+PS C:\> New-AzApplicationSecurityGroup -ResourceGroupName "MyResourceGroup" -Name "MyApplicationSecurityGroup" -Location "West US"
 ```
 
 This example creates an application security group with no associations. Once it is created, IP configurations in the network interface can be included in the group. Security rules may also refer to the group as their sources or destinations.
@@ -51,7 +50,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -185,18 +184,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApplicationSecurityGroup](./Get-AzureRmApplicationSecurityGroup.md)
+[Get-AzApplicationSecurityGroup](./Get-AzApplicationSecurityGroup.md)
 
-[Remove-AzureRmApplicationSecurityGroup](./Remove-AzureRmApplicationSecurityGroup.md)
+[Remove-AzApplicationSecurityGroup](./Remove-AzApplicationSecurityGroup.md)
 
-[New-AzureRmNetworkSecurityRuleConfig](./New-AzureRmNetworkSecurityRuleConfig.md)
+[New-AzNetworkSecurityRuleConfig](./New-AzNetworkSecurityRuleConfig.md)
 
-[Add-AzureRmNetworkSecurityRuleConfig](./Add-AzureRmNetworkSecurityRuleConfig.md)
+[Add-AzNetworkSecurityRuleConfig](./Add-AzNetworkSecurityRuleConfig.md)
 
-[Set-AzureRmNetworkSecurityRuleConfig](./Set-AzureRmNetworkSecurityRuleConfig.md)
+[Set-AzNetworkSecurityRuleConfig](./Set-AzNetworkSecurityRuleConfig.md)
 
-[New-AzureRmNetworkInterfaceIpConfig](./New-AzureRmNetworkInterfaceIpConfig.md)
+[New-AzNetworkInterfaceIpConfig](./New-AzNetworkInterfaceIpConfig.md)
 
-[Add-AzureRmNetworkInterfaceIpConfig](./Add-AzureRmNetworkInterfaceIpConfig.md)
+[Add-AzNetworkInterfaceIpConfig](./Add-AzNetworkInterfaceIpConfig.md)
 
-[Set-AzureRmNetworkInterfaceIpConfig](./Set-AzureRmNetworkInterfaceIpConfig.md)
+[Set-AzNetworkInterfaceIpConfig](./Set-AzNetworkInterfaceIpConfig.md)

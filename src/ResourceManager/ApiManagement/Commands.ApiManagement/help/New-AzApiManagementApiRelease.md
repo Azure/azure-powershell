@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementapirelease
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementapirelease
 schema: 2.0.0
 ---
 
-# New-AzureRmApiManagementApiRelease
+# New-AzApiManagementApiRelease
 
 ## SYNOPSIS
 Creates an API Release of an API Revision
@@ -13,21 +13,21 @@ Creates an API Release of an API Revision
 ## SYNTAX
 
 ```
-New-AzureRmApiManagementApiRelease -Context <PsApiManagementContext> -ApiId <String> -ApiRevision <String>
+New-AzApiManagementApiRelease -Context <PsApiManagementContext> -ApiId <String> -ApiRevision <String>
  [-ReleaseId <String>] [-Note <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-The **New-AzureRmApiManagementApiRelease** cmdlet creates an API Release for an API Revision in API Management context.
+The **New-AzApiManagementApiRelease** cmdlet creates an API Release for an API Revision in API Management context.
 
 ## EXAMPLES
 
 ### Example 1: Create an API Release for an API Revision
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzureRmApiManagementApiRelease -Context $context  -ApiId 5adf6fbf0faadf3ad8558065 -ApiRevision 6 -Note "Releasing version 6"
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>New-AzApiManagementApiRelease -Context $context  -ApiId 5adf6fbf0faadf3ad8558065 -ApiRevision 6 -Note "Releasing version 6"
 
 
 ReleaseId         : 7e4d3fbb43c146c4bf406499ef9411f4
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -187,8 +187,8 @@ Parameters: Context (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementApiRelease](./Get-AzureRmApiManagementApiRelease.md)
+[Get-AzApiManagementApiRelease](./Get-AzApiManagementApiRelease.md)
 
-[Remove-AzureRmApiManagementApiRelease](./Remove-AzureRmApiManagementApiRelease.md)
+[Remove-AzApiManagementApiRelease](./Remove-AzApiManagementApiRelease.md)
 
-[Set-AzureRmApiManagementApiRelease](./Set-AzureRmApiManagementApiRelease.md)
+[Set-AzApiManagementApiRelease](./Set-AzApiManagementApiRelease.md)

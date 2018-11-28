@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
-Module Name: AzureRM.DataLakeAnalytics
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/get-azurermdatalakeanalyticsjobpipeline
+Module Name: Az.DataLakeAnalytics
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticsjobpipeline
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataLakeAnalyticsJobPipeline
+# Get-AzDataLakeAnalyticsJobPipeline
 
 ## SYNOPSIS
 Gets a Data Lake Analytics Job pipeline or pipelines.
@@ -14,32 +14,31 @@ Gets a Data Lake Analytics Job pipeline or pipelines.
 
 ### GetAllInAccount (Default)
 ```
-Get-AzureRmDataLakeAnalyticsJobPipeline [-Account] <String> [-SubmittedAfter <DateTimeOffset>]
+Get-AzDataLakeAnalyticsJobPipeline [-Account] <String> [-SubmittedAfter <DateTimeOffset>]
  [-SubmittedBefore <DateTimeOffset>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetBySpecificJobPipeline
 ```
-Get-AzureRmDataLakeAnalyticsJobPipeline [-Account] <String> [-PipelineId] <Guid>
- [-SubmittedAfter <DateTimeOffset>] [-SubmittedBefore <DateTimeOffset>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataLakeAnalyticsJobPipeline [-Account] <String> [-PipelineId] <Guid> [-SubmittedAfter <DateTimeOffset>]
+ [-SubmittedBefore <DateTimeOffset>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataLakeAnalyticsJobPipeline** gets a specified Azure Data Lake Analytics Job pipeline or a list of pipelines.
+The **Get-AzDataLakeAnalyticsJobPipeline** gets a specified Azure Data Lake Analytics Job pipeline or a list of pipelines.
 
 ## EXAMPLES
 
 ### Example 1: Get a specified pipeline
 ```
-PS C:\>Get-AzureRmDataLakeAnalyticsJobPipeline -Account "contosoadla" -PipelineId 83cb7ad2-3523-4b82-b909-d478b0d8aea3
+PS C:\>Get-AzDataLakeAnalyticsJobPipeline -Account "contosoadla" -PipelineId 83cb7ad2-3523-4b82-b909-d478b0d8aea3
 ```
 
 This command gets the specified pipeline with id '83cb7ad2-3523-4b82-b909-d478b0d8aea3' in account 'contosoadla'.
 
 ### Example 2: Get a list of all pipelines in the account
 ```
-PS C:\>Get-AzureRmDataLakeAnalyticsJobPipeline -AccountName "contosoadla"
+PS C:\>Get-AzDataLakeAnalyticsJobPipeline -AccountName "contosoadla"
 ```
 
 This command gets a list of all pipelines in the account "contosoadla"
@@ -65,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,60 +1,63 @@
 ---
 external help file: Microsoft.Azure.Commands.MarketplaceOrdering.dll-Help.xml
-Module Name: AzureRM.MarketplaceOrdering
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms
+Module Name: Az.MarketplaceOrdering
+online version: https://docs.microsoft.com/en-us/powershell/module/az.marketplaceordering/set-azmarketplaceterms
 schema: 2.0.0
 ---
 
-# Set-AzureRmMarketplaceTerms
+# Set-AzMarketplaceTerms
 
 ## SYNOPSIS
-Accept or reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). Please use Get-AzureRmMarketplaceTerms to get the agreement terms.
+Accept or reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). Please use Get-AzMarketplaceTerms to get the agreement terms.
 
 ## SYNTAX
 
 ### AgreementAcceptParameterSet (Default)
 ```
-Set-AzureRmMarketplaceTerms -Publisher <String> -Product <String> -Name <String> [-Accept]
+Set-AzMarketplaceTerms -Publisher <String> -Product <String> -Name <String> [-Accept]
  [-Terms <PSAgreementTerms>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### AgreementRejectParameterSet
 ```
-Set-AzureRmMarketplaceTerms -Publisher <String> -Product <String> -Name <String> [-Reject]
+Set-AzMarketplaceTerms -Publisher <String> -Product <String> -Name <String> [-Reject]
  [-Terms <PSAgreementTerms>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectAcceptParameterSet
 ```
-Set-AzureRmMarketplaceTerms [-Accept] [-InputObject] <PSAgreementTerms>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzMarketplaceTerms [-Accept] [-InputObject] <PSAgreementTerms> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectRejectParameterSet
 ```
-Set-AzureRmMarketplaceTerms [-Reject] [-InputObject] <PSAgreementTerms>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzMarketplaceTerms [-Reject] [-InputObject] <PSAgreementTerms> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmMarketplaceTerms** cmdlet saves the terms object for given publisher id(Publisher), offer id(Product) and plan id(Name) tuple.
+The **Set-AzMarketplaceTerms** cmdlet saves the terms object for given publisher id(Publisher), offer id(Product) and plan id(Name) tuple.
 
 ## EXAMPLES
 
 ### Example 1
 Get the marketplace publisher agreement
+
+
 ```
-PS C:\> Get-AzureRmMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" | Set-AzureRmMarketplaceTerms -Accept
+PS C:\> Get-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" | Set-AzMarketplaceTerms -Accept
 ```
 
 ### Example 2
-Set the publisher agreement to 'Accept'. Get the value for the 'Terms' parameter from the 'Get-AzureRmMarketplaceTerms' cmdlet
-```
-PS C:\> Set-AzureRmMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Terms $agreementTerms -Accept
-```
+Set the publisher agreement to 'Accept'. Get the value for the 'Terms' parameter from the 'Get-AzMarketplaceTerms' cmdlet
 
+
+```
+PS C:\> Set-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Terms $agreementTerms -Accept
+```
 
 ## PARAMETERS
 
@@ -63,7 +66,7 @@ Pass this to accept the legal terms.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AgreementAcceptParameterSet, InputObjectAcceptParametrSet
+Parameter Sets: AgreementAcceptParameterSet, InputObjectAcceptParameterSet
 Aliases:
 
 Required: True
@@ -77,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,11 +92,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Terms object returned in Get-AzureRmMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted paramter is true.
+Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted paramter is true.
 
 ```yaml
 Type: Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms
-Parameter Sets: InputObjectAcceptParametrSet, InputObjectRejectParametrSet
+Parameter Sets: InputObjectAcceptParameterSet, InputObjectRejectParameterSet
 Aliases:
 
 Required: True
@@ -153,7 +156,7 @@ Pass this to reject the legal terms.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AgreementRejectParameterSet, InputObjectRejectParametrSet
+Parameter Sets: AgreementRejectParameterSet, InputObjectRejectParameterSet
 Aliases:
 
 Required: True
@@ -164,7 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -Terms
-Terms object returned in Get-AzureRmMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted paramter is true.
+Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted paramter is true.
 
 ```yaml
 Type: Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: FD2E3442-9CEA-4390-BE9C-772C7D6FD1E2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/remove-azurermbatchapplicationpackage
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchapplicationpackage
 schema: 2.0.0
 ---
 
-# Remove-AzureRmBatchApplicationPackage
+# Remove-AzBatchApplicationPackage
 
 ## SYNOPSIS
 Deletes an application package record and the binary file.
@@ -14,19 +14,19 @@ Deletes an application package record and the binary file.
 ## SYNTAX
 
 ```
-Remove-AzureRmBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String>
+Remove-AzBatchApplicationPackage [-AccountName] <String> [-ResourceGroupName] <String>
  [-ApplicationId] <String> [-ApplicationVersion] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmBatchApplicationPackage** cmdlet deletes an application package record and the binary file from an Azure Batch account.
+The **Remove-AzBatchApplicationPackage** cmdlet deletes an application package record and the binary file from an Azure Batch account.
 
 ## EXAMPLES
 
 ### Example 1: Delete an application package from a Batch account
 ```
-PS C:\>Remove-AzureRmBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "litware" -ApplicationVersion "1.0"
+PS C:\>Remove-AzBatchApplicationPackage -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "litware" -ApplicationVersion "1.0"
 ```
 
 This command deletes version 1.0 of the Litware application from the ContosoBatchGroup account.
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -124,16 +124,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchApplication](./Get-AzureRmBatchApplication.md)
+[Get-AzBatchApplication](./Get-AzBatchApplication.md)
 
-[Get-AzureRmBatchApplicationPackage](./Get-AzureRmBatchApplicationPackage.md)
+[Get-AzBatchApplicationPackage](./Get-AzBatchApplicationPackage.md)
 
-[New-AzureRmBatchApplication](./New-AzureRmBatchApplication.md)
+[New-AzBatchApplication](./New-AzBatchApplication.md)
 
-[New-AzureRmBatchApplicationPackage](./New-AzureRmBatchApplicationPackage.md)
+[New-AzBatchApplicationPackage](./New-AzBatchApplicationPackage.md)
 
-[Remove-AzureRmBatchApplication](./Remove-AzureRmBatchApplication.md)
+[Remove-AzBatchApplication](./Remove-AzBatchApplication.md)
 
-[Set-AzureRmBatchApplication](./Set-AzureRmBatchApplication.md)
+[Set-AzBatchApplication](./Set-AzBatchApplication.md)
 
 

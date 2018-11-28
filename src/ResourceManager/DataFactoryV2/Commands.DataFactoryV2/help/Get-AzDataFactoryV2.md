@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryv2
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryV2
+# Get-AzDataFactoryV2
 
 ## SYNOPSIS
 Gets information about Data Factory.
@@ -14,17 +14,17 @@ Gets information about Data Factory.
 
 ### BySubscriptionId (Default)
 ```
-Get-AzureRmDataFactoryV2 [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataFactoryV2 [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryName
 ```
-Get-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [[-Name] <String>]
+Get-AzDataFactoryV2 [-ResourceGroupName] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDataFactoryV2 cmdlet gets information about data factories in an Azure resource group.
+The Get-AzDataFactoryV2 cmdlet gets information about data factories in an Azure resource group.
 If you specify the name of a data factory, this cmdlet gets information about that data factory.
 If you do not specify a name, this cmdlet gets information about all of the data factories in an Azure resource group.
 
@@ -32,7 +32,7 @@ If you do not specify a name, this cmdlet gets information about all of the data
 
 ### Example 1: Get all data factories
 ```
-PS C:\> Get-AzureRmDataFactoryV2 -ResourceGroupName "ADF"
+PS C:\> Get-AzDataFactoryV2 -ResourceGroupName "ADF"
 
     DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
@@ -55,7 +55,7 @@ Displays information about all data factories in the Azure subscription.
 
 ### Example 2: Get a specific data factory
 ```
-PS C:\> $DataFactory = Get-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF"
+PS C:\> $DataFactory = Get-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF"
 
     DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataF
@@ -134,7 +134,7 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Set-AzureRmDataFactoryV2]()
+[Set-AzDataFactoryV2]()
 
-[Remove-AzureRmDataFactoryV2]()
+[Remove-AzDataFactoryV2]()
 

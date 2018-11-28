@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 7039528F-42AE-45DB-BF81-FE5003F8AEE2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqlserver
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlserver
 schema: 2.0.0
 ---
 
-# New-AzureRmSqlServer
+# New-AzSqlServer
 
 ## SYNOPSIS
 Creates a SQL Database server.
@@ -14,19 +14,19 @@ Creates a SQL Database server.
 ## SYNTAX
 
 ```
-New-AzureRmSqlServer -ServerName <String> -SqlAdministratorCredentials <PSCredential> -Location <String>
+New-AzSqlServer -ServerName <String> -SqlAdministratorCredentials <PSCredential> -Location <String>
  [-Tags <Hashtable>] [-ServerVersion <String>] [-AssignIdentity] [-AsJob] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlServer** cmdlet creates an Azure SQL Database server.
+The **New-AzSqlServer** cmdlet creates an Azure SQL Database server.
 
 ## EXAMPLES
 
 ### Example 1: Create a new Azure SQL Database server
 ```
-PS C:\>New-AzureRmSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential)
+PS C:\>New-AzSqlServer -ResourceGroupName "ResourceGroup01" -Location "Central US" -ServerName "server01" -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential)
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -225,12 +225,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServer](./Get-AzureRmSqlServer.md)
+[Get-AzSqlServer](./Get-AzSqlServer.md)
 
-[Remove-AzureRmSqlServer](./Remove-AzureRmSqlServer.md)
+[Remove-AzSqlServer](./Remove-AzSqlServer.md)
 
-[Set-AzureRmSqlServer](./Set-AzureRmSqlServer.md)
+[Set-AzSqlServer](./Set-AzSqlServer.md)
 
-[New-AzureRmSqlServerFirewallRule](./New-AzureRmSqlServerFirewallRule.md)
+[New-AzSqlServerFirewallRule](./New-AzSqlServerFirewallRule.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
-Module Name: AzureRM.RecoveryServices
+Module Name: Az.RecoveryServices
 ms.assetid: 466F6B7C-BA7E-4DFD-8504-5A196A335231
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices/remove-azurermrecoveryservicesvault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault
 schema: 2.0.0
 ---
 
-# Remove-AzureRmRecoveryServicesVault
+# Remove-AzRecoveryServicesVault
 
 ## SYNOPSIS
 Deletes a Recovery Services vault.
@@ -14,29 +14,44 @@ Deletes a Recovery Services vault.
 ## SYNTAX
 
 ```
-Remove-AzureRmRecoveryServicesVault -Vault <ARSVault> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzRecoveryServicesVault -Vault <ARSVault> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRecoveryServicesVault** cmdlet deletes a Recovery Services vault.
+The **Remove-AzRecoveryServicesVault** cmdlet deletes a Recovery Services vault.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmRecoveryServicesVault -Vault $vault
+PS C:\> Remove-AzRecoveryServicesVault -Vault $vault
 ```
 
 Deletes a Recovery Services vault.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Vault
 Specifies an Azure Site Recovery vault object.
 
 ```yaml
-Type: ARSVault
+Type: Microsoft.Azure.Commands.RecoveryServices.ARSVault
 Parameter Sets: (All)
 Aliases:
 
@@ -51,7 +66,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -66,24 +81,9 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -108,10 +108,10 @@ Parameters: Vault (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmRecoveryServicesVault](./Get-AzureRmRecoveryServicesVault.md)
+[Get-AzRecoveryServicesVault](./Get-AzRecoveryServicesVault.md)
 
-[Get-AzureRmRecoveryServicesVaultSettingsFile](./Get-AzureRmRecoveryServicesVaultSettingsFile.md)
+[Get-AzRecoveryServicesVaultSettingsFile](./Get-AzRecoveryServicesVaultSettingsFile.md)
 
-[New-AzureRmRecoveryServicesVault](./New-AzureRmRecoveryServicesVault.md)
+[New-AzRecoveryServicesVault](./New-AzRecoveryServicesVault.md)
 
 

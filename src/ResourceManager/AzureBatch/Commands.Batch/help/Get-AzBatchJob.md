@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 8BF49C4D-E7CD-4FD0-AFAC-9856239D24EC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchjob
 schema: 2.0.0
 ---
 
-# Get-AzureBatchJob
+# Get-AzBatchJob
 
 ## SYNOPSIS
 Gets Batch jobs for a Batch account or job schedule.
@@ -15,26 +15,26 @@ Gets Batch jobs for a Batch account or job schedule.
 
 ### ODataFilter (Default)
 ```
-Get-AzureBatchJob [-JobScheduleId <String>] [-Filter <String>] [-MaxCount <Int32>] [-Select <String>]
+Get-AzBatchJob [-JobScheduleId <String>] [-Filter <String>] [-MaxCount <Int32>] [-Select <String>]
  [-Expand <String>] -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### Id
 ```
-Get-AzureBatchJob [[-Id] <String>] [-Select <String>] [-Expand <String>] -BatchContext <BatchAccountContext>
+Get-AzBatchJob [[-Id] <String>] [-Select <String>] [-Expand <String>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentObject
 ```
-Get-AzureBatchJob [[-JobSchedule] <PSCloudJobSchedule>] [-Filter <String>] [-MaxCount <Int32>]
- [-Select <String>] [-Expand <String>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBatchJob [[-JobSchedule] <PSCloudJobSchedule>] [-Filter <String>] [-MaxCount <Int32>] [-Select <String>]
+ [-Expand <String>] -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureBatchJob** cmdlet gets the Azure Batch jobs for the Batch account specified by the *BatchAccountContext* parameter.
+The **Get-AzBatchJob** cmdlet gets the Azure Batch jobs for the Batch account specified by the *BatchAccountContext* parameter.
 You can use the *Id* parameter to get a single job.
 You can use the *Filter* parameter to get the jobs that match an Open Data Protocol (OData) filter.
 If you supply a job schedule ID or **PSCloudJobSchedule** instance, this cmdlet returns only the jobs for that job schedule.
@@ -43,7 +43,7 @@ If you supply a job schedule ID or **PSCloudJobSchedule** instance, this cmdlet 
 
 ### Example 1: Get a Batch job by ID
 ```
-PS C:\>Get-AzureBatchJob -Id "Job01" -BatchContext $Context
+PS C:\>Get-AzBatchJob -Id "Job01" -BatchContext $Context
 CommonEnvironmentSettings   : 
 Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
 CreationTime                : 7/25/2015 9:12:07 PM
@@ -67,11 +67,11 @@ Url                         : https://pfuller.westus.batch.azure.com/jobs/Job01
 ```
 
 This command gets the job that has the ID Job01.
-Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.
+Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Get all active jobs for a job schedule
 ```
-PS C:\>Get-AzureBatchJob -JobScheduleId "JobSchedule27" -Filter "state eq 'active'" -BatchContext $Context
+PS C:\>Get-AzBatchJob -JobScheduleId "JobSchedule27" -Filter "state eq 'active'" -BatchContext $Context
 CommonEnvironmentSettings   : 
 Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
 CreationTime                : 7/25/2015 9:15:44 PM
@@ -98,7 +98,7 @@ This command gets the active jobs for the job schedule that has the ID JobSchedu
 
 ### Example 3: Gets all jobs under a job schedule by using the pipeline
 ```
-PS C:\>Get-AzureBatchJobSchedule -Id "JobSchedule27" -BatchContext $Context | Get-AzureBatchJob -BatchContext $Context
+PS C:\>Get-AzBatchJobSchedule -Id "JobSchedule27" -BatchContext $Context | Get-AzBatchJob -BatchContext $Context
 CommonEnvironmentSettings   : 
 Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
 CreationTime                : 7/25/2015 9:15:44 PM
@@ -121,7 +121,7 @@ Statistics                  :
 Url                         : https://pfuller.westus.batch.azure.com/jobs/JobSchedule27:job-1
 ```
 
-This command gets the job schedule that has the ID JobSchedule27 by using the Get-AzureBatchJobSchedule cmdlet.
+This command gets the job schedule that has the ID JobSchedule27 by using the Get-AzBatchJobSchedule cmdlet.
 The command passes that job schedule to the current cmdlet by using the pipeline operator.
 The command gets all jobs for that job schedule.
 
@@ -129,7 +129,7 @@ The command gets all jobs for that job schedule.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 
 ### -JobSchedule
 Specifies a **PSCloudJobSchedule** object that represents the job schedule which contains the jobs.
-To obtain a **PSCloudJobSchedule** object, use the Get-AzureBatchJobSchedule cmdlet.
+To obtain a **PSCloudJobSchedule** object, use the Get-AzBatchJobSchedule cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.Models.PSCloudJobSchedule
@@ -291,20 +291,20 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Disable-AzureBatchJob](./Disable-AzureBatchJob.md)
+[Disable-AzBatchJob](./Disable-AzBatchJob.md)
 
-[Enable-AzureBatchJob](./Enable-AzureBatchJob.md)
+[Enable-AzBatchJob](./Enable-AzBatchJob.md)
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchJobSchedule](./Get-AzureBatchJobSchedule.md)
+[Get-AzBatchJobSchedule](./Get-AzBatchJobSchedule.md)
 
-[New-AzureBatchJob](./New-AzureBatchJob.md)
+[New-AzBatchJob](./New-AzBatchJob.md)
 
-[Remove-AzureBatchJob](./Remove-AzureBatchJob.md)
+[Remove-AzBatchJob](./Remove-AzBatchJob.md)
 
-[Stop-AzureBatchJob](./Stop-AzureBatchJob.md)
+[Stop-AzBatchJob](./Stop-AzBatchJob.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

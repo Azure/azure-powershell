@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactoryv2trigger
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactoryv2trigger
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryV2Trigger
+# Remove-AzDataFactoryV2Trigger
 
 ## SYNOPSIS
 Removes a trigger from a data factory.
@@ -14,30 +14,30 @@ Removes a trigger from a data factory.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmDataFactoryV2Trigger [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
+Remove-AzDataFactoryV2Trigger [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzureRmDataFactoryV2Trigger [-InputObject] <PSTrigger> [-Force]
+Remove-AzDataFactoryV2Trigger [-InputObject] <PSTrigger> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzureRmDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDataFactoryV2Trigger** cmdlet removes a trigger from a data factory. If the _Force_ parameter is specified, the cmdlet doesn't prompt before removing the trigger.
+The **Remove-AzDataFactoryV2Trigger** cmdlet removes a trigger from a data factory. If the _Force_ parameter is specified, the cmdlet doesn't prompt before removing the trigger.
 
 ## EXAMPLES
 
 ### Example 1: Remove a trigger
 ```
-Remove-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "ScheduledTrigger"
+Remove-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "ScheduledTrigger"
 
 Confirm
 Are you sure you want to remove trigger 'ScheduledTrigger' in data factory 'TestFactory'?
@@ -202,11 +202,11 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2Trigger]()
+[Get-AzDataFactoryV2Trigger]()
 
-[Set-AzureRmDataFactoryV2Trigger]()
+[Set-AzDataFactoryV2Trigger]()
 
-[Start-AzureRmDataFactoryV2Trigger]()
+[Start-AzDataFactoryV2Trigger]()
 
-[Stop-AzureRmDataFactoryV2Trigger]()
+[Stop-AzDataFactoryV2Trigger]()
 

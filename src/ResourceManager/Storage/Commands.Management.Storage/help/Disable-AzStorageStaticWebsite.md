@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
-Module Name: Azure.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/disable-azurestoragstaticwebsite
+Module Name: Az.Storage
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/disable-azstoragstaticwebsite
 schema: 2.0.0
 ---
 
-# Disable-AzureStorageStaticWebsite
+# Disable-AzStorageStaticWebsite
 
 ## SYNOPSIS
 Disable static website for the Azure Storage account.
@@ -13,18 +13,18 @@ Disable static website for the Azure Storage account.
 ## SYNTAX
 
 ```
-Disable-AzureStorageStaticWebsite [-PassThru] [-Context <IStorageContext>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Disable-AzStorageStaticWebsite [-PassThru] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzureStorageStaticWebsite** cmdlet disables static website for the Azure Storage account.
+The **Disable-AzStorageStaticWebsite** cmdlet disables static website for the Azure Storage account.
 
 ## EXAMPLES
 
 ### Example 1: Disable static website for a Azure Storage account
 ```
-C:\PS>Disable-AzureStorageStaticWebsite
+C:\PS>Disable-AzStorageStaticWebsite
 ```
 
 This command disables static website for a Azure Storage account.
@@ -35,9 +35,9 @@ This command disables static website for a Azure Storage account.
 Azure Storage Context Object
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -46,13 +46,28 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 {{Fill PassThru Description}}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -65,7 +80,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -81,7 +96,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -106,4 +121,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
-Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/Get-AzureRmDataMigrationService
+Module Name: Az.DataMigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/Get-AzDataMigrationService
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataMigrationService
+# Get-AzDataMigrationService
 
 ## SYNOPSIS
 Retrieves the properties associated with an instance of the Azure Database Migration Service. 
@@ -14,37 +14,37 @@ Retrieves the properties associated with an instance of the Azure Database Migra
 
 ### ResourceGroupSet (Default)
 ```
-Get-AzureRmDataMigrationService [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataMigrationService [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmDataMigrationService [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataMigrationService [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ServiceNameGroupSet
 ```
-Get-AzureRmDataMigrationService [-ResourceGroupName] <String> [-Name] <String>
+Get-AzDataMigrationService [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDataMigrationService cmdlet retrieves the properties associated with an instance of the Azure Database Migration Service based on Service name and Azure Resource Group name as input parameters. 
+The Get-AzDataMigrationService cmdlet retrieves the properties associated with an instance of the Azure Database Migration Service based on Service name and Azure Resource Group name as input parameters. 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmDataMigrationService -ResourceGroupName testResourceGroup -Name testService
+PS C:\> Get-AzDataMigrationService -ResourceGroupName testResourceGroup -Name testService
 ```
 
 The above example retrieves the properties of the Azure Database Migration Service instance called testService. 
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmDataMigrationService -ResourceGroupName testResourceGroup
+PS C:\> Get-AzDataMigrationService -ResourceGroupName testResourceGroup
 ```
 
 The above example retrieves Azure Database Migration Services in the resource group called testResourceGroup. 
@@ -55,7 +55,7 @@ The above example retrieves Azure Database Migration Services in the resource gr
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

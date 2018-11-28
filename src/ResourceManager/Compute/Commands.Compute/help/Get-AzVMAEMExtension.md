@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 212281F0-9A3E-4652-919F-400455E3950E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmaemextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmaemextension
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMAEMExtension
+# Get-AzVMAEMExtension
 
 ## SYNOPSIS
 Gets information about the AEM extension.
@@ -14,18 +14,18 @@ Gets information about the AEM extension.
 ## SYNTAX
 
 ```
-Get-AzureRmVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
+Get-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
  [[-OSType] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMAEMExtension** cmdlet gets information about the Azure Enhanced Monitoring (AEM) extension.
+The **Get-AzVMAEMExtension** cmdlet gets information about the Azure Enhanced Monitoring (AEM) extension.
 
 ## EXAMPLES
 
 ### Example 1: Get the AEM extension
 ```
-PS C:\> Get-AzureRmVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
+PS C:\> Get-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
 ```
 
 This command gets information for the AEM extension for the virtual machine named contoso-server.
@@ -36,7 +36,7 @@ This command gets information for the AEM extension for the virtual machine name
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -144,10 +144,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmVMAEMExtension](./Remove-AzureRmVMAEMExtension.md)
+[Remove-AzVMAEMExtension](./Remove-AzVMAEMExtension.md)
 
-[Set-AzureRmVMAEMExtension](./Set-AzureRmVMAEMExtension.md)
+[Set-AzVMAEMExtension](./Set-AzVMAEMExtension.md)
 
-[Test-AzureRmVMAEMExtension](./Test-AzureRmVMAEMExtension.md)
+[Test-AzVMAEMExtension](./Test-AzVMAEMExtension.md)
 
 

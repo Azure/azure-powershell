@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: F6D9EA59-BA61-4117-8771-9B190424BFF8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/set-azurermintegrationaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/set-azintegrationaccount
 schema: 2.0.0
 ---
 
-# Set-AzureRmIntegrationAccount
+# Set-AzIntegrationAccount
 
 ## SYNOPSIS
 Modifies an integration account.
@@ -14,12 +14,12 @@ Modifies an integration account.
 ## SYNTAX
 
 ```
-Set-AzureRmIntegrationAccount -ResourceGroupName <String> -Name <String> [-Location <String>] [-Sku <String>]
+Set-AzIntegrationAccount -ResourceGroupName <String> -Name <String> [-Location <String>] [-Sku <String>]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmIntegrationAccount** cmdlet modifies an integration account.
+The **Set-AzIntegrationAccount** cmdlet modifies an integration account.
 This cmdlet returns an object that represents the integration account.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -30,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Modify an integration account
 ```
-PS C:\>Set-AzureRmIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Sku "Free"
+PS C:\>Set-AzIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Sku "Free"
 Id          : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31
 Name        : IntegrationAccount31
 Type        : Microsoft.Logic/integrationAccounts
@@ -48,7 +48,7 @@ This command modifies an integration account named IntegrationAccount31 in the s
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -180,10 +180,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmIntegrationAccount](./Get-AzureRmIntegrationAccount.md)
+[Get-AzIntegrationAccount](./Get-AzIntegrationAccount.md)
 
-[New-AzureRmIntegrationAccount](./New-AzureRmIntegrationAccount.md)
+[New-AzIntegrationAccount](./New-AzIntegrationAccount.md)
 
-[Remove-AzureRmIntegrationAccount](./Remove-AzureRmIntegrationAccount.md)
+[Remove-AzIntegrationAccount](./Remove-AzIntegrationAccount.md)
 
 

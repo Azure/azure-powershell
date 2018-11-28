@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
-Module Name: AzureRM.NotificationHubs
+Module Name: Az.NotificationHubs
 ms.assetid: 796396B4-1F9D-4D53-AD2E-4CE83B563E93
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/get-azurermnotificationhub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/get-aznotificationhub
 schema: 2.0.0
 ---
 
-# Get-AzureRmNotificationHub
+# Get-AzNotificationHub
 
 ## SYNOPSIS
 Gets information about your notification hubs.
@@ -14,24 +14,24 @@ Gets information about your notification hubs.
 ## SYNTAX
 
 ```
-Get-AzureRmNotificationHub [-ResourceGroup] <String> [-Namespace] <String> [[-NotificationHub] <String>]
+Get-AzNotificationHub [-ResourceGroup] <String> [-Namespace] <String> [[-NotificationHub] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmNotificationHub** cmdlet gets information about the notification hubs in a specified namespace and assigned to a specified resource group.
+The **Get-AzNotificationHub** cmdlet gets information about the notification hubs in a specified namespace and assigned to a specified resource group.
 For example, you can get information for all the notification hubs in the namespace ContosoNamespace and assigned to the ContosoNotificationsGroup resource group.
 Alternatively, you can use the *NotificationHub* parameter to limit the returned data to information about a specific notification hub.
 Notification hubs are used to send push notifications to multiple clients regardless of the platform, such as iOS, Android, Windows Phone 8, and Windows Store, used by those clients.
 These hubs are roughly equivalent to individual apps and each of your apps will typically have its own notification hub.
 This cmdlet only gets information about the hub itself.
-Other cmdlets, such as Get-AzureRmNotificationHubAuthorizationRules, Get-AzureRmNotificationHubListKeys, and Get-AzureRmNotificationHubPNSCredentials, are needed to get information about a hub's authorization rules, connection strings, and platform notification service credentials.
+Other cmdlets, such as Get-AzNotificationHubAuthorizationRules, Get-AzNotificationHubListKeys, and Get-AzNotificationHubPNSCredentials, are needed to get information about a hub's authorization rules, connection strings, and platform notification service credentials.
 
 ## EXAMPLES
 
 ### Example 1: Get information for all notification hubs in a specific namespace
 ```
-PS C:\>Get-AzureRmNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup"
+PS C:\>Get-AzNotificationHub -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup"
 ```
 
 This command gets information for all the notification hubs in the namespace named ContosoNamespace that have been assigned to the resource group ContosoNotificationsGroup.
@@ -42,7 +42,7 @@ This command gets information for all the notification hubs in the namespace nam
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,16 +116,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNotificationHubAuthorizationRules](./Get-AzureRmNotificationHubAuthorizationRules.md)
+[Get-AzNotificationHubAuthorizationRules](./Get-AzNotificationHubAuthorizationRules.md)
 
-[Get-AzureRmNotificationHubListKeys](./Get-AzureRmNotificationHubListKeys.md)
+[Get-AzNotificationHubListKeys](./Get-AzNotificationHubListKeys.md)
 
-[Get-AzureRmNotificationHubPNSCredentials](./Get-AzureRmNotificationHubPNSCredentials.md)
+[Get-AzNotificationHubPNSCredentials](./Get-AzNotificationHubPNSCredentials.md)
 
-[New-AzureRmNotificationHub](./New-AzureRmNotificationHub.md)
+[New-AzNotificationHub](./New-AzNotificationHub.md)
 
-[Remove-AzureRmNotificationHub](./Remove-AzureRmNotificationHub.md)
+[Remove-AzNotificationHub](./Remove-AzNotificationHub.md)
 
-[Set-AzureRmNotificationHub](./Set-AzureRmNotificationHub.md)
+[Set-AzNotificationHub](./Set-AzNotificationHub.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 7915A7AC-5A47-4868-B846-2896BCEBFAB2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermmetricdefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azmetricdefinition
 schema: 2.0.0
 ---
 
-# Get-AzureRmMetricDefinition
+# Get-AzMetricDefinition
 
 ## SYNOPSIS
 Gets metric definitions.
@@ -14,18 +14,18 @@ Gets metric definitions.
 ## SYNTAX
 
 ```
-Get-AzureRmMetricDefinition [-ResourceId] <String> [-MetricName <String[]>] [-MetricNamespace <String>]
+Get-AzMetricDefinition [-ResourceId] <String> [-MetricName <String[]>] [-MetricNamespace <String>]
  [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmMetricDefinition** cmdlet gets metric definitions.
+The **Get-AzMetricDefinition** cmdlet gets metric definitions.
 
 ## EXAMPLES
 
 ### Example 1: Get metric definitions for a resource
 ```
-PS C:\>Get-AzureRmMetricDefinition -ResourceId "/subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2"
+PS C:\>Get-AzMetricDefinition -ResourceId "/subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2"
 Name                   : CpuTime
 Dimensions             : {}
 MetricAvailabilities   : {Microsoft.Azure.Insights.Models.MetricAvailability, 
@@ -50,7 +50,7 @@ This command gets the metrics definitions for the specified resource.
 
 ### Example 2: Get metric definitions with detailed output
 ```
-PS C:\>Get-AzureRmMetricDefinition -ResourceId "/subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2" -DetailedOutput
+PS C:\>Get-AzMetricDefinition -ResourceId "/subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2" -DetailedOutput
 Dimensions             : 
 MetricAvailabilities   : 
                              Location  : 
@@ -90,7 +90,7 @@ The output is detailed.
 
 ### Example 3: Get metric definitions by name
 ```
-PS C:\>Get-AzureRmMetricDefinition -ResourceId "/subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2" -DetailedOutput -MetricNames "BytesSent,CpuTime"
+PS C:\>Get-AzMetricDefinition -ResourceId "/subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2" -DetailedOutput -MetricNames "BytesSent,CpuTime"
 MetricAvailabilities   : 
                              Location  : 
                              Retention : 2.00:00:00
@@ -133,7 +133,7 @@ The output is detailed.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -222,7 +222,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmMetric](./Get-AzureRmMetric.md)
-[New-AzureRmMetricFilter](./New-AzureRmMetricFilter.md)
+[Get-AzMetric](./Get-AzMetric.md)
+[New-AzMetricFilter](./New-AzMetricFilter.md)
 
 

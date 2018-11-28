@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 30C1AF6C-A8DC-4CA0-9E5F-10641A29D0E8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/new-azurermdatafactorypipeline
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/new-azdatafactorypipeline
 schema: 2.0.0
 ---
 
-# New-AzureRmDataFactoryPipeline
+# New-AzDataFactoryPipeline
 
 ## SYNOPSIS
 Creates a pipeline in Data Factory.
@@ -15,19 +15,19 @@ Creates a pipeline in Data Factory.
 
 ### ByFactoryName (Default)
 ```
-New-AzureRmDataFactoryPipeline [[-Name] <String>] [-DataFactoryName] <String> [-File] <String> [-Force]
+New-AzDataFactoryPipeline [[-Name] <String>] [-DataFactoryName] <String> [-File] <String> [-Force]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-New-AzureRmDataFactoryPipeline [[-Name] <String>] [-DataFactory] <PSDataFactory> [-File] <String> [-Force]
+New-AzDataFactoryPipeline [[-Name] <String>] [-DataFactory] <PSDataFactory> [-File] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmDataFactoryPipeline** cmdlet creates a pipeline in Azure Data Factory.
+The **New-AzDataFactoryPipeline** cmdlet creates a pipeline in Azure Data Factory.
 If you specify a name for a pipeline that already exists, the cmdlet prompts you for confirmation before it replaces the pipeline.
 If you specify the *Force* parameter, the cmdlet replaces the existing pipeline without confirmation.
 Perform these operations in the following order: 
@@ -42,7 +42,7 @@ If you confirm to overwrite the existing pipeline, the pipeline definition is al
 
 ### Example 1: Create a pipeline
 ```
-PS C:\>New-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" -File "C:\DPWikisample.json" 
+PS C:\>New-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" -File "C:\DPWikisample.json" 
 PipelineName      : DPWikisample
 ResourceGroupName : ADF
 DataFactoryName   : WikiADF11
@@ -212,14 +212,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryPipeline](./Get-AzureRmDataFactoryPipeline.md)
+[Get-AzDataFactoryPipeline](./Get-AzDataFactoryPipeline.md)
 
-[Remove-AzureRmDataFactoryPipeline](./Remove-AzureRmDataFactoryPipeline.md)
+[Remove-AzDataFactoryPipeline](./Remove-AzDataFactoryPipeline.md)
 
-[Resume-AzureRmDataFactoryPipeline](./Resume-AzureRmDataFactoryPipeline.md)
+[Resume-AzDataFactoryPipeline](./Resume-AzDataFactoryPipeline.md)
 
-[Set-AzureRmDataFactoryPipelineActivePeriod](./Set-AzureRmDataFactoryPipelineActivePeriod.md)
+[Set-AzDataFactoryPipelineActivePeriod](./Set-AzDataFactoryPipelineActivePeriod.md)
 
-[Suspend-AzureRmDataFactoryPipeline](./Suspend-AzureRmDataFactoryPipeline.md)
+[Suspend-AzDataFactoryPipeline](./Suspend-AzDataFactoryPipeline.md)
 
 

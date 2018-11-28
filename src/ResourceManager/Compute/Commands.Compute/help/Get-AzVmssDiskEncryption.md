@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmssdiskencryption
+Module Name: Az.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmssdiskencryption
 schema: 2.0.0
 ---
 
-# Get-AzureRmVmssDiskEncryption
+# Get-AzVmssDiskEncryption
 
 ## SYNOPSIS
 Shows the disk encryption status of a VM scale set.
@@ -13,7 +13,7 @@ Shows the disk encryption status of a VM scale set.
 ## SYNTAX
 
 ```
-Get-AzureRmVmssDiskEncryption [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>]
+Get-AzVmssDiskEncryption [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>]
  [[-ExtensionName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Shows the disk encryption status of a VM scale set.
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmVmssDiskEncryption -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+PS C:\> Get-AzVmssDiskEncryption -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 Shows the disk encryption status of the VM scale set named VMSS001 that belongs to the resource group named Group001.
@@ -35,7 +35,7 @@ Shows the disk encryption status of the VM scale set named VMSS001 that belongs 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

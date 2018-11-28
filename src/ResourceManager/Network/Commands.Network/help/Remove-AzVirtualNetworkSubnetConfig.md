@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 47FE9EF4-6000-4096-8F04-26A0C6661FDB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermvirtualnetworksubnetconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvirtualnetworksubnetconfig
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVirtualNetworkSubnetConfig
+# Remove-AzVirtualNetworkSubnetConfig
 
 ## SYNOPSIS
 Removes a subnet configuration from a virtual network.
@@ -14,36 +14,36 @@ Removes a subnet configuration from a virtual network.
 ## SYNTAX
 
 ```
-Remove-AzureRmVirtualNetworkSubnetConfig [-Name <String>] -VirtualNetwork <PSVirtualNetwork>
+Remove-AzVirtualNetworkSubnetConfig [-Name <String>] -VirtualNetwork <PSVirtualNetwork>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVirtualNetworkSubnetConfig** cmdlet removes a subnet from an Azure virtual network.
+The **Remove-AzVirtualNetworkSubnetConfig** cmdlet removes a subnet from an Azure virtual network.
 
 ## EXAMPLES
 
 ### 1: Remove a subnet from a virtual network and update the virtual network
 ```
-New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
-    $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet 
+New-AzResourceGroup -Name TestResourceGroup -Location centralus
+    $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet 
     -AddressPrefix "10.0.1.0/24"
 
-$backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix 
+$backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix 
     "10.0.2.0/24"
 
-$virtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName 
+$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName 
     TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet 
     $frontendSubnet,$backendSubnet
 
-Remove-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork 
+Remove-AzVirtualNetworkSubnetConfig -Name backendSubnet -VirtualNetwork 
     $virtualNetwork
-    $virtualNetwork | Set-AzureRmVirtualNetwork
+    $virtualNetwork | Set-AzVirtualNetwork
 ```
 
 This example creates a resource group and a virtual network with two subnets. It then 
-    uses the Remove-AzureRmVirtualNetworkSubnetConfig command to remove the backend subnet 
-    from the in-memory representation of the virtual network. Set-AzureRmVirtualNetwork is 
+    uses the Remove-AzVirtualNetworkSubnetConfig command to remove the backend subnet 
+    from the in-memory representation of the virtual network. Set-AzVirtualNetwork is 
     then called to modify the virtual network on the server side.
 
 ## PARAMETERS
@@ -52,7 +52,7 @@ This example creates a resource group and a virtual network with two subnets. It
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -109,12 +109,12 @@ Parameters: VirtualNetwork (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmVirtualNetworkSubnetConfig](./Add-AzureRmVirtualNetworkSubnetConfig.md)
+[Add-AzVirtualNetworkSubnetConfig](./Add-AzVirtualNetworkSubnetConfig.md)
 
-[Get-AzureRmVirtualNetworkSubnetConfig](./Get-AzureRmVirtualNetworkSubnetConfig.md)
+[Get-AzVirtualNetworkSubnetConfig](./Get-AzVirtualNetworkSubnetConfig.md)
 
-[New-AzureRmVirtualNetworkSubnetConfig](./New-AzureRmVirtualNetworkSubnetConfig.md)
+[New-AzVirtualNetworkSubnetConfig](./New-AzVirtualNetworkSubnetConfig.md)
 
-[Set-AzureRmVirtualNetworkSubnetConfig](./Set-AzureRmVirtualNetworkSubnetConfig.md)
+[Set-AzVirtualNetworkSubnetConfig](./Set-AzVirtualNetworkSubnetConfig.md)
 
 

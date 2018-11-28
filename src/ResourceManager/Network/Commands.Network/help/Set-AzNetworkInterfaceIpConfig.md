@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 13EF1028-43DE-424D-8185-EC45B5CEF2C1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
-# Set-AzureRmNetworkInterfaceIpConfig
+# Set-AzNetworkInterfaceIpConfig
 
 ## SYNOPSIS
 Sets the goal state for an Azure network interface IP configuration.
@@ -15,7 +15,7 @@ Sets the goal state for an Azure network interface IP configuration.
 
 ### SetByResource (Default)
 ```
-Set-AzureRmNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
+Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
  [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-Subnet <PSSubnet>]
  [-PublicIpAddress <PSPublicIpAddress>]
  [-LoadBalancerBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]>]
@@ -27,7 +27,7 @@ Set-AzureRmNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkI
 
 ### SetByResourceId
 ```
-Set-AzureRmNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
+Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
  [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-SubnetId <String>]
  [-PublicIpAddressId <String>]
  [-LoadBalancerBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
@@ -38,21 +38,21 @@ Set-AzureRmNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkI
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmNetworkInterfaceIpConfig** cmdlet sets the goal state for an Azure network interface IP configuration.
+The **Set-AzNetworkInterfaceIpConfig** cmdlet sets the goal state for an Azure network interface IP configuration.
 
 ## EXAMPLES
 
 ### 1: Changing the IP address of an IP configuration
 ```
-$vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
+$vnet = Get-AzVirtualNetwork -Name myvnet -ResourceGroupName myrg
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
 
-$nic = Get-AzureRmNetworkInterface -Name nic1 -ResourceGroupName myrg
+$nic = Get-AzNetworkInterface -Name nic1 -ResourceGroupName myrg
 
-$nic | Set-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet
+$nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet
     -Primary
 
-$nic | Set-AzureRmNetworkInterface
+$nic | Set-AzNetworkInterface
 ```
 
 The first two commands get a virtual network called myvnet and a subnet called mysubnet and store it in the
@@ -64,21 +64,21 @@ The first two commands get a virtual network called myvnet and a subnet called m
 
 ### 2: Associating an IP configuration with an application security group
 ```
-$vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
+$vnet = Get-AzVirtualNetwork -Name myvnet -ResourceGroupName myrg
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
 $asg = Get-ApplicationSecurityGroup -Name myasg -ResourceGroupName myrg
 
-$nic = Get-AzureRmNetworkInterface -Name nic1 -ResourceGroupName myrg
+$nic = Get-AzNetworkInterface -Name nic1 -ResourceGroupName myrg
 
-$nic | Set-AzureRmNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet -ApplicationSecurityGroup $asg
+$nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet -ApplicationSecurityGroup $asg
     -Primary
 
-$nic | Set-AzureRmNetworkInterface
+$nic | Set-AzNetworkInterface
 ```
 
 In this example, the variable $asg contains a reference to an application security group.
     The fourth command gets the network interface nic1 associated with the IP
-    configuration that needs to be updated. The Set-AzureRmNetworkInterfaceIpConfig sets the private IP address of the primary IP
+    configuration that needs to be updated. The Set-AzNetworkInterfaceIpConfig sets the private IP address of the primary IP
     configuration ipconfig1 to 10.0.0.11 and creates an association with the retrieved application security group.
     Finally, the last command updates the network interface ensuring the changes
     have been made successfully.
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -387,12 +387,12 @@ Parameters: NetworkInterface (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmNetworkInterfaceIpConfig](./Add-AzureRmNetworkInterfaceIpConfig.md)
+[Add-AzNetworkInterfaceIpConfig](./Add-AzNetworkInterfaceIpConfig.md)
 
-[Get-AzureRmNetworkInterfaceIpConfig](./Get-AzureRmNetworkInterfaceIpConfig.md)
+[Get-AzNetworkInterfaceIpConfig](./Get-AzNetworkInterfaceIpConfig.md)
 
-[New-AzureRmNetworkInterfaceIpConfig](./New-AzureRmNetworkInterfaceIpConfig.md)
+[New-AzNetworkInterfaceIpConfig](./New-AzNetworkInterfaceIpConfig.md)
 
-[Remove-AzureRmNetworkInterfaceIpConfig](./Remove-AzureRmNetworkInterfaceIpConfig.md)
+[Remove-AzNetworkInterfaceIpConfig](./Remove-AzNetworkInterfaceIpConfig.md)
 
 

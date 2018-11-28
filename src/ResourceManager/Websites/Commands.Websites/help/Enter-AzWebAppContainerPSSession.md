@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/?view=azurermps-6.8.1
+Module Name: Az.Websites
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/?view=azurermps-6.8.1
 schema: 2.0.0
 ---
 
-# Enter-AzureRmWebAppContainerPSSession
+# Enter-AzWebAppContainerPSSession
 
 ## SYNOPSIS
 Opens a remote PowerShell session into the windows container specified in a given site or slot and given resource group
@@ -14,13 +14,13 @@ Opens a remote PowerShell session into the windows container specified in a give
 
 ### S1 (Default)
 ```
-Enter-AzureRmWebAppContainerPSSession [-PassThru] [-Force] [[-SlotName] <String>] [-ResourceGroupName] <String>
+Enter-AzWebAppContainerPSSession [-PassThru] [-Force] [[-SlotName] <String>] [-ResourceGroupName] <String>
  [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Enter-AzureRmWebAppContainerPSSession [-PassThru] [-Force] [-WebApp] <PSSite>
+Enter-AzWebAppContainerPSSession [-PassThru] [-Force] [-WebApp] <PSSite>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ opens a remote PowerShell session into the windows container specified in a give
 
 ### Example 1
 ```
-PS C:\> Enter-AzureRmWebAppContainerPSSession -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
+PS C:\> Enter-AzWebAppContainerPSSession -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
 ```
 
 This command opens a remote PowerShell session into the windows container app ContosoASP
@@ -42,7 +42,7 @@ This command opens a remote PowerShell session into the windows container app Co
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

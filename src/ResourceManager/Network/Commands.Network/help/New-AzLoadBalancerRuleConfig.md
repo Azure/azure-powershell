@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: FD84D530-491B-4075-A6B4-2E1C46AD92D4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermloadbalancerruleconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azloadbalancerruleconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmLoadBalancerRuleConfig
+# New-AzLoadBalancerRuleConfig
 
 ## SYNOPSIS
 Creates a rule configuration for a load balancer.
@@ -15,7 +15,7 @@ Creates a rule configuration for a load balancer.
 
 ### SetByResource (Default)
 ```
-New-AzureRmLoadBalancerRuleConfig -Name <String> [-Protocol <String>] [-LoadDistribution <String>]
+New-AzLoadBalancerRuleConfig -Name <String> [-Protocol <String>] [-LoadDistribution <String>]
  [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP]
  [-EnableTcpReset] [-DisableOutboundSNAT] [-FrontendIpConfiguration <PSFrontendIPConfiguration>]
  [-BackendAddressPool <PSBackendAddressPool>] [-Probe <PSProbe>] [-DefaultProfile <IAzureContextContainer>]
@@ -24,7 +24,7 @@ New-AzureRmLoadBalancerRuleConfig -Name <String> [-Protocol <String>] [-LoadDist
 
 ### SetByResourceId
 ```
-New-AzureRmLoadBalancerRuleConfig -Name <String> [-Protocol <String>] [-LoadDistribution <String>]
+New-AzLoadBalancerRuleConfig -Name <String> [-Protocol <String>] [-LoadDistribution <String>]
  [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP]
  [-EnableTcpReset] [-DisableOutboundSNAT] [-FrontendIpConfigurationId <String>]
  [-BackendAddressPoolId <String>] [-ProbeId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -32,19 +32,19 @@ New-AzureRmLoadBalancerRuleConfig -Name <String> [-Protocol <String>] [-LoadDist
 ```
 
 ## DESCRIPTION
-The **New-AzureRmLoadBalancerRuleConfig** cmdlet creates a rule configuration for an Azure load balancer.
+The **New-AzLoadBalancerRuleConfig** cmdlet creates a rule configuration for an Azure load balancer.
 
 ## EXAMPLES
 
 ### 1: Creating a rule configuration for an Azure Load Balancer
 ```
-PS C:\>  $publicip = New-AzureRmPublicIpAddress -ResourceGroupName "MyResourceGroup" 
+PS C:\>  $publicip = New-AzPublicIpAddress -ResourceGroupName "MyResourceGroup" 
     -name MyPublicIP -location 'West US' -AllocationMethod Dynamic
-PS C:\>  $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name MyFrontEnd 
+PS C:\>  $frontend = New-AzLoadBalancerFrontendIpConfig -Name MyFrontEnd 
     -PublicIpAddress $publicip
-PS C:\>  $probe = New-AzureRmLoadBalancerProbeConfig -Name MyProbe -Protocol http -Port 
+PS C:\>  $probe = New-AzLoadBalancerProbeConfig -Name MyProbe -Protocol http -Port 
     80 -IntervalInSeconds 15 -ProbeCount 2 -RequestPath healthcheck.aspx
-PS C:\> New-AzureRmLoadBalancerRuleConfig -Name "MyLBrule" -FrontendIPConfiguration 
+PS C:\> New-AzLoadBalancerRuleConfig -Name "MyLBrule" -FrontendIPConfiguration 
     $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp 
     -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP 
     -LoadDistribution SourceIP
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -344,12 +344,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmLoadBalancerRuleConfig](./Add-AzureRmLoadBalancerRuleConfig.md)
+[Add-AzLoadBalancerRuleConfig](./Add-AzLoadBalancerRuleConfig.md)
 
-[Get-AzureRmLoadBalancerRuleConfig](./Get-AzureRmLoadBalancerRuleConfig.md)
+[Get-AzLoadBalancerRuleConfig](./Get-AzLoadBalancerRuleConfig.md)
 
-[Remove-AzureRmLoadBalancerRuleConfig](./Remove-AzureRmLoadBalancerRuleConfig.md)
+[Remove-AzLoadBalancerRuleConfig](./Remove-AzLoadBalancerRuleConfig.md)
 
-[Set-AzureRmLoadBalancerRuleConfig](./Set-AzureRmLoadBalancerRuleConfig.md)
+[Set-AzLoadBalancerRuleConfig](./Set-AzLoadBalancerRuleConfig.md)
 
 

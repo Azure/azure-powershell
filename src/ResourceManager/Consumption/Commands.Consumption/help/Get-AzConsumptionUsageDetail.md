@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Consumption.dll-Help.xml
-Module Name: AzureRM.Consumption
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.consumption/get-azurermconsumptionusagedetail
+Module Name: Az.Consumption
+online version: https://docs.microsoft.com/en-us/powershell/module/az.consumption/get-azconsumptionusagedetail
 schema: 2.0.0
 ---
 
-# Get-AzureRmConsumptionUsageDetail
+# Get-AzConsumptionUsageDetail
 
 ## SYNOPSIS
 Get usage details of the subscription.
@@ -13,20 +13,20 @@ Get usage details of the subscription.
 ## SYNTAX
 
 ```
-Get-AzureRmConsumptionUsageDetail [-BillingPeriodName <String>] [-Expand <String>] [-IncludeMeterDetails]
+Get-AzConsumptionUsageDetail [-BillingPeriodName <String>] [-Expand <String>] [-IncludeMeterDetails]
  [-IncludeAdditionalProperties] [-StartDate <DateTime>] [-EndDate <DateTime>] [-ResourceGroup <String>]
  [-InstanceName <String>] [-InstanceId <String>] [-Tag <String>] [-MaxCount <Int32>] [-Top <Int32>]
  [-InvoiceName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmConsumptionUsageDetail** cmdlet gets usage details of the subscription. 
+The **Get-AzConsumptionUsageDetail** cmdlet gets usage details of the subscription. 
 
 ## EXAMPLES
 
 ### Example 1: Get usage details with expand of MeterDetails
 ```powershell
-PS C:\> Get-AzureRmConsumptionUsageDetail -Expand MeterDetails -Top 10
+PS C:\> Get-AzConsumptionUsageDetail -Expand MeterDetails -Top 10
 AccountName:  AAAA
 BillingPeriodId:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601
 ConsumedService:  Microsoft.Compute
@@ -57,7 +57,7 @@ UsageStart:  6/1/2018 12:00:00 AM
 
 ### Example 2: Get usage details with date range
 ```powershell
-PS C:\> Get-AzureRmConsumptionUsageDetail -StartDate 2017-10-02 -EndDate 2017-10-05 -Top 10
+PS C:\> Get-AzConsumptionUsageDetail -StartDate 2017-10-02 -EndDate 2017-10-05 -Top 10
 AccountName:  AAAA
 BillingPeriodId:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20171001
 ConsumedService:  Storage
@@ -83,7 +83,7 @@ UsageStart:  10/2/2017 12:00:00 AM
 
 ### Example 3: Get usage details of BillingPeriodName with InstanceName filter
 ```powershell
-PS C:\> Get-AzureRmConsumptionUsageDetail -BillingPeriodName 201710 -InstanceName 1c2052westus -Top 10
+PS C:\> Get-AzConsumptionUsageDetail -BillingPeriodName 201710 -InstanceName 1c2052westus -Top 10
 AccountName:  AAAA
 BillingPeriodId:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20171001
 ConsumedService:  Microsoft.Storage
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

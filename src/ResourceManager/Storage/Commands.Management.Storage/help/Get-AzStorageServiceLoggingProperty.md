@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
-Module Name: Azure.Storage
+Module Name: Az.Storage
 ms.assetid: 494291A1-D854-4E97-B5EE-27BB5653D97C
-online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestorageserviceloggingproperty
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azstorageserviceloggingproperty
 schema: 2.0.0
 ---
 
-# Get-AzureStorageServiceLoggingProperty
+# Get-AzStorageServiceLoggingProperty
 
 ## SYNOPSIS
 Gets logging properties for Azure Storage services.
@@ -14,18 +14,18 @@ Gets logging properties for Azure Storage services.
 ## SYNTAX
 
 ```
-Get-AzureStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
+Get-AzStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageServiceLoggingProperty** cmdlet gets logging properties for Azure Storage services.
+The **Get-AzStorageServiceLoggingProperty** cmdlet gets logging properties for Azure Storage services.
 
 ## EXAMPLES
 
 ### Example 1: Get logging properties for the Blob service
 ```
-C:\PS>Get-AzureStorageServiceLoggingProperty -ServiceType Blob
+C:\PS>Get-AzStorageServiceLoggingProperty -ServiceType Blob
 ```
 
 This command gets logging properties for blob storage.
@@ -34,7 +34,7 @@ This command gets logging properties for blob storage.
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -101,8 +101,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
-[Set-AzureStorageServiceLoggingProperty](./Set-AzureStorageServiceLoggingProperty.md)
+[Set-AzStorageServiceLoggingProperty](./Set-AzStorageServiceLoggingProperty.md)
 
 

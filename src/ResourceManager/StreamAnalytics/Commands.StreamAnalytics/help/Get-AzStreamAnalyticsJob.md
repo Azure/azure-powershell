@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM.StreamAnalytics
+Module Name: Az.StreamAnalytics
 ms.assetid: 1D10C1EA-632A-4953-85B1-596A45C30B24
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/get-azurermstreamanalyticsjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/get-azstreamanalyticsjob
 schema: 2.0.0
 ---
 
-# Get-AzureRmStreamAnalyticsJob
+# Get-AzStreamAnalyticsJob
 
 ## SYNOPSIS
 Gets Stream Analytics jobs information.
@@ -15,37 +15,37 @@ Gets Stream Analytics jobs information.
 
 ### ByResourceGroup
 ```
-Get-AzureRmStreamAnalyticsJob [-ResourceGroupName] <String> [[-Name] <String>] [-NoExpand]
+Get-AzStreamAnalyticsJob [-ResourceGroupName] <String> [[-Name] <String>] [-NoExpand]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySubscription
 ```
-Get-AzureRmStreamAnalyticsJob [-NoExpand] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzStreamAnalyticsJob [-NoExpand] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmStreamAnalyticsJob** cmdlet lists all Stream Analytics jobs defined in the Azure subscription or specified resource group or gets job information about a specific job within a resource group.
+The **Get-AzStreamAnalyticsJob** cmdlet lists all Stream Analytics jobs defined in the Azure subscription or specified resource group or gets job information about a specific job within a resource group.
 
 ## EXAMPLES
 
 ### EXAMPLE 1: Get information about all jobs in a subscription
 ```
-PS C:\>Get-AzureRmStreamAnalyticsJob
+PS C:\>Get-AzStreamAnalyticsJob
 ```
 
 This command returns information about all the Stream Analytics jobs in the Azure subscription.
 
 ### EXAMPLE 2: Get information about all jobs in a resource group
 ```
-PS C:\>Get-AzureRmStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US"
+PS C:\>Get-AzStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US"
 ```
 
 This command returns information about all the Stream Analytics jobs in the resource group StreamAnalytics-Default-West-US.
 
 ### EXAMPLE 3: Get information about a specific job in a resource group
 ```
-PS C:\>Get-AzureRmStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US" -Name "StreamingJob"
+PS C:\>Get-AzStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US" -Name "StreamingJob"
 ```
 
 This command returns information about the Stream Analytics job StreamingJob in the resource group StreamAnalytics-Default-West-US.
@@ -56,7 +56,7 @@ This command returns information about the Stream Analytics job StreamingJob in 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -129,12 +129,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmStreamAnalyticsJob](./New-AzureRmStreamAnalyticsJob.md)
+[New-AzStreamAnalyticsJob](./New-AzStreamAnalyticsJob.md)
 
-[Remove-AzureRmStreamAnalyticsJob](./Remove-AzureRmStreamAnalyticsJob.md)
+[Remove-AzStreamAnalyticsJob](./Remove-AzStreamAnalyticsJob.md)
 
-[Start-AzureRmStreamAnalyticsJob](./Start-AzureRmStreamAnalyticsJob.md)
+[Start-AzStreamAnalyticsJob](./Start-AzStreamAnalyticsJob.md)
 
-[Stop-AzureRmStreamAnalyticsJob](./Stop-AzureRmStreamAnalyticsJob.md)
+[Stop-AzStreamAnalyticsJob](./Stop-AzStreamAnalyticsJob.md)
 
 

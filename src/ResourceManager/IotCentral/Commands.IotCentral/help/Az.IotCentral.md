@@ -1,25 +1,25 @@
 ---
-Module Name: AzureRM.IotCentral
+Module Name: Az.IotCentral
 Module Guid: df9fc69a-c019-403a-9013-eefa7eb5e27a
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.iotcentral
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.iotcentral
 Help Version: 0.1.0.0
 Locale: en-US
 ---
 
-# AzureRM.IotCentral Module
+# Az.IotCentral Module
 ## Description
 Provides CRUD Management for IoT Central Applications.
 
-## AzureRM.IotCentral Cmdlets
-### [Get-AzureRmIotCentralApp](Get-AzureRmIotCentralApp.md)
+## Az.IotCentral Cmdlets
+### [Get-AzIotCentralApp](Get-AzIotCentralApp.md)
 Gets properties for either one or several IoT Central Applications.
 
-### [New-AzureRmIotCentralApp](New-AzureRmIotCentralApp.md)
+### [New-AzIotCentralApp](New-AzIotCentralApp.md)
 Creates a new IoT Central Application.
 
-### [Remove-AzureRmIotCentralApp](Remove-AzureRmIotCentralApp.md)
+### [Remove-AzIotCentralApp](Remove-AzIotCentralApp.md)
 Deletes an IoT Central Application.
 
-### [Set-AzureRmIotCentralApp](Set-AzureRmIotCentralApp.md)
+### [Set-AzIotCentralApp](Set-AzIotCentralApp.md)
 Updates the metadata for an IoT Central Application.
 

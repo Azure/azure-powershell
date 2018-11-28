@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-Module Name: AzureRM.MachineLearning
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/get-azurermmlcommitmentplan
+Module Name: Az.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/get-azmlcommitmentplan
 schema: 2.0.0
 ---
 
-# Get-AzureRmMlCommitmentPlan
+# Get-AzMlCommitmentPlan
 
 ## SYNOPSIS
 Retrieves the summary information for one or more commitment plans.
@@ -13,7 +13,7 @@ Retrieves the summary information for one or more commitment plans.
 ## SYNTAX
 
 ```
-Get-AzureRmMlCommitmentPlan [-ResourceGroupName <String>] [-Name <String>]
+Get-AzMlCommitmentPlan [-ResourceGroupName <String>] [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,17 +25,17 @@ Depending on the paramenters passed, the cmdlet returns the a specific commitmen
 
 ### Example 1: Get a specific commitment plan
 ```
-Get-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
+Get-AzMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
 ```
 
 ### Example 2: Get all commitment plan resources in current subscription
 ```
-Get-AzureRmMlCommitmentPlan
+Get-AzMlCommitmentPlan
 ```
 
 ### Example 3: Get all commitment plans in the current subscription and given resource group
 ```
-Get-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup"
+Get-AzMlCommitmentPlan -ResourceGroupName "MyResourceGroup"
 ```
 
 ## PARAMETERS
@@ -44,7 +44,7 @@ Get-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

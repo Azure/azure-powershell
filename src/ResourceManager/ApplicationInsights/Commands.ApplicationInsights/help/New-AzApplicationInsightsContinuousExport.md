@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApplicationInsights.dll-Help.xml
-Module Name: AzureRM.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport
+Module Name: Az.ApplicationInsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
 schema: 2.0.0
 ---
 
-# New-AzureRmApplicationInsightsContinuousExport
+# New-AzApplicationInsightsContinuousExport
 
 ## SYNOPSIS
 Create a new application insights continuous export configuration for an application insights resource
@@ -14,21 +14,21 @@ Create a new application insights continuous export configuration for an applica
 
 ### ComponentNameParameterSet (Default)
 ```
-New-AzureRmApplicationInsightsContinuousExport [-ResourceGroupName] <String> [-Name] <String>
+New-AzApplicationInsightsContinuousExport [-ResourceGroupName] <String> [-Name] <String>
  -DocumentType <String[]> -StorageAccountId <String> -StorageLocation <String> -StorageSASUri <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
-New-AzureRmApplicationInsightsContinuousExport [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
+New-AzApplicationInsightsContinuousExport [-ApplicationInsightsComponent] <PSApplicationInsightsComponent>
  -DocumentType <String[]> -StorageAccountId <String> -StorageLocation <String> -StorageSASUri <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzureRmApplicationInsightsContinuousExport [-ResourceId] <String> -DocumentType <String[]>
+New-AzApplicationInsightsContinuousExport [-ResourceId] <String> -DocumentType <String[]>
  -StorageAccountId <String> -StorageLocation <String> -StorageSASUri <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -40,9 +40,9 @@ Create a new application insights continuous export configuration for an applica
 
 ### Example 1 Create a new continuous export configuration for an application insights resource
 ```
-PS C:\> $sastoken = New-AzureStorageContainerSASToken -Name testcontainer -Context $context -ExpiryTime (Get-Date).AddYears(50) -Permission w
+PS C:\> $sastoken = New-AzStorageContainerSASToken -Name testcontainer -Context $context -ExpiryTime (Get-Date).AddYears(50) -Permission w
 PS C:\> $sasuri = "https://teststorageaccount.blob.core.windows.net/testcontainer" + $sastoken
-PS C:\> New-AzureRmApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
+PS C:\> New-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
  -DocumentType "Request","Trace", "Custom Event" -StorageAccountId "/subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount" -StorageLocation sourcecentralus
  -StorageSASUri $sasuri
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

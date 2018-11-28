@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvirtualnetworkavailableendpointservice
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetworkavailableendpointservice
 schema: 2.0.0
 ---
 
-# Get-AzureRmVirtualNetworkAvailableEndpointService
+# Get-AzVirtualNetworkAvailableEndpointService
 
 ## SYNOPSIS
 Lists available endpoint services for location.
@@ -13,18 +13,18 @@ Lists available endpoint services for location.
 ## SYNTAX
 
 ```
-Get-AzureRmVirtualNetworkAvailableEndpointService -Location <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzVirtualNetworkAvailableEndpointService -Location <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get-AzureRmVirtualNetworkAvailableEndpointService lists endpoint services available in the specified location.
+Get-AzVirtualNetworkAvailableEndpointService lists endpoint services available in the specified location.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmVirtualNetworkAvailableEndpointService -Location westus
+PS C:\> Get-AzVirtualNetworkAvailableEndpointService -Location westus
 
 -Name              Id                                                                                             Type
 -----              --                                                                                             ----
@@ -39,7 +39,7 @@ Gets available endpoint services in westus region.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

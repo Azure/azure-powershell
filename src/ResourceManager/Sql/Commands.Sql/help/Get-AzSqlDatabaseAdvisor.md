@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 5AAB22C6-8E3C-4BDC-8A54-DA5A9906B762
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqldatabaseadvisor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseadvisor
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlDatabaseAdvisor
+# Get-AzSqlDatabaseAdvisor
 
 ## SYNOPSIS
 Gets one or more Advisors for an Azure SQL Database.
@@ -14,19 +14,19 @@ Gets one or more Advisors for an Azure SQL Database.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlDatabaseAdvisor [-AdvisorName <String>] [-ExpandRecommendedActions] -ServerName <String>
+Get-AzSqlDatabaseAdvisor [-AdvisorName <String>] [-ExpandRecommendedActions] -ServerName <String>
  -DatabaseName <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlDatabaseAdvisor** cmdlet gets one or more Azure SQL Database Advisors for an Azure SQL Database.
+The **Get-AzSqlDatabaseAdvisor** cmdlet gets one or more Azure SQL Database Advisors for an Azure SQL Database.
 
 ## EXAMPLES
 
 ### Example 1: List all the advisors for the specified database
 ```
-PS C:\>Get-AzureRmSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner"
+PS C:\>Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner"
 DatabaseName                   : WIRunner
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
@@ -76,7 +76,7 @@ This command gets lists all the advisors for the database named WIRunner that be
 
 ### Example 2: Get a single advisor for the specified database
 ```
-PS C:\>Get-AzureRmSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex"
+PS C:\>Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex"
 DatabaseName                   : WIRunner
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
@@ -93,7 +93,7 @@ This command gets the Advisor named CreateIndex for the database named WIRunner.
 
 ### Example 3: List all the advisors with their recommended actions included in the response
 ```
-PS C:\>Get-AzureRmSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -ExpandRecommendedActions
+PS C:\>Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -ExpandRecommendedActions
 DatabaseName                   : WIRunner
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
@@ -150,7 +150,7 @@ Since the command uses the *ExpandRecommendedActions* parameter, the cmdlet gets
 
 ### Example 4: Get a single advisor with its recommended actions included in the response
 ```
-PS C:\>Get-AzureRmSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex" -ExpandRecommendedActions
+PS C:\>Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName "CreateIndex" -ExpandRecommendedActions
 DatabaseName                   : WIRunner
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -279,12 +279,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServerAdvisor](./Get-AzureRmSqlServerAdvisor.md)
+[Get-AzSqlServerAdvisor](./Get-AzSqlServerAdvisor.md)
 
-[Get-AzureRmSqlElasticPoolAdvisor](./Get-AzureRmSqlElasticPoolAdvisor.md)
+[Get-AzSqlElasticPoolAdvisor](./Get-AzSqlElasticPoolAdvisor.md)
 
-[Get-AzureRmSqlDatabaseRecommendedAction](./Get-AzureRmSqlDatabaseRecommendedAction.md)
+[Get-AzSqlDatabaseRecommendedAction](./Get-AzSqlDatabaseRecommendedAction.md)
 
-[Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus](./Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus.md)
+[Set-AzSqlDatabaseAdvisorAutoExecuteStatus](./Set-AzSqlDatabaseAdvisorAutoExecuteStatus.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

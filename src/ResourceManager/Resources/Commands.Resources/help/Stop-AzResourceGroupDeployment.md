@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 089954C3-7F3E-46C2-AA93-C0151EACDA2F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/stop-azresourcegroupdeployment
 schema: 2.0.0
 ---
 
-# Stop-AzureRmResourceGroupDeployment
+# Stop-AzResourceGroupDeployment
 
 ## SYNOPSIS
 Cancels a resource group deployment.
@@ -15,26 +15,26 @@ Cancels a resource group deployment.
 
 ### StopByResourceGroupDeploymentName (Default)
 ```
-Stop-AzureRmResourceGroupDeployment [-ResourceGroupName] <String> [-Name] <String> [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzResourceGroupDeployment [-ResourceGroupName] <String> [-Name] <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopByResourceGroupDeploymentId
 ```
-Stop-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
+Stop-AzResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmResourceGroupDeployment** cmdlet cancels an Azure resource group deployment that has started but not completed.
+The **Stop-AzResourceGroupDeployment** cmdlet cancels an Azure resource group deployment that has started but not completed.
 To stop a deployment, the deployment must have an incomplete provisioning state, such as Provisioning, and not a completed state, such as Provisioned or Failed.
 An Azure resource is a user-managed entity, such as a website, database, or database server.
 A resource group is a collection of resources that are deployed as a unit.
-To deploy a resource group, use the New-AzureRmResourceGroupDeployment cmdlet.
-The New-AzureRmResource cmdlet creates a new resource, but it does not trigger a resource group deployment operation that this cmdlet can stop.
+To deploy a resource group, use the New-AzResourceGroupDeployment cmdlet.
+The New-AzResource cmdlet creates a new resource, but it does not trigger a resource group deployment operation that this cmdlet can stop.
 This cmdlet stops only one running deployment.
 Use the *Name* parameter to stop a specific deployment.
-If you omit the *Name* parameter, **Stop-AzureRmResourceGroupDeployment** searches for a running deployment and stops it.
+If you omit the *Name* parameter, **Stop-AzResourceGroupDeployment** searches for a running deployment and stops it.
 If the cmdlet finds more than one running deployment, the command fails.
 
 ## EXAMPLES
@@ -42,20 +42,20 @@ If the cmdlet finds more than one running deployment, the command fails.
 ### Example 1: Starting and stopping a resource group deployment
 
 ```powershell
-PS C:\> New-AzureRmResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg -TemplateFile .\storage-account-create-azuredeploy.json -TemplateParameterFile .\storage-account-create-azuredeploy.parameters.json -AsJob
+PS C:\> New-AzResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg -TemplateFile .\storage-account-create-azdeploy.json -TemplateParameterFile .\storage-account-create-azdeploy.parameters.json -AsJob
 
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
 --     ----            -------------   -----         -----------     --------             -------
-1      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmResourceGro...
+1      Long Running... AzureLongRun... Running       True            localhost            New-AzResourceGro...
 
-PS C:\> Stop-AzureRmResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg
+PS C:\> Stop-AzResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg
 True
 
 PS C:\> Get-Job 1
 
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
 --     ----            -------------   -----         -----------     --------             -------
-1      Long Running... AzureLongRun... Failed        True            localhost            New-AzureRmResourceGro...
+1      Long Running... AzureLongRun... Failed        True            localhost            New-AzResourceGro...
 ```
 
 ## PARAMETERS
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group deployment to stop.
 If you do not specify this parameter, this cmdlet searches for a running deployment in the resource group and stops it.
 If it finds more than one running deployment, the command fails.
-To get the deployment name, use the Get-AzureRmResourceGroupDeployment cmdlet.
+To get the deployment name, use the Get-AzResourceGroupDeployment cmdlet.
 
 ```yaml
 Type: System.String
@@ -201,16 +201,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmResourceGroupDeployment](./Get-AzureRmResourceGroupDeployment.md)
+[Get-AzResourceGroupDeployment](./Get-AzResourceGroupDeployment.md)
 
-[New-AzureRmResource](./New-AzureRmResource.md)
+[New-AzResource](./New-AzResource.md)
 
-[New-AzureRmResourceGroup](./New-AzureRmResourceGroup.md)
+[New-AzResourceGroup](./New-AzResourceGroup.md)
 
-[New-AzureRmResourceGroupDeployment](./New-AzureRmResourceGroupDeployment.md)
+[New-AzResourceGroupDeployment](./New-AzResourceGroupDeployment.md)
 
-[Remove-AzureRmResourceGroupDeployment](./Remove-AzureRmResourceGroupDeployment.md)
+[Remove-AzResourceGroupDeployment](./Remove-AzResourceGroupDeployment.md)
 
-[Test-AzureRmResourceGroupDeployment](./Test-AzureRmResourceGroupDeployment.md)
+[Test-AzResourceGroupDeployment](./Test-AzResourceGroupDeployment.md)
 
 

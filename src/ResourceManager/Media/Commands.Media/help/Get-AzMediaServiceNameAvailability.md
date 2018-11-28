@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
-Module Name: AzureRM.Media
+Module Name: Az.Media
 ms.assetid: 23C6C9D3-A745-46C8-AB2C-B874223FBFFF
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/get-azurermmediaservicenameavailability
+online version: https://docs.microsoft.com/en-us/powershell/module/az.media/get-azmediaservicenameavailability
 schema: 2.0.0
 ---
 
-# Get-AzureRmMediaServiceNameAvailability
+# Get-AzMediaServiceNameAvailability
 
 ## SYNOPSIS
 Checks whether a media service name is available.
@@ -15,19 +15,19 @@ Media service names are globally unique.
 ## SYNTAX
 
 ```
-Get-AzureRmMediaServiceNameAvailability [-DefaultProfile <IAzureContextContainer>] [-AccountName] <String>
+Get-AzMediaServiceNameAvailability [-DefaultProfile <IAzureContextContainer>] [-AccountName] <String>
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmMediaServiceNameAvailability** cmdlet checks whether a media service name is available.
+The **Get-AzMediaServiceNameAvailability** cmdlet checks whether a media service name is available.
 Media service names are globally unique.
 
 ## EXAMPLES
 
 ### Example 1: Check whether a Media Service name is available
 ```
-PS C:\>Get-AzureRmMediaServiceNameAvailability -AccountName "MediaService1"
+PS C:\>Get-AzMediaServiceNameAvailability -AccountName "MediaService1"
 ```
 
 This command checks if the name MediaService1 is available.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -79,12 +79,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmMediaService](./Get-AzureRmMediaService.md)
+[Get-AzMediaService](./Get-AzMediaService.md)
 
-[New-AzureRmMediaService](./New-AzureRmMediaService.md)
+[New-AzMediaService](./New-AzMediaService.md)
 
-[Remove-AzureRmMediaService](./Remove-AzureRmMediaService.md)
+[Remove-AzMediaService](./Remove-AzMediaService.md)
 
-[Set-AzureRmMediaService](./Set-AzureRmMediaService.md)
+[Set-AzMediaService](./Set-AzMediaService.md)
 
 

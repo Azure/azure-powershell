@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
-Module Name: AzureRM.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor/new-azurermfrontdoorbackendobject
+Module Name: Az.FrontDoor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorbackendobject
 schema: 2.0.0
 ---
 
-# New-AzureRmFrontDoorBackendObject
+# New-AzFrontDoorBackendObject
 
 ## SYNOPSIS
 Create a PSBackend object
@@ -13,8 +13,8 @@ Create a PSBackend object
 ## SYNTAX
 
 ```
-New-AzureRmFrontDoorBackendObject -Address <String> [-HttpPort <Int32>] [-HttpsPort <Int32>]
- [-Priority <Int32>] [-Weight <Int32>] [-EnabledState <PSEnabledState>] [-BackendHostHeader <String>]
+New-AzFrontDoorBackendObject -Address <String> [-HttpPort <Int32>] [-HttpsPort <Int32>] [-Priority <Int32>]
+ [-Weight <Int32>] [-EnabledState <PSEnabledState>] [-BackendHostHeader <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Create a PSBackend object for Front Door creation
 
 ### Example 1
 ```powershell
-PS C:\>New-AzureRmFrontDoorBackendObject -Address "contoso1.azurewebsites.net"
+PS C:\>New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net"
 
 
 Address           : contoso1.azurewebsites.net
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -187,4 +187,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmFrontDoorBackendPoolObject](./New-AzureRmFrontDoorBackendPoolObject.md)
+[New-AzFrontDoorBackendPoolObject](./New-AzFrontDoorBackendPoolObject.md)

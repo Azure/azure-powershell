@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/import-azurermcontext
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/import-azcontext
 schema: 2.0.0
 ---
 
-# Import-AzureRmContext
+# Import-AzContext
 
 ## SYNOPSIS
 Loads Azure authentication information from a file.
@@ -14,25 +14,25 @@ Loads Azure authentication information from a file.
 
 ### ProfileFromDisk (Default)
 ```
-Import-AzureRmContext [-Path] <String> [-Scope <ContextModificationScope>]
+Import-AzContext [-Path] <String> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InMemoryProfile
 ```
-Import-AzureRmContext [-AzureContext] <AzureRmProfile> [-Scope <ContextModificationScope>]
+Import-AzContext [-AzureContext] <AzureRmProfile> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Import-AzureRmContext cmdlet loads authentication information from a file to set the Azure environment and context.
+The Import-AzContext cmdlet loads authentication information from a file to set the Azure environment and context.
 Cmdlets that you run in the current session use this information to authenticate requests to Azure Resource Manager.
 
 ## EXAMPLES
 
 ### Example 1: Importing a context from a AzureRmProfile
 ```
-PS C:\> Import-AzureRmContext -AzureContext (Connect-AzureRmAccount)
+PS C:\> Import-AzContext -AzContext (Connect-AzAccount)
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
@@ -43,19 +43,19 @@ This example imports a context from a PSAzureProfile that is passed through to t
 
 ### Example 2: Importing a context from a JSON file
 ```
-PS C:\> Import-AzureRmContext -Path C:\test.json
+PS C:\> Import-AzContext -Path C:\test.json
 
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-This example selects a context from a JSON file that is passed through to the cmdlet. This JSON file can be created from Save-AzureRmContext.
+This example selects a context from a JSON file that is passed through to the cmdlet. This JSON file can be created from Save-AzContext.
 
 ## PARAMETERS
 
 ### -AzureContext
-Specifies the Azure context from which this cmdlet reads. If you do not specify a context, this cmdlet reads from the local default context.
+{{Fill AzureContext Description}}
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 The credentials, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Specifies the path to context information saved by using Save-AzureRMContext.
+Specifies the path to context information saved by using Save-AzContext.
 
 ```yaml
 Type: System.String

@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubvalidsku
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubvalidsku
 schema: 2.0.0
 ---
 
-# Get-AzureRmIotHubValidSku
+# Get-AzIotHubValidSku
 
 ## SYNOPSIS
 Gets all valid skus that this IotHub can transition to.
@@ -13,8 +13,8 @@ Gets all valid skus that this IotHub can transition to.
 ## SYNTAX
 
 ```
-Get-AzureRmIotHubValidSku [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIotHubValidSku [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ You will have to delete and recreate the iothub if you want to achieve this.
 
 ### Example 1 Get the valid skus
 ```
-PS C:\> Get-AzureRmIotHubValidSku -ResourceGroupName "myresourcegroup" -Name "myiothub"
+PS C:\> Get-AzIotHubValidSku -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets a list of all skus for the IotHub named "myiothub"
@@ -37,7 +37,7 @@ Gets a list of all skus for the IotHub named "myiothub"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

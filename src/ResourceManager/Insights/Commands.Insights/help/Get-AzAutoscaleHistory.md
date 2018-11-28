@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: A70F4C03-E842-45D5-9323-DC5B14B569F1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermautoscalehistory
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azautoscalehistory
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutoscaleHistory
+# Get-AzAutoscaleHistory
 
 ## SYNOPSIS
 Gets the Autoscale history.
@@ -14,26 +14,25 @@ Gets the Autoscale history.
 ## SYNTAX
 
 ```
-Get-AzureRmAutoscaleHistory [-ResourceId <String>] [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-Status <String>] [-Caller <String>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzAutoscaleHistory [-ResourceId <String>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>]
+ [-Caller <String>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutoscaleHistory** cmdlet gets the history of events related to an Autoscale setting.
+The **Get-AzAutoscaleHistory** cmdlet gets the history of events related to an Autoscale setting.
 
 ## EXAMPLES
 
 ### Example 1: Get all events associated with a subscription
 ```
-PS C:\>Get-AzureRmAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -DetailedOutput
+PS C:\>Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -DetailedOutput
 ```
 
 This command gets all of the Autoscale-related events associated with the current subscription.
 
 ### Example 2: GetAutoscaleHistory for a particular resource
 ```
-PS C:\>Get-AzureRmAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -ResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS" -DetailedOutput
+PS C:\>Get-AzAutoscaleHistory -StartTime 2015-02-09T18:35:00 -EndTime 2015-02-09T18:40:00 -ResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS" -DetailedOutput
 Authorization        : 
 Caller               : Microsoft.Insights/autoscaleSettings
 Claims               :  http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn: Microsoft.Insights/autoscaleSettings
@@ -191,7 +190,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -303,10 +302,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmAutoscaleSetting](./Add-AzureRmAutoscaleSetting.md)
+[Add-AzAutoscaleSetting](./Add-AzAutoscaleSetting.md)
 
-[Get-AzureRmAutoscaleSetting](./Get-AzureRmAutoscaleSetting.md)
+[Get-AzAutoscaleSetting](./Get-AzAutoscaleSetting.md)
 
-[Remove-AzureRmAutoscaleSetting](./Remove-AzureRmAutoscaleSetting.md)
+[Remove-AzAutoscaleSetting](./Remove-AzAutoscaleSetting.md)
 
 

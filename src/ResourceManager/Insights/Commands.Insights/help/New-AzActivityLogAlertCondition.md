@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 5E854358-CA9D-4336-BA6A-BF7B1FADAB50
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/new-azurermactivitylogalertcondition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azactivitylogalertcondition
 schema: 2.0.0
 ---
 
-# New-AzureRmActivityLogAlertCondition
+# New-AzActivityLogAlertCondition
 
 ## SYNOPSIS
 Creates an new activity log alert condition object in memory.
@@ -14,22 +14,22 @@ Creates an new activity log alert condition object in memory.
 ## SYNTAX
 
 ```
-New-AzureRmActivityLogAlertCondition -Field <String> -Equal <String> [-DefaultProfile <IAzureContextContainer>]
+New-AzActivityLogAlertCondition -Field <String> -Equal <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmActivityLogAlertCondition** cmdlet creates new activity log alert condition object in memory.
+The **New-AzActivityLogAlertCondition** cmdlet creates new activity log alert condition object in memory.
 
 ## EXAMPLES
 
 ### Example 1: Create a new activity log alert condition object in memory.
 ```
-PS C:\>$condition = New-AzureRmActivityLogAlertCondition -Field "Requests" -Equal "OtherField"
+PS C:\>$condition = New-AzActivityLogAlertCondition -Field "Requests" -Equal "OtherField"
 ```
 
 This command creates a new activity log alert condition object in memory.
-**NOTE**: when this cmdlet is used with Set-AzureRmActivityLogAlert at least one of these objects, passed as parameters, must have its Field equal to "Category". Otherwise, the backend responds with a 400 (BadRequest.)
+**NOTE**: when this cmdlet is used with Set-AzActivityLogAlert at least one of these objects, passed as parameters, must have its Field equal to "Category". Otherwise, the backend responds with a 400 (BadRequest.)
 
 ## PARAMETERS
 
@@ -37,7 +37,7 @@ This command creates a new activity log alert condition object in memory.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,14 +93,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmActivityLogAlert](./Set-AzureRmActivityLogAlert.md)
+[Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
 
-[Enable-AzureRmActivityLogAlert](./Enable-AzureRmActivityLogAlert.md)
+[Enable-AzActivityLogAlert](./Enable-AzActivityLogAlert.md)
 
-[Disable-AzureRmActivityLogAlert](./Disable-AzureRmActivityLogAlert.md)
+[Disable-AzActivityLogAlert](./Disable-AzActivityLogAlert.md)
 
-[Get-AzureRmActivityLogAlert](./Get-AzureRmActivityLogAlert.md)
+[Get-AzActivityLogAlert](./Get-AzActivityLogAlert.md)
 
-[Remove-AzureRmActivityLogAlert](./Remove-AzureRmActivityLogAlert.md)
+[Remove-AzActivityLogAlert](./Remove-AzActivityLogAlert.md)
 
-[New-AzureRmActionGroup](./Get-AzureRmActionGroup.md)
+[New-AzActionGroup](./Get-AzActionGroup.md)

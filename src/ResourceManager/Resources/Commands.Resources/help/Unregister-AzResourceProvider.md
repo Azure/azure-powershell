@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: D5126B7B-7FBB-4C72-B77E-13ADE2BE9B1B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/unregister-azurermresourceprovider
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/unregister-azresourceprovider
 schema: 2.0.0
 ---
 
-# Unregister-AzureRmResourceProvider
+# Unregister-AzResourceProvider
 
 ## SYNOPSIS
 Unregisters a resource provider.
@@ -14,12 +14,12 @@ Unregisters a resource provider.
 ## SYNTAX
 
 ```
-Unregister-AzureRmResourceProvider -ProviderNamespace <String> [-ApiVersion <String>] [-Pre]
+Unregister-AzResourceProvider -ProviderNamespace <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Unregister-AzureRmResourceProvider** cmdlet unregisters an Azure resource provider.
+The **Unregister-AzResourceProvider** cmdlet unregisters an Azure resource provider.
 
 ## EXAMPLES
 
@@ -45,7 +45,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -128,8 +128,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmResourceProvider](./Get-AzureRmResourceProvider.md)
+[Get-AzResourceProvider](./Get-AzResourceProvider.md)
 
-[Register-AzureRmResourceProvider](./Register-AzureRmResourceProvider.md)
+[Register-AzResourceProvider](./Register-AzResourceProvider.md)
 
 

@@ -1,67 +1,67 @@
 ---
-Module Name: AzureRM.DataMigration
+Module Name: Az.DataMigration
 Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datamigration
 Help Version: 0.1.0.0
 Locale: en-US
 ---
 
-# AzureRM.DataMigration Module
+# Az.DataMigration Module
 ## Description
 {{Azure DataMigration Service Module}}
 
-## AzureRM.DataMigration Cmdlets
-### [Get-AzureRmDataMigrationProject](Get-AzureRmDataMigrationProject.md)
+## Az.DataMigration Cmdlets
+### [Get-AzDataMigrationProject](Get-AzDataMigrationProject.md)
 Retrieves the properties of an Azure Database Migration project.
 
-### [Get-AzureRmDataMigrationService](Get-AzureRmDataMigrationService.md)
+### [Get-AzDataMigrationService](Get-AzDataMigrationService.md)
 Retrieves the properties associated with an instance of the Azure Database Migration Service. 
 
-### [Get-AzureRmDataMigrationTask](Get-AzureRmDataMigrationTask.md)
+### [Get-AzDataMigrationTask](Get-AzDataMigrationTask.md)
 Retrieves the PSProjectTask object associated with an Azure Database Migration Service migration task.
 
-### [New-AzureRmDataMigrationCommand(Get-AzureRmDataMigrationCommand.md)
-Creates a new command to be executed on an existing Azure Database Migration Service migration task.
+### [Invoke-AzDataMigrationCommand](Invoke-AzDataMigrationCommand.md)
+Creates a new command to be executed on an existing DMS task.
 
-### [New-AzureRmDataMigrationConnectionInfo](New-AzureRmDataMigrationConnectionInfo.md)
+### [New-AzDataMigrationConnectionInfo](New-AzDataMigrationConnectionInfo.md)
 Creates a new Connection Info object specifying the server type and name for connection.
 
-### [New-AzureRmDataMigrationDatabaseInfo](New-AzureRmDataMigrationDatabaseInfo.md)
+### [New-AzDataMigrationDatabaseInfo](New-AzDataMigrationDatabaseInfo.md)
 Creates the DatabaseInfo object for the Azure Database Migration Service, which specifies the database source for migration.
 
-### [New-AzureRmDataMigrationFileShare](New-AzureRmDataMigrationFileShare.md)
+### [New-AzDataMigrationFileShare](New-AzDataMigrationFileShare.md)
 Creates the FileShare object for the Azure Database Migration Service, which specifies the local network share to take the source database backups to.
 
-### [New-AzureRmDataMigrationProject](New-AzureRmDataMigrationProject.md)
+### [New-AzDataMigrationProject](New-AzDataMigrationProject.md)
 Creates a new Azure Database Migration Service project.
 
-### [New-AzureRmDataMigrationSelectedDB](New-AzureRmDataMigrationSelectedDB.md)
+### [New-AzDataMigrationSelectedDBObject](New-AzDataMigrationSelectedDBObject.md)
 Creates a database input object that contains information about source and target databases for migration.
 
-### [New-AzureRmDataMigrationService](New-AzureRmDataMigrationService.md)
+### [New-AzDataMigrationService](New-AzDataMigrationService.md)
 Creates a new instance of the Azure Database Migration Service.
 
-### [New-AzureRmDataMigrationSyncSelectedDB](New-AzureRmDataMigrationSyncSelectedDB.md)
-Creates a database input object for sync scenarios that contains information about source and target databases for migration.
+### [New-AzDataMigrationSyncSelectedDBObject](New-AzDataMigrationSyncSelectedDBObject.md)
+Creates a database info object specific to the sync scenario to be used for a migration task.
 
-### [New-AzureRmDataMigrationTask](New-AzureRmDataMigrationTask.md)
+### [New-AzDataMigrationTask](New-AzDataMigrationTask.md)
 Creates and starts a data migration task in the Azure Database Migration Service.
 
-### [Remove-AzureRmDataMigrationProject](Remove-AzureRmDataMigrationProject.md)
+### [Remove-AzDataMigrationProject](Remove-AzDataMigrationProject.md)
 Removes an Azure Database Migration Service project from Azure.
 
-### [Remove-AzureRmDataMigrationService](Remove-AzureRmDataMigrationService.md)
+### [Remove-AzDataMigrationService](Remove-AzDataMigrationService.md)
 Removes an instance of the Azure Database Migration Service from Azure.
 
-### [Remove-AzureRmDataMigrationTask](Remove-AzureRmDataMigrationTask.md)
+### [Remove-AzDataMigrationTask](Remove-AzDataMigrationTask.md)
 Removes an Azure Database Migration Service task from Azure.
 
-### [Start-AzureRmDataMigrationService](Start-AzureRmDataMigrationService.md)
+### [Start-AzDataMigrationService](Start-AzDataMigrationService.md)
 Starts an instance of the Azure Database Migration Service in a stopped state. 
 
-### [Stop-AzureRmDataMigrationService](Stop-AzureRmDataMigrationService.md)
+### [Stop-AzDataMigrationService](Stop-AzDataMigrationService.md)
 Stops an instance of the Azure Database Migration Service that is in a running state.
 
-### [Stop-AzureRmDataMigrationTask](Stop-AzureRmDataMigrationTask.md)
+### [Stop-AzDataMigrationTask](Stop-AzDataMigrationTask.md)
 Stops an  Azure Database Migration Service task that is in a running state.
 

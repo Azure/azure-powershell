@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
-Module Name: AzureRM.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/test-azurermanalysisservicesserver
+Module Name: Az.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/test-azanalysisservicesserver
 schema: 2.0.0
 ---
 
-# Test-AzureRmAnalysisServicesServer
+# Test-AzAnalysisServicesServer
 
 ## SYNOPSIS
 Tests the existence of an instance of Analysis Services server
@@ -13,18 +13,18 @@ Tests the existence of an instance of Analysis Services server
 ## SYNTAX
 
 ```
-Test-AzureRmAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String>]
+Test-AzAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Test-AzureRmAnalysisServicesServer cmdlet tests the existence of an instance of Analysis Services server
+The Test-AzAnalysisServicesServer cmdlet tests the existence of an instance of Analysis Services server
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Test-AzureRmAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup"
+PS C:\> Test-AzAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup"
 ```
 
 This command will test if there is a server named testserver in the resourcegroup testgroup
@@ -35,7 +35,7 @@ This command will test if there is a server named testserver in the resourcegrou
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,10 +88,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-Alias: Test-AzureAs
+Alias: Test-AzAs
 
 ## RELATED LINKS
 
-[Get-AzureRmAnalysisServicesServer](./Get-AzureRmAnalysisServicesServer.md)
+[Get-AzAnalysisServicesServer](./Get-AzAnalysisServicesServer.md)
 
-[Remove-AzureRmAnalysisServicesServer](./Remove-AzureRmAnalysisServicesServer.md)
+[Remove-AzAnalysisServicesServer](./Remove-AzAnalysisServicesServer.md)

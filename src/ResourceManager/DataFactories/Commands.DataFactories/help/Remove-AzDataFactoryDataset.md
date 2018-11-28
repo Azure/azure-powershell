@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 428BC568-A305-49AD-B6B8-B1BB5E9B822B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactorydataset
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactorydataset
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryDataset
+# Remove-AzDataFactoryDataset
 
 ## SYNOPSIS
 Removes a dataset from Azure Data Factory.
@@ -15,25 +15,25 @@ Removes a dataset from Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmDataFactoryDataset [-Force] [-DataFactoryName] <String> [-Name] <String>
+Remove-AzDataFactoryDataset [-Force] [-DataFactoryName] <String> [-Name] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Remove-AzureRmDataFactoryDataset [-Force] [-DataFactory] <PSDataFactory> [-Name] <String>
+Remove-AzDataFactoryDataset [-Force] [-DataFactory] <PSDataFactory> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDataFactoryDataset** cmdlet removes a dataset from Azure Data Factory.
+The **Remove-AzDataFactoryDataset** cmdlet removes a dataset from Azure Data Factory.
 
 ## EXAMPLES
 
 ### Example 1: Remove a dataset
 ```
-PS C:\>Remove-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikiAggregatedData"
+PS C:\>Remove-AzDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikiAggregatedData"
 Confirm
 Are you sure you want to remove dataset 'DAWikiAggregatedData' in data factory 'WikiADF'? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
@@ -187,8 +187,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryDataset](./Get-AzureRmDataFactoryDataset.md)
+[Get-AzDataFactoryDataset](./Get-AzDataFactoryDataset.md)
 
-[New-AzureRmDataFactoryDataset](./New-AzureRmDataFactoryDataset.md)
+[New-AzDataFactoryDataset](./New-AzDataFactoryDataset.md)
 
 

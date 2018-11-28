@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
-Module Name: AzureRM.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/get-azurermstorageaccountnetworkruleset
+Module Name: Az.Storage
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageaccountnetworkruleset
 schema: 2.0.0
 ---
 
-# Get-AzureRmStorageAccountNetworkRuleSet
+# Get-AzStorageAccountNetworkRuleSet
 
 ## SYNOPSIS
 Get the NetWorkRule property of a Storage account
@@ -13,18 +13,18 @@ Get the NetWorkRule property of a Storage account
 ## SYNTAX
 
 ```
-Get-AzureRmStorageAccountNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String>
+Get-AzStorageAccountNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmStorageAccountNetworkRuleSet** cmdlet gets the NetworkRule property of a Storage account
+The **Get-AzStorageAccountNetworkRuleSet** cmdlet gets the NetworkRule property of a Storage account
 
 ## EXAMPLES
 
 ### Example 1: Get NetworkRule property of a specified Storage account
 ```
-PS C:\> Get-AzureRmStorageAccountNetworkRuleSet  -ResourceGroupName "rg1" -AccountName "mystorageaccount"
+PS C:\> Get-AzStorageAccountNetworkRuleSet  -ResourceGroupName "rg1" -AccountName "mystorageaccount"
 ```
 
 This command gets NetworkRule property of a specified Storage account
@@ -35,7 +35,7 @@ This command gets NetworkRule property of a specified Storage account
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

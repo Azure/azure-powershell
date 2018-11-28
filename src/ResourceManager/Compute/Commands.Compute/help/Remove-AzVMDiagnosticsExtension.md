@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 89DA3965-5344-4A1D-AEF1-10EA58E129CF
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmdiagnosticsextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmdiagnosticsextension
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVMDiagnosticsExtension
+# Remove-AzVMDiagnosticsExtension
 
 ## SYNOPSIS
 Removes the Diagnostics extension from a virtual machine.
@@ -14,23 +14,23 @@ Removes the Diagnostics extension from a virtual machine.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMDiagnosticsExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
+Remove-AzVMDiagnosticsExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVMDiagnosticsExtension** cmdlet removes an Azure Diagnostics extension from a virtual machine.
-You must pass the output of this cmdlet to the Update-AzureRmVM cmdlet to implement your changes.
+The **Remove-AzVMDiagnosticsExtension** cmdlet removes an Azure Diagnostics extension from a virtual machine.
+You must pass the output of this cmdlet to the Update-AzVM cmdlet to implement your changes.
 
 ## EXAMPLES
 
 ### Example 1: Remove the Diagnostics extension from a virtual machine
 ```
-PS C:\> Remove-AzureRmVMDiagnosticsExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" | Update-AzureRmVM
+PS C:\> Remove-AzVMDiagnosticsExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22" | Update-AzVM
 ```
 
 This command removes the Diagnostics extension from a virtual machine named ContosoVM22.
-The command passes the result to the Update-AzureRmVM cmdlet by using the pipeline operator.
+The command passes the result to the Update-AzVM cmdlet by using the pipeline operator.
 That command updates the virtual machine.
 
 ## PARAMETERS
@@ -39,7 +39,7 @@ That command updates the virtual machine.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -110,10 +110,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMDiagnosticsExtension](./Get-AzureRMVMDiagnosticsExtension.md)
+[Get-AzVMDiagnosticsExtension](./Get-AzVMDiagnosticsExtension.md)
 
-[Set-AzureRmVMDiagnosticsExtension](./Set-AzureRMVMDiagnosticsExtension.md)
+[Set-AzVMDiagnosticsExtension](./Set-AzVMDiagnosticsExtension.md)
 
-[Update-AzureRmVM](./Update-AzureRmVM.md)
+[Update-AzVM](./Update-AzVM.md)
 
 

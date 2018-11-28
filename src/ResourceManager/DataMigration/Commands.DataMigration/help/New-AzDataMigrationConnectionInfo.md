@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
-Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/New-AzureRmDataMigrationConnectionInfo
+Module Name: Az.DataMigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/New-AzDataMigrationConnectionInfo
 schema: 2.0.0
 ---
 
-# New-AzureRmDataMigrationConnectionInfo
+# New-AzDataMigrationConnectionInfo
 
 ## SYNOPSIS
 Creates a new Connection Info object specifying the server type and name for connection.
@@ -13,18 +13,18 @@ Creates a new Connection Info object specifying the server type and name for con
 ## SYNTAX
 
 ```
-New-AzureRmDataMigrationConnectionInfo -ServerType <ServerTypeEnum> [-DefaultProfile <IAzureContextContainer>]
+New-AzDataMigrationConnectionInfo -ServerType <ServerTypeEnum> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmDataMigrationConnectionInfo cmdlet creates new a Connection Info object specifying the server type for connection. 
+The New-AzDataMigrationConnectionInfo cmdlet creates new a Connection Info object specifying the server type for connection. 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmDmsConnInfo -ServerType SQL -DataSource mySourceServer -AuthType SqlAuthentication -TrustServerCertificate:$true
+PS C:\> New-AzDmsConnInfo -ServerType SQL -DataSource mySourceServer -AuthType SqlAuthentication -TrustServerCertificate:$true
 ```
 
 The preceding example creates a new Connection Info object providing SQL as ServerType parameter.
@@ -35,7 +35,7 @@ The preceding example creates a new Connection Info object providing SQL as Serv
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

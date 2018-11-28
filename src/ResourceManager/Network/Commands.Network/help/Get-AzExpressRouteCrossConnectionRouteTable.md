@@ -1,12 +1,12 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: BA7F6BAC-6047-42B0-B8CA-0B36302951B0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressroutecrossconnectionroutetable
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecrossconnectionroutetable
 schema: 2.0.0
 ---
 
-# Get-AzureRmExpressRouteCrossConnectionRouteTable
+# Get-AzExpressRouteCrossConnectionRouteTable
 
 ## SYNOPSIS
 Gets a route table from an ExpressRoute cross connection.
@@ -14,13 +14,13 @@ Gets a route table from an ExpressRoute cross connection.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCrossConnectionRouteTable -ResourceGroupName <String> -ExpressRouteCrossConnectionName <String>
+Get-AzExpressRouteCrossConnectionRouteTable -ResourceGroupName <String> -ExpressRouteCrossConnectionName <String>
  [-PeeringType <String>] -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmExpressRouteCrossConnectionRouteTable** cmdlet retrieves a detailed route table of an
+The **Get-AzExpressRouteCrossConnectionRouteTable** cmdlet retrieves a detailed route table of an
 ExpressRoute circuit. The route table will show all routes or can be filtered to show routes for a
 specific peering type. You can use the route table to validate your peering configuration and
 connectivity.
@@ -29,7 +29,7 @@ connectivity.
 
 ### Example 1: Display the route table for the primary path
 ```
-Get-AzureRmExpressRouteCrossConnectionRouteTable -ResourceGroupName $RG -ExpressRouteCrossConnectionName $CircuitName -DevicePath 'Primary'
+Get-AzExpressRouteCrossConnectionRouteTable -ResourceGroupName $RG -ExpressRouteCrossConnectionName $CircuitName -DevicePath 'Primary'
 ```
 
 ## PARAMETERS
@@ -128,6 +128,6 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[Get-AzureRmExpressRouteCrossConnectionARPTable](Get-AzureRmExpressRouteCrossConnectionARPTable.md)
+[Get-AzExpressRouteCrossConnectionARPTable](Get-AzExpressRouteCrossConnectionARPTable.md)
 
-[Get-AzureRmExpressRouteCrossConnectionRouteTableSummary](Get-AzureRmExpressRouteCrossConnectionRouteTableSummary.md)
+[Get-AzExpressRouteCrossConnectionRouteTableSummary](Get-AzExpressRouteCrossConnectionRouteTableSummary.md)

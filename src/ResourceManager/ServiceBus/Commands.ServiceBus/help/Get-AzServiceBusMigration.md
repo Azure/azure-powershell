@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebusmigration
+Module Name: Az.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusmigration
 schema: 2.0.0
 ---
 
-# Get-AzureRmServiceBusMigration
+# Get-AzServiceBusMigration
 
 ## SYNOPSIS
 Retrieves MigrationConfiguration for the namespace
@@ -14,30 +14,30 @@ Retrieves MigrationConfiguration for the namespace
 
 ### MigrationConfigurationPropertiesSet (Default)
 ```
-Get-AzureRmServiceBusMigration [-ResourceGroupName] <String> [-Name] <String>
+Get-AzServiceBusMigration [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NamespaceInputObjectSet
 ```
-Get-AzureRmServiceBusMigration [-InputObject] <PSNamespaceAttributes>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzServiceBusMigration [-InputObject] <PSNamespaceAttributes> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmServiceBusMigration [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzServiceBusMigration [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmServiceBusMigration** Retrieves Migration Configuration for the namespace
+The **Get-AzServiceBusMigration** Retrieves Migration Configuration for the namespace
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation
+PS C:\> Get-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation
 
 Name              : TestingNamespaceStandardMirgation
 Id                : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespaceStandardMirgation/migrationConfigurations/$default
@@ -56,7 +56,7 @@ Gets the Migration Configuration properties of 'TestingNamespaceStandardMirgatio
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

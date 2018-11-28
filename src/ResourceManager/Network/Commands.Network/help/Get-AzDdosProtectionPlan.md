@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azuredosprotectionplan
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azdosprotectionplan
 schema: 2.0.0
 ---
 
-# Get-AzureRmDdosProtectionPlan
+# Get-AzDdosProtectionPlan
 
 ## SYNOPSIS
 Gets a DDoS protection plan.
@@ -14,24 +14,24 @@ Gets a DDoS protection plan.
 
 ### GetByNameAndGroup
 ```
-Get-AzureRmDdosProtectionPlan -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDdosProtectionPlan -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzureRmDdosProtectionPlan [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzDdosProtectionPlan [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDdosProtectionPlan cmdlet gets a DDoS protection plan.
+The Get-AzDdosProtectionPlan cmdlet gets a DDoS protection plan.
 
 ## EXAMPLES
 
 ### Example 1: Get a specific DDoS protection plan
 ```
-D:\> Get-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName
+D:\> Get-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName
 
 
 Name              : DdosProtectionPlanName
@@ -49,7 +49,7 @@ In this case, we need to specify both **ResourceGroupName** and **Name** attribu
 
 ### Example 2: Get all DDoS protection plans in a resource group
 ```
-D:\> Get-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName
+D:\> Get-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName
 
 
 Name              : DdosProtectionPlanName
@@ -67,7 +67,7 @@ In this scenario, we only specify the parameter **ResourceGroupName** to get a l
 
 ### Example 2: Get all DDoS protection plans in a subscription
 ```
-D:\> Get-AzureRmDdosProtectionPlan
+D:\> Get-AzDdosProtectionPlan
 
 
 Name              : DdosProtectionPlanName
@@ -89,7 +89,7 @@ Here, we do not specify any parameters to get a list of all DDoS protection plan
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -157,12 +157,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmDdosProtectionPlan](./New-AzureRmDdosProtectionPlan.md)
+[New-AzDdosProtectionPlan](./New-AzDdosProtectionPlan.md)
 
-[Remove-AzureRmDdosProtectionPlan](./Remove-AzureRmDdosProtectionPlan.md)
+[Remove-AzDdosProtectionPlan](./Remove-AzDdosProtectionPlan.md)
 
-[New-AzureRmVirtualNetwork](./New-AzureRmVirtualNetwork.md)
+[New-AzVirtualNetwork](./New-AzVirtualNetwork.md)
 
-[Set-AzureRmVirtualNetwork](./Set-AzureRmVirtualNetwork.md)
+[Set-AzVirtualNetwork](./Set-AzVirtualNetwork.md)
 
-[Get-AzureRmVirtualNetwork](./Get-AzureRmVirtualNetwork.md)
+[Get-AzVirtualNetwork](./Get-AzVirtualNetwork.md)

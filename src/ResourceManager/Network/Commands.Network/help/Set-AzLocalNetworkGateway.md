@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: F8C1DF39-1DAF-4BDB-8B0E-1BC3B5E82185
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermlocalnetworkgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azlocalnetworkgateway
 schema: 2.0.0
 ---
 
-# Set-AzureRmLocalNetworkGateway
+# Set-AzLocalNetworkGateway
 
 ## SYNOPSIS
 Modifies a local network gateway.
@@ -14,14 +14,14 @@ Modifies a local network gateway.
 ## SYNTAX
 
 ```
-Set-AzureRmLocalNetworkGateway -LocalNetworkGateway <PSLocalNetworkGateway>
+Set-AzLocalNetworkGateway -LocalNetworkGateway <PSLocalNetworkGateway>
  [-AddressPrefix <System.Collections.Generic.List`1[System.String]>] [-Asn <UInt32>]
  [-BgpPeeringAddress <String>] [-PeerWeight <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmLocalNetworkGateway** cmdlet modifies a local network gateway.
+The **Set-AzLocalNetworkGateway** cmdlet modifies a local network gateway.
 
 ## EXAMPLES
 
@@ -30,8 +30,8 @@ Set configuration for an existing gateway
 
 
 ```
-$lgw = Get-AzureRmLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
-Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $lgw
+$lgw = Get-AzLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
+Set-AzLocalNetworkGateway -LocalNetworkGateway $lgw
 
 Name                     : myLocalGW
 ResourceGroupName        : TestRG1
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -170,10 +170,10 @@ Parameters: LocalNetworkGateway (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmLocalNetworkGateway](./Get-AzureRmLocalNetworkGateway.md)
+[Get-AzLocalNetworkGateway](./Get-AzLocalNetworkGateway.md)
 
-[New-AzureRmLocalNetworkGateway](./New-AzureRmLocalNetworkGateway.md)
+[New-AzLocalNetworkGateway](./New-AzLocalNetworkGateway.md)
 
-[Remove-AzureRmLocalNetworkGateway](./Remove-AzureRmLocalNetworkGateway.md)
+[Remove-AzLocalNetworkGateway](./Remove-AzLocalNetworkGateway.md)
 
 

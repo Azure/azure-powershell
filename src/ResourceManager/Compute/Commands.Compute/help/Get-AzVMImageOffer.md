@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: D2CCAEB4-E43E-4075-9436-77F2C4FE9463
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmimageoffer
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmimageoffer
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMImageOffer
+# Get-AzVMImageOffer
 
 ## SYNOPSIS
 Gets VMImage offer types.
@@ -14,18 +14,18 @@ Gets VMImage offer types.
 ## SYNTAX
 
 ```
-Get-AzureRmVMImageOffer -Location <String> -PublisherName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzVMImageOffer -Location <String> -PublisherName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMImageOffer** cmdlet gets the VMImage offer types.
+The **Get-AzVMImageOffer** cmdlet gets the VMImage offer types.
 
 ## EXAMPLES
 
 ### Example 1: Get offer types for a publisher
 ```
-PS C:\> Get-AzureRmVMImageOffer -Location "Central US" -PublisherName "Fabrikam"
+PS C:\> Get-AzVMImageOffer -Location "Central US" -PublisherName "Fabrikam"
 ```
 
 This command gets the offer types for the specified publisher in the Central US region.
@@ -36,7 +36,7 @@ This command gets the offer types for the specified publisher in the Central US 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 
 ### -PublisherName
 Specifies the name of a publisher of a VMImage.
-To obtain a publisher, use the Get-AzureRmVMImagePublisher cmdlet.
+To obtain a publisher, use the Get-AzVMImagePublisher cmdlet.
 
 ```yaml
 Type: System.String
@@ -93,12 +93,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMImage](./Get-AzureRmVMImage.md)
+[Get-AzVMImage](./Get-AzVMImage.md)
 
-[Get-AzureRmVMImagePublisher](./Get-AzureRmVMImagePublisher.md)
+[Get-AzVMImagePublisher](./Get-AzVMImagePublisher.md)
 
-[Get-AzureRmVMImageSku](./Get-AzureRmVMImageSku.md)
+[Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
-[Save-AzureRmVMImage](./Save-AzureRmVMImage.md)
+[Save-AzVMImage](./Save-AzVMImage.md)
 
 

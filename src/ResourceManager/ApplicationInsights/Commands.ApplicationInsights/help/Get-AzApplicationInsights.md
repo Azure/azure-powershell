@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApplicationInsights.dll-Help.xml
-Module Name: AzureRM.ApplicationInsights
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.applicationinsights/get-azurermapplicationinsights
+Module Name: Az.ApplicationInsights
+online version: https://docs.microsoft.com/en-us/powershell/module/az.applicationinsights/get-azapplicationinsights
 schema: 2.0.0
 ---
 
-# Get-AzureRmApplicationInsights
+# Get-AzApplicationInsights
 
 ## SYNOPSIS
 Get application insights resources
@@ -14,19 +14,19 @@ Get application insights resources
 
 ### ResourceGroupParameterSet (Default)
 ```
-Get-AzureRmApplicationInsights [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzApplicationInsights [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ComponentNameParameterSet
 ```
-Get-AzureRmApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Full]
+Get-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Full]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmApplicationInsights [-ResourceId] <String> [-Full] [-DefaultProfile <IAzureContextContainer>]
+Get-AzApplicationInsights [-ResourceId] <String> [-Full] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Get application insights resources in a resource group or specific resource
 
 ### Example 1 Get application insights resource
 ```
-PS C:\> Get-AzureRmApplicationInsights -ResourceGroupName "testgroup" -Name "test"
+PS C:\> Get-AzApplicationInsights -ResourceGroupName "testgroup" -Name "test"
 
 Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test
 ResourceGroupName  : testgroup
@@ -63,7 +63,7 @@ Get application insights resource named "test" in resoruce group "testgroup"
 
 ### Example 2 Get application insights resource with pricing plan information
 ```
-PS C:\> Get-AzureRmApplicationInsights -ResourceGroupName "testgroup" -Name "test" -IncludePricingPlan
+PS C:\> Get-AzApplicationInsights -ResourceGroupName "testgroup" -Name "test" -IncludePricingPlan
 
 Cap                            : 330
 ResetTime                      : 0
@@ -99,7 +99,7 @@ Get application insights resource and include pricing plan information for resou
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

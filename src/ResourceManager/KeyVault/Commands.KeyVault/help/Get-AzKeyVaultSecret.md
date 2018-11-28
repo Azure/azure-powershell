@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 8C9B33EE-10DE-4803-B76D-FE9FC2AC3372
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultsecret
 schema: 2.0.0
 ---
 
-# Get-AzureKeyVaultSecret
+# Get-AzKeyVaultSecret
 
 ## SYNOPSIS
 Gets the secrets in a key vault.
@@ -15,67 +15,67 @@ Gets the secrets in a key vault.
 
 ### ByVaultName (Default)
 ```
-Get-AzureKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySecretName
 ```
-Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Version] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySecretVersions
 ```
-Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVaultName
 ```
-Get-AzureKeyVaultSecret [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectSecretName
 ```
-Get-AzureKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectSecretVersions
 ```
-Get-AzureKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdVaultName
 ```
-Get-AzureKeyVaultSecret [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultSecret [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdSecretName
 ```
-Get-AzureKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-Version] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdSecretVersions
 ```
-Get-AzureKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureKeyVaultSecret** cmdlet gets secrets in a key vault.
+The **Get-AzKeyVaultSecret** cmdlet gets secrets in a key vault.
 This cmdlet gets a specific secret or all the secrets in a key vault.
 
 ## EXAMPLES
 
 ### Example 1: Get all current versions of all secrets in a key vault
 ```powershell
-PS C:\> Get-AzureKeyVaultSecret -VaultName 'Contoso'
+PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso'
 
 Vault Name   : contoso
 Name         : secret1
@@ -106,7 +106,7 @@ This command gets the current versions of all secrets in the key vault named Con
 
 ### Example 2: Get all versions of a specific secret
 ```powershell
-PS C:\> Get-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'secret1' -IncludeVersions
+PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1' -IncludeVersions
 
 Vault Name   : contoso
 Name         : secret1
@@ -137,7 +137,7 @@ This command gets all versions of the secret named secret1 in the key vault name
 
 ### Example 3: Get the current version of a specific secret
 ```powershell
-PS C:\> Get-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'secret1'
+PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1'
 
 Vault Name   : contoso
 Name         : secret1
@@ -156,7 +156,7 @@ This command gets the current version of the secret named secret1 in the key vau
 
 ### Example 4: Get a specific version of a specific secret
 ```powershell
-PS C:\> Get-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'secret1' -Version '5d1a74ba2c454439886fb8509b6cab3c'
+PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1' -Version '5d1a74ba2c454439886fb8509b6cab3c'
 
 Vault Name   : contoso
 Name         : secret1
@@ -175,7 +175,7 @@ This command gets a specific version of the secret named secret1 in the key vaul
 
 ### Example 5: Get the plain text value of the current version of a specific secret
 ```powershell
-PS C:\> $secret = Get-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret'
+PS C:\> $secret = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret'
 PS C:\> Write-Host "Secret Value is:" $secret.SecretValueText
 
 Secret Value is: P@ssw0rd
@@ -185,7 +185,7 @@ These commands get the current version of a secret named ITSecret, and then disp
 
 ### Example 6: Get all the secrets that have been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzureKeyVaultSecret -VaultName 'Contoso' -InRemovedState
+PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -InRemovedState
 
 Vault Name           : contoso
 Name                 : secret1
@@ -218,7 +218,7 @@ This command gets all the secrets that have been previously deleted, but not pur
 
 ### Example 7: Gets the secret ITSecret that has been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzureKeyVaultSecret -VaultName 'Contoso' -KeyName 'secret1' -InRemovedState
+PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -KeyName 'secret1' -InRemovedState
 
 Vault Name           : contoso
 Name                 : secret1
@@ -244,7 +244,7 @@ This command will return metadata such as the deletion date, and the scheduled p
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -401,9 +401,9 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Remove-AzureKeyVaultSecret](./Remove-AzureKeyVaultSecret.md)
+[Remove-AzKeyVaultSecret](./Remove-AzKeyVaultSecret.md)
 
-[Undo-AzureKeyVaultSecretRemoval](./Undo-AzureKeyVaultSecretRemoval.md)
+[Undo-AzKeyVaultSecretRemoval](./Undo-AzKeyVaultSecretRemoval.md)
 
-[Set-AzureKeyVaultSecret](./Set-AzureKeyVaultSecret.md)
+[Set-AzKeyVaultSecret](./Set-AzKeyVaultSecret.md)
 

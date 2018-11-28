@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-Module Name: AzureRM.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/new-azurermcontainerregistry
+Module Name: Az.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/new-azcontainerregistry
 schema: 2.0.0
 ---
 
-# New-AzureRmContainerRegistryReplication
+# New-AzContainerRegistryReplication
 
 ## SYNOPSIS
 Creates a container registry replication.
@@ -14,31 +14,31 @@ Creates a container registry replication.
 
 ### NameResourceGroupParameterSet (Default)
 ```
-New-AzureRmContainerRegistryReplication [-ResourceGroupName] <String> [-RegistryName] <String>
- -Location <String> [-Name <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzContainerRegistryReplication [-ResourceGroupName] <String> [-RegistryName] <String> -Location <String>
+ [-Name <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RegistryObjectParameterSet
 ```
-New-AzureRmContainerRegistryReplication -Registry <PSContainerRegistry> -Location <String> [-Name <String>]
+New-AzContainerRegistryReplication -Registry <PSContainerRegistry> -Location <String> [-Name <String>]
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzureRmContainerRegistryReplication -Location <String> [-Name <String>] [-Tag <Hashtable>]
- -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzContainerRegistryReplication -Location <String> [-Name <String>] [-Tag <Hashtable>] -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmContainerRegistryReplication cmdlet creates a new container registry replication.
+The New-AzContainerRegistryReplication cmdlet creates a new container registry replication.
 
 ## EXAMPLES
 
 ### Example 1: Create a new container registry replication.
 ```powershell
-PS C:\>New-AzureRmContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name replication001 -Location 'west us' -Tag @{tagName='MyTag'}
+PS C:\>New-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name replication001 -Location 'west us' -Tag @{tagName='MyTag'}
 
 Name                 Location   Provisioni Status               StatusTimestamp                Tags
                                 ngState
@@ -54,7 +54,7 @@ Create a new container registry replication.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -218,6 +218,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmContainerRegistryReplication](New-AzureRmContainerRegistryReplication.md)
+[Get-AzContainerRegistryReplication](New-AzContainerRegistryReplication.md)
 
-[Remove-AzureRmContainerRegistryReplication](Remove-AzureRmContainerRegistryReplication.md)
+[Remove-AzContainerRegistryReplication](Remove-AzContainerRegistryReplication.md)

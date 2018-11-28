@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: 613DE097-65E0-4F08-839D-F9B53F772382
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/test-azurermdatalakestoreaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/test-azdatalakestoreaccount
 schema: 2.0.0
 ---
 
-# Test-AzureRmDataLakeStoreAccount
+# Test-AzDataLakeStoreAccount
 
 ## SYNOPSIS
 Tests the existence of a Data Lake Store account.
@@ -14,18 +14,18 @@ Tests the existence of a Data Lake Store account.
 ## SYNTAX
 
 ```
-Test-AzureRmDataLakeStoreAccount [-Name] <String> [[-ResourceGroupName] <String>]
+Test-AzDataLakeStoreAccount [-Name] <String> [[-ResourceGroupName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzureRmDataLakeStoreAccount** cmdlet tests the existence of a Data Lake Store account.
+The **Test-AzDataLakeStoreAccount** cmdlet tests the existence of a Data Lake Store account.
 
 ## EXAMPLES
 
 ### Example 1: Test an account
 ```
-PS C:\>Test-AzureRmDataLakeStoreAccount -Name "ContosoADL"
+PS C:\>Test-AzDataLakeStoreAccount -Name "ContosoADL"
 ```
 
 This command tests whether the account named ContosoADL exists.
@@ -36,7 +36,7 @@ This command tests whether the account named ContosoADL exists.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,12 +92,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataLakeStoreAccount](./Get-AzureRmDataLakeStoreAccount.md)
+[Get-AzDataLakeStoreAccount](./Get-AzDataLakeStoreAccount.md)
 
-[New-AzureRmDataLakeStoreAccount](./New-AzureRmDataLakeStoreAccount.md)
+[New-AzDataLakeStoreAccount](./New-AzDataLakeStoreAccount.md)
 
-[Remove-AzureRmDataLakeStoreAccount](./Remove-AzureRmDataLakeStoreAccount.md)
+[Remove-AzDataLakeStoreAccount](./Remove-AzDataLakeStoreAccount.md)
 
-[Set-AzureRmDataLakeStoreAccount](./Set-AzureRmDataLakeStoreAccount.md)
+[Set-AzDataLakeStoreAccount](./Set-AzDataLakeStoreAccount.md)
 
 

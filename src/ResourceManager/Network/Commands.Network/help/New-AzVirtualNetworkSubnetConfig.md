@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 901FD38B-67FA-40D5-8D23-51E5544C25D8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualnetworksubnetconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmVirtualNetworkSubnetConfig
+# New-AzVirtualNetworkSubnetConfig
 
 ## SYNOPSIS
 Creates a virtual network subnet configuration.
@@ -15,7 +15,7 @@ Creates a virtual network subnet configuration.
 
 ### SetByResource (Default)
 ```
-New-AzureRmVirtualNetworkSubnetConfig -Name <String>
+New-AzVirtualNetworkSubnetConfig -Name <String>
  -AddressPrefix <System.Collections.Generic.List`1[System.String]>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
  [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
@@ -26,7 +26,7 @@ New-AzureRmVirtualNetworkSubnetConfig -Name <String>
 
 ### SetByResourceId
 ```
-New-AzureRmVirtualNetworkSubnetConfig -Name <String>
+New-AzVirtualNetworkSubnetConfig -Name <String>
  -AddressPrefix <System.Collections.Generic.List`1[System.String]> [-NetworkSecurityGroupId <String>]
  [-RouteTableId <String>] [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
  [-ServiceEndpointPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]>]
@@ -35,35 +35,35 @@ New-AzureRmVirtualNetworkSubnetConfig -Name <String>
 ```
 
 ## DESCRIPTION
-**The New-AzureRmVirtualNetworkSubnetConfig** cmdlet creates a virtual network subnet configuration.
+**The New-AzVirtualNetworkSubnetConfig** cmdlet creates a virtual network subnet configuration.
 
 ## EXAMPLES
 
 ### 1:  Create a virtual network with two subnets and a network security group
 ```
-New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
+New-AzResourceGroup -Name TestResourceGroup -Location centralus
 
-$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" `
+$rdpRule = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" `
    -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 `
    -SourceAddressPrefix Internet -SourcePortRange * `
    -DestinationAddressPrefix * -DestinationPortRange 3389 
     
-$networkSecurityGroup = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestResourceGroup `
+$networkSecurityGroup = New-AzNetworkSecurityGroup -ResourceGroupName TestResourceGroup `
   -Location centralus -Name "NSG-FrontEnd" -SecurityRules $rdpRule
 
-$frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet `
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet `
     -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroup $networkSecurityGroup
 
-$backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet `
+$backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet `
     -AddressPrefix "10.0.2.0/24" -NetworkSecurityGroup $networkSecurityGroup
 
-New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup `
+New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup `
     -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet
 ```
 
 This example creates two new subnet configurations using the 
-    New-AzureRmVirtualSubnetConfig cmdlet, and then uses them to create a virtual network. 
-    The New-AzureRmVirtualSubnetConfig template only creates an in-memory representation of 
+    New-AzVirtualSubnetConfig cmdlet, and then uses them to create a virtual network. 
+    The New-AzVirtualSubnetConfig template only creates an in-memory representation of 
     the subnet. In this example, the frontendSubnet has CIDR 10.0.1.0/24 and references a 
     network security group that allows RDP access. The backendSubnet has CIDR 10.0.2.0/24 and 
     references the same network security group.
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -245,12 +245,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmVirtualNetworkSubnetConfig](./Add-AzureRmVirtualNetworkSubnetConfig.md)
+[Add-AzVirtualNetworkSubnetConfig](./Add-AzVirtualNetworkSubnetConfig.md)
 
-[Get-AzureRmVirtualNetworkSubnetConfig](./Get-AzureRmVirtualNetworkSubnetConfig.md)
+[Get-AzVirtualNetworkSubnetConfig](./Get-AzVirtualNetworkSubnetConfig.md)
 
-[Remove-AzureRmVirtualNetworkSubnetConfig](./Remove-AzureRmVirtualNetworkSubnetConfig.md)
+[Remove-AzVirtualNetworkSubnetConfig](./Remove-AzVirtualNetworkSubnetConfig.md)
 
-[Set-AzureRmVirtualNetworkSubnetConfig](./Set-AzureRmVirtualNetworkSubnetConfig.md)
+[Set-AzVirtualNetworkSubnetConfig](./Set-AzVirtualNetworkSubnetConfig.md)
 
 

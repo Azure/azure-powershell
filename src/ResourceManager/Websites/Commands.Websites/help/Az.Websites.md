@@ -1,154 +1,154 @@
 ---
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 Module Guid: cc69c625-e961-43f4-8b50-0061eba6e4b6
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.websites
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# AzureRM.Websites Module
+# Az.Websites Module
 ## Description
 ARM (Azure Resource Manager) Web App and App Service Plan commands.
 
-## AzureRM.Websites Cmdlets
-### [Edit-AzureRmWebAppBackupConfiguration](Edit-AzureRmWebAppBackupConfiguration.md)
-Modifies an Azure Web App backup schedule.
+## Az.Websites Cmdlets
+### [Edit-AzWebAppBackupConfiguration](Edit-AzWebAppBackupConfiguration.md)
 
-### [Enter-AzureRmWebAppContainerPSSession](Enter-AzureRmWebAppContainerPSSession.md)
-Opens a remote PowerShell session into the windows container specified in a given site or slot and given resource group.
 
-### [Get-AzureRmAppServicePlan](Get-AzureRmAppServicePlan.md)
+### [Enter-AzWebAppContainerPSSession](Enter-AzWebAppContainerPSSession.md)
+Opens a remote PowerShell session into the windows container specified in a given site or slot and given resource group
+
+### [Get-AzAppServicePlan](Get-AzAppServicePlan.md)
 Gets an Azure App Service plan in the specified resource group.
 
-### [Get-AzureRmAppServicePlanMetrics](Get-AzureRmAppServicePlanMetrics.md)
-Gets usage metrics for an Azure Web App.
+### [Get-AzAppServicePlanMetrics](Get-AzAppServicePlanMetrics.md)
 
-### [Get-AzureRmWebApp](Get-AzureRmWebApp.md)
-Gets Azure Web Apps in the specified resource group.
 
-### [Get-AzureRmDeletedWebApp](Get-AzureRmDeletedWebApp.md)
+### [Get-AzDeletedWebApp](Get-AzDeletedWebApp.md)
 Gets deleted web apps in the subscription.
 
-### [Get-AzureRmWebAppBackup](Get-AzureRmWebAppBackup.md)
-Gets an Azure Web App backup.
+### [Get-AzWebApp](Get-AzWebApp.md)
+Gets Azure Web Apps in the specified resource group.
 
-### [Get-AzureRmWebAppBackupConfiguration](Get-AzureRmWebAppBackupConfiguration.md)
-Gets an Azure Web App backup schedule.
+### [Get-AzWebAppBackup](Get-AzWebAppBackup.md)
 
-### [Get-AzureRmWebAppBackupList](Get-AzureRmWebAppBackupList.md)
-Gets all backups of an Azure Web App.
 
-### [Get-AzureRmWebAppCertificate](Get-AzureRmWebAppCertificate.md)
+### [Get-AzWebAppBackupConfiguration](Get-AzWebAppBackupConfiguration.md)
+
+
+### [Get-AzWebAppBackupList](Get-AzWebAppBackupList.md)
+
+
+### [Get-AzWebAppCertificate](Get-AzWebAppCertificate.md)
 Gets an Azure Web App certificate.
 
-### [Get-AzureRmWebAppContainerContinuousDeploymentUrl](Get-AzureRmWebAppContainerContinuousDeploymentUrl.md)
-Gets the continuous deployment url for a container web app
+### [Get-AzWebAppContainerContinuousDeploymentUrl](Get-AzWebAppContainerContinuousDeploymentUrl.md)
+Get-AzWebAppContainerContinuousDeploymentUrl will return container continuous deployment url
 
-### [Get-AzureRmWebAppMetrics](Get-AzureRmWebAppMetrics.md)
+### [Get-AzWebAppMetrics](Get-AzWebAppMetrics.md)
 Gets Azure Web App metrics.
 
-### [Get-AzureRmWebAppPublishingProfile](Get-AzureRmWebAppPublishingProfile.md)
+### [Get-AzWebAppPublishingProfile](Get-AzWebAppPublishingProfile.md)
 Gets an Azure Web App publishing profile.
 
-### [Get-AzureRmWebAppSlot](Get-AzureRmWebAppSlot.md)
+### [Get-AzWebAppSlot](Get-AzWebAppSlot.md)
 Gets an Azure Web App slot.
 
-### [Get-AzureRmWebAppSlotConfigName](Get-AzureRmWebAppSlotConfigName.md)
+### [Get-AzWebAppSlotConfigName](Get-AzWebAppSlotConfigName.md)
 Get the list of Web App Slot Config names
 
-### [Get-AzureRmWebAppSlotMetrics](Get-AzureRmWebAppSlotMetrics.md)
+### [Get-AzWebAppSlotMetrics](Get-AzWebAppSlotMetrics.md)
 Gets metrics for an Azure Web App slot.
 
-### [Get-AzureRmWebAppSlotPublishingProfile](Get-AzureRmWebAppSlotPublishingProfile.md)
+### [Get-AzWebAppSlotPublishingProfile](Get-AzWebAppSlotPublishingProfile.md)
 Gets an Azure Web App slot publishing profile.
 
-### [Get-AzureRmWebAppSnapshot](Get-AzureRmWebAppSnapshot.md)
+### [Get-AzWebAppSnapshot](Get-AzWebAppSnapshot.md)
 Gets the snapshots available for a web app.
 
-### [Get-AzureRmWebAppSSLBinding](Get-AzureRmWebAppSSLBinding.md)
+### [Get-AzWebAppSSLBinding](Get-AzWebAppSSLBinding.md)
 Gets an Azure Web App certificate SSL binding.
 
-### [New-AzureRmAppServicePlan](New-AzureRmAppServicePlan.md)
+### [New-AzAppServicePlan](New-AzAppServicePlan.md)
 Creates an Azure App Service plan in a given Geo location.
 
-### [New-AzureRmWebApp](New-AzureRmWebApp.md)
+### [New-AzWebApp](New-AzWebApp.md)
 Creates an Azure Web App.
 
-### [New-AzureRmWebAppBackup](New-AzureRmWebAppBackup.md)
-Creates an Azure Web App backup.
+### [New-AzWebAppBackup](New-AzWebAppBackup.md)
 
-### [New-AzureRmWebAppContainerPSSession](New-AzureRmWebAppContainerPSSession.md)
-New-AzureRmWebAppContainerPSSession will create new remote PowerShell Session into the windows container specified in a given site or slot and given resource group.
 
-### [New-AzureRmWebAppDatabaseBackupSetting](New-AzureRmWebAppDatabaseBackupSetting.md)
-Creates an Azure Web App database backup setting to be used with New-AzureRmWebAppBackup.
+### [New-AzWebAppContainerPSSession](New-AzWebAppContainerPSSession.md)
+New-AzWebAppContainerPSSession will create new remote PowerShell Session into the windows container specified in a given site or slot and given resource group
 
-### [New-AzureRmWebAppSlot](New-AzureRmWebAppSlot.md)
+### [New-AzWebAppDatabaseBackupSetting](New-AzWebAppDatabaseBackupSetting.md)
+
+
+### [New-AzWebAppSlot](New-AzWebAppSlot.md)
 Creates an Azure Web App slot.
 
-### [New-AzureRmWebAppSSLBinding](New-AzureRmWebAppSSLBinding.md)
+### [New-AzWebAppSSLBinding](New-AzWebAppSSLBinding.md)
 Creates an SSL certificate binding for an Azure Web App.
 
-### [Remove-AzureRmAppServicePlan](Remove-AzureRmAppServicePlan.md)
+### [Remove-AzAppServicePlan](Remove-AzAppServicePlan.md)
 Removes an Azure App Service plan.
 
-### [Remove-AzureRmWebApp](Remove-AzureRmWebApp.md)
+### [Remove-AzWebApp](Remove-AzWebApp.md)
 Removes an Azure Web App.
 
-### [Remove-AzureRmWebAppBackup](Remove-AzureRmWebAppBackup.md)
-Removes an Azure Web App backup.
+### [Remove-AzWebAppBackup](Remove-AzWebAppBackup.md)
 
-### [Remove-AzureRmWebAppSlot](Remove-AzureRmWebAppSlot.md)
-Removes an Azure Web App slot.
 
-### [Remove-AzureRmWebAppSSLBinding](Remove-AzureRmWebAppSSLBinding.md)
+### [Remove-AzWebAppSlot](Remove-AzWebAppSlot.md)
+
+
+### [Remove-AzWebAppSSLBinding](Remove-AzWebAppSSLBinding.md)
 Removes an SSL binding from an uploaded certificate.
 
-### [Reset-AzureRmWebAppPublishingProfile](Reset-AzureRmWebAppPublishingProfile.md)
-Resets the publishing credentials of an Azure Web App.
+### [Reset-AzWebAppPublishingProfile](Reset-AzWebAppPublishingProfile.md)
 
-### [Reset-AzureRmWebAppSlotPublishingProfile](Reset-AzureRmWebAppSlotPublishingProfile.md)
-Resets the publishing credentials of an Azure Web App slot.
 
-### [Restart-AzureRmWebApp](Restart-AzureRmWebApp.md)
+### [Reset-AzWebAppSlotPublishingProfile](Reset-AzWebAppSlotPublishingProfile.md)
+
+
+### [Restart-AzWebApp](Restart-AzWebApp.md)
 Restarts an Azure Web App.
 
-### [Restart-AzureRmWebAppSlot](Restart-AzureRmWebAppSlot.md)
-Restarts an Azure Web App slot.
+### [Restart-AzWebAppSlot](Restart-AzWebAppSlot.md)
 
-### [Restore-AzureRmWebAppBackup](Restore-AzureRmWebAppBackup.md)
-Restores an Azure Web App from a backup.
 
-### [Restore-AzureRmDeletedWebApp](Restore-AzureRmDeletedWebApp.md)
+### [Restore-AzDeletedWebApp](Restore-AzDeletedWebApp.md)
 Restores a deleted web app to a new or existing web app.
 
-### [Restore-AzureRmWebAppSnapshot](Restore-AzureRmWebAppSnapshot.md)
+### [Restore-AzWebAppBackup](Restore-AzWebAppBackup.md)
+
+
+### [Restore-AzWebAppSnapshot](Restore-AzWebAppSnapshot.md)
 Restores a web app snapshot.
 
-### [Set-AzureRmAppServicePlan](Set-AzureRmAppServicePlan.md)
+### [Set-AzAppServicePlan](Set-AzAppServicePlan.md)
 Sets an Azure App Service plan.
 
-### [Set-AzureRmWebApp](Set-AzureRmWebApp.md)
+### [Set-AzWebApp](Set-AzWebApp.md)
 Modifies an Azure Web App.
 
-### [Set-AzureRmWebAppSlot](Set-AzureRmWebAppSlot.md)
+### [Set-AzWebAppSlot](Set-AzWebAppSlot.md)
 Modifies an Azure Web App slot.
 
-### [Set-AzureRmWebAppSlotConfigName](Set-AzureRmWebAppSlotConfigName.md)
+### [Set-AzWebAppSlotConfigName](Set-AzWebAppSlotConfigName.md)
 Set Web App Slot Config names
 
-### [Start-AzureRmWebApp](Start-AzureRmWebApp.md)
+### [Start-AzWebApp](Start-AzWebApp.md)
 Starts an Azure Web App.
 
-### [Start-AzureRmWebAppSlot](Start-AzureRmWebAppSlot.md)
+### [Start-AzWebAppSlot](Start-AzWebAppSlot.md)
 Starts an Azure Web App slot.
 
-### [Stop-AzureRmWebApp](Stop-AzureRmWebApp.md)
+### [Stop-AzWebApp](Stop-AzWebApp.md)
 Stops an Azure Web App.
 
-### [Stop-AzureRmWebAppSlot](Stop-AzureRmWebAppSlot.md)
+### [Stop-AzWebAppSlot](Stop-AzWebAppSlot.md)
 Stops an Azure Web App slot.
 
-### [Switch-AzureRmWebAppSlot](Switch-AzureRmWebAppSlot.md)
+### [Switch-AzWebAppSlot](Switch-AzWebAppSlot.md)
 Swap two slots with a Web App
 

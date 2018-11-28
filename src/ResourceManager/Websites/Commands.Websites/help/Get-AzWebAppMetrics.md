@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: 513BE097-EB4A-4C49-9F7F-42A2BED09022
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebappmetrics
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebappmetrics
 schema: 2.0.0
 ---
 
-# Get-AzureRmWebAppMetrics
+# Get-AzWebAppMetrics
 
 ## SYNOPSIS
 Gets Azure Web App metrics.
@@ -15,26 +15,26 @@ Gets Azure Web App metrics.
 
 ### S1
 ```
-Get-AzureRmWebAppMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [[-EndTime] <DateTime>]
+Get-AzWebAppMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [[-EndTime] <DateTime>]
  [-Granularity] <String> [-InstanceDetails] [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Get-AzureRmWebAppMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [[-EndTime] <DateTime>]
+Get-AzWebAppMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [[-EndTime] <DateTime>]
  [-Granularity] <String> [-InstanceDetails] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmWebAppMetrics** gets Web App metrics.
+The **Get-AzWebAppMetrics** gets Web App metrics.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmAppServicePlanMetrics -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -StartTime 2016-11-30T22:00:00Z -EndTime 2016-11-30T22:30:00Z -Granularity PT1M -Metrics "Requests"
+PS C:\> Get-AzAppServicePlanMetrics -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -StartTime 2016-11-30T22:00:00Z -EndTime 2016-11-30T22:30:00Z -Granularity PT1M -Metrics "Requests"
 ```
 
 This command gets Requests of the Web App ContosoWebApp 
@@ -46,7 +46,7 @@ This command gets Requests of the Web App ContosoWebApp
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -196,5 +196,5 @@ Parameters: WebApp (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmWebAppCertificate](./Get-AzureRmWebAppCertificate.md)
+[Get-AzWebAppCertificate](./Get-AzWebAppCertificate.md)
 

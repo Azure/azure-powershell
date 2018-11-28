@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 67EE6EFB-3297-4D21-A6EC-B03F5FE82F84
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementoperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementoperation
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagementOperation
+# Set-AzApiManagementOperation
 
 ## SYNOPSIS
 Sets API operation details.
@@ -14,7 +14,7 @@ Sets API operation details.
 ## SYNTAX
 
 ```
-Set-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
+Set-AzApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
  -OperationId <String> -Name <String> -Method <String> -UrlTemplate <String> [-Description <String>]
  [-TemplateParameters <PsApiManagementParameter[]>] [-Request <PsApiManagementRequest>]
  [-Responses <PsApiManagementResponse[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
@@ -22,14 +22,14 @@ Set-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <Stri
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApiManagementOperation** cmdlet sets API operation details.
+The **Set-AzApiManagementOperation** cmdlet sets API operation details.
 
 ## EXAMPLES
 
 ### Example 1: Set the operation details
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzureRmApiManagementOperation -Context $apimContext -ApiId $APIID -OperationId $OperationId -Name "Get Resource" -Method GET -UrlTemplate "/newresource" -Description "Use this operation to get newresource"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>New-AzApiManagementOperation -Context $apimContext -ApiId $APIID -OperationId $OperationId -Name "Get Resource" -Method GET -UrlTemplate "/newresource" -Description "Use this operation to get newresource"
 ```
 
 This command sets the operation details for API management.
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -259,10 +259,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementOperation](./Get-AzureRmApiManagementOperation.md)
+[Get-AzApiManagementOperation](./Get-AzApiManagementOperation.md)
 
-[New-AzureRmApiManagementOperation](./New-AzureRmApiManagementOperation.md)
+[New-AzApiManagementOperation](./New-AzApiManagementOperation.md)
 
-[Remove-AzureRmApiManagementOperation](./Remove-AzureRmApiManagementOperation.md)
+[Remove-AzApiManagementOperation](./Remove-AzApiManagementOperation.md)
 
 

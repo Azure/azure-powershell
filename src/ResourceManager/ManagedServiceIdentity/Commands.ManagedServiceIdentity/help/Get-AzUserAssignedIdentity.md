@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ManagedServiceIdentity.dll-Help.xml
-Module Name: AzureRM.ManagedServiceIdentity
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity
+Module Name: Az.ManagedServiceIdentity
+online version: https://docs.microsoft.com/en-us/powershell/module/az.managedserviceidentity/get-azuserassignedidentity
 schema: 2.0.0
 ---
 
-# Get-AzureRmUserAssignedIdentity
+# Get-AzUserAssignedIdentity
 
 ## SYNOPSIS
 Gets User Assigned Identity/identities.
@@ -14,17 +14,17 @@ Gets User Assigned Identity/identities.
 
 ### SuscriptionParameterSet (Default)
 ```
-Get-AzureRmUserAssignedIdentity [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzUserAssignedIdentity [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmUserAssignedIdentity -ResourceGroupName <String> [-Name <String>]
+Get-AzUserAssignedIdentity -ResourceGroupName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmUserAssignedIdentity** gets existing user assigned identities.
+The **Get-AzUserAssignedIdentity** gets existing user assigned identities.
 
 ## EXAMPLES
 
@@ -32,7 +32,7 @@ The **Get-AzureRmUserAssignedIdentity** gets existing user assigned identities.
 This example cmdlet gets the User Assigned Identity with name **ID1** under the resource group **PSRG**
 
 ```powershell
-PS C:\> Get-AzureRmUserAssignedIdentity -ResourceGroupName PSRG -Name ID1
+PS C:\> Get-AzUserAssignedIdentity -ResourceGroupName PSRG -Name ID1
 
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
@@ -57,7 +57,7 @@ Type              : Microsoft.ManagedIdentity/userAssignedIdentities
 This example cmdlet gets all the User Assigned Identities under the resource group **PSRG**
 
 ```powershell
-PS C:\> Get-AzureRmUserAssignedIdentity -ResourceGroupName PSRG
+PS C:\> Get-AzUserAssignedIdentity -ResourceGroupName PSRG
 
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
@@ -101,7 +101,7 @@ Type              : Microsoft.ManagedIdentity/userAssignedIdentities
 This example cmdlet gets all the User Assigned Identities under the subscription.
 
 ```powershell
-PS C:\> Get-AzureRmUserAssignedIdentity
+PS C:\> Get-AzUserAssignedIdentity
 
 Id                : /subscriptions/586d0246-0344-49dc-a790-59c916b0c309/resourcegroups/PSRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1
 
@@ -166,7 +166,7 @@ Type              : Microsoft.ManagedIdentity/userAssignedIdentities
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

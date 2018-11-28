@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 9FC72DE9-46BB-4CB5-9880-F53756DBE012
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/set-azkeyvaultsecret
 schema: 2.0.0
 ---
 
-# Set-AzureKeyVaultSecret
+# Set-AzKeyVaultSecret
 
 ## SYNOPSIS
 Creates or updates a secret in a key vault.
@@ -15,20 +15,20 @@ Creates or updates a secret in a key vault.
 
 ### Default (Default)
 ```
-Set-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-SecretValue] <SecureString> [-Disable]
+Set-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-SecretValue] <SecureString> [-Disable]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [-SecretValue] <SecureString> [-Disable]
+Set-AzKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [-SecretValue] <SecureString> [-Disable]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureKeyVaultSecret** cmdlet creates or updates a secret in a key vault in Azure Key
+The **Set-AzKeyVaultSecret** cmdlet creates or updates a secret in a key vault in Azure Key
 Vault. If the secret does not exist, this cmdlet creates it. If the secret already exists, this
 cmdlet creates a new version of that secret.
 
@@ -37,7 +37,7 @@ cmdlet creates a new version of that secret.
 ### Example 1: Modify the value of a secret using default attributes
 ```powershell
 PS C:\> $Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
-PS C:\> Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret
+PS C:\> Set-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret
 
 Vault Name   : Contoso
 Name         : ITSecret
@@ -65,7 +65,7 @@ PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 PS C:\> $NBF =(Get-Date).ToUniversalTime()
 PS C:\> $Tags = @{ 'Severity' = 'medium'; 'IT' = 'true'}
 PS C:\> $ContentType = 'txt'
-PS C:\> Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret -Expires $Expires -NotBefore $NBF -ContentType $ContentType -Disable -Tags $Tags
+PS C:\> Set-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret -Expires $Expires -NotBefore $NBF -ContentType $ContentType -Disable -Tags $Tags
 
 Vault Name   : Contoso
 Name         : ITSecret
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -299,6 +299,6 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultSecret](./Get-AzureKeyVaultSecret.md)
+[Get-AzKeyVaultSecret](./Get-AzKeyVaultSecret.md)
 
-[Remove-AzureKeyVaultSecret](./Remove-AzureKeyVaultSecret.md)
+[Remove-AzKeyVaultSecret](./Remove-AzKeyVaultSecret.md)

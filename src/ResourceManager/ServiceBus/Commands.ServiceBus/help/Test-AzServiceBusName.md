@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/test-azurermservicebusname
+Module Name: Az.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusname
 schema: 2.0.0
 ---
 
-# Test-AzureRmServiceBusName
+# Test-AzServiceBusName
 
 ## SYNOPSIS
 Checks the Availability of the given NameSpace Name or Alias (DR Configuration Name) 
@@ -14,38 +14,37 @@ Checks the Availability of the given NameSpace Name or Alias (DR Configuration N
 
 ### AliasCheckNameAvailabilitySet
 ```
-Test-AzureRmServiceBusName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
+Test-AzServiceBusName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NamespaceCheckNameAvailabilitySet
 ```
-Test-AzureRmServiceBusName [-Namespace] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Test-AzServiceBusName [-Namespace] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzureRmServiceBusName** Cmdlet Check Availability of the NameSpace Name or Alias (DR Configuration Name)
+The **Test-AzServiceBusName** Cmdlet Check Availability of the NameSpace Name or Alias (DR Configuration Name)
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Test-AzureRmServiceBusName -Namespace MyNameSapceName
+PS C:\> Test-AzServiceBusName -Namespace MyNameSapceName
 ```
 
 Returns the status on availability of the namespace name 'MyNameSapceName' as True
 
 ### Example 2
 ```
-PS C:\> Test-AzureRmServiceBusName -Namespace MyNameSapceName
+PS C:\> Test-AzServiceBusName -Namespace MyNameSapceName
 ```
 
 Returns the status on availability of the namespace name 'MyNameSapceName' as False with Reason
 
 ### Example 3
 ```
-PS C:\> Test-AzureRmServiceBusName -ResourceGroupName MyResourceGroup -Namespace Test123 -AliasName myAliasName
+PS C:\> Test-AzServiceBusName -ResourceGroupName MyResourceGroup -Namespace Test123 -AliasName myAliasName
 ```
 
 ## PARAMETERS
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

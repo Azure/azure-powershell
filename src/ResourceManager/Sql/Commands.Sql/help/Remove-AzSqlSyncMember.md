@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlsyncmember
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlsyncmember
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlSyncMember
+# Remove-AzSqlSyncMember
 
 ## SYNOPSIS
 Removes an Azure SQL Database Sync Member.
@@ -13,19 +13,19 @@ Removes an Azure SQL Database Sync Member.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlSyncMember -Name <String> [-Force] [-PassThru] [-SyncGroupName] <String>
- [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSqlSyncMember -Name <String> [-Force] [-PassThru] [-SyncGroupName] <String> [-ServerName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlSyncMember** cmdlet removes an Azure SQL Database Sync Member.
+The **Remove-AzSqlSyncMember** cmdlet removes an Azure SQL Database Sync Member.
 
 ## EXAMPLES
 
 ### Example 1: Remove a sync member
 ```
-PS C:\>Remove-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -Name "syncMember01"
+PS C:\>Remove-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -Name "syncMember01"
 ```
 
 This command removes the Azure SQL Database Sync Member named syncMember01.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -198,9 +198,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlSyncMember](./New-AzureRmSqlSyncMember.md)
+[New-AzSqlSyncMember](./New-AzSqlSyncMember.md)
 
-[Update-AzureRmSqlSyncMember](./Update-AzureRmSqlSyncMember.md)
+[Update-AzSqlSyncMember](./Update-AzSqlSyncMember.md)
 
-[Get-AzureRmSqlSyncMember](./Get-AzureRmSqlSyncMember.md)
+[Get-AzSqlSyncMember](./Get-AzSqlSyncMember.md)
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 04F58D88-53D6-42CA-852C-9E2A129898C7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmdscextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmdscextension
 schema: 2.0.0
 ---
 
-# Set-AzureRmVMDscExtension
+# Set-AzVMDscExtension
 
 ## SYNOPSIS
 Configures the DSC extension on a virtual machine.
@@ -14,7 +14,7 @@ Configures the DSC extension on a virtual machine.
 ## SYNTAX
 
 ```
-Set-AzureRmVMDscExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
+Set-AzVMDscExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
  [-ArchiveBlobName] <String> [-ArchiveStorageAccountName] <String> [-ArchiveResourceGroupName <String>]
  [-ArchiveStorageEndpointSuffix <String>] [-ArchiveContainerName <String>] [-ConfigurationName <String>]
  [-ConfigurationArgument <Hashtable>] [-ConfigurationData <String>] [-Version] <String> [-Force]
@@ -23,42 +23,42 @@ Set-AzureRmVMDscExtension [-ResourceGroupName] <String> [-VMName] <String> [-Nam
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMDscExtension** cmdlet configures the Windows PowerShell Desired State Configuration (DSC) extension on a virtual machine in a resource group.
+The **Set-AzVMDscExtension** cmdlet configures the Windows PowerShell Desired State Configuration (DSC) extension on a virtual machine in a resource group.
 
 ## EXAMPLES
 
 ### Example 1: Set a DSC extension
 ```
-PS C:\> Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM07" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -Version "1.10" -Location "West US"
+PS C:\> Set-AzVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM07" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -Version "1.10" -Location "West US"
 ```
 
 This command sets the DSC extension on the virtual machine named VM07 to download Sample.ps1.zip from the storage account named Stg and the default container.
 The command invokes the configuration named ConfigName.
-The Sample.ps1.zip file was previously uploaded by using **Publish-AzureRmVMDscConfiguration**.
+The Sample.ps1.zip file was previously uploaded by using **Publish-AzVMDscConfiguration**.
 
 ### Example 2: Set a DSC extension with configuration data
 ```
-PS C:\> Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM13" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName "WindowsPowerShellDSC" -ConfigurationData "SampleData.psd1" -Version "1.10" -Location "West US"
+PS C:\> Set-AzVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM13" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName "WindowsPowerShellDSC" -ConfigurationData "SampleData.psd1" -Version "1.10" -Location "West US"
 ```
 
 This command sets the extension on the virtual machine named VM13 to download Sample.ps1.zip from the storage account named Stg and the container named WindowsPowerShellDSC.
 The command the configuration named ConfigName and specifies configuration data and arguments.
-The Sample.ps1.zip file was previously uploaded by using **Publish-AzureRmVMDscConfiguration**.
+The Sample.ps1.zip file was previously uploaded by using **Publish-AzVMDscConfiguration**.
 
 ### Example 3: Set a DSC extension with configuration data that has auto update
 ```
-PS C:\> Set-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM22" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData "SampleData.psd1" -Version "1.10" -Location "West US" -AutoUpdate
+PS C:\> Set-AzVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM22" -ArchiveBlobName "Sample.ps1.zip" -ArchiveStorageAccountName "Stg" -ConfigurationName "ConfigName" -ConfigurationArgument "@{arg="val"}" -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData "SampleData.psd1" -Version "1.10" -Location "West US" -AutoUpdate
 ```
 
 This command sets the extension on the virtual machine named VM22 to download Sample.ps1.zip from the storage account named Stg and the container named WindowsPowerShellDSC.
 The command invokes the configuration named ConfigName and specifies configuration data and arguments.
 This command also enables auto update of extension handler to the latest version.
-The Sample.ps1.zip was previously uploaded by using **Publish-AzureRmVMDscConfiguration**.
+The Sample.ps1.zip was previously uploaded by using **Publish-AzVMDscConfiguration**.
 
 ## PARAMETERS
 
 ### -ArchiveBlobName
-Specifies the name of the configuration file that was previously uploaded by the Publish-AzureRmVMDscConfiguration cmdlet.
+Specifies the name of the configuration file that was previously uploaded by the Publish-AzVMDscConfiguration cmdlet.
 
 ```yaml
 Type: System.String
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -289,7 +289,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Specifies the version of the DSC extension that Set-AzureRmVMDscExtension applies the settings to.
+Specifies the version of the DSC extension that Set-AzVMDscExtension applies the settings to.
 
 ```yaml
 Type: System.String
@@ -382,10 +382,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMDscExtension](./Get-AzureRmVMDscExtension.md)
+[Get-AzVMDscExtension](./Get-AzVMDscExtension.md)
 
-[Remove-AzureRmVMDscExtension](./Remove-AzureRmVMDscExtension.md)
+[Remove-AzVMDscExtension](./Remove-AzVMDscExtension.md)
 
-[Publish-AzureRmVMDscConfiguration](./Publish-AzureRmVMDscConfiguration.md)
+[Publish-AzVMDscConfiguration](./Publish-AzVMDscConfiguration.md)
 
 

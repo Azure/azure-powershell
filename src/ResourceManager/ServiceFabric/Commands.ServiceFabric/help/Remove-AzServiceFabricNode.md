@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnode
+Module Name: Az.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/remove-azservicefabricnode
 schema: 2.0.0
 ---
 
-# Remove-AzureRmServiceFabricNode
+# Remove-AzServiceFabricNode
 
 ## SYNOPSIS
 Remove nodes from the specific node type from a cluster.
@@ -13,18 +13,18 @@ Remove nodes from the specific node type from a cluster.
 ## SYNTAX
 
 ```
-Remove-AzureRmServiceFabricNode -NumberOfNodesToRemove <Int32> [-ResourceGroupName] <String> [-Name] <String>
+Remove-AzServiceFabricNode -NumberOfNodesToRemove <Int32> [-ResourceGroupName] <String> [-Name] <String>
  -NodeType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use **Remove-AzureRmServiceFabricNode** to remove nodes from a specific node type from a cluster. The removal proceeds only if it meets cluster health metrics.
+Use **Remove-AzServiceFabricNode** to remove nodes from a specific node type from a cluster. The removal proceeds only if it meets cluster health metrics.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Remove-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1' -NumberOfNodesToRemove 2
+PS c:> Remove-AzServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1' -NumberOfNodesToRemove 2
 ```
 
 This command will remove 2 nodes from the NodeType 'nt1'.
@@ -35,7 +35,7 @@ This command will remove 2 nodes from the NodeType 'nt1'.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -155,4 +155,4 @@ Parameters: NodeType (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmServiceFabricNode](./Add-AzureRmServiceFabricNode.md) 
+[Add-AzServiceFabricNode](./Add-AzServiceFabricNode.md) 

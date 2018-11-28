@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerInstance.dll-Help.xml
-Module Name: AzureRM.ContainerInstance
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance/get-azurermcontainergroup
+Module Name: Az.ContainerInstance
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance/get-azcontainergroup
 schema: 2.0.0
 ---
 
-# Get-AzureRmContainerGroup
+# Get-AzContainerGroup
 
 ## SYNOPSIS
 Gets container groups.
@@ -14,29 +14,29 @@ Gets container groups.
 
 ### ListContainerGroupParamSet (Default)
 ```
-Get-AzureRmContainerGroup [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzContainerGroup [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetContainerGroupInResourceGroupParamSet
 ```
-Get-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetContainerGroupByResourceIdParamSet
 ```
-Get-AzureRmContainerGroup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContainerGroup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmContainerGroup** cmdlet gets a specified container group or all the container groups in a resource group or the subscription.
+The **Get-AzContainerGroup** cmdlet gets a specified container group or all the container groups in a resource group or the subscription.
 
 ## EXAMPLES
 
 ### Example 1: Gets a specified container group
 ```
-PS C:\> Get-AzureRmContainerGroup -ResourceGroupName demo -Name mycontainer
+PS C:\> Get-AzContainerGroup -ResourceGroupName demo -Name mycontainer
 
 ResourceGroupName        : demo
 Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
@@ -60,7 +60,7 @@ The command gets the specified container group.
 
 ### Example 2: Gets container groups in a resource group
 ```
-PS C:\> Get-AzureRmContainerGroup -ResourceGroupName demo
+PS C:\> Get-AzContainerGroup -ResourceGroupName demo
 
 ResourceGroupName Name                     Location   OsType  Image                         IP                   Resources        ProvisioningState
 ----------------- ----                     --------   ------  -----                         --                   ---------        -----------------
@@ -72,7 +72,7 @@ The command gets the container groups in the resource group `demo`.
 
 ### Example 3: Gets container groups in the current subscription
 ```
-PS C:\> Get-AzureRmContainerGroup
+PS C:\> Get-AzContainerGroup
 
 ResourceGroupName Name                     Location   OsType  Image                         IP                   Resources        ProvisioningState
 ----------------- ----                     --------   ------  -----                         --                   ---------        -----------------
@@ -84,7 +84,7 @@ The command gets the container groups in the current subscription.
 
 ### Example 4: Gets container groups using resource Id.
 ```
-PS C:\> Find-AzureRmResource -ResourceGroupEquals demo -ResourceNameEquals mycontainer | Get-AzureRmContainerGroup
+PS C:\> Find-AzResource -ResourceGroupEquals demo -ResourceNameEquals mycontainer | Get-AzContainerGroup
 
 ResourceGroupName        : demo
 Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
@@ -112,7 +112,7 @@ The command gets the container group with the resource Id.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

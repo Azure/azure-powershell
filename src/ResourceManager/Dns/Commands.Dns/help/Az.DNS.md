@@ -1,46 +1,46 @@
 ---
-Module Name: AzureRM.Dns
+Module Name: Az.Dns
 Module Guid: 5e5ed8bc-27bf-4380-9de1-4b22ba0920b2
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.dns
 Help Version: 4.1.2.0
 Locale: en-US
 ---
 
-# AzureRM.Dns Module
+# Az.Dns Module
 ## Description
 This topic displays help topics for the Azure DNS Cmdlets.
 
-## AzureRM.Dns Cmdlets
-### [Add-AzureRmDnsRecordConfig](Add-AzureRmDnsRecordConfig.md)
+## Az.Dns Cmdlets
+### [Add-AzDnsRecordConfig](Add-AzDnsRecordConfig.md)
 Adds a DNS record to a local record set object.
 
-### [Get-AzureRmDnsRecordSet](Get-AzureRmDnsRecordSet.md)
+### [Get-AzDnsRecordSet](Get-AzDnsRecordSet.md)
 Gets a DNS record set.
 
-### [Get-AzureRmDnsZone](Get-AzureRmDnsZone.md)
+### [Get-AzDnsZone](Get-AzDnsZone.md)
 Gets a DNS zone.
 
-### [New-AzureRmDnsRecordConfig](New-AzureRmDnsRecordConfig.md)
+### [New-AzDnsRecordConfig](New-AzDnsRecordConfig.md)
 Creates a new DNS record local object.
 
-### [New-AzureRmDnsRecordSet](New-AzureRmDnsRecordSet.md)
+### [New-AzDnsRecordSet](New-AzDnsRecordSet.md)
 Creates a DNS record set.
 
-### [New-AzureRmDnsZone](New-AzureRmDnsZone.md)
+### [New-AzDnsZone](New-AzDnsZone.md)
 Creates a new DNS zone.
 
-### [Remove-AzureRmDnsRecordConfig](Remove-AzureRmDnsRecordConfig.md)
+### [Remove-AzDnsRecordConfig](Remove-AzDnsRecordConfig.md)
 Removes a DNS record from a local record set object.
 
-### [Remove-AzureRmDnsRecordSet](Remove-AzureRmDnsRecordSet.md)
+### [Remove-AzDnsRecordSet](Remove-AzDnsRecordSet.md)
 Deletes a record set.
 
-### [Remove-AzureRmDnsZone](Remove-AzureRmDnsZone.md)
+### [Remove-AzDnsZone](Remove-AzDnsZone.md)
 Removes a DNS zone from a resource group.
 
-### [Set-AzureRmDnsRecordSet](Set-AzureRmDnsRecordSet.md)
+### [Set-AzDnsRecordSet](Set-AzDnsRecordSet.md)
 Updates a DNS record set.
 
-### [Set-AzureRmDnsZone](Set-AzureRmDnsZone.md)
+### [Set-AzDnsZone](Set-AzDnsZone.md)
 Updates the properties of a DNS zone.
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 67AED9B8-AE3D-47E5-813C-9B46E11AE46C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/test-azurermvmaemextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/test-azvmaemextension
 schema: 2.0.0
 ---
 
-# Test-AzureRmVMAEMExtension
+# Test-AzVMAEMExtension
 
 ## SYNOPSIS
 Checks the configuration of the AEM extension.
@@ -14,13 +14,13 @@ Checks the configuration of the AEM extension.
 ## SYNTAX
 
 ```
-Test-AzureRmVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-OSType] <String>]
+Test-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-OSType] <String>]
  [[-WaitTimeInMinutes] <Int32>] [-SkipStorageCheck] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzureRmVMAEMExtension** cmdlet checks the configuration of the Azure Enhanced Monitoring (AEM) extension.
+The **Test-AzVMAEMExtension** cmdlet checks the configuration of the Azure Enhanced Monitoring (AEM) extension.
 The AEM extension collects the performance data.
 This cmdlet checks whether performance data is available.
 
@@ -28,7 +28,7 @@ This cmdlet checks whether performance data is available.
 
 ### Example 1: Check the configuration of the AEM extension
 ```
-PS C:\> Test-AzureRmVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
+PS C:\> Test-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
 ```
 
 This command checks the configuration of the AEM extension for the virtual machine named contoso-server.
@@ -39,7 +39,7 @@ This command checks the configuration of the AEM extension for the virtual machi
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -143,10 +143,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMAEMExtension](./Get-AzureRmVMAEMExtension.md)
+[Get-AzVMAEMExtension](./Get-AzVMAEMExtension.md)
 
-[Remove-AzureRmVMAEMExtension](./Remove-AzureRmVMAEMExtension.md)
+[Remove-AzVMAEMExtension](./Remove-AzVMAEMExtension.md)
 
-[Set-AzureRmVMAEMExtension](./Set-AzureRmVMAEMExtension.md)
+[Set-AzVMAEMExtension](./Set-AzVMAEMExtension.md)
 
 

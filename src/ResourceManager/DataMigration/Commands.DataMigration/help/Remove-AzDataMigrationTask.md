@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
-Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/Remove-AzureRmDataMigrationTask
+Module Name: Az.DataMigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/Remove-AzDataMigrationTask
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataMigrationTask
+# Remove-AzDataMigrationTask
 
 ## SYNOPSIS
 Removes an Azure Database Migration Service task from Azure.
@@ -14,31 +14,31 @@ Removes an Azure Database Migration Service task from Azure.
 
 ### ComponentNameParameterSet (Default)
 ```
-Remove-AzureRmDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
+Remove-AzDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
  -Name <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
-Remove-AzureRmDataMigrationTask [-InputObject] <PSProjectTask> [-Force] [-PassThru]
+Remove-AzDataMigrationTask [-InputObject] <PSProjectTask> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzureRmDataMigrationTask [-ResourceId] <String> [-Force] [-PassThru]
+Remove-AzDataMigrationTask [-ResourceId] <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmDataMigrationTask cmdlet removes an Azure Database Migration Service task from Azure.
+The Remove-AzDataMigrationTask cmdlet removes an Azure Database Migration Service task from Azure.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmDataMigrationTask -TaskName TestTask -ProjectName myTestProject -ServiceName MyTestService
+PS C:\> Remove-AzDataMigrationTask -TaskName TestTask -ProjectName myTestProject -ServiceName MyTestService
  -ResourceGroupName MyResourceGroup
 ```
 
@@ -46,7 +46,7 @@ The preceding example removes an Azure Database Migration Service task named Tes
 
 ### Example 2
 ```
-PS C:\> Remove-AzureRmDataMigrationTask -InputObject $TestTask
+PS C:\> Remove-AzDataMigrationTask -InputObject $TestTask
 ```
 
 The preceding example removes an Azure Database Migration Service task based on PSProjectTask object passed in.
@@ -57,7 +57,7 @@ The preceding example removes an Azure Database Migration Service task based on 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

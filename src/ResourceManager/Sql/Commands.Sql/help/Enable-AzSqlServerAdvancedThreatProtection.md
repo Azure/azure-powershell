@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/enable-azurermsqlserveradvancedthreatprotection
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/enable-azsqlserveradvancedthreatprotection
 schema: 2.0.0
 ---
 
-# Enable-AzureRmSqlServerAdvancedThreatProtection
+# Enable-AzSqlServerAdvancedThreatProtection
 
 ## SYNOPSIS
 Enables Advanced Threat Protection on a server.
@@ -13,19 +13,19 @@ Enables Advanced Threat Protection on a server.
 ## SYNTAX
 
 ```
-Enable-AzureRmSqlServerAdvancedThreatProtection [-InputObject <AzureSqlServerModel>] -ServerName <String>
+Enable-AzSqlServerAdvancedThreatProtection [-InputObject <AzureSqlServerModel>] -ServerName <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzureRmSqlServerAdvancedThreatProtection** cmdlet enables Advanced Threat Protection on a server.
+The **Enable-AzSqlServerAdvancedThreatProtection** cmdlet enables Advanced Threat Protection on a server.
 
 ## EXAMPLES
 
 ### Example 1 - Enable server Advanced Threat Protection
 ```powershell
-PS C:\>  Enable-AzureRmSqlServerAdvancedThreatProtection `
+PS C:\>  Enable-AzSqlServerAdvancedThreatProtection `
             -ResourceGroupName "ResourceGroup01" `
             -ServerName "Server01" 
 
@@ -36,10 +36,10 @@ IsEnabled		             : True
 
 ### Example 2 - Enable server Advanced Threat Protection from server resource
 ```powershell
-PS C:\>  Get-AzureRmSqlServer `
+PS C:\>  Get-AzSqlServer `
            -ResourceGroupName "ResourceGroup01" `
            -ServerName "Server01" `
-           | Enable-AzureRmSqlServerAdvancedThreatProtection
+           | Enable-AzSqlServerAdvancedThreatProtection
 
 ResourceGroupName	         : ResourceGroup01
 ServerName		             : Server01
@@ -52,7 +52,7 @@ IsEnabled		             : True
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

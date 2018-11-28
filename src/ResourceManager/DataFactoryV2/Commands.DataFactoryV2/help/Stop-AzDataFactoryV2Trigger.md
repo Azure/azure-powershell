@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/stop-azurermdatafactoryv2trigger
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/stop-azdatafactoryv2trigger
 schema: 2.0.0
 ---
 
-# Stop-AzureRmDataFactoryV2Trigger
+# Stop-AzDataFactoryV2Trigger
 
 ## SYNOPSIS
 Stops a trigger in a data factory.
@@ -14,30 +14,30 @@ Stops a trigger in a data factory.
 
 ### ByFactoryName (Default)
 ```
-Stop-AzureRmDataFactoryV2Trigger [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
+Stop-AzDataFactoryV2Trigger [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Stop-AzureRmDataFactoryV2Trigger [-InputObject] <PSTrigger> [-Force] [-DefaultProfile <IAzureContextContainer>]
+Stop-AzDataFactoryV2Trigger [-InputObject] <PSTrigger> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Stop-AzureRmDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+Stop-AzDataFactoryV2Trigger [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmDataFactoryV2Trigger** cmdlet stops a trigger in a data factory. If the trigger is in the 'Started' state, the cmdlet stops the trigger and no longer invokes pipelines. If the trigger is already in the 'Stopped' state, this cmdlet has no effect. If the Force parameter is specified, the cmdlet doesn't prompt before stopping the trigger.
+The **Stop-AzDataFactoryV2Trigger** cmdlet stops a trigger in a data factory. If the trigger is in the 'Started' state, the cmdlet stops the trigger and no longer invokes pipelines. If the trigger is already in the 'Stopped' state, this cmdlet has no effect. If the Force parameter is specified, the cmdlet doesn't prompt before stopping the trigger.
 
 ## EXAMPLES
 
 ### Example 1: Stop a trigger
 ```
-Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
+Stop-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TriggerName "ScheduledTrigger"
 
 Confirm
 Are you sure you want to stop trigger 'ScheduledTrigger' in data factory 'TestFactory'?
@@ -202,10 +202,10 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2Trigger]()
+[Get-AzDataFactoryV2Trigger]()
 
-[Set-AzureRmDataFactoryV2Trigger]()
+[Set-AzDataFactoryV2Trigger]()
 
-[Start-AzureRmDataFactoryV2Trigger]()
+[Start-AzDataFactoryV2Trigger]()
 
-[Remove-AzureRmDataFactoryV2Trigger]()
+[Remove-AzDataFactoryV2Trigger]()

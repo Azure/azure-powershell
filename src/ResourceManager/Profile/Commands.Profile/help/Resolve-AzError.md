@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/resolve-azurermerror
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/resolve-azerror
 schema: 2.0.0
 ---
 
-# Resolve-AzureRmError
+# Resolve-AzError
 
 ## SYNOPSIS
 Display detailed information about PowerShell errors, with extended details for Azure PowerShell errors.
@@ -14,12 +14,12 @@ Display detailed information about PowerShell errors, with extended details for 
 
 ### AnyErrorParameterSet (Default)
 ```
-Resolve-AzureRmError [[-Error] <ErrorRecord[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Resolve-AzError [[-Error] <ErrorRecord[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LastErrorParameterSet
 ```
-Resolve-AzureRmError [-Last] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Resolve-AzError [-Last] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,12 +32,12 @@ that caused the error.
 
 ### Example 1: Resolve the Last Error
 ```
-PS C:\> Resolve-AzureRmError -Last
+PS C:\> Resolve-AzError -Last
 
    HistoryId: 3
 
 
-Message        : Run Connect-AzureRmAccount to login.
+Message        : Run Connect-AzAccount to login.
 StackTrace     :    at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet.get_DefaultContext() in AzureRmCmdlet.cs:line 85
                     at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet.LogCmdletStartInvocationInfo() in AzureRmCmdlet.cs:line 269
                     at Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet.BeginProcessing() inAzurePSCmdlet.cs:line 299
@@ -46,10 +46,10 @@ StackTrace     :    at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCm
                     at System.Management.Automation.Cmdlet.DoBeginProcessing()
                     at System.Management.Automation.CommandProcessorBase.DoBegin()
 Exception      : System.Management.Automation.PSInvalidOperationException
-InvocationInfo : {Get-AzureRmSubscription}
-Line           : Get-AzureRmSubscription
+InvocationInfo : {Get-AzSubscription}
+Line           : Get-AzSubscription
 Position       : At line:1 char:1
-                 + Get-AzureRmSubscription
+                 + Get-AzSubscription
                  + ~~~~~~~~~~~~~~~~~~~~~~~
 HistoryId      : 3
 ```
@@ -58,7 +58,7 @@ Get details of the last error.
 
 ### Example 2: Resolve all Errors in the Session
 ```
-PS C:\> Resolve-AzureRmError
+PS C:\> Resolve-AzError
 
 
    HistoryId: 8
@@ -71,10 +71,10 @@ ServerMessage  : ResourceGroupNotFound: Resource group 'contoso' could not be fo
 ServerResponse : {NotFound}
 RequestMessage : {GET https://management.azure.com/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/co
                  ntoso/providers/Microsoft.Storage/storageAccounts/contoso?api-version=2016-12-01}
-InvocationInfo : {Get-AzureRmStorageAccount}
-Line           : Get-AzureRmStorageAccount -ResourceGroupName contoso -Name contoso
+InvocationInfo : {Get-AzStorageAccount}
+Line           : Get-AzStorageAccount -ResourceGroupName contoso -Name contoso
 Position       : At line:1 char:1
-                 + Get-AzureRmStorageAccount -ResourceGroupName contoso -Name contoso
+                 + Get-AzStorageAccount -ResourceGroupName contoso -Name contoso
                  + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 StackTrace     :    at Microsoft.Azure.Management.Storage.StorageAccountsOperations.<GetPropertiesWithHttpMessagesAsync
                  >d__8.MoveNext()
@@ -99,7 +99,7 @@ HistoryId      : 8
    HistoryId: 5
 
 
-Message        : Run Connect-AzureRmAccount to login.
+Message        : Run Connect-AzAccount to login.
 StackTrace     :    at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet.get_DefaultContext() in C:\zd\azur
                  e-powershell\src\ResourceManager\Common\Commands.ResourceManager.Common\AzureRmCmdlet.cs:line 85
                     at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet.LogCmdletStartInvocationInfo() in
@@ -114,10 +114,10 @@ StackTrace     :    at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCm
                     at System.Management.Automation.Cmdlet.DoBeginProcessing()
                     at System.Management.Automation.CommandProcessorBase.DoBegin()
 Exception      : System.Management.Automation.PSInvalidOperationException
-InvocationInfo : {Get-AzureRmSubscription}
-Line           : Get-AzureRmSubscription
+InvocationInfo : {Get-AzSubscription}
+Line           : Get-AzSubscription
 Position       : At line:1 char:1
-                 + Get-AzureRmSubscription
+                 + Get-AzSubscription
                  + ~~~~~~~~~~~~~~~~~~~~~~~
 HistoryId      : 5
 ```
@@ -126,7 +126,7 @@ Get details of all errors that have occurred in the current session.
 
 ### Example 3: Resolve a Specific Error
 ```
-PS C:\> Resolve-AzureRmError $Error[0]
+PS C:\> Resolve-AzError $Error[0]
 
 
    HistoryId: 8
@@ -139,10 +139,10 @@ ServerMessage  : ResourceGroupNotFound: Resource group 'contoso' could not be fo
 ServerResponse : {NotFound}
 RequestMessage : {GET https://management.azure.com/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d/resourceGroups/co
                  ntoso/providers/Microsoft.Storage/storageAccounts/contoso?api-version=2016-12-01}
-InvocationInfo : {Get-AzureRmStorageAccount}
-Line           : Get-AzureRmStorageAccount -ResourceGroupName contoso -Name contoso
+InvocationInfo : {Get-AzStorageAccount}
+Line           : Get-AzStorageAccount -ResourceGroupName contoso -Name contoso
 Position       : At line:1 char:1
-                 + Get-AzureRmStorageAccount -ResourceGroupName contoso -Name contoso
+                 + Get-AzStorageAccount -ResourceGroupName contoso -Name contoso
                  + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 StackTrace     :    at Microsoft.Azure.Management.Storage.StorageAccountsOperations.<GetPropertiesWithHttpMessagesAsync
                  >d__8.MoveNext()
@@ -172,7 +172,7 @@ Get details of the specified error.
 The credentials, tenant and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

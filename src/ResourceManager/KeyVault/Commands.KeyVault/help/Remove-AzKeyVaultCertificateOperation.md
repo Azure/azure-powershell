@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 2659C06A-AE5B-4F7B-B9EF-069A74E12560
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/remove-azurekeyvaultcertificateoperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultcertificateoperation
 schema: 2.0.0
 ---
 
-# Remove-AzureKeyVaultCertificateOperation
+# Remove-AzKeyVaultCertificateOperation
 
 ## SYNOPSIS
 Deletes a certificate operation from a key vault.
@@ -15,24 +15,24 @@ Deletes a certificate operation from a key vault.
 
 ### Default
 ```
-Remove-AzureKeyVaultCertificateOperation [-VaultName] <String> [-Name] <String> [-Force] [-PassThru]
+Remove-AzKeyVaultCertificateOperation [-VaultName] <String> [-Name] <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzureKeyVaultCertificateOperation [-InputObject] <PSKeyVaultCertificateOperation> [-Force] [-PassThru]
+Remove-AzKeyVaultCertificateOperation [-InputObject] <PSKeyVaultCertificateOperation> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureKeyVaultCertificateOperation** cmdlet deletes a certificate operation from a key vault.
+The **Remove-AzKeyVaultCertificateOperation** cmdlet deletes a certificate operation from a key vault.
 
 ## EXAMPLES
 
 ### Example 1: Remove a certificate operation
 ```powershell
-PS C:\> Remove-AzureKeyVaultCertificateOperation -VaultName "ContosoKV01" -Name "TestCert01" -Force
+PS C:\> Remove-AzKeyVaultCertificateOperation -VaultName "ContosoKV01" -Name "TestCert01" -Force
 
 Id                        : https://contosokv01.vault.azure.net/certificates/testcert01/pending
 Status                    : completed
@@ -62,7 +62,7 @@ This command removes the certificate operation named TestCert01 from the Contoso
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -197,7 +197,7 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultCertificateOperation](./Get-AzureKeyVaultCertificateOperation.md)
+[Get-AzKeyVaultCertificateOperation](./Get-AzKeyVaultCertificateOperation.md)
 
-[Stop-AzureKeyVaultCertificateOperation](./Stop-AzureKeyVaultCertificateOperation.md)
+[Stop-AzKeyVaultCertificateOperation](./Stop-AzKeyVaultCertificateOperation.md)
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermapplicationsecuritygroup
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azapplicationsecuritygroup
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApplicationSecurityGroup
+# Remove-AzApplicationSecurityGroup
 
 ## SYNOPSIS
 Removes an application security group.
@@ -13,18 +13,18 @@ Removes an application security group.
 ## SYNTAX
 
 ```
-Remove-AzureRmApplicationSecurityGroup -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzApplicationSecurityGroup -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmApplicationSecurityGroup** cmdlet removes an application security group.
+The **Remove-AzApplicationSecurityGroup** cmdlet removes an application security group.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>Remove-AzureRmApplicationSecurityGroup -Name "MyApplicationSecurityGrouo" -ResourceGroupName "MyResourceGroup"
+PS C:\>Remove-AzApplicationSecurityGroup -Name "MyApplicationSecurityGrouo" -ResourceGroupName "MyResourceGroup"
 ```
 
 This command deletes an application security group named MyApplicationSecurityGrouo in the resource group named MyResourceGroup.
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -167,6 +167,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApplicationSecurityGroup](./New-AzureRmApplicationSecurityGroup.md)
+[New-AzApplicationSecurityGroup](./New-AzApplicationSecurityGroup.md)
 
-[Get-AzureRmApplicationSecurityGroup](./Get-AzureRmApplicationSecurityGroup.md)
+[Get-AzApplicationSecurityGroup](./Get-AzApplicationSecurityGroup.md)

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/disable-azurermhdinsightoperationsmanagementsuite
+Module Name: Az.HDInsight
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite
 schema: 2.0.0
 ---
 
-# Disable-AzureRmHDInsightOperationsManagementSuite
+# Disable-AzHDInsightOperationsManagementSuite
 
 ## SYNOPSIS
 Disables Operations Management Suite (OMS) in a HDInsight cluster and relevant logs will stop flowing to the OMS workspace specified during enable.
@@ -13,18 +13,18 @@ Disables Operations Management Suite (OMS) in a HDInsight cluster and relevant l
 ## SYNTAX
 
 ```
-Disable-AzureRmHDInsightOperationsManagementSuite [-Name] <String> [-ResourceGroupName <String>]
+Disable-AzHDInsightOperationsManagementSuite [-Name] <String> [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzureRmHDInsightOperationsManagementSuite** cmdlet disables Operations Management Suite (OMS) in a Azure HDInsight cluster.
+The **Disable-AzHDInsightOperationsManagementSuite** cmdlet disables Operations Management Suite (OMS) in a Azure HDInsight cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Disable-AzureRmHDInsightOMS -Name testcluster
+PS C:\> Disable-AzHDInsightOMS -Name testcluster
 
 ErrorInfo  :
 
@@ -39,7 +39,7 @@ Operations Management Suite (OMS) will be disabled on the HDInsight cluster and 
 
 ### Example 2
 ```
-PS C:\> Disable-AzureRmHDInsightOMS -Name testcluster -ResourceGroupName testrg
+PS C:\> Disable-AzHDInsightOMS -Name testcluster -ResourceGroupName testrg
 
 ErrorInfo  :
 

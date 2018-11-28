@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: F8756DA1-7BB9-4CD5-9D81-E11FF7A26125
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermlocalnetworkgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azlocalnetworkgateway
 schema: 2.0.0
 ---
 
-# Get-AzureRmLocalNetworkGateway
+# Get-AzLocalNetworkGateway
 
 ## SYNOPSIS
 Gets a Local Network Gateway
@@ -14,19 +14,19 @@ Gets a Local Network Gateway
 ## SYNTAX
 
 ```
-Get-AzureRmLocalNetworkGateway [-Name <String>] -ResourceGroupName <String>
+Get-AzLocalNetworkGateway [-Name <String>] -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Local Network Gateway is the object representing your VPN device On-Premises.
-The **Get-AzureRmLocalNetworkGateway** cmdlet returns the object representing your on-prem gateway based on Name and Resource Group Name.
+The **Get-AzLocalNetworkGateway** cmdlet returns the object representing your on-prem gateway based on Name and Resource Group Name.
 
 ## EXAMPLES
 
 ### 1: Get a Local Network Gateway
 ```
-Get-AzureRmLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
+Get-AzLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
 ```
 
 Returns the object of the Local Network Gateway with the name "myLocalGW" within the resource group "myRG"
@@ -37,7 +37,7 @@ Returns the object of the Local Network Gateway with the name "myLocalGW" within
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

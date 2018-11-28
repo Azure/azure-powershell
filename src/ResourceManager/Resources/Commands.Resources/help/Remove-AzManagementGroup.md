@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermmanagementgroup/
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azmanagementgroup/
 schema: 2.0.0
 ---
 
-# Remove-AzureRmManagementGroup
+# Remove-AzManagementGroup
 
 ## SYNOPSIS
 Removes a Management Group
@@ -14,29 +14,29 @@ Removes a Management Group
 
 ### GroupOperations (Default)
 ```
-Remove-AzureRmManagementGroup [-GroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzManagementGroup [-GroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagementGroupObject
 ```
-Remove-AzureRmManagementGroup -InputObject <PSManagementGroup> [-PassThru]
+Remove-AzManagementGroup -InputObject <PSManagementGroup> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmManagementGroup** cmdlet deletes a Management Group.
+The **Remove-AzManagementGroup** cmdlet deletes a Management Group.
 
 ## EXAMPLES
 
 ### Example 1 - Remove a Management Group
 ```
-PS C:\> Remove-AzureRmManagementGroup -GroupName "TestGroup"
+PS C:\> Remove-AzManagementGroup -GroupName "TestGroup"
 ```
 
 ### Example 2 - Remove a Management Group by piping PSManagementGroup Object
 ```
-PS C:\> Get-Remove-AzureRmManagementGroup -GroupName "TestGroup" | Remove-AzureRmManagementGroup
+PS C:\> Get-Remove-AzManagementGroup -GroupName "TestGroup" | Remove-AzManagementGroup
 ```
 
 ## PARAMETERS
@@ -45,7 +45,7 @@ PS C:\> Get-Remove-AzureRmManagementGroup -GroupName "TestGroup" | Remove-AzureR
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

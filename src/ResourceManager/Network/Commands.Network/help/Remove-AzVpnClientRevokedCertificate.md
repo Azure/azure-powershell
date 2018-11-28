@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 818C2250-DE43-409E-AC68-B4A7E945401E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermvpnclientrevokedcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvpnclientrevokedcertificate
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVpnClientRevokedCertificate
+# Remove-AzVpnClientRevokedCertificate
 
 ## SYNOPSIS
 Removes a VPN client-revocation certificate.
@@ -14,13 +14,13 @@ Removes a VPN client-revocation certificate.
 ## SYNTAX
 
 ```
-Remove-AzureRmVpnClientRevokedCertificate -VpnClientRevokedCertificateName <String>
+Remove-AzVpnClientRevokedCertificate -VpnClientRevokedCertificateName <String>
  -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -Thumbprint <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVpnClientRevokedCertificate** cmdlet removes a client-revocation certificate from a virtual network gateway.
+The **Remove-AzVpnClientRevokedCertificate** cmdlet removes a client-revocation certificate from a virtual network gateway.
 Client-revocation certificates prevent client computers from using the specified certificate for authentication.
 If you remove a client-revocation certificate client computers can then use the previously-banned certificate to make a virtual private network (VPN) connection.
 
@@ -28,7 +28,7 @@ If you remove a client-revocation certificate client computers can then use the 
 
 ### Example 1: Remove a client-revocation certificate from a virtual network gateway
 ```
-PS C:\>Remove-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName"ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate"-Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
+PS C:\>Remove-AzVpnClientRevokedCertificate -VirtualNetworkGatewayName "ContosoVirtualNetwork" -ResourceGroupName"ContosoResourceGroup" -VpnClientRevokedCertificateName "ContosoRevokedClientCertificate"-Thumbprint "E3A38EBA60CAA1C162785A2E1C44A15AD450199C3"
 ```
 
 This command removes a client-revocation certificate from a virtual network gateway named ContosoVirtualNetwork.
@@ -40,7 +40,7 @@ In order to remove a client-revocation certificate, you must specify both the ce
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -130,10 +130,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmVpnClientRevokedCertificate](./Add-AzureRmVpnClientRevokedCertificate.md)
+[Add-AzVpnClientRevokedCertificate](./Add-AzVpnClientRevokedCertificate.md)
 
-[Get-AzureRmVpnClientRevokedCertificate](./Get-AzureRmVpnClientRevokedCertificate.md)
+[Get-AzVpnClientRevokedCertificate](./Get-AzVpnClientRevokedCertificate.md)
 
-[New-AzureRmVpnClientRevokedCertificate](./New-AzureRmVpnClientRevokedCertificate.md)
+[New-AzVpnClientRevokedCertificate](./New-AzVpnClientRevokedCertificate.md)
 
 

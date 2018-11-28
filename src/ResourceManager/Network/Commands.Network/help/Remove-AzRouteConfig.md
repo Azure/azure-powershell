@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 03285628-6BD3-4F2F-8129-E3CAE4C70EC8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermrouteconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azrouteconfig
 schema: 2.0.0
 ---
 
-# Remove-AzureRmRouteConfig
+# Remove-AzRouteConfig
 
 ## SYNOPSIS
 Removes a route from a route table.
@@ -14,18 +14,18 @@ Removes a route from a route table.
 ## SYNTAX
 
 ```
-Remove-AzureRmRouteConfig -RouteTable <PSRouteTable> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRouteConfig** cmdlet removes a route from an Azure route table.
+The **Remove-AzRouteConfig** cmdlet removes a route from an Azure route table.
 
 ## EXAMPLES
 
 ### Example 1: Remove a route
 ```
-PS C:\>Get-AzureRmRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Remove-AzureRmRouteConfig -Name "Route02" | Set-AzureRmRouteTable
+PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Remove-AzRouteConfig -Name "Route02" | Set-AzRouteTable
 Name              : RouteTable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
@@ -49,9 +49,9 @@ Routes            : [
 Subnets           : []
 ```
 
-This command gets the route table named RouteTable01 by using the **Get-AzureRmRouteTable** cmdlet.
+This command gets the route table named RouteTable01 by using the **Get-AzRouteTable** cmdlet.
 The command passes that table to the current cmdlet by using the pipeline operator.
-The current cmdlet remove the route named Route02, and the passes the result to the **Set-AzureRmRouteTable** cmdlet, which updates the table to reflect your changes.
+The current cmdlet remove the route named Route02, and the passes the result to the **Set-AzRouteTable** cmdlet, which updates the table to reflect your changes.
 The table no longer contains the route named Route02.
 
 ## PARAMETERS
@@ -60,7 +60,7 @@ The table no longer contains the route named Route02.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -146,12 +146,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmRouteConfig](./Add-AzureRmRouteConfig.md)
+[Add-AzRouteConfig](./Add-AzRouteConfig.md)
 
-[Get-AzureRmRouteConfig](./Get-AzureRmRouteConfig.md)
+[Get-AzRouteConfig](./Get-AzRouteConfig.md)
 
-[New-AzureRmRouteConfig](./New-AzureRmRouteConfig.md)
+[New-AzRouteConfig](./New-AzRouteConfig.md)
 
-[Set-AzureRmRouteConfig](./Set-AzureRmRouteConfig.md)
+[Set-AzRouteConfig](./Set-AzRouteConfig.md)
 
 

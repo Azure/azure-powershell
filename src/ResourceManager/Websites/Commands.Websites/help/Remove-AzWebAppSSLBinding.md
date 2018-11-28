@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: 3AB3D398-E5DB-4214-BA27-6E3B7D225550
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/remove-azurermwebappsslbinding
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/remove-azwebappsslbinding
 schema: 2.0.0
 ---
 
-# Remove-AzureRmWebAppSSLBinding
+# Remove-AzWebAppSSLBinding
 
 ## SYNOPSIS
 Removes an SSL binding from an uploaded certificate.
@@ -15,26 +15,26 @@ Removes an SSL binding from an uploaded certificate.
 
 ### S1
 ```
-Remove-AzureRmWebAppSSLBinding [-Name] <String> [[-DeleteCertificate] <Boolean>] [-Force]
+Remove-AzWebAppSSLBinding [-Name] <String> [[-DeleteCertificate] <Boolean>] [-Force]
  [-ResourceGroupName] <String> [-WebAppName] <String> [[-Slot] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Remove-AzureRmWebAppSSLBinding [-Name] <String> [[-DeleteCertificate] <Boolean>] [-Force] [-WebApp] <PSSite>
+Remove-AzWebAppSSLBinding [-Name] <String> [[-DeleteCertificate] <Boolean>] [-Force] [-WebApp] <PSSite>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmWebAppSSLBinding** cmdlet removes a Secure Sockets Layer (SSL) binding from an Azure Web App.
+The **Remove-AzWebAppSSLBinding** cmdlet removes a Secure Sockets Layer (SSL) binding from an Azure Web App.
 SSL bindings are used to associate a Web App with a certificate.
 
 ## EXAMPLES
 
 ### Example 1: Remove an SSL binding for a web app
 ```
-PS C:\>Remove-AzureRmWebAppSSLBinding -ResourceGroupName "ContosoResourceGroup" -WebAppName "ContosoWebApp" -Name "www.contoso.com"
+PS C:\>Remove-AzWebAppSSLBinding -ResourceGroupName "ContosoResourceGroup" -WebAppName "ContosoWebApp" -Name "www.contoso.com"
 ```
 
 This command removes the SSL binding for the web app ContosoWebApp.
@@ -42,7 +42,7 @@ Since the *DeleteCertificate* parameter is not included, the certificate will be
 
 ### Example 2: Remove an SSL binding without removing the certificate
 ```
-PS C:\>Remove-AzureRmWebAppSSLBinding -ResourceGroupName "ContosoResourceGroup" -WebAppName "ContosoWebApp" -Name "www.contoso.com" -DeleteCertificate $False
+PS C:\>Remove-AzWebAppSSLBinding -ResourceGroupName "ContosoResourceGroup" -WebAppName "ContosoWebApp" -Name "www.contoso.com" -DeleteCertificate $False
 ```
 
 Similar to Example 1, this command also removes the SSL binding for the Web App ContosoWebApp.
@@ -51,14 +51,14 @@ That means that the certificate will not be deleted regardless of whether it has
 
 ### Example 3: Use an object reference to remove an SSL binding
 ```
-PS C:\>$WebApp = Get-AzureRmWebApp -Name "ContosoWebApp"
-PS C:\> Remove-AzureRmWebAppSSLBinding -WebApp $WebApp -Name "www.contoso.com"
+PS C:\>$WebApp = Get-AzWebApp -Name "ContosoWebApp"
+PS C:\> Remove-AzWebAppSSLBinding -WebApp $WebApp -Name "www.contoso.com"
 ```
 
 This example uses an object reference to the Web App website to remove the SSL binding for a Web App.
-The first command uses the Get-AzureRmWebApp cmdlet to create an object reference to the Web App named ContosoWebApp.
+The first command uses the Get-AzWebApp cmdlet to create an object reference to the Web App named ContosoWebApp.
 That object reference is stored in a variable named $WebApp.
-The second command uses the object reference and the **Remove-AzureRmWebAppSSLBinding** cmdlet to remove the SSL binding.
+The second command uses the object reference and the **Remove-AzWebAppSSLBinding** cmdlet to remove the SSL binding.
 
 ## PARAMETERS
 
@@ -66,7 +66,7 @@ The second command uses the object reference and the **Remove-AzureRmWebAppSSLBi
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 
 ### -Slot
 Specifies the Web App deployment slot.
-To get a deployment slot, use the Get-AzureRMWebAppSlot cmdlet.
+To get a deployment slot, use the Get-AzWebAppSlot cmdlet.
 
 ```yaml
 Type: System.String
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 
 ### -WebApp
 Specifies a Web App.
-To get a Web App, use the Get-AzureRmWebApp cmdlet.
+To get a Web App, use the Get-AzWebApp cmdlet.
 You cannot use the *WebApp* parameter in the same command as the *ResourceGroupName* parameter and/or the *WebAppName*.
 
 ```yaml
@@ -239,12 +239,12 @@ Parameters: WebApp (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmWebAppSSLBinding](./Get-AzureRmWebAppSSLBinding.md)
+[Get-AzWebAppSSLBinding](./Get-AzWebAppSSLBinding.md)
 
-[New-AzureRmWebAppSSLBinding](./New-AzureRmWebAppSSLBinding.md)
+[New-AzWebAppSSLBinding](./New-AzWebAppSSLBinding.md)
 
-[Get-AzureRMWebAppSlot](./Get-AzureRMWebAppSlot.md)
+[Get-AzWebAppSlot](./Get-AzWebAppSlot.md)
 
-[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)
+[Get-AzWebApp](./Get-AzWebApp.md)
 
 

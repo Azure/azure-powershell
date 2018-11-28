@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 92F21752-4FB6-4162-B542-DA25ACA3340B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/set-azurermhdinsightpersistedscriptaction
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/set-azhdinsightpersistedscriptaction
 schema: 2.0.0
 ---
 
-# Set-AzureRmHDInsightPersistedScriptAction
+# Set-AzHDInsightPersistedScriptAction
 
 ## SYNOPSIS
 Sets a previously executed script action to be a persisted script action.
@@ -14,12 +14,12 @@ Sets a previously executed script action to be a persisted script action.
 ## SYNTAX
 
 ```
-Set-AzureRmHDInsightPersistedScriptAction [-ClusterName] <String> [-ScriptExecutionId] <Int64>
+Set-AzHDInsightPersistedScriptAction [-ClusterName] <String> [-ScriptExecutionId] <Int64>
  [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmHDInsightPersistedScriptAction** cmdlet sets a previously executed script action to be a persisted script action.
+The **Set-AzHDInsightPersistedScriptAction** cmdlet sets a previously executed script action to be a persisted script action.
 The specified script action must have previously succeeded.
 The script action will run each time the Azure HDInsight cluster is scaled up.
 
@@ -27,7 +27,7 @@ The script action will run each time the Azure HDInsight cluster is scaled up.
 
 ### Example 1: Set a previously successful script action to be persisted, or run on cluster scale up
 ```
-PS C:\>Set-AzureRmHDInsightPersistedScriptAction `
+PS C:\>Set-AzHDInsightPersistedScriptAction `
             -ClusterName "your-hadoop-001" `
             -ScriptExecutionId "<id>"
 ```
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ### -ScriptExecutionId
 Specifies the execution ID of the script action to promote to persisted.
 This script action must have succeeded in order to be promoted.
-You can find the script action execution ID using Get-AzureRmHDInsightScriptActionHistory.
+You can find the script action execution ID using Get-AzHDInsightScriptActionHistory.
 
 ```yaml
 Type: System.Int64
@@ -113,8 +113,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmHDInsightPersistedScriptAction](./Get-AzureRmHDInsightPersistedScriptAction.md)
+[Get-AzHDInsightPersistedScriptAction](./Get-AzHDInsightPersistedScriptAction.md)
 
-[Remove-AzureRmHDInsightPersistedScriptAction](./Remove-AzureRmHDInsightPersistedScriptAction.md)
+[Remove-AzHDInsightPersistedScriptAction](./Remove-AzHDInsightPersistedScriptAction.md)
 
 

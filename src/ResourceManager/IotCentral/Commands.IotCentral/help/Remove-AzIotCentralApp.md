@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.IotCentral.dll-Help.xml
-Module Name: AzureRM.IotCentral
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iotcentral/remove-azurermiotcentralapp
+Module Name: Az.IotCentral
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iotcentral/remove-aziotcentralapp
 schema: 2.0.0
 ---
 
-# Remove-AzureRmIotCentralApp
+# Remove-AzIotCentralApp
 
 ## SYNOPSIS
 Deletes an IoT Central Application.
@@ -14,19 +14,19 @@ Deletes an IoT Central Application.
 
 ### ResourceIdParameterSet (Default)
 ```
-Remove-AzureRmIotCentralApp [-PassThru] -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzIotCentralApp [-PassThru] -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzureRmIotCentralApp [-PassThru] -InputObject <PSIotCentralApp> [-AsJob]
+Remove-AzIotCentralApp [-PassThru] -InputObject <PSIotCentralApp> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InteractiveIotCentralParameterSet
 ```
-Remove-AzureRmIotCentralApp [-PassThru] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
+Remove-AzIotCentralApp [-PassThru] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Deletes an existing IoT Central Application.
 
 ### Example 1 Delete and IoT Central Application
 ```powershell
-PS C:\> Remove-AzureRmIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName"
+PS C:\> Remove-AzIotCentralApp -ResourceGroupName "MyResourceGroupName" -Name "MyAppResourceName"
 ```
 
 Deletes the provided IoT Central Application.
@@ -48,7 +48,7 @@ Deletes the provided IoT Central Application.
 Run cmdlet as a job in the background.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 Iot Central Application Input Object.
 
 ```yaml
-Type: PSIotCentralApp
+Type: Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Name of the Iot Central Application Resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InteractiveIotCentralParameterSet
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 Name of the Resource Group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InteractiveIotCentralParameterSet
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 Iot Central Application Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -169,7 +169,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

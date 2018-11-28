@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermroutefilterruleconfig
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azroutefilterruleconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmRouteFilterRuleConfig
+# New-AzRouteFilterRuleConfig
 
 ## SYNOPSIS
 Creates a route filter rule for a route filter.
@@ -13,13 +13,13 @@ Creates a route filter rule for a route filter.
 ## SYNTAX
 
 ```
-New-AzureRmRouteFilterRuleConfig [-Force] -Name <String> -Access <String> -RouteFilterRuleType <String>
+New-AzRouteFilterRuleConfig [-Force] -Name <String> -Access <String> -RouteFilterRuleType <String>
  -CommunityList <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmRouteFilterRuleConfig cmdlet creates a route filter rule for an Azure route filter.
+The New-AzRouteFilterRuleConfig cmdlet creates a route filter rule for an Azure route filter.
 
 ## EXAMPLES
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -172,11 +172,11 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 ## RELATED LINKS
 
-[Add-AzureRmRouteFilterRuleConfig](./Add-AzureRmRouteFilterRuleConfig.md)
+[Add-AzRouteFilterRuleConfig](./Add-AzRouteFilterRuleConfig.md)
 
-[Get-AzureRmRouteFilterRuleConfig](./Get-AzureRmRouteFilterRuleConfig.md)
+[Get-AzRouteFilterRuleConfig](./Get-AzRouteFilterRuleConfig.md)
 
-[Remove-AzureRmRouteFilterRuleConfig](./Remove-AzureRmRouteFilterRuleConfig.md)
+[Remove-AzRouteFilterRuleConfig](./Remove-AzRouteFilterRuleConfig.md)
 
-[Set-AzureRmRouteFilterRuleConfig](./Set-AzureRmRouteFilterRuleConfig.md)
+[Set-AzRouteFilterRuleConfig](./Set-AzRouteFilterRuleConfig.md)
 

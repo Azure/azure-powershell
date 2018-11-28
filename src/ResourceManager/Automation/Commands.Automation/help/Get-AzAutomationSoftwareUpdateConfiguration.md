@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationsoftwareupdateconfiguration
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationsoftwareupdateconfiguration
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationSoftwareUpdateConfiguration
+# Get-AzAutomationSoftwareUpdateConfiguration
 
 ## SYNOPSIS
 Gets a list of azure automation software update configurations.
@@ -14,24 +14,24 @@ Gets a list of azure automation software update configurations.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationSoftwareUpdateConfiguration [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAutomationSoftwareUpdateConfiguration [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmAutomationSoftwareUpdateConfiguration -Name <String> [-ResourceGroupName] <String>
+Get-AzAutomationSoftwareUpdateConfiguration -Name <String> [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVMId
 ```
-Get-AzureRmAutomationSoftwareUpdateConfiguration -AzureVMResourceId <String> [-ResourceGroupName] <String>
+Get-AzAutomationSoftwareUpdateConfiguration -AzureVMResourceId <String> [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmAutomationSoftwareUpdateConfiguration returns a list of software update configurations. To get a specific software update configuration, specify the name parameter. You can also list software update configurations targeting specific azure virtual machine by specifying the azure resource Id for this virtual machine.
+The Get-AzAutomationSoftwareUpdateConfiguration returns a list of software update configurations. To get a specific software update configuration, specify the name parameter. You can also list software update configurations targeting specific azure virtual machine by specifying the azure resource Id for this virtual machine.
 
 ## EXAMPLES
 
@@ -39,7 +39,7 @@ The Get-AzureRmAutomationSoftwareUpdateConfiguration returns a list of software 
 Get an azure automation software update configuration by name.
 
 ```powershell
-PS C:\> Get-AzureRmAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" -AutomationAccountName "myaccount" -Name "MyWeeklySchedule"
+PS C:\> Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" -AutomationAccountName "myaccount" -Name "MyWeeklySchedule"
 
 UpdateConfiguration   : Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration
 ScheduleConfiguration : Microsoft.Azure.Commands.Automation.Model.Schedule
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

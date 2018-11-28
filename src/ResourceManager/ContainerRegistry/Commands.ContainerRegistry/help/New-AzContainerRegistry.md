@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-Module Name: AzureRM.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/new-azurermcontainerregistry
+Module Name: Az.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/new-azcontainerregistry
 schema: 2.0.0
 ---
 
-# New-AzureRmContainerRegistry
+# New-AzContainerRegistry
 
 ## SYNOPSIS
 Creates a container registry.
@@ -13,19 +13,19 @@ Creates a container registry.
 ## SYNTAX
 
 ```
-New-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-Sku] <String>
- [-Location <String>] [-EnableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>]
+New-AzContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-Sku] <String> [-Location <String>]
+ [-EnableAdminUser] [-Tag <Hashtable>] [-StorageAccountName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmContainerRegistry cmdlet creates a container registry.
+The New-AzContainerRegistry cmdlet creates a container registry.
 
 ## EXAMPLES
 
 ### Example 1: Create a container registry with a new storage account.
 ```powershell
-PS C:\>New-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic"
+PS C:\>New-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic"
 
    Container registry location: eastus
 
@@ -39,7 +39,7 @@ This command creates a container registry with a new storage account in the reso
 
 ### Example 2: Create a container registry with admin user enabled.
 ```powershell
-PS C:\>New-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic" -EnableAdminUser
+PS C:\>New-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic" -EnableAdminUser
 
   Container registry location: eastus
 
@@ -53,7 +53,7 @@ This command creates a container registry with admin user enabled.
 
 ### Example 3: Create a container registry with an existing storage account.
 ```powershell
-PS C:\>New-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic" -StorageAccountName "mystorageaccount"
+PS C:\>New-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -Sku "Basic" -StorageAccountName "mystorageaccount"
 
   Container registry location: eastus
 
@@ -71,7 +71,7 @@ This command creates a container registry with an existing storage account \`mys
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -238,9 +238,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmContainerRegistry](Get-AzureRmContainerRegistry.md)
+[Get-AzContainerRegistry](Get-AzContainerRegistry.md)
 
-[Update-AzureRmContainerRegistry](Update-AzureRmContainerRegistry.md)
+[Update-AzContainerRegistry](Update-AzContainerRegistry.md)
 
-[Remove-AzureRmContainerRegistry](Remove-AzureRmContainerRegistry.md)
+[Remove-AzContainerRegistry](Remove-AzContainerRegistry.md)
 

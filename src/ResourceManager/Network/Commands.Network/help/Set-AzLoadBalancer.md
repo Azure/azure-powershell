@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 494E185D-3746-4959-846E-660017A1F392
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermloadbalancer
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azloadbalancer
 schema: 2.0.0
 ---
 
-# Set-AzureRmLoadBalancer
+# Set-AzLoadBalancer
 
 ## SYNOPSIS
 Sets the goal state for a load balancer.
@@ -14,25 +14,25 @@ Sets the goal state for a load balancer.
 ## SYNTAX
 
 ```
-Set-AzureRmLoadBalancer -LoadBalancer <PSLoadBalancer> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzLoadBalancer -LoadBalancer <PSLoadBalancer> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmLoadBalancer** cmdlet sets the goal state for an Azure load balancer.
+The **Set-AzLoadBalancer** cmdlet sets the goal state for an Azure load balancer.
 
 ## EXAMPLES
 
 ### Example 1: Modify a load balancer
 ```
-PS C:\>$slb = Get-AzureRmLoadBalancer -Name "NRPLB" -ResourceGroupName "NRP-RG"
-PS C:\> $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name "NewRule" -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81 -BackendPort 8181 -Protocol "TCP"
-PS C:\> $slb | Set-AzureRmLoadBalancer
+PS C:\>$slb = Get-AzLoadBalancer -Name "NRPLB" -ResourceGroupName "NRP-RG"
+PS C:\> $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewRule" -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81 -BackendPort 8181 -Protocol "TCP"
+PS C:\> $slb | Set-AzLoadBalancer
 ```
 
 The first command gets the load balancer named NRPLB, and then stores it in the $slb variable.
-The second command uses the pipeline operator to pass the load balancer in $slb to Add-AzureRmLoadBalancerInboundNatRuleConfig, which adds an inbound NAT rule named NewRule.
-The third command passes the load balancer to **Set-AzureRmLoadBalancer**, which updates the load balancer configuration and saves it.
+The second command uses the pipeline operator to pass the load balancer in $slb to Add-AzLoadBalancerInboundNatRuleConfig, which adds an inbound NAT rule named NewRule.
+The third command passes the load balancer to **Set-AzLoadBalancer**, which updates the load balancer configuration and saves it.
 
 ## PARAMETERS
 
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -128,10 +128,10 @@ Parameters: LoadBalancer (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmLoadBalancer](./Get-AzureRmLoadBalancer.md)
+[Get-AzLoadBalancer](./Get-AzLoadBalancer.md)
 
-[New-AzureRmLoadBalancer](./New-AzureRmLoadBalancer.md)
+[New-AzLoadBalancer](./New-AzLoadBalancer.md)
 
-[Remove-AzureRmLoadBalancer](./Remove-AzureRmLoadBalancer.md)
+[Remove-AzLoadBalancer](./Remove-AzLoadBalancer.md)
 
 

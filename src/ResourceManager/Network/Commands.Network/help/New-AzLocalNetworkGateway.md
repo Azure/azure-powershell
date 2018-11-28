@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 59BE802E-C061-4E25-A446-B00B0BA36019
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermlocalnetworkgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azlocalnetworkgateway
 schema: 2.0.0
 ---
 
-# New-AzureRmLocalNetworkGateway
+# New-AzLocalNetworkGateway
 
 ## SYNOPSIS
 Creates a Local Network Gateway
@@ -14,7 +14,7 @@ Creates a Local Network Gateway
 ## SYNTAX
 
 ```
-New-AzureRmLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
  [-GatewayIpAddress <String>] [-AddressPrefix <System.Collections.Generic.List`1[System.String]>]
  [-Asn <UInt32>] [-BgpPeeringAddress <String>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,7 +22,7 @@ New-AzureRmLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Locat
 
 ## DESCRIPTION
 The Local Network Gateway is the object representing your VPN device On-Premises.
-The **New-AzureRmLocalNetworkGateway** cmdlet creates the object representing your on-prem gateway
+The **New-AzLocalNetworkGateway** cmdlet creates the object representing your on-prem gateway
 based on the Name, Resource Group Name, Location, and IP Address of the gateway, as well as the
 Address Prefix of the On-Premises network which will be connecting to Azure.
 
@@ -30,7 +30,7 @@ Address Prefix of the On-Premises network which will be connecting to Azure.
 
 ### 1: Create a Local Network Gateway
 ```
-New-AzureRmLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG -Location "West US" -GatewayIpAddress 23.99.221.164 -AddressPrefix "10.5.51.0/24"
+New-AzLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG -Location "West US" -GatewayIpAddress 23.99.221.164 -AddressPrefix "10.5.51.0/24"
 ```
 
 Creates the object of the Local Network Gateway with the name "myLocalGW" within the resource group
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -260,8 +260,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmLocalNetworkGateway](./Get-AzureRmLocalNetworkGateway.md)
+[Get-AzLocalNetworkGateway](./Get-AzLocalNetworkGateway.md)
 
-[Remove-AzureRmLocalNetworkGateway](./Remove-AzureRmLocalNetworkGateway.md)
+[Remove-AzLocalNetworkGateway](./Remove-AzLocalNetworkGateway.md)
 
-[Set-AzureRmLocalNetworkGateway](./Set-AzureRmLocalNetworkGateway.md)
+[Set-AzLocalNetworkGateway](./Set-AzLocalNetworkGateway.md)

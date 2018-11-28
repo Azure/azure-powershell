@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/remove-azurermiothubeventhubconsumergroup
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/remove-aziothubeventhubconsumergroup
 schema: 2.0.0
 ---
 
-# Remove-AzureRmIotHubEventHubConsumerGroup
+# Remove-AzIotHubEventHubConsumerGroup
 
 ## SYNOPSIS
 Deletes an eventhub consumergroup.
@@ -13,7 +13,7 @@ Deletes an eventhub consumergroup.
 ## SYNTAX
 
 ```
-Remove-AzureRmIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
+Remove-AzIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
  [-EventHubEndpointName] <String> [-EventHubConsumerGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Deletes an eventhub consumergroup.
 
 ### Example 1 Remove eventhub consumergroup from the telemetry eventhub
 ```
-PS C:\> Remove-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName events -EventHubConsumerGroupName myconsumergroup
+PS C:\> Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName events -EventHubConsumerGroupName myconsumergroup
 ```
 
 Removes the consumergroup named myconsumergroup from the IotHub named "myiothub"
@@ -36,7 +36,7 @@ Removes the consumergroup named myconsumergroup from the IotHub named "myiothub"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

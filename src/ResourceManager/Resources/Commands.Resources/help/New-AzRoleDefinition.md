@@ -1,17 +1,17 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 8300B143-E322-419E-BC98-DBA56DD90A59
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermroledefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azroledefinition
 schema: 2.0.0
 ---
 
-# New-AzureRmRoleDefinition
+# New-AzRoleDefinition
 
 ## SYNOPSIS
 Creates a custom role in Azure RBAC.
 Provide either a JSON role definition file or a PSRoleDefinition object as input.
-First, use the Get-AzureRmRoleDefinition command to generate a baseline role definition object.
+First, use the Get-AzRoleDefinition command to generate a baseline role definition object.
 Then, modify its properties as required.
 Finally, use this command to create a custom role using role definition.
 
@@ -19,23 +19,22 @@ Finally, use this command to create a custom role using role definition.
 
 ### InputFileParameterSet
 ```
-New-AzureRmRoleDefinition [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzRoleDefinition [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionParameterSet
 ```
-New-AzureRmRoleDefinition [-Role] <PSRoleDefinition> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzRoleDefinition [-Role] <PSRoleDefinition> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmRoleDefinition cmdlet creates a custom role in Azure Role-Based Access Control.
+The New-AzRoleDefinition cmdlet creates a custom role in Azure Role-Based Access Control.
 Provide a role definition as an input to the command as a JSON file or a PSRoleDefinition object.
 The input role definition MUST contain the following properties:
 1) DisplayName: the name of the custom role
 2) Description: a short description of the role that summarizes the access that the role grants.
 3) Actions: the set of operations to which the custom role grants access.
-Use Get-AzureRmProviderOperation to get the operation for Azure resource providers that can be secured using Azure RBAC.
+Use Get-AzProviderOperation to get the operation for Azure resource providers that can be secured using Azure RBAC.
 Following are some valid operation strings:
  - "*/read" grants access to read operations of all Azure resource providers.
  - "Microsoft.Network/*/read" grants access to read operations for all resource types in the Microsoft.Network resource provider of Azure.
@@ -83,7 +82,7 @@ Following is a sample json role definition that can be provided as input
 
 ### Create using PSRoleDefinitionObject
 ```
-PS C:\> $role = Get-AzureRmRoleDefinition -Name "Virtual Machine Contributor"
+PS C:\> $role = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
           PS C:\> $role.Id = $null
           PS C:\> $role.Name = "Virtual Machine Operator"
           PS C:\> $role.Description = "Can monitor, start, and restart virtual machines."
@@ -102,12 +101,12 @@ PS C:\> $role = Get-AzureRmRoleDefinition -Name "Virtual Machine Contributor"
           PS C:\> $role.AssignableScopes.Clear()
           PS C:\> $role.AssignableScopes.Add("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 
-          PS C:\> New-AzureRmRoleDefinition -Role $role
+          PS C:\> New-AzRoleDefinition -Role $role
 ```
 
 ### Create using JSON file
 ```
-PS C:\> New-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json
+PS C:\> New-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
 ```
 
 ## PARAMETERS
@@ -116,7 +115,7 @@ PS C:\> New-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -173,11 +172,11 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 ## RELATED LINKS
 
-[Get-AzureRmProviderOperation](./Get-AzureRmProviderOperation.md)
+[Get-AzProviderOperation](./Get-AzProviderOperation.md)
 
-[Get-AzureRmRoleDefinition](./Get-AzureRmRoleDefinition.md)
+[Get-AzRoleDefinition](./Get-AzRoleDefinition.md)
 
-[Set-AzureRmRoleDefinition](./Set-AzureRmRoleDefinition.md)
+[Set-AzRoleDefinition](./Set-AzRoleDefinition.md)
 
-[Remove-AzureRmRoleDefinition](./Remove-AzureRmRoleDefinition.md)
+[Remove-AzRoleDefinition](./Remove-AzRoleDefinition.md)
 

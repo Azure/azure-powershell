@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: F845ED42-A7C1-4CCC-9AD8-E9A91C3EEC7A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/move-azurermexpressroutecircuit
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/move-azexpressroutecircuit
 schema: 2.0.0
 ---
 
-# Move-AzureRmExpressRouteCircuit
+# Move-AzExpressRouteCircuit
 
 ## SYNOPSIS
 Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
@@ -14,13 +14,13 @@ Moves an ExpressRoute circuit from the classic deployment model to the Resource 
 ## SYNTAX
 
 ```
-Move-AzureRmExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String>
- -ServiceKey <String> [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Move-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String> -ServiceKey <String>
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Move-AzureRmExpressRouteCircuit** cmdlet moves an ExpressRoute circuit from the classic
+The **Move-AzExpressRouteCircuit** cmdlet moves an ExpressRoute circuit from the classic
 deployment model to the Resource Manager deployment model. After the move, the ExpressRoute circuit
 behaves and performs like any other ExpressRoute circuit that is created in the Resource Manager
 deployment model. Circuit links, virtual networks, and VPN gateways are not moved through this
@@ -30,7 +30,7 @@ operation. Those resources need to be reconfigured after the move.
 
 ### Example 1: Move an ExpressRoute circuit to the Resource Manager deployment model
 ```
-Move-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $RG -Location $Location -ServiceKey $ServiceKey
+Move-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $RG -Location $Location -ServiceKey $ServiceKey
 ```
 
 ## PARAMETERS
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -204,10 +204,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmExpressRouteCircuit](./Get-AzureRmExpressRouteCircuit.md)
+[Get-AzExpressRouteCircuit](./Get-AzExpressRouteCircuit.md)
 
-[New-AzureRmExpressRouteCircuit](./New-AzureRmExpressRouteCircuit.md)
+[New-AzExpressRouteCircuit](./New-AzExpressRouteCircuit.md)
 
-[Remove-AzureRmExpressRouteCircuit](./Remove-AzureRmExpressRouteCircuit.md)
+[Remove-AzExpressRouteCircuit](./Remove-AzExpressRouteCircuit.md)
 
-[Set-AzureRmExpressRouteCircuit](./Set-AzureRmExpressRouteCircuit.md)
+[Set-AzExpressRouteCircuit](./Set-AzExpressRouteCircuit.md)

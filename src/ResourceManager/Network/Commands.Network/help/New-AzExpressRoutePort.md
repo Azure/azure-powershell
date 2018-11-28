@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermexpressrouteport
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azexpressrouteport
 schema: 2.0.0
 ---
 
-# New-AzureRmExpressRoutePort
+# New-AzExpressRoutePort
 
 ## SYNOPSIS
 Creates an Azure ExpressRoutePort.
@@ -14,7 +14,7 @@ Creates an Azure ExpressRoutePort.
 
 ### ResourceNameParameterSet (Default)
 ```
-New-AzureRmExpressRoutePort -ResourceGroupName <String> -Name <String> -PeeringLocation <String>
+New-AzExpressRoutePort -ResourceGroupName <String> -Name <String> -PeeringLocation <String>
  -BandwidthInGbps <Int32> -Encapsulation <String> -Location <String> [-Tag <Hashtable>]
  [-Link <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteLink]>]
  [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,14 +22,14 @@ New-AzureRmExpressRoutePort -ResourceGroupName <String> -Name <String> -PeeringL
 
 ### ResourceIdParameterSet
 ```
-New-AzureRmExpressRoutePort -ResourceId <String> -PeeringLocation <String> -BandwidthInGbps <Int32>
+New-AzExpressRoutePort -ResourceId <String> -PeeringLocation <String> -BandwidthInGbps <Int32>
  -Encapsulation <String> -Location <String> [-Tag <Hashtable>]
  [-Link <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteLink]>]
  [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmExpressRoutePort** cmdlet creates an Azure ExpressRoutePort
+The **New-AzExpressRoutePort** cmdlet creates an Azure ExpressRoutePort
 
 ## EXAMPLES
 
@@ -43,7 +43,7 @@ PS C:\> $parameters = @{
     BandwidthInGbps=100
     Encapsulation='QinQ'
 }
-PS C:\> New-AzureRmExpressRoutePort @parameters
+PS C:\> New-AzExpressRoutePort @parameters
 ```
 
 ### Example 2
@@ -55,7 +55,7 @@ PS C:\> $parameters = @{
     BandwidthInGbps=100
     Encapsulation='QinQ'
 }
-PS C:\> New-AzureRmExpressRoutePort @parameters
+PS C:\> New-AzExpressRoutePort @parameters
 ```
 
 ## PARAMETERS
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

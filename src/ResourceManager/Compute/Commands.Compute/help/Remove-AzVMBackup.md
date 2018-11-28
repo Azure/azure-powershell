@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 2AB1B227-68C4-49AE-84C0-E1421E609DE7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmbackup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmbackup
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVMBackup
+# Remove-AzVMBackup
 
 ## SYNOPSIS
 Removes the backup from a virtual machine.
@@ -14,7 +14,7 @@ Removes the backup from a virtual machine.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMBackup [-ResourceGroupName] <String> [-VMName] <String> [-Tag] <String>
+Remove-AzVMBackup [-ResourceGroupName] <String> [-VMName] <String> [-Tag] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ PS C:\>
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

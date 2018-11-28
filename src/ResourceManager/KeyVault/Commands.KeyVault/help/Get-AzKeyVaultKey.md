@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 2BE34AE1-06FA-4F66-8FDB-CED22C2E0978
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultkey
 schema: 2.0.0
 ---
 
-# Get-AzureKeyVaultKey
+# Get-AzKeyVaultKey
 
 ## SYNOPSIS
 Gets Key Vault keys.
@@ -15,67 +15,67 @@ Gets Key Vault keys.
 
 ### ByVaultName (Default)
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultKey [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByKeyName
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [-Version] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByKeyVersions
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVaultName
 ```
-Get-AzureKeyVaultKey [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultKey [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectKeyName
 ```
-Get-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObjectKeyVersions
 ```
-Get-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdVaultName
 ```
-Get-AzureKeyVaultKey [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
+Get-AzKeyVaultKey [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdKeyName
 ```
-Get-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> [-Version] <String>
+Get-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> [-Version] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdKeyVersions
 ```
-Get-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> [-IncludeVersions]
+Get-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureKeyVaultKey** cmdlet gets Azure Key Vault keys.
+The **Get-AzKeyVaultKey** cmdlet gets Azure Key Vault keys.
 This cmdlet gets a specific **Microsoft.Azure.Commands.KeyVault.Models.KeyBundle** or a list of all **KeyBundle** objects in a key vault or by version.
 
 ## EXAMPLES
 
 ### Example 1: Get all the keys in a key vault
 ```powershell
-PS C:\> Get-AzureKeyVaultKey -VaultName 'contoso'
+PS C:\> Get-AzKeyVaultKey -VaultName 'contoso'
 
 Vault Name     : contoso
 Name           : test1
@@ -106,7 +106,7 @@ This command gets all the keys in the key vault named Contoso.
 
 ### Example 2: Get the current version of a key
 ```powershell
-PS C:\> Get-AzureKeyVaultKey -VaultName 'contoso' -KeyName 'test1'
+PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -KeyName 'test1'
 
 Vault Name     : contoso
 Name           : test1
@@ -125,7 +125,7 @@ This command gets the current version of the key named test1 in the key vault na
 
 ### Example 3: Get all versions of a key
 ```powershell
-PS C:\> Get-AzureKeyVaultKey -VaultName 'contoso' -KeyName 'test1' -IncludeVersions
+PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -KeyName 'test1' -IncludeVersions
 
 Vault Name     : contoso
 Name           : test1
@@ -156,7 +156,7 @@ This command gets all versions the key named ITPfx in the key vaultnamed Contoso
 
 ### Example 4: Get a specific version of a key
 ```powershell
-PS C:\> Get-AzureKeyVaultKey -VaultName 'contoso' -KeyName 'test1' -Version 'e4e95940e669407fbdb4298bc21a3e1d'
+PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -KeyName 'test1' -Version 'e4e95940e669407fbdb4298bc21a3e1d'
 
 Vault Name     : contoso
 Name           : test1
@@ -176,7 +176,7 @@ After running this command, you can inspect various properties of the key by nav
 
 ### Example 5: Get all the keys that have been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzureKeyVaultKey -VaultName 'contoso' -InRemovedState
+PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -InRemovedState
 
 Vault Name           : contoso
 Name                 : test3
@@ -196,7 +196,7 @@ This command gets all the keys that have been previously deleted, but not purged
 
 ### Example 6: Gets the key ITPfx that has been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzureKeyVaultKey -VaultName 'contoso' -KeyName 'test3' -InRemovedState
+PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -KeyName 'test3' -InRemovedState
 
 Vault Name           : contoso
 Name                 : test3
@@ -221,7 +221,7 @@ This command will return metadata such as the deletion date, and the scheduled p
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -378,11 +378,11 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultKey](./Add-AzureKeyVaultKey.md)
+[Add-AzKeyVaultKey](./Add-AzKeyVaultKey.md)
 
-[Remove-AzureKeyVaultKey](./Remove-AzureKeyVaultKey.md)
+[Remove-AzKeyVaultKey](./Remove-AzKeyVaultKey.md)
 
-[Undo-AzureKeyVaultKeyRemoval](./Undo-AzureKeyVaultKeyRemoval.md)
+[Undo-AzKeyVaultKeyRemoval](./Undo-AzKeyVaultKeyRemoval.md)
 
-[Set-AzureKeyVaultKeyAttribute](./Set-AzureKeyVaultKeyAttribute.md)
+[Set-AzKeyVaultKeyAttribute](./Set-AzKeyVaultKeyAttribute.md)
 

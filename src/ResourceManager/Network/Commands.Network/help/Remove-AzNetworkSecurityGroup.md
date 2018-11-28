@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 01F56553-1685-43D4-89E6-DDCDF17D1E00
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermnetworksecuritygroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznetworksecuritygroup
 schema: 2.0.0
 ---
 
-# Remove-AzureRmNetworkSecurityGroup
+# Remove-AzNetworkSecurityGroup
 
 ## SYNOPSIS
 Removes a network security group.
@@ -14,18 +14,18 @@ Removes a network security group.
 ## SYNTAX
 
 ```
-Remove-AzureRmNetworkSecurityGroup -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
+Remove-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmNetworkSecurityGroup** cmdlet removes an Azure network security group.
+The **Remove-AzNetworkSecurityGroup** cmdlet removes an Azure network security group.
 
 ## EXAMPLES
 
 ### Example 1: Remove a network security group
 ```
-PS C:\>Remove-AzureRmNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
+PS C:\>Remove-AzNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
 ```
 
 This command removes the security group named NSG-FrontEnd in the resource group named TestRG.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -169,10 +169,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNetworkSecurityGroup](./Get-AzureRmNetworkSecurityGroup.md)
+[Get-AzNetworkSecurityGroup](./Get-AzNetworkSecurityGroup.md)
 
-[New-AzureRmNetworkSecurityGroup](./New-AzureRmNetworkSecurityGroup.md)
+[New-AzNetworkSecurityGroup](./New-AzNetworkSecurityGroup.md)
 
-[Set-AzureRmNetworkSecurityGroup](./Set-AzureRmNetworkSecurityGroup.md)
+[Set-AzNetworkSecurityGroup](./Set-AzNetworkSecurityGroup.md)
 
 

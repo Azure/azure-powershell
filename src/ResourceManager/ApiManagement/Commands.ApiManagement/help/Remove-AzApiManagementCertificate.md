@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 9B261CD8-5209-4C14-A6F8-97D61B641642
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementcertificate
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApiManagementCertificate
+# Remove-AzApiManagementCertificate
 
 ## SYNOPSIS
 Removes an API Management certificate.
@@ -14,19 +14,19 @@ Removes an API Management certificate.
 ## SYNTAX
 
 ```
-Remove-AzureRmApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String> [-PassThru]
+Remove-AzApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmApiManagementCertificate** cmdlet removes an Azure API Management certificate.
+The **Remove-AzApiManagementCertificate** cmdlet removes an Azure API Management certificate.
 
 ## EXAMPLES
 
 ### Example 1: Remove a certificate
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzureRmApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789" -Force
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789" -Force
 ```
 
 This command removes the specified API Management certificate.
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -144,10 +144,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementCertificate](./Get-AzureRmApiManagementCertificate.md)
+[Get-AzApiManagementCertificate](./Get-AzApiManagementCertificate.md)
 
-[New-AzureRmApiManagementCertificate](./New-AzureRmApiManagementCertificate.md)
+[New-AzApiManagementCertificate](./New-AzApiManagementCertificate.md)
 
-[Set-AzureRmApiManagementCertificate](./Set-AzureRmApiManagementCertificate.md)
+[Set-AzApiManagementCertificate](./Set-AzApiManagementCertificate.md)
 
 

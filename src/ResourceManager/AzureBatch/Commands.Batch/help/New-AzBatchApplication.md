@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: FF111B74-90A3-4F7C-B515-CE1EEF68EB54
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/new-azurermbatchapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/new-azbatchapplication
 schema: 2.0.0
 ---
 
-# New-AzureRmBatchApplication
+# New-AzBatchApplication
 
 ## SYNOPSIS
 Adds an application to the specified Batch account.
@@ -14,19 +14,19 @@ Adds an application to the specified Batch account.
 ## SYNTAX
 
 ```
-New-AzureRmBatchApplication [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationId] <String>
+New-AzBatchApplication [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationId] <String>
  [[-AllowUpdates] <Boolean>] [[-DisplayName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmBatchApplication** cmdlet adds an application to the specified Azure Batch account.
+The **New-AzBatchApplication** cmdlet adds an application to the specified Azure Batch account.
 
 ## EXAMPLES
 
 ### Example 1: Add an empty application to a Batch account
 ```
-PS C:\>New-AzureRmBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "Litware" -AllowUpdates $True -DisplayName "Litware Advanced Reticulator"
+PS C:\>New-AzBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "Litware" -AllowUpdates $True -DisplayName "Litware Advanced Reticulator"
 ```
 
 This command creates the Litware application in the ContosoBatch account.
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -141,16 +141,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchApplication](./Get-AzureRmBatchApplication.md)
+[Get-AzBatchApplication](./Get-AzBatchApplication.md)
 
-[Get-AzureRmBatchApplicationPackage](./Get-AzureRmBatchApplicationPackage.md)
+[Get-AzBatchApplicationPackage](./Get-AzBatchApplicationPackage.md)
 
-[New-AzureRmBatchApplicationPackage](./New-AzureRmBatchApplicationPackage.md)
+[New-AzBatchApplicationPackage](./New-AzBatchApplicationPackage.md)
 
-[Remove-AzureRmBatchApplication](./Remove-AzureRmBatchApplication.md)
+[Remove-AzBatchApplication](./Remove-AzBatchApplication.md)
 
-[Remove-AzureRmBatchApplicationPackage](./Remove-AzureRmBatchApplicationPackage.md)
+[Remove-AzBatchApplicationPackage](./Remove-AzBatchApplicationPackage.md)
 
-[Set-AzureRmBatchApplication](./Set-AzureRmBatchApplication.md)
+[Set-AzBatchApplication](./Set-AzBatchApplication.md)
 
 

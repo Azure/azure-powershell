@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: EE3D2BA0-32E7-4A37-BCAF-F0E8FAAC43CE
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebappsslbinding
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebappsslbinding
 schema: 2.0.0
 ---
 
-# Get-AzureRmWebAppSSLBinding
+# Get-AzWebAppSSLBinding
 
 ## SYNOPSIS
 Gets an Azure Web App certificate SSL binding.
@@ -15,18 +15,18 @@ Gets an Azure Web App certificate SSL binding.
 
 ### S1
 ```
-Get-AzureRmWebAppSSLBinding [[-Name] <String>] [-ResourceGroupName] <String> [-WebAppName] <String>
+Get-AzWebAppSSLBinding [[-Name] <String>] [-ResourceGroupName] <String> [-WebAppName] <String>
  [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Get-AzureRmWebAppSSLBinding [[-Name] <String>] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+Get-AzWebAppSSLBinding [[-Name] <String>] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmWebAppSSLBinding** cmdlet gets a Secure Sockets Layer (SSL) binding for an Azure Web App.
+The **Get-AzWebAppSSLBinding** cmdlet gets a Secure Sockets Layer (SSL) binding for an Azure Web App.
 SSL bindings are used to associate a Web App with an uploaded certificate.
 Web Apps can be bound to multiple certificates.
 
@@ -34,21 +34,21 @@ Web Apps can be bound to multiple certificates.
 
 ### Example 1: Get SSL bindings for a Web App
 ```
-PS C:\>Get-AzureRmWebAppSSLBinding -ResourceGroupName "ContosoResourceGroup" -WebAppName "ContosoWebApp"
+PS C:\>Get-AzWebAppSSLBinding -ResourceGroupName "ContosoResourceGroup" -WebAppName "ContosoWebApp"
 ```
 
 This command retrieves the SSL bindings for the Web App ContosoWebApp, which is associated with the resource group ContosoResourceGroup.
 
 ### Example 2: Use an object reference to get SSL bindings for a Web App
 ```
-PS C:\>$WebApp = Get-AzureRmWebApp -Name "ContosoWebApp"
-PS C:\> Get-AzureRmWebAppSSLBinding -WebApp $WebApp
+PS C:\>$WebApp = Get-AzWebApp -Name "ContosoWebApp"
+PS C:\> Get-AzWebAppSSLBinding -WebApp $WebApp
 ```
 
 The commands in this example also get the SSL bindings for the Web App ContosoWebApp; in this case, however, an object reference is used instead of the Web App name and the name of the associated resource group.
-This object reference is created by the first command in the example, which uses **Get-AzureRmWebApp** to create an object reference to the Web App named ContosoWebApp.
+This object reference is created by the first command in the example, which uses **Get-AzWebApp** to create an object reference to the Web App named ContosoWebApp.
 That object reference is stored in a variable named $WebApp.
-This variable, and the **Get-AzureRmWebAppSSLBinding** cmdlet, are then used by the second command to get the SSL bindings.
+This variable, and the **Get-AzWebAppSSLBinding** cmdlet, are then used by the second command to get the SSL bindings.
 
 ## PARAMETERS
 
@@ -56,7 +56,7 @@ This variable, and the **Get-AzureRmWebAppSSLBinding** cmdlet, are then used by 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 
 ### -Slot
 Specifies a Web App deployment slot.
-To get a deployment slot, use the Get-AzureRMWebAppSlot cmdlet.
+To get a deployment slot, use the Get-AzWebAppSlot cmdlet.
 
 ```yaml
 Type: System.String
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 
 ### -WebApp
 Specifies a Web App.
-To get a Web App, use the Get-AzureRmWebApp cmdlet.
+To get a Web App, use the Get-AzWebApp cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
@@ -162,10 +162,10 @@ Parameters: WebApp (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmWebAppSSLBinding](./New-AzureRmWebAppSSLBinding.md)
+[New-AzWebAppSSLBinding](./New-AzWebAppSSLBinding.md)
 
-[Remove-AzureRmWebAppSSLBinding](./Remove-AzureRmWebAppSSLBinding.md)
+[Remove-AzWebAppSSLBinding](./Remove-AzWebAppSSLBinding.md)
 
-[Get-AzureRmWebApp](./Get-AzureRmWebApp.md)
+[Get-AzWebApp](./Get-AzWebApp.md)
 
 

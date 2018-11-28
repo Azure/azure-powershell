@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 ms.assetid: 10141D75-B58D-42B0-B0A6-92FF630E534C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/enable-azurermoperationalinsightslinuxperformancecollection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/enable-azoperationalinsightslinuxperformancecollection
 schema: 2.0.0
 ---
 
-# Enable-AzureRmOperationalInsightsLinuxPerformanceCollection
+# Enable-AzOperationalInsightsLinuxPerformanceCollection
 
 ## SYNOPSIS
 Starts collection of performance counters from Linux computers.
@@ -15,18 +15,18 @@ Starts collection of performance counters from Linux computers.
 
 ### ByWorkspaceName (Default)
 ```
-Enable-AzureRmOperationalInsightsLinuxPerformanceCollection [-ResourceGroupName] <String>
- [-WorkspaceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzOperationalInsightsLinuxPerformanceCollection [-ResourceGroupName] <String> [-WorkspaceName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
-Enable-AzureRmOperationalInsightsLinuxPerformanceCollection [-Workspace] <PSWorkspace>
+Enable-AzOperationalInsightsLinuxPerformanceCollection [-Workspace] <PSWorkspace>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzureRmOperationalInsightsLinuxPerformanceCollection** cmdlet starts collection of performance counters from connected Linux computers in a workspace.
+The **Enable-AzOperationalInsightsLinuxPerformanceCollection** cmdlet starts collection of performance counters from connected Linux computers in a workspace.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ The **Enable-AzureRmOperationalInsightsLinuxPerformanceCollection** cmdlet start
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -142,6 +142,6 @@ Parameters: Workspace (ByValue)
 
 ## RELATED LINKS
 
-[Disable-AzureRmOperationalInsightsLinuxPerformanceCollection](./Disable-AzureRmOperationalInsightsLinuxPerformanceCollection.md)
+[Disable-AzOperationalInsightsLinuxPerformanceCollection](./Disable-AzOperationalInsightsLinuxPerformanceCollection.md)
 
 

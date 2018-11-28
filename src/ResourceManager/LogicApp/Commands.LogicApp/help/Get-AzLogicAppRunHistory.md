@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: F271BCB1-6D43-48E5-BB51-00288F57BFFB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermlogicapprunhistory
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azlogicapprunhistory
 schema: 2.0.0
 ---
 
-# Get-AzureRmLogicAppRunHistory
+# Get-AzLogicAppRunHistory
 
 ## SYNOPSIS
 Gets the run history of a logic app.
@@ -14,12 +14,12 @@ Gets the run history of a logic app.
 ## SYNTAX
 
 ```
-Get-AzureRmLogicAppRunHistory -ResourceGroupName <String> -Name <String> [-RunName <String>]
+Get-AzLogicAppRunHistory -ResourceGroupName <String> -Name <String> [-RunName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmLogicAppRunHistory** cmdlet gets the run history of a logic app.
+The **Get-AzLogicAppRunHistory** cmdlet gets the run history of a logic app.
 This cmdlet returns a collection of **WorkflowRun** objects.
 Specify the logic app and resource group.
 This module supports dynamic parameters.
@@ -31,7 +31,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Get the run history of a logic app
 ```
-PS C:\>Get-AzureRmLogicAppActionRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03"
+PS C:\>Get-AzLogicAppActionRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03"
 CorrelationId    : 55830326-9042-404d-a4c3-fab198106a57
 EndTime          : 1/13/2016 2:46:55 PM
 Error            : {code, message}
@@ -59,7 +59,7 @@ This command gets the run history of a logic app named LogicApp03.
 
 ### Example 2: Get a logic app run
 ```
-PS C:\>Get-AzureRmLogicAppActionRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03" -RunName "08587489104702792076"
+PS C:\>Get-AzLogicAppActionRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03" -RunName "08587489104702792076"
 CorrelationId    : 55830326-9042-404d-a4c3-fab198106a57
 EndTime          : 1/13/2016 2:46:55 PM
 Error            : {code, message}
@@ -80,7 +80,7 @@ This command gets a specific logic app run for the logic app named LogicApp03.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -152,10 +152,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmLogicAppRunAction](./Get-AzureRmLogicAppRunAction.md)
+[Get-AzLogicAppRunAction](./Get-AzLogicAppRunAction.md)
 
-[Start-AzureRmLogicApp](./Start-AzureRmLogicApp.md)
+[Start-AzLogicApp](./Start-AzLogicApp.md)
 
-[Stop-AzureRmLogicAppRun](./Stop-AzureRmLogicAppRun.md)
+[Stop-AzLogicAppRun](./Stop-AzLogicAppRun.md)
 
 

@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: F344D8D1-5593-4C09-A1CA-37579D2A3A61
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/set-azurermautomationvariable
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationvariable
 schema: 2.0.0
 ---
 
-# Set-AzureRmAutomationVariable
+# Set-AzAutomationVariable
 
 ## SYNOPSIS
 Modifies an Automation variable.
@@ -15,19 +15,18 @@ Modifies an Automation variable.
 
 ### UpdateVariableValue
 ```
-Set-AzureRmAutomationVariable [-Name] <String> -Encrypted <Boolean> -Value <Object>
- [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzAutomationVariable [-Name] <String> -Encrypted <Boolean> -Value <Object> [-ResourceGroupName] <String>
+ [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### UpdateVariableDescription
 ```
-Set-AzureRmAutomationVariable [-Name] <String> -Description <String> [-ResourceGroupName] <String>
+Set-AzAutomationVariable [-Name] <String> -Description <String> [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmAutomationVariable** cmdlet modifies the value or description of a variable in Azure Automation.
+The **Set-AzAutomationVariable** cmdlet modifies the value or description of a variable in Azure Automation.
 To encrypt the variable, specify the *Encrypted* parameter.
 You cannot modify the encrypted state of a variable after creation.
 Specifying *Encrypted* for an existing, non-encrypted, variable fails.
@@ -36,7 +35,7 @@ Specifying *Encrypted* for an existing, non-encrypted, variable fails.
 
 ### Example 1: Set the value of a variable
 ```
-PS C:\>Set-AzureRmAutomationVariable -AutomationAccountName "Contoso17" -Name "StringVariable22" -ResourceGroupName "ResourceGroup01" -Value "New Value" -Encrypted $False
+PS C:\>Set-AzAutomationVariable -AutomationAccountName "Contoso17" -Name "StringVariable22" -ResourceGroupName "ResourceGroup01" -Value "New Value" -Encrypted $False
 ```
 
 This command sets a new value for the variable named StringVariable22 in the Azure Automation account named Contoso17.
@@ -62,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -167,10 +166,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationVariable](./Get-AzureRMAutomationVariable.md)
+[Get-AzAutomationVariable](./Get-AzAutomationVariable.md)
 
-[New-AzureRmAutomationVariable](./New-AzureRMAutomationVariable.md)
+[New-AzAutomationVariable](./New-AzAutomationVariable.md)
 
-[Remove-AzureRmAutomationVariable](./Remove-AzureRMAutomationVariable.md)
+[Remove-AzAutomationVariable](./Remove-AzAutomationVariable.md)
 
 

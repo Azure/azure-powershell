@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 5307F1F1-E84C-4949-A557-99EF0012C3DF
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermlogicapptrigger
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azlogicapptrigger
 schema: 2.0.0
 ---
 
-# Get-AzureRmLogicAppTrigger
+# Get-AzLogicAppTrigger
 
 ## SYNOPSIS
 Gets the triggers of a logic app.
@@ -14,12 +14,12 @@ Gets the triggers of a logic app.
 ## SYNTAX
 
 ```
-Get-AzureRmLogicAppTrigger -ResourceGroupName <String> -Name <String> [-TriggerName <String>]
+Get-AzLogicAppTrigger -ResourceGroupName <String> -Name <String> [-TriggerName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmLogicAppTrigger** cmdlet gets triggers from a logic app.
+The **Get-AzLogicAppTrigger** cmdlet gets triggers from a logic app.
 This cmdlet returns a **WorkflowTrigger** object.
 Specify the workflow, resource group, and trigger.
 This module supports dynamic parameters.
@@ -31,7 +31,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Get a trigger of a logic app
 ```
-PS C:\>Get-AzureRmLogicAppTrigger -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -TriggerName "Trigger01"
+PS C:\>Get-AzLogicAppTrigger -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -TriggerName "Trigger01"
 ChangedTime         : 1/14/2016 11:45:07 AM
 CreatedTime         : 1/13/2016 2:42:26 PM
 LastExecutionTime   : 1/14/2016 11:45:07 AM
@@ -49,7 +49,7 @@ This command gets the trigger named Trigger01 from the logic app named LogicApp0
 
 ### Example 2: Get all triggers of a logic app
 ```
-PS C:\>Get-AzureRmLogicAppTrigger -ResourceGroupName "ResourceGroup11" -Name "LogicApp07"
+PS C:\>Get-AzLogicAppTrigger -ResourceGroupName "ResourceGroup11" -Name "LogicApp07"
 ChangedTime         : 1/14/2016 11:45:07 AM
 CreatedTime         : 1/13/2016 2:42:26 PM
 LastExecutionTime   : 1/14/2016 11:45:07 AM
@@ -71,7 +71,7 @@ This command gets the triggers of the logic app named LogicApp07.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -142,8 +142,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmLogicAppTriggerHistory](./Get-AzureRmLogicAppTriggerHistory.md)
+[Get-AzLogicAppTriggerHistory](./Get-AzLogicAppTriggerHistory.md)
 
-[Start-AzureRmLogicApp](./Start-AzureRmLogicApp.md)
+[Start-AzLogicApp](./Start-AzLogicApp.md)
 
 

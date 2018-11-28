@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 9400E9EB-E927-44D5-8722-9706BDD92FD5
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/resume-azurermautomationjob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/resume-azautomationjob
 schema: 2.0.0
 ---
 
-# Resume-AzureRmAutomationJob
+# Resume-AzAutomationJob
 
 ## SYNOPSIS
 Resumes a suspended Automation job.
@@ -14,20 +14,20 @@ Resumes a suspended Automation job.
 ## SYNTAX
 
 ```
-Resume-AzureRmAutomationJob [-Id] <Guid> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Resume-AzAutomationJob [-Id] <Guid> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Resume-AzureRmAutomationJob** cmdlet resumes a suspended Azure Automation job.
+The **Resume-AzAutomationJob** cmdlet resumes a suspended Azure Automation job.
 Specify the suspended job.
-To suspend a job, use the Suspend-AzureRmAutomationJob cmdlet.
+To suspend a job, use the Suspend-AzAutomationJob cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Resume a suspended job
 ```
-PS C:\>Resume-AzureRmAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -ResourceGroupName "ResourceGroup01"
+PS C:\>Resume-AzAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -ResourceGroupName "ResourceGroup01"
 ```
 
 This command resumes the job that has the specified ID.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,12 +111,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationJob](./Get-AzureRMAutomationJob.md)
+[Get-AzAutomationJob](./Get-AzAutomationJob.md)
 
-[Get-AzureRmAutomationJobOutput](./Get-AzureRMAutomationJobOutput.md)
+[Get-AzAutomationJobOutput](./Get-AzAutomationJobOutput.md)
 
-[Stop-AzureRmAutomationJob](./Stop-AzureRMAutomationJob.md)
+[Stop-AzAutomationJob](./Stop-AzAutomationJob.md)
 
-[Suspend-AzureRmAutomationJob](./Suspend-AzureRMAutomationJob.md)
+[Suspend-AzAutomationJob](./Suspend-AzAutomationJob.md)
 
 

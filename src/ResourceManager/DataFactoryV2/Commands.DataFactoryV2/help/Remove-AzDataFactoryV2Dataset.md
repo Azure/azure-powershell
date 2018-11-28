@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactoryv2dataset
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactoryv2dataset
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryV2Dataset
+# Remove-AzDataFactoryV2Dataset
 
 ## SYNOPSIS
 Removes a dataset from Data Factory.
@@ -14,30 +14,30 @@ Removes a dataset from Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmDataFactoryV2Dataset [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
+Remove-AzDataFactoryV2Dataset [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzureRmDataFactoryV2Dataset [-InputObject] <PSDataset> [-Force]
+Remove-AzDataFactoryV2Dataset [-InputObject] <PSDataset> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzureRmDataFactoryV2Dataset [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzDataFactoryV2Dataset [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmDataFactoryV2Dataset cmdlet removes a dataset from Azure Data Factory.
+The Remove-AzDataFactoryV2Dataset cmdlet removes a dataset from Azure Data Factory.
 
 ## EXAMPLES
 
 ### Example 1: Remove a dataset
 ```
-PS C:\> Remove-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikiAggregatedData"
+PS C:\> Remove-AzDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikiAggregatedData"
           Confirm
           Are you sure you want to remove dataset 'DAWikiAggregatedData' in data factory 'WikiADF'?
           [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
@@ -205,6 +205,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2Dataset]()
+[Get-AzDataFactoryV2Dataset]()
 
-[Set-AzureRmDataFactoryV2Dataset]()
+[Set-AzDataFactoryV2Dataset]()

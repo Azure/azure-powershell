@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/add-azurermvmssvmdatadisk
+Module Name: Az.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmssvmdatadisk
 schema: 2.0.0
 ---
 
-# Add-AzureRmVmssVMDataDisk
+# Add-AzVmssVMDataDisk
 
 ## SYNOPSIS
 Adds a data disk to a Vmss VM.
@@ -13,22 +13,22 @@ Adds a data disk to a Vmss VM.
 ## SYNTAX
 
 ```
-Add-AzureRmVmssVMDataDisk [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [-Lun] <Int32>
+Add-AzVmssVMDataDisk [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [-Lun] <Int32>
  [-CreateOption] <String> [-ManagedDiskId] <String> [-StorageAccountType <String>] [-Caching <CachingTypes>]
  [-DiskSizeInGB <Int32>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmVmssVMDataDisk** cmdlet adds a data disk to a Vmss VM.
+The **Add-AzVmssVMDataDisk** cmdlet adds a data disk to a Vmss VM.
 
 ## EXAMPLES
 
 ### Example 1: Add a managed data disk to a Vmss VM.
 ```powershell
-PS C:\> $disk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname0
-PS C:\> $VmssVM = Get-AzureRmVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0
-PS C:\> $VmssVM = Add-AzureRmVmssVMDataDisk -VirtualMachineScaleSetVM $VmssVM -Lun 0 -DiskSizeInGB 10 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk.Id
-PS C:\> Update-AzureRmVmssVM -VirtualMachineScaleSetVM $VmssVM
+PS C:\> $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0
+PS C:\> $VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0
+PS C:\> $VmssVM = Add-AzVmssVMDataDisk -VirtualMachineScaleSetVM $VmssVM -Lun 0 -DiskSizeInGB 10 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk.Id
+PS C:\> Update-AzVmssVM -VirtualMachineScaleSetVM $VmssVM
 ```
 
 The first command gets an existing managed disk.
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSetVM
 Specifies the local virtual machine scale set VM object to which to add a data disk.
-You can use the **Get-AzureRmVmssVM** cmdlet to obtain a virtual machine scale set VM object.
+You can use the **Get-AzVmssVM** cmdlet to obtain a virtual machine scale set VM object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
@@ -174,7 +174,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

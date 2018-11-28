@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-Module Name: AzureRM.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/test-azurermeventhubname
+Module Name: Az.EventHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/test-azeventhubname
 schema: 2.0.0
 ---
 
-# Test-AzureRmEventHubName
+# Test-AzEventHubName
 
 ## SYNOPSIS
 Checks the Availability of the given NameSpace Name or Alias (DR Configuration Name)
@@ -14,37 +14,37 @@ Checks the Availability of the given NameSpace Name or Alias (DR Configuration N
 
 ### NamespaceCheckNameAvailabilitySet (Default)
 ```
-Test-AzureRmEventHubName [-Namespace] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzEventHubName [-Namespace] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AliasCheckNameAvailabilitySet
 ```
-Test-AzureRmEventHubName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
+Test-AzEventHubName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzureRmEventhubName** Cmdlet Check Availability of the NameSpace Name or Alias (DR Configuration Name)
+The **Test-AzEventhubName** Cmdlet Check Availability of the NameSpace Name or Alias (DR Configuration Name)
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Test-AzureRmEventhubName -Namespace MyNameSapceName
+PS C:\> Test-AzEventhubName -Namespace MyNameSapceName
 ```
 
 Returns the status on availability of the namespace name 'MyNameSapceName' as True if available
 
 ### Example 2
 ```
-PS C:\> Test-AzureRmEventhubName -Namespace MyNameSapceName
+PS C:\> Test-AzEventhubName -Namespace MyNameSapceName
 ```
 
 Returns the status on availability of the namespace name 'MyNameSapceName' as False with Reason
 
 ### Example 3
 ```
-PS C:\> Test-AzureRmEventhubName -ResourceGroupName MyResourceGroup -Namespace Test123 -AliasName myAliasName
+PS C:\> Test-AzEventhubName -ResourceGroupName MyResourceGroup -Namespace Test123 -AliasName myAliasName
 ```
 
 Returns the status on availability of the alias name 'myAliasName' for namespace 'MyNameSapceName' as True if available
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

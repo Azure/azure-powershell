@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-Module Name: AzureRM.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/remove-azurermcontainerregistry
+Module Name: Az.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/remove-azcontainerregistry
 schema: 2.0.0
 ---
 
-# Remove-AzureRmContainerRegistryReplication
+# Remove-AzContainerRegistryReplication
 
 ## SYNOPSIS
 Removes a container registry replication.
@@ -14,31 +14,30 @@ Removes a container registry replication.
 
 ### NameResourceGroupParameterSet (Default)
 ```
-Remove-AzureRmContainerRegistryReplication [-Name] <String> [-ResourceGroupName] <String>
- [-RegistryName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzContainerRegistryReplication [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ReplicationObjectParameterSet
 ```
-Remove-AzureRmContainerRegistryReplication -Replicatoin <PSContainerRegistryReplication> [-PassThru]
+Remove-AzContainerRegistryReplication -Replicatoin <PSContainerRegistryReplication> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzureRmContainerRegistryReplication -ResourceId <String> [-PassThru]
+Remove-AzContainerRegistryReplication -ResourceId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmContainerRegistryReplication cmdlet removes a container registry replication.
+The Remove-AzContainerRegistryReplication cmdlet removes a container registry replication.
 
 ## EXAMPLES
 
 ### Example 1: Removes a container registry replication.
 ```powershell
-PS C:\> Remove-AzureRmContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "replication001"
+PS C:\> Remove-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "replication001"
 ```
 
 Removes a container registry replication.
@@ -49,7 +48,7 @@ Removes a container registry replication.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -200,7 +199,7 @@ Parameters: Replicatoin (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmContainerRegistryReplication](New-AzureRmContainerRegistryReplication.md)
+[New-AzContainerRegistryReplication](New-AzContainerRegistryReplication.md)
 
-[Get-AzureRmContainerRegistryReplication](Remove-AzureRmContainerRegistryReplication.md)
+[Get-AzContainerRegistryReplication](Remove-AzContainerRegistryReplication.md)
 

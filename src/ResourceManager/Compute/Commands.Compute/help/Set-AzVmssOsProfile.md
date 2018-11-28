@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 3E7B9EFA-8BC2-46EB-9AD7-43EAB7FF3891
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmssosprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmssosprofile
 schema: 2.0.0
 ---
 
-# Set-AzureRmVmssOsProfile
+# Set-AzVmssOsProfile
 
 ## SYNOPSIS
 Sets the VMSS operating system profile properties.
@@ -14,7 +14,7 @@ Sets the VMSS operating system profile properties.
 ## SYNTAX
 
 ```
-Set-AzureRmVmssOsProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-ComputerNamePrefix] <String>]
+Set-AzVmssOsProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-ComputerNamePrefix] <String>]
  [[-AdminUsername] <String>] [[-AdminPassword] <String>] [[-CustomData] <String>]
  [[-WindowsConfigurationProvisionVMAgent] <Boolean>] [[-WindowsConfigurationEnableAutomaticUpdate] <Boolean>]
  [[-TimeZone] <String>] [[-AdditionalUnattendContent] <AdditionalUnattendContent[]>]
@@ -24,13 +24,13 @@ Set-AzureRmVmssOsProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVmssOsProfile** cmdlet sets the Virtual Machine Scale Set operating system profile properties.
+The **Set-AzVmssOsProfile** cmdlet sets the Virtual Machine Scale Set operating system profile properties.
 
 ## EXAMPLES
 
 ### Example 1: Set the operating system profile properties for a VMSS
 ```
-PS C:\> Set-AzureRmVmssOSProfile -VirtualMachineScaleSet "ContosoVMSS" -ComputerNamePrefix "Test" -AdminUsername $AdminUsername -AdminPassword $AdminPassword
+PS C:\> Set-AzVmssOSProfile -VirtualMachineScaleSet "ContosoVMSS" -ComputerNamePrefix "Test" -AdminUsername $AdminUsername -AdminPassword $AdminPassword
 ```
 
 This command sets operating system profile properties for the virtual machines that belong to the VMSS named ContosoVMSS.
@@ -40,7 +40,7 @@ The command sets the computer name prefix for all the virtual machine instances 
 
 ### -AdditionalUnattendContent
 Specifies an unattended content object.
-You can use the Add-AzureRmVMAdditionalUnattendContent to create the object.
+You can use the Add-AzVMAdditionalUnattendContent to create the object.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.AdditionalUnattendContent[]
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ### -Listener
 Specifies the Windows Remote Management (WinRM) listeners.
 This enables remote Windows PowerShell.
-You can use the Add-AzureRmVmssWinRMListener cmdlet to create the listener.
+You can use the Add-AzVmssWinRMListener cmdlet to create the listener.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.WinRMListener[]
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 
 ### -PublicKey
 Specifies the Secure Shell (SSH) public key object.
-You can use the Add-AzureRmVMSshPublicKey cmdlet to create the object.
+You can use the Add-AzVMSshPublicKey cmdlet to create the object.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.SshPublicKey[]
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 
 ### -Secret
 Specifies the secrets object which contains the certificate references to place on the virtual machine.
-You can use the Add-AzureRmVmssSecret cmdlet to create the secrets object.
+You can use the Add-AzVmssSecret cmdlet to create the secrets object.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.VaultSecretGroup[]
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specifies the VMSS object.
-You can use the New-AzureRmVmssConfig cmdlet to create the object.
+You can use the New-AzVmssConfig cmdlet to create the object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
@@ -314,14 +314,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmVMAdditionalUnattendContent](./Add-AzureRmVMAdditionalUnattendContent.md)
+[Add-AzVMAdditionalUnattendContent](./Add-AzVMAdditionalUnattendContent.md)
 
-[Add-AzureRmVmssWinRMListener](./Add-AzureRmVmssWinRMListener.md)
+[Add-AzVmssWinRMListener](./Add-AzVmssWinRMListener.md)
 
-[Add-AzureRmVMSshPublicKey](./Add-AzureRmVMSshPublicKey.md)
+[Add-AzVMSshPublicKey](./Add-AzVMSshPublicKey.md)
 
-[Add-AzureRmVmssSecret](./Add-AzureRmVmssSecret.md)
+[Add-AzVmssSecret](./Add-AzVmssSecret.md)
 
-[New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md)
+[New-AzVmssConfig](./New-AzVmssConfig.md)
 
 

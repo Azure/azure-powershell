@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: E655684D-9601-4A0B-BB09-EFB787EB2B1B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchjobstatistics
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchjobstatistics
 schema: 2.0.0
 ---
 
-# Get-AzureBatchJobStatistics
+# Get-AzBatchJobStatistics
 
 ## SYNOPSIS
 Gets job summary statistics for a Batch account.
@@ -14,19 +14,19 @@ Gets job summary statistics for a Batch account.
 ## SYNTAX
 
 ```
-Get-AzureBatchJobStatistics -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
+Get-AzBatchJobStatistics -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureBatchJobStatistics** cmdlet gets lifetime summary statistics for all of the jobs in an Azure Batch account.
+The **Get-AzBatchJobStatistics** cmdlet gets lifetime summary statistics for all of the jobs in an Azure Batch account.
 Statistics are aggregated across all jobs that have ever existed in the account, from account creation to the last update time of the statistics.
 
 ## EXAMPLES
 
 ### Example 1: Get summary statistics for all jobs
 ```
-PS C:\>Get-AzureBatchJobStatistics -BatchContext $Context
+PS C:\>Get-AzBatchJobStatistics -BatchContext $Context
 FailedTaskCount    : 330
 KernelCpuTime      : 00:24:31.8440000
 LastUpdateTime     : 5/16/2016 6:00:00 PM
@@ -43,7 +43,7 @@ WriteIOGiB         : 0.159623090177774
 WriteIOps          : 146946
 ```
 
-The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzureRmBatchAccountKeys**.
+The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKeys**.
 The command stores this object reference in the $Context variable.
 The second command gets the summary statistics for all of the jobs.
 The command uses the $Context value from the first command.
@@ -52,7 +52,7 @@ The command uses the $Context value from the first command.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -97,10 +97,10 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchPoolStatistics](./Get-AzureBatchPoolStatistics.md)
+[Get-AzBatchPoolStatistics](./Get-AzBatchPoolStatistics.md)
 
-[Get-AzureBatchPoolUsageMetrics](./Get-AzureBatchPoolUsageMetrics.md)
+[Get-AzBatchPoolUsageMetrics](./Get-AzBatchPoolUsageMetrics.md)
 
 

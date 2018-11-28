@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 28BC1B99-946C-4A8D-9581-4D5CC0BCEF8B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/set-azurekeyvaultcertificatepolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy
 schema: 2.0.0
 ---
 
-# Set-AzureKeyVaultCertificatePolicy
+# Set-AzKeyVaultCertificatePolicy
 
 ## SYNOPSIS
 Creates or updates the policy for a certificate in a key vault.
@@ -15,7 +15,7 @@ Creates or updates the policy for a certificate in a key vault.
 
 ### ExpandedRenewPercentage (Default)
 ```
-Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> [-RenewAtPercentageLifetime <Int32>]
+Set-AzKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> [-RenewAtPercentageLifetime <Int32>]
  [-SecretContentType <String>] [-ReuseKeyOnRenewal <Boolean>] [-Disabled] [-SubjectName <String>]
  [-DnsName <System.Collections.Generic.List`1[System.String]>]
  [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
@@ -27,7 +27,7 @@ Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> [-Rene
 
 ### ByValue
 ```
-Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
+Set-AzKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
  [-InputObject] <PSKeyVaultCertificatePolicy> [-EmailAtNumberOfDaysBeforeExpiry <Int32>]
  [-EmailAtPercentageLifetime <Int32>] [-KeyType <String>] [-CertificateTransparency <Boolean>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -35,9 +35,9 @@ Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
 
 ### ExpandedRenewNumber
 ```
-Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
- -RenewAtNumberOfDaysBeforeExpiry <Int32> [-SecretContentType <String>] [-ReuseKeyOnRenewal <Boolean>]
- [-Disabled] [-SubjectName <String>] [-DnsName <System.Collections.Generic.List`1[System.String]>]
+Set-AzKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> -RenewAtNumberOfDaysBeforeExpiry <Int32>
+ [-SecretContentType <String>] [-ReuseKeyOnRenewal <Boolean>] [-Disabled] [-SubjectName <String>]
+ [-DnsName <System.Collections.Generic.List`1[System.String]>]
  [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>] [-IssuerName <String>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
@@ -46,13 +46,13 @@ Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-The **Set-AzureKeyVaultCertificatePolicy** cmdlet creates or updates the policy for a certificate in a key vault.
+The **Set-AzKeyVaultCertificatePolicy** cmdlet creates or updates the policy for a certificate in a key vault.
 
 ## EXAMPLES
 
 ### Example 1: Set a certificate policy
 ```powershell
-PS C:\> Set-AzureKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01" -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal $True -PassThru
+PS C:\> Set-AzKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01" -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal $True -PassThru
 
 SecretContentType               : application/x-pkcs12
 Kty                             :
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -466,7 +466,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultCertificatePolicy](./Get-AzureKeyVaultCertificatePolicy.md)
+[Get-AzKeyVaultCertificatePolicy](./Get-AzKeyVaultCertificatePolicy.md)
 
-[New-AzureKeyVaultCertificatePolicy](./New-AzureKeyVaultCertificatePolicy.md)
+[New-AzKeyVaultCertificatePolicy](./New-AzKeyVaultCertificatePolicy.md)
 

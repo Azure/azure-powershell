@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmssdiskencryptionextension
+Module Name: Az.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmssdiskencryptionextension
 schema: 2.0.0
 ---
 
-# Set-AzureRmVmssDiskEncryptionExtension
+# Set-AzVmssDiskEncryptionExtension
 
 ## SYNOPSIS
 Enables disk encryption on a VM scale set.
@@ -13,7 +13,7 @@ Enables disk encryption on a VM scale set.
 ## SYNTAX
 
 ```
-Set-AzureRmVmssDiskEncryptionExtension [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+Set-AzVmssDiskEncryptionExtension [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String> [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionKeyVaultId <String>] [-KeyEncryptionAlgorithm <String>] [-VolumeType <String>] [-ForceUpdate]
  [-TypeHandlerVersion <String>] [-ExtensionName <String>] [-Passphrase <String>] [-Force]
@@ -22,7 +22,7 @@ Set-AzureRmVmssDiskEncryptionExtension [-ResourceGroupName] <String> [-VMScaleSe
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVmssDiskEncryptionExtension** cmdlet enables encryption on a VM scale set.
+The **Set-AzVmssDiskEncryptionExtension** cmdlet enables encryption on a VM scale set.
 This cmdlet enables encryption by installing the disk encryption extension on the VM scale set.
 If no *Name* parameter is specified, an extension with the default name AzureDiskEncryption for virtual machines that run the Windows operating system or AzureDiskEncryptionForLinux for Linux virtual machines are installed.
 
@@ -33,10 +33,10 @@ If no *Name* parameter is specified, an extension with the default name AzureDis
 $RGName = "MyResourceGroup"
 $VmssName = "MyTestVmss"
 $VaultName= "MyKeyVault"
-$KeyVault = Get-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $RGName
+$KeyVault = Get-AzKeyVault -VaultName $VaultName -ResourceGroupName $RGName
 $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
 $KeyVaultResourceId = $KeyVault.ResourceId
-PS C:\> Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
+PS C:\> Set-AzVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
 ```
 
 This command enables encryption on all disks of all VMs in the VM scale set.
@@ -47,7 +47,7 @@ This command enables encryption on all disks of all VMs in the VM scale set.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

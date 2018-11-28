@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermmanagementgroupsubscription/
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azmanagementgroupsubscription/
 schema: 2.0.0
 ---
 
-# New-AzureRmManagementGroupSubscription
+# New-AzManagementGroupSubscription
 
 ## SYNOPSIS
 Adds a Subscription to a Management Group.
@@ -13,18 +13,18 @@ Adds a Subscription to a Management Group.
 ## SYNTAX
 
 ```
-New-AzureRmManagementGroupSubscription [-GroupName] <String> [-SubscriptionId] <Guid> [-PassThru]
+New-AzManagementGroupSubscription [-GroupName] <String> [-SubscriptionId] <Guid> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRMManagementGroupSubscription** cmdlet adds a Subscription to a Management Group.
+The **New-AzManagementGroupSubscription** cmdlet adds a Subscription to a Management Group.
 
 ## EXAMPLES
 
 ### Example 1: Add Subscription to a Management Group
 ```
-PS C:\> New-AzureRMManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 2120692d-35c3-44c8-81f5-631fa7351726
+PS C:\> New-AzManagementGroupSubscription -GroupName "TestGroup" -SubscriptionId 2120692d-35c3-44c8-81f5-631fa7351726
 ```
 
 ## PARAMETERS
@@ -33,7 +33,7 @@ PS C:\> New-AzureRMManagementGroupSubscription -GroupName "TestGroup" -Subscript
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

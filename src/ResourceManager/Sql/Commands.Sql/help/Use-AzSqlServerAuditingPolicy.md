@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 381F5B34-983C-4733-B384-35D6579B79A2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/use-azurermsqlserverauditingpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/use-azsqlserverauditingpolicy
 schema: 2.0.0
 ---
 
-# Use-AzureRmSqlServerAuditingPolicy
+# Use-AzSqlServerAuditingPolicy
 
 ## SYNOPSIS
 Specifies that a database uses the auditing policy of its host server.
@@ -14,12 +14,12 @@ Specifies that a database uses the auditing policy of its host server.
 ## SYNTAX
 
 ```
-Use-AzureRmSqlServerAuditingPolicy [-PassThru] [-ServerName] <String> [-DatabaseName] <String>
+Use-AzSqlServerAuditingPolicy [-PassThru] [-ServerName] <String> [-DatabaseName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Use-AzureRmSqlServerAuditingPolicy** cmdlet specifies that a database uses the auditing policy of its host server.
+The **Use-AzSqlServerAuditingPolicy** cmdlet specifies that a database uses the auditing policy of its host server.
 Specify the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database.
 If no auditing policy is defined for the database server, this cmdlet fails.
 If the host uses server level auditing, threat detection is removed.
@@ -28,7 +28,7 @@ If the host uses server level auditing, threat detection is removed.
 
 ### Example 1: Configure a database to use the auditing policy of its server
 ```
-PS C:\>Use-AzureRmSqlServerAuditingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server02" -DatabaseName "Database01"
+PS C:\>Use-AzSqlServerAuditingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server02" -DatabaseName "Database01"
 ```
 
 This command specifies that the database named Database01 on Server02 uses the auditing policy of the server.
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -126,13 +126,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlDatabaseAuditingPolicy](./Get-AzureRmSqlDatabaseAuditingPolicy.md)
+[Get-AzSqlDatabaseAuditingPolicy](./Get-AzSqlDatabaseAuditingPolicy.md)
 
-[Get-AzureRmSqlServerAuditingPolicy](./Get-AzureRmSqlServerAuditingPolicy.md)
+[Get-AzSqlServerAuditingPolicy](./Get-AzSqlServerAuditingPolicy.md)
 
-[Set-AzureRmSqlDatabaseAuditingPolicy](./Set-AzureRmSqlDatabaseAuditingPolicy.md)
+[Set-AzSqlDatabaseAuditingPolicy](./Set-AzSqlDatabaseAuditingPolicy.md)
 
-[Set-AzureRmSqlServerAuditingPolicy](./Set-AzureRmSqlServerAuditingPolicy.md)
+[Set-AzSqlServerAuditingPolicy](./Set-AzSqlServerAuditingPolicy.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

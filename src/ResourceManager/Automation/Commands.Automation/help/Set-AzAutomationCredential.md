@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: D6325A22-2D1B-4228-A5BC-3F1071E26FB2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/set-azurermautomationcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationcredential
 schema: 2.0.0
 ---
 
-# Set-AzureRmAutomationCredential
+# Set-AzAutomationCredential
 
 ## SYNOPSIS
 Modifies an Automation credential.
@@ -14,13 +14,13 @@ Modifies an Automation credential.
 ## SYNTAX
 
 ```
-Set-AzureRmAutomationCredential [-Name] <String> [-Description <String>] [-Value <PSCredential>]
+Set-AzAutomationCredential [-Name] <String> [-Description <String>] [-Value <PSCredential>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmAutomationCredential** cmdlet modifies a credential as a **PSCredential** object in Azure Automation.
+The **Set-AzAutomationCredential** cmdlet modifies a credential as a **PSCredential** object in Azure Automation.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ The **Set-AzureRmAutomationCredential** cmdlet modifies a credential as a **PSCr
 PS C:\>$User = "Contoso\DChew"
 PS C:\> $Password = ConvertTo-SecureString "Password" -AsPlainText -Force
 PS C:\> $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $Password
-PS C:\> Set-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -Name "ContosoCredential" -ResourceGroupName "ResourceGroup01" -Value $Credential
+PS C:\> Set-AzAutomationCredential -AutomationAccountName "Contoso17" -Name "ContosoCredential" -ResourceGroupName "ResourceGroup01" -Value $Credential
 ```
 
 The first command assigns a user name to the $User variable.
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -147,10 +147,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationCredential](./Get-AzureRMAutomationCredential.md)
+[Get-AzAutomationCredential](./Get-AzAutomationCredential.md)
 
-[New-AzureRmAutomationCredential](./New-AzureRMAutomationCredential.md)
+[New-AzAutomationCredential](./New-AzAutomationCredential.md)
 
-[Remove-AzureRmAutomationCredential](./Remove-AzureRMAutomationCredential.md)
+[Remove-AzAutomationCredential](./Remove-AzAutomationCredential.md)
 
 

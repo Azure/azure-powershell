@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: AC2D64B9-5BCD-45D3-8650-538633F5BBBC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlserverserviceobjective
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverserviceobjective
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlServerServiceObjective
+# Get-AzSqlServerServiceObjective
 
 ## SYNOPSIS
 Gets service objectives for an Azure SQL Database server.
@@ -14,19 +14,19 @@ Gets service objectives for an Azure SQL Database server.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServerServiceObjective [[-ServiceObjectiveName] <String>] [-ServerName] <String>
+Get-AzSqlServerServiceObjective [[-ServiceObjectiveName] <String>] [-ServerName] <String>
  [[-DatabaseName] <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlServerServiceObjective** cmdlet gets the available service objectives for an Azure SQL Database server.
+The **Get-AzSqlServerServiceObjective** cmdlet gets the available service objectives for an Azure SQL Database server.
 
 ## EXAMPLES
 
 ### Example 1: Get service objectives
 ```
-PS C:\>Get-AzureRmSqlServerServiceObjective -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+PS C:\>Get-AzSqlServerServiceObjective -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ResourceGroupName ServerName ServiceObjectiveName Description Enabled IsDefault IsSystem
 ----------------- ---------- -------------------- ----------- ------- --------- --------
 resourcegroup01   server01   ElasticPool                         True     False    False
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

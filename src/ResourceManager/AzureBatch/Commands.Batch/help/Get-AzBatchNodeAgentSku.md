@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 5C6D3792-AA56-4210-B376-D9E656B04FBD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchnodeagentsku
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchnodeagentsku
 schema: 2.0.0
 ---
 
-# Get-AzureBatchNodeAgentSku
+# Get-AzBatchNodeAgentSku
 
 ## SYNOPSIS
 Gets Batch node agent SKUs available in a Batch account.
@@ -14,12 +14,12 @@ Gets Batch node agent SKUs available in a Batch account.
 ## SYNTAX
 
 ```
-Get-AzureBatchNodeAgentSku [-Filter <String>] [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
+Get-AzBatchNodeAgentSku [-Filter <String>] [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureBatchNodeAgentSku** cmdlet gets node agent SKUs that are available in an Azure Batch account.
+The **Get-AzBatchNodeAgentSku** cmdlet gets node agent SKUs that are available in an Azure Batch account.
 Specify the account by using the *BatchContext* parameter.
 You can narrow your search to SKUs that match an Open Data Protocol (OData) filter.
 
@@ -27,8 +27,8 @@ You can narrow your search to SKUs that match an Open Data Protocol (OData) filt
 
 ### Example 1: Get all available node agent SKUs
 ```
-PS C:\>$Context = Get-AzureRmBatchAccountKeys -AccountName "ContosoBatchAccount"
-PS C:\> Get-AzureBatchNodeAgentSku -BatchContext $Context 
+PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "ContosoBatchAccount"
+PS C:\> Get-AzBatchNodeAgentSku -BatchContext $Context 
 batch.node.centos 7 Linux {7.0, 7.1, 7.2, OL70} 
 batch.node.debian 8 Linux {15.10, 8} 
 batch.node.opensuse 13.2 Linux {13.2} 
@@ -37,7 +37,7 @@ batch.node.ubuntu 14.04 Linux {14.04.0-LTS, 14.04.1-LTS, 14.04.2-LTS, 14.04.3-LT
 batch.node.windows amd64 Windows {2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter, Windows-Server-Technical-Preview}
 ```
 
-The first command gets a batch account context that contains access keys for your subscription by using **Get-AzureRmBatchAccountKeys**.
+The first command gets a batch account context that contains access keys for your subscription by using **Get-AzBatchAccountKeys**.
 The command stores the context in the $Context variable to use in the next command.
 The second command gets all available node agent SKUs that Batch supports.
 
@@ -45,7 +45,7 @@ The second command gets all available node agent SKUs that Batch supports.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -121,6 +121,6 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
 

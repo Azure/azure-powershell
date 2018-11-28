@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
-Module Name: AzureRM.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/resume-azurermanalysisservicesserver
+Module Name: Az.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/resume-azanalysisservicesserver
 schema: 2.0.0
 ---
 
-# Resume-AzureRmAnalysisServicesServer
+# Resume-AzAnalysisServicesServer
 
 ## SYNOPSIS
 Resumes an instance of Analysis Services server
@@ -13,18 +13,18 @@ Resumes an instance of Analysis Services server
 ## SYNTAX
 
 ```
-Resume-AzureRmAnalysisServicesServer [[-ResourceGroupName] <String>] [-Name] <String> [-PassThru]
+Resume-AzAnalysisServicesServer [[-ResourceGroupName] <String>] [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Resume-AzureRmAnalysisServicesServer cmdlet resumes an instance of Analysis Services server
+The Resume-AzAnalysisServicesServer cmdlet resumes an instance of Analysis Services server
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Resume-AzureRmAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup"
+PS C:\> Resume-AzAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup"
 ```
 
 This command will resume a paused server named testserver in the resourcegroup testgroup
@@ -35,7 +35,7 @@ This command will resume a paused server named testserver in the resourcegroup t
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -133,10 +133,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer
 
 ## NOTES
-Alias: Resume-AzureAs
+Alias: Resume-AzAs
 
 ## RELATED LINKS
 
-[Get-AzureRmAnalysisServicesServer](./Get-AzureRmAnalysisServicesServer.md)
+[Get-AzAnalysisServicesServer](./Get-AzAnalysisServicesServer.md)
 
-[Suspend-AzureRmAnalysisServicesServer](./Suspend-AzureRmAnalysisServicesServer.md)
+[Suspend-AzAnalysisServicesServer](./Suspend-AzAnalysisServicesServer.md)

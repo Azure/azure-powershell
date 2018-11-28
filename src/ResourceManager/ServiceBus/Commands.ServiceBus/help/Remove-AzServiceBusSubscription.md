@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/remove-azurermservicebussubscription
+Module Name: Az.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebussubscription
 schema: 2.0.0
 ---
 
-# Remove-AzureRmServiceBusSubscription
+# Remove-AzServiceBusSubscription
 
 ## SYNOPSIS
 Removes the subscription to a topic from the specified Service Bus namespace.
@@ -14,55 +14,55 @@ Removes the subscription to a topic from the specified Service Bus namespace.
 
 ### SubscriptionPropertiesSet (Default)
 ```
-Remove-AzureRmServiceBusSubscription [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
+Remove-AzServiceBusSubscription [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
  [-Name] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SubscriptionInputObjectSet
 ```
-Remove-AzureRmServiceBusSubscription [-InputObject] <PSSubscriptionAttributes> [-PassThru] [-AsJob]
+Remove-AzServiceBusSubscription [-InputObject] <PSSubscriptionAttributes> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionResourceIdSet
 ```
-Remove-AzureRmServiceBusSubscription [-ResourceId] <String> [-PassThru] [-AsJob]
+Remove-AzServiceBusSubscription [-ResourceId] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmServiceBusSubscription** cmdlet removes the subscription to a topic from the specified Service Bus namespace.
+The **Remove-AzServiceBusSubscription** cmdlet removes the subscription to a topic from the specified Service Bus namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
+PS C:\> Remove-AzServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
 ```
 
 Removes the subscription `SB-TopicSubscription-Example1` to the topic `SB-Topic_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
 ### Example 2.1 - InputObject - Using Variable:
 ```
-PS C:\> $inputobject = Get-AzureRmServiceBusSubscription <params>
-PS C:\> Remove-AzureRmServiceBusSubscription -InputObject $inputobject
+PS C:\> $inputobject = Get-AzServiceBusSubscription <params>
+PS C:\> Remove-AzServiceBusSubscription -InputObject $inputobject
 ```
 
 ### Example 2.2 - InputObject - Using Piping:
 ```
-PS C:\>Get-AzureRmServiceBusSubscription <params> |Remove-AzureRmServiceBusSubscription
+PS C:\>Get-AzServiceBusSubscription <params> |Remove-AzServiceBusSubscription
 ```
 
 ### Example 3.1 - ResourceId - Using Variable:
 ```
-PS C:\> $resourceid = Get-AzureRmServiceBusSubscription <params>
-PS C:\> Remove-AzureRmServiceBusSubscription -ResourceId $resourceid.Id
+PS C:\> $resourceid = Get-AzServiceBusSubscription <params>
+PS C:\> Remove-AzServiceBusSubscription -ResourceId $resourceid.Id
 ```
 
 ### Example 3.2 - ResourceId - Using string value:
 ```
-PS C:\> Remove-AzureRmServiceBusSubscription -ResourceId "/subscriptions/Subscriptionid/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName/subscriptions/SubscriptionName"
+PS C:\> Remove-AzServiceBusSubscription -ResourceId "/subscriptions/Subscriptionid/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName/subscriptions/SubscriptionName"
 ```
 
 Removes the subscription provided through ARM Id in $resourceid/string for -ResourceId parameter 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

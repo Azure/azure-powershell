@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: CBFFBF1B-1AF0-4D2F-9315-C3790A4E9346
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmbackupextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmbackupextension
 schema: 2.0.0
 ---
 
-# Set-AzureRmVMBackupExtension
+# Set-AzVMBackupExtension
 
 ## SYNOPSIS
 Sets the backup extension properties on a virtual machine.
@@ -14,7 +14,7 @@ Sets the backup extension properties on a virtual machine.
 ## SYNTAX
 
 ```
-Set-AzureRmVMBackupExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Tag] <String>
+Set-AzVMBackupExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Tag] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ PS C:\>
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

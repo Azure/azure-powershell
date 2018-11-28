@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 ms.assetid: FA99C137-68E3-47D3-A0AC-FE33A481BE66
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/set-azurermrediscachediagnostics
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/set-azrediscachediagnostics
 schema: 2.0.0
 ---
 
-# Set-AzureRmRedisCacheDiagnostics
+# Set-AzRedisCacheDiagnostics
 
 ## SYNOPSIS
 Enables diagnostics on an Azure Redis Cache.
@@ -14,18 +14,18 @@ Enables diagnostics on an Azure Redis Cache.
 ## SYNTAX
 
 ```
-Set-AzureRmRedisCacheDiagnostics [-ResourceGroupName <String>] -Name <String> -StorageAccountId <String>
+Set-AzRedisCacheDiagnostics [-ResourceGroupName <String>] -Name <String> -StorageAccountId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmRedisCacheDiagnostics** cmdlet enables diagnostics for an Azure Redis Cache.
+The **Set-AzRedisCacheDiagnostics** cmdlet enables diagnostics for an Azure Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1: Enable diagnostics
 ```
-PS C:\>Set-AzureRmRedisCacheDiagnostics -ResourceGroupName "ContosoResourceGroup" -Name "PeakCache" -StorageAccountId "/subscriptions/fffff139-aaaa-bbbb-cccc-21f21f35806e/resourcegroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount"
+PS C:\>Set-AzRedisCacheDiagnostics -ResourceGroupName "ContosoResourceGroup" -Name "PeakCache" -StorageAccountId "/subscriptions/fffff139-aaaa-bbbb-cccc-21f21f35806e/resourcegroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount"
 ```
 
 This command enables diagnostics for an Azure Redis cache.
@@ -37,7 +37,7 @@ This command will enable diagnostics or update the storage account for all Azure
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -139,6 +139,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmRedisCacheDiagnostics](./Remove-AzureRmRedisCacheDiagnostics.md)
+[Remove-AzRedisCacheDiagnostics](./Remove-AzRedisCacheDiagnostics.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 617FB2F9-05EA-4224-B9A9-2F00A7599486
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvirtualnetworkgatewayconnection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetworkgatewayconnection
 schema: 2.0.0
 ---
 
-# Get-AzureRmVirtualNetworkGatewayConnection
+# Get-AzVirtualNetworkGatewayConnection
 
 ## SYNOPSIS
 Gets a Virtual Network Gateway Connection
@@ -14,19 +14,19 @@ Gets a Virtual Network Gateway Connection
 ## SYNTAX
 
 ```
-Get-AzureRmVirtualNetworkGatewayConnection [-Name <String>] -ResourceGroupName <String>
+Get-AzVirtualNetworkGatewayConnection [-Name <String>] -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Virtual Network Gateway Connection is the object representing the IPsec tunnel (Site-to-Site or Vnet-to-Vnet) connected to your Virtual Network Gateway in Azure.
-The **Get-AzureRmVirtualNetworkGatewayConnection** cmdlet returns the object of your connection based on Name and Resource Group Name.
+The **Get-AzVirtualNetworkGatewayConnection** cmdlet returns the object of your connection based on Name and Resource Group Name.
 
 ## EXAMPLES
 
 ### 1: Get a Virtual Network Gateway Connection
 ```
-Get-AzureRmVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
+Get-AzVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
 ```
 
 Returns the object of the Virtual Network Gateway Connection with the name "myTunnel" within the resource group "myRG"
@@ -37,7 +37,7 @@ Returns the object of the Virtual Network Gateway Connection with the name "myTu
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

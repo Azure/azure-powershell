@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlinstancedatabase
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlInstanceDatabase
+# Remove-AzSqlInstanceDatabase
 
 ## SYNOPSIS
 Removes an Azure SQL Managed Instance database.
@@ -14,30 +14,30 @@ Removes an Azure SQL Managed Instance database.
 
 ### RemoveInstanceDatabaseFromInputParameters (Default)
 ```
-Remove-AzureRmSqlInstanceDatabase [-Name] <String> [-InstanceName] <String> [-ResourceGroupName] <String>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSqlInstanceDatabase [-Name] <String> [-InstanceName] <String> [-ResourceGroupName] <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
-Remove-AzureRmSqlInstanceDatabase [-InputObject] <AzureSqlManagedDatabaseModel> [-Force]
+Remove-AzSqlInstanceDatabase [-InputObject] <AzureSqlManagedDatabaseModel> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveInstanceDatabaseFromAzureResourceId
 ```
-Remove-AzureRmSqlInstanceDatabase [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzSqlInstanceDatabase [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlInstanceDatabase** cmdlet removes an Azure SQL Managed Instance database.
+The **Remove-AzSqlInstanceDatabase** cmdlet removes an Azure SQL Managed Instance database.
 
 ## EXAMPLES
 
 ### Example 1: Remove a database from an instance
 ```
-PS C:\>Remove-AzureRmSqlInstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\>Remove-AzSqlInstanceDatabase -Name "Database01" -InstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes the database named Database01 from instance managedInstance1.
@@ -48,7 +48,7 @@ This command removes the database named Database01 from instance managedInstance
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 Skip confirmation message for performing the action
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The Instance Database object to remove
 
 ```yaml
-Type: AzureSqlManagedDatabaseModel
+Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 Parameter Sets: RemoveInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 Aliases: InstanceDatabase
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The instance name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveInstanceDatabaseFromInputParameters
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Instance Database to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveInstanceDatabaseFromInputParameters
 Aliases: InstanceDatabaseName
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveInstanceDatabaseFromInputParameters
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 The resource id of Instance Database object to remove
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveInstanceDatabaseFromAzureResourceId
 Aliases:
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -169,7 +169,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

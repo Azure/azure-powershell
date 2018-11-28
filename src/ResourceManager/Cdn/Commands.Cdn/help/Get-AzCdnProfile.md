@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-Module Name: AzureRM.Cdn
+Module Name: Az.Cdn
 ms.assetid: 28DECA86-37A5-48BE-9727-0C1A3B867E9B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdnprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnprofile
 schema: 2.0.0
 ---
 
-# Get-AzureRmCdnProfile
+# Get-AzCdnProfile
 
 ## SYNOPSIS
 Gets a CDN profile.
@@ -14,12 +14,12 @@ Gets a CDN profile.
 ## SYNTAX
 
 ```
-Get-AzureRmCdnProfile [-ProfileName <String>] [-ResourceGroupName <String>]
+Get-AzCdnProfile [-ProfileName <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRMCdnProfile** cmdlet gets an Azure Content Delivery Network (CDN) profile and its related information.
+The **Get-AzCdnProfile** cmdlet gets an Azure Content Delivery Network (CDN) profile and its related information.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ The **Get-AzureRMCdnProfile** cmdlet gets an Azure Content Delivery Network (CDN
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,10 +85,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmCdnProfile](./New-AzureRmCdnProfile.md)
+[New-AzCdnProfile](./New-AzCdnProfile.md)
 
-[Remove-AzureRmCdnProfile](./Remove-AzureRmCdnProfile.md)
+[Remove-AzCdnProfile](./Remove-AzCdnProfile.md)
 
-[Set-AzureRmCdnProfile](./Set-AzureRmCdnProfile.md)
+[Set-AzCdnProfile](./Set-AzCdnProfile.md)
 
 

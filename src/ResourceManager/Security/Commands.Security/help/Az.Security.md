@@ -1,76 +1,76 @@
 ---
-Module Name: AzureRM.Security
+Module Name: Az.Security
 Module Guid: 5e312bb4-9d3a-4c88-94c3-8e5bbb2e3da4
-Download Help Link: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/AzureRM.Security.md
+Download Help Link: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Az.Security.md
 Help Version: 0.1.0
 Locale: en-US
 ---
 
-# AzureRM.Security Module
+# Az.Security Module
 ## Description
 Azure Security Center gives you control over the security of your Azure subscriptions and other machines that you connected to it outside of Azure.
 
-## AzureRM.Security Cmdlets
-### [Get-AzureRmDiscoveredSecuritySolution](Get-AzureRmDiscoveredSecuritySolution.md)
+## Az.Security Cmdlets
+### [Get-AzDiscoveredSecuritySolution](Get-AzDiscoveredSecuritySolution.md)
 Gets security solutions that were discovered by Azure Security Center
 
-### [Get-AzureRmExternalSecuritySolution](Get-AzureRmExternalSecuritySolution.md)
+### [Get-AzExternalSecuritySolution](Get-AzExternalSecuritySolution.md)
 Get external security solution 
 
-### [Get-AzureRmJitNetworkAccessPolicy](Get-AzureRmJitNetworkAccessPolicy.md)
+### [Get-AzJitNetworkAccessPolicy](Get-AzJitNetworkAccessPolicy.md)
 Gets the JIT network access policies
 
-### [Get-AzureRmSecurityAlert](Get-AzureRmSecurityAlert.md)
+### [Get-AzSecurityAlert](Get-AzSecurityAlert.md)
 Gets security alerts that were detected by Azure Security Center
 
-### [Get-AzureRmSecurityAutoProvisioningSetting](Get-AzureRmSecurityAutoProvisioningSetting.md)
+### [Get-AzSecurityAutoProvisioningSetting](Get-AzSecurityAutoProvisioningSetting.md)
 Gets the security automatic provisioning settings
 
-### [Get-AzureRmSecurityCompliance](Get-AzureRmSecurityCompliance.md)
+### [Get-AzSecurityCompliance](Get-AzSecurityCompliance.md)
 Get the security compliance of a subscription over time
 
-### [Get-AzureRmSecurityContact](Get-AzureRmSecurityContact.md)
+### [Get-AzSecurityContact](Get-AzSecurityContact.md)
 Gets security contacts that were configured on this subscription
 
-### [Get-AzureRmSecurityLocation](Get-AzureRmSecurityLocation.md)
+### [Get-AzSecurityLocation](Get-AzSecurityLocation.md)
 Gets the location where Azure Security Center will automatically save data for the specific subscription
 
-### [Get-AzureRmSecurityPricing](Get-AzureRmSecurityPricing.md)
+### [Get-AzSecurityPricing](Get-AzSecurityPricing.md)
 Gets the pricing tier data for Azure Security Center for a scope.
 
-### [Get-AzureRmSecurityTask](Get-AzureRmSecurityTask.md)
+### [Get-AzSecurityTask](Get-AzSecurityTask.md)
 Gets the security tasks that Azure Security Center recommends you to do in order to strengthen your security posture.
 
-### [Get-AzureRmSecurityWorkspaceSetting](Get-AzureRmSecurityWorkspaceSetting.md)
+### [Get-AzSecurityWorkspaceSetting](Get-AzSecurityWorkspaceSetting.md)
 Gets the configured security workspace settings on a subscription.
 
-### [Remove-AzureRmJitNetworkAccessPolicy](Remove-AzureRmJitNetworkAccessPolicy.md)
+### [Remove-AzJitNetworkAccessPolicy](Remove-AzJitNetworkAccessPolicy.md)
 Deletes a JIT network access policy.
 
-### [Remove-AzureRmSecurityContact](Remove-AzureRmSecurityContact.md)
+### [Remove-AzSecurityContact](Remove-AzSecurityContact.md)
 Deletes a security contact.
 
-### [Remove-AzureRmSecurityWorkspaceSetting](Remove-AzureRmSecurityWorkspaceSetting.md)
+### [Remove-AzSecurityWorkspaceSetting](Remove-AzSecurityWorkspaceSetting.md)
 Deletes the security workspace setting for this subscription.
 
-### [Set-AzureRmJitNetworkAccessPolicy](Set-AzureRmJitNetworkAccessPolicy.md)
+### [Set-AzJitNetworkAccessPolicy](Set-AzJitNetworkAccessPolicy.md)
 Updates JIT network access policy.
 
-### [Set-AzureRmSecurityAlert](Set-AzureRmSecurityAlert.md)
+### [Set-AzSecurityAlert](Set-AzSecurityAlert.md)
 Updates a security alert state.
 
-### [Set-AzureRmSecurityAutoProvisioningSetting](Set-AzureRmSecurityAutoProvisioningSetting.md)
+### [Set-AzSecurityAutoProvisioningSetting](Set-AzSecurityAutoProvisioningSetting.md)
 Updates automatic provisioning setting
 
-### [Set-AzureRmSecurityContact](Set-AzureRmSecurityContact.md)
+### [Set-AzSecurityContact](Set-AzSecurityContact.md)
 Updates a security contact for a subscription.
 
-### [Set-AzureRmSecurityPricing](Set-AzureRmSecurityPricing.md)
+### [Set-AzSecurityPricing](Set-AzSecurityPricing.md)
 Sets the pricing of Azure Security Center tier for a scope.
 
-### [Set-AzureRmSecurityWorkspaceSetting](Set-AzureRmSecurityWorkspaceSetting.md)
+### [Set-AzSecurityWorkspaceSetting](Set-AzSecurityWorkspaceSetting.md)
 Updates the workspace settings for the subscription.
 
-### [Start-AzureRmJitNetworkAccessPolicy](Start-AzureRmJitNetworkAccessPolicy.md)
+### [Start-AzJitNetworkAccessPolicy](Start-AzJitNetworkAccessPolicy.md)
 Invokes a temporary network access request.
 

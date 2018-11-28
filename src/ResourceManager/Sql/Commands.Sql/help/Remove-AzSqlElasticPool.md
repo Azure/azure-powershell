@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 47E8E8C1-A63D-4243-A004-ABD5CA1A559E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlelasticpool
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlelasticpool
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlElasticPool
+# Remove-AzSqlElasticPool
 
 ## SYNOPSIS
 Deletes an elastic database pool.
@@ -14,19 +14,19 @@ Deletes an elastic database pool.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Force] [-ServerName] <String>
+Remove-AzSqlElasticPool [-ElasticPoolName] <String> [-Force] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlElasticPool** cmdlet deletes an Azure SQL Database elastic pool.
+The **Remove-AzSqlElasticPool** cmdlet deletes an Azure SQL Database elastic pool.
 
 ## EXAMPLES
 
 ### Example 1: Delete an elastic pool
 ```
-PS C:\>Remove-AzureRmSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
+PS C:\>Remove-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01"
 ```
 
 This command deletes an elastic pool named ElasticPool01.
@@ -37,7 +37,7 @@ This command deletes an elastic pool named ElasticPool01.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -154,15 +154,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlElasticPool](./Get-AzureRmSqlElasticPool.md)
+[Get-AzSqlElasticPool](./Get-AzSqlElasticPool.md)
 
-[Get-AzureRmSqlElasticPoolActivity](./Get-AzureRmSqlElasticPoolActivity.md)
+[Get-AzSqlElasticPoolActivity](./Get-AzSqlElasticPoolActivity.md)
 
-[Get-AzureRmSqlElasticPoolDatabase](./Get-AzureRmSqlElasticPoolDatabase.md)
+[Get-AzSqlElasticPoolDatabase](./Get-AzSqlElasticPoolDatabase.md)
 
-[New-AzureRmSqlElasticPool](./New-AzureRmSqlElasticPool.md)
+[New-AzSqlElasticPool](./New-AzSqlElasticPool.md)
 
-[Set-AzureRmSqlElasticPool](./Set-AzureRmSqlElasticPool.md)
+[Set-AzSqlElasticPool](./Set-AzSqlElasticPool.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

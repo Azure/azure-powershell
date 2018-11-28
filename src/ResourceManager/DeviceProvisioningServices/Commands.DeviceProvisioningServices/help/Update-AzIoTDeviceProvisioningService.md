@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
-Module Name: AzureRM.DeviceProvisioningServices
+Module Name: Az.DeviceProvisioningServices
 online version:
 schema: 2.0.0
 ---
 
-# Update-AzureRmIoTDeviceProvisioningService
+# Update-AzIoTDeviceProvisioningService
 
 ## SYNOPSIS
 Update an Azure IoT Hub device provisioning service.
@@ -14,38 +14,38 @@ Update an Azure IoT Hub device provisioning service.
 
 ### ResourceUpdateSet (Default)
 ```
-Update-AzureRmIoTDeviceProvisioningService [-ResourceGroupName] <String> [-Name] <String> [-Tag] <Hashtable>
+Update-AzIoTDeviceProvisioningService [-ResourceGroupName] <String> [-Name] <String> [-Tag] <Hashtable>
  [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectUpdateSet
 ```
-Update-AzureRmIoTDeviceProvisioningService [-InputObject] <PSProvisioningServiceDescription> [-Tag] <Hashtable>
+Update-AzIoTDeviceProvisioningService [-InputObject] <PSProvisioningServiceDescription> [-Tag] <Hashtable>
  [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectCreateUpdateSet
 ```
-Update-AzureRmIoTDeviceProvisioningService [-InputObject] <PSProvisioningServiceDescription>
+Update-AzIoTDeviceProvisioningService [-InputObject] <PSProvisioningServiceDescription>
  [-AllocationPolicy] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdUpdateSet
 ```
-Update-AzureRmIoTDeviceProvisioningService [-ResourceId] <String> [-Tag] <Hashtable> [-Reset]
+Update-AzIoTDeviceProvisioningService [-ResourceId] <String> [-Tag] <Hashtable> [-Reset]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdCreateUpdateSet
 ```
-Update-AzureRmIoTDeviceProvisioningService [-ResourceId] <String> [-AllocationPolicy] <String>
+Update-AzIoTDeviceProvisioningService [-ResourceId] <String> [-AllocationPolicy] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceCreateUpdateSet
 ```
-Update-AzureRmIoTDeviceProvisioningService [-ResourceGroupName] <String> [-Name] <String>
+Update-AzIoTDeviceProvisioningService [-ResourceGroupName] <String> [-Name] <String>
  [-AllocationPolicy] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -57,7 +57,7 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 
 ### Example 1
 ```
-PS C:\> Update-AzureRmIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -AllocationPolicy "GeoLatency"
+PS C:\> Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -AllocationPolicy "GeoLatency"
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
@@ -76,7 +76,7 @@ Update Allocation Policy to "GeoLatency" of an Azure IoT Hub device provisioning
 
 ### Example 2
 ```
-PS C:\> Update-AzureRmIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag @tags
+PS C:\> Update-AzIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag @tags
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
@@ -95,7 +95,7 @@ Add "@tags" to the Tag of an Azure IoT Hub device provisioning service "myiotdps
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Update-AzureRmIoTDps -Tag @tags -Reset
+PS C:\> Get-AzIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Update-AzIoTDps -Tag @tags -Reset
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

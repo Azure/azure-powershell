@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/remove-azurermaccount
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/remove-azaccount
 schema: 2.0.0
 ---
 
-# Disconnect-AzureRmAccount
+# Disconnect-AzAccount
 
 ## SYNOPSIS
 Disconnects a connected Azure account and removes all credentials and contexts associated with that account.
@@ -14,57 +14,57 @@ Disconnects a connected Azure account and removes all credentials and contexts a
 
 ### ContextName (Default)
 ```
-Disconnect-AzureRmAccount [-ContextName <String>] [-Scope <ContextModificationScope>]
+Disconnect-AzAccount [-ContextName <String>] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UserId
 ```
-Disconnect-AzureRmAccount [-Username] <String> [-Scope <ContextModificationScope>]
+Disconnect-AzAccount [-Username] <String> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipal
 ```
-Disconnect-AzureRmAccount -ApplicationId <String> -TenantId <String> [-Scope <ContextModificationScope>]
+Disconnect-AzAccount -ApplicationId <String> -TenantId <String> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Disconnect-AzureRmAccount [-InputObject] <PSAzureRmAccount> [-Scope <ContextModificationScope>]
+Disconnect-AzAccount [-InputObject] <PSAzureRmAccount> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContextObject
 ```
-Disconnect-AzureRmAccount [-AzureContext] <PSAzureContext> [-Scope <ContextModificationScope>]
+Disconnect-AzAccount [-AzureContext] <PSAzureContext> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Disconnect-AzureRmAccount cmdlet disconnects a connected Azure account and removes all credentials and contexts (subscription and tenant information) associated with that account.
-After executing this cmdlet, you will need to login again using Connect-AzureRmAccount.
+The Disconnect-AzAccount cmdlet disconnects a connected Azure account and removes all credentials and contexts (subscription and tenant information) associated with that account.
+After executing this cmdlet, you will need to login again using Connect-AzAccount.
 
 ## EXAMPLES
 
 ### Logout of the current account
 ```
-PS C:\> Disconnect-AzureRmAccount
+PS C:\> Disconnect-AzAccount
 ```
 
 Logs out of the Azure account associated with the current context.
 
 ### Logout of the account associated with a particular context
 ```
-PS C:\> Get-AzureRmContext "Work" | Disconnect-AzureRmAccount -Scope CurrentUser
+PS C:\> Get-AzContext "Work" | Disconnect-AzAccount -Scope CurrentUser
 ```
 
 Logs out the account associated with the given context (named 'Work'). Because this uses the 'CurrentUser' scope, all credentials and contexts will be permanently deleted.
 
 ### Log out a particular user
 ```
-PS C:\> Disconnect-AzureRmAccount -Username 'user1@contoso.org'
+PS C:\> Disconnect-AzAccount -Username 'user1@contoso.org'
 ```
 
 Logs out the 'user1@contoso.org' user - all credentials and all contexts associated with this user will be removed.
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 Context
 
 ```yaml
-Type: Microsoft.Azure.Commands.Profile.Models.PSAzureContext
+Type: Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext
 Parameter Sets: ContextObject
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 The credentials, tenant and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

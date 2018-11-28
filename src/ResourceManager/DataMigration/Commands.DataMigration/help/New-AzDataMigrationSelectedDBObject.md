@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
-Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/New-AzureRmDataMigrationSelectedDBObject
+Module Name: Az.DataMigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/New-AzDataMigrationSelectedDBObject
 schema: 2.0.0
 ---
 
-# New-AzureRmDataMigrationSelectedDBObject
+# New-AzDataMigrationSelectedDBObject
 
 ## SYNOPSIS
 Creates a database input object that contains information about source and target databases for migration.
@@ -14,7 +14,7 @@ Creates a database input object that contains information about source and targe
 
 ### MigrateSqlServerSqlDb (Default)
 ```
-New-AzureRmDataMigrationSelectedDBObject -SourceDatabaseName <String> -TargetDatabaseName <String>
+New-AzDataMigrationSelectedDBObject -SourceDatabaseName <String> -TargetDatabaseName <String>
  [-MigrateSqlServerSqlDb] [-MakeSourceDbReadOnly]
  [-TableMap <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -22,35 +22,33 @@ New-AzureRmDataMigrationSelectedDBObject -SourceDatabaseName <String> -TargetDat
 
 ### MigrateSqlServerSqlDbMi
 ```
-New-AzureRmDataMigrationSelectedDBObject -SourceDatabaseName <String> -TargetDatabaseName <String>
+New-AzDataMigrationSelectedDBObject -SourceDatabaseName <String> -TargetDatabaseName <String>
  [-MigrateSqlServerSqlDbMi] [-BackupFileShare <FileShare>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmDataMigrationSelectedDB cmdlet creates a database info object that contains information about source and target databases, as well as the table mappings, for migration. This cmdlet can be used as a parameter with the New-AzureRmDataMigrationTask cmdlet.
+The New-AzDataMigrationSelectedDB cmdlet creates a database info object that contains information about source and target databases, as well as the table mappings, for migration. This cmdlet can be used as a parameter with the New-AzDataMigrationTask cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDb -Name "HR" -TargetDatabaseName "HR_PSTEST" -TableMap $tableMap
+PS C:\> New-AzDataMigrationSelectedDB -MigrateSqlServerSqlDb -Name "HR" -TargetDatabaseName "HR_PSTEST" -TableMap $tableMap
 
 Name TargetDatabaseName MakeSourceDbReadOnly TableMap
 ---- ------------------ -------------------- --------
 HR   HR_PSTEST                         False {[HR.COUNTRIES, HR.COUNTRIES]}
 ```
 
-
 ### Example 2
 ```
-PS C:\> New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name "HR" -TargetDatabaseName "HR_PSTEST" -BackupFileShare $backupFileShare
+PS C:\> New-AzDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name "HR" -TargetDatabaseName "HR_PSTEST" -BackupFileShare $backupFileShare
 
 Name RestoreDatabaseName BackupFileShare
 ---- ------------------- ---------------
 HR   HRTest              Microsoft.Azure.Management.DataMigration.Models.FileShare
 ```
-
 
 ## PARAMETERS
 
@@ -75,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

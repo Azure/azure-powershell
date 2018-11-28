@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: DCA1FD7A-54AF-48B1-A245-BFA9C43ACA9B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/set-azurermbatchapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/set-azbatchapplication
 schema: 2.0.0
 ---
 
-# Set-AzureRmBatchApplication
+# Set-AzBatchApplication
 
 ## SYNOPSIS
 Updates settings for the specified application.
@@ -14,19 +14,19 @@ Updates settings for the specified application.
 ## SYNTAX
 
 ```
-Set-AzureRmBatchApplication [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationId] <String>
+Set-AzBatchApplication [-AccountName] <String> [-ResourceGroupName] <String> [-ApplicationId] <String>
  [[-DisplayName] <String>] [[-DefaultVersion] <String>] [[-AllowUpdates] <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmBatchApplication** cmdlet modifies settings for the specified Azure Batch application.
+The **Set-AzBatchApplication** cmdlet modifies settings for the specified Azure Batch application.
 
 ## EXAMPLES
 
 ### Example 1: Update an application in a Batch account
 ```
-PS C:\>Set-AzureRmBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "Litware" -AllowUpdates $False
+PS C:\>Set-AzBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "Litware" -AllowUpdates $False
 ```
 
 This command changes whether the Llitware application in the ContosoBatch account allows updates.
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -156,16 +156,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchApplication](./Get-AzureRmBatchApplication.md)
+[Get-AzBatchApplication](./Get-AzBatchApplication.md)
 
-[Get-AzureRmBatchApplicationPackage](./Get-AzureRmBatchApplicationPackage.md)
+[Get-AzBatchApplicationPackage](./Get-AzBatchApplicationPackage.md)
 
-[New-AzureRmBatchApplication](./New-AzureRmBatchApplication.md)
+[New-AzBatchApplication](./New-AzBatchApplication.md)
 
-[New-AzureRmBatchApplicationPackage](./New-AzureRmBatchApplicationPackage.md)
+[New-AzBatchApplicationPackage](./New-AzBatchApplicationPackage.md)
 
-[Remove-AzureRmBatchApplication](./Remove-AzureRmBatchApplication.md)
+[Remove-AzBatchApplication](./Remove-AzBatchApplication.md)
 
-[Remove-AzureRmBatchApplicationPackage](./Remove-AzureRmBatchApplicationPackage.md)
+[Remove-AzBatchApplicationPackage](./Remove-AzBatchApplicationPackage.md)
 
 

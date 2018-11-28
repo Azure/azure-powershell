@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
-Module Name: AzureRM.NotificationHubs
+Module Name: Az.NotificationHubs
 ms.assetid: BD311CEF-378B-463E-8998-CC3E9A5B3A7B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/set-azurermnotificationhubauthorizationrules
+online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/set-aznotificationhubauthorizationrules
 schema: 2.0.0
 ---
 
-# Set-AzureRmNotificationHubAuthorizationRules
+# Set-AzNotificationHubAuthorizationRules
 
 ## SYNOPSIS
 Sets authorization rules for a notification hub.
@@ -15,20 +15,20 @@ Sets authorization rules for a notification hub.
 
 ### InputFileParameterSet
 ```
-Set-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] <String> [-Namespace] <String>
+Set-AzNotificationHubAuthorizationRules [-ResourceGroup] <String> [-Namespace] <String>
  [-NotificationHub] <String> [-InputFile] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SASRuleParameterSet
 ```
-Set-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] <String> [-Namespace] <String>
+Set-AzNotificationHubAuthorizationRules [-ResourceGroup] <String> [-Namespace] <String>
  [-NotificationHub] <String> [-SASRule] <SharedAccessAuthorizationRuleAttributes> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmNotificationHubAuthorizationRules** cmdlet modifies a Shared Access Signature (SAS) authorization rule assigned to a notification hub.
+The **Set-AzNotificationHubAuthorizationRules** cmdlet modifies a Shared Access Signature (SAS) authorization rule assigned to a notification hub.
 Authorization rules manage access to your notification hubs by the creation of links, as URIs, based on different permission levels.
 Permission levels can be one of the following: 
 - Listen
@@ -49,13 +49,13 @@ A JSON file is a text file that uses syntax similar to this:
         "Send"  
     \]  
 }
-When used in conjunction with the New-AzureRmNotificationHubAuthorizationRules cmdlet, the preceding JSON sample modifies an authorization rule named ContosoAuthorizationRule in order to give users Listen and Send rights to the hub.
+When used in conjunction with the New-AzNotificationHubAuthorizationRules cmdlet, the preceding JSON sample modifies an authorization rule named ContosoAuthorizationRule in order to give users Listen and Send rights to the hub.
 
 ## EXAMPLES
 
 ### Example 1: Modify an authorization rule assigned to a notification hub
 ```
-PS C:\>Set-AzureRmNotificationHubAuthorizationRules -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationGroup" -NotificationHub "ContosoExternalHub" -InputFile "C:\Configuration\AuthorizationRules.json"
+PS C:\>Set-AzNotificationHubAuthorizationRules -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationGroup" -NotificationHub "ContosoExternalHub" -InputFile "C:\Configuration\AuthorizationRules.json"
 ```
 
 This command modifies an authorization rule assigned to the notification hub named ContosoExternalHub.
@@ -69,7 +69,7 @@ Instead, that information is found in the input file C:\Configuration\Authorizat
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -218,10 +218,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNotificationHubAuthorizationRules](./Get-AzureRmNotificationHubAuthorizationRules.md)
+[Get-AzNotificationHubAuthorizationRules](./Get-AzNotificationHubAuthorizationRules.md)
 
-[New-AzureRmNotificationHubAuthorizationRules](./New-AzureRmNotificationHubAuthorizationRules.md)
+[New-AzNotificationHubAuthorizationRules](./New-AzNotificationHubAuthorizationRules.md)
 
-[Remove-AzureRmNotificationHubAuthorizationRules](./Remove-AzureRmNotificationHubAuthorizationRules.md)
+[Remove-AzNotificationHubAuthorizationRules](./Remove-AzNotificationHubAuthorizationRules.md)
 
 

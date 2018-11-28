@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
-Module Name: AzureRM.Media
+Module Name: Az.Media
 ms.assetid: 6AB6C366-4925-4370-A33E-EDAF4BE1E230
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/remove-azurermmediaservice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.media/remove-azmediaservice
 schema: 2.0.0
 ---
 
-# Remove-AzureRmMediaService
+# Remove-AzMediaService
 
 ## SYNOPSIS
 Removes a media service.
@@ -14,18 +14,18 @@ Removes a media service.
 ## SYNTAX
 
 ```
-Remove-AzureRmMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Force]
+Remove-AzMediaService [-ResourceGroupName] <String> [-AccountName] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmMediaService** cmdlet removes a media service.
+The **Remove-AzMediaService** cmdlet removes a media service.
 
 ## EXAMPLES
 
 ### Example 1: Remove a media service
 ```
-PS C:\>Remove-AzureRmMediaService -ResourceGroupName "ResourceGroup001" -AccountName "MediaService0011"
+PS C:\>Remove-AzMediaService -ResourceGroupName "ResourceGroup001" -AccountName "MediaService0011"
 ```
 
 This command removes the media service named MediaService0011 in the resource group named ResourceGroup001.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -138,10 +138,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmMediaService](./Get-AzureRmMediaService.md)
+[Get-AzMediaService](./Get-AzMediaService.md)
 
-[New-AzureRmMediaService](./New-AzureRmMediaService.md)
+[New-AzMediaService](./New-AzMediaService.md)
 
-[Set-AzureRmMediaService](./Set-AzureRmMediaService.md)
+[Set-AzMediaService](./Set-AzMediaService.md)
 
 

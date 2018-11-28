@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/clear-azurermdefault
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/clear-azdefault
 schema: 2.0.0
 ---
 
-# Clear-AzureRmDefault
+# Clear-AzDefault
 
 ## SYNOPSIS
 Clears the defaults set by the user in the current context.
@@ -13,26 +13,26 @@ Clears the defaults set by the user in the current context.
 ## SYNTAX
 
 ```
-Clear-AzureRmDefault [-ResourceGroup] [-PassThru] [-Force] [-Scope <ContextModificationScope>]
+Clear-AzDefault [-ResourceGroup] [-PassThru] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Clear-AzureRmDefault cmdlet removes the defaults set by 
+The Clear-AzDefault cmdlet removes the defaults set by 
 the user depending on the switch parameters specified by the user.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Clear-AzureRmDefault
+PS C:\> Clear-AzDefault
 ```
 
 This command removes all the defaults set by the user in the current context.
 
 ### Example 1
 ```
-PS C:\> Clear-AzureRmDefault -ResourceGroup
+PS C:\> Clear-AzDefault -ResourceGroup
 ```
 
 This command removes the default resource group set by the user in the current context.
@@ -43,7 +43,7 @@ This command removes the default resource group set by the user in the current c
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

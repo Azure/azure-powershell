@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2dataset
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryv2dataset
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryV2Dataset
+# Get-AzDataFactoryV2Dataset
 
 ## SYNOPSIS
 Gets information about datasets in Data Factory.
@@ -14,24 +14,24 @@ Gets information about datasets in Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactoryV2Dataset [[-Name] <String>] [-ResourceGroupName] <String> [-DataFactoryName] <String>
+Get-AzDataFactoryV2Dataset [[-Name] <String>] [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactoryV2Dataset [[-Name] <String>] [-DataFactory] <PSDataFactory>
+Get-AzDataFactoryV2Dataset [[-Name] <String>] [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzureRmDataFactoryV2Dataset [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataFactoryV2Dataset [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmDataFactoryV2Dataset cmdlet gets information about datasets in Azure Data Factory.
+The Get-AzDataFactoryV2Dataset cmdlet gets information about datasets in Azure Data Factory.
 If you specify the name of a dataset, this cmdlet gets information about that dataset.
 If you do not specify a name, this cmdlet gets information about all the datasets in the data factory.
 
@@ -39,7 +39,7 @@ If you do not specify a name, this cmdlet gets information about all the dataset
 
 ### Example 1: Get information about all datasets
 ```
-PS C:\> Get-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+PS C:\> Get-AzDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 
     DatasetName       : DACuratedWikiData
     ResourceGroupName : ADF
@@ -64,7 +64,7 @@ This command gets information about all datasets in the data factory named WikiA
 
 ### Example 2: Get information about a specific dataset
 ```
-PS C:\> Get-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents"
+PS C:\> Get-AzDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents"
 
     DatasetName       : DAWikipediaClickEvents
     ResourceGroupName : ADF
@@ -189,6 +189,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Set-AzureRmDataFactoryV2Dataset]()
+[Set-AzDataFactoryV2Dataset]()
 
-[Remove-AzureRmDataFactoryV2Dataset]()
+[Remove-AzDataFactoryV2Dataset]()

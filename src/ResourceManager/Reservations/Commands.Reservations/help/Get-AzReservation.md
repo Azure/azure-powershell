@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Reservations.dll-Help.xml
-Module Name: AzureRM.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.reservations/get-azurermreservation
+Module Name: Az.Reservations
+online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/get-azreservation
 schema: 2.0.0
 ---
 
-# Get-AzureRmReservation
+# Get-AzReservation
 
 ## SYNOPSIS
 Get `Reservation`s in a given reservation Order
@@ -14,20 +14,20 @@ Get `Reservation`s in a given reservation Order
 
 ### CommandLine (Default)
 ```
-Get-AzureRmReservation -ReservationOrderId <Guid> [-ReservationId <Guid>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzReservation -ReservationOrderId <Guid> [-ReservationId <Guid>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
-Get-AzureRmReservation [-ReservationOrder <PSReservationOrder>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzReservation [-ReservationOrder <PSReservationOrder>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### PagePipeObject
 ```
-Get-AzureRmReservation [-ReservationOrderPage <PSReservationOrderPage>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzReservation [-ReservationOrderPage <PSReservationOrderPage>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,14 +37,14 @@ List `Reservation`s within a single `ReservationOrder`.
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmReservation -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff"
+PS C:\> Get-AzReservation -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff"
 ```
 
 List `Reservation`s within the specified `ReservationOrder`.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmReservation -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservationId "11111111-1111-1111-1111-1111111111"
+PS C:\> Get-AzReservation -ReservationOrderId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservationId "11111111-1111-1111-1111-1111111111"
 ```
 
 Get specific `Reservation` details.
@@ -55,7 +55,7 @@ Get specific `Reservation` details.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

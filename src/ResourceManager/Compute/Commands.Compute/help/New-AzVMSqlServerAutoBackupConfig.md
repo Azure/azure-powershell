@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 0AC17275-17A9-47DE-BF04-C1A51DF057DC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermvmsqlserverautobackupconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmsqlserverautobackupconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmVMSqlServerAutoBackupConfig
+# New-AzVMSqlServerAutoBackupConfig
 
 ## SYNOPSIS
 Creates a configuration object for SQL Server automatic backup.
@@ -15,31 +15,30 @@ Creates a configuration object for SQL Server automatic backup.
 
 ### StorageUriSqlServerAutoBackup (Default)
 ```
-New-AzureRmVMSqlServerAutoBackupConfig [-ResourceGroupName] <String> [-Enable]
- [[-RetentionPeriodInDays] <Int32>] [-EnableEncryption] [[-CertificatePassword] <SecureString>]
- [[-StorageUri] <Uri>] [[-StorageKey] <SecureString>] [-BackupSystemDbs] [-BackupScheduleType <String>]
+New-AzVMSqlServerAutoBackupConfig [-ResourceGroupName] <String> [-Enable] [[-RetentionPeriodInDays] <Int32>]
+ [-EnableEncryption] [[-CertificatePassword] <SecureString>] [[-StorageUri] <Uri>]
+ [[-StorageKey] <SecureString>] [-BackupSystemDbs] [-BackupScheduleType <String>]
  [-FullBackupFrequency <String>] [-FullBackupStartHour <Int32>] [-FullBackupWindowInHours <Int32>]
  [-LogBackupFrequencyInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### StorageContextSqlServerAutoBackup
 ```
-New-AzureRmVMSqlServerAutoBackupConfig [-ResourceGroupName] <String> [-Enable]
- [[-RetentionPeriodInDays] <Int32>] [-EnableEncryption] [[-CertificatePassword] <SecureString>]
- [[-StorageContext] <IStorageContext>] [[-StorageUri] <Uri>] [[-StorageKey] <SecureString>] [-BackupSystemDbs]
- [-BackupScheduleType <String>] [-FullBackupFrequency <String>] [-FullBackupStartHour <Int32>]
- [-FullBackupWindowInHours <Int32>] [-LogBackupFrequencyInMinutes <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzVMSqlServerAutoBackupConfig [-ResourceGroupName] <String> [-Enable] [[-RetentionPeriodInDays] <Int32>]
+ [-EnableEncryption] [[-CertificatePassword] <SecureString>] [[-StorageContext] <IStorageContext>]
+ [[-StorageUri] <Uri>] [[-StorageKey] <SecureString>] [-BackupSystemDbs] [-BackupScheduleType <String>]
+ [-FullBackupFrequency <String>] [-FullBackupStartHour <Int32>] [-FullBackupWindowInHours <Int32>]
+ [-LogBackupFrequencyInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmVMSqlServerAutoBackupConfig** cmdlet creates a configuration object for SQL Server automatic backup.
+The **New-AzVMSqlServerAutoBackupConfig** cmdlet creates a configuration object for SQL Server automatic backup.
 
 ## EXAMPLES
 
 ### Example 1: Create an automatic backup configuration using storage URI and account key
 ```
-PS C:\> $AutoBackupConfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri "\\contoso\StorageGeneral" -StorageKey "< Storage Key for ContosoGeneral >"
+PS C:\> $AutoBackupConfig = New-AzVMSqlServerAutoBackupConfig -Enable -RetentionPeriod 10 -StorageUri "\\contoso\StorageGeneral" -StorageKey "< Storage Key for ContosoGeneral >"
 Enable                : True
 EnableEncryption      : False
 RetentionPeriodInDays : 10
@@ -48,25 +47,25 @@ RetentionPeriodInDays : 10
 This command creates an automatic backup configuration object by specifying storage URI and account key.
 Automatic backup is enabled and automatic backups are kept for 10 days.
 The command stores the result in the $AutoBackupConfig variable.
-You can specify this configuration item for other cmdlets, such as the Set-AzureRmVMSqlServerExtension cmdlet.
+You can specify this configuration item for other cmdlets, such as the Set-AzVMSqlServerExtension cmdlet.
 
 ### Example 2: Create an automatic backup configuration using storage context
 ```
-PS C:\> $StorageContext = New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral >"
-PS C:\> $AutoBackupConfig = New-AzureRmVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriod 10
+PS C:\> $StorageContext = New-AzStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral >"
+PS C:\> $AutoBackupConfig = New-AzVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriod 10
 Enable                : True
 EnableEncryption      : False
 RetentionPeriodInDays : 10
 ```
 
 The first command creates a storage context, and then stores it in the $StorageContext variable.
-For more information, see New-AzureStorageContext.
+For more information, see New-AzStorageContext.
 The second command creates an automatic backup configuration object by specifying the storage context in $StorageContext.
 Automatic backup is enabled and automatic backups are kept for 10 days.
 
 ### Example 3: Create an automatic backup configuration using storage context with encryption and password
 ```
-PS C:\> $StorageContext = New-AzureRmVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriod 10 -EnableEncryption -CertificatePassword $CertificatePassword
+PS C:\> $StorageContext = New-AzVMSqlServerAutoBackupConfig -StorageContext $StorageContext -Enable -RetentionPeriod 10 -EnableEncryption -CertificatePassword $CertificatePassword
 Enable                : True
 EnableEncryption      : True
 RetentionPeriodInDays : 10
@@ -130,7 +129,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -266,7 +265,7 @@ Accept wildcard characters: False
 
 ### -StorageContext
 Specifies the storage account that will be used to store backups.
-To obtain an **AzureStorageContext** object, use the New-AzureStorageContext cmdlet.
+To obtain an **AzureStorageContext** object, use the New-AzStorageContext cmdlet.
 The default is the storage account that is associated with the SQL Server virtual machine.
 
 ```yaml
@@ -338,8 +337,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureVMSqlServerAutoPatchingConfig](./New-AzureVMSqlServerAutoPatchingConfig.md)
+[New-AzVMSqlServerAutoPatchingConfig](./New-AzVMSqlServerAutoPatchingConfig.md)
 
-[Set-AzureRmVMSqlServerExtension](./Set-AzureRMVMSqlServerExtension.md)
+[Set-AzVMSqlServerExtension](./Set-AzVMSqlServerExtension.md)
 
 

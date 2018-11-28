@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/update-azurermvpnsite
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azvpnsite
 schema: 2.0.0
 ---
 
-# Update-AzureRmVpnSite
+# Update-AzVpnSite
 
 ## SYNOPSIS
 Updates a VpnSite representing a customer branch to an intended goal state.
@@ -14,7 +14,7 @@ Updates a VpnSite representing a customer branch to an intended goal state.
 
 ### ByVpnSiteNameNoVirtualWanUpdate (Default)
 ```
-Update-AzureRmVpnSite -ResourceGroupName <String> -Name <String> [-IpAddress <String>]
+Update-AzVpnSite -ResourceGroupName <String> -Name <String> [-IpAddress <String>]
  [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -23,7 +23,7 @@ Update-AzureRmVpnSite -ResourceGroupName <String> -Name <String> [-IpAddress <St
 
 ### ByVpnSiteNameByVirtualWanName
 ```
-Update-AzureRmVpnSite -ResourceGroupName <String> -Name <String> -VirtualWanResourceGroupName <String>
+Update-AzVpnSite -ResourceGroupName <String> -Name <String> -VirtualWanResourceGroupName <String>
  -VirtualWanName <String> [-IpAddress <String>]
  [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
@@ -33,7 +33,7 @@ Update-AzureRmVpnSite -ResourceGroupName <String> -Name <String> -VirtualWanReso
 
 ### ByVpnSiteNameByVirtualWanResourceId
 ```
-Update-AzureRmVpnSite -ResourceGroupName <String> -Name <String> -VirtualWanId <String> [-IpAddress <String>]
+Update-AzVpnSite -ResourceGroupName <String> -Name <String> -VirtualWanId <String> [-IpAddress <String>]
  [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -42,16 +42,16 @@ Update-AzureRmVpnSite -ResourceGroupName <String> -Name <String> -VirtualWanId <
 
 ### ByVpnSiteNameByVirtualWanObject
 ```
-Update-AzureRmVpnSite -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtualWan>
- [-IpAddress <String>] [-AddressSpace <System.Collections.Generic.List`1[System.String]>]
- [-DeviceModel <String>] [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>]
- [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzVpnSite -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtualWan> [-IpAddress <String>]
+ [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
+ [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
+ [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnSiteObjectByVirtualWanName
 ```
-Update-AzureRmVpnSite -InputObject <PSVpnSite> -VirtualWanResourceGroupName <String> -VirtualWanName <String>
+Update-AzVpnSite -InputObject <PSVpnSite> -VirtualWanResourceGroupName <String> -VirtualWanName <String>
  [-IpAddress <String>] [-AddressSpace <System.Collections.Generic.List`1[System.String]>]
  [-DeviceModel <String>] [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>]
  [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob]
@@ -60,7 +60,7 @@ Update-AzureRmVpnSite -InputObject <PSVpnSite> -VirtualWanResourceGroupName <Str
 
 ### ByVpnSiteObjectByVirtualWanResourceId
 ```
-Update-AzureRmVpnSite -InputObject <PSVpnSite> -VirtualWanId <String> [-IpAddress <String>]
+Update-AzVpnSite -InputObject <PSVpnSite> -VirtualWanId <String> [-IpAddress <String>]
  [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -69,7 +69,7 @@ Update-AzureRmVpnSite -InputObject <PSVpnSite> -VirtualWanId <String> [-IpAddres
 
 ### ByVpnSiteObjectByVirtualWanObject
 ```
-Update-AzureRmVpnSite -InputObject <PSVpnSite> -VirtualWan <PSVirtualWan> [-IpAddress <String>]
+Update-AzVpnSite -InputObject <PSVpnSite> -VirtualWan <PSVirtualWan> [-IpAddress <String>]
  [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -78,7 +78,7 @@ Update-AzureRmVpnSite -InputObject <PSVpnSite> -VirtualWan <PSVirtualWan> [-IpAd
 
 ### ByVpnSiteObjectNoVirtualWanUpdate
 ```
-Update-AzureRmVpnSite -InputObject <PSVpnSite> [-IpAddress <String>]
+Update-AzVpnSite -InputObject <PSVpnSite> [-IpAddress <String>]
  [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -87,7 +87,7 @@ Update-AzureRmVpnSite -InputObject <PSVpnSite> [-IpAddress <String>]
 
 ### ByVpnSiteResourceIdByVirtualWanName
 ```
-Update-AzureRmVpnSite -ResourceId <String> -VirtualWanResourceGroupName <String> -VirtualWanName <String>
+Update-AzVpnSite -ResourceId <String> -VirtualWanResourceGroupName <String> -VirtualWanName <String>
  [-IpAddress <String>] [-AddressSpace <System.Collections.Generic.List`1[System.String]>]
  [-DeviceModel <String>] [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>]
  [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob]
@@ -96,7 +96,7 @@ Update-AzureRmVpnSite -ResourceId <String> -VirtualWanResourceGroupName <String>
 
 ### ByVpnSiteResourceIdByVirtualWanResourceId
 ```
-Update-AzureRmVpnSite -ResourceId <String> -VirtualWanId <String> [-IpAddress <String>]
+Update-AzVpnSite -ResourceId <String> -VirtualWanId <String> [-IpAddress <String>]
  [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -105,7 +105,7 @@ Update-AzureRmVpnSite -ResourceId <String> -VirtualWanId <String> [-IpAddress <S
 
 ### ByVpnSiteResourceIdByVirtualWanObject
 ```
-Update-AzureRmVpnSite -ResourceId <String> -VirtualWan <PSVirtualWan> [-IpAddress <String>]
+Update-AzVpnSite -ResourceId <String> -VirtualWan <PSVirtualWan> [-IpAddress <String>]
  [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -114,7 +114,7 @@ Update-AzureRmVpnSite -ResourceId <String> -VirtualWan <PSVirtualWan> [-IpAddres
 
 ### ByVpnSiteResourceIdNoVirtualWanUpdate
 ```
-Update-AzureRmVpnSite -ResourceId <String> [-IpAddress <String>]
+Update-AzVpnSite -ResourceId <String> [-IpAddress <String>]
  [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -129,13 +129,13 @@ Updates a VpnSite representing a customer branch to an intended goal state.
 ### Example 1
 
 ```powershell
-PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
-PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
 PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
 PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
 PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
-PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
-PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "2.3.5.5"
+PS C:\> New-AzVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
+PS C:\> New-AzVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "2.3.5.5"
 
 ResourceGroupName : testRG
 Name              : testVpnSite
@@ -153,7 +153,7 @@ The above will create a resource group, Virtual WAN in West US in "testRG" resou
 
 Then it creates a VpnSite to represent a customer branch and links it to the Virtual WAN.
 
-Once the site is created, it updates the IpAddress of the site using the Set-AzureRmVpnSite command.
+Once the site is created, it updates the IpAddress of the site using the Set-AzVpnSite command.
 
 ## PARAMETERS
 
@@ -237,7 +237,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

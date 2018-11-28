@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 7BCF2086-05FA-43FB-9D19-7277374CB03E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/get-azurermintegrationaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azintegrationaccount
 schema: 2.0.0
 ---
 
-# Get-AzureRmIntegrationAccount
+# Get-AzIntegrationAccount
 
 ## SYNOPSIS
 Gets integration accounts.
@@ -14,12 +14,12 @@ Gets integration accounts.
 ## SYNTAX
 
 ```
-Get-AzureRmIntegrationAccount [-ResourceGroupName <String>] [-Name <String>]
+Get-AzIntegrationAccount [-ResourceGroupName <String>] [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmIntegrationAccount** cmdlet gets integration accounts from a resource group. 
+The **Get-AzIntegrationAccount** cmdlet gets integration accounts from a resource group. 
 Specify an integration account name and resource group name.
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
@@ -30,7 +30,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Get an integration account by name
 ```
-PS C:\>Get-AzureRmIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
+PS C:\>Get-AzIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
 Id          : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31
 Name        : IntegrationAccount31
 Type        : Microsoft.Logic/integrationAccounts
@@ -44,7 +44,7 @@ This command gets an integration account named IntegrationAccount31 from the spe
 
 ### Example 2: Get integration accounts in a resource group
 ```
-PS C:\>Get-AzureRmIntegrationAccount -ResourceGroupName "ResourceGroup11"
+PS C:\>Get-AzIntegrationAccount -ResourceGroupName "ResourceGroup11"
 Id          : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup1/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31
 Name        : IntegrationAccount31
 Type        : Microsoft.Logic/integrationAccounts
@@ -58,7 +58,7 @@ This command gets integration accounts from a resource group named ResourceGroup
 
 ### Example 3: Get all integration accounts
 ```
-PS C:\>Get-AzureRmIntegrationAccount
+PS C:\>Get-AzIntegrationAccount
 Id          : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31
 Name        : IntegrationAccount31
 Type        : Microsoft.Logic/integrationAccounts
@@ -76,7 +76,7 @@ This command gets all the integration accounts in your Azure subscription.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -132,12 +132,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmIntegrationAccountCallbackUrl](./Get-AzureRmIntegrationAccountCallbackUrl.md)
+[Get-AzIntegrationAccountCallbackUrl](./Get-AzIntegrationAccountCallbackUrl.md)
 
-[New-AzureRmIntegrationAccount](./New-AzureRmIntegrationAccount.md)
+[New-AzIntegrationAccount](./New-AzIntegrationAccount.md)
 
-[Remove-AzureRmIntegrationAccount](./Remove-AzureRmIntegrationAccount.md)
+[Remove-AzIntegrationAccount](./Remove-AzIntegrationAccount.md)
 
-[Set-AzureRmIntegrationAccount](./Set-AzureRmIntegrationAccount.md)
+[Set-AzIntegrationAccount](./Set-AzIntegrationAccount.md)
 
 

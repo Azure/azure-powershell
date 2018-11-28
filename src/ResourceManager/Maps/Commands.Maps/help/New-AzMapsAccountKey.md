@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Maps.dll-Help.xml
-Module Name: AzureRM.Maps
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.maps/new-azurermmapsaccountkey
+Module Name: Az.Maps
+online version: https://docs.microsoft.com/en-us/powershell/module/az.maps/new-azmapsaccountkey
 schema: 2.0.0
 ---
 
-# New-AzureRmMapsAccountKey
+# New-AzMapsAccountKey
 
 ## SYNOPSIS
 Regenerates an account key.
@@ -14,30 +14,30 @@ Regenerates an account key.
 
 ### NameParameterSet (Default)
 ```
-New-AzureRmMapsAccountKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
+New-AzMapsAccountKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-New-AzureRmMapsAccountKey [-KeyName] <String> [-InputObject <PSMapsAccount>]
+New-AzMapsAccountKey [-KeyName] <String> [-InputObject <PSMapsAccount>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzureRmMapsAccountKey [-KeyName] <String> [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+New-AzMapsAccountKey [-KeyName] <String> [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmMapsAccountKey cmdlet regenerates an API key for a Azure Maps account.
+The New-AzMapsAccountKey cmdlet regenerates an API key for a Azure Maps account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmMapsAccountKey -ResourceGroupName MyResourceGroup -Name MyAccount -KeyName Primary
+PS C:\> New-AzMapsAccountKey -ResourceGroupName MyResourceGroup -Name MyAccount -KeyName Primary
 
 Confirm
 Are you sure you want to perform this action?
@@ -53,7 +53,7 @@ Regenerates the Primary API Key for the account MyAccount in the resource group 
 
 ### Example 2
 ```powershell
-PS C:\> New-AzureRmMapsAccountKey -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount -KeyName Secondary
+PS C:\> New-AzMapsAccountKey -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount -KeyName Secondary
 
 Confirm
 Are you sure you want to perform this action?
@@ -73,7 +73,7 @@ Regenerates the Secondary API Key for the specified Azure Maps Account.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Maps Account piped from Get-AzureRmMapsAccount.
+Maps Account piped from Get-AzMapsAccount.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Maps.Models.PSMapsAccount

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: D7065B04-1A01-4BB4-A519-1DA9002CDE02
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetworkgatewayconnection
 schema: 2.0.0
 ---
 
-# Set-AzureRmVirtualNetworkGatewayConnection
+# Set-AzVirtualNetworkGatewayConnection
 
 ## SYNOPSIS
 Configures a virtual network gateway connection.
@@ -14,21 +14,21 @@ Configures a virtual network gateway connection.
 ## SYNTAX
 
 ```
-Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtualNetworkGatewayConnection>
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtualNetworkGatewayConnection>
  [-EnableBgp <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
  [-IpsecPolicies <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]>]
  [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVirtualNetworkGatewayConnection** cmdlet configures a virtual network gateway connection.
+The **Set-AzVirtualNetworkGatewayConnection** cmdlet configures a virtual network gateway connection.
 
 ## EXAMPLES
 
 ### Example 1:
 ```
-$conn = Get-AzureRmVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
-Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn
+$conn = Get-AzVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn
 
 Confirm
 Are you sure you want to overwrite resource '1'
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -217,10 +217,10 @@ Parameters: VirtualNetworkGatewayConnection (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmVirtualNetworkGatewayConnection](./Get-AzureRmVirtualNetworkGatewayConnection.md)
+[Get-AzVirtualNetworkGatewayConnection](./Get-AzVirtualNetworkGatewayConnection.md)
 
-[New-AzureRmVirtualNetworkGatewayConnection](./New-AzureRmVirtualNetworkGatewayConnection.md)
+[New-AzVirtualNetworkGatewayConnection](./New-AzVirtualNetworkGatewayConnection.md)
 
-[Remove-AzureRmVirtualNetworkGatewayConnection](./Remove-AzureRmVirtualNetworkGatewayConnection.md)
+[Remove-AzVirtualNetworkGatewayConnection](./Remove-AzVirtualNetworkGatewayConnection.md)
 
 

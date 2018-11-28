@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 80AAA327-77C6-4372-9461-FFED5A15E678
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/backup-azkeyvaultsecret
 schema: 2.0.0
 ---
 
-# Backup-AzureKeyVaultSecret
+# Backup-AzKeyVaultSecret
 
 ## SYNOPSIS
 Backs up a secret in a key vault.
@@ -15,30 +15,30 @@ Backs up a secret in a key vault.
 
 ### BySecretName (Default)
 ```
-Backup-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-OutputFile] <String>] [-Force]
+Backup-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-OutputFile] <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BySecret
 ```
-Backup-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-OutputFile] <String>] [-Force]
+Backup-AzKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-OutputFile] <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Backup-AzureKeyVaultSecret** cmdlet backs up a specified secret in a key vault by downloading it and storing it in a file.
+The **Backup-AzKeyVaultSecret** cmdlet backs up a specified secret in a key vault by downloading it and storing it in a file.
 If there are multiple versions of the secret, all versions are included in the backup.
 Because the downloaded content is encrypted, it cannot be used outside of Azure Key Vault.
 You can restore a backed-up secret to any key vault in the subscription that it was backed up from.
 Typical reasons to use this cmdlet are:
 - You want to escrow a copy of your secret, so that you have an offline copy in case you accidentally delete your secret in your key vault.
-- You added a secret to a key vault and now want to clone the secret into a different Azure region, so that you can use it from all instances of your distributed application. Use the Backup-AzureKeyVaultSecret cmdlet to retrieve the secret in encrypted format and then use the Restore-AzureKeyVaultSecret cmdlet and specify a key vault in the second region. (Note that the regions must belong to the same geography.)
+- You added a secret to a key vault and now want to clone the secret into a different Azure region, so that you can use it from all instances of your distributed application. Use the Backup-AzKeyVaultSecret cmdlet to retrieve the secret in encrypted format and then use the Restore-AzKeyVaultSecret cmdlet and specify a key vault in the second region. (Note that the regions must belong to the same geography.)
 
 ## EXAMPLES
 
 ### Example 1: Back up a secret with an automatically generated file name
 ```powershell
-PS C:\Users\username\> Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
+PS C:\Users\username\> Backup-AzKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
 
 C:\Users\username\mykeyvault-mysecret-1527029447.01191
 ```
@@ -47,7 +47,7 @@ This command retrieves the secret named MySecret from the key vault named MyKeyV
 
 ### Example 2: Back up a secret to a specified file name, overwriting the existing file without prompting
 ```powershell
-PS C:\> Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret' -OutputFile 'C:\Backup.blob' -Force
+PS C:\> Backup-AzKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret' -OutputFile 'C:\Backup.blob' -Force
 
 C:\Backup.blob
 ```
@@ -56,8 +56,8 @@ This command retrieves the secret named MySecret from the key vaultnamed MyKeyVa
 
 ### Example 3: Back up a secret previously retrieved to a specified file name
 ```powershell
-PS C:\> $secret = Get-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
-PS C:\> Backup-AzureKeyVaultSecret -Secret $secret -OutputFile 'C:\Backup.blob'
+PS C:\> $secret = Get-AzKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
+PS C:\> Backup-AzKeyVaultSecret -Secret $secret -OutputFile 'C:\Backup.blob'
 
 C:\Backup.blob
 ```
@@ -70,7 +70,7 @@ This command uses the $secret object's vault name and name to retrieves the secr
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -205,11 +205,11 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Set-AzureKeyVaultSecret](./Set-AzureKeyVaultSecret.md)
+[Set-AzKeyVaultSecret](./Set-AzKeyVaultSecret.md)
 
-[Get-AzureKeyVaultSecret](./Get-AzureKeyVaultSecret.md)
+[Get-AzKeyVaultSecret](./Get-AzKeyVaultSecret.md)
 
-[Remove-AzureKeyVaultSecret](./Remove-AzureKeyVaultSecret.md)
+[Remove-AzKeyVaultSecret](./Remove-AzKeyVaultSecret.md)
 
-[Restore-AzureKeyVaultSecret](./Restore-AzureKeyVaultSecret.md)
+[Restore-AzKeyVaultSecret](./Restore-AzKeyVaultSecret.md)
 

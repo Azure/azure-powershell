@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubeventhubconsumergroup
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubeventhubconsumergroup
 schema: 2.0.0
 ---
 
-# Get-AzureRmIotHubEventHubConsumerGroup
+# Get-AzIotHubEventHubConsumerGroup
 
 ## SYNOPSIS
 Gets all the eventhub consumergroups.
@@ -13,7 +13,7 @@ Gets all the eventhub consumergroups.
 ## SYNTAX
 
 ```
-Get-AzureRmIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
+Get-AzIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
  [-EventHubEndpointName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ Gets all the eventhub consumergroups for the different EventHubs used by IotHub.
 
 ### Example 1 Gets all the eventhub consumergroups for the telemetry eventhub
 ```
-PS C:\> Get-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events"
+PS C:\> Get-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events"
 ```
 
 Gets all the eventhub consumergroups for the telemetry eventhub for the iothub named myiothub
 
 ### Example 2 Gets all the eventhub consumergroups for the operationsmonitoring eventhub
 ```
-PS C:\> Get-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "operationsMonitoringEvents"
+PS C:\> Get-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "operationsMonitoringEvents"
 ```
 
 Gets all the eventhub consumergroups for the operationsMonitoringEvents eventhub for the iothub named myiothub
@@ -42,7 +42,7 @@ Gets all the eventhub consumergroups for the operationsMonitoringEvents eventhub
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

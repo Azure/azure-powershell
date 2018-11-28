@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
-Module Name: AzureRM.Security
-online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzureRmSecurityAlert.md
+Module Name: Az.Security
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzSecurityAlert.md
 schema: 2.0.0
 ---
 
-# Get-AzureRmSecurityAlert
+# Get-AzSecurityAlert
 
 ## SYNOPSIS
 Gets security alerts that were detected by Azure Security Center
@@ -14,30 +14,29 @@ Gets security alerts that were detected by Azure Security Center
 
 ### SubscriptionScope (Default)
 ```
-Get-AzureRmSecurityAlert [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAlert [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
-Get-AzureRmSecurityAlert -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityAlert -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
 ```
-Get-AzureRmSecurityAlert -ResourceGroupName <String> -Name <String> -Location <String>
+Get-AzSecurityAlert -ResourceGroupName <String> -Name <String> -Location <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
-Get-AzureRmSecurityAlert -Name <String> -Location <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSecurityAlert -Name <String> -Location <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzureRmSecurityAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +46,7 @@ Gets security alerts that were detected by Azure Security Center
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmSecurityAlert
+PS C:\> Get-AzSecurityAlert
 
 
 Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/RSG/providers/Microsoft.Securit
@@ -185,7 +184,7 @@ Gets all the security alerts that were detected on resoruces inside a subscripti
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmSecurityAlert -ResourceGroupName "myService1"
+PS C:\> Get-AzSecurityAlert -ResourceGroupName "myService1"
 
 
 Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.
@@ -313,7 +312,7 @@ Gets all the security alerts that were detected on resoruces inside the "myServi
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzureRmSecurityAlert -ResourceGroupName "myService1" -Location "westeurope" -Name "2518675235999999999_0cd957d9-8101-47f7-88cc-0c5d0ebdbfd0"
+PS C:\> Get-AzSecurityAlert -ResourceGroupName "myService1" -Location "westeurope" -Name "2518675235999999999_0cd957d9-8101-47f7-88cc-0c5d0ebdbfd0"
 
 
 Id                 : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.
@@ -355,7 +354,7 @@ Gets a specific security alert that were detected on resoruces inside the "mySer
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -370,7 +369,7 @@ Accept wildcard characters: False
 Location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource, SubscriptionLevelResource
 Aliases:
 
@@ -385,7 +384,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource, SubscriptionLevelResource
 Aliases:
 
@@ -400,7 +399,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupScope, ResourceGroupLevelResource
 Aliases:
 
@@ -415,7 +414,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 

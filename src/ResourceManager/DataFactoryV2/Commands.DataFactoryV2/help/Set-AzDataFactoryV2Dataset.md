@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/set-azurermdatafactoryv2dataset
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/set-azdatafactoryv2dataset
 schema: 2.0.0
 ---
 
-# Set-AzureRmDataFactoryV2Dataset
+# Set-AzDataFactoryV2Dataset
 
 ## SYNOPSIS
 Creates a dataset in Data Factory.
@@ -14,19 +14,19 @@ Creates a dataset in Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Set-AzureRmDataFactoryV2Dataset [-Name] <String> [-DefinitionFile] <String> [-ResourceGroupName] <String>
+Set-AzDataFactoryV2Dataset [-Name] <String> [-DefinitionFile] <String> [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzureRmDataFactoryV2Dataset [-DefinitionFile] <String> [-ResourceId] <String> [-Force]
+Set-AzDataFactoryV2Dataset [-DefinitionFile] <String> [-ResourceId] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzureRmDataFactoryV2Dataset cmdlet creates a dataset in Azure Data Factory.
+The Set-AzDataFactoryV2Dataset cmdlet creates a dataset in Azure Data Factory.
 If you specify a name for a dataset that already exists, this cmdlet prompts you for confirmation before it replaces the dataset.
 If you specify the Force parameter, the cmdlet replaces the existing dataset without confirmation.
 Perform these operations in the following order:
@@ -41,7 +41,7 @@ If you confirm to overwrite the existing dataset, the dataset definition is also
 
 ### Example 1: Create a dataset
 ```
-PS C:\> Set-AzureRmDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -DefinitionFile "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
+PS C:\> Set-AzDataFactoryV2Dataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -DefinitionFile "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
 
     DatasetName       : DAWikipediaClickEvents
     ResourceGroupName : ADF
@@ -208,6 +208,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryV2Dataset]()
+[Get-AzDataFactoryV2Dataset]()
 
-[Remove-AzureRmDataFactoryV2Dataset]()
+[Remove-AzDataFactoryV2Dataset]()

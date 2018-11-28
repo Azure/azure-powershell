@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 7642F18A-B193-4849-BE3C-1B85FBD213F3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverbackuplongtermretentionvault
 schema: 2.0.0
 ---
 
-# Set-AzureRmSqlServerBackupLongTermRetentionVault
+# Set-AzSqlServerBackupLongTermRetentionVault
 
 ## SYNOPSIS
 Sets a server long term retention vault.
@@ -14,13 +14,13 @@ Sets a server long term retention vault.
 ## SYNTAX
 
 ```
-Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceId <String> [-ServerName] <String>
+Set-AzSqlServerBackupLongTermRetentionVault -ResourceId <String> [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlServerBackupLongTermRetentionVault** cmdlet sets the long term retention vault registered to this server.
+The **Set-AzSqlServerBackupLongTermRetentionVault** cmdlet sets the long term retention vault registered to this server.
 The vault is an Azure Backup resource used to store backup data.
 
 ## EXAMPLES
@@ -31,7 +31,7 @@ The vault is an Azure Backup resource used to store backup data.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -133,6 +133,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServerBackupLongTermRetentionVault](./Get-AzureRmSqlServerBackupLongTermRetentionVault.md)
+[Get-AzSqlServerBackupLongTermRetentionVault](./Get-AzSqlServerBackupLongTermRetentionVault.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermdelegation
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azdelegation
 schema: 2.0.0
 ---
 
-# Get-AzureRmDelegation
+# Get-AzDelegation
 
 ## SYNOPSIS
 Get a delegation (or all of the delegations) on a given subnet.
@@ -13,19 +13,19 @@ Get a delegation (or all of the delegations) on a given subnet.
 ## SYNTAX
 
 ```
-Get-AzureRmDelegation [-Name <String>] -Subnet <PSSubnet> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDelegation [-Name <String>] -Subnet <PSSubnet> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDelegation** cmdlet gets the named delegation from a subnet. If no delegation is named, it returns all of the delegations on the provided subnet.
+The **Get-AzDelegation** cmdlet gets the named delegation from a subnet. If no delegation is named, it returns all of the delegations on the provided subnet.
 
 ## EXAMPLES
 
 ### 1: Retrieving a specific delegation
 ```powershell
-PS C:\> $subnet = Get-AzureRmVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mySubnet"
-PS C:\> Get-AzureRmDelegation -Name "myDelegation" -Subnet $subnet
+PS C:\> $subnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
+PS C:\> Get-AzDelegation -Name "myDelegation" -Subnet $subnet
 
 ProvisioningState : Succeeded
 ServiceName       : Microsoft.Sql/servers
@@ -39,8 +39,8 @@ The first line retrieves the subnet of interest. The second line shows the deleg
 
 ### 2: Retrieving all subnet delegations
 ```powershell
-PS C:\> $vnet = Get-AzureRmVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup" | Get-AzureRmVirtualNetworkSubnetConfig -Name "mySubnet"
-PS C:\> $delegations = Get-AzureRmDelegation -Subnet $subnet
+PS C:\> $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
+PS C:\> $delegations = Get-AzDelegation -Subnet $subnet
 ```
 
 The first line retrieves the subnet of interest. The second line stores a list of all of the delegations on _mySubnet_ in the $delegations variable.
@@ -51,7 +51,7 @@ The first line retrieves the subnet of interest. The second line stores a list o
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,14 +66,14 @@ Accept wildcard characters: False
 The name of the delegation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The subnet
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: (All)
 Aliases:
 
@@ -93,8 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -107,8 +106,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## NOTES
 
 ## RELATED LINKS
-[Add-AzureRmDelegation](./Add-AzureRmDelegation.md)
-[New-AzureRmDelegation](./New-AzureRmDelegation.md)
-[Remove-AzureRmDelegation](./Remove-AzureRmDelegation.md)
-[Get-AzureRmVirtualNetwork](./Get-AzureRmVirtualNetwork.md)
-[Get-AzureRmVirtualNetworkSubnetConfig](./Get-AzureRmVirtualNetworkSubnetConfig.md)
+
+[Add-AzDelegation](./Add-AzDelegation.md)
+[New-AzDelegation](./New-AzDelegation.md)
+[Remove-AzDelegation](./Remove-AzDelegation.md)
+[Get-AzVirtualNetwork](./Get-AzVirtualNetwork.md)
+[Get-AzVirtualNetworkSubnetConfig](./Get-AzVirtualNetworkSubnetConfig.md)

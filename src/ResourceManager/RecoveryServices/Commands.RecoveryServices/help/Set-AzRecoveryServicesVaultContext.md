@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
-Module Name: AzureRM.RecoveryServices
+Module Name: Az.RecoveryServices
 ms.assetid: 368DD95E-EA25-4FC4-8171-CB7348FE480C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext
 schema: 2.0.0
 ---
 
-# Set-AzureRmRecoveryServicesVaultContext
+# Set-AzRecoveryServicesVaultContext
 
 ## SYNOPSIS
 Sets vault context.
@@ -14,45 +14,29 @@ Sets vault context.
 ## SYNTAX
 
 ```
-Set-AzureRmRecoveryServicesVaultContext -Vault <ARSVault> [-DefaultProfile <IAzureContextContainer>]
+Set-AzRecoveryServicesVaultContext -Vault <ARSVault> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmRecoveryServicesVaultContext** cmdlet sets the vault context for Azure Site Recovery services.
+The **Set-AzRecoveryServicesVaultContext** cmdlet sets the vault context for Azure Site Recovery services.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmRecoveryServicesVaultContext -Vault $vault
+PS C:\> Set-AzRecoveryServicesVaultContext -Vault $vault
 ```
 
 Sets vault context.
 
 ## PARAMETERS
 
-### -Vault
-Specifies the name of the vault.
-The vault must be an **AzureRmRecoveryServicesVault** object.
-
-```yaml
-Type: ARSVault
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -60,6 +44,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Vault
+Specifies the name of the vault.
+The vault must be an **AzureRmRecoveryServicesVault** object.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.ARSVault
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

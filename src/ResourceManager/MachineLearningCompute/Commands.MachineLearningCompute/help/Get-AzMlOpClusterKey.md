@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
-Module Name: AzureRM.MachineLearningCompute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/get-azurermmlopclusterkey
+Module Name: Az.MachineLearningCompute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearningcompute/get-azmlopclusterkey
 schema: 2.0.0
 ---
 
-# Get-AzureRmMlOpClusterKey
+# Get-AzMlOpClusterKey
 
 ## SYNOPSIS
 Gets the access keys associated with an operationalization cluster.
@@ -14,19 +14,19 @@ Gets the access keys associated with an operationalization cluster.
 
 ### GetByNameAndResourceGroup
 ```
-Get-AzureRmMlOpClusterKey -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzMlOpClusterKey -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
-Get-AzureRmMlOpClusterKey -InputObject <PSOperationalizationCluster> [-DefaultProfile <IAzureContextContainer>]
+Get-AzMlOpClusterKey -InputObject <PSOperationalizationCluster> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByResourceId
 ```
-Get-AzureRmMlOpClusterKey -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzMlOpClusterKey -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ The keys for the storage account, container registry, and other services associa
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmMlOpClusterKey -ResourceGroupName my-group -Name my-cluster
+PS C:\> Get-AzMlOpClusterKey -ResourceGroupName my-group -Name my-cluster
 ```
 
 Returns the secret keys for the services associated with the operationalization cluster.
@@ -47,7 +47,7 @@ Returns the secret keys for the services associated with the operationalization 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

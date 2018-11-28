@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 1CE2A30A-6DF8-4C4C-8348-C3C1CD4D0146
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermroutetable
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azroutetable
 schema: 2.0.0
 ---
 
-# Set-AzureRmRouteTable
+# Set-AzRouteTable
 
 ## SYNOPSIS
 Sets the goal state for a route table.
@@ -14,18 +14,18 @@ Sets the goal state for a route table.
 ## SYNTAX
 
 ```
-Set-AzureRmRouteTable -RouteTable <PSRouteTable> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Set-AzRouteTable -RouteTable <PSRouteTable> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmRouteTable** cmdlet sets the goal state for an Azure route table.
+The **Set-AzRouteTable** cmdlet sets the goal state for an Azure route table.
 
 ## EXAMPLES
 
 ### Example 1: Add a route and then set the goal state of the route table
 ```
-PS C:\>Get-AzureRmRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Add-AzureRmRouteConfig -Name "Route07" -AddressPrefix 10.2.0.0/16 -NextHopType "VnetLocal" | Set-AzureRmRouteTable
+PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Add-AzRouteConfig -Name "Route07" -AddressPrefix 10.2.0.0/16 -NextHopType "VnetLocal" | Set-AzRouteTable
 Name              : RouteTable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
@@ -68,9 +68,9 @@ Routes            : [
 Subnets           : []
 ```
 
-This command gets the route table named RouteTable01 by using Get-AzureRmRouteTable cmdlet.
-The command passes that table to the Add-AzureRmRouteConfig cmdlet by using the pipeline operator.
-**Add-AzureRmRouteConfig** adds the route named Route07, and then passes the result to the current cmdlet, which updates the table to reflect your changes.
+This command gets the route table named RouteTable01 by using Get-AzRouteTable cmdlet.
+The command passes that table to the Add-AzRouteConfig cmdlet by using the pipeline operator.
+**Add-AzRouteConfig** adds the route named Route07, and then passes the result to the current cmdlet, which updates the table to reflect your changes.
 
 ## PARAMETERS
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -165,12 +165,12 @@ Parameters: RouteTable (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmRouteConfig](./Add-AzureRmRouteConfig.md)
+[Add-AzRouteConfig](./Add-AzRouteConfig.md)
 
-[Get-AzureRmRouteTable](./Get-AzureRmRouteTable.md)
+[Get-AzRouteTable](./Get-AzRouteTable.md)
 
-[New-AzureRmRouteTable](./New-AzureRmRouteTable.md)
+[New-AzRouteTable](./New-AzRouteTable.md)
 
-[Remove-AzureRmRouteTable](./Remove-AzureRmRouteTable.md)
+[Remove-AzRouteTable](./Remove-AzRouteTable.md)
 
 

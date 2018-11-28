@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 8188C617-4895-4B43-8D3B-FA6FC5B868DD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchpoolstatistics
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchpoolstatistics
 schema: 2.0.0
 ---
 
-# Get-AzureBatchPoolStatistics
+# Get-AzBatchPoolStatistics
 
 ## SYNOPSIS
 Gets pool summary statistics for a Batch account.
@@ -14,20 +14,20 @@ Gets pool summary statistics for a Batch account.
 ## SYNTAX
 
 ```
-Get-AzureBatchPoolStatistics -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
+Get-AzBatchPoolStatistics -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureBatchPoolStatistics** cmdlet gets the lifetime statistics for all of the pools in the specified account.
+The **Get-AzBatchPoolStatistics** cmdlet gets the lifetime statistics for all of the pools in the specified account.
 Statistics are aggregated across all pools that have ever existed in the account, from account creation to the last update time of the statistics.
 
 ## EXAMPLES
 
 ### Example 1: Get resource statistics of all pools in an account
 ```
-PS C:\>$Context = Get-AzureRmBatchAccountKeys -AccountName "ContosoBatchAccount"
-PS C:\> $PoolStatistics = Get-AzureBatchPoolStatistics -BatchContext $Context
+PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "ContosoBatchAccount"
+PS C:\> $PoolStatistics = Get-AzBatchPoolStatistics -BatchContext $Context
 PS C:\> $PoolStatistics.ResourceStatistics 
 AverageCpuPercentage : 0.351232518750755
 AverageDiskGiB       : 55.2569014701165
@@ -44,7 +44,7 @@ PeakMemoryGiB        : 1.11184692382813
 StartTime            : 2/10/2016 7:07:24 PM
 ```
 
-The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzureRmBatchAccountKeys**.
+The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKeys**.
 The command stores this object reference in the $Context variable.
 The second command gets the statistics of all of the pools in the specified account, and then stores them in the $PoolStatistics.
 The final command displays the **ResourceStatistics** property of $PoolStatistics.
@@ -53,7 +53,7 @@ The final command displays the **ResourceStatistics** property of $PoolStatistic
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,10 +98,10 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchPoolUsageMetrics](./Get-AzureBatchPoolUsageMetrics.md)
+[Get-AzBatchPoolUsageMetrics](./Get-AzBatchPoolUsageMetrics.md)
 
-[Get-AzureBatchJobStatistics](./Get-AzureBatchJobStatistics.md)
+[Get-AzBatchJobStatistics](./Get-AzBatchJobStatistics.md)
 
 

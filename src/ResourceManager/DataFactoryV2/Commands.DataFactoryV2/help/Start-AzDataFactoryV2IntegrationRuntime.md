@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/start-azurermdatafactoryv2integrationruntime
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/start-azdatafactoryv2integrationruntime
 schema: 2.0.0
 ---
 
-# Start-AzureRmDataFactoryV2IntegrationRuntime
+# Start-AzDataFactoryV2IntegrationRuntime
 
 ## SYNOPSIS
 Starts a managed dedicated integration runtime.
@@ -14,31 +14,31 @@ Starts a managed dedicated integration runtime.
 
 ### ByIntegrationRuntimeName (Default)
 ```
-Start-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-Name] <String> [-ResourceGroupName] <String>
+Start-AzDataFactoryV2IntegrationRuntime [-Force] [-Name] <String> [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Start-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-ResourceId] <String>
+Start-AzDataFactoryV2IntegrationRuntime [-Force] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Start-AzureRmDataFactoryV2IntegrationRuntime [-Force] [-InputObject] <PSIntegrationRuntime>
+Start-AzDataFactoryV2IntegrationRuntime [-Force] [-InputObject] <PSIntegrationRuntime>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmDataFactoryV2IntegrationRuntime** cmdlet starts a managed dedicated integration runtime. The resource is provisioned and after the operation the state is 'Started'.
+The **Start-AzDataFactoryV2IntegrationRuntime** cmdlet starts a managed dedicated integration runtime. The resource is provisioned and after the operation the state is 'Started'.
 
 ## EXAMPLES
 
 ### Example 1: Start an integration runtime
 ```
-PS C:\> Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name test-dedicated-ir' -Force
+PS C:\> Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name test-dedicated-ir' -Force
 
     CreateTime                   : 9/11/2017 2:16:12 PM
     Nodes                        : {tvm-1650185656_1-20170911t141751z}
@@ -219,4 +219,4 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Stop-AzureRmDataFactoryV2IntegrationRuntime]()
+[Stop-AzDataFactoryV2IntegrationRuntime]()

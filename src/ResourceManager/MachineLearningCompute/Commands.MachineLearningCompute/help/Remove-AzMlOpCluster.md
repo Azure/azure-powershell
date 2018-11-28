@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
-Module Name: AzureRM.MachineLearningCompute
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/remove-azurermmlopcluster
+Module Name: Az.MachineLearningCompute
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearningcompute/remove-azmlopcluster
 schema: 2.0.0
 ---
 
-# Remove-AzureRmMlOpCluster
+# Remove-AzMlOpCluster
 
 ## SYNOPSIS
 Removes an operationalization cluster.
@@ -14,20 +14,20 @@ Removes an operationalization cluster.
 
 ### RemoveByNameAndResourceGroup (Default)
 ```
-Remove-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> [-IncludeAllResources]
+Remove-AzMlOpCluster -ResourceGroupName <String> -Name <String> [-IncludeAllResources]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByInputObject
 ```
-Remove-AzureRmMlOpCluster -InputObject <PSOperationalizationCluster> [-IncludeAllResources]
+Remove-AzMlOpCluster -InputObject <PSOperationalizationCluster> [-IncludeAllResources]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByResourceId
 ```
-Remove-AzureRmMlOpCluster -ResourceId <String> [-IncludeAllResources]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzMlOpCluster -ResourceId <String> [-IncludeAllResources] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,12 +37,12 @@ Removes an operationalization cluster. Some resources associated with the cluste
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmMlOpCluster -ResourceGroupName my-group -Name my-cluster
+PS C:\> Remove-AzMlOpCluster -ResourceGroupName my-group -Name my-cluster
 ```
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmMlOpCluster -ResourceGroupName my-group -Name my-cluster | Remove-AzureRmMlOpCluster
+PS C:\> Get-AzMlOpCluster -ResourceGroupName my-group -Name my-cluster | Remove-AzMlOpCluster
 ```
 
 ## PARAMETERS
@@ -51,7 +51,7 @@ PS C:\> Get-AzureRmMlOpCluster -ResourceGroupName my-group -Name my-cluster | Re
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

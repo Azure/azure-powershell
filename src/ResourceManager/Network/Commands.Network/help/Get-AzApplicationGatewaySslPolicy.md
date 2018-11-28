@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: AF02FFF8-F00D-4446-968F-F3C9008C39F0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermapplicationgatewaysslpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewaysslpolicy
 schema: 2.0.0
 ---
 
-# Get-AzureRmApplicationGatewaySslPolicy
+# Get-AzApplicationGatewaySslPolicy
 
 ## SYNOPSIS
 Gets the SSL policy of an application gateway.
@@ -14,19 +14,19 @@ Gets the SSL policy of an application gateway.
 ## SYNTAX
 
 ```
-Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway <PSApplicationGateway>
+Get-AzApplicationGatewaySslPolicy -ApplicationGateway <PSApplicationGateway>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApplicationGatewaySslPolicy** cmdlet gets the SSL policy of an application gateway.
+The **Get-AzApplicationGatewaySslPolicy** cmdlet gets the SSL policy of an application gateway.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>$AppGW = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $sslpolicy = Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $AppGW
+PS C:\>$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $sslpolicy = Get-AzApplicationGatewaySslPolicy -ApplicationGateway $AppGW
 ```
 
 The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -81,8 +81,8 @@ Parameters: ApplicationGateway (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmApplicationGatewaySslPolicy](./New-AzureRmApplicationGatewaySslPolicy.md)
+[New-AzApplicationGatewaySslPolicy](./New-AzApplicationGatewaySslPolicy.md)
 
-[Set-AzureRmApplicationGatewaySslPolicy](./Set-AzureRmApplicationGatewaySslPolicy.md)
+[Set-AzApplicationGatewaySslPolicy](./Set-AzApplicationGatewaySslPolicy.md)
 
 

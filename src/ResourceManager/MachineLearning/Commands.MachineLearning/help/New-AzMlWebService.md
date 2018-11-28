@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-Module Name: AzureRM.MachineLearning
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/new-azurermmlwebservice
+Module Name: Az.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/new-azmlwebservice
 schema: 2.0.0
 ---
 
-# New-AzureRmMlWebService
+# New-AzMlWebService
 
 ## SYNOPSIS
 Creates a new web service.
@@ -14,13 +14,13 @@ Creates a new web service.
 
 ### CreateFromFile
 ```
-New-AzureRmMlWebService -ResourceGroupName <String> -Location <String> -Name <String> -DefinitionFile <String>
+New-AzMlWebService -ResourceGroupName <String> -Location <String> -Name <String> -DefinitionFile <String>
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateFromInstance
 ```
-New-AzureRmMlWebService -ResourceGroupName <String> -Location <String> -Name <String>
+New-AzMlWebService -ResourceGroupName <String> -Location <String> -Name <String>
  -NewWebServiceDefinition <WebService> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -33,17 +33,17 @@ If a web service with the same name exists in the resource group, the call acts 
 
 ### Example 1: Create a new service from a Json file based definition
 ```
-New-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Location "South Central US" -DefinitionFile "C:\mlservice.json"
+New-AzMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Location "South Central US" -DefinitionFile "C:\mlservice.json"
 ```
 
 Creates a new Azure Machine Learning web service named "mywebservicename" in the "myresourcegroup" group and South Central US region, based on the definition present in the referenced json file.
 
 ### Example 2: Create a new service from an object instance
 ```
-New-AzureRmMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Location "South Central US" -NewWebServiceDefinition $serviceDefinitionObject
+New-AzMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename" -Location "South Central US" -NewWebServiceDefinition $serviceDefinitionObject
 ```
 
-You can obtain a web service object instance to customize before publishing as a resource by using the Import-AzureRmMlWebService cmdlet.
+You can obtain a web service object instance to customize before publishing as a resource by using the Import-AzMlWebService cmdlet.
 
 ## PARAMETERS
 
@@ -51,7 +51,7 @@ You can obtain a web service object instance to customize before publishing as a
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -99,7 +99,7 @@ Enter an Azure data center region, such as "West US" or "Southeast Asia".
 You can place a web service in any region that supports resources of that type.
 The web service does not have to be in the same region your Azure subscription or the same region as its resource group.
 Resource groups can contain web services from different regions.
-To determine which regions support each resource type, use the Get-AzureRmResourceProvider with the ProviderNamespace parameter cmdlet.
+To determine which regions support each resource type, use the Get-AzResourceProvider with the ProviderNamespace parameter cmdlet.
 
 ```yaml
 Type: System.String
@@ -152,7 +152,7 @@ Enter an Azure data center region, such as "West US" or "Southeast Asia".
 You can place a web service in any region that supports resources of that type.
 The web service does not have to be in the same region your Azure subscription or the same region as its resource group.
 Resource groups can contain web services from different regions.
-To determine which regions support each resource type, use the Get-AzureRmResourceProvider with the ProviderNamespace parameter cmdlet.
+To determine which regions support each resource type, use the Get-AzResourceProvider with the ProviderNamespace parameter cmdlet.
 
 ```yaml
 Type: System.String

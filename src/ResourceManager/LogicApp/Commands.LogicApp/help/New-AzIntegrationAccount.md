@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
-Module Name: AzureRM.LogicApp
+Module Name: Az.LogicApp
 ms.assetid: 5F1A4FE0-CB57-45D3-9F08-879469A61E1E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp/new-azurermintegrationaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/new-azintegrationaccount
 schema: 2.0.0
 ---
 
-# New-AzureRmIntegrationAccount
+# New-AzIntegrationAccount
 
 ## SYNOPSIS
 Creates an integration account.
@@ -14,12 +14,12 @@ Creates an integration account.
 ## SYNTAX
 
 ```
-New-AzureRmIntegrationAccount -ResourceGroupName <String> -Name <String> -Location <String> [-Sku <String>]
+New-AzIntegrationAccount -ResourceGroupName <String> -Name <String> -Location <String> [-Sku <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmIntegrationAccount** cmdlet creates an integration account.
+The **New-AzIntegrationAccount** cmdlet creates an integration account.
 This cmdlet returns an object that represents the integration account.Specify a name, location, resource group name, and SKU name.
 Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
 This module supports dynamic parameters.
@@ -31,7 +31,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 
 ### Example 1: Create an integration account
 ```
-PS C:\>New-AzureRmIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Location "brazilsouth" -Sku "Standard"
+PS C:\>New-AzIntegrationAccount -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -Location "brazilsouth" -Sku "Standard"
 Id          : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31
 Name        : IntegrationAccount31
 Type        : Microsoft.Logic/integrationAccounts
@@ -49,7 +49,7 @@ This command creates an integration account named IntegrationAccount31 in the sp
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -166,10 +166,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmIntegrationAccount](./Get-AzureRmIntegrationAccount.md)
+[Get-AzIntegrationAccount](./Get-AzIntegrationAccount.md)
 
-[Remove-AzureRmIntegrationAccount](./Remove-AzureRmIntegrationAccount.md)
+[Remove-AzIntegrationAccount](./Remove-AzIntegrationAccount.md)
 
-[Set-AzureRmIntegrationAccount](./Set-AzureRmIntegrationAccount.md)
+[Set-AzIntegrationAccount](./Set-AzIntegrationAccount.md)
 
 

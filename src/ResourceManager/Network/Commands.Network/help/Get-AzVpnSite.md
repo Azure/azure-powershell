@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvpnsite
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvpnsite
 schema: 2.0.0
 ---
 
-# Get-AzureRmVpnSite
+# Get-AzVpnSite
 
 ## SYNOPSIS
 Gets an Azure VpnSite resource by name OR lists all VpnSites in a ResourceGroup or SubscriptionId. 
@@ -16,12 +16,12 @@ This is an RM representation of customer branches that are uploaded to Azure for
 
 ### ListBySubscriptionId (Default)
 ```
-Get-AzureRmVpnSite [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVpnSite [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByResourceGroupName
 ```
-Get-AzureRmVpnSite -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzVpnSite -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -33,13 +33,13 @@ Gets an Azure VpnSite resource by name OR lists all VpnSites in a ResourceGroup 
 ### Example 1
 
 ```powershell
-PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
-PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
 PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
 PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
 PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
-PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
-PS C:\> Get-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite"
+PS C:\> New-AzVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
+PS C:\> Get-AzVpnSite -ResourceGroupName "testRG" -Name "testVpnSite"
 
 ResourceGroupName : testRG
 Name              : testVpnSite
@@ -57,7 +57,7 @@ The above will create a resource group, Virtual WAN in West US in "testRG" resou
 
 Then it creates a VpnSite to represent a customer branch and links it to the Virtual WAN.
 
-Once the site is created, it gets the site using the Get-AzureRmVpnSite command.
+Once the site is created, it gets the site using the Get-AzVpnSite command.
 
 ## PARAMETERS
 
@@ -65,7 +65,7 @@ Once the site is created, it gets the site using the Get-AzureRmVpnSite command.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

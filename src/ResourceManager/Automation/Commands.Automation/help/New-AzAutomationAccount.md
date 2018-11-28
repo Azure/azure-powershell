@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 2D5B16F0-0662-4D9F-A13F-808CE5EEBBA3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationaccount
 schema: 2.0.0
 ---
 
-# New-AzureRmAutomationAccount
+# New-AzAutomationAccount
 
 ## SYNOPSIS
 Creates an Automation account.
@@ -14,12 +14,12 @@ Creates an Automation account.
 ## SYNTAX
 
 ```
-New-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [-Plan <String>] [-Tags <IDictionary>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [-Plan <String>]
+ [-Tags <IDictionary>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAutomationAccount** cmdlet creates an Azure Automation account in a resource group.
+The **New-AzAutomationAccount** cmdlet creates an Azure Automation account in a resource group.
 An Automation account is a container for Automation resources that is isolated from the resources
 of other Automation accounts. Automation resources include runbooks, Desired State Configuration
 (DSC) configurations, jobs, and assets.
@@ -28,7 +28,7 @@ of other Automation accounts. Automation resources include runbooks, Desired Sta
 
 ### Example 1: Create an automation account
 ```
-PS C:\> New-AzureRmAutomationAccount -Name "ContosoAutomationAccount" -Location "East US" -ResourceGroupName "ResourceGroup01"
+PS C:\> New-AzAutomationAccount -Name "ContosoAutomationAccount" -Location "East US" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command creates a new automation account named ContosoAutomationAccount in the East US region.
@@ -39,7 +39,7 @@ This command creates a new automation account named ContosoAutomationAccount in 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the location in which this cmdlet creates the Automation account.
-To obtain valid locations, use the Get-AzureRMLocation cmdlet.
+To obtain valid locations, use the Get-AzLocation cmdlet.
 
 ```yaml
 Type: System.String
@@ -148,8 +148,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationAccount](./Get-AzureRmAutomationAccount.md)
+[Get-AzAutomationAccount](./Get-AzAutomationAccount.md)
 
-[Remove-AzureRmAutomationAccount](./Remove-AzureRmAutomationAccount.md)
+[Remove-AzAutomationAccount](./Remove-AzAutomationAccount.md)
 
-[Set-AzureRmAutomationAccount](./Set-AzureRmAutomationAccount.md)
+[Set-AzAutomationAccount](./Set-AzAutomationAccount.md)

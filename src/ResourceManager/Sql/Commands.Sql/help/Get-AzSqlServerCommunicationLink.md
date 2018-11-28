@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 2E7E20CD-6A2B-455E-9476-8E0827429162
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlservercommunicationlink
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlservercommunicationlink
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlServerCommunicationLink
+# Get-AzSqlServerCommunicationLink
 
 ## SYNOPSIS
 Gets communication links for elastic database transactions between database servers.
@@ -14,27 +14,26 @@ Gets communication links for elastic database transactions between database serv
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServerCommunicationLink [[-LinkName] <String>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSqlServerCommunicationLink [[-LinkName] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlServerCommunicationLink** cmdlet gets server-to-server communication links for elastic database transactions in Azure SQL Database.
+The **Get-AzSqlServerCommunicationLink** cmdlet gets server-to-server communication links for elastic database transactions in Azure SQL Database.
 Specify the name of a server communication link to see the properties for that link.
 
 ## EXAMPLES
 
 ### Example 1: Get all communication links for a server
 ```
-PS C:\>Get-AzureRmSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17"
+PS C:\>Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17"
 ```
 
 This command gets all server-to-server communication links for elastic database transactions for the server named ContosoServer17.
 
 ### Example 2: Get a specific communication link for a server
 ```
-PS C:\>Get-AzureRmSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01"
+PS C:\>Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01"
 ```
 
 This command gets the server-to-server communication link named Link01.
@@ -45,7 +44,7 @@ This command gets the server-to-server communication link named Link01.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -149,8 +148,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlServerCommunicationLink](./New-AzureRmSqlServerCommunicationLink.md)
+[New-AzSqlServerCommunicationLink](./New-AzSqlServerCommunicationLink.md)
 
-[Remove-AzureRmSqlServerCommunicationLink](./Remove-AzureRmSqlServerCommunicationLink.md)
+[Remove-AzSqlServerCommunicationLink](./Remove-AzSqlServerCommunicationLink.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

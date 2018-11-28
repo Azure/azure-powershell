@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DevSpaces.dll-Help.xml
-Module Name: AzureRM.DevSpaces
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.devspaces/update-azureevspacescontroller
+Module Name: Az.DevSpaces
+online version: https://docs.microsoft.com/en-us/powershell/module/az.devspaces/update-azevspacescontroller
 schema: 2.0.0
 ---
 
-# Update-AzureRmDevSpacesController
+# Update-AzDevSpacesController
 
 ## SYNOPSIS
 Update the DevSpaces controller to add tags. 
@@ -14,19 +14,19 @@ Update the DevSpaces controller to add tags.
 
 ### DevSpacesControllerNameParameterSet (Default)
 ```
-Update-AzureRmDevSpacesController [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
+Update-AzDevSpacesController [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Update-AzureRmDevSpacesController -ResourceId <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDevSpacesController -ResourceId <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Update-AzureRmDevSpacesController -InputObject <PSController> [-Tag <Hashtable>]
+Update-AzDevSpacesController -InputObject <PSController> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Update the DevSpaces controller to add tags.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzureRmDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName -Tag @{ tagKey="tagValue"}
+PS C:\> Update-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName -Tag @{ tagKey="tagValue"}
 
 Name        Resource Group  Location  Provisioning State
 ----------  --------------  --------  ------------------
@@ -52,7 +52,7 @@ Tag a DevSpaces contoller.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

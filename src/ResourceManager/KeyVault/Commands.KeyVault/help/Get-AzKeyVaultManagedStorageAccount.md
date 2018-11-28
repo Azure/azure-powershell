@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultmanagedstorageaccount
+Module Name: Az.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultmanagedstorageaccount
 schema: 2.0.0
 ---
 
-# Get-AzureKeyVaultManagedStorageAccount
+# Get-AzKeyVaultManagedStorageAccount
 
 ## SYNOPSIS
 Gets Key Vault managed Azure Storage Accounts.
@@ -14,19 +14,19 @@ Gets Key Vault managed Azure Storage Accounts.
 
 ### ByAccountName (Default)
 ```
-Get-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [[-AccountName] <String>] [-InRemovedState]
+Get-AzKeyVaultManagedStorageAccount [-VaultName] <String> [[-AccountName] <String>] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Get-AzureKeyVaultManagedStorageAccount [-InputObject] <PSKeyVault> [-InRemovedState]
+Get-AzKeyVaultManagedStorageAccount [-InputObject] <PSKeyVault> [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzureKeyVaultManagedStorageAccount [-ResourceId] <String> [-InRemovedState]
+Get-AzKeyVaultManagedStorageAccount [-ResourceId] <String> [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Gets a Key Vault managed Azure Storage Account if the name of the account is spe
 
 ### Example 1: List all Key Vault managed Storage Accounts
 ```powershell
-PS C:\> Get-AzureKeyVaultManagedStorageAccount -VaultName 'myvault'
+PS C:\> Get-AzKeyVaultManagedStorageAccount -VaultName 'myvault'
 
 Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
 Vault Name          : myvault
@@ -54,7 +54,7 @@ Lists all the accounts whose keys are managed by vault 'myvault'
 
 ### Example 2: Get a Key Vault managed Storage Account
 ```powershell
-PS C:\> Get-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -Name 'mystorageaccount'
+PS C:\> Get-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -Name 'mystorageaccount'
 
 Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
 Vault Name          : myvault
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

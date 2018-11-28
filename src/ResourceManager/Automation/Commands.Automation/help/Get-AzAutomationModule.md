@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: A73B388A-E859-40D3-BA63-0E231CF1E81D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationmodule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationmodule
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationModule
+# Get-AzAutomationModule
 
 ## SYNOPSIS
 Gets metadata for modules from Automation.
@@ -15,31 +15,31 @@ Gets metadata for modules from Automation.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationModule [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationModule [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmAutomationModule [-Name] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationModule [-Name] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAutomationModule** cmdlet gets metadata for modules from Azure Automation.
+The **Get-AzAutomationModule** cmdlet gets metadata for modules from Azure Automation.
 
 ## EXAMPLES
 
 ### Example 1: Get all modules
 ```
-PS C:\>Get-AzureRmAutomationModule -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01"
+PS C:\>Get-AzAutomationModule -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command gets all modules in the Automation account named Contoso17.
 
 ### Example 2: Get a module
 ```
-PS C:\>Get-AzureRmAutomationModule -AutomationAccountName "Contoso17" -Name "ContosoModule" -ResourceGroupName "ResourceGroup01"
+PS C:\>Get-AzAutomationModule -AutomationAccountName "Contoso17" -Name "ContosoModule" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command gets a module named ContosoModule in the Automation account named Contoso17.
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -121,10 +121,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAutomationModule](./New-AzureRmAutomationModule.md)
+[New-AzAutomationModule](./New-AzAutomationModule.md)
 
-[Remove-AzureRmAutomationModule](./Remove-AzureRmAutomationModule.md)
+[Remove-AzAutomationModule](./Remove-AzAutomationModule.md)
 
-[Set-AzureRmAutomationModule](./Set-AzureRmAutomationModule.md)
+[Set-AzAutomationModule](./Set-AzAutomationModule.md)
 
 

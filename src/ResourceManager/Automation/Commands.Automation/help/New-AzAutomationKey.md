@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 055526FA-5DB7-4F1D-81B3-5D9753283FE2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/new-azautomationkey
 schema: 2.0.0
 ---
 
-# New-AzureRmAutomationKey
+# New-AzAutomationKey
 
 ## SYNOPSIS
 Regenerates registration keys for an Automation account.
@@ -14,18 +14,18 @@ Regenerates registration keys for an Automation account.
 ## SYNTAX
 
 ```
-New-AzureRmAutomationKey [-KeyType] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+New-AzAutomationKey [-KeyType] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmAutomationKey** cmdlet regenerates registration keys for an Azure Automation account.
+The **New-AzAutomationKey** cmdlet regenerates registration keys for an Azure Automation account.
 
 ## EXAMPLES
 
 ### Example 1: Regenerate a key for an Automation account
 ```
-PS C:\>New-AzureAutomationKey -KeyType Primary -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
+PS C:\>New-AzAutomationKey -KeyType Primary -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01"
 ```
 
 This command regenerates the primary key for the Azure Automation account named AutomationAccount01 in the resource group named ResourceGroup01.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlsyncgroup
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlsyncgroup
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlSyncGroup
+# Remove-AzSqlSyncGroup
 
 ## SYNOPSIS
 Removes an Azure SQL Database Sync Group.
@@ -13,19 +13,19 @@ Removes an Azure SQL Database Sync Group.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlSyncGroup [-Name] <String> [-Force] [-PassThru] [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzSqlSyncGroup [-Name] <String> [-Force] [-PassThru] [-ServerName] <String> [-DatabaseName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlSyncGroup** cmdlet removes an Azure SQL Database Sync Group.
+The **Remove-AzSqlSyncGroup** cmdlet removes an Azure SQL Database Sync Group.
 
 ## EXAMPLES
 
 ### Example 1: Remove a sync group
 ```
-PS C:\>Remove-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -Name "syncGroup01"
+PS C:\>Remove-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -Name "syncGroup01"
 ```
 
 This command removes the Azure SQL Database Sync Group named syncGroup01.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -183,9 +183,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlSyncGroup](./New-AzureRmSqlSyncGroup.md)
+[New-AzSqlSyncGroup](./New-AzSqlSyncGroup.md)
 
-[Update-AzureRmSqlSyncGroup](./Update-AzureRmSqlSyncGroup.md)
+[Update-AzSqlSyncGroup](./Update-AzSqlSyncGroup.md)
 
-[Get-AzureRmSqlSyncGroup](./Get-AzureRmSqlSyncGroup.md)
+[Get-AzSqlSyncGroup](./Get-AzSqlSyncGroup.md)
 

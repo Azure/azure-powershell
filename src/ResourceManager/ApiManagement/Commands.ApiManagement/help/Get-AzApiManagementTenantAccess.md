@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 236B4436-E8AD-42B4-922C-E2E1406CAFC2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementtenantaccess
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementtenantaccess
 schema: 2.0.0
 ---
 
-# Get-AzureRmApiManagementTenantAccess
+# Get-AzApiManagementTenantAccess
 
 ## SYNOPSIS
 Gets the access configuration for a tenant.
@@ -14,19 +14,19 @@ Gets the access configuration for a tenant.
 ## SYNTAX
 
 ```
-Get-AzureRmApiManagementTenantAccess -Context <PsApiManagementContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApiManagementTenantAccess -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApiManagementTenantAccess** cmdlet gets the tenant access configuration for a tenant.
+The **Get-AzApiManagementTenantAccess** cmdlet gets the tenant access configuration for a tenant.
 
 ## EXAMPLES
 
 ### Example 1: Get tenant access configuration
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementTenantAccess -Context $apimContext
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementTenantAccess -Context $apimContext
 ```
 
 This command gets the tenant access configuration for the specified context.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,6 +78,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmApiManagementTenantAccess](./Set-AzureRmApiManagementTenantAccess.md)
+[Set-AzApiManagementTenantAccess](./Set-AzApiManagementTenantAccess.md)
 
 

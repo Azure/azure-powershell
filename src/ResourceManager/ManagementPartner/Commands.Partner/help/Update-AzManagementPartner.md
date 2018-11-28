@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ManagementPartner.dll-Help.xml
-Module Name: AzureRM.ManagementPartner
+Module Name: Az.ManagementPartner
 online version: http://go.microsoft.com/fwlink/?LinkID=393054
 schema: 2.0.0
 ---
 
-# Update-AzureRmManagementPartner
+# Update-AzManagementPartner
 
 ## SYNOPSIS
 Updates the Microsoft Partner Network(MPN) ID of the current authenticated user or service principal.
@@ -13,7 +13,7 @@ Updates the Microsoft Partner Network(MPN) ID of the current authenticated user 
 ## SYNTAX
 
 ```
-Update-AzureRmManagementPartner [-PartnerId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Update-AzManagementPartner [-PartnerId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Updates the Microsoft Partner Network(MPN) ID of the current authenticated user 
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzureRmManagementPartner -PartnerId 4977985
+PS C:\> Update-AzManagementPartner -PartnerId 4977985
 PartnerId   : 4977985
 PartnerName : Test_Test_DPORTest
 TenantId    : 1b1121dd-6900-412a-af73-e8d44f81e1c1
@@ -40,7 +40,7 @@ Update the management partner to a new one
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,8 +112,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmManagementPartner](./Remove-AzureRmManagementPartner.md)
+[Remove-AzManagementPartner](./Remove-AzManagementPartner.md)
 
-[New-AzureRmManagementPartner](./New-AzureRmManagementPartner.md)
+[New-AzManagementPartner](./New-AzManagementPartner.md)
 
-[Get-AzureRmManagementPartner](./Get-AzureRmManagementPartner.md)
+[Get-AzManagementPartner](./Get-AzManagementPartner.md)

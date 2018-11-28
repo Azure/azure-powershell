@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 818D5D85-B6D5-458C-A26E-E4DE8E111A10
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurermbatchaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchaccount
 schema: 2.0.0
 ---
 
-# Get-AzureRmBatchAccount
+# Get-AzBatchAccount
 
 ## SYNOPSIS
 Gets a Batch account in the current subscription.
@@ -14,12 +14,12 @@ Gets a Batch account in the current subscription.
 ## SYNTAX
 
 ```
-Get-AzureRmBatchAccount [[-AccountName] <String>] [[-ResourceGroupName] <String>] [[-Tag] <Hashtable>]
+Get-AzBatchAccount [[-AccountName] <String>] [[-ResourceGroupName] <String>] [[-Tag] <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmBatchAccount** cmdlet gets an Azure Batch account in the current subscription. You
+The **Get-AzBatchAccount** cmdlet gets an Azure Batch account in the current subscription. You
 can use the *AccountName* parameter to get a single account, or you can use the *ResourceGroupName*
 parameter to get accounts under that resource group.
 
@@ -27,7 +27,7 @@ parameter to get accounts under that resource group.
 
 ### Example 1: Get a batch account by name
 ```
-PS C:\>Get-AzureRmBatchAccount -AccountName "pfuller"
+PS C:\>Get-AzBatchAccount -AccountName "pfuller"
 AccountName                  : pfuller
 Location                     : westus
 ResourceGroupName            : CmdletExampleRG
@@ -42,7 +42,7 @@ This command gets the batch account named pfuller.
 
 ### Example 2: Get the batch accounts associated with a resource group
 ```
-PS C:\>Get-AzureRmBatchAccount -ResourceGroupName "CmdletExampleRG"
+PS C:\>Get-AzBatchAccount -ResourceGroupName "CmdletExampleRG"
 AccountName                  : cmdletexample
 Location                     : westus
 ResourceGroupName            : CmdletExampleRG
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -146,10 +146,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmBatchAccount](./New-AzureRmBatchAccount.md)
+[New-AzBatchAccount](./New-AzBatchAccount.md)
 
-[Remove-AzureRmBatchAccount](./Remove-AzureRmBatchAccount.md)
+[Remove-AzBatchAccount](./Remove-AzBatchAccount.md)
 
-[Set-AzureRmBatchAccount](./Set-AzureRmBatchAccount.md)
+[Set-AzBatchAccount](./Set-AzBatchAccount.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)

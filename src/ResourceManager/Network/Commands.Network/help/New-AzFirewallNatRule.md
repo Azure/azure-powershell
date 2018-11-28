@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: C0E1D4DF-232F-49C6-BE4C-05C8E8038329
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermfirewallnatrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallnatrule
 schema: 2.0.0
 ---
 
-# New-AzureRmFirewallNatRule
+# New-AzFirewallNatRule
 
 ## SYNOPSIS
 Creates a Firewall NAT Rule.
@@ -14,7 +14,7 @@ Creates a Firewall NAT Rule.
 ## SYNTAX
 
 ```
-New-AzureRmFirewallNatRule -Name <String> [-Description <String>]
+New-AzFirewallNatRule -Name <String> [-Description <String>]
  -SourceAddress <System.Collections.Generic.List`1[System.String]>
  -DestinationAddress <System.Collections.Generic.List`1[System.String]>
  -DestinationPort <System.Collections.Generic.List`1[System.String]>
@@ -23,13 +23,13 @@ New-AzureRmFirewallNatRule -Name <String> [-Description <String>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmFirewallNatRule** cmdlet creates a NAT rule for Azure Firewall.
+The **New-AzFirewallNatRule** cmdlet creates a NAT rule for Azure Firewall.
 
 ## EXAMPLES
 
 ### 1:  Create a rule to DNAT all TCP traffic from 10.0.0.0/24 with destination 10.1.2.3:80 to destination 10.4.5.6:8080
 ```
-New-AzureRmFirewallNatRule -Name "dnat-rule" -Protocol "TCP" -SourceAddress "10.0.0.0/24" -DestinationAddress "10.1.2.3" -DestinationPort "80" -TranslatedAddress "10.4.5.6" -TranslatedPort "8080"
+New-AzFirewallNatRule -Name "dnat-rule" -Protocol "TCP" -SourceAddress "10.0.0.0/24" -DestinationAddress "10.1.2.3" -DestinationPort "80" -TranslatedAddress "10.4.5.6" -TranslatedPort "8080"
 ```
 
 This example creates a rule which will DNAT all traffic originating in 10.0.0.0/24 with destination 10.1.2.3:80 to 10.4.5.6:8080
@@ -40,7 +40,7 @@ This example creates a rule which will DNAT all traffic originating in 10.0.0.0/
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -221,8 +221,8 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[New-AzureRmFirewallNatRuleCollection](./New-AzureRmFirewallNatRuleCollection.md)
+[New-AzFirewallNatRuleCollection](./New-AzFirewallNatRuleCollection.md)
 
-[New-AzureRmFirewall](./New-AzureRmFirewall.md)
+[New-AzFirewall](./New-AzFirewall.md)
 
-[Get-AzureRmFirewall](./Get-AzureRmFirewall.md)
+[Get-AzFirewall](./Get-AzFirewall.md)

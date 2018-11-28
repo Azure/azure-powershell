@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: F23D9274-63B9-4654-897B-6E84757774D2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementapi
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/remove-azapimanagementapi
 schema: 2.0.0
 ---
 
-# Remove-AzureRmApiManagementApi
+# Remove-AzApiManagementApi
 
 ## SYNOPSIS
 Removes an API.
@@ -14,19 +14,19 @@ Removes an API.
 ## SYNTAX
 
 ```
-Remove-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [-PassThru]
+Remove-AzApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmAzureRmApiManagementApi** cmdlet removes an existing API.
+The **Remove-AzAzureRmApiManagementApi** cmdlet removes an existing API.
 
 ## EXAMPLES
 
 ### Example 1: Remove an API
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Remove-AzureRmAzureRmApiManagementApi -Context $apimContext -ApiId "0123456789"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Remove-AzAzureRmApiManagementApi -Context $apimContext -ApiId "0123456789"
 ```
 
 This command removes the API with the specified ID.
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -143,14 +143,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Export-AzureRmApiManagementApi](./Export-AzureRmApiManagementApi.md)
+[Export-AzApiManagementApi](./Export-AzApiManagementApi.md)
 
-[Get-AzureRmApiManagementApi](./Get-AzureRmApiManagementApi.md)
+[Get-AzApiManagementApi](./Get-AzApiManagementApi.md)
 
-[Import-AzureRmApiManagementApi](./Import-AzureRmApiManagementApi.md)
+[Import-AzApiManagementApi](./Import-AzApiManagementApi.md)
 
-[New-AzureRmApiManagementApi](./New-AzureRmApiManagementApi.md)
+[New-AzApiManagementApi](./New-AzApiManagementApi.md)
 
-[Set-AzureRmApiManagementApi](./Set-AzureRmApiManagementApi.md)
+[Set-AzApiManagementApi](./Set-AzApiManagementApi.md)
 
 

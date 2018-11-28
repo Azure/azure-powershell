@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 939320CB-2595-4150-AFDD-500CEA78559C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvm
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvm
 schema: 2.0.0
 ---
 
-# Set-AzureRmVM
+# Set-AzVM
 
 ## SYNOPSIS
 Marks a virtual machine as generalized.
@@ -15,37 +15,37 @@ Marks a virtual machine as generalized.
 
 ### GeneralizeResourceGroupNameParameterSetName (Default)
 ```
-Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Generalized] [-AsJob]
+Set-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Generalized] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RedeployResourceGroupNameParameterSetName
 ```
-Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Redeploy] [-AsJob]
+Set-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Redeploy] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GeneralizeIdParameterSetName
 ```
-Set-AzureRmVM [-Id] <String> [-Name] <String> [-Generalized] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzVM [-Id] <String> [-Name] <String> [-Generalized] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### RedeployIdParameterSetName
 ```
-Set-AzureRmVM [-Id] <String> [-Name] <String> [-Redeploy] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Set-AzVM [-Id] <String> [-Name] <String> [-Redeploy] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVM** cmdlet marks a virtual machine as generalized.
+The **Set-AzVM** cmdlet marks a virtual machine as generalized.
 Before you run this cmdlet, log on to the virtual machine and use Sysprep to prepare the hard disk.
 
 ## EXAMPLES
 
 ### Example 1: Mark a virtual machine as generalized
 ```
-PS C:\> Set-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Generalized
+PS C:\> Set-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Generalized
 ```
 
 This command marks the virtual machine named VirtualMachine07 as generalized.
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -173,6 +173,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVM](./Get-AzureRmVM.md)
+[Get-AzVM](./Get-AzVM.md)
 
 

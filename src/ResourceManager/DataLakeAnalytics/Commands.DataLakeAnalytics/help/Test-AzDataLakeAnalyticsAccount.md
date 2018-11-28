@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
-Module Name: AzureRM.DataLakeAnalytics
+Module Name: Az.DataLakeAnalytics
 ms.assetid: 0B52890D-102F-4C3C-9EF9-017F6ECA3E26
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics/test-azurermdatalakeanalyticsaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakeanalytics/test-azdatalakeanalyticsaccount
 schema: 2.0.0
 ---
 
-# Test-AzureRmDataLakeAnalyticsAccount
+# Test-AzDataLakeAnalyticsAccount
 
 ## SYNOPSIS
 Checks for the existence of a Data Lake Analytics account.
@@ -14,18 +14,18 @@ Checks for the existence of a Data Lake Analytics account.
 ## SYNTAX
 
 ```
-Test-AzureRmDataLakeAnalyticsAccount [-Name] <String> [[-ResourceGroupName] <String>]
+Test-AzDataLakeAnalyticsAccount [-Name] <String> [[-ResourceGroupName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzureRmDataLakeAnalyticsAccount** cmdlet checks for the existence of a Data Lake Analytics account.
+The **Test-AzDataLakeAnalyticsAccount** cmdlet checks for the existence of a Data Lake Analytics account.
 
 ## EXAMPLES
 
 ### Example 1: Test whether an account exists
 ```
-PS C:\>Test-AzureRmDataLakeAnalyticsAccount -Name "ContosoAdlAccount"
+PS C:\>Test-AzDataLakeAnalyticsAccount -Name "ContosoAdlAccount"
 ```
 
 This command tests whether the account named ContosoAdlAccount exists.
@@ -36,7 +36,7 @@ This command tests whether the account named ContosoAdlAccount exists.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,10 +92,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataLakeAnalyticsAccount](./Get-AzureRmDataLakeAnalyticsAccount.md)
+[Get-AzDataLakeAnalyticsAccount](./Get-AzDataLakeAnalyticsAccount.md)
 
-[New-AzureRmDataLakeAnalyticsAccount](./New-AzureRmDataLakeAnalyticsAccount.md)
+[New-AzDataLakeAnalyticsAccount](./New-AzDataLakeAnalyticsAccount.md)
 
-[Set-AzureRmDataLakeAnalyticsAccount](./Set-AzureRmDataLakeAnalyticsAccount.md)
+[Set-AzDataLakeAnalyticsAccount](./Set-AzDataLakeAnalyticsAccount.md)
 
 

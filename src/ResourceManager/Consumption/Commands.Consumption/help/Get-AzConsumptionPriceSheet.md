@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Consumption.dll-Help.xml
-Module Name: AzureRM.Consumption
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.consumption/get-azurermconsumptionpricesheet
+Module Name: Az.Consumption
+online version: https://docs.microsoft.com/en-us/powershell/module/az.consumption/get-azconsumptionpricesheet
 schema: 2.0.0
 ---
 
-# Get-AzureRmConsumptionPriceSheet
+# Get-AzConsumptionPriceSheet
 
 ## SYNOPSIS
 Get price sheets of the subscription.
@@ -13,18 +13,18 @@ Get price sheets of the subscription.
 ## SYNTAX
 
 ```
-Get-AzureRmConsumptionPriceSheet [-BillingPeriodName <String>] [-ExpandMeterDetail] [-Top <Int32>]
+Get-AzConsumptionPriceSheet [-BillingPeriodName <String>] [-ExpandMeterDetail] [-Top <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmConsumptionPriceSheet** cmdlet gets price sheets of the subscription.
+The **Get-AzConsumptionPriceSheet** cmdlet gets price sheets of the subscription.
 
 ## EXAMPLES
 
 ### Example 1: Get price sheets
 ```powershell
-PS C:\> Get-AzureRmConsumptionPriceSheet
+PS C:\> Get-AzConsumptionPriceSheet
 Id:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601/providers/Microsoft.Consumption/pricesheets/default
 Name:  default
 Type:  Microsoft.Consumption/pricesheets
@@ -39,7 +39,7 @@ Pricesheets:  BillingPeriodId:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c
 
 ### Example 2: Get price sheets with expand of MeterDetails
 ```powershell
-PS C:\> Get-AzureRmConsumptionPriceSheet -ExpandMeterDetail
+PS C:\> Get-AzConsumptionPriceSheet -ExpandMeterDetail
 Id:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601/providers/Microsoft.Consumption/pricesheets/default
 Name:  default
 Type:  Microsoft.Consumption/pricesheets
@@ -59,7 +59,7 @@ Pricesheets:  BillingPeriodId:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c
 
 ### Example 3: Get price sheets of BillingPeriodName
 ```powershell
-PS C:\> Get-AzureRmConsumptionPriceSheet -BillingPeriodName 201712
+PS C:\> Get-AzConsumptionPriceSheet -BillingPeriodName 201712
 Id:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601/providers/Microsoft.Consumption/pricesheets/default
 Name:  default
 Type:  Microsoft.Consumption/pricesheets
@@ -74,7 +74,7 @@ Pricesheets:  BillingPeriodId:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c
 
 ### Example 4: Get top 5 records of price sheets
 ```powershell
-PS C:\> Get-AzureRmConsumptionPriceSheet -Top 5
+PS C:\> Get-AzConsumptionPriceSheet -Top 5
 Id:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601/providers/Microsoft.Consumption/pricesheets/default
 Name:  default
 Type:  Microsoft.Consumption/pricesheets
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

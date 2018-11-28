@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementapirelease
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementapirelease
 schema: 2.0.0
 ---
 
-# Get-AzureRmApiManagementApiRelease
+# Get-AzApiManagementApiRelease
 
 ## SYNOPSIS
 Get the API Release.
@@ -13,19 +13,19 @@ Get the API Release.
 ## SYNTAX
 
 ```
-Get-AzureRmApiManagementApiRelease -Context <PsApiManagementContext> -ApiId <String> [-ReleaseId <String>]
+Get-AzApiManagementApiRelease -Context <PsApiManagementContext> -ApiId <String> [-ReleaseId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApiManagementApiRelease** cmdlet gets one or more releases of the Azure API Management API.
+The **Get-AzApiManagementApiRelease** cmdlet gets one or more releases of the Azure API Management API.
 
 ## EXAMPLES
 
 ### Example 1: Get all releases of the API
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementApiRelease -Context $ApiMgmtContext -ApiId 5adf6fbf0faadf3ad8558065
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementApiRelease -Context $ApiMgmtContext -ApiId 5adf6fbf0faadf3ad8558065
 ReleaseId         : 5afccaf6b89fd067426d402e
 ApiId             : 5adf6fbf0faadf3ad8558065
 CreatedDateTime   : 5/17/2018 12:21:12 AM
@@ -40,8 +40,8 @@ This command gets all of the releases of the `echo-api` API for the specified co
 
 ### Example 2: Get the release information of the particular API release
 ```powershell
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementApiRelease -Context $ApiMgmtContext -ApiId 5adf6fbf0faadf3ad8558065 -ReleaseId 5afccaf6b89fd067426d402e
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementApiRelease -Context $ApiMgmtContext -ApiId 5adf6fbf0faadf3ad8558065 -ReleaseId 5afccaf6b89fd067426d402e
 ReleaseId         : 5afccaf6b89fd067426d402e
 ApiId             : 5adf6fbf0faadf3ad8558065
 CreatedDateTime   : 5/17/2018 12:21:12 AM
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -137,8 +137,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagementApiRelease](./Get-AzureRmApiManagementApiRelease.md)
+[New-AzApiManagementApiRelease](./Get-AzApiManagementApiRelease.md)
 
-[Remove-AzureRmApiManagementApiRelease](./Remove-AzureRmApiManagementApiRelease.md)
+[Remove-AzApiManagementApiRelease](./Remove-AzApiManagementApiRelease.md)
 
-[Set-AzureRmApiManagementApiRelease](./Set-AzureRmApiManagementApiRelease.md)
+[Set-AzApiManagementApiRelease](./Set-AzApiManagementApiRelease.md)

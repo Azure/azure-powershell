@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-Module Name: AzureRM.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/get-azurermcontainerregistry
+Module Name: Az.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/get-azcontainerregistry
 schema: 2.0.0
 ---
 
-# Get-AzureRmContainerRegistry
+# Get-AzContainerRegistry
 
 ## SYNOPSIS
 Gets a container registry.
@@ -14,30 +14,30 @@ Gets a container registry.
 
 ### ListRegistriesParameterSet (Default)
 ```
-Get-AzureRmContainerRegistry [[-ResourceGroupName] <String>] [-IncludeDetail]
+Get-AzContainerRegistry [[-ResourceGroupName] <String>] [-IncludeDetail]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RegistryNameParameterSet
 ```
-Get-AzureRmContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-IncludeDetail]
+Get-AzContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-IncludeDetail]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmContainerRegistry [-IncludeDetail] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzContainerRegistry [-IncludeDetail] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmContainerRegistry cmdlet gets a specified container registry or all the container registries in a resource group or the subscription.
+The Get-AzContainerRegistry cmdlet gets a specified container registry or all the container registries in a resource group or the subscription.
 
 ## EXAMPLES
 
 ### Example 1: Get a specified container registry
 ```powershell
-PS C:\>Get-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
+PS C:\>Get-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
 
    Container registry location: westus
 
@@ -51,7 +51,7 @@ This command gets the specified container registry.
 
 ### Example 2: Get all the container registries in a resource group
 ```powershell
-PS C:\>Get-AzureRmContainerRegistry -ResourceGroupName "MyResourceGroup"
+PS C:\>Get-AzContainerRegistry -ResourceGroupName "MyResourceGroup"
 
    Container registry location: westus
 
@@ -73,7 +73,7 @@ This command gets all the container registries in a resource group.
 
 ### Example 3:  Get all the container registries in the subscription
 ```powershell
-PS C:\>Get-AzureRmContainerRegistry
+PS C:\>Get-AzContainerRegistry
 
   Container registry location: westus
 
@@ -99,7 +99,7 @@ This command gets all the container registries in the subscription.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -197,9 +197,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmContainerRegistry](New-AzureRmContainerRegistry.md)
+[New-AzContainerRegistry](New-AzContainerRegistry.md)
 
-[Update-AzureRmContainerRegistry](Update-AzureRmContainerRegistry.md)
+[Update-AzContainerRegistry](Update-AzContainerRegistry.md)
 
-[Remove-AzureRmContainerRegistry](Remove-AzureRmContainerRegistry.md)
+[Remove-AzContainerRegistry](Remove-AzContainerRegistry.md)
 

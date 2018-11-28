@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 6288DD8A-FF23-4B12-A065-856DBAE200E8
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/grant-azurermhdinsightrdpservicesaccess
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/grant-azhdinsightrdpservicesaccess
 schema: 2.0.0
 ---
 
-# Grant-AzureRmHDInsightRdpServicesAccess
+# Grant-AzHDInsightRdpServicesAccess
 
 ## SYNOPSIS
 Grants RDP access to the Windows cluster.
@@ -14,13 +14,13 @@ Grants RDP access to the Windows cluster.
 ## SYNTAX
 
 ```
-Grant-AzureRmHDInsightRdpServicesAccess [-ClusterName] <String> [-RdpCredential] <PSCredential>
+Grant-AzHDInsightRdpServicesAccess [-ClusterName] <String> [-RdpCredential] <PSCredential>
  [-RdpAccessExpiry] <DateTime> [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Grant-AzureRmHDInsightRdpServicesAccess** cmdlet enables Remote Desktop Protocol (RDP) to access to a Windows-based Azure HDInsight cluster.
+The **Grant-AzHDInsightRdpServicesAccess** cmdlet enables Remote Desktop Protocol (RDP) to access to a Windows-based Azure HDInsight cluster.
 
 ## EXAMPLES
 
@@ -30,7 +30,7 @@ PS C:\># Cluster info
 PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $clusterCreds = Get-Credential
 
-PS C:\> Grant-AzureRmHDInsightRdpServicesAccess `
+PS C:\> Grant-AzHDInsightRdpServicesAccess `
             -ClusterName $clusterName `
             -RdpCredential $newRdpCreds `
             -RdpAccessExpiry $newRdpExpiry
@@ -131,6 +131,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Revoke-AzureRmHDInsightRdpServicesAccess](./Revoke-AzureRmHDInsightRdpServicesAccess.md)
+[Revoke-AzHDInsightRdpServicesAccess](./Revoke-AzHDInsightRdpServicesAccess.md)
 
 

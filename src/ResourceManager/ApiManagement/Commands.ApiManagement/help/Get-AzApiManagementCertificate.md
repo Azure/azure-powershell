@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 6F7C6611-5C56-4F1D-AB98-CDD92D88821C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementcertificate
 schema: 2.0.0
 ---
 
-# Get-AzureRmApiManagementCertificate
+# Get-AzApiManagementCertificate
 
 ## SYNOPSIS
 Gets API Management certificates configured for Mutual Authentication with Backend in the service.
@@ -15,33 +15,33 @@ Gets API Management certificates configured for Mutual Authentication with Backe
 
 ### GetAllCertificates (Default)
 ```
-Get-AzureRmApiManagementCertificate -Context <PsApiManagementContext>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzApiManagementCertificate -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetByCertificateId
 ```
-Get-AzureRmApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String>
+Get-AzApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApiManagementCertificate** cmdlet gets all Azure API Management certificates or certificates that you specify.
+The **Get-AzApiManagementCertificate** cmdlet gets all Azure API Management certificates or certificates that you specify.
 
 ## EXAMPLES
 
 ### Example 1: Get all certificates
 ```
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementCertificate -Context $ApiMgmtContext
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementCertificate -Context $ApiMgmtContext
 ```
 
 This command gets all API Management certificates.
 
 ### Example 2: Get a certificate by its ID
 ```
-PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789"
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementCertificate -Context $ApiMgmtContext -CertificateId "0123456789"
 ```
 
 This command gets the API Management certificate with the specified ID.
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -141,10 +141,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmApiManagementCertificate](./New-AzureRmApiManagementCertificate.md)
+[New-AzApiManagementCertificate](./New-AzApiManagementCertificate.md)
 
-[Remove-AzureRmApiManagementCertificate](./Remove-AzureRmApiManagementCertificate.md)
+[Remove-AzApiManagementCertificate](./Remove-AzApiManagementCertificate.md)
 
-[Set-AzureRmApiManagementCertificate](./Set-AzureRmApiManagementCertificate.md)
+[Set-AzApiManagementCertificate](./Set-AzApiManagementCertificate.md)
 
 

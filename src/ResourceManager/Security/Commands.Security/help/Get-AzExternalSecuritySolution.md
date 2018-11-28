@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
-Module Name: AzureRM.Security
-online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzureRmExternalSecuritySolution.md
+Module Name: Az.Security
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzExternalSecuritySolution.md
 schema: 2.0.0
 ---
 
-# Get-AzureRmExternalSecuritySolution
+# Get-AzExternalSecuritySolution
 
 ## SYNOPSIS
 Get external security solution 
@@ -14,24 +14,24 @@ Get external security solution
 
 ### SubscriptionScope (Default)
 ```
-Get-AzureRmExternalSecuritySolution [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzExternalSecuritySolution [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
 ```
-Get-AzureRmExternalSecuritySolution -ResourceGroupName <String> -Name <String> -Location <String>
+Get-AzExternalSecuritySolution -ResourceGroupName <String> -Name <String> -Location <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
-Get-AzureRmExternalSecuritySolution -Location <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzExternalSecuritySolution -Location <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzureRmExternalSecuritySolution -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzExternalSecuritySolution -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ Get external security solution
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmExternalSecuritySolution
+PS C:\> Get-AzExternalSecuritySolution
 ConnectivityState : Discovered
 DeviceType        : Azure Active Directory Identity Protection
 DeviceVendor      : microsoft
@@ -92,7 +92,7 @@ Get all the external security solutions in the subscription
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmExternalSecuritySolution -ResourceGroupName "myservice1" -Location "centralus" -Name "aad_testservicews"
+PS C:\> Get-AzExternalSecuritySolution -ResourceGroupName "myservice1" -Location "centralus" -Name "aad_testservicews"
 ConnectivityState : Discovered
 DeviceType        : Azure Active Directory Identity Protection
 DeviceVendor      : microsoft
@@ -110,7 +110,7 @@ Get a specific external security solution
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 Location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource, SubscriptionLevelResource
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 Resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource
 Aliases:
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupLevelResource
 Aliases:
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 

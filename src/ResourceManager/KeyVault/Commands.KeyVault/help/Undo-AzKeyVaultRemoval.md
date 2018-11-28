@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/undo-azurermkeyvaultremoval
+Module Name: Az.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/undo-azkeyvaultremoval
 schema: 2.0.0
 ---
 
-# Undo-AzureRmKeyVaultRemoval
+# Undo-AzKeyVaultRemoval
 
 ## SYNOPSIS
 Recovers a deleted key vault into an active state.
@@ -14,25 +14,25 @@ Recovers a deleted key vault into an active state.
 
 ### Default (Default)
 ```
-Undo-AzureRmKeyVaultRemoval [-VaultName] <String> [-ResourceGroupName] <String> [-Location] <String>
+Undo-AzKeyVaultRemoval [-VaultName] <String> [-ResourceGroupName] <String> [-Location] <String>
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Undo-AzureRmKeyVaultRemoval [-InputObject] <PSDeletedKeyVault> [-Tag <Hashtable>]
+Undo-AzKeyVaultRemoval [-InputObject] <PSDeletedKeyVault> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Undo-AzureRmKeyVaultRemoval** cmdlet will recover a previously deleted key vault. The
+The **Undo-AzKeyVaultRemoval** cmdlet will recover a previously deleted key vault. The
 recovered vault will be active after recovery
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Undo-AzureRmKeyVaultRemoval -VaultName 'MyKeyVault' -ResourceGroupName 'MyResourceGroup' -Location 'eastus2' -Tag @{"x"= "y"}
+PS C:\> Undo-AzKeyVaultRemoval -VaultName 'MyKeyVault' -ResourceGroupName 'MyResourceGroup' -Location 'eastus2' -Tag @{"x"= "y"}
 
 Vault Name                       : MyKeyVault
 Resource Group Name              : MyResourceGroup
@@ -77,7 +77,7 @@ tags with new tag.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -211,8 +211,8 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Remove-AzureRmKeyVault](./Remove-AzureRmKeyVault.md)
+[Remove-AzKeyVault](./Remove-AzKeyVault.md)
 
-[New-AzureRmKeyVault](./New-AzureRmKeyVault.md)
+[New-AzKeyVault](./New-AzKeyVault.md)
 
-[Get-AzureRmKeyVault](./Get-AzureRmKeyVault.md)
+[Get-AzKeyVault](./Get-AzKeyVault.md)

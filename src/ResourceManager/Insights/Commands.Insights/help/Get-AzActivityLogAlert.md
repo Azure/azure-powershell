@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: AzureRM.Insights
+Module Name: Az.Insights
 ms.assetid: 85492E00-3776-4F20-A444-9C28CC6154B7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/get-azurermactivitylogalert
+online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azactivitylogalert
 schema: 2.0.0
 ---
 
-# Get-AzureRmActivityLogAlert
+# Get-AzActivityLogAlert
 
 ## SYNOPSIS
 Gets one or more activity log alert resources.
@@ -15,38 +15,38 @@ Gets one or more activity log alert resources.
 
 ### GetByNameAndResourceGroup
 ```
-Get-AzureRmActivityLogAlert [-ResourceGroupName] <String> [-Name] <String>
+Get-AzActivityLogAlert [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceGroup
 ```
-Get-AzureRmActivityLogAlert [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzActivityLogAlert [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmActivityLogAlert** cmdlet gets one or more activity log alert resources.
+The **Get-AzActivityLogAlert** cmdlet gets one or more activity log alert resources.
 
 ## EXAMPLES
 
 ### Example 1: Get a activity log alerts by subscription ID
 ```
-PS C:\>Get-AzureRmActivityLogAlert
+PS C:\>Get-AzActivityLogAlert
 ```
 
 This command lists all the activity log alerts for the current subscription.
 
 ### Example 2: Get activity log alerts for the given resource group
 ```
-PS C:\>Get-AzureRmActivityLogAlert -ResourceGroupName "Default-activityLogAlerts"
+PS C:\>Get-AzActivityLogAlert -ResourceGroupName "Default-activityLogAlerts"
 ```
 
 This command lists activity log alerts for the given resource group.
 
 ### Example 3: Get an activity log alert.
 ```
-PS C:\>Get-AzureRmActivityLogAlert -ResourceGroupName "Default-activityLogAlerts" -Name "alert1"
+PS C:\>Get-AzActivityLogAlert -ResourceGroupName "Default-activityLogAlerts" -Name "alert1"
 ```
 
 This command lists one (a list with a single element) activity log alert.
@@ -57,7 +57,7 @@ This command lists one (a list with a single element) activity log alert.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -126,12 +126,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmActivityLogAlert](./Set-AzureRmActivityLogAlert.md)
+[Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
 
-[Update-AzureRmActivityLogAlert](./Update-AzureRmActivityLogAlert.md)
+[Update-AzActivityLogAlert](./Update-AzActivityLogAlert.md)
 
-[Remove-AzureRmActivityLogAlert](./Remove-AzureRmActivityLogAlert.md)
+[Remove-AzActivityLogAlert](./Remove-AzActivityLogAlert.md)
 
-[New-AzureRmActionGroup](./New-AzureRmActionGroup.md)
+[New-AzActionGroup](./New-AzActionGroup.md)
 
-[New-AzureRmActivityLogAlertCondition](./Get-AzureRmActivityLogAlertCondition.md)
+[New-AzActivityLogAlertCondition](./Get-AzActivityLogAlertCondition.md)

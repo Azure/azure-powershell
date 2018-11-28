@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 5F135E64-9432-4D08-961F-4604410378A3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmssdiagnosticsextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmssdiagnosticsextension
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVmssDiagnosticsExtension
+# Remove-AzVmssDiagnosticsExtension
 
 ## SYNOPSIS
 Removes a diagnostics extension from the VMSS.
@@ -14,18 +14,18 @@ Removes a diagnostics extension from the VMSS.
 ## SYNTAX
 
 ```
-Remove-AzureRmVmssDiagnosticsExtension [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Name] <String>]
+Remove-AzVmssDiagnosticsExtension [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmVmssDiagnosticsExtension** cmdlet removes a diagnostics extension from the Virtual Machine Scale Set (VMSS).
+The **Remove-AzVmssDiagnosticsExtension** cmdlet removes a diagnostics extension from the Virtual Machine Scale Set (VMSS).
 
 ## EXAMPLES
 
 ### Example 1: Remove a diagnostics extension from the VMSS
 ```
-PS C:\> Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -Name $extName
+PS C:\> Remove-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $VMSS -Name $extName
 ```
 
 This command removes diagnostics extension from the VMSS.
@@ -36,7 +36,7 @@ This command removes diagnostics extension from the VMSS.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -125,10 +125,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmVmssDiagnosticsExtension](./Add-AzureRmVmssDiagnosticsExtension.md)
+[Add-AzVmssDiagnosticsExtension](./Add-AzVmssDiagnosticsExtension.md)
 
-[Remove-AzureRmVMDiagnosticsExtension](./Remove-AzureRmVMDiagnosticsExtension.md)
+[Remove-AzVMDiagnosticsExtension](./Remove-AzVMDiagnosticsExtension.md)
 
-[Remove-AzureRmVmssExtension](./Remove-AzureRmVmssExtension.md)
+[Remove-AzVmssExtension](./Remove-AzVmssExtension.md)
 
 

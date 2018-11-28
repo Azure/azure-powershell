@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 894297BF-2771-4871-9E4C-8684364DAC4B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementproperty
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementproperty
 schema: 2.0.0
 ---
 
-# Get-AzureRmApiManagementProperty
+# Get-AzApiManagementProperty
 
 ## SYNOPSIS
 
@@ -14,25 +14,25 @@ schema: 2.0.0
 
 ### GetAllProperties (Default)
 ```
-Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
+Get-AzApiManagementProperty -Context <PsApiManagementContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByPropertyId
 ```
-Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-PropertyId <String>]
+Get-AzApiManagementProperty -Context <PsApiManagementContext> [-PropertyId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByName
 ```
-Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-Name <String>]
+Get-AzApiManagementProperty -Context <PsApiManagementContext> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByTag
 ```
-Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-Tag <String>]
+Get-AzApiManagementProperty -Context <PsApiManagementContext> [-Tag <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -42,8 +42,8 @@ Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-Tag <String
 
 ### Example 1: Get Property by name
 ```
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementProperty -Context $apimContext -Name "sql-connectionstring"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementProperty -Context $apimContext -Name "sql-connectionstring"
 ```
 
 ## PARAMETERS
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

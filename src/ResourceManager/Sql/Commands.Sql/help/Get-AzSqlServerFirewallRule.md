@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: AD8BA5CB-D5D4-4C6E-A65F-E7AE69E3B22C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverfirewallrule
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlServerFirewallRule
+# Get-AzSqlServerFirewallRule
 
 ## SYNOPSIS
 Gets firewall rules for a SQL Database server.
@@ -14,20 +14,19 @@ Gets firewall rules for a SQL Database server.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlServerFirewallRule [[-FirewallRuleName] <String>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSqlServerFirewallRule [[-FirewallRuleName] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlServerFirewallRule** cmdlet gets firewall rules for an Azure SQL Database server.
+The **Get-AzSqlServerFirewallRule** cmdlet gets firewall rules for an Azure SQL Database server.
 If you specify the name of a firewall rule, this cmdlet gets information about that specific firewall rule.
 
 ## EXAMPLES
 
 ### Example 1: Get all rules for a server
 ```
-PS C:\>Get-AzureRmSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>Get-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ResourceGroupName : ResourceGroup01
 ServerName        : server01
 StartIpAddress    : 0.0.0.0
@@ -49,7 +48,7 @@ This command gets all the firewall rules for the server named Server01.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -151,11 +150,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlServerFirewallRule](./New-AzureRmSqlServerFirewallRule.md)
+[New-AzSqlServerFirewallRule](./New-AzSqlServerFirewallRule.md)
 
-[Remove-AzureRmSqlServerFirewallRule](./Remove-AzureRmSqlServerFirewallRule.md)
+[Remove-AzSqlServerFirewallRule](./Remove-AzSqlServerFirewallRule.md)
 
-[Set-AzureRmSqlServerFirewallRule](./Set-AzureRmSqlServerFirewallRule.md)
+[Set-AzSqlServerFirewallRule](./Set-AzSqlServerFirewallRule.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 2A3B7343-9AA0-4505-AEDE-31C0C5B98694
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermexpressroutecircuit
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azexpressroutecircuit
 schema: 2.0.0
 ---
 
-# Set-AzureRmExpressRouteCircuit
+# Set-AzExpressRouteCircuit
 
 ## SYNOPSIS
 Modifies an ExpressRoute circuit.
@@ -14,20 +14,20 @@ Modifies an ExpressRoute circuit.
 ## SYNTAX
 
 ```
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit <PSExpressRouteCircuit> [-AsJob]
+Set-AzExpressRouteCircuit -ExpressRouteCircuit <PSExpressRouteCircuit> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmExpressRouteCircuit** cmdlet saves the modified ExpressRoute circuit to Azure.
+The **Set-AzExpressRouteCircuit** cmdlet saves the modified ExpressRoute circuit to Azure.
 
 ## EXAMPLES
 
 ### Example 1: Change the ServiceKey of an ExpressRoute circuit
 ```
-$ckt = Get-AzureRmExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
+$ckt = Get-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $rg
 $ckt.ServiceKey = '64ce99dd-ee70-4e74-b6b8-91c6307433a0'
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ## PARAMETERS
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,10 +93,10 @@ Parameters: ExpressRouteCircuit (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmExpressRouteCircuit](./Get-AzureRmExpressRouteCircuit.md)
+[Get-AzExpressRouteCircuit](./Get-AzExpressRouteCircuit.md)
 
-[Move-AzureRmExpressRouteCircuit](./Move-AzureRmExpressRouteCircuit.md)
+[Move-AzExpressRouteCircuit](./Move-AzExpressRouteCircuit.md)
 
-[New-AzureRmExpressRouteCircuit](./New-AzureRmExpressRouteCircuit.md)
+[New-AzExpressRouteCircuit](./New-AzExpressRouteCircuit.md)
 
-[Remove-AzureRmExpressRouteCircuit](./Remove-AzureRmExpressRouteCircuit.md)
+[Remove-AzExpressRouteCircuit](./Remove-AzExpressRouteCircuit.md)

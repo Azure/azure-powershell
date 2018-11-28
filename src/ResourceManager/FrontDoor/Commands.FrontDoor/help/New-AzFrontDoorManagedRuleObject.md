@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
-Module Name: AzureRM.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor/new-azurermfrontdoormanagedruleobject
+Module Name: Az.FrontDoor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoormanagedruleobject
 schema: 2.0.0
 ---
 
-# New-AzureRmFrontDoorManagedRuleObject
+# New-AzFrontDoorManagedRuleObject
 
 ## SYNOPSIS
 Create ManagedRule Object for WAF policy creation
@@ -13,7 +13,7 @@ Create ManagedRule Object for WAF policy creation
 ## SYNTAX
 
 ```
-New-AzureRmFrontDoorManagedRuleObject -Priority <Int32> [-Version <String>]
+New-AzFrontDoorManagedRuleObject -Priority <Int32> [-Version <String>]
  [-RuleGroupOverride <PSAzureRuleGroupOverride[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Create ManagedRule Object for WAF policy creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmFrontDoor
+PS C:\> New-AzFrontDoor
 ManagedRuleObject -Priority 1 -Version 0 -RuleGroupOverride $override1
 
 RuleGroupOverrides                                                   Priority Version
@@ -41,7 +41,7 @@ Create a ManagedRule Object
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,6 +112,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmFrontDoorFireWallPolicy](./New-AzureRmFrontDoorFireWallPolicy.md)
-[Set-AzureRmFrontDoorFireWallPolicy](./Set-AzureRmFrontDoorFireWallPolicy.md)
-[New-AzureRmFrontDoorRuleGroupOverrideObject](./Set-AzureRmFrontDoorRuleGroupOverrideObject.md)
+[New-AzFrontDoorFireWallPolicy](./New-AzFrontDoorFireWallPolicy.md)
+[Set-AzFrontDoorFireWallPolicy](./Set-AzFrontDoorFireWallPolicy.md)
+[New-AzFrontDoorRuleGroupOverrideObject](./Set-AzFrontDoorRuleGroupOverrideObject.md)

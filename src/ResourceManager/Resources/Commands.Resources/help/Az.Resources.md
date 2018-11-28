@@ -1,304 +1,309 @@
 ---
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.resources
 Help Version: 5.5.2.0
 Locale: en-US
 ---
 
-# AzureRM.Resources Module
+# Az.Resources Module
 ## Description
 This topic displays help topics for the Azure Resource Manager Cmdlets.
 
-## AzureRM.Resources Cmdlets
-### [Add-AzureRmADGroupMember](Add-AzureRmADGroupMember.md)
+## Az.Resources Cmdlets
+### [Add-AzADGroupMember](Add-AzADGroupMember.md)
 Adds a user to an existing AD group.
 
-### [Export-AzureRmResourceGroup](Export-AzureRmResourceGroup.md)
+### [Export-AzResourceGroup](Export-AzResourceGroup.md)
 Captures a resource group as a template and saves it to a file.
 
-### [Get-AzureRmADAppCredential](Get-AzureRmADAppCredential.md)
+### [Get-AzADAppCredential](Get-AzADAppCredential.md)
 Retrieves a list of credentials associated with an application.
 
-### [Get-AzureRmADApplication](Get-AzureRmADApplication.md)
+### [Get-AzADApplication](Get-AzADApplication.md)
 Lists existing azure active directory applications.
 
-### [Get-AzureRmADGroup](Get-AzureRmADGroup.md)
+### [Get-AzADGroup](Get-AzADGroup.md)
 Filters active directory groups.
 
-### [Get-AzureRmADGroupMember](Get-AzureRmADGroupMember.md)
+### [Get-AzADGroupMember](Get-AzADGroupMember.md)
 Lists members of an AD group in the current tenant.
 
-### [Get-AzureRmADServicePrincipal](Get-AzureRmADServicePrincipal.md)
+### [Get-AzADServicePrincipal](Get-AzADServicePrincipal.md)
 Filters active directory service principals.
 
-### [Get-AzureRmADSpCredential](Get-AzureRmADSpCredential.md)
+### [Get-AzADSpCredential](Get-AzADSpCredential.md)
 Retrieves a list of credentials associated with a service principal.
 
-### [Get-AzureRmADUser](Get-AzureRmADUser.md)
+### [Get-AzADUser](Get-AzADUser.md)
 Filters active directory users.
 
-### [Get-AzureRmDeployment](Get-AzureRmDeployment.md)
-Gets a deployment at subscription scope.
+### [Get-AzDeployment](Get-AzDeployment.md)
+Get deployment
 
-### [Get-AzureRmDeploymentOperation](Get-AzureRmDeploymentOperation.md)
-Gets the deployment operations for a deployment at subscription scope.
+### [Get-AzDeploymentOperation](Get-AzDeploymentOperation.md)
+Get deployment operation
 
-### [Get-AzureRmLocation](Get-AzureRmLocation.md)
+### [Get-AzLocation](Get-AzLocation.md)
 Gets all locations and the supported resource providers for each location.
 
-### [Get-AzureRmManagedApplication](Get-AzureRmManagedApplication.md)
+### [Get-AzManagedApplication](Get-AzManagedApplication.md)
 Gets managed applications
 
-### [Get-AzureRmManagedApplicationDefinition](Get-AzureRmManagedApplicationDefinition.md)
+### [Get-AzManagedApplicationDefinition](Get-AzManagedApplicationDefinition.md)
 Gets managed application definitions
 
-### [Get-AzureRmManagementGroup](Get-AzureRmManagementGroup.md)
+### [Get-AzManagementGroup](Get-AzManagementGroup.md)
 Gets Management Group(s)
 
-### [Get-AzureRmPolicyAssignment](Get-AzureRmPolicyAssignment.md)
+### [Get-AzPolicyAlias](Get-AzPolicyAlias.md)
+Get-AzPolicyAlias retrieves and outputs Azure provider resource types that have aliases defined and match the
+given parameter values. If no parameters are provided, all provider resource types that contain an alias will be output.
+The -ListAvailable switch modifies this behavior by listing all matching resource types including those without aliases.
+
+### [Get-AzPolicyAssignment](Get-AzPolicyAssignment.md)
 Gets policy assignments.
 
-### [Get-AzureRmPolicyDefinition](Get-AzureRmPolicyDefinition.md)
+### [Get-AzPolicyDefinition](Get-AzPolicyDefinition.md)
 Gets policy definitions.
 
-### [Get-AzureRmPolicySetDefinition](Get-AzureRmPolicySetDefinition.md)
+### [Get-AzPolicySetDefinition](Get-AzPolicySetDefinition.md)
 Gets policy set definitions.
 
-### [Get-AzureRmProviderFeature](Get-AzureRmProviderFeature.md)
+### [Get-AzProviderFeature](Get-AzProviderFeature.md)
 Gets information about Azure provider features.
 
-### [Get-AzureRmProviderOperation](Get-AzureRmProviderOperation.md)
+### [Get-AzProviderOperation](Get-AzProviderOperation.md)
 Gets the operations for an Azure resource provider that are securable using Azure RBAC.
 
-### [Get-AzureRmResource](Get-AzureRmResource.md)
+### [Get-AzResource](Get-AzResource.md)
 Gets resources.
 
-### [Get-AzureRmResourceGroup](Get-AzureRmResourceGroup.md)
+### [Get-AzResourceGroup](Get-AzResourceGroup.md)
 Gets resource groups.
 
-### [Get-AzureRmResourceGroupDeployment](Get-AzureRmResourceGroupDeployment.md)
+### [Get-AzResourceGroupDeployment](Get-AzResourceGroupDeployment.md)
 Gets the deployments in a resource group.
 
-### [Get-AzureRmResourceGroupDeploymentOperation](Get-AzureRmResourceGroupDeploymentOperation.md)
+### [Get-AzResourceGroupDeploymentOperation](Get-AzResourceGroupDeploymentOperation.md)
 Gets the resource group deployment operation
 
-### [Get-AzureRmResourceLock](Get-AzureRmResourceLock.md)
+### [Get-AzResourceLock](Get-AzResourceLock.md)
 Gets a resource lock.
 
-### [Get-AzureRmResourceProvider](Get-AzureRmResourceProvider.md)
+### [Get-AzResourceProvider](Get-AzResourceProvider.md)
 Gets a resource provider.
 
-### [Get-AzureRmRoleAssignment](Get-AzureRmRoleAssignment.md)
+### [Get-AzRoleAssignment](Get-AzRoleAssignment.md)
 Lists Azure RBAC role assignments at the specified scope.
 By default it lists all role assignments in the selected Azure subscription.
 Use respective parameters to list assignments to a specific user, or to list assignments on a specific resource group or resource.
 
-### [Get-AzureRmRoleDefinition](Get-AzureRmRoleDefinition.md)
+### [Get-AzRoleDefinition](Get-AzRoleDefinition.md)
 Lists all Azure RBAC roles that are available for assignment.
 
-### [Invoke-AzureRmResourceAction](Invoke-AzureRmResourceAction.md)
+### [Invoke-AzResourceAction](Invoke-AzResourceAction.md)
 Invokes an action on a resource.
 
-### [Move-AzureRmResource](Move-AzureRmResource.md)
+### [Move-AzResource](Move-AzResource.md)
 Moves a resource to a different resource group or subscription.
 
-### [New-AzureRmADAppCredential](New-AzureRmADAppCredential.md)
+### [New-AzADAppCredential](New-AzADAppCredential.md)
 Adds a credential to an existing application.
 
-### [New-AzureRmADApplication](New-AzureRmADApplication.md)
+### [New-AzADApplication](New-AzADApplication.md)
 Creates a new azure active directory application.
 
-### [New-AzureRmADGroup](New-AzureRmADGroup.md)
+### [New-AzADGroup](New-AzADGroup.md)
 Creates a new active directory group.
 
-### [New-AzureRmADServicePrincipal](New-AzureRmADServicePrincipal.md)
+### [New-AzADServicePrincipal](New-AzADServicePrincipal.md)
 Creates a new azure active directory service principal.
 
-### [New-AzureRmADSpCredential](New-AzureRmADSpCredential.md)
+### [New-AzADSpCredential](New-AzADSpCredential.md)
 Adds a credential to an existing service principal.
 
-### [New-AzureRmADUser](New-AzureRmADUser.md)
+### [New-AzADUser](New-AzADUser.md)
 Creates a new active directory user.
 
-### [New-AzureRmDeployment](New-AzureRmDeployment.md)
-Creates a new deployment at subscription scope.
+### [New-AzDeployment](New-AzDeployment.md)
+Creat a deployment
 
-### [New-AzureRmManagedApplication](New-AzureRmManagedApplication.md)
+### [New-AzManagedApplication](New-AzManagedApplication.md)
 Creates an Azure managed application.
 
-### [New-AzureRmManagedApplicationDefinition](New-AzureRmManagedApplicationDefinition.md)
+### [New-AzManagedApplicationDefinition](New-AzManagedApplicationDefinition.md)
 Creates a managed application definition.
 
-### [New-AzureRmManagementGroup](New-AzureRmManagementGroup.md)
+### [New-AzManagementGroup](New-AzManagementGroup.md)
 Creates a Management Group
 
-### [New-AzureRmManagementGroupSubscription](New-AzureRmManagementGroupSubscription.md)
+### [New-AzManagementGroupSubscription](New-AzManagementGroupSubscription.md)
 Adds a Subscription to a Management Group.
 
-### [New-AzureRmPolicyAssignment](New-AzureRmPolicyAssignment.md)
+### [New-AzPolicyAssignment](New-AzPolicyAssignment.md)
 Creates a policy assignment.
 
-### [New-AzureRmPolicyDefinition](New-AzureRmPolicyDefinition.md)
+### [New-AzPolicyDefinition](New-AzPolicyDefinition.md)
 Creates a policy definition.
 
-### [New-AzureRmPolicySetDefinition](New-AzureRmPolicySetDefinition.md)
+### [New-AzPolicySetDefinition](New-AzPolicySetDefinition.md)
 Creates a policy set definition.
 
-### [New-AzureRmResource](New-AzureRmResource.md)
+### [New-AzResource](New-AzResource.md)
 Creates a resource.
 
-### [New-AzureRmResourceGroup](New-AzureRmResourceGroup.md)
+### [New-AzResourceGroup](New-AzResourceGroup.md)
 Creates an Azure resource group.
 
-### [New-AzureRmResourceGroupDeployment](New-AzureRmResourceGroupDeployment.md)
+### [New-AzResourceGroupDeployment](New-AzResourceGroupDeployment.md)
 Adds an Azure deployment to a resource group.
 
-### [New-AzureRmResourceLock](New-AzureRmResourceLock.md)
+### [New-AzResourceLock](New-AzResourceLock.md)
 Creates a resource lock.
 
-### [New-AzureRmRoleAssignment](New-AzureRmRoleAssignment.md)
+### [New-AzRoleAssignment](New-AzRoleAssignment.md)
 Assigns the specified RBAC role to the specified principal, at the specified scope.
 
-### [New-AzureRmRoleDefinition](New-AzureRmRoleDefinition.md)
+### [New-AzRoleDefinition](New-AzRoleDefinition.md)
 Creates a custom role in Azure RBAC.
 Provide either a JSON role definition file or a PSRoleDefinition object as input.
-First, use the Get-AzureRmRoleDefinition command to generate a baseline role definition object.
+First, use the Get-AzRoleDefinition command to generate a baseline role definition object.
 Then, modify its properties as required.
 Finally, use this command to create a custom role using role definition.
 
-### [Register-AzureRmProviderFeature](Register-AzureRmProviderFeature.md)
+### [Register-AzProviderFeature](Register-AzProviderFeature.md)
 Registers an Azure provider feature in your account.
 
-### [Register-AzureRmResourceProvider](Register-AzureRmResourceProvider.md)
+### [Register-AzResourceProvider](Register-AzResourceProvider.md)
 Registers a resource provider.
 
-### [Remove-AzureRmADAppCredential](Remove-AzureRmADAppCredential.md)
+### [Remove-AzADAppCredential](Remove-AzADAppCredential.md)
 Removes a credential from an application.
 
-### [Remove-AzureRmADApplication](Remove-AzureRmADApplication.md)
+### [Remove-AzADApplication](Remove-AzADApplication.md)
 Deletes the azure active directory application.
 
-### [Remove-AzureRmADGroup](Remove-AzureRmADGroup.md)
+### [Remove-AzADGroup](Remove-AzADGroup.md)
 Deletes an active directory group.
 
-### [Remove-AzureRmADGroupMember](Remove-AzureRmADGroupMember.md)
+### [Remove-AzADGroupMember](Remove-AzADGroupMember.md)
 Removes a user from an AD group.
 
-### [Remove-AzureRmADServicePrincipal](Remove-AzureRmADServicePrincipal.md)
+### [Remove-AzADServicePrincipal](Remove-AzADServicePrincipal.md)
 Deletes the azure active directory service principal.
 
-### [Remove-AzureRmADSpCredential](Remove-AzureRmADSpCredential.md)
+### [Remove-AzADSpCredential](Remove-AzADSpCredential.md)
 Removes a credential from a service principal.
 
-### [Remove-AzureRmADUser](Remove-AzureRmADUser.md)
+### [Remove-AzADUser](Remove-AzADUser.md)
 Deletes an active directory user.
 
-### [Remove-AzureRmDeployment](Remove-AzureRmDeployment.md)
-Removes a deployment at subscription scope.
+### [Remove-AzDeployment](Remove-AzDeployment.md)
+Removes a deployment and any associated operations
 
-### [Remove-AzureRmManagedApplication](Remove-AzureRmManagedApplication.md)
+### [Remove-AzManagedApplication](Remove-AzManagedApplication.md)
 Removes a managed application
 
-### [Remove-AzureRmManagedApplicationDefinition](Remove-AzureRmManagedApplicationDefinition.md)
+### [Remove-AzManagedApplicationDefinition](Remove-AzManagedApplicationDefinition.md)
 Removes a managed application definition
 
-### [Remove-AzureRmManagementGroup](Remove-AzureRmManagementGroup.md)
+### [Remove-AzManagementGroup](Remove-AzManagementGroup.md)
 Removes a Management Group
 
-### [Remove-AzureRmManagementGroupSubscription](Remove-AzureRmManagementGroupSubscription.md)
+### [Remove-AzManagementGroupSubscription](Remove-AzManagementGroupSubscription.md)
 Removes a Subscription from a Management Group.
 
-### [Remove-AzureRmPolicyAssignment](Remove-AzureRmPolicyAssignment.md)
+### [Remove-AzPolicyAssignment](Remove-AzPolicyAssignment.md)
 Removes a policy assignment.
 
-### [Remove-AzureRmPolicyDefinition](Remove-AzureRmPolicyDefinition.md)
+### [Remove-AzPolicyDefinition](Remove-AzPolicyDefinition.md)
 Removes a policy definition.
 
-### [Remove-AzureRmPolicySetDefinition](Remove-AzureRmPolicySetDefinition.md)
+### [Remove-AzPolicySetDefinition](Remove-AzPolicySetDefinition.md)
 Removes a policy set definition.
 
-### [Remove-AzureRmResource](Remove-AzureRmResource.md)
+### [Remove-AzResource](Remove-AzResource.md)
 Removes a resource.
 
-### [Remove-AzureRmResourceGroup](Remove-AzureRmResourceGroup.md)
+### [Remove-AzResourceGroup](Remove-AzResourceGroup.md)
 Removes a resource group.
 
-### [Remove-AzureRmResourceGroupDeployment](Remove-AzureRmResourceGroupDeployment.md)
+### [Remove-AzResourceGroupDeployment](Remove-AzResourceGroupDeployment.md)
 Removes a resource group deployment and any associated operations.
 
-### [Remove-AzureRmResourceLock](Remove-AzureRmResourceLock.md)
+### [Remove-AzResourceLock](Remove-AzResourceLock.md)
 Removes a resource lock.
 
-### [Remove-AzureRmRoleAssignment](Remove-AzureRmRoleAssignment.md)
+### [Remove-AzRoleAssignment](Remove-AzRoleAssignment.md)
 Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope.
 
-### [Remove-AzureRmRoleDefinition](Remove-AzureRmRoleDefinition.md)
+### [Remove-AzRoleDefinition](Remove-AzRoleDefinition.md)
 Deletes a custom role in Azure RBAC.
 The role to be deleted is specified using the Id property of the role.
 Delete will fail if there are existing role assignments made to the custom role.
 
-### [Save-AzureRmDeploymentTemplate](Save-AzureRmDeploymentTemplate.md)
-Gets the template for a deployment at subscription scope.
+### [Save-AzDeploymentTemplate](Save-AzDeploymentTemplate.md)
+Saves a deployment template to a file.
 
-### [Save-AzureRmResourceGroupDeploymentTemplate](Save-AzureRmResourceGroupDeploymentTemplate.md)
+### [Save-AzResourceGroupDeploymentTemplate](Save-AzResourceGroupDeploymentTemplate.md)
 Saves a resource group deployment template to a file.
 
-### [Set-AzureRmManagedApplication](Set-AzureRmManagedApplication.md)
+### [Set-AzManagedApplication](Set-AzManagedApplication.md)
 Updates managed application
 
-### [Set-AzureRmManagedApplicationDefinition](Set-AzureRmManagedApplicationDefinition.md)
+### [Set-AzManagedApplicationDefinition](Set-AzManagedApplicationDefinition.md)
 Updates managed application definition
 
-### [Set-AzureRmPolicyAssignment](Set-AzureRmPolicyAssignment.md)
+### [Set-AzPolicyAssignment](Set-AzPolicyAssignment.md)
 Modifies a policy assignment.
 
-### [Set-AzureRmPolicyDefinition](Set-AzureRmPolicyDefinition.md)
+### [Set-AzPolicyDefinition](Set-AzPolicyDefinition.md)
 Modifies a policy definition.
 
-### [Set-AzureRmPolicySetDefinition](Set-AzureRmPolicySetDefinition.md)
+### [Set-AzPolicySetDefinition](Set-AzPolicySetDefinition.md)
 Modifies a policy set definition
 
-### [Set-AzureRmResource](Set-AzureRmResource.md)
+### [Set-AzResource](Set-AzResource.md)
 Modifies a resource.
 
-### [Set-AzureRmResourceGroup](Set-AzureRmResourceGroup.md)
+### [Set-AzResourceGroup](Set-AzResourceGroup.md)
 Modifies a resource group.
 
-### [Set-AzureRmResourceLock](Set-AzureRmResourceLock.md)
+### [Set-AzResourceLock](Set-AzResourceLock.md)
 Modifies a resource lock.
 
-### [Set-AzureRmRoleDefinition](Set-AzureRmRoleDefinition.md)
+### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Modifies a custom role in Azure RBAC.
 Provide the modified role definition either as a JSON file or as a PSRoleDefinition.
-First, use the Get-AzureRmRoleDefinition command to retrieve the custom role that you wish to modify.
+First, use the Get-AzRoleDefinition command to retrieve the custom role that you wish to modify.
 Then, modify the properties that you wish to change.
 Finally, save the role definition using this command.
 
-### [Stop-AzureRmDeployment](Stop-AzureRmDeployment.md)
-Cancels a running deployment at subscription scope.
+### [Stop-AzDeployment](Stop-AzDeployment.md)
+Cancal a running deployment
 
-### [Stop-AzureRmResourceGroupDeployment](Stop-AzureRmResourceGroupDeployment.md)
+### [Stop-AzResourceGroupDeployment](Stop-AzResourceGroupDeployment.md)
 Cancels a resource group deployment.
 
-### [Test-AzureRmDeployment](Test-AzureRmDeployment.md)
-Validates a deployment template and parameters at subscription scope.
+### [Test-AzDeployment](Test-AzDeployment.md)
+Validates a deployment.
 
-### [Test-AzureRmResourceGroupDeployment](Test-AzureRmResourceGroupDeployment.md)
+### [Test-AzResourceGroupDeployment](Test-AzResourceGroupDeployment.md)
 Validates a resource group deployment.
 
-### [Unregister-AzureRmResourceProvider](Unregister-AzureRmResourceProvider.md)
+### [Unregister-AzResourceProvider](Unregister-AzResourceProvider.md)
 Unregisters a resource provider.
 
-### [Update-AzureRmADApplication](Update-AzureRmADApplication.md)
+### [Update-AzADApplication](Update-AzADApplication.md)
 Updates an existing azure active directory application.
 
-### [Update-AzureRmADServicePrincipal](Update-AzureRmADServicePrincipal.md)
+### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates an existing azure active directory service principal.
 
-### [Update-AzureRmADUser](Update-AzureRmADUser.md)
+### [Update-AzADUser](Update-AzADUser.md)
 Updates an existing active directory user.
 
-### [Update-AzureRmManagementGroup](Update-AzureRmManagementGroup.md)
+### [Update-AzManagementGroup](Update-AzManagementGroup.md)
 Updates a Management Group
 

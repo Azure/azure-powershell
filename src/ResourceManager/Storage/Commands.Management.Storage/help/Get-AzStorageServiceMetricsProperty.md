@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
-Module Name: Azure.Storage
+Module Name: Az.Storage
 ms.assetid: 3B5B828A-6B3E-49BD-8BA9-916F8B69B8E9
-online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestorageservicemetricsproperty
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azstorageservicemetricsproperty
 schema: 2.0.0
 ---
 
-# Get-AzureStorageServiceMetricsProperty
+# Get-AzStorageServiceMetricsProperty
 
 ## SYNOPSIS
 Gets metrics properties for the Azure Storage service.
@@ -14,18 +14,18 @@ Gets metrics properties for the Azure Storage service.
 ## SYNTAX
 
 ```
-Get-AzureStorageServiceMetricsProperty [-ServiceType] <StorageServiceType> [-MetricsType] <ServiceMetricsType>
+Get-AzStorageServiceMetricsProperty [-ServiceType] <StorageServiceType> [-MetricsType] <ServiceMetricsType>
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureStorageServiceMetricsProperty** cmdlet gets metrics properties for the Azure Storage service.
+The **Get-AzStorageServiceMetricsProperty** cmdlet gets metrics properties for the Azure Storage service.
 
 ## EXAMPLES
 
 ### Example 1: Get metrics properties for the Blob service
 ```
-C:\PS>Get-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour
+C:\PS>Get-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour
 ```
 
 This command gets metrics properties for blob storage for the Hour metrics type.
@@ -34,7 +34,7 @@ This command gets metrics properties for blob storage for the Hour metrics type.
 
 ### -Context
 Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
+To obtain a storage context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -119,8 +119,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureStorageContext](./New-AzureStorageContext.md)
+[New-AzStorageContext](./New-AzStorageContext.md)
 
-[Set-AzureStorageServiceMetricsProperty](./Set-AzureStorageServiceMetricsProperty.md)
+[Set-AzStorageServiceMetricsProperty](./Set-AzStorageServiceMetricsProperty.md)
 
 

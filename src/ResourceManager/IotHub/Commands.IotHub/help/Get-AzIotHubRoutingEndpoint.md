@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubroutingendpoint
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubroutingendpoint
 schema: 2.0.0
 ---
 
-# Get-AzureRmIotHubRoutingEndpoint
+# Get-AzIotHubRoutingEndpoint
 
 ## SYNOPSIS
 Get information on all the endpoints for your IoT Hub
@@ -14,21 +14,20 @@ Get information on all the endpoints for your IoT Hub
 
 ### ResourceSet (Default)
 ```
-Get-AzureRmIotHubRoutingEndpoint [-ResourceGroupName] <String> [-Name] <String>
- [-EndpointType <PSEndpointType>] [-EndpointName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzIotHubRoutingEndpoint [-ResourceGroupName] <String> [-Name] <String> [-EndpointType <PSEndpointType>]
+ [-EndpointName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Get-AzureRmIotHubRoutingEndpoint [-InputObject] <PSIotHub> [-EndpointType <PSEndpointType>]
- [-EndpointName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIotHubRoutingEndpoint [-InputObject] <PSIotHub> [-EndpointType <PSEndpointType>] [-EndpointName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmIotHubRoutingEndpoint [-ResourceId] <String> [-EndpointType <PSEndpointType>]
- [-EndpointName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIotHubRoutingEndpoint [-ResourceId] <String> [-EndpointType <PSEndpointType>] [-EndpointName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +37,7 @@ Get information on the endpoint.
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmIotHubRoutingEndpoint -ResourceGroupName "myresourcegroup" -Name "myiothub"
+PS C:\> Get-AzIotHubRoutingEndpoint -ResourceGroupName "myresourcegroup" -Name "myiothub"
 
 Name EndpointType			AzureResource
 ---- ------------			-------------
@@ -51,7 +50,7 @@ Get all the endpoints from "myiothub" IoT Hub.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmIotHubRoutingEndpoint -ResourceGroupName "myresourcegroup" -Name "myiothub" -EndpointType EventHub
+PS C:\> Get-AzIotHubRoutingEndpoint -ResourceGroupName "myresourcegroup" -Name "myiothub" -EndpointType EventHub
 
 ResourceGroupName SubscriptionId                       EndpointName
 ----------------- --------------                       ------------
@@ -63,7 +62,7 @@ Get all the endpoints of type EventHub from "myiothub" IoT Hub.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmIotHubRoutingEndpoint -ResourceGroupName "myresourcegroup" -Name "myiothub" -EndpointType EventHub
+PS C:\> Get-AzIotHubRoutingEndpoint -ResourceGroupName "myresourcegroup" -Name "myiothub" -EndpointType EventHub
 
 ResourceGroupName : resourcegroup1
 SubscriptionId    : 91d12343-a3de-345d-b2ea-135792468abc
@@ -75,7 +74,7 @@ Get all the endpoints of type EventHub from "myiothub" IoT Hub.
 
 ### Example 4
 ```
-PS C:\> Get-AzureRmIotHubRoutingEndpoint -ResourceGroupName "myresourcegroup" -Name "myiothub" -EndpointName E1
+PS C:\> Get-AzIotHubRoutingEndpoint -ResourceGroupName "myresourcegroup" -Name "myiothub" -EndpointName E1
 
 ResourceGroupName : resourcegroup1
 SubscriptionId    : 91d12343-a3de-345d-b2ea-135792468abc
@@ -91,7 +90,7 @@ Get an endpoint information from "myiothub" IoT Hub.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

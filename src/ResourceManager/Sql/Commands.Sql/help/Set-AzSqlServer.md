@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: FAAF458C-1662-4130-9A16-0514B714D11D
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqlserver
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserver
 schema: 2.0.0
 ---
 
-# Set-AzureRmSqlServer
+# Set-AzSqlServer
 
 ## SYNOPSIS
 Modifies properties of a SQL Database server.
@@ -14,13 +14,13 @@ Modifies properties of a SQL Database server.
 ## SYNTAX
 
 ```
-Set-AzureRmSqlServer [-ServerName] <String> [-SqlAdministratorPassword <SecureString>] [-Tags <Hashtable>]
+Set-AzSqlServer [-ServerName] <String> [-SqlAdministratorPassword <SecureString>] [-Tags <Hashtable>]
  [-ServerVersion <String>] [-AssignIdentity] [-Force] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlServer** cmdlet modifies properties of an Azure SQL Database server.
+The **Set-AzSqlServer** cmdlet modifies properties of an Azure SQL Database server.
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ The **Set-AzureRmSqlServer** cmdlet modifies properties of an Azure SQL Database
 ```
 PS C:\>$ServerPassword = "newpassword"
 PS C:\> $SecureString = ConvertTo-SecureString $ServerPassword -AsPlainText -Force
-PS C:\> Set-AzureRmSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SqlAdministratorPassword $secureString
+PS C:\> Set-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SqlAdministratorPassword $secureString
 ResourceGroupName        : ResourceGroup01
 ServerName               : Server01
 Location                 : Australia East
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

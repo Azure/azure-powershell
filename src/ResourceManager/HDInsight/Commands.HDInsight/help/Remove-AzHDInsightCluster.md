@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 87B3C102-0A8C-4FFA-8429-594D2360AC32
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/remove-azurermhdinsightcluster
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/remove-azhdinsightcluster
 schema: 2.0.0
 ---
 
-# Remove-AzureRmHDInsightCluster
+# Remove-AzHDInsightCluster
 
 ## SYNOPSIS
 Removes the specified HDInsight cluster from the current subscription.
@@ -14,12 +14,12 @@ Removes the specified HDInsight cluster from the current subscription.
 ## SYNTAX
 
 ```
-Remove-AzureRmHDInsightCluster [-ClusterName] <String> [-ResourceGroupName <String>]
+Remove-AzHDInsightCluster [-ClusterName] <String> [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmHDInsightCluster** cmdlet removes the specified HDInsight service cluster from a subscription.
+The **Remove-AzHDInsightCluster** cmdlet removes the specified HDInsight service cluster from a subscription.
 This operation also deletes any data stored in the Hadoop Distributed File System (HDFS) on the cluster.
 Data stored in the associated Azure Storage account is not deleted.
 Data stored in external metastores is not deleted.
@@ -28,7 +28,7 @@ Data stored in external metastores is not deleted.
 
 ### Example 1: Delete an Azure HDInsight cluster
 ```
-PS C:\>Remove-AzureRmHDInsightCluster -ClusterName "your-hadoop-001"
+PS C:\>Remove-AzHDInsightCluster -ClusterName "your-hadoop-001"
 ```
 
 This command removes the cluster named your-hadoop-001.
@@ -95,8 +95,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmHDInsightCluster](./Get-AzureRmHDInsightCluster.md)
+[Get-AzHDInsightCluster](./Get-AzHDInsightCluster.md)
 
-[Use-AzureRmHDInsightCluster](./Use-AzureRmHDInsightCluster.md)
+[Use-AzHDInsightCluster](./Use-AzHDInsightCluster.md)
 
 

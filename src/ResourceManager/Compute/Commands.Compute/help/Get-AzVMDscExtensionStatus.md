@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 695F224D-DA25-49F2-916E-25DA2A48A4A7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmdscextensionstatus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmdscextensionstatus
 schema: 2.0.0
 ---
 
-# Get-AzureRmVMDscExtensionStatus
+# Get-AzVMDscExtensionStatus
 
 ## SYNOPSIS
 Gets the status of the DSC extension handler for a virtual machine.
@@ -14,12 +14,12 @@ Gets the status of the DSC extension handler for a virtual machine.
 ## SYNTAX
 
 ```
-Get-AzureRmVMDscExtensionStatus [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
+Get-AzVMDscExtensionStatus [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmVMDscExtensionStatus** cmdlet gets the status of the Desired State Configuration (DSC) extension handler for a virtual machine in a resource group.
+The **Get-AzVMDscExtensionStatus** cmdlet gets the status of the Desired State Configuration (DSC) extension handler for a virtual machine in a resource group.
 When a configuration is applied this cmdlet produces output consistent with the Start-DscConfiguration cmdlet.
 
 ## EXAMPLES
@@ -30,7 +30,7 @@ When a configuration is applied this cmdlet produces output consistent with the 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -43,7 +43,7 @@ Accept wildcard characters: False
 
 ### -Name
 Specifies the name of the Azure Resource Manager resource that represents the extension.
-The Set-AzureRmVMDscExtension cmdlet sets this name to Microsoft.Powershell.DSC, which is the same value that is used by **Get-AzureRmVMDscExtensionStatus**.
+The Set-AzVMDscExtension cmdlet sets this name to Microsoft.Powershell.DSC, which is the same value that is used by **Get-AzVMDscExtensionStatus**.
 Specify this parameter only if you changed the default name in the Set cmdlet or used a different resource name in a Resource Manager template.
 
 ```yaml
@@ -103,6 +103,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzureRmVMDscExtension](./Set-AzureRmVMDscExtension.md)
+[Set-AzVMDscExtension](./Set-AzVMDscExtension.md)
 
 

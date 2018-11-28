@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothubquotametric
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubquotametric
 schema: 2.0.0
 ---
 
-# Get-AzureRmIotHubQuotaMetric
+# Get-AzIotHubQuotaMetric
 
 ## SYNOPSIS
 Gets the Quota Metrics for an IotHub.
@@ -13,7 +13,7 @@ Gets the Quota Metrics for an IotHub.
 ## SYNTAX
 
 ```
-Get-AzureRmIotHubQuotaMetric [-ResourceGroupName] <String> [-Name] <String>
+Get-AzIotHubQuotaMetric [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Gets the Quota Metrics for an IotHub.
 
 ### Example 1 Get the Quota Metrics
 ```
-PS C:\> Get-AzureRmIotHubQuotaMetric -ResourceGroupName "myresourcegroup" -Name "myiothub"
+PS C:\> Get-AzIotHubQuotaMetric -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets the Quota Metric information for the IotHub named "myiothub"
@@ -35,7 +35,7 @@ Gets the Quota Metric information for the IotHub named "myiothub"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

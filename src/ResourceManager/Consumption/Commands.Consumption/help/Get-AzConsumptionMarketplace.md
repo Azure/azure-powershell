@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Consumption.dll-Help.xml
-Module Name: AzureRM.Consumption
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.consumption/get-azurermconsumptionmarketplace
+Module Name: Az.Consumption
+online version: https://docs.microsoft.com/en-us/powershell/module/az.consumption/get-azconsumptionmarketplace
 schema: 2.0.0
 ---
 
-# Get-AzureRmConsumptionMarketplace
+# Get-AzConsumptionMarketplace
 
 ## SYNOPSIS
 Get marketplaces of the subscription.
@@ -13,19 +13,19 @@ Get marketplaces of the subscription.
 ## SYNTAX
 
 ```
-Get-AzureRmConsumptionMarketplace [-BillingPeriodName <String>] [-EndDate <DateTime>] [-InstanceId <String>]
+Get-AzConsumptionMarketplace [-BillingPeriodName <String>] [-EndDate <DateTime>] [-InstanceId <String>]
  [-InstanceName <String>] [-ResourceGroup <String>] [-StartDate <DateTime>] [-Top <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmConsumptionMarketplace** cmdlet gets marketplaces of the subscription.
+The **Get-AzConsumptionMarketplace** cmdlet gets marketplaces of the subscription.
 
 ## EXAMPLES
 
 ### Example 1: Get marketplaces usage
 ```powershell
-PS C:\> Get-AzureRmConsumptionMarketplace -Top 10
+PS C:\> Get-AzConsumptionMarketplace -Top 10
 BillingPeriodId:  subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/providers/Microsoft.Billing/billingPeriods/201807-1
 ConsumedQuantity:  24
 Currency:  USD
@@ -45,7 +45,7 @@ UsageStart:  2018-04-28T00:00:00Z
 
 ### Example 2: Get marketplace usage with date range
 ```powershell
-PS C:\> Get-AzureRmConsumptionMarketplace -StartDate 2018-01-03 -EndDate 2018-01-20 -Top 10
+PS C:\> Get-AzConsumptionMarketplace -StartDate 2018-01-03 -EndDate 2018-01-20 -Top 10
 BillingPeriodId:  subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/providers/Microsoft.Billing/billingPeriods/201803-1
 ConsumedQuantity:  24
 Currency:  USD
@@ -65,7 +65,7 @@ UsageStart:  2018-01-03T00:00:00Z
 
 ### Example 3: Get marketplace usage of BillingPeriodName
 ```powershell
-PS C:\> Get-AzureRmConsumptionMarketplace -BillingPeriodName 201801-1 -Top 10
+PS C:\> Get-AzConsumptionMarketplace -BillingPeriodName 201801-1 -Top 10
 BillingPeriodId:  subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/providers/Microsoft.Billing/billingPeriods/201801-1
 ConsumedQuantity:  24
 Currency:  USD
@@ -85,7 +85,7 @@ UsageStart:  2017-10-28T00:00:00Z
 
 ### Example 4: Get marketplace usage with InstanceName filter
 ```powershell
-PS C:\> Get-AzureRmConsumptionMarketplace -InstanceName TestVM -Top 10
+PS C:\> Get-AzConsumptionMarketplace -InstanceName TestVM -Top 10
 BillingPeriodId:  subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/providers/Microsoft.Billing/billingPeriods/201807-1
 ConsumedQuantity:  24
 Currency:  USD
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqlsyncschema
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlsyncschema
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlSyncSchema
+# Get-AzSqlSyncSchema
 
 ## SYNOPSIS
 Returns information about the sync schema of a member database or a hub database.
@@ -13,19 +13,19 @@ Returns information about the sync schema of a member database or a hub database
 ## SYNTAX
 
 ```
-Get-AzureRmSqlSyncSchema [-SyncGroupName] <String> [-SyncMemberName <String>] [-ServerName] <String>
+Get-AzSqlSyncSchema [-SyncGroupName] <String> [-SyncMemberName <String>] [-ServerName] <String>
  [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlSyncSchema** cmdlet returns information about the sync schema of a member database or a hub database.
+The **Get-AzSqlSyncSchema** cmdlet returns information about the sync schema of a member database or a hub database.
 
 ## EXAMPLES
 
 ### Example 1.1: Get the sync schema for a hub database
 ```
-PS C:\>Get-AzureRmSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"
+PS C:\>Get-AzSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"
 Tables                     LastUpdateTime
 ------                     --------------
 {dbo.Table_1, dbo.Table_2} 6/13/2017 10:03:44 AM
@@ -35,7 +35,7 @@ This command gets the sync schema for the hub database in the sync group syncGro
 
 ### Example 1.2: Get the sync schema for a hub database, and expand Tables
 ```
-PS C:\>Get-AzureRmSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"  | select -ExpandProperty Tables
+PS C:\>Get-AzSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"  | select -ExpandProperty Tables
 Columns    : {column1, column2}
 ErrorId    : Schema_TableHasNoPrimaryKey
 HasError   : True
@@ -53,7 +53,7 @@ This command gets the sync schema for the hub database in the sync group syncGro
 
 ### Example 2: Get the sync schema for a member database
 ```
-PS C:\>Get-AzureRmSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -SyncMemberName "syncMember01"
+PS C:\>Get-AzSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -SyncMemberName "syncMember01"
 The schema payload is the same as Example 1.
 ```
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

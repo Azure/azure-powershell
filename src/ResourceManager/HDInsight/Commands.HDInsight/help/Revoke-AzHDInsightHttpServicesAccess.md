@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 670EAFC0-3F8D-4F3D-8B62-448F04378F8B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/revoke-azurermhdinsighthttpservicesaccess
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/revoke-azhdinsighthttpservicesaccess
 schema: 2.0.0
 ---
 
-# Revoke-AzureRmHDInsightHttpServicesAccess
+# Revoke-AzHDInsightHttpServicesAccess
 
 ## SYNOPSIS
 Disables HTTP access to the cluster.
@@ -14,18 +14,18 @@ Disables HTTP access to the cluster.
 ## SYNTAX
 
 ```
-Revoke-AzureRmHDInsightHttpServicesAccess [-ClusterName] <String> [-ResourceGroupName <String>]
+Revoke-AzHDInsightHttpServicesAccess [-ClusterName] <String> [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Revoke-AzureRmHDInsightHttpServicesAccess** cmdlet disables HTTP access to an Azure HDInsight cluster for ODBC, Ambari, Oozie and webHCatalog web services.
+The **Revoke-AzHDInsightHttpServicesAccess** cmdlet disables HTTP access to an Azure HDInsight cluster for ODBC, Ambari, Oozie and webHCatalog web services.
 
 ## EXAMPLES
 
 ### Example 1: Disable HTTP access to a cluster
 ```
-PS C:\>Revoke-AzureRmHDInsightHttpServicesAccess `
+PS C:\>Revoke-AzHDInsightHttpServicesAccess `
        -ClusterName "your-hadoop_001"
 ```
 
@@ -93,6 +93,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Grant-AzureRmHDInsightHttpServicesAccess](./Grant-AzureRmHDInsightHttpServicesAccess.md)
+[Grant-AzHDInsightHttpServicesAccess](./Grant-AzHDInsightHttpServicesAccess.md)
 
 

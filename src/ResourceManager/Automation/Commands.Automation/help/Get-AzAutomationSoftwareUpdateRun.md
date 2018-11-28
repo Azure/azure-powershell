@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationsoftwareupdaterun
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationsoftwareupdaterun
 schema: 2.0.0
 ---
 
-# Get-AzureRmAutomationSoftwareUpdateRun
+# Get-AzAutomationSoftwareUpdateRun
 
 ## SYNOPSIS
 Gets a list of azure automation software update runs.
@@ -14,20 +14,20 @@ Gets a list of azure automation software update runs.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationSoftwareUpdateRun [-OperatingSystem <OperatingSystemType>]
- [-Status <SoftwareUpdateRunStatus>] [-StartTime <DateTimeOffset>] [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAutomationSoftwareUpdateRun [-OperatingSystem <OperatingSystemType>] [-Status <SoftwareUpdateRunStatus>]
+ [-StartTime <DateTimeOffset>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ById
 ```
-Get-AzureRmAutomationSoftwareUpdateRun -Id <Guid> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAutomationSoftwareUpdateRun -Id <Guid> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BySucName
 ```
-Get-AzureRmAutomationSoftwareUpdateRun [-SoftwareUpdateConfigurationName <String>]
+Get-AzAutomationSoftwareUpdateRun [-SoftwareUpdateConfigurationName <String>]
  [-OperatingSystem <OperatingSystemType>] [-Status <SoftwareUpdateRunStatus>] [-StartTime <DateTimeOffset>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -35,14 +35,14 @@ Get-AzureRmAutomationSoftwareUpdateRun [-SoftwareUpdateConfigurationName <String
 
 ### BySuc
 ```
-Get-AzureRmAutomationSoftwareUpdateRun [-SoftwareUpdateConfiguration <SoftwareUpdateConfiguration>]
+Get-AzAutomationSoftwareUpdateRun [-SoftwareUpdateConfiguration <SoftwareUpdateConfiguration>]
  [-OperatingSystem <OperatingSystemType>] [-Status <SoftwareUpdateRunStatus>] [-StartTime <DateTimeOffset>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmAutomationSoftwareUpdateRun cmdlet returns a list of software update runs. Since a software update configuration has an associated schedule, it can be triggered multiple times. Each time a schedule is triggered will result in an update run created. Update run is an aggregate of the result of all machine runs. You can get runs for specific software update configuration by passing the SoftwareUpdateConfigurationName parameter. To get a specific runs, you need to pass the name parameter. You can also list runs with specific status, runs targeting specific operatins system, or runs started after specific time by passing the appropriate parameter.
+The Get-AzAutomationSoftwareUpdateRun cmdlet returns a list of software update runs. Since a software update configuration has an associated schedule, it can be triggered multiple times. Each time a schedule is triggered will result in an update run created. Update run is an aggregate of the result of all machine runs. You can get runs for specific software update configuration by passing the SoftwareUpdateConfigurationName parameter. To get a specific runs, you need to pass the name parameter. You can also list runs with specific status, runs targeting specific operatins system, or runs started after specific time by passing the appropriate parameter.
 
 ## EXAMPLES
 
@@ -50,7 +50,7 @@ The Get-AzureRmAutomationSoftwareUpdateRun cmdlet returns a list of software upd
 This example list all update runs triggered by a specific software update configuration.
 
 ```powershell
-PS C:\> Get-AzureRmAutomationSoftwareUpdateRun -ResourceGroupName "mygroup" `
+PS C:\> Get-AzAutomationSoftwareUpdateRun -ResourceGroupName "mygroup" `
                                                -AutomationAccountName "myaccount" `
                                                -SoftwareUpdateConfigurationName "MyUpdateConfiguration"
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

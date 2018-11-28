@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/clear-azurermcontext
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/clear-azcontext
 schema: 2.0.0
 ---
 
-# Clear-AzureRmContext
+# Clear-AzContext
 
 ## SYNOPSIS
 Remove all Azure credentials, account, and subscription information.
@@ -13,7 +13,7 @@ Remove all Azure credentials, account, and subscription information.
 ## SYNTAX
 
 ```
-Clear-AzureRmContext [-PassThru] [-Force] [-Scope <ContextModificationScope>]
+Clear-AzContext [-PassThru] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Remove all Azure Credentials, account, and subscription information.
 
 ### Clear global context
 ```
-PS C:\> Clear-AzureRmContext -Scope CurrentUser
+PS C:\> Clear-AzContext -Scope CurrentUser
 ```
 
 Remove all account, subscription, and credential information for any powershell session.
@@ -35,7 +35,7 @@ Remove all account, subscription, and credential information for any powershell 
 The credentials, tenant and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

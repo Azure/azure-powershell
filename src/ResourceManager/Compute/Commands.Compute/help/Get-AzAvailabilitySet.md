@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 45D55DC9-0027-4EB9-B2F7-9ABF6685E6B5
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermavailabilityset
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azavailabilityset
 schema: 2.0.0
 ---
 
-# Get-AzureRmAvailabilitySet
+# Get-AzAvailabilitySet
 
 ## SYNOPSIS
 Gets Azure availability sets in a resource group.
@@ -14,26 +14,26 @@ Gets Azure availability sets in a resource group.
 ## SYNTAX
 
 ```
-Get-AzureRmAvailabilitySet [[-ResourceGroupName] <String>] [[-Name] <String>]
+Get-AzAvailabilitySet [[-ResourceGroupName] <String>] [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmAvailabilitySet** cmdlet gets Azure availability sets in a resource group.
+The **Get-AzAvailabilitySet** cmdlet gets Azure availability sets in a resource group.
 You can specify the name of a specific availability set to get.
 
 ## EXAMPLES
 
 ### Example 1: Get a specific availability set
 ```
-PS C:\> Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03"
+PS C:\> Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03"
 ```
 
 This command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11.
 
 ### Example 2: Get all availability sets
 ```
-PS C:\> Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11"
+PS C:\> Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11"
 ```
 
 This command gets all the availability sets in the resource group named ResourceGroup11.
@@ -44,7 +44,7 @@ This command gets all the availability sets in the resource group named Resource
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -100,8 +100,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmAvailabilitySet](./New-AzureRmAvailabilitySet.md)
+[New-AzAvailabilitySet](./New-AzAvailabilitySet.md)
 
-[Remove-AzureRmAvailabilitySet](./Remove-AzureRmAvailabilitySet.md)
+[Remove-AzAvailabilitySet](./Remove-AzAvailabilitySet.md)
 
 

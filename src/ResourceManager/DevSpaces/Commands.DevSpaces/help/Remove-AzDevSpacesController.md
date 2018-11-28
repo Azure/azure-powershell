@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DevSpaces.dll-Help.xml
-Module Name: AzureRM.DevSpaces
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.devspaces/remove-azureevspacescontroller
+Module Name: Az.DevSpaces
+online version: https://docs.microsoft.com/en-us/powershell/module/az.devspaces/remove-azevspacescontroller
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDevSpacesController
+# Remove-AzDevSpacesController
 
 ## SYNOPSIS
 Delete a DevSpaces controller.
@@ -14,19 +14,19 @@ Delete a DevSpaces controller.
 
 ### DevSpacesControllerNameParameterSet (Default)
 ```
-Remove-AzureRmDevSpacesController [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob]
+Remove-AzDevSpacesController [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzureRmDevSpacesController -ResourceId <String> [-PassThru] [-AsJob]
+Remove-AzDevSpacesController -ResourceId <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzureRmDevSpacesController -InputObject <PSController> [-PassThru] [-AsJob]
+Remove-AzDevSpacesController -InputObject <PSController> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Delete a DevSpaces controller.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzureRmDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName
+PS C:\> Remove-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName
 ```
 
 Delete a DevSpaces controller named devSpaceControllerName.
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

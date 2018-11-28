@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-Module Name: AzureRM.ContainerRegistry
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/test-azurermcontainerregistrynameavailability
+Module Name: Az.ContainerRegistry
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/test-azcontainerregistrynameavailability
 schema: 2.0.0
 ---
 
-# Test-AzureRmContainerRegistryWebhook
+# Test-AzContainerRegistryWebhook
 
 ## SYNOPSIS
 Triggers a webhook ping event.
@@ -14,30 +14,30 @@ Triggers a webhook ping event.
 
 ### ResourceIdParameterSet (Default)
 ```
-Test-AzureRmContainerRegistryWebhook -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Test-AzContainerRegistryWebhook -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### NameResourceGroupParameterSet
 ```
-Test-AzureRmContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
+Test-AzContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WebhookObjectParameterSet
 ```
-Test-AzureRmContainerRegistryWebhook -Webhook <PSContainerRegistryWebhook>
+Test-AzContainerRegistryWebhook -Webhook <PSContainerRegistryWebhook>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Test-AzureRmContainerRegistryWebhook cmdlet triggers a webhook ping event.
+The Test-AzContainerRegistryWebhook cmdlet triggers a webhook ping event.
 
 ## EXAMPLES
 
 ### Example 1: Triggers a webhook ping event.
 ```powershell
-PS C:\> Test-AzureRmContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001"
+PS C:\> Test-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001"
 
 Id
 --
@@ -52,7 +52,7 @@ Triggers a webhook ping event.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -156,10 +156,10 @@ Parameters: Webhook (ByValue)
 
 ## RELATED LINKS
 
-[New-AzureRmContainerRegistryWebhook](New-AzureRmContainerRegistryWebhook.md)
+[New-AzContainerRegistryWebhook](New-AzContainerRegistryWebhook.md)
 
-[Get-AzureRmContainerRegistryWebhook](Get-AzureRmContainerRegistryWebhook.md)
+[Get-AzContainerRegistryWebhook](Get-AzContainerRegistryWebhook.md)
 
-[Update-AzureRmContainerRegistryWebhook](Update-AzureRmContainerRegistryWebhook.md)
+[Update-AzContainerRegistryWebhook](Update-AzContainerRegistryWebhook.md)
 
-[Remove-AzureRmContainerRegistryWebhook](Remove-AzureRmContainerRegistryWebhook.md)
+[Remove-AzContainerRegistryWebhook](Remove-AzContainerRegistryWebhook.md)

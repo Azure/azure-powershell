@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 3B15C734-DF57-433A-8854-ACE2B35FF6CB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmaemextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmaemextension
 schema: 2.0.0
 ---
 
-# Set-AzureRmVMAEMExtension
+# Set-AzVMAEMExtension
 
 ## SYNOPSIS
 Enables support for monitoring for SAP systems.
@@ -14,20 +14,20 @@ Enables support for monitoring for SAP systems.
 ## SYNTAX
 
 ```
-Set-AzureRmVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [-EnableWAD]
+Set-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [-EnableWAD]
  [[-WADStorageAccountName] <String>] [[-OSType] <String>] [-SkipStorage]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMAEMExtension** cmdlet updates the configuration of a virtual machine to enable or update the support for monitoring for SAP systems that are installed on the virtual machine.
+The **Set-AzVMAEMExtension** cmdlet updates the configuration of a virtual machine to enable or update the support for monitoring for SAP systems that are installed on the virtual machine.
 The cmdlet installs the Azure Enhanced Monitoring (AEM) extension that collects the performance data and makes it discoverable for the SAP system.
 
 ## EXAMPLES
 
 ### Example 1: Use AEM extension
 ```
-PS C:\> Set-AzureRmVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server" -WADStorageAccountName "stdstorage"
+PS C:\> Set-AzVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server" -WADStorageAccountName "stdstorage"
 ```
 
 This command configures the virtual machine named contoso-server to use the AEM extension.
@@ -39,7 +39,7 @@ The command specifies the storage account named stdstorage.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -159,10 +159,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMAEMExtension](./Get-AzureRmVMAEMExtension.md)
+[Get-AzVMAEMExtension](./Get-AzVMAEMExtension.md)
 
-[Remove-AzureRmVMAEMExtension](./Remove-AzureRmVMAEMExtension.md)
+[Remove-AzVMAEMExtension](./Remove-AzVMAEMExtension.md)
 
-[Test-AzureRmVMAEMExtension](./Test-AzureRmVMAEMExtension.md)
+[Test-AzVMAEMExtension](./Test-AzVMAEMExtension.md)
 
 

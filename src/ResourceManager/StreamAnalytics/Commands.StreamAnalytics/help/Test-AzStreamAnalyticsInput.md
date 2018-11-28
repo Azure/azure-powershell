@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM.StreamAnalytics
+Module Name: Az.StreamAnalytics
 ms.assetid: DEAC40AB-D90B-41D8-86AB-A66B60A908BD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/test-azurermstreamanalyticsinput
+online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
 schema: 2.0.0
 ---
 
-# Test-AzureRmStreamAnalyticsInput
+# Test-AzStreamAnalyticsInput
 
 ## SYNOPSIS
 Tests the connection status of an input.
@@ -14,18 +14,18 @@ Tests the connection status of an input.
 ## SYNTAX
 
 ```
-Test-AzureRmStreamAnalyticsInput [-JobName] <String> [-Name] <String> [-ResourceGroupName] <String>
+Test-AzStreamAnalyticsInput [-JobName] <String> [-Name] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzureRmStreamAnalyticsInput** cmdlet tests the ability of Stream Analytics to connect to an input.
+The **Test-AzStreamAnalyticsInput** cmdlet tests the ability of Stream Analytics to connect to an input.
 
 ## EXAMPLES
 
 ### EXAMPLE 1: Test the connection status of an input stream
 ```
-PS C:\>Test-AzureRmStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "EntryStream"
+PS C:\>Test-AzStreamAnalyticsInput -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamingJob" -Name "EntryStream"
 ```
 
 This tests the connection status of the input EntryStream in StreamingJob.
@@ -36,7 +36,7 @@ This tests the connection status of the input EntryStream in StreamingJob.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -107,10 +107,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmStreamAnalyticsInput](./Get-AzureRmStreamAnalyticsInput.md)
+[Get-AzStreamAnalyticsInput](./Get-AzStreamAnalyticsInput.md)
 
-[New-AzureRmStreamAnalyticsInput](./New-AzureRmStreamAnalyticsInput.md)
+[New-AzStreamAnalyticsInput](./New-AzStreamAnalyticsInput.md)
 
-[Remove-AzureRmStreamAnalyticsInput](./Remove-AzureRmStreamAnalyticsInput.md)
+[Remove-AzStreamAnalyticsInput](./Remove-AzStreamAnalyticsInput.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 66AC5120-80B1-46F2-AA51-132BF361602E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermadapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadapplication
 schema: 2.0.0
 ---
 
-# Get-AzureRmADApplication
+# Get-AzADApplication
 
 ## SYNOPSIS
 Lists existing azure active directory applications.
@@ -15,38 +15,38 @@ Lists existing azure active directory applications.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzureRmADApplication [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>]
+Get-AzADApplication [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>]
  [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdParameterSet
 ```
-Get-AzureRmADApplication -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+Get-AzADApplication -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
-Get-AzureRmADApplication -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+Get-AzADApplication -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
-Get-AzureRmADApplication -DisplayNameStartWith <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzADApplication -DisplayNameStartWith <String> [-DefaultProfile <IAzureContextContainer>]
  [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzureRmADApplication -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+Get-AzADApplication -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ApplicationIdentifierUriParameterSet
 ```
-Get-AzureRmADApplication -IdentifierUri <String> [-DefaultProfile <IAzureContextContainer>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADApplication -IdentifierUri <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,7 @@ If no parameter is provided, it fetches all applications under the tenant.
 ### Example 1 - List all applications
 
 ```
-PS C:\> Get-AzureRmADApplication
+PS C:\> Get-AzADApplication
 ```
 
 Lists all the applications under a tenant.
@@ -67,7 +67,7 @@ Lists all the applications under a tenant.
 ### Example 2 - List applications using paging
 
 ```
-PS C:\> Get-AzureRmADApplication -First 100
+PS C:\> Get-AzADApplication -First 100
 ```
 
 Lists the first 100 applications under a tenant.
@@ -75,7 +75,7 @@ Lists the first 100 applications under a tenant.
 ### Example 3 - Get application by identifier URI
 
 ```
-PS C:\> Get-AzureRmADApplication -IdentifierUri http://mySecretApp1
+PS C:\> Get-AzADApplication -IdentifierUri http://mySecretApp1
 ```
 
 Gets the application with identifier uri as "http://mySecretApp1".
@@ -83,7 +83,7 @@ Gets the application with identifier uri as "http://mySecretApp1".
 ### Example 4 - Get application by object id
 
 ```
-PS C:\> Get-AzureRmADApplication -ObjectId 39e64ec6-569b-4030-8e1c-c3c519a05d69
+PS C:\> Get-AzADApplication -ObjectId 39e64ec6-569b-4030-8e1c-c3c519a05d69
 ```
 
 Gets the application with the object id '39e64ec6-569b-4030-8e1c-c3c519a05d69'.
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -150,27 +150,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -First
-The maximum number of objects to return.
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IdentifierUri
 Unique identifier Uri of the application to fetch.
 
 ```yaml
 Type: System.String
 Parameter Sets: ApplicationIdentifierUriParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ObjectId
+The object id of the application to fetch.
+
+```yaml
+Type: System.Guid
+Parameter Sets: ApplicationObjectIdParameterSet
 Aliases:
 
 Required: True
@@ -195,23 +195,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ObjectId
-The object id of the application to fetch.
+### -Skip
+Ignores the first N objects and then gets the remaining objects.
 
 ```yaml
-Type: System.Guid
-Parameter Sets: ApplicationObjectIdParameterSet
+Type: System.UInt64
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Skip
-Ignores the first N objects and then gets the remaining objects.
+### -First
+The maximum number of objects to return.
 
 ```yaml
 Type: System.UInt64
@@ -242,15 +242,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmADAppCredential](./Remove-AzureRmADAppCredential.md)
+[Remove-AzADAppCredential](./Remove-AzADAppCredential.md)
 
-[New-AzureRmADAppCredential](./New-AzureRmADAppCredential.md)
+[New-AzADAppCredential](./New-AzADAppCredential.md)
 
-[Get-AzureRmADAppCredential](./Get-AzureRmADAppCredential.md)
+[Get-AzADAppCredential](./Get-AzADAppCredential.md)
 
-[Remove-AzureRmADApplication](./Remove-AzureRmADApplication.md)
+[Remove-AzADApplication](./Remove-AzADApplication.md)
 
-[Set-AzureRmADApplication](./Set-AzureRmADApplication.md)
+[Set-AzADApplication](./Set-AzADApplication.md)
 
-[New-AzureRmADApplication](./New-AzureRmADApplication.md)
+[New-AzADApplication](./New-AzADApplication.md)
 

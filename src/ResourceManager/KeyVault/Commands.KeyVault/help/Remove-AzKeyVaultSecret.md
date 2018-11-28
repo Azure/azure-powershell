@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/remove-azurekeyvaultsecret
+Module Name: Az.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultsecret
 schema: 2.0.0
 ---
 
-# Remove-AzureKeyVaultSecret
+# Remove-AzKeyVaultSecret
 
 ## SYNOPSIS
 Deletes a secret in a key vault.
@@ -14,26 +14,26 @@ Deletes a secret in a key vault.
 
 ### ByVaultName (Default)
 ```
-Remove-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState]
+Remove-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [-Force] [-PassThru] [-InRemovedState]
+Remove-AzKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [-Force] [-PassThru] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureKeyVaultSecret cmdlet deletes a secret in a key vault.
-If the secret was accidentally deleted the secret can be recovered using Undo-AzureKeyVaultSecretRemoval by a user with special 'recover' permissions.
+The Remove-AzKeyVaultSecret cmdlet deletes a secret in a key vault.
+If the secret was accidentally deleted the secret can be recovered using Undo-AzKeyVaultSecretRemoval by a user with special 'recover' permissions.
 This cmdlet has a value of high for the **ConfirmImpact** property.
 
 ## EXAMPLES
 
 ### Example 1: Remove a secret from a key vault
 ```powershell
-PS C:\> Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -PassThru
+PS C:\> Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -PassThru
 
 Vault Name           : Contoso
 Name                 : FinanceSecret
@@ -54,7 +54,7 @@ This command removes the secret named FinanceSecret from the key vault named Con
 
 ### Example 2: Remove a secret from a key vault without user confirmation
 ```powershell
-PS C:\> Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -PassThru -Force
+PS C:\> Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -PassThru -Force
 
 Vault Name           : Contoso
 Name                 : FinanceSecret
@@ -76,7 +76,7 @@ The command specifies the *Force* and *Confirm* parameters, and, therefore, the 
 
 ### Example 3: Purge deleted secret from the key vault permanently
 ```powershell
-PS C:\> Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
+PS C:\> Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
 ```
 
 This command premoves the secret named FinanceSecret from the key vault named Contoso permanently.
@@ -88,7 +88,7 @@ Executing this cmdlet requires the 'purge' permission, which must have been prev
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -240,9 +240,9 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultSecret](./Get-AzureKeyVaultSecret.md)
+[Get-AzKeyVaultSecret](./Get-AzKeyVaultSecret.md)
 
-[Set-AzureKeyVaultSecret](./Set-AzureKeyVaultSecret.md)
+[Set-AzKeyVaultSecret](./Set-AzKeyVaultSecret.md)
 
-[Undo-AzureKeyVaultSecretRemoval](./Undo-AzureKeyVaultSecretRemoval.md)
+[Undo-AzKeyVaultSecretRemoval](./Undo-AzKeyVaultSecretRemoval.md)
 

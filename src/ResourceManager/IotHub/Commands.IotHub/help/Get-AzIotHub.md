@@ -1,11 +1,11 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
-Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothub
+Module Name: Az.IotHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothub
 schema: 2.0.0
 ---
 
-# Get-AzureRmIotHub
+# Get-AzIotHub
 
 ## SYNOPSIS
 Gets information about the IotHubs in a subscription.
@@ -14,13 +14,12 @@ Gets information about the IotHubs in a subscription.
 
 ### ListIotHubsByResourceGroup (Default)
 ```
-Get-AzureRmIotHub [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzIotHub [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetIotHubByName
 ```
-Get-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzIotHub [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -32,21 +31,21 @@ You can view all IotHub instances in a subscription, or filter your results by a
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmIotHub
+PS C:\> Get-AzIotHub
 ```
 
 Gets all the IotHubs in the subscription.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmIotHub -ResourceGroupName "myresourcegroup"
+PS C:\> Get-AzIotHub -ResourceGroupName "myresourcegroup"
 ```
 
 Gets all the IotHubs in the subscription belonging to the resourcegroup named "myresourcegroup".
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub"
+PS C:\> Get-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets information about the IotHub named "myiothub".
@@ -57,7 +56,7 @@ Gets information about the IotHub named "myiothub".
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

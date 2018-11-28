@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
-Module Name: AzureRM.NotificationHubs
+Module Name: Az.NotificationHubs
 ms.assetid: 5EDFBF19-928F-4F95-BD93-CF8BAEA11C52
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs/remove-azurermnotificationhubsnamespace
+online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/remove-aznotificationhubsnamespace
 schema: 2.0.0
 ---
 
-# Remove-AzureRmNotificationHubsNamespace
+# Remove-AzNotificationHubsNamespace
 
 ## SYNOPSIS
 Removes a notification hub namespace.
@@ -14,21 +14,21 @@ Removes a notification hub namespace.
 ## SYNTAX
 
 ```
-Remove-AzureRmNotificationHubsNamespace [-ResourceGroup] <String> [-Namespace] <String> [-Force]
+Remove-AzNotificationHubsNamespace [-ResourceGroup] <String> [-Namespace] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmNotificationHubsNamespace** cmdlet removes a notification hub namespace from your deployment.
+The **Remove-AzNotificationHubsNamespace** cmdlet removes a notification hub namespace from your deployment.
 Namespaces are logical containers that help you organize and manage your notification hubs.
-The **Remove-AzureRmNotificationHubsNamespace** cmdlet removes a notification hub namespace from your deployment.
+The **Remove-AzNotificationHubsNamespace** cmdlet removes a notification hub namespace from your deployment.
 When you run this cmdlet, the specified namespace will be deleted along with all the notification hubs associated with that namespace.
 
 ## EXAMPLES
 
 ### Example 1: Remove a notification hub namespace
 ```
-PS C:\>Remove-AzureRmNotificationHubsNamespace -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup"
+PS C:\>Remove-AzNotificationHubsNamespace -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup"
 ```
 
 This command removes the namespace named ContosoNamespace.
@@ -40,7 +40,7 @@ You must specify the resource group the namespace is assigned to.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -143,10 +143,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmNotificationHubsNamespace](./Get-AzureRmNotificationHubsNamespace.md)
+[Get-AzNotificationHubsNamespace](./Get-AzNotificationHubsNamespace.md)
 
-[New-AzureRmNotificationHubsNamespace](./New-AzureRmNotificationHubsNamespace.md)
+[New-AzNotificationHubsNamespace](./New-AzNotificationHubsNamespace.md)
 
-[Set-AzureRmNotificationHubsNamespace](./Set-AzureRmNotificationHubsNamespace.md)
+[Set-AzNotificationHubsNamespace](./Set-AzNotificationHubsNamespace.md)
 
 

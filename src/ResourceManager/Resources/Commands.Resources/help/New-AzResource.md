@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: D6FF6BDD-4515-438D-B39D-C0BFC3342F4E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermresource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azresource
 schema: 2.0.0
 ---
 
-# New-AzureRmResource
+# New-AzResource
 
 ## SYNOPSIS
 Creates a resource.
@@ -15,7 +15,7 @@ Creates a resource.
 
 ### ByResourceId (Default)
 ```
-New-AzureRmResource [-Location <String>] [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>]
+New-AzResource [-Location <String>] [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>]
  [-Sku <Hashtable>] [-Tag <Hashtable>] [-IsFullObject] [-AsJob] -ResourceId <String> [-ODataQuery <String>]
  [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,7 +23,7 @@ New-AzureRmResource [-Location <String>] [-Kind <String>] [-Properties <PSObject
 
 ### BySubscriptionLevel
 ```
-New-AzureRmResource [-Location <String>] [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>]
+New-AzResource [-Location <String>] [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>]
  [-Sku <Hashtable>] [-Tag <Hashtable>] [-IsFullObject] [-AsJob] -ResourceName <String> -ResourceType <String>
  [-ExtensionResourceName <String>] [-ExtensionResourceType <String>] [-ODataQuery <String>]
  [-ResourceGroupName <String>] [-Force] [-ApiVersion <String>] [-Pre]
@@ -32,7 +32,7 @@ New-AzureRmResource [-Location <String>] [-Kind <String>] [-Properties <PSObject
 
 ### ByTenantLevel
 ```
-New-AzureRmResource [-Location <String>] [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>]
+New-AzResource [-Location <String>] [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>]
  [-Sku <Hashtable>] [-Tag <Hashtable>] [-IsFullObject] [-AsJob] -ResourceName <String> -ResourceType <String>
  [-ExtensionResourceName <String>] [-ExtensionResourceType <String>] [-ODataQuery <String>] [-TenantLevel]
  [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -40,13 +40,13 @@ New-AzureRmResource [-Location <String>] [-Kind <String>] [-Properties <PSObject
 ```
 
 ## DESCRIPTION
-The **New-AzureRmResource** cmdlet creates an Azure resource, such as a website, Azure SQL Database server, or Azure SQL Database, in a resource group.
+The **New-AzResource** cmdlet creates an Azure resource, such as a website, Azure SQL Database server, or Azure SQL Database, in a resource group.
 
 ## EXAMPLES
 
 ### Example 1: Create a resource
 ```
-PS> New-AzureRmResource -Location "West US" -Properties @{test="test"} -ResourceName TestSite06 -ResourceType microsoft.web/sites -ResourceGroupName ResourceGroup11 -Force
+PS> New-AzResource -Location "West US" -Properties @{test="test"} -ResourceName TestSite06 -ResourceType microsoft.web/sites -ResourceGroupName ResourceGroup11 -Force
 ```
 
 This command creates a resource that is a website in ResourceGroup11.
@@ -62,7 +62,7 @@ PS> $prop = @{
     Force             = $true
 }
 
-PS> New-AzureRmResource @prop
+PS> New-AzResource @prop
 ```
 
 This command creates a resource that is a website in ResourceGroup11.
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -197,7 +197,7 @@ Specifies the location of the resource.
 Specify data center location, such as Central US or Southeast Asia.
 You can place a resource in any location that supports resources of that type. Resource groups can
 contain resources from different locations. To determine which locations support each resource
-type, use the Get-AzureLocation cmdlet.
+type, use the Get-AzLocation cmdlet.
 
 ```yaml
 Type: System.String
@@ -429,12 +429,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Find-AzureRmResource](./Find-AzureRmResource.md)
+[Find-AzResource](./Find-AzResource.md)
 
-[Get-AzureRmResource](./Get-AzureRmResource.md)
+[Get-AzResource](./Get-AzResource.md)
 
-[Move-AzureRmResource](./Move-AzureRmResource.md)
+[Move-AzResource](./Move-AzResource.md)
 
-[Remove-AzureRmResource](./Remove-AzureRmResource.md)
+[Remove-AzResource](./Remove-AzResource.md)
 
-[Set-AzureRmResource](./Set-AzureRmResource.md)
+[Set-AzResource](./Set-AzResource.md)

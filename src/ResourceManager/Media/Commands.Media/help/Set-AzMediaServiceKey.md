@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
-Module Name: AzureRM.Media
+Module Name: Az.Media
 ms.assetid: D28EB28D-DBC6-48D5-AB0A-C56F56CD0104
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.media/set-azurermmediaservicekey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.media/set-azmediaservicekey
 schema: 2.0.0
 ---
 
-# Set-AzureRmMediaServiceKey
+# Set-AzMediaServiceKey
 
 ## SYNOPSIS
 Regenerates a key used for accessing the REST endpoint associated with the media service.
@@ -14,25 +14,25 @@ Regenerates a key used for accessing the REST endpoint associated with the media
 ## SYNTAX
 
 ```
-Set-AzureRmMediaServiceKey [-ResourceGroupName] <String> [-AccountName] <String> [-KeyType] <KeyType>
+Set-AzMediaServiceKey [-ResourceGroupName] <String> [-AccountName] <String> [-KeyType] <KeyType>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmMediaServiceKey** cmdlet regenerates a key used for accessing the Representational State Transfer (REST) endpoint associated with the media service.
+The **Set-AzMediaServiceKey** cmdlet regenerates a key used for accessing the Representational State Transfer (REST) endpoint associated with the media service.
 
 ## EXAMPLES
 
 ### Example 1: Regenerate the primary key used for accessing the Media Service
 ```
-PS C:\>Set-AzureRmMediaServiceKey -ResourceGroupName "ResourceGroup004" -AccountName "MediaService001" -KeyType Primary
+PS C:\>Set-AzMediaServiceKey -ResourceGroupName "ResourceGroup004" -AccountName "MediaService001" -KeyType Primary
 ```
 
 This command regenerates the primary key for the media service named MediaService001 that belongs to the resource group named ResourceGroup004.
 
 ### Example 2: Regenerates the secondary key used for accessing the Media Service
 ```
-PS C:\>Set-AzureRmMediaServiceKey -ResourceGroupName "Resourcegroup123" -AccountName "MediaService002" -KeyType Secondary
+PS C:\>Set-AzMediaServiceKey -ResourceGroupName "Resourcegroup123" -AccountName "MediaService002" -KeyType Secondary
 ```
 
 This command regenerates the secondary key for the media service named MediaService002 that belongs to the resource group named Resourcegroup123.
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -147,6 +147,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmMediaServiceKeys](./Get-AzureRmMediaServiceKeys.md)
+[Get-AzMediaServiceKeys](./Get-AzMediaServiceKeys.md)
 
 

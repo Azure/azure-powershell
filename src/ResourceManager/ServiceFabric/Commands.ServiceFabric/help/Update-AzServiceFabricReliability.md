@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM.ServiceFabric
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/update-azurermservicefabricreliability
+Module Name: Az.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/update-azservicefabricreliability
 schema: 2.0.0
 ---
 
-# Update-AzureRmServiceFabricReliability
+# Update-AzServiceFabricReliability
 
 ## SYNOPSIS
 Update the reliability tier of the primary node type in a cluster.
@@ -13,19 +13,19 @@ Update the reliability tier of the primary node type in a cluster.
 ## SYNTAX
 
 ```
-Update-AzureRmServiceFabricReliability [-ResourceGroupName] <String> [-Name] <String>
+Update-AzServiceFabricReliability [-ResourceGroupName] <String> [-Name] <String>
  -ReliabilityLevel <ReliabilityLevel> [-AutoAddNode] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use **Update-AzureRmServiceFabricReliability** to update reliability of the primary node type in a cluster.
+Use **Update-AzServiceFabricReliability** to update reliability of the primary node type in a cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricReliability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -ReliabilityLevel Silver
+PS c:> Add-AzServiceFabricReliability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -ReliabilityLevel Silver
 ```
 
 This command changes the reliability tier of the primary node type to silver.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

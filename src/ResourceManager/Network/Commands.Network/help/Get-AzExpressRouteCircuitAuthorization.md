@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 3D80F94B-AF9D-40C2-BE7E-2F32E5E926D2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressroutecircuitauthorization
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecircuitauthorization
 schema: 2.0.0
 ---
 
-# Get-AzureRmExpressRouteCircuitAuthorization
+# Get-AzExpressRouteCircuitAuthorization
 
 ## SYNOPSIS
 Gets information about ExpressRoute circuit authorizations.
@@ -14,39 +14,39 @@ Gets information about ExpressRoute circuit authorizations.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCircuitAuthorization [-Name <String>] -ExpressRouteCircuit <PSExpressRouteCircuit>
+Get-AzExpressRouteCircuitAuthorization [-Name <String>] -ExpressRouteCircuit <PSExpressRouteCircuit>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmExpressRouteCircuitAuthorization** cmdlet gets information about the
+The **Get-AzExpressRouteCircuitAuthorization** cmdlet gets information about the
 authorizations assigned to an ExpressRoute circuit. ExpressRoute circuits connect your on-premises
 network to the Microsoft cloud by using a connectivity provider instead of the public Internet. The
 owner of an ExpressRoute circuit can create as many as 10 authorizations for each circuit; these
 authorizations generate an authorization key that can be used by a virtual network owner to connect
 his or her network to the circuit (one authorization per virtual network). Authorization keys, as
 well as other information about the authorization, can be viewed at any time by running
-**Get-AzureRmExpressRouteCircuitAuthorization**.
+**Get-AzExpressRouteCircuitAuthorization**.
 
 ## EXAMPLES
 
 ### Example 1: Get all ExpressRoute authorizations
 ```
-$Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
-Get-AzureRmExpressRouteCircuitAuthorization -Circuit $Circuit
+$Circuit = Get-AzExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
+Get-AzExpressRouteCircuitAuthorization -Circuit $Circuit
 ```
 
 These commands return information about all the ExpressRoute authorizations associated with an
-ExpressRoute circuit. The first command uses the **Get-AzureRmExpressRouteCircuit** cmdlet to
+ExpressRoute circuit. The first command uses the **Get-AzExpressRouteCircuit** cmdlet to
 create an object reference a circuit named ContosoCircuit; that object reference is stored in the
 variable $Circuit. The second command then uses that object reference and the
-**Get-AzureRmExpressRouteCircuitAuthorization** cmdlet to return information about the
+**Get-AzExpressRouteCircuitAuthorization** cmdlet to return information about the
 authorizations associated with ContosoCircuit.
 
 ### Example 2: Get all ExpressRoute authorizations using the Where-Object cmdlet
 ```
-$Circuit = Get-AzureRmExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
- Get-AzureRmExpressRouteCircuitAuthorization -Circuit $Circuit | Where-Object {$_.AuthorizationUseStatus -eq "Available"}
+$Circuit = Get-AzExpressRouteCircuit -Name "ContosoCircuit" -ResourceGroupName "ContosoResourceGroup"
+ Get-AzExpressRouteCircuitAuthorization -Circuit $Circuit | Where-Object {$_.AuthorizationUseStatus -eq "Available"}
 ```
 
 These commands represent a variation on the commands used in Example 1. In this case, however,
@@ -64,7 +64,7 @@ syntax for the Where clause:
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -122,10 +122,10 @@ Parameters: ExpressRouteCircuit (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureRmExpressRouteCircuitAuthorization](./Add-AzureRmExpressRouteCircuitAuthorization.md)
+[Add-AzExpressRouteCircuitAuthorization](./Add-AzExpressRouteCircuitAuthorization.md)
 
-[Get-AzureRmExpressRouteCircuit](./Get-AzureRmExpressRouteCircuit.md)
+[Get-AzExpressRouteCircuit](./Get-AzExpressRouteCircuit.md)
 
-[New-AzureRmExpressRouteCircuitAuthorization](./New-AzureRmExpressRouteCircuitAuthorization.md)
+[New-AzExpressRouteCircuitAuthorization](./New-AzExpressRouteCircuitAuthorization.md)
 
-[Remove-AzureRmExpressRouteCircuitAuthorization](./Remove-AzureRmExpressRouteCircuitAuthorization.md)
+[Remove-AzExpressRouteCircuitAuthorization](./Remove-AzExpressRouteCircuitAuthorization.md)

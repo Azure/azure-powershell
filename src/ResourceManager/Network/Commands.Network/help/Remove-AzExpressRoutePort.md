@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermexpressrouteport
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azexpressrouteport
 schema: 2.0.0
 ---
 
-# Remove-AzureRmExpressRoutePort
+# Remove-AzExpressRoutePort
 
 ## SYNOPSIS
 Removes an ExpressRoutePort.
@@ -14,43 +14,44 @@ Removes an ExpressRoutePort.
 
 ### ResourceNameParameterSet (Default)
 ```
-Remove-AzureRmExpressRoutePort -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzExpressRoutePort -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzureRmExpressRoutePort -InputObject <PSExpressRoutePort> [-Force] [-AsJob] [-PassThru]
+Remove-AzExpressRoutePort -InputObject <PSExpressRoutePort> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzureRmExpressRoutePort -ResourceId <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzExpressRoutePort -ResourceId <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmExpressRoutePort** cmdlet removes an ExpressRoutePort.
+The **Remove-AzExpressRoutePort** cmdlet removes an ExpressRoutePort.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzureRmExpressRoutePort -Name $PortName -ResourceGroupName $rg
+PS C:\> Remove-AzExpressRoutePort -Name $PortName -ResourceGroupName $rg
 ```
 
 Removes $PortName ExpressRoutePort resource in $rg resource group in your subscription.
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzureRmExpressRoutePort -InputObject $erPort
+PS C:\> Remove-AzExpressRoutePort -InputObject $erPort
 ```
+
 Removes the ExpressRoutePort resource in InputObject.
 
 ### Example 3
 ```powershell
-PS C:\> Remove-AzureRmExpressRoutePort -Name $ResourceId $id
+PS C:\> Remove-AzExpressRoutePort -Name $ResourceId $id
 ```
 
 Removes the ExpressRoutePort resource with ResourceId $id.
@@ -76,7 +77,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

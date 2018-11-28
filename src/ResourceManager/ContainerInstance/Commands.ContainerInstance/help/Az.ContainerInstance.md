@@ -1,25 +1,25 @@
 ---
-Module Name: AzureRM.ContainerInstance
+Module Name: Az.ContainerInstance
 Module Guid: 99d2fc1f-ff3c-4bf3-ac22-8f81f0e5c279
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance
 Help Version: 0.2.5.0
 Locale: en-US
 ---
 
-# AzureRM.ContainerInstance Module
+# Az.ContainerInstance Module
 ## Description
 This topic displays help topics for the Azure Container Instance Cmdlets.
 
-## AzureRM.ContainerInstance Cmdlets
-### [Get-AzureRmContainerGroup](Get-AzureRmContainerGroup.md)
+## Az.ContainerInstance Cmdlets
+### [Get-AzContainerGroup](Get-AzContainerGroup.md)
 Gets container groups.
 
-### [Get-AzureRmContainerInstanceLog](Get-AzureRmContainerInstanceLog.md)
+### [Get-AzContainerInstanceLog](Get-AzContainerInstanceLog.md)
 Get the logs of a container instance in a container group.
 
-### [New-AzureRmContainerGroup](New-AzureRmContainerGroup.md)
+### [New-AzContainerGroup](New-AzContainerGroup.md)
 Creates a container group.
 
-### [Remove-AzureRmContainerGroup](Remove-AzureRmContainerGroup.md)
+### [Remove-AzContainerGroup](Remove-AzContainerGroup.md)
 Removes a container group.
 

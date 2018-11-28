@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 9160A21D-0F83-415B-830B-F35C8B863E90
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermnetworksecurityruleconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-aznetworksecurityruleconfig
 schema: 2.0.0
 ---
 
-# Add-AzureRmNetworkSecurityRuleConfig
+# Add-AzNetworkSecurityRuleConfig
 
 ## SYNOPSIS
 Adds a network security rule configuration to a network security group.
@@ -15,7 +15,7 @@ Adds a network security rule configuration to a network security group.
 
 ### SetByResource (Default)
 ```
-Add-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
+Add-AzNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
  [-Description <String>] [-Protocol <String>]
  [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
  [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
@@ -29,7 +29,7 @@ Add-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNet
 
 ### SetByResourceId
 ```
-Add-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
+Add-AzNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
  [-Description <String>] [-Protocol <String>]
  [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
  [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
@@ -41,31 +41,31 @@ Add-AzureRmNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNet
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmNetworkSecurityRuleConfig** cmdlet adds a network security rule configuration to an Azure network security group.
+The **Add-AzNetworkSecurityRuleConfig** cmdlet adds a network security rule configuration to an Azure network security group.
 
 ## EXAMPLES
 
 ### 1: Adding a network security group
 ```
-Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 | 
-Add-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access 
+Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 | 
+Add-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access 
     Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet 
     -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 | 
-    Set-AzureRmNetworkSecurityGroup
+    Set-AzNetworkSecurityGroup
 ```
 
 The first command retrieves an Azure network security group named "nsg1" from resource group "rg1". The second command adds a network security rule named "rdp-rule" that allows traffic from internet on port 3389 to the retrieved network security group object. Persists the modified Azure network security group.
 
 ### 2: Adding a new security rule with application security groups
 ```
-$srcAsg = New-AzureRmApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name srcAsg -Location "West US"
-$destAsg = New-AzureRmApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name destAsg -Location "West US"
+$srcAsg = New-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name srcAsg -Location "West US"
+$destAsg = New-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name destAsg -Location "West US"
 
-Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 |
-Add-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access
+Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 |
+Add-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access
     Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceApplicationSecurityGroup
     $srcAsg -SourcePortRange * -DestinationApplicationSecurityGroup $destAsg -DestinationPortRange 3389 |
-Set-AzureRmNetworkSecurityGroup
+Set-AzNetworkSecurityGroup
 ```
 
 First, we create two new application security groups. Then, we retrieve an Azure network security group named "nsg1" from resource group "rg1". and add a network security rule named "rdp-rule" to it. The rule allows traffic from all the IP configurations in the application security group "srcAsg" to all the IP configurations in "destAsg" on port 3389. After adding the rule, we persist the modified Azure network security group.
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -356,12 +356,12 @@ Parameters: NetworkSecurityGroup (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmNetworkSecurityRuleConfig](./Get-AzureRmNetworkSecurityRuleConfig.md)
+[Get-AzNetworkSecurityRuleConfig](./Get-AzNetworkSecurityRuleConfig.md)
 
-[New-AzureRmNetworkSecurityRuleConfig](./New-AzureRmNetworkSecurityRuleConfig.md)
+[New-AzNetworkSecurityRuleConfig](./New-AzNetworkSecurityRuleConfig.md)
 
-[Remove-AzureRmNetworkSecurityRuleConfig](./Remove-AzureRmNetworkSecurityRuleConfig.md)
+[Remove-AzNetworkSecurityRuleConfig](./Remove-AzNetworkSecurityRuleConfig.md)
 
-[Set-AzureRmNetworkSecurityRuleConfig](./Set-AzureRmNetworkSecurityRuleConfig.md)
+[Set-AzNetworkSecurityRuleConfig](./Set-AzNetworkSecurityRuleConfig.md)
 
 

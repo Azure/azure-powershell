@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
-Module Name: AzureRM.Dns
+Module Name: Az.Dns
 ms.assetid: E37ADC54-A37B-41BF-BE94-9E4052C234BB
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/set-azurermdnszone
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/set-azdnszone
 schema: 2.0.0
 ---
 
-# Set-AzureRmDnsZone
+# Set-AzDnsZone
 
 ## SYNOPSIS
 Updates the properties of a DNS zone.
@@ -15,7 +15,7 @@ Updates the properties of a DNS zone.
 
 ### Fields (Default)
 ```
-Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
+Set-AzDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
  [-RegistrationVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
  [-ResolutionVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -23,7 +23,7 @@ Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
 
 ### FieldsObjects
 ```
-Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
+Set-AzDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
  [-RegistrationVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]>]
  [-ResolutionVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -31,12 +31,12 @@ Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
 
 ### Object
 ```
-Set-AzureRmDnsZone -Zone <DnsZone> [-Overwrite] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Set-AzDnsZone -Zone <DnsZone> [-Overwrite] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmDnsZone** cmdlet updates the specified DNS zone in the Azure DNS service.
+The **Set-AzDnsZone** cmdlet updates the specified DNS zone in the Azure DNS service.
 This cmdlet does not update the record sets in the zone.
 You can pass a **DnsZone** object as a parameter or by using the pipeline operator, or
 alternatively you can specify the *ZoneName* and *ResourceGroupName* parameters.
@@ -51,9 +51,9 @@ which updates the zone regardless of concurrent changes.
 
 ### Example 1: Update a DNS zone
 ```
-PS C:\>$Zone = Get-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
+PS C:\>$Zone = Get-AzDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 PS C:\> $Zone.Tags = @(@{"Name"="Dept"; "Value"="Electrical"})
-PS C:\> Set-AzureRmDnsZone -Zone $Zone
+PS C:\> Set-AzDnsZone -Zone $Zone
 ```
 
 The first command gets the zone named myzone.com from the specified resource group, and then stores
@@ -63,7 +63,7 @@ The final command commits the change.
 
 ### Example 2: Update tags for a zone
 ```
-PS C:\>Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com" -Tag @(@{"Name"="Dept"; "Value"="Electrical"})
+PS C:\>Set-AzDNSZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com" -Tag @(@{"Name"="Dept"; "Value"="Electrical"})
 ```
 
 This command updates the tags for the zone named myzone.com without first explicitly getting the
@@ -71,8 +71,8 @@ zone.
 
 ### Example 3: Associating a private zone with a virtual network by specifying its ID
 ```
-PS C:\>$vnet = Get-AzureRmVirualNetwork -ResourceGroupName "MyResourceGroup" -Name "myvnet"
-PS C:\>Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myprivatezone.com" -RegistrationVirtualNetworkId @($vnet.Id)
+PS C:\>$vnet = Get-AzVirualNetwork -ResourceGroupName "MyResourceGroup" -Name "myvnet"
+PS C:\>Set-AzDNSZone -ResourceGroupName "MyResourceGroup" -Name "myprivatezone.com" -RegistrationVirtualNetworkId @($vnet.Id)
 ```
 
 This command associates the Private DNS zone myprivatezone.com with the virtual network myvnet as a registration network
@@ -80,12 +80,12 @@ by specifying its ID.
 
 ### Example 4: Associating a private zone with a virtual network by specifying the network object.
 ```
-PS C:\>$vnet = Get-AzureRmVirualNetwork -ResourceGroupName "MyResourceGroup" -Name "myvnet"
-PS C:\>Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myprivatezone.com" -RegistrationVirtualNetwork @($vnet)
+PS C:\>$vnet = Get-AzVirualNetwork -ResourceGroupName "MyResourceGroup" -Name "myvnet"
+PS C:\>Set-AzDNSZone -ResourceGroupName "MyResourceGroup" -Name "myprivatezone.com" -RegistrationVirtualNetwork @($vnet)
 ```
 
 This command associates the Private DNS zone myprivatezone.com with the virtual network myvnet as a registration network
-by passing the virtual network object represented by $vnet variable to the Set-AzureRmDnsZone cmdlet.
+by passing the virtual network object represented by $vnet variable to the Set-AzDnsZone cmdlet.
 
 ## PARAMETERS
 
@@ -93,7 +93,7 @@ by passing the virtual network object represented by $vnet variable to the Set-A
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -304,8 +304,8 @@ If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation
 
 ## RELATED LINKS
 
-[Get-AzureRmDnsZone](./Get-AzureRmDnsZone.md)
+[Get-AzDnsZone](./Get-AzDnsZone.md)
 
-[New-AzureRmDnsZone](./New-AzureRmDnsZone.md)
+[New-AzDnsZone](./New-AzDnsZone.md)
 
-[Remove-AzureRmDnsZone](./Remove-AzureRmDnsZone.md)
+[Remove-AzDnsZone](./Remove-AzDnsZone.md)

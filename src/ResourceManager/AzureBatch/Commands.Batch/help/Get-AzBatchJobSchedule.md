@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 8BAA6D8C-1530-4CC4-8AE5-A2CE6B1192CA
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchjobschedule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchjobschedule
 schema: 2.0.0
 ---
 
-# Get-AzureBatchJobSchedule
+# Get-AzBatchJobSchedule
 
 ## SYNOPSIS
 Gets Batch job schedules.
@@ -15,18 +15,18 @@ Gets Batch job schedules.
 
 ### ODataFilter (Default)
 ```
-Get-AzureBatchJobSchedule [-Filter <String>] [-MaxCount <Int32>] [-Select <String>] [-Expand <String>]
+Get-AzBatchJobSchedule [-Filter <String>] [-MaxCount <Int32>] [-Select <String>] [-Expand <String>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Get-AzureBatchJobSchedule [[-Id] <String>] [-Select <String>] [-Expand <String>]
+Get-AzBatchJobSchedule [[-Id] <String>] [-Select <String>] [-Expand <String>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureBatchJobSchedule** cmdlet gets Azure Batch job schedules for the Batch account specified by the *BatchContext* parameter.
+The **Get-AzBatchJobSchedule** cmdlet gets Azure Batch job schedules for the Batch account specified by the *BatchContext* parameter.
 Specify an ID to get a single job schedule.
 Specify the *Filter* parameter to get the job schedules that match an Open Data Protocol (OData) filter.
 
@@ -34,7 +34,7 @@ Specify the *Filter* parameter to get the job schedules that match an Open Data 
 
 ### Example 1: Get a job schedule by specifying an ID
 ```
-PS C:\>Get-AzureBatchJobSchedule -Id "JobSchedule23" -BatchContext $Context
+PS C:\>Get-AzBatchJobSchedule -Id "JobSchedule23" -BatchContext $Context
 CreationTime                : 7/25/2015 9:15:43 PM
 DisplayName                 : 
 ETag                        : 0x8D2953633427FCA
@@ -53,11 +53,11 @@ Url                         : https://pfuller.westus.batch.azure.com/jobschedule
 ```
 
 This command gets the job schedule that has the ID JobSchedule23.
-Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.
+Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Get job schedules by using a filter
 ```
-PS C:\>Get-AzureBatchJobSchedule -Filter "startswith(id,'Job')" -BatchContext $Context
+PS C:\>Get-AzBatchJobSchedule -Filter "startswith(id,'Job')" -BatchContext $Context
 CreationTime                : 7/25/2015 9:15:43 PM
 DisplayName                 : 
 ETag                        : 0x8D2953633427FCA
@@ -97,7 +97,7 @@ This command gets all job schedules that have IDs that start with Job by specify
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -226,18 +226,18 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Disable-AzureBatchJobSchedule](./Disable-AzureBatchJobSchedule.md)
+[Disable-AzBatchJobSchedule](./Disable-AzBatchJobSchedule.md)
 
-[Enable-AzureBatchJobSchedule](./Enable-AzureBatchJobSchedule.md)
+[Enable-AzBatchJobSchedule](./Enable-AzBatchJobSchedule.md)
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[New-AzureBatchJobSchedule](./New-AzureBatchJobSchedule.md)
+[New-AzBatchJobSchedule](./New-AzBatchJobSchedule.md)
 
-[Remove-AzureBatchJobSchedule](./Remove-AzureBatchJobSchedule.md)
+[Remove-AzBatchJobSchedule](./Remove-AzBatchJobSchedule.md)
 
-[Stop-AzureBatchJobSchedule](./Stop-AzureBatchJobSchedule.md)
+[Stop-AzBatchJobSchedule](./Stop-AzBatchJobSchedule.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

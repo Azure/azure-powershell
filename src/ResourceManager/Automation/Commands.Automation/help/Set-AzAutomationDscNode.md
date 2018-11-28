@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: 60023C8D-EA37-41DA-97E6-AF89F7F9BADD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/set-azurermautomationdscnode
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationdscnode
 schema: 2.0.0
 ---
 
-# Set-AzureRmAutomationDscNode
+# Set-AzAutomationDscNode
 
 ## SYNOPSIS
 Modifies the node configuration that a DSC node is mapped to.
@@ -14,20 +14,20 @@ Modifies the node configuration that a DSC node is mapped to.
 ## SYNTAX
 
 ```
-Set-AzureRmAutomationDscNode -Id <Guid> -NodeConfigurationName <String> [-Force] [-ResourceGroupName] <String>
+Set-AzAutomationDscNode -Id <Guid> -NodeConfigurationName <String> [-Force] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmAutomationDscNode** cmdlet modifies an APS Desired State Configuration (DSC) node configuration.
+The **Set-AzAutomationDscNode** cmdlet modifies an APS Desired State Configuration (DSC) node configuration.
 Azure Automation stores DSC node configuration as a Managed Object Format (MOF) configuration document.
 
 ## EXAMPLES
 
 ### Example 1: Modify node configuration mapping
 ```
-PS C:\>Set-AzureRmAutomationDscNode -NodeConfigurationName "Contoso.NodeConfiguration01" -ResourceGroupName "ResourceGroup01" -Id 064a8929-c98b-25e4-80hh-111c8a6067j8
+PS C:\>Set-AzAutomationDscNode -NodeConfigurationName "Contoso.NodeConfiguration01" -ResourceGroupName "ResourceGroup01" -Id 064a8929-c98b-25e4-80hh-111c8a6067j8
 ```
 
 This command assigns the node configuration named Contoso.NodeConfiguration01 to the node that has the specified GUID.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -172,10 +172,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationDscNode](./Get-AzureRmAutomationDscNode.md)
+[Get-AzAutomationDscNode](./Get-AzAutomationDscNode.md)
 
-[Register-AzureRmAutomationDscNode](./Register-AzureRmAutomationDscNode.md)
+[Register-AzAutomationDscNode](./Register-AzAutomationDscNode.md)
 
-[Unregister-AzureRmAutomationDscNode](./Unregister-AzureRmAutomationDscNode.md)
+[Unregister-AzAutomationDscNode](./Unregister-AzAutomationDscNode.md)
 
 

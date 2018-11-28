@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 2970E81E-A788-4829-B1FF-B522A91DE4B1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermproviderfeature
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azproviderfeature
 schema: 2.0.0
 ---
 
-# Get-AzureRmProviderFeature
+# Get-AzProviderFeature
 
 ## SYNOPSIS
 Gets information about Azure provider features.
@@ -15,31 +15,31 @@ Gets information about Azure provider features.
 
 ### ListAvailableParameterSet (Default)
 ```
-Get-AzureRmProviderFeature [-ProviderNamespace <String>] [-ListAvailable]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzProviderFeature [-ProviderNamespace <String>] [-ListAvailable] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetFeature
 ```
-Get-AzureRmProviderFeature -ProviderNamespace <String> -FeatureName <String>
+Get-AzProviderFeature -ProviderNamespace <String> -FeatureName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmProviderFeature** cmdlet gets the feature name, provider name, and registration status for Azure provider features.
+The **Get-AzProviderFeature** cmdlet gets the feature name, provider name, and registration status for Azure provider features.
 
 ## EXAMPLES
 
 ### Example 1: Get all available features
 ```
-PS C:\>Get-AzureRmProviderFeature -ListAvailable
+PS C:\>Get-AzProviderFeature -ListAvailable
 ```
 
 This command gets all available features.
 
 ### Example 2: Get information about a specific feature
 ```
-PS C:\>Get-AzureRmProviderFeature -FeatureName "AllowPreReleaseRegions" -ProviderNamespace "Microsoft.Compute"
+PS C:\>Get-AzProviderFeature -FeatureName "AllowPreReleaseRegions" -ProviderNamespace "Microsoft.Compute"
 ```
 
 This command gets information for the feature named AllowPreReleaseRegions for the specified provider.
@@ -50,7 +50,7 @@ This command gets information for the feature named AllowPreReleaseRegions for t
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -129,6 +129,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Register-AzureRmProviderFeature](./Register-AzureRmProviderFeature.md)
+[Register-AzProviderFeature](./Register-AzProviderFeature.md)
 
 

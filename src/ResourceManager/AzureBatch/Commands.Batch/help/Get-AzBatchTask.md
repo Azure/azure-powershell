@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: 4B5FE41A-090B-4859-B021-05CF0A8B7882
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchtask
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchtask
 schema: 2.0.0
 ---
 
-# Get-AzureBatchTask
+# Get-AzBatchTask
 
 ## SYNOPSIS
 Gets the Batch tasks for a job.
@@ -15,26 +15,25 @@ Gets the Batch tasks for a job.
 
 ### ODataFilter (Default)
 ```
-Get-AzureBatchTask [-JobId] <String> [-Filter <String>] [-MaxCount <Int32>] [-Select <String>]
- [-Expand <String>] -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzBatchTask [-JobId] <String> [-Filter <String>] [-MaxCount <Int32>] [-Select <String>] [-Expand <String>]
+ -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Get-AzureBatchTask [-JobId] <String> [[-Id] <String>] [-Select <String>] [-Expand <String>]
+Get-AzBatchTask [-JobId] <String> [[-Id] <String>] [-Select <String>] [-Expand <String>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentObject
 ```
-Get-AzureBatchTask [[-Job] <PSCloudJob>] [-Filter <String>] [-MaxCount <Int32>] [-Select <String>]
+Get-AzBatchTask [[-Job] <PSCloudJob>] [-Filter <String>] [-MaxCount <Int32>] [-Select <String>]
  [-Expand <String>] -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureBatchTask** cmdlet gets Azure Batch tasks for a Batch job.
+The **Get-AzBatchTask** cmdlet gets Azure Batch tasks for a Batch job.
 Specify a job by either the *JobId* parameter or the *Job* parameter.
 To get a single task, specify the *Id* parameter.
 You can specify the *Filter* parameter to get the tasks that match an Open Data Protocol (OData) filter.
@@ -43,7 +42,7 @@ You can specify the *Filter* parameter to get the tasks that match an Open Data 
 
 ### Example 1: Get a task by ID
 ```
-PS C:\>Get-AzureBatchTask -JobId "Job01" -Id "Task03" -BatchContext $Context
+PS C:\>Get-AzBatchTask -JobId "Job01" -Id "Task03" -BatchContext $Context
 AffinityInformation         : 
 CommandLine                 : cmd /c dir /s
 ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
@@ -66,11 +65,11 @@ Url                         : https://pfuller.westus.batch.azure.com/jobs/Job01/
 ```
 
 This command gets the task with ID Task03 under job Job01.
-Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.
+Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Get all completed tasks from a specified job
 ```
-PS C:\>Get-AzureBatchTask -JobId "Job02" -Filter "state eq 'completed'" -BatchContext $Context
+PS C:\>Get-AzBatchTask -JobId "Job02" -Filter "state eq 'completed'" -BatchContext $Context
 AffinityInformation         : 
 CommandLine                 : cmd /c dir /s
 ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
@@ -116,7 +115,7 @@ This command gets the completed tasks from the job that has the ID Job02.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -134,7 +133,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -195,7 +194,7 @@ Accept wildcard characters: False
 
 ### -Job
 Specifies the job that contains tasks that this cmdlet gets.
-To obtain a **PSCloudJob** object, use the Get-AzureBatchJob cmdlet.
+To obtain a **PSCloudJob** object, use the Get-AzBatchJob cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.Models.PSCloudJob
@@ -278,16 +277,16 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchJob](./Get-AzureBatchJob.md)
+[Get-AzBatchJob](./Get-AzBatchJob.md)
 
-[New-AzureBatchTask](./New-AzureBatchTask.md)
+[New-AzBatchTask](./New-AzBatchTask.md)
 
-[Remove-AzureBatchTask](./Remove-AzureBatchTask.md)
+[Remove-AzBatchTask](./Remove-AzBatchTask.md)
 
-[Stop-AzureBatchTask](./Stop-AzureBatchTask.md)
+[Stop-AzBatchTask](./Stop-AzBatchTask.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

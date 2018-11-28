@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
-Module Name: Azure.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/disable-azurestoragedeleteretentionpolicy
+Module Name: Az.Storage
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/disable-azstoragedeleteretentionpolicy
 schema: 2.0.0
 ---
 
-# Disable-AzureStorageDeleteRetentionPolicy
+# Disable-AzStorageDeleteRetentionPolicy
 
 ## SYNOPSIS
 Disable delete retention policy  for the Azure Storage Blob service.
@@ -13,18 +13,18 @@ Disable delete retention policy  for the Azure Storage Blob service.
 ## SYNTAX
 
 ```
-Disable-AzureStorageDeleteRetentionPolicy [-PassThru] [-Context <IStorageContext>]
+Disable-AzStorageDeleteRetentionPolicy [-PassThru] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzureStorageDeleteRetentionPolicy** cmdlet disables delete retention policy for the Azure Storage Blob service.
+The **Disable-AzStorageDeleteRetentionPolicy** cmdlet disables delete retention policy for the Azure Storage Blob service.
 
 ## EXAMPLES
 
 ### Example 1: Disable delete retention policy for the Blob service
 ```
-C:\PS>Disable-AzureStorageDeleteRetentionPolicy
+C:\PS>Disable-AzStorageDeleteRetentionPolicy
 ```
 
 This command disables delete retention policy for the Blob service.
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

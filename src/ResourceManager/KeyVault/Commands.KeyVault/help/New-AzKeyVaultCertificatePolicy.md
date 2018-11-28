@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 25E0F0E9-BF8C-49DF-87BA-31E2103A29A9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/new-azurekeyvaultcertificatepolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy
 schema: 2.0.0
 ---
 
-# New-AzureKeyVaultCertificatePolicy
+# New-AzKeyVaultCertificatePolicy
 
 ## SYNOPSIS
 Creates an in-memory certificate policy object.
@@ -15,7 +15,7 @@ Creates an in-memory certificate policy object.
 
 ### SubjectName (Default)
 ```
-New-AzureKeyVaultCertificatePolicy [-IssuerName] <String> [-SubjectName] <String>
+New-AzKeyVaultCertificatePolicy [-IssuerName] <String> [-SubjectName] <String>
  [-RenewAtNumberOfDaysBeforeExpiry <Int32>] [-RenewAtPercentageLifetime <Int32>] [-SecretContentType <String>]
  [-ReuseKeyOnRenewal] [-Disabled]
  [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
@@ -27,7 +27,7 @@ New-AzureKeyVaultCertificatePolicy [-IssuerName] <String> [-SubjectName] <String
 
 ### DNSNames
 ```
-New-AzureKeyVaultCertificatePolicy [-IssuerName] <String> [[-SubjectName] <String>]
+New-AzKeyVaultCertificatePolicy [-IssuerName] <String> [[-SubjectName] <String>]
  [-DnsName] <System.Collections.Generic.List`1[System.String]> [-RenewAtNumberOfDaysBeforeExpiry <Int32>]
  [-RenewAtPercentageLifetime <Int32>] [-SecretContentType <String>] [-ReuseKeyOnRenewal] [-Disabled]
  [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
@@ -38,13 +38,13 @@ New-AzureKeyVaultCertificatePolicy [-IssuerName] <String> [[-SubjectName] <Strin
 ```
 
 ## DESCRIPTION
-The **New-AzureKeyVaultCertificatePolicy** cmdlet creates an in-memory certificate policy object for Azure Key Vault.
+The **New-AzKeyVaultCertificatePolicy** cmdlet creates an in-memory certificate policy object for Azure Key Vault.
 
 ## EXAMPLES
 
 ### Example 1: Create a certificate policy
 ```powershell
-PS C:\> New-AzureKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
+PS C:\> New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
 
 SecretContentType               : application/x-pkcs12
 Kty                             :
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -402,7 +402,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureKeyVaultCertificatePolicy](./Get-AzureKeyVaultCertificatePolicy.md)
+[Get-AzKeyVaultCertificatePolicy](./Get-AzKeyVaultCertificatePolicy.md)
 
-[Set-AzureKeyVaultCertificatePolicy](./Set-AzureKeyVaultCertificatePolicy.md)
+[Set-AzKeyVaultCertificatePolicy](./Set-AzKeyVaultCertificatePolicy.md)
 

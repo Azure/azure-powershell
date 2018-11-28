@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-Module Name: AzureRM.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/set-azurermeventhubconsumergroup
+Module Name: Az.EventHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/set-azeventhubconsumergroup
 schema: 2.0.0
 ---
 
-# Set-AzureRmEventHubConsumerGroup
+# Set-AzEventHubConsumerGroup
 
 ## SYNOPSIS
 Updates the specified Event Hubs consumer group.
@@ -13,19 +13,19 @@ Updates the specified Event Hubs consumer group.
 ## SYNTAX
 
 ```
-Set-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-Namespace] <String> [-EventHub] <String>
+Set-AzEventHubConsumerGroup [-ResourceGroupName] <String> [-Namespace] <String> [-EventHub] <String>
  [-Name] <String> [[-UserMetadata] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzureRmEventHubConsumerGroup cmdlet updates the specified Event Hubs consumer group.
+The Set-AzEventHubConsumerGroup cmdlet updates the specified Event Hubs consumer group.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName -UserMetadata "Testing"
+PS C:\> Set-AzEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName -UserMetadata "Testing"
 ```
 
 Sets the user metadata of the consumer group \`MyConsumerGroupName\` to "Testing."
@@ -36,7 +36,7 @@ Sets the user metadata of the consumer group \`MyConsumerGroupName\` to "Testing
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

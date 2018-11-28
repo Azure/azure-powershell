@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
-Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/get-azurermdatafactoryv2activityrun
+Module Name: Az.DataFactoryV2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryv2activityrun
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataFactoryV2ActivityRun
+# Get-AzDataFactoryV2ActivityRun
 
 ## SYNOPSIS
 Gets information about activity runs for a pipeline run.
@@ -14,7 +14,7 @@ Gets information about activity runs for a pipeline run.
 
 ### ByFactoryName (Default)
 ```
-Get-AzureRmDataFactoryV2ActivityRun [-PipelineRunId] <String> [-RunStartedAfter] <DateTime>
+Get-AzDataFactoryV2ActivityRun [-PipelineRunId] <String> [-RunStartedAfter] <DateTime>
  [-RunStartedBefore] <DateTime> [[-ActivityName] <String>] [[-Status] <String>] [[-LinkedServiceName] <String>]
  [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -22,19 +22,19 @@ Get-AzureRmDataFactoryV2ActivityRun [-PipelineRunId] <String> [-RunStartedAfter]
 
 ### ByFactoryObject
 ```
-Get-AzureRmDataFactoryV2ActivityRun [-PipelineRunId] <String> [-RunStartedAfter] <DateTime>
+Get-AzDataFactoryV2ActivityRun [-PipelineRunId] <String> [-RunStartedAfter] <DateTime>
  [-RunStartedBefore] <DateTime> [[-ActivityName] <String>] [[-Status] <String>] [[-LinkedServiceName] <String>]
  [-DataFactory] <PSDataFactory> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataFactoryV2ActivityRun** cmdlet gets information about runs in Azure Data Factory for the specified pipeline run that happened in the given timeframe. Additionally, you can specify filters for activity name, linked service name that executed the run, and the status of the run.
+The **Get-AzDataFactoryV2ActivityRun** cmdlet gets information about runs in Azure Data Factory for the specified pipeline run that happened in the given timeframe. Additionally, you can specify filters for activity name, linked service name that executed the run, and the status of the run.
 
 ## EXAMPLES
 
 ### Example 1: Get all activity runs for a pipeline run
 ```
-PS C:\> Get-AzureRmDataFactoryV2ActivityRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId "f288712d-fb08-4cb8-96ef-82d3b9b30621" -RunStartedAfter "2017-09-01" -RunStartedBefore "2017-09-30"
+PS C:\> Get-AzDataFactoryV2ActivityRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId "f288712d-fb08-4cb8-96ef-82d3b9b30621" -RunStartedAfter "2017-09-01" -RunStartedBefore "2017-09-30"
 
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF
@@ -223,7 +223,7 @@ Parameters: DataFactory (ByValue)
 
 ## RELATED LINKS
 
-[Invoke-AzureRmDataFactoryV2Pipeline]()
+[Invoke-AzDataFactoryV2Pipeline]()
 
-[Get-AzureRmDataFactoryV2PipelineRun]()
+[Get-AzDataFactoryV2PipelineRun]()
 

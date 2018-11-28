@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlsyncagent
+Module Name: Az.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlsyncagent
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlSyncAgent
+# Remove-AzSqlSyncAgent
 
 ## SYNOPSIS
 Removes an Azure SQL Sync Agent.
@@ -13,19 +13,19 @@ Removes an Azure SQL Sync Agent.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlSyncAgent [-Name] <String> [-Force] [-PassThru] [-ServerName] <String>
+Remove-AzSqlSyncAgent [-Name] <String> [-Force] [-PassThru] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlSyncAgent** cmdlet removes an Azure SQL Sync Agent.
+The **Remove-AzSqlSyncAgent** cmdlet removes an Azure SQL Sync Agent.
 
 ## EXAMPLES
 
 ### Example 1: Remove a sync agent
 ```
-PS C:\>Remove-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "syncAgent01"
+PS C:\>Remove-AzSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "syncAgent01"
 ```
 
 This command removes the Azure SQL Sync Agent named syncAgent01.
@@ -36,7 +36,7 @@ This command removes the Azure SQL Sync Agent named syncAgent01.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -168,7 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmSqlSyncAgent](./New-AzureRmSqlSyncAgent.md)
+[New-AzSqlSyncAgent](./New-AzSqlSyncAgent.md)
 
-[Get-AzureRmSqlSyncAgent](./Get-AzureRmSqlSyncAgent.md)
+[Get-AzSqlSyncAgent](./Get-AzSqlSyncAgent.md)
 

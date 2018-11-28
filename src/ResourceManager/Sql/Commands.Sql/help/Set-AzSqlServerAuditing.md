@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqlserverauditing
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverauditing
 schema: 2.0.0
 ---
 
-# Set-AzureRmSqlServerAuditing
+# Set-AzSqlServerAuditing
 
 ## SYNOPSIS
 Changes the auditing settings of an Azure SQL server.
@@ -15,7 +15,7 @@ Changes the auditing settings of an Azure SQL server.
 
 ### DefaultParameterSet (Default)
 ```
-Set-AzureRmSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
+Set-AzSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
  [-StorageAccountName <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>]
  [-PredicateExpression <String>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -23,7 +23,7 @@ Set-AzureRmSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGrou
 
 ### StorageAccountSubscriptionIdSet
 ```
-Set-AzureRmSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
+Set-AzSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
  -StorageAccountName <String> [-StorageAccountSubscriptionId <Guid>] [-StorageKeyType <String>]
  [-RetentionInDays <UInt32>] [-PredicateExpression <String>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -31,7 +31,7 @@ Set-AzureRmSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGrou
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlServerAuditing** cmdlet changes the auditing settings of an Azure SQL server.
+The **Set-AzSqlServerAuditing** cmdlet changes the auditing settings of an Azure SQL server.
 To use the cmdlet, use the *ResourceGroupName* and *ServerName* parameters to identify the server.
 Specify the *StorageAccountName* parameter to specify the storage account for the audit logs and the *StorageKeyType* parameter to define the storage keys.
 Use the *State* parameter to enable/disable the policy.
@@ -44,27 +44,27 @@ Server identifiers include, but are not limited to, **ResourceGroupName** and **
 
 ### Example 1: Enable the auditing policy of an Azure SQL server
 ```
-PS C:\>Set-AzureRmSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22"
+PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22"
 ```
 
 ### Example 2: Disable the auditing policy of an Azure SQL server
 ```
-PS C:\>Set-AzureRmSqlServerAuditing -State Disabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>Set-AzSqlServerAuditing -State Disabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
 ### Example 3: Enable the auditing policy of an Azure SQL server using a storage account from a different subscription
 ```
-PS C:\>Set-AzureRmSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -StorageAccountSubscriptionId "7fe3301d-31d3-4668-af5e-211a890ba6e3"
+PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -StorageAccountSubscriptionId "7fe3301d-31d3-4668-af5e-211a890ba6e3"
 ```
 
 ### Example 4: Enable the auditing policy of an Azure SQL server with advanced filtering using a T-SQL predicate.
 ```
-PS C:\>Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -DatabaseName "Database01" -PredicateExpression "statement <> 'select 1'"
+PS C:\>Set-AzSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -DatabaseName "Database01" -PredicateExpression "statement <> 'select 1'"
 ```
 
 ### Example 5: Remove the advanced filtering setting from the auditing policy of an Azure SQL server.
 ```
-PS C:\>Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -DatabaseName "Database01" -PredicateExpression ""
+PS C:\>Set-AzSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -DatabaseName "Database01" -PredicateExpression ""
 ```
 
 ## PARAMETERS
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

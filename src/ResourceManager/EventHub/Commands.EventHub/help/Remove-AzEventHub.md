@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-Module Name: AzureRM.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/remove-azurermeventhub
+Module Name: Az.EventHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/remove-azeventhub
 schema: 2.0.0
 ---
 
-# Remove-AzureRmEventHub
+# Remove-AzEventHub
 
 ## SYNOPSIS
 Removes the specified Event Hub.
@@ -14,54 +14,54 @@ Removes the specified Event Hub.
 
 ### EventhubDefaultSet (Default)
 ```
-Remove-AzureRmEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EventhubInputObjectSet
 ```
-Remove-AzureRmEventHub [-InputObject] <PSEventHubAttributes> [-PassThru] [-AsJob]
+Remove-AzEventHub [-InputObject] <PSEventHubAttributes> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EventhubResourceIdParameterSet
 ```
-Remove-AzureRmEventHub [-ResourceId] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzEventHub [-ResourceId] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmEventHub cmdlet removes and deletes the specified Event Hub from the given namespace.
+The Remove-AzEventHub cmdlet removes and deletes the specified Event Hub from the given namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName
+PS C:\> Remove-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName
 ```
 
 Removes the Event Hub \`MyEventHubName\`.
 
 ### Example 2.1 - InputObject - Using Variable:
 ```
-PS C:\> $inputobject = Get-AzureRmEventHub <params>
-PS C:\> Remove-AzureRmEventHub -InputObject $inputobject
+PS C:\> $inputobject = Get-AzEventHub <params>
+PS C:\> Remove-AzEventHub -InputObject $inputobject
 ```
 
 ### Example 2.2 - InputObject Using Piping:
 ```
-PS C:\> Get-AzureRmEventHub <params> | Remove-AzureRmEventHub
+PS C:\> Get-AzEventHub <params> | Remove-AzEventHub
 ```
 
 ### Example 3.1 - ResourceId - Using Variable:
 ```
-PS C:\> $resourceid = Get-AzureRmEventHub <params>
-PS C:\> Remove-AzureRmEventHub -ResourceId $resourceid.Id
+PS C:\> $resourceid = Get-AzEventHub <params>
+PS C:\> Remove-AzEventHub -ResourceId $resourceid.Id
 ```
 
 ### Example 3.1 - ResourceId - Using string:
 ```
-PS C:\> Remove-AzureRmEventHub -ResourceId "/subscriptions/xxxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName"
+PS C:\> Remove-AzEventHub -ResourceId "/subscriptions/xxxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName"
 ```
 
 ## PARAMETERS
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 972F4188-52C5-4B92-8B88-E68526537F48
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/stop-azurermsqlserverupgrade
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/stop-azsqlserverupgrade
 schema: 2.0.0
 ---
 
-# Stop-AzureRmSqlServerUpgrade
+# Stop-AzSqlServerUpgrade
 
 ## SYNOPSIS
 Stops the upgrade of a SQL Database server.
@@ -14,18 +14,18 @@ Stops the upgrade of a SQL Database server.
 ## SYNTAX
 
 ```
-Stop-AzureRmSqlServerUpgrade [-Force] -ServerName <String> [-ResourceGroupName] <String>
+Stop-AzSqlServerUpgrade [-Force] -ServerName <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmSqlServerUpgrade** cmdlet stops the upgrade of an Azure SQL Database server.
+The **Stop-AzSqlServerUpgrade** cmdlet stops the upgrade of an Azure SQL Database server.
 
 ## EXAMPLES
 
 ### Example 1: Stop a server upgrade
 ```
-PS C:\>Stop-AzureRmSqlServerUpgrade -ResourceGroupName "ResourceGroup01" -ServerName "Server02"
+PS C:\>Stop-AzSqlServerUpgrade -ResourceGroupName "ResourceGroup01" -ServerName "Server02"
 ```
 
 This command stops the request to upgrade the server named Server02 assigned to the resource group named ResourceGroup01.
@@ -36,7 +36,7 @@ This command stops the request to upgrade the server named Server02 assigned to 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -138,9 +138,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSqlServerUpgrade](./Get-AzureRmSqlServerUpgrade.md)
+[Get-AzSqlServerUpgrade](./Get-AzSqlServerUpgrade.md)
 
-[Start-AzureRmSqlServerUpgrade](./Start-AzureRmSqlServerUpgrade.md)
+[Start-AzSqlServerUpgrade](./Start-AzSqlServerUpgrade.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

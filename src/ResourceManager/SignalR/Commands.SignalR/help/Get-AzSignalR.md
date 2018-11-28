@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.SignalR.dll-Help.xml
-Module Name: AzureRM.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.signalr/get-azurermsignalr
+Module Name: Az.SignalR
+online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/get-azsignalr
 schema: 2.0.0
 ---
 
-# Get-AzureRmSignalR
+# Get-AzSignalR
 
 ## SYNOPSIS
 Get a specific SignalR service or all the SignalR services in a resource group or a subscription.
@@ -14,19 +14,18 @@ Get a specific SignalR service or all the SignalR services in a resource group o
 
 ### ListSignalRServiceParameterSet (Default)
 ```
-Get-AzureRmSignalR [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSignalR [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmSignalR [-ResourceGroupName <String>] [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmSignalR -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSignalR -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +35,7 @@ Get a specific SignalR service or all the SignalR services in a resource group o
 
 ### Get all SignalR services in the subscription
 ```powershell
-PS C:\> Get-AzureRmSignalR
+PS C:\> Get-AzSignalR
 
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
@@ -49,7 +48,7 @@ mysignalr3.service.signalr.net                     eastus         5002       500
 ### Get all SignalR services in a resource group
 
 ```powershell
-PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup
+PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
@@ -60,7 +59,7 @@ mysignalr2.service.signalr.net                     eastus         5002       500
 ### Get a specific SignalR service
 
 ```powershell
-PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup -Name mysignalr1
+PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
@@ -70,14 +69,14 @@ mysignalr1.service.signalr.net                     eastus         5002       500
 ### Get a specific SignalR service from the default resource group
 
 ```powershell
-PS C:\> Get-AzureRmSignalR -Name mysignalr2
+PS C:\> Get-AzSignalR -Name mysignalr2
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
 mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
 ```
 
-The default resource group can be set by `Set-AzureRmDefault -ResourceGroupName myResourceGroup`.
+The default resource group can be set by `Set-AzDefault -ResourceGroupName myResourceGroup`.
 
 ## PARAMETERS
 
@@ -85,7 +84,7 @@ The default resource group can be set by `Set-AzureRmDefault -ResourceGroupName 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: F58FD77E-2946-44B1-B410-6E983FC20E21
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermadapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadapplication
 schema: 2.0.0
 ---
 
-# New-AzureRmADApplication
+# New-AzADApplication
 
 ## SYNOPSIS
 Creates a new azure active directory application.
@@ -15,35 +15,35 @@ Creates a new azure active directory application.
 
 ### ApplicationWithoutCredentialParameterSet (Default)
 ```
-New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordPlainParameterSet
 ```
-New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordCredentialParameterSet
 ```
-New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -PasswordCredentials <PSADPasswordCredential[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyPlainParameterSet
 ```
-New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -CertValue <String> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyCredentialParameterSet
 ```
-New-AzureRmADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -KeyCredentials <PSADKeyCredential[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -56,7 +56,7 @@ Creates a new azure active directory application.
 ### Example 1 - Create new AAD application.
 
 ```
-PS C:\> New-AzureRmADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http://NewApplication"
+PS C:\> New-AzADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http://NewApplication"
 ```
 
 Creates a new azure active directory application without any credentials.
@@ -65,7 +65,7 @@ Creates a new azure active directory application without any credentials.
 
 ```
 PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
-PS C:\> New-AzureRmADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http:
+PS C:\> New-AzADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http:
 //NewApplication" -Password $SecureStringPassword
 ```
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -317,15 +317,15 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 ## RELATED LINKS
 
-[Remove-AzureRmADApplication](./Remove-AzureRmADApplication.md)
+[Remove-AzADApplication](./Remove-AzADApplication.md)
 
-[Get-AzureRmADApplication](./Get-AzureRmADApplication.md)
+[Get-AzADApplication](./Get-AzADApplication.md)
 
-[New-AzureRmADServicePrincipal](./New-AzureRmADServicePrincipal.md)
+[New-AzADServicePrincipal](./New-AzADServicePrincipal.md)
 
-[Get-AzureRmADAppCredential](./Get-AzureRmADAppCredential.md)
+[Get-AzADAppCredential](./Get-AzADAppCredential.md)
 
-[New-AzureRmADAppCredential](./New-AzureRmADAppCredential.md)
+[New-AzADAppCredential](./New-AzADAppCredential.md)
 
-[Remove-AzureRmADAppCredential](./Remove-AzureRmADAppCredential.md)
+[Remove-AzADAppCredential](./Remove-AzADAppCredential.md)
 

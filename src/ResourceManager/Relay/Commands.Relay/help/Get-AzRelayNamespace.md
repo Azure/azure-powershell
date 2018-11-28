@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM.Relay
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/get-azurermrelaynamespace
+Module Name: Az.Relay
+online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/get-azrelaynamespace
 schema: 2.0.0
 ---
 
-# Get-AzureRmRelayNamespace
+# Get-AzRelayNamespace
 
 ## SYNOPSIS
 Gets a description for the specified Relay namespace within the resource group.
@@ -13,18 +13,18 @@ Gets a description for the specified Relay namespace within the resource group.
 ## SYNTAX
 
 ```
-Get-AzureRmRelayNamespace [[-ResourceGroupName] <String>] [[-Name] <String>]
+Get-AzRelayNamespace [[-ResourceGroupName] <String>] [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRelayNamespace** cmdlet gets a description for the specified Relay namespace within the resource group.
+The **Get-AzRelayNamespace** cmdlet gets a description for the specified Relay namespace within the resource group.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1
+PS C:\> Get-AzRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1
 
 ProvisioningState  : Succeeded
 CreatedAt          : 4/12/2017 12:38:47 AM
@@ -46,7 +46,7 @@ Returns a description of the specified Relay namespace.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,18 +88,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.PSRelayNamespaceAttributes
-
 
 ## NOTES
 

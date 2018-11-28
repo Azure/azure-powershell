@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: Az.Websites
 ms.assetid: 78AAF476-2E9E-4E60-9940-9A9AC6F9506A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/remove-azurermappserviceplan
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/remove-azappserviceplan
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAppServicePlan
+# Remove-AzAppServicePlan
 
 ## SYNOPSIS
 Removes an Azure App Service plan.
@@ -15,24 +15,24 @@ Removes an Azure App Service plan.
 
 ### S1
 ```
-Remove-AzureRmAppServicePlan [-Force] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
+Remove-AzAppServicePlan [-Force] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Remove-AzureRmAppServicePlan [-Force] [-AsJob] [-AppServicePlan] <PSAppServicePlan>
+Remove-AzAppServicePlan [-Force] [-AsJob] [-AppServicePlan] <PSAppServicePlan>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmAppServicePlan** cmdlet removes an Azure App Service plan.
+The **Remove-AzAppServicePlan** cmdlet removes an Azure App Service plan.
 
 ## EXAMPLES
 
 ### Example 1: Remove an App Service plan
 ```
-PS C:\>Remove-AzureRmAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
+PS C:\>Remove-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
 ```
 
 This command removes the Azure App Service plan named ContosoASP that belongs to the resource group named Default-Web-WestUS.
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -176,10 +176,10 @@ Parameters: AppServicePlan (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmAppServicePlan](./Get-AzureRmAppServicePlan.md)
+[Get-AzAppServicePlan](./Get-AzAppServicePlan.md)
 
-[New-AzureRmAppServicePlan](./New-AzureRmAppServicePlan.md)
+[New-AzAppServicePlan](./New-AzAppServicePlan.md)
 
-[Set-AzureRmAppServicePlan](./Set-AzureRmAppServicePlan.md)
+[Set-AzAppServicePlan](./Set-AzAppServicePlan.md)
 
 

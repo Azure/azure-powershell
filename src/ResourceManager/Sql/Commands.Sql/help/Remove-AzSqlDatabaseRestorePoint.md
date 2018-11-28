@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-Module Name: AzureRM.Sql
+Module Name: Az.Sql
 ms.assetid: 67A9BB67-EF14-4CAA-99D9-002D0D23178B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqldatabaserestorepoint
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqldatabaserestorepoint
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSqlDatabaseRestorePoint
+# Remove-AzSqlDatabaseRestorePoint
 
 ## SYNOPSIS
 Removes given restore point from a SQL Database.
@@ -14,13 +14,13 @@ Removes given restore point from a SQL Database.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlDatabaseRestorePoint -RestorePointCreationDate <DateTime> [-PassThru] [-ServerName] <String>
+Remove-AzSqlDatabaseRestorePoint -RestorePointCreationDate <DateTime> [-PassThru] [-ServerName] <String>
  [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlDatabaseRestorePoint** cmdlet removes given restore point from Azure SQL Database.
+The **Remove-AzSqlDatabaseRestorePoint** cmdlet removes given restore point from Azure SQL Database.
 This cmdlet is currently supported by the SQL Server Datawarehouse service on Azure SQL Database.
 
 ## EXAMPLES
@@ -28,7 +28,7 @@ This cmdlet is currently supported by the SQL Server Datawarehouse service on Az
 ### Example 1: Removes a restore point
 ```
 PS C:\>$RestorePointCreationDate = Get-Date "3/11/2017 1:50:00 AM"
-PS C:\>Remove-AzureRmSqlDatabaseRestorePoint -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -RestorePointCreationDate $RestorePointCreationDate
+PS C:\>Remove-AzSqlDatabaseRestorePoint -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -RestorePointCreationDate $RestorePointCreationDate
 ```
 
 This command removes a restore point for Azure SQL Database given creation date.
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

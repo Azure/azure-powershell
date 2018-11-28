@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewayprobeconfig
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayprobeconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmApplicationGatewayProbeConfig
+# New-AzApplicationGatewayProbeConfig
 
 ## SYNOPSIS
 Creates a health probe.
@@ -13,20 +13,20 @@ Creates a health probe.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayProbeConfig -Name <String> -Protocol <String> [-HostName <String>] -Path <String>
+New-AzApplicationGatewayProbeConfig -Name <String> -Protocol <String> [-HostName <String>] -Path <String>
  -Interval <Int32> -Timeout <Int32> -UnhealthyThreshold <Int32> [-PickHostNameFromBackendHttpSettings]
  [-MinServers <Int32>] [-Match <PSApplicationGatewayProbeHealthResponseMatch>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmApplicationGatewayProbeConfig cmdlet creates a health probe.
+The New-AzApplicationGatewayProbeConfig cmdlet creates a health probe.
 
 ## EXAMPLES
 
 ### Example1: Create a health probe
 ```
-PS C:\>New-AzureRmApplicationGatewayProbeConfig -Name "Probe03" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
+PS C:\>New-AzApplicationGatewayProbeConfig -Name "Probe03" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
 ```
 
 This command creates a health probe named Probe03, with HTTP protocol, a 30 second interval, timeout of 120 seconds, and an unhealthy threshold of 8 retries.
@@ -37,7 +37,7 @@ This command creates a health probe named Probe03, with HTTP protocol, a 30 seco
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -227,11 +227,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Create custom probe for Application Gateway using PowerShell for Azure Resource Manager](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#)
 
-[Add-AzureRmApplicationGatewayProbeConfig]()
+[Add-AzApplicationGatewayProbeConfig]()
 
-[Get-AzureRmApplicationGatewayProbeConfig]()
+[Get-AzApplicationGatewayProbeConfig]()
 
-[Remove-AzureRmApplicationGatewayProbeConfig]()
+[Remove-AzApplicationGatewayProbeConfig]()
 
-[Set-AzureRmApplicationGatewayProbeConfig]()
+[Set-AzApplicationGatewayProbeConfig]()
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: AFF75E0B-CB88-45ED-9067-7F43E2BA485C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermcontainerservice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcontainerservice
 schema: 2.0.0
 ---
 
-# Get-AzureRmContainerService
+# Get-AzContainerService
 
 ## SYNOPSIS
 Gets a container service.
@@ -14,19 +14,19 @@ Gets a container service.
 ## SYNTAX
 
 ```
-Get-AzureRmContainerService [[-ResourceGroupName] <String>] [[-Name] <String>]
+Get-AzContainerService [[-ResourceGroupName] <String>] [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmContainerService** cmdlet gets a container service.
+The **Get-AzContainerService** cmdlet gets a container service.
 You can view the properties of a container service, which include state, number of master and agents, and fully qualified domain name of master and agent.
 
 ## EXAMPLES
 
 ### Example 1: Get a container service
 ```
-PS C:\> Get-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17"
+PS C:\> Get-AzContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17"
 ```
 
 This command gets a container service named CSResourceGroup17.
@@ -37,7 +37,7 @@ This command gets a container service named CSResourceGroup17.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,10 +93,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmContainerService](./New-AzureRmContainerService.md)
+[New-AzContainerService](./New-AzContainerService.md)
 
-[Remove-AzureRmContainerService](./Remove-AzureRmContainerService.md)
+[Remove-AzContainerService](./Remove-AzContainerService.md)
 
-[Update-AzureRmContainerService](./Update-AzureRmContainerService.md)
+[Update-AzContainerService](./Update-AzContainerService.md)
 
 

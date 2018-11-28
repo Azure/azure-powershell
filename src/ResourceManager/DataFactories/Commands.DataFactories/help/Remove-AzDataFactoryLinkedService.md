@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 9425D38D-5978-421F-A438-4463068C4628
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactorylinkedservice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactorylinkedservice
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactoryLinkedService
+# Remove-AzDataFactoryLinkedService
 
 ## SYNOPSIS
 Removes a linked service from Azure Data Factory.
@@ -15,25 +15,25 @@ Removes a linked service from Azure Data Factory.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmDataFactoryLinkedService [-Force] [-DataFactoryName] <String> [-Name] <String>
+Remove-AzDataFactoryLinkedService [-Force] [-DataFactoryName] <String> [-Name] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Remove-AzureRmDataFactoryLinkedService [-Force] [-DataFactory] <PSDataFactory> [-Name] <String>
+Remove-AzDataFactoryLinkedService [-Force] [-DataFactory] <PSDataFactory> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDataFactoryLinkedService** cmdlet removes a linked service from Azure Data Factory.
+The **Remove-AzDataFactoryLinkedService** cmdlet removes a linked service from Azure Data Factory.
 
 ## EXAMPLES
 
 ### Example 1: Remove a linked service
 ```
-PS C:\>Remove-AzureRmDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceTest"
+PS C:\>Remove-AzDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceTest"
 Confirm
 Are you sure you want to remove linked service 'LinkedServiceTest' in data factory 'WikiADF'? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -187,8 +187,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactoryLinkedService](./Get-AzureRmDataFactoryLinkedService.md)
+[Get-AzDataFactoryLinkedService](./Get-AzDataFactoryLinkedService.md)
 
-[New-AzureRmDataFactoryLinkedService](./New-AzureRmDataFactoryLinkedService.md)
+[New-AzDataFactoryLinkedService](./New-AzDataFactoryLinkedService.md)
 
 

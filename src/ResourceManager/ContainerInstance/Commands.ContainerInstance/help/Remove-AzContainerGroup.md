@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerInstance.dll-Help.xml
-Module Name: AzureRM.ContainerInstance
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance/remove-azurermcontainergroup
+Module Name: Az.ContainerInstance
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance/remove-azcontainergroup
 schema: 2.0.0
 ---
 
-# Remove-AzureRmContainerGroup
+# Remove-AzContainerGroup
 
 ## SYNOPSIS
 Removes a container group.
@@ -14,44 +14,44 @@ Removes a container group.
 
 ### RemoveContainerGroupByResourceGroupAndNameParamSet (Default)
 ```
-Remove-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+Remove-AzContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveContainerGroupByPSContainerGroupParamSet
 ```
-Remove-AzureRmContainerGroup -InputObject <PSContainerGroup> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzContainerGroup -InputObject <PSContainerGroup> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveContainerGroupByResourceIdParamSet
 ```
-Remove-AzureRmContainerGroup -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzContainerGroup -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmContainerGroup** cmdlet removes a container group.
+The **Remove-AzContainerGroup** cmdlet removes a container group.
 
 ## EXAMPLES
 
 ### Example 1: Removes a container group
 ```
-PS C:\> Remove-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer
+PS C:\> Remove-AzContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer
 ```
 
 This command removes the specified container group.
 
 ### Example 2: Removes a container group by piping
 ```
-PS C:\> Get-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer | Remove-AzureRmContainerGroup
+PS C:\> Get-AzContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer | Remove-AzContainerGroup
 ```
 
 This command removes a container group by piping.
 
 ### Example 3: Removes a container group by resource Id.
 ```
-PS C:\> Find-AzureRmResource -ResourceGroupEquals MyResourceGroup -ResourceNameEquals MyContainer | Remove-AzureRmContainerGroup
+PS C:\> Find-AzResource -ResourceGroupEquals MyResourceGroup -ResourceNameEquals MyContainer | Remove-AzContainerGroup
 ```
 
 This command removes a container group by resource Id.
@@ -62,7 +62,7 @@ This command removes a container group by resource Id.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

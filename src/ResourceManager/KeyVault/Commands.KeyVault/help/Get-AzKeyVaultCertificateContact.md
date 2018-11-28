@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: 200C68A3-A79C-4517-8E5D-8128F6C73A5C
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultcertificatecontact
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultcertificatecontact
 schema: 2.0.0
 ---
 
-# Get-AzureKeyVaultCertificateContact
+# Get-AzKeyVaultCertificateContact
 
 ## SYNOPSIS
 Gets contacts that are registered for certificate notifications for a key vault.
@@ -15,30 +15,30 @@ Gets contacts that are registered for certificate notifications for a key vault.
 
 ### VaultName (Default)
 ```
-Get-AzureKeyVaultCertificateContact [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzKeyVaultCertificateContact [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Get-AzureKeyVaultCertificateContact [-InputObject] <PSKeyVault> [-DefaultProfile <IAzureContextContainer>]
+Get-AzKeyVaultCertificateContact [-InputObject] <PSKeyVault> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzureKeyVaultCertificateContact [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzKeyVaultCertificateContact [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureKeyVaultCertificateContact** cmdlet gets contacts that are registered for certificate notifications for a key vault in Azure Key Vault.
+The **Get-AzKeyVaultCertificateContact** cmdlet gets contacts that are registered for certificate notifications for a key vault in Azure Key Vault.
 
 ## EXAMPLES
 
 ### Example 1: Get all certificate contacts
 ```powershell
-PS C:\> $Contacts = Get-AzureKeyVaultCertificateContact -VaultName "Contoso"
+PS C:\> $Contacts = Get-AzKeyVaultCertificateContact -VaultName "Contoso"
 
 Email                   VaultName
 -----                   ---------
@@ -54,7 +54,7 @@ This command gets all of the contacts for the certificate objects in the Contoso
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -128,7 +128,7 @@ Parameters: InputObject (ByValue)
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultCertificateContact](./Add-AzureKeyVaultCertificateContact.md)
+[Add-AzKeyVaultCertificateContact](./Add-AzKeyVaultCertificateContact.md)
 
-[Remove-AzureKeyVaultCertificateContact](./Remove-AzureKeyVaultCertificateContact.md)
+[Remove-AzKeyVaultCertificateContact](./Remove-AzKeyVaultCertificateContact.md)
 

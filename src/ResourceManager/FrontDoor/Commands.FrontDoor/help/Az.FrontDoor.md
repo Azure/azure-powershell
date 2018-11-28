@@ -1,70 +1,70 @@
 ---
-Module Name: AzureRM.FrontDoor
+Module Name: Az.FrontDoor
 Module Guid: 91832aaa-dc11-4583-8239-adb7df531604
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.frontdoor
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor
 Help Version: 0.1.0
 Locale: en-US
 ---
 
-# AzureRM.FrontDoor Module
+# Az.FrontDoor Module
 ## Description
 The topics in this section document the Azure PowerShell cmdlets for Azure Front Door Service in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.FrontDoor namespace.
 
-## AzureRM.FrontDoor Cmdlets
-### [Get-AzureRmFrontDoor](Get-AzureRmFrontDoor.md)
+## Az.FrontDoor Cmdlets
+### [Get-AzFrontDoor](Get-AzFrontDoor.md)
 Get Front Door load balancer
 
-### [Get-AzureRmFrontDoorFireWallPolicy](Get-AzureRmFrontDoorFireWallPolicy.md)
+### [Get-AzFrontDoorFireWallPolicy](Get-AzFrontDoorFireWallPolicy.md)
 Get WAF policy
 
-### [New-AzureRmFrontDoor](New-AzureRmFrontDoor.md)
+### [New-AzFrontDoor](New-AzFrontDoor.md)
 Create a new Azure Front Door load balancer
 
-### [New-AzureRmFrontDoorBackendObject](New-AzureRmFrontDoorBackendObject.md)
+### [New-AzFrontDoorBackendObject](New-AzFrontDoorBackendObject.md)
 Create a PSBackend object
 
-### [New-AzureRmFrontDoorBackendPoolObject](New-AzureRmFrontDoorBackendPoolObject.md)
+### [New-AzFrontDoorBackendPoolObject](New-AzFrontDoorBackendPoolObject.md)
 Create a PSBackendPool object for Front Door creation
 
-### [New-AzureRmFrontDoorCustomRuleObject](New-AzureRmFrontDoorCustomRuleObject.md)
+### [New-AzFrontDoorCustomRuleObject](New-AzFrontDoorCustomRuleObject.md)
 Create CustomRule Object for WAF policy creation
 
-### [New-AzureRmFrontDoorFireWallPolicy](New-AzureRmFrontDoorFireWallPolicy.md)
+### [New-AzFrontDoorFireWallPolicy](New-AzFrontDoorFireWallPolicy.md)
 Create WAF policy
 
-### [New-AzureRmFrontDoorFrontendEndpointObject](New-AzureRmFrontDoorFrontendEndpointObject.md)
+### [New-AzFrontDoorFrontendEndpointObject](New-AzFrontDoorFrontendEndpointObject.md)
 Create a PSFrontendEndpoint Object for Front Door creation
 
-### [New-AzureRmFrontDoorHealthProbeSettingObject](New-AzureRmFrontDoorHealthProbeSettingObject.md)
+### [New-AzFrontDoorHealthProbeSettingObject](New-AzFrontDoorHealthProbeSettingObject.md)
 Create a PSHealthProbeSetting object for Front Door creation
 
-### [New-AzureRmFrontDoorLoadBalancingSettingObject](New-AzureRmFrontDoorLoadBalancingSettingObject.md)
+### [New-AzFrontDoorLoadBalancingSettingObject](New-AzFrontDoorLoadBalancingSettingObject.md)
 Create a PSLoadBalancingSetting object for Front Door creation
 
-### [New-AzureRmFrontDoorManagedRuleObject](New-AzureRmFrontDoorManagedRuleObject.md)
+### [New-AzFrontDoorManagedRuleObject](New-AzFrontDoorManagedRuleObject.md)
 Create ManagedRule Object for WAF policy creation
 
-### [New-AzureRmFrontDoorMatchConditionObject](New-AzureRmFrontDoorMatchConditionObject.md)
+### [New-AzFrontDoorMatchConditionObject](New-AzFrontDoorMatchConditionObject.md)
 Create MatchCondition Object for WAF policy creation
 
-### [New-AzureRmFrontDoorRoutingRuleObject](New-AzureRmFrontDoorRoutingRuleObject.md)
+### [New-AzFrontDoorRoutingRuleObject](New-AzFrontDoorRoutingRuleObject.md)
 Create a PSRoutingRuleObject for Front Door creation
 
-### [New-AzureRmFrontDoorRuleGroupOverrideObject](New-AzureRmFrontDoorRuleGroupOverrideObject.md)
+### [New-AzFrontDoorRuleGroupOverrideObject](New-AzFrontDoorRuleGroupOverrideObject.md)
 Create RuleGroupOverride Object for WAF policy creation
 
-### [Remove-AzureRmFrontDoor](Remove-AzureRmFrontDoor.md)
+### [Remove-AzFrontDoor](Remove-AzFrontDoor.md)
 Remove Front Door load balancer
 
-### [Remove-AzureRmFrontDoorContent](Remove-AzureRmFrontDoorContent.md)
+### [Remove-AzFrontDoorContent](Remove-AzFrontDoorContent.md)
 Remove contents in Front Door
 
-### [Remove-AzureRmFrontDoorFireWallPolicy](Remove-AzureRmFrontDoorFireWallPolicy.md)
+### [Remove-AzFrontDoorFireWallPolicy](Remove-AzFrontDoorFireWallPolicy.md)
 Remove WAF policy
 
-### [Set-AzureRmFrontDoor](Set-AzureRmFrontDoor.md)
+### [Set-AzFrontDoor](Set-AzFrontDoor.md)
 Update a Front Door load balancer
 
-### [Set-AzureRmFrontDoorFireWallPolicy](Set-AzureRmFrontDoorFireWallPolicy.md)
+### [Set-AzFrontDoorFireWallPolicy](Set-AzFrontDoorFireWallPolicy.md)
 update WAF policy
 

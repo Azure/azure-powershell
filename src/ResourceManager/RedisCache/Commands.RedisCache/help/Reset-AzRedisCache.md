@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
-Module Name: AzureRM.RedisCache
+Module Name: Az.RedisCache
 ms.assetid: A73D4DDD-387A-4468-AC6E-F15BF473527E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.rediscache/reset-azurermrediscache
+online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/reset-azrediscache
 schema: 2.0.0
 ---
 
-# Reset-AzureRmRedisCache
+# Reset-AzRedisCache
 
 ## SYNOPSIS
 Restarts nodes of a cache.
@@ -14,18 +14,18 @@ Restarts nodes of a cache.
 ## SYNTAX
 
 ```
-Reset-AzureRmRedisCache [-ResourceGroupName <String>] -Name <String> -RebootType <String> [-ShardId <Int32>]
+Reset-AzRedisCache [-ResourceGroupName <String>] -Name <String> -RebootType <String> [-ShardId <Int32>]
  [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Reset-AzureRmRedisCache** cmdlet restarts nodes of an Azure Redis Cache instance.
+The **Reset-AzRedisCache** cmdlet restarts nodes of an Azure Redis Cache instance.
 
 ## EXAMPLES
 
 ### Example 1: Restart both nodes
 ```
-PS C:\>Reset-AzureRmRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -RebootType "AllNodes" -Force
+PS C:\>Reset-AzRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -RebootType "AllNodes" -Force
 ```
 
 This command restarts both nodes for the cache named RedisCache06.
@@ -36,7 +36,7 @@ This command restarts both nodes for the cache named RedisCache06.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -192,14 +192,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Export-AzureRmRedisCache](./Export-AzureRmRedisCache.md)
+[Export-AzRedisCache](./Export-AzRedisCache.md)
 
-[Import-AzureRmRedisCache](./Import-AzureRmRedisCache.md)
+[Import-AzRedisCache](./Import-AzRedisCache.md)
 
-[New-AzureRmRedisCache](./New-AzureRmRedisCache.md)
+[New-AzRedisCache](./New-AzRedisCache.md)
 
-[Remove-AzureRmRedisCache](./Remove-AzureRmRedisCache.md)
+[Remove-AzRedisCache](./Remove-AzRedisCache.md)
 
-[Set-AzureRmRedisCache](./Set-AzureRmRedisCache.md)
+[Set-AzRedisCache](./Set-AzRedisCache.md)
 
 

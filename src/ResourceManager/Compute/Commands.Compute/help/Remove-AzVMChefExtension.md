@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 473C71A8-1DF7-487A-B239-B80E2BB63B82
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmchefextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmchefextension
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVMChefExtension
+# Remove-AzVMChefExtension
 
 ## SYNOPSIS
 Removes the Chef extension from a virtual machine.
@@ -15,31 +15,31 @@ Removes the Chef extension from a virtual machine.
 
 ### Linux
 ```
-Remove-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Linux]
+Remove-AzVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Linux]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Windows
 ```
-Remove-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Windows]
+Remove-AzVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Windows]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureVMChefExtension** cmdlet removes the Chef extension from a virtual machine.
+The **Remove-AzVMChefExtension** cmdlet removes the Chef extension from a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Remove a Chef extension from a Windows virtual machine
 ```
-PS C:\> Remove-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -Windows
+PS C:\> Remove-AzVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -Windows
 ```
 
 This command removes a Chef extension from a Windows based virtual machine named WindowsVM001 that belongs to the resource group named ResourceGroup001.
 
 ### Example 2: Remove a Chef extension from a Linux virtual machine
 ```
-PS C:\> Remove-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -Linux
+PS C:\> Remove-AzVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -Linux
 ```
 
 This command removes a Chef extension from a Linux based virtual machine named LinuxVM001 that belongs to the resource group named ResourceGroup002.
@@ -50,7 +50,7 @@ This command removes a Chef extension from a Linux based virtual machine named L
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -182,6 +182,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMChefExtension](./Get-AzureRmVMChefExtension.md)
+[Get-AzVMChefExtension](./Get-AzVMChefExtension.md)
 
-[Set-AzureRmVMChefExtension](./Set-AzureRmVMChefExtension.md)
+[Set-AzVMChefExtension](./Set-AzVMChefExtension.md)

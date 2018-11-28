@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressrouteportslocation
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressrouteportslocation
 schema: 2.0.0
 ---
 
-# Get-AzureRmExpressRoutePortsLocation
+# Get-AzExpressRoutePortsLocation
 
 ## SYNOPSIS
 Gets the locations at which ExpressRoutePort resources are available.
@@ -13,28 +13,27 @@ Gets the locations at which ExpressRoutePort resources are available.
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRoutePortsLocation [-LocationName <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzExpressRoutePortsLocation [-LocationName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmExpressRoutePortsLocation** cmdlet is used to retrieve the locations at which 
+The **Get-AzExpressRoutePortsLocation** cmdlet is used to retrieve the locations at which 
 ExpressRoutePort resources are available. Given a specific location as input, the cmdlet displays
 the details of that location i.e., list of available bandwidths at that location.
-
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmExpressRoutePortsLocation
+PS C:\> Get-AzExpressRoutePortsLocation
 ```
 
 Lists the locations at which ExpressRoutePort resources are available.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmExpressRoutePortsLocation -LocationName $loc
+PS C:\> Get-AzExpressRoutePortsLocation -LocationName $loc
 ```
 
 Lists the ExpressRoutePort bandwidths available at location $loc.
@@ -45,7 +44,7 @@ Lists the ExpressRoutePort bandwidths available at location $loc.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -60,7 +59,7 @@ Accept wildcard characters: False
 The name of the location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

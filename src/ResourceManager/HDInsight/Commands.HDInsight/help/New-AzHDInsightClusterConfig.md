@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 2C06626F-E5A9-48C2-AEA2-B448AD254C2E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/new-azurermhdinsightclusterconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/new-azhdinsightclusterconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmHDInsightClusterConfig
+# New-AzHDInsightClusterConfig
 
 ## SYNOPSIS
 Creates a non-persisted cluster configuration object that describes an Azure HDInsight cluster configuration.
@@ -14,7 +14,7 @@ Creates a non-persisted cluster configuration object that describes an Azure HDI
 ## SYNTAX
 
 ```
-New-AzureRmHDInsightClusterConfig [-DefaultStorageAccountName <String>] [-DefaultStorageAccountKey <String>]
+New-AzHDInsightClusterConfig [-DefaultStorageAccountName <String>] [-DefaultStorageAccountKey <String>]
  [-DefaultStorageAccountType <StorageType>] [-OozieMetastore <AzureHDInsightMetastore>]
  [-HiveMetastore <AzureHDInsightMetastore>] [-HeadNodeSize <String>] [-WorkerNodeSize <String>]
  [-EdgeNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>] [-ClusterTier <Tier>]
@@ -24,7 +24,7 @@ New-AzureRmHDInsightClusterConfig [-DefaultStorageAccountName <String>] [-Defaul
 ```
 
 ## DESCRIPTION
-The **New-AzureRmHDInsightClusterConfig** cmdlet creates a non-persisted object that describes an Azure HDInsight cluster configuration.
+The **New-AzHDInsightClusterConfig** cmdlet creates a non-persisted object that describes an Azure HDInsight cluster configuration.
 
 ## EXAMPLES
 
@@ -33,7 +33,7 @@ The **New-AzureRmHDInsightClusterConfig** cmdlet creates a non-persisted object 
 PS C:\># Primary storage account info
 PS C:\> $storageAccountResourceGroupName = "Group"
 PS C:\> $storageAccountName = "yourstorageacct001"
-PS C:\> $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
 
 
 PS C:\> $storageContainer = "container002"
@@ -45,14 +45,14 @@ PS C:\> $clusterName = "your-hadoop-002"
 PS C:\> $clusterCreds = Get-Credential
 
 # If the cluster's resource group doesn't exist yet, run:
-#   New-AzureRmResourceGroup -Name $clusterResourceGroupName -Location $location
+#   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
 
 # Create the cluster
-PS C:\> New-AzureRmHDInsightClusterConfig `
-            | Add-AzureRmHDInsightStorage `
+PS C:\> New-AzHDInsightClusterConfig `
+            | Add-AzHDInsightStorage `
                 -StorageAccountName "$secondStorageAccountName.blob.core.contoso.net" `
                 -StorageAccountKey $key2 `
-            | New-AzureRmHDInsightCluster `
+            | New-AzHDInsightCluster `
                 -ClusterType Hadoop `
                 -OSType Windows `
                 -ClusterSizeInNodes 4 `
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -EdgeNodeSize
-Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.
+Specifies the size of the virtual machine for the edge node. Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.
 
 ```yaml
 Type: System.String
@@ -250,7 +250,7 @@ Accept wildcard characters: False
 
 ### -HeadNodeSize
 Specifies the size of the virtual machine for the Head node.
-Use Get-AzureRMVMSize for acceptable VM sizes, and see HDInsight's pricing page.
+Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page.
 
 ```yaml
 Type: System.String
@@ -266,7 +266,7 @@ Accept wildcard characters: False
 
 ### -HiveMetastore
 Specifies the metastore to store Hive metadata.
-You can alternatively use the Add-AzureRmHDInsightMetastore cmdlet.
+You can alternatively use the Add-AzHDInsightMetastore cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore
@@ -298,7 +298,7 @@ Accept wildcard characters: False
 
 ### -OozieMetastore
 Specifies the metastore to store Oozie metadata.
-You can alternatively use the **Add-AzureRmHDInsightMetastore** cmdlet.
+You can alternatively use the **Add-AzHDInsightMetastore** cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightMetastore
@@ -314,7 +314,7 @@ Accept wildcard characters: False
 
 ### -WorkerNodeSize
 Specifies the size of the virtual machine for the Worker node.
-Use Get-AzureRMVMSize for acceptable VM sizes, and see HDInsight's pricing page.
+Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page.
 
 ```yaml
 Type: System.String
@@ -330,7 +330,7 @@ Accept wildcard characters: False
 
 ### -ZookeeperNodeSize
 Specifies the size of the virtual machine for the Zookeeper node.
-Use Get-AzureRMVMSize for acceptable VM sizes, and see HDInsight's pricing page.
+Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page.
 This parameter is valid only for HBase or Storm clusters.
 
 ```yaml
@@ -360,6 +360,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmHDInsightStorage](./Add-AzureRmHDInsightStorage.md)
+[Add-AzHDInsightStorage](./Add-AzHDInsightStorage.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: Az.ApiManagement
 ms.assetid: 6CD1C2B8-0416-4FF3-81B0-0C9E59AE6CF9
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagementpolicy
 schema: 2.0.0
 ---
 
-# Set-AzureRmApiManagementPolicy
+# Set-AzApiManagementPolicy
 
 ## SYNOPSIS
 Sets the specified scope policy for API Management.
@@ -15,65 +15,65 @@ Sets the specified scope policy for API Management.
 
 ### SetTenantLevel (Default)
 ```
-Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] [-Policy <String>]
+Set-AzApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] [-Policy <String>]
  [-PolicyFilePath <String>] [-PolicyUrl <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### SetProductLevel
 ```
-Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ProductId <String>
+Set-AzApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ProductId <String>
  [-Policy <String>] [-PolicyFilePath <String>] [-PolicyUrl <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetApiLevel
 ```
-Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ApiId <String>
+Set-AzApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ApiId <String>
  [-ApiRevision <String>] [-Policy <String>] [-PolicyFilePath <String>] [-PolicyUrl <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetOperationLevel
 ```
-Set-AzureRmApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ApiId <String>
+Set-AzApiManagementPolicy -Context <PsApiManagementContext> [-Format <String>] -ApiId <String>
  [-ApiRevision <String>] -OperationId <String> [-Policy <String>] [-PolicyFilePath <String>]
  [-PolicyUrl <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApiManagementPolicy** cmdlet sets the specified scope policy for API Management.
+The **Set-AzApiManagementPolicy** cmdlet sets the specified scope policy for API Management.
 
 ## EXAMPLES
 
 ### Example 1: Set the tenant level policy
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementPolicy -Context $apimContext -PolicyFilePath "C:\contoso\policies\tenantpolicy.xml"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementPolicy -Context $apimContext -PolicyFilePath "C:\contoso\policies\tenantpolicy.xml"
 ```
 
 This command sets the tenant level policy from a file named tenantpolicy.xml.
 
 ### Example 2: Set a product-scope policy
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementPolicy -Context $apimContext -ProductId "0123456789" -Policy $PolicyString
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementPolicy -Context $apimContext -ProductId "0123456789" -Policy $PolicyString
 ```
 
 This command sets the product-scope policy for API Management.
 
 ### Example 3: Set API-scope policy
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementPolicy -Context $apimContext -ApiId "9876543210" -Policy $PolicyString
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementPolicy -Context $apimContext -ApiId "9876543210" -Policy $PolicyString
 ```
 
 This command sets API-scope policy for API Management.
 
 ### Example 4: Set operation-scope policy
 ```powershell
-PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Set-AzureRmApiManagementPolicy -Context $apimContext -ApiId "9876543210" -OperationId "777" -Policy $PolicyString
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>Set-AzApiManagementPolicy -Context $apimContext -ApiId "9876543210" -OperationId "777" -Policy $PolicyString
 ```
 
 This command sets operation-scope policy for API Management.
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -142,10 +142,10 @@ Accept wildcard characters: False
 ```
 
 ### -Format
-Specifies the format of the policy. When using `application/vnd.ms-azure-apim.policy+xml`, 
-expressions contained within the policy must be XML-escaped. When using `application/vnd.ms-azure-apim.policy.raw+xml` it 
+Specifies the format of the policy. When using `application/vnd.ms-az-apim.policy+xml`, 
+expressions contained within the policy must be XML-escaped. When using `application/vnd.ms-az-apim.policy.raw+xml` it 
 is **not** necessary for the policy to be XML-escaped.
-The default value is `application/vnd.ms-azure-apim.policy+xml`.
+The default value is `application/vnd.ms-az-apim.policy+xml`.
 This parameter is optional.
 
 ```yaml
@@ -275,8 +275,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApiManagementPolicy](./Get-AzureRmApiManagementPolicy.md)
+[Get-AzApiManagementPolicy](./Get-AzApiManagementPolicy.md)
 
-[Remove-AzureRmApiManagementPolicy](./Remove-AzureRmApiManagementPolicy.md)
+[Remove-AzApiManagementPolicy](./Remove-AzApiManagementPolicy.md)
 
 

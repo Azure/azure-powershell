@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 ms.assetid: 35C6E85B-E5E1-44E8-86E8-F18E197F69DC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightslinktargets
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightslinktargets
 schema: 2.0.0
 ---
 
-# Get-AzureRmOperationalInsightsLinkTargets
+# Get-AzOperationalInsightsLinkTargets
 
 ## SYNOPSIS
 Gets accounts that are not associated with a subscription.
@@ -14,18 +14,18 @@ Gets accounts that are not associated with a subscription.
 ## SYNTAX
 
 ```
-Get-AzureRmOperationalInsightsLinkTargets [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzOperationalInsightsLinkTargets [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmOperationalInsightsLinkTargets** cmdlet lists existing accounts that are not associated with an Azure subscription.
+The **Get-AzOperationalInsightsLinkTargets** cmdlet lists existing accounts that are not associated with an Azure subscription.
 To link a new workspace to an existing account, use a customer ID returned by this operation in the customer ID property of a new workspace.
 
 ## EXAMPLES
 
 ### Example 1: Get unlinked accounts
 ```
-PS C:\>Get-AzureRmOperationalInsightsLinkTargets
+PS C:\>Get-AzOperationalInsightsLinkTargets
 ```
 
 This command gets unlinked accounts that are owned by the caller's ID.
@@ -36,7 +36,7 @@ This command gets unlinked accounts that are owned by the caller's ID.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -62,6 +62,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure Operational Insights Cmdlets](./AzureRM.OperationalInsights.md)
+[Azure Operational Insights Cmdlets](./Az.OperationalInsights.md)
 
 

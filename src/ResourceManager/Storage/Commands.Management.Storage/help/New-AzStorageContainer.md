@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
-Module Name: Azure.Storage
+Module Name: Az.Storage
 ms.assetid: 2B12BC19-EF8F-43F5-AF04-C570FEEA1AE6
-online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragecontainer
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azstoragecontainer
 schema: 2.0.0
 ---
 
-# New-AzureStorageContainer
+# New-AzStorageContainer
 
 ## SYNOPSIS
 Creates an Azure storage container.
@@ -14,26 +14,26 @@ Creates an Azure storage container.
 ## SYNTAX
 
 ```
-New-AzureStorageContainer [-Name] <String> [[-Permission] <BlobContainerPublicAccessType>]
+New-AzStorageContainer [-Name] <String> [[-Permission] <BlobContainerPublicAccessType>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureStorageContainer** cmdlet creates an Azure storage container.
+The **New-AzStorageContainer** cmdlet creates an Azure storage container.
 
 ## EXAMPLES
 
 ### Example 1: Create an Azure storage container
 ```
-PS C:\>New-AzureStorageContainer -Name "ContainerName" -Permission Off
+PS C:\>New-AzStorageContainer -Name "ContainerName" -Permission Off
 ```
 
 This command creates a storage container.
 
 ### Example 2: Create multiple Azure storage containers
 ```
-PS C:\>"container1 container2 container3".split() | New-AzureStorageContainer -Permission Container
+PS C:\>"container1 container2 container3".split() | New-AzStorageContainer -Permission Container
 ```
 
 This example creates multiple storage containers.
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -183,10 +183,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureStorageContainer](./Get-AzureStorageContainer.md)
+[Get-AzStorageContainer](./Get-AzStorageContainer.md)
 
-[Remove-AzureStorageContainer](./Remove-AzureStorageContainer.md)
+[Remove-AzStorageContainer](./Remove-AzStorageContainer.md)
 
-[Set-AzureStorageContainerAcl](./Set-AzureStorageContainerAcl.md)
+[Set-AzStorageContainerAcl](./Set-AzStorageContainerAcl.md)
 
 

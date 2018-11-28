@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 356764CF-A860-432A-907A-9058CEB2BF8E
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermrouteconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azrouteconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmRouteConfig
+# New-AzRouteConfig
 
 ## SYNOPSIS
 Creates a route for a route table.
@@ -14,19 +14,19 @@ Creates a route for a route table.
 ## SYNTAX
 
 ```
-New-AzureRmRouteConfig [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
+New-AzRouteConfig [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
  [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmRouteConfig** cmdlet creates a route for an Azure route table.
+The **New-AzRouteConfig** cmdlet creates a route for an Azure route table.
 
 ## EXAMPLES
 
 ### Example 1: Create a route
 ```
-PS C:\>$Route = New-AzureRmRouteConfig -Name "Route07" -AddressPrefix 10.1.0.0/16 -NextHopType "VnetLocal"
+PS C:\>$Route = New-AzRouteConfig -Name "Route07" -AddressPrefix 10.1.0.0/16 -NextHopType "VnetLocal"
 PS C:\> $Route
 Name              : Route07
 Id                : 
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -177,12 +177,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmRouteConfig](./Add-AzureRmRouteConfig.md)
+[Add-AzRouteConfig](./Add-AzRouteConfig.md)
 
-[Get-AzureRmRouteConfig](./Get-AzureRmRouteConfig.md)
+[Get-AzRouteConfig](./Get-AzRouteConfig.md)
 
-[Remove-AzureRmRouteConfig](./Remove-AzureRmRouteConfig.md)
+[Remove-AzRouteConfig](./Remove-AzRouteConfig.md)
 
-[Set-AzureRmRouteConfig](./Set-AzureRmRouteConfig.md)
+[Set-AzRouteConfig](./Set-AzRouteConfig.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
-Module Name: AzureRM.DataLakeStore
+Module Name: Az.DataLakeStore
 ms.assetid: D79080D5-2785-4C46-86FD-FDAA11117D17
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/get-azurermdatalakestoretrustedidprovider
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/get-azdatalakestoretrustedidprovider
 schema: 2.0.0
 ---
 
-# Get-AzureRmDataLakeStoreTrustedIdProvider
+# Get-AzDataLakeStoreTrustedIdProvider
 
 ## SYNOPSIS
 Gets the specified trusted identity provider in the specified Data Lake Store.
@@ -15,26 +15,26 @@ If no provider is specified, then lists all providers for the account.
 ## SYNTAX
 
 ```
-Get-AzureRmDataLakeStoreTrustedIdProvider [-Account] <String> [[-Name] <String>]
- [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataLakeStoreTrustedIdProvider [-Account] <String> [[-Name] <String>] [[-ResourceGroupName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmDataLakeStoreTrustedIdProvider** cmdlet gets the specified trusted identity provider in the specified Data Lake Store.
+The **Get-AzDataLakeStoreTrustedIdProvider** cmdlet gets the specified trusted identity provider in the specified Data Lake Store.
 If no provider is specified, then lists all providers for the account.
 
 ## EXAMPLES
 
 ### Example 1: Get a specific trusted identity provider
 ```
-PS C:\> Get-AzureRmDataLakeStoreTrustedIdProvider -AccountName "ContosoADL" -Name MyProvider
+PS C:\> Get-AzDataLakeStoreTrustedIdProvider -AccountName "ContosoADL" -Name MyProvider
 ```
 
 Returns the provider named "MyProvider" from account "ContosoADL"
 
 ### Example 2: List all providers in an account
 ```
-PS C:\> Get-AzureRmDataLakeStoreTrustedIdProvider -AccountName "ContosoADL"
+PS C:\> Get-AzDataLakeStoreTrustedIdProvider -AccountName "ContosoADL"
 ```
 
 Lists all providers under the account "ContosoADL"
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

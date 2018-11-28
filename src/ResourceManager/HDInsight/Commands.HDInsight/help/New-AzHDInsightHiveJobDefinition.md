@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
-Module Name: AzureRM.HDInsight
+Module Name: Az.HDInsight
 ms.assetid: 580D3388-4E18-4E67-866F-1FCF5E54AB3A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight/new-azurermhdinsighthivejobdefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/new-azhdinsighthivejobdefinition
 schema: 2.0.0
 ---
 
-# New-AzureRmHDInsightHiveJobDefinition
+# New-AzHDInsightHiveJobDefinition
 
 ## SYNOPSIS
 Creates a Hive job object.
@@ -14,13 +14,13 @@ Creates a Hive job object.
 ## SYNTAX
 
 ```
-New-AzureRmHDInsightHiveJobDefinition [-Arguments <String[]>] [-Files <String[]>] [-StatusFolder <String>]
+New-AzHDInsightHiveJobDefinition [-Arguments <String[]>] [-Files <String[]>] [-StatusFolder <String>]
  [-Defines <Hashtable>] [-File <String>] [-JobName <String>] [-Query <String>] [-RunAsFileJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmHDInsightHiveJobDefinition** cmdlet defines a Hive job object for use with an Azure HDInsight cluster.
+The **New-AzHDInsightHiveJobDefinition** cmdlet defines a Hive job object for use with an Azure HDInsight cluster.
 
 ## EXAMPLES
 
@@ -34,9 +34,9 @@ PS C:\>$clusterCreds = Get-Credential
 PS C:\>$statusFolder = "<status folder>"        
 PS C:\>$query = "SHOW TABLES"
 
-PS C:\>New-AzureRmHDInsightHiveJobDefinition -StatusFolder $statusFolder `
+PS C:\>New-AzHDInsightHiveJobDefinition -StatusFolder $statusFolder `
             -Query $query `
-        | Start-AzureRmHDInsightJob `
+        | Start-AzHDInsightJob `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds
 ```
@@ -200,6 +200,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Start-AzureRmHDInsightJob](./Start-AzureRmHDInsightJob.md)
+[Start-AzHDInsightJob](./Start-AzHDInsightJob.md)
 
 

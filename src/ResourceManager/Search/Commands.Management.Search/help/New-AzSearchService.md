@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
-Module Name: AzureRM.Search
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/new-azurermsearchservice
+Module Name: Az.Search
+online version: https://docs.microsoft.com/en-us/powershell/module/az.search/new-azsearchservice
 schema: 2.0.0
 ---
 
-# New-AzureRmSearchService
+# New-AzSearchService
 
 ## SYNOPSIS
 Creates an Azure Search service.
@@ -13,19 +13,19 @@ Creates an Azure Search service.
 ## SYNTAX
 
 ```
-New-AzureRmSearchService [-ResourceGroupName] <String> [-Name] <String> [-Sku] <PSSkuName> [-Location] <String>
+New-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-Sku] <PSSkuName> [-Location] <String>
  [-PartitionCount <Int32>] [-ReplicaCount <Int32>] [-HostingMode <PSHostingMode>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSearchService** cmdlet creates an Azure Search service with specified parameters.
+The **New-AzSearchService** cmdlet creates an Azure Search service with specified parameters.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -Sku "Standard" -Location "West US" -PartitionCount 1 -ReplicaCount 1 -HostingMode Default -Force
+PS C:\> New-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -Sku "Standard" -Location "West US" -PartitionCount 1 -ReplicaCount 1 -HostingMode Default -Force
 
 
 ResourceGroupName : TestAzureSearchPsGroup
@@ -47,7 +47,7 @@ The command creates an Azure Search service.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -210,8 +210,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmSearchService](./Get-AzureRmSearchService.md)
+[Get-AzSearchService](./Get-AzSearchService.md)
 
-[Set-AzureRmSearchService](./Set-AzureRmSearchService.md)
+[Set-AzSearchService](./Set-AzSearchService.md)
 
-[Remove-AzureRmSearchService](./Remove-AzureRmSearchService.md)
+[Remove-AzSearchService](./Remove-AzSearchService.md)

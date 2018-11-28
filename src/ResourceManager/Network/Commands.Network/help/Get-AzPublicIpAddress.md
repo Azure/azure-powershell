@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 0CD03BF8-8DB6-44BC-91F0-D863949DBD17
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermpublicipaddress
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azpublicipaddress
 schema: 2.0.0
 ---
 
-# Get-AzureRmPublicIpAddress
+# Get-AzPublicIpAddress
 
 ## SYNOPSIS
 Gets a public IP address.
@@ -15,38 +15,38 @@ Gets a public IP address.
 
 ### NoExpandStandAloneIp (Default)
 ```
-Get-AzureRmPublicIpAddress [-Name <String>] [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPublicIpAddress [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ExpandStandAloneIp
 ```
-Get-AzureRmPublicIpAddress -Name <String> -ResourceGroupName <String> -ExpandResource <String>
+Get-AzPublicIpAddress -Name <String> -ResourceGroupName <String> -ExpandResource <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NoExpandScaleSetIp
 ```
-Get-AzureRmPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-VirtualMachineScaleSetName <String>]
+Get-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-VirtualMachineScaleSetName <String>]
  [-VirtualMachineIndex <String>] [-NetworkInterfaceName <String>] [-IpConfigurationName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExpandScaleSetIp
 ```
-Get-AzureRmPublicIpAddress -Name <String> -ResourceGroupName <String> -VirtualMachineScaleSetName <String>
+Get-AzPublicIpAddress -Name <String> -ResourceGroupName <String> -VirtualMachineScaleSetName <String>
  -VirtualMachineIndex <String> -NetworkInterfaceName <String> -IpConfigurationName <String>
  -ExpandResource <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmPublicIPAddress** cmdlet gets one or more public IP addresses in a resource group.
+The **Get-AzPublicIPAddress** cmdlet gets one or more public IP addresses in a resource group.
 
 ## EXAMPLES
 
 ### 1: Get a public IP resource
 ```
-$publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
 
 This command gets a public IP address resource with name $publicIPName in the resource group $rgName.
@@ -57,7 +57,7 @@ This command gets a public IP address resource with name $publicIPName in the re
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -258,10 +258,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmPublicIpAddress](./New-AzureRmPublicIpAddress.md)
+[New-AzPublicIpAddress](./New-AzPublicIpAddress.md)
 
-[Remove-AzureRmPublicIpAddress](./Remove-AzureRmPublicIpAddress.md)
+[Remove-AzPublicIpAddress](./Remove-AzPublicIpAddress.md)
 
-[Set-AzureRmPublicIpAddress](./Set-AzureRmPublicIpAddress.md)
+[Set-AzPublicIpAddress](./Set-AzPublicIpAddress.md)
 
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 31B0FBEF-366A-41AF-9182-2EB087019F36
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermloadbalancer
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azloadbalancer
 schema: 2.0.0
 ---
 
-# Remove-AzureRmLoadBalancer
+# Remove-AzLoadBalancer
 
 ## SYNOPSIS
 Removes a load balancer.
@@ -14,18 +14,18 @@ Removes a load balancer.
 ## SYNTAX
 
 ```
-Remove-AzureRmLoadBalancer -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzLoadBalancer -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmLoadBalancer** cmdlet removes an Azure load balancer.
+The **Remove-AzLoadBalancer** cmdlet removes an Azure load balancer.
 
 ## EXAMPLES
 
 ### Example 1: Remove a load balancer
 ```
-PS C:\>Remove-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+PS C:\>Remove-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
 ```
 
 This command deletes a load balancer named MyLoadBalancer in the resource group named MyResourceGroup.
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -171,10 +171,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmLoadBalancer](./Get-AzureRmLoadBalancer.md)
+[Get-AzLoadBalancer](./Get-AzLoadBalancer.md)
 
-[New-AzureRmLoadBalancer](./New-AzureRmLoadBalancer.md)
+[New-AzLoadBalancer](./New-AzLoadBalancer.md)
 
-[Set-AzureRmLoadBalancer](./Set-AzureRmLoadBalancer.md)
+[Set-AzLoadBalancer](./Set-AzLoadBalancer.md)
 
 

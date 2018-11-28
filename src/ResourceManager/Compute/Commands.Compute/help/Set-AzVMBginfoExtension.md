@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: B2B4E132-4A71-4DB8-A7B9-9ED3FE7EB292
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmbginfoextension
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmbginfoextension
 schema: 2.0.0
 ---
 
-# Set-AzureRmVMBginfoExtension
+# Set-AzVMBginfoExtension
 
 ## SYNOPSIS
 Adds the BGInfo extension to a virtual machine.
@@ -14,19 +14,19 @@ Adds the BGInfo extension to a virtual machine.
 ## SYNTAX
 
 ```
-Set-AzureRmVMBginfoExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
+Set-AzVMBginfoExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMBGInfoExtension** cmdlet adds the BGInfo extension to a virtual machine.
+The **Set-AzVMBGInfoExtension** cmdlet adds the BGInfo extension to a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Add the BGInfo extension for a virtual machine
 ```
-PS C:\> Set-AzureRmVMBgInfoExtension -ResourceGroupName "ContosoRG" -VMName "ContosoVM" -Name "ExtensionName" -TypeHandlerVersion "2.1" -Location "West Europe"
+PS C:\> Set-AzVMBgInfoExtension -ResourceGroupName "ContosoRG" -VMName "ContosoVM" -Name "ExtensionName" -TypeHandlerVersion "2.1" -Location "West Europe"
 ```
 
 This command adds the BGInfo extension to virtual machine named ContosoVM.
@@ -39,7 +39,7 @@ The command specifies the name and version of the extension.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

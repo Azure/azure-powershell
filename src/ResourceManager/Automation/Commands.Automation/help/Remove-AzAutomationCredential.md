@@ -1,12 +1,12 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
-Module Name: AzureRM.Automation
+external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+Module Name: Az.Automation
 ms.assetid: B53B765F-5CFC-4BF8-A48A-E638A73E1FC5
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/remove-azurermautomationcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/remove-azautomationcredential
 schema: 2.0.0
 ---
 
-# Remove-AzureRmAutomationCredential
+# Remove-AzAutomationCredential
 
 ## SYNOPSIS
 Removes an Automation credential.
@@ -14,19 +14,18 @@ Removes an Automation credential.
 ## SYNTAX
 
 ```
-Remove-AzureRmAutomationCredential [-Name] <String> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzAutomationCredential [-Name] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmAutomationCredential** cmdlet removes a credential from Azure Automation.
+The **Remove-AzAutomationCredential** cmdlet removes a credential from Azure Automation.
 
 ## EXAMPLES
 
 ### Example 1: Remove a credential
 ```
-PS C:\>Remove-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -Name "ContosoCredential" -ResourceGroupName "ResourceGroup01"
+PS C:\>Remove-AzAutomationCredential -AutomationAccountName "Contoso17" -Name "ContosoCredential" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes a credential named ContosoCredential in the Azure Automation account named Contoso17.
@@ -52,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -139,10 +138,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmAutomationCredential](./Get-AzureRMAutomationCredential.md)
+[Get-AzAutomationCredential](./Get-AzAutomationCredential.md)
 
-[New-AzureRmAutomationCredential](./New-AzureRMAutomationCredential.md)
+[New-AzAutomationCredential](./New-AzAutomationCredential.md)
 
-[Set-AzureRmAutomationCredential](./Set-AzureRMAutomationCredential.md)
+[Set-AzAutomationCredential](./Set-AzAutomationCredential.md)
 
 

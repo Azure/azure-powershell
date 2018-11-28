@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-Module Name: AzureRM.Compute
+Module Name: Az.Compute
 ms.assetid: 979E956B-4C74-426E-A617-E50C4EBC8A20
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/disable-azurermvmdiskencryption
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/disable-azvmdiskencryption
 schema: 2.0.0
 ---
 
-# Disable-AzureRmVMDiskEncryption
+# Disable-AzVMDiskEncryption
 
 ## SYNOPSIS
 Disables encryption on an IaaS virtual machine.
@@ -14,14 +14,14 @@ Disables encryption on an IaaS virtual machine.
 ## SYNTAX
 
 ```
-Disable-AzureRmVMDiskEncryption [-ResourceGroupName] <String> [-VMName] <String> [[-VolumeType] <String>]
+Disable-AzVMDiskEncryption [-ResourceGroupName] <String> [-VMName] <String> [[-VolumeType] <String>]
  [[-Name] <String>] [[-TypeHandlerVersion] <String>] [-Force] [-DisableAutoUpgradeMinorVersion]
  [-ExtensionType <String>] [-ExtensionPublisherName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzureRmVMDiskEncryption** cmdlet disables encryption on an infrastructure as a service (IaaS) virtual machine.
+The **Disable-AzVMDiskEncryption** cmdlet disables encryption on an infrastructure as a service (IaaS) virtual machine.
 This cmdlet is only supported on Windows virtual machines and not Linux virtual machines.
 This cmdlet installs an extension on the virtual machine to disable encryption.
 If the *Name* parameter is not specified, an extension with the default name "AzureDiskEncryption for Windows VMs" is created.
@@ -31,7 +31,7 @@ Caution: This cmdlet reboots the virtual machine.
 
 ### Example 1: Disable encryption for all volumes on a Windows virtual machine
 ```
-PS C:\> Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group001" -VMName "VM002"
+PS C:\> Disable-AzVMDiskEncryption -ResourceGroupName "Group001" -VMName "VM002"
 ```
 
 This command disables encryption for volumes of type all for the virtual machine named VM002 that belongs to the resource group named Group001.
@@ -41,7 +41,7 @@ Since the *VolumeType* parameter is not specified, the cmdlet sets the value to 
 ```
 PS C:\> $ResourceGroup = "Group002";
 PS C:\> $VMName = "VM004";
-PS C:\> Disable-AzureRMVMDiskEncryption -ResourceGroupName "Group002" -VMName "VM004" -VolumeType "Data"
+PS C:\> Disable-AzVMDiskEncryption -ResourceGroupName "Group002" -VMName "VM004" -VolumeType "Data"
 ```
 
 This command disables encryption for volumes of type data for the virtual machine named VM004 that belongs to the resource group named Group002.
@@ -52,7 +52,7 @@ This command disables encryption for volumes of type data for the virtual machin
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -255,10 +255,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmVMDiskEncryptionStatus](./Get-AzureRmVMDiskEncryptionStatus.md)
+[Get-AzVMDiskEncryptionStatus](./Get-AzVMDiskEncryptionStatus.md)
 
-[Remove-AzureRmVMDiskEncryptionExtension](./Remove-AzureRmVMDiskEncryptionExtension.md)
+[Remove-AzVMDiskEncryptionExtension](./Remove-AzVMDiskEncryptionExtension.md)
 
-[Set-AzureRmVMDiskEncryptionExtension](./Set-AzureRmVMDiskEncryptionExtension.md)
+[Set-AzVMDiskEncryptionExtension](./Set-AzVMDiskEncryptionExtension.md)
 
 

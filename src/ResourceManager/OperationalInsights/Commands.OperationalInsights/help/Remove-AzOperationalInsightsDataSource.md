@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
-Module Name: AzureRM.OperationalInsights
+Module Name: Az.OperationalInsights
 ms.assetid: 5C1C51FE-747F-4176-84ED-A28AA3475581
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsdatasource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/remove-azoperationalinsightsdatasource
 schema: 2.0.0
 ---
 
-# Remove-AzureRmOperationalInsightsDataSource
+# Remove-AzOperationalInsightsDataSource
 
 ## SYNOPSIS
 Deletes a data source.
@@ -15,18 +15,18 @@ Deletes a data source.
 
 ### ByWorkspaceName (Default)
 ```
-Remove-AzureRmOperationalInsightsDataSource [-ResourceGroupName] <String> [-WorkspaceName] <String>
- [-Name] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzOperationalInsightsDataSource [-ResourceGroupName] <String> [-WorkspaceName] <String> [-Name] <String>
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
-Remove-AzureRmOperationalInsightsDataSource [-Workspace] <PSWorkspace> [-Name] <String> [-Force]
+Remove-AzOperationalInsightsDataSource [-Workspace] <PSWorkspace> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmOperationalInsightsDataSource** cmdlet deletes a data source.
+The **Remove-AzOperationalInsightsDataSource** cmdlet deletes a data source.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ The **Remove-AzureRmOperationalInsightsDataSource** cmdlet deletes a data source
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -172,8 +172,8 @@ Parameters: Workspace (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmOperationalInsightsDataSource](./Get-AzureRmOperationalInsightsDataSource.md)
+[Get-AzOperationalInsightsDataSource](./Get-AzOperationalInsightsDataSource.md)
 
-[Set-AzureRmOperationalInsightsDataSource](./Set-AzureRmOperationalInsightsDataSource.md)
+[Set-AzOperationalInsightsDataSource](./Set-AzOperationalInsightsDataSource.md)
 
 

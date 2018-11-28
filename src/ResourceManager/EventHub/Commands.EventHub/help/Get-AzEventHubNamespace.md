@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
-Module Name: AzureRM.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/get-azurermeventhubnamespace
+Module Name: Az.EventHub
+online version: https://docs.microsoft.com/en-us/powershell/module/az.eventhub/get-azeventhubnamespace
 schema: 2.0.0
 ---
 
-# Get-AzureRmEventHubNamespace
+# Get-AzEventHubNamespace
 
 ## SYNOPSIS
 Gets the details of an Event Hubs namespace, or gets a list of all Event Hubs namespaces in the current Azure subscription.
@@ -13,12 +13,12 @@ Gets the details of an Event Hubs namespace, or gets a list of all Event Hubs na
 ## SYNTAX
 
 ```
-Get-AzureRmEventHubNamespace [[-ResourceGroupName] <String>] [[-Name] <String>]
+Get-AzEventHubNamespace [[-ResourceGroupName] <String>] [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmEventHubNamespace cmdlet gets either the details of a specified Event Hubs namespace, or a list of all Event Hubs namespaces in the current Azure subscription.
+The Get-AzEventHubNamespace cmdlet gets either the details of a specified Event Hubs namespace, or a list of all Event Hubs namespaces in the current Azure subscription.
 If the namespace name is provided, the details of a single Event Hubs namespace is returned.
 If the namespace name is not provided, a list of namespaces is returned.
 
@@ -26,7 +26,7 @@ If the namespace name is not provided, a list of namespaces is returned.
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName
+PS C:\> Get-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName
 ```
 
 Gets the details of namespace \`MyNamespaceName\` in the resource group \`MyResourceGroupName\`.
@@ -37,7 +37,7 @@ Gets the details of namespace \`MyNamespaceName\` in the resource group \`MyReso
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

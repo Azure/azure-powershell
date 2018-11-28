@@ -1,54 +1,48 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkprofile
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkprofile
 schema: 2.0.0
 ---
 
-# Get-AzureRmNetworkProfile
+# Get-AzNetworkProfile
 
 ## SYNOPSIS
 Gets an existing network profile top level resource
 
 ## SYNTAX
 
-### NoExpand (Default)
+### GetByResourceNameNoExpandParameterSet (Default)
 ```
-Get-AzureRmNetworkProfile [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkProfile [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByResourceNameExpandParameterSet
 ```
-Get-AzureRmNetworkProfile -ResourceGroupName <String> -Name <String> -ExpandResource <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByResourceNameNoExpandParameterSet
-```
-Get-AzureRmNetworkProfile [-ResourceGroupName <String>] [-Name <String>] -ExpandResource <String>
+Get-AzNetworkProfile -ResourceGroupName <String> -Name <String> -ExpandResource <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceIdExpandParameterSet
 ```
-Get-AzureRmNetworkProfile -ResourceId <String> -ExpandResource <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkProfile -ResourceId <String> -ExpandResource <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByResourceIdNoExpandParameterSet
 ```
-Get-AzureRmNetworkProfile -ResourceId <String> -ExpandResource <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkProfile -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmNetworkProfile** cmdlet retrieves an existing network profile top level resource
+The **Get-AzNetworkProfile** cmdlet retrieves an existing network profile top level resource
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$networkProfile = Get-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
+$networkProfile = Get-AzNetworkProfile -Name np1 -ResourceGroupName rg1
 ```
 
 This retrieves the network profile np1 in resource group rg1
@@ -59,7 +53,7 @@ This retrieves the network profile np1 in resource group rg1
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,7 +69,7 @@ The resource reference to be expanded.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceNameExpandParameterSet, GetByResourceNameNoExpandParameterSet, GetByResourceIdExpandParameterSet, GetByResourceIdNoExpandParameterSet
+Parameter Sets: GetByResourceNameExpandParameterSet, GetByResourceIdExpandParameterSet
 Aliases:
 
 Required: True
@@ -90,10 +84,10 @@ The name of the network profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceNameExpandParameterSet
+Parameter Sets: GetByResourceNameNoExpandParameterSet
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -102,10 +96,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceNameNoExpandParameterSet
+Parameter Sets: GetByResourceNameExpandParameterSet
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -117,10 +111,10 @@ The resource group name of the network profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceNameExpandParameterSet
+Parameter Sets: GetByResourceNameNoExpandParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -129,10 +123,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceNameNoExpandParameterSet
+Parameter Sets: GetByResourceNameExpandParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

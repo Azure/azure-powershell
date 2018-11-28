@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermroutefilter
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azroutefilter
 schema: 2.0.0
 ---
 
-# New-AzureRmRouteFilter
+# New-AzRouteFilter
 
 ## SYNOPSIS
 Creates a route filter.
@@ -13,14 +13,14 @@ Creates a route filter.
 ## SYNTAX
 
 ```
-New-AzureRmRouteFilter -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzRouteFilter -Name <String> -ResourceGroupName <String> -Location <String>
  [-Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRouteFilterRule]>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmRouteFilter cmdlet creates an Azure route filter.
+The New-AzRouteFilter cmdlet creates an Azure route filter.
 
 ## EXAMPLES
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -205,10 +205,10 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 ## RELATED LINKS
 
-[Get-AzureRmRouteFilter](./Get-AzureRmRouteFilter.md)
+[Get-AzRouteFilter](./Get-AzRouteFilter.md)
 
-[New-AzureRmRouteFilterRuleConfig](./New-AzureRmRouteFilterRuleConfig.md)
+[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
 
-[Remove-AzureRmRouteFilter](./Remove-AzureRmRouteFilter.md)
+[Remove-AzRouteFilter](./Remove-AzRouteFilter.md)
 
-[Set-AzureRmRouteFilter](./Set-AzureRmRouteFilter.md)
+[Set-AzRouteFilter](./Set-AzRouteFilter.md)

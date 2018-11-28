@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-Module Name: AzureRM.KeyVault
+Module Name: Az.KeyVault
 ms.assetid: D4188DC6-A8AB-4B45-9781-94B74C338C63
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/import-azkeyvaultcertificate
 schema: 2.0.0
 ---
 
-# Import-AzureKeyVaultCertificate
+# Import-AzKeyVaultCertificate
 
 ## SYNOPSIS
 Imports a certificate to a key vault.
@@ -15,29 +15,29 @@ Imports a certificate to a key vault.
 
 ### ImportCertificateFromFile (Default)
 ```
-Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <String>
+Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <String>
  [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromString
 ```
-Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> -CertificateString <String>
+Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -CertificateString <String>
  [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromCollection
 ```
-Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String>
+Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String>
  [-CertificateCollection] <X509Certificate2Collection> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Import-AzureKeyVaultCertificate** cmdlet imports a certificate into a key vault.
+The **Import-AzKeyVaultCertificate** cmdlet imports a certificate into a key vault.
 You can create the certificate to import by using one of the following methods:
-- Use the New-AzureKeyVaultCertificateSigningRequest cmdlet to create a certificate signing request and submit it to a certificate authority.
+- Use the New-AzKeyVaultCertificateSigningRequest cmdlet to create a certificate signing request and submit it to a certificate authority.
 - Use an existing certificate package file, such as a .pfx or .p12 file, which contains both the certificate and private key.
 
 ## EXAMPLES
@@ -45,7 +45,7 @@ You can create the certificate to import by using one of the following methods:
 ### Example 1: Import a key vault certificate
 ```powershell
 PS C:\> $Password = ConvertTo-SecureString -String "123" -AsPlainText -Force
-PS C:\> Import-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "ImportCert01" -FilePath "C:\Users\contosoUser\Desktop\import.pfx" -Password $Password
+PS C:\> Import-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "ImportCert01" -FilePath "C:\Users\contosoUser\Desktop\import.pfx" -Password $Password
 
 Name        : importCert01
 Certificate : [Subject]
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -253,4 +253,4 @@ Parameters: CertificateCollection (ByValue)
 
 ## RELATED LINKS
 
-[Remove-AzureKeyVaultCertificate](./Remove-AzureKeyVaultCertificate.md)
+[Remove-AzKeyVaultCertificate](./Remove-AzKeyVaultCertificate.md)

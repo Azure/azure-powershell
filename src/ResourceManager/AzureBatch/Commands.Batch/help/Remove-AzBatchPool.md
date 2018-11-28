@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
-Module Name: AzureRM.Batch
+Module Name: Az.Batch
 ms.assetid: DB0A8E4B-AD3F-4BAC-A0B2-031913E019D4
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/remove-azurebatchpool
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchpool
 schema: 2.0.0
 ---
 
-# Remove-AzureBatchPool
+# Remove-AzBatchPool
 
 ## SYNOPSIS
 Deletes the specified Batch pool.
@@ -14,19 +14,19 @@ Deletes the specified Batch pool.
 ## SYNTAX
 
 ```
-Remove-AzureBatchPool [-Id] <String> [-Force] -BatchContext <BatchAccountContext>
+Remove-AzBatchPool [-Id] <String> [-Force] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureBatchPool** cmdlet deletes the specified Azure Batch pool.
+The **Remove-AzBatchPool** cmdlet deletes the specified Azure Batch pool.
 You are prompted for confirmation unless you use the *Force* parameter.
 
 ## EXAMPLES
 
 ### Example 1: Delete a Batch pool by pool ID
 ```
-PS C:\>Remove-AzureBatchPool -Id "MyPool" -BatchContext $Context
+PS C:\>Remove-AzBatchPool -Id "MyPool" -BatchContext $Context
 ```
 
 This command deletes the pool with ID MyPool.
@@ -34,7 +34,7 @@ The user is prompted for confirmation before the delete operation takes place.
 
 ### Example 2: Delete all Batch pools by force
 ```
-PS C:\>Get-AzureBatchPool -BatchContext $Context | Remove-AzureBatchPool -Force -BatchContext $Context
+PS C:\>Get-AzBatchPool -BatchContext $Context | Remove-AzBatchPool -Force -BatchContext $Context
 ```
 
 This command deletes all Batch pools.
@@ -44,7 +44,7 @@ Because the *Force* parameter is present, the confirmation prompt is suppressed.
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -153,12 +153,12 @@ Parameters: BatchContext (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
 
-[Get-AzureBatchPool](./Get-AzureBatchPool.md)
+[Get-AzBatchPool](./Get-AzBatchPool.md)
 
-[New-AzureBatchPool](./New-AzureBatchPool.md)
+[New-AzBatchPool](./New-AzBatchPool.md)
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets](./Az.Batch.md)
 
 

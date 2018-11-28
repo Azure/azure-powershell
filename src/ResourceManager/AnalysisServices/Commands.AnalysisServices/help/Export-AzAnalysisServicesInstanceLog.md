@@ -1,33 +1,33 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
-Module Name: Azure.AnalysisServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/export-azureanalysisservicesinstancelog
+Module Name: Az.AnalysisServices
+online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/export-azanalysisservicesinstancelog
 schema: 2.0.0
 ---
 
-# Export-AzureAnalysisServicesInstanceLog
+# Export-AzAnalysisServicesInstanceLog
 
 ## SYNOPSIS
-Exports a log from an instance of Analysis Services server in the currently logged in Environment as specified in Add-AzureAnalysisServicesAccount command
+Exports a log from an instance of Analysis Services server in the currently logged in Environment as specified in Add-AzAnalysisServicesAccount command
 
 ## SYNTAX
 
 ```
-Export-AzureAnalysisServicesInstanceLog -Instance <String> -OutputPath <String> [-Force] [-WhatIf] [-Confirm]
+Export-AzAnalysisServicesInstanceLog -Instance <String> -OutputPath <String> [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Export-AzureAnalysisServicesInstance cmdlet exports log from an instance of Azure Analysis Services server to file
+The Export-AzAnalysisServicesInstance cmdlet exports log from an instance of Azure Analysis Services server to file
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>Export-AzureAnalysisServicesInstanceLog -Instance testserver -OuptutPath C:\path\to\log\testserver.log
+PS C:\>Export-AzAnalysisServicesInstanceLog -Instance testserver -OuptutPath C:\path\to\log\testserver.log
 ```
 
-This command will export log from the server 'testserver' in the environment specified in the Add-AzureAnalysisServicesAccount command
+This command will export log from the server 'testserver' in the environment specified in the Add-AzAnalysisServicesAccount command
 and save it to file specified in OutputPath 'C:\path\to\log\testserver.log'
 
 ## PARAMETERS
@@ -119,6 +119,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Void
 
 ## NOTES
-Alias: Export-AzureAsInstanceLog
+Alias: Export-AzAsInstanceLog
 
 ## RELATED LINKS

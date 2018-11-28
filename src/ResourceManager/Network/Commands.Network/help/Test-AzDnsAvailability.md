@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 556A9F12-DF72-468F-9C3F-A747CC70BD2F
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/test-azurermdnsavailability
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/test-azdnsavailability
 schema: 2.0.0
 ---
 
-# Test-AzureRmDnsAvailability
+# Test-AzDnsAvailability
 
 ## SYNOPSIS
 Checks whether a domain name in the cloudapp.azure.com zone is available for use.
@@ -14,8 +14,8 @@ Checks whether a domain name in the cloudapp.azure.com zone is available for use
 ## SYNTAX
 
 ```
-Test-AzureRmDnsAvailability -DomainNameLabel <String> -Location <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDnsAvailability -DomainNameLabel <String> -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Checks whether a domain name in the cloudapp.azure.com zone is available for use
 
 ### Example 1: Check if contoso.cloudapp.azure.com is available for use.
 ```
-Test-AzureRmDnsAvailability -DomainNameLabel contoso -Location westus
+Test-AzDnsAvailability -DomainNameLabel contoso -Location westus
 ```
 
 ## PARAMETERS
@@ -34,7 +34,7 @@ Test-AzureRmDnsAvailability -DomainNameLabel contoso -Location westus
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

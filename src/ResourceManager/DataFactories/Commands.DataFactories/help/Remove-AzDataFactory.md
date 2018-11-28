@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
-Module Name: AzureRM.DataFactories
+Module Name: Az.DataFactories
 ms.assetid: 3D2E9FAE-FE34-457A-BE95-BC61D025B07A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/remove-azurermdatafactory
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactory
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataFactory
+# Remove-AzDataFactory
 
 ## SYNOPSIS
 Removes a data factory.
@@ -15,24 +15,24 @@ Removes a data factory.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzureRmDataFactory [-Name] <String> [-Force] [-ResourceGroupName] <String>
+Remove-AzDataFactory [-Name] <String> [-Force] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Remove-AzureRmDataFactory [-DataFactory] <PSDataFactory> [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzDataFactory [-DataFactory] <PSDataFactory> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDataFactory** cmdlet removes a data factory.
+The **Remove-AzDataFactory** cmdlet removes a data factory.
 
 ## EXAMPLES
 
 ### Example 1: Remove a data factory
 ```
-PS C:\>Remove-AzureRmDataFactory -Name "WikiADF" -ResourceGroupName "ADF"
+PS C:\>Remove-AzDataFactory -Name "WikiADF" -ResourceGroupName "ADF"
 Confirm
 Are you sure you want to remove data factory 'WikiADF' in resource group 'ADF'? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -169,8 +169,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmDataFactory](./Get-AzureRmDataFactory.md)
+[Get-AzDataFactory](./Get-AzDataFactory.md)
 
-[New-AzureRmDataFactory](./New-AzureRmDataFactory.md)
+[New-AzDataFactory](./New-AzDataFactory.md)
 
 

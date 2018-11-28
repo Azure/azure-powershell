@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+Module Name: Az.Resources
 ms.assetid: 6424B740-DBFB-490C-AEAA-EDD60952B435
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermprovideroperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azprovideroperation
 schema: 2.0.0
 ---
 
-# Get-AzureRmProviderOperation
+# Get-AzProviderOperation
 
 ## SYNOPSIS
 Gets the operations for an Azure resource provider that are securable using Azure RBAC.
@@ -14,32 +14,32 @@ Gets the operations for an Azure resource provider that are securable using Azur
 ## SYNTAX
 
 ```
-Get-AzureRmProviderOperation [[-OperationSearchString] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzProviderOperation [[-OperationSearchString] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmProviderOperation gets the operations exposed by Azure resource providers.
+The Get-AzProviderOperation gets the operations exposed by Azure resource providers.
 Operations can be composed to create custom roles in Azure RBAC.
 The command takes as input an operation search string (with possible wildcard(*) character(s)) which determines the operations details to display.
-Use Get-AzureRmProviderOperation * to get all operations for all Azure resource providers.
-Use Get-AzureRmProviderOperation Microsoft.Compute/* to get all operations of Microsoft.Compute resource provider.
+Use Get-AzProviderOperation * to get all operations for all Azure resource providers.
+Use Get-AzProviderOperation Microsoft.Compute/* to get all operations of Microsoft.Compute resource provider.
 
 ## EXAMPLES
 
 ### Get all actions for all providers
 ```
-PS C:\> Get-AzureRmProviderOperation *
+PS C:\> Get-AzProviderOperation *
 ```
 
 ### Get actions for a particular resource provider
 ```
-PS C:\> Get-AzureRmProviderOperation Microsoft.Insights/*
+PS C:\> Get-AzProviderOperation Microsoft.Insights/*
 ```
 
 ### Get all actions that can be performed on virtual machines
 ```
-PS C:\> Get-AzureRmProviderOperation */virtualMachines/*
+PS C:\> Get-AzProviderOperation */virtualMachines/*
 ```
 
 ## PARAMETERS
@@ -48,7 +48,7 @@ PS C:\> Get-AzureRmProviderOperation */virtualMachines/*
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
+Module Name: Az.Network
 ms.assetid: 30A34CA8-AC07-4327-B7B9-19F001DA996A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermapplicationgatewaysslpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgatewaysslpolicy
 schema: 2.0.0
 ---
 
-# Set-AzureRmApplicationGatewaySslPolicy
+# Set-AzApplicationGatewaySslPolicy
 
 ## SYNOPSIS
 Modifies the SSL policy of an application gateway.
@@ -14,7 +14,7 @@ Modifies the SSL policy of an application gateway.
 ## SYNTAX
 
 ```
-Set-AzureRmApplicationGatewaySslPolicy -ApplicationGateway <PSApplicationGateway>
+Set-AzApplicationGatewaySslPolicy -ApplicationGateway <PSApplicationGateway>
  [-DisabledSslProtocols <System.Collections.Generic.List`1[System.String]>] [-PolicyType <String>]
  [-PolicyName <String>] [-CipherSuite <System.Collections.Generic.List`1[System.String]>]
  [-MinProtocolVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -22,14 +22,14 @@ Set-AzureRmApplicationGatewaySslPolicy -ApplicationGateway <PSApplicationGateway
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApplicationGatewaySslPolicy** cmdlet modifies the SSL policy of an application gateway.
+The **Set-AzApplicationGatewaySslPolicy** cmdlet modifies the SSL policy of an application gateway.
 
 ## EXAMPLES
 
 ### 1:
 ```
-PS C:\>$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $AppGw = Set-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $getgw -PolicyType Predefined -PolicyName AppGwSslPolicy20170401
+PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $AppGw = Set-AzApplicationGatewaySslPolicy -ApplicationGateway $getgw -PolicyType Predefined -PolicyName AppGwSslPolicy20170401
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -197,8 +197,8 @@ Parameters: ApplicationGateway (ByValue)
 
 ## RELATED LINKS
 
-[Get-AzureRmApplicationGatewaySslPolicy](./Get-AzureRmApplicationGatewaySslPolicy.md)
+[Get-AzApplicationGatewaySslPolicy](./Get-AzApplicationGatewaySslPolicy.md)
 
-[New-AzureRmApplicationGatewaySslPolicy](./New-AzureRmApplicationGatewaySslPolicy.md)
+[New-AzApplicationGatewaySslPolicy](./New-AzApplicationGatewaySslPolicy.md)
 
 

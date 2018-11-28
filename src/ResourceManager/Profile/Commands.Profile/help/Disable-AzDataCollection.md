@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/disable-azurermdatacollection
+Module Name: Az.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/disable-azdatacollection
 schema: 2.0.0
 ---
 
-# Disable-AzureRmDataCollection
+# Disable-AzDataCollection
 
 ## SYNOPSIS
 Opts out of collecting data to improve the AzurePowerShell cmdlets. 
@@ -14,24 +14,23 @@ Data is not collected unless you explicitly opt in.
 ## SYNTAX
 
 ```
-Disable-AzureRmDataCollection [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Disable-AzDataCollection [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 You can improve the experience of using the Microsoft Cloud and Azure PowerShell by opting in to data collection.
-Azure PowerShell does not collect data without your consent - you must explicitly opt in by executing Enable-AzureRmDataCollection, or by answering yes when Azure PowerShell prompts you about collecting data the first time you execute a cmdlet.
+Azure PowerShell does not collect data without your consent - you must explicitly opt in by executing Enable-AzDataCollection, or by answering yes when Azure PowerShell prompts you about collecting data the first time you execute a cmdlet.
 Microsoft aggregates collected data to identify patterns of usage, to identify common issues and to improve the experience of using Azure PowerShell.
 Microsoft Azure PowerShell does not collect any private data, or any personally identifiable information.
-Run the Disable-AzureRMDataCollection cmdlet to disable data collection for the current user.
+Run the Disable-AzDataCollection cmdlet to disable data collection for the current user.
 This will prevent the current user from being prompted about data collection the first time cmdlets are executed.
-To enable data collection for the current user, run the Enable-AzureRmDataCollection cmdlet.
+To enable data collection for the current user, run the Enable-AzDataCollection cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Disabling data collection for the current user
 ```
-PS C:\> Disable-AzureRmDataCollection
+PS C:\> Disable-AzDataCollection
 ```
 
 This example shows how to disable data collection for the current user. 
@@ -42,7 +41,7 @@ This example shows how to disable data collection for the current user.
 The credentials, account, tenant and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,5 +97,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Enable-AzureRmDataCollection](./Enable-AzureRmDataCollection.md)
+[Enable-AzDataCollection](./Enable-AzDataCollection.md)
 

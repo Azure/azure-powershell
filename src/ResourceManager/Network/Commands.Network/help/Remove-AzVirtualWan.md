@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermvirtualwan
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvirtualwan
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVirtualWan
+# Remove-AzVirtualWan
 
 ## SYNOPSIS
 Removes an Azure Virtual WAN.
@@ -14,19 +14,19 @@ Removes an Azure Virtual WAN.
 
 ### ByVirtualWanName (Default)
 ```
-Remove-AzureRmVirtualWan -ResourceGroupName <String> -Name <String> [-Force] [-PassThru]
+Remove-AzVirtualWan -ResourceGroupName <String> -Name <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanObject
 ```
-Remove-AzureRmVirtualWan -InputObject <PSVirtualWan> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzVirtualWan -InputObject <PSVirtualWan> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceId
 ```
-Remove-AzureRmVirtualWan -ResourceId <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzVirtualWan -ResourceId <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,9 +38,9 @@ Removes an Azure Virtual WAN.
 ### Example 1
 
 ```powershell
-PS C:\> New-AzureRmResourceGroup -Name "TestResourceGroup" -Location "Central US"
-PS C:\> New-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US"
-PS C:\> Remove-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Passthru
+PS C:\> New-AzResourceGroup -Name "TestResourceGroup" -Location "Central US"
+PS C:\> New-AzVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US"
+PS C:\> Remove-AzVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Passthru
 ```
 
 This example creates a Virtual WAN in a resource group and then immediately deletes it. 
@@ -49,23 +49,23 @@ To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
 ### Example 2
 
 ```powershell
-PS C:\> New-AzureRmResourceGroup -Name "TestResourceGroup" -Location "Central US"
-PS C:\> $virtualWan = New-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US"
-PS C:\> Remove-AzureRmVirtualWan -InputObject $virtualWan -Passthru
+PS C:\> New-AzResourceGroup -Name "TestResourceGroup" -Location "Central US"
+PS C:\> $virtualWan = New-AzVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US"
+PS C:\> Remove-AzVirtualWan -InputObject $virtualWan -Passthru
 ```
 
-This example creates a Virtual WAN in a resource group and then immediately deletes it. This deletion happens using the virtual wan object returned by New-AzureRmVirtualWan.
+This example creates a Virtual WAN in a resource group and then immediately deletes it. This deletion happens using the virtual wan object returned by New-AzVirtualWan.
 To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
 
 ### Example 3
 
 ```powershell
-PS C:\> New-AzureRmResourceGroup -Name "TestResourceGroup" -Location "Central US"
-PS C:\> $virtualWan = New-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US"
-PS C:\> Remove-AzureRmVirtualWan -ResourceId $virtualWan.Id -Passthru
+PS C:\> New-AzResourceGroup -Name "TestResourceGroup" -Location "Central US"
+PS C:\> $virtualWan = New-AzVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US"
+PS C:\> Remove-AzVirtualWan -ResourceId $virtualWan.Id -Passthru
 ```
 
-This example creates a Virtual WAN in a resource group and then immediately deletes it. This deletion happens using the virtual wan resource id returned by New-AzureRmVirtualWan.
+This example creates a Virtual WAN in a resource group and then immediately deletes it. This deletion happens using the virtual wan resource id returned by New-AzVirtualWan.
 To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
 
 ## PARAMETERS
@@ -74,7 +74,7 @@ To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

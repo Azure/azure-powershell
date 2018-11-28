@@ -1,12 +1,12 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
-Module Name: AzureRM.Dns
+Module Name: Az.Dns
 ms.assetid: 99E6C4DD-11AF-4DC0-848B-39811240BE06
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/set-azurermdnsrecordset
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/set-azdnsrecordset
 schema: 2.0.0
 ---
 
-# Set-AzureRmDnsRecordSet
+# Set-AzDnsRecordSet
 
 ## SYNOPSIS
 Updates a DNS record set.
@@ -14,12 +14,12 @@ Updates a DNS record set.
 ## SYNTAX
 
 ```
-Set-AzureRmDnsRecordSet -RecordSet <DnsRecordSet> [-Overwrite] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDnsRecordSet -RecordSet <DnsRecordSet> [-Overwrite] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmDnsRecordSet** cmdlet updates a record set in the Azure DNS service from a local **RecordSet** object.
+The **Set-AzDnsRecordSet** cmdlet updates a record set in the Azure DNS service from a local **RecordSet** object.
 You can pass a **RecordSet** object as a parameter or by using the pipeline operator.
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 The record set is not updated if it has been changed in Azure DNS since the local **RecordSet** object was retrieved.
@@ -30,30 +30,30 @@ You can suppress this behavior using the *Overwrite* parameter, which updates th
 
 ### Example 1: Update a record set
 ```
-PS C:\>$RecordSet = Get-AzureRmDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A
-PS C:\> Add-AzureRmDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.16.0.0
-PS C:\> Add-AzureRmDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.31.255.255
-PS C:\> Set-AzureRmDnsRecordSet -RecordSet $RecordSet
+PS C:\>$RecordSet = Get-AzDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A
+PS C:\> Add-AzDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.16.0.0
+PS C:\> Add-AzDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.31.255.255
+PS C:\> Set-AzDnsRecordSet -RecordSet $RecordSet
 
 # These cmdlets can also be piped:
 
-PS C:\> Get-AzureRmDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A | Add-AzureRmDnsRecordConfig -Ipv4Address 172.16.0.0 | Add-AzureRmDnsRecordConfig -Ipv4Address 172.31.255.255 | Set-AzureRmDnsRecordSet
+PS C:\> Get-AzDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A | Add-AzDnsRecordConfig -Ipv4Address 172.16.0.0 | Add-AzDnsRecordConfig -Ipv4Address 172.31.255.255 | Set-AzDnsRecordSet
 ```
 
-The first command uses the Get-AzureRmDnsRecordSet cmdlet to get the specified record set, and then stores it in the $RecordSet variable.
+The first command uses the Get-AzDnsRecordSet cmdlet to get the specified record set, and then stores it in the $RecordSet variable.
 The second and third commands are off-line operations to add two A records to the record set.
-The final command uses the **Set-AzureRmDnsRecordSet** cmdlet to commit the update.
+The final command uses the **Set-AzDnsRecordSet** cmdlet to commit the update.
 
 ### Example 2: Update an SOA record
 ```
-PS C:\>$RecordSet = Get-AzureRmDnsRecordSet -Name "@" -RecordType SOA -Zone $Zone
+PS C:\>$RecordSet = Get-AzDnsRecordSet -Name "@" -RecordType SOA -Zone $Zone
 PS C:\> $RecordSet.Records[0].Email = "admin.myzone.com"
-PS C:\> Set-AzureRmDnsRecordSet -RecordSet $RecordSet
+PS C:\> Set-AzDnsRecordSet -RecordSet $RecordSet
 ```
 
-The first command uses the **Get-AzureRmDnsRecordset** cmdlet to get the specified record set, and then stores it in the $RecordSet variable.
+The first command uses the **Get-AzDnsRecordset** cmdlet to get the specified record set, and then stores it in the $RecordSet variable.
 The second command updates the specified SOA record in $RecordSet.
-The final command uses the **Set-AzureRmDnsRecordSet** cmdlet to propagate the update in $RecordSet.
+The final command uses the **Set-AzDnsRecordSet** cmdlet to propagate the update in $RecordSet.
 
 ## PARAMETERS
 
@@ -61,7 +61,7 @@ The final command uses the **Set-AzureRmDnsRecordSet** cmdlet to propagate the u
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -155,8 +155,8 @@ If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation
 
 ## RELATED LINKS
 
-[Get-AzureRmDnsRecordSet](./Get-AzureRmDnsRecordSet.md)
+[Get-AzDnsRecordSet](./Get-AzDnsRecordSet.md)
 
-[New-AzureRmDnsRecordSet](./New-AzureRmDnsRecordSet.md)
+[New-AzDnsRecordSet](./New-AzDnsRecordSet.md)
 
-[Remove-AzureRmDnsRecordSet](./Remove-AzureRmDnsRecordSet.md)
+[Remove-AzDnsRecordSet](./Remove-AzDnsRecordSet.md)
