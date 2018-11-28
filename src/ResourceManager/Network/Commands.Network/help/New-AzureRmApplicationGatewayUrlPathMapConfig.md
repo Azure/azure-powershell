@@ -17,7 +17,8 @@ Creates an array of URL path mappings to a backend server pool.
 ```
 New-AzureRmApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
  [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>]
- [-DefaultRedirectConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultRewriteRuleSetId <String>] [-DefaultRedirectConfigurationId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -25,6 +26,7 @@ New-AzureRmApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSAppli
 New-AzureRmApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
  [-DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>]
  [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
+ [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
  [-DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -36,7 +38,7 @@ The **New-AzureRmApplicationGatewayUrlPathMapConfig** cmdlet creates an array of
 
 ### Example 1: Create an array of URL path mappings to a backend server pool
 ```
-PS C:\>New-AzureRmApplicationGatewayUrlPathMapConfig -Name $UrlPathMapName -PathRules $VideoPathRule, $ImagePathRule -DefaultBackendAddressPool $Pool -DefaultBackendHttpSettings $PoolSetting02
+PS C:\>New-AzureRmApplicationGatewayUrlPathMapConfig -Name $UrlPathMapName -PathRules $VideoPathRule, $ImagePathRule -DefaultBackendAddressPool $Pool -DefaultBackendHttpSettings $PoolSetting02 -DefaultRewriteRuleSet $RuleSet
 ```
 
 This command creates an array of URL path mappings to a backend server pool.
@@ -135,6 +137,36 @@ Accept wildcard characters: False
 
 ### -DefaultRedirectConfigurationId
 ID of the application gateway default RedirectConfiguration
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultRewriteRuleSet
+Application gateway default rewrite rule set
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultRewriteRuleSetId
+ID of the application gateway default rewrite rule set
 
 ```yaml
 Type: System.String

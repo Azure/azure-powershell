@@ -16,7 +16,7 @@ Creates an application gateway path rule.
 ### SetByResourceId
 ```
 New-AzureRmApplicationGatewayPathRuleConfig -Name <String> -Paths <String[]> [-BackendAddressPoolId <String>]
- [-BackendHttpSettingsId <String>] [-RedirectConfigurationId <String>]
+ [-BackendHttpSettingsId <String>] [-RedirectConfigurationId <String>] [-RewriteRuleSetId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,6 +25,7 @@ New-AzureRmApplicationGatewayPathRuleConfig -Name <String> -Paths <String[]> [-B
 New-AzureRmApplicationGatewayPathRuleConfig -Name <String> -Paths <String[]>
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
  [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
+ [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
  [-RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -41,8 +42,8 @@ Path map configuration settings are used in application gateway load balancing.
 PS C:\>$Gateway = Get-AzureRmApplicationGateway -Name "ContosoApplicationGateway"
 PS C:\> $AddressPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "ContosoAddressPool" -BackendIPAddresses "192.168.1.1", "192.168.1.2"
 PS C:\> $HttpSettings = New-AzureRmApplicationGatewayBackendHttpSettings -Name "ContosoHttpSetings" -Port 80 -Protocol "Http" -CookieBasedAffinity "Disabled"
-PS C:\> $PathRuleConfig = New-AzureRmApplicationGatewayPathRuleConfig -Name "base" -Paths "/base" -BackendAddressPool $AddressPool -BackendHttpSettings $HttpSettings
-PS C:\> Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Gateway -Name "ContosoUrlPathMap" -PathRules $PathRuleConfig -DefaultBackendAddressPool $AddressPool -DefaultBackendHttpSettings $HttpSettings
+PS C:\> $PathRuleConfig = New-AzureRmApplicationGatewayPathRuleConfig -Name "base" -Paths "/base" -BackendAddressPool $AddressPool -BackendHttpSettings $HttpSettings -RewriteRuleSet $RuleSet
+PS C:\> Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Gateway -Name "ContosoUrlPathMap" -PathRules $PathRuleConfig -DefaultBackendAddressPool $AddressPool -DefaultBackendHttpSettings $HttpSettings -DefaultRewriteRuleSet $RuleSet
 ```
 
 These commands create a new application gateway path rule and then use the **Add-AzureRmApplicationGatewayUrlPathMapConfig** cmdlet to assign that rule to an application gateway.
@@ -202,6 +203,36 @@ Accept wildcard characters: False
 
 ### -RedirectConfigurationId
 ID of the application gateway RedirectConfiguration
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RewriteRuleSet
+Application gateway RewriteRuleSet
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RewriteRuleSetId
+ID of the application gateway RewriteRuleSet
 
 ```yaml
 Type: System.String

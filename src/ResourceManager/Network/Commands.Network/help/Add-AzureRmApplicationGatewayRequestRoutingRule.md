@@ -17,8 +17,8 @@ Adds a request routing rule to an application gateway.
 ```
 Add-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway <PSApplicationGateway> -Name <String>
  -RuleType <String> [-BackendHttpSettingsId <String>] [-HttpListenerId <String>]
- [-BackendAddressPoolId <String>] [-UrlPathMapId <String>] [-RedirectConfigurationId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-BackendAddressPoolId <String>] [-UrlPathMapId <String>] [-RewriteRuleSetId <String>]
+ [-RedirectConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -27,6 +27,7 @@ Add-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway <PSApplicati
  -RuleType <String> [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
  [-HttpListener <PSApplicationGatewayHttpListener>]
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>] [-UrlPathMap <PSApplicationGatewayUrlPathMap>]
+ [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
  [-RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -39,7 +40,7 @@ The **Add-AzureRmApplicationGatewayRequestRoutingRule** cmdlet adds a request ro
 ### Example 1: Add a request routing rule to an application gateway
 ```
 PS C:\>$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $Appgw = Add-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw -Name "Rule01" -RuleType Basic -BackendHttpSettings $Setting -HttpListener $Listener -BackendAddressPool $Pool
+PS C:\> $Appgw = Add-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw -Name "Rule01" -RuleType Basic -BackendHttpSettings $Setting -HttpListener $Listener -BackendAddressPool $Pool -RewriteRuleSet $RewriteRuleSet
 ```
 
 The first command gets the application gateway and stores it in the $AppGw variable.
@@ -199,6 +200,36 @@ Accept wildcard characters: False
 
 ### -RedirectConfigurationId
 ID of the application gateway RedirectConfiguration
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RewriteRuleSet
+Application gateway RewriteRuleSet
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RewriteRuleSetId
+ID of the application gateway RewriteRuleSet
 
 ```yaml
 Type: System.String
