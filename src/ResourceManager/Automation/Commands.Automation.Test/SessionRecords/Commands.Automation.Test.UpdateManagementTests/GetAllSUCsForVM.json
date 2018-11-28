@@ -7,49 +7,39 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a27b8e45-c8f1-4d38-826d-da485c7ea2f7"
+          "6df28314-5eb8-4e92-94a2-5846472ed10b"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2650.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.0.2.0"
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ],
         "x-ms-activity-id": [
-          "7368cf00-df46-47e6-9db9-2493419e680a"
+          "e47ed429-6f1a-47e4-a8ab-290e6c744a8c"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/tst\",\r\n      \"name\": \"tst\",\r\n      \"properties\": {\r\n        \"updateConfiguration\": {\r\n          \"operatingSystem\": \"Windows\",\r\n          \"windows\": {\r\n            \"includedUpdateClassifications\": \"Critical, Security, UpdateRollup, FeaturePack, ServicePack, Definition, Tools, Updates\",\r\n            \"excludedKbNumbers\": null\r\n          },\r\n          \"linux\": null,\r\n          \"duration\": \"PT2H\",\r\n          \"azureVirtualMachines\": [\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourcegroups/mo-compute/providers/microsoft.compute/virtualmachines/mo-vm-w-01\"\r\n          ],\r\n          \"nonAzureComputerNames\": null\r\n        },\r\n        \"frequency\": \"OneTime\",\r\n        \"startTime\": \"2018-05-24T01:19:00-07:00\",\r\n        \"creationTime\": \"2018-05-24T00:50:18.11-07:00\",\r\n        \"lastModifiedTime\": \"2018-05-24T00:50:18.44-07:00\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"nextRun\": \"2018-05-24T01:19:00-07:00\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/tst2\",\r\n      \"name\": \"tst2\",\r\n      \"properties\": {\r\n        \"updateConfiguration\": {\r\n          \"operatingSystem\": \"Windows\",\r\n          \"windows\": {\r\n            \"includedUpdateClassifications\": \"Critical, Security, UpdateRollup, FeaturePack, ServicePack, Definition, Tools, Updates\",\r\n            \"excludedKbNumbers\": null\r\n          },\r\n          \"linux\": null,\r\n          \"duration\": \"PT2H\",\r\n          \"azureVirtualMachines\": [\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourcegroups/mo-compute/providers/microsoft.compute/virtualmachines/mo-vm-w-01\"\r\n          ],\r\n          \"nonAzureComputerNames\": null\r\n        },\r\n        \"frequency\": \"OneTime\",\r\n        \"startTime\": \"2018-05-24T01:21:00-07:00\",\r\n        \"creationTime\": \"2018-05-24T00:51:45.707-07:00\",\r\n        \"lastModifiedTime\": \"2018-05-24T00:51:46.097-07:00\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"nextRun\": \"2018-05-24T01:21:00-07:00\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
-        "Content-Length": [
-          "1763"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "7368cf00-df46-47e6-9db9-2493419e680a"
+          "e47ed429-6f1a-47e4-a8ab-290e6c744a8c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "11973"
         ],
         "x-ms-correlation-request-id": [
-          "189a329e-aeb3-4635-a9f9-a5b7483103c9"
+          "694cabcc-33ae-4804-8720-96feac5c19f1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180524T075429Z:189a329e-aeb3-4635-a9f9-a5b7483103c9"
+          "WESTUS2:20181128T214830Z:694cabcc-33ae-4804-8720-96feac5c19f1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -58,7 +48,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 May 2018 07:54:29 GMT"
+          "Wed, 28 Nov 2018 21:48:30 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -68,8 +58,18 @@
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "Content-Length": [
+          "6186"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
         ]
       },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/MyWeeklySchedule\",\r\n      \"name\": \"MyWeeklySchedule\",\r\n      \"properties\": {\r\n        \"updateConfiguration\": {\r\n          \"operatingSystem\": \"Windows\",\r\n          \"windows\": {\r\n            \"includedUpdateClassifications\": \"Critical\",\r\n            \"excludedKbNumbers\": null,\r\n            \"includedKbNumbers\": null,\r\n            \"rebootSetting\": \"IfRequired\",\r\n            \"IsInvalidKbNumbers\": false\r\n          },\r\n          \"linux\": null,\r\n          \"targets\": null,\r\n          \"duration\": \"PT2H\",\r\n          \"azureVirtualMachines\": [\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\",\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02\"\r\n          ],\r\n          \"nonAzureComputerNames\": null\r\n        },\r\n        \"frequency\": \"Week\",\r\n        \"startTime\": \"2018-09-20T21:00:00-07:00\",\r\n        \"creationTime\": \"2018-09-13T20:53:27.02-07:00\",\r\n        \"lastModifiedTime\": \"2018-09-20T15:51:56.573-07:00\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"nextRun\": \"2018-11-30T20:00:00-08:00\",\r\n        \"tasks\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/MyWeeklySchedule2\",\r\n      \"name\": \"MyWeeklySchedule2\",\r\n      \"properties\": {\r\n        \"updateConfiguration\": {\r\n          \"operatingSystem\": \"Windows\",\r\n          \"windows\": {\r\n            \"includedUpdateClassifications\": \"Critical\",\r\n            \"excludedKbNumbers\": null,\r\n            \"includedKbNumbers\": null,\r\n            \"rebootSetting\": \"IfRequired\",\r\n            \"IsInvalidKbNumbers\": false\r\n          },\r\n          \"linux\": null,\r\n          \"targets\": null,\r\n          \"duration\": \"PT2H\",\r\n          \"azureVirtualMachines\": [\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\",\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\"\r\n          ],\r\n          \"nonAzureComputerNames\": null\r\n        },\r\n        \"frequency\": \"Week\",\r\n        \"startTime\": \"2018-09-13T21:20:00-07:00\",\r\n        \"creationTime\": \"2018-09-13T21:09:12.41-07:00\",\r\n        \"lastModifiedTime\": \"2018-09-13T21:09:22.94-07:00\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"nextRun\": \"2018-11-30T20:20:00-08:00\",\r\n        \"tasks\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/mo-onetime-01\",\r\n      \"name\": \"mo-onetime-01\",\r\n      \"properties\": {\r\n        \"updateConfiguration\": {\r\n          \"operatingSystem\": \"Windows\",\r\n          \"windows\": {\r\n            \"includedUpdateClassifications\": \"Critical, Security\",\r\n            \"excludedKbNumbers\": null,\r\n            \"includedKbNumbers\": null,\r\n            \"rebootSetting\": \"IfRequired\",\r\n            \"IsInvalidKbNumbers\": false\r\n          },\r\n          \"linux\": null,\r\n          \"targets\": null,\r\n          \"duration\": \"PT2H\",\r\n          \"azureVirtualMachines\": [\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\",\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02\"\r\n          ],\r\n          \"nonAzureComputerNames\": null\r\n        },\r\n        \"frequency\": \"OneTime\",\r\n        \"startTime\": \"2018-11-28T13:44:00-08:00\",\r\n        \"creationTime\": \"2018-11-28T13:34:13.173-08:00\",\r\n        \"lastModifiedTime\": \"2018-11-28T13:34:23.5-08:00\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"nextRun\": null,\r\n        \"tasks\": {\r\n          \"preTask\": null,\r\n          \"postTask\": null\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/prePostTest\",\r\n      \"name\": \"prePostTest\",\r\n      \"properties\": {\r\n        \"updateConfiguration\": {\r\n          \"operatingSystem\": \"Windows\",\r\n          \"windows\": {\r\n            \"includedUpdateClassifications\": \"Critical, Security, UpdateRollup, FeaturePack, ServicePack, Definition, Tools, Updates\",\r\n            \"excludedKbNumbers\": null,\r\n            \"includedKbNumbers\": null,\r\n            \"rebootSetting\": \"IfRequired\",\r\n            \"IsInvalidKbNumbers\": false\r\n          },\r\n          \"linux\": null,\r\n          \"targets\": {\r\n            \"azureQueries\": [],\r\n            \"nonAzureQueries\": null\r\n          },\r\n          \"duration\": \"PT2H\",\r\n          \"azureVirtualMachines\": [\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourcegroups/mo-compute/providers/microsoft.compute/virtualmachines/mo-vm-w-01\"\r\n          ],\r\n          \"nonAzureComputerNames\": []\r\n        },\r\n        \"frequency\": \"OneTime\",\r\n        \"startTime\": \"2018-11-07T15:21:00-08:00\",\r\n        \"creationTime\": \"2018-11-07T13:14:19.69-08:00\",\r\n        \"lastModifiedTime\": \"2018-11-07T15:15:30.52-08:00\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"nextRun\": null,\r\n        \"tasks\": {\r\n          \"preTask\": {\r\n            \"source\": \"preTask\",\r\n            \"parameters\": {}\r\n          },\r\n          \"postTask\": {\r\n            \"source\": \"postTask\",\r\n            \"parameters\": {\r\n              \"PARAM1\": \"yay\"\r\n            }\r\n          }\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/test-01\",\r\n      \"name\": \"test-01\",\r\n      \"properties\": {\r\n        \"updateConfiguration\": {\r\n          \"operatingSystem\": \"Windows\",\r\n          \"windows\": {\r\n            \"includedUpdateClassifications\": \"Critical\",\r\n            \"excludedKbNumbers\": null,\r\n            \"includedKbNumbers\": null,\r\n            \"rebootSetting\": \"IfRequired\",\r\n            \"IsInvalidKbNumbers\": false\r\n          },\r\n          \"linux\": null,\r\n          \"targets\": null,\r\n          \"duration\": \"PT4H\",\r\n          \"azureVirtualMachines\": [\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\"\r\n          ],\r\n          \"nonAzureComputerNames\": null\r\n        },\r\n        \"frequency\": \"OneTime\",\r\n        \"startTime\": \"2018-08-15T15:19:00-07:00\",\r\n        \"creationTime\": \"2018-08-14T15:27:57.523-07:00\",\r\n        \"lastModifiedTime\": \"2018-08-14T15:27:57.553-07:00\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"nextRun\": null,\r\n        \"tasks\": null\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/tst\",\r\n      \"name\": \"tst\",\r\n      \"properties\": {\r\n        \"updateConfiguration\": {\r\n          \"operatingSystem\": \"Windows\",\r\n          \"windows\": {\r\n            \"includedUpdateClassifications\": \"Critical, Security, UpdateRollup, FeaturePack, ServicePack, Definition, Tools, Updates\",\r\n            \"excludedKbNumbers\": null,\r\n            \"includedKbNumbers\": null,\r\n            \"rebootSetting\": \"IfRequired\",\r\n            \"IsInvalidKbNumbers\": false\r\n          },\r\n          \"linux\": null,\r\n          \"targets\": null,\r\n          \"duration\": \"PT2H\",\r\n          \"azureVirtualMachines\": [\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourcegroups/mo-compute/providers/microsoft.compute/virtualmachines/mo-vm-w-01\"\r\n          ],\r\n          \"nonAzureComputerNames\": null\r\n        },\r\n        \"frequency\": \"OneTime\",\r\n        \"startTime\": \"2018-05-24T01:19:00-07:00\",\r\n        \"creationTime\": \"2018-05-24T00:50:18.11-07:00\",\r\n        \"lastModifiedTime\": \"2018-05-24T00:50:18.44-07:00\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"nextRun\": null,\r\n        \"tasks\": null\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],

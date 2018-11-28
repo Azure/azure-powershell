@@ -48,7 +48,9 @@ function Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithDefaults {
                                                              -Schedule $s `
                                                              -Windows `
                                                              -AzureVMResourceId $azureVMIdsW `
-                                                             -Duration (New-TimeSpan -Hours 2)
+                                                             -Duration (New-TimeSpan -Hours 2)`
+                                                             -RebootSetting "Never"`
+                                                             -IncludedUpdateClassification Security,Critical 
 
     Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"
     Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
@@ -75,7 +77,9 @@ function Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithDefaults {
                                                              -Schedule $s `
                                                              -Linux `
                                                              -AzureVMResourceId $azureVMIdsL `
-                                                             -Duration (New-TimeSpan -Hours 2)
+                                                             -Duration (New-TimeSpan -Hours 2)`
+                                                             -RebootSetting "Never"`
+                                                             -IncludedPackageClassification Other,Security
 
     Assert-NotNull $suc "New-AzureRmAutomationSoftwareUpdateConfiguration returned null"
     Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
@@ -209,7 +213,7 @@ Test-GetAllSoftwareUpdateConfigurations
 function Test-GetAllSoftwareUpdateConfigurations {
     $sucs = Get-AzureRmAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
                                                               -AutomationAccountName $aa
-    Assert-AreEqual $sucs.Count 7 "Get all software update configuration didn't retrieve the expected number of items"
+    Assert-AreEqual $sucs.Count 13 "Get all software update configuration didn't retrieve the expected number of items"
 }
 
 
@@ -220,7 +224,7 @@ function Test-GetSoftwareUpdateConfigurationsForVM {
     $sucs = Get-AzureRmAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
                                                               -AutomationAccountName $aa `
                                                               -AzureVMResourceId $azureVMIdsW[0]
-    Assert-AreEqual $sucs.Count 2 "Get software update configurations for VM didn't return expected number of items"
+    Assert-AreEqual $sucs.Count 6 "Get software update configurations for VM didn't return expected number of items"
 }
 
 
@@ -302,7 +306,7 @@ function Test-GetAllSoftwareUpdateMachineRuns {
     $runs = Get-AzureRmAutomationSoftwareUpdateMachineRun  -ResourceGroupName $rg `
                                                            -AutomationAccountName $aa
     
-    Assert-AreEqual $runs.Count 18 "Get software update configurations machine runs didn't return expected number of items"
+    Assert-AreEqual $runs.Count 41 "Get software update configurations machine runs didn't return expected number of items"
 }
 
 <#
