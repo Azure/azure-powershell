@@ -32,12 +32,11 @@ function Get-ResourceGroupName
 
 <#
 .SYNOPSIS
-Gets a location for testing.
+Gets a location for testing Azure Analysis Services.
 #>
-function Get-Location
+function Get-AnalysisServicesLocation
 {
-	# TODO: should be implemented via Get-AzureRmResourceProvider 
-	return "West US"
+    return Get-Location -providerNamespace "Microsoft.AnalysisServices" -resourceType "servers" -preferredLocation "West US"
 }
 
 <#

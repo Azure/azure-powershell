@@ -29,9 +29,8 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void HybridConnectionsCRUD()
         {
             RelayController.NewInstance.RunPsTest(_logger, "HybridConnectionsTests");
