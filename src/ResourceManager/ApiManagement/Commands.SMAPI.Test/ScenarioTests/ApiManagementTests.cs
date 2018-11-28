@@ -43,15 +43,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             };
             XunitTracingInterceptor.AddToContext(_helper.TracingInterceptor);
 
-            using (MockContext context = MockContext.Start("ApiManagementTests", "CreateApiManagementService"))
+            using (var context = MockContext.Start("ApiManagementTests", "CreateApiManagementService"))
             {
-                var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient();
+                var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient(context);
                 ResourceGroupName = "powershelltest";
                 Location = "West US";
 
                 if (string.IsNullOrWhiteSpace(ResourceGroupName))
                 {
-                    ResourceGroupName = Azure.Test.TestUtilities.GenerateName("Api-Default");
+                    ResourceGroupName = TestUtilities.GenerateName("Api-Default");
                     resourceManagementClient.TryRegisterResourceGroup(Location, ResourceGroupName);
                 }
 
