@@ -59,6 +59,18 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
                 ParameterSetName = "SetByResourceId",
+                HelpMessage = "ID of the application gateway RewriteRuleSet")]
+        [ValidateNotNullOrEmpty]
+        public string RewriteRuleSetId { get; set; }
+
+        [Parameter(
+                ParameterSetName = "SetByResource",
+                HelpMessage = "Application gateway RewriteRuleSet")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayRewriteRuleSet RewriteRuleSet { get; set; }
+
+        [Parameter(
+                ParameterSetName = "SetByResourceId",
                 HelpMessage = "ID of the application gateway RedirectConfiguration")]
         [ValidateNotNullOrEmpty]
         public string RedirectConfigurationId { get; set; }

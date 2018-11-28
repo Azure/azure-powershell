@@ -47,6 +47,9 @@ Adds a redirect configuration to an Application Gateway.
 ### [Add-AzureRmApplicationGatewayRequestRoutingRule](Add-AzureRmApplicationGatewayRequestRoutingRule.md)
 Adds a request routing rule to an application gateway.
 
+### [Add-AzureRmApplicationGatewayRewriteRuleSet](Add-AzureRmApplicationGatewayRewriteRuleSet.md) 
+Adds a rewrite rule set to an application gateway. 
+
 ### [Add-AzureRmApplicationGatewaySslCertificate](Add-AzureRmApplicationGatewaySslCertificate.md)
 Adds an SSL certificate to an application gateway.
 
@@ -175,6 +178,9 @@ Gets an existing redirect configuration from an Application Gateway.
 
 ### [Get-AzureRmApplicationGatewayRequestRoutingRule](Get-AzureRmApplicationGatewayRequestRoutingRule.md)
 Gets the request routing rule of an application gateway.
+
+### [Get-AzureRmApplicationGatewayRewriteRuleSet](Get-AzureRmApplicationGatewayRewriteRuleSet.md) 
+Gets the rewrite rule set of an application gateway.
 
 ### [Get-AzureRmApplicationGatewaySku](Get-AzureRmApplicationGatewaySku.md)
 Gets the SKU of an application gateway.
@@ -506,6 +512,18 @@ Creates a redirect configuration for an application gateway.
 ### [New-AzureRmApplicationGatewayRequestRoutingRule](New-AzureRmApplicationGatewayRequestRoutingRule.md)
 Creates a request routing rule for an application gateway.
 
+### [New-AzureRmApplicationGatewayRewriteRule](New-AzureRmApplicationGatewayRewriteRule.md) 
+Creates a rewrite rule for an application gateway. 
+
+### [New-AzureRmApplicationGatewayRewriteRuleActionSet](New-AzureRmApplicationGatewayRewriteRuleActionSet.md) 
+Creates a rewrite rule action set for an application gateway. 
+
+### [New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration](New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration.md) 
+Creates a rewrite rule header configuration for an application gateway. 
+
+### [New-AzureRmApplicationGatewayRewriteRuleSet](New-AzureRmApplicationGatewayRewriteRuleSet.md) 
+Creates a rewrite rule set for an application gateway. 
+
 ### [New-AzureRmApplicationGatewaySku](New-AzureRmApplicationGatewaySku.md)
 Creates a SKU for an application gateway.
 
@@ -756,6 +774,9 @@ Removes a redirect configuration from an existing Application Gateway.
 ### [Remove-AzureRmApplicationGatewayRequestRoutingRule](Remove-AzureRmApplicationGatewayRequestRoutingRule.md)
 Removes a request routing rule from an application gateway.
 
+### [Remove-AzureRmApplicationGatewayRewriteRuleSet](Remove-AzureRmApplicationGatewayRewriteRuleSet.md) 
+Removes a rewrite rule set from an application gateway.
+
 ### [Remove-AzureRmApplicationGatewaySslCertificate](Remove-AzureRmApplicationGatewaySslCertificate.md)
 Removes an SSL certificate from an Azure application gateway.
 
@@ -978,6 +999,9 @@ Sets the redirect configuration on an existing Application Gateway.
 ### [Set-AzureRmApplicationGatewayRequestRoutingRule](Set-AzureRmApplicationGatewayRequestRoutingRule.md)
 Modifies a request routing rule for an application gateway.
 
+### [Set-AzureRmApplicationGatewayRewriteRuleSet](Set-AzureRmApplicationGatewayRewriteRuleSet.md) 
+Modifies a rewrite rule set for an application gateway.
+
 ### [Set-AzureRmApplicationGatewaySku](Set-AzureRmApplicationGatewaySku.md)
 Modifies the SKU of an application gateway.
 
@@ -1154,4 +1178,3 @@ Update-AzureRmVpnGateway updates a scalable VPN Gateway to the appropriate goal 
 
 ### [Update-AzureRmVpnSite](Update-AzureRmVpnSite.md)
 Updates a VpnSite representing a customer branch to an intended goal state.
-
