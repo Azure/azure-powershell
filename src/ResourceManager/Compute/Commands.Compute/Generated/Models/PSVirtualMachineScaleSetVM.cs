@@ -19,9 +19,10 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
@@ -39,48 +40,28 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             }
         }
 
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Type { get; set; }
-
-        public string Location { get; set; }
-
-        public IDictionary<string, string> Tags { get; set; }
-        
-        public Plan Plan { get; set; }
-        
-        public string LicenseType { get; set; }
-        
-        public string ProvisioningState { get; set; }
-        
-        public SubResource AvailabilitySet { get; set; }
-        
-        public DiagnosticsProfile DiagnosticsProfile { get; set; }
-        
-        public NetworkProfile NetworkProfile { get; set; }
-        
-        public OSProfile OsProfile { get; set; }
-        
-        public StorageProfile StorageProfile { get; set; }
-        
-        public HardwareProfile HardwareProfile { get; set; }
-        
-        //public VirtualMachineScaleSetVMInstanceView InstanceView { get; } // hide this until breaking change release
-        
-        public string VmId { get; set; }
-        
-        public bool? LatestModelApplied { get; set; }
-        
-        public Sku Sku { get; set; }
-        
         public string InstanceId { get; set; }
-        
+        public Sku Sku { get; set; }
+        public bool? LatestModelApplied { get; set; }
+        public string VmId { get; set; }
+        //public VirtualMachineScaleSetVMInstanceView InstanceView { get; set; }
+        public HardwareProfile HardwareProfile { get; set; }
+        public StorageProfile StorageProfile { get; set; }
+        public AdditionalCapabilities AdditionalCapabilities { get; set; }
+        public OSProfile OsProfile { get; set; }
+        public NetworkProfile NetworkProfile { get; set; }
+        public DiagnosticsProfile DiagnosticsProfile { get; set; }
+        public SubResource AvailabilitySet { get; set; }
+        public string ProvisioningState { get; set; }
+        public string LicenseType { get; set; }
+        public Plan Plan { get; set; }
         public IList<VirtualMachineExtension> Resources { get; set; }
-        
-        public IList<string> Zones { get; set; }
+        public System.Collections.Generic.IList<string> Zones { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Location { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
 
-        public VirtualMachineInstanceView InstanceView { get; set; }
     }
 }

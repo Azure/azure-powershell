@@ -30,7 +30,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVaultCertificateConfig", SupportsShouldProcess = true)]
-    [OutputType(typeof(Microsoft.Azure.Management.Compute.Models.VaultCertificate))]
+    [OutputType(typeof(VaultCertificate))]
     public partial class NewAzureRmVmssVaultCertificateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            var vVaultCertificates = new Microsoft.Azure.Management.Compute.Models.VaultCertificate();
+            var vVaultCertificates = new VaultCertificate();
 
             vVaultCertificates.CertificateUrl = this.MyInvocation.BoundParameters.ContainsKey("CertificateUrl") ? this.CertificateUrl : null;
             vVaultCertificates.CertificateStore = this.MyInvocation.BoundParameters.ContainsKey("CertificateStore") ? this.CertificateStore : null;

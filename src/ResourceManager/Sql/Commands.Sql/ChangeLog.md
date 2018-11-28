@@ -17,12 +17,16 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Releas
+## Current Release
+* Fixed issue with using Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings with storage account name parameter set
 * Support for custom collation on managed instance
+
+## Version 4.11.6-preview
+* Add DnsZonePartner Parameter for New-AzureRmSqlManagedInstance cmdlet to support AutoDr for Managed Instance.
 
 ## Version 4.11.5
 * Fixed issue where some backup cmdlets would not recognize the current azure subscription
-* Add DnsZonePartner Parameter for New-AzureRmSqlManagedInstance cmdlet to support AutoDr for Managed Instance.
+* Fixed issue where Tags were not being added correctly in New-AzureRmSqlDatabaseCopy 
 
 ## Version 4.11.4-preview
 * New Cmdlets for Management.Sql to allow customers to add TDE keys and set TDE protector for managed instances
@@ -49,7 +53,7 @@
 
 ## Version 4.11.1
 * Updated to the latest version of the Azure ClientRuntime.
-	
+
 
 ## Version 4.11.0
 * Adding Server Advanced Threat Protection support with the following cmdlets:

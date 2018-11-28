@@ -19,7 +19,23 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Added new sizes to the whitelist of VM sizes for which Accel Net will be turned on when using the simple param set for `New-AzureRmVm`
+
+## Version 5.8.0
+* Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets
+* Get-AzureRmVMImage shows AutomaticOSUpgradeProperties
+* Fixed SetAzureRmVMChefExtension -BootstrapOptions and -JsonAttribute option values are not setting in json format.
+
+## Version 5.7.2
+* Add EnableUltraSSD switch parameter to New-AzureRmVMConfiig and New-AzureRmVmssConfig.
+* Add UltraSSDEnabled parameter to Update-AuzreRmVM and Update-AzureRmVmss.
+* Shared Gallery cmdlets
+
+## Version 5.7.1
+* Add DiskIOPSReadWrite and  DiskMBpsReadWrite parameters to New-AzureRmDiskConfig and New-AzureRmDiskUpdateConfig cmdlets 
+* Add DiffDiskSetting parameter to Set-AzureRmVmOSDisk and Set-AzureRmVmssStorageProfile cmdlets
+* Add Location parameter to Get-AzureRmVM
+* Added new sizes to the whitelist of VM sizes for which accelerated networking will be turned on when using the simple param set for `New-AzureRmVm`
+* Added ResourceName argument completer to all cmdlets.
 
 ## Version 5.7.0
 * Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed

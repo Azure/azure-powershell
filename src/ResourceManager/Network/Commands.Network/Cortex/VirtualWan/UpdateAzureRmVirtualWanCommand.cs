@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
             Mandatory = true,
             HelpMessage = "The resource name.")]
+        [ResourceNameCompleter("Microsoft.Network/virtualWans", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

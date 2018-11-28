@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.ContainerInstance, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.1.0.2-preview\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.1.0.3-preview\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
