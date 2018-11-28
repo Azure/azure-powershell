@@ -356,7 +356,7 @@
           ContinueOnError="false" />
     <!-- Generate the Help -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
-          Condition="'$(SkipHelp)' == 'false'"
+          Condition="'$(SkipHelp)' == 'false' And '$(RunStaticAnalysis)' == 'true'"
           ContinueOnError="false"/>
 
     <CallTarget targets="DependencyAnalysisNetcore" ContinueOnError="ErrorAndContinue" Condition="'$(RunStaticAnalysis)' == 'true'" />

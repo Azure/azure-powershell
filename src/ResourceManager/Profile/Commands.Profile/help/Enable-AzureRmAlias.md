@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: Az.Profile
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/enable-azurermalias
 schema: 2.0.0
 ---
 
 # Enable-AzureRmAlias
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Enables AzureRm prefix aliases for Az modules.
 
 ## SYNTAX
 
@@ -18,16 +18,23 @@ Enable-AzureRmAlias [-Scope <String>] [-Module <String[]>] [-PassThru]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Enables AzureRm prefix aliases for Az modules. If -Module is specified, only modules listed will have aliases enabled. Otherwise all AzureRm aliases are enabled.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```
+PS C:\> Enable-AzureRmAlias
 ```
 
-{{ Add example description here }}
+Enables all AzureRm prefixes for the current PowerShell session.
+
+### Example 1
+```
+PS C:\> Enable-AzureRmAlias -Module Az.Profile -Scope CurrentUser
+```
+
+Enables AzureRm aliases for the Az.Profile module for both the current process and for the current user.
 
 ## PARAMETERS
 

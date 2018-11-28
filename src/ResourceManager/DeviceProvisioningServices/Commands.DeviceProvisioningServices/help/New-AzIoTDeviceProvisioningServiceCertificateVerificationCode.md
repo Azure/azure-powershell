@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
 Module Name: Az.DeviceProvisioningServices
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/new-aziotdeviceprovisioningservicecertificateverificationcode
 schema: 2.0.0
 ---
 

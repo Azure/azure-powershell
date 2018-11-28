@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: Az.Profile
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/uninstall-azurerm
 schema: 2.0.0
 ---
 
 # Uninstall-AzureRm
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes all AzureRm modules from a machine.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Uninstall-AzureRm [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatI
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Removes all AzureRm modules from a machine.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```
+PS C:\> Uninstall-AzureRm
 ```
 
-{{ Add example description here }}
+Running this command will remove all AzureRm modules from the machine.
 
 ## PARAMETERS
 
