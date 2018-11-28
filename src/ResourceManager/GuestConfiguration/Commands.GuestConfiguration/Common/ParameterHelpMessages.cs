@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
         public const string InitiativeName = "Name of a policy where definition type is Initiative and category is Guest Configuration";
         public const string InitiativeId = "Definition Id of a policy where definition type is Initiative and category is Guest Configuration";
         public const string ReportId = "Report Id of a Guest Configuration policy report. A policy where definition type is Initiative and category is Guest Configuration must be assigned to a scope to get reports.";
-        public const string DetailedSwitch = "Retrieves detailed Guest Configuration policy report. It includes compliance status and reasons for the resources for which the policy checks compliance, and more.";
-        public const string LatestSwitch = "Limits the detailed reports to the latest one, one latest report for each policy in an initiative(policy set).";
+        public const string ShowOnlyChange = "Shows historical status changes only for guest configuration policies. Skips statuses that have not changed between two compliance status audit runs.";
     }
 }

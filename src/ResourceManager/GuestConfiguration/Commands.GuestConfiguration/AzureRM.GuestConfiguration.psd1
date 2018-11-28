@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.9.0'
+ModuleVersion = '0.9.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -72,7 +72,7 @@ NestedModules = @('.\Microsoft.Azure.Commands.GuestConfiguration.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmVMGuestPolicyReport'
+CmdletsToExport = 'Get-AzureRmVMGuestPolicyReport', 'Get-AzureRmVMGuestPolicyStatusHistory'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.GuestConfiguration {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid resource group name {0} or VM name {1}. Please check whether the resource group and VM exist in subscription..
+        /// </summary>
+        internal static string InvalidRGOrVMName {
+            get {
+                return ResourceManager.GetString("InvalidRGOrVMName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Limits the detailed reports to the latest one, one latest report for each policy in an initiative(policy set)..
         /// </summary>
         internal static string LatestSwitch {
@@ -147,6 +156,15 @@ namespace Microsoft.Azure.Commands.GuestConfiguration {
         internal static string NoInitiativeNameFound {
             get {
                 return ResourceManager.GetString("NoInitiativeNameFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No report was found for report id {0}..
+        /// </summary>
+        internal static string NotFoundByReportId {
+            get {
+                return ResourceManager.GetString("NotFoundByReportId", resourceCulture);
             }
         }
         

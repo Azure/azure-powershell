@@ -26,13 +26,17 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
     /// </summary>
     public class GuestConfigurationPolicyAssignmentReport
     {
-        public GuestConfigurationPolicyAssignmentReport(GuestConfigurationAssignmentReport gcrpReport, string policyDisplayName)
+        public GuestConfigurationPolicyAssignmentReport(GuestConfigurationAssignmentReport gcrpReport, GuestConfigurationPolicyAssignment gcPolicyAssignment)
         {
-            this.PolicyDisplayName = policyDisplayName;
-
-            if(gcrpReport.Properties != null)
+            if(gcPolicyAssignment != null)
             {
-                this.ConfigurationName = gcrpReport.Properties.Assignment.Configuration.Name;
+                this.PolicyDisplayName = gcPolicyAssignment.PolicyDisplayName;
+                this.LatestReportId = gcrpReport.Id;
+                this.Configuration = gcPolicyAssignment.Configuration;
+            }
+
+            if (gcrpReport.Properties != null)
+            {
                 this.ComplianceStatus = gcrpReport.Properties.ComplianceStatus;
             }
 
@@ -111,8 +115,6 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
 
         public string PolicyDisplayName { get; set; }
 
-        public string ConfigurationName { get; set; }
-
         public string ComplianceStatus { get; set; }
 
         public IList<ComplianceReasonDetails> ComplianceReasons { get; set; }
@@ -121,7 +123,11 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
 
         public DateTime? EndTime { get; set; }
 
+        public string LatestReportId { get; set; }
+
         public VMInfo VM { get; set; }
+
+        public GuestConfigurationPolicyAssignment.ConfigurationInfo Configuration { get; set; }
 
         public class ComplianceReasonDetails
         {

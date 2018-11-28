@@ -18,38 +18,10 @@ Get guest configuration policy report by Vm name scope
 #>
 function Get-AzureRmVMGuestPolicyReport-VmNameScope
 {
-	$rgName = "VivsCmdlet"
-	$vmName = "VivsCmdlet0"
+	$rgName = "VivsGL"
+	$vmName = "VivsGL0"
 
     $reports = Get-AzureRmVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName
-	Assert-NotNull $reports
-	Assert-True { $reports.Count -gt 0 }
-}
-
-<#
-.SYNOPSIS
-Get guest configuration policy report by Vm name scope, detailed
-#>
-function Get-AzureRmVMGuestPolicyReport-VmNameScope-Detailed
-{
-	$rgName = "VivsCmdlet"
-	$vmName = "VivsCmdlet0"
-
-    $reports = Get-AzureRmVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName -Detailed
-	Assert-NotNull $reports
-	Assert-True { $reports.Count -gt 0 }
-}
-
-<#
-.SYNOPSIS
-Get guest configuration policy report by Vm name scope, detailed and latest
-#>
-function Get-AzureRmVMGuestPolicyReport-VmNameScope-Detailed-Latest
-{
-	$rgName = "VivsCmdlet"
-	$vmName = "VivsCmdlet0"
-
-    $reports = Get-AzureRmVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName -Detailed -Latest
 	Assert-NotNull $reports
 	Assert-True { $reports.Count -gt 0 }
 }
@@ -60,8 +32,8 @@ Get guest configuration policy report by Initiative id scope
 #>
 function Get-AzureRmVMGuestPolicyReport-InitiativeIdScope
 {
-	$rgName = "VivsCmdlet"
-	$vmName = "VivsCmdlet0"
+	$rgName = "VivsGL"
+	$vmName = "VivsGL0"
 	$initiativeId = "/providers/Microsoft.Authorization/policySetDefinitions/3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6"
 
     $reports = Get-AzureRmVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName -InitiativeId $initiativeId
@@ -71,42 +43,12 @@ function Get-AzureRmVMGuestPolicyReport-InitiativeIdScope
 
 <#
 .SYNOPSIS
-Get guest configuration policy report by Initiative id scope, detailed
-#>
-function Get-AzureRmVMGuestPolicyReport-InitiativeIdScope-Detailed
-{
-	$rgName = "VivsCmdlet"
-	$vmName = "VivsCmdlet0"
-	$initiativeId = "/providers/Microsoft.Authorization/policySetDefinitions/3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6"
-
-    $reports = Get-AzureRmVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName -InitiativeId $initiativeId -Detailed
-	Assert-NotNull $reports
-	Assert-True { $reports.Count -gt 0 }
-}
-
-<#
-.SYNOPSIS
-Get guest configuration policy report by Initiative id scope, detailed and latest
-#>
-function Get-AzureRmVMGuestPolicyReport-InitiativeIdScope-Detailed-Latest
-{
-	$rgName = "VivsCmdlet"
-	$vmName = "VivsCmdlet0"
-	$initiativeId = "/providers/Microsoft.Authorization/policySetDefinitions/3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6"
-
-    $reports = Get-AzureRmVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName -InitiativeId $initiativeId -Detailed -Latest
-	Assert-NotNull $reports
-	Assert-True { $reports.Count -gt 0 }
-}
-
-<#
-.SYNOPSIS
-Get guest configuration policy report by Initiative id scope
+Get guest configuration policy report by Initiative name scope
 #>
 function Get-AzureRmVMGuestPolicyReport-InitiativeNameScope
 {
-	$rgName = "VivsCmdlet"
-	$vmName = "VivsCmdlet0"
+	$rgName = "VivsGL"
+	$vmName = "VivsGL0"
 	$initiativeName = "3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6"
 
     $reports = Get-AzureRmVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
@@ -116,30 +58,14 @@ function Get-AzureRmVMGuestPolicyReport-InitiativeNameScope
 
 <#
 .SYNOPSIS
-Get guest configuration policy report by Initiative id scope, detailed
+Get guest configuration policy by reportId scope
 #>
-function Get-AzureRmVMGuestPolicyReport-InitiativeNameScope-Detailed
+function Get-AzureRmVMGuestPolicyReport-ReportIdScope
 {
-	$rgName = "VivsCmdlet"
-	$vmName = "VivsCmdlet0"
-	$initiativeName = "3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6"
+	$rgName = "VivsGL"
+	$vmName = "VivsGL0"
+	$reportId= "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/VivsGL/providers/Microsoft.Compute/virtualMachines/VivsGL0/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/PasswordMustMeetComplexityRequirements/reports/7421bae4-60f0-4712-a45f-c9c960ffc75c"
 
-    $reports = Get-AzureRmVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName -Detailed
-	Assert-NotNull $reports
-	Assert-True { $reports.Count -gt 0 }
-}
-
-<#
-.SYNOPSIS
-Get guest configuration policy report by Initiative id scope, detailed and latest
-#>
-function Get-AzureRmVMGuestPolicyReport-InitiativeNameScope-Detailed-Latest
-{
-	$rgName = "VivsCmdlet"
-	$vmName = "VivsCmdlet0"
-	$initiativeName = "3fa7cbf5-c0a4-4a59-85a5-cca4d996d5a6"
-
-    $reports = Get-AzureRmVMGuestPolicyReport -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName -Detailed -Latest
-	Assert-NotNull $reports
-	Assert-True { $reports.Count -gt 0 }
+    $report = Get-AzureRmVMGuestPolicyReport -ReportId $reportId
+	Assert-NotNull $report
 }

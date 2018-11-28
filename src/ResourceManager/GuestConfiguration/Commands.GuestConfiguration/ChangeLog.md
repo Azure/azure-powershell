@@ -17,5 +17,10 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Release
- - First release of Get-AzureRmGuestConfigurationPolicy report cmdlet (version: 0.9.0-preview)
+## Current release 
+ - Return only the latest and detailed reports for all policies assigned to VM (optionally, by initiative id or name) by default with Get-AzureRmVmGuestPolicyReport cmdlet
+ - Remove Detailed and Latest switches of Get-AzureRmVmGuestPolicyReport cmdlet
+ - Introducing Get-AzureRmVmGuestPolicyStatusHistory cmdlet; gets guest configuration policy compliance status history for an initiative of type "Guest Configuration" that is assigned to a VM.
+
+## Version 0.9.0-preview
+ - First release of Get-AzureRmVmGuestPolicyReport report cmdlet

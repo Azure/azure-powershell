@@ -2,113 +2,46 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Commands.GuestConfiguration.Models.GuestConfigurationPolicyAssignment</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.GuestConfiguration.Models.GuestConfigurationPolicyAssignment</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <PropertyName>PolicyDisplayName</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>
-                    $_.PolicyDisplayName -ne $null
-                  </ScriptBlock>
-                </ItemSelectionCondition>
-              </ListItem>
-              <ListItem>
-                <PropertyName>ComplianceStatus</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>
-                    $_.ComplianceStatus -ne $null
-                  </ScriptBlock>
-                </ItemSelectionCondition>
-              </ListItem>
-              <ListItem>
-                <PropertyName>LatestReportId</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>
-                    $_.LatestReportId -ne $null
-                  </ScriptBlock>
-                </ItemSelectionCondition>
-              </ListItem>
-              <ListItem>
-                <PropertyName>LastUpdated</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>
-                    $_.LastUpdated.ToString("MM/dd/yyyy hh:mm:ss tt")
-                  </ScriptBlock>
-                </ItemSelectionCondition>
-              </ListItem>
-              <ListItem>
-                <PropertyName>Configuration</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.GuestConfiguration.Models.GuestConfigurationPolicyAssignmentReport</Name>
+      <Name>GuestConfigurationPolicyAssignmentReport</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.GuestConfiguration.Models.GuestConfigurationPolicyAssignmentReport</TypeName>
       </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <PropertyName>PolicyDisplayName</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>
-                    $_.PolicyDisplayName -ne $null
-                  </ScriptBlock>
-                </ItemSelectionCondition>
-              </ListItem>
-              <ListItem>
-                <PropertyName>ConfigurationName</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>
-                    $_.ConfigurationName -ne $null
-                  </ScriptBlock>
-                </ItemSelectionCondition>
-              </ListItem>
-              <ListItem>
-                <PropertyName>ComplianceStatus</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>
-                    $_.ComplianceStatus -ne $null
-                  </ScriptBlock>
-                </ItemSelectionCondition>
-              </ListItem>
-              <ListItem>
-                <PropertyName>ComplianceReasons</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>StartTime</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>
-                    $_.StartTime.ToString("MM/dd/yyyy hh:mm:ss tt")
-                  </ScriptBlock>
-                </ItemSelectionCondition>
-              </ListItem>
-              <ListItem>
-                <PropertyName>EndTime</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>
-                    $_.EndTime.ToString("MM/dd/yyyy hh:mm:ss tt")
-                  </ScriptBlock>
-                </ItemSelectionCondition>
-              </ListItem>
-              <ListItem>
-                <PropertyName>VM</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
+       <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader><Label>PolicyDisplayName</Label></TableColumnHeader>
+                    <TableColumnHeader><Label>ComplianceStatus</Label></TableColumnHeader>
+                    <TableColumnHeader><Label>ComplianceReasons</Label><Width>100</Width></TableColumnHeader>
+                    <TableColumnHeader><Label>StartTime</Label><Width>10</Width></TableColumnHeader>
+                    <TableColumnHeader><Label>EndTime</Label><Width>10</Width></TableColumnHeader>
+                    <TableColumnHeader><Label>VMName</Label><Width>10</Width></TableColumnHeader>
+                    <TableColumnHeader><Label>LatestReportId</Label><Width>10</Width></TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem><PropertyName>PolicyDisplayName</PropertyName></TableColumnItem>
+                            <TableColumnItem><PropertyName>ComplianceStatus</PropertyName></TableColumnItem>
+                            <TableColumnItem>
+                              <ScriptBlock>
+                                If($_.ComplianceReasons -ne $null -and $_.ComplianceReasons[0] -ne $null -and $_.ComplianceReasons[0].Reasons -ne $null -and 
+                                   $_.ComplianceReasons[0].Reasons[0] -ne $null -and $_.ComplianceReasons[0].Reasons[0].Reason -ne $null  -and 
+                                   $_.ComplianceReasons[0].Reasons[0].Reason -ne $null)
+                                  {
+                                    if(99 -lt $_.ComplianceReasons[0].Reasons[0].Reason.Length)
+                                      { $_.ComplianceReasons[0].Reasons[0].Reason.Substring(0, 100) }
+                                    Else 
+                                      { $_.ComplianceReasons[0].Reasons[0].Reason }
+                                  }
+                              </ScriptBlock>
+                          </TableColumnItem>
+                            <TableColumnItem><ScriptBlock>$_.StartTime.ToString("MM/dd/yyyy hh:mm:ss tt")</ScriptBlock></TableColumnItem>
+                            <TableColumnItem><ScriptBlock>$_.EndTime.ToString("MM/dd/yyyy hh:mm:ss tt")</ScriptBlock></TableColumnItem>
+                            <TableColumnItem><ScriptBlock>$_.VM.ResourceId.Substring($_.VM.ResourceId.LastIndexOf("/")+1)</ScriptBlock></TableColumnItem>
+                            <TableColumnItem><ScriptBlock>".." + $_.LatestReportId.Substring($_.LatestReportId.LastIndexOf("/"), 37)</ScriptBlock></TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+       </TableControl>
     </View>
   </ViewDefinitions>
 </Configuration>

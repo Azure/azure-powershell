@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
     /// <summary>
     /// Gets Vm Guest Policy reports (GuestConfiguration policy reports)
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMGuestPolicyReport", DefaultParameterSetName = ParameterSetNames.VmNameScope), 
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMGuestPolicyStatusHistory", DefaultParameterSetName = ParameterSetNames.VmNameScope),
         OutputType(typeof(IList<GuestConfigurationAssignment>), typeof(IList<GuestConfigurationAssignmentReport>))]
-    public class GetAzureRmVMGuestPolicyReport : GuestConfigurationCmdletBase
+    public class GetAzureRmVMGuestPolicyStatusHistory : GuestConfigurationCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [Parameter(ParameterSetName = ParameterSetNames.InitiativeIdScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
@@ -50,9 +50,10 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
         [ValidateNotNullOrEmpty]
         public string InitiativeId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ReportIdScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ReportId)]
-        [ValidateNotNullOrEmpty]
-        public string ReportId { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.InitiativeNameScope, Mandatory = false, HelpMessage = ParameterHelpMessages.ShowOnlyChange)]
+        [Parameter(ParameterSetName = ParameterSetNames.InitiativeIdScope, Mandatory = false, HelpMessage = ParameterHelpMessages.ShowOnlyChange)]
+        [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = false, HelpMessage = ParameterHelpMessages.ShowOnlyChange)]
+        public SwitchParameter ShowOnlyChange { get; set; }
 
         /// <summary>
         /// Executes the cmdlet
@@ -64,38 +65,30 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
             switch (ParameterSetName)
             {
                 case ParameterSetNames.InitiativeNameScope:
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeName(ResourceGroupName, VMName, InitiativeName, false);
-                    if(gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
+                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeName(ResourceGroupName, VMName, InitiativeName, true, ShowOnlyChange.IsPresent);
+                    if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
                         WriteObject(gcPolicyAssignmentReports, true);
-                    }                        
+                    }
                     break;
 
                 case ParameterSetNames.InitiativeIdScope:
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(ResourceGroupName, VMName, InitiativeId, false);
+                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReportsByInitiativeId(ResourceGroupName, VMName, InitiativeId, true, ShowOnlyChange.IsPresent);
 
                     if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
                         WriteObject(gcPolicyAssignmentReports, true);
-                    }                   
-                    break;
-
-                case ParameterSetNames.ReportIdScope:
-                    var policyReport = GetGuestConfigurationAssignmentReportById(ReportId);
-                    if (policyReport != null)
-                    {
-                        WriteObject(policyReport);
                     }
                     break;
 
                 case ParameterSetNames.VmNameScope:
-                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReports(ResourceGroupName, VMName, false);
+                    gcPolicyAssignmentReports = GetAllGuestConfigurationAssignmentReports(ResourceGroupName, VMName, true, ShowOnlyChange.IsPresent);
                     if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
                         WriteObject(gcPolicyAssignmentReports, true);
                     }
                     break;
-            }    
+            }
         }
     }
 }
