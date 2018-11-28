@@ -1,10 +1,8 @@
 <#
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the MIT License. See License.txt in the project root for license information.
-
-Manually created custom quota object class
 #>
-
+using module '..\CustomObjects\ComputeQuotaObject.psm1'
 function ConvertTo-ComputeQuota {
 
     [OutputType([ComputeQuotaObject])]

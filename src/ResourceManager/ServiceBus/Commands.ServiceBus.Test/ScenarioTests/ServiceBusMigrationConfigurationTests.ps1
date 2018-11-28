@@ -22,7 +22,7 @@ function WaitforStatetoBeSucceded
 	
 	$createdMigrationConfig = Get-AzureRmServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
 
-	while($createdMigrationConfig.ProvisioningState -ne "Succeeded")
+	while($createdMigrationConfig.MigrationState -ne "Active" -and $createdMigrationConfig.ProvisioningState -ne "Succeeded")
 	{
 		Wait-Seconds 10
 		$createdMigrationConfig = Get-AzureRmServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
@@ -53,25 +53,6 @@ function WaitforStatetoBeSucceded_namespace
 		$Getnamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
 	}
 
-}
-
-<#
-.SYNOPSIS
-Check the Provisioning state of the created alias and wait till it get succeeded 
-#>
-function WaitforStatetoBeSuccededGeoDR 
-{
-	param([string]$resourceGroupName,[string]$namespaceName,[string]$drConfigName)
-	
-	$createdDRConfig = Get-AzureRmServiceBusGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $drConfigName
-
-	while($createdDRConfig.ProvisioningState -ne "Succeeded")
-	{
-		Wait-Seconds 10
-		$createdDRConfig = Get-AzureRmServiceBusGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $drConfigName
-	}
-
-	return $createdDRConfig
 }
 
 <#
@@ -169,17 +150,17 @@ function ServiceBusMigrationConfigurationTests
 			
 		# Get queues using Premium namespace to check migration
 		$getQueueList = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName2
-		Assert-AreEqual $getQueueList.Count 20 "Total Queue count not 50"
+		Assert-AreEqual $getQueueList.Count 20 "Total Queue count not 20"
 
 		# Get Topic using Premium namespace to check migration			
 		$getTopicList = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName2
-		Assert-AreEqual $getTopicList.Count 20 "Total Topic count not 50"
+		Assert-AreEqual $getTopicList.Count 20 "Total Topic count not 20"
 
 		# Wait till the Namespace Provisioning  state changes to succeeded
 		WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName2
 
 		# Wait till the migrationConfiguration Provisioning  state changes to succeeded
-		WaitforStatetoBeSuccededGeoDR $resourceGroupName $namespaceName2 $namespaceName1
+		WaitforStatetoBeSucceded $resourceGroupName $namespaceName1
 	}
 	Finally
 	{

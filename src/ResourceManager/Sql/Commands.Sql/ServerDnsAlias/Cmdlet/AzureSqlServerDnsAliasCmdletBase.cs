@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Sql.ServerDnsAlias.Services;
 using Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 {
@@ -28,7 +29,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// </summary>
 		[Parameter(Mandatory = true,
 			HelpMessage = "The Azure Sql Server name.")]
-		[ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
 		public virtual string ServerName { get; set; }
 
 		protected override AzureSqlServerDnsAliasAdapter InitModelAdapter(IAzureSubscription subscription)

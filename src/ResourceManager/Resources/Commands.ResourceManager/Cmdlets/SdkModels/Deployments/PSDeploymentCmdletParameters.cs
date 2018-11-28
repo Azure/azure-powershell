@@ -25,5 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public string ParameterUri { get; set; }
 
         public string DeploymentDebugLogLevel { get; set; }
+
+        public OnErrorDeployment OnErrorDeployment { get; set; }
     }
 }

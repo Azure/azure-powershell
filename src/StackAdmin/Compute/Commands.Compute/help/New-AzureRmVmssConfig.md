@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: CE32F620-8DB2-4004-8012-F1C4AA235B60
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermvmssconfig
 schema: 2.0.0
 ---
 
@@ -14,19 +14,19 @@ Creates a VMSS configuration object.
 
 ```
 New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>]
- [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int64>] [[-UpgradePolicyMode] <UpgradeMode>]
+ [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
  [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
  [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
- [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-PlanName <String>]
- [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-RecoveryPolicyMode <RecoveryMode>] [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>]
- [-IdentityType <ResourceIdentityType>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-Zone <String[]>]
+ [-PlanName <String>] [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
+ [-RollingUpgradePolicy <RollingUpgradePolicy>] [-AutoOSUpgrade] [-HealthProbeId <String>]
+ [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-AssignIdentity]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmVmssConfig** cmdlet creates a configurable local Virtual Manager Scale Set (VMSS) object.
-Other cmdlets are needed to configure the VMSS object.
-These cmdlets are:
+The **New-AzureRmVmssConfig** cmdlet creates a configurable local Virtual Manager Scale Set (VMSS)
+object. Other cmdlets are needed to configure the VMSS object. These cmdlets are:
 
 - Set-AzureRmVmssOsProfile
 - Set-AzureRmVmssStorageProfile
@@ -49,11 +49,42 @@ PS C:\> $VMSS = New-AzureRmVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "St
 New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $VMSS;
 ```
 
-This example creates a VMSS configuration object.
-The first command uses the **New-AzureRmVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS.
-The second command uses the **New-AzureRmVmss** cmdlet to create a VMSS that uses the VMSS configuration object created in the first command.
+This example creates a VMSS configuration object. The first command uses the
+**New-AzureRmVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the
+variable named $VMSS. The second command uses the **New-AzureRmVmss** cmdlet to create a VMSS that
+uses the VMSS configuration object created in the first command.
 
 ## PARAMETERS
+
+### -AssignIdentity
+Specify the system assigned identity for the virtual machine scale set.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoOSUpgrade
+Sets whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BootDiagnostic
 Specifies the virtual machine scale set boot diagnostics profile.
@@ -70,9 +101,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Extension
-Specifies the extension information object for the VMSS.
-You can use the **Add-AzureRmVmssExtension** cmdlet to add this object.
+Specifies the extension information object for the VMSS. You can use the
+**Add-AzureRmVmssExtension** cmdlet to add this object.
 
 ```yaml
 Type: VirtualMachineScaleSetExtension[]
@@ -86,11 +132,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Specify the identity of the virtual machine scale set, if configured.
+### -HealthProbeId
+Specify the ID of a load balancer probe used to determine the health of an instance in the virtual machine scale set.
+HealthProbeId is in the form of '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
 
 ```yaml
-Type: ResourceIdentityType
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
@@ -238,11 +285,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RecoveryPolicyMode
-Specify the recovery policy.
+### -RollingUpgradePolicy
+Specifies the rolling upgrade policy.
 
 ```yaml
-Type: RecoveryMode
+Type: RollingUpgradePolicy
 Parameter Sets: (All)
 Aliases: 
 
@@ -272,7 +319,7 @@ Accept wildcard characters: False
 Specifies the number of instances in the VMSS.
 
 ```yaml
-Type: Int64
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
@@ -299,9 +346,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-Specifies the tier of VMSS.
-
-The acceptable values for this parameter are:
+Specifies the tier of VMSS. The acceptable values for this parameter are:
 
 - Standard
 - Basic
@@ -335,7 +380,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies the tags that will be assigned to the VMSS.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -361,10 +408,25 @@ The acceptable values for this parameter are:
 Type: UpgradeMode
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Automatic, Manual
+Accepted values: Automatic, Manual, Rolling
 
 Required: False
 Position: 6
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Zone
+Specifies the zone list for the virtual machine scale set.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -405,12 +467,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
 
-### This cmdlet does not generate any output.
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 
 ## NOTES
 
@@ -425,5 +484,3 @@ This cmdlet does not accept any input.
 [Add-AzureRmVmssExtension](./Add-AzureRmVmssExtension.md)
 
 [New-AzureRmVmss](./New-AzureRmVmss.md)
-
-

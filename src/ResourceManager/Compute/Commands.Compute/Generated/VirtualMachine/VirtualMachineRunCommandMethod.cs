@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -41,8 +42,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (ShouldProcess(this.VMName, VerbsLifecycle.Invoke))
                 {
-                    string resourceGroupName = this.ResourceGroupName;
-                    string vmName = this.VMName;
+                    string resourceGroupName;
+                    string vmName;
+                    switch (this.ParameterSetName)
+                    {
+                        case "ResourceIdParameter":
+                            resourceGroupName = GetResourceGroupName(this.ResourceId);
+                            vmName = GetResourceName(this.ResourceId, "Microsoft.Compute/VirtualMachines");
+                            break;
+                        case "VMParameter":
+                            resourceGroupName = GetResourceGroupName(this.VM.Id);
+                            vmName = GetResourceName(this.VM.Id, "Microsoft.Compute/VirtualMachines");
+                            break;
+                        default:
+                            resourceGroupName = this.ResourceGroupName;
+                            vmName = this.VMName;
+                            break;
+                    }
                     RunCommandInput parameters = new RunCommandInput();
                     parameters.CommandId = this.CommandId;
                     if (this.ScriptPath != null)
@@ -65,11 +81,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                         parameters.Parameters = vParameter;
                     }
-                    if (this.VM != null)
-                    {
-                        vmName = VM.Name;
-                        resourceGroupName = VM.ResourceGroupName;
-                    }
 
                     var result = VirtualMachinesClient.RunCommand(resourceGroupName, vmName, parameters);
                     var psObject = new PSRunCommandResult();
@@ -84,7 +95,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -92,6 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [Alias("Name")]
         public string VMName { get; set; }
 
@@ -109,6 +121,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         [AllowNull]
         public Hashtable Parameter { get; set; }
+
+        [Parameter(
+            ParameterSetName = "ResourceIdParameter",
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceId { get; set; }
 
         [Alias("VMProfile")]
         [Parameter(

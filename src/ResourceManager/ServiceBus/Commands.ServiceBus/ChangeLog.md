@@ -20,6 +20,13 @@
 -->
 ## Current Release
 
+## Version 0.6.13
+* Added MigrationState read-only property to PSServiceBusMigrationConfigurationAttributes which will help to know the Migration state.
+
+## Version 0.6.12
+* Fixed issue
+	- https://github.com/Azure/azure-powershell/issues/7161
+
 ## Version 0.6.11
 * Fixed issues
 	- https://github.com/Azure/azure-powershell/issues/5058

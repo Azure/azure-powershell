@@ -45,12 +45,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public string GatewayManagerEtag { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? AllowGlobalReach { get; set; }
         [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
         public PSExpressRouteCircuitSku Sku { get; set; }
         public List<PSExpressRouteCircuitAuthorization> Authorizations { get; set; }
         public List<PSPeering> Peerings { get; set; }
         [Ps1Xml(Label = "ServiceProviderProperties ServiceProviderName", Target = ViewControl.Table, ScriptBlock = "$_.ServiceProviderProperties.ServiceProviderName")]
         public PSServiceProviderProperties ServiceProviderProperties { get; set; }
+        public PSResourceId ExpressRoutePort { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public double? BandwidthInGbps { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? Stag { get; set; }
 
         [JsonIgnore]
         public string SkuText
@@ -74,6 +81,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ServiceProviderPropertiesText
         {
             get { return JsonConvert.SerializeObject(ServiceProviderProperties, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ExpressRoutePortText
+        {
+            get { return JsonConvert.SerializeObject(ExpressRoutePort, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

@@ -49,7 +49,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.9.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.9.1-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Caching" />
   </ItemGroup>
@@ -100,7 +100,9 @@
     <Compile Include="Entities\ResourceGroup\ExportTemplateParameters.cs" />
     <Compile Include="Entities\ResourceGroup\ResourceBatchMoveParameters.cs" />
     <Compile Include="Entities\Resources\Resource.cs" />
+    <Compile Include="Entities\Resources\ResourceIdentityType.cs" />
     <Compile Include="Entities\Resources\ResourcePlan.cs" />
+    <Compile Include="Entities\Resources\ResourceIdentity.cs" />
     <Compile Include="Entities\Resources\ResourceSku.cs" />
     <Compile Include="Entities\Resources\TerminalProvisioningStates.cs" />
     <Compile Include="Extensions\AsyncExtensions.cs" />
@@ -137,9 +139,11 @@
     <Compile Include="Implementation\ManagedApplications\NewAzureManagedApplication.cs" />
     <Compile Include="Implementation\ManagedApplications\ManagedApplicationCmdletBase.cs" />
     <Compile Include="Implementation\Policy\GetAzurePolicySetDefinition.cs" />
+    <Compile Include="Implementation\Policy\GetAzurePolicyAliasCmdlet.cs" />
     <Compile Include="Implementation\Policy\PolicyHelpStrings.cs" />
     <Compile Include="Implementation\Policy\NewAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\Policy\PolicyCmdletBase.cs" />
+    <Compile Include="Implementation\Policy\PsResourceProviderAlias.cs" />
     <Compile Include="Implementation\Policy\RemoveAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\Policy\SetAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\ResourceGroups\ExportAzureResourceGroupCmdlet.cs" />

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
@@ -21,8 +22,6 @@ using Microsoft.WindowsAzure.Commands.Sync.Download;
 using System;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
@@ -38,7 +37,6 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             Mandatory = true,
             ParameterSetName = ResourceGroupParameterSet,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -49,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Key of the storage account")]
         [ValidateNotNullOrEmpty]
         [Alias("sk")]
-        public string StorageKey  { get; set; }
+        public string StorageKey { get; set; }
 
         [Parameter(
             Position = 1,
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Uri to blob")]
         [ValidateNotNullOrEmpty]
         [Alias("src", "Source")]
-        public Uri SourceUri  { get; set; }
+        public Uri SourceUri { get; set; }
 
         [Parameter(
             Position = 2,
@@ -66,7 +64,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Local path of the vhd file")]
         [ValidateNotNullOrEmpty]
         [Alias("lf")]
-        public FileInfo LocalFilePath  { get; set; }
+        public FileInfo LocalFilePath { get; set; }
 
         private int numberOfThreads = DefaultNumberOfUploaderThreads;
 
@@ -89,7 +87,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Delete the local file if already exists")]
         [ValidateNotNullOrEmpty]
         [Alias("o")]
-        public SwitchParameter OverWrite  { get; set; }
+        public SwitchParameter OverWrite { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -122,15 +120,15 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
             if (storagekey == null)
             {
-                var storageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(
+                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
 
                 var storageService = storageClient.StorageAccounts.GetProperties(resourceGroupName, blobUri.StorageAccountName);
                 if (storageService != null)
                 {
-                    var storageKeys = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageService.StorageAccount.Name);
-                    storagekey = storageKeys.StorageAccountKeys.Key1;
+                    var storageKeys = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageService.Name);
+                    storagekey = storageKeys.GetKey1();
                 }
             }
 

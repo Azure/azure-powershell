@@ -24,7 +24,7 @@ Add-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-
  [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [-EnableAdfsAuthentication]
  [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
  [[-BatchEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>]
- [[-AzureOperationalInsightsEndpoint] <String>] [-Scope <ContextModificationScope>]
+ [[-AzureOperationalInsightsEndpoint] <String>] [-AzureAnalysisServicesEndpointSuffix <String>] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -53,37 +53,22 @@ PS C:\> Add-AzureRmEnvironment -Name TestEnvironment `
         -GalleryEndpoint TestGalleryEndpoint `
         -GraphEndpoint TestGraphEndpoint
 
+Name            Resource Manager Url ActiveDirectory Authority
+----            -------------------- -------------------------
+TestEnvironment TestRMEndpoint       TestADEndpoint/
+
+PS C:\> Set-AzureRmEnvironment -Name TestEnvironment `
+        -ActiveDirectoryEndpoint NewTestADEndpoint `
+        -GraphEndpoint NewTestGraphEndpoint | Format-List
+
 Name                                              : TestEnvironment
 EnableAdfsAuthentication                          : False
+OnPremise                                         : False
 ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
 AdTenant                                          :
 GalleryUrl                                        : TestGalleryEndpoint
 ManagementPortalUrl                               :
-ServiceManagementUrl                              : 
-PublishSettingsFileUrl                            :
-ResourceManagerUrl                                : TestRMEndpoint
-SqlDatabaseDnsSuffix                              :
-StorageEndpointSuffix                             :
-ActiveDirectoryAuthority                          : TestADEndpoint
-GraphUrl                                          : TestGraphEndpoint
-GraphEndpointResourceId                           :
-TrafficManagerDnsSuffix                           :
-AzureKeyVaultDnsSuffix                            :
-AzureDataLakeStoreFileSystemEndpointSuffix        :
-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
-AzureKeyVaultServiceEndpointResourceId            :
-
-PS C:\> Set-AzureRmEnvironment -Name TestEnvironment
-        -ActiveDirectoryEndpoint NewTestADEndpoint
-        -GraphEndpoint NewTestGraphEndpoint
-
-Name                                              : TestEnvironment
-EnableAdfsAuthentication                          : False
-ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
-AdTenant                                          :
-GalleryUrl                                        : TestGalleryEndpoint
-ManagementPortalUrl                               :
-ServiceManagementUrl                              : 
+ServiceManagementUrl                              :
 PublishSettingsFileUrl                            :
 ResourceManagerUrl                                : TestRMEndpoint
 SqlDatabaseDnsSuffix                              :
@@ -93,12 +78,19 @@ GraphUrl                                          : NewTestGraphEndpoint
 GraphEndpointResourceId                           :
 TrafficManagerDnsSuffix                           :
 AzureKeyVaultDnsSuffix                            :
+DataLakeEndpointResourceId                        :
 AzureDataLakeStoreFileSystemEndpointSuffix        :
 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
 AzureKeyVaultServiceEndpointResourceId            :
-```
+AzureOperationalInsightsEndpointResourceId        :
+AzureOperationalInsightsEndpoint                  :
+AzureAnalysisServicesEndpointSuffix               :
+VersionProfiles                                   : {}
+ExtendedProperties                                : {}
+BatchEndpointResourceId                           :
 
 In this example we are creating a new Azure environment with sample endpoints using Add-AzureRmEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzureRmEnvironment.
+```
 
 ## PARAMETERS
 
@@ -161,6 +153,22 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### -AzureAnalysisServicesEndpointSuffix
+Dns Suffix of Azure Analysis Services service endpoints
+
+```yaml
+Type: System.String
+Parameter Sets: Name
+Aliases:
+
+Required: False
+Position: 15
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 
 ### -AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix
 Dns Suffix of Azure Data Lake Analytics job and catalog services

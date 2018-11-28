@@ -42,6 +42,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmFromSIGImage()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmFromSIGImage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmWithUltraSSD()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmWithUltraSSD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmWithAccelNet()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmWithAccelNet");
@@ -73,7 +87,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             /**
              * To record this test run these commands first :
              * New-AzureRmResourceGroup -Name UAITG123456 -Location 'Central US'
-             * New-AzureRmUserAssignedIdentity -ResourceGroupName  UAITG123456 -NameUAITG123456Identity
+             * New-AzureRmUserAssignedIdentity -ResourceGroupName  UAITG123456 -Name UAITG123456Identity
              * 
              * Now get the identity :
              * 

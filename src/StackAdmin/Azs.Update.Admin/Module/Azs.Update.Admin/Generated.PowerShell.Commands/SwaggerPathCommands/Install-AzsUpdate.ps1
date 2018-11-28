@@ -22,8 +22,11 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ResourceId
     The resource id.
 
+.PARAMETER AsJob
+    Run asynchronous as a job and return the job object.
+
 .PARAMETER Force
-    Flag to remove the item without confirmation.
+    Don't ask for confirmation.
 
 .EXAMPLE
 
@@ -92,8 +95,10 @@ function Install-AzsUpdate {
             $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
+        Write-Warning -Message 'Run Test-AzureStack -Group UpdateReadiness to validate the status of your Azure Stack and then resolve any operational issues found, including all warnings and failures.'
+        
         if ($PsCmdlet.ShouldProcess($Name, "Install the update")) {
-            if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Install the update?", "Performing operation ApplyWithHttpMessagesAsync on $Name")) {
+            if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Run Test-AzureStack -Group UpdateReadiness to validate the status of your Azure Stack and then resolve any operational issues found, including all warnings and failures. Are you sure you want to continue?", "Performing Update $Name")) {
 
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient'

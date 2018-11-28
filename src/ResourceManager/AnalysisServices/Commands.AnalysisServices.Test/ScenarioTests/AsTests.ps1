@@ -7,7 +7,7 @@ function Test-AnalysisServicesServer
 	try
 	{  
 		# Creating server
-		$location = Get-Location
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		$backupBlobContainerUri = $env:AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI
@@ -105,9 +105,8 @@ function Test-AnalysisServicesServer
 		Suspend-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
-		# this is to ensure backward compatibility compatibility. The servie side would make change to differenciate state and provisioningState in future
 		Assert-True {$serverGetItem.State -like "Paused"}
-		Assert-True {$serverGetItem.ProvisioningState -like "Paused"}
+		# Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"} # TODO: Uncomment this in future after fix is deployed.
 
 		# Resume Analysis Servicesserver
 		Resume-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
@@ -139,7 +138,7 @@ function Test-AnalysisServicesServerScaleUpDown
 	try
 	{  
 		# Creating server
-		$location = Get-Location
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -195,7 +194,7 @@ function Test-AnalysisServicesServerFirewall
 	try
 	{  
 		# Creating server
-		$location = Get-Location Microsoft.AnalysisServices 'servers' 'West US'
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -262,7 +261,7 @@ function Test-AnalysisServicesServerScaleOutIn
 	try
 	{  
 		# Creating server
-		$location = Get-Location Microsoft.AnalysisServices 'servers' 'West US'
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -324,7 +323,7 @@ function Test-AnalysisServicesServerDisableBackup
 	try
 	{  
 		# Creating server
-		$location = Get-Location
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		$backupBlobContainerUri = $env:AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI
@@ -390,7 +389,7 @@ function Test-NegativeAnalysisServicesServer
 	try
 	{
 		# Creating Account
-		$location = Get-Location
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -450,7 +449,7 @@ function Test-AnalysisServicesServerLogExport
 	)
     try
     {
-        $location = Get-Location
+        $location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -498,7 +497,7 @@ function Test-AnalysisServicesServerRestart
 	try
 	{
 		# Creating server
-		$location = Get-Location
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -554,7 +553,7 @@ function Test-AnalysisServicesServerSynchronizeSingle
 	try
 	{
 		# Creating server
-        $location = Get-Location
+        $location = Get-AnalysisServicesLocation
         $resourceGroupName = Get-ResourceGroupName
         $serverName = Get-AnalysisServicesServerName
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -633,7 +632,7 @@ function Test-AnalysisServicesServerGateway
     try
     {
         # Creating server
-        $location = Get-Location
+        $location = Get-AnalysisServicesLocation
         $resourceGroupName = Get-ResourceGroupName
         $serverName = Get-AnalysisServicesServerName
         $gatewayName = $env:GATEWAY_NAME

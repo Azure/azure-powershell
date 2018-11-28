@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ComputeAutomationAutoMapperProfile.Initialize();
         }
 
         protected static PSArgument[] ConvertFromObjectsToArguments(string[] names, object[] objects)
@@ -80,6 +79,70 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             return objects;
         }
 
+        public IAvailabilitySetsOperations AvailabilitySetsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.AvailabilitySets;
+            }
+        }
+
+        public IContainerServicesOperations ContainerServicesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.ContainerServices;
+            }
+        }
+
+        public IDisksOperations DisksClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.Disks;
+            }
+        }
+
+        public IImagesOperations ImagesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.Images;
+            }
+        }
+
+        public IResourceSkusOperations ResourceSkusClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.ResourceSkus;
+            }
+        }
+
+        public ISnapshotsOperations SnapshotsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.Snapshots;
+            }
+        }
+
+        public IVirtualMachineRunCommandsOperations VirtualMachineRunCommandsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineRunCommands;
+            }
+        }
+
+        public IVirtualMachineScaleSetRollingUpgradesOperations VirtualMachineScaleSetRollingUpgradesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetRollingUpgrades;
+            }
+        }
+
         public IVirtualMachineScaleSetsOperations VirtualMachineScaleSetsClient
         {
             get
@@ -93,6 +156,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             get
             {
                 return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMs;
+            }
+        }
+
+        public IVirtualMachinesOperations VirtualMachinesClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachines;
             }
         }
 
@@ -164,7 +235,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             {
                                 Type propType = elem[i].GetType();
 
-                                if (propType.IsSerializable)
+                                if (propType.IsSerializable || propType.Equals(typeof(Newtonsoft.Json.Linq.JObject)))
                                 {
                                     tupleList.Add(MakeTuple(property.Name + "[" + i + "]", elem[i].ToString(), depth));
                                 }

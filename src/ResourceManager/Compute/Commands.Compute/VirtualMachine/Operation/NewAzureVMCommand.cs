@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false)]
@@ -221,6 +221,10 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public int[] DataDiskSizeInGb { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public SwitchParameter EnableUltraSSD { get; set; }
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -315,6 +319,7 @@ namespace Microsoft.Azure.Commands.Compute
                         availabilitySet: availabilitySet,
                         dataDisks: _cmdlet.DataDiskSizeInGb,
                         zones: _cmdlet.Zone,
+                        ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                         identity: _cmdlet.GetVMIdentityFromArgs());
                 }
                 else
@@ -332,6 +337,7 @@ namespace Microsoft.Azure.Commands.Compute
                         availabilitySet: availabilitySet,
                         dataDisks: _cmdlet.DataDiskSizeInGb,
                         zones: _cmdlet.Zone,
+                        ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                         identity: _cmdlet.GetVMIdentityFromArgs());
                 }
             }
@@ -478,7 +484,7 @@ namespace Microsoft.Azure.Commands.Compute
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.Location ?? this.VM.Location,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
-                        Identity = this.VM.Identity,
+                        Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = this.Zone ?? this.VM.Zones,
                     };
 
@@ -539,7 +545,13 @@ namespace Microsoft.Azure.Commands.Compute
                     Type = !isUserAssignedEnabled ? 
                            CM.ResourceIdentityType.SystemAssigned :
                            (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
-                    IdentityIds = isUserAssignedEnabled ? new[] { UserAssignedIdentity } : null,
+
+                    UserAssignedIdentities = isUserAssignedEnabled 
+                                             ? new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>()
+                                             {
+                                                 { UserAssignedIdentity, new VirtualMachineIdentityUserAssignedIdentitiesValue() }
+                                             }
+                                             : null,
                 }
                 : null;
         }

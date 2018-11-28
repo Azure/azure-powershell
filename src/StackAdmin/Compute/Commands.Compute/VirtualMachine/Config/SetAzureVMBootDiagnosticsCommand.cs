@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
@@ -22,8 +23,6 @@ using Microsoft.Azure.Management.Storage.Models;
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = EnableParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMBootDiagnosticsResourceGroupName)]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -101,16 +99,16 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var storageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(
+                    var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                     var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.StorageAccountName);
 
-                    if (storageAccount.StorageAccount.AccountType.Equals(AccountType.PremiumLRS))
+                    if (storageAccount.IsPremiumLrs())
                     {
                         ThrowPremiumStorageError(this.StorageAccountName);
                     }
 
-                    diagnosticsProfile.BootDiagnostics.StorageUri = storageAccount.StorageAccount.PrimaryEndpoints.Blob.ToString();
+                    diagnosticsProfile.BootDiagnostics.StorageUri = storageAccount.PrimaryEndpoints.Blob.ToString();
                 }
             }
 

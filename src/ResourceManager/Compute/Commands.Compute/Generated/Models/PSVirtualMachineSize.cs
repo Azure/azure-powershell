@@ -19,11 +19,20 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSVirtualMachineSize : VirtualMachineSize
+    public partial class PSVirtualMachineSize
     {
+        public string Name { get; set; }
+        public int? NumberOfCores { get; set; }
+        public int? OsDiskSizeInMB { get; set; }
+        public int? ResourceDiskSizeInMB { get; set; }
+        public int? MemoryInMB { get; set; }
+        public int? MaxDataDiskCount { get; set; }
+
     }
 }

@@ -3,12 +3,13 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
     <AssemblyName>Microsoft.Azure.Commands.Billing.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Billing.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,8 +24,14 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+    <PackageReference Include="Microsoft.Azure.Management.Billing" Version="2.1.1-preview" />
+  </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Billing" Version="2.1.0-preview" />
+    <Reference Include="Microsoft.Azure.Commands.Billing">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Billing\Microsoft.Azure.Commands.Billing.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

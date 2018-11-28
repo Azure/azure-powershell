@@ -44,17 +44,65 @@ The **New-AzureRmPolicyDefinition** cmdlet creates a policy definition that incl
 
 ### Example 1: Create a policy definition by using a policy file
 ```
-PS C:\> New-AzureRmPolicyDefinition -Name 'VMPolicyDefinition' -Policy C:\VMPolicy.json
+{
+   "if": {
+      "field": "location",
+      "notIn": ["eastus", "westus", "centralus"]
+   },
+   "then": {
+      "effect": "audit"
+   }
+}
 ```
 
-This command creates a policy definition named VMPolicyDefinition that contains the policy rule specified in C:\VMPolicy.json.
+```
+PS C:\> New-AzureRmPolicyDefinition -Name 'LocationDefinition' -Policy C:\LocationPolicy.json
+```
 
-### Example 2: Create a policy definition inline in a management group
+This command creates a policy definition named LocationDefinition that contains the policy rule specified in C:\LocationPolicy.json. Example content for the LocationPolicy.json file is provided above.
+
+### Example 2: Create a parameterized policy definition using inline parameters
+```
+{
+   "if": {
+      "field": "location",
+      "notIn": "[parameters('listOfAllowedLocations')]"
+   },
+   "then": {
+      "effect": "audit"
+   }
+}
+```
+
+```
+PS C:\> New-AzureRmPolicyDefinition -Name 'LocationDefinition' -Policy C:\LocationPolicy.json -Parameter '{ "listOfAllowedLocations": { "type": "array" } }'
+```
+
+This command creates a policy definition named LocationDefinition that contains the policy rule specified in C:\LocationPolicy.json. The parameter definition for the policy rule is provided inline.
+
+### Example 3: Create a policy definition inline in a management group
 ```
 PS C:\> New-AzureRmPolicyDefinition -Name 'VMPolicyDefinition' -ManagementGroupName Dept42 -DisplayName 'Virtual Machine policy definition' -Policy '{"if":{"source":"action","equals":"Microsoft.Compute/virtualMachines/write"},"then":{"effect":"deny"}}'
 ```
 
 This command creates a policy definition named VMPolicyDefinition in management group Dept42.
+The command specifies the policy as a string in valid JSON format.
+
+### Example 4: Create a policy definition inline with metadata
+```
+PS C:\> New-AzureRmPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"Category":"Virtual Machine"}' -Policy '{"if":{"source":"action","equals":"Microsoft.Compute/virtualMachines/write"},"then":{"effect":"deny"}}'
+
+
+Name               : VMPolicyDefinition
+ResourceId         : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policyDefinitions/VMPolicyDefinition
+ResourceName       : VMPolicyDefinition
+ResourceType       : Microsoft.Authorization/policyDefinitions
+SubscriptionId     : 11111111-1111-1111-1111-111111111111
+Properties         : @{displayName=VMPolicyDefinition; policyType=Custom; mode=All; metadata=; policyRule=}
+PolicyDefinitionId : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policyDefinitions/VMPolicyDefinition
+```
+
+This command creates a policy definition named VMPolicyDefinition with metadata indicating its category is "Virtual Machine".
 The command specifies the policy as a string in valid JSON format.
 
 ## PARAMETERS

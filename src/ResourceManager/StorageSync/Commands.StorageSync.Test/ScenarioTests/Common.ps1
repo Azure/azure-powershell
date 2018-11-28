@@ -167,7 +167,7 @@ function Get-StorageManagementTestResourceName
     
     try
     {
-        $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "pstestrg")
+        $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "pstestrg")
     }
     catch
     {

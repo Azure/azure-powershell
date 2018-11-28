@@ -42,10 +42,55 @@ The **New-AzureRmPolicySetDefinition** cmdlet creates a policy set definition.
 
 ### Example 1: Create a policy set definition by using a policy set file
 ```
+[
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+      "parameters": {
+         "tagName": {
+            "value": "Business Unit"
+         },
+         "tagValue": {
+            "value": "Finance"
+         }
+      }
+   },
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/464dbb85-3d5f-4a1d-bb09-95a9b5dd19cf"
+   }
+]
+```
+
+```
 PS C:\> New-AzureRmPolicySetDefinition -Name 'VMPolicyDefinition' -PolicyDefinition C:\VMPolicySet.json
 ```
 
-This command creates a policy set definition named VMPolicyDefinition that contains the policy definitions specified in C:\VMPolicy.json.
+This command creates a policy set definition named VMPolicyDefinition that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
+
+### Example 2: Create a parameterized policy set definition
+```
+[
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+      "parameters": {
+         "tagName": {
+            "value": "Business Unit"
+         },
+         "tagValue": {
+            "value": "[parameters('buTagValue')]"
+         }
+      }
+   },
+   {
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/464dbb85-3d5f-4a1d-bb09-95a9b5dd19cf"
+   }
+]
+```
+
+```
+PS C:\> New-AzureRmPolicySetDefinition -Name 'VMPolicyDefinition' -PolicyDefinition C:\VMPolicySet.json -Parameter '{ "buTagValue": { "type": "string" } }'
+```
+
+This command creates a parameterized policy set definition named VMPolicyDefinition that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
 
 ## PARAMETERS
 

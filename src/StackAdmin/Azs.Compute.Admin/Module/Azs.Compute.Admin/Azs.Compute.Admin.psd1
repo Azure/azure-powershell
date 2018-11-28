@@ -56,18 +56,14 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; },
-        @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.2'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
-    # RequiredAssemblies = @()
-
+    RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.Compute.Admin.dll')
+    
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-    ScriptsToProcess  = @(
-        'Generated.PowerShell.Commands\CustomObjects\ComputeQuotaObject.ps1',
-        'Generated.PowerShell.Commands\CustomObjects\PlatformImageObject.ps1',
-        'Generated.PowerShell.Commands\CustomObjects\VmExtensionObject.ps1'
-    )
+    ScriptsToProcess  = @()
 
     # Type files (.ps1xml) to be loaded when importing this module
     TypesToProcess    = @('Generated.PowerShell.Commands\FormatFiles\Azs.Compute.Admin.Type.ps1xml')
@@ -112,7 +108,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags         = @('AzureStack', 'Compute', 'Admin', 'Azure Stack Compute', 'Virtual Machine', 'Virtual Machine', 'Platform Image', 'Extension', 'CRP')
+            Tags         = @('AzureStack', 'Compute', 'Admin', 'VirtualMachine', 'PlatformImage', 'Extension', 'CRP')
 
             # A URL to the license for this module.
             LicenseUri   = 'https://aka.ms/azps-license'

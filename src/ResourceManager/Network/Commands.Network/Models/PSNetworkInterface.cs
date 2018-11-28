@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSNetworkInterfaceIPConfiguration> IpConfigurations { get; set; }
 
+        public List<PSNetworkInterfaceTapConfiguration> TapConfigurations { get; set; }
+
         public PSNetworkInterfaceDnsSettings DnsSettings { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -38,6 +40,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableIPForwarding { get; set; }
+
+        public List<string> HostedWorkloads { get; set; }
 
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
@@ -54,6 +58,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string IpConfigurationsText
         {
             get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string TapConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(TapConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

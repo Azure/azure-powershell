@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent == null)
             {
-                this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent = new List<AdditionalUnattendContent> ();
+                this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent = new List<AdditionalUnattendContent>();
             }
 
             this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent.Add(

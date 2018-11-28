@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -28,16 +29,16 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmVmssExtension")]
-    [OutputType(typeof(VirtualMachineScaleSet))]
-    public class AddAzureRmVmssExtensionCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [Cmdlet("Add", "AzureRmVmssExtension", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSVirtualMachineScaleSet))]
+    public partial class AddAzureRmVmssExtensionCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
+        public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
-        public string VirtualMachineScaleSetExtensionType { get; set; }
+        public string Type { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -83,11 +84,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            Position = 8,
             ValueFromPipelineByPropertyName = true)]
-        public string Id { get; set; }
+        public string ForceUpdateTag { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("VirtualMachineScaleSet", "Add"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -110,13 +118,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vExtensions = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension();
 
             vExtensions.Name = this.Name;
+            vExtensions.ForceUpdateTag = this.ForceUpdateTag;
             vExtensions.Publisher = this.Publisher;
-            vExtensions.VirtualMachineScaleSetExtensionType = this.VirtualMachineScaleSetExtensionType;
+            vExtensions.Type = this.Type;
             vExtensions.TypeHandlerVersion = this.TypeHandlerVersion;
             vExtensions.AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion;
             vExtensions.Settings = this.Setting;
             vExtensions.ProtectedSettings = this.ProtectedSetting;
-            vExtensions.Id = this.Id;
             this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
             WriteObject(this.VirtualMachineScaleSet);
         }

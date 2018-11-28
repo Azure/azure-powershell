@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName;
                     string vmScaleSetName;
-                    switch(this.ParameterSetName)
+                    switch (this.ParameterSetName)
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -82,6 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [Alias("Name")]
         public string VMScaleSetName { get; set; }
 
@@ -91,13 +93,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public int PlatformUpdateDomain { get; set; }
 
         [Parameter(
-           ParameterSetName = "ResourceIdParameter",
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = "ResourceIdParameter",
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
         public string ResourceId { get; set; }
 
         [Parameter(
             ParameterSetName = "ObjectParameter",
+            Position = 0,
             Mandatory = true,
             ValueFromPipeline = true)]
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }

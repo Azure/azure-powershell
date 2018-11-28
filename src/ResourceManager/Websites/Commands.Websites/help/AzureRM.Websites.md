@@ -14,6 +14,9 @@ ARM (Azure Resource Manager) Web App and App Service Plan commands.
 ### [Edit-AzureRmWebAppBackupConfiguration](Edit-AzureRmWebAppBackupConfiguration.md)
 Modifies an Azure Web App backup schedule.
 
+### [Enter-AzureRmWebAppContainerPSSession](Enter-AzureRmWebAppContainerPSSession.md)
+Opens a remote PowerShell session into the windows container specified in a given site or slot and given resource group.
+
 ### [Get-AzureRmAppServicePlan](Get-AzureRmAppServicePlan.md)
 Gets an Azure App Service plan in the specified resource group.
 
@@ -22,6 +25,9 @@ Gets usage metrics for an Azure Web App.
 
 ### [Get-AzureRmWebApp](Get-AzureRmWebApp.md)
 Gets Azure Web Apps in the specified resource group.
+
+### [Get-AzureRmDeletedWebApp](Get-AzureRmDeletedWebApp.md)
+Gets deleted web apps in the subscription.
 
 ### [Get-AzureRmWebAppBackup](Get-AzureRmWebAppBackup.md)
 Gets an Azure Web App backup.
@@ -34,6 +40,9 @@ Gets all backups of an Azure Web App.
 
 ### [Get-AzureRmWebAppCertificate](Get-AzureRmWebAppCertificate.md)
 Gets an Azure Web App certificate.
+
+### [Get-AzureRmWebAppContainerContinuousDeploymentUrl](Get-AzureRmWebAppContainerContinuousDeploymentUrl.md)
+Gets the continuous deployment url for a container web app
 
 ### [Get-AzureRmWebAppMetrics](Get-AzureRmWebAppMetrics.md)
 Gets Azure Web App metrics.
@@ -68,6 +77,9 @@ Creates an Azure Web App.
 ### [New-AzureRmWebAppBackup](New-AzureRmWebAppBackup.md)
 Creates an Azure Web App backup.
 
+### [New-AzureRmWebAppContainerPSSession](New-AzureRmWebAppContainerPSSession.md)
+New-AzureRmWebAppContainerPSSession will create new remote PowerShell Session into the windows container specified in a given site or slot and given resource group.
+
 ### [New-AzureRmWebAppDatabaseBackupSetting](New-AzureRmWebAppDatabaseBackupSetting.md)
 Creates an Azure Web App database backup setting to be used with New-AzureRmWebAppBackup.
 
@@ -76,6 +88,9 @@ Creates an Azure Web App slot.
 
 ### [New-AzureRmWebAppSSLBinding](New-AzureRmWebAppSSLBinding.md)
 Creates an SSL certificate binding for an Azure Web App.
+
+### [New-AzureRmWebAppAzureStoragePath](New-AzureRmWebAppAzureStoragePath.md)
+Creates an object that represents an Azure Storage path to be mounted in a Web App. It is meant to be used as a parameter (-AzureStoragePath) to Set-AzureRmWebApp and Set-AzureRmWebAppSlot
 
 ### [Remove-AzureRmAppServicePlan](Remove-AzureRmAppServicePlan.md)
 Removes an Azure App Service plan.
@@ -107,6 +122,8 @@ Restarts an Azure Web App slot.
 ### [Restore-AzureRmWebAppBackup](Restore-AzureRmWebAppBackup.md)
 Restores an Azure Web App from a backup.
 
+### [Restore-AzureRmDeletedWebApp](Restore-AzureRmDeletedWebApp.md)
+Restores a deleted web app to a new or existing web app.
 
 ### [Restore-AzureRmWebAppSnapshot](Restore-AzureRmWebAppSnapshot.md)
 Restores a web app snapshot.

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ExplicitIdentityParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -95,6 +96,11 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = false)]
         public bool OsDiskWriteAccelerator { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public bool UltraSSDEnabled { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -123,13 +129,31 @@ namespace Microsoft.Azure.Commands.Compute
                         Location = this.VM.Location,
                         LicenseType = this.VM.LicenseType,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
-                        Identity = this.AssignIdentity.IsPresent ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : this.VM.Identity,
+                        Identity = this.AssignIdentity.IsPresent 
+                                   ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned, null)
+                                   : ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null
                     };
 
-                    if (this.IdentityType != null)
+                    if (this.MyInvocation.BoundParameters.ContainsKey("IdentityType"))
                     {
-                        parameters.Identity = new VirtualMachineIdentity(null, null, this.IdentityType);
+                        parameters.Identity = new VirtualMachineIdentity(null, null, this.IdentityType, null);
+                    }
+
+                    if (this.MyInvocation.BoundParameters.ContainsKey("IdentityId"))
+                    {
+                        if (parameters.Identity == null)
+                        {
+                            parameters.Identity = new VirtualMachineIdentity();
+
+                        }
+
+                        parameters.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>();
+
+                        foreach (var id in this.IdentityId)
+                        {
+                            parameters.Identity.UserAssignedIdentities.Add(id, new VirtualMachineIdentityUserAssignedIdentitiesValue());
+                        }
                     }
 
                     if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskWriteAccelerator"))
@@ -145,12 +169,13 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.OsDiskWriteAccelerator;
                     }
 
-                    if (this.IdentityId != null)
+                    if (this.MyInvocation.BoundParameters.ContainsKey("UltraSSDEnabled"))
                     {
-                        if (parameters.Identity != null)
+                        if (parameters.AdditionalCapabilities == null)
                         {
-                            parameters.Identity.IdentityIds = this.IdentityId;
+                            parameters.AdditionalCapabilities = new AdditionalCapabilities();
                         }
+                        parameters.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
                     }
 
                     var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(

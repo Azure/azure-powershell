@@ -24,6 +24,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string Tier { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
-        public int Capacity { get; set; }
+        public int? Capacity { get; set; }
     }
 }

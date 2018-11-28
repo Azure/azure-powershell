@@ -24,7 +24,7 @@ Set-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-
  [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [-EnableAdfsAuthentication]
  [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
  [[-BatchEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>]
- [[-AzureOperationalInsightsEndpoint] <String>] [-Scope <ContextModificationScope>]
+ [[-AzureOperationalInsightsEndpoint] <String>] [[-AzureAnalysisServicesEndpointSuffix] <String>] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -52,32 +52,13 @@ PS C:\> Add-AzureRmEnvironment -Name TestEnvironment `
         -GalleryEndpoint TestGalleryEndpoint `
         -GraphEndpoint TestGraphEndpoint
 
-Name                                              : TestEnvironment
-EnableAdfsAuthentication                          : False
-ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
-AdTenant                                          :
-GalleryUrl                                        : TestGalleryEndpoint
-ManagementPortalUrl                               :
-ServiceManagementUrl                              : 
-PublishSettingsFileUrl                            :
-ResourceManagerUrl                                : TestRMEndpoint
-SqlDatabaseDnsSuffix                              :
-StorageEndpointSuffix                             :
-ActiveDirectoryAuthority                          : TestADEndpoint
-GraphUrl                                          : TestGraphEndpoint
-GraphEndpointResourceId                           :
-TrafficManagerDnsSuffix                           :
-AzureKeyVaultDnsSuffix                            :
-AzureDataLakeStoreFileSystemEndpointSuffix        :
-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
-AzureKeyVaultServiceEndpointResourceId            :
-BatchEndpointResourceId                           :
-AzureOperationalInsightsEndpoint                  :
-AzureOperationalInsightsEndpointResourceId        :
+Name            Resource Manager Url ActiveDirectory Authority
+----            -------------------- -------------------------
+TestEnvironment TestRMEndpoint       TestADEndpoint/
 
 PS C:\> Set-AzureRmEnvironment -Name TestEnvironment
         -ActiveDirectoryEndpoint NewTestADEndpoint
-        -GraphEndpoint NewTestGraphEndpoint
+        -GraphEndpoint NewTestGraphEndpoint | Format-List
 
 Name                                              : TestEnvironment
 EnableAdfsAuthentication                          : False
@@ -162,6 +143,21 @@ Aliases: ArmUrl
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AzureAnalysisServicesEndpointSuffix
+Dns Suffix of Azure Analysis Services service endpoints
+
+```yaml
+Type: System.String
+Parameter Sets: Name
+Aliases:
+
+Required: False
+Position: 15
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

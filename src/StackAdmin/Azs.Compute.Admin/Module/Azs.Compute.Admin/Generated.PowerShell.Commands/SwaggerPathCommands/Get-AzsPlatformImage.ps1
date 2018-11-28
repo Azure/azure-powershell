@@ -44,6 +44,8 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Get a specific platform image.
 
 #>
+using module '..\CustomObjects\PlatformImageObject.psm1'
+
 function Get-AzsPlatformImage {
     [OutputType([PlatformImageObject])]
     [CmdletBinding(DefaultParameterSetName = 'List')]

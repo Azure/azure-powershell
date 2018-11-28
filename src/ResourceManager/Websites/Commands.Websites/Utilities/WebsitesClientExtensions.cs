@@ -23,33 +23,8 @@ namespace Microsoft.Azure.Management.WebSites
 {
     public static class WebsitesClientExtensions
     {
-#if !NETSTANDARD
-        public static IWebAppsOperations WebApps(this WebSiteManagementClient client)
-        {
-            return client.WebApps;
-        }
-
-        public static IDeletedWebAppsOperations DeletedWebApps(this WebSiteManagementClient client)
-        {
-            return client.DeletedWebApps;
-        }
-
-        public static IAppServicePlansOperations AppServicePlans(this WebSiteManagementClient client)
-        {
-            return client.AppServicePlans;
-        }
-         
-        public static string ApiVersion(this WebSiteManagementClient client)
-        {
-            return client.ApiVersion();
-        }
-        
-        public static ICertificatesOperations Certificates(this WebSiteManagementClient client)
-        {
-            return client.Certificates;
-        }
-
-#else
+// TODO: Remove IfDef
+#if NETSTANDARD
         public static void Save(this System.Xml.Linq.XDocument xdoc, string fileName, System.Xml.Linq.SaveOptions options)
         {
             using (var fileStream = System.IO.File.Create(fileName))
@@ -80,7 +55,7 @@ namespace Microsoft.Azure.Management.WebSites
 
         public static string ApiVersion(this WebSiteManagementClient client)
         {
-            return "2016-08-01";
+            return "2018-02-01";
         }
 
         public static IWebAppsOperations WebApps(this WebSiteManagementClient client)
@@ -88,43 +63,32 @@ namespace Microsoft.Azure.Management.WebSites
             return client.WebApps;
         }
 
+        public static IDeletedWebAppsOperations DeletedWebApps(this WebSiteManagementClient client)
+        {
+            return client.DeletedWebApps;
+        }
+
         public static Site CreateOrUpdateSiteSlot(this IWebAppsOperations webApp,
             string resourceGroupName, 
             string name, 
             Site siteEnvelope, 
-            string slot, 
-            bool? skipDnsRegistration = default(bool?), 
-            bool? skipCustomDomainVerification = default(bool?), 
-            bool? forceDnsRegistration = default(bool?), 
-            string ttlInSeconds = null)
+            string slot)
         {
             return webApp.CreateOrUpdateSlot(resourceGroupName,
                 name,
                 siteEnvelope,
-                slot,
-                skipDnsRegistration,
-                skipCustomDomainVerification,
-                forceDnsRegistration,
-                ttlInSeconds);
+                slot);
         }
 
         public static Site CreateOrUpdateSite(this IWebAppsOperations webApp,
             string resourceGroupName, 
             string name, 
-            Site siteEnvelope, 
-            bool? skipDnsRegistration = default(bool?), 
-            bool? skipCustomDomainVerification = default(bool?), 
-            bool? forceDnsRegistration = default(bool?), 
-            string ttlInSeconds = null)
+            Site siteEnvelope)
         {
             return webApp.CreateOrUpdate(
                 resourceGroupName,
                 name,
-                siteEnvelope,
-                skipDnsRegistration,
-                skipCustomDomainVerification,
-                forceDnsRegistration,
-                ttlInSeconds);
+                siteEnvelope);
         }
 
         public static Site GetSiteSlot(this IWebAppsOperations webApp, 
@@ -206,30 +170,26 @@ namespace Microsoft.Azure.Management.WebSites
             string name,
             string slot,
             string deleteMetrics = null,
-            string deleteEmptyServerFarm = null,
-            string deleteAllSlots = null)
+            string deleteEmptyServerFarm = null)
         {
             webApp.DeleteSlot(resourceGroupName,
                 name,
                 slot,
                 deleteMetrics.ToNullableBool(),
-                deleteEmptyServerFarm.ToNullableBool(),
-                deleteAllSlots.ToNullableBool());
+                deleteEmptyServerFarm.ToNullableBool());
         }
 
         public static void DeleteSite(this IWebAppsOperations webApp,
             string resourceGroupName, 
             string name,
             string deleteMetrics = null,
-            string deleteEmptyServerFarm = null,
-            string deleteAllSlots = null)
+            string deleteEmptyServerFarm = null)
         {
             webApp.Delete(
                 resourceGroupName, 
                 name,
                 deleteMetrics.ToNullableBool(),
-                deleteEmptyServerFarm.ToNullableBool(),
-                deleteAllSlots.ToNullableBool());
+                deleteEmptyServerFarm.ToNullableBool());
         }
 
         public static Stream ListSitePublishingProfileXmlSlot(this IWebAppsOperations webApp,
@@ -423,16 +383,16 @@ namespace Microsoft.Azure.Management.WebSites
             return webApp.GetBackupStatus(resourceGroupName, name, backupId);
         }
 
-        public static RestoreResponse RestoreSiteSlot(this IWebAppsOperations webApp,
+        public static void RestoreSiteSlot(this IWebAppsOperations webApp,
             string resourceGroupName, string name, string backupId, RestoreRequest request, string slot)
         {
-            return webApp.RestoreSlot(resourceGroupName, name, backupId, request, slot);
+            webApp.RestoreSlot(resourceGroupName, name, backupId, request, slot);
         }
 
-        public static RestoreResponse RestoreSite(this IWebAppsOperations webApp,
+        public static void RestoreSite(this IWebAppsOperations webApp,
             string resourceGroupName, string name, string backupId, RestoreRequest request)
         {
-            return webApp.Restore(resourceGroupName, name, backupId, request);
+            webApp.Restore(resourceGroupName, name, backupId, request);
         }
 
         public static SlotConfigNamesResource GetSlotConfigNames(this IWebAppsOperations webApp,
@@ -522,8 +482,7 @@ namespace Microsoft.Azure.Management.WebSites
             bool temp;
             if (bool.TryParse(val, out temp))
                 return temp;
-            else
-                return null;
+            return null;
         }
 
         public static ICertificatesOperations Certificates(this WebSiteManagementClient client)
@@ -547,6 +506,31 @@ namespace Microsoft.Azure.Management.WebSites
             string resourceGroupName, string name)
         {
             certificate.Delete(resourceGroupName, name);
+        }
+#else
+        public static IWebAppsOperations WebApps(this WebSiteManagementClient client)
+        {
+            return client.WebApps;
+        }
+
+        public static IDeletedWebAppsOperations DeletedWebApps(this WebSiteManagementClient client)
+        {
+            return client.DeletedWebApps;
+        }
+
+        public static IAppServicePlansOperations AppServicePlans(this WebSiteManagementClient client)
+        {
+            return client.AppServicePlans;
+        }
+         
+        public static string ApiVersion(this WebSiteManagementClient client)
+        {
+            return client.ApiVersion();
+        }
+        
+        public static ICertificatesOperations Certificates(this WebSiteManagementClient client)
+        {
+            return client.Certificates;
         }
 #endif
     }

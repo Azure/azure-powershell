@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 ComputerName = this.ComputerName,
                 AdminUsername = this.Credential.UserName,
-                AdminPassword = SecureStringExtensions.ConvertToString(this.Credential.Password),
+                AdminPassword = ConversionUtilities.SecureStringToString(this.Credential.Password),
                 CustomData = string.IsNullOrWhiteSpace(this.CustomData) ? null : Convert.ToBase64String(Encoding.UTF8.GetBytes(this.CustomData)),
             };
 
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent = null;
                 }
 
-                var listenerList  = new List<WinRMListener>();
+                var listenerList = new List<WinRMListener>();
 
                 if (this.WinRMHttp.IsPresent)
                 {
@@ -237,18 +237,18 @@ namespace Microsoft.Azure.Commands.Compute
                 // OS Profile
                 this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent =
                     (this.ProvisionVMAgent.IsPresent)
-                    ? (bool?) true
+                    ? (bool?)true
                     : null;
 
                 this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates =
                     this.EnableAutoUpdate.IsPresent
-                    ? (bool?) true
+                    ? (bool?)true
                     : null;
 
                 this.VM.OSProfile.WindowsConfiguration.TimeZone = this.TimeZone;
 
                 this.VM.OSProfile.WindowsConfiguration.WinRM =
-                    ! (this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent)
+                    !(this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent)
                     ? null
                     : new WinRMConfiguration
                     {
