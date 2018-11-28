@@ -18,6 +18,7 @@ namespace Tools.Common.Helpers
 {
     public static class EnvironmentHelpers
     {
+// TODO: Remove IfDef code
 #if !NETSTANDARD
         /// <summary>
         /// Create a new AppDomain and create a remote instance of AssemblyLoader we can use there
@@ -58,7 +59,7 @@ namespace Tools.Common.Helpers
                 throw new ArgumentNullException("path");
             }
 
-            string result = path.TrimEnd('\\');
+            var result = path.TrimEnd('\\');
             var lastSlash = result.LastIndexOf("\\");
             if (lastSlash > 0)
             {

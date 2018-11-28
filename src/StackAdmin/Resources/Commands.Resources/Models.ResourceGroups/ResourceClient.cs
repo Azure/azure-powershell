@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public IResourceManagementClient ResourceManagementClient { get; set; }
 
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
-
+// TODO: Remove IfDef code
 #if !NETSTANDARD
         public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
 #endif
@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public ResourcesClient(IAzureContext context)
             : this(
                 AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+// TODO: Remove IfDef code
 #if !NETSTANDARD
                 new GalleryTemplatesClient(context),
 #endif
@@ -87,11 +88,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <param name="authorizationManagementClient">The management client instance</param>
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
+// TODO: Remove IfDef code
 #if !NETSTANDARD
             GalleryTemplatesClient galleryTemplatesClient,
 #endif
             IAuthorizationManagementClient authorizationManagementClient)
         {
+// TODO: Remove IfDef code
 #if !NETSTANDARD
             GalleryTemplatesClient = galleryTemplatesClient;
 #endif

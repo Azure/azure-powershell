@@ -74,6 +74,9 @@ Creates an Azure App Service plan in a given Geo location.
 ### [New-AzWebApp](New-AzWebApp.md)
 Creates an Azure Web App.
 
+### [New-AzWebAppAzureStoragePath](New-AzWebAppAzureStoragePath.md)
+Creates an object that represents an Azure Storage path to be mounted in a Web App. It is meant to be used as a parameter (-AzureStoragePath) to Set-AzWebApp and Set-AzWebAppSlot
+
 ### [New-AzWebAppBackup](New-AzWebAppBackup.md)
 
 
