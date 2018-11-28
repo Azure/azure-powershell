@@ -952,6 +952,34 @@
     {
       "file": "src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
       "_justification": "Sample certificate only used in tests"
+    },
+    {
+      "file": "src\\ResourceManager\\Network\\Commands.Network\\ApplicationGateway\\RewriteRuleHeaderConfiguration\\NewAzureApplicationGatewayRewriteRuleHeaderConfigurationCommand.cs",
+      "_justification": "Not supporting ShouldProcess because only in memory modification of PS object."
+    },
+    {
+      "file": "src\\ResourceManager\\Network\\Commands.Network\\ApplicationGateway\\RewriteRuleActionSet\\NewAzureApplicationGatewayRewriteRuleActionSet.cs",
+      "_justification": "Not supporting ShouldProcess because only in memory modification of PS object."
+    },
+    {
+      "file": "src\\ResourceManager\\Network\\Commands.Network\\ApplicationGateway\\RewriteRule\\NewAzureApplicationGatewayRewriteRuleCommand.cs",
+      "_justification": "Not supporting ShouldProcess because only in memory modification of PS object."
+    },
+    {
+      "file": "src\\ResourceManager\\Network\\Commands.Network\\ApplicationGateway\\RewriteRuleSet\\AddAzureApplicationGatewayRewriteRuleSetCommand.cs",
+      "_justification": "Not supporting ShouldProcess because only in memory modification of PS object."
+    },
+    {
+      "file": "src\\ResourceManager\\Network\\Commands.Network\\ApplicationGateway\\RewriteRuleSet\\NewAzureApplicationGatewayRewriteRuleSetCommand.cs",
+      "_justification": "Not supporting ShouldProcess because only in memory modification of PS object."
+    },
+    {
+      "file": "src\\ResourceManager\\Network\\Commands.Network\\ApplicationGateway\\RewriteRuleSet\\RemoveAzureApplicationGatewayRewriteRuleSetCommand.cs",
+      "_justification": "Not supporting ShouldProcess because only in memory modification of PS object."
+    },
+    {
+      "file": "src\\ResourceManager\\Network\\Commands.Network\\ApplicationGateway\\RewriteRuleSet\\SetAzureApplicationGatewayRewriteRuleSetCommand.cs",
+      "_justification": "Not supporting ShouldProcess because only in memory modification of PS object."
     }
   ]
 }
