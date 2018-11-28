@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\GetVmGuestPolicyReportTests.cs" />
+    <Compile Include="ScenarioTests\GetVmGuestPolicyStatusHistoryTests.cs" />
     <Compile Include="ScenarioTests\TestController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,31 +57,31 @@
     <None Include="ScenarioTests\GetVmGuestPolicyReportTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\InitiativeIdScope.json">
+    <None Include="ScenarioTests\GetVmGuestPolicyStatusHistoryTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\InitiativeIdScope.json" >
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\InitiativeIdScopeDetailed.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\InitiativeNameScope.json" >
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\InitiativeIdScopeDetailedLatest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\ReportIdScope.json" >
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\InitiativeNameScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\VmNameScope.json" >
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\InitiativeNameScopeDetailed.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyStatusHistoryTests\InitiativeIdScope.json" >
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\InitiativeNameScopeDetailedLatest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyStatusHistoryTests\InitiativeNameScope.json" >
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\VmNameScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyStatusHistoryTests\ShowOnlyChangeSwitchVmNameScope.json" >
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\VmNameScopeDetailed.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyReportTests\VmNameScopeDetailedLatest.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests.GetVmGuestPolicyStatusHistoryTests\VmNameScope.json" >
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
