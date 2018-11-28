@@ -4,19 +4,19 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ApiManagement", "Commands.ApiManagement\Commands.ApiManagement.Netcore.csproj", "{DC0A9742-DF36-48C9-BD2F-68D01AED6257}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ApiManagement.Netcore", "Commands.ApiManagement\Commands.ApiManagement.Netcore.csproj", "{DC0A9742-DF36-48C9-BD2F-68D01AED6257}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ApiManagement.Test", "Commands.ApiManagement.Test\Commands.ApiManagement.Test.Netcore.csproj", "{BEC9ECE9-A3D6-4B24-A682-1FA890647D9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ApiManagement.Test.Netcore", "Commands.ApiManagement.Test\Commands.ApiManagement.Test.Netcore.csproj", "{BEC9ECE9-A3D6-4B24-A682-1FA890647D9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ApiManagement.ServiceManagement", "Commands.ApiManagement.ServiceManagement\Commands.ApiManagement.ServiceManagement.Netcore.csproj", "{ED8BA708-AF42-4C08-9F4E-DAA1037797D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ApiManagement.ServiceManagement.Netcore", "Commands.ApiManagement.ServiceManagement\Commands.ApiManagement.ServiceManagement.Netcore.csproj", "{ED8BA708-AF42-4C08-9F4E-DAA1037797D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ApiManagement.ServiceManagement.Test", "Commands.SMAPI.Test\Commands.ApiManagement.ServiceManagement.Test.Netcore.csproj", "{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ApiManagement.ServiceManagement.Test.Netcore", "Commands.SMAPI.Test\Commands.ApiManagement.ServiceManagement.Test.Netcore.csproj", "{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Management.Storage", "..\Storage\Commands.Management.Storage\Commands.Management.Storage.Netcore.csproj", "{A50AB133-5C04-4A17-9054-F8343683EC23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Management.Storage.Netcore", "..\Storage\Commands.Management.Storage\Commands.Management.Storage.Netcore.csproj", "{A50AB133-5C04-4A17-9054-F8343683EC23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "..\..\Storage\Commands.Storage\Commands.Storage.Netcore.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Storage.Netcore", "..\Storage\Commands.Storage\Commands.Storage.Netcore.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +59,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BEC9ECE9-A3D6-4B24-A682-1FA890647D9D} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{A50AB133-5C04-4A17-9054-F8343683EC23} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection

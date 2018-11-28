@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
 
-            Dictionary<string, string> d = new Dictionary<string, string>
+            var d = new Dictionary<string, string>
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
 
