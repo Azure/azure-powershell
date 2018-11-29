@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+#if !NETSTANDARD
 namespace Microsoft.Azure.Commands.StorageSync.Common
 {
+
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
@@ -23,7 +25,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
     using System.Net.Http;
     using System.Net.Http.Formatting;
     using System.Threading.Tasks;
-
+    
     /// <summary>
     /// Json formatter use JSON.NET
     /// </summary>
@@ -96,7 +98,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <param name="transportContext">The TransportContext if available. It may be null.</param>
         /// <returns>A Task that will perform the write.</returns>
         public override Task WriteToStreamAsync(
-            Type type, 
+            Type type,
             object value,
             Stream stream,
             HttpContent content,
@@ -110,14 +112,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     ReferenceLoopHandling = ReferenceLoopHandling.Serialize
                 };
 
-                    string json = JsonConvert.SerializeObject(
-                    value,
-                    Formatting.Indented,
-                    settings);
+                string json = JsonConvert.SerializeObject(
+                value,
+                Formatting.Indented,
+                settings);
 
-                    byte[] buf = System.Text.Encoding.UTF8.GetBytes(json);
-                    stream.Write(buf, 0, buf.Length);
-                    stream.Flush();
+                byte[] buf = System.Text.Encoding.UTF8.GetBytes(json);
+                stream.Write(buf, 0, buf.Length);
+                stream.Flush();
             });
 
             return task;
@@ -212,3 +214,4 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         }
     }
 }
+#endif

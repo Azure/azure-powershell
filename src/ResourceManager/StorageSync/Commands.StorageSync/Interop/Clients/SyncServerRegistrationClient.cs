@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.InternalObjects;
 using Microsoft.Azure.Management.StorageSync.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -170,8 +171,10 @@ namespace Commands.StorageSync.Interop.Clients
             string osVersion = null;
 
             // Get OS version using Win32_OperatingSystem WMI object
-            try 
+            try
             {
+
+#if !NETSTANDARD
                 var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
                 ManagementObject info = searcher.Get().Cast<ManagementObject>().FirstOrDefault();
 
@@ -186,6 +189,10 @@ namespace Commands.StorageSync.Interop.Clients
                 // we expect the version format to be something like 10.0.14943.0
                 // In order to construct this, we need to combine the version output with the service pack major version.
                 osVersion = $"{version}.{servicePackMajorVersion}";
+#else
+                throw new InvalidOperationException("Cannot retrieve OS version");
+#endif
+
             }
             catch (Exception)
             {
@@ -292,7 +299,7 @@ namespace Commands.StorageSync.Interop.Clients
  
             // We try to register monitoring agent but do not gurantee it to succeed.
             hr = EcsManagementInteropClient.RegisterMonitoringAgent(
-                registrationInfo.ToJson(), 
+               registrationInfo.ToJson(),
                 monitoringDataPath);
             success = hr == 0;
 

@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
     /// </summary>
     public static class RegistryUtility
     {
+#if !NETSTANDARD
         /// <summary>
         /// This function will read the key in the given registry path and returns the value to it.
         /// </summary>
@@ -99,6 +100,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 }
             }
         }
-
+#endif
     }
 }

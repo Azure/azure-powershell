@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Text;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
 {
@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
     /// </summary>
     public static class ObjectExtensions
     {
+
         /// <summary>
         /// This function will transform an object to json formatted string.
         /// </summary>
@@ -28,11 +29,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
         /// <returns>Json formatted string</returns>
         public static string ToJson(this object currentObject)
         {
+#if !NETSTANDARD
             using (var stream = new System.IO.MemoryStream())
             {
                 new JsonFormatter().WriteToStreamAsync(currentObject.GetType(), currentObject, stream, null, null).Wait();
                 return Encoding.UTF8.GetString(stream.GetBuffer());
             }
+#else
+            return JsonConvert.SerializeObject(currentObject);
+#endif
         }
     }
 }

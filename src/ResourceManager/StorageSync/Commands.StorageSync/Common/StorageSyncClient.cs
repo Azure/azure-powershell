@@ -96,6 +96,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             {
                 if (_afsAgentInstallerPath == null)
                 {
+#if !NETSTANDARD
                     if (!RegistryUtility.TryGetValue<string>(StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName, StorageSyncConstants.AfsAgentRegistryKey, out _afsAgentInstallerPath, RegistryValueKind.String, RegistryValueOptions.None))
                     {
                         if (!RegistryUtility.TryGetValue<string>(StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName, StorageSyncConstants.AfsAgentRegistryKey, out _afsAgentInstallerPath, RegistryValueKind.String, RegistryValueOptions.None, RegistryView.Registry64))
@@ -103,6 +104,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                             ErrorLogger.Invoke($"AFS Agent Registrykey {StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName} Value: {StorageSyncConstants.AfsAgentInstallerPathRegistryKeyValueName} not found in registry.");
                         }
                     }
+#else
+                    _afsAgentInstallerPath = null;
+                    throw new InvalidOperationException("Cannot retreive Afs Agent Installer Path");
+#endif
+
                 }
                 return _afsAgentInstallerPath;
             }
@@ -120,6 +126,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             {
                 if (_afsAgentVersion == null)
                 {
+#if !NETSTANDARD
                     if (!RegistryUtility.TryGetValue<string>(StorageSyncConstants.AfsAgentVersionRegistryKeyValueName, StorageSyncConstants.AfsAgentRegistryKey, out _afsAgentVersion, RegistryValueKind.String, RegistryValueOptions.None))
                     {
                         if (!RegistryUtility.TryGetValue<string>(StorageSyncConstants.AfsAgentVersionRegistryKeyValueName, StorageSyncConstants.AfsAgentRegistryKey, out _afsAgentVersion, RegistryValueKind.String, RegistryValueOptions.None, RegistryView.Registry64))
@@ -127,6 +134,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                             ErrorLogger.Invoke($"AFS Agent Registrykey {StorageSyncConstants.AfsAgentVersionRegistryKeyValueName} Value: {StorageSyncConstants.AfsAgentVersionRegistryKeyValueName} not found in registry.");
                         }
                     }
+                    
+#else
+                    _afsAgentVersion = null;
+                    throw new InvalidOperationException("Cannot retreive Afs Agent Version");
+#endif
                 }
                 return _afsAgentVersion;
             }
