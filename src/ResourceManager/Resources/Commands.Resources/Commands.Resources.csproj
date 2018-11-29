@@ -56,7 +56,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.9.1-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.8.1-preview\lib\net452\Microsoft.Azure.Management.Authorization.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.9.0-preview\lib\net452\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +84,7 @@
     <Compile Include="ActiveDirectory\UpdateAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\UpdateAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\UpdateAzureADUserCommand.cs" />
+    <Compile Include="DenyAssignments\GetAzureDenyAssignmentCommand.cs" />
     <Compile Include="Extensions\ResourceExtensions.cs" />
     <Compile Include="Gallery\Artifact.cs" />
     <Compile Include="Gallery\DefinitionTemplates.cs" />
@@ -116,9 +117,12 @@
     <Compile Include="ManagementGroups\UpdateAzureRmManagementGroup.cs" />
     <Compile Include="ManagementGroups\Common\Utility.cs" />
     <Compile Include="Models.Authorization\AuthorizationHelper.cs" />
+    <Compile Include="Models.Authorization\FilterDenyAssignmentsOptions.cs" />
     <Compile Include="Models.Authorization\FilterRoleDefinitionOptions.cs" />
     <Compile Include="Models.Authorization\PSADCredentialWrapper.cs" />
     <Compile Include="Models.Authorization\PSADServicePrincipalWrapper.cs" />
+    <Compile Include="Models.Authorization\PSDenyAssignment.cs" />
+    <Compile Include="Models.Authorization\PSPrincipal.cs" />
     <Compile Include="Models.ManagementGroups\PSManagementGroup.cs" />
     <Compile Include="Models.ManagementGroups\PSManagementGroupChildInfo.cs" />
     <Compile Include="Models.ManagementGroups\PSManagementGroupInfo.cs" />
@@ -200,6 +204,7 @@
       <Name>Commands.Resources.Rest</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
