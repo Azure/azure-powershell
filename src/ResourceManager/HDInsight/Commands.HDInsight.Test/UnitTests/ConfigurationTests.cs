@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             CustomizeSpark(2);
         }
 
-        public void CreateNewConfig(bool setEdgeNodeVmSize = false)
+        private void CreateNewConfig(bool setEdgeNodeVmSize = false)
         {
             var newconfigcmdlet = new NewAzureHDInsightClusterConfigCommand
             {
