@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "The managed identity type")]
         [ValidateNotNullOrEmpty]
-        public ResourceIdentityType? IdentityType { get; set; }
+        public ResourceIdentityType IdentityType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -142,7 +142,6 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             Mandatory = false,
             ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
             HelpMessage = "Enable system assigned identity")]
-        [ValidateNotNullOrEmpty]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(
