@@ -14,14 +14,16 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 // TODO: Remove IfDef
 #if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Profile.Models.Core;
+#else
+using Microsoft.Azure.Commands.Common.Authentication;
 #endif
 using Microsoft.Azure.Commands.Profile.Properties;
 using System;
@@ -82,6 +84,11 @@ namespace Microsoft.Azure.Commands.Profile
 
         void EnsureProtectedCache(IProfileOperations profile, byte[] cacheData)
         {
+            if (profile == null || cacheData == null)
+            {
+                return;
+            }
+
             AzureRmAutosaveProfile autosave = profile as AzureRmAutosaveProfile;
             var protectedcache = AzureSession.Instance.TokenCache as ProtectedFileTokenCache;
             if (autosave != null && protectedcache == null && cacheData.Any())
