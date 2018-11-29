@@ -385,8 +385,12 @@ function Test-AzureVMSetVaultContext
 			-Container $container `
 			-WorkloadType AzureVM
 
-		$backupJob = Backup-AzureRmRecoveryServicesBackupItem `
-			-Item $item | Wait-AzureRmRecoveryServicesBackupJob;
+		$job = Backup-AzureRmRecoveryServicesBackupItem `
+			-Item $item
+    
+		Wait-AzureRmRecoveryServicesBackupJob -Job $job
+
+		$backupJob = Get-AzureRmRecoveryServicesBackupJobDetails -Job $job
 
 		# Get Recovery Point
 		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
@@ -400,8 +404,9 @@ function Test-AzureVMSetVaultContext
 		$restoreJob1 = Restore-AzureRmRecoveryServicesBackupItem `
 			-RecoveryPoint $rps[0] `
 			-StorageAccountName $saName `
-			-StorageAccountResourceGroupName $resourceGroupName | `
-				Wait-AzureRmRecoveryServicesBackupJob
+			-StorageAccountResourceGroupName $resourceGroupName
+
+		Wait-AzureRmRecoveryServicesBackupJob -Job $restoreJob1
 
 		# Disable protection
 		Disable-AzureRmRecoveryServicesBackupProtection `
