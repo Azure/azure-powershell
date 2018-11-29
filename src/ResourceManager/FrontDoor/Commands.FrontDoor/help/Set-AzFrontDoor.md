@@ -346,7 +346,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzFrontDoor](./Get-AzFrontDoor.md)
 [Remove-AzFrontDoor](./Remove-AzFrontDoor.md)
 [New-AzFrontDoorRoutingRuleObject](./New-AzFrontDoorRoutingRuleObject.md)
-[New-AzFrontDoorHealthProbeSettingObject](./New-AzFrontHealthProbeSettingObject.md)
+[New-AzFrontDoorHealthProbeSettingObject](./New-AzFrontDoorHealthProbeSettingObject.md)
 [New-AzFrontDoorLoadBalancingSettingObject](./New-AzFrontDoorLoadBalancingSettingObject.md)
 [New-AzFrontDoorFrontendEndpointObject](./New-AzFrontDoorFrontendEndpointObject.md)
 [New-AzFrontDoorBackendPoolObject](./New-AzFrontDoorBackendPoolObject.md)

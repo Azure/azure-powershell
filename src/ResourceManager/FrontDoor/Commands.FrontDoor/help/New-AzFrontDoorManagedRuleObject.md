@@ -114,4 +114,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzFrontDoorFireWallPolicy](./New-AzFrontDoorFireWallPolicy.md)
 [Set-AzFrontDoorFireWallPolicy](./Set-AzFrontDoorFireWallPolicy.md)
-[New-AzFrontDoorRuleGroupOverrideObject](./Set-AzFrontDoorRuleGroupOverrideObject.md)
+[New-AzFrontDoorRuleGroupOverrideObject](./New-AzFrontDoorRuleGroupOverrideObject.md)
