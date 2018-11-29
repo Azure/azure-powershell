@@ -4,11 +4,11 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch", "Commands.Batch\Commands.Batch.Netcore.csproj", "{D470E50A-9607-48D6-A924-4F9F86502704}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Batch.Netcore", "Commands.Batch\Commands.Batch.Netcore.csproj", "{D470E50A-9607-48D6-A924-4F9F86502704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch.Test", "Commands.Batch.Test\Commands.Batch.Test.Netcore.csproj", "{F4ABAD68-64A5-4B23-B09C-42559A7524DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Batch.Test.Netcore", "Commands.Batch.Test\Commands.Batch.Test.Netcore.csproj", "{F4ABAD68-64A5-4B23-B09C-42559A7524DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +34,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F4ABAD68-64A5-4B23-B09C-42559A7524DE} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4DDDB3A2-D24E-477A-A010-DF24D25DD45A}
