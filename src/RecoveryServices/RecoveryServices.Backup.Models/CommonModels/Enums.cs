@@ -37,7 +37,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Represents any Azure Storage containers.
         /// </summary>
-        AzureStorage
+        AzureStorage,
+
+        /// <summary>
+        /// Represents any Azure Workload containers.
+        /// </summary>
+        AzureWorkload
     }
 
     /// <summary>
@@ -70,6 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents Azure File Storage. https://docs.microsoft.com/en-in/azure/storage/files/storage-files-introduction
         /// </summary>
         AzureStorage,
+        AzureWorkload,
     }
 
     /// <summary>
@@ -103,6 +109,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents Azure File https://docs.microsoft.com/en-in/azure/storage/files/storage-files-introduction
         /// </summary>
         AzureFiles,
+        MSSQL,
     }
 
     /// <summary>
@@ -134,6 +141,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents the Azure File provider for powershell cmdlets.
         /// </summary>
         AzureFiles,
+        AzureWorkload,
     }
 
     /// <summary>
