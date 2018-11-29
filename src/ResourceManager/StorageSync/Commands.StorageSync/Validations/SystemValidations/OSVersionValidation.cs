@@ -79,7 +79,9 @@
             }
             catch (Exception e)
             {
-                return ValidationResult.UnavailableValidation(this.ValidationType,
+                return ValidationResult.UnavailableValidation(
+                    this.ValidationType, 
+                    this.ValidationKind,
                     $"The OS Version validation was not able to complete. Cause: {e.Message}");
             }
 
@@ -91,6 +93,7 @@
                     Description = $"OS version {osVersion} is not supported. Supported versions are: {this._supportedVersionsString}",
                     Level = ResultLevel.Error,
                     Type = this.ValidationType,
+                    Kind = this.ValidationKind,
                     Result = Result.Fail
                 };
             }
@@ -103,6 +106,7 @@
                     Description = $"OS edition '{skuEdition}' is not supported. Supported editions are: {this._supportedEditionsStrings}",
                     Level = ResultLevel.Error,
                     Type = this.ValidationType,
+                    Kind = this.ValidationKind,
                     Result = Result.Fail
                 };
             }

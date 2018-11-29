@@ -63,7 +63,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.1'; }
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = @()
+FormatsToProcess = '.\Microsoft.Azure.Commands.StorageSync.Evaluation.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.StorageSync.dll')
