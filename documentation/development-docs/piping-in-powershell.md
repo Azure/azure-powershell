@@ -82,7 +82,7 @@ Get/New-Az<ExampleResource> -ParentResourceId <string (accepts ResourceId of the
 
 ### Long explanation
 
-In this scenario, we are using the generic cmdlets found in the `AzureRM.Resources` module. These cmdlets, `Find-AzResource` and `Get-AzResource`, return a `PSCustomObject` that has a `ResourceId` property, which is the unique identifier for the given resource. Since this identifier can parsed to get the name and resource group name for a top-level resource, we can create a parameter set that has a `ResourceId` parameter that accepts its value from the pipeline by property name, allowing us to accept piping from these generic cmdlets.
+In this scenario, we are using the generic cmdlets found in the `Az.Resources` module. These cmdlets, `Find-AzResource` and `Get-AzResource`, return a `PSCustomObject` that has a `ResourceId` property, which is the unique identifier for the given resource. Since this identifier can parsed to get the name and resource group name for a top-level resource, we can create a parameter set that has a `ResourceId` parameter that accepts its value from the pipeline by property name, allowing us to accept piping from these generic cmdlets.
 
 ```powershell
 # --- Piping scenario ---
@@ -107,7 +107,7 @@ Find-AzResource -ResourceType Microsoft.Foo/foo -ResourceGroupEquals "RG" | ForE
 Find-AzResource -ResourceGroupEquals "RG" -ResourceNameEquals "FooName" | ForEach-Object { Remove-AzFoo -ResourceId $_.ResourceId }
 ```
 
-To implement this scenario, please see the [`ResourceIdentifier`](https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Common/Commands.ResourceManager.Common/Utilities/Models/ResourceIdentifier.cs) class in the `Commands.ResourceManager.Common` project. This class will allow you to create a `ResourceIdentifier` object that accepts a `ResourceId` string in its constructor and has properties `ResourceName`, `ResourceGroupName`, and others.
+To implement this scenario, please see the [`ResourceIdentifier`](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Common/Commands.ResourceManager.Common/Utilities/Models/ResourceIdentifier.cs) class in the `Commands.ResourceManager.Common` project. This class will allow you to create a `ResourceIdentifier` object that accepts a `ResourceId` string in its constructor and has properties `ResourceName`, `ResourceGroupName`, and others.
 
 ## Summary
 For all Remove/Set/Update cmdlets (and any other cmdlet where an existing resource is being operated on), you will have three parameter sets (and potentially a multiple of three if you have initially have multiple parameter sets):

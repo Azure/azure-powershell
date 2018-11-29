@@ -64,7 +64,7 @@ From the [Strongly Encouraged Development Guidelines](https://msdn.microsoft.com
 
 #### Noun Prefix
 
-For ARM cmdlets, the noun must be prefixed with `AzureRm`. For RDFE and data plane cmdlets, the noun must be prefixed with `Azure`.
+For ARM cmdlets, the noun must be prefixed with `Az`. For RDFE and data plane cmdlets, the noun must be prefixed with `Azure`.
 
 #### Specific Noun
 
@@ -274,7 +274,7 @@ $job | Wait-Job
 $subcriptions = $job | Receive-Job
 ````
 
-To set a custom job name, please use [SetBackgroupJobDescription(string name)](https://github.com/Azure/azure-powershell/blob/preview/src/Common/Commands.Common/AzurePSCmdlet.cs#L761).  The default job description is: "Long Running Operation for '{cmdlet name}' on resource '{resource name}'"
+To set a custom job name, please use [SetBackgroupJobDescription(string name)](https://github.com/Azure/azure-powershell-common/blob/dev/src/Common/AzurePSCmdlet.cs#L810).  The default job description is: "Long Running Operation for '{cmdlet name}' on resource '{resource name}'"
 
 ## Argument Completers
 
