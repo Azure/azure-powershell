@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Updated the Microsoft.DataTransfer.Gateway.Encryption version to 3.11.6898.1 for .NetStandard version.
+* Minor changes for upcoming AzureRM to Az transition
 
 ## Version 5.0.3
 * Updated to the latest version of the Azure ClientRuntime.

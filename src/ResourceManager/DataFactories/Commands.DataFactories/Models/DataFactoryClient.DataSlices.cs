@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.DataFactories
     {
         public virtual List<PSDataSliceRun> ListDataSliceRuns(DataSliceRunFilterOptions filterOptions)
         {
-            List<PSDataSliceRun> runs = new List<PSDataSliceRun>();
+            var runs = new List<PSDataSliceRun>();
 
             DataSliceRunListResponse response;
             if (filterOptions.NextLink.IsNextPageLink())
@@ -42,12 +42,12 @@ namespace Microsoft.Azure.Commands.DataFactories
                     filterOptions.ResourceGroupName,
                     filterOptions.DataFactoryName,
                     filterOptions.DatasetName,
-                    new DataSliceRunListParameters()
+                    new DataSliceRunListParameters
                     {
                         DataSliceStartTime = filterOptions.StartDateTime.ConvertToISO8601DateTimeString()
                     });
             }
-            filterOptions.NextLink = response != null ? response.NextLink : null;
+            filterOptions.NextLink = response?.NextLink;
 
             if (response != null && response.DataSliceRuns != null)
             {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         public virtual List<PSDataSlice> ListDataSlices(DataSliceFilterOptions filterOptions)
         {
-            List<PSDataSlice> dataSlices = new List<PSDataSlice>();
+            var dataSlices = new List<PSDataSlice>();
 
             DataSliceListResponse response;
             if (filterOptions.NextLink.IsNextPageLink())
@@ -81,13 +81,13 @@ namespace Microsoft.Azure.Commands.DataFactories
                     filterOptions.ResourceGroupName,
                     filterOptions.DataFactoryName,
                     filterOptions.DatasetName,
-                    new DataSliceListParameters()
+                    new DataSliceListParameters
                     {
                         DataSliceRangeStartTime = filterOptions.DataSliceRangeStartTime.ConvertToISO8601DateTimeString(),
                         DataSliceRangeEndTime = filterOptions.DataSliceRangeEndTime.ConvertToISO8601DateTimeString()
                     });
             }
-            filterOptions.NextLink = response != null ? response.NextLink : null;
+            filterOptions.NextLink = response?.NextLink;
 
             if (response != null && response.DataSlices != null)
             {
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 resourceGroupName,
                 dataFactoryName,
                 datasetName,
-                new DataSliceSetStatusParameters()
+                new DataSliceSetStatusParameters
                 {
                     SliceState = sliceState,
                     UpdateType = updateType,
@@ -143,20 +143,20 @@ namespace Microsoft.Azure.Commands.DataFactories
                 throw new ArgumentNullException(Resources.DownloadCredentialsNull);
             }
 
-            PSRunLogInfo rli = new PSRunLogInfo(parameters.SasUri);
+            var rli = new PSRunLogInfo(parameters.SasUri);
             StorageCredentials sc = new StorageCredentials(rli.SasToken);
 
             StorageUri suri = new StorageUri(new Uri("https://" + parameters.SasUri.Host));
             CloudBlobClient sourceClient = new CloudBlobClient(suri, sc);
             CloudBlobContainer sascontainer = sourceClient.GetContainerReference(rli.Container);
             CloudBlobDirectory sourceDirectory = sascontainer.GetDirectoryReference(rli.Directory);
-
+// TODO: Remove IfDef
 #if NETSTANDARD
             var bloblist = sourceDirectory.ListBlobsSegmentedAsync(true, BlobListingDetails.None, null, null, null, null).Result.Results;
 #else
             var bloblist = sourceDirectory.ListBlobs(true);
 #endif
-            string downloadFolderPath = parameters.Directory.Insert(parameters.Directory.Length, @"\");
+            var downloadFolderPath = parameters.Directory.Insert(parameters.Directory.Length, @"\");
 
             foreach (var blob in bloblist)
             {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 int length = destBlob.Name.Split('/').Length;
                 string blobFileName = destBlob.Name.Split('/')[length - 1];
                 // the folder structure of run logs changed from flat listing to nesting under time directory
-                string blobFolderPath = String.Empty;
+                var blobFolderPath = String.Empty;
                 if (destBlob.Name.Length > blobFileName.Length)
                 {
                     blobFolderPath = destBlob.Name.Substring(0, destBlob.Name.Length - blobFileName.Length - 1);
@@ -182,8 +182,9 @@ namespace Microsoft.Azure.Commands.DataFactories
                 // adding _log suffix to differentiate between files and folders of the same name. Azure blob storage only knows about blob files. We could use nested folder structure
                 // as part of the blob file name and thus it is possible to have a file and folder of the same name in the same location which is not acceptable for Windows file system
                 string fileToDownload = destBlob.Name.Remove(0, rli.Directory.Length);
+// TODO: Remove IfDef
 #if NETSTANDARD
-                destBlob.DownloadToFileAsync(downloadFolderPath + fileToDownload + "_log", FileMode.Create).RunSynchronously();
+                Task.Run(() => destBlob.DownloadToFileAsync(downloadFolderPath + fileToDownload + "_log", FileMode.Create)).Wait();
 #else
                 destBlob.DownloadToFile(downloadFolderPath + fileToDownload + "_log", FileMode.Create);
 #endif
