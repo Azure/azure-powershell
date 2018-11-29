@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7c88e753-304b-4aca-8df5-8869e1cdbc67"
+          "8c439072-bd22-4e17-a4f8-bcdeacf3d238"
         ],
         "accept-language": [
           "en-US"
@@ -15,8 +15,8 @@
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,7 +27,7 @@
           "d6efba02-92ca-4b55-926d-6f81546fb1c6"
         ],
         "x-ms-request-id": [
-          "7c88e753-304b-4aca-8df5-8869e1cdbc67"
+          "8c439072-bd22-4e17-a4f8-bcdeacf3d238"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -36,10 +36,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "35d2c56f-1f36-4d7a-997e-79018429f425"
+          "ea85b472-835b-4b22-89d1-0b7124ff5952"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213655Z:35d2c56f-1f36-4d7a-997e-79018429f425"
+          "WESTUS2:20181128T235752Z:ea85b472-835b-4b22-89d1-0b7124ff5952"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -48,7 +48,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:36:54 GMT"
+          "Wed, 28 Nov 2018 23:57:52 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -60,7 +60,7 @@
           "ASP.NET"
         ],
         "Content-Length": [
-          "611"
+          "610"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"PSCmdletTestAccount01\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://wcus-agentservice-prod-1.azure-automation.net/accounts/d6efba02-92ca-4b55-926d-6f81546fb1c6\",\r\n    \"creationTime\": \"2018-10-31T18:37:23.68-07:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-01T10:07:37.49-07:00\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"PSCmdletTestAccount01\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://wcus-agentservice-prod-1.azure-automation.net/accounts/d6efba02-92ca-4b55-926d-6f81546fb1c6\",\r\n    \"creationTime\": \"2018-10-31T18:37:23.68-07:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-20T11:26:20.1-08:00\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -79,7 +79,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "314ac6bc-db04-48e3-9fd5-d7b1bc232a20"
+          "b1330228-dbb6-476c-acad-468d6f62ca97"
         ],
         "accept-language": [
           "en-US"
@@ -87,11 +87,11 @@
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ],
         "x-ms-activity-id": [
-          "04c1cd98-28c7-44d9-8f3d-dda05c0f8ecb"
+          "6e9ea1aa-058c-4525-a1f2-3cb2b5e55661"
         ]
       },
       "ResponseHeaders": {
@@ -102,7 +102,7 @@
           "d6efba02-92ca-4b55-926d-6f81546fb1c6"
         ],
         "x-ms-request-id": [
-          "04c1cd98-28c7-44d9-8f3d-dda05c0f8ecb"
+          "6e9ea1aa-058c-4525-a1f2-3cb2b5e55661"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,10 +111,10 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "94b0781c-79d9-4181-b7e9-a71bad95702f"
+          "122077a5-6b16-44ac-9b02-2c92fcb20f62"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213655Z:94b0781c-79d9-4181-b7e9-a71bad95702f"
+          "WESTUS2:20181128T235752Z:122077a5-6b16-44ac-9b02-2c92fcb20f62"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -123,7 +123,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:36:55 GMT"
+          "Wed, 28 Nov 2018 23:57:52 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -135,7 +135,7 @@
           "ASP.NET"
         ],
         "Content-Length": [
-          "611"
+          "610"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -144,17 +144,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"PSCmdletTestAccount01\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://wcus-agentservice-prod-1.azure-automation.net/accounts/d6efba02-92ca-4b55-926d-6f81546fb1c6\",\r\n    \"creationTime\": \"2018-10-31T18:37:23.68-07:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-01T10:07:37.49-07:00\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"PSCmdletTestAccount01\",\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://wcus-agentservice-prod-1.azure-automation.net/accounts/d6efba02-92ca-4b55-926d-6f81546fb1c6\",\r\n    \"creationTime\": \"2018-10-31T18:37:23.68-07:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-20T11:26:20.1-08:00\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0P2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2018-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0P2FwaS12ZXJzaW9uPTIwMTgtMDYtMzA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "33669e94-493d-4623-9da2-ce134ab343f5"
+          "242a9ad2-1e55-4911-a1a8-23228c59c425"
         ],
         "accept-language": [
           "en-US"
@@ -162,11 +162,11 @@
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ],
         "x-ms-activity-id": [
-          "04c1cd98-28c7-44d9-8f3d-dda05c0f8ecb"
+          "6e9ea1aa-058c-4525-a1f2-3cb2b5e55661"
         ]
       },
       "ResponseHeaders": {
@@ -177,13 +177,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "8c700438-5f43-414c-9e60-169be9ee1358"
+          "ea39624e-0bb8-43d0-8c1e-939339389425"
         ],
         "x-ms-correlation-request-id": [
-          "8c700438-5f43-414c-9e60-169be9ee1358"
+          "ea39624e-0bb8-43d0-8c1e-939339389425"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213655Z:8c700438-5f43-414c-9e60-169be9ee1358"
+          "WESTUS2:20181128T235752Z:ea39624e-0bb8-43d0-8c1e-939339389425"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -195,7 +195,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:36:55 GMT"
+          "Wed, 28 Nov 2018 23:57:52 GMT"
         ],
         "Content-Length": [
           "218"
@@ -211,13 +211,13 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0P2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2018-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0P2FwaS12ZXJzaW9uPTIwMTgtMDYtMzA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "98bde0f9-6a88-45a7-8f49-e8e4de699565"
+          "99e78b89-c823-4ab2-a0ee-8a0be4ac1c80"
         ],
         "accept-language": [
           "en-US"
@@ -225,11 +225,11 @@
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ],
         "x-ms-activity-id": [
-          "04c1cd98-28c7-44d9-8f3d-dda05c0f8ecb"
+          "6e9ea1aa-058c-4525-a1f2-3cb2b5e55661"
         ]
       },
       "ResponseHeaders": {
@@ -237,7 +237,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "04c1cd98-28c7-44d9-8f3d-dda05c0f8ecb"
+          "6e9ea1aa-058c-4525-a1f2-3cb2b5e55661"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -246,10 +246,10 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "92be780a-aa00-46ba-9e46-fe3d061cdde2"
+          "0e0b71e0-3bf6-4b8f-b64a-95631e8fbcdf"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213656Z:92be780a-aa00-46ba-9e46-fe3d061cdde2"
+          "WESTUS2:20181128T235753Z:0e0b71e0-3bf6-4b8f-b64a-95631e8fbcdf"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -258,10 +258,10 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:36:55 GMT"
+          "Wed, 28 Nov 2018 23:57:53 GMT"
         ],
         "ETag": [
-          "\"636773098160233333\""
+          "\"636790462734900000\""
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -273,7 +273,7 @@
           "ASP.NET"
         ],
         "Content-Length": [
-          "780"
+          "770"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -282,17 +282,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript\",\r\n  \"name\": \"TestRunbook-PowerShellScript\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Runbooks\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"TagKey1\": \"TagValue1\"\r\n  },\r\n  \"etag\": \"\\\"636773098160233333\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"PowerShell Tutorial runbook\",\r\n    \"logVerbose\": true,\r\n    \"logProgress\": true,\r\n    \"logActivityTrace\": 0,\r\n    \"runbookType\": \"PowerShell\",\r\n    \"parameters\": {},\r\n    \"state\": \"New\",\r\n    \"jobCount\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"serviceManagementTags\": null,\r\n    \"outputTypes\": [],\r\n    \"creationTime\": \"2018-11-08T13:36:56.0233333-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-08T13:36:56.0233333-08:00\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript\",\r\n  \"name\": \"TestRunbook-PowerShellScript\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Runbooks\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"TagKey1\": \"TagValue1\"\r\n  },\r\n  \"etag\": \"\\\"636790462734900000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"PowerShell Tutorial runbook\",\r\n    \"logVerbose\": true,\r\n    \"logProgress\": true,\r\n    \"logActivityTrace\": 0,\r\n    \"runbookType\": \"PowerShell\",\r\n    \"parameters\": {},\r\n    \"state\": \"New\",\r\n    \"jobCount\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"serviceManagementTags\": null,\r\n    \"outputTypes\": [],\r\n    \"creationTime\": \"2018-11-28T15:57:53.49-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-28T15:57:53.49-08:00\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0P2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2018-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0P2FwaS12ZXJzaW9uPTIwMTgtMDYtMzA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3fa04466-78f9-4180-aa75-5ec430d17107"
+          "c6b52ef2-9df7-472d-bc32-889c135b7e9c"
         ],
         "accept-language": [
           "en-US"
@@ -300,11 +300,11 @@
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ],
         "x-ms-activity-id": [
-          "48ed046a-877b-41be-8469-58c066e90e37"
+          "be04dc6c-811b-4c20-b2a5-fc41c5edd1e4"
         ]
       },
       "ResponseHeaders": {
@@ -312,7 +312,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "48ed046a-877b-41be-8469-58c066e90e37"
+          "be04dc6c-811b-4c20-b2a5-fc41c5edd1e4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -321,10 +321,10 @@
           "11991"
         ],
         "x-ms-correlation-request-id": [
-          "7c582c5f-6e12-44ce-a1ed-00a0174b516b"
+          "5ae30fb7-89f5-45f5-aa70-dd7a6f15f881"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213757Z:7c582c5f-6e12-44ce-a1ed-00a0174b516b"
+          "WESTUS2:20181128T235855Z:5ae30fb7-89f5-45f5-aa70-dd7a6f15f881"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -333,10 +333,10 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:37:57 GMT"
+          "Wed, 28 Nov 2018 23:58:54 GMT"
         ],
         "ETag": [
-          "\"636773098475533333\""
+          "\"636790463048700000\""
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -348,7 +348,7 @@
           "ASP.NET"
         ],
         "Content-Length": [
-          "786"
+          "776"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -357,17 +357,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript\",\r\n  \"name\": \"TestRunbook-PowerShellScript\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Runbooks\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"TagKey1\": \"TagValue1\"\r\n  },\r\n  \"etag\": \"\\\"636773098475533333\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"PowerShell Tutorial runbook\",\r\n    \"logVerbose\": true,\r\n    \"logProgress\": true,\r\n    \"logActivityTrace\": 0,\r\n    \"runbookType\": \"PowerShell\",\r\n    \"parameters\": {},\r\n    \"state\": \"Published\",\r\n    \"jobCount\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"serviceManagementTags\": null,\r\n    \"outputTypes\": [],\r\n    \"creationTime\": \"2018-11-08T13:36:56.0233333-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-08T13:37:27.5533333-08:00\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript\",\r\n  \"name\": \"TestRunbook-PowerShellScript\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Runbooks\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"TagKey1\": \"TagValue1\"\r\n  },\r\n  \"etag\": \"\\\"636790463048700000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"PowerShell Tutorial runbook\",\r\n    \"logVerbose\": true,\r\n    \"logProgress\": true,\r\n    \"logActivityTrace\": 0,\r\n    \"runbookType\": \"PowerShell\",\r\n    \"parameters\": {},\r\n    \"state\": \"Published\",\r\n    \"jobCount\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"serviceManagementTags\": null,\r\n    \"outputTypes\": [],\r\n    \"creationTime\": \"2018-11-28T15:57:53.49-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-28T15:58:24.87-08:00\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0P2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2018-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0P2FwaS12ZXJzaW9uPTIwMTgtMDYtMzA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8deab1d1-5ad6-40d2-9d86-78c74ac856f3"
+          "58e78fe9-a415-4948-bb85-a665e9f97864"
         ],
         "accept-language": [
           "en-US"
@@ -375,8 +375,8 @@
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -387,13 +387,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "056756b9-8e2c-4996-b241-fb995148c2c9"
+          "8023bb0d-795d-43ba-805e-61678d7d79c5"
         ],
         "x-ms-correlation-request-id": [
-          "056756b9-8e2c-4996-b241-fb995148c2c9"
+          "8023bb0d-795d-43ba-805e-61678d7d79c5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213758Z:056756b9-8e2c-4996-b241-fb995148c2c9"
+          "WESTUS2:20181128T235855Z:8023bb0d-795d-43ba-805e-61678d7d79c5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -405,7 +405,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:37:58 GMT"
+          "Wed, 28 Nov 2018 23:58:55 GMT"
         ],
         "Content-Length": [
           "218"
@@ -421,13 +421,13 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0P2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2018-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0P2FwaS12ZXJzaW9uPTIwMTgtMDYtMzA=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"logVerbose\": true,\r\n    \"logProgress\": true,\r\n    \"runbookType\": \"PowerShell\",\r\n    \"draft\": {\r\n      \"creationTime\": \"0001-01-01T00:00:00-08:00\",\r\n      \"lastModifiedTime\": \"0001-01-01T00:00:00-08:00\"\r\n    },\r\n    \"description\": \"PowerShell Tutorial runbook\"\r\n  },\r\n  \"name\": \"TestRunbook-PowerShellScript\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"TagKey1\": \"TagValue1\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "edfc8185-4b4b-4c66-812c-18b143d169b0"
+          "5a68c77f-107c-4f34-be78-f7cb6af9fabc"
         ],
         "accept-language": [
           "en-US"
@@ -435,11 +435,11 @@
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ],
         "x-ms-activity-id": [
-          "04c1cd98-28c7-44d9-8f3d-dda05c0f8ecb"
+          "6e9ea1aa-058c-4525-a1f2-3cb2b5e55661"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -453,13 +453,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "04c1cd98-28c7-44d9-8f3d-dda05c0f8ecb"
+          "6e9ea1aa-058c-4525-a1f2-3cb2b5e55661"
         ],
         "x-ms-location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2015-10-31"
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2018-06-30"
         ],
         "ocp-location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2015-10-31"
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2018-06-30"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -468,10 +468,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "b659550d-e2c8-40ce-850e-cbff02436510"
+          "609f77f9-ff95-4cb8-ae23-f88ce8371a7e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213656Z:b659550d-e2c8-40ce-850e-cbff02436510"
+          "WESTUS2:20181128T235753Z:609f77f9-ff95-4cb8-ae23-f88ce8371a7e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -480,13 +480,13 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:36:55 GMT"
+          "Wed, 28 Nov 2018 23:57:53 GMT"
         ],
         "ETag": [
-          "\"636773098160233333\""
+          "\"636790462734900000\""
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2015-10-31"
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2018-06-30"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -498,7 +498,7 @@
           "ASP.NET"
         ],
         "Content-Length": [
-          "780"
+          "770"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -507,17 +507,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript\",\r\n  \"name\": \"TestRunbook-PowerShellScript\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Runbooks\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"TagKey1\": \"TagValue1\"\r\n  },\r\n  \"etag\": \"\\\"636773098160233333\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"PowerShell Tutorial runbook\",\r\n    \"logVerbose\": true,\r\n    \"logProgress\": true,\r\n    \"logActivityTrace\": 0,\r\n    \"runbookType\": \"PowerShell\",\r\n    \"parameters\": {},\r\n    \"state\": \"New\",\r\n    \"jobCount\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"serviceManagementTags\": null,\r\n    \"outputTypes\": [],\r\n    \"creationTime\": \"2018-11-08T13:36:56.0233333-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-08T13:36:56.0233333-08:00\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript\",\r\n  \"name\": \"TestRunbook-PowerShellScript\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Runbooks\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"TagKey1\": \"TagValue1\"\r\n  },\r\n  \"etag\": \"\\\"636790462734900000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"PowerShell Tutorial runbook\",\r\n    \"logVerbose\": true,\r\n    \"logProgress\": true,\r\n    \"logActivityTrace\": 0,\r\n    \"runbookType\": \"PowerShell\",\r\n    \"parameters\": {},\r\n    \"state\": \"New\",\r\n    \"jobCount\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"serviceManagementTags\": null,\r\n    \"outputTypes\": [],\r\n    \"creationTime\": \"2018-11-28T15:57:53.49-08:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-11-28T15:57:53.49-08:00\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/content?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0L2RyYWZ0L2NvbnRlbnQ/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/content?api-version=2018-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0L2RyYWZ0L2NvbnRlbnQ/YXBpLXZlcnNpb249MjAxOC0wNi0zMA==",
       "RequestMethod": "PUT",
       "RequestBody": "<#\r\n    .DESCRIPTION\r\n        An example runbook which gets all the ARM resources using the Run As Account (Service Principal)\r\n\r\n    .NOTES\r\n        AUTHOR: Azure Automation Team\r\n        LASTEDIT: Mar 14, 2016\r\n#>\r\n\r\n$connectionName = \"AzureRunAsConnection100\"\r\ntry\r\n{\r\n    # Get the connection \"AzureRunAsConnection \"\r\n    $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         \r\n\r\n    \"Logging in to Azure...\"\r\n    Add-AzureRmAccount `\r\n        -ServicePrincipal `\r\n        -TenantId $servicePrincipalConnection.TenantId `\r\n        -ApplicationId $servicePrincipalConnection.ApplicationId `\r\n        -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint \r\n}\r\ncatch {\r\n    if (!$servicePrincipalConnection)\r\n    {\r\n        $ErrorMessage = \"Connection $connectionName not found.\"\r\n        throw $ErrorMessage\r\n    } else{\r\n        Write-Error -Message $_.Exception\r\n        throw $_.Exception\r\n    }\r\n}\r\n\r\n#Get all ARM resources from all resource groups\r\n$ResourceGroups = Get-AzureRmResourceGroup \r\n\r\nforeach ($ResourceGroup in $ResourceGroups)\r\n{    \r\n    Write-Output (\"Showing resources in resource group \" + $ResourceGroup.ResourceGroupName)\r\n    $Resources = Find-AzureRmResource -ResourceGroupNameContains $ResourceGroup.ResourceGroupName | Select ResourceName, ResourceType\r\n    ForEach ($Resource in $Resources)\r\n    {\r\n        Write-Output ($Resource.ResourceName + \" of type \" +  $Resource.ResourceType)\r\n    }\r\n    Write-Output (\"\")\r\n} \r\n",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dc83b6b9-bd92-4cc5-a533-f4754d0a8c5c"
+          "76380eca-9fd4-462d-aa17-13d2422c8a13"
         ],
         "accept-language": [
           "en-US"
@@ -525,8 +525,8 @@
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ],
         "Content-Type": [
           "text/powershell"
@@ -543,17 +543,17 @@
           "30"
         ],
         "ocp-automation-operationresultid": [
-          "644b43b4-50bb-48cf-8b26-47b1ad0f7f03",
-          "644b43b4-50bb-48cf-8b26-47b1ad0f7f03"
+          "b4654b3e-bf9c-4f27-9a2b-0b09994dd079",
+          "b4654b3e-bf9c-4f27-9a2b-0b09994dd079"
         ],
         "x-ms-request-id": [
-          "dc83b6b9-bd92-4cc5-a533-f4754d0a8c5c"
+          "76380eca-9fd4-462d-aa17-13d2422c8a13"
         ],
         "x-ms-location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/content/operationResults/644b43b4-50bb-48cf-8b26-47b1ad0f7f03?api-version=2015-10-31"
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/content/operationResults/b4654b3e-bf9c-4f27-9a2b-0b09994dd079?api-version=2018-06-30"
         ],
         "ocp-location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/content/operationResults/644b43b4-50bb-48cf-8b26-47b1ad0f7f03?api-version=2015-10-31"
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/content/operationResults/b4654b3e-bf9c-4f27-9a2b-0b09994dd079?api-version=2018-06-30"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -562,10 +562,10 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "af29e443-22d8-4e75-ab7c-ca4f56b85fc2"
+          "f76d2207-99d6-4f05-a2b6-e0f80ab337cc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213657Z:af29e443-22d8-4e75-ab7c-ca4f56b85fc2"
+          "WESTUS2:20181128T235754Z:f76d2207-99d6-4f05-a2b6-e0f80ab337cc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -574,10 +574,10 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:36:56 GMT"
+          "Wed, 28 Nov 2018 23:57:54 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/content/operationResults/644b43b4-50bb-48cf-8b26-47b1ad0f7f03?api-version=2015-10-31"
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/content/operationResults/b4654b3e-bf9c-4f27-9a2b-0b09994dd079?api-version=2018-06-30"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -599,16 +599,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/content/operationResults/644b43b4-50bb-48cf-8b26-47b1ad0f7f03?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0L2RyYWZ0L2NvbnRlbnQvb3BlcmF0aW9uUmVzdWx0cy82NDRiNDNiNC01MGJiLTQ4Y2YtOGIyNi00N2IxYWQwZjdmMDM/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/content/operationResults/b4654b3e-bf9c-4f27-9a2b-0b09994dd079?api-version=2018-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0L2RyYWZ0L2NvbnRlbnQvb3BlcmF0aW9uUmVzdWx0cy9iNDY1NGIzZS1iZjljLTRmMjctOWEyYi0wYjA5OTk0ZGQwNzk/YXBpLXZlcnNpb249MjAxOC0wNi0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -616,7 +616,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "69423e91-3ac6-413a-b140-9eba941d5938"
+          "dd0a7c19-f84d-4997-9f94-d2cfc353b9c8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -625,10 +625,10 @@
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "1d53a31e-859b-4fda-bb0a-090b55b05159"
+          "9f49b743-edd1-42db-ae20-3c4bd95bb7cf"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213727Z:1d53a31e-859b-4fda-bb0a-090b55b05159"
+          "WESTUS2:20181128T235824Z:9f49b743-edd1-42db-ae20-3c4bd95bb7cf"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -637,7 +637,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:37:26 GMT"
+          "Wed, 28 Nov 2018 23:58:23 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -662,16 +662,16 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/content?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0L2RyYWZ0L2NvbnRlbnQ/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/content?api-version=2018-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0L2RyYWZ0L2NvbnRlbnQ/YXBpLXZlcnNpb249MjAxOC0wNi0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -685,16 +685,16 @@
           "11994"
         ],
         "x-ms-request-id": [
-          "953e237b-305b-476a-b98a-5b10031b4236"
+          "f02003e9-55dd-4744-b3a8-d15130c74191"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-correlation-request-id": [
-          "db878394-26ef-4004-a62e-dac7ced462ec"
+          "555f9da4-b9eb-42ce-a238-05efdf65b0be"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213727Z:db878394-26ef-4004-a62e-dac7ced462ec"
+          "WESTUS2:20181128T235824Z:555f9da4-b9eb-42ce-a238-05efdf65b0be"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -703,10 +703,10 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:37:26 GMT"
+          "Wed, 28 Nov 2018 23:58:23 GMT"
         ],
         "ETag": [
-          "\"636773098169600000\""
+          "\"636790462743500000\""
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -731,13 +731,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/publish?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0L2RyYWZ0L3B1Ymxpc2g/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/publish?api-version=2018-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0L3B1Ymxpc2g/YXBpLXZlcnNpb249MjAxOC0wNi0zMA==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "aa736a3d-98f7-4596-ac1e-cf54af69770c"
+          "66f034e3-96ef-433a-979e-eb1388b4e4b4"
         ],
         "accept-language": [
           "en-US"
@@ -745,11 +745,11 @@
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ],
         "x-ms-activity-id": [
-          "48ed046a-877b-41be-8469-58c066e90e37"
+          "be04dc6c-811b-4c20-b2a5-fc41c5edd1e4"
         ]
       },
       "ResponseHeaders": {
@@ -760,17 +760,17 @@
           "30"
         ],
         "ocp-automation-operationresultid": [
-          "da65619b-d643-4aa8-b625-246bbdcc7095",
-          "da65619b-d643-4aa8-b625-246bbdcc7095"
+          "1c4c2e59-14aa-4d57-a0c5-2c7c022e9a20",
+          "1c4c2e59-14aa-4d57-a0c5-2c7c022e9a20"
         ],
         "x-ms-request-id": [
-          "48ed046a-877b-41be-8469-58c066e90e37"
+          "be04dc6c-811b-4c20-b2a5-fc41c5edd1e4"
         ],
         "x-ms-location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/publish/operationResults/da65619b-d643-4aa8-b625-246bbdcc7095?api-version=2015-10-31"
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/publish/operationResults/1c4c2e59-14aa-4d57-a0c5-2c7c022e9a20?api-version=2018-06-30"
         ],
         "ocp-location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/publish/operationResults/da65619b-d643-4aa8-b625-246bbdcc7095?api-version=2015-10-31"
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/publish/operationResults/1c4c2e59-14aa-4d57-a0c5-2c7c022e9a20?api-version=2018-06-30"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -779,10 +779,10 @@
           "1197"
         ],
         "x-ms-correlation-request-id": [
-          "4632b799-146b-46bb-aad9-09b7d28f0a43"
+          "8441dafe-8512-4bac-a85d-d72429c2eef5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213727Z:4632b799-146b-46bb-aad9-09b7d28f0a43"
+          "WESTUS2:20181128T235824Z:8441dafe-8512-4bac-a85d-d72429c2eef5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -791,10 +791,10 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:37:26 GMT"
+          "Wed, 28 Nov 2018 23:58:24 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/publish/operationResults/da65619b-d643-4aa8-b625-246bbdcc7095?api-version=2015-10-31"
+          "https://management.azure.com/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/publish/operationResults/1c4c2e59-14aa-4d57-a0c5-2c7c022e9a20?api-version=2018-06-30"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -816,22 +816,22 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/publish/operationResults/da65619b-d643-4aa8-b625-246bbdcc7095?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0L2RyYWZ0L3B1Ymxpc2gvb3BlcmF0aW9uUmVzdWx0cy9kYTY1NjE5Yi1kNjQzLTRhYTgtYjYyNS0yNDZiYmRjYzcwOTU/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/publish/operationResults/1c4c2e59-14aa-4d57-a0c5-2c7c022e9a20?api-version=2018-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0L3B1Ymxpc2gvb3BlcmF0aW9uUmVzdWx0cy8xYzRjMmU1OS0xNGFhLTRkNTctYTBjNS0yYzdjMDIyZTlhMjA/YXBpLXZlcnNpb249MjAxOC0wNi0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ],
         "x-ms-activity-id": [
-          "48ed046a-877b-41be-8469-58c066e90e37"
+          "be04dc6c-811b-4c20-b2a5-fc41c5edd1e4"
         ],
         "x-ms-client-request-id": [
-          "3255acf3-4071-40a5-bb53-ffd8b948445e"
+          "38d56d5d-dba8-4b29-852f-f553b13a203a"
         ]
       },
       "ResponseHeaders": {
@@ -839,7 +839,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "48ed046a-877b-41be-8469-58c066e90e37"
+          "be04dc6c-811b-4c20-b2a5-fc41c5edd1e4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -848,10 +848,10 @@
           "11993"
         ],
         "x-ms-correlation-request-id": [
-          "b28fcaa8-689f-430b-a5de-0bc775c2607b"
+          "ac1cce87-0d74-458e-8cf0-05b3aed6ba04"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213757Z:b28fcaa8-689f-430b-a5de-0bc775c2607b"
+          "WESTUS2:20181128T235855Z:ac1cce87-0d74-458e-8cf0-05b3aed6ba04"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -860,7 +860,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:37:57 GMT"
+          "Wed, 28 Nov 2018 23:58:54 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -885,22 +885,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/draft/publish/operationResults/da65619b-d643-4aa8-b625-246bbdcc7095?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0L2RyYWZ0L3B1Ymxpc2gvb3BlcmF0aW9uUmVzdWx0cy9kYTY1NjE5Yi1kNjQzLTRhYTgtYjYyNS0yNDZiYmRjYzcwOTU/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript/publish/operationResults/1c4c2e59-14aa-4d57-a0c5-2c7c022e9a20?api-version=2018-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0L3B1Ymxpc2gvb3BlcmF0aW9uUmVzdWx0cy8xYzRjMmU1OS0xNGFhLTRkNTctYTBjNS0yYzdjMDIyZTlhMjA/YXBpLXZlcnNpb249MjAxOC0wNi0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ],
         "x-ms-activity-id": [
-          "48ed046a-877b-41be-8469-58c066e90e37"
+          "be04dc6c-811b-4c20-b2a5-fc41c5edd1e4"
         ],
         "x-ms-client-request-id": [
-          "3255acf3-4071-40a5-bb53-ffd8b948445e"
+          "38d56d5d-dba8-4b29-852f-f553b13a203a"
         ]
       },
       "ResponseHeaders": {
@@ -908,7 +908,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "48ed046a-877b-41be-8469-58c066e90e37"
+          "be04dc6c-811b-4c20-b2a5-fc41c5edd1e4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -917,10 +917,10 @@
           "11992"
         ],
         "x-ms-correlation-request-id": [
-          "bb8b866b-beb3-483a-886e-fde81d849b30"
+          "1e59d659-03a9-4f4b-bd7f-977e51bb2320"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213757Z:bb8b866b-beb3-483a-886e-fde81d849b30"
+          "WESTUS2:20181128T235855Z:1e59d659-03a9-4f4b-bd7f-977e51bb2320"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -929,7 +929,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:37:57 GMT"
+          "Wed, 28 Nov 2018 23:58:54 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -954,13 +954,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0P2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/PSCmdletTest-RG/providers/Microsoft.Automation/automationAccounts/PSCmdletTestAccount01/runbooks/TestRunbook-PowerShellScript?api-version=2018-06-30",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL1BTQ21kbGV0VGVzdC1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL1BTQ21kbGV0VGVzdEFjY291bnQwMS9ydW5ib29rcy9UZXN0UnVuYm9vay1Qb3dlclNoZWxsU2NyaXB0P2FwaS12ZXJzaW9uPTIwMTgtMDYtMzA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "298e649b-9730-47de-a50d-b4d8d65d420c"
+          "3e1fb08a-259f-493e-8c97-ed20607c0026"
         ],
         "accept-language": [
           "en-US"
@@ -968,11 +968,11 @@
         "User-Agent": [
           "FxVersion/4.7.3190.0",
           "OSName/Windows",
-          "OSVersion/10.0.17763.0",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.3.0.0"
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ],
         "x-ms-activity-id": [
-          "1f8efd25-6239-42af-9162-becc960b662e"
+          "d7caac33-be30-44cf-baab-fd62d144c53b"
         ]
       },
       "ResponseHeaders": {
@@ -980,7 +980,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1f8efd25-6239-42af-9162-becc960b662e"
+          "d7caac33-be30-44cf-baab-fd62d144c53b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -989,10 +989,10 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "4ca66e27-66d1-490f-8a5f-03ee1ca4db31"
+          "81ba0965-8df8-458b-b76e-68a2e7c4e4a0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181108T213758Z:4ca66e27-66d1-490f-8a5f-03ee1ca4db31"
+          "WESTUS2:20181128T235855Z:81ba0965-8df8-458b-b76e-68a2e7c4e4a0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -1001,7 +1001,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 08 Nov 2018 21:37:58 GMT"
+          "Wed, 28 Nov 2018 23:58:55 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
