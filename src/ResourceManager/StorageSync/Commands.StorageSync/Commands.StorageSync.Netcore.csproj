@@ -29,18 +29,9 @@
 
    <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.StorageSync" Version="2.0.0" />
-	<PackageReference Include="Microsoft.Azure.ActiveDirectory.GraphClient" Version="2.0.6" />
 	<PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.8.0-preview" />
 	<PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.0-preview" />
 	<PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" />
-	<PackageReference Include="Microsoft.Data.Edm" Version="5.6.3" />
-	<PackageReference Include="Microsoft.Data.OData" Version="5.6.3" />
-	<PackageReference Include="Microsoft.Data.Services.Client" Version="5.6.3" />
-	<PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.14" />
-	<PackageReference Include="Microsoft.Bcl.Async" Version="1.0.168" />
-	<PackageReference Include="Newtonsoft.Json" Version="6.0.8" />
-	<PackageReference Include="Microsoft.Net.Http" Version="2.2.22" />
-	<PackageReference Include="System.Spatial" Version="5.6.3" />	
   </ItemGroup>
   <ItemGroup>
     <None Include="Az.StorageSync.psd1">
