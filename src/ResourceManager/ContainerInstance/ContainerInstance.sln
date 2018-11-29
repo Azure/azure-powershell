@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ContainerInstance", "Commands.ContainerInstance\Commands.ContainerInstance.Netcore.csproj", "{0E11B67A-1257-40D0-BD33-8315759FDB01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ContainerInstance.Netcore", "Commands.ContainerInstance\Commands.ContainerInstance.Netcore.csproj", "{0E11B67A-1257-40D0-BD33-8315759FDB01}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{254150A6-D7EB-4D1B-9EB1-15B836D6F493}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ContainerInstance.Test", "Commands.ContainerInstance.Test\Commands.ContainerInstance.Test.Netcore.csproj", "{F5D771BE-9C6B-4AF9-AC41-B2D7F3267868}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ContainerInstance.Test.Netcore", "Commands.ContainerInstance.Test\Commands.ContainerInstance.Test.Netcore.csproj", "{F5D771BE-9C6B-4AF9-AC41-B2D7F3267868}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +35,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F5D771BE-9C6B-4AF9-AC41-B2D7F3267868} = {254150A6-D7EB-4D1B-9EB1-15B836D6F493}
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E} = {254150A6-D7EB-4D1B-9EB1-15B836D6F493}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3555524E-A7CA-4A4B-B228-08B2ED034EC5}
