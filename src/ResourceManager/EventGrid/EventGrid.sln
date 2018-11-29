@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.EventGrid", "Commands.EventGrid\Commands.EventGrid.Netcore.csproj", "{07EF53EF-7CB0-4E7D-B41A-BBF96E5357D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.EventGrid.Netcore", "Commands.EventGrid\Commands.EventGrid.Netcore.csproj", "{07EF53EF-7CB0-4E7D-B41A-BBF96E5357D7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DBEBFF94-E0FD-45A7-8D2D-6EC24C053819}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.EventGrid.Test", "Commands.EventGrid.Test\Commands.EventGrid.Test.Netcore.csproj", "{2DA1C063-AA27-4BBC-BE25-E3C7D008B6CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.EventGrid.Test.Netcore", "Commands.EventGrid.Test\Commands.EventGrid.Test.Netcore.csproj", "{2DA1C063-AA27-4BBC-BE25-E3C7D008B6CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.EventHub", "..\EventHub\Commands.EventHub\Commands.EventHub.Netcore.csproj", "{1E60D2AC-DEA7-403C-86DC-7B8C47F54668}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.EventHub.Netcore", "..\EventHub\Commands.EventHub\Commands.EventHub.Netcore.csproj", "{1E60D2AC-DEA7-403C-86DC-7B8C47F54668}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

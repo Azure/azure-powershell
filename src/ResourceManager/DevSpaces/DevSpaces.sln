@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DevSpaces.Netcore"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6484AC9D-DEEF-4123-AC2D-58DBEBC28D1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DevSpaces.Test", "Commands.DevSpaces.Test\Commands.DevSpaces.Test.Netcore.csproj", "{50406A5E-E685-4A53-BC31-9FBEBE80686D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DevSpaces.Test.Netcore", "Commands.DevSpaces.Test\Commands.DevSpaces.Test.Netcore.csproj", "{50406A5E-E685-4A53-BC31-9FBEBE80686D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Tags", "..\Tags\Commands.Tags\Commands.Tags.Netcore.csproj", "{2493A8F7-1949-4F29-8D53-9D459046C3B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Tags.Netcore", "..\Tags\Commands.Tags\Commands.Tags.Netcore.csproj", "{2493A8F7-1949-4F29-8D53-9D459046C3B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,7 +42,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{50406A5E-E685-4A53-BC31-9FBEBE80686D} = {6484AC9D-DEEF-4123-AC2D-58DBEBC28D1B}
 		{2493A8F7-1949-4F29-8D53-9D459046C3B8} = {6484AC9D-DEEF-4123-AC2D-58DBEBC28D1B}
-		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E} = {6484AC9D-DEEF-4123-AC2D-58DBEBC28D1B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B36984C5-2D35-4047-8A5F-5D45298F8234}
