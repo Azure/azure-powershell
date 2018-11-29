@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
         /// <summary>
         /// The name of the configuration archive that was previously uploaded by 
-        /// Publish-AzureRmVMDSCConfiguration. This parameter must specify only the name 
+        /// Publish-AzVMDSCConfiguration. This parameter must specify only the name 
         /// of the file, without any path.
         /// A null value or empty string indicate that the VM extension should install DSC,
         /// but not start any configuration
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Position = 5,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureBlobDscExtensionParamSet,
-            HelpMessage = "The name of the configuration file that was previously uploaded by Publish-AzureRmVMDSCConfiguration")]
+            HelpMessage = "The name of the configuration file that was previously uploaded by Publish-AzVMDSCConfiguration")]
         [AllowEmptyString]
         [AllowNull]
         public string ArchiveBlobName { get; set; }
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public string ConfigurationData { get; set; }
 
         /// <summary>
-        /// The specific version of the DSC extension that Set-AzureRmVMDSCExtension will 
+        /// The specific version of the DSC extension that Set-AzVMDSCExtension will 
         /// apply the settings to. 
         /// </summary>
         [Alias("HandlerVersion")]
@@ -154,13 +154,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The version of the DSC extension that Set-AzureRmVMDSCExtension will apply the settings to. " +
+            HelpMessage = "The version of the DSC extension that Set-AzVMDSCExtension will apply the settings to. " +
                           "Allowed format N.N")]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 
         /// <summary>
-        /// By default Set-AzureRmVMDscExtension will not overwrite any existing blobs. Use -Force to overwrite them.
+        /// By default Set-AzVMDscExtension will not overwrite any existing blobs. Use -Force to overwrite them.
         /// </summary>
         [Parameter(
             HelpMessage = "Use this parameter to overwrite any existing blobs")]

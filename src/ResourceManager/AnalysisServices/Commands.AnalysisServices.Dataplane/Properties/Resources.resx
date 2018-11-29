@@ -124,7 +124,7 @@
     <value>Login to {0}</value>
   </data>
   <data name="NotLoggedInMessage" xml:space="preserve">
-    <value>Run Login-AzureAsAccount to login to Analysis Services server {0}</value>
+    <value>Run Login-AzAsAccount to login to Analysis Services server {0}</value>
   </data>
   <data name="RestartingAnalysisServicesServer" xml:space="preserve">
     <value>Restart Analysis Services Server</value>
@@ -146,8 +146,8 @@
 The data is anonymous and does not include commandline argument values.
 The data is collected by Microsoft.
 
-Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzureRmDataCollection.
-Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable data collection: PS &gt; Enable-AzureRmDataCollection.</value>
+Use the Disable-AzDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzDataCollection.
+Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable data collection: PS &gt; Enable-AzDataCollection.</value>
   </data>
   <data name="SynchronizingAnalysisServicesServer" xml:space="preserve">
     <value>Replicate databases from the processing server to the query scale-out servers</value>
