@@ -18,6 +18,11 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Tools.Common.Loggers;
 using Tools.Common.Models;
+#if NETSTANDARD
+using StaticAnalysis.Netcore.Properties;
+#else
+using StaticAnalysis.Properties;
+#endif
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -112,8 +117,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         cmdlet: oldCmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedCmdlet,
-                        description: string.Format(Properties.Resources.RemovedCmdletDescription, oldCmdlet.Name),
-                        remediation: string.Format(Properties.Resources.RemovedCmdletRemediation, oldCmdlet.Name));
+                        description: string.Format(Resources.RemovedCmdletDescription, oldCmdlet.Name),
+                        remediation: string.Format(Resources.RemovedCmdletRemediation, oldCmdlet.Name));
                 }
             }
         }
@@ -149,9 +154,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         cmdlet: oldCmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedCmdletAlias,
-                        description: string.Format(Properties.Resources.RemovedCmdletAliasDescription,
+                        description: string.Format(Resources.RemovedCmdletAliasDescription,
                             oldCmdlet.Name, oldAlias),
-                        remediation: string.Format(Properties.Resources.RemovedCmdletAliasRemediation,
+                        remediation: string.Format(Resources.RemovedCmdletAliasRemediation,
                             oldAlias, oldCmdlet.Name));
                 }
             }
@@ -175,8 +180,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     cmdlet: oldCmdlet,
                     severity: 0,
                     problemId: ProblemIds.BreakingChangeProblemId.RemovedShouldProcess,
-                    description: string.Format(Properties.Resources.RemovedShouldProcessDescription, oldCmdlet.Name),
-                    remediation: string.Format(Properties.Resources.RemovedShouldProcessRemediation, oldCmdlet.Name));
+                    description: string.Format(Resources.RemovedShouldProcessDescription, oldCmdlet.Name),
+                    remediation: string.Format(Resources.RemovedShouldProcessRemediation, oldCmdlet.Name));
             }
         }
 
@@ -198,8 +203,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     cmdlet: oldCmdlet,
                     severity: 0,
                     problemId: ProblemIds.BreakingChangeProblemId.RemovedPaging,
-                    description: string.Format(Properties.Resources.RemovedPagingDescription, oldCmdlet.Name),
-                    remediation: string.Format(Properties.Resources.RemovedPagingRemediation, oldCmdlet.Name));
+                    description: string.Format(Resources.RemovedPagingDescription, oldCmdlet.Name),
+                    remediation: string.Format(Resources.RemovedPagingRemediation, oldCmdlet.Name));
             }
         }
 
@@ -250,9 +255,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             cmdlet: oldCmdlet,
                             severity: 0,
                             problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputType,
-                            description: string.Format(Properties.Resources.ChangedOutputTypeDescription,
+                            description: string.Format(Resources.ChangedOutputTypeDescription,
                                 oldCmdlet.Name, oldOutput.Type.Name),
-                            remediation: string.Format(Properties.Resources.ChangedOutputTypeRemediation,
+                            remediation: string.Format(Resources.ChangedOutputTypeRemediation,
                                 oldCmdlet.Name, oldOutput.Type.Name));
                     }
                 }
@@ -311,9 +316,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         cmdlet: oldCmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.ChangeDefaultParameter,
-                        description: string.Format(Properties.Resources.ChangeDefaultParameterDescription,
+                        description: string.Format(Resources.ChangeDefaultParameterDescription,
                             oldCmdlet.DefaultParameterSetName, oldCmdlet.Name),
-                        remediation: string.Format(Properties.Resources.ChangeDefaultParameterRemediation,
+                        remediation: string.Format(Resources.ChangeDefaultParameterRemediation,
                             oldCmdlet.Name, oldCmdlet.DefaultParameterSetName));
                 }
             }
