@@ -19,11 +19,11 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Consumption;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using RM = Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
     {
         private readonly EnvironmentSetupHelper _helper;
 
-        public RM.ResourceManagementClient ResourceClient { get; private set; }
+        public ResourceManagementClient ResourceClient { get; private set; }
 
         public ConsumptionManagementClient ConsumptionManagementClient { get; private set; }
 
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
                     _helper.GetRMModulePath("AzureRM.Consumption.psd1"),
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    "AzureRM.Resources.ps1");
                 try
                 {
                     var psScripts = scriptBuilder?.Invoke();
@@ -117,9 +117,9 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
             }
         }
 
-        private static RM.ResourceManagementClient GetResourceClient(MockContext context)
+        private static ResourceManagementClient GetResourceClient(MockContext context)
         {
-            return context.GetServiceClient<RM.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static ConsumptionManagementClient GetConsumptionManagementClient(MockContext context)
