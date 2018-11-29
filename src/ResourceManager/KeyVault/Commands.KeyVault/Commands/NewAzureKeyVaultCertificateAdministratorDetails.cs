@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
     /// <summary>
-    /// New-AzureKeyVaultCertificateAdministratorDetails creates an in-memory administrator details object
+    /// New-AzKeyVaultCertificateAdministratorDetails creates an in-memory administrator details object
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateAdministratorDetails",SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultCertificateAdministratorDetails))]

@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
 {
     /// <summary>
-    /// 'Get-AzureRmRelayHybridConnection' Cmdlet gives the details of a / List of HybridConnections(s)
+    /// 'Get-AzRelayHybridConnection' Cmdlet gives the details of a / List of HybridConnections(s)
     /// <para> If HybridConnections name provided, a single HybridConnections detials will be returned</para>
     /// <para> If WcfRelayHybridConnections name not provided, list of WcfRelayHybridConnections will be returned</para>
     /// </summary>

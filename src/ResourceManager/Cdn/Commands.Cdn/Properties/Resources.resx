@@ -175,18 +175,18 @@
     <value>Success!</value>
   </data>
   <data name="Success_RemoveCustomDomain" xml:space="preserve">
-    <value>Remove-AzureRmCdnCustomDomain on {0}.</value>
+    <value>Remove-AzCdnCustomDomain on {0}.</value>
   </data>
   <data name="Success_RemoveEndpoint" xml:space="preserve">
-    <value>Remove-AzureRmCdnEndpoint on {0}.</value>
+    <value>Remove-AzCdnEndpoint on {0}.</value>
   </data>
   <data name="Success_RemoveProfile" xml:space="preserve">
-    <value>Remove-AzureRmCdnProfile on {0}.</value>
+    <value>Remove-AzCdnProfile on {0}.</value>
   </data>
   <data name="Success_StartEndpoint" xml:space="preserve">
     <value>Endpoint with name '{0}' in the profile '{1}' and resource group '{2}' has been started.</value>
   </data>
   <data name="Success_StopEndpoint" xml:space="preserve">
-    <value>Stop-AzureRmCdnEndpoint on {0}.</value>
+    <value>Stop-AzCdnEndpoint on {0}.</value>
   </data>
 </root>

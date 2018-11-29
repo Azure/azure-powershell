@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
 {
     /// <summary>
-    /// Defines the Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus cmdlet
+    /// Defines the Set-AzSqlDatabaseAdvisorAutoExecuteStatus cmdlet
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAdvisorAutoExecuteStatus",SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseAdvisorModel))]
     public class SetAzureSqlDatabaseAdvisorAutoExecuteStatus : AzureSqlDatabaseAdvisorCmdletBase
