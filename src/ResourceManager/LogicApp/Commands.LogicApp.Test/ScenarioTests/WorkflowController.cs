@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         private readonly EnvironmentSetupHelper _helper;
         private const string AuthorizationApiVersion = "2014-07-01-preview";
 
+        public Management.ResourceManager.ResourceManagementClient OldResourceManagementClient { get; private set; }
+
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public LogicManagementClient LogicManagementClient { get; private set; }
@@ -113,9 +115,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient(context);
+            OldResourceManagementClient = GetOldResourceManagementClient(context);
             LogicManagementClient = GetLogicManagementClient(context);
             WebsiteManagementClient = GetWebsiteManagementClient(context);
             _helper.SetupManagementClients(ResourceManagementClient,
+                OldResourceManagementClient,
                 LogicManagementClient,
                 WebsiteManagementClient);
         }
@@ -123,6 +127,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static Management.ResourceManager.ResourceManagementClient GetOldResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<Management.ResourceManager.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static LogicManagementClient GetLogicManagementClient(MockContext context)
