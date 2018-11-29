@@ -11,46 +11,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-#if !NETSTANDARD
 
-using Microsoft.Azure.Management.Storage.Models;
-
-namespace Microsoft.Azure.Commands.Compute
-{
-    public static class StorageExtensions
-    {
-        public static SkuName? Sku(this StorageAccount account)
-        {
-            return account.Sku.Name;
-        }
-
-        public static bool IsPremiumLrs(this StorageAccount account)
-        {
-            return account.Sku.Name== SkuName.PremiumLRS;
-        }
-
-        public static void SetAsStandardGRS(this StorageAccountCreateParameters createParams)
-        {
-            createParams.Sku.Name = SkuName.StandardGRS;
-        }
-
-        public static string GetFirstAvailableKey(this StorageAccountListKeysResult listKeyResult)
-        {
-            return !string.IsNullOrEmpty(listKeyResult.Keys[0].Value) ? listKeyResult.Keys[0].Value : listKeyResult.Keys[1].Value;
-        }
-
-        public static string GetKey1(this StorageAccountListKeysResult listKeyResult)
-        {
-            return listKeyResult.Keys[0].Value;
-        }
-
-        public static string GetKey2(this StorageAccountListKeysResult listKeyResult)
-        {
-            return listKeyResult.Keys[1].Value;
-        }
-    }    
-}
-#else
+// TODO: Remove IfDef
+#if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Network;
@@ -783,4 +746,42 @@ namespace Microsoft.Azure.Commands.Network.Models
 }
 #endregion
 
+#else
+using Microsoft.Azure.Management.Storage.Models;
+
+namespace Microsoft.Azure.Commands.Compute
+{
+    public static class StorageExtensions
+    {
+        public static SkuName? Sku(this StorageAccount account)
+        {
+            return account.Sku.Name;
+        }
+
+        public static bool IsPremiumLrs(this StorageAccount account)
+        {
+            return account.Sku.Name== SkuName.PremiumLRS;
+        }
+
+        public static void SetAsStandardGRS(this StorageAccountCreateParameters createParams)
+        {
+            createParams.Sku.Name = SkuName.StandardGRS;
+        }
+
+        public static string GetFirstAvailableKey(this StorageAccountListKeysResult listKeyResult)
+        {
+            return !string.IsNullOrEmpty(listKeyResult.Keys[0].Value) ? listKeyResult.Keys[0].Value : listKeyResult.Keys[1].Value;
+        }
+
+        public static string GetKey1(this StorageAccountListKeysResult listKeyResult)
+        {
+            return listKeyResult.Keys[0].Value;
+        }
+
+        public static string GetKey2(this StorageAccountListKeysResult listKeyResult)
+        {
+            return listKeyResult.Keys[1].Value;
+        }
+    }
+}
 #endif

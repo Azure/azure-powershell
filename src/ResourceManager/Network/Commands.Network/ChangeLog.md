@@ -37,7 +37,6 @@
         - Add-AzureRmApplicationGatewayUrlPathMapConfig
         - New-AzureRmApplicationGatewayUrlPathMapConfig
 
-
 ## Version 6.11.0
 * Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
 * Added ICMP back to supported AzureFirewall Network Protocols
