@@ -126,26 +126,25 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSVirtualNetwork CreateVirtualNetwork()
         {
-            var vnet = new PSVirtualNetwork();
-            vnet.Name = this.Name;
-            vnet.ResourceGroupName = this.ResourceGroupName;
-            vnet.Location = this.Location;
-            vnet.AddressSpace = new PSAddressSpace();
-            vnet.AddressSpace.AddressPrefixes = this.AddressPrefix?.ToList();
-
-            if (this.DnsServer != null)
+            var vnet = new PSVirtualNetwork
             {
-                vnet.DhcpOptions = new PSDhcpOptions();
-                vnet.DhcpOptions.DnsServers = this.DnsServer?.ToList();
+                Name = Name,
+                ResourceGroupName = ResourceGroupName,
+                Location = Location,
+                AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
+            };
+
+            if (DnsServer != null)
+            {
+                vnet.DhcpOptions = new PSDhcpOptions {DnsServers = DnsServer?.ToList()};
             }
 
             vnet.Subnets = this.Subnet?.ToList();
-            vnet.EnableDdosProtection = this.EnableDdosProtection;
+            vnet.EnableDdosProtection = EnableDdosProtection;
             
-            if (!string.IsNullOrEmpty(this.DdosProtectionPlanId))
+            if (!string.IsNullOrEmpty(DdosProtectionPlanId))
             {
-                vnet.DdosProtectionPlan = new PSResourceId();
-                vnet.DdosProtectionPlan.Id = this.DdosProtectionPlanId;
+                vnet.DdosProtectionPlan = new PSResourceId {Id = DdosProtectionPlanId};
             }
 
             // Map to the sdk object

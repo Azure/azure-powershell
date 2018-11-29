@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Current Release
+* Minor changes for upcoming AzureRM to Az transition
 * Added support for the configuring RewriteRuleSets in the Application Gateway
     - New cmdlets added:
         - Add-AzureRmApplicationGatewayRewriteRuleSet
