@@ -572,7 +572,7 @@
   </Target>
 
   <Target Name="StaticAnalysisErrorMessage">
-    <Error Text="StaticAnalysis has failed.  Please follow the instructions on this doc: https://github.com/Azure/azure-powershell/blob/preview/documentation/Debugging-StaticAnalysis-Errors.md"/>
+    <Error Text="StaticAnalysis has failed.  Please follow the instructions on this doc: https://github.com/Azure/azure-powershell/blob/dev/documentation/Debugging-StaticAnalysis-Errors.md"/>
   </Target>
 
   <Target Name="ChangeLogCheck">

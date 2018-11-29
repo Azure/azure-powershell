@@ -385,7 +385,7 @@ _Add the parameter '`<parameter>`' back to the cmdlet '`<cmdlet>`', or add an al
 To add an alias to the original parameter name, use the `Alias` attribute for the parameter.
 
 ```cs
-[Cmdlet(VerbsCommunications.Connect, "AzureRmAccount")]
+[Cmdlet(VerbsCommunications.Connect, "AzAccount")]
 public class ConnectAzureRmAccount : Cmdlet
 {
     [Alias("Domain")]
