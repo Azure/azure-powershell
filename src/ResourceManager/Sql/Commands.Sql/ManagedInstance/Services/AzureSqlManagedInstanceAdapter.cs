@@ -182,6 +182,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
 
             managedInstance.Sku = sku;
             managedInstance.DnsZone = resp.DnsZone;
+            managedInstance.Collation = resp.Collation;
 
             return managedInstance;
         }

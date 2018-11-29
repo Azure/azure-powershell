@@ -21,9 +21,9 @@
 function Test-CreateManagedInstance
 {
 	# Setup
-    $rgName = "ps2110"
+    $rgName = "ps2115"
 	$rg = Create-ResourceGroupWithName($rgName)
-    $vnetName1 = "ps2255"
+    $vnetName1 = "ps2252"
  	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
  	$managedInstanceLogin = "dummylogin"
@@ -32,7 +32,8 @@ function Test-CreateManagedInstance
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
- 	$skuName = "GP_Gen4"
+	$skuName = "GP_Gen4"
+	$collation = "Serbian_Cyrillic_100_CS_AS"
  	$credentials = new-object System.Management.Automation.PSCredential($managedInstanceLogin, ($managedInstancePassword | ConvertTo-SecureString -asPlainText -Force)) 
 
  	try
@@ -67,7 +68,8 @@ function Test-CreateManagedInstance
 		# With edition and computeGeneration specified
  		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition -ComputeGeneration $computeGeneration  -DnsZonePartner $dnsZonePartner  -AsJob
+			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition `
+			-ComputeGeneration $computeGeneration -DnsZonePartner $dnsZonePartner -Collation $collation -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -80,6 +82,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.LicenseType $licenseType
 		Assert-AreEqual $managedInstance1.VCores $vCore
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
+		Assert-AreEqual $managedInstance1.Collation $collation
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
  	}
  	finally
