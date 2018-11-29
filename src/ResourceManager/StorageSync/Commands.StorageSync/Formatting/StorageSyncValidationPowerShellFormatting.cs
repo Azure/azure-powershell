@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
                 foreach (PSValidationResult validatonResult in systemValidationResults)
                 {
                     string result = validatonResult.Level == PSResultLevel.Error ? "Failed" : (validatonResult.Level == PSResultLevel.Warning ? "Warning" : "Passed");
-                    string description = validationTypeDescriptions.TryGetValue(validatonResult.Type.ToString(), out string displayName) ? displayName : validatonResult.Type.ToString();
+                    string displayName;
+                    string description = validationTypeDescriptions.TryGetValue(validatonResult.Type.ToString(), out displayName) ? displayName : validatonResult.Type.ToString();
                     output.AppendLine($"{description}: {result}.");
                 }
             }
@@ -82,7 +83,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
                     output.AppendLine("");
                     foreach (KeyValuePair<PSValidationType, long> entry in validationErrorsHistogram)
                     {
-                        string description = validationTypeDescriptions.TryGetValue(entry.Key.ToString(), out string displayName) ? displayName : entry.Key.ToString();
+                        string displayName;
+                        string description = validationTypeDescriptions.TryGetValue(entry.Key.ToString(), out displayName) ? displayName : entry.Key.ToString();
                         output.AppendLine($"{description}: {entry.Value}");
                     }
                 }
