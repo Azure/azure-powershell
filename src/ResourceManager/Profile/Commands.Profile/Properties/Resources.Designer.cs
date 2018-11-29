@@ -457,6 +457,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to import authentication information into the global cache.  Please try executing the command again..
+        /// </summary>
+        internal static string ImportAuthenticationFailure {
+            get {
+                return ResourceManager.GetString("ImportAuthenticationFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current context.
         /// </summary>
         internal static string ImportContextTarget {
