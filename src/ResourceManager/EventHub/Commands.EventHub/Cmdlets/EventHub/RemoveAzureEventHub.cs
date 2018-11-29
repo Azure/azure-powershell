@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.EventHub.Models;
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
     /// <summary>
-    /// 'Remove-AzureRmEventHub' Cmdlet removes the specified EventHub
+    /// 'Remove-AzEventHub' Cmdlet removes the specified EventHub
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHub", DefaultParameterSetName = EventhubDefaultParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureEventHub : AzureEventHubsCmdletBase

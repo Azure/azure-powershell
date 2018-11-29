@@ -21,7 +21,7 @@ using System.Xml;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
 {
     /// <summary>
-    /// 'New-AzureRmServiceBusRule' Cmdlet creates a new Rule
+    /// 'New-AzServiceBusRule' Cmdlet creates a new Rule
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusRule", DefaultParameterSetName = RuleResourceParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSRulesAttributes))]
     public class NewAzureRmServiceBusRule : AzureServiceBusCmdletBase

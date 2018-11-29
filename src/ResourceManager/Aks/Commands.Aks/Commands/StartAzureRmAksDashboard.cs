@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.Aks
         private readonly string _dashPod;
         private string _statusMsg = "Initializing";
 
-        public KubeTunnelJob(string credFilePath, string dashPod) : base("Start-AzureRmKubernetesDashboard",
+        public KubeTunnelJob(string credFilePath, string dashPod) : base("Start-AzKubernetesDashboard",
             "Kubectl-Tunnel")
         {
             _credFilePath = credFilePath;

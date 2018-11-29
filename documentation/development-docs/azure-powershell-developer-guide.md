@@ -394,7 +394,7 @@ Once you add the parameter, please manually test that the job is created and suc
 To ensure that `-AsJob` is not broken in future changes, please add a test for this parameter. To update tests to include this parameter, use the following pattern:
 
 ````powershell
-$job = Get-AzureRmSubscription
+$job = Get-AzSubscription
 $job | Wait-Job
 $subcriptions = $job | Receive-Job
 ````

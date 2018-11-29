@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {    
     /// <summary>
-    /// 'Remove-AzureRmEventHubDRConfiguration' Cmdlet Deletes an Alias(Disaster Recovery configuration)
+    /// 'Remove-AzEventHubDRConfiguration' Cmdlet Deletes an Alias(Disaster Recovery configuration)
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveEventHubGeoDRConfiguration : AzureEventHubsCmdletBase

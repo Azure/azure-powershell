@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.EventHub.Models;
 namespace Microsoft.Azure.Commands.EventHub.Commands
 {
     /// <summary>
-    /// 'New-AzureRmRelayAuthorizationRule' Cmdlet creates a new AuthorizationRule
+    /// 'New-AzRelayAuthorizationRule' Cmdlet creates a new AuthorizationRule
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
     public class NewAzureEventhubAuthorizationRules : AzureEventHubsCmdletBase
