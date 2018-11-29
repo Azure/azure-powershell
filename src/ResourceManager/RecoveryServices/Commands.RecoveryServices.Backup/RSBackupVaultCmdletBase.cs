@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// ARM ID of the Recovery Services Vault.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "ARM ID of the Recovery Services Vault.",
-            ValueFromPipelineByPropertyName = true)]
-        [Alias("Id")]
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public string VaultId { get; set; }
 
