@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Profile.Models.Core;
 #endif
 using Microsoft.Azure.Commands.Profile.Properties;
 using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -68,7 +69,13 @@ namespace Microsoft.Azure.Commands.Profile
                     ModifyContext((profile, client) =>
                     {
                         var newProfile = new AzureRmProfile(Path);
+                        var cache = newProfile?.DefaultContext?.TokenCache;
                         profile.TryCopyProfile(newProfile);
+                        if (cache != null && cache.CacheData.Any())
+                        {
+                            AzureSession.Instance.TokenCache.CacheData = cache.CacheData;
+                        }
+
                         AzureRmProfileProvider.Instance.SetTokenCacheForProfile(newProfile);
                         executionComplete = true;
                     });
@@ -80,7 +87,13 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     ModifyContext((profile, client) =>
                     {
+                        var cache = profile?.DefaultContext?.TokenCache;
                         profile.TryCopyProfile(AzureContext);
+                        if (cache != null && cache.CacheData.Any())
+                        {
+                            AzureSession.Instance.TokenCache.CacheData = cache.CacheData;
+                        }
+
                         AzureRmProfileProvider.Instance.SetTokenCacheForProfile(AzureContext);
                         executionComplete = true;
                     });
