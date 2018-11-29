@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
 
 ## Version 6.7.2
 * Update help documentation for resource identity related parameters in `New-AzureRmPolicyAssignment` and `Set-AzureRmPolicyAssignment`
