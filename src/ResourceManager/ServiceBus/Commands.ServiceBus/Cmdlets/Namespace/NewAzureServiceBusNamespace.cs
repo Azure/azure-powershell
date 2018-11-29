@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.ServiceBus.Models;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
     /// <summary>
-    /// 'New-AzureRmServiceBusNamespace' cmdlet creates a new Servicebus NameSpace
+    /// 'New-AzServiceBusNamespace' cmdlet creates a new Servicebus NameSpace
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNamespace", SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
     public class NewAzureRmServiceBusNamespace : AzureServiceBusCmdletBase

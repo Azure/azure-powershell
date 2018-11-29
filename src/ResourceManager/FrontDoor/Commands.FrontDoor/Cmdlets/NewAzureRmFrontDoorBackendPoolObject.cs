@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzureRmFrontDoorBackendPoolObject cmdlet.
+    /// Defines the New-AzFrontDoorBackendPoolObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorBackendPoolObject"), OutputType(typeof(PSBackendPool))]
     public class NewAzureRmFrontDoorBackendPoolObject : AzureFrontDoorCmdletBase

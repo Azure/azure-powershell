@@ -98,7 +98,7 @@ Specified by the `OutputType` attribute, this piece of metadata lets the user kn
 
 In most cases, cmdlets will be returning an object corresponding to a resource(s) that a user is performing an action on. Rather than returning the .NET SDK type for that resource (exposing .NET SDK types in PowerShell cmdlets is _strongly_ discouraged), we suggest creating a new class that wraps this .NET SDK type, allowing for breaking changes in the underlying type while avoiding breaking changes in the PowerShell type.
 
-For example, the `Get-AzureRmVM` cmdlet uses the .NET SDK to retrieve objects of the `VirtualMachine` type, but a new class, `PSVirtualMachine`, was created to wrap the type from the .NET SDK, and is returned by the cmdlet. If, in the future, the `VirtualMachine` type in the .NET SDK has a property removed, that property can still be maintained in PowerShell by adding it to the `PSVirtualMachine` and recreating the value, thus avoiding a breaking change in the cmdlet(s).
+For example, the `Get-AzVM` cmdlet uses the .NET SDK to retrieve objects of the `VirtualMachine` type, but a new class, `PSVirtualMachine`, was created to wrap the type from the .NET SDK, and is returned by the cmdlet. If, in the future, the `VirtualMachine` type in the .NET SDK has a property removed, that property can still be maintained in PowerShell by adding it to the `PSVirtualMachine` and recreating the value, thus avoiding a breaking change in the cmdlet(s).
 
 #### Returning No Output
 
@@ -235,10 +235,10 @@ Below are the two main piping scenarios that should be applied in the cmdlets wi
 
 ### ResourceId
 
-In this scenario, the user is able to pipe the result of a generic resources cmdlet into a cmdlet that accepts `ResourceId`. The below example shows how a user can use the generic resources cmdlet `Find-AzureRmResource` to get all resources of type `Foo` and remove them:
+In this scenario, the user is able to pipe the result of a generic resources cmdlet into a cmdlet that accepts `ResourceId`. The below example shows how a user can use the generic resources cmdlet `Find-AzResource` to get all resources of type `Foo` and remove them:
 
 ```powershell
-Find-AzureRmResource -ResourceType Microsoft.Foo/foo | Remove-AzureRmFoo
+Find-AzResource -ResourceType Microsoft.Foo/foo | Remove-AzFoo
 ```
 
 For more information on enabling the `ResourceId` piping scenario and more examples, please see the ["Using the `ResourceId` parameter"](./piping-in-powershell.md#using-the-resourceid-parameter) section of the _Piping in PowerShell_ document.
@@ -248,7 +248,7 @@ For more information on enabling the `ResourceId` piping scenario and more examp
 In this scenario, the user is able to pipe the result of a cmdlet that returns a resource into a cmdlet that accepts that resource as an `InputObject`. The below example shows how a user can get a `Foo` object from one cmdlet and pipe it to a cmdlet that removes it:
 
 ```powershell
-Get-AzureRmFoo -Name "FooName" -ResourceGroupName "RG" | Remove-AzureRmFoo
+Get-AzFoo -Name "FooName" -ResourceGroupName "RG" | Remove-AzFoo
 ```
 
 For more information on enabling the `InputObject` piping scenario and more examples, please see the ["Using the `InputObject` parameter"](./piping-in-powershell.md#using-the-inputobject-parameter) section of the _Piping in PowerShell_ document.
@@ -269,7 +269,7 @@ Once you add the parameter, please manually test that the job is created and suc
 To ensure that `-AsJob` is not broken in future changes, please add a test for this parameter. To update tests to include this parameter, use the following pattern:
 
 ````powershell
-$job = Get-AzureRmSubscription
+$job = Get-AzSubscription
 $job | Wait-Job
 $subcriptions = $job | Receive-Job
 ````

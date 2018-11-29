@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
-    /// Set-AzureKeyVaultCertificateIssuer sets the provided parameters on the
+    /// Set-AzKeyVaultCertificateIssuer sets the provided parameters on the
     /// issuer object
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateIssuer",SupportsShouldProcess = true,DefaultParameterSetName = ExpandedParameterSet)]

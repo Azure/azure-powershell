@@ -25,7 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlDatabaseIndexRecommendations cmdlet
+    /// Defines the Get-AzSqlDatabaseIndexRecommendations cmdlet
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseIndexRecommendations", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(IndexRecommendation))]

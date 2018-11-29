@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 {
     /// <summary>
-    /// 'Set-AzureRmServiceBusCompleteMigrationConfiguration' Cmdlet invokes 
+    /// 'Set-AzServiceBusCompleteMigrationConfiguration' Cmdlet invokes 
     /// </summary>
     [Cmdlet("Complete", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusMigration", DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class CompleteAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
