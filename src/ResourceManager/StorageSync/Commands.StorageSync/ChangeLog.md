@@ -20,6 +20,9 @@
 
 ## Current Release
 * Fixed a typo in the progress message.
+* Introduced the following breaking changes in Invoke-AzureRmStorageSyncCompatibilityCheck cmdlet:
+    - Parameter 'Quiet' had been removed.
+    - Return type has changed from list of PSValidationResult to PSStorageSyncValidation. Validation results are now stored in PSStorageSyncValidation.Results member.
 
 ## Version 0.1.2
 * Updated list of unsupported file name characters.

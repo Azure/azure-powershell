@@ -15,13 +15,13 @@ Checks for potential compatibility issues between your system and Azure File Syn
 ### PathBased (Default)
 ```
 Invoke-AzureRmStorageSyncCompatibilityCheck [-Path] <String> [-Credential <PSCredential>] [-SkipSystemChecks]
- [-SkipNamespaceChecks] [-Quiet] [<CommonParameters>]
+ [-SkipNamespaceChecks] [<CommonParameters>]
 ```
 
 ### ComputerNameBased
 ```
 Invoke-AzureRmStorageSyncCompatibilityCheck [-Credential <PSCredential>] [-ComputerName] <String>
- [-SkipSystemChecks] [-Quiet] [<CommonParameters>]
+ [-SkipSystemChecks] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,8 +54,8 @@ This command checks the compatibility of files and folders in C:\DATA, but does 
 
 ### Example 3
 ```powershell
-PS C:\> $errors = Invoke-AzureRmStorageSyncCompatibilityCheck C:\DATA
-PS C:\> $errors | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results
+PS C:\> $validation = Invoke-AzureRmStorageSyncCompatibilityCheck C:\DATA
+PS C:\> $validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results
 ```
 
 This command checks the compatibility of the system and also of files and folders in C:\DATA, and then exports the results as a CSV file to C:\results.
@@ -66,7 +66,7 @@ This command checks the compatibility of the system and also of files and folder
 The computer you are performing this check on.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ComputerNameBased
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Your credentials for the share you are validating.
 
 ```yaml
-Type: System.Management.Automation.PSCredential
+Type: PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The UNC path of the share you are validating.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: PathBased
 Aliases:
 
@@ -107,26 +107,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Quiet
-Suppresses writing output report to console.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SkipNamespaceChecks
 Set this flag to skip file namespace validations and only perform system validations.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: PathBased
 Aliases:
 
@@ -141,7 +126,7 @@ Accept wildcard characters: False
 Set this flag to skip system validations and only perform file namespace validations.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +146,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationResult
+### Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSStorageSyncValidation
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, storagesync, filesync
