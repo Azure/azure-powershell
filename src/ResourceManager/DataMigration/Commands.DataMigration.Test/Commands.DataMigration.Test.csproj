@@ -86,14 +86,18 @@
     <None Include="ScenarioTests\ServiceTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\TestConnectToSourceMongoDb.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\TestConnectToSourceMongoDb.json" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\TestConnectToSourceSqlServer.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\TestConnectToSourceSqlServerSync.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\TestConnectToTargetCosmosDb.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\TestConnectToTargetCosmosDb.json" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>    
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\TestConnectToTargetSqlDb.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -115,7 +119,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\TestGetUserTableTask.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\TestMigrateMongoDb.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\TestMigrateMongoDb.json" >
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DmsTest.ServiceTests\TestMigrateSqlSqlDb.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

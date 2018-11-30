@@ -14,16 +14,14 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Management.DataMigration.Models;
+using Microsoft.Azure.Commands.DataMigration.Models.MongoDb;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    using MongoDbCollectionSettingItem = System.Collections.Generic.KeyValuePair<string, MongoDbCollectionSettings>;
-    using MongoDbDatabaseSettingItem = System.Collections.Generic.KeyValuePair<string, MongoDbDatabaseSettings>;
-
     /// <summary>
     /// Class that creates a new instance of the mongo db target database setting
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationMongoDbDatabaseSetting", SupportsShouldProcess = true), OutputType(typeof(MongoDbDatabaseSettingItem))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationMongoDbDatabaseSetting", SupportsShouldProcess = true), OutputType(typeof(MongoDbDatabaseSetting))]
     [Alias("New-AzureRmDmsMongoDbDatabaseSetting")]
     public class NewMongoDbDatabaseSettingCmdlet : DataMigrationCmdlet
     {
@@ -39,14 +37,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
            HelpMessage = "The database level shared RU at the target CosmosDb"
                )]
         [Alias("RU")]
-        public int? TargetRU { get; set; }
+        public int? TargetRequestUnit { get; set; }
 
         [Parameter(
            Mandatory = false,
            HelpMessage = "The collection settings for the databases, refer to: New-AzureRmDmsMongoCollectionSetting"
                )]
         [Alias("Coll")]
-        public MongoDbCollectionSettingItem[] Collections { get; set; }
+        public MongoDbCollectionSetting[] CollectionSetting { get; set; }
         
         public override void ExecuteCmdlet()
         {
@@ -55,20 +53,19 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                 base.ExecuteCmdlet();
                 var dbInfo = new MongoDbDatabaseSettings()
                 {
-                    TargetRUs = this.TargetRU,
+                    TargetRUs = this.TargetRequestUnit,
                     Collections = new System.Collections.Generic.Dictionary<string, MongoDbCollectionSettings>()
                 };
 
-                var dbInfoItem = new System.Collections.Generic.KeyValuePair<string, MongoDbDatabaseSettings>(this.DatabaseName, dbInfo);
-                if (this.Collections != null && this.Collections.Length > 0)
+                if (this.CollectionSetting != null && this.CollectionSetting.Length > 0)
                 {
-                    foreach(var col in this.Collections)
+                    foreach(var col in this.CollectionSetting)
                     {
-                        dbInfoItem.Value.Collections.Add(col);
+                        dbInfo.Collections.Add(col.Name, col.Setting);
                     }
                 }
 
-                WriteObject(dbInfoItem);
+                WriteObject(new MongoDbDatabaseSetting { Name = this.DatabaseName, Setting = dbInfo });
             }
         }
     }

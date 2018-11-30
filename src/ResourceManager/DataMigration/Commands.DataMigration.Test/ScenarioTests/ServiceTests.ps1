@@ -881,9 +881,9 @@ function Test-MigrateMongoDb
 		#----------------------
 		# MIGRATION SETUP
 		#----------------------
-		$testColSettingA = New-AzureRmDataMigrationMongoDbCollectionSetting -Name large -RU 1000 -CanDelete -ShardKeyFields "_id"
-		$testColSettingB = New-AzureRmDataMigrationMongoDbCollectionSetting -Name many -RU 1000 -CanDelete -ShardKeyFields "_id"
-		$testDbSetting = New-AzureRmDataMigrationMongoDbDatabaseSetting -Name test -collections @($testColSettingA, $testColSettingB)
+		$testColSettingA = New-AzureRmDataMigrationMongoDbCollectionSetting -Name large -RU 1000 -CanDelete -ShardKey "_id"
+		$testColSettingB = New-AzureRmDataMigrationMongoDbCollectionSetting -Name many -RU 1000 -CanDelete -ShardKey "_id"
+		$testDbSetting = New-AzureRmDataMigrationMongoDbDatabaseSetting -Name test -CollectionSetting @($testColSettingA, $testColSettingB)
 
 		#----------------------
 		# MIGRATION VALIDATION
