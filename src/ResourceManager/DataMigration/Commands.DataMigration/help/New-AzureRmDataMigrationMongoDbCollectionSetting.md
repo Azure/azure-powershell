@@ -13,7 +13,7 @@ Creates collection setting for migration according for the mongoDb migration
 ## SYNTAX
 
 ```
-New-AzureRmDataMigrationMongoDbCollectionSetting -Name <Name> [-TargetRU <TargetRU>] [-CanDelete] [-ShardKeyFields <ShardKeyFields>]
+New-AzureRmDataMigrationMongoDbCollectionSetting -Name <Name> [-TargetRequestUnit <TargetRequestUnit>] [-CanDelete] [-ShardKey <ShardKey>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ the database level settings for migration.
 
 ### Example 1
 ```
-PS C:\> New-AzureRmDataMigrationMongoDbCollectionSetting -Name myCollection -TargetRU 1000 -CanDelete -ShardKeyFields "_id:-1,age:1,name"
+PS C:\> New-AzureRmDataMigrationMongoDbCollectionSetting -Name myCollection -TargetRequestUnit 1000 -CanDelete -ShardKey "_id:-1,age:1,name"
 
 ```
 
@@ -46,7 +46,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ShardKeyFields
+### -ShardKey
 The comma seperated list of the shard keys. For mongoDb target, 
 you can specify shard key order of "ShardKeyName:Order", 
 where order is 1, -1 or empty for hashed, for example "_id,email:-1".
@@ -63,7 +63,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetRU
+### -TargetRequestUnit
 The dedicated collection request unit value. If not set, that collection uses shared database RU.
 
 ```yaml
@@ -103,7 +103,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.KeyValuePair<string, MongoDbCollectionSettings>
+### Microsoft.Azure.Commands.DataMigration.Models.MongoDbCollectionSetting>
 
 ## NOTES
 

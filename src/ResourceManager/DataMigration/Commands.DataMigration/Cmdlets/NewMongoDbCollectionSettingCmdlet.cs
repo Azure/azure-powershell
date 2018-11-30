@@ -15,16 +15,14 @@
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Management.DataMigration.Models;
+using Microsoft.Azure.Commands.DataMigration.Models.MongoDb;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-
-    using MongoDbCollectionSettingItem = System.Collections.Generic.KeyValuePair<string, MongoDbCollectionSettings>;
-
     /// <summary>
     /// Class that creates a new instance of the mongo db collection info
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationMongoDbCollectionSetting", SupportsShouldProcess = true), OutputType(typeof(MongoDbCollectionSettingItem))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationMongoDbCollectionSetting", SupportsShouldProcess = true), OutputType(typeof(MongoDbCollectionSetting))]
     [Alias("New-AzureRmDmsMongoDbCollectionSetting")]
     public class NewMongoDbCollectionSettingCmdlet : DataMigrationCmdlet
     {
@@ -40,7 +38,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
            HelpMessage = "The database level shared RU at the target CosmosDb"
                )]
         [Alias("RU")]
-        public int? TargetRU { get; set; }
+        public int? TargetRequestUnit { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -60,8 +58,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
            Mandatory = false,
            HelpMessage = "Comma seperated field names to represent shard key to be created, with format of 'a:-1,b:1,c' where -1/1 is for order"
                )]
-        [Alias("ShardFields")]
-        public string ShardKeyFields { get; set; }
+        public string ShardKey { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -70,15 +67,15 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                 base.ExecuteCmdlet();
                 var setting = new MongoDbCollectionSettings()
                 {
-                    TargetRUs = this.TargetRU,
+                    TargetRUs = this.TargetRequestUnit,
                     CanDelete = this.CanDelete.IsPresent,
-                    ShardKey = new MongoDbShardKeySetting(this._parseShardKeyFields(this.ShardKeyFields), this.UniqueShard.IsPresent)
+                    ShardKey = new MongoDbShardKeySetting(this._parseShardKey(this.ShardKey), this.UniqueShard.IsPresent)
                 };
-                WriteObject(new MongoDbCollectionSettingItem(this.CollectionName, setting));
+                WriteObject(new MongoDbCollectionSetting { Name = this.CollectionName, Setting = setting });
             }
         }
 
-        private System.Collections.Generic.List<MongoDbShardKeyField> _parseShardKeyFields(string shardKeyStr)
+        private System.Collections.Generic.List<MongoDbShardKeyField> _parseShardKey(string shardKeyStr)
         {
             var res = new System.Collections.Generic.List<MongoDbShardKeyField>();
             if (!string.IsNullOrWhiteSpace(shardKeyStr))

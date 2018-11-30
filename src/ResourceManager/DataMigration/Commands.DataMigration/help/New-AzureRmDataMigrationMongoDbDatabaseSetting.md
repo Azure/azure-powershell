@@ -13,7 +13,7 @@ Creates database setting for migration for the mongoDb migration
 ## SYNTAX
 
 ```
-New-AzureRmDataMigrationMongoDbDatabaseSetting  -Name <Name> [-RU <RU>] -Collections <Collections>
+New-AzureRmDataMigrationMongoDbDatabaseSetting  -Name <Name> [-RU <RU>] -CollectionSetting <Collections>
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ The output is a key value pair with name of collection and value of the setting,
 
 ### Example 1
 ```
-PS C:\> New-AzureRmDataMigrationMongoDbDatabaseSetting  -Name mycollection -RU 1000 -Collections @(coll1, coll2)
+PS C:\> New-AzureRmDataMigrationMongoDbDatabaseSetting  -Name mycollection -RU 1000 -CollectionSetting @(coll1, coll2)
 
 ```
 
@@ -44,7 +44,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-### -TargetRU
+### -TargetRequestUnit
 The dedicated database level request unit value. If not set, that collection uses shared database RU.
 
 ```yaml
@@ -83,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.KeyValuePair<string, MongoDbDatabaseSettings>
+### Microsoft.Azure.Commands.DataMigration.Models.MongoDbDatabaseSetting
 
 ## NOTES
 
