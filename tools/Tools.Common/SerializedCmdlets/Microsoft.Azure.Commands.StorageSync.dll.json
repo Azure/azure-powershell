@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationResult, Microsoft.Azure.Commands.StorageSync, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationResult, Microsoft.Azure.Commands.StorageSync, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Level": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSResultLevel",
               "Type": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationType",
@@ -631,7 +631,7 @@
     "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSResultLevel": {
       "Namespace": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models",
       "Name": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSResultLevel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSResultLevel, Microsoft.Azure.Commands.StorageSync, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSResultLevel, Microsoft.Azure.Commands.StorageSync, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -746,7 +746,7 @@
     "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationType": {
       "Namespace": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models",
       "Name": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationType, Microsoft.Azure.Commands.StorageSync, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationType, Microsoft.Azure.Commands.StorageSync, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
