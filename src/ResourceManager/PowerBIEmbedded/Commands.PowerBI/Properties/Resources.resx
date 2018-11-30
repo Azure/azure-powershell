@@ -130,7 +130,7 @@
     <value>Could not find capacity: '{0}' in any resource group in the currently selected subscription: {1}. Please ensure this capacity exists and that the current user has access to it.</value>
   </data>
   <data name="InvalidDefaultSubscription" xml:space="preserve">
-    <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
+    <value>No default subscription has been designated. Use Select-AzSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
   </data>
   <data name="InvalidSku" xml:space="preserve">
     <value>Invalid Sku: '{0}'. Available Skus are: '{1}'</value>

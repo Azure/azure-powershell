@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
+    /// Defines the Get-AzSqlDatabaseServer cmdlet
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer", SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerModel))]
     public class RemoveAzureSqlServer : AzureSqlServerCmdletBase

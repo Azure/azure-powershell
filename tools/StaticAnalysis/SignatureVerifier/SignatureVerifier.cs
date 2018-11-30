@@ -106,7 +106,7 @@ namespace StaticAnalysis.SignatureVerifier
                     var psd1FileName = Path.GetFileName(psd1);
                     IEnumerable<string> nestedModules = null;
                     List<string> requiredModules = null;
-                    var powershell = PowerShell.Create();
+                    var powershell = PowerShell.Create(RunspaceMode.NewRunspace);
                     powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
                                          " -FileName " + psd1FileName +
                                          " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };");

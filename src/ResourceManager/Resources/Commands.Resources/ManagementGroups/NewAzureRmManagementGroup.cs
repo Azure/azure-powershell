@@ -23,7 +23,7 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.Azure.Commands.Resources.ManagementGroups
 {
     /// <summary>
-    /// New-AzureRmManagementGroup Cmdlet
+    /// New-AzManagementGroup Cmdlet
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroup))]
     public class NewAzureRmManagementGroup : AzureManagementGroupsCmdletBase
