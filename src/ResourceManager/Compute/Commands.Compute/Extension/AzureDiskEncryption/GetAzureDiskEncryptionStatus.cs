@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             if (vmParameters == null)
             {
-                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Get-AzureDiskEncryptionExtension can enable encryption only on a VM that was already created ")),
+                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Get-AzDiskEncryptionExtension can enable encryption only on a VM that was already created ")),
                                                       "InvalidResult",
                                                       ErrorCategory.InvalidResult,
                                                       null));

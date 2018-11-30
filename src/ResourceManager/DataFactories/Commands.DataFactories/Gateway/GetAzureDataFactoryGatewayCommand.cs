@@ -39,7 +39,6 @@ HelpMessage = "The data factory object.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByFactoryObject)

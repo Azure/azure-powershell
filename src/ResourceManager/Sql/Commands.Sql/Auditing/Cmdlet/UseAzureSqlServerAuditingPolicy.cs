@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// </summary>
     [Cmdlet("Use", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAuditingPolicy"), OutputType(typeof(AuditingPolicyModel))]
     [Alias("Use-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseServerAuditingPolicy")]
-    [Obsolete("Note that Table auditing is deprecated and this command will be removed in a future release. Please use the 'Set-AzureRmSqlDatabaseAuditing' command to configure Blob auditing.", false)]
+    [Obsolete("Note that Table auditing is deprecated and this command will be removed in a future release. Please use the 'Set-AzSqlDatabaseAuditing' command to configure Blob auditing.", false)]
     public class UseAzureSqlServerAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>

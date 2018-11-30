@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             ValueFromPipeline = true,
-            HelpMessage = "The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzureRmVirtualNetworkGateway")]
+            HelpMessage = "The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzVirtualNetworkGateway")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             ValueFromPipeline = true,
-            HelpMessage = "The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzureRmVirtualNetworkGateway")]
+            HelpMessage = "The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzVirtualNetworkGateway")]
         public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
 
         [Parameter(
