@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Reservations", "Commands.Reservations\Commands.Reservations.Netcore.csproj", "{1F3B3B96-4569-450B-98A1-C2B8136FA2EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Reservations.Netcore", "Commands.Reservations\Commands.Reservations.Netcore.csproj", "{1F3B3B96-4569-450B-98A1-C2B8136FA2EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Reservations.Test", "Commands.Reservations.Test\Commands.Reservations.Test.Netcore.csproj", "{9A994056-856D-4B46-8FAB-409EE746A651}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Reservations.Test.Netcore", "Commands.Reservations.Test\Commands.Reservations.Test.Netcore.csproj", "{9A994056-856D-4B46-8FAB-409EE746A651}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{ED1E16A7-9DFB-475D-BC65-6580A90CDD45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
