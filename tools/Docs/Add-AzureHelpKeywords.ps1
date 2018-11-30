@@ -13,14 +13,8 @@
 # ----------------------------------------------------------------------------------
 
 # default keywords
-$CommonDefaults = @("common", "azure", "services", "data")
 $RmDefaults = @("azure", "azurerm", "arm", "resource", "management", "manager")
 $SmDefaults = @("azure", "azuresm", "servicemanagement", "management", "service")
-
-# specialized Common keywords by module
-$Common = @{
-	"Common\Storage\Commands.Storage\Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml" = @("storage", "blob", "queue", "table")
-}
 
 # specialized Resource Management keywords by module
 $RM = @{
@@ -44,6 +38,7 @@ $RM = @{
 	"ResourceManager\SiteRecovery\Commands.SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll-help.xml" = @("site", "recovery")
 	"ResourceManager\Sql\Commands.Sql\Microsoft.Azure.Commands.Sql.dll-Help.xml" = @("sql", "database", "mssql")
 	"ResourceManager\Storage\Commands.Management.Storage\Microsoft.Azure.Commands.Management.Storage.dll-Help.xml" = @("storage", "container", "account")
+	"ResourceManager\Storage\Commands.Storage\Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml" = @("storage", "blob", "queue", "table")
 	"ResourceManager\StreamAnalytics\Commands.StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml" = @("analytics", "stream")
 	"ResourceManager\Tags\Commands.Tags\Microsoft.Azure.Commands.Tags.dll-help.xml" = @("tag", "tags", "resource", "group")
 	"ResourceManager\TrafficManager\Commands.TrafficManager2\Microsoft.Azure.Commands.TrafficManager.dll-help.xml" = @("traffic", "trafficmanager")
@@ -70,7 +65,7 @@ $SM = @{
 }
 
 # default and specialized keyword pairs
-$Pairs = ($CommonDefaults, $Common),($RmDefaults, $RM),($SmDefaults, $SM)
+$Pairs = ($RmDefaults, $RM),($SmDefaults, $SM)
 
 # the namespaces used in the dll-help.xml
 $ns = @{

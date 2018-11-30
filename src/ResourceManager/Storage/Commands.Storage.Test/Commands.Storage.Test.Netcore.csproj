@@ -3,7 +3,7 @@
   <PropertyGroup>
     <UseStorageDataPlane>true</UseStorageDataPlane>
   </PropertyGroup>
-  <Import Project="$(ProjectDir)..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
+  <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
@@ -38,7 +38,7 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.WindowsAzure.Commands.Storage">
-      <HintPath>..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Storage\Microsoft.WindowsAzure.Commands.Storage.dll</HintPath>
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Storage\Microsoft.WindowsAzure.Commands.Storage.dll</HintPath>
     </Reference>
   </ItemGroup>
 
