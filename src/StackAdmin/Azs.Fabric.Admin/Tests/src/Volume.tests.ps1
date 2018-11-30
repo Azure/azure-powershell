@@ -26,18 +26,20 @@
 .EXAMPLE
     PS C:\> .\Volume.Tests.ps1
     Describing Volumes
-     [+] TestListVolumes 188ms
-     [+] TestGetVolume 157ms
-     [+] TestGetAllVolumes 100ms
-     [+] TestGetInvaildVolume 72ms
+     [+] TestListVolumes 658ms
+     [+] TestGetVolume 174ms
+     [+] TestGetAllVolumes 159ms
+     [+] TestGetInvaildVolume 112ms
+     [+] TestGetVolumeByResourceId 275ms
 
 .EXAMPLE
     PS C:\> .\src\Volume.Tests.ps1 -RunRaw $true
     Describing Volumes
-     [+] TestListVolumes 10.19s
-     [+] TestGetVolume 3.03s
-     [+] TestGetAllVolumes 2.83s
-     [+] TestGetInvaildVolume 2.44s
+     [+] TestListVolumes 10.71s
+     [+] TestGetVolume 3.58s
+     [+] TestGetAllVolumes 3.34s
+     [+] TestGetInvaildVolume 2.23s
+     [+] TestGetVolumeByResourceId 3.12s
 
 .NOTES
     Author: Jeffrey Robinson
@@ -189,6 +191,25 @@ InModuleScope Azs.Fabric.Admin {
                     $invaildVolumeName = "invaildvolumename"
                     $retrieved = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name -Name $invaildVolumeName
                     $retrieved | Should Be $null
+                    break
+                }
+                break
+            }
+        }
+
+        it "TestGetVolumeByResourceId" -Skip:$('TestGetVolumeByResourceId' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetVolumeByResourceId'
+
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $storageSubSystems = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name
+                foreach ($storageSubSystem in $storageSubSystems) {
+                    $volumes = Get-AzsVolume -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name
+                    foreach ($volume in $volumes) {
+                        $retrieved = Get-AzsVolume -ResourceId $volume.Id
+                        AssertVolumesAreSame -Expected $volume -Found $retrieved
+                        break
+                    }
                     break
                 }
                 break

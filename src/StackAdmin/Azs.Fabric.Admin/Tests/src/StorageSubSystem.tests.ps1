@@ -26,18 +26,20 @@
 .EXAMPLE
     PS C:\> .\src\StorageSubSystem.Tests.ps1
     Describing StorageSubSystems
-     [+] TestListStorageSubSystems 187ms
-     [+] TestGetStorageSubSystem 98ms
-     [+] TestGetAllStorageSubSystems 79ms
-     [+] TestGetInvaildStorageSubSystem 78ms
+     [+] TestListStorageSubSystems 550ms
+     [+] TestGetStorageSubSystem 170ms
+     [+] TestGetAllStorageSubSystems 151ms
+     [+] TestGetInvaildStorageSubSystem 98ms
+     [+] TestGetStorageSubSystemByResourceId 127ms
 
 .EXAMPLE
     PS C:\> .\src\StorageSubSystem.Tests.ps1 -RunRaw $true
     Describing StorageSubSystems
-     [+] TestListStorageSubSystems 1.56s
-     [+] TestGetStorageSubSystem 1.98s
-     [+] TestGetAllStorageSubSystems 2.07s
-     [+] TestGetInvaildStorageSubSystem 1.58s
+     [+] TestListStorageSubSystems 2s
+     [+] TestGetStorageSubSystem 2.56s
+     [+] TestGetAllStorageSubSystems 2.82s
+     [+] TestGetInvaildStorageSubSystem 1.76s
+     [+] TestGetStorageSubSystemByResourceId 2.32s
 
 .NOTES
     Author: Yuxing Zhou
@@ -170,6 +172,21 @@ InModuleScope Azs.Fabric.Admin {
                 $invaildStorageSubSystemName = "invaildstoragesubsystemname"
                 $retrieved = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -Name $invaildStorageSubSystemName
                 $retrieved | Should Be $null
+                break
+            }
+        }
+
+        it "TestGetStorageSubSystemByResourceId" -Skip:$('TestGetStorageSubSystemByResourceId' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetStorageSubSystemByResourceId'
+
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $StorageSubSystems = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name
+                foreach ($StorageSubSystem in $StorageSubSystems) {
+                    $retrieved = Get-AzsStorageSubSystem -ResourceId $StorageSubSystem.Id
+                    AssertStorageSubSystemsAreSame -Expected $StorageSubSystem -Found $retrieved
+                    break
+                }
                 break
             }
         }
