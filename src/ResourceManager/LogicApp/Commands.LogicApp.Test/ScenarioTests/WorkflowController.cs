@@ -22,7 +22,6 @@ using Microsoft.Azure.Management.Logic;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.WebSites.Version2016_09_01;
 using System.IO;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
@@ -36,8 +35,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public LogicManagementClient LogicManagementClient { get; private set; }
-
-        public WebSiteManagementClient WebsiteManagementClient { get; private set; }
 
         public static WorkflowController NewInstance => new WorkflowController();
 
@@ -113,10 +110,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient(context);
             LogicManagementClient = GetLogicManagementClient(context);
-            WebsiteManagementClient = GetWebsiteManagementClient(context);
-            _helper.SetupManagementClients(ResourceManagementClient,
-                LogicManagementClient,
-                WebsiteManagementClient);
+            _helper.SetupManagementClients(ResourceManagementClient, LogicManagementClient);
         }
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
@@ -127,11 +121,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         private static LogicManagementClient GetLogicManagementClient(MockContext context)
         {
             return context.GetServiceClient<LogicManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private static WebSiteManagementClient GetWebsiteManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<WebSiteManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
