@@ -23,13 +23,22 @@
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
-
   <ItemGroup>
+
+    <Reference Include="Microsoft.Azure.Commands.StorageSync">
+
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.StorageSync\Microsoft.Azure.Commands.StorageSync.dll</HintPath>
+
+    </Reference>
+
+  </ItemGroup>
+    <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.StorageSync" Version="2.0.0" />
 	<PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.8.0-preview" />
 	<PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.0-preview" />
 	<PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" />
   </ItemGroup>
+
 
   <ItemGroup>
     <None Update="SessionRecords\**\*.json">
