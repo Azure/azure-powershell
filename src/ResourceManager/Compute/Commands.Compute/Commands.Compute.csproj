@@ -49,8 +49,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
@@ -317,243 +317,85 @@
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs">
       <Link>Common\AzureStorageContext.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs">
-      <Link>Extension\DSC\DscExtensionCmdletConstants.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPrivateSettings.cs">
-      <Link>Extension\DSC\DscExtensionPrivateSettings.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPublicSettings.cs">
-      <Link>Extension\DSC\DscExtensionPublicSettings.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionSettingsSerializer.cs">
-      <Link>Extension\DSC\DscExtensionSettingsSerializer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParseResult.cs">
-      <Link>Extension\DSC\ConfigurationParseResult.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParsingHelper.cs">
-      <Link>Extension\DSC\ConfigurationParsingHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\ComputeStats.cs">
-      <Link>Sync\ComputeStats.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Download\BlobHandle.cs">
-      <Link>Sync\Download\BlobHandle.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Download\BlobUri.cs">
-      <Link>Sync\Download\BlobUri.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Download\Downloader.cs">
-      <Link>Sync\Download\Downloader.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Download\DownloaderParameters.cs">
-      <Link>Sync\Download\DownloaderParameters.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\IO\StreamWithReadProgress.cs">
-      <Link>Sync\IO\StreamWithReadProgress.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Program.cs">
-      <Link>Sync\Program.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\ProgressRecord.cs">
-      <Link>Sync\ProgressRecord.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\ProgressStatus.cs">
-      <Link>Sync\ProgressStatus.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\ProgressTracker.cs">
-      <Link>Sync\ProgressTracker.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\ServicePointHandler.cs">
-      <Link>Sync\ServicePointHandler.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Threading\Parallel.cs">
-      <Link>Sync\Threading\Parallel.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\BlobCreator.cs">
-      <Link>Sync\Upload\BlobCreator.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\BlobCreatorBase.cs">
-      <Link>Sync\Upload\BlobCreatorBase.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\BlobSynchronizer.cs">
-      <Link>Sync\Upload\BlobSynchronizer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\ComputeStats.cs">
-      <Link>Sync\Upload\ComputeStats.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\DataWithRange.cs">
-      <Link>Sync\Upload\DataWithRange.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\ExtensionMethods.cs">
-      <Link>Sync\Upload\ExtensionMethods.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\IndexRangeHelper.cs">
-      <Link>Sync\Upload\IndexRangeHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\PatchingBlobCreator.cs">
-      <Link>Sync\Upload\PatchingBlobCreator.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\SerializationUtil.cs">
-      <Link>Sync\Upload\SerializationUtil.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\UploadContext.cs">
-      <Link>Sync\Upload\UploadContext.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\UploadOperationMetaData.cs">
-      <Link>Sync\Upload\UploadOperationMetaData.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Async\AsyncMachine.cs">
-      <Link>VhdManagement\Async\AsyncMachine.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Async\ExceptionExtension.cs">
-      <Link>VhdManagement\Async\ExceptionExtension.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\AttributeHelper.cs">
-      <Link>VhdManagement\Model\AttributeHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\BitMap.cs">
-      <Link>VhdManagement\Model\BitMap.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Block.cs">
-      <Link>VhdManagement\Model\Block.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\BlockAllocationTable.cs">
-      <Link>VhdManagement\Model\BlockAllocationTable.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\DiskGeometry.cs">
-      <Link>VhdManagement\Model\DiskGeometry.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\DiskType.cs">
-      <Link>VhdManagement\Model\DiskType.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\HostOsType.cs">
-      <Link>VhdManagement\Model\HostOsType.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\IndexRange.cs">
-      <Link>VhdManagement\Model\IndexRange.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\IndexRangeComparer.cs">
-      <Link>VhdManagement\Model\IndexRangeComparer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Model.cs">
-      <Link>VhdManagement\Model\Model.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\ParentLocator.cs">
-      <Link>VhdManagement\Model\ParentLocator.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\AbstractDiskBlockFactory.cs">
-      <Link>VhdManagement\Model\Persistance\AbstractDiskBlockFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\BitMapFactory.cs">
-      <Link>VhdManagement\Model\Persistance\BitMapFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\BlockAllocationTableFactory.cs">
-      <Link>VhdManagement\Model\Persistance\BlockAllocationTableFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\CloudVhdFileCreator.cs">
-      <Link>VhdManagement\Model\Persistance\CloudVhdFileCreator.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\DifferencingDiskBlockFactory.cs">
-      <Link>VhdManagement\Model\Persistance\DifferencingDiskBlockFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\DiskTypeFactory.cs">
-      <Link>VhdManagement\Model\Persistance\DiskTypeFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\DynamicDiskBlockFactory.cs">
-      <Link>VhdManagement\Model\Persistance\DynamicDiskBlockFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\FixedDiskBlockFactory.cs">
-      <Link>VhdManagement\Model\Persistance\FixedDiskBlockFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\IBlockFactory.cs">
-      <Link>VhdManagement\Model\Persistance\IBlockFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\SectorFactory.cs">
-      <Link>VhdManagement\Model\Persistance\SectorFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\StreamHelper.cs">
-      <Link>VhdManagement\Model\Persistance\StreamHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdConstants.cs">
-      <Link>VhdManagement\Model\Persistance\VhdConstants.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdDataReader.cs">
-      <Link>VhdManagement\Model\Persistance\VhdDataReader.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdDataWriter.cs">
-      <Link>VhdManagement\Model\Persistance\VhdDataWriter.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdFileFactory.cs">
-      <Link>VhdManagement\Model\Persistance\VhdFileFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdFooterFactory.cs">
-      <Link>VhdManagement\Model\Persistance\VhdFooterFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdFooterSerializer.cs">
-      <Link>VhdManagement\Model\Persistance\VhdFooterSerializer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdHeaderFactory.cs">
-      <Link>VhdManagement\Model\Persistance\VhdHeaderFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdParentLocatorFactory.cs">
-      <Link>VhdManagement\Model\Persistance\VhdParentLocatorFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\PlatformCode.cs">
-      <Link>VhdManagement\Model\PlatformCode.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Sector.cs">
-      <Link>VhdManagement\Model\Sector.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdCookie.cs">
-      <Link>VhdManagement\Model\VhdCookie.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdCookieType.cs">
-      <Link>VhdManagement\Model\VhdCookieType.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdCreatorVersion.cs">
-      <Link>VhdManagement\Model\VhdCreatorVersion.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdEntityAttribute.cs">
-      <Link>VhdManagement\Model\VhdEntityAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdEntityDescriptor.cs">
-      <Link>VhdManagement\Model\VhdEntityDescriptor.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdFeature.cs">
-      <Link>VhdManagement\Model\VhdFeature.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdFile.cs">
-      <Link>VhdManagement\Model\VhdFile.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdFileFormatVersion.cs">
-      <Link>VhdManagement\Model\VhdFileFormatVersion.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdFooter.cs">
-      <Link>VhdManagement\Model\VhdFooter.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdHeader.cs">
-      <Link>VhdManagement\Model\VhdHeader.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdHeaderVersion.cs">
-      <Link>VhdManagement\Model\VhdHeaderVersion.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdPropertyAttribute.cs">
-      <Link>VhdManagement\Model\VhdPropertyAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdPropertyDescriptor.cs">
-      <Link>VhdManagement\Model\VhdPropertyDescriptor.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdTimeStamp.cs">
-      <Link>VhdManagement\Model\VhdTimeStamp.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\SparseStream.cs">
-      <Link>VhdManagement\SparseStream.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\VirtualDiskStream.cs">
-      <Link>VhdManagement\VirtualDiskStream.cs</Link>
-    </Compile>
+    <Compile Include="Extension\DSC\DscExtensionCmdletConstants.cs" />
+    <Compile Include="Extension\DSC\DscExtensionPrivateSettings.cs" />
+    <Compile Include="Extension\DSC\DscExtensionPublicSettings.cs" />
+    <Compile Include="Extension\DSC\DscExtensionSettingsSerializer.cs" />
+    <Compile Include="Extension\DSC\ConfigurationParseResult.cs" />
+    <Compile Include="Extension\DSC\ConfigurationParsingHelper.cs" />
+    <Compile Include="Sync\ComputeStats.cs" />
+    <Compile Include="Sync\Download\BlobHandle.cs" />
+    <Compile Include="Sync\Download\BlobUri.cs" />
+    <Compile Include="Sync\Download\Downloader.cs" />
+    <Compile Include="Sync\Download\DownloaderParameters.cs" />
+    <Compile Include="Sync\IO\StreamWithReadProgress.cs" />
+    <Compile Include="Sync\Program.cs" />
+    <Compile Include="Sync\ProgressRecord.cs" />
+    <Compile Include="Sync\ProgressStatus.cs" />
+    <Compile Include="Sync\ProgressTracker.cs" />
+    <Compile Include="Sync\ServicePointHandler.cs" />
+    <Compile Include="Sync\Threading\Parallel.cs" />
+    <Compile Include="Sync\Upload\BlobCreator.cs" />
+    <Compile Include="Sync\Upload\BlobCreatorBase.cs" />
+    <Compile Include="Sync\Upload\BlobSynchronizer.cs" />
+    <Compile Include="Sync\Upload\ComputeStats.cs" />
+    <Compile Include="Sync\Upload\DataWithRange.cs" />
+    <Compile Include="Sync\Upload\ExtensionMethods.cs" />
+    <Compile Include="Sync\Upload\IndexRangeHelper.cs" />
+    <Compile Include="Sync\Upload\PatchingBlobCreator.cs" />
+    <Compile Include="Sync\Upload\SerializationUtil.cs" />
+    <Compile Include="Sync\Upload\UploadContext.cs" />
+    <Compile Include="Sync\Upload\UploadOperationMetaData.cs" />
+    <Compile Include="VhdManagement\Async\AsyncMachine.cs" />
+    <Compile Include="VhdManagement\Async\ExceptionExtension.cs" />
+    <Compile Include="VhdManagement\Model\AttributeHelper.cs" />
+    <Compile Include="VhdManagement\Model\BitMap.cs" />
+    <Compile Include="VhdManagement\Model\Block.cs" />
+    <Compile Include="VhdManagement\Model\BlockAllocationTable.cs" />
+    <Compile Include="VhdManagement\Model\DiskGeometry.cs" />
+    <Compile Include="VhdManagement\Model\DiskType.cs" />
+    <Compile Include="VhdManagement\Model\HostOsType.cs" />
+    <Compile Include="VhdManagement\Model\IndexRange.cs" />
+    <Compile Include="VhdManagement\Model\IndexRangeComparer.cs" />
+    <Compile Include="VhdManagement\Model\Model.cs" />
+    <Compile Include="VhdManagement\Model\ParentLocator.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\AbstractDiskBlockFactory.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\BitMapFactory.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\BlockAllocationTableFactory.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\CloudVhdFileCreator.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\DifferencingDiskBlockFactory.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\DiskTypeFactory.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\DynamicDiskBlockFactory.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\FixedDiskBlockFactory.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\IBlockFactory.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\SectorFactory.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\StreamHelper.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\VhdConstants.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\VhdDataReader.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\VhdDataWriter.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\VhdFileFactory.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\VhdFooterFactory.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\VhdFooterSerializer.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\VhdHeaderFactory.cs" />
+    <Compile Include="VhdManagement\Model\Persistence\VhdParentLocatorFactory.cs" />
+    <Compile Include="VhdManagement\Model\PlatformCode.cs" />
+    <Compile Include="VhdManagement\Model\Sector.cs" />
+    <Compile Include="VhdManagement\Model\VhdCookie.cs" />
+    <Compile Include="VhdManagement\Model\VhdCookieType.cs" />
+    <Compile Include="VhdManagement\Model\VhdCreatorVersion.cs" />
+    <Compile Include="VhdManagement\Model\VhdEntityAttribute.cs" />
+    <Compile Include="VhdManagement\Model\VhdEntityDescriptor.cs" />
+    <Compile Include="VhdManagement\Model\VhdFeature.cs" />
+    <Compile Include="VhdManagement\Model\VhdFile.cs" />
+    <Compile Include="VhdManagement\Model\VhdFileFormatVersion.cs" />
+    <Compile Include="VhdManagement\Model\VhdFooter.cs" />
+    <Compile Include="VhdManagement\Model\VhdHeader.cs" />
+    <Compile Include="VhdManagement\Model\VhdHeaderVersion.cs" />
+    <Compile Include="VhdManagement\Model\VhdPropertyAttribute.cs" />
+    <Compile Include="VhdManagement\Model\VhdPropertyDescriptor.cs" />
+    <Compile Include="VhdManagement\Model\VhdTimeStamp.cs" />
+    <Compile Include="VhdManagement\SparseStream.cs" />
+    <Compile Include="VhdManagement\VirtualDiskStream.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">

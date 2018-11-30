@@ -14,7 +14,7 @@ Our team trends to make the cmdlets output more convenient and consistent across
 
 # How table view output works by default.
 
- As an example let's consider [Get-AzureRmSubscription](https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Profile/Commands.Profile/Subscription/GetAzureRMSubscription.cs) cmdlet. 
+ As an example let's consider [Get-AzSubscription](https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Profile/Commands.Profile/Subscription/GetAzureRMSubscription.cs) cmdlet. 
 
 The cmdlet class specifies the ```PSAzureSubscription``` class as an output type with the **OutputType attribute**:
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 PowerShell uses these properties for the cmdlet table formated output:
 
 ```PowerShell
-PS C:\> Get-AzureRmSubscription | Format-Table
+PS C:\> Get-AzSubscription | Format-Table
 
 Id                                   Name                      State   SubscriptionId                       TenantId                             CurrentStorageAcc
                                                                                                                                                  ountName
@@ -340,7 +340,7 @@ d-----        4/25/2018   4:35 PM                Storage
 PS E:\git\azure-powershell> Import-Module E:\git\azure-powershell\tools\RepoTasks\RepoTasks.Cmdlets\bin\Debug\RepoTasks.Cmdlets.dll
 ```
 3. Run the **New-FormatPs1Xml** cmdlet. 
-* The cmdlet has one required argument **-ModulePath** - a path to a module manifest (psd1) file. Since in our example we are using the Get-AzureRmSubscription cmdlet from the AzureRM.Profile module we need to specify path to the AzureRm.Profile module manifest which is 
+* The cmdlet has one required argument **-ModulePath** - a path to a module manifest (psd1) file. Since in our example we are using the Get-AzSubscription cmdlet from the AzureRM.Profile module we need to specify path to the AzureRm.Profile module manifest which is 
 ```
 E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1 
 ``` 
@@ -394,7 +394,7 @@ PS C:\> Import-Module E:\git\azure-powershell\src\Package\Debug\ResourceManager\
 
 4. Try your cmdlet out. In our example it is Get-AuzreRmSubsription:
 ```Powershell
-PS C:\> Get-AzureRmSubscription
+PS C:\> Get-AzSubscription
 
 Subscription Id                      Subscription Name         State   Tenant Id
 ---------------                      -----------------         -----   ---------

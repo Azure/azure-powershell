@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 CreateNewCloudService = false,
                 RecoveryPointId = rp.RecoveryPointId,
                 RecoveryType = RecoveryType.RestoreDisks,
-                Region = vaultLocation,
+                Region = vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation(),
                 StorageAccountId = storageAccountResource.Id,
                 SourceResourceId = rp.SourceResourceId,
                 TargetResourceGroupId = targetResourceGroupName != null ?
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 triggerRestoreRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
-                vaultLocation: vaultLocation);
+                vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation());
             return response;
         }
 
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                                 (CmdletModel.LongTermRetentionPolicy)retentionPolicy),
                     SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                                 (CmdletModel.SimpleSchedulePolicy)schedulePolicy),
-                    TimeZone = DateTimeKind.Utc.ToString()
+                    TimeZone = DateTimeKind.Utc.ToString().ToUpper()
                 }
 
             };
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                   (CmdletModel.LongTermRetentionPolicy)((AzureVmPolicy)policy).RetentionPolicy),
                     SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                   (CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy),
-                    TimeZone = DateTimeKind.Utc.ToString()
+                    TimeZone = DateTimeKind.Utc.ToString().ToUpper()
                 }
             };
 

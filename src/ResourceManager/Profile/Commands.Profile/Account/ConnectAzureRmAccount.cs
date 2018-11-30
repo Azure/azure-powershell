@@ -14,8 +14,16 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Profile.Models.Core;
+#endif
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -31,8 +39,8 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet("Connect", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
-    [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Account")]
+    [Cmdlet("Connect", AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
+    [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-" + AzureRMConstants.AzureRMPrefix + "Account")]
     [OutputType(typeof(PSAzureProfile))]
     public class ConnectAzureRmAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
     {
@@ -44,13 +52,14 @@ namespace Microsoft.Azure.Commands.Profile
         public const string MSIEndpointVariable = "MSI_ENDPOINT";
         public const string MSISecretVariable = "MSI_SECRET";
 
-        protected IAzureEnvironment _environment =AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+        private IAzureEnvironment _environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
         [Alias("EnvironmentName")]
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
 
+// TODO: Remove IfDef code
 #if !NETSTANDARD
         [Parameter(ParameterSetName = UserParameterSet,
                     Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
@@ -194,7 +203,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             }
 
-            AzureAccount azureAccount = new AzureAccount();
+            var azureAccount = new AzureAccount();
 
             switch (ParameterSetName)
             {
@@ -211,17 +220,19 @@ namespace Microsoft.Azure.Commands.Profile
                     break;
                 case ManagedServiceParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.ManagedService;
-                    var builder = new UriBuilder();
-                    builder.Scheme = "http";
-                    builder.Host = ManagedServiceHostName;
-                    builder.Port = ManagedServicePort;
-                    builder.Path = "/oauth2/token";
+                    var builder = new UriBuilder
+                    {
+                        Scheme = "http",
+                        Host = ManagedServiceHostName,
+                        Port = ManagedServicePort,
+                        Path = "/oauth2/token"
+                    };
 
-                    string msiSecret = this.IsBound(nameof(ManagedServiceSecret))
+                    var msiSecret = this.IsBound(nameof(ManagedServiceSecret))
                         ? ManagedServiceSecret.ConvertToString()
                         : System.Environment.GetEnvironmentVariable(MSISecretVariable);
 
-                    string suppliedUri = this.IsBound(nameof(ManagedServiceHostName))
+                    var suppliedUri = this.IsBound(nameof(ManagedServiceHostName))
                         ? builder.Uri.ToString()
                         : System.Environment.GetEnvironmentVariable(MSIEndpointVariable);
 
@@ -266,11 +277,12 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (!string.IsNullOrEmpty(Tenant))
             {
-                azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { Tenant });
+                azureAccount.SetProperty(AzureAccount.Property.Tenants, Tenant);
             }
 
+// TODO: Remove IfDef
 #if NETSTANDARD
-            if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal)
+            if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && string.IsNullOrEmpty(CertificateThumbprint))
             {
                 azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
                 if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
@@ -299,19 +311,19 @@ namespace Microsoft.Azure.Commands.Profile
                         subscriptionName,
                         password,
                         SkipValidation,
-                        (s) => WriteWarning(s),
+                        WriteWarning,
                         name,
-                        !this.SkipContextPopulation.IsPresent));
+                        !SkipContextPopulation.IsPresent));
                });
             }
         }
 
-        bool CheckForExistingContext(AzureRmProfile profile, string name)
+        private static bool CheckForExistingContext(AzureRmProfile profile, string name)
         {
-            return name != null && profile != null && profile.Contexts != null && profile.Contexts.ContainsKey(name);
+            return name != null && profile?.Contexts != null && profile.Contexts.ContainsKey(name);
         }
 
-        void SetContextWithOverwritePrompt(Action<AzureRmProfile, RMProfileClient, string> setContextAction)
+        private void SetContextWithOverwritePrompt(Action<AzureRmProfile, RMProfileClient, string> setContextAction)
         {
             string name = null;
             if (MyInvocation.BoundParameters.ContainsKey(nameof(ContextName)))
@@ -319,7 +331,7 @@ namespace Microsoft.Azure.Commands.Profile
                 name = ContextName;
             }
 
-            AzureRmProfile profile = DefaultProfile as AzureRmProfile;
+            var profile = DefaultProfile as AzureRmProfile;
             if (!CheckForExistingContext(profile, name)
                 || Force.IsPresent
                 || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name),
@@ -348,7 +360,7 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 #endif
 
-                bool autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
+                var autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
                 var autosaveVariable = System.Environment.GetEnvironmentVariable(AzureProfileConstants.AzureAutosaveVariable);
                 bool localAutosave;
                 if(bool.TryParse(autosaveVariable, out localAutosave))
@@ -358,6 +370,7 @@ namespace Microsoft.Azure.Commands.Profile
 
                 InitializeProfileProvider(autoSaveEnabled);
                 IServicePrincipalKeyStore keyStore =
+// TODO: Remove IfDef
 #if NETSTANDARD
                     new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
 #else

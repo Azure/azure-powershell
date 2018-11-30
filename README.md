@@ -67,53 +67,53 @@ For more detailed instructions on using Azure PowerShell, please refer to the [g
 
 ### Log in to Azure
 
-To connect to Azure, use the [`Connect-AzureRmAccount`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/connect-azurermaccount) cmdlet.
+To connect to Azure, use the [`Connect-AzAccount`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/connect-Azaccount) cmdlet.
 
 ```powershell
 # Interactive login - you will get a dialog box asking for your Azure credentials
-Connect-AzureRmAccount
+Connect-AzAccount
 
 # Non-interactive login - you will need to use a service principal
-Connect-AzureRmAccount -ServicePrincipal -ApplicationId "http://my-app" -Credential $PSCredential -TenantId $TenantId
+Connect-AzAccount -ServicePrincipal -ApplicationId "http://my-app" -Credential $PSCredential -TenantId $TenantId
 ```
 
 To log into a specific cloud (_AzureChinaCloud_, _AzureCloud_, _AzureGermanCloud_, _AzureUSGovernment_), use the `Environment` parameter:
 
 ```powershell
 # Log into a specific cloud - in this case, the Azure China cloud
-Connect-AzureRmAccount -Environment AzureChinaCloud
+Connect-AzAccount -Environment AzureChinaCloud
 ```
 
 ### Getting and setting your session context
 
-To view the context you are using in the current session, which contains the subscription and tenant, use the [`Get-AzureRmContext`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermcontext) cmdlet:
+To view the context you are using in the current session, which contains the subscription and tenant, use the [`Get-AzContext`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-Azcontext) cmdlet:
 
 ```powershell
 # Get the context you are currently using
-Get-AzureRmContext
+Get-AzContext
 
 # List all available contexts in the current session
-Get-AzureRmContext -ListAvailable
+Get-AzContext -ListAvailable
 ```
 
-To get the subscriptions in a tenant, use the [`Get-AzureRmSubscription`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermsubscription) cmdlet:
+To get the subscriptions in a tenant, use the [`Get-AzSubscription`](https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermsubscription) cmdlet:
 
 ```powershell
 # Get all of the subscriptions in your current tenant
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Get all of the subscriptions in a specific tenant
-Get-AzureRmSubscription -TenantId $TenantId
+Get-AzSubscription -TenantId $TenantId
 ```
 
-To change the subscription that you are using for your current context, use the [`Set-AzureRmContext`]() cmdlet:
+To change the subscription that you are using for your current context, use the [`Set-AzContext`]() cmdlet:
 
 ```powershell
 # Set the context to a specific subscription
-Set-AzureRmContext -Subscription $SubscriptionName -Name "MyContext"
+Set-AzContext -Subscription $SubscriptionName -Name "MyContext"
 
 # Set the context using piping
-Get-AzureRmSubscription -SubscriptionName $SubscriptionName | Set-AzureRmContext -Name "MyContext"
+Get-AzSubscription -SubscriptionName $SubscriptionName | Set-AzContext -Name "MyContext"
 ```
 
 ### Discovering cmdlets
@@ -136,17 +136,17 @@ Get-Command -Module AzureRM.Compute -Name "*VM*"
 To view the help content for a cmdlet, use the `Get-Help` cmdlet:
 
 ```powershell
-# View the basic help content for Get-AzureRmSubscription
-Get-Help -Name Get-AzureRmSubscription
+# View the basic help content for Get-AzSubscription
+Get-Help -Name Get-AzSubscription
 
-# View the examples for Get-AzureRmSubscription
-Get-Help -Name Get-AzureRmSubscription -Examples
+# View the examples for Get-AzSubscription
+Get-Help -Name Get-AzSubscription -Examples
 
-# View the full help content for Get-AzureRmSubscription
-Get-Help -Name Get-AzureRmSubscription -Full
+# View the full help content for Get-AzSubscription
+Get-Help -Name Get-AzSubscription -Full
 
-# View the help content for Get-AzureRmSubscription on https://docs.microsoft.com
-Get-Help -Name Get-AzureRmSubscription -Online
+# View the help content for Get-AzSubscription on https://docs.microsoft.com
+Get-Help -Name Get-AzSubscription -Online
 ```
 
 ## Reporting Issues and Feedback

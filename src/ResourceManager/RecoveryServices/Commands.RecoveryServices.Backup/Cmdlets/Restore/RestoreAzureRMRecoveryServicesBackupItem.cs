@@ -53,7 +53,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Storage account name where the disks need to be recovered
         /// </summary>
-        [Parameter(Mandatory = true, Position = 1,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AzureVMParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
+        [Parameter(Mandatory = false, Position = 1, ParameterSetName = AzureFileParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
@@ -61,7 +63,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Resource group name of Storage account name where the disks need to be recovered
         /// </summary>
-        [Parameter(Mandatory = true, Position = 2,
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = AzureVMParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
+        [Parameter(Mandatory = false, Position = 2, ParameterSetName = AzureFileParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceGroupName { get; set; }
@@ -144,14 +148,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(VaultParams.ResourceGroupName, resourceGroupName);
                 providerParameters.Add(VaultParams.VaultLocation, VaultLocation);
                 providerParameters.Add(RestoreBackupItemParams.RecoveryPoint, RecoveryPoint);
-                providerParameters.Add(RestoreBackupItemParams.StorageAccountName, StorageAccountName);
-                providerParameters.Add(RestoreBackupItemParams.StorageAccountResourceGroupName, StorageAccountResourceGroupName);
                 providerParameters.Add(RestoreVMBackupItemParams.OsaOption, UseOriginalStorageAccount.IsPresent);
                 providerParameters.Add(RestoreFSBackupItemParams.ResolveConflict, ResolveConflict.ToString());
                 providerParameters.Add(RestoreFSBackupItemParams.SourceFilePath, SourceFilePath);
                 providerParameters.Add(RestoreFSBackupItemParams.TargetStorageAccountName, TargetStorageAccountName);
                 providerParameters.Add(RestoreFSBackupItemParams.TargetFileShareName, TargetFileShareName);
                 providerParameters.Add(RestoreFSBackupItemParams.TargetFolder, TargetFolder);
+
+                if (StorageAccountName != null)
+                {
+                    providerParameters.Add(RestoreBackupItemParams.StorageAccountName, StorageAccountName);
+                }
+
+                if (StorageAccountResourceGroupName != null)
+                {
+                    providerParameters.Add(RestoreBackupItemParams.StorageAccountResourceGroupName, StorageAccountResourceGroupName);
+                }
 
                 if (TargetResourceGroupName != null)
                 {

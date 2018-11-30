@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.1.2'
+ModuleVersion = '6.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Automation.dll'
@@ -63,7 +63,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Automation.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = @()
+FormatsToProcess = @(".\AzureRM.Automation.format.ps1xml")
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.Automation.dll')
@@ -73,6 +73,7 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzureRMAutomationHybridWorkerGroup', 
+               'Remove-AzureRmAutomationHybridWorkerGroup', 
                'Get-AzureRmAutomationJobOutputRecord', 
                'Import-AzureRmAutomationDscNodeConfiguration', 
                'Export-AzureRmAutomationDscConfiguration', 
@@ -129,7 +130,19 @@ CmdletsToExport = 'Get-AzureRMAutomationHybridWorkerGroup',
                'Start-AzureRmAutomationDscNodeConfigurationDeployment', 
                'Stop-AzureRmAutomationDscNodeConfigurationDeployment', 
                'Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule', 
-               'Get-AzureRmAutomationDscNodeConfigurationDeployment'
+               'Get-AzureRmAutomationDscNodeConfigurationDeployment',
+               'New-AzureRmAutomationSoftwareUpdateConfiguration',
+               'Get-AzureRmAutomationSoftwareUpdateConfiguration',
+               'Remove-AzureRmAutomationSoftwareUpdateConfiguration',
+               'Get-AzureRmAutomationSoftwareUpdateRun',
+               'Get-AzureRmAutomationSoftwareUpdateMachineRun',
+               'New-AzureRmAutomationSourceControl',
+               'Get-AzureRmAutomationSourceControl',
+               'Remove-AzureRmAutomationSourceControl',
+               'Update-AzureRmAutomationSourceControl',
+               'Start-AzureRmAutomationSourceControlSyncJob',
+               'Get-AzureRmAutomationSourceControlSyncJob',
+               'Get-AzureRmAutomationSourceControlSyncJobOutput'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -164,7 +177,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Renamed cmdlet DLL filename to Microsoft.Azure.Commands.Automation.dll'
+        ReleaseNotes = '* Swagger based Azure Automation cmdlets
+* Added Update Management cmdlets
+* Added Source Control cmdlets
+* Added Remove-AzureRmAutomationHybridWorkerGroup cmdlet
+* Fixed the DSC Register Node command'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -186,4 +203,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

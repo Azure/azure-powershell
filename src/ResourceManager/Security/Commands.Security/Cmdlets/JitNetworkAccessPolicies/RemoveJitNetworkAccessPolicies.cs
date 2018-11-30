@@ -23,7 +23,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.JitNetworkAccessPolicies
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmJitNetworkAccessPolicy", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "JitNetworkAccessPolicy", DefaultParameterSetName = ParameterSetNames.ResourceGroupLevelResource, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveJitNetworkAccessPolicies : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]

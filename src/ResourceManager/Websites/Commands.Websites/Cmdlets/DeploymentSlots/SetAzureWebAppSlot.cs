@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     public class SetAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
+        [ResourceNameCompleter("Microsoft.Web/serverfarms", "DoNotFilter")]
         public string AppServicePlan { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Default documents for web app")]
@@ -108,7 +110,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [Parameter(Mandatory = false, HelpMessage = "Enables/Disables container continuous deployment webhook", ParameterSetName = ParameterSet1Name)]
         public bool EnableContainerContinuousDeployment  { get; set; }
 
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -117,6 +118,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable redirecting all traffic to HTTPS on an existing azure webapp")]
         public bool HttpsOnly { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Azure Storage to mount inside a Web App for Container. Use New-AzWebAppAzureStoragePath to create it")]
+        public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -211,7 +216,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         }
                     }
                     // Update web app configuration
-                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, appSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
+                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, appSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary(), AzureStoragePath.ConvertToAzureStorageAccountPathPropertyDictionary());
 
                     //update reference to WebApp object after site configuration update
                     WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));

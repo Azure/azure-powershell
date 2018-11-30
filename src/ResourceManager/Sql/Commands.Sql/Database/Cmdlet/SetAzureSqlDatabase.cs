@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
@@ -91,6 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the Elastic Pool to put the database in.",
             ParameterSetName = UpdateParameterSetName)]
+        [ResourceNameCompleter("Microsoft.Sql/servers/elasticPools", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
 

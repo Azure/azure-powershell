@@ -20,11 +20,12 @@ using Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 {
 	/// <summary>
-	/// Defines the Set-AzureRmSqlServerDnsAlias cmdlet
+	/// Defines the Set-AzSqlServerDnsAlias cmdlet
 	/// </summary>
 	[Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerDnsAlias",SupportsShouldProcess = true)]
 	[OutputType(typeof(Model.AzureSqlServerDnsAliasModel))]
@@ -50,7 +51,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// </summary>
 		[Parameter(Mandatory = true,
 			HelpMessage = "The name of Azure Sql Server to which alias should point.")]
-		[ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
 		public string TargetServerName { get; set; }
 
 		/// <summary>
@@ -60,6 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 			Position = 0,
 			ValueFromPipelineByPropertyName = true,
 			HelpMessage = "The name of the resource group of the target server.")]
+        [ResourceGroupCompleter]
 		[Alias("TargetResourceGroupName")]
 		[ValidateNotNullOrEmpty]
 		public override string ResourceGroupName { get; set; }
@@ -69,7 +72,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// </summary>
 		[Parameter(Mandatory = true,
 			HelpMessage = "The name of Azure Sql Server to which alias is currently pointing.")]
-		[ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "SourceServerResourceGroupName")]
+        [ValidateNotNullOrEmpty]
 		public string SourceServerName { get; set; }
 
 		/// <summary>
@@ -77,6 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		/// </summary>
 		[Parameter(Mandatory = true,
 			HelpMessage = "The name of resource group of the source server.")]
+        [ResourceGroupCompleter]
 		[ValidateNotNullOrEmpty]
 		public string SourceServerResourceGroupName { get; set; }
 

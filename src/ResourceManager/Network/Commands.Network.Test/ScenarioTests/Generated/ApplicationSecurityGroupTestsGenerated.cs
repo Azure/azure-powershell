@@ -45,18 +45,18 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestApplicationSecurityGroupCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupCRUDMinimalParameters"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ApplicationSecurityGroupCRUDMinimalParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestApplicationSecurityGroupCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupCRUDAllParameters"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ApplicationSecurityGroupCRUDAllParameters");
         }
     }
 }

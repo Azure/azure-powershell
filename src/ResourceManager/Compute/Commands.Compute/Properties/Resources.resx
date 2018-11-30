@@ -242,7 +242,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <comment>{0} = minimal required PS version, {1} = current PS version</comment>
   </data>
   <data name="AzureVMDscDefaultStorageCredentialsNotFound" xml:space="preserve">
-    <value>Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using "Set-AzureRmSubscription", or set the "AZURE_STORAGE_CONNECTION_STRING" environment variable.</value>
+    <value>Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using "Set-AzSubscription", or set the "AZURE_STORAGE_CONNECTION_STRING" environment variable.</value>
   </data>
   <data name="PublishVMDscExtensionRequiredModulesVerbose" xml:space="preserve">
     <value>List of required modules: [{0}].</value>
@@ -363,10 +363,10 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <value>Uploading</value>
   </data>
   <data name="StorageCredentialsFactoryCurrentSubscriptionNotSet" xml:space="preserve">
-    <value>No current subscription has been designated. Use Select-AzureRmSubscription -Current &lt;subscriptionName&gt; to set the current subscription.</value>
+    <value>No current subscription has been designated. Use Select-AzSubscription -Current &lt;subscriptionName&gt; to set the current subscription.</value>
   </data>
   <data name="DataDiskNotAssignedForVM" xml:space="preserve">
-    <value>A data disk, {0}, is not currently assigned for this VM. Use Add-AzureRmVMDataDisk to add it.</value>
+    <value>A data disk, {0}, is not currently assigned for this VM. Use Add-AzVMDataDisk to add it.</value>
   </data>
   <data name="AzureVMSqlServerWrongConfigFormat" xml:space="preserve">
     <value>Cannot deserialize sql configuration substatus message from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
@@ -595,6 +595,6 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <comment>{0} = image name</comment>
   </data>
   <data name="NoSubscriptionInContext" xml:space="preserve">
-    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRmAccount to login.</value>
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login.</value>
   </data>
 </root>

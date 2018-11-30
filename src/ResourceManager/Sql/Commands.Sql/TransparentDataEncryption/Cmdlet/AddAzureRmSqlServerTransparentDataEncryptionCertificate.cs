@@ -29,7 +29,7 @@ using System.Security;
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
     /// <summary>
-    /// Defines the Add-AzureRmSqlServerTransparentDataEncryptionCertificate cmdlet
+    /// Defines the Add-AzSqlServerTransparentDataEncryptionCertificate cmdlet
     /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(bool))]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             ParameterSetName = DefaultParameterSet,
             Position = 0,
             HelpMessage = "The Resource Group Name")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             ParameterSetName = DefaultParameterSet,
             Position = 1,
             HelpMessage = "The Server Name")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string ServerName { get; set; }
 

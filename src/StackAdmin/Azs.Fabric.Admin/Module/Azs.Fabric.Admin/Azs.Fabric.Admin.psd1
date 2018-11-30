@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Fabric.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.2.0'
+    ModuleVersion     = '0.3.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -81,14 +81,15 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Get-AzsSlbMuxInstance', 'Get-AzsScaleUnit', 'New-AzsIpPool',
     'Start-AzsInfrastructureRoleInstance', 'Get-AzsMacAddressPool',
     'Get-AzsEdgeGatewayPool', 'Restart-AzsInfrastructureRole',
-    'Get-AzsInfrastructureVolume', 'Enable-AzsScaleUnitNode',
+    'Get-AzsVolume', 'Enable-AzsScaleUnitNode',
     'Get-AzsInfrastructureRole', 'Get-AzsIpPool', 'Get-AzsLogicalSubnet',
     'Get-AzsEdgeGateway', 'Get-AzsInfrastructureLocation',
     'Get-AzsStoragePool', 'Suspend-AzsInfrastructureRoleInstance',
     'Start-AzsScaleUnitNode', 'Get-AzsInfrastructureRoleInstance',
     'Repair-AzsScaleUnitNode', 'Stop-AzsInfrastructureRoleInstance',
     'Stop-AzsScaleUnitNode', 'Add-AzsScaleUnitNode',
-    'New-AzsScaleUnitNodeObject'
+    'New-AzsScaleUnitNodeObject', 'Get-AzsDrive',
+    'Get-AzsStorageSubSystem'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()
@@ -97,7 +98,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # VariablesToExport = @()
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport   = @()
+    AliasesToExport   = @(
+    'Get-AzsInfrastructureVolume'
+    )
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()
@@ -126,41 +129,13 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.9.10
-            * New Module dependencies
-                * AzureRM.Profile
-                * AzureRM.Resources
-            * New cmdlet
-                * Add-AzsScaleUnitNode
-                * New-AzsScaleUnitNodeObject
-            * Support handling names of nested resources
-                * Add-AzsScaleUnitNode
-                * Disable-AzsScaleUnitNode
-                * Enable-AzsScaleUnitNode
-                * Get-AzsEdgeGateway
-                * Get-AzsEdgeGatewayPool
-                * Get-AzsInfrastructureRole
-                * Get-AzsInfrastructureRoleInstance
-                * Get-AzsInfrastructureShare
-                * Get-AzsInfrastructureVolume
-                * Get-AzsIpPool
-                * Get-AzsLogicalNetwork
-                * Get-AzsLogicalSubnet
-                * Get-AzsMacAddressPool
-                * Get-AzsScaleUnit
-                * Get-AzsScaleUnitNode
-                * Get-AzsSlbMuxInstance
-                * Get-AzsStoragePool
-                * Get-AzsStorageSystem
-                * Repair-AzsScaleUnitNode
-                * Restart-AzsInfrastructureRole
-                * Restart-AzsInfrastructureRoleInstance
-                * Start-AzsInfrastructureRoleInstance
-                * Start-AzsScaleUnitNode
-                * Stop-AzsInfrastructureRoleInstance
-                * Stop-AzsScaleUnitNode
-            * Bug fixes
-                * Handle ErrrorAction correctly now
+            ReleaseNotes = '## 2018.11.5
+            * New cmdlet (The features are supported by Azure Stack 1811+)
+	            * Get-AzsDrive
+	            * Get-AzsVolume
+	            * Get-AzsStorageSubSystem
+            * Deprecation
+	            * Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume
             '
 
         } # End of PSData hashtable

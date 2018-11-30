@@ -22,13 +22,14 @@ using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Imports a certificate to the key vault. The certificate can be created by 
     /// adding the certificate after getting the CSR from 
-    /// Add-AzureKeyVaultCertificate issued by a Certificate Authority or by 
+    /// Add-AzKeyVaultCertificate issued by a Certificate Authority or by 
     /// importing an existing certificate package file that contains both the 
     /// certificate and private key (example: PFX or P12 files).
     /// </summary>
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

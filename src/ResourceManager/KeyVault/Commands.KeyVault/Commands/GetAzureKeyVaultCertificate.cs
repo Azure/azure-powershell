@@ -16,13 +16,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
-    /// The Get-AzureKeyVaultCertificate cmdlet gets the certificates in an Azure Key Vault or the current version of the certificate.
+    /// The Get-AzKeyVaultCertificate cmdlet gets the certificates in an Azure Key Vault or the current version of the certificate.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificate",        DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateIdentityItem), typeof(PSKeyVaultCertificate), typeof(PSDeletedKeyVaultCertificate), typeof(PSDeletedKeyVaultCertificateIdentityItem))]
@@ -61,6 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ParameterSetName = ByCertificateVersionsParameterSet,
                    Position = 0,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

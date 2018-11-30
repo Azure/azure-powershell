@@ -118,7 +118,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// </summary>
         protected override void EndProcessing()
         {
-            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "New-AzureRmHDInsightMapReduceJobDefinition"));
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "New-AzHDInsightMapReduceJobDefinition"));
             this.command.EndProcessing().Wait();
             foreach (AzureHDInsightMapReduceJobDefinition output in this.command.Output)
             {

@@ -15,24 +15,28 @@
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Management.Automation;
 using System;
+// TODO: Remove IfDef code
 #if !NETSTANDARD
 using System.Diagnostics.Eventing;
 #endif
+using AutomationManagement = Microsoft.Azure.Management.Automation;
+
 namespace Microsoft.Azure.Commands.Automation
 {
     public class RequestSettings : IDisposable
     {
-        private readonly AutomationManagementClient client;
+        private readonly AutomationManagement.AutomationClient _client;
 
-        public RequestSettings(IAutomationManagementClient automationClient)
+        public RequestSettings(AutomationManagement.IAutomationClient automationClient)
         {
-            client = ((AutomationManagementClient)automationClient);
-            client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, Guid.NewGuid().ToString());
+            _client = ((AutomationManagement.AutomationClient)automationClient);
+            _client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+            _client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, Guid.NewGuid().ToString());
 
-            client.HttpClient.DefaultRequestHeaders.Remove(Constants.ActivityIdHeaderName);
+            _client.HttpClient.DefaultRequestHeaders.Remove(Constants.ActivityIdHeaderName);
             var activityId = Guid.NewGuid();
-            client.HttpClient.DefaultRequestHeaders.Add(Constants.ActivityIdHeaderName, activityId.ToString());
+            _client.HttpClient.DefaultRequestHeaders.Add(Constants.ActivityIdHeaderName, activityId.ToString());
+// TODO: Remove IfDef code
 #if !NETSTANDARD
             EventProvider.SetActivityId(ref activityId);
 #endif
@@ -45,11 +49,10 @@ namespace Microsoft.Azure.Commands.Automation
 
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-                client.HttpClient.DefaultRequestHeaders.Remove(Constants.ActivityIdHeaderName);
-            }
+            if (!disposing) return;
+
+            _client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+            _client.HttpClient.DefaultRequestHeaders.Remove(Constants.ActivityIdHeaderName);
         }
     }
 }

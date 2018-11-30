@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
+        ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
         /// </summary>
         internal static string InvalidDefaultSubscription {
             get {
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid ACE Supplied. Expected ACE format: &apos;[default]:&lt;scope&gt;:&lt;identity&gt;:&lt;permissions&gt;&apos;. Actual ACE: {0}. Note: parsing is only supported for user and group ACEs. The mask and other permissions are set through Set-AzureDataLakeItemOwner.
+        ///   Looks up a localized string similar to Invalid ACE Supplied. Expected ACE format: &apos;[default]:&lt;scope&gt;:&lt;identity&gt;:&lt;permissions&gt;&apos;. Actual ACE: {0}. Note: parsing is only supported for user and group ACEs. The mask and other permissions are set through Set-AzDataLakeItemOwner.
         /// </summary>
         internal static string InvalidParseAce {
             get {
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRMAccount to login..
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
         /// </summary>
         internal static string NoSubscriptionInContext {
             get {
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzureRMDataLakeStoreItemAclEntry.
+        ///   Looks up a localized string similar to The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzDataLakeStoreItemAclEntry.
         /// </summary>
         internal static string ObsoleteWarningForAclObjects {
             get {
