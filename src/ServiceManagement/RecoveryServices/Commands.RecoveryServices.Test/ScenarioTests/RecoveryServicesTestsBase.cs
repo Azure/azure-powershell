@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             {
                 Environment.SetEnvironmentVariable(
                     "VAULT_SETTINGS_FILE_PATH",
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ScenarioTests\\vaultSettings.vaultcredentials"));
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ScenarioTests", "vaultSettings.vaultcredentials"));
             }
 
             this.vaultSettingsFilePath = Environment.GetEnvironmentVariable("VAULT_SETTINGS_FILE_PATH");

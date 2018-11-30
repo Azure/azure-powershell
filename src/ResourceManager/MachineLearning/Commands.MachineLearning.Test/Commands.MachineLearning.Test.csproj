@@ -40,7 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.MachineLearning">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearning.1.0.0\lib\net45\Microsoft.Azure.Management.MachineLearning.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.MachineLearning.1.0.1\lib\net452\Microsoft.Azure.Management.MachineLearning.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

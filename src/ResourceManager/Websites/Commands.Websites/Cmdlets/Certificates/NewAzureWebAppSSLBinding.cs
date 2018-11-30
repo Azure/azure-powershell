@@ -50,11 +50,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = true, HelpMessage = "The name of the web app.")]
         [Parameter(ParameterSetName = ParameterSet2Name, Position = 1, Mandatory = true, HelpMessage = "The name of the web app.")]
+        [ResourceNameCompleter("Microsoft.Web/sites", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string WebAppName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
         [Parameter(ParameterSetName = ParameterSet2Name, Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
+        [ResourceNameCompleter("Microsoft.Web/sites/slots", "ResourceGroupName", "WebAppName")]
         [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 

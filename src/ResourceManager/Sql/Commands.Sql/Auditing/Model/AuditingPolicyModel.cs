@@ -71,5 +71,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         /// Gets or sets the retention days
         /// </summary>
         public uint? RetentionInDays { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets predicate expression
+        /// </summary>
+        public string PredicateExpression { get; set; }
     }
 }

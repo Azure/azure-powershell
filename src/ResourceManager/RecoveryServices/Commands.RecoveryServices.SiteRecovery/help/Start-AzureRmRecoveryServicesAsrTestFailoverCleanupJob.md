@@ -44,7 +44,7 @@ Job to track test failover Cleanup of an Azure Site Recovery replication protect
 
 ### Example 2
 ```
-PS C:\> Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $recoveryPlan -Comments "testing done"
+PS C:\> Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob -RecoveryPlan $recoveryPlan -Comment "testing done"
 ```
 
 Job to track test failover Cleanup of an Azure Site Recovery recoveryPlan.

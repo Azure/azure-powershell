@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             ParameterSetName = DefaultParameterSet,
             Position = 0,
             HelpMessage = "The Resource Group Name")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             ParameterSetName = DefaultParameterSet,
             Position = 1,
             HelpMessage = "The Server Name")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string ServerName { get; set; }
 

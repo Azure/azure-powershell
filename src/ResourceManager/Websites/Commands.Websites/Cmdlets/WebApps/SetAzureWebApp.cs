@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     public class SetAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
+        [ResourceNameCompleter("Microsoft.Web/serverfarms", "ResourceGroupName")]
         public string AppServicePlan { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = false, HelpMessage = "Default documents for web app")]
@@ -124,6 +126,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable redirecting all traffic to HTTPS on an existing azure webapp")]
         public bool HttpsOnly { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Azure Storage to mount inside a Web App for Container. Use New-AzureRmWebAppAzureStoragePath to create it")]
+        public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -218,7 +223,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     }
 
                     // Update web app configuration
-                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, siteConfig, appSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
+
+                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, siteConfig, appSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary(), AzureStoragePath.ConvertToAzureStorageAccountPathPropertyDictionary());
 
                     //Update WebApp object after configuration update
                     WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));

@@ -297,7 +297,7 @@ function Test-NewAzureRmCognitiveServicesAccountKey
 .SYNOPSIS
 Test Get-AzureRmCognitiveServicesAccountSkus
 #>
-function Test-GetAzureRmCognitiveServicesAccountSkus
+function Test-GetAzureRmCognitiveServicesAccountSkusLegacy
 {
     # Setup
     $rgname = Get-CognitiveServicesManagementTestResourceName;
@@ -316,7 +316,7 @@ function Test-GetAzureRmCognitiveServicesAccountSkus
         $skus = (Get-AzureRmCognitiveServicesAccountSkus -ResourceGroupName $rgname -Name $accountname).Value | Select-Object -ExpandProperty Sku;
         $skuNames = $skus | Select-Object -ExpandProperty Name
         
-        $expectedSkus = "F0", "S1", "S2", "S3", "S4"
+        $expectedSkus = "F0", "S0", "S1", "S2", "S3", "S4"
         Assert-AreEqualArray $expectedSkus $skuNames
 
         Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
@@ -327,6 +327,70 @@ function Test-GetAzureRmCognitiveServicesAccountSkus
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Get-AzureRmCognitiveServicesAccountSkus
+#>
+function Test-GetAzureRmCognitiveServicesAccountSkus
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+    
+    try
+    {
+        $skus = (Get-AzureRmCognitiveServicesAccountSkus -Type 'TextAnalytics');
+        $skuNames = $skus | Select-Object -ExpandProperty Name | Sort-Object | Get-Unique
+        
+        $expectedSkus = "F0", "S0","S1", "S2", "S3", "S4"
+        Assert-AreEqualArray $expectedSkus $skuNames
+
+		$skus = (Get-AzureRmCognitiveServicesAccountSkus -Type 'TextAnalytics' -Location 'westus');
+        $skuNames = $skus | Select-Object -ExpandProperty Name | Sort-Object | Get-Unique
+        
+        $expectedSkus = "F0", "S0","S1", "S2", "S3", "S4"
+        Assert-AreEqualArray $expectedSkus $skuNames
+
+        $skus = (Get-AzureRmCognitiveServicesAccountSkus -Type 'QnAMaker' -Location 'global');
+        $skuNames = $skus | Select-Object -ExpandProperty Name | Sort-Object | Get-Unique
+        
+        Assert-AreEqual 0 $skuNames.Count
+
+    }
+    finally
+    {
+    }
+}
+
+<#
+.SYNOPSIS
+Test Get-AzureRmCognitiveServicesAccountType
+#>
+function Test-GetAzureRmCognitiveServicesAccountType
+{
+    try
+    {
+        $typeName = (Get-AzureRmCognitiveServicesAccountType -TypeName 'Face');
+        Assert-AreEqual 'Face' $typeName
+
+        $typeName = (Get-AzureRmCognitiveServicesAccountType -TypeName 'InvalidKind');
+        Assert-Null $typeName
+		
+		$typeNames = (Get-AzureRmCognitiveServicesAccountType -Location 'westus');
+        Assert-True {$typeNames.Contains('Face')}
+
+		$typeNames = (Get-AzureRmCognitiveServicesAccountType);
+        Assert-True {$typeNames.Contains('Face')}
+
+		$typeNames = (Get-AzureRmCognitiveServicesAccountType -Location 'global');
+        Assert-False {$typeNames.Contains('Face')}
+        Assert-True {$typeNames.Contains('Bing.Search.v7')}
+    }
+    finally
+    {
+    }
+}
+
 
 <#
 .SYNOPSIS

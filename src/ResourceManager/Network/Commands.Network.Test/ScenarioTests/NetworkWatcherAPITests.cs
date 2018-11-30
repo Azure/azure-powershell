@@ -31,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestGetTopology()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-GetTopology");
@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestGetSecurityGroupView()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-GetSecurityGroupView");
@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestGetNextHop()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-GetNextHop");
@@ -55,7 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestVerifyIPFlow()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VerifyIPFlow");
@@ -63,7 +63,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestPacketCapture()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PacketCapture");
@@ -71,24 +71,28 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestTroubleshoot()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-Troubleshoot");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestFlowLog()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-FlowLog");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.netanalyticsdev)]
+#if NETSTANDARD
+        [Fact(Skip = "This test only applies to desktop")]
         [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestConnectivityCheck()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ConnectivityCheck");
@@ -96,7 +100,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestReachabilityReport()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ReachabilityReport");
@@ -104,7 +108,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestProvidersList()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ProvidersList");
@@ -112,7 +116,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestConnectionMonitor()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ConnectionMonitor");

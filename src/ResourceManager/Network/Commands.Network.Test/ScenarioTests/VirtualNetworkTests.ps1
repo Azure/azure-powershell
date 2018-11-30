@@ -582,11 +582,10 @@ function Test-MultiTenantVNetPCRUD
     $vnet2Id = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/paryTestRG/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork1"
     $subnet1Name = Get-ResourceName
     $subnet2Name = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $rglocation = Get-ProviderLocation ResourceManagement "East US"
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent "East US"
 
-    $location = "eastus"
-    
 	# The remote VNet in this case lives under a different tenant and hence can is assumed to be created by the time the test is run
 	# Create the remote Virtual Network : This needs to e done ins a seperate subscription that lives under a different tenant
 	# As of now the steps are manual
@@ -597,7 +596,6 @@ function Test-MultiTenantVNetPCRUD
     try 
     {
         # Create the resource group
-        $rglocation = "eastus"
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network1
@@ -707,14 +705,13 @@ function Test-ResourceNavigationLinksCRUD
     $vnetName = Get-ResourceName
     $subnetName = Get-ResourceName
     $cacheName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $rglocation = Get-ProviderLocation ResourceManagement "West US"
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
     {
         # Create the resource group
-        $rglocation = "westus"
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
