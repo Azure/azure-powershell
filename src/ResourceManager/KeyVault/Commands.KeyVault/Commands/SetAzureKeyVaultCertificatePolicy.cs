@@ -24,7 +24,7 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
-    /// Set-AzureKeyVaultCertificatePolicy sets the provided parameters on the
+    /// Set-AzKeyVaultCertificatePolicy sets the provided parameters on the
     /// policy for the Certificate object
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificatePolicy",SupportsShouldProcess = true,DefaultParameterSetName = ExpandedRenewPercentageParameterSet)]

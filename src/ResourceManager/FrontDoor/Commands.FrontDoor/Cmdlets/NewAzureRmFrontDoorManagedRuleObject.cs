@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzureRmFrontDoorManagedRuleObject cmdlet.
+    /// Defines the New-AzFrontDoorManagedRuleObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorManagedRuleObject"), OutputType(typeof(PSAzureManagedRule))]
     public class NewAzureRmFrontDoorManagedRuleObject : AzureFrontDoorCmdletBase

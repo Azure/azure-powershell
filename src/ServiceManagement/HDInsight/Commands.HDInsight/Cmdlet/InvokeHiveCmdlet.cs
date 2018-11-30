@@ -138,7 +138,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             this.command.Connection = currentConnection;
             try
             {
-                this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Invoke-AzureRmHDInsightHiveJob"));
+                this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Invoke-AzHDInsightHiveJob"));
                 this.command.Logger = this.Logger;
                 this.command.CurrentSubscription = this.GetCurrentSubscription(string.Empty, null);
                 Task task = this.command.EndProcessing();

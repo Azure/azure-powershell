@@ -54,7 +54,7 @@ namespace VersionController
             {
                 exceptionsDirectory = args[0];
             }
-            
+
             if (!Directory.Exists(exceptionsDirectory))
             {
                 throw new ArgumentException("Please provide a path to the Exceptions folder in the output directory (src/Package/Exceptions).");

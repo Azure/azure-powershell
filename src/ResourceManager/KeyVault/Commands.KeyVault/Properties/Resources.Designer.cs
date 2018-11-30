@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Email argument specified, &apos;{1}&apos;, matches multiple objects in the Azure Active Directory tenant &apos;{2}&apos;. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet &apos;Get-AzureRmContext&apos; is the current subscription&apos;s Azure Active Directory..
+        ///   Looks up a localized string similar to The Email argument specified, &apos;{1}&apos;, matches multiple objects in the Azure Active Directory tenant &apos;{2}&apos;. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet &apos;Get-AzContext&apos; is the current subscription&apos;s Azure Active Directory..
         /// </summary>
         internal static string ADObjectAmbiguous {
             get {
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find the Active Directory object &apos;{0}&apos; in tenant &apos;{1}&apos;. Please make sure that the user or application service principal you are authorizing is registered in the current subscription&apos;s Azure Active directory. The TenantID displayed by the cmdlet &apos;Get-AzureRmContext&apos; is the current subscription&apos;s Azure Active directory..
+        ///   Looks up a localized string similar to Cannot find the Active Directory object &apos;{0}&apos; in tenant &apos;{1}&apos;. Please make sure that the user or application service principal you are authorizing is registered in the current subscription&apos;s Azure Active directory. The TenantID displayed by the cmdlet &apos;Get-AzContext&apos; is the current subscription&apos;s Azure Active directory..
         /// </summary>
         internal static string ADObjectNotFound {
             get {
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No account found in the context. Please login using Connect-AzureRMAccount..
+        ///   Looks up a localized string similar to No account found in the context. Please login using Connect-AzAccount..
         /// </summary>
         internal static string ArmAccountNotFound {
             get {
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No current subscription has been designated. Use Set-AzureRmContext -SubscriptionName &lt;subscriptionName&gt; to set the current subscription..
+        ///   Looks up a localized string similar to No current subscription has been designated. Use Set-AzContext -SubscriptionName &lt;subscriptionName&gt; to set the current subscription..
         /// </summary>
         internal static string InvalidCurrentSubscription {
             get {
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No subscription is currently selected. Use Set-AzureRmContext to activate a subscription..
+        ///   Looks up a localized string similar to No subscription is currently selected. Use Set-AzContext to activate a subscription..
         /// </summary>
         internal static string InvalidSelectedSubscription {
             get {
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Connect-AzureRmAccount to set up your Azure credentials..
+        ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Connect-AzAccount to set up your Azure credentials..
         /// </summary>
         internal static string InvalidSubscriptionState {
             get {
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRMAccount to login..
+        ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
         /// </summary>
         internal static string NoTenantInContext {
             get {
@@ -1126,7 +1126,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Access policy is not set. No user or application have access permission to use this vault. This can happen if the vault was created by a service principal. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies..
+        ///   Looks up a localized string similar to Access policy is not set. No user or application have access permission to use this vault. This can happen if the vault was created by a service principal. Please use Set-AzKeyVaultAccessPolicy to set access policies..
         /// </summary>
         internal static string VaultNoAccessPolicyWarning {
             get {

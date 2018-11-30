@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+// TODO: Remove IfDef code
 #if !NETSTANDARD
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 #endif
@@ -30,14 +31,14 @@ using Tools.Common.Loggers;
 
 namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
 {
-    class BreakingChangeAttributesAnalyzer : IStaticAnalyzer
+    internal class BreakingChangeAttributesAnalyzer : IStaticAnalyzer
     {
         public AnalysisLogger Logger { get; set; }
         public string Name { get; set; }
         public bool CleanBreakingChangesFileBeforeWriting { get; set; }
         public string OutputFilePath { get; set; }
         public string BreakingChangeAttributeReportLoggerName { get; protected set; }
-
+// TODO: Remove IfDef code
 #if !NETSTANDARD
         private AppDomain _appDomain;
 #endif
@@ -91,8 +92,6 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
         /// <param name="modulesToAnalyze">The set of modules to analyze</param>
         public void Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter, IEnumerable<string> modulesToAnalyze)
         {
-            var savedDirectory = Directory.GetCurrentDirectory();
-
             if (directoryFilter != null)
             {
                 cmdletProbingDirs = directoryFilter(cmdletProbingDirs);
@@ -100,17 +99,16 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
 
             var logFileName = Path.Combine(OutputFilePath, BreakingChangeAttributeReportLoggerName);
             //Init the log file
-            TextFileLogger logger = TextFileLogger.GetTextFileLogger(logFileName, CleanBreakingChangesFileBeforeWriting);
+            var logger = TextFileLogger.GetTextFileLogger(logFileName, CleanBreakingChangesFileBeforeWriting);
 
             try
             {
                 foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") &&
                                                                             !s.Contains("Stack") && Directory.Exists(Path.GetFullPath(s))))
                 {
-                    List<string> probingDirectories = new List<string>();
+                    var probingDirectories = new List<string> {baseDirectory};
 
                     // Add current directory for probing
-                    probingDirectories.Add(baseDirectory);
                     probingDirectories.AddRange(Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)));
 
 
@@ -118,61 +116,60 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                     {
                         if (modulesToAnalyze != null &&
                             modulesToAnalyze.Any() &&
-                            !modulesToAnalyze.Where(m => directory.EndsWith(m)).Any())
+                            !modulesToAnalyze.Any(m => directory.EndsWith(m)))
                         {
                             continue;
                         }
 
-                        IEnumerable<string> cmdlets = GetCmdletsFilesInFolder(directory);
-                        if (cmdlets.Any())
+                        var cmdlets = GetCmdletsFilesInFolder(directory);
+                        if (!cmdlets.Any()) continue;
+
+                        foreach (var cmdletFileName in cmdlets)
                         {
-                            foreach (var cmdletFileName in cmdlets)
-                            {
-                                var cmdletFileFullPath = Path.Combine(directory, Path.GetFileName(cmdletFileName));
+                            var cmdletFileFullPath = Path.Combine(directory, Path.GetFileName(cmdletFileName));
 
-                                if (File.Exists(cmdletFileFullPath))
-                                {
-                                    var proxy =
-#if !NETSTANDARD
-                                        EnvironmentHelpers.CreateProxy<CmdletBreakingChangeAttributeLoader>(directory, out _appDomain);
+                            if (!File.Exists(cmdletFileFullPath)) continue;
+
+// TODO: Remove IfDef
+#if NETSTANDARD
+                            var proxy = new CmdletBreakingChangeAttributeLoader();
 #else
-                                        new CmdletBreakingChangeAttributeLoader();
+                            var proxy = EnvironmentHelpers.CreateProxy<CmdletBreakingChangeAttributeLoader>(directory, out _appDomain);
 #endif
-                                    var cmdletDataForModule = proxy.GetModuleBreakingChangeAttributes(cmdletFileFullPath);
+                            var cmdletDataForModule = proxy.GetModuleBreakingChangeAttributes(cmdletFileFullPath);
 
-                                    //If there is nothing in this module just onctinue
-                                    if (cmdletDataForModule == null)
-                                    {
-                                        Console.WriteLine("No breaking change attributes found in module " + cmdletFileName);
-                                        continue;
-                                    }
-
-                                    if (cmdletFilter != null)
-                                    {
-                                        string output = string.Format("Before filter\nmodule cmdlet count: {0}\n",
-                                            cmdletDataForModule.CmdletList.Count);
-
-                                        output += string.Format("\nCmdlet file: {0}", cmdletFileFullPath);
-
-                                        cmdletDataForModule.FilterCmdlets(cmdletFilter);
-
-                                        output += string.Format("After filter\nmodule cmdlet count: {0}\n",
-                                            cmdletDataForModule.CmdletList.Count);
-
-                                        foreach (var cmdlet in cmdletDataForModule.CmdletList)
-                                        {
-                                            output += string.Format("\n\tcmdlet - {0}", cmdlet.CmdletName);
-                                        }
-
-                                        Console.WriteLine(output);
-                                    }
-
-                                    LogBreakingChangesInModule(cmdletDataForModule, logger);
-#if !NETSTANDARD
-                                    AppDomain.Unload(_appDomain);
-#endif
-                                }
+                            //If there is nothing in this module just continue
+                            if (cmdletDataForModule == null)
+                            {
+                                Console.WriteLine("No breaking change attributes found in module " + cmdletFileName);
+                                continue;
                             }
+
+                            if (cmdletFilter != null)
+                            {
+                                var output = string.Format("Before filter\nmodule cmdlet count: {0}\n",
+                                    cmdletDataForModule.CmdletList.Count);
+
+                                output += string.Format("\nCmdlet file: {0}", cmdletFileFullPath);
+
+                                cmdletDataForModule.FilterCmdlets(cmdletFilter);
+
+                                output += string.Format("After filter\nmodule cmdlet count: {0}\n",
+                                    cmdletDataForModule.CmdletList.Count);
+
+                                foreach (var cmdlet in cmdletDataForModule.CmdletList)
+                                {
+                                    output += string.Format("\n\tcmdlet - {0}", cmdlet.CmdletName);
+                                }
+
+                                Console.WriteLine(output);
+                            }
+
+                            LogBreakingChangesInModule(cmdletDataForModule, logger);
+// TODO: Remove IfDef code
+#if !NETSTANDARD
+                            AppDomain.Unload(_appDomain);
+#endif
                         }
                     }
                 }
@@ -182,21 +179,20 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                 if (logger != null)
                 {
                     TextFileLogger.CloseLogger(logFileName);
-                    logger = null;
                 }
             }
         }
 
         public AnalysisReport GetAnalysisReport()
         {
-            AnalysisReport report = new AnalysisReport();
-            //We dont really generate a report, instead we just generate the .md file for the current directory as we go along in Analyze and output it
+            var report = new AnalysisReport();
+            //We don't really generate a report, instead we just generate the .md file for the current directory as we go along in Analyze and output it
             //each directory is analyzed
             return report;
         }
 
         //Gets the list of all modules in a folder
-        static IEnumerable<string> GetCmdletsFilesInFolder(string folderName)
+        private static IEnumerable<string> GetCmdletsFilesInFolder(string folderName)
         {
             var service = Path.GetFileName(folderName);
 
@@ -217,7 +213,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             var parentDirectory = Directory.GetParent(psd1);
             var psd1FileName = Path.GetFileName(psd1);
 
-            PowerShell powershell = PowerShell.Create();
+            var powershell = PowerShell.Create();
             powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
                                 " -FileName " + psd1FileName +
                                 " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules");
@@ -226,24 +222,25 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             return cmdletResult.Select(c => c.ToString().Substring(2));
         }
 
-        const string BREAKING_CHANGE_MODUE_HEADER_FORMAT_STRING = @"## Breaking changes in module {0}\n\n The following cmdlets were affected this release:\n\n";
-        const string BREAKING_CHANGE_CMDLET_HEADER_FORMAT_STRING = @"**{0}**\n";
+        private const string BreakingChangeModuleHeaderFormatString = @"## Breaking changes in module {0}\n\n The following cmdlets were affected this release:\n\n";
+        private const string BreakingChangeCmdletHeaderFormatString = @"**{0}**\n";
 
-        //Logs all the breaking changes in a module as a unit (all cmdlets in the same module appear contigously)
-        private void LogBreakingChangesInModule(BreakingChangeAttributesInModule moduleData, TextFileLogger logger)
+        //Logs all the breaking changes in a module as a unit (all cmdlets in the same module appear contiguously)
+        private static void LogBreakingChangesInModule(BreakingChangeAttributesInModule moduleData, TextFileLogger logger)
         {
-            string textForBreakingChangesInModule = string.Format(BREAKING_CHANGE_MODUE_HEADER_FORMAT_STRING, Path.GetFileName(moduleData.ModuleName));
+            var textForBreakingChangesInModule = string.Format(BreakingChangeModuleHeaderFormatString, Path.GetFileName(moduleData.ModuleName));
 
-            foreach (BreakingChangeAttributesInCmdlet cmdletData in moduleData.CmdletList)
+            foreach (var cmdletData in moduleData.CmdletList)
             {
-                textForBreakingChangesInModule += string.Format(BREAKING_CHANGE_CMDLET_HEADER_FORMAT_STRING, cmdletData.CmdletName);
+                textForBreakingChangesInModule += string.Format(BreakingChangeCmdletHeaderFormatString, cmdletData.CmdletName);
+// TODO: Remove IfDef code
 #if !NETSTANDARD
                 foreach (GenericBreakingChangeAttribute attribute in cmdletData.BreakingChangeAttributes)
                 {
                     textForBreakingChangesInModule += attribute.GetBreakingChangeTextFromAttribute(cmdletData.CmdletType, true) + "\n\n";
                 }
 #endif
-                }
+            }
 
             //Now that we have the text, add it to the log file
             logger.LogMessage(textForBreakingChangesInModule);

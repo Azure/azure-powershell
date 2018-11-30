@@ -136,7 +136,7 @@ This is the preferred option for recording tests because it works with both .NET
 After the service principal is created, you will need to give it access to Azure resources. This can be done with the following PowerShell command, with the [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) (this is a guid, not the display name of the service principal) substituted in for `{clientId}`.
 
 ```powershell
-New-AzureRmRoleAssignment -ServicePrincipalName {clientId} -RoleDefinitionName Contributor
+New-AzRoleAssignment -ServicePrincipalName {clientId} -RoleDefinitionName Contributor
 ```
 
 To use this option, set the following environment variable before starting Visual Studio. The following values are substituted into the below connection string:

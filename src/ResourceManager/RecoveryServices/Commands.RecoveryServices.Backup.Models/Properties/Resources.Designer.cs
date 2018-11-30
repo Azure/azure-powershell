@@ -110,6 +110,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provide SourceFilePath for File restore or remove SourceFileType for file share restore.
+        /// </summary>
+        public static string AzureFileSourceFilePathMissingException {
+            get {
+                return ResourceManager.GetString("AzureFileSourceFilePathMissingException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provide SourceFileType for File restore or remove SourceFilePath for file share restore.
+        /// </summary>
+        public static string AzureFileSourceFileTypeMissingException {
+            get {
+                return ResourceManager.GetString("AzureFileSourceFileTypeMissingException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provide TargetFileShareName for Alternate Location restore or remove TargetStorageAccountName for Original Location restore.
+        /// </summary>
+        public static string AzureFileTargetFSNameMissingException {
+            get {
+                return ResourceManager.GetString("AzureFileTargetFSNameMissingException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provide TargetStorageAccountName for Alternate Location restore or remove TargetFileShareName for Original Location restore.
+        /// </summary>
+        public static string AzureFileTargetSANameMissingException {
+            get {
+                return ResourceManager.GetString("AzureFileTargetSANameMissingException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BackupManagementType value should be empty for WorkloadType AzureFiles..
         /// </summary>
         public static string AzureFileUnsupportedBackupManagementTypeException {
@@ -1028,7 +1064,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set vault context first using cmdlet Set-AzureRmRecoveryServicesVaultContext.
+        ///   Looks up a localized string similar to Set vault context first using cmdlet Set-AzRecoveryServicesVaultContext.
         /// </summary>
         public static string SetVaultContextFirst {
             get {
