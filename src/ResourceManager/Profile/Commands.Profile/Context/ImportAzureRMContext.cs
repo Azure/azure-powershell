@@ -22,8 +22,6 @@ using Microsoft.Azure.Commands.Profile.Models;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Profile.Models.Core;
-#else
-using Microsoft.Azure.Commands.Common.Authentication;
 #endif
 using Microsoft.Azure.Commands.Profile.Properties;
 using System;
