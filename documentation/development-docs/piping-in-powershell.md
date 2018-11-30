@@ -107,7 +107,7 @@ Find-AzResource -ResourceType Microsoft.Foo/foo -ResourceGroupEquals "RG" | ForE
 Find-AzResource -ResourceGroupEquals "RG" -ResourceNameEquals "FooName" | ForEach-Object { Remove-AzFoo -ResourceId $_.ResourceId }
 ```
 
-To implement this scenario, please see the [`ResourceIdentifier`](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Common/Commands.ResourceManager.Common/Utilities/Models/ResourceIdentifier.cs) class in the `Commands.ResourceManager.Common` project. This class will allow you to create a `ResourceIdentifier` object that accepts a `ResourceId` string in its constructor and has properties `ResourceName`, `ResourceGroupName`, and others.
+To implement this scenario, please see the [`ResourceIdentifier`](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Common/Commands.ResourceManager.Common/Utilities/Models/ResourceIdentifier.cs) class in the `Commands.ResourceManager.Common` project. This class will allow you to create a `ResourceIdentifier` object that accepts a `ResourceId` string in its constructor and has properties `ResourceName`, `ResourceGroupName`, and others.
 
 ## Summary
 For all Remove/Set/Update cmdlets (and any other cmdlet where an existing resource is being operated on), you will have three parameter sets (and potentially a multiple of three if you have initially have multiple parameter sets):
