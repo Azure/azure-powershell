@@ -29,14 +29,21 @@ The **New-AzureRmFirewallNetworkRule** cmdlet creates an network rule for Azure 
 
 ### 1:  Create a rule for all TCP traffic
 ```
-$rule1 = New-AzureRmFirewallNetworkRule -Name "all-tcp-traffic" -Description "Rule for all TCP traffic" -Protocol TCP -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
+$rule = New-AzureRmFirewallNetworkRule -Name "all-tcp-traffic" -Description "Rule for all TCP traffic" -Protocol TCP -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
 ```
 
 This example creates a rule for all TCP traffic. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
 
 ### 2:  Create a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040
 ```
-$rule1 = New-AzureRmFirewallNetworkRule -Name "partial-tcp-rule" -Description "Rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040" -Protocol TCP -SourceAddress "10.0.0.0" -DestinationAddress "60.1.5.0" -DestinationPort "4040"
+$rule = New-AzureRmFirewallNetworkRule -Name "partial-tcp-rule" -Description "Rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040" -Protocol TCP -SourceAddress "10.0.0.0" -DestinationAddress "60.1.5.0" -DestinationPort "4040"
+```
+
+This example creates a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
+
+### 3: Create a rule for all TCP and ICMP traffic from any source to 10.0.0.0/16
+```
+$rule = New-AzureRmFirewallNetworkRule -Name "tcp-and-icmp-rule" -Description "Rule for all TCP and ICMP traffic from any source to 10.0.0.0/16" -Protocol TCP,ICMP -SourceAddress * -DestinationAddress "10.0.0.0/16" -DestinationPort *
 ```
 
 This example creates a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
@@ -119,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Specifies the type of traffic to be filtered by this rule. Possible values are TCP, UDP, and Any.
+Specifies the type of traffic to be filtered by this rule. Possible values are TCP, UDP, ICMP and Any.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]

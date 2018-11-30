@@ -25,32 +25,36 @@ The **Set-AzureRmServiceBusQueue** cmdlet updates the description for the Servic
 
 ### Example 1
 ```
-PS C:\> $QueueObj = Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1
+PS C:\> $QueueObj = Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1
 
 PS C:\> $QueueObj.DeadLetteringOnMessageExpiration = $True
 PS C:\> $QueueObj.SupportOrdering = $True
 
-PS C:\> Set-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1 -QueueObj $QueueObj
+PS C:\> Set-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1 -QueueObj $QueueObj
 
+Id                                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroupName}/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/SB-Queue_exampl1
 Name                                : SB-Queue_exampl1
-LockDuration                        : 
+LockDuration                        : PT1M
 AccessedAt                          : 1/1/0001 12:00:00 AM
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-CreatedAt                           : 1/20/2017 2:51:34 AM
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
-DeadLetteringOnMessageExpiration    : False
+AutoDeleteOnIdle                    : P10675199DT2H48M5.4775807S
+CreatedAt                           : 1/1/0001 12:00:00 AM
+DefaultMessageTimeToLive            : P10675199DT2H48M5.4775807S
+DuplicateDetectionHistoryTimeWindow : PT10M
+DeadLetteringOnMessageExpiration    : True
 EnableExpress                       : False
-EnablePartitioning                  : True
-MaxDeliveryCount                    : 
-MaxSizeInMegabytes                  : 16384
-MessageCount                        : 
+EnablePartitioning                  : False
+MaxDeliveryCount                    : 10
+MaxSizeInMegabytes                  : 81920
+MessageCount                        : 0
 CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
 RequiresDuplicateDetection          : False
 RequiresSession                     : False
-SizeInBytes                         : 
+SizeInBytes                         : 0
 Status                              : Active
-UpdatedAt                           : 1/20/2017 6:16:18 PM
+UpdatedAt                           : 1/1/0001 12:00:00 AM
+ForwardTo                           :
+ForwardDeadLetteredMessagesTo       :
+EnableBatchedOperations             : False
 ```
 
 Updates the specified queue with a new description in the specified namespace. This example updates the **DeadLetteringOnMessageExpiration** property to **true** and **SupportOrdering** to **true**.

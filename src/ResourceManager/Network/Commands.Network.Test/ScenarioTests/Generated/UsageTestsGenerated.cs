@@ -45,10 +45,10 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.wanrpdev)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestUsageCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-UsageCRUDMinimalParameters"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-UsageCRUDMinimalParameters");
         }
     }
 }

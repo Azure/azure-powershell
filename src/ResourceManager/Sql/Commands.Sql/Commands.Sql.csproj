@@ -60,8 +60,8 @@
     <Compile Include="Auditing\Cmdlet\AuditingSettings\GetAzureSqlServerAuditing.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\SetAzureSqlDatabaseAuditing.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\SetAzureSqlServerAuditing.cs" />
-    <Compile Include="Auditing\Cmdlet\AuditingSettings\SqlDatabaseAuditingCmdletBase.cs" />
-    <Compile Include="Auditing\Cmdlet\AuditingSettings\SqlServerAuditingCmdletBase.cs" />
+    <Compile Include="Auditing\Cmdlet\AuditingSettings\SqlDatabaseAuditingSettingsCmdletBase.cs" />
+    <Compile Include="Auditing\Cmdlet\AuditingSettings\SqlServerAuditingSettingsCmdletBase.cs" />
     <Compile Include="Auditing\Model\DatabaseBlobAuditingSettingsModel.cs" />
     <Compile Include="Auditing\Model\ServerBlobAuditingSettingsModel.cs" />
     <Compile Include="Common\Iso8601DurationHelper.cs" />
@@ -576,7 +576,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.20.1-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.20.2-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>

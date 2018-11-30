@@ -34,12 +34,9 @@ Azure Resource Manager cmdlets use these settings by default when making Azure R
 PS C:\> Connect-AzureRmAccount
 PS C:\> Get-AzureRmContext
 
-Environment           : AzureCloud
-Account               : test@outlook.com
-TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SubscriptionName      : Test Subscription
-CurrentStorageAccount :
+Name                                     Account             SubscriptionName    Environment         TenantId
+----                                     -------             ----------------    -----------         --------
+Subscription1 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...
 ```
 
 In this example we are logging into our account with an Azure subscription using Connect-AzureRmAccount, and then we are getting the context of the current session by calling Get-AzureRmContext.
@@ -48,21 +45,11 @@ In this example we are logging into our account with an Azure subscription using
 ```
 PS C:\> Get-AzureRmContext -ListAvailable
 
-Name                  : Test
-Environment           : AzureCloud
-Account               : test@outlook.com
-TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SubscriptionName      : Test Subscription
-CurrentStorageAccount :
-
-Name                  : Production
-Environment           : AzureCloud
-Account               : prod@outlook.com
-TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SubscriptionName      : Production Subscription
-CurrentStorageAccount :
+Name                                     Account             SubscriptionName    Environment         TenantId
+----                                     -------             ----------------    -----------         --------
+Subscription1 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription1       AzureCloud          xxxxxxxx-x...
+Subscription2 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription2       AzureCloud          xxxxxxxx-x...
+Subscription3 (xxxxxxxx-xxxx-xxxx-xxx... test@outlook.com    Subscription3       AzureCloud          xxxxxxxx-x...
 ```
 
 In this example, all currently available contexts are displayed.  The user may select one of these contexts using Select-AzureRmContext.

@@ -15,6 +15,7 @@
 
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
+        public List<PSApplicationGatewayCustomError> CustomErrorConfigurations { get; set; }
 
         [JsonIgnore]
         public string FrontendIpConfigurationText

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             public const string Vault = "The Azure Backup vault object which is the parent resource.";
             public const string VaultId = "Resource ID of the Recovery Services Vault.";
-            public const string WorkloadType = "Workload type of the resource (for example: AzureVM, WindowsServer).";
+            public const string WorkloadType = "Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).";
             public const string BackupManagementType = "Backup Management type of the resource (for example: MAB, DPM).";
             public const string ConfirmationMessage = "Don't ask for confirmation.";
         }
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         internal static class Item
         {
-            public const string AzureVMName = "Azure VM Name.";
+            public const string ItemName = "Name of the item.";
             public const string AzureVMServiceName = "Cloud Service Name for Azure Classic Compute VM.";
             public const string AzureVMResourceGroupName = "Resource Group Name for Azure Compute VM .";
             public const string ProtectedItem = "Filter value for status of job.";
@@ -80,6 +80,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ExpiryDateTimeUTC = "Date and time specified in UTC after which" +
                 " the recovery points created by this backup will no longer be available for restore";
             public const string ProtectionPolicy = "The id of the backup policy which is used to protect the backup items";
+            public const string AzureFileShareName = "Azure FileShare Name.";
+            public const string AzureFileStorageAccountName = "Azure file share storage account name";
+            public const string AzureFileStorageAccountResourceGroupName = "Azure file share storage account resource group name";
         }
 
         internal static class RecoveryPoint
@@ -107,8 +110,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RecoveryPoint = "Recovery point object to be restored";
             public const string StorageAccountName = "Storage account name where the disks need to be recovered";
             public const string StorageAccountResourceGroupName = "Resource group name of Storage account name where the disks need to be recovered";
+        }
+
+        internal static class RestoreVM
+        {
             public const string TargetResourceGroupName = "The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks";
             public const string OsaOption = "Use this switch if the disks from the recovery point are to be restored to their original storage accounts";
+        }
+
+        internal static class RestoreFS
+        {
+            public const string SourceFilePath = "Used for a particular item restore from a file share. The path of the item to be restored within the file share.";
+            public const string SourceFileType = "Whether the item to be restored is a file or a folder";
+            public const string ResolveConflict = "In case the restored item also exists in the destination, use this to indicate whether to overwrite or not.";
+            public const string TargetStorageAccountName = "The storage account to which the file share has to be restored to.";
+            public const string TargetFileShareName = "The File Share to which the file share has to be restored to.";
+            public const string TargetFolder = "The folder under which the file share has to be restored to within the targetFileShareName.Leave the variable empty to restore under root folder.";
+
         }
 
         internal static class ProtectionCheck

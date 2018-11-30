@@ -179,17 +179,17 @@ Gets elastic pool recommendations.
 ### [Get-AzureRmSqlElasticPoolRecommendedAction](Get-AzureRmSqlElasticPoolRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Elastic Pool Advisor.
 
-### [Get-AzureRmSqlManagedDatabase](Get-AzureRmSqlManagedDatabase.md)
-Gets one or more managed databases.
-
-### [Get-AzureRmSqlManagedInstance](Get-AzureRmSqlManagedInstance.md)
-Returns information about SQL Database Managed instances.
-
 ### [Get-AzureRmSqlManagedInstanceKeyVaultKey](Get-AzureRmSqlManagedInstanceKeyVaultKey.md)
 Gets a SQL managed instance's Key Vault keys.
 
 ### [Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector](Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector.md)
 Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
+
+### [Get-AzureRmSqlInstance](Get-AzureRmSqlInstance.md)
+Returns information about Azure SQL Managed Database Instance.
+
+### [Get-AzureRmSqlInstanceDatabase](Get-AzureRmSqlInstanceDatabase.md)
+Returns information about Azure SQL Managed Instance database.
 
 ### [Get-AzureRmSqlServer](Get-AzureRmSqlServer.md)
 Returns information about SQL Database servers.
@@ -311,11 +311,11 @@ Creates a new target group
 ### [New-AzureRmSqlElasticPool](New-AzureRmSqlElasticPool.md)
 Creates an elastic database pool for a SQL Database.
 
-### [New-AzureRmSqlManagedDatabase](New-AzureRmSqlManagedDatabase.md)
-Creates a managed database.
+### [New-AzureRmSqlInstance](New-AzureRmSqlInstance.md)
+Creates an Azure SQL Database Managed Instance.
 
-### [New-AzureRmSqlManagedInstance](New-AzureRmSqlManagedInstance.md)
-Creates a SQL Database Managed instance.
+### [New-AzureRmSqlInstanceDatabase](New-AzureRmSqlInstanceDatabase.md)
+Creates an Azure SQL Managed Instance database.
 
 ### [New-AzureRmSqlServer](New-AzureRmSqlServer.md)
 Creates a SQL Database server.
@@ -398,14 +398,14 @@ Removes the target group
 ### [Remove-AzureRmSqlElasticPool](Remove-AzureRmSqlElasticPool.md)
 Deletes an elastic database pool.
 
-### [Remove-AzureRmSqlManagedDatabase](Remove-AzureRmSqlManagedDatabase.md)
-Removes an Azure SQL Managed database.
-
-### [Remove-AzureRmSqlManagedInstance](Remove-AzureRmSqlManagedInstance.md)
-Removes an Azure SQL Database Managed instance.
-
 ### [Remove-AzureRmSqlManagedInstanceKeyVaultKey](Remove-AzureRmSqlManagedInstanceKeyVaultKey.md)
 Removes a Key Vault key from a SQL managed instance
+
+### [Remove-AzureRmSqlInstance](Remove-AzureRmSqlInstance.md)
+Removes an Azure SQL Managed Database Instance.
+
+### [Remove-AzureRmSqlInstanceDatabase](Remove-AzureRmSqlInstanceDatabase.md)
+Removes an Azure SQL Managed Instance database.
 
 ### [Remove-AzureRmSqlServer](Remove-AzureRmSqlServer.md)
 Removes an Azure SQL Database server.
@@ -449,8 +449,8 @@ Removes an Azure SQL Database Sync Member.
 ### [Restore-AzureRmSqlDatabase](Restore-AzureRmSqlDatabase.md)
 Restores a SQL database.
 
-### [Restore-AzureRmSqlManagedDatabase](Restore-AzureRmSqlManagedDatabase.md)
-Restores a SQL Managed database.
+### [Restore-AzureRmSqlInstanceDatabase](Restore-AzureRmSqlInstanceDatabase.md)
+Restores an Azure SQL Managed Instance database.
 
 ### [Resume-AzureRmSqlDatabase](Resume-AzureRmSqlDatabase.md)
 Resumes a SQL Data Warehouse database.
@@ -524,11 +524,11 @@ Updates auto execute status of an Azure SQL Elastic Pool Advisor.
 ### [Set-AzureRmSqlElasticPoolRecommendedActionState](Set-AzureRmSqlElasticPoolRecommendedActionState.md)
 Updates the state of an Azure SQL Elastic Pool recommended action.
 
-### [Set-AzureRmSqlManagedInstance](Set-AzureRmSqlManagedInstance.md)
-Modifies properties of a SQL Database Managed instance. Properties that are not specified are set to their default values.
-
 ### [Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector](Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector.md)
 Sets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
+
+### [Set-AzureRmSqlInstance](Set-AzureRmSqlInstance.md)
+Sets properties for an Azure SQL Database Managed Instance.
 
 ### [Set-AzureRmSqlServer](Set-AzureRmSqlServer.md)
 Modifies properties of a SQL Database server.

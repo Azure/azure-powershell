@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.3'
+ModuleVersion = '0.5.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.3.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
@@ -213,15 +213,6 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Remove-AzSqlDatabaseInstanceFailoverGroup', 
                'Set-AzSqlDatabaseInstanceFailoverGroup', 
                'Switch-AzSqlDatabaseInstanceFailoverGroup',
-               'Get-AzSqlManagedInstance',
-               'New-AzSqlManagedInstance',
-               'Remove-AzSqlManagedInstance',
-               'Set-AzSqlManagedInstance',
-               'Update-AzSqlManagedInstance',
-               'Get-AzSqlManagedDatabase',
-               'New-AzSqlManagedDatabase',
-               'Remove-AzSqlManagedDatabase',
-               'Restore-AzSqlManagedDatabase',
                'New-AzSqlElasticJobAgent',
                'Remove-AzSqlElasticJobAgent',
                'Get-AzSqlElasticJobAgent',
@@ -252,7 +243,15 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Get-AzSqlManagedInstanceKeyVaultKey',
                'Remove-AzSqlManagedInstanceKeyVaultKey',
                'Get-AzSqlManagedInstanceTransparentDataEncryptionProtector',
-               'Set-AzSqlManagedInstanceTransparentDataEncryptionProtector'
+               'Set-AzSqlManagedInstanceTransparentDataEncryptionProtector',
+               'Get-AzSqlInstance', 
+               'New-AzSqlInstance', 
+               'Remove-AzSqlInstance', 
+               'Set-AzSqlInstance', 
+               'Get-AzSqlInstanceDatabase', 
+               'New-AzSqlInstanceDatabase', 
+               'Remove-AzSqlInstanceDatabase', 
+               'Restore-AzSqlInstanceDatabase' 
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -294,12 +293,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* New Cmdlets for Management.Sql to allow customers to add TDE keys and set TDE protector for managed instances
-   - Add-AzSqlManagedInstanceKeyVaultKey
-   - Get-AzSqlManagedInstanceKeyVaultKey
-   - Remove-AzSqlManagedInstanceKeyVaultKey
-   - Get-AzSqlManagedInstanceTransparentDataEncryptionProtector
-   - Set-AzSqlManagedInstanceTransparentDataEncryptionProtector'
+        ReleaseNotes = '* Add DnsZonePartner Parameter for New-AzureRmSqlManagedInstance cmdlet to support AutoDr for Managed Instance.'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -21,27 +21,28 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-ManagedInstance cmdlet
+    /// Defines the Get-AzureRmSqlInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstance",
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = GetByResourceGroupParameterSet),
         OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class GetAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
-        protected const string GetByResourceGroupParameterSet =
-            "GetManagedInstanceByResourceGroup";
-
         protected const string GetByNameAndResourceGroupParameterSet =
-            "GetManagedInstanceByNameAndResourceGroup";
+            "GetInstanceByNameAndResourceGroup";
+
+        protected const string GetByResourceGroupParameterSet =
+            "GetInstanceByResourceGroup";
 
         /// <summary>
-        /// Gets or sets the name of the managed instance.
+        /// Gets or sets the name of the instance.
         /// </summary>
         [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 0,
-            HelpMessage = "SQL managed instance name.")]
-        [Alias("ManagedInstanceName")]
+            HelpMessage = "The name of the instance.")]
+        [Alias("InstanceName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets a managed instance from the service.
+        /// Gets an instance from the service.
         /// </summary>
         /// <returns>A single server</returns>
         protected override IEnumerable<AzureSqlManagedInstanceModel> GetEntity()

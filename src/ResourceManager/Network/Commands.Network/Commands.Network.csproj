@@ -50,8 +50,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -59,7 +59,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=19.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.5.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.6.1-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -94,10 +94,22 @@
     <Compile Include="ApplicationGateway\ConnectionDraining\NewAzureApplicationGatewayConnectionDrainingCommand.cs" />
     <Compile Include="ApplicationGateway\ConnectionDraining\RemoveAzureApplicationGatewayConnectionDrainingCommand.cs" />
     <Compile Include="ApplicationGateway\ConnectionDraining\SetAzureApplicationGatewayConnectionDrainingCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\AddAzureApplicationGatewayCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\AddAzureApplicationGatewayHttpListenerCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\AzureCustomErrorBase.cs" />
+    <Compile Include="ApplicationGateway\CustomError\GetAzureApplicationGatewayCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\GetAzureApplicationGatewayHttpListenerCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\NewAzureApplicationGatewayCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\RemoveAzureApplicationGatewayCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\RemoveAzureApplicationGatewayHttpListenerCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\SetAzureApplicationGatewayCustomErrorCommand.cs" />
+    <Compile Include="ApplicationGateway\CustomError\SetAzureApplicationGatewayHttpListenerCustomErrorCommand.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\AzureApplicationGatewayWebApplicationFirewallConfigurationBase.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\GetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\NewAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\SetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\FirewallExclusion\AzureApplicationGatewayFirewallExclusionConfigBase.cs" />
+    <Compile Include="ApplicationGateway\FirewallExclusion\NewAzureApplicationGatewayFirewallExclusionConfigCommand.cs" />
     <Compile Include="ApplicationGateway\GetAzureApplicationGatewayAvailableSslOptions.cs" />
     <Compile Include="ApplicationGateway\GetAzureApplicationGatewaySslPredefinedPolicy.cs" />
     <Compile Include="ApplicationGateway\ProbeHealthResponseMatch\AzureApplicationGatewayProbeHealthResponseMatchBase.cs" />
@@ -184,6 +196,7 @@
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="AzureFirewallFqdnTag\AzureFirewallFqdnTagHelper.cs" />
+    <Compile Include="AzureFirewallFqdnTag\GetAzureFirewallFqdnTagCommand.cs" />
     <Compile Include="AzureFirewall\ApplicationRuleCollection\NewAzureFirewallApplicationRuleCollectionCommand.cs" />
     <Compile Include="AzureFirewall\ApplicationRule\AzureFirewallApplicationRuleParameterSets.cs" />
     <Compile Include="AzureFirewall\ApplicationRule\NewAzureFirewallApplicationRuleCommand.cs" />
@@ -197,6 +210,16 @@
     <Compile Include="AzureFirewall\NewAzureFirewallCommand.cs" />
     <Compile Include="AzureFirewall\RemoveAzureFirewallCommand.cs" />
     <Compile Include="AzureFirewall\SetAzureFirewallCommand.cs" />
+    <Compile Include="ExpressRoutePortsLocation\GetAzureRMExpressRoutePortsLocationCommand.cs" />
+    <Compile Include="ExpressRoutePort\GetAzureRMExpressRoutePortCommand.cs" />
+    <Compile Include="ExpressRoutePort\Link\GetAzureRmExpressRoutePortLinkConfigCommand.cs" />
+    <Compile Include="ExpressRoutePort\NewAzureRMExpressRoutePortCommand.cs" />
+    <Compile Include="ExpressRoutePort\RemoveAzureRMExpressRoutePortCommand.cs" />
+    <Compile Include="ExpressRoutePort\SetAzureRMExpressRoutePortCommand.cs" />
+    <Compile Include="Generated\Models\PSExpressRouteLink.cs" />
+    <Compile Include="Generated\Models\PSExpressRoutePort.cs" />
+    <Compile Include="Generated\Models\PSExpressRoutePortsLocation.cs" />
+    <Compile Include="Generated\Models\PSExpressRoutePortsLocationBandwidths.cs" />
     <Compile Include="InterfaceEndpoint\AzureInterfaceEndpointBaseCmdlet.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\GetAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
@@ -362,6 +385,9 @@
     <Compile Include="Generated\Models\PSTroubleshootingDetails.cs" />
     <Compile Include="Generated\Models\PSTroubleshootingRecommendedActions.cs" />
     <Compile Include="InterfaceEndpoint\GetAzureInterfaceEndpointCommand.cs" />
+    <Compile Include="Models\PSApplicationGatewayFirewallExclusion.cs" />
+    <Compile Include="Models\AzureFirewall\PSAzureFirewallFqdnTag.cs" />
+    <Compile Include="Models\PSApplicationGatewayCustomError.cs" />
     <Compile Include="Models\PSTrafficAnalyticsConfigurationProperties.cs" />
     <Compile Include="Models\PSTrafficAnalyticsProperties.cs" />
     <Compile Include="Generated\Models\PSTunnelConnectionHealth.cs" />

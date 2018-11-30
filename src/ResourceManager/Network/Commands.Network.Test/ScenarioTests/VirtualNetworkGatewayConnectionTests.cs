@@ -31,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionCRUD");
@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionSharedKeyCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionSharedKeyCRUD");
@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkeExpressRouteGatewayConnectionCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD");
@@ -55,7 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionWithBgpCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionWithBgpCRUD");
@@ -63,7 +63,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionwithIpsecPoliciesCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD");
@@ -71,7 +71,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionWithActiveAcitveGateway()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway");
@@ -79,7 +79,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayVpnDeviceConfigurationScripts()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations");
