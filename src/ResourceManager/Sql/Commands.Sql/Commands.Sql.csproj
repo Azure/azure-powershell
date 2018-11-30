@@ -60,8 +60,8 @@
     <Compile Include="Auditing\Cmdlet\AuditingSettings\GetAzureSqlServerAuditing.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\SetAzureSqlDatabaseAuditing.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\SetAzureSqlServerAuditing.cs" />
-    <Compile Include="Auditing\Cmdlet\AuditingSettings\SqlDatabaseAuditingCmdletBase.cs" />
-    <Compile Include="Auditing\Cmdlet\AuditingSettings\SqlServerAuditingCmdletBase.cs" />
+    <Compile Include="Auditing\Cmdlet\AuditingSettings\SqlDatabaseAuditingSettingsCmdletBase.cs" />
+    <Compile Include="Auditing\Cmdlet\AuditingSettings\SqlServerAuditingSettingsCmdletBase.cs" />
     <Compile Include="Auditing\Model\DatabaseBlobAuditingSettingsModel.cs" />
     <Compile Include="Auditing\Model\ServerBlobAuditingSettingsModel.cs" />
     <Compile Include="Common\Iso8601DurationHelper.cs" />

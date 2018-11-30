@@ -26,9 +26,7 @@ function Test-CreateManagedInstance
     $vnetName1 = "ps2252"
  	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
- 	$managedInstanceLogin = "dummylogin"
-	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
- 	$managedInstancePassword = "Un53cuRE!"
+ 	$credentials = Get-ServerCredential
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
@@ -39,13 +37,13 @@ function Test-CreateManagedInstance
  	try
  	{
 		# Setup VNET 
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $rg $vnetName1 $rg.Location
-		$subnetId = $virtualNetwork1.Subnets[0].Id
-	
+		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+
  		# With SKU name specified
- 		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
+ 		$job = New-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AsJob 
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -53,7 +51,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.Location $rg.Location
 		Assert-AreEqual $managedInstance1.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $managedInstance1.Sku.Name $skuName
- 		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstanceLogin
+ 		Assert-AreEqual $managedInstance1.AdministratorLogin $credentials.Username
 		Assert-AreEqual $managedInstance1.SubnetId $subnetId
 		Assert-AreEqual $managedInstance1.LicenseType $licenseType
 		Assert-AreEqual $managedInstance1.VCores $vCore
@@ -66,7 +64,7 @@ function Test-CreateManagedInstance
 		$managedInstanceName = Get-ManagedInstanceName
 
 		# With edition and computeGeneration specified
- 		$job = New-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
+ 		$job = New-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
 			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition `
 			-ComputeGeneration $computeGeneration -DnsZonePartner $dnsZonePartner -Collation $collation -AsJob
@@ -77,7 +75,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.Location $rg.Location
 		Assert-AreEqual $managedInstance1.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $managedInstance1.Sku.Name $skuName
- 		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstanceLogin
+ 		Assert-AreEqual $managedInstance1.AdministratorLogin $credentials.Username
 		Assert-AreEqual $managedInstance1.SubnetId $subnetId
 		Assert-AreEqual $managedInstance1.LicenseType $licenseType
 		Assert-AreEqual $managedInstance1.VCores $vCore
@@ -87,7 +85,7 @@ function Test-CreateManagedInstance
  	}
  	finally
  	{
- 		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $rg
  	}
 }
 
@@ -101,21 +99,25 @@ function Test-SetManagedInstance
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$managedInstance = Create-ManagedInstanceForTest $rg
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
+
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+
+	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 
 	try
 	{
 		# Test using parameters
-		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
-		$managedInstancePassword = "n3wc00lP@55w0rd"
+		$credentials = Get-ServerCredential
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
 		$vCore = 8
 
-		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
-
-		$managedInstance1 = Set-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
-			-AdministratorPassword $secureString -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+		$managedInstance1 = Set-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 		
 		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstance.AdministratorLogin
@@ -125,16 +127,14 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
 		
 		# Test using piping
-		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
-		$managedInstancePassword = "n3wc00lP@55w0rd!!!"
-		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
+		$credentials = Get-ServerCredential
 
 		$licenseType = "LicenseIncluded"
 		$storageSizeInGB = 96
 		$vCore = 16
 
-		$managedInstance2 = $managedInstance | Set-AzureRmSqlManagedInstance -AdministratorPassword $secureString `
-			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+		$managedInstance2 = $managedInstance | Set-AzureRmSqlInstance -AdministratorPassword $credentials.Password `
+			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 
 		Assert-AreEqual $managedInstance2.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance2.AdministratorLogin $managedInstance.AdministratorLogin
@@ -144,16 +144,13 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance2.ManagedInstanceName + ".") $managedInstance2.FullyQualifiedDomainName
 
 		# Test Set using InputObject
-		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
-		$managedInstancePassword = "n3wc00lP@55w0rd4321"
+		$credentials = Get-ServerCredential
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
 		$vCore = 8
 
-		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
-
-		$managedInstance3 = Set-AzureRmSqlManagedInstance -InputObject $managedInstance `
-			-AdministratorPassword $secureString -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+		$managedInstance3 = Set-AzureRmSqlInstance -InputObject $managedInstance `
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 		
 		Assert-AreEqual $managedInstance3.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance3.AdministratorLogin $managedInstance.AdministratorLogin
@@ -163,16 +160,13 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance3.ManagedInstanceName + ".") $managedInstance3.FullyQualifiedDomainName
 
 		# Test Set using ResourceId
-		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
-		$managedInstancePassword = "n3wc00lP@55w0rd4321"
+		$credentials = Get-ServerCredential
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 32
 		$vCore = 16
 
-		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
-
-		$managedInstance4 = Set-AzureRmSqlManagedInstance -ResourceId $managedInstance.Id `
-			-AdministratorPassword $secureString -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
+		$managedInstance4 = Set-AzureRmSqlInstance -ResourceId $managedInstance.Id `
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Force
 		
 		Assert-AreEqual $managedInstance4.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance4.AdministratorLogin $managedInstance.AdministratorLogin
@@ -186,103 +180,6 @@ function Test-SetManagedInstance
 		Remove-ResourceGroupForTest $rg
 	}
 }
-
-<#
-	.SYNOPSIS
-	Tests updating a Managed Instance
-	.DESCRIPTION
-	SmokeTest
-#>
-function Test-UpdateManagedInstance
-{
-	# Setup
-	$rg = Create-ResourceGroupForTest
-	$managedInstance = Create-ManagedInstanceForTest $rg
-
-	try
-	{
-		# Test update using all parameters
-		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
-		$managedInstancePassword = "n3wc00lP@55w0rd"
-		$licenseType = "BasePrice"
-		$storageSizeInGB = 64
-		$vCore = 8
-
-		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
-
-		$managedInstance1 = Update-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
-			-AdministratorPassword $secureString -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
-		
-		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstance.ManagedInstanceName
-		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstance.AdministratorLogin
-		Assert-AreEqual $managedInstance1.LicenseType $licenseType
-		Assert-AreEqual $managedInstance1.VCores $vCore
-		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
-		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
-
-		# Test update using piping
-		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
-		$managedInstancePassword = "n3wc00lP@55w0rd1234!!!"
-		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
-
-		$licenseType = "LicenseIncluded"
-		$storageSizeInGB = 96
-		$vCore = 16
-
-		$managedInstance2 = $managedInstance | Update-AzureRmSqlManagedInstance -AdministratorPassword $secureString `
-			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
-
-		Assert-AreEqual $managedInstance2.ManagedInstanceName $managedInstance.ManagedInstanceName
-		Assert-AreEqual $managedInstance2.AdministratorLogin $managedInstance.AdministratorLogin
-		Assert-AreEqual $managedInstance2.LicenseType $licenseType
-		Assert-AreEqual $managedInstance2.VCores $vCore
-		Assert-AreEqual $managedInstance2.StorageSizeInGB $storageSizeInGB
-		Assert-StartsWith ($managedInstance2.ManagedInstanceName + ".") $managedInstance2.FullyQualifiedDomainName
-
-		# Test update using InputObject
-		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
-		$managedInstancePassword = "n3wc00lP@55w0rd4321"
-		$licenseType = "BasePrice"
-		$storageSizeInGB = 64
-		$vCore = 8
-
-		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
-
-		$managedInstance3 = Update-AzureRmSqlManagedInstance -InputObject $managedInstance `
-			-AdministratorPassword $secureString -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
-		
-		Assert-AreEqual $managedInstance3.ManagedInstanceName $managedInstance.ManagedInstanceName
-		Assert-AreEqual $managedInstance3.AdministratorLogin $managedInstance.AdministratorLogin
-		Assert-AreEqual $managedInstance3.LicenseType $licenseType
-		Assert-AreEqual $managedInstance3.VCores $vCore
-		Assert-AreEqual $managedInstance3.StorageSizeInGB $storageSizeInGB
-		Assert-StartsWith ($managedInstance3.ManagedInstanceName + ".") $managedInstance3.FullyQualifiedDomainName
-
-		# Test update using ResourceId
-		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
-		$managedInstancePassword = "n3wc00lP@55w0rd4321"
-		$licenseType = "BasePrice"
-		$storageSizeInGB = 32
-		$vCore = 16
-
-		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
-
-		$managedInstance4 = Update-AzureRmSqlManagedInstance -ResourceId $managedInstance.Id `
-			-AdministratorPassword $secureString -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore
-		
-		Assert-AreEqual $managedInstance4.ManagedInstanceName $managedInstance.ManagedInstanceName
-		Assert-AreEqual $managedInstance4.AdministratorLogin $managedInstance.AdministratorLogin
-		Assert-AreEqual $managedInstance4.LicenseType $licenseType
-		Assert-AreEqual $managedInstance4.VCores $vCore
-		Assert-AreEqual $managedInstance4.StorageSizeInGB $storageSizeInGB
-		Assert-StartsWith ($managedInstance4.ManagedInstanceName + ".") $managedInstance4.FullyQualifiedDomainName
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
-}
-
 
 <#
 	.SYNOPSIS
@@ -295,13 +192,20 @@ function Test-GetManagedInstance
 	# Setup
 	$rg = Create-ResourceGroupForTest
 	$rg1 = Create-ResourceGroupForTest
-	$managedInstance1 = Create-ManagedInstanceForTest $rg
-	$managedInstance2 = Create-ManagedInstanceForTest $rg1
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
+
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+
+	$managedInstance1 = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance2 = Create-ManagedInstanceForTest $rg1 $subnetId
 
 	try
 	{
 		# Test using all parameters
-		$resp1 = Get-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName
+		$resp1 = Get-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName
 		Assert-AreEqual $managedInstance1.ManagedInstanceName $resp1.ManagedInstanceName
 		Assert-AreEqual $managedInstance1.SqlAdministratorLogin $resp1.SqlAdministratorLogin
 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $resp1.FullyQualifiedDomainName
@@ -310,11 +214,11 @@ function Test-GetManagedInstance
 		Assert-AreEqual $managedInstance1.VCores $resp1.VCores
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $resp1.StorageSizeInGB
 		
-		$all = Get-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName
+		$all = Get-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual 1 $all.Count
 
 		# Test getting all managedInstances in all resource groups
-		$all2 = Get-AzureRmSqlManagedInstance
+		$all2 = Get-AzureRmSqlInstance
 
 		# It is possible that there were existing managedInstances in the subscription when the test was recorded, so make sure
 		# that the managedInstances that we created are retrieved and ignore the other ones.
@@ -337,26 +241,32 @@ function Test-RemoveManagedInstance
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
+
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
 
 	try
 	{
 		# Test using parameters
-		$managedInstance1 = Create-ManagedInstanceForTest $rg
-		Remove-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName -Force
+		$managedInstance1 = Create-ManagedInstanceForTest $rg $subnetId
+		Remove-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName -Force
 		
 		# Test using InputObject
-		$managedInstance2 = Create-ManagedInstanceForTest $rg
-		Remove-AzureRmSqlManagedInstance -InputObject $managedInstance2 -Force
+		$managedInstance2 = Create-ManagedInstanceForTest $rg $subnetId
+		Remove-AzureRmSqlInstance -InputObject $managedInstance2 -Force
 
 		# Test using ResourceId
-		$managedInstance3 = Create-ManagedInstanceForTest $rg
-		Remove-AzureRmSqlManagedInstance -ResourceId $managedInstance3.Id -Force
+		$managedInstance3 = Create-ManagedInstanceForTest $rg $subnetId
+		Remove-AzureRmSqlInstance -ResourceId $managedInstance3.Id -Force
 
 		# Test piping
-		$managedInstance4 = Create-ManagedInstanceForTest $rg
-		$managedInstance4 | Remove-AzureRmSqlManagedInstance -Force
+		$managedInstance4 = Create-ManagedInstanceForTest $rg $subnetId
+		$managedInstance4 | Remove-AzureRmSqlInstance -Force
 
-		$all = Get-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName
+		$all = Get-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $all.Count 0
 	}
 	finally
@@ -373,22 +283,24 @@ function Test-CreateManagedInstanceWithIdentity
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	 	
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
+
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+
  	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
- 	$managedInstanceLogin = "login"
-	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
- 	$managedInstancePassword = "Un5!"
- 	$subnetId = "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/cl_one/providers/Microsoft.Network/virtualNetworks/cl_initial/subnets/CooL"
+ 	$credentials = Get-ServerCredential
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
  	$vCore = 16
  	$skuName = "GP_Gen4"
- 	$credentials = new-object System.Management.Automation.PSCredential($managedInstanceLogin, ($managedInstancePassword | ConvertTo-SecureString -asPlainText -Force)) 
 
 	try
 	{
-		$managedInstance1 = New-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
+		$managedInstance1 = New-AzureRmSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AssignIdentity
 
@@ -400,54 +312,4 @@ function Test-CreateManagedInstanceWithIdentity
 	{
 		Remove-ResourceGroupForTest $rg
 	}
-}
-
-
-<#
-	.SYNOPSIS
-	Create a virtual network
-#>
-function CreateAndGetVirtualNetworkForManagedInstance ($resourceGroup, $vnetName, $location = "westcentralus")
-{
-	$vNetAddressPrefix = "10.0.0.0/16"
-	$defaultSubnetName = "default"
-	$defaultSubnetAddressPrefix = "10.0.0.0/24"
-
-	$virtualNetwork = New-AzureRmVirtualNetwork `
-						  -ResourceGroupName $resourceGroup.ResourceGroupName `
-						  -Location $location `
-						  -Name $vNetName `
-						  -AddressPrefix $vNetAddressPrefix
-
-	$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
-						  -Name $defaultSubnetName `
-						  -AddressPrefix $defaultSubnetAddressPrefix `
-						  -VirtualNetwork $virtualNetwork
-
-	$virtualNetwork | Set-AzureRmVirtualNetwork
-
-	$routeTableMiManagementService = New-AzureRmRouteTable `
-						  -Name 'myRouteTableMiManagementService' `
-						  -ResourceGroupName $resourceGroup.ResourceGroupName `
-						  -location $location
-
-	Set-AzureRmVirtualNetworkSubnetConfig `
-						  -VirtualNetwork $virtualNetwork `
-						  -Name $defaultSubnetName `
-						  -AddressPrefix $defaultSubnetAddressPrefix `
-						  -RouteTable $routeTableMiManagementService | `
-						Set-AzureRmVirtualNetwork
-
-	Get-AzureRmRouteTable `
-						  -ResourceGroupName $resourceGroup.ResourceGroupName `
-						  -Name "myRouteTableMiManagementService" `
-						  | Add-AzureRmRouteConfig `
-						  -Name "ToManagedInstanceManagementService" `
-						  -AddressPrefix 0.0.0.0/0 `
-						  -NextHopType "Internet" `
-						 | Set-AzureRmRouteTable
-				
-	$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup.ResourceGroupName
-	
-	return $getVnet
 }

@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The name of the Azure SQL Managed Instance.")]
+            HelpMessage = "The name of the instance.")]
         [ValidateNotNullOrEmpty]
-        public virtual string ManagedInstanceName { get; set; }
+        public virtual string InstanceName { get; set; }
 
         /// <summary>
         /// Initializes the adapter

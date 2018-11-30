@@ -9,6 +9,44 @@
 $PSDefaultParameterValues.Clear()
 Set-StrictMode -Version Latest
 
+function Test-DotNet
+{
+    try
+    {
+        if (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\' -ErrorAction Stop | Get-ItemPropertyValue -Name Release | Foreach-Object { $_ -lt 461808 })
+        {
+            throw ".NET Framework versions lower than 4.7.2 are not supported in Az.  Please upgrade to .NET Framework 4.7.2 or higher."
+        }
+    }
+    catch [System.Management.Automation.DriveNotFoundException]
+    {
+        Write-Verbose ".NET Framework version check failed."
+    }
+}
+
+if (%ISAZMODULE%)
+{
+    if ($PSVersionTable.PSVersion -lt [Version]'5.1')
+    {
+        throw "PowerShell versions lower than 5.1 are not supported in Az. Please upgrade to PowerShell 5.1 or higher."
+    }
+
+    Test-DotNet
+}
+
+if (Test-Path -Path "$PSScriptRoot\StartupScripts")
+{
+    Get-ChildItem "$PSScriptRoot\StartupScripts" -ErrorAction Stop | ForEach-Object {
+        . $_.FullName
+    }
+}
+
+if (Get-Module %AZORAZURERM%.profile)
+{
+    Write-Warning "%AZORAZURERM%.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: https://aka.ms/azps-migration-guide"
+    throw "%AZORAZURERM%.Profile already loaded. Az and AzureRM module cannot be run side-by-side, please run 'Uninstall-AzureRm' to remove all AzureRm modules from your machine. More information can be found here: https://aka.ms/azps-migration-guide"
+}
+
 $preloadPath = (Join-Path $PSScriptRoot -ChildPath "PreloadAssemblies")
 if($PSEdition -eq 'Desktop' -and (Test-Path $preloadPath))
 {
@@ -41,13 +79,6 @@ if($PSEdition -eq 'Core' -and (Test-Path $netCorePath))
 
 
 %IMPORTED-DEPENDENCIES%
-
-if (Test-Path -Path "$PSScriptRoot\StartupScripts")
-{
-    Get-ChildItem "$PSScriptRoot\StartupScripts" | ForEach-Object {
-        . $_.FullName
-    }
-}
 
 $FilteredCommands = %DEFAULTRGCOMMANDS%
 

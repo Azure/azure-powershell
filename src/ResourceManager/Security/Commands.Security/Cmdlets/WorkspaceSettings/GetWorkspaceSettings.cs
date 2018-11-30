@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.WorkspaceSettings
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSecurityWorkspaceSetting", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityWorkspaceSetting))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityWorkspaceSetting", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityWorkspaceSetting))]
     public class GetWorkspaceSettings : SecurityCenterCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceName)]

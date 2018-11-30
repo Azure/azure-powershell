@@ -14,13 +14,13 @@ namespace Microsoft.Azure.Commands.Relay.Models
     /// <summary>
     /// Description of a Check Name availability request properties.
     /// </summary>
-    public partial class CheckNameAvailabilityResultAttributes
+    public partial class PSCheckNameAvailabilityResultAttributes
     {
         /// <summary>
         /// Initializes a new instance of the CheckNameAvailabilityResult
         /// class.
         /// </summary>
-        public CheckNameAvailabilityResultAttributes() { }
+        public PSCheckNameAvailabilityResultAttributes() { }
 
         /// <summary>
         /// Initializes a new instance of the CheckNameAvailabilityResult
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// 'TooManyNamespaceInCurrentSubscription'</param>
         /// <param name="message">The detailed info regarding the reason
         /// associated with the namespace.</param>
-        public CheckNameAvailabilityResultAttributes(bool? nameAvailable = default(bool?), UnavailableReasonAttributes? reason = default(UnavailableReasonAttributes?), string message = default(string))
+        public PSCheckNameAvailabilityResultAttributes(bool? nameAvailable = default(bool?), PSUnavailableReasonAttributes? reason = default(PSUnavailableReasonAttributes?), string message = default(string))
         {
             NameAvailable = nameAvailable;
             Reason = reason;
@@ -43,12 +43,12 @@ namespace Microsoft.Azure.Commands.Relay.Models
         }
 
 
-        public CheckNameAvailabilityResultAttributes(CheckNameAvailabilityResult checkNameAvailabilityResult)
+        public PSCheckNameAvailabilityResultAttributes(CheckNameAvailabilityResult checkNameAvailabilityResult)
         {
             NameAvailable = checkNameAvailabilityResult.NameAvailable;
             if (checkNameAvailabilityResult.Reason.HasValue)
             {
-                Reason = (UnavailableReasonAttributes)Enum.Parse(typeof(UnavailableReasonAttributes), checkNameAvailabilityResult.Reason.Value.ToString(), true);
+                Reason = (PSUnavailableReasonAttributes)Enum.Parse(typeof(PSUnavailableReasonAttributes), checkNameAvailabilityResult.Reason.Value.ToString(), true);
             }
             
             Message = checkNameAvailabilityResult.Message;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// 'NameInUse', 'NameInLockdown',
         /// 'TooManyNamespaceInCurrentSubscription'
         /// </summary>
-        public UnavailableReasonAttributes? Reason { get; set; }
+        public PSUnavailableReasonAttributes? Reason { get; set; }
 
         /// <summary>
         /// Gets the detailed info regarding the reason associated with the
