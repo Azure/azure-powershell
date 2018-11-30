@@ -5,18 +5,11 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7558612C-29CF-4C4A-8BAE-114FC14B682D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.PolicyInsights", "Commands.PolicyInsights\Commands.PolicyInsights.Netcore.csproj", "{D28548D3-2673-4508-A28B-A69E0470FAF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.PolicyInsights.Netcore", "Commands.PolicyInsights\Commands.PolicyInsights.Netcore.csproj", "{D28548D3-2673-4508-A28B-A69E0470FAF7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6ABFB030-9CD9-4863-9A62-54C0BC738B83}"
-	ProjectSection(SolutionItems) = preProject
-		Commands.PolicyInsights\ChangeLog.md = Commands.PolicyInsights\ChangeLog.md
-		documentation\current-breaking-changes.md = documentation\current-breaking-changes.md
-		documentation\upcoming-breaking-changes.md = documentation\upcoming-breaking-changes.md
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.PolicyInsights.Test.Netcore", "Commands.PolicyInsights.Test\Commands.PolicyInsights.Test.Netcore.csproj", "{FA1B708E-8875-4E75-AF94-4CCCCAC6FF0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.PolicyInsights.Test", "Commands.PolicyInsights.Test\Commands.PolicyInsights.Test.Netcore.csproj", "{FA1B708E-8875-4E75-AF94-4CCCCAC6FF0F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
