@@ -18,22 +18,23 @@
 
 .DESCRIPTION
     Run AzureStack fabric admin edge gateway pool tests using either mock client or our client.
-	The mock client allows for recording and playback.  This allows for offline tests.
+    The mock client allows for recording and playback.  This allows for offline tests.
 
 .PARAMETER RunRaw
     Run using our client creation path.
 
 .EXAMPLE
     PS C:\> .\src\Alert.Tests.ps1
-	Describing Alerts
-	[+] TestListAlerts 349ms
-	[+] TestGetAlert 175ms
-	[+] TestGetAllAlerts 866ms
-	[+] TestCloseAlert 171ms
+    Describing Alerts
+    [+] TestListAlerts 349ms
+    [+] TestGetAlert 175ms
+    [+] TestGetAllAlerts 866ms
+    [+] TestCloseAlert 171ms
+    [+] TestRepairAlert 390ms
 
 .NOTES
     Author: Jeffrey Robinson
-	Copyright: Microsoft
+    Copyright: Microsoft
     Date:   August 24, 2017
 #>
 param(
@@ -224,6 +225,52 @@ InModuleScope Azs.InfrastructureInsights.Admin {
                     return
                 }
             }
+        }
+
+        it "TestRepairAlert" -Skip:$('TestRepairAlert' -in $global:SkippedTests) {
+            $global:TestName = 'TestRepairAlert'
+
+            $ErrorActionPreference = "SilentlyContinue"
+
+            # Test repair for a non-existing alert
+            Write-Verbose "Repairing alert with an invalid name"
+            Repair-AzsAlert -Name "wrongid" -Location "local" -Force -ErrorVariable invalidAlertErr
+            if(($invalidAlertErr -ne $null) -and ($invalidAlertErr -like '*RemediateAlertFailed*') -and ($invalidAlertErr -like '*NotFoundException*'))
+            {
+                Write-Verbose "As expected the repair operation failed"
+            }
+            else
+            {
+                throw $invalidAlertErr
+            }
+
+            $Alerts = Get-AzsAlert -ResourceGroupName $global:ResourceGroupName -Location $global:location
+            $Alerts | Should Not Be $null
+            foreach ($Alert in $Alerts)
+            {
+                $Alert | Should not be $null
+                $Alert.State | Should not be $null
+                Write-Verbose "Repairing alert $($Alert.Name)"
+                $Alert | Repair-AzsAlert -Force -ErrorVariable validAlertErr
+                if($validAlertErr -ne $null){
+                    if ($Alert.State -eq "Active" -and $Alert.hasValidRemediationAction -eq $true)
+                    {
+                        throw "Repair operation failed with $validAlertErr"
+                    }
+                    else
+                    {
+                         if($validAlertErr -like '*RemediateAlertPrecheckFailed*')
+                         {
+                            Write-Verbose "As expected the repair operation failed"
+                         }
+                         else
+                         {
+                            throw "Repair operation failed with $validAlertErr"
+                         }
+                    }
+                }
+            }
+            return
         }
     }
 }

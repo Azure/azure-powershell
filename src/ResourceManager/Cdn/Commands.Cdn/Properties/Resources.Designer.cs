@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove-AzureRmCdnCustomDomain on {0}..
+        ///   Looks up a localized string similar to Remove-AzCdnCustomDomain on {0}..
         /// </summary>
         internal static string Success_RemoveCustomDomain {
             get {
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove-AzureRmCdnEndpoint on {0}..
+        ///   Looks up a localized string similar to Remove-AzCdnEndpoint on {0}..
         /// </summary>
         internal static string Success_RemoveEndpoint {
             get {
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove-AzureRmCdnProfile on {0}..
+        ///   Looks up a localized string similar to Remove-AzCdnProfile on {0}..
         /// </summary>
         internal static string Success_RemoveProfile {
             get {
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stop-AzureRmCdnEndpoint on {0}..
+        ///   Looks up a localized string similar to Stop-AzCdnEndpoint on {0}..
         /// </summary>
         internal static string Success_StopEndpoint {
             get {

@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to upload {0} to Azure Storage and the attempt to delete the application package record afterwards failed. Remove the application package record with the Remove-AzureRmBatchApplicationPackage cmdlet and retry. {1}..
+        ///   Looks up a localized string similar to Failed to upload {0} to Azure Storage and the attempt to delete the application package record afterwards failed. Remove the application package record with the Remove-AzBatchApplicationPackage cmdlet and retry. {1}..
         /// </summary>
         internal static string FailedToUploadAndDelete {
             get {
@@ -1168,7 +1168,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Application package {0} version {1} successfully uploaded but failed to activate. Activate the application package using the New-AzureRmBatchApplicationPackage cmdlet with the -ActivateOnly parameter. {2}..
+        ///   Looks up a localized string similar to Application package {0} version {1} successfully uploaded but failed to activate. Activate the application package using the New-AzBatchApplicationPackage cmdlet with the -ActivateOnly parameter. {2}..
         /// </summary>
         internal static string UploadedApplicationButFailedToActivate {
             get {
@@ -1177,7 +1177,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Using Azure Active Directory authentication to interact with the Batch service. To use shared key authentication, supply a BatchAccountContext that was returned from the Get-AzureRmBatchAccountKeys cmdlet..
+        ///   Looks up a localized string similar to Using Azure Active Directory authentication to interact with the Batch service. To use shared key authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccountKeys cmdlet..
         /// </summary>
         internal static string UsingAadAuth {
             get {
@@ -1186,7 +1186,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Using shared key authentication to interact with the Batch service. Current key in use: {0}. To change keys, set the BatchAccountContext.KeyInUse property. To use Azure Active Directory authentication, supply a BatchAccountContext that was returned from the Get-AzureRmBatchAccount cmdlet..
+        ///   Looks up a localized string similar to Using shared key authentication to interact with the Batch service. Current key in use: {0}. To change keys, set the BatchAccountContext.KeyInUse property. To use Azure Active Directory authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccount cmdlet..
         /// </summary>
         internal static string UsingSharedKeyAuth {
             get {

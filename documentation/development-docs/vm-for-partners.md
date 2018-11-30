@@ -34,7 +34,7 @@ If you need an Azure Virtual Machine with all the [prerequisites](https://github
    ```
 4. Sign in to your Azure account.
     ```PowerShell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 5. Execute the Powershell script. The script essentially does the following:
     1. Checks if a **resource group** with the name ```$ResourceGroupName``` exists if not - creates it for you.
@@ -46,14 +46,14 @@ If you need an Azure Virtual Machine with all the [prerequisites](https://github
     ```PowerShell    
     function SelectSubscription() {
         Write-Host "==> SelectSubscription"
-        $null = Select-AzureRmSubscription -SubscriptionId $SubscriptionId    
+        $null = Select-AzSubscription -SubscriptionId $SubscriptionId    
     }
 
     function CreateResourceGroupIfNone() {
         Write-Host "==> CreateResourceGroupIfNone"
-        $null = Get-AzureRmResourceGroup -Name $ResourceGroupName -ErrorVariable rgNotPresent -ErrorAction SilentlyContinue 
+        $null = Get-AzResourceGroup -Name $ResourceGroupName -ErrorVariable rgNotPresent -ErrorAction SilentlyContinue 
         if ($rgNotPresent) {
-            $null = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+            $null = New-AzResourceGroup -Name $ResourceGroupName -Location $Location
             Write-Host "`tCreated resource group $ResourceGroupName" -ForegroundColor Yellow
         }
     }
@@ -64,10 +64,10 @@ If you need an Azure Virtual Machine with all the [prerequisites](https://github
         # Storage Account
         Write-Host "`tStorage Account"
         try {
-            $sa = Get-AzureRmStorageAccount -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName
+            $sa = Get-AzStorageAccount -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName
         } catch {
             if ($_ -like "*was not found*") {
-                $sa = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Location $Location -SkuName Standard_LRS 
+                $sa = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Location $Location -SkuName Standard_LRS 
                 Write-Host "`tCreated storage account $StorageAccountName." -ForegroundColor Yellow
             } else {
                 throw $_.Exception
@@ -106,14 +106,14 @@ If you need an Azure Virtual Machine with all the [prerequisites](https://github
         $Blob = Get-AzureStorageBlob -Context $StorageAccountContext -Container $StorageContainerName -Blob $VhdFileName
         $BlobUri = $Blob.ICloudBlob.Uri.AbsoluteUri
 
-        $ImageConfig = New-AzureRmImageConfig -Location $Location
-        $ImageConfig = Set-AzureRmImageOsDisk -Image $ImageConfig -OsType Windows -OsState Generalized -BlobUri $BlobUri
-        $script:Image = New-AzureRmImage -ImageName $ImageName -ResourceGroupName $ResourceGroupName -Image $ImageConfig
+        $ImageConfig = New-AzImageConfig -Location $Location
+        $ImageConfig = Set-AzImageOsDisk -Image $ImageConfig -OsType Windows -OsState Generalized -BlobUri $BlobUri
+        $script:Image = New-AzImage -ImageName $ImageName -ResourceGroupName $ResourceGroupName -Image $ImageConfig
     }
 
     function CreateVmFromImage() {
         Write-Host "==> CreateVmFromImage"
-        New-AzureRmVm -Name $VmName -Location $Location -ResourceGroupName $ResourceGroupName -ImageName $Image.Id -Credential $VmCredential -Size $VmSize
+        New-AzVm -Name $VmName -Location $Location -ResourceGroupName $ResourceGroupName -ImageName $Image.Id -Credential $VmCredential -Size $VmSize
     }
 
     SelectSubscription

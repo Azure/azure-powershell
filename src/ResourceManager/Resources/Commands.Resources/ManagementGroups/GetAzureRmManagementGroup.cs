@@ -22,13 +22,13 @@ using Microsoft.Azure.Management.ManagementGroups.Models;
 namespace Microsoft.Azure.Commands.Resources.ManagementGroups
 {
     /// <summary>
-    /// Get-AzureRmManagementGroup Cmdlet
+    /// Get-AzManagementGroup Cmdlet
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroupInfo), typeof(PSManagementGroup))]
     public class GetAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         /// <summary>
-        /// Get-AzureRmManagementGroup Cmdlet
+        /// Get-AzManagementGroup Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GetParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         public string GroupName { get; set; }
