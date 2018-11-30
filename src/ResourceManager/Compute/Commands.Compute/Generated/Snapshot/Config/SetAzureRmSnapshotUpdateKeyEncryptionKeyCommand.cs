@@ -21,6 +21,7 @@
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,6 +30,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+#if NETSTANDARD
+    [CmdletOutputBreakingChange(typeof(DiskSku), ReplacementCmdletOutputTypeName = "SnapshotSku")]
+#endif
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotUpdateKeyEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
     public partial class SetAzureRmSnapshotUpdateKeyEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -67,12 +71,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // EncryptionSettings
                 if (this.SnapshotUpdate.EncryptionSettings == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    this.SnapshotUpdate.EncryptionSettings = new EncryptionSettings();
                 }
                 // KeyEncryptionKey
                 if (this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference();
+                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey = new KeyVaultAndKeyReference();
                 }
                 this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.KeyUrl = this.KeyUrl;
             }
@@ -82,17 +86,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // EncryptionSettings
                 if (this.SnapshotUpdate.EncryptionSettings == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    this.SnapshotUpdate.EncryptionSettings = new EncryptionSettings();
                 }
                 // KeyEncryptionKey
                 if (this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey = new Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference();
+                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey = new KeyVaultAndKeyReference();
                 }
                 // SourceVault
                 if (this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault == null)
                 {
-                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault = new Microsoft.Azure.Management.Compute.Models.SourceVault();
+                    this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault = new SourceVault();
                 }
                 this.SnapshotUpdate.EncryptionSettings.KeyEncryptionKey.SourceVault.Id = this.SourceVaultId;
             }

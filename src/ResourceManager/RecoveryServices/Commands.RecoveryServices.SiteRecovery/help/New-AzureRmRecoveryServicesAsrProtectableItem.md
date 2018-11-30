@@ -25,7 +25,7 @@ The **New-AzureRmRecoveryServicesAsrProtectableItem** adds a new protectable ite
 
 ### Example 1
 ```
-PS C:\> New-AzureRmRecoveryServicesAsrProtectableItem ProtectionContainer $pc -Name $name -IPAddress $ipaddresss -OSType $OsType
+PS C:\> New-AzureRmRecoveryServicesAsrProtectableItem -ProtectionContainer $pc -Name $name -IPAddress $ipaddresss -OSType $OsType
 ```
 
 Add or Discover new Azure Recovery Service ProtectableItem.

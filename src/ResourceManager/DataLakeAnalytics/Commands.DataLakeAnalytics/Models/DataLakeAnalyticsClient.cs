@@ -34,8 +34,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private readonly DataLakeAnalyticsCatalogManagementClient _catalogClient;
         private readonly DataLakeAnalyticsJobManagementClient _jobClient;
         private readonly Guid _subscriptionId;
-        private static Queue<Guid> jobIdQueue;
-
+        private static Queue<Guid> _jobIdQueue;
 
         /// <summary>
         /// Gets or sets the job identifier queue, which is used exclusively as a test hook.
@@ -45,16 +44,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         /// </value>
         public static Queue<Guid> JobIdQueue
         {
-            get
-            {
-                if (jobIdQueue == null)
-                {
-                    jobIdQueue = new Queue<Guid>();
-                }
-
-                return jobIdQueue;
-            }
-            set { jobIdQueue = value; }
+            get { return _jobIdQueue ?? (_jobIdQueue = new Queue<Guid>()); }
+            set { _jobIdQueue = value; }
         }
 
         public DataLakeAnalyticsClient(IAzureContext context)
@@ -478,6 +469,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public void CreateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
+// TODO: Remove IfDef
 #if NETSTANDARD
             _catalogClient.Catalog.CreateCredential(accountName, databaseName, secretName,
                 new DataLakeAnalyticsCatalogCredentialCreateParameters
@@ -498,6 +490,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public USqlSecret UpdateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
+// TODO: Remove IfDef
 #if NETSTANDARD
             _catalogClient.Catalog.UpdateCredential(accountName, databaseName, secretName,
                 new DataLakeAnalyticsCatalogCredentialUpdateParameters
@@ -520,6 +513,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         public void DeleteSecret(string accountName, string databaseName, string secretName)
         {
+// TODO: Remove IfDef
 #if NETSTANDARD
             if (string.IsNullOrEmpty(secretName))
             {
@@ -545,7 +539,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 #endif
         }
 
-
+// TODO: Remove IfDef
 #if NETSTANDARD
         public USqlCredential GetSecret(string accountName, string databaseName, string secretName)
         {
@@ -947,7 +941,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         private IList<USqlDatabase> GetDatabases(string accountName)
         {
-            List<USqlDatabase> toReturn = new List<USqlDatabase>();
+            var toReturn = new List<USqlDatabase>();
             var response = _catalogClient.Catalog.ListDatabases(accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -968,7 +962,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         private IList<USqlAssemblyClr> GetAssemblies(string accountName, string databaseName)
         {
-            List<USqlAssemblyClr> toReturn = new List<USqlAssemblyClr>();
+            var toReturn = new List<USqlAssemblyClr>();
             var response = _catalogClient.Catalog.ListAssemblies(accountName, databaseName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -991,7 +985,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private IList<USqlExternalDataSource> GetExternalDataSources(string accountName,
             string databaseName)
         {
-            List<USqlExternalDataSource> toReturn = new List<USqlExternalDataSource>();
+            var toReturn = new List<USqlExternalDataSource>();
             var response = _catalogClient.Catalog.ListExternalDataSources(accountName, databaseName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -1003,6 +997,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
+// TODO: Remove IfDef
 #if NETSTANDARD
         private USqlCredential GetCredential(string accountName, string databaseName, string credName)
         {
@@ -1015,13 +1010,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         }
 #endif
 
+// TODO: Remove IfDef
 #if NETSTANDARD
         private IList<USqlCredential> GetCredentials(string accountName, string databaseName)
 #else
         private IList<ObsoleteUSqlCredential> GetCredentials(string accountName, string databaseName)
 #endif
         {
-            List<USqlCredential> toReturn = new List<USqlCredential>();
+            var toReturn = new List<USqlCredential>();
             var response = _catalogClient.Catalog.ListCredentials(accountName, databaseName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -1030,6 +1026,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 toReturn.AddRange(response);
             }
 
+// TODO: Remove IfDef
 #if NETSTANDARD
             return toReturn;
 #else
@@ -1045,7 +1042,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         private IList<USqlSchema> GetSchemas(string accountName, string databaseName)
         {
-            List<USqlSchema> toReturn = new List<USqlSchema>();
+            var toReturn = new List<USqlSchema>();
             var response = _catalogClient.Catalog.ListSchemas(accountName, databaseName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -1067,7 +1064,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private IList<USqlTable> GetTables(string accountName, string databaseName,
             string schemaName)
         {
-            List<USqlTable> toReturn = new List<USqlTable>();
+            var toReturn = new List<USqlTable>();
             if (string.IsNullOrEmpty(schemaName))
             {
                 var response = _catalogClient.Catalog.ListTablesByDatabase(accountName, databaseName);
@@ -1101,7 +1098,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private IList<USqlTablePartition> GetTablePartitions(string accountName, string databaseName,
             string schemaName, string tableName)
         {
-            List<USqlTablePartition> toReturn = new List<USqlTablePartition>();
+            var toReturn = new List<USqlTablePartition>();
             var response = _catalogClient.Catalog.ListTablePartitions(accountName, databaseName, schemaName, tableName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -1124,7 +1121,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private IList<USqlTableValuedFunction> GetTableValuedFunctions(string accountName,
             string databaseName, string schemaName)
         {
-            List<USqlTableValuedFunction> toReturn = new List<USqlTableValuedFunction>();
+            var toReturn = new List<USqlTableValuedFunction>();
             if (string.IsNullOrEmpty(schemaName))
             {
                 var response = _catalogClient.Catalog.ListTableValuedFunctionsByDatabase(accountName, databaseName);
@@ -1159,7 +1156,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private IList<USqlTableStatistics> GetTableStatistics(string accountName,
             string databaseName, string schemaName, string tableName)
         {
-            List<USqlTableStatistics> toReturn = new List<USqlTableStatistics>();
+            var toReturn = new List<USqlTableStatistics>();
             if (string.IsNullOrEmpty(schemaName) && string.IsNullOrEmpty(tableName))
             {
                 var response = _catalogClient.Catalog.ListTableStatisticsByDatabase(accountName, databaseName);
@@ -1203,7 +1200,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private IList<USqlView> GetViews(string accountName, string databaseName,
             string schemaName)
         {
-            List<USqlView> toReturn = new List<USqlView>();
+            var toReturn = new List<USqlView>();
             if (string.IsNullOrEmpty(schemaName))
             {
                 var response = _catalogClient.Catalog.ListViewsByDatabase(accountName, databaseName);
@@ -1238,7 +1235,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private IList<USqlProcedure> GetProcedures(string accountName, string databaseName,
             string schemaName)
         {
-            List<USqlProcedure> toReturn = new List<USqlProcedure>();
+            var toReturn = new List<USqlProcedure>();
             var response = _catalogClient.Catalog.ListProcedures(accountName, databaseName, schemaName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -1260,7 +1257,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private IList<USqlPackage> GetPackages(string accountName, string databaseName,
             string schemaName)
         {
-            List<USqlPackage> toReturn = new List<USqlPackage>();
+            var toReturn = new List<USqlPackage>();
             var response = _catalogClient.Catalog.ListPackages(accountName, databaseName, schemaName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -1275,7 +1272,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private IList<USqlType> GetTypes(string accountName, string databaseName,
             string schemaName)
         {
-            List<USqlType> toReturn = new List<USqlType>();
+            var toReturn = new List<USqlType>();
             var response = _catalogClient.Catalog.ListTypes(accountName, databaseName, schemaName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -1452,14 +1449,13 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             var jobList = new List<JobInformationBasic>();
             var response = _jobClient.Job.List(accountName, parameters);
-            var curCount = 0;
             jobList.AddRange(response);
-            curCount = jobList.Count();
+            var curCount = jobList.Count;
             while (!string.IsNullOrEmpty(response.NextPageLink) && curCount <= top.Value)
             {
                 response = ListJobsWithNextLink(response.NextPageLink);
                 jobList.AddRange(response);
-                curCount = jobList.Count();
+                curCount = jobList.Count;
             }
 
             

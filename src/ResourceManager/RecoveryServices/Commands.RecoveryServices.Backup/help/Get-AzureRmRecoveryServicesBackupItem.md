@@ -62,13 +62,14 @@ The acceptable values for this parameter are:
 - MARS 
 - SCDPM 
 - AzureBackupServer 
- AzureSQL
+- AzureSQL
+- AzureStorage
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
 Parameter Sets: GetItemsForVault
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
+Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage
 
 Required: True
 Position: 1
@@ -202,12 +203,13 @@ Specifies the workload type.
 The acceptable values for this parameter are:
 - AzureVM 
 - AzureSQLDatabase
+- AzureFiles
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: GetItemsForContainer, GetItemsForVault
 Aliases:
-Accepted values: AzureVM, AzureSQLDatabase
+Accepted values: AzureVM, AzureSQLDatabase, AzureFiles
 
 Required: True
 Position: 5

@@ -264,6 +264,12 @@
   <data name="ApplicationGatewayRedirectConfigurationName" xml:space="preserve">
     <value>redirectConfigurations</value>
   </data>
+  <data name="NetworkProfileNameNotSet" xml:space="preserve">
+    <value>NetworkProfileNameNotSet</value>
+  </data>
+  <data name="ContainerNetworkInterfaceConfigurationNameNotSet" xml:space="preserve">
+    <value>ContainerNetworkInterfaceConfigurationNameNotSet</value>
+  </data>
   <data name="HubVnetConnectionNotFound" xml:space="preserve">
     <value>The hub virtual network connection to modify could not be found.</value>
   </data>
@@ -338,5 +344,17 @@
   </data>
   <data name="ApplicationGatewayTrustedRootCertificateName" xml:space="preserve">
     <value>trustedRootCertificates</value>
+  </data>
+  <data name="ConnectivityDestinationIsMustNotBeTheSameAsSource" xml:space="preserve">
+    <value>Connectivity check destination resource id must not be the same as source: {0}</value>
+  </data>
+  <data name="ConnectivityMissingDestinationPort" xml:space="preserve">
+    <value>Connectivity check missing destination port</value>
+  </data>
+  <data name="ConnectivityMissingDestinationResourceIdOrAddress" xml:space="preserve">
+    <value>Connectivity check missing destination resource id or address</value>
+  </data>
+  <data name="NoNetworkWatcherInLocation" xml:space="preserve">
+    <value>There is no network watcher in location {0}</value>
   </data>
 </root>

@@ -40,6 +40,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyDefinitionMode()
+        {
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicyDefinitionMode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyDefinitionCRUDAtManagementGroup()
         {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicyDefinitionCRUDAtManagementGroup");

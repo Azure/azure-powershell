@@ -188,8 +188,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (destChannel == null)
             {
-                AzureStorageContext context = null;
-
                 if (ContainerNameParameterSet == this.ParameterSetName ||
                     ContainerParameterSet == this.ParameterSetName ||
                     BlobFilePathParameterSet == this.ParameterSetName ||
@@ -198,14 +196,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     FileFilePathParameterSet == this.ParameterSetName ||
                     UriFilePathParameterSet == this.ParameterSetName)
                 {
-                    context = this.GetCmdletStorageContext(DestContext);
+                    if (DestContext == null)
+                    {
+                        if (Channel != null)
+                        {
+                            destChannel = Channel;
+                        }
+                        else
+                        {
+                            destChannel = base.CreateChannel();
+                        }
+                    }
+                    else
+                    {
+                        destChannel = new StorageFileManagement(this.GetCmdletStorageContext(DestContext));
+                    }
                 }
                 else
                 {
-                    context = AzureStorageContext.EmptyContextInstance;
+                    destChannel = base.CreateChannel();
                 }
-
-                destChannel = new StorageFileManagement(context);
             }
 
             return destChannel;
@@ -366,6 +376,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             try
             {
                 await destFile.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+
+                //Clean the Metadata of the destination file object, or the source metadata won't overwirte the dest file metadata. See https://docs.microsoft.com/en-us/rest/api/storageservices/copy-file
+                destFile.Metadata.Clear();
             }
             catch (StorageException ex)
             {

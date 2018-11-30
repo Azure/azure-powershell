@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ImportExport.Model;
 using System;
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "SQL Database name.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 

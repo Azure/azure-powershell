@@ -18,9 +18,9 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationSelectedDB", DefaultParameterSetName = SqlServerSqlDbParameterSet), OutputType(typeof(MigrateSqlServerSqlDbDatabaseInput))]
-    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsSelectedDB")]
-    public class NewDataMigrationSelectedDB : DataMigrationCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationSelectedDBObject", DefaultParameterSetName = SqlServerSqlDbParameterSet), OutputType(typeof(MigrateSqlServerSqlDbDatabaseInput))]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationSelectedDB", "New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsSelectedDB", "New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsSelectedDBObject")]
+    public class NewDataMigrationSelectedDBObject : DataMigrationCmdlet
     {
         private const string SqlServerSqlDbParameterSet = "MigrateSqlServerSqlDb";
         private const string SqlServerSqlDbMiParameterSet = "MigrateSqlServerSqlDbMi";
@@ -35,8 +35,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             HelpMessage = "The name of the source database.",
             ParameterSetName = SqlServerSqlDbParameterSet
         )]
+
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        [Alias("Name")]
+        public string SourceDatabaseName { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -97,7 +99,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                 case SqlServerSqlDbMiParameterSet:
                     MigrateSqlServerSqlMIDatabaseInput selectedDbMI = new MigrateSqlServerSqlMIDatabaseInput
                     {
-                        Name = Name,
+                        Name = SourceDatabaseName,
                         RestoreDatabaseName = TargetDatabaseName,
                         BackupFileShare = BackupFileShare,
                     };
@@ -106,7 +108,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                 default:
                     MigrateSqlServerSqlDbDatabaseInput selectedDbSqlDB = new MigrateSqlServerSqlDbDatabaseInput
                     {
-                        Name = Name,
+                        Name = SourceDatabaseName,
                         MakeSourceDbReadOnly = MakeSourceDbReadOnly,
                         TargetDatabaseName = TargetDatabaseName,
                         TableMap = TableMap

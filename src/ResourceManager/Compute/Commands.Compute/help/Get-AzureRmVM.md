@@ -30,6 +30,11 @@ Get-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-Display
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ListLocationVirtualMachinesParamSet
+```
+Get-AzureRmVM -Location <String> [-Status] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ListNextLinkVirtualMachinesParamSet
 ```
 Get-AzureRmVM [-Status] [-NextLink] <Uri> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -73,6 +78,13 @@ PS C:\> Get-AzureRmVM
 
 This command gets all the virtual machines in your subscription.
 
+### Example 5: Get all virtual machines in the location.
+```
+PS C:\> Get-AzureRmVM -Location "westus"
+```
+
+This command gets all the virtual machines in West US region.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -103,6 +115,21 @@ Aliases:
 Accepted values: Compact, Expand
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies a location for the virtual machines to list.
+
+```yaml
+Type: System.String
+Parameter Sets: ListLocationVirtualMachinesParamSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

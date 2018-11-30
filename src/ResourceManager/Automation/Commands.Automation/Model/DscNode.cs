@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
             this.Name = node.Name;
-            this.Id = node.NodeId.ToString("D");
+            this.Id = node.NodeId;
             this.IpAddress = node.Ip;
             this.LastSeen = node.LastSeen.ToLocalTime();
             this.RegistrationTime = node.RegistrationTime.ToLocalTime();
             this.Status = node.Status;
-            this.NodeConfigurationName = node.NodeConfiguration.Name;
+            this.NodeConfigurationName = node.DscNodeName;
         }
 
         /// <summary>

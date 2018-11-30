@@ -213,7 +213,7 @@ function Test-SetAzureStorageAccount
         $kind = 'Storage'
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true -EnableHierarchicalNamespace $true;
 
         Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         $stotype = 'StandardGRS';
@@ -222,6 +222,7 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
+        Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
         
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
         Assert-AreEqual $stoname $stos[0].StorageAccountName;
@@ -229,12 +230,14 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $stos[0].Location;
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
+        Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
 
         $stotype = 'Standard_LRS';
         # TODO: Still need to do retry for Set-, even after Get- returns it.
         Retry-IfException { Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -EnableHttpsTrafficOnly $false }
         $stotype = 'Standard_RAGRS';
-        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype;
+        $sto = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype;
+        Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
 
         $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
         $stotype = 'StandardRAGRS';
@@ -243,6 +246,7 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $false $sto.EnableHttpsTrafficOnly;
+        Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
 
         Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
@@ -656,4 +660,20 @@ function Test-SetAzureStorageAccountStorageV2
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
+
+<#
+.SYNOPSIS
+Test GetAzureStorageUsage with current Location
+.Description
+AzureAutomationTest
+#>
+function Test-GetAzureStorageLocationUsage
+{
+        # Test
+        $loc = Get-ProviderLocation_Stage ResourceManagement; 
+
+        $usage = Get-AzureRmStorageUsage -Location $loc
+        Assert-AreNotEqual 0 $usage.Limit;
+        Assert-AreNotEqual 0 $usage.CurrentValue;      
 }
