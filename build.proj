@@ -364,6 +364,10 @@
 
     <!-- Cleanup extraneous files. -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
+
+    <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
+
+    <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
     
     <CallTarget Targets="CodeSignBinaries" Condition="'$(CodeSign)' == 'true'" />
   </Target>
