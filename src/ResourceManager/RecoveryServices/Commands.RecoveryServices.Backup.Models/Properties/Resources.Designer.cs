@@ -1064,7 +1064,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set vault context first using cmdlet Set-AzureRmRecoveryServicesVaultContext.
+        ///   Looks up a localized string similar to Set vault context first using cmdlet Set-AzRecoveryServicesVaultContext.
         /// </summary>
         public static string SetVaultContextFirst {
             get {

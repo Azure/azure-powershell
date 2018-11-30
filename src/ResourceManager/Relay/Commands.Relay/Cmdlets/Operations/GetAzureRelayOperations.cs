@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
 {
     /// <summary>
-    /// 'Get-AzureRmRelayOperation' Cmdlet retrive the Operations List
+    /// 'Get-AzRelayOperation' Cmdlet retrive the Operations List
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayOperation"), OutputType(typeof(PSOperationAttributes))]
     public class GetAzureRmRelayOperation : AzureRelayCmdletBase

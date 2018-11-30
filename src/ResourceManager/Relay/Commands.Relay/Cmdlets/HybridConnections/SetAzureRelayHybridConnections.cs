@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
 {
     /// <summary>
-    /// 'Set-AzureRmRelayHybridConnection' Cmdlet updates the specified WcfRelay
+    /// 'Set-AzRelayHybridConnection' Cmdlet updates the specified WcfRelay
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayHybridConnection", SupportsShouldProcess = true), OutputType(typeof(PSHybridConnectionAttibutes))]
     public class SetAzureRelayHybridConnections : AzureRelayCmdletBase

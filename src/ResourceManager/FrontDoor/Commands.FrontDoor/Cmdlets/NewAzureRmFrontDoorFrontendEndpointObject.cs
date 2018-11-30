@@ -26,7 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzureRmFrontDoorFrontendEndpointObject cmdlet.
+    /// Defines the New-AzFrontDoorFrontendEndpointObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFrontendEndpointObject"), OutputType(typeof(PSFrontendEndpoint))]
     public class NewAzureRmFrontDoorFrontendEndpointObject : AzureFrontDoorCmdletBase
