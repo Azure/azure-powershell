@@ -26,40 +26,42 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Managed Database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedDatabase",
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabase",
         DefaultParameterSetName = CreateNewByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class NewAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<AzureSqlManagedDatabaseModel>
     {
         protected const string CreateNewByNameAndResourceGroupParameterSet =
-            "CreateNewManagedDatabaseByInputParameters";
+            "CreateNewInstanceDatabaseFromInputParameters";
 
         protected const string CreateNewByInputObjectParameterSet =
-            "CreateNewManagedDatabaseByAzureSqlManagedInstanceModelInstanceDefinition";
+            "CreateNewInstanceDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition";
 
         protected const string CreateNewByResourceIdParameterSet =
-            "CreateNewManagedDatabaseByAzureSqlManagedInstanceResourceId";
+            "CreateNewInstanceDatabaseFromAzureSqlInstanceResourceId";
 
         /// <summary>
-        /// Gets or sets the name of the managed database to create.
+        /// Gets or sets the name of the instance database to create.
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            HelpMessage = "The name of the Azure SQL Managed Database to create.")]
-        [Alias("ManagedDatabaseName")]
+            HelpMessage = "The name of the instance database to create.")]
+        [Alias("InstanceDatabaseName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "InstanceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Azure Sql Managed instance to use
+        /// Gets or sets the name of the instance to use
         /// </summary>
         [Parameter(ParameterSetName = CreateNewByNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 1,
-            HelpMessage = "The Azure Sql Managed Instance name.")]
+            HelpMessage = "The name of the instance.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public override string ManagedInstanceName { get; set; }
+        public override string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -73,44 +75,45 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Azure SQL Managed Database collation to use
+        /// Gets or sets the name of the instance database collation to use
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The collation of the Azure SQL Managed Database collation to use.")]
+            HelpMessage = "The collation of the instance database to use.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("SQL_Latin1_General_CP1_CI_AS", "Latin1_General_100_CS_AS_SC")]
         public string Collation { get; set; }
 
         /// <summary>
-        /// Gets or sets the tags associated with the Azure Sql Managed Database
+        /// Gets or sets the tags associated with the instance database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Sql Managed Database")]
+            HelpMessage = "The tags to associate with the instance database")]
         [Alias("Tags")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
-        /// Gets or sets the Azure Sql Managed Instance object
+        /// Gets or sets the instance object
         /// </summary>
         [Parameter(ParameterSetName = CreateNewByInputObjectParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The Azure Sql Managed Instance object")]
+            HelpMessage = "The instance object")]
         [ValidateNotNullOrEmpty]
-        [Alias("InputObject")]
-        public AzureSqlManagedInstanceModel ManagedInstanceObject { get; set; }
+        [Alias("ParentObject")]
+        public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource id of the Managed instance to get
+        /// Gets or sets the resource id of the instance to get
         /// </summary>
         [Parameter(ParameterSetName = CreateNewByResourceIdParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Managed Instance resource id")]
+            HelpMessage = "The instance resource id")]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceResourceId { get; set; }
+        [Alias("ParentResourceId")]
+        public string InstanceResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -134,27 +137,27 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         {
             if (string.Equals(this.ParameterSetName, CreateNewByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                ResourceGroupName = ManagedInstanceObject.ResourceGroupName;
-                ManagedInstanceName = ManagedInstanceObject.ManagedInstanceName;
+                ResourceGroupName = InstanceObject.ResourceGroupName;
+                InstanceName = InstanceObject.ManagedInstanceName;
             }
             else if (string.Equals(this.ParameterSetName, CreateNewByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                var resourceInfo = new ResourceIdentifier(ManagedInstanceResourceId);
+                var resourceInfo = new ResourceIdentifier(InstanceResourceId);
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
-                ManagedInstanceName = resourceInfo.ResourceName;
+                InstanceName = resourceInfo.ResourceName;
             }
 
-            // We try to get the managed database. Since this is a create, we don't want the database to exist
+            // We try to get the instance database. Since this is a create, we don't want the database to exist
             try
             {
-                ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.ManagedInstanceName, this.Name);
+                ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.InstanceName, this.Name);
             }
             catch (CloudException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    // This is what we want.  We looked and there is no managed database with this name.
+                    // This is what we want.  We looked and there is no instance database with this name.
                     return null;
                 }
 
@@ -162,10 +165,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 throw;
             }
 
-            // The managed database already exists
+            // The instance database already exists
             throw new PSArgumentException(
-                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseNameExists, this.Name, this.ManagedInstanceName),
-                "ManagedDatabaseName");
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseNameExists, this.Name, this.InstanceName),
+                "InstanceDatabaseName");
         }
 
         /// <summary>
@@ -175,12 +178,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override AzureSqlManagedDatabaseModel ApplyUserInputToModel(AzureSqlManagedDatabaseModel model)
         {
-            string location = ModelAdapter.GetManagedInstanceLocation(ResourceGroupName, ManagedInstanceName);
+            string location = ModelAdapter.GetManagedInstanceLocation(ResourceGroupName, InstanceName);
             return new AzureSqlManagedDatabaseModel()
             {
                 Location = location,
                 ResourceGroupName = ResourceGroupName,
-                ManagedInstanceName = ManagedInstanceName,
+                ManagedInstanceName = InstanceName,
                 Collation = Collation,
                 Name = Name,
                 CreateMode = "Default",
@@ -189,14 +192,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         }
 
         /// <summary>
-        /// Create the new managed database
+        /// Create the new instance database
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
         protected override AzureSqlManagedDatabaseModel PersistChanges(AzureSqlManagedDatabaseModel entity)
         {
             AzureSqlManagedDatabaseModel upsertedManagedDatabase;
-            return upsertedManagedDatabase = ModelAdapter.UpsertManagedDatabase(this.ResourceGroupName, this.ManagedInstanceName, entity);
+            return upsertedManagedDatabase = ModelAdapter.UpsertManagedDatabase(this.ResourceGroupName, this.InstanceName, entity);
         }
 
         /// <summary>

@@ -64,12 +64,12 @@ After executing this cmdlet, you can disconnect from an Azure account using Disc
 ## EXAMPLES
 
 ### Example 1: Use an interactive login to connect to an Azure account
-```
+```powershell
 PS C:\> Connect-AzureRmAccount
-Account: azureuser@contoso.com
-Environment: AzureCloud
-Subscription: xxxx-xxxx-xxxx-xxxx
-Tenant: xxxx-xxxx-xxxx-xxxx
+
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 This command connects to an Azure account.
@@ -77,56 +77,78 @@ To run Azure Resource Manager cmdlets with this account, you must provide Micros
 If multi-factor authentication is enabled for your credentials, you must log in using the interactive option or use service principal authentication.
 
 ### Example 2: Connect to an Azure account using organizational ID credentials
-```
+```powershell
 PS C:\> $Credential = Get-Credential
 PS C:\> Connect-AzureRmAccount -Credential $Credential
-Account: azureuser@contoso.com
-Environment: AzureChinaCloud
-Subscription: xxxx-xxxx-xxxx-xxxx
-Tenant: xxxx-xxxx-xxxx-xxxx
+
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-The first command gets the user credentials, and then stores them in the $Credential variable.
+The first command will prompt for user credentials (username and password), and then stores them in the $Credential variable.
 The second command connects to an Azure account using the credentials stored in $Credential.
 This account authenticates with Azure Resource Manager using organizational ID credentials.
 You cannot use multi-factor authentication or Microsoft account credentials to run Azure Resource Manager cmdlets with this account.
 
 ### Example 3: Connect to an Azure service principal account
-```
+```powershell
 PS C:\> $Credential = Get-Credential
+
 PS C:\> Connect-AzureRmAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
-Account: xxxx-xxxx-xxxx-xxxx
-Environment: AzureCloud
-Subscription: yyyy-yyyy-yyyy-yyyy
-Tenant: xxxx-xxxx-xxxx-xxxx
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+xxxx-xxxx-xxxx-xxxx    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-The first command gets the user credentials, and then stores them in the $Credential variable.
+The first command gets the service principal credentials (application id and service principal secret), and then stores them in the $Credential variable.
 The second command connect to Azure using the service principal credentials stored in $Credential for the specified Tenant.
 The ServicePrincipal switch parameter indicates that the account authenticates as a service principal.
 
 ### Example 4: Use an interactive login to connect to an account for a specific tenant and subscription
-```
+```powershell
 PS C:\> Connect-AzureRmAccount -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
-Account: pfuller@contoso.com
-Environment: AzureCloud
-Subscription: yyyy-yyyy-yyyy-yyyy
-Tenant: xxxx-xxxx-xxxx-xxxx
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
 This command connects to an Azure account and configured AzureRM PowerShell to run cmdlets for the specified tenant and subscription by default.
 
 ### Example 5: Add an Account Using Managed Service Identity Login
-```
+```powershell
 PS C:\> Connect-AzureRmAccount -MSI
-Account: MSI@50342
-Environment: AzureCloud
-Subscription: yyyy-yyyy-yyyy-yyyy
-Tenant: xxxx-xxxx-xxxx-xxxx
+
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+MSI@50342              Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-This command connects using the managed service identity of the host environment (for example, if executed on a 
+This command connects using the managed service identity of the host environment (for example, if executed on a
 VirtualMachine with an assigned Managed Service Identity, this will allow the code to login using that assigned identity)
+
+### Example 6: Add an account using certificates
+```powershell
+# For more information on creating a self-signed certificate
+# and giving it proper permissions, please see the following:
+# https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-authenticate-service-principal-powershell
+PS C:\> $Thumbprint = "0SZTNJ34TCCMUJ5MJZGR8XQD3S0RVHJBA33Z8ZXV"
+PS C:\> $TenantId = "4cd76576-b611-43d0-8f2b-adcb139531bf"
+PS C:\> $ApplicationId = "3794a65a-e4e4-493d-ac1d-f04308d712dd"
+PS C:\> Connect-AzureRmAccount -CertificateThumbprint $Thumbprint -ApplicationId $ApplicationId -Tenant $TenantId -ServicePrincipal
+
+Account             SubscriptionName TenantId            Environment
+-------             ---------------- --------            -----------
+xxxx-xxxx-xxxx-xxxx Subscription1    xxxx-xxxx-xxxx-xxxx AzureCloud
+
+Account          : 3794a65a-e4e4-493d-ac1d-f04308d712dd
+SubscriptionName : MyTestSubscription
+SubscriptionId   : 85f0f653-1f86-4d2c-a9f1-042efc00085c
+TenantId         : 4cd76576-b611-43d0-8f2b-adcb139531bf
+Environment      : AzureCloud
+```
+
+This command connects to an Azure account using certificate-based service principal authentication. Theservice principal used for authentication should have been created with the given certificate.
 
 ## PARAMETERS
 
