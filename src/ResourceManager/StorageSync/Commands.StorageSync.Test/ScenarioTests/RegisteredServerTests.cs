@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests
+namespace StorageSync.Test.ScenarioTests
 {
     public class RegisteredServerTests : RMTestBase
     {
