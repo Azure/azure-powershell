@@ -135,6 +135,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ResourceGroupName = "Name of the resource group of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.";
             public const string Type = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
             public const string ResourceId = "ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.";
+            public const string ProtectableObjName = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
         }
     }
 }
