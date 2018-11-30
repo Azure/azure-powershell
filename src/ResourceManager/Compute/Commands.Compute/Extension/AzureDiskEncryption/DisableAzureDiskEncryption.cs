@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         new ApplicationException(
                             string.Format(
                                 CultureInfo.CurrentUICulture,
-                                "Disable-AzureDiskEncryption can disable encryption only on a VM that was already created ")),
+                                "Disable-AzDiskEncryption can disable encryption only on a VM that was already created ")),
                         "InvalidResult",
                         ErrorCategory.InvalidResult,
                         null));
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         new ApplicationException(
                             string.Format(
                                 CultureInfo.CurrentUICulture,
-                                "Set-AzureDiskEncryptionExtension can enable encryption only on a VM that was already created and has appropriate storageProfile and OS disk")),
+                                "Set-AzDiskEncryptionExtension can enable encryption only on a VM that was already created and has appropriate storageProfile and OS disk")),
                         "InvalidResult",
                         ErrorCategory.InvalidResult,
                         null));
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             new ApplicationException(
                                 string.Format(
                                     CultureInfo.CurrentUICulture,
-                                    "Disable-AzureDiskEncryption can disable encryption only on a VM that was already created and has appropriate storageProfile and OS disk")),
+                                    "Disable-AzDiskEncryption can disable encryption only on a VM that was already created and has appropriate storageProfile and OS disk")),
                             "InvalidResult",
                             ErrorCategory.InvalidResult,
                             null));

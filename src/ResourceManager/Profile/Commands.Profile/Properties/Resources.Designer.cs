@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Connect-AzureRmAccount..
+        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Connect-AzAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {
             get {
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Connect-AzureRmAccount..
+        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Connect-AzAccount..
         /// </summary>
         internal static string ContextCannotBeNull {
             get {
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Connect-AzureRmAccount..
+        ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Connect-AzAccount..
         /// </summary>
         internal static string NoValidTenant {
             get {
@@ -655,6 +655,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Module deletion failed. Please close all PowerShell sessions to ensure no AzureRM modules are currently loaded, and rerun this cmdlet in Administrator mode..
+        /// </summary>
+        internal static string RemoveModuleError {
+            get {
+                return ResourceManager.GetString("RemoveModuleError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rename context &apos;{0}&apos; to &apos;{1}&apos;.
         /// </summary>
         internal static string RenameContextMessage {
@@ -691,7 +700,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run Connect-AzureRmAccount to login..
+        ///   Looks up a localized string similar to Run Connect-AzAccount to login..
         /// </summary>
         internal static string RunLoginCmdlet {
             get {
@@ -799,6 +808,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing module &apos;{0}&apos; from your machine.
+        /// </summary>
+        internal static string ShouldRemoveModule {
+            get {
+                return ResourceManager.GetString("ShouldRemoveModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Targeting all subsequent cmdlets in this session at a different subscription.
         /// </summary>
         internal static string SubscriptionChangeWarning {
@@ -853,7 +871,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Connect-AzureRmAccount.
+        ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Connect-AzAccount.
         /// </summary>
         internal static string TenantAuthFailed {
             get {
@@ -907,7 +925,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate user account &apos;{0}&apos; with tenant &apos;{1}&apos;. Subscriptions in this tenant will not be listed. Please login again using Connect-AzureRmAccount to view the subscriptions in this tenant..
+        ///   Looks up a localized string similar to Could not authenticate user account &apos;{0}&apos; with tenant &apos;{1}&apos;. Subscriptions in this tenant will not be listed. Please login again using Connect-AzAccount to view the subscriptions in this tenant..
         /// </summary>
         internal static string UnableToLogin {
             get {

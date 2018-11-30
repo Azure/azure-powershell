@@ -19,6 +19,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add support for UltraSSD and Gallery Images in the simple param sets for `New-AzVm(ss)` cmdlets.
+* Minor changes for upcoming AzureRM to Az transition
+
+## Version 5.9.0
+* Fixed identity issue for SystemAssigned identity
+* Update dependencies for type mapping issue
 
 ## Version 5.8.0
 * Add Add-AzureRmVmssVMDataDisk and Remove-AzureRmVmssVMDataDisk cmdlets

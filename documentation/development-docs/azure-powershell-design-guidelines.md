@@ -40,6 +40,7 @@
     - [ResourceId](#resourceid)
     - [InputObject](#inputobject)
 - [AsJob Parameter](#asjob-parameter)
+- [Argument Completers](#argument-completers)
 
 ## Expected Patterns for Standard Cmdlets
 
@@ -97,7 +98,7 @@ Specified by the `OutputType` attribute, this piece of metadata lets the user kn
 
 In most cases, cmdlets will be returning an object corresponding to a resource(s) that a user is performing an action on. Rather than returning the .NET SDK type for that resource (exposing .NET SDK types in PowerShell cmdlets is _strongly_ discouraged), we suggest creating a new class that wraps this .NET SDK type, allowing for breaking changes in the underlying type while avoiding breaking changes in the PowerShell type.
 
-For example, the `Get-AzureRmVM` cmdlet uses the .NET SDK to retrieve objects of the `VirtualMachine` type, but a new class, `PSVirtualMachine`, was created to wrap the type from the .NET SDK, and is returned by the cmdlet. If, in the future, the `VirtualMachine` type in the .NET SDK has a property removed, that property can still be maintained in PowerShell by adding it to the `PSVirtualMachine` and recreating the value, thus avoiding a breaking change in the cmdlet(s).
+For example, the `Get-AzVM` cmdlet uses the .NET SDK to retrieve objects of the `VirtualMachine` type, but a new class, `PSVirtualMachine`, was created to wrap the type from the .NET SDK, and is returned by the cmdlet. If, in the future, the `VirtualMachine` type in the .NET SDK has a property removed, that property can still be maintained in PowerShell by adding it to the `PSVirtualMachine` and recreating the value, thus avoiding a breaking change in the cmdlet(s).
 
 #### Returning No Output
 
@@ -234,10 +235,10 @@ Below are the two main piping scenarios that should be applied in the cmdlets wi
 
 ### ResourceId
 
-In this scenario, the user is able to pipe the result of a generic resources cmdlet into a cmdlet that accepts `ResourceId`. The below example shows how a user can use the generic resources cmdlet `Find-AzureRmResource` to get all resources of type `Foo` and remove them:
+In this scenario, the user is able to pipe the result of a generic resources cmdlet into a cmdlet that accepts `ResourceId`. The below example shows how a user can use the generic resources cmdlet `Find-AzResource` to get all resources of type `Foo` and remove them:
 
 ```powershell
-Find-AzureRmResource -ResourceType Microsoft.Foo/foo | Remove-AzureRmFoo
+Find-AzResource -ResourceType Microsoft.Foo/foo | Remove-AzFoo
 ```
 
 For more information on enabling the `ResourceId` piping scenario and more examples, please see the ["Using the `ResourceId` parameter"](./piping-in-powershell.md#using-the-resourceid-parameter) section of the _Piping in PowerShell_ document.
@@ -247,7 +248,7 @@ For more information on enabling the `ResourceId` piping scenario and more examp
 In this scenario, the user is able to pipe the result of a cmdlet that returns a resource into a cmdlet that accepts that resource as an `InputObject`. The below example shows how a user can get a `Foo` object from one cmdlet and pipe it to a cmdlet that removes it:
 
 ```powershell
-Get-AzureRmFoo -Name "FooName" -ResourceGroupName "RG" | Remove-AzureRmFoo
+Get-AzFoo -Name "FooName" -ResourceGroupName "RG" | Remove-AzFoo
 ```
 
 For more information on enabling the `InputObject` piping scenario and more examples, please see the ["Using the `InputObject` parameter"](./piping-in-powershell.md#using-the-inputobject-parameter) section of the _Piping in PowerShell_ document.
@@ -268,7 +269,7 @@ Once you add the parameter, please manually test that the job is created and suc
 To ensure that `-AsJob` is not broken in future changes, please add a test for this parameter. To update tests to include this parameter, use the following pattern:
 
 ````powershell
-$job = Get-AzureRmSubscription
+$job = Get-AzSubscription
 $job | Wait-Job
 $subcriptions = $job | Receive-Job
 ````
@@ -289,6 +290,22 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 [Parameter(Mandatory = false, HelpMessage = "The resource group name")]
 [ResourceGroupCompleter]
 public string ResourceGroupName { get; set; }
+```
+
+### Resource Name Completer
+
+For any parameter that takes a resource name, the `ResourceNameCompleter` should be applied as an attribute.  This will allow the user to tab through all resource names for the ResourceType in the current subscription.  This completer will filter based upon the current parent resources provided (for instance, if ResourceGroupName is provided, only the resources in that particular resource group will be returned).  For this completer, please provide the ResourceType as the first argument, followed by the parameter name for all parent resources starting at the top level.
+
+```cs
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+...
+[Parameter(Mandatory = false, HelpMessage = "The parent server name")]
+[ResourceNameCompleter("Microsoft.Sql/servers", nameof(ResourceGroupName))]
+public string ServerName { get; set; }
+
+[Parameter(Mandatory = false, HelpMessage = "The database name")]
+[ResourceNameCompleter("Microsoft.Sql/servers/databases", nameof(ResourceGroupName), nameof(ServerName))]
+public string Name { get; set; }
 ```
 
 ### Location Completer

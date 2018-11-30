@@ -26,7 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzureRmFrontDoorHealthProbeSettingObject cmdlet.
+    /// Defines the New-AzFrontDoorHealthProbeSettingObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorHealthProbeSettingObject"), OutputType(typeof(PSHealthProbeSetting))]
     public class NewAzureRmFrontDoorHealthProbeSettingObject : AzureFrontDoorCmdletBase

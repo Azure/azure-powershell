@@ -23,7 +23,8 @@ function Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD
     # Setup
     $rgname = "onesdkTestConnection"
     $vnetConnectionName = Get-ResourceName
-	$location = "westus"
+    $location = Get-ProviderLocation "Microsoft.Network/vpnGateways" "West US"
+
     try 
      {
         # Get the resource group

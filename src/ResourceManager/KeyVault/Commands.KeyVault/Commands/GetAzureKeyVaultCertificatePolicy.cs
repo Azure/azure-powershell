@@ -13,13 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.KeyVault.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
     /// <summary>
-    /// Get-AzureKeyVaultCertificatePolicy gets the policy for a certificate object in key vault.
+    /// Get-AzKeyVaultCertificatePolicy gets the policy for a certificate object in key vault.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificatePolicy",        DefaultParameterSetName = ByVaultAndCertNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificatePolicy))]
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                    ParameterSetName = ByVaultAndCertNameParameterSet,
                    Position = 0,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 

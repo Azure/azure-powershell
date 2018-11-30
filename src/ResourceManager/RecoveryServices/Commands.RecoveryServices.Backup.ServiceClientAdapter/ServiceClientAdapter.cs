@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         const string AzureFabricName = "Azure";
         public const string ResourceProviderProductionNamespace = "Microsoft.RecoveryServices";
 
-        ClientProxy<RecoveryServicesBackupNS.RecoveryServicesBackupClient> BmsAdapter;
+        public ClientProxy<RecoveryServicesBackupNS.RecoveryServicesBackupClient> BmsAdapter;
 
         ClientProxy<RecoveryServicesNS.RecoveryServicesClient> RSAdapter;
 

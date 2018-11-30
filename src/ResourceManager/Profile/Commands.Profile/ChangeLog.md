@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.8.1
+* Update common code to use latest version of ClientRuntime
+
 ## Version 5.8.0
 * Update common code to use latest version of ClientRuntime
 * Rename param TenantId in cmdlet Connect-AzureRmAccount to Tenant and add an alias for TenantId
@@ -31,6 +34,7 @@
     - https://github.com/Azure/azure-powershell/issues/7462
 * Fix issue where `Disconnect-AzureRmAccount` would throw if not connected
     - https://github.com/Azure/azure-powershell/issues/7167
+* Minor changes for upcoming AzureRM to Az transition
 
 ## Version 5.7.0
 * Fix issue with Get-AzureRmSubscription in CloudShell
