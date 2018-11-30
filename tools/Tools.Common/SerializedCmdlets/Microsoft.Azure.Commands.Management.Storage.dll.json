@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHold",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHold, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHold, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HasLegalHold": "System.Nullable`1[System.Boolean]",
               "Tags": "System.String[]"
@@ -132,7 +132,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -227,7 +227,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
               "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -566,7 +566,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -734,7 +734,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
                     "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -993,7 +993,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
               "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -1144,7 +1144,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -1418,7 +1418,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -1666,7 +1666,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPeriodSinceCreationInDays": "System.Int32",
               "State": "System.String",
@@ -1787,7 +1787,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -1882,7 +1882,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
               "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -2223,7 +2223,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -2393,7 +2393,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
                     "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -2656,7 +2656,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPeriodSinceCreationInDays": "System.Int32",
               "State": "System.String",
@@ -2777,7 +2777,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -2872,7 +2872,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
               "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -3006,7 +3006,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPeriodSinceCreationInDays": "System.Int32",
               "State": "System.String",
@@ -3319,7 +3319,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -3513,7 +3513,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
                     "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -3726,7 +3726,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPeriodSinceCreationInDays": "System.Int32",
                     "State": "System.String",
@@ -3935,7 +3935,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
               "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -4086,7 +4086,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -4202,7 +4202,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4438,7 +4438,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4614,7 +4614,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -4742,7 +4742,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4945,7 +4945,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5206,7 +5206,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -5303,7 +5303,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
               "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -5684,7 +5684,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -5878,7 +5878,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
                     "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -6185,7 +6185,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPeriodSinceCreationInDays": "System.Int32",
               "State": "System.String",
@@ -6306,7 +6306,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -6401,7 +6401,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
               "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -6535,7 +6535,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPeriodSinceCreationInDays": "System.Int32",
               "State": "System.String",
@@ -6806,7 +6806,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -6976,7 +6976,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
                     "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -7165,7 +7165,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPeriodSinceCreationInDays": "System.Int32",
                     "State": "System.String",
@@ -7326,7 +7326,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHold",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHold, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHold, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HasLegalHold": "System.Nullable`1[System.Boolean]",
               "Tags": "System.String[]"
@@ -7444,7 +7444,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -7539,7 +7539,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
               "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -7878,7 +7878,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -8046,7 +8046,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
                     "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -8305,7 +8305,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPeriodSinceCreationInDays": "System.Int32",
               "State": "System.String",
@@ -8426,7 +8426,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -8521,7 +8521,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
               "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -8635,7 +8635,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPeriodSinceCreationInDays": "System.Int32",
               "State": "System.String",
@@ -9185,7 +9185,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -9407,7 +9407,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -9627,7 +9627,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
                     "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -9840,7 +9840,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
                     "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -10079,7 +10079,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPeriodSinceCreationInDays": "System.Int32",
                     "State": "System.String",
@@ -10218,7 +10218,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPeriodSinceCreationInDays": "System.Int32",
                     "State": "System.String",
@@ -10455,7 +10455,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
               "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -10627,7 +10627,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -10724,7 +10724,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
               "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -10836,7 +10836,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -11072,7 +11072,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11275,7 +11275,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -11376,7 +11376,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11554,7 +11554,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSContainer, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ImmutabilityPolicy": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
                     "LegalHold": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
@@ -11672,7 +11672,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11848,7 +11848,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12031,7 +12031,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -12073,7 +12073,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -12158,7 +12158,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule",
             "GenericTypeArguments": [],
@@ -12176,7 +12176,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule",
             "GenericTypeArguments": [],
@@ -12407,7 +12407,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule",
                   "GenericTypeArguments": [],
@@ -12549,7 +12549,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule",
                   "GenericTypeArguments": [],
@@ -12985,7 +12985,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -13620,7 +13620,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
               "DefaultAction": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum",
@@ -13974,7 +13974,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -14292,7 +14292,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
               "DefaultAction": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum",
@@ -14829,7 +14829,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IpRules": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
                     "DefaultAction": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum",
@@ -15688,7 +15688,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15730,7 +15730,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15815,7 +15815,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule",
             "GenericTypeArguments": [],
@@ -15833,7 +15833,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule",
             "GenericTypeArguments": [],
@@ -16064,7 +16064,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule",
                   "GenericTypeArguments": [],
@@ -16206,7 +16206,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule",
                   "GenericTypeArguments": [],
@@ -16987,7 +16987,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -17373,7 +17373,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
               "DefaultAction": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum",
@@ -17882,7 +17882,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IpRules": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
                     "DefaultAction": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum",
@@ -18438,7 +18438,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IpRules": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
                     "DefaultAction": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum",
@@ -19066,7 +19066,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IpRules": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
                     "DefaultAction": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum",
@@ -19345,7 +19345,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
               "DefaultAction": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum",
@@ -19560,7 +19560,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19663,7 +19663,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19766,7 +19766,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule",
             "GenericTypeArguments": [],
@@ -19784,7 +19784,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule",
             "GenericTypeArguments": [],
@@ -19909,7 +19909,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20018,7 +20018,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20127,7 +20127,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule",
                   "GenericTypeArguments": [],
@@ -20151,7 +20151,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule",
                   "GenericTypeArguments": [],
@@ -20458,7 +20458,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
             "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSUsage, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSUsage, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Unit": "System.Nullable`1[Microsoft.Azure.Management.Storage.Models.UsageUnit]",
               "CurrentValue": "System.Nullable`1[System.Int32]",
@@ -20828,7 +20828,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IpRules": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
         "DefaultAction": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum",
@@ -20995,7 +20995,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule",
       "GenericTypeArguments": [],
@@ -21005,7 +21005,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21041,7 +21041,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21146,7 +21146,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule",
       "GenericTypeArguments": [],
@@ -21156,7 +21156,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21192,7 +21192,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21204,7 +21204,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21299,7 +21299,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleActionEnum]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleActionEnum]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleActionEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleActionEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21311,7 +21311,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleActionEnum": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleActionEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleActionEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleActionEnum, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -23333,7 +23333,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
         "NetworkRuleSet": "Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet",
@@ -23420,7 +23420,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicyProperties, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "UpdateHistory": "Microsoft.Azure.Commands.Management.Storage.Models.PSUpdateHistoryProperty[]",
         "ImmutabilityPeriodSinceCreationInDays": "System.Int32",
@@ -23472,7 +23472,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSUpdateHistoryProperty[]": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSUpdateHistoryProperty[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSUpdateHistoryProperty[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSUpdateHistoryProperty[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSUpdateHistoryProperty",
       "GenericTypeArguments": [],
@@ -23482,7 +23482,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSUpdateHistoryProperty": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSUpdateHistoryProperty",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSUpdateHistoryProperty, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSUpdateHistoryProperty, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Timestamp": "System.Nullable`1[System.DateTime]",
         "ImmutabilityPeriodSinceCreationInDays": "System.Nullable`1[System.Int32]",
@@ -23548,7 +23548,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSLegalHoldProperties, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "Microsoft.Azure.Commands.Management.Storage.Models.PSTagProperty[]",
         "HasLegalHold": "System.Nullable`1[System.Boolean]"
@@ -23598,7 +23598,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSTagProperty[]": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSTagProperty[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSTagProperty[], Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSTagProperty[], Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Management.Storage.Models.PSTagProperty",
       "GenericTypeArguments": [],
@@ -23608,7 +23608,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSTagProperty": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSTagProperty",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSTagProperty, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSTagProperty, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Timestamp": "System.Nullable`1[System.DateTime]",
         "Tag": "System.String",
@@ -23661,7 +23661,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -23673,7 +23673,7 @@
     "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess": {
       "Namespace": "Microsoft.Azure.Commands.Management.Storage.Models",
       "Name": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Storage.Models.PSPublicAccess, Microsoft.Azure.Commands.Management.Storage, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
