@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
-    /// 'New-AzureRmEventHubDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
+    /// 'New-AzEventHubDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubDRConfigurationAttributes))]
     public class NewAzureRmEventHubGeoDRConfiguration : AzureEventHubsCmdletBase

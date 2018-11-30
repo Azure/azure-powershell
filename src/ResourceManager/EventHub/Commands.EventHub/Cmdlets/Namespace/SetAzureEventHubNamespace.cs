@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 {
     /// <summary>
-    /// 'Set-AzureRmEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
+    /// 'Set-AzEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubNamespace", SupportsShouldProcess = true, DefaultParameterSetName = NamespaceParameterSet), OutputType(typeof(PSNamespaceAttributes))]
     public class SetAzureEventHubNamespace : AzureEventHubsCmdletBase

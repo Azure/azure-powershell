@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Minor changes for upcoming AzureRM to Az transition
 * Fixed issue with using Get-AzureRmSqlDatabaseVulnerabilityAssessment with DotNet core
+* Modified documentation of help messages related to SQL Auditing cmdlets.
+* Minor changes for upcoming AzureRM to Az transition
 
 ## Version 4.12.0
 * Added new cmdlets for CRUD operations on Azure Sql Database Managed Instance and Azure Sql Managed Database

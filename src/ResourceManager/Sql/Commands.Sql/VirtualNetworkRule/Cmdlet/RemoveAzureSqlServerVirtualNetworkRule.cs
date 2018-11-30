@@ -20,7 +20,7 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
 {
     /// <summary>
-    /// Defines the Remove-AzureRmSqlServerVirtualNetworkRule cmdlet
+    /// Defines the Remove-AzSqlServerVirtualNetworkRule cmdlet
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerVirtualNetworkRule", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium),OutputType(typeof(Model.AzureSqlServerVirtualNetworkRuleModel))]
     public class RemoveAzureSqlServerVirtualNetworkRule : AzureSqlServerVirtualNetworkRuleCmdletBase

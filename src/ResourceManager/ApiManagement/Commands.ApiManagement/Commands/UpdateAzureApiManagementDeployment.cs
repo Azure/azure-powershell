@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementDeployment", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(PsApiManagement))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "Set-AzureRmApiManagement cmdlet from the AzureRM.ApiManagement module instead.",
+        "Set-AzApiManagement cmdlet from the AzureRM.ApiManagement module instead.",
         false)]
     public class UpdateAzureApiManagementDeployment : AzureApiManagementCmdletBase
     {

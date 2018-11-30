@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (ShouldProcess(this.SnapshotName, VerbsCommon.Remove)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
-                                            "Remove-AzureRmSnapshot operation")))
+                                            "Remove-AzSnapshot operation")))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;

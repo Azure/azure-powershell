@@ -28,7 +28,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzureRmFrontDoor cmdlet.
+    /// Defines the New-AzFrontDoor cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", SupportsShouldProcess = true), OutputType(typeof(PSFrontDoor))]
     public class NewAzureRmFrontDoor : AzureFrontDoorCmdletBase
