@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 Tags = model.Tags,
                 AdministratorLogin = model.AdministratorLogin,
                 AdministratorLoginPassword = model.AdministratorPassword != null ? ConversionUtilities.SecureStringToString(model.AdministratorPassword) : null,
-                Sku = model.Sku != null ? new Management.Sql.Models.Sku(model.Sku.Name) : null,
+                Sku = model.Sku != null ? new Management.Sql.Models.Sku(model.Sku.Name, model.Sku.Tier) : null,
                 LicenseType = model.LicenseType,
                 StorageSizeInGB = model.StorageSizeInGB,
                 SubnetId = model.SubnetId,

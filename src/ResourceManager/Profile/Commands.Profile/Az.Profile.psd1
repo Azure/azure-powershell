@@ -81,10 +81,10 @@ RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.d
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = '.\Microsoft.Azure.Commands.Profile.types.ps1xml'
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Profile.format.ps1xml'
+FormatsToProcess = @('.\Microsoft.Azure.Commands.Profile.format.ps1xml', '.\Microsoft.Azure.Commands.Profile.generated.format.ps1xml')
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.Profile.dll')
@@ -105,7 +105,8 @@ CmdletsToExport = 'Disable-AzDataCollection', 'Disable-AzContextAutosave',
     'Clear-AzContext', 'Disconnect-AzAccount', 
     'Get-AzContextAutosaveSetting', 'Set-AzDefault', 
     'Get-AzDefault', 'Clear-AzDefault',
-    'Enable-AzureRmAlias', 'Disable-AzureRmAlias'
+    'Enable-AzureRmAlias', 'Disable-AzureRmAlias',
+    'Uninstall-AzureRm'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -27,54 +27,55 @@ using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
     /// <summary>
-    /// Defines the Set-AzureRmSqlManagedInstance cmdlet
+    /// Defines the Set-AzureRmSqlInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstance",
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = SetByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class SetAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         protected const string SetByNameAndResourceGroupParameterSet =
-            "SetManagedInstanceFromInputParameters";
+            "SetInstanceFromInputParameters";
 
         protected const string SetByInputObjectParameterSet =
-            "SetManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition";
+            "SetInstanceFromAzureSqlManagedInstanceModelInstanceDefinition";
 
         protected const string SetByResourceIdParameterSet =
-            "SetManagedInstanceFromAzureResourceId";
+            "SetInstanceFromAzureResourceId";
 
         /// <summary>
-        /// AzureSqlManagedInstanceModel object to remove
+        /// Instance object to remove
         /// </summary>
         [Parameter(ParameterSetName = SetByInputObjectParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            HelpMessage = "The AzureSqlManagedInstanceModel object to remove")]
+            HelpMessage = "The instance object to remove")]
         [ValidateNotNullOrEmpty]
-        [Alias("ManagedInstance")]
+        [Alias("SqlInstance")]
         public Model.AzureSqlManagedInstanceModel InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource id of the Managed instance
+        /// Gets or sets the resource id of the instance
         /// </summary>
         [Parameter(ParameterSetName = SetByResourceIdParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of Managed instance to remove")]
+            HelpMessage = "The resource id of instance to remove")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Managed instance to use.
+        /// Gets or sets the name of the instance to use.
         /// </summary>
         [Parameter(ParameterSetName = SetByNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 0,
-            HelpMessage = "SQL Database Managed instance name.")]
-        [Alias("ManagedInstanceName")]
+            HelpMessage = "The name of the instance.")]
+        [Alias("InstanceName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -90,48 +91,57 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// The new SQL administrator password for the Managed instance.
+        /// The new SQL administrator password for the instance.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The new SQL administrator password for the Managed instance.")]
+            HelpMessage = "The new SQL administrator password for the instance.")]
         [ValidateNotNull]
         public SecureString AdministratorPassword { get; set; }
 
         /// <summary>
-        /// Gets or sets the Managed instance License Type
+        /// Gets or sets the edition to assign to the instance
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Determines which License Type of Sql Azure Managed Instance to use")]
+            HelpMessage = "The edition to assign to the instance.")]
+        [PSArgumentCompleter(Constants.GeneralPurposeEdition, Constants.BusinessCriticalEdition)]
+        [ValidateNotNullOrEmpty]
+        public string Edition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the instance License Type
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines which License Type to use")]
         [PSArgumentCompleter(Constants.LicenseTypeBasePrice, Constants.LicenseTypeLicenseIncluded)]
         public string LicenseType { get; set; }
 
         /// <summary>
-        /// Gets or sets the Storage Size in GB for Managed instance
+        /// Gets or sets the Storage Size in GB for instance
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Determines how much Storage size to associate with Managed instance")]
+            HelpMessage = "Determines how much Storage size to associate with instance")]
         public int? StorageSizeInGB { get; set; }
 
         /// <summary>
-        /// Gets or sets the VCore for Managed instance
+        /// Gets or sets the VCore for instance
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Determines how much VCore to associate with Managed instance")]
+            HelpMessage = "Determines how much VCore to associate with instance")]
         public int? VCore { get; set; }
 
         /// <summary>
-        /// The tags to associate with the Managed instance.
+        /// The tags to associate with the instance.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Managed instance.")]
+            HelpMessage = "The tags to associate with the instance.")]
         [Alias("Tags")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
-        /// Gets or sets whether or not to assign identity for Managed instance
+        /// Gets or sets whether or not to assign identity for instance
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this Managed instance for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this instance for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>
@@ -141,9 +151,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public SwitchParameter Force { get; set; }
         
         /// <summary>
-        /// Get the Managed instance to update
+        /// Get the instance to update
         /// </summary>
-        /// <returns>The Managed instance being updated</returns>
+        /// <returns>The instance being updated</returns>
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> GetEntity()
         {
             return new List<Model.AzureSqlManagedInstanceModel>() { ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name) };
@@ -156,6 +166,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <returns>The model to send to the update</returns>
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlManagedInstanceModel> model)
         {
+            AzureSqlManagedInstanceModel existingInstance = ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name);
+            Management.Internal.Resources.Models.Sku Sku = new Management.Internal.Resources.Models.Sku();
+
+            if (Edition != null)
+            {
+                string computeGeneration = existingInstance.Sku.Name.Contains(Constants.ComputeGenerationGen4) ? Constants.ComputeGenerationGen4 : Constants.ComputeGenerationGen5;
+                string editionShort = Edition.Equals(Constants.GeneralPurposeEdition) ? "GP" : Edition.Equals(Constants.BusinessCriticalEdition) ? "BC" : "Unknown";
+                Sku.Name = editionShort + "_" + computeGeneration;
+                Sku.Tier = Edition;
+            }
+            else
+            {
+                Sku = null;
+            }
+
             // Construct a new entity so we only send the relevant data to the Managed instance
             List<Model.AzureSqlManagedInstanceModel> updateData = new List<Model.AzureSqlManagedInstanceModel>();
             updateData.Add(new Model.AzureSqlManagedInstanceModel()
@@ -164,6 +189,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 ManagedInstanceName = this.Name,
                 FullyQualifiedDomainName = this.Name,
                 Location = model.FirstOrDefault().Location,
+                Sku = Sku,
                 AdministratorPassword = this.AdministratorPassword,
                 LicenseType = this.LicenseType,
                 StorageSizeInGB = this.StorageSizeInGB,
@@ -175,7 +201,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         }
 
         /// <summary>
-        /// Sends the Managed instance update request to the service
+        /// Sends the instance update request to the service
         /// </summary>
         /// <param name="entity">The update parameters</param>
         /// <returns>The response object from the service</returns>
@@ -189,10 +215,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDescription, this.Name),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerWarning, this.Name),
-               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+            if (!Force.IsPresent && !ShouldContinue(
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.SetAzureSqlInstanceDescription, this.Name),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.SetAzureSqlInstanceWarning, this.Name)))
             {
                 return;
             }

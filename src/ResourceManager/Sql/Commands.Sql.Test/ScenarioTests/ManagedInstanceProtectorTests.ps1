@@ -28,7 +28,7 @@ $tdeKeyName = $keyVaultName + "_" + $keyName + "_" + $keyVersion
 #>
 function Test-SetGetManagedInstanceEncryptionProtectorCI
 {
-	$managedInstance = Get-AzureRmSqlManagedInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
 	# ServiceManaged with ResourceGroupName and ManagedInstanceName & ResourceId
 	$encryptionProtector = Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -Type ServiceManaged
@@ -82,7 +82,7 @@ function Test-SetGetManagedInstanceEncryptionProtectorServiceManaged
 #>
 function Test-SetGetManagedInstanceEncryptionProtectorServiceManagedInputObject
 {
-	$managedInstance = Get-AzureRmSqlManagedInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
 	$encryptionProtector = Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance $managedInstance -Type ServiceManaged
 	
@@ -102,7 +102,7 @@ function Test-SetGetManagedInstanceEncryptionProtectorServiceManagedInputObject
 function Test-SetGetManagedInstanceEncryptionProtectorServiceManagedResourceId
 {
 
-	$managedInstance = Get-AzureRmSqlManagedInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 	$managedInstanceResourceId = $managedInstance.ResourceId
 
 	$encryptionProtector = Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstanceResourceId $managedInstanceResourceId -Type ServiceManaged
@@ -122,7 +122,7 @@ function Test-SetGetManagedInstanceEncryptionProtectorServiceManagedResourceId
 #>
 function Test-SetGetManagedInstanceEncryptionProtectorServiceManagedPiping
 {
-	$managedInstance = Get-AzureRmSqlManagedInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
 	$encryptionProtector = $managedInstance | Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -Type ServiceManaged
 	
@@ -172,7 +172,7 @@ function Test-SetGetManagedInstanceEncryptionProtectorByokInputObject
 	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after adding managed instance key vault key"
 	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyVaultKeyName mismatch after adding managed instance key vault key"
 
-	$managedInstance = Get-AzureRmSqlManagedInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
 	$encryptionProtector = Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance $managedInstance -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
 	
@@ -198,7 +198,7 @@ function Test-SetGetManagedInstanceEncryptionProtectorByokResourceId
 	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyVaultKeyName mismatch after adding managed instance key vault key"
 
 
-	$managedInstance = Get-AzureRmSqlManagedInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 	$managedInstanceResourceId = $managedInstance.ResourceId
 
 	$encryptionProtector = Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstanceResourceId $managedInstanceResourceId -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
@@ -224,7 +224,7 @@ function Test-SetGetManagedInstanceEncryptionProtectorByokPiping
 	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after adding managed instance key vault key"
 	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyVaultKeyName mismatch after adding managed instance key vault key"
 
-	$managedInstance = Get-AzureRmSqlManagedInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
 	$encryptionProtector = $managedInstance | Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
 	
