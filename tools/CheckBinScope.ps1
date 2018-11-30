@@ -7,7 +7,6 @@ param(
     [Parameter(Mandatory = $false)]
     [string] $CIToolsPath,
     [Parameter(Mandatory = $false)]
-    [ValidateSet('All', 'Latest', 'Stack', 'ServiceManagement', 'AzureStorage')]
     [System.String] $Scope
 )
 
