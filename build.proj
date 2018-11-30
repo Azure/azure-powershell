@@ -359,11 +359,17 @@
           Condition="'$(SkipHelp)' == 'false' And '$(RunStaticAnalysis)' == 'true'"
           ContinueOnError="false"/>
 
+    <Exec ContinueOnError="false"
+      Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration) &quot;" />
+
     <CallTarget targets="DependencyAnalysisNetcore" ContinueOnError="ErrorAndContinue" Condition="'$(RunStaticAnalysis)' == 'true'" />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" Condition="'$(RunStaticAnalysis)' == 'true'" />
 
     <!-- Cleanup extraneous files. -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
+
+    <Exec ContinueOnError="false"
+          Command="$(PowerShellCoreCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;" />
     
     <CallTarget Targets="CodeSignBinaries" Condition="'$(CodeSign)' == 'true'" />
   </Target>
