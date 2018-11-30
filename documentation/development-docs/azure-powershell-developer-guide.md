@@ -52,7 +52,7 @@ The following prerequisites should be completed before contributing to the Azure
 
 - Install [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 - Install the latest version of [Git](https://git-scm.com/downloads)
-- Install the [`platyPS` module](https://github.com/Azure/azure-powershell/blob/dev/documentation/development-docs/help-generation.md#installing-platyps)
+- Install the [`platyPS` module](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/help-generation.md#installing-platyps)
 - Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
     - `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
     - `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
@@ -85,10 +85,10 @@ You now be able to create your own branches, commit changes, and push commits to
 git remote add upstream https://github.com/Azure/azure-powershell.git
 ```
 
-Then, to pull changes from the **dev** branch in _Azure/azure-powershell_ into your local working branch, run the following command:
+Then, to pull changes from the **master** branch in _Azure/azure-powershell_ into your local working branch, run the following command:
 
 ```
-git pull upstream dev
+git pull upstream master
 ```
 
 ## Building the Environment
@@ -369,7 +369,7 @@ Create these environment variables for the AD scenario tests:
 
 # After Development
 
-Once all of your cmdlets have been created and the appropriate tests have been added, you can open a pull request in the Azure PowerShell repository to have your cmdlets added to the next release. Please make sure to read [CONTRIBUTING.md](https://github.com/Azure/azure-powershell/blob/dev/CONTRIBUTING.md) for more information on how to open a pull request, clean up commits, make sure appropriate files have been added/changed, and more.
+Once all of your cmdlets have been created and the appropriate tests have been added, you can open a pull request in the Azure PowerShell repository to have your cmdlets added to the next release. Please make sure to read [CONTRIBUTING.md](https://github.com/Azure/azure-powershell/blob/master/CONTRIBUTING.md) for more information on how to open a pull request, clean up commits, make sure appropriate files have been added/changed, and more.
 
 # Misc
 

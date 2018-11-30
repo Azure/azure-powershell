@@ -57,7 +57,7 @@ For more detailed instructions on using Azure PowerShell, please refer to the [g
 
 ### Log in to Azure
 
-To connect to Azure, use the [`Connect-AzAccount`](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Profile/Commands.Profile/help/Connect-AzAccount.md) cmdlet.
+To connect to Azure, use the [`Connect-AzAccount`](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Commands.Profile/help/Connect-AzAccount.md) cmdlet.
 
 ```powershell
 # Interactive login - you will get a dialog box asking for your Azure credentials
@@ -76,7 +76,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 
 ### Getting and setting your session context
 
-To view the context you are using in the current session, which contains the subscription and tenant, use the [`Get-AzContext`](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Profile/Commands.Profile/help/Get-AzContext.md) cmdlet:
+To view the context you are using in the current session, which contains the subscription and tenant, use the [`Get-AzContext`](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Commands.Profile/help/Get-AzContext.md) cmdlet:
 
 ```powershell
 # Get the context you are currently using
@@ -86,7 +86,7 @@ Get-AzContext
 Get-AzContext -ListAvailable
 ```
 
-To get the subscriptions in a tenant, use the [`Get-AzSubscription`](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Profile/Commands.Profile/help/Get-AzSubscription.md) cmdlet:
+To get the subscriptions in a tenant, use the [`Get-AzSubscription`](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Commands.Profile/help/Get-AzSubscription.md) cmdlet:
 
 ```powershell
 # Get all of the subscriptions in your current tenant
@@ -96,7 +96,7 @@ Get-AzSubscription
 Get-AzSubscription -TenantId $TenantId
 ```
 
-To change the subscription that you are using for your current context, use the [`Set-AzContext`](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Profile/Commands.Profile/help/Set-AzContext.md) cmdlet:
+To change the subscription that you are using for your current context, use the [`Set-AzContext`](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Commands.Profile/help/Set-AzContext.md) cmdlet:
 
 ```powershell
 # Set the context to a specific subscription
@@ -155,7 +155,7 @@ If there is a feature you would like to see in Azure PowerShell, please use the 
 
 If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](https://azure.github.io/guidelines/).
 
-More information about contributing to this repo can be found in [CONTRIBUTING md](https://github.com/Azure/azure-powershell/blob/dev/CONTRIBUTING.md) and the [Azure PowerShell Developer Guide](https://github.com/Azure/azure-powershell/blob/dev/documentation/development-docs/azure-powershell-developer-guide.md) folder.
+More information about contributing to this repo can be found in [CONTRIBUTING md](https://github.com/Azure/azure-powershell/blob/master/CONTRIBUTING.md) and the [Azure PowerShell Developer Guide](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/azure-powershell-developer-guide.md) folder.
 
 ## Learn More
 
