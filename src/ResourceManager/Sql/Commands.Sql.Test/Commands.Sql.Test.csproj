@@ -67,7 +67,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-	<Compile Include="ScenarioTests\ManagedInstanceCrudScenarioTests.cs" />
     <Compile Include="ScenarioTests\ManagedInstanceProtectorTests.cs" />
     <Compile Include="ScenarioTests\ManagedInstanceKeyVaultKeyTests.cs" />
     <Compile Include="ScenarioTests\TDECertificateTests.cs" />

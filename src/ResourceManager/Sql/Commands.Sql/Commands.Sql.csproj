@@ -399,6 +399,11 @@
     <Compile Include="Data Masking\Model\DatabaseDataMaskingRuleModel.cs" />
     <Compile Include="Data Masking\Services\DataMaskingEndpointsCommunicator.cs" />
     <Compile Include="Data Masking\Services\SqlDataMaskingAdapter.cs" />
+    <Compile Include="Database Activation\Cmdlet\AzureSqlDatabaseActivationCmdletBase.cs" />
+    <Compile Include="Database Activation\Cmdlet\ResumeAzureSqlDatabase.cs" />
+    <Compile Include="Database Activation\Cmdlet\SuspendAzureSqlDatabase.cs" />
+    <Compile Include="Database Activation\Services\SqlAzureDatabaseActivationAdapter.cs" />
+    <Compile Include="Database Activation\Services\SqlAzureDatabaseActivationCommunicator.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseRestorePointCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\GetAzureSqlDatabaseRestorePoints.cs" />
     <Compile Include="Database Backup\Cmdlet\NewAzureSqlDatabaseRestorePoint.cs" />
