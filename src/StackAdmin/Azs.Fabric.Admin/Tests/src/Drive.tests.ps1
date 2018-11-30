@@ -26,18 +26,20 @@
 .EXAMPLE
     PS C:\> .\Drive.Tests.ps1
     Describing Drives
-     [+] TestListDrives 331ms
-     [+] TestGetDrive 131ms
-     [+] TestGetAllDrives 215ms
-     [+] TestGetInvaildDrive 90ms
+     [+] TestListDrives 721ms
+     [+] TestGetDrive 174ms
+     [+] TestGetAllDrives 372ms
+     [+] TestGetInvaildDrive 114ms
+     [+] TestGetDriveByResourceId 178ms
 
 .EXAMPLE
     PS C:\> .\src\Drive.Tests.ps1 -RunRaw $true
     Describing Drives
-     [+] TestListDrives 2.86s
-     [+] TestGetDrive 2.95s
-     [+] TestGetAllDrives 6.98s
-     [+] TestGetInvaildDrive 2.75s
+     [+] TestListDrives 3.57s
+     [+] TestGetDrive 3.25s
+     [+] TestGetAllDrives 7.55s
+     [+] TestGetInvaildDrive 2.42s
+     [+] TestGetDriveByResourceId 3.59s
 
 .NOTES
     Author: Yuxing Zhou
@@ -199,6 +201,25 @@ InModuleScope Azs.Fabric.Admin {
                     $invaildDriveName = "invailddrivename"
                     $retrieved = Get-AzsDrive -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name -Name $invaildDriveName
                     $retrieved | Should Be $null
+                    break
+                }
+                break
+            }
+        }
+
+        it "TestGetDriveByResourceId" -Skip:$('TestGetDriveByResourceId' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetDriveByResourceId'
+
+            $scaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($scaleUnit in $scaleUnits) {
+                $storageSubSystems = Get-AzsStorageSubSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name
+                foreach ($storageSubSystem in $storageSubSystems) {
+                    $drives = Get-AzsDrive -ResourceGroupName $global:ResourceGroupName -Location $Location -ScaleUnit $scaleUnit.Name -StorageSubSystem $storageSubSystem.Name
+                    foreach ($drive in $drives) {
+                        $retrieved = Get-AzsDrive -ResourceId $drive.Id
+                        AssertDrivesAreSame -Expected $drive -Found $retrieved
+                        break
+                    }
                     break
                 }
                 break

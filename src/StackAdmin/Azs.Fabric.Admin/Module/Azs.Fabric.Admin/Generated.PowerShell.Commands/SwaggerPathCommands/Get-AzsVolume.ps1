@@ -119,9 +119,6 @@ function Get-AzsVolume {
             Write-Warning "Get-AzsInfrastructureVolume has been deprecated, please use Get-AzsVolume"
         }
 
-        $StorageSubSystem = Get-ResourceNameSuffix -ResourceName $StorageSubSystem
-        $ScaleUnit = Get-ResourceNameSuffix -ResourceName $ScaleUnit
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
         }
@@ -156,6 +153,9 @@ function Get-AzsVolume {
             $StorageSubSystem = $ArmResourceIdParameterValues['storageSubSystem']
             $Name = $ArmResourceIdParameterValues['volume']
         } else {
+            $StorageSubSystem = Get-ResourceNameSuffix -ResourceName $StorageSubSystem
+            $ScaleUnit = Get-ResourceNameSuffix -ResourceName $ScaleUnit
+
             if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }

@@ -114,9 +114,6 @@ function Get-AzsDrive {
 
     Process {
 
-        $StorageSubSystem = Get-ResourceNameSuffix -ResourceName $StorageSubSystem
-        $ScaleUnit = Get-ResourceNameSuffix -ResourceName $ScaleUnit
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
         }
@@ -151,6 +148,9 @@ function Get-AzsDrive {
             $StorageSubSystem = $ArmResourceIdParameterValues['storageSubSystem']
             $Name = $ArmResourceIdParameterValues['drive']
         } else {
+            $StorageSubSystem = Get-ResourceNameSuffix -ResourceName $StorageSubSystem
+            $ScaleUnit = Get-ResourceNameSuffix -ResourceName $ScaleUnit
+
             if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }

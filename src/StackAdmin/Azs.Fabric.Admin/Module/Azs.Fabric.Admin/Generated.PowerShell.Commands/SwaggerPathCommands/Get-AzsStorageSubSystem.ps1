@@ -105,8 +105,6 @@ function Get-AzsStorageSubSystem {
     }
 
     Process {
-        
-        $ScaleUnit = Get-ResourceNameSuffix -ResourceName $ScaleUnit
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
@@ -141,6 +139,8 @@ function Get-AzsStorageSubSystem {
             $ScaleUnit = $ArmResourceIdParameterValues['scaleUnit']
             $Name = $ArmResourceIdParameterValues['storageSubSystem']
         } else {
+            $ScaleUnit = Get-ResourceNameSuffix -ResourceName $ScaleUnit
+
             if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
