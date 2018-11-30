@@ -173,6 +173,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.LicenseType = resp.LicenseType;
             managedInstance.VCores = resp.VCores;
             managedInstance.StorageSizeInGB = resp.StorageSizeInGB;
+            managedInstance.ResourceId = resp.Id;
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;

@@ -30,7 +30,7 @@ $tdeKeyName = $keyVaultName + "_" + $keyName + "_" + $keyVersion
 function Test-ManagedInstanceKeyVaultKeyCI
 {
 
-	$managedInstance = Get-AzureRmSqlManagedInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 	$managedInstanceResourceId = $managedInstance.ResourceId
 
 	# Test Add
