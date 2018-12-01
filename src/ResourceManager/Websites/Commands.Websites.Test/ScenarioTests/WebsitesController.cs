@@ -26,7 +26,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
     {
         private readonly EnvironmentSetupHelper _helper;
 
-        public Management.Internal.Resources.ResourceManagementClient NewResourceManagementClient { get; private set; }
+        public ResourceManagementClient NewResourceManagementClient { get; private set; }
 
         public WebSiteManagementClient WebsitesManagementClient { get; private set; }
 
@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         public string UserDomain { get; private set; }
 
         public static WebsitesController NewInstance => new WebsitesController();
-
 
         public WebsitesController()
         {
@@ -72,16 +71,20 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
@@ -93,25 +96,16 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-#if NETSTANDARD
-                    _helper.RMStorageModule,
-#else
-                    _helper.RMStorageDataPlaneModule,
-#endif
                     _helper.GetRMModulePath(@"AzureRM.Websites.psd1"),
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
                 try
                 {
-                    if (scriptBuilder != null)
+                    var psScripts = scriptBuilder?.Invoke();
+                    if (psScripts != null)
                     {
-                        var psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            _helper.RunPowerShellTest(psScripts);
-                        }
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
@@ -136,22 +130,22 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                 );
         }
 
-        protected StorageManagementClient GetArmStorageManagementClient(MockContext context)
+        private static StorageManagementClient GetArmStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
+        private static AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
             return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private Management.Internal.Resources.ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return context.GetServiceClient<Management.Internal.Resources.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private WebSiteManagementClient GetWebsitesManagementClient(MockContext context)
+        private static WebSiteManagementClient GetWebsitesManagementClient(MockContext context)
         {
             return context.GetServiceClient<WebSiteManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
