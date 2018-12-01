@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.StorageSync.Netcore", "Commands.StorageSync\Commands.StorageSync.Netcore.csproj", "{FA564D6F-0EE0-4AC8-ABAF-65D8D79259F2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.StorageSync.Test.Netcore", "Commands.StorageSync.Test\Commands.StorageSync.Test.Netcore.csproj", "{04542E7D-F411-4972-A5C7-25240A4A5D31}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5CEE0796-C522-44B6-B6F1-97BFD241E998}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.StorageSync.Test.Netcore", "Commands.StorageSync.Test\Commands.StorageSync.Test.Netcore.csproj", "{04542E7D-F411-4972-A5C7-25240A4A5D31}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject

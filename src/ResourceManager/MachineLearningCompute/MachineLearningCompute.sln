@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.MachineLearningCompute.Netcore", "Commands.MachineLearningCompute\Commands.MachineLearningCompute.Netcore.csproj", "{A9558AF1-827B-482A-98AF-9AC5F0A866DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.MachineLearningCompute.Test.Netcore", "Commands.MachineLearningCompute.Test\Commands.MachineLearningCompute.Test.Netcore.csproj", "{1C4B42F4-439E-4C5B-AA02-4C8DF1033B77}"
 EndProject
