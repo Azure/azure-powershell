@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ResourceGraph.Netcore", "Commands.ResourceGraph\Commands.ResourceGraph.Netcore.csproj", "{CDFD4E1B-BB5F-439B-8843-E6127CD9B8AD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{161E0CBC-10D6-4BA5-B9B9-7356931B8C3B}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ResourceGraph.Test.Netcore", "Commands.ResourceGraph.Test\Commands.ResourceGraph.Test.Netcore.csproj", "{E628DC38-C7DE-4E2B-B9DF-36D0940EE6BA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{161E0CBC-10D6-4BA5-B9B9-7356931B8C3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,9 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataFactories.Netcore", "Commands.DataFactories\Commands.DataFactories.Netcore.csproj", "{9577252E-0A6B-4D61-86E8-95F7F309A987}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataFactories.Test.Netcore", "Commands.DataFactories.Test\Commands.DataFactories.Test.Netcore.csproj", "{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B}"
 EndProject

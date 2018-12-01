@@ -2,9 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{13BB1C60-A70E-4780-ABEF-D5EE36754085}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Maps.Netcore", "Commands.Maps\Commands.Maps.Netcore.csproj", "{CFDE176D-2F12-4730-88B1-2722E986F4B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{13BB1C60-A70E-4780-ABEF-D5EE36754085}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Maps.Test.Netcore", "Maps.Test\Commands.Maps.Test.Netcore.csproj", "{1EB67860-F099-434D-B9C9-F8E2CA843D03}"
 EndProject
