@@ -3,7 +3,7 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
     <AssemblyName>Microsoft.Azure.Commands.OperationalInsights.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.OperationalInsights.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -24,7 +24,7 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.19.0-preview" />
     <PackageReference Include="Microsoft.Azure.OperationalInsights" Version="0.10.0-preview" />
   </ItemGroup>
