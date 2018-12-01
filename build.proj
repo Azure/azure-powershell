@@ -301,8 +301,6 @@
       <Scope>Netcore</Scope>
     </PropertyGroup>
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\CreateAliasMapping.ps1 &quot;"/>
-
     <!-- Build and create package content -->
     <Exec Command="dotnet --version"/>
     <Exec Command="dotnet publish Azure.PowerShell.Netcore.sln -c $(Configuration)"/>
