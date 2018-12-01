@@ -180,7 +180,7 @@
     <PowerShellCoreCommand Condition=" '$(PowerShellCoreCommand)' == '' ">pwsh</PowerShellCoreCommand>
     <!-- All PowerShell commands have this prefix  -->
     <PowerShellCommandPrefix>&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command</PowerShellCommandPrefix>
-    <PowerShellCoreCommandPrefix>&quot;$(PowerShellCoreCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
+    <PowerShellCoreCommandPrefix>$(PowerShellCoreCommand) -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
   </PropertyGroup>
 
   <!--
@@ -305,7 +305,12 @@
 
     <!-- Build and create package content -->
     <Exec Command="dotnet --version"/>
-    <Exec Command="dotnet publish Azure.PowerShell.Netcore.sln -c $(Configuration)"/>
+    <Exec Command="dotnet new sln -n Azure.PowerShell --force"/>
+    <PropertyGroup>
+      <GenerateSolutionCommand>$projects = (Get-ChildItem -Path src/ResourceManager -Recurse -Include '*.csproj' | Where-Object { $_.FullName -notlike '*.Test.Netcore.csproj' } | ForEach-Object { $_.FullName }) -join ' '; Invoke-Expression ""dotnet sln Azure.PowerShell.sln add $projects""</GenerateSolutionCommand>
+    </PropertyGroup>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(GenerateSolutionCommand)&quot;" />
+    <Exec Command="dotnet publish Azure.PowerShell.sln -c $(Configuration)"/>
 
     <!-- Delete powershell runtime files -->
     <ItemGroup>
