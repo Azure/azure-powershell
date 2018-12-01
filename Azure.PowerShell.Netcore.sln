@@ -36,8 +36,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Cdn.Netcore", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Management.CognitiveServices.Netcore", "src\ResourceManager\CognitiveServices\Commands.Management.CognitiveServices\Commands.Management.CognitiveServices.Netcore.csproj", "{14D94D03-A65A-4DA1-91D1-CDE45C3573E2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Compute.ManagedService.Netcore", "src\ResourceManager\Compute.ManagedService\Commands.Compute.ManagedService\Commands.Compute.ManagedService.Netcore.csproj", "{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Consumption.Netcore", "src\ResourceManager\Consumption\Commands.Consumption\Commands.Consumption.Netcore.csproj", "{A6EB716D-F214-41E4-8563-5DFC939ACEC1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ContainerRegistry.Netcore", "src\ResourceManager\ContainerRegistry\Commands.ContainerRegistry\Commands.ContainerRegistry.Netcore.csproj", "{49A69011-CEFF-464B-AC2E-5A387EFFBE8B}"
@@ -370,18 +368,6 @@ Global
 		{14D94D03-A65A-4DA1-91D1-CDE45C3573E2}.Release|x64.Build.0 = Release|Any CPU
 		{14D94D03-A65A-4DA1-91D1-CDE45C3573E2}.Release|x86.ActiveCfg = Release|Any CPU
 		{14D94D03-A65A-4DA1-91D1-CDE45C3573E2}.Release|x86.Build.0 = Release|Any CPU
-		{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}.Debug|x64.Build.0 = Debug|Any CPU
-		{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}.Debug|x86.Build.0 = Debug|Any CPU
-		{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}.Release|x64.ActiveCfg = Release|Any CPU
-		{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}.Release|x64.Build.0 = Release|Any CPU
-		{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}.Release|x86.ActiveCfg = Release|Any CPU
-		{B4D6EE70-DA17-49BD-AE27-0D3CBAE51B72}.Release|x86.Build.0 = Release|Any CPU
 		{A6EB716D-F214-41E4-8563-5DFC939ACEC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A6EB716D-F214-41E4-8563-5DFC939ACEC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6EB716D-F214-41E4-8563-5DFC939ACEC1}.Debug|x64.ActiveCfg = Debug|Any CPU
