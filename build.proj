@@ -304,10 +304,11 @@
     <!-- Build and create package content -->
     <Exec Command="dotnet --version"/>
     <Exec Command="dotnet new sln -n Azure.PowerShell --force"/>
-    <PropertyGroup>
-      <GenerateSolutionCommand>$projects = (Get-ChildItem -Path src/ResourceManager -Recurse -Include '*.csproj' | Where-Object { $_.FullName -notlike '*.Test.Netcore.csproj' } | ForEach-Object { $_.FullName }) -join ' '; Invoke-Expression ""dotnet sln Azure.PowerShell.sln add $projects""</GenerateSolutionCommand>
-    </PropertyGroup>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(GenerateSolutionCommand)&quot;" />
+    <ItemGroup>
+      <ModuleCsprojFiles Include="$(LibraryRoot)src/ResourceManager/**/*.csproj" Exclude="$(LibraryRoot)src/ResourceManager/**/*.Test.Netcore.csproj" />
+    </ItemGroup>
+    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFiles->'%(FullPath)', ' ')" />
+    <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/Tools.Common/Tools.Common.Netcore.csproj $(LibraryRoot)tools/StaticAnalysis/StaticAnalysis.Netcore.csproj"/>
     <Exec Command="dotnet publish Azure.PowerShell.sln -c $(Configuration)"/>
 
     <!-- Delete powershell runtime files -->
