@@ -106,7 +106,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         {
             try
             {
-                this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Add-AzureRmHDinsightMetastore"));
+                this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Add-AzHDinsightMetastore"));
                 this.command.EndProcessing().Wait();
                 foreach (AzureHDInsightConfig output in this.command.Output)
                 {

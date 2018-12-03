@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.EventHub.Commands
 {
     /// <summary>
-    /// 'Get-AzureRmEventHubAuthorizationRule' Cmdlet gives the details of a / List of AuthorizationRule(s)
+    /// 'Get-AzEventHubAuthorizationRule' Cmdlet gives the details of a / List of AuthorizationRule(s)
     /// <para> If AuthorizationRule name provided, a single AuthorizationRule detials will be returned</para>
     /// <para> If AuthorizationRule name not provided, list of AuthorizationRules will be returned</para>
     /// </summary>

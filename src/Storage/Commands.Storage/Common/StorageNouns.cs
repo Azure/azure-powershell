@@ -190,7 +190,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const string DefaultLoggingVersion = "1.0";
 
         /// <summary>
-        /// Permission const for New-AzureStorage(Blob/Container/Table/Queue)SasToken
+        /// Permission const for New-AzStorage(Blob/Container/Table/Queue)SasToken
         /// </summary>
         public static class Permission
         {
