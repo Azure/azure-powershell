@@ -21,10 +21,11 @@
 function Test-CreateManagedInstance
 {
 	# Setup
-    $rgName = "ps2115"
-	$rg = Create-ResourceGroupWithName($rgName)
-    $vnetName1 = "ps2252"
- 	$managedInstanceName = Get-ManagedInstanceName
+	$rg = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "CooL"
+
+	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
  	$credentials = Get-ServerCredential
  	$licenseType = "BasePrice"
@@ -32,7 +33,6 @@ function Test-CreateManagedInstance
  	$vCore = 16
 	$skuName = "GP_Gen4"
 	$collation = "Serbian_Cyrillic_100_CS_AS"
- 	$credentials = new-object System.Management.Automation.PSCredential($managedInstanceLogin, ($managedInstancePassword | ConvertTo-SecureString -asPlainText -Force)) 
 
  	try
  	{
