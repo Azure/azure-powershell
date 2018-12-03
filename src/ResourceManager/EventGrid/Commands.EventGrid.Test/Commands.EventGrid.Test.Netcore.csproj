@@ -30,15 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.EventGrid">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.EventGrid\Microsoft.Azure.Commands.EventGrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.EventHub">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.EventHub\Microsoft.Azure.Commands.EventHub.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

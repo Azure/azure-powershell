@@ -1,5 +1,4 @@
-﻿using Microsoft.Azure.Commands.ApiManagement.Models;
-using Microsoft.Azure.Management.ApiManagement.Models;
+﻿using Microsoft.Azure.Management.ApiManagement.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;

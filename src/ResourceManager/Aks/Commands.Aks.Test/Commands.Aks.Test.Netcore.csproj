@@ -29,9 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Aks">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Aks\Microsoft.Azure.Commands.Aks.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.Aks\Commands.Aks.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -25,21 +25,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Profile">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Profile\Microsoft.Azure.Commands.Profile.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.Profile\Commands.Profile.Netcore.csproj" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <None Remove="App.config" />
+    <!-- <None Remove="App.config" /> -->
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="*.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Profile\Microsoft.Azure.PowerShell.ResourceManager.dll">
+    <!-- <None Include="..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Profile\Microsoft.Azure.PowerShell.ResourceManager.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </None> -->
   </ItemGroup>
+
 </Project>

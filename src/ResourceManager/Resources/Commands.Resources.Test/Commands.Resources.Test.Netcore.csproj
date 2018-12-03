@@ -32,14 +32,8 @@
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.1.0" />
   </ItemGroup>
 
-
-    <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Resources">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Resources\Microsoft.Azure.Commands.Resources.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll</HintPath>
-    </Reference>
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.Resources\Commands.Resources.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

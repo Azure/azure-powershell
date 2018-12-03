@@ -29,15 +29,6 @@
     <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.1.1" />
   </ItemGroup>
 
-<ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.EventHub">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.EventHub\Microsoft.Azure.Commands.EventHub.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.IotHub">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.IotHub\Microsoft.Azure.Commands.IotHub.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
   <ItemGroup>
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

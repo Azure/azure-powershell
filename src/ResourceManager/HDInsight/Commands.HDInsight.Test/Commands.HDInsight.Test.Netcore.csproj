@@ -29,9 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.HDInsight">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.HDInsight\Microsoft.Azure.Commands.HDInsight.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.HDInsight\Commands.HDInsight.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
