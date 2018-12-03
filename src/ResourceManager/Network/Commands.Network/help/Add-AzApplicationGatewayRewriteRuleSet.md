@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermapplicationgatewayrewriteruleset
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azapplicationgatewayrewriteruleset
 schema: 2.0.0
 ---
 
-# Add-AzureRmApplicationGatewayRewriteRuleSet
+# Add-AzApplicationGatewayRewriteRuleSet
 
 ## SYNOPSIS
 Adds a rewrite rule set to an application gateway.
@@ -13,20 +13,20 @@ Adds a rewrite rule set to an application gateway.
 ## SYNTAX
 
 ```
-Add-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway <PSApplicationGateway> -Name <String>
+Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway <PSApplicationGateway> -Name <String>
  -RewriteRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRule]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmApplicationGatewayRewriteRuleSet** cmdlet adds a rewrite rule set to an application gateway.
+The **Add-AzApplicationGatewayRewriteRuleSet** cmdlet adds a rewrite rule set to an application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $Appgw = Add-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $AppGw -Name "ruleset1" -RewriteRule $rule
+PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $AppGw = Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $AppGw -Name "ruleset1" -RewriteRule $rule
 ```
 
 The first command gets the application gateway and stores it in the $AppGw variable.
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -109,10 +109,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzureRmApplicationGatewayRewriteRuleSet](./Get-AzureRmApplicationGatewayRewriteRuleSet.md)
+[Get-AzApplicationGatewayRewriteRuleSet](./Get-AzApplicationGatewayRewriteRuleSet.md)
 
-[New-AzureRmApplicationGatewayRewriteRuleSet](./New-AzureRmApplicationGatewayRewriteRuleSet.md)
+[New-AzApplicationGatewayRewriteRuleSet](./New-AzApplicationGatewayRewriteRuleSet.md)
 
-[Remove-AzureRmApplicationGatewayRewriteRuleSet](./Remove-AzureRmApplicationGatewayRewriteRuleSet.md)
+[Remove-AzApplicationGatewayRewriteRuleSet](./Remove-AzApplicationGatewayRewriteRuleSet.md)
 
-[Set-AzureRmApplicationGatewayRewriteRuleSet](./Set-AzureRmApplicationGatewayRewriteRuleSet.md)
+[Set-AzApplicationGatewayRewriteRuleSet](./Set-AzApplicationGatewayRewriteRuleSet.md)

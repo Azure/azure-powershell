@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewayrewriterule
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayrewriterule
 schema: 2.0.0
 ---
 
-# New-AzureRmApplicationGatewayRewriteRule
+# New-AzApplicationGatewayRewriteRule
 
 ## SYNOPSIS
 Creates a rewrite rule for an application gateway.
@@ -13,18 +13,18 @@ Creates a rewrite rule for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayRewriteRule -Name <String> -ActionSet <PSApplicationGatewayRewriteRuleActionSet>
+New-AzApplicationGatewayRewriteRule -Name <String> -ActionSet <PSApplicationGatewayRewriteRuleActionSet>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**The New-AzureRmApplicationGatewayRewriteRule** cmdlet creates a rewrite rule for an Azure application gateway.
+**The New-AzApplicationGatewayRewriteRule** cmdlet creates a rewrite rule for an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1 : Create a rewrite rule for an application gateway
 ```powershell
-PS C:\>$rule = New-AzureRmApplicationGatewayRewriteRule -Name rule1 -ActionSet $action
+PS C:\> $rule = New-AzApplicationGatewayRewriteRule -Name rule1 -ActionSet $action
 ```
 
 This command creates a rewrite rule named rule1 and stores the result in the variable named $rule.
@@ -35,7 +35,7 @@ This command creates a rewrite rule named rule1 and stores the result in the var
 ActionSet of the rewrite rule
 
 ```yaml
-Type: PSApplicationGatewayRewriteRuleActionSet
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleActionSet
 Parameter Sets: (All)
 Aliases:
 
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The name of the RewriteRule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

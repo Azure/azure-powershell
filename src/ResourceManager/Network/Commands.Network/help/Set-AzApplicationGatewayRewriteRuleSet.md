@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermapplicationgatewayrewriteruleset
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgatewayrewriteruleset
 schema: 2.0.0
 ---
 
-# Set-AzureRmApplicationGatewayRewriteRuleSet
+# Set-AzApplicationGatewayRewriteRuleSet
 
 ## SYNOPSIS
 Modifies a rewrite rule set for an application gateway.
@@ -13,20 +13,20 @@ Modifies a rewrite rule set for an application gateway.
 ## SYNTAX
 
 ```
-Set-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway <PSApplicationGateway> -Name <String>
+Set-AzApplicationGatewayRewriteRuleSet -ApplicationGateway <PSApplicationGateway> -Name <String>
  -RewriteRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRule]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApplicationGatewayRewriteRuleSet** cmdlet modifies a request routing rule.
+The **Set-AzApplicationGatewayRewriteRuleSet** cmdlet modifies a request routing rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $AppGw = Set-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $AppGw -Name "ruleset1" -RewriteRule $rule
+PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $AppGw = Set-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $AppGw -Name "ruleset1" -RewriteRule $rule
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.
@@ -38,7 +38,7 @@ The second command modifies the rewrite rule set for the application gateway to 
 The applicationGateway
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The name of the RewriteRuleSet
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -110,10 +110,10 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## RELATED LINKS
 
-[Add-AzureRmApplicationGatewayRewriteRuleSet](./Add-AzureRmApplicationGatewayRewriteRuleSet.md)
+[Add-AzApplicationGatewayRewriteRuleSet](./Add-AzApplicationGatewayRewriteRuleSet.md)
 
-[Get-AzureRmApplicationGatewayRewriteRuleSet](./Get-AzureRmApplicationGatewayRewriteRuleSet.md)
+[Get-AzApplicationGatewayRewriteRuleSet](./Get-AzApplicationGatewayRewriteRuleSet.md)
 
-[New-AzureRmApplicationGatewayRewriteRuleSet](./New-AzureRmApplicationGatewayRewriteRuleSet.md)
+[New-AzApplicationGatewayRewriteRuleSet](./New-AzApplicationGatewayRewriteRuleSet.md)
 
-[Remove-AzureRmApplicationGatewayRewriteRuleSet](./Remove-AzureRmApplicationGatewayRewriteRuleSet.md)
+[Remove-AzApplicationGatewayRewriteRuleSet](./Remove-AzApplicationGatewayRewriteRuleSet.md)

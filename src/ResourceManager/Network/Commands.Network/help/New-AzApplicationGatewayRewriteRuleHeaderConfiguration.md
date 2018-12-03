@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewayrewriteruleheaderconfiguration
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayrewriteruleheaderconfiguration
 schema: 2.0.0
 ---
 
-# New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration
+# New-AzApplicationGatewayRewriteRuleHeaderConfiguration
 
 ## SYNOPSIS
 Creates a rewrite rule header configuration for an application gateway.
@@ -13,18 +13,18 @@ Creates a rewrite rule header configuration for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName <String> [-HeaderValue <String>]
+New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName <String> [-HeaderValue <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**The AzureRmApplicationGatewayRewriteRuleHeaderConfiguration** cmdlet creates a rewrite rule actionset for an Azure application gateway.
+**The AzApplicationGatewayRewriteRuleHeaderConfiguration** cmdlet creates a rewrite rule actionset for an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $hc = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName abc -HeaderValue def
+PS C:\> $hc = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName abc -HeaderValue def
 ```
 
 This command creates a rewrite rule header configuration and stores the result in the variable named $hc.
@@ -35,7 +35,7 @@ This command creates a rewrite rule header configuration and stores the result i
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 Name of the Header to rewrite
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ Header value to the set for the given header name.
 Header will be deleted if this is omitted
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

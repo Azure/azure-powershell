@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewayrewriteruleset
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayrewriteruleset
 schema: 2.0.0
 ---
 
-# New-AzureRmApplicationGatewayRewriteRuleSet
+# New-AzApplicationGatewayRewriteRuleSet
 
 ## SYNOPSIS
 Creates a request routing rule for an application gateway.
@@ -13,19 +13,19 @@ Creates a request routing rule for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayRewriteRuleSet -Name <String>
+New-AzApplicationGatewayRewriteRuleSet -Name <String>
  -RewriteRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRule]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**The New-AzureRmApplicationGatewayRewriteRuleSet** cmdlet creates a rewrite rule set for an Azure application gateway.
+**The New-AzApplicationGatewayRewriteRuleSet** cmdlet creates a rewrite rule set for an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $ruleset = New-AzureRmApplicationGatewayRewriteRuleSet -Name ruleset1 -RewriteRule $rule
+PS C:\> $ruleset = New-AzApplicationGatewayRewriteRuleSet -Name ruleset1 -RewriteRule $rule
 ```
 
 This command creates a rewrite rule set named ruleset1 and stores the result in the variable named $ruleset.
@@ -36,7 +36,7 @@ This command creates a rewrite rule set named ruleset1 and stores the result in 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The name of the RewriteRuleSet
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -93,10 +93,10 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## RELATED LINKS
 
-[Add-AzureRmApplicationGatewayRewriteRuleSet](./Add-AzureRmApplicationGatewayRewriteRuleSet.md)
+[Add-AzApplicationGatewayRewriteRuleSet](./Add-AzApplicationGatewayRewriteRuleSet.md)
 
-[Get-AzureRmApplicationGatewayRewriteRuleSet](./Get-AzureRmApplicationGatewayRewriteRuleSet.md)
+[Get-AzApplicationGatewayRewriteRuleSet](./Get-AzApplicationGatewayRewriteRuleSet.md)
 
-[Remove-AzureRmApplicationGatewayRewriteRuleSet](./Remove-AzureRmApplicationGatewayRewriteRuleSet.md)
+[Remove-AzApplicationGatewayRewriteRuleSet](./Remove-AzApplicationGatewayRewriteRuleSet.md)
 
-[Set-AzureRmApplicationGatewayRewriteRuleSet](./Set-AzureRmApplicationGatewayRewriteRuleSet.md)
+[Set-AzApplicationGatewayRewriteRuleSet](./Set-AzApplicationGatewayRewriteRuleSet.md)
