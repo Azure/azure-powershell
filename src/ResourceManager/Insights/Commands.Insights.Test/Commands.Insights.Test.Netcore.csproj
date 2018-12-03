@@ -28,9 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Insights">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Insights\Microsoft.Azure.Commands.Insights.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.Insights\Commands.Insights.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

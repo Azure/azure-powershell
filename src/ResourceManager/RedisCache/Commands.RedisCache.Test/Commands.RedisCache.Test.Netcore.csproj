@@ -30,9 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.RedisCache">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RedisCache\Microsoft.Azure.Commands.RedisCache.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.RedisCache\Commands.RedisCache.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

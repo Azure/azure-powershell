@@ -29,12 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.AnalysisServices">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.AnalysisServices\Microsoft.Azure.Commands.AnalysisServices.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.AnalysisServices.Dataplane">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.AnalysisServices\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.AnalysisServices.Dataplane\Commands.AnalysisServices.Dataplane.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

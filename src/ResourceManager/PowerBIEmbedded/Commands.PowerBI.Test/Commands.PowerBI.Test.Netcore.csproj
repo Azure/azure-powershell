@@ -29,15 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.PowerBI">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.PowerBIEmbedded\Microsoft.Azure.Commands.PowerBI.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.Management.PowerBIEmbedded">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.PowerBIEmbedded\Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
