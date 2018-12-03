@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
 {
     /// <summary>
-    /// 'Get-AzureRmRelayNamespace' Cmdlet gives the details of a / List of Relay Namespace(s)
+    /// 'Get-AzRelayNamespace' Cmdlet gives the details of a / List of Relay Namespace(s)
     /// <para> If Namespace name provided, a single Namespace detials will be returned</para>
     /// <para> If Namespace name not provided, list of Namespace will be returned</para>
     /// </summary>

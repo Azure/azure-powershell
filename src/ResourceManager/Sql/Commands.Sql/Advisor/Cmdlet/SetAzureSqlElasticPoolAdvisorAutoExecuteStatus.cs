@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
 {
     /// <summary>
-    /// Defines the Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus cmdlet
+    /// Defines the Set-AzSqlElasticPoolAdvisorAutoExecuteStatus cmdlet
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlElasticPoolAdvisorAutoExecuteStatus",SupportsShouldProcess = true), OutputType(typeof(AzureSqlElasticPoolAdvisorModel))]
     public class SetAzureSqlElasticPoolAdvisorAutoExecuteStatus : AzureSqlElasticPoolAdvisorCmdletBase
