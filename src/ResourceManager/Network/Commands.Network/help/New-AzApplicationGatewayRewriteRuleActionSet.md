@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermapplicationgatewayrewriteruleactionset
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayrewriteruleactionset
 schema: 2.0.0
 ---
 
-# New-AzureRmApplicationGatewayRewriteRuleActionSet
+# New-AzApplicationGatewayRewriteRuleActionSet
 
 ## SYNOPSIS
 Creates a rewrite rule actionset for an application gateway.
@@ -13,20 +13,20 @@ Creates a rewrite rule actionset for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayRewriteRuleActionSet
+New-AzApplicationGatewayRewriteRuleActionSet
  [-RequestHeaderConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration]>]
  [-ResponseHeaderConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**The New-AzureRmApplicationGatewayRewriteRuleActionSet** cmdlet creates a rewrite rule actionset for an Azure application gateway.
+**The New-AzApplicationGatewayRewriteRuleActionSet** cmdlet creates a rewrite rule actionset for an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $action = New-AzureRmApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc
+PS C:\> $action = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc
 ```
 
 This command creates a rewrite rule actionset and stores the result in the variable named $action.
@@ -37,7 +37,7 @@ This command creates a rewrite rule actionset and stores the result in the varia
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

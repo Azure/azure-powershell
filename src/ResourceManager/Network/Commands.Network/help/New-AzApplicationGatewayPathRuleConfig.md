@@ -15,16 +15,17 @@ Creates an application gateway path rule.
 
 ### SetByResourceId
 ```
-New-AzApplicationGatewayPathRuleConfig -Name <String> -Paths <System.Collections.Generic.List`1[System.String]>
- [-BackendAddressPoolId <String>] [-BackendHttpSettingsId <String>] [-RedirectConfigurationId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayPathRuleConfig -Name <String> -Paths <String[]>
+ [-BackendAddressPoolId <String>] [-BackendHttpSettingsId <String>] [-RewriteRuleSetId <String>]
+ [-RedirectConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
-New-AzApplicationGatewayPathRuleConfig -Name <String> -Paths <System.Collections.Generic.List`1[System.String]>
+New-AzApplicationGatewayPathRuleConfig -Name <String> -Paths <String[]>
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
  [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
+ [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
  [-RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -174,7 +175,7 @@ Accept wildcard characters: False
 Specifies one or more application gateway path rules.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -202,6 +203,36 @@ Accept wildcard characters: False
 
 ### -RedirectConfigurationId
 ID of the application gateway RedirectConfiguration
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RewriteRuleSet
+Application gateway RewriteRuleSet
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RewriteRuleSetId
+ID of the application gateway RewriteRuleSet
 
 ```yaml
 Type: System.String
