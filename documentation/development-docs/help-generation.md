@@ -27,7 +27,7 @@ Register-PSRepository -Name PSGallery -SourceLocation https://www.powershellgall
 
 Before you run the `platyPS` cmdlets to update your markdown help files, you will need to first import the module containing the changes that you have made to your cmdlets into your current PowerShell session. Once you have built your project (either through Visual Studio or with `msbuild`), you can locate the module manifest that you will need to import in the `src/Package/Debug` folder of your local repository.
 
-For example, if you have made changes to the `Profile` module, you will find the corresponding module manifest in `src/Package/Debug/ResourceManager/AzureResourceManager/AzureRM.Profile/AzureRM.Profile.psd1`.
+For example, if you have made changes to the `Profile` module, you will find the corresponding module manifest in `src/Package/Debug/ResourceManager/AzureResourceManager/Az.Profile/Az.Profile.psd1`.
 
 Once you have located the module manifest, you can import it in your current PowerShell session by running the following command:
 
@@ -67,9 +67,9 @@ Update-MarkdownHelpModule -Path $PathToHelpFolder -RefreshModulePage -Alphabetic
 
 If you would like to update the inputs/outputs for a markdown file, please run this cmdlet with the -UpdateInputOutput parameter.  Keep in mind that this will overwrite any customized descriptions of inputs and outputs, so you will need to add these descriptions back if still relevant.
 
-This will update all of the markdown files with public interface changes made to corresponding cmdlets, add markdown files for any new cmdlets, remove markdown files for any deleted cmdlets, and update the module page (_e.g.,_ `AzureRM.Profile.md`) with any added or removed cmdlets.
+This will update all of the markdown files with public interface changes made to corresponding cmdlets, add markdown files for any new cmdlets, remove markdown files for any deleted cmdlets, and update the module page (_e.g.,_ `Az.Profile.md`) with any added or removed cmdlets.
 
-_This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](https://github.com/Azure/azure-powershell/tree/preview/src/ResourceManager/Network) module run the cmd from under [`Commands.Network/help`](https://github.com/Azure/azure-powershell/tree/preview/src/ResourceManager/Network/Commands.Network/help)). Also, you will have to import the profile module from under <Repo base path>/src/Package/Debug/ResourceManager/AzureResourceManager/AzureRM.Profile/AzureRM.Profile.psd1_
+_This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](https://github.com/Azure/azure-powershell/tree/master/src/ResourceManager/Network) module run the cmd from under [`Commands.Network/help`](https://github.com/Azure/azure-powershell/tree/master/src/ResourceManager/Network/Commands.Network/help)). Also, you will have to import the profile module from under <Repo base path>/src/Package/Debug/ResourceManager/AzureResourceManager/Az.Profile/Az.Profile.psd1_
 
 #### Updating a single markdown file
 

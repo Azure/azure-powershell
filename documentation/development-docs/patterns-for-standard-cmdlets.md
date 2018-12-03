@@ -43,7 +43,7 @@ The first parameter set has an optional `-ResourceGroupName` parameter, which al
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmFoo", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSFoo))]
+    [Cmdlet(VerbsCommon.Get, "AzFoo", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSFoo))]
     public class GetFooCommand : FooBaseCmdlet
     {
         private const string ListParameterSet = "ListParameterSet";
@@ -120,7 +120,7 @@ This parameter set has required `-ResourceGroupName` and `-Name` parameters to s
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmFoo", DefaultParameterSetName = CreateParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFoo))]
+    [Cmdlet(VerbsCommon.New, "AzFoo", DefaultParameterSetName = CreateParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFoo))]
     public class NewFooCommand : FooBaseCmdlet
     {
         private const string CreateParameterSet = "CreateParameterSet";
@@ -207,7 +207,7 @@ The first parameter set has required `-ResourceGroupName` and `-Name` parameters
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmFoo", DefaultParameterSetName = DeleteByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzFoo", DefaultParameterSetName = DeleteByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveFooCommand : FooBaseCmdlet
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
@@ -291,7 +291,7 @@ The first parameter set has required `-ResourceGroupName` and `-Name` parameters
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmFoo", DefaultParameterSet = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFoo))]
+    [Cmdlet(VerbsCommon.Set, "AzFoo", DefaultParameterSet = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFoo))]
     public class SetFooCommand : FooBaseCmdlet
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
@@ -405,7 +405,7 @@ The first parameter set has required `-ResourceGroupName` and `-Name` parameters
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsData.Update, "AzureRmFoo", DefaultParameterSet = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFoo))]
+    [Cmdlet(VerbsData.Update, "AzFoo", DefaultParameterSet = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFoo))]
     public class UpdateFooCommand : FooBaseCmdlet
     {
         private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
@@ -512,7 +512,7 @@ The first parameter set has mandatory `-ResourceGroupName` and `-FooName` parame
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmChildFoo", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(PSChildFoo))]
+    [Cmdlet(VerbsCommon.Get, "AzChildFoo", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(PSChildFoo))]
     public class GetChildFooCommand : FooBaseCmdlet
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
@@ -601,7 +601,7 @@ The first parameter set has required `-ResourceGroupName`, `-FooName` and `-Name
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmChildFoo", DefaultParameterSetName = CreateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSChildFoo))]
+    [Cmdlet(VerbsCommon.New, "AzChildFoo", DefaultParameterSetName = CreateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSChildFoo))]
     public class NewChildFooCommand : FooBaseCmdlet
     {
         private const string CreateByNameParameterSet = "CreateByNameParameterSet";
@@ -706,7 +706,7 @@ The first parameter set has required `-ResourceGroupName`, `-FooName` and `-Name
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmChildFoo", DefaultParameterSetName = DeleteByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzChildFoo", DefaultParameterSetName = DeleteByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveChildFooCommand : FooBaseCmdlet
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
@@ -810,7 +810,7 @@ The first parameter set has required `-ResourceGroupName`, `-FooName` and `-Name
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmChildFoo", DefaultParameterSet = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSChildFoo))]
+    [Cmdlet(VerbsCommon.Set, "AzChildFoo", DefaultParameterSet = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSChildFoo))]
     public class SetChildFooCommand : FooBaseCmdlet
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
@@ -944,7 +944,7 @@ The first parameter set has required `-ResourceGroupName`, `-FooName` and `-Name
 ```cs
 namespace Microsoft.Azure.Commands.Foo
 {
-    [Cmdlet(VerbsData.Update, "AzureRmChildFoo", DefaultParameterSet = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSChildFoo))]
+    [Cmdlet(VerbsData.Update, "AzChildFoo", DefaultParameterSet = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSChildFoo))]
     public class UpdateChildFooCommand : FooBaseCmdlet
     {
         private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
