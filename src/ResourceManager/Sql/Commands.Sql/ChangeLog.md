@@ -37,6 +37,7 @@
 	- Get-AzureRmSqlDatabaseAuditing.
 
 * Fixed issue with using Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings with storage account name parameter set
+* Support for custom collation on managed instance
 
 ## Version 4.11.6-preview
 * Add DnsZonePartner Parameter for New-AzureRmSqlManagedInstance cmdlet to support AutoDr for Managed Instance.
