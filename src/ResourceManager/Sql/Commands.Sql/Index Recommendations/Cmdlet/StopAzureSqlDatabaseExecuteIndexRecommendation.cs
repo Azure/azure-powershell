@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Cmdlet
 {
     /// <summary>
-    /// Defines the Stop-AzureRmSqlDatabaseExecuteIndexRecommendation cmdlet
+    /// Defines the Stop-AzSqlDatabaseExecuteIndexRecommendation cmdlet
     /// </summary>
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseExecuteIndexRecommendation",ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(IndexRecommendation))]
     public class StopAzureSqlDatabaseExecuteIndexRecommendation : AzureSqlDatabaseExecuteIndexRecommendationCmdletBase

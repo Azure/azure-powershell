@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.ManagementGroups.Models;
 namespace Microsoft.Azure.Commands.Resources.ManagementGroups
 {
     /// <summary>
-    /// Remove-AzureRmManagementGroupSubscription Cmdlet
+    /// Remove-AzManagementGroupSubscription Cmdlet
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupSubscription",DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase

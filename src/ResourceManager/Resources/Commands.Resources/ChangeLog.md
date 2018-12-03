@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix for https://github.com/Azure/azure-powershell/issues/7679
+    - Update Get-AzureRmRoleAssignment to use the subscription scope if it is provided when requesting classic administrators.
+* Minor changes for upcoming AzureRM to Az transition
+
+## Version 6.7.2
 * Update help documentation for resource identity related parameters in `New-AzureRmPolicyAssignment` and `Set-AzureRmPolicyAssignment`
 * Add an example for New-AzureRmPolicyDefinition that uses -Metadata
 * Fix to allow case preservation in Tag keys in NetStandard: #7678 #7703

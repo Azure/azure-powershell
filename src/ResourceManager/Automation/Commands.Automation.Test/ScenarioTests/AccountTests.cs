@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Test;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Automation.Test
+namespace Commands.Automation.Test
 {
     public class AccountTests : AutomationScenarioTestsBase
     {

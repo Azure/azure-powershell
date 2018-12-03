@@ -29,7 +29,7 @@ using System.Security;
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
     /// <summary>
-    /// Defines the Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate cmdlet
+    /// Defines the Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate cmdlet
     /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]

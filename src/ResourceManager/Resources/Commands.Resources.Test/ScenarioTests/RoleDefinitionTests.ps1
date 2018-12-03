@@ -181,7 +181,7 @@ function Test-RDRemove
     # Setup
     # Create a role definition at RG Scope.
 
-    $subscription = Get-AzureRmSubscription
+    $subscription = $(Get-AzureRmContext).Subscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
 
     $scope = "/subscriptions/" + $subscription[0].SubscriptionId
@@ -216,7 +216,7 @@ Verify positive and negative scenarios for RoleDefinition Get.
 function Test-RDGet
 {
     # Setup
-    $subscription = Get-AzureRmSubscription
+    $subscription = $(Get-AzureRmContext).Subscription
 
     $resource = Get-AzureRmResource | Select-Object -Last 1 -Wait
     Assert-NotNull $resource "Cannot find any resource to continue test execution."

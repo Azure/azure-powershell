@@ -26,7 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzureRmFrontDoorLoadBalancingSettingObject cmdlet.
+    /// Defines the New-AzFrontDoorLoadBalancingSettingObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorLoadBalancingSettingObject"), OutputType(typeof(PSLoadBalancingSetting))]
     public class NewAzureRmFrontDoorLoadBalancingSettingObject : AzureFrontDoorCmdletBase

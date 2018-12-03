@@ -140,7 +140,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// <inheritdoc />
         protected override void EndProcessing()
         {
-            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Get-AzureRmHDInsightJobOutput"));
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Get-AzHDInsightJobOutput"));
             this.command.Logger = this.Logger;
             this.command.CurrentSubscription = this.GetCurrentSubscription(this.Subscription, this.Certificate);
             this.AssertTaskLogsDirectorySpecified(this.TaskLogsDirectory);
