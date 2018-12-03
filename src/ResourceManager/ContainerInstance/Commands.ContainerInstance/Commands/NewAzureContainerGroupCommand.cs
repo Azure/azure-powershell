@@ -201,14 +201,10 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [ValidateNotNullOrEmpty]
         public int[] Port { get; set; }
 
-// TODO: Remove IfDef code
-#if !NETSTANDARD
        [Parameter(
             Mandatory = false,
             HelpMessage = "The command to run in the container.")]
-        [ValidateNotNullOrEmpty]
         public string Command { get; set; }
-#endif
 
         [Parameter(
             Mandatory = false,
