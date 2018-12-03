@@ -30,7 +30,7 @@ using SdkPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFire
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the Set-AzureRmFrontDoorFireWallPolicy cmdlet.
+    /// Defines the Set-AzFrontDoorFireWallPolicy cmdlet.
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFireWallPolicy", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSPolicy))]
     public class SetAzureRmFrontDoorFireWallPolicy : AzureFrontDoorCmdletBase

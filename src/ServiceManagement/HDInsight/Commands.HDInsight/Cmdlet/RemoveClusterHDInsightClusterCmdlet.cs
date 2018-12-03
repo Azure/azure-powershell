@@ -105,7 +105,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// </summary>
         protected override void EndProcessing()
         {
-            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Remove-AzureRmHDInsightCluster"));
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Remove-AzHDInsightCluster"));
             try
             {
                 this.command.CurrentSubscription = this.GetCurrentSubscription(this.Subscription, this.Certificate);

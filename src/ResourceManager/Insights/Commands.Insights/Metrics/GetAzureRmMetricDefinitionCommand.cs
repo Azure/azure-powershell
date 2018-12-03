@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            string cmdletName = "Get-AzureRmMetricDefinition";
+            string cmdletName = "Get-AzMetricDefinition";
             this.WriteIdentifiedWarning(
                 cmdletName: cmdletName,
                 topic: "Parameter deprecation",

@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.DataMigration {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The database &apos;{0}&apos; has not been selected for migration. Please first run Add-AzureRmDmsDatabase to add the database to the migration task..
+        ///   Looks up a localized string similar to The database &apos;{0}&apos; has not been selected for migration. Please first run Add-AzDmsDatabase to add the database to the migration task..
         /// </summary>
         public static string DatabaseNotSelectedForMigration {
             get {

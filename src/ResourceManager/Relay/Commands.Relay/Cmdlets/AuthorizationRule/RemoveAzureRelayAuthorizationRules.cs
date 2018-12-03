@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands
 {
     /// <summary>
-    /// 'Remove-AzureRmRelayAuthorizationRule' Cmdlet removes/deletes AuthorizationRule
+    /// 'Remove-AzRelayAuthorizationRule' Cmdlet removes/deletes AuthorizationRule
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRelayAuthorizationRule : AzureRelayCmdletBase
