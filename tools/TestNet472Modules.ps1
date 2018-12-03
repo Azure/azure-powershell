@@ -26,19 +26,31 @@ if ($ModuleFilter)
 }
 
 $rmItems | %{`
-  Write-Host "Testing $_.FullName"
-  Start-Process -FilePath $TestExecPath `
+  Write-Host ("Testing " + $_.FullName)
+  $testDir = $_.Directory.FullName
+  $testExec = Get-Item $TestExecPath
+  $testExecDir = $testExec.Directory.FullName
+  $testExecFile = $testExec.Name
+  $newExecPath = Join-Path $testDir -ChildPath $testExecFile
+  $copiedItems = (Get-ChildItem $testExecDir | Where-Object {$_.Name.StartsWith("xunit")})
+  $copiedItems | Copy-Item -Destination $testDir
+  try {
+  Start-Process -FilePath $newExecPath `
     -Wait `
-    -WorkingDirectory $PSScriptRoot\..\src\Package `
+    -WorkingDirectory $testDir `
     -NoNewWindow `
     -ArgumentList $_.FullName, $testConfig, '-trait "AcceptanceType=CheckIn"', '-notrait "Runtype=DesktopOnly"'`
+  }
+  finally {
+    $copiedItems | %{Remove-Item -Force (Join-Path $testDir $_.Name)}
+  }
 }
 
 $storageItems | %{`
-  Write-Host "Testing $_.FullName"
+  Write-Host ("Testing " + $_.FullName)
   Start-Process -FilePath $TestExecPath `
     -Wait `
-    -WorkingDirectory $PSScriptRoot\..\src\Package `
+    -WorkingDirectory $_.Directory.FullName `
     -NoNewWindow `
     -ArgumentList $_.FullName, $testStorageConfig, '-trait "AcceptanceType=CheckIn"'`
 }

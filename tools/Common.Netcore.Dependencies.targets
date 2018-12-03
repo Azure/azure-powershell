@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.Azure.PowerShell.Graph.Rbac" Version="1.1.8-preview" />
     <PackageReference Include="Microsoft.Azure.PowerShell.KeyVault" Version="1.1.8-preview" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Network" Version="1.1.8-preview" />
-    <PackageReference Include="Microsoft.Azure.PowerShell.ResourceManager" Version="1.1.8-preview /">
+    <PackageReference Include="Microsoft.Azure.PowerShell.ResourceManager" Version="1.1.8-preview" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Storage" Version="1.1.8-preview" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Storage.Management" Version="1.1.8-preview" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Strategies" Version="1.1.8-preview" />
