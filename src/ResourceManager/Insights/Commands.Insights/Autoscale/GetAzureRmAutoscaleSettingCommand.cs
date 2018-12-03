@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         protected override void ProcessRecordInternal()
         {
             this.WriteIdentifiedWarning(
-                cmdletName: "Get-AzureRmAutoscaleSetting",
+                cmdletName: "Get-AzAutoscaleSetting",
                 topic: "Parameter deprecation", 
                 message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             if (string.IsNullOrWhiteSpace(this.Name))

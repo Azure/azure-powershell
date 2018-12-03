@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 {
     /// <summary>
-    /// 'Set-AzureRmServiceBusTopic' Cmdlet updates the specified ServiceBus Topic
+    /// 'Set-AzServiceBusTopic' Cmdlet updates the specified ServiceBus Topic
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusTopic", SupportsShouldProcess = true), OutputType(typeof(PSTopicAttributes))]
     public class SetAzureRmServiceBusTopic : AzureServiceBusCmdletBase

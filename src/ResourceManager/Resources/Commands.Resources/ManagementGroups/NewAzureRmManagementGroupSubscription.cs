@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.ManagementGroups.Models;
 namespace Microsoft.Azure.Commands.Resources.ManagementGroups
 {
     /// <summary>
-    /// Add-AzureRmManagementGroupSubscription Cmdlet
+    /// Add-AzManagementGroupSubscription Cmdlet
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupSubscription",DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class NewAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase

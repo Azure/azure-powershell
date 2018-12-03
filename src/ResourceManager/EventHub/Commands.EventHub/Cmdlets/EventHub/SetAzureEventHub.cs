@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
     /// <summary>
-    /// 'Set-AzureRmEventHub' Cmdlet updates the specified EventHub
+    /// 'Set-AzEventHub' Cmdlet updates the specified EventHub
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHub", SupportsShouldProcess = true), OutputType(typeof(PSEventHubAttributes))]
     public class SetAzureEventHub : AzureEventHubsCmdletBase

@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
 {
     /// <summary>
-    /// 'Get-AzureRmEventHubConsumerGroup' Cmdlet gives the details of a / List of Consumer Group
+    /// 'Get-AzEventHubConsumerGroup' Cmdlet gives the details of a / List of Consumer Group
     /// <para> If consumerGroup name provided, a single Consumergroup detials will be returned</para>
     /// <para> If consumerGroup name not provided, list of Consumergroups will be returned</para>
     /// </summary>

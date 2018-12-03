@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (ShouldProcess(this.ImageName, VerbsCommon.Remove)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
-                                            "Remove-AzureRmImage operation")))
+                                            "Remove-AzImage operation")))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string imageName = this.ImageName;
