@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (ShouldProcess(this.VMScaleSetName, VerbsLifecycle.Stop)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceStoppingConfirmation,
-                                            "Stop-AzureRmVmssRollingUpgrade operation")))
+                                            "Stop-AzVmssRollingUpgrade operation")))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;

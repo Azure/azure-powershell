@@ -972,7 +972,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDiskStorageAccountType"))
             {
-                WriteWarning("Update-AzureRmVmss: The accepted values for parameter ManagedDiskStorageAccountType will change in an upcoming breaking change release " +
+                WriteWarning("Update-AzVmss: The accepted values for parameter ManagedDiskStorageAccountType will change in an upcoming breaking change release " +
                              "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {

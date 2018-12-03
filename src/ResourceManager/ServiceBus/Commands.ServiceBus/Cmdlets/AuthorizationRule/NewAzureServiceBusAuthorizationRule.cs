@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands
 {
     /// <summary>
-    /// 'New-AzureRmServiceBusAuthorizationRule' Cmdlet creates a new AuthorizationRule
+    /// 'New-AzServiceBusAuthorizationRule' Cmdlet creates a new AuthorizationRule
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
     public class NewAzureServiceBusAuthorizationRule : AzureServiceBusCmdletBase

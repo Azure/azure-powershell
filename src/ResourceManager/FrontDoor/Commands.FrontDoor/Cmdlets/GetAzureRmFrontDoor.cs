@@ -27,7 +27,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the Get-AzureRmFrontDoor cmdlet.
+    /// Defines the Get-AzFrontDoor cmdlet.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor"), OutputType(typeof(PSFrontDoor))]
     public class GetAzureRmFrontDoor : AzureFrontDoorCmdletBase

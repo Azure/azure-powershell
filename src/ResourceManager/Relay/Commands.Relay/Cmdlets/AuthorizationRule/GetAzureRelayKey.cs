@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Relay.Commands
 {
     /// <summary>
-    /// 'Get-AzureRmRelayKey' Cmdlet gives key detials for the given Authorization Rule
+    /// 'Get-AzRelayKey' Cmdlet gives key detials for the given Authorization Rule
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSAuthorizationRuleKeysAttributes))]
     public class GetAzureRelayKey : AzureRelayCmdletBase

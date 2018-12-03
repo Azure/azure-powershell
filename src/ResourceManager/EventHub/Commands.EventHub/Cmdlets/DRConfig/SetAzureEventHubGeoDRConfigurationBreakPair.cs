@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
-    /// 'Set-AzureRmEventHubDRConfigurationBreakPair' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+    /// 'Set-AzEventHubDRConfigurationBreakPair' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubGeoDRConfigurationBreakPair", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureEventHubGeoDRConfigurationBreakPair : AzureEventHubsCmdletBase
