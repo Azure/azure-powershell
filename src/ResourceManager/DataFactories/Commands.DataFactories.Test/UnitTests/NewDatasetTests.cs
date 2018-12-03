@@ -73,9 +73,8 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
             };
         }
 
-        // ToDo: enable the tests when we can set readonly provisioning state in test
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Enable the tests when we can set readonly provisioning state in test")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateDataset()
         {
             // Arrange

@@ -4,15 +4,15 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute.ManagedService.Test", "Commands.Compute.ManagedService.Test\Commands.Compute.ManagedService.Test.csproj", "{D5952853-91FC-4CD0-9A16-F2A7129B95C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute.ManagedService.Test", "Commands.Compute.ManagedService.Test\Commands.Compute.ManagedService.Test.Netcore.csproj", "{D5952853-91FC-4CD0-9A16-F2A7129B95C8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E} = {142D7B0B-388A-4CEB-A228-7F6D423C5C2E}
 		{9D1FC58F-4247-4F86-8135-359B32207B39} = {9D1FC58F-4247-4F86-8135-359B32207B39}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute.ManagedService", "Commands.Compute.ManagedService\Commands.Compute.ManagedService.csproj", "{9D1FC58F-4247-4F86-8135-359B32207B39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute.ManagedService", "Commands.Compute.ManagedService\Commands.Compute.ManagedService.Netcore.csproj", "{9D1FC58F-4247-4F86-8135-359B32207B39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

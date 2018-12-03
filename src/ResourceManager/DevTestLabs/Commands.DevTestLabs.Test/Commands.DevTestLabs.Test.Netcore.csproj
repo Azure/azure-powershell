@@ -25,8 +25,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DevTestLabs" Version="2.0.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="3.0.0" />
-    <PackageReference Include="Moq" Version="4.2.1510.2205" />
   </ItemGroup>
 
   <ItemGroup>

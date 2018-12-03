@@ -6,45 +6,44 @@ using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
 using System.Collections.Generic;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Reflection;
 using System.IO;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Commands.Aks.Test.ScenarioTests
 {
     public class TestController : RMTestBase
     {
-        private EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper _helper;
 
         public ContainerServiceClient ContainerServiceClient { get; private set; }
 
-        public Microsoft.Azure.Management.ResourceManager.ResourceManagementClient ResourceClient { get; private set; }
-
         public TestController()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
         public static TestController NewInstance => new TestController();
 
-        public Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient InternalResourceManagementClient { get; private set; }
-
-        public GraphRbacManagementClient GraphRbacManagementClient { get; private set; }
+        public ResourceManagementClient InternalResourceManagementClient { get; private set; }
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
-            helper.TracingInterceptor = logger;
+            _helper.TracingInterceptor = logger;
 
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
             var providersToIgnore = new Dictionary<string, string>
                 {
                     {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2017-05-10"},
@@ -56,17 +55,15 @@ namespace Commands.Aks.Test.ScenarioTests
             using (var context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
+                var callingClassName = callingClassType?.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager,
-                    helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.GetRMModulePath(@"AzureRM.Aks.psd1"),
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupModules(AzureModule.AzureResourceManager,
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.Aks.psd1"),
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    "AzureRM.Resources.ps1");
 
                 if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback)
                 {
@@ -75,7 +72,7 @@ namespace Commands.Aks.Test.ScenarioTests
                     var dir = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
                     var subscription = HttpMockServer.Variables["SubscriptionId"];
                     AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".ssh", "id_rsa.pub"), File.ReadAllText(dir + "/Fixtures/id_rsa.pub"));
-                    string jsonOutput = @"{""" + subscription + @""":{ ""service_principal"":""foo"",""client_secret"":""bar""}}";
+                    var jsonOutput = @"{""" + subscription + @""":{ ""service_principal"":""foo"",""client_secret"":""bar""}}";
                     AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".azure", "acsServicePrincipal.json"), jsonOutput);
                 }
                 else if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
@@ -96,41 +93,28 @@ namespace Commands.Aks.Test.ScenarioTests
                         spnSecret = currentEnvironment.ConnectionString.KeyValuePairs["ServicePrincipalSecret"];
                     }
                     AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".ssh", "id_rsa.pub"), File.ReadAllText(dir + "/Fixtures/id_rsa.pub"));
-                    string jsonOutput = @"{""" + subscription + @""":{ ""service_principal"":""" + spn + @""",""client_secret"":"""+ spnSecret + @"""}}";
+                    var jsonOutput = @"{""" + subscription + @""":{ ""service_principal"":""" + spn + @""",""client_secret"":"""+ spnSecret + @"""}}";
                     AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".azure", "acsServicePrincipal.json"), jsonOutput);
                 }
 
-                helper.RunPowerShellTest(scripts);
+                _helper.RunPowerShellTest(scripts);
             }
         }
 
         private void SetupManagementClients(MockContext context)
         {
             ContainerServiceClient = GetContainerServiceClient(context);
-            ResourceClient = GetResourceManagementClient(context);
             InternalResourceManagementClient = GetInternalResourceManagementClient(context);
-            GraphRbacManagementClient = GetRbacManagementClient(context);
-            helper.SetupManagementClients(ContainerServiceClient, ResourceClient, InternalResourceManagementClient, GraphRbacManagementClient);
+            _helper.SetupManagementClients(ContainerServiceClient, InternalResourceManagementClient);
         }
 
-        private ContainerServiceClient GetContainerServiceClient(MockContext context)
+        private static ContainerServiceClient GetContainerServiceClient(MockContext context)
         {
             return context.GetServiceClient<ContainerServiceClient>();
         }
-
-        private Microsoft.Azure.Management.ResourceManager.ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static ResourceManagementClient GetInternalResourceManagementClient(MockContext context)
         {
-            return context.GetServiceClient<Microsoft.Azure.Management.ResourceManager.ResourceManagementClient>();
-        }
-
-        private Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient GetInternalResourceManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>();
-        }
-
-        private GraphRbacManagementClient GetRbacManagementClient(MockContext context)
-        {
-            return context.GetGraphServiceClient<GraphRbacManagementClient>();
+            return context.GetServiceClient<ResourceManagementClient>();
         }
     }
 }
