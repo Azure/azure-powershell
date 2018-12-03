@@ -14,7 +14,7 @@ Gets the Storage resource usage of the current subscription.
 ## SYNTAX
 
 ```
-Get-AzStorageUsage [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzStorageUsage -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
