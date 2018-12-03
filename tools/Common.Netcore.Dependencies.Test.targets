@@ -25,10 +25,6 @@
     <PackageReference Include="Newtonsoft.Json" version="10.0.3" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.0.1" />
   </ItemGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-  </PropertyGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.4" IncludeAssets="All" />
