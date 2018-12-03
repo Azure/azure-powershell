@@ -54,7 +54,13 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.6.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = ''
+RequiredAssemblies = '.\Microsoft.Azure.Management.StorageSync.dll',
+                     '.\Microsoft.Azure.Management.Authorization.dll',
+                     '.\Microsoft.Data.Edm.dll',
+                     '.\Microsoft.Data.OData.dll',
+                     '.\Microsoft.Data.Services.Client.dll',
+                     '.\System.Net.Http.Formatting.dll',
+                     '.\System.Spatial.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -72,7 +78,12 @@ NestedModules = @('.\Microsoft.Azure.Commands.StorageSync.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Invoke-AzStorageSyncCompatibilityCheck'
+CmdletsToExport = 'Invoke-AzureRmStorageSyncCompatibilityCheck',
+                'New-AzureRmStorageSyncService','Get-AzureRmStorageSyncService','Remove-AzureRmStorageSyncService',
+                'New-AzureRmStorageSyncGroup','Get-AzureRmStorageSyncGroup','Remove-AzureRmStorageSyncGroup',
+                'New-AzureRmStorageSyncCloudEndpoint','Get-AzureRmStorageSyncCloudEndpoint','Remove-AzureRmStorageSyncCloudEndpoint',
+                'New-AzureRmStorageSyncServerEndpoint','Get-AzureRmStorageSyncServerEndpoint','Remove-AzureRmStorageSyncServerEndpoint','Set-AzureRmStorageSyncServerEndpoint','Invoke-AzureRmStorageSyncFileRecall',
+                'Register-AzureRmStorageSyncServer','Unregister-AzureRmStorageSyncServer','Get-AzureRmStorageSyncServer','Reset-AzureRmStorageSyncServerCertificate'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -95,7 +106,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'Storage', 'StorageSync'
+        Tags = 'Azure','ResourceManager','ARM','Storage','StorageSync','AFS','Azure','File','Sync'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -110,7 +121,7 @@ PrivateData = @{
         ReleaseNotes = 'Initial Release with PowerShell and PowerShell Core Support'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

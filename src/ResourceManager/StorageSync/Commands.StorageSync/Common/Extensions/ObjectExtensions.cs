@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Extensions
 {

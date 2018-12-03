@@ -7,9 +7,9 @@ $scriptpath = $MyInvocation.MyCommand.Path
 $scriptDirectory = Split-Path $scriptpath
 $scriptFileName = Split-Path $scriptpath -Leaf
 
-Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1" -Verbose
-#Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1" -Verbose
-Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\AzureRM.StorageSync\AzureRM.StorageSync.psd1" -Verbose
+Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\Az.Profile\Az.Profile.psd1" -Verbose
+#Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\Az.Storage\Az.Storage.psd1" -Verbose
+Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\Az.StorageSync\Az.StorageSync.psd1" -Verbose
 
 $VerbosePreference='Continue'
 

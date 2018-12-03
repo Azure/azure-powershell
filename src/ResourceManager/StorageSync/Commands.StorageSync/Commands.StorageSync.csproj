@@ -248,6 +248,8 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Az.StorageSync.psd1" />
+    <None Include="ChangeLog.md" />
     <None Include="help\AzureRm.StorageSync.md" />
     <None Include="help\Get-AzureRmStorageSyncCloudEndpoint.md" />
     <None Include="help\Get-AzureRmStorageSyncGroup.md" />
@@ -271,10 +273,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="debug.ps1" />
-    <None Include="AzureRM.StorageSync.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <EmbeddedResource Include="Config.json" />
+    <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
