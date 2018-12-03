@@ -444,4 +444,7 @@
   <data name="ShouldRemoveModule" xml:space="preserve">
     <value>Removing module '{0}' from your machine</value>
   </data>
+  <data name="ImportAuthenticationFailure" xml:space="preserve">
+    <value>Unable to import authentication information into the global cache.  Please try executing the command again.</value>
+  </data>
 </root>
