@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (ShouldProcess(this.DiskName, VerbsCommon.Remove)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
-                                            "Remove-AzureRmDisk operation")))
+                                            "Remove-AzDisk operation")))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;

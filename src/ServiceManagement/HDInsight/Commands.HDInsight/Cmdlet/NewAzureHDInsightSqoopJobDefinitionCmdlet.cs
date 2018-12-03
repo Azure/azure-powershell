@@ -79,7 +79,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// </summary>
         protected override void EndProcessing()
         {
-            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "New-AzureRmHDInsightSqoopJobDefinition"));
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "New-AzHDInsightSqoopJobDefinition"));
             if (this.File.IsNullOrEmpty() && this.Command.IsNullOrEmpty())
             {
                 throw new PSArgumentException("Either File or Command should be specified for Sqoop jobs.");
