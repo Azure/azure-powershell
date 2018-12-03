@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         [Parameter(
             Mandatory = false, 
             HelpMessage = "The tags associated with the media service account.")]
-        [Obsolete("New-AzureRmMediaService: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [Obsolete("New-AzMediaService: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
         [Alias("Tags")]
         [ValidateNotNull]
         public Hashtable Tag { get; set; }

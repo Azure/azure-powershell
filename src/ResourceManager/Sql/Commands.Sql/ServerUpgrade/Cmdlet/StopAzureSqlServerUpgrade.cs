@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
+    /// Defines the Get-AzSqlDatabaseServer cmdlet
     /// </summary>
     [CmdletDeprecation(ChangeDescription = "All Azure SQL DB Servers now have version 12.0 so there is nothing to upgrade.")]
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerUpgrade", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerUpgradeModel))]

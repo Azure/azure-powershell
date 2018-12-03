@@ -20,6 +20,7 @@
 ## Current Release
 * Fix the trailing slash of the domain of adls account
 * Update the sdk version of dataplane to 1.1.13
+
 ## Version 6.2.1
 * Update the DataLake package to 1.1.10.
 * Add default Concurrency to multithreaded operations.

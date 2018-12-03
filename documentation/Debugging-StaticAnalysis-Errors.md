@@ -36,19 +36,19 @@ _Note_: Sometimes the error listed in the .csv file can be a false positive (for
 
 - Download the `BreakingChangeIssues.csv` file from the Jenkins build
 - Open the file using a text editor (such as VS Code) and copy each of the errors you'd like to suppress
-- Paste each of these errors into the `BreakingChangeIssues.csv` file found in their respective [module folder](../tools/StaticAnalysis/Exceptions) (_e.g._, if a breaking change is being suppressed for Compute, then you would paste the corresponding line(s) in the `tools/StaticAnalysis/Exceptions/AzureRM.Compute/BreakingChangeIssues.csv` file) using the same text editor
+- Paste each of these errors into the `BreakingChangeIssues.csv` file found in their respective [module folder](../tools/StaticAnalysis/Exceptions) (_e.g._, if a breaking change is being suppressed for Compute, then you would paste the corresponding line(s) in the `tools/StaticAnalysis/Exceptions/Az.Compute/BreakingChangeIssues.csv` file) using the same text editor
 - Push the changes to the .csv file and ensure the errors no longer show up in the `BreakingChangeIssues.csv` file output from the Jenkins build.
 
 We take breaking changes very seriously, so please be mindful about the violations that you suppress in our repo.
 
 ### Signature Issues
-Signature issues occur when your cmdlets do not follow PowerShell standards.  Please check [this page](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/azure-powershell-design-guidelines.md) to ensure you are following PowerShell guidelines.  Issues with severity 0 or 1 must be addressed, while issues with severity 2 are advisory.  If you have an issue with severity 0 or 1 that has been approved by the Azure PowerShell team, you can suppress them following these steps:
+Signature issues occur when your cmdlets do not follow PowerShell standards.  Please check [this page](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/azure-powershell-design-guidelines.md) to ensure you are following PowerShell guidelines.  Issues with severity 0 or 1 must be addressed, while issues with severity 2 are advisory.  If you have an issue with severity 0 or 1 that has been approved by the Azure PowerShell team, you can suppress them following these steps:
 
 - Download the `SignatureIssues.csv` file from the Jenkins build
 - Open the file using a text editor (such as VS Code) and copy each of the errors you'd like to suppress
-- Paste each of these errors into the `SignatureIssues.csv` file found in their respective [module folder](../tools/StaticAnalysis/Exceptions) (_e.g.,_ if a signature issue is being suppressed for Sql, then you would paste the corresponding line(s) in the `tools/StaticAnalysis/Exceptions/AzureRM.Sql/SignatureIssues.csv` file) using the same text editor
+- Paste each of these errors into the `SignatureIssues.csv` file found in their respective [module folder](../tools/StaticAnalysis/Exceptions) (_e.g.,_ if a signature issue is being suppressed for Sql, then you would paste the corresponding line(s) in the `tools/StaticAnalysis/Exceptions/Az.Sql/SignatureIssues.csv` file) using the same text editor
 - Copy each of the errors you would like to suppress directly from the SignatureIssues.csv file output in the Jenkins build
 - Push the changes to the .csv file and ensure the errors no longer show up in the `SignatureIssues.csv` file output from the Jenkins build.
 
 ### Help Issues
-Most help issues that cause StaticAnalysis to fail occur when help has not been added for a particular cmdlet.  If you have not generated help for your new cmdlets, please follow the instructions [here](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/help-generation.md). If this is not the issue, follow the steps listed under "Remediation" for each violation listed in HelpIssues.csv.
+Most help issues that cause StaticAnalysis to fail occur when help has not been added for a particular cmdlet.  If you have not generated help for your new cmdlets, please follow the instructions [here](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/help-generation.md). If this is not the issue, follow the steps listed under "Remediation" for each violation listed in HelpIssues.csv.

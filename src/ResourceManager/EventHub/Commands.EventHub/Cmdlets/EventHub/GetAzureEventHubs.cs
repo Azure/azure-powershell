@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {    
     /// <summary>
-    /// 'Get-AzureRmEventHub' Cmdlet gives the details of a / List of EventHub(s)
+    /// 'Get-AzEventHub' Cmdlet gives the details of a / List of EventHub(s)
     /// <para> If EventHub name provided, a single EventHub detials will be returned</para>
     /// <para> If EventHub name not provided, list of EventHub will be returned</para>
     /// </summary>
