@@ -271,6 +271,7 @@
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanRecordModel.cs" />
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentRuleBaselineModel.cs" />
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentSettingsModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\ServerVulnerabilityAssessmentSettingsModel.cs" />
     <Compile Include="VulnerabilityAssessment\Services\BaseSqlVulnerabilityAssessmentAdapter.cs" />
     <Compile Include="VulnerabilityAssessment\Services\SqlVulnerabilityAssessmentScanAdapter.cs" />
     <Compile Include="VulnerabilityAssessment\Services\SqlVulnerabilityAssessmentRuleBaselineAdapter.cs" />
@@ -499,9 +500,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.22.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.24.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
@@ -515,6 +514,16 @@
     <Reference Include="Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.8.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.18\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.18\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime" />
     <Reference Include="WindowsAzure.Storage">
       <HintPath>..\..\..\packages\WindowsAzure.Storage.8.7.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>

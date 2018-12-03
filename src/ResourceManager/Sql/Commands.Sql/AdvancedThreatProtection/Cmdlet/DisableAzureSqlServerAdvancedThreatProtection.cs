@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.VulnerabilityAssessment.Model;
+using Microsoft.Azure.Commands.Sql.VulnerabilityAssessment.Services;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
@@ -30,6 +32,15 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override ServerAdvancedThreatProtectionPolicyModel PersistChanges(ServerAdvancedThreatProtectionPolicyModel model)
         {
+            // Delete VA server policy when disabling ATP
+            var sqlVulnerabilityAssessmentAdapter = new SqlVulnerabilityAssessmentAdapter(DefaultProfile.DefaultContext);
+            var vaModel = new ServerVulnerabilityAssessmentSettingsModel()
+            {
+                ResourceGroupName = model.ResourceGroupName,
+                ServerName = model.ServerName
+            };
+            sqlVulnerabilityAssessmentAdapter.ClearServerVulnerabilityAssessmentSettings(vaModel);
+
             model.IsEnabled = false;
             ModelAdapter.SetServerAdvancedThreatProtection(model);
             return model;
