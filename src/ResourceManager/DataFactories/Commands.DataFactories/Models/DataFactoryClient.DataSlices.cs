@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Scheduler", "Commands.Scheduler\Commands.Scheduler.csproj", "{84FABEE4-86CD-43B5-A131-9FDAE3A58F0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Scheduler", "Commands.Scheduler\Commands.Scheduler.Netcore.csproj", "{84FABEE4-86CD-43B5-A131-9FDAE3A58F0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Scheduler.Test", "Commands.Scheduler.Test\Commands.Scheduler.Test.csproj", "{7181C815-A8C5-4BEC-988F-BD1F64D0BDC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Scheduler.Test", "Commands.Scheduler.Test\Commands.Scheduler.Test.Netcore.csproj", "{7181C815-A8C5-4BEC-988F-BD1F64D0BDC9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C4E14B14-9935-4E60-BA59-CEC2FE04995C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -32,6 +32,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.IotCentral" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Az.IotCentral.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>true</DesignTime>
       <AutoGen>true</AutoGen>
@@ -47,17 +57,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Az.IotCentral.psd1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.IotCentral" Version="2.0.0" />
   </ItemGroup>
 
 </Project>

@@ -44,12 +44,10 @@
     <NetCoreAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.19.2\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
   </ItemGroup>
 
-
   <ItemGroup>
     <StorageDependencies Include="$(ProjectDir)..\..\..\lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
     <StorageDependencies Include="$(ProjectDir)..\..\..\lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
   </ItemGroup>
-
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

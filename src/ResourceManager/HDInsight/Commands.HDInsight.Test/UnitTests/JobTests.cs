@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             WaitForJobCompletion_Internal(JobCompletionType.TimeOut, expectedExceptionMessage);
         }
 
-        public void WaitForJobCompletion_Internal(JobCompletionType completionType, string expectedMessageFormat)
+        private void WaitForJobCompletion_Internal(JobCompletionType completionType, string expectedMessageFormat)
         {
             var cmdlet = GetWaitAzureHDInsightJobCommandDefinition(completionType);
 

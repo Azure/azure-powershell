@@ -23,9 +23,8 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace RecoveryServices.SiteRecovery.Test
 {
@@ -41,10 +40,8 @@ namespace RecoveryServices.SiteRecovery.Test
             _helper = new EnvironmentSetupHelper();
         }
 
-        public ResourceManagementClient RmRestClient { get; private set; }
         public RecoveryServicesClient RecoveryServicesMgmtClient { get; private set; }
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
-        public ComputeManagementClient ComputeManagementClient { get; private set; }
         public ResourceManagementClient ResourceManagementRestClient { get; private set; }
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, string scenario, params string[] scripts)
@@ -84,7 +81,7 @@ namespace RecoveryServices.SiteRecovery.Test
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine( AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (var context = RestTestFramework.MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
 
@@ -96,7 +93,6 @@ namespace RecoveryServices.SiteRecovery.Test
                     PowershellFile,
                     PowershellHelperFile,
                     rmProfileModule,
-                    _helper.RMResourceModule,
                     _helper.GetRMModulePath("AzureRM.RecoveryServices.psd1"),
 #if !NETSTANDARD
                     _helper.GetRMModulePath("AzureRM.RecoveryServices.SiteRecovery.psd1"),
@@ -118,39 +114,31 @@ namespace RecoveryServices.SiteRecovery.Test
             }
         }
 
-        protected void SetupManagementClients(
-            RestTestFramework.MockContext context)
+        protected void SetupManagementClients(MockContext context)
         {
-            RmRestClient = GetRmRestClient(context);
             ResourceManagementRestClient = GetResourceManagementClientRestClient(context);
             RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient(context);
             SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient(context);
             
             _helper.SetupManagementClients(
-                RmRestClient,
                 RecoveryServicesMgmtClient,
                 SiteRecoveryMgmtClient,
                 ResourceManagementRestClient);
         }
 
-        private static RecoveryServicesClient GetRecoveryServicesManagementClient(RestTestFramework.MockContext context)
+        private static RecoveryServicesClient GetRecoveryServicesManagementClient(MockContext context)
         {
-            return context.GetServiceClient<RecoveryServicesClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<RecoveryServicesClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static ResourceManagementClient GetRmRestClient(RestTestFramework.MockContext context)
+        private static ResourceManagementClient GetResourceManagementClientRestClient(MockContext context)
         {
-            return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static ResourceManagementClient GetResourceManagementClientRestClient(RestTestFramework.MockContext context)
+        private static SiteRecoveryManagementClient GetSiteRecoveryManagementClient(MockContext context)
         {
-            return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private static SiteRecoveryManagementClient GetSiteRecoveryManagementClient(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<SiteRecoveryManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<SiteRecoveryManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
