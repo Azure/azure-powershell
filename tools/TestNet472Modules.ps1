@@ -15,9 +15,9 @@ $storageBasePath = (Join-Path $srcPath -ChildPath 'Storage')
 $testConfig = (Join-Path $libPath -ChildPath 'test.net472.config')
 $testStorageConfig = (Join-Path $libPath -ChildPath 'test.net472.storage.config')
 $rmItems = Get-ChildItem -Recurse -Path $rmBasePath -Include *.Test.dll `
-  | Where {$_.FullName.Contains('bin\Debug\net472')}
+  | Where {$_.FullName.Contains('bin\Debug\netstandard2.0')}
 $storageItems = Get-ChildItem -Recurse -Path $storageBasePath -Include *.Test.dll `
-  | Where {$_.FullName.Contains('bin\Debug\net472')}
+  | Where {$_.FullName.Contains('bin\Debug\netstandard2.0')}
 
 if ($ModuleFilter)
 {
