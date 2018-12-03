@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
 
         [Parameter(
             ParameterSetName = InputObjectParameterSet,
-            HelpMessage = "Maps Account piped from Get-AzureRmMapsAccount.",
+            HelpMessage = "Maps Account piped from Get-AzMapsAccount.",
             ValueFromPipeline = true)]
         public PSMapsAccount InputObject { get; set; }
 

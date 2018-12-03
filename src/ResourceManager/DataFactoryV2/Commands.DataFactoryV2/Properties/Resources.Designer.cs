@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The data factory object provided is invalid. Use Get-AzureRmDataFactory to retrieve a specific data factory object, or use New-AzureRmDataFactory to create a new data factory object..
+        ///   Looks up a localized string similar to The data factory object provided is invalid. Use Get-AzDataFactory to retrieve a specific data factory object, or use New-AzDataFactory to create a new data factory object..
         /// </summary>
         internal static string DataFactoryArgumentInvalid {
             get {
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Get-AzureRmDataFactorySlice command if you want to specify EndDateTime..
+        ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Get-AzDataFactorySlice command if you want to specify EndDateTime..
         /// </summary>
         internal static string EndDateTimeNotSpecifiedForGetSlice {
             get {
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Set-AzureRmDataFactorySliceStatus command if you want to specify EndDateTime..
+        ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Set-AzDataFactorySliceStatus command if you want to specify EndDateTime..
         /// </summary>
         internal static string EndDateTimeNotSpecifiedForSetSliceStatus {
             get {
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyIR -Status.
+        ///   Looks up a localized string similar to An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyIR -Status.
         /// </summary>
         internal static string LongRunningStatusError {
             get {

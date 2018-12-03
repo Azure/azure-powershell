@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         protected override void ProcessRecordInternal()
         {
             this.WriteIdentifiedWarning(
-                cmdletName: "Get-AzureRmMetric",
+                cmdletName: "Get-AzMetric",
                 topic: "Parameter deprecation", 
                 message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             bool fullDetails = this.DetailedOutput.IsPresent;

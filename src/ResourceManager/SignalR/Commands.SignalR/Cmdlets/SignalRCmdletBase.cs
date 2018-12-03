@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         public abstract string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Returns the default resource group set by Set-AzureRmDefault, if present.
+        /// Returns the default resource group set by Set-AzDefault, if present.
         /// </summary>
         protected string DefaultResourceGroupName
         {

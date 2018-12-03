@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var vpnClientIPsecParametersModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnClientIPsecParameters>(this.VpnClientIPsecParameter);
 
-            string shouldProcessMessage = string.Format("Execute Set-AzureRmVpnClientIpsecParameters for ResourceGroupName {0} VirtualNetworkGateway {1}", this.ResourceGroupName, this.VirtualNetworkGatewayName);
+            string shouldProcessMessage = string.Format("Execute Set-AzVpnClientIpsecParameters for ResourceGroupName {0} VirtualNetworkGateway {1}", this.ResourceGroupName, this.VirtualNetworkGatewayName);
             if (ShouldProcess(shouldProcessMessage, VerbsCommon.Set))
             {
                 var vpnClientIpsecParameters = this.VirtualNetworkGatewayClient.SetVpnclientIpsecParameters(this.ResourceGroupName, this.VirtualNetworkGatewayName, vpnClientIPsecParametersModel);
