@@ -2040,7 +2040,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sourcePlatform\": \"MongoDb\",\r\n    \"targetPlatform\": \"MongoDb\",\r\n    \"creationTime\": \"2018-11-28T10:23:02.4371195-08:00\",\r\n    \"sourceConnectionInfo\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"\",\r\n      \"serverName\": \"AzureStorage\",\r\n      \"userName\": \"\"\r\n    },\r\n    \"targetConnectionInfo\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"\",\r\n      \"serverName\": \"adamcosmos.documents.azure.com\",\r\n      \"port\": 10255,\r\n      \"useSSL\": true,\r\n      \"userName\": \"adamcosmos\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"etag\": \"IwfNYaUnSOrv2aKwG4mgHS1svX5cwj1eATAdKW/sE8E=\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun4400/providers/Microsoft.DataMigration/services/DmService-PsTestRun84/projects/DmProject-PsTestRun3006\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"DmProject-PsTestRun3006\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sourcePlatform\": \"MongoDb\",\r\n    \"targetPlatform\": \"MongoDb\",\r\n    \"creationTime\": \"2018-11-28T10:23:02.4371195-08:00\",\r\n    \"sourceConnectionInfo\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"\",\r\n      \"serverName\": \"AzureStorage\",\r\n      \"userName\": \"\"\r\n    },\r\n    \"targetConnectionInfo\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"\",\r\n      \"serverName\": \"adamcosmos.documents.azure.com\",\r\n      \"port\": 10255,\r\n      \"useSSL\": true,\r\n          },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"etag\": \"\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun4400/providers/Microsoft.DataMigration/services/DmService-PsTestRun84/projects/DmProject-PsTestRun3006\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"DmProject-PsTestRun3006\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects\"\r\n}",
       "StatusCode": 201
     },
     {
@@ -2097,7 +2097,7 @@
           "Wed, 28 Nov 2018 18:23:02 GMT"
         ],
         "ETag": [
-          "\"TMp+UFrU7bWdQMlOuj0tZpPtMDr9k59IgVWLvktSMjE=\""
+          "\"\""
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -2112,7 +2112,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"input\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"\"\r\n    },\r\n    \"taskId\": \"0185b46d-9b38-4105-b599-035d02379edc\",\r\n    \"taskType\": \"Connect.MongoDb\",\r\n    \"state\": \"Queued\"\r\n  },\r\n  \"etag\": \"TMp+UFrU7bWdQMlOuj0tZpPtMDr9k59IgVWLvktSMjE=\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun4400/providers/Microsoft.DataMigration/services/DmService-PsTestRun84/projects/DmProject-PsTestRun3006/tasks/DmTask-PsTestRun935\",\r\n  \"name\": \"DmTask-PsTestRun935\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects/tasks\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"input\": {\r\n      \"type\": \"MongoDbConnectionInfo\",\r\n      \"connectionString\": \"\"\r\n    },\r\n    \"taskId\": \"0185b46d-9b38-4105-b599-035d02379edc\",\r\n    \"taskType\": \"Connect.MongoDb\",\r\n    \"state\": \"Queued\"\r\n  },\r\n  \"etag\": \"\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun4400/providers/Microsoft.DataMigration/services/DmService-PsTestRun84/projects/DmProject-PsTestRun3006/tasks/DmTask-PsTestRun935\",\r\n  \"name\": \"DmTask-PsTestRun935\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects/tasks\"\r\n}",
       "StatusCode": 201
     },
     {
