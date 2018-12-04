@@ -14,9 +14,8 @@ Creates an SSL policy for an application gateway.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewaySslPolicy [-DisabledSslProtocols <System.Collections.Generic.List`1[System.String]>]
- [-PolicyType <String>] [-PolicyName <String>]
- [-CipherSuite <System.Collections.Generic.List`1[System.String]>] [-MinProtocolVersion <String>]
+New-AzApplicationGatewaySslPolicy [-DisabledSslProtocols <String[]>] [-PolicyType <String>]
+ [-PolicyName <String>] [-CipherSuite <String[]>] [-MinProtocolVersion <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,7 +37,7 @@ This command creates a custom policy.
 Ssl cipher suites to be enabled in the specified order to application gateway
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +71,7 @@ The acceptable values for this parameter are:
 - TLSv1_2
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: TLSv1_0, TLSv1_1, TLSv1_2

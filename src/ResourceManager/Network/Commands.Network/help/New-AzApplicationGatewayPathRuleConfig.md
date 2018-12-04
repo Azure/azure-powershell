@@ -15,9 +15,9 @@ Creates an application gateway path rule.
 
 ### SetByResourceId
 ```
-New-AzApplicationGatewayPathRuleConfig -Name <String> -Paths <String[]>
- [-BackendAddressPoolId <String>] [-BackendHttpSettingsId <String>] [-RewriteRuleSetId <String>]
- [-RedirectConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayPathRuleConfig -Name <String> -Paths <String[]> [-BackendAddressPoolId <String>]
+ [-BackendHttpSettingsId <String>] [-RewriteRuleSetId <String>] [-RedirectConfigurationId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource

@@ -17,8 +17,8 @@ Creates a request routing rule for an application gateway.
 ```
 New-AzApplicationGatewayRequestRoutingRule -Name <String> -RuleType <String> [-BackendHttpSettingsId <String>]
  [-HttpListenerId <String>] [-BackendAddressPoolId <String>] [-UrlPathMapId <String>]
- [-RewriteRuleSetId <String>] [-RedirectConfigurationId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-RewriteRuleSetId <String>] [-RedirectConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResource
