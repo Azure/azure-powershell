@@ -298,13 +298,13 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-The tier of service for the circuit. Possible values for this parameter are: `Standard` or `Premium`.
+The tier of service for the circuit. Possible values for this parameter are: `Standard`, `Premium` or `Basic`.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard, Premium
+Accepted values: Standard, Premium, Basic
 
 Required: False
 Position: Named
