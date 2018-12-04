@@ -13,7 +13,7 @@
         {
             string scripts = @"param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
 $location = $fakeBoundParameter['Location']
-$values = $(Get-AzureRmCognitiveServicesAccountType -Location $location)
+$values = $(Get-AzCognitiveServicesAccountType -Location $location)
 $values | Where-Object { $_ -Like ""$wordToComplete*"" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
             return ScriptBlock.Create(scripts);
         }
