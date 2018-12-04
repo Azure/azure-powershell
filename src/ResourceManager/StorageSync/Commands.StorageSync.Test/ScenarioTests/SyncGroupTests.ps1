@@ -22,7 +22,7 @@ function Test-SyncGroup
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -83,7 +83,7 @@ function Test-NewSyncGroup
 {
    # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -128,7 +128,7 @@ function Test-GetSyncGroup
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -175,7 +175,7 @@ function Test-GetSyncGroups
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -226,7 +226,7 @@ function Test-GetSyncGroupParentObject
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -273,7 +273,7 @@ function Test-GetSyncGroupParentResourceId
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -320,7 +320,7 @@ function Test-RemoveSyncGroup
 {
      # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -362,7 +362,7 @@ function Test-RemoveSyncGroupInputObject
 {
      # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -405,7 +405,7 @@ function Test-RemoveSyncGroupResourceId
 {
      # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test

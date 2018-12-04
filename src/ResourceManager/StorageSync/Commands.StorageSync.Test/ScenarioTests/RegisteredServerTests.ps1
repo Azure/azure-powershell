@@ -22,7 +22,7 @@ function Test-RegisteredServer
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -103,7 +103,7 @@ function Test-NewRegisteredServer
 {
    # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -157,7 +157,7 @@ function Test-NewRegisteredServerParentObject
 {
    # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -211,7 +211,7 @@ function Test-NewRegisteredServerParentResourceId
 {
    # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -265,7 +265,7 @@ function Test-GetRegisteredServer
 {
      # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -322,7 +322,7 @@ function Test-GetRegisteredServers
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
             # Test
@@ -380,7 +380,7 @@ function Test-GetRegisteredServerParentObject
 {
       # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -434,7 +434,7 @@ function Test-GetRegisteredServerParentResourceId
 {
      # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -488,7 +488,7 @@ function Test-RemoveRegisteredServer
 {
      # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -536,7 +536,7 @@ function Test-RemoveRegisteredServerInputObject
 {
       # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -585,7 +585,7 @@ function Test-RemoveRegisteredServerResourceId
 {
      # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test

@@ -22,7 +22,7 @@ function Test-ServerEndpoint
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
        # Test
@@ -52,8 +52,8 @@ function Test-ServerEndpoint
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
-        $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+        $storageAccount = New-AzureRMStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $key = Get-AzureRMStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
         $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
         Write-Verbose "Resource: $StorageAccountShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
@@ -180,7 +180,7 @@ function Test-ServerEndpoint
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        Remove-AzStorageAccount -Force -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+        Remove-AzureRMStorageAccount -Force -ResourceGroupName $resourceGroupName -Name $StorageAccountName
 
     }
     finally

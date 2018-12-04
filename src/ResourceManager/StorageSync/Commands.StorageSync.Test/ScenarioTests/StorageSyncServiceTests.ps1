@@ -22,9 +22,10 @@ function Test-StorageSyncService
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
+
         # Test
         $storageSyncServiceName = Get-ResourceName("sss")
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
@@ -73,7 +74,7 @@ function Test-NewStorageSyncService
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -110,7 +111,7 @@ function Test-GetStorageSyncService
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -150,7 +151,7 @@ function Test-GetStorageSyncServices
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -193,7 +194,7 @@ function Test-RemoveStorageSyncService
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -230,7 +231,7 @@ function Test-RemoveStorageSyncServiceInputObject
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
@@ -267,7 +268,7 @@ function Test-RemoveStorageSyncServiceResourceId
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
         # Test
