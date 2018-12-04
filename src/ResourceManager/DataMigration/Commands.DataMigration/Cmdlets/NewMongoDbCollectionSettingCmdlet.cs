@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// <summary>
     /// Class that creates a new instance of the mongo db collection info
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationMongoDbCollectionSetting", SupportsShouldProcess = true), OutputType(typeof(MongoDbCollectionSetting))]
-    [Alias("New-AzureRmDmsMongoDbCollectionSetting")]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationMongoDbCollectionSetting", SupportsShouldProcess = true), OutputType(typeof(MongoDbCollectionSetting))]
+    [Alias("New-"+ ResourceManager.Common.AzureRMConstants.AzureRMPrefix +"DmsMongoDbCollectionSetting")]
     public class NewMongoDbCollectionSettingCmdlet : DataMigrationCmdlet
     {
         [Parameter(

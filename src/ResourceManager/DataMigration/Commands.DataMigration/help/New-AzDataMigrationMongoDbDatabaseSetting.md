@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/New-AzureRmDmsMongoDbDatabaseSettings
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/New-AzDataMigrationMongoDbDatabaseSetting
 schema: 2.0.0
 ---
 
-# New-AzureRmDataMigrationMongoDbDatabaseSetting 
+# New-AzDataMigrationMongoDbDatabaseSetting 
 
 ## SYNOPSIS
 Creates database setting for migration for the mongoDb migration
@@ -13,18 +13,18 @@ Creates database setting for migration for the mongoDb migration
 ## SYNTAX
 
 ```
-New-AzureRmDataMigrationMongoDbDatabaseSetting  -Name <Name> [-RU <RU>] -CollectionSetting <Collections>
+New-AzDataMigrationMongoDbDatabaseSetting  -Name <Name> [-RU <RU>] -CollectionSetting <Collections>
 ```
 
 ## DESCRIPTION
-The New-AzureRmDataMigrationMongoDbDatabaseSetting  cmdlet creates the migration setting object that specifies the throughput and delete behavior. 
+The New-AzDataMigrationMongoDbDatabaseSetting  cmdlet creates the migration setting object that specifies the throughput and delete behavior. 
 The output is a key value pair with name of collection and value of the setting, which can be used in invoking the migration task.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmDataMigrationMongoDbDatabaseSetting  -Name mycollection -RU 1000 -CollectionSetting @(coll1, coll2)
+PS C:\> New-AzDataMigrationMongoDbDatabaseSetting  -Name mycollection -RU 1000 -CollectionSetting @(coll1, coll2)
 
 ```
 
