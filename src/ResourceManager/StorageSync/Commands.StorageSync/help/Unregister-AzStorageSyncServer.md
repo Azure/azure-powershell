@@ -1,47 +1,54 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
-Module Name: AzureRM.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/{CmdletName}
+Module Name: Az.StorageSync
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/unregister-Azstoragesyncserver
 schema: 2.0.0
 ---
 
-# Remove-AzureRmStorageSyncServerEndpoint
+# Unregister-AzStorageSyncServer
 
 ## SYNOPSIS
-This command will use to remove storage sync server endpoint.
+This command will use to unregister storage sync server.
 
 ## SYNTAX
 
-### StringParameterSet (Default)
+### ObjectParameterSet (Default)
 ```
-Remove-AzureRmStorageSyncServerEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-SyncGroupName] <String> [-Name] <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Unregister-AzStorageSyncServer [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzureRmStorageSyncServerEndpoint [-InputObject] <PSServerEndpoint> [-Force] [-PassThru] [-AsJob]
+Unregister-AzStorageSyncServer [-InputObject] <PSRegisteredServer> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzureRmStorageSyncServerEndpoint [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
+Unregister-AzStorageSyncServer [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### StringParameterSet
+```
+Unregister-AzStorageSyncServer [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
+ [-ServerId] <Guid> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-This command will use to remove storage sync server endpoint.
+This command will use to unregister storage sync server.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzureRmStorageSyncServerEndpoint -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"
+PS C:\> $RegisteredServer = Get-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+PS C:\> Unregister-AzStorageSyncServer -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -ServerId $RegisteredServer.ServerId
 ```
 
-This command will remove the server endpoint.
+This command will unregister the sync server.
 
 ## PARAMETERS
 
@@ -64,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force to Delete the ServerEndpoint
+Force to Delete the RegisteredServer
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -86,15 +93,15 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -InputObject
-ServerEndpoint Input Object, normally passed through the pipeline.
+RegisteredServer Input Object, normally passed through the pipeline.
 
 ```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -102,21 +109,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the ServerEndpoint.
-
-```yaml
-Type: System.String
-Parameter Sets: StringParameterSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -151,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ServerEndpoint Resource Id
+RegisteredServer Resource Id
 
 ```yaml
 Type: System.String
@@ -165,23 +157,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -StorageSyncServiceName
-Name of the StorageSyncService.
+### -ServerId
+Name of the RegisteredServer.
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: StringParameterSet
-Aliases:
+Aliases: RegisteredServerName
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SyncGroupName
-Name of the SyncGroup.
+### -StorageSyncServiceName
+Name of the StorageSyncService.
 
 ```yaml
 Type: System.String
@@ -189,7 +181,7 @@ Parameter Sets: StringParameterSet
 Aliases: ParentName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -230,9 +222,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
+### Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer
 
 ### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

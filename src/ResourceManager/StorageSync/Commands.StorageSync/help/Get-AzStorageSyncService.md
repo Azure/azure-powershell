@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
-Module Name: AzureRM.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/get-azurermstoragesyncservice
+Module Name: Az.StorageSync
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/get-Azstoragesyncservice
 schema: 2.0.0
 ---
 
-# Get-AzureRmStorageSyncService
+# Get-AzStorageSyncService
 
 ## SYNOPSIS
 This command will use to get sync service.
@@ -14,13 +14,13 @@ This command will use to get sync service.
 
 ### ParentStringParameterSet (Default)
 ```
-Get-AzureRmStorageSyncService [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzStorageSyncService [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### StringParameterSet
 ```
-Get-AzureRmStorageSyncService [-ResourceGroupName] <String> [[-Name] <String>]
+Get-AzStorageSyncService [-ResourceGroupName] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ This command will use to get sync service.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmStorageSyncService -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+PS C:\> Get-AzStorageSyncService -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
 This command is used to get the storage sync service based on the dependent resource names.
@@ -42,7 +42,7 @@ This command is used to get the storage sync service based on the dependent reso
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

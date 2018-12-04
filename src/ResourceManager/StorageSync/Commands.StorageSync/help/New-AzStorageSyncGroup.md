@@ -1,56 +1,56 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
-Module Name: AzureRM.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/register-azurermstoragesyncserver
+Module Name: Az.StorageSync
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/new-Azstoragesyncgroup
 schema: 2.0.0
 ---
 
-# Register-AzureRmStorageSyncServer
+# New-AzStorageSyncGroup
 
 ## SYNOPSIS
-This command will use to register sync server.
+This command will use to create sync group.
 
 ## SYNTAX
 
 ### ObjectParameterSet (Default)
 ```
-Register-AzureRmStorageSyncServer [-ParentObject] <PSStorageSyncService> [-AsJob]
+New-AzStorageSyncGroup [-ParentObject] <PSStorageSyncService> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### StringParameterSet
 ```
-Register-AzureRmStorageSyncServer [-ResourceGroupName] <String> [-StorageSyncServiceName] <String> [-AsJob]
+New-AzStorageSyncGroup [-ResourceGroupName] <String> [-StorageSyncServiceName] <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentStringParameterSet
 ```
-Register-AzureRmStorageSyncServer [-ParentResourceId] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzStorageSyncGroup [-ParentResourceId] <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command will use to register sync server.
+This command will use to create sync group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Register-AzureRmStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+PS C:\> New-AzStorageSyncGroup -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
 ```
 
-This command will register the storage sync server.
+This command adds a cloudendpoint provided all the name of the dependent resources.
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases:
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -59,18 +59,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -Name
+Name of the SyncGroup.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: System.String
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: SyncGroupName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -145,7 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer
+### Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup
 
 ## NOTES
 

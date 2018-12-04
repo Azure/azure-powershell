@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
-Module Name: AzureRM.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/new-azurermstoragesyncservice
+Module Name: Az.StorageSync
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/new-Azstoragesyncservice
 schema: 2.0.0
 ---
 
-# New-AzureRmStorageSyncService
+# New-AzStorageSyncService
 
 ## SYNOPSIS
 This command will use to create storage sync service.
@@ -13,7 +13,7 @@ This command will use to create storage sync service.
 ## SYNTAX
 
 ```
-New-AzureRmStorageSyncService [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+New-AzStorageSyncService [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-Tag] <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ This command will use to create storage sync service.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmStorageSyncService -ResourceGroupName "myResourceGroup" -Location "myLocation" -StorageSyncServiceName "myStorageSyncServiceName"
+PS C:\> New-AzStorageSyncService -ResourceGroupName "myResourceGroup" -Location "myLocation" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
 This command will create a storage sync service.
@@ -35,7 +35,7 @@ This command will create a storage sync service.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

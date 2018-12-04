@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
-Module Name: AzureRM.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/set-azurermstoragesyncserverendpoint
+Module Name: Az.StorageSync
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/set-Azstoragesyncserverendpoint
 schema: 2.0.0
 ---
 
-# Set-AzureRmStorageSyncServerEndpoint
+# Set-AzStorageSyncServerEndpoint
 
 ## SYNOPSIS
 This command will use to set server endpoint.
@@ -14,7 +14,7 @@ This command will use to set server endpoint.
 
 ### ObjectParameterSet (Default)
 ```
-Set-AzureRmStorageSyncServerEndpoint [-InputObject] <PSServerEndpoint> [-CloudTiering]
+Set-AzStorageSyncServerEndpoint [-InputObject] <PSServerEndpoint> [-CloudTiering]
  [-VolumeFreeSpacePercent <Int32>] [-CloudSeededData] [-TierFilesOlderThanDays <Int32>]
  [-CloudSeededDataFileShareUri <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -22,7 +22,7 @@ Set-AzureRmStorageSyncServerEndpoint [-InputObject] <PSServerEndpoint> [-CloudTi
 
 ### StringParameterSet
 ```
-Set-AzureRmStorageSyncServerEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
+Set-AzStorageSyncServerEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-SyncGroupName] <String> [-Name] <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>]
  [-CloudSeededData] [-TierFilesOlderThanDays <Int32>] [-CloudSeededDataFileShareUri <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -30,7 +30,7 @@ Set-AzureRmStorageSyncServerEndpoint [-ResourceGroupName] <String> [-StorageSync
 
 ### ResourceIdParameterSet
 ```
-Set-AzureRmStorageSyncServerEndpoint [-ResourceId] <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>]
+Set-AzStorageSyncServerEndpoint [-ResourceId] <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>]
  [-CloudSeededData] [-TierFilesOlderThanDays <Int32>] [-CloudSeededDataFileShareUri <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -42,7 +42,7 @@ This command will use to set server endpoint.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzureRmStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"  -CloudTiering -CloudSeededData -CloudSeededDataFileShareUri "myCloudSeededDataFileShareUri" -TierFilesOlderThanDays "myTierFilesOlderThanDays"
+PS C:\> Set-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"  -CloudTiering -CloudSeededData -CloudSeededDataFileShareUri "myCloudSeededDataFileShareUri" -TierFilesOlderThanDays "myTierFilesOlderThanDays"
 ```
 
 This command set a serverendpoint provided all the name of the dependent resources.
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

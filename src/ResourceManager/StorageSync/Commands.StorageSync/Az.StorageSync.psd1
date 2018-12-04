@@ -78,12 +78,12 @@ NestedModules = @('.\Microsoft.Azure.Commands.StorageSync.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Invoke-AzureRmStorageSyncCompatibilityCheck',
-                'New-AzureRmStorageSyncService','Get-AzureRmStorageSyncService','Remove-AzureRmStorageSyncService',
-                'New-AzureRmStorageSyncGroup','Get-AzureRmStorageSyncGroup','Remove-AzureRmStorageSyncGroup',
-                'New-AzureRmStorageSyncCloudEndpoint','Get-AzureRmStorageSyncCloudEndpoint','Remove-AzureRmStorageSyncCloudEndpoint',
-                'New-AzureRmStorageSyncServerEndpoint','Get-AzureRmStorageSyncServerEndpoint','Remove-AzureRmStorageSyncServerEndpoint','Set-AzureRmStorageSyncServerEndpoint','Invoke-AzureRmStorageSyncFileRecall',
-                'Register-AzureRmStorageSyncServer','Unregister-AzureRmStorageSyncServer','Get-AzureRmStorageSyncServer','Reset-AzureRmStorageSyncServerCertificate'
+CmdletsToExport = 'Invoke-AzStorageSyncCompatibilityCheck',
+                'New-AzStorageSyncService','Get-AzStorageSyncService','Remove-AzStorageSyncService',
+                'New-AzStorageSyncGroup','Get-AzStorageSyncGroup','Remove-AzStorageSyncGroup',
+                'New-AzStorageSyncCloudEndpoint','Get-AzStorageSyncCloudEndpoint','Remove-AzStorageSyncCloudEndpoint',
+                'New-AzStorageSyncServerEndpoint','Get-AzStorageSyncServerEndpoint','Remove-AzStorageSyncServerEndpoint','Set-AzStorageSyncServerEndpoint','Invoke-AzStorageSyncFileRecall',
+                'Register-AzStorageSyncServer','Unregister-AzStorageSyncServer','Get-AzStorageSyncServer','Reset-AzStorageSyncServerCertificate'
 
 # Variables to export from this module
 # VariablesToExport = @()

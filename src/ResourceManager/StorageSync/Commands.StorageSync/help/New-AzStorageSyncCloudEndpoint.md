@@ -1,47 +1,50 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
-Module Name: AzureRM.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/{CmdletName}
+Module Name: Az.StorageSync
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/new-Azstoragesynccloudendpoint
 schema: 2.0.0
 ---
 
-# Remove-AzureRmStorageSyncGroup
+# New-AzStorageSyncCloudEndpoint
 
 ## SYNOPSIS
-This command will use to remove sync group.
+This command will use to create cloud endpoint.
 
 ## SYNTAX
 
-### StringParameterSet (Default)
+### ObjectParameterSet (Default)
 ```
-Remove-AzureRmStorageSyncGroup [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-Name] <String> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### InputObjectParameterSet
-```
-Remove-AzureRmStorageSyncGroup [-InputObject] <PSSyncGroup> [-Force] [-PassThru] [-AsJob]
+New-AzStorageSyncCloudEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -StorageAccountResourceId <String>
+ -StorageAccountShareName <String> [-StorageAccountTenantId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### StringParameterSet
 ```
-Remove-AzureRmStorageSyncGroup [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
+New-AzStorageSyncCloudEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
+ [-SyncGroupName] <String> -Name <String> -StorageAccountResourceId <String> -StorageAccountShareName <String>
+ [-StorageAccountTenantId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ParentStringParameterSet
+```
+New-AzStorageSyncCloudEndpoint [-ParentResourceId] <String> -Name <String> -StorageAccountResourceId <String>
+ -StorageAccountShareName <String> [-StorageAccountTenantId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command will use to remove sync group.
+This command will use to create cloud endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
+PS C:\> New-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName" -StorageAccountResourceId $storageAccountResourceId -StorageAccountShareName "myAzureFileShareName" -StorageAccountTenantId "myStorageAccountTenantId"
 ```
 
-This command will remove the sync group.
+This command adds a cloudendpoint provided all the name of the dependent resources.
 
 ## PARAMETERS
 
@@ -64,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,28 +78,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Force to Delete the Sync Group
+### -Name
+Name of the CloudEndpoint.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: CloudEndpointName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-SyncGroup Input Object
+### -ParentObject
+SyncGroup Object, normally passed through the parameter.
 
 ```yaml
 Type: Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup
-Parameter Sets: InputObjectParameterSet
-Aliases:
+Parameter Sets: ObjectParameterSet
+Aliases: SyncGroup
 
 Required: True
 Position: 0
@@ -105,33 +108,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the SyncGroup.
+### -ParentResourceId
+SyncGroup Parent Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: StringParameterSet
-Aliases: SyncGroupName
+Parameter Sets: ParentStringParameterSet
+Aliases: SyncGroupId
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-{{Fill PassThru Description}}
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -150,18 +138,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-SyncGroup Resource Id
+### -StorageAccountResourceId
+Storage Account Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountShareName
+Storage Account Share Name (Azure File Share Name)
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountTenantId
+Storage Account Tenant Id (Company Directory Id)
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -175,6 +193,21 @@ Aliases: ParentName
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SyncGroupName
+Name of the SyncGroup.
+
+```yaml
+Type: System.String
+Parameter Sets: StringParameterSet
+Aliases:
+
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -219,11 +252,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Management.Automation.SwitchParameter
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint
+
 ## NOTES
 
 ## RELATED LINKS

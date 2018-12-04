@@ -1,70 +1,54 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
-Module Name: AzureRM.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/remove-azurermstoragesynccloudendpoint
+Module Name: Az.StorageSync
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/reset-Azstoragesyncservercertificate
 schema: 2.0.0
 ---
 
-# Remove-AzureRmStorageSyncCloudEndpoint
+# Reset-AzStorageSyncServerCertificate
 
 ## SYNOPSIS
-This command will use to remove cloud endpoint.
+This command will use to reset storage sync server certificate.
 
 ## SYNTAX
 
-### StringParameterSet (Default)
+### ObjectParameterSet (Default)
 ```
-Remove-AzureRmStorageSyncCloudEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-SyncGroupName] <String> [-Name] <String> [-Force] [-PassThru] [-AsJob]
+Reset-AzStorageSyncServerCertificate [-ParentObject] <PSStorageSyncService> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InputObjectParameterSet
+### StringParameterSet
 ```
-Remove-AzureRmStorageSyncCloudEndpoint [-InputObject] <PSCloudEndpoint> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AzStorageSyncServerCertificate [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### ParentStringParameterSet
 ```
-Remove-AzureRmStorageSyncCloudEndpoint [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
+Reset-AzStorageSyncServerCertificate [-ParentResourceId] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command will use to remove cloud endpoint.
+This command will use to reset storage sync server certificate.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzureRMStorageSyncCloudEndpoint -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName"
+PS C:\> Reset-AzStorageSyncServerCertificate -ResourceGroupName "myResourceGroup" -Name "myStorageSyncServiceName"
 ```
 
-This command will remove the cloudendpoint.
+This command will reset the sync server certificate.
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,28 +59,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Force to Delete the CloudEndpoint
+### -ParentObject
+StorageSyncService Object, normally passed through the parameter.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-CloudEndpoint Input Object, normally passed through the pipeline.
-
-```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint
-Parameter Sets: InputObjectParameterSet
-Aliases:
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
+Parameter Sets: ObjectParameterSet
+Aliases: StorageSyncService
 
 Required: True
 Position: 0
@@ -105,18 +74,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the CloudEndpoint.
+### -ParentResourceId
+StorageSyncService Parent Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: StringParameterSet
-Aliases:
+Parameter Sets: ParentStringParameterSet
+Aliases: StorageSyncServiceId
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -146,21 +115,6 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-CloudEndpoint Resource Id
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -171,27 +125,12 @@ Name of the StorageSyncService.
 ```yaml
 Type: System.String
 Parameter Sets: StringParameterSet
-Aliases:
+Aliases: ParentName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SyncGroupName
-Name of the SyncGroup.
-
-```yaml
-Type: System.String
-Parameter Sets: StringParameterSet
-Aliases: ParentName
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -230,9 +169,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint
-
 ### System.String
+
+### Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
 
 ## OUTPUTS
 

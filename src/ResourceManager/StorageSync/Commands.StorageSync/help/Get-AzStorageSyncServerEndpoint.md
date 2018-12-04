@@ -1,46 +1,46 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
-Module Name: AzureRM.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/get-azurermstoragesyncgroup
+Module Name: Az.StorageSync
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/get-Azstoragesyncserverendpoint
 schema: 2.0.0
 ---
 
-# Get-AzureRmStorageSyncGroup
+# Get-AzStorageSyncServerEndpoint
 
 ## SYNOPSIS
-This command will use to get syncgroup.
+This command will use to get server endpoint.
 
 ## SYNTAX
 
 ### ObjectParameterSet (Default)
 ```
-Get-AzureRmStorageSyncGroup [-ParentObject] <PSStorageSyncService> [-Name <String>]
+Get-AzStorageSyncServerEndpoint [-ParentObject] <PSSyncGroup> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### StringParameterSet
 ```
-Get-AzureRmStorageSyncGroup [-ResourceGroupName] <String> [-StorageSyncServiceName] <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzStorageSyncServerEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
+ [-SyncGroupName] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentStringParameterSet
 ```
-Get-AzureRmStorageSyncGroup [-ParentResourceId] <String> [-Name <String>]
+Get-AzStorageSyncServerEndpoint [-ParentResourceId] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command will use to get syncgroup.
+This command will use to get server endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmStorageSyncGroup New-AzureRmStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
+PS C:\> Get-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -ServerEndpointName "myServerEndpointName"
 ```
 
-This command gets a syncgroup provided all the name of the dependent resources.
+This command gets a sync serverendpoint provided all the name of the dependent resources.
 
 ## PARAMETERS
 
@@ -48,7 +48,7 @@ This command gets a syncgroup provided all the name of the dependent resources.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -60,12 +60,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the SyncGroup.
+Name of the ServerEndpoint.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: SyncGroupName
+Aliases: ServerEndpointName
 
 Required: False
 Position: Named
@@ -78,9 +78,9 @@ Accept wildcard characters: False
 StorageSyncService Object, normally passed through the parameter.
 
 ```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup
 Parameter Sets: ObjectParameterSet
-Aliases: StorageSyncService
+Aliases: SyncGroup
 
 Required: True
 Position: 0
@@ -95,7 +95,7 @@ StorageSyncService Object, normally passed through the parameter.
 ```yaml
 Type: System.String
 Parameter Sets: ParentStringParameterSet
-Aliases: StorageSyncServiceId
+Aliases: SyncGroupId
 
 Required: True
 Position: 0
@@ -134,18 +134,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SyncGroupName
+Name of the SyncGroup.
+
+```yaml
+Type: System.String
+Parameter Sets: StringParameterSet
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup
 
-### Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup
+### Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
 
 ## NOTES
 

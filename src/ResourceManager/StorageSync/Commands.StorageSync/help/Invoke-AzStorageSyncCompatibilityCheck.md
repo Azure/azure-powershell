@@ -164,6 +164,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationResult
 
 ## NOTES
-* Keywords: azure, azurerm, arm, resource, management, storagesync, filesync
+* Keywords: azure, Az, arm, resource, management, storagesync, filesync
 
 ## RELATED LINKS

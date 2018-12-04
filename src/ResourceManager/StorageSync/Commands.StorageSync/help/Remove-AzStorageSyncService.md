@@ -1,54 +1,69 @@
 ---
 external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
-Module Name: AzureRM.StorageSync
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync/reset-azurermstoragesyncservercertificate
+Module Name: Az.StorageSync
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/remove-Azstoragesyncservice
 schema: 2.0.0
 ---
 
-# Reset-AzureRmStorageSyncServerCertificate
+# Remove-AzStorageSyncService
 
 ## SYNOPSIS
-This command will use to reset storage sync server certificate.
+This command will use to remove the storage sync service.
 
 ## SYNTAX
 
-### ObjectParameterSet (Default)
+### InputObjectParameterSet (Default)
 ```
-Reset-AzureRmStorageSyncServerCertificate [-ParentObject] <PSStorageSyncService> [-PassThru]
+Remove-AzStorageSyncService [-InputObject] <PSStorageSyncService> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Remove-AzStorageSyncService [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StringParameterSet
 ```
-Reset-AzureRmStorageSyncServerCertificate [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ParentStringParameterSet
-```
-Reset-AzureRmStorageSyncServerCertificate [-ParentResourceId] <String> [-PassThru]
+Remove-AzStorageSyncService [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command will use to reset storage sync server certificate.
+This command will use to remove the storage sync service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzureRmStorageSyncServerCertificate -ResourceGroupName "myResourceGroup" -Name "myStorageSyncServiceName"
+PS C:\> Remove-AzStorageSyncService -Force -ResourceGroupName "myResourceGroup" -Name "myStorageSyncServiceName"
 ```
 
-This command will reset the sync server certificate.
+This command will remove the storage sync service.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -59,13 +74,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParentObject
-StorageSyncService Object, normally passed through the parameter.
+### -Force
+Force to Delete the Storage Sync Service
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+StorageSyncService Input Object, normally passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
-Parameter Sets: ObjectParameterSet
-Aliases: StorageSyncService
+Parameter Sets: InputObjectParameterSet
+Aliases:
 
 Required: True
 Position: 0
@@ -74,18 +104,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ParentResourceId
-StorageSyncService Parent Resource Id
+### -Name
+Name of the StorageSyncService.
 
 ```yaml
 Type: System.String
-Parameter Sets: ParentStringParameterSet
-Aliases: StorageSyncServiceId
+Parameter Sets: StringParameterSet
+Aliases: StorageSyncServiceName
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -115,20 +145,20 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageSyncServiceName
-Name of the StorageSyncService.
+### -ResourceId
+StorageSyncService Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: StringParameterSet
-Aliases: ParentName
+Parameter Sets: ResourceIdParameterSet
+Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -169,9 +199,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
+
 ### System.String
 
-### Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
