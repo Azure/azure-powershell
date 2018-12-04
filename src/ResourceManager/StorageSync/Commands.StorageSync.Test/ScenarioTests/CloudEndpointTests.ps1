@@ -35,7 +35,7 @@ function Test-CloudEndpoint
         $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -146,7 +146,7 @@ function Test-NewCloudEndpoint
         $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -230,7 +230,7 @@ function Test-GetCloudEndpoint
         $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -322,7 +322,7 @@ function Test-GetCloudEndpoints
         $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -417,7 +417,7 @@ function Test-GetCloudEndpointParentObject
         $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -508,7 +508,7 @@ function Test-GetCloudEndpointParentResourceId
         $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -599,7 +599,7 @@ function Test-RemoveCloudEndpoint
         $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -686,7 +686,7 @@ function Test-RemoveCloudEndpointInputObject
         $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -766,7 +766,7 @@ function Test-RemoveCloudEndpointResourceId
         $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
