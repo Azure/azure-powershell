@@ -952,6 +952,10 @@
     {
       "file": "src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
       "_justification": "Sample certificate only used in tests"
+    },
+    {
+      "file": "src\\ResourceManager\\Resources\\Commands.Resources\\ActiveDirectory\\Models\\ParameterSet.cs",
+      "_justification": "Flagged secrets are names of parameter sets."
     }
   ]
 }
