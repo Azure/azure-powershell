@@ -135,9 +135,9 @@
     <!-- Clean out the NuGet cache -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$Path = Join-Path $env:USERPROFILE .nuget; if (Test-Path $Path) { Remove-Item $Path -Recurse -Force }&quot;" />
 
-    <!-- Remove Package, Publish, bin, and obj directories -->
+    <!-- Remove Package, Publish, bin, obj, and TestResults directories -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path $(PackageDirectory),$(PublishDirectory) -Recurse -Force&quot;" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj' | Remove-Item -Recurse -Force&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj','TestResults' | Remove-Item -Recurse -Force&quot;" />
   </Target>
 
   <PropertyGroup>
@@ -508,7 +508,7 @@
     <ItemGroup>
       <TestResults Include="$(LibraryRoot)src/ResourceManager/**/TestResults/*.trx" />
     </ItemGroup>
-    <Move SourceFiles="@(TestResults)" DestinationFolder="$(TestOutputDirectory)" />
+    <Copy SourceFiles="@(TestResults)" DestinationFolder="$(TestOutputDirectory)" />
 
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
