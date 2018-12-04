@@ -275,7 +275,7 @@ Accept wildcard characters: False
 
 ### -TypeHandlerVersion
 Specifies the version of the extension to use for this virtual machine.
-To obtain the version, run the Get-AzureRmVMExtensionImage cmdlet with a value of Microsoft.Compute for the *PublisherName* parameter and VMAccessAgent for the *Type* parameter.
+To obtain the version, run the Get-AzureRmVMExtensionImage cmdlet with a value of Microsoft.Compute for the *PublisherName* parameter and CustomScriptExtension for the *Type* parameter.
 
 ```yaml
 Type: System.String
