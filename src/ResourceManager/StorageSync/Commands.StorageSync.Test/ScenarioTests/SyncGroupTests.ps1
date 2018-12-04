@@ -31,38 +31,38 @@ function Test-SyncGroup
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
-         $storageSyncService = New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+         $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
         Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
-        New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Get SyncGroup by Name"
-        $syncGroup = Get-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -Verbose
+        $syncGroup = Get-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -Verbose
          Write-Verbose "Validating SyncGroup Properties"
         Assert-AreEqual $syncGroupName $syncGroup.SyncGroupName
 
         Write-Verbose "Get SyncGroup by ParentObject"
-        $syncGroup = Get-AzureRmStorageSyncGroup -ParentObject $storageSyncService -Name $syncGroupName -Verbose
+        $syncGroup = Get-AzStorageSyncGroup -ParentObject $storageSyncService -Name $syncGroupName -Verbose
         Write-Verbose "Validating SyncGroup Properties"
         Assert-AreEqual $syncGroupName $syncGroup.SyncGroupName
 
         Write-Verbose "Get SyncGroup by ParentResourceId"
-        $syncGroup = Get-AzureRmStorageSyncGroup -ParentResourceId $storageSyncService.ResourceId -Name $syncGroupName -Verbose
+        $syncGroup = Get-AzStorageSyncGroup -ParentResourceId $storageSyncService.ResourceId -Name $syncGroupName -Verbose
         Write-Verbose "Validating SyncGroup Properties"
         Assert-AreEqual $syncGroupName $syncGroup.SyncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
-        Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -AsJob | Wait-Job
+        Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -AsJob | Wait-Job
 
-        New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName | Get-AzureRmStorageSyncGroup  | Remove-AzureRmStorageSyncGroup -Force -AsJob | Wait-Job
+        New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName | Get-AzStorageSyncGroup  | Remove-AzStorageSyncGroup -Force -AsJob | Wait-Job
 
-        New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName | Remove-AzureRmStorageSyncGroup -Force -AsJob | Wait-Job
+        New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName | Remove-AzStorageSyncGroup -Force -AsJob | Wait-Job
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
-        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName -AsJob | Wait-Job
+        Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName -AsJob | Wait-Job
 
     }
     finally
@@ -92,22 +92,22 @@ function Test-NewSyncGroup
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
-        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+        New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
         Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
-        $syncGroup = New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
          Write-Verbose "Validating SyncGroup Properties"
         Assert-AreEqual $syncGroupName $syncGroup.SyncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
-        Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
-        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+        Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
 
     }
     finally
@@ -137,24 +137,24 @@ function Test-GetSyncGroup
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
-        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+        New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
         Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
-        New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Get SyncGroup by Name"
-        $syncGroup = Get-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -Verbose
+        $syncGroup = Get-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -Verbose
          Write-Verbose "Validating SyncGroup Properties"
         Assert-AreEqual $syncGroupName $syncGroup.SyncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
-        Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
-        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+        Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
 
     }
     finally
@@ -184,16 +184,16 @@ function Test-GetSyncGroups
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
-        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+        New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
         Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
-        New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Get SyncGroup by Name"
-        $syncGroups = Get-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Verbose
+        $syncGroups = Get-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Verbose
 
         Assert-AreEqual $syncGroups.Length 1
         $syncGroup = $syncGroups[0]
@@ -202,10 +202,10 @@ function Test-GetSyncGroups
         Assert-AreEqual $syncGroupName $syncGroup.SyncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
-        Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
-        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+        Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
 
     }
     finally
@@ -235,24 +235,24 @@ function Test-GetSyncGroupParentObject
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
-        $storageSyncService = New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+        $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
         Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
-        New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Get SyncGroup by ParentObject"
-        $syncGroup = Get-AzureRmStorageSyncGroup -ParentObject $storageSyncService -Name $syncGroupName -Verbose
+        $syncGroup = Get-AzStorageSyncGroup -ParentObject $storageSyncService -Name $syncGroupName -Verbose
         Write-Verbose "Validating SyncGroup Properties"
         Assert-AreEqual $syncGroupName $syncGroup.SyncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
-        Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
-        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+        Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
 
     }
     finally
@@ -282,24 +282,24 @@ function Test-GetSyncGroupParentResourceId
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
-        $storageSyncService = New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+        $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
         Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
-        New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Get SyncGroup by ParentResourceId"
-        $syncGroup = Get-AzureRmStorageSyncGroup -ParentResourceId $storageSyncService.ResourceId -Name $syncGroupName -Verbose
+        $syncGroup = Get-AzStorageSyncGroup -ParentResourceId $storageSyncService.ResourceId -Name $syncGroupName -Verbose
         Write-Verbose "Validating SyncGroup Properties"
         Assert-AreEqual $syncGroupName $syncGroup.SyncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
-        Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
-        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+        Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
 
     }
     finally
@@ -329,19 +329,19 @@ function Test-RemoveSyncGroup
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
-        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+        New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
         Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
-        New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
-        Remove-AzureRmStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName 
+        Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName 
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
-        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+        Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
 
     }
     finally
@@ -371,19 +371,19 @@ function Test-RemoveSyncGroupInputObject
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
-        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+        New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
         Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
-        $syncGroup = New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
-        Remove-AzureRmStorageSyncGroup -InputObject $syncGroup -Force
+        Remove-AzStorageSyncGroup -InputObject $syncGroup -Force
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
-        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+        Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
 
     }
     finally
@@ -414,19 +414,19 @@ function Test-RemoveSyncGroupResourceId
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
-        New-AzureRmStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+        New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
 
         Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
-        $syncGroup = New-AzureRmStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+        $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Removing SyncGroup: $syncGroupName"
-        Remove-AzureRmStorageSyncGroup -ResourceId $syncGroup.ResourceId -Force
+        Remove-AzStorageSyncGroup -ResourceId $syncGroup.ResourceId -Force
 
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
-        Remove-AzureRmStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+        Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
 
     }
     finally
