@@ -26,7 +26,7 @@ before_install:
 script:
  - sudo dotnet msbuild build.proj /t:Full /p:Configuration=$CONFIG || travis_terminate 1
  # - sudo dotnet src/Package/StaticAnalysis/StaticAnalysis.Netcore.dll -p $TRAVIS_BUILD_DIR/src/Package/$CONFIG -r $TRAVIS_BUILD_DIR/src/Package/StaticAnalysis -u || travis_terminate 1
- - sudo pwsh -NonInteractive -NoLogo -NoProfile -File tools/TestModuleLoading.ps1 || travis_terminate 1
+ # - sudo pwsh -NonInteractive -NoLogo -NoProfile -File tools/TestModuleLoading.ps1 || travis_terminate 1
  # - sudo dotnet test src/Azure.PowerShell.Netcore.Test.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $CONFIG --framework netcoreapp2.0
 
 after_success:
