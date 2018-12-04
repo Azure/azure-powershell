@@ -21,20 +21,18 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-AuthenticationCertificates <PSApplicationGatewayAuthenticationCertificate[]>]
  [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>]
  [-FrontendIPConfigurations <PSApplicationGatewayFrontendIPConfiguration[]>]
- -FrontendPorts <PSApplicationGatewayFrontendPort[]>
- [-Probes <PSApplicationGatewayProbe[]>]
+ -FrontendPorts <PSApplicationGatewayFrontendPort[]> [-Probes <PSApplicationGatewayProbe[]>]
  -BackendAddressPools <PSApplicationGatewayBackendAddressPool[]>
  -BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>
- -HttpListeners <PSApplicationGatewayHttpListener[]>
- [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ -HttpListeners <PSApplicationGatewayHttpListener[]> [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
  -RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>
  [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
  [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,7 +144,7 @@ Accept wildcard characters: False
 Specifies the list of back-end address pools for the application gateway.
 
 ```yaml
-Type: PSApplicationGatewayBackendAddressPool]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool[]
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +159,7 @@ Accept wildcard characters: False
 Specifies the list of back-end HTTP settings for the application gateway.
 
 ```yaml
-Type: PSApplicationGatewayBackendHttpSettings]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings[]
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +174,7 @@ Accept wildcard characters: False
 Customer error of an application gateway
 
 ```yaml
-Type: PSApplicationGatewayCustomError]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError[]
 Parameter Sets: (All)
 Aliases:
 
@@ -251,7 +249,7 @@ Accept wildcard characters: False
 Specifies a list of front-end IP configurations for the application gateway.
 
 ```yaml
-Type: PSApplicationGatewayFrontendIPConfiguration]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -266,7 +264,7 @@ Accept wildcard characters: False
 Specifies a list of front-end ports for the application gateway.
 
 ```yaml
-Type: PSApplicationGatewayFrontendPort]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -281,7 +279,7 @@ Accept wildcard characters: False
 Specifies a list of IP configurations for the application gateway.
 
 ```yaml
-Type: PSApplicationGatewayIPConfiguration]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -296,7 +294,7 @@ Accept wildcard characters: False
 Specifies a list of HTTP listeners for the application gateway.
 
 ```yaml
-Type: PSApplicationGatewayHttpListener]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener[]
 Parameter Sets: (All)
 Aliases:
 
@@ -341,7 +339,7 @@ Accept wildcard characters: False
 Specifies probes for the application gateway.
 
 ```yaml
-Type: PSApplicationGatewayProbe]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe[]
 Parameter Sets: (All)
 Aliases:
 
@@ -356,7 +354,7 @@ Accept wildcard characters: False
 The list of redirect configuration
 
 ```yaml
-Type: PSApplicationGatewayRedirectConfiguration]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -371,7 +369,7 @@ Accept wildcard characters: False
 Specifies a list of request routing rules for the application gateway.
 
 ```yaml
-Type: PSApplicationGatewayRequestRoutingRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRequestRoutingRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -431,7 +429,7 @@ Accept wildcard characters: False
 Specifies the list of Secure Sockets Layer (SSL) certificates for the application gateway.
 
 ```yaml
-Type: PSApplicationGatewaySslCertificate]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -477,7 +475,7 @@ Accept wildcard characters: False
 The list of trusted root certificates
 
 ```yaml
-Type: PSApplicationGatewayTrustedRootCertificate]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -492,7 +490,7 @@ Accept wildcard characters: False
 Specifies URL path maps for the application gateway.
 
 ```yaml
-Type: PSApplicationGatewayUrlPathMap]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap[]
 Parameter Sets: (All)
 Aliases:
 
