@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"AzureRM.UsageAggregates.psd1"));
+                    _helper.GetRMModulePath(@"AzureRM.Billing.psd1"));
 
                 _helper.RunPowerShellTest(scripts);
             }

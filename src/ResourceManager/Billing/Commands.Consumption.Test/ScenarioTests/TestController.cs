@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath("AzureRM.Consumption.psd1"),
+                    _helper.GetRMModulePath("AzureRM.Billing.psd1"),
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1");
                 try

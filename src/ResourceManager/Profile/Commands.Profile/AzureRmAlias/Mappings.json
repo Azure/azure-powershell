@@ -344,7 +344,16 @@
   "Az.Billing": {
     "Get-AzBillingInvoice": "Get-AzureRmBillingInvoice",
     "Get-AzBillingPeriod": "Get-AzureRmBillingPeriod",
-    "Get-AzEnrollmentAccount": "Get-AzureRmEnrollmentAccount"
+    "Get-AzEnrollmentAccount": "Get-AzureRmEnrollmentAccount",
+    "Get-AzConsumptionBudget": "Get-AzureRmConsumptionBudget",
+    "Get-AzConsumptionMarketplace": "Get-AzureRmConsumptionMarketplace",
+    "Get-AzConsumptionPriceSheet": "Get-AzureRmConsumptionPriceSheet",
+    "Get-AzConsumptionReservationDetail": "Get-AzureRmConsumptionReservationDetail",
+    "Get-AzConsumptionReservationSummary": "Get-AzureRmConsumptionReservationSummary",
+    "Get-AzConsumptionUsageDetail": "Get-AzureRmConsumptionUsageDetail",
+    "New-AzConsumptionBudget": "New-AzureRmConsumptionBudget",
+    "Remove-AzConsumptionBudget": "Remove-AzureRmConsumptionBudget",
+    "Set-AzConsumptionBudget": "Set-AzureRmConsumptionBudget"
   },
   "Az.Cdn": {
     "Get-AzCdnProfile": "Get-AzureRmCdnProfile",
@@ -578,17 +587,6 @@
   },
   "Az.Compute.ManagedService": {
     "ConvertTo-AzVhd": "ConvertTo-AzureRmVhd"
-  },
-  "Az.Consumption": {
-    "Get-AzConsumptionBudget": "Get-AzureRmConsumptionBudget",
-    "Get-AzConsumptionMarketplace": "Get-AzureRmConsumptionMarketplace",
-    "Get-AzConsumptionPriceSheet": "Get-AzureRmConsumptionPriceSheet",
-    "Get-AzConsumptionReservationDetail": "Get-AzureRmConsumptionReservationDetail",
-    "Get-AzConsumptionReservationSummary": "Get-AzureRmConsumptionReservationSummary",
-    "Get-AzConsumptionUsageDetail": "Get-AzureRmConsumptionUsageDetail",
-    "New-AzConsumptionBudget": "New-AzureRmConsumptionBudget",
-    "Remove-AzConsumptionBudget": "Remove-AzureRmConsumptionBudget",
-    "Set-AzConsumptionBudget": "Set-AzureRmConsumptionBudget"
   },
   "Az.ContainerInstance": {
     "New-AzContainerGroup": "New-AzureRmContainerGroup",
@@ -2435,7 +2433,6 @@
     "Get-AzTrafficManagerProfile": "Get-AzureRmTrafficManagerProfile",
     "New-AzTrafficManagerProfile": "New-AzureRmTrafficManagerProfile"
   },
-  "Az.UsageAggregates": {},
   "Az.Websites": {
     "Get-AzAppServicePlan": "Get-AzureRmAppServicePlan",
     "Set-AzAppServicePlan": "Set-AzureRmAppServicePlan",

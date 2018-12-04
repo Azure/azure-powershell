@@ -54,7 +54,9 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.6.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Billing.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Billing.dll',
+    '.\Microsoft.Azure.Management.Consumption.dll',
+    '.\Microsoft.Azure.Commerce.UsageAggregates.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -63,17 +65,27 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Billing.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Billing.Format.ps1xml'
+FormatsToProcess = '.\Microsoft.Azure.Commands.Billing.Format.ps1xml',
+    '.\Microsoft.Azure.Commands.Consumption.Format.ps1xml',
+    '.\Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Billing.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.Billing.dll',
+    '.\Microsoft.Azure.Commands.Consumption.dll',
+    '.\Microsoft.Azure.Commands.UsageAggregates.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzBillingInvoice', 'Get-AzBillingPeriod', 
-    'Get-AzEnrollmentAccount'
+    'Get-AzEnrollmentAccount', 'Get-AzConsumptionBudget', 'Get-AzConsumptionMarketplace', 
+    'Get-AzConsumptionPriceSheet', 
+    'Get-AzConsumptionReservationDetail', 
+    'Get-AzConsumptionReservationSummary', 
+    'Get-AzConsumptionUsageDetail', 'New-AzConsumptionBudget', 
+    'Remove-AzConsumptionBudget', 'Set-AzConsumptionBudget', 
+    'Get-UsageAggregates'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -96,7 +108,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'Billing'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'Billing', 'Consumption', 'UsageAggregates'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
