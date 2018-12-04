@@ -28,12 +28,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Az.Tags.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>true</DesignTime>
       <AutoGen>true</AutoGen>
