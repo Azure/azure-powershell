@@ -273,6 +273,25 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public IOperationalInsightWorkspace Workspace { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
+            ParameterSetName = SetFlowlogByResourceWithTAByDetails)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
+            ParameterSetName = SetFlowlogByNameWithTAByDetails)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
+            ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
+        public int? TrafficAnalyticsInterval { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -362,7 +381,8 @@ namespace Microsoft.Azure.Commands.Network
 
                         parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId = WorkspaceResourceId;
                         parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId = WorkspaceGUID;
-                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion = WorkspaceLocation;                        
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion = WorkspaceLocation;
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.TrafficAnalyticsInterval = TrafficAnalyticsInterval;
                     }
 
                     PSFlowLog flowLog = new PSFlowLog();
