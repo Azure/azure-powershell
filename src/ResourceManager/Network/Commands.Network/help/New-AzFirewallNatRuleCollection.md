@@ -14,8 +14,7 @@ Creates a collection of Firewall NAT rules.
 ## SYNTAX
 
 ```
-New-AzFirewallNatRuleCollection -Name <String> -Priority <UInt32>
- -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRule]>
+New-AzFirewallNatRuleCollection -Name <String> -Priority <UInt32> -Rule <PSAzureFirewallNatRule[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -117,7 +116,7 @@ Accept wildcard characters: False
 Specifies the list of rules to be grouped under this collection.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRule[]
 Parameter Sets: (All)
 Aliases:
 
