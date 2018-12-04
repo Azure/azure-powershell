@@ -34,21 +34,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.9.dll"/>
-    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.10.dll"/>
-    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.14.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"/>
-    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.14.0\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"/>
+    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.10.dll" />
+    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.14.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.14.0\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
   </ItemGroup>
 
   <ItemGroup>
-    <NetCoreAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.19.2\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"/>
-    <NetCoreAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.19.2\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"/>
+    <NetCoreAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.19.2\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <NetCoreAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.19.2\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <StorageDependencies Include="$(ProjectDir)..\..\..\lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll"/>
-    <StorageDependencies Include="$(ProjectDir)..\..\..\lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll"/>
+    <StorageDependencies Include="$(ProjectDir)..\..\..\lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
+    <StorageDependencies Include="$(ProjectDir)..\..\..\lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
   </ItemGroup>
 
 
@@ -68,10 +67,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="AzureRmProfileStartup.ps1">
+    <None Update="StartupScripts\AzError.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Microsoft.Azure.Commands.Profile.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Microsoft.Azure.Commands.Profile.generated.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Microsoft.Azure.Commands.Profile.types.ps1xml">
@@ -82,7 +84,6 @@
   <ItemGroup>
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.ps1xml" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="*.ps1" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.Netcore.psd1" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.psm1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>

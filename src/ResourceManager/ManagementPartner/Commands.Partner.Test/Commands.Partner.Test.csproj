@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.ManagementPartner">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ManagementPartner.1.1.0-preview\lib\net452\Microsoft.Azure.Management.ManagementPartner.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ManagementPartner.1.1.1-preview\lib\net452\Microsoft.Azure.Management.ManagementPartner.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

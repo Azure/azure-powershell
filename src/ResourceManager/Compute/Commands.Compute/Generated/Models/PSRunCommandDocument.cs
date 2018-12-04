@@ -19,11 +19,21 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSRunCommandDocument : RunCommandDocument
+    public partial class PSRunCommandDocument
     {
+        public System.Collections.Generic.IList<string> Script { get; set; }
+        public IList<RunCommandParameterDefinition> Parameters { get; set; }
+        public string Schema { get; set; }
+        public string Id { get; set; }
+        public OperatingSystemTypes OsType { get; set; }
+        public string Label { get; set; }
+        public string Description { get; set; }
+
     }
 }

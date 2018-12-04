@@ -823,9 +823,9 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
     $publicIpName = Get-ResourceName
     $nicName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
-    $rglocation = "westcentralus"
+    $rglocation = Get-ProviderLocation ResourceManagement "West Central US"
     $resourceTypeParent = "Microsoft.Network/networkInterfaces"
-    $location = "westcentralus"
+    $location = Get-ProviderLocation $resourceTypeParent "West Central US"
     
     try 
     {

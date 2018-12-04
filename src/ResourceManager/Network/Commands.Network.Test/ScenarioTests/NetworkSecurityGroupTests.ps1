@@ -108,6 +108,12 @@ function Test-NetworkSecurityGroupCRUD
         
         $list = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
+
+        $list = Get-AzureRmNetworkSecurityGroup | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $nsgName }
+        Assert-AreEqual 0 @($list).Count
+
+        # Test error handling
+        Assert-ThrowsContains { Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg } "not found"
     }
     finally
     {
@@ -197,7 +203,10 @@ function Test-NetworkSecurityGroup-SecurityRuleCRUD
 		Assert-NotNull $nsg.SecurityRules[1].Etag
 		Assert-AreEqual $securityRule1Name $nsg.SecurityRules[0].Name
 		Assert-AreEqual $securityRule2Name $nsg.SecurityRules[1].Name
-		
+
+        # Test error handling
+        Assert-ThrowsContains { Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $securityRule2Name } "Rule with the specified name already exists"
+
 		# Get security rule
 		$securityRule2 = $nsg | Get-AzureRmNetworkSecurityRuleConfig -name $securityRule2Name 
 		Assert-AreEqual $securityRule2.Name $nsg.SecurityRules[1].Name
@@ -342,6 +351,65 @@ function Test-NetworkSecurityGroup-MultiValuedRules
         
         $list = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test NetworkSecurityRule argument validation
+#>
+function Test-NetworkSecurityRule-ArgumentValidation
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $asgName = Get-ResourceName
+    $nsgName = Get-ResourceName
+    $ruleName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/networkSecurityGroups"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+
+        # Create ApplicationSecurityGroup
+        $asg = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $asgName -Location $location
+
+        # Create NetworkSecurityGroup
+        $job = New-AzureRmNetworkSecurityGroup -Name $nsgName -ResourceGroupName $rgname -Location $location -AsJob
+        $job | Wait-Job
+        $nsg = $job | Receive-Job
+
+        # Test error handling for New
+        Assert-ThrowsContains { New-AzureRmNetworkSecurityRuleConfig -Name $ruleName -SourceAddressPrefix * -SourceApplicationSecurityGroup $asg } "cannot be used simultaneously";
+        Assert-ThrowsContains { New-AzureRmNetworkSecurityRuleConfig -Name $ruleName -SourceAddressPrefix * -SourceApplicationSecurityGroupId $asg.Id } "cannot be used simultaneously";
+        Assert-ThrowsContains { New-AzureRmNetworkSecurityRuleConfig -Name $ruleName -DestinationAddressPrefix * -DestinationApplicationSecurityGroup $asg } "cannot be used simultaneously";
+        Assert-ThrowsContains { New-AzureRmNetworkSecurityRuleConfig -Name $ruleName -DestinationAddressPrefix * -DestinationApplicationSecurityGroupId $asg.Id } "cannot be used simultaneously";
+
+        # Test error handling for Add
+        Assert-ThrowsContains { Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $ruleName -SourceAddressPrefix * -SourceApplicationSecurityGroup $asg } "cannot be used simultaneously";
+        Assert-ThrowsContains { Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $ruleName -SourceAddressPrefix * -SourceApplicationSecurityGroupId $asg.Id } "cannot be used simultaneously";
+        Assert-ThrowsContains { Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $ruleName -DestinationAddressPrefix * -DestinationApplicationSecurityGroup $asg } "cannot be used simultaneously";
+        Assert-ThrowsContains { Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $ruleName -DestinationAddressPrefix * -DestinationApplicationSecurityGroupId $asg.Id } "cannot be used simultaneously";
+
+        # Test error handling for Set
+        Assert-ThrowsContains { Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $ruleName -SourceAddressPrefix * -SourceApplicationSecurityGroup $asg } "cannot be used simultaneously";
+        Assert-ThrowsContains { Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $ruleName -SourceAddressPrefix * -SourceApplicationSecurityGroupId $asg.Id } "cannot be used simultaneously";
+        Assert-ThrowsContains { Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $ruleName -DestinationAddressPrefix * -DestinationApplicationSecurityGroup $asg } "cannot be used simultaneously";
+        Assert-ThrowsContains { Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $ruleName -DestinationAddressPrefix * -DestinationApplicationSecurityGroupId $asg.Id } "cannot be used simultaneously";
+        Assert-ThrowsContains { Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name $ruleName } "Rule with the specified name does not exist";
+
+        # Delete NetworkSecurityGroup
+        $job = Remove-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Force -AsJob
+        $job | Wait-Job
+        $delete = $job | Receive-Job
+        Assert-AreEqual true $delete
     }
     finally
     {

@@ -60,6 +60,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.AzureFirewallNetworkRuleProtocol.Any,
             MNM.AzureFirewallNetworkRuleProtocol.TCP,
             MNM.AzureFirewallNetworkRuleProtocol.UDP,
+            MNM.AzureFirewallNetworkRuleProtocol.ICMP,
             IgnoreCase = false)]
         public List<string> Protocol { get; set; }
         
