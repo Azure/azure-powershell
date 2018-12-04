@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(this.LoadBalancer);
                 return;
             }
-            var vBackendAddressPools = this.LoadBalancer.BackendAddressPools.First
+            var vBackendAddressPools = this.LoadBalancer.BackendAddressPools.SingleOrDefault
                 (e =>
-                    (this.Name != null && e.Name == this.Name)
+                    string.Equals(e.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)
                 );
 
             if (vBackendAddressPools != null)
