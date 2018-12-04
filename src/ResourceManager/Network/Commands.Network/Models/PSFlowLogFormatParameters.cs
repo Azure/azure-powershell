@@ -12,22 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSFlowLogFormatParameters
     {
         [JsonProperty(Order = 2)]
-        [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Json")]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Type { get; set; }
 
         [JsonProperty(Order = 2)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public int Version { get; set; }
+        public int? Version { get; set; }
     }
 }

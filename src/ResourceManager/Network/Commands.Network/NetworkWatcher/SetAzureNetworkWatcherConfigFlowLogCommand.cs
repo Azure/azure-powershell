@@ -153,6 +153,22 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateRange(1, int.MaxValue)]
         public int RetentionInDays { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Type of flow log format.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Json")]
+        public string FormatType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Version of flow log format.")]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
+        public int? FormatVersion { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -305,6 +321,13 @@ namespace Microsoft.Azure.Commands.Network
                         parameters.RetentionPolicy = new MNM.RetentionPolicyParameters();
                         parameters.RetentionPolicy.Enabled = this.EnableRetention;
                         parameters.RetentionPolicy.Days = this.RetentionInDays;
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(this.FormatType) || this.FormatVersion != null)
+                    {
+                        parameters.Format = new MNM.FlowLogFormatParameters();
+                        parameters.Format.Type = this.FormatType;
+                        parameters.Format.Version = this.FormatVersion;
                     }
 
                     if (ParameterSetName.Contains(WithTA))
