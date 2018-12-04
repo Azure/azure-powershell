@@ -39,24 +39,15 @@ function Set-AzureRmAdvisorConfigurationWithLowCpu
 # Negative Test, bad input for Exclude
 function Set-AzureRmAdvisorConfigurationBadUserInputExclude-Negative
 {
-	$propertiesCount = 4
-	$lowCpuThresholdParameter = 20
-	$IncludeValue = "true"
-
-	# $queryResult = Set-AzureRMAdvisorConfiguration -L $lowCpuThresholdParameter -E trueeee 
+	$lowCpuThresholdParameter = 20	
 	Assert-ThrowsContains { Set-AzureRMAdvisorConfiguration -L $lowCpuThresholdParameter -E trueeee  } "User provided input for -Include (or) -Exclude is not an accpeted value. Accepted values are true (or) false."   			
 }
 
 # Negative Test, bad input for LowCpuThreshold
 function Set-AzureRmAdvisorConfigurationBadUserInputLowCpu-Negative
 {
-	$propertiesCount = 4
 	$lowCpuThresholdParameter = 25
-	$IncludeValue = "true"
-
-	# $queryResult = Set-AzureRMAdvisorConfiguration -L $lowCpuThresholdParameter
 	Assert-ThrowsContains { Set-AzureRMAdvisorConfiguration -L $lowCpuThresholdParameter  } "User provided input for -LowCpuThreshold is not an accpeted value. Accepted values are 0, 5, 10, 15, 20."   						
-	
 }
 
 <#

@@ -216,16 +216,17 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
             try
             {
-                lowCpuThreshold = int.Parse(lowCpuThreshold).ToString();
-                if (!ValidateLowCpuThresholdValue(int.Parse(lowCpuThreshold)))
-                {
-                    throw new Exception("User provided input for -LowCpuThreshold is not an accpeted value. Accepted values are 0, 5, 10, 15, 20.");
-                }
+                lowCpuThreshold = int.Parse(lowCpuThreshold).ToString(); 
             }
             catch (Exception ex)
             {
                 Exception e = new Exception("User provided input for -LowCpuThreshold is not a integer.", ex);
                 throw e;
+            }
+
+            if (!ValidateLowCpuThresholdValue(int.Parse(lowCpuThreshold)))
+            {
+                throw new Exception("User provided input for -LowCpuThreshold is not an accpeted value. Accepted values are 0, 5, 10, 15, 20.");
             }
 
             ConfigData configData = new ConfigData();

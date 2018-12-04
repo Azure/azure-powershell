@@ -14,19 +14,11 @@
 
 <#
 .SYNOPSIS
-Enable-AzureRmAdvisorRecommendationPipeline scenario, given a recommendation name (stable-Id) enable all of its corresponding suppressions.
+Neagtive Test, no user input for the parameters. 
 #>
 function Enable-AzureRmAdvisorRecommendationNoParameterSet
 {
-	# All of our API data updates data-resource. Since this CMDLET does not update/create/delete any azure-resource, we have these hardcoded strings to test data and cmdlet.  
-	
-	$queryResult = Enable-AzureRmAdvisorRecommendation
-	
-	#Assert-IsInstance $queryResult System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]
-	
-	#Assert-PropertiesCount $queryResult[0] 14	
-	#Assert-IsInstance $queryResult[0].id String
-	#Assert-IsInstance $queryResult[0].Name String
+		Assert-ThrowsContains { Enable-AzureRmAdvisorRecommendation } "Cannot process command because of one or more missing mandatory parameters: RecommendationName."
 }
 
 <#
