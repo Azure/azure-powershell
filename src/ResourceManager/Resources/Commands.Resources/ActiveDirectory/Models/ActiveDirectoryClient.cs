@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             try
             {
                 var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(spn));
-                servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery.ToString()).FirstOrDefault()?.ToPSADServicePrincipal();
+                servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery.ToString()).First().ToPSADServicePrincipal();
             }
             catch { /* The service principal does not exist, ignore the exception. */ }
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 if (!string.IsNullOrEmpty(options.SearchString) && options.SearchString.EndsWith("*"))
                 {
                     options.SearchString = options.SearchString.TrimEnd('*');
-                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName.StartsWith(options.SearchString));
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName != null && s.DisplayName.StartsWith(options.SearchString));
                 }
                 else
                 {
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 if (!string.IsNullOrEmpty(options.SearchString) && options.SearchString.EndsWith("*"))
                 {
                     options.SearchString = options.SearchString.TrimEnd('*');
-                    odataQuery = new Rest.Azure.OData.ODataQuery<User>(u => u.DisplayName.StartsWith(options.SearchString));
+                    odataQuery = new Rest.Azure.OData.ODataQuery<User>(u => u.DisplayName != null && u.DisplayName.StartsWith(options.SearchString));
                 }
                 else
                 {
