@@ -5,7 +5,7 @@
            Language="1033"
            Version="$(var.version)"
            Manufacturer="Microsoft Corporation"
-           UpgradeCode="EBC1AD5E-1BBE-45B5-9E8D-ACFC8951C252">
+           UpgradeCode="EBC1AD5E-1BBE-45B5-9E8D-ACFC8951C253">
 
     <Package InstallerVersion="200" Compressed="yes"  />
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
@@ -30,9 +30,29 @@
     </Property>
 
     <!-- This condition will break if PowerShell has less than version x5.0 -->
-    <Condition Message="This setup requires the Windows PowerShell 5.0 or compatible version to be installed.">
-      <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "5.0")]]>
+    <Condition Message="This setup requires the Windows PowerShell 5.1 or compatible version to be installed.">
+      <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "5.1")]]>
     </Condition>
+
+    <?define NetFx472MinRelease = 461808 ?>
+    <Property Id="NETFRAMEWORK472" Value="0" Secure="yes">
+        <RegistrySearch
+            Id="RegSearch"
+            Root="HKLM"
+            Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"
+            Name="Release"
+            Type="raw" />
+    </Property>
+
+    <Condition Message="This setup requires the .NET Framework version 4.7.2 or greater to be installed.">
+        <![CDATA[NETFRAMEWORK472 >= "#$(var.NetFx472MinRelease)"]]>
+    </Condition>
+
+    <!--<Condition Message="Found the environment variable">
+        <![CDATA[%PSModulePath]]>
+    </Condition>
+
+    <?define ModulePath = ![CDATA[%PSModulePath]] ?>-->
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       <!-- x64 files -->
@@ -51,7 +71,7 @@
       </Directory>
     </Directory>
 
-    <Feature Id="azurecmd" Title="Microsoft Azure PowerShell" Level="1" Description="Windows PowerShell commandlets">
+    <Feature Id="azurecmd" Title="Microsoft Azure PowerShell" Level="1" Description="Azure PowerShell commandlets">
       <?if $(sys.BUILDARCH) = "x64" ?>  
         <ComponentGroupRef Id="azurecmdfilesx64" />
       <?endif?>      
@@ -77,6 +97,12 @@ $command = 'if( (get-executionpolicy -scope localmachine) -eq "undefined" ) { & 
 --> 
     <CustomAction Id='ExecutionPolicy' Execute='deferred' Property="POWERSHELLEXE" ExeCommand="-noprofile -nologo -noninteractive -EncodedCommand aQBmACgAIAAoAGcAZQB0AC0AZQB4AGUAYwB1AHQAaQBvAG4AcABvAGwAaQBjAHkAIAAtAHMAYwBvAHAAZQAgAGwAbwBjAGEAbABtAGEAYwBoAGkAbgBlACkAIAAtAGUAcQAgACIAdQBuAGQAZQBmAGkAbgBlAGQAIgAgACkAIAB7ACAAJgAgACIAJABlAG4AdgA6AHcAaQBuAGQAaQByAFwAcwB5AHMAdABlAG0AMwAyAFwAdwBpAG4AZABvAHcAcwBwAG8AdwBlAHIAcwBoAGUAbABsAFwAdgAxAC4AMABcAHAAbwB3AGUAcgBzAGgAZQBsAGwALgBlAHgAZQAiACAALQBuAG8AcAByAG8AZgBpAGwAZQAgAC0AbgBvAGwAbwBnAG8AIAAtAG4AbwBuAGkAbgB0AGUAcgBhAGMAdABpAHYAZQAgAC0AZQB4AGUAYwB1AHQAaQBvAG4AcABvAGwAaQBjAHkAIABhAGwAbABzAGkAZwBuAGUAZAAgAC0AYwBvAG0AbQBhAG4AZAAgAHMAZQB0AC0AZQB4AGUAYwB1AHQAaQBvAG4AcABvAGwAaQBjAHkAIABhAGwAbABzAGkAZwBuAGUAZAAgAH0AIAA="  Impersonate="no" Return='asyncNoWait'/>
   <?endif ?>
+<!-- 
+# to regenerate the EncodedCommand, run this (x86): 
+$command = '(get-module -ListAvailable) | ForEach-Object { if($_.Name -like "*AzureRM*") { throw "ahhh" } }'
+[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($command))
+--> 
+  <!--<CustomAction Id='AzureRmSideBySide' Execute='deferred' Property="POWERSHELLEXE" ExeCommand="-noprofile -nologo -noninteractive -EncodedCommand KABnAGUAdAAtAG0AbwBkAHUAbABlACAALQBMAGkAcwB0AEEAdgBhAGkAbABhAGIAbABlACkAIAB8ACAARgBvAHIARQBhAGMAaAAtAE8AYgBqAGUAYwB0ACAAewAgAGkAZgAoACQAXwAuAE4AYQBtAGUAIAAtAGwAaQBrAGUAIAAiACoAQQB6AHUAcgBlAFIATQAqACIAKQAgAHsAIAB0AGgAcgBvAHcAIAAiAGEAaABoAGgAIgAgAH0AIAB9AA=="  Impersonate="no" Return='asyncNoWait'/>-->
   </Product>
 
   <?if $(sys.BUILDARCH) = "x64" ?>
