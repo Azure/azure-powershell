@@ -14,8 +14,8 @@ Add a secondary cluster certificate to the cluster.
 
 ### ByExistingKeyVault
 ```
-Add-AzServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String> 
- -SecretIdentifier <String> [-CertificateCommonName <String>] [-CertificateIssuerThumbprint <String>]
+Add-AzServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String> -SecretIdentifier <String>
+ [-CertificateCommonName <String>] [-CertificateIssuerThumbprint <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

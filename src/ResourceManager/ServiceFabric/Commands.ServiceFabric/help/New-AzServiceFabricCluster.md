@@ -24,8 +24,8 @@ New-AzServiceFabricCluster [-ResourceGroupName] <String> [-CertificateOutputFold
 ### ByExistingKeyVault
 ```
 New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
- [-CertificateCommonName <String>] [-CertificateIssuerThumbprint <String>]  [-VmPassword <SecureString>] 
- -SecretIdentifier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] 
+ [-CertificateCommonName <String>] [-CertificateIssuerThumbprint <String>] [-VmPassword <SecureString>]
+ -SecretIdentifier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
