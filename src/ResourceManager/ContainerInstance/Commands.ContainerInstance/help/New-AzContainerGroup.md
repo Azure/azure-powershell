@@ -17,8 +17,9 @@ Creates a container group.
 New-AzContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
  [-RegistryCredential <PSCredential>] [-Location <String>] [-AssignIdentity] [-OsType <String>]
  [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>]
- [-DnsNameLabel <String>] [-Port <Int32[]>] [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DnsNameLabel <String>] [-Port <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>]
+ [-RegistryServerDomain <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateContainerGroupWithAzureFileMountParamSet
@@ -27,9 +28,9 @@ New-AzContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <St
  [-RegistryCredential <PSCredential>] -AzureFileVolumeShareName <String>
  -AzureFileVolumeAccountCredential <PSCredential> -AzureFileVolumeMountPath <String> [-Location <String>]
  [-AssignIdentity] [-OsType <String>] [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>]
- [-IpAddressType <String>] [-DnsNameLabel <String>] [-Port <Int32[]>] [-EnvironmentVariable <Hashtable>]
- [-RegistryServerDomain <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-IpAddressType <String>] [-DnsNameLabel <String>] [-Port <Int32[]>] [-Command <String>]
+ [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateContainerGroupWithAzureFileMountAndExplicitIdentityParamSet
@@ -39,18 +40,18 @@ New-AzContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <St
  -AzureFileVolumeAccountCredential <PSCredential> -AzureFileVolumeMountPath <String> [-Location <String>]
  -IdentityType <ResourceIdentityType> [-IdentityId <String[]>] [-OsType <String>] [-RestartPolicy <String>]
  [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>] [-DnsNameLabel <String>] [-Port <Int32[]>]
- [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>] [-Tag <Hashtable>]
+ [-Command <String>] [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateContainerGroupWithAzureFileMountParamSet
+### ExplicitIdentityParameterSet
 ```
 New-AzContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
  [-RegistryCredential <PSCredential>] [-Location <String>] -IdentityType <ResourceIdentityType>
  [-IdentityId <String[]>] [-OsType <String>] [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>]
- [-IpAddressType <String>] [-DnsNameLabel <String>] [-Port <Int32[]>] [-EnvironmentVariable <Hashtable>]
- [-RegistryServerDomain <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-IpAddressType <String>] [-DnsNameLabel <String>] [-Port <Int32[]>] [-Command <String>]
+ [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -314,6 +315,21 @@ Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet, CreateContainerG
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Command
+The command to run in the container.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
