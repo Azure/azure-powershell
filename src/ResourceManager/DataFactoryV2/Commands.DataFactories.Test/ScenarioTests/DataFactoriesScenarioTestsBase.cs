@@ -25,10 +25,6 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-#if !NETSTANDARD
-using Microsoft.Azure.Test;
-using TestBase = Microsoft.Azure.Test.TestBase;
-#endif
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
@@ -57,25 +53,29 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
             _helper.TracingInterceptor = logger;
 
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    "ScenarioTests\\" + GetType().Name + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath("AzureRM.DataFactories.psd1"),
+                    _helper.GetRMModulePath("AzureRM.DataFactory.psd1"),
                     "AzureRM.Resources.ps1");
 
                 _helper.RunPowerShellTest(scripts);
@@ -84,12 +84,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
         protected DataFactoryManagementClient GetDataPipelineManagementClient(MockContext context)
         {
-#if NETSTANDARD
-            //return context.GetServiceClient<DataFactoryManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-            return null;
-#else
-            return TestBase.GetServiceClient<DataFactoryManagementClient>(new CSMTestEnvironmentFactory());
-#endif
+            return context.GetServiceClient<DataFactoryManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected ResourceManagementClient GetResourceManagementClient(MockContext context)
