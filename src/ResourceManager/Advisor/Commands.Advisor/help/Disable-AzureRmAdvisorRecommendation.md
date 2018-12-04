@@ -1,0 +1,202 @@
+---
+external help file: Microsoft.Azure.Commands.Advisor.dll-Help.xml
+Module Name: AzureRM.Advisor
+online version:
+schema: 2.0.0
+---
+
+# Disable-AzureRmAdvisorRecommendation
+
+## SYNOPSIS
+Disable an Azure Advisor recommendation.
+
+## SYNTAX
+
+### IdParameterSet (Default)
+```
+Disable-AzureRmAdvisorRecommendation -ResourceId <String> [-SupressionName <String>] [-Days <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### NameParameterSet
+```
+Disable-AzureRmAdvisorRecommendation [-SupressionName <String>] [-Days <String>] -RecommendationName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Disable-AzureRmAdvisorRecommendation [-SupressionName <String>] [-Days <String>]
+ -InputObject <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Create suppression for recomendation, this enables a particular recommendation to be postponed for a specific duration or infinitely.
+
+## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> Disable-AzureRMAdvisorRecommendation -Name "f380a3a8-9d18-cfad-78e0-55762c72a178"
+
+SuppressionId : d1f70547-0e72-db29-443e-c1164d5d4377
+Ttl           : -1
+Id            : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations
+                /{recommendation_id}/suppressions/DefaultSuppressionName
+Name          : DefaultSuppressionName
+Type          : Microsoft.Advisor/suppressions
+```
+
+Create a suppression for the given recomendation name with a default-SuppressionName and default days as -1.
+
+### Example 2
+```powershell
+PS C:\> Disable-AzureRMAdvisorRecommendation -Name "f380a3a8-9d18-cfad-78e0-55762c72a178" -SupressionName "suppression-test-one" -Days 10
+
+SuppressionId : 4cb60847-6d2e-cf00-78ae-d7d8d9ebe140
+Ttl           : 10.00:00:00
+Id            : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations
+                /{recommendation_id}/suppressions/suppression-test-one
+Name          : suppression-test-one
+Type          : Microsoft.Advisor/suppressions
+```
+
+Create a suppression for the given recomendation name with a user specified SuppressionName and Time-to-live as 10 days. After ten days recommendation is enabled back.
+
+### Example 3
+```powershell
+PS C:\> Disable-AzureRMAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{}" -Days 12
+
+SuppressionId : 7d1f0547-0e72-db29-443e-c1164d5d4377
+Ttl           : 12.00:00:00
+Id            : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations
+                /{recommendation_id}/suppressions/DefaultSuppressionName
+Name          : DefaultSuppressionName
+Type          : Microsoft.Advisor/suppressions
+```
+
+A suppression is created for the given recommendation-Id
+
+### Example 4
+```powershell
+PS C:\>  Get-AzureRMAdvisorRecommendation -Id "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/AzExpertStg/providers/Microsoft.Cache/Redis/azacache/providers/Microsoft.Advisor/recommendations/f380a3a8-9d18-cfad-78e0-55762c72a178" | Disable-A
+zureRMAdvisorRecommendation -SName "piping-suppression-name"
+
+SuppressionId : daf24e78-af2d-e8d3-9c50-fa970edc2937
+Ttl           : -1
+Id            : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations
+                /{recommendation_id}/suppressions/piping-suppression-name
+Name          : piping-suppression-name
+Type          : Microsoft.Advisor/suppressions
+```
+
+Creating a suppression by piping two cmdlet.
+
+## PARAMETERS
+
+### -Days
+Days to disable
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Piping data passed through the previous cmdlet.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -RecommendationName
+ResourceName of the recommendation
+
+```yaml
+Type: String
+Parameter Sets: NameParameterSet
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ResourceID of the recommendation to be suppressed (space delimitited).
+
+```yaml
+Type: String
+Parameter Sets: IdParameterSet
+Aliases: Id
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SupressionName
+Name of suppression
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: SName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.Commands.Advisor, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]]
+
+## OUTPUTS
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract, Microsoft.Azure.Commands.Advisor, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]]
+
+## NOTES
+
+## RELATED LINKS
