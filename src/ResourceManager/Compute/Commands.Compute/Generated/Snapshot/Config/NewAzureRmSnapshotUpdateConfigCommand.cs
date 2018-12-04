@@ -22,6 +22,7 @@
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +31,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+#if NETSTANDARD
+    [CmdletOutputBreakingChange(typeof(DiskSku), ReplacementCmdletOutputTypeName = "SnapshotSku")]
+#endif
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotUpdateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
     public partial class NewAzureRmSnapshotUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -86,16 +90,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private void Run()
         {
             // EncryptionSettings
-            Microsoft.Azure.Management.Compute.Models.EncryptionSettings vEncryptionSettings = null;
+            EncryptionSettings vEncryptionSettings = null;
 
             // Sku
-            Microsoft.Azure.Management.Compute.Models.SnapshotSku vSku = null;
+            SnapshotSku vSku = null;
 
             if (this.MyInvocation.BoundParameters.ContainsKey("EncryptionSettingsEnabled"))
             {
                 if (vEncryptionSettings == null)
                 {
-                    vEncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    vEncryptionSettings = new EncryptionSettings();
                 }
                 vEncryptionSettings.Enabled = this.EncryptionSettingsEnabled;
             }
@@ -104,7 +108,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vEncryptionSettings == null)
                 {
-                    vEncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    vEncryptionSettings = new EncryptionSettings();
                 }
                 vEncryptionSettings.DiskEncryptionKey = this.DiskEncryptionKey;
             }
@@ -113,7 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vEncryptionSettings == null)
                 {
-                    vEncryptionSettings = new Microsoft.Azure.Management.Compute.Models.EncryptionSettings();
+                    vEncryptionSettings = new EncryptionSettings();
                 }
                 vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
             }
@@ -122,7 +126,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (vSku == null)
                 {
-                    vSku = new Microsoft.Azure.Management.Compute.Models.SnapshotSku();
+                    vSku = new SnapshotSku();
                 }
                 vSku.Name = this.SkuName;
             }

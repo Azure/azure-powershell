@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         // month constants
         public const int NumOfMonthsInYear = 12;
 
+        // SQL constants
         public const int MaxAllowedRetentionDurationCountWeeklySql = 520;
         public const int MaxAllowedRetentionDurationCountMonthlySql = 120;
         public const int MaxAllowedRetentionDurationCountYearlySql = 10;
@@ -215,6 +216,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                     return BackupManagementType.AzureBackupServer;
                 case ServiceClientModel.BackupManagementType.AzureSql:
                     return BackupManagementType.AzureSQL;
+                case ServiceClientModel.BackupManagementType.AzureStorage:
+                    return BackupManagementType.AzureStorage;
                 default:
                     throw new Exception("Unsupported BackupManagmentType: " + backupManagementType);
             }
@@ -240,6 +243,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return ContainerType.AzureSQL;
             }
+            else if (containerType ==
+                ServiceClientModel.BackupManagementType.AzureStorage)
+            {
+                return ContainerType.AzureStorage;
+            }
             else
             {
                 throw new Exception("Unsupported ContainerType: " + containerType);
@@ -260,6 +268,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             if (workloadType == ServiceClientModel.WorkloadType.AzureSqlDb.ToString())
             {
                 return WorkloadType.AzureSQLDatabase;
+            }
+            if (workloadType == ServiceClientModel.WorkloadType.AzureFileShare)
+            {
+                return WorkloadType.AzureFiles;
+            }
+            else
+            {
+                throw new Exception("Unsupported WorkloadType: " + workloadType);
+            }
+        }
+
+        /// <summary>
+        /// Returns the Service Client backup management type given the PS workload type.
+        /// </summary>
+        /// <param name="workloadType">PS workload type</param>
+        /// <returns>Service Client workload type</returns>
+        public static string GetServiceClientWorkloadType(string workloadType)
+        {
+            if (workloadType == WorkloadType.AzureVM.ToString())
+            {
+                return ServiceClientModel.WorkloadType.VM;
+            }
+            if (workloadType == WorkloadType.AzureSQLDatabase.ToString())
+            {
+                return ServiceClientModel.WorkloadType.AzureSqlDb;
+            }
+            if (workloadType == WorkloadType.AzureFiles.ToString())
+            {
+                return ServiceClientModel.WorkloadType.AzureFileShare;
             }
             else
             {

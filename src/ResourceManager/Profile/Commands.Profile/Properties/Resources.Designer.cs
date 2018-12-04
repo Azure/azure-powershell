@@ -493,6 +493,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the managed service identity found on this machine has proper permissions to the provided tenant domain..
+        /// </summary>
+        internal static string MSITenantDomainNotFound {
+            get {
+                return ResourceManager.GetString("MSITenantDomainNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (no account provided).
         /// </summary>
         internal static string NoAccountProvided {
@@ -646,6 +655,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Module deletion failed. Please close all PowerShell sessions to ensure no AzureRM modules are currently loaded, and rerun this cmdlet in Administrator mode..
+        /// </summary>
+        internal static string RemoveModuleError {
+            get {
+                return ResourceManager.GetString("RemoveModuleError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rename context &apos;{0}&apos; to &apos;{1}&apos;.
         /// </summary>
         internal static string RenameContextMessage {
@@ -763,6 +781,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the provided service principal &apos;{0}&apos; is found in the provided tenant domain..
+        /// </summary>
+        internal static string ServicePrincipalTenantDomainNotFound {
+            get {
+                return ResourceManager.GetString("ServicePrincipalTenantDomainNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided service principal secret will be included in the &apos;{0}&apos; file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections..
         /// </summary>
         internal static string ServicePrincipalWarning {
@@ -777,6 +804,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string SetPropertyAction {
             get {
                 return ResourceManager.GetString("SetPropertyAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing module &apos;{0}&apos; from your machine.
+        /// </summary>
+        internal static string ShouldRemoveModule {
+            get {
+                return ResourceManager.GetString("ShouldRemoveModule", resourceCulture);
             }
         }
         
@@ -853,6 +889,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not find tenant id for provided tenant domain &apos;{0}&apos;..
+        /// </summary>
+        internal static string TenantDomainNotFound {
+            get {
+                return ResourceManager.GetString("TenantDomainNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to find tenant &apos;{0}&apos;..
         /// </summary>
         internal static string TenantIdNotFound {
@@ -894,6 +939,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string UnknownEnvironment {
             get {
                 return ResourceManager.GetString("UnknownEnvironment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the provided user is found in the provided tenant domain..
+        /// </summary>
+        internal static string UserTenantDomainNotFound {
+            get {
+                return ResourceManager.GetString("UserTenantDomainNotFound", resourceCulture);
             }
         }
     }

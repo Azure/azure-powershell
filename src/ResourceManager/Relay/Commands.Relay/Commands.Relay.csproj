@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Relay, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Relay.2.0.0\lib\net452\Microsoft.Azure.Management.Relay.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Relay.2.0.2\lib\net452\Microsoft.Azure.Management.Relay.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -80,25 +80,25 @@
     <Compile Include="Cmdlets\WcfRelay\NewAzureWcfRelay.cs" />
     <Compile Include="Cmdlets\WcfRelay\RemoveAzureWcfRelay.cs" />
     <Compile Include="Cmdlets\WcfRelay\SetAzureWcfRelay.cs" />
-    <Compile Include="Models\AccessRightsAttributes.cs" />
-    <Compile Include="Models\AuthorizationRuleAttributes.cs" />
-    <Compile Include="Models\AuthorizationRuleKeysAttributes.cs" />
-    <Compile Include="Models\CheckNameAvailabilityAttributes.cs" />
-    <Compile Include="Models\CheckNameAvailabilityResultAttributes.cs" />
-    <Compile Include="Models\HybridConnectionAttibutes.cs" />
-    <Compile Include="Models\OperationAttributes.cs" />
-    <Compile Include="Models\OperationDisplayAttributes.cs" />
-    <Compile Include="Models\PageAttributes.cs" />
-    <Compile Include="Models\PolicyKeyAttributes.cs" />
-    <Compile Include="Models\RegenerateKeysAttirbutes.cs" />
-    <Compile Include="Models\RelayNamespaceAttributes.cs" />
-    <Compile Include="Models\RelayNamespaceAttributesUpdateParameter.cs" />
-    <Compile Include="Models\RelaytypeAttributes.cs" />
-    <Compile Include="Models\ResourceAttributes.cs" />
-    <Compile Include="Models\SkuAttributes.cs" />
-    <Compile Include="Models\TrackedResourceAttributes.cs" />
-    <Compile Include="Models\UnavailableReasonAttributes.cs" />
-    <Compile Include="Models\WcfRelayAttributes.cs" />
+    <Compile Include="Models\PSAccessRightsAttributes.cs" />
+    <Compile Include="Models\PSAuthorizationRuleAttributes.cs" />
+    <Compile Include="Models\PSAuthorizationRuleKeysAttributes.cs" />
+    <Compile Include="Models\PSCheckNameAvailabilityAttributes.cs" />
+    <Compile Include="Models\PSCheckNameAvailabilityResultAttributes.cs" />
+    <Compile Include="Models\PSHybridConnectionAttibutes.cs" />
+    <Compile Include="Models\PSOperationAttributes.cs" />
+    <Compile Include="Models\PSOperationDisplayAttributes.cs" />
+    <Compile Include="Models\PSPageAttributes.cs" />
+    <Compile Include="Models\PSPolicyKeyAttributes.cs" />
+    <Compile Include="Models\PSRegenerateKeysAttirbutes.cs" />
+    <Compile Include="Models\PSRelayNamespaceAttributes.cs" />
+    <Compile Include="Models\PSRelayNamespaceAttributesUpdateParameter.cs" />
+    <Compile Include="Models\PSRelaytypeAttributes.cs" />
+    <Compile Include="Models\PSResourceAttributes.cs" />
+    <Compile Include="Models\PSSkuAttributes.cs" />
+    <Compile Include="Models\PSTrackedResourceAttributes.cs" />
+    <Compile Include="Models\PSUnavailableReasonAttributes.cs" />
+    <Compile Include="Models\PSWcfRelayAttributes.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -89,6 +89,9 @@ Creates an Azure Web App slot.
 ### [New-AzureRmWebAppSSLBinding](New-AzureRmWebAppSSLBinding.md)
 Creates an SSL certificate binding for an Azure Web App.
 
+### [New-AzureRmWebAppAzureStoragePath](New-AzureRmWebAppAzureStoragePath.md)
+Creates an object that represents an Azure Storage path to be mounted in a Web App. It is meant to be used as a parameter (-AzureStoragePath) to Set-AzureRmWebApp and Set-AzureRmWebAppSlot
+
 ### [Remove-AzureRmAppServicePlan](Remove-AzureRmAppServicePlan.md)
 Removes an Azure App Service plan.
 

@@ -169,6 +169,7 @@ function Create-BasicTestEnvironmentWithParams ($params, $location, $serverVersi
 	New-AzureRmResourceGroup -Name $params.rgname -Location $location
 	$serverName = $params.serverName
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!Sec"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	New-AzureRmSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
@@ -283,6 +284,7 @@ function Create-ServerKeyVaultKeyTestEnvironment ($params)
 
 	# Create Server
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$server = New-AzureRmSqlServer -ResourceGroupName  $rg.ResourceGroupName -ServerName $params.serverName -Location $params.location -ServerVersion "12.0" -SqlAdministratorCredentials $credentials
@@ -355,6 +357,33 @@ function Get-VirtualNetworkRuleName
 Gets valid server dns alias name
 #>
 function Get-ServerDnsAliasName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid managed instance name
+#>
+function Get-ManagedInstanceName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid managed database name
+#>
+function Get-ManagedDatabaseName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid vnet name
+#>
+function Get-VNetName
 {
     return getAssetName
 }
@@ -437,6 +466,7 @@ function Remove-ResourceGroupForTest ($rg)
 function Get-ServerCredential
 {
 	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 	return $credentials
@@ -617,4 +647,72 @@ function Get-DNSNameBasedOnEnvironment ()
          return ".sqltest-eg1.mscds.com"
      }
      return ".database.windows.net"
+}
+
+<#
+	.SYNOPSIS
+	Creates the test environment needed to perform the Sql managed instance CRUD tests
+#>
+function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
+{
+	$managedInstanceName = Get-ManagedInstanceName
+	$credentials = Get-ServerCredential
+ 	$licenseType = "BasePrice"
+  	$storageSizeInGB = 32
+ 	$vCore = 16
+ 	$skuName = "GP_Gen4"
+
+	$managedInstance = New-AzureRmSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
+ 			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
+
+	return $managedInstance
+}
+
+<#
+	.SYNOPSIS
+	Create a virtual network
+#>
+function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $location = "westcentralus")
+{
+	$vNetAddressPrefix = "10.0.0.0/16"
+	$defaultResourceGroupName = "cl_one"
+	$defaultSubnetAddressPrefix = "10.0.0.0/24"
+
+	try {
+		$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $defaultResourceGroupName
+		return $getVnet
+	} catch {
+		$virtualNetwork = New-AzureRmVirtualNetwork `
+							-ResourceGroupName $defaultResourceGroupName `
+							-Location $location `
+							-Name $vNetName `
+							-AddressPrefix $vNetAddressPrefix
+ 		$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+								-Name $subnetName `
+								-AddressPrefix $defaultSubnetAddressPrefix `
+								-VirtualNetwork $virtualNetwork
+ 		$virtualNetwork | Set-AzureRmVirtualNetwork
+ 		$routeTableMiManagementService = New-AzureRmRouteTable `
+								-Name 'myRouteTableMiManagementService' `
+								-ResourceGroupName $defaultResourceGroupName `
+								-location $location
+ 		Set-AzureRmVirtualNetworkSubnetConfig `
+								-VirtualNetwork $virtualNetwork `
+								-Name $subnetName `
+								-AddressPrefix $defaultSubnetAddressPrefix `
+								-RouteTable $routeTableMiManagementService | `
+							Set-AzureRmVirtualNetwork
+ 		Get-AzureRmRouteTable `
+								-ResourceGroupName $defaultResourceGroupName `
+								-Name "myRouteTableMiManagementService" `
+								| Add-AzureRmRouteConfig `
+								-Name "ToManagedInstanceManagementService" `
+								-AddressPrefix 0.0.0.0/0 `
+								-NextHopType "Internet" `
+								| Set-AzureRmRouteTable
+
+		$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $defaultResourceGroupName
+		return $getVnet
+	}
 }

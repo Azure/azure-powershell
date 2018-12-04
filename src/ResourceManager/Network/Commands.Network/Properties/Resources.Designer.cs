@@ -214,6 +214,33 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connectivity check destination resource id must not be the same as source: {0}.
+        /// </summary>
+        public static string ConnectivityDestinationIsMustNotBeTheSameAsSource {
+            get {
+                return ResourceManager.GetString("ConnectivityDestinationIsMustNotBeTheSameAsSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connectivity check missing destination port.
+        /// </summary>
+        public static string ConnectivityMissingDestinationPort {
+            get {
+                return ResourceManager.GetString("ConnectivityMissingDestinationPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connectivity check missing destination resource id or address.
+        /// </summary>
+        public static string ConnectivityMissingDestinationResourceIdOrAddress {
+            get {
+                return ResourceManager.GetString("ConnectivityMissingDestinationResourceIdOrAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ContainerNetworkInterfaceConfigurationNameNotSet.
         /// </summary>
         public static string ContainerNetworkInterfaceConfigurationNameNotSet {
@@ -390,6 +417,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string NetworkProfileNameNotSet {
             get {
                 return ResourceManager.GetString("NetworkProfileNameNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no network watcher in location {0}.
+        /// </summary>
+        public static string NoNetworkWatcherInLocation {
+            get {
+                return ResourceManager.GetString("NoNetworkWatcherInLocation", resourceCulture);
             }
         }
         

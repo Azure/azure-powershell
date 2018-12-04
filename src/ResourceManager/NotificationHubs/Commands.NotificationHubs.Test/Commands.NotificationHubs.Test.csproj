@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.NotificationHubs.2.3.1-preview\lib\net452\Microsoft.Azure.Management.NotificationHubs.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.NotificationHubs.2.3.2-preview\lib\net452\Microsoft.Azure.Management.NotificationHubs.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

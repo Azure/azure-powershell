@@ -29,7 +29,7 @@ param(
     [string] $BuildConfig,
 
     [Parameter(Mandatory = $false, Position = 1)]
-    [ValidateSet("All", "Latest", "Stack", "NetCore","ServiceManagement","AzureStorage")]
+    [ValidateSet("All", "Latest", "Stack", "NetCore", "ServiceManagement", "AzureStorage")]
     [string] $Scope
 )
 
@@ -94,6 +94,18 @@ function New-ModulePsm1 {
         $template = $template -replace "%MODULE-NAME%", $file.BaseName
         $template = $template -replace "%DATE%", [string](Get-Date)
         $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
+
+        # Replace Az or AzureRM with correct information
+        if ($IsNetcore)
+        {
+            $template = $template -replace "%AZORAZURERM%", "AzureRM"
+            $template = $template -replace "%ISAZMODULE%", "`$true"
+        }
+        else
+        {
+            $template = $template -replace "%AZORAZURERM%", "`Az"
+            $template = $template -replace "%ISAZMODULE%", "`$false"
+        }
 
         # Add deprecation messages
         if ($ModulePath -like "*Profile*") {
@@ -309,7 +321,7 @@ function Update-Azure {
     if ($scope -in $script:StorageScopes) {
         $modulePath = "$script:AzurePackages\$buildConfig\Storage\Azure.Storage"
         Write-Host "Updating AzureStorage module from $modulePath"
-        New-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule:$false
+        New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsRMModule:$false
         Write-Host " "
     }
 
@@ -359,12 +371,22 @@ function Update-Stack {
 
     $modulePath = "$script:StackPackages\$buildConfig\Storage\Azure.Storage"
     Write-Host "Updating AzureStorage module from $modulePath"
-    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule:$false
+    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsRMModule:$false
     Write-Host " "
 
     $StackRMModules = Get-ChildItem -Path $script:StackRMRoot -Directory
     Write-Host "Updating stack modules"
     Update-RMModule -Modules $StackRMModules
+    Write-Host " "
+
+    $modulePath = "$script:StackProjects\AzureRM"
+    Write-Host "Updating AzureRM module from $modulePath"
+    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation
+    Write-Host " "
+
+    $modulePath = "$script:StackProjects\AzureStack"
+    Write-Host "Updating AzureStack module from $modulePath"
+    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation
     Write-Host " "
 }
 
@@ -423,8 +445,9 @@ $script:StorageScopes = @('All', 'Latest', 'AzureStorage')
 $script:ServiceScopes = @('All', 'Latest', 'ServiceManagement')
 
 # Package locations
-$script:AzurePackages = "$PSSCriptRoot\..\src\Package"
-$script:StackPackages = "$PSSCriptRoot\..\src\Stack"
+$script:AzurePackages = "$PSScriptRoot\..\src\Package"
+$script:StackPackages = "$PSScriptRoot\..\src\Stack"
+$script:StackProjects = "$PSScriptRoot\..\src\StackAdmin"
 
 # Resource Management folders
 $script:AzureRMRoot = "$script:AzurePackages\$buildConfig\ResourceManager\AzureResourceManager"

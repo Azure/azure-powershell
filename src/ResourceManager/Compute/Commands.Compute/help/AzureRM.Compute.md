@@ -56,6 +56,9 @@ Adds a secret to a VMSS.
 ### [Add-AzureRmVmssSshPublicKey](Add-AzureRmVmssSshPublicKey.md)
 Adds SSH public keys to the VMSS.
 
+### [Add-AzureRmVmssVMDataDisk](Add-AzureRmVmssVMDataDisk.md)
+Adds a data disk to a Vmss VM.
+
 ### [Add-AzureRmVmssWinRMListener](Add-AzureRmVmssWinRMListener.md)
 Adds a WinRM listener to the VMSS.
 
@@ -85,6 +88,15 @@ Gets a container service.
 
 ### [Get-AzureRmDisk](Get-AzureRmDisk.md)
 Gets the properties of a Managed disk.
+
+### [Get-AzureRmGallery](Get-AzureRmGallery.md)
+Get or list galleries.
+
+### [Get-AzureRmGalleryImageDefinition](Get-AzureRmGalleryImageDefinition.md)
+Get or list gallery image definitions.
+
+### [Get-AzureRmGalleryImageVersion](Get-AzureRmGalleryImageVersion.md)
+Get or list gallery image versions.
 
 ### [Get-AzureRmImage](Get-AzureRmImage.md)
 Gets the properties of an image.
@@ -209,6 +221,15 @@ Creates a configurable disk object.
 ### [New-AzureRmDiskUpdateConfig](New-AzureRmDiskUpdateConfig.md)
 Creates a configurable disk update object.
 
+### [New-AzureRmGallery](New-AzureRmGallery.md)
+Create a gallery.
+
+### [New-AzureRmGalleryImageDefinition](New-AzureRmGalleryImageDefinition.md)
+Create a gallery image definition.
+
+### [New-AzureRmGalleryImageVersion](New-AzureRmGalleryImageVersion.md)
+Create a gallery image version.
+
 ### [New-AzureRmImage](New-AzureRmImage.md)
 Creats an image.
 
@@ -271,6 +292,15 @@ Removes an agent pool profile from a container service.
 
 ### [Remove-AzureRmDisk](Remove-AzureRmDisk.md)
 Removes a disk.
+
+### [Remove-AzureRmGallery](Remove-AzureRmGallery.md)
+Delete a gallery.
+
+### [Remove-AzureRmGalleryImageDefinition](Remove-AzureRmGalleryImageDefinition.md)
+Delete a gallery image definition.
+
+### [Remove-AzureRmGalleryImageVersion](Remove-AzureRmGalleryImageVersion.md)
+Delete a gallery image version.
 
 ### [Remove-AzureRmImage](Remove-AzureRmImage.md)
 Removes an image.
@@ -337,6 +367,9 @@ Removes an extension from the VMSS.
 
 ### [Remove-AzureRmVmssNetworkInterfaceConfiguration](Remove-AzureRmVmssNetworkInterfaceConfiguration.md)
 Removes a network interface configuration from a VMSS.
+
+### [Remove-AzureRmVmssVMDataDisk](Remove-AzureRmVmssVMDataDisk.md)
+Removes a data disk from a virtual machine scale set VM
 
 ### [Repair-AzureRmVmssServiceFabricUpdateDomain](Repair-AzureRmVmssServiceFabricUpdateDomain.md)
 Manual platform update domain walk to update virtual machines in a service fabric virtual machine scale set.
@@ -499,6 +532,15 @@ Updates the state of a container service.
 
 ### [Update-AzureRmDisk](Update-AzureRmDisk.md)
 Updates a disk.
+
+### [Update-AzureRmGallery](Update-AzureRmGallery.md)
+Update a gallery.
+
+### [Update-AzureRmGalleryImageDefinition](Update-AzureRmGalleryImageDefinition.md)
+Update a gallery image definition.
+
+### [Update-AzureRmGalleryImageVersion](Update-AzureRmGalleryImageVersion.md)
+Update a gallery image version.
 
 ### [Update-AzureRmImage](Update-AzureRmImage.md)
 Updates an image.

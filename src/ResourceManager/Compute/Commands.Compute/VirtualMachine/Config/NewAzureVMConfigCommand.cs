@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +23,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
+#if NETSTANDARD
+    [CmdletOutputBreakingChange(typeof(PSVirtualMachineIdentity), DeprecatedOutputProperties = new string[] { "IdentityIds" })]
+#endif
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMConfig",DefaultParameterSetName = "DefaultParameterSet"),OutputType(typeof(PSVirtualMachine))]
     public class NewAzureVMConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -87,6 +91,11 @@ namespace Microsoft.Azure.Commands.Compute
 		[Alias("Tag")]
 		public Hashtable Tags { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EnableUltraSSD { get; set; }
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
@@ -131,6 +140,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 vm.HardwareProfile = new HardwareProfile();
                 vm.HardwareProfile.VmSize = this.VMSize;
+            }
+
+            if (this.EnableUltraSSD.IsPresent)
+            {
+                vm.AdditionalCapabilities = new AdditionalCapabilities(true);
             }
 
             WriteObject(vm);

@@ -19,6 +19,10 @@ using System.Linq;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.Common.Authentication;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
+#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common.Properties;

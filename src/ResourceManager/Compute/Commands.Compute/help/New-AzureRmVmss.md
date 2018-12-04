@@ -28,7 +28,7 @@ New-AzureRmVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJ
  [-LoadBalancerName <String>] [-BackendPort <Int32[]>] [-Location <String>] [-VmSize <String>]
  [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>] [-VnetAddressPrefix <String>]
  [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
- [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
+ [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-NatBackendPort <Int32[]>]
  [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -49,7 +49,7 @@ $vmPassword = ConvertTo-SecureString <PASSWORD_HERE> -AsPlainText -Force
 $vmCred = New-Object System.Management.Automation.PSCredential(<USERNAME_HERE>, $vmPassword)
 
 #Create a VMSS using the default settings
-New-AzureRmVmss -Credential $vmCred -VMScaleSetName $vmssName 
+New-AzureRmVmss -Credential $vmCred -VMScaleSetName $vmssName
 ```
 
 The command above creates the following with the name `$vmssName` :
@@ -61,9 +61,8 @@ The command above creates the following with the name `$vmssName` :
 
 The default image chosen for the VMs in the VMSS is `2016-Datacenter Windows Server` and the SKU is `Standard_DS1_v2`
 
-
 ### Example 2: Create a VMSS using the **`DefaultParameterSet`**
-``` powershell
+```powershell
 # Common
 $LOC = "WestUs";
 $RGName = "rgkyvms";
@@ -278,6 +277,21 @@ The domain name label for the public Fully-Qualified domain name (FQDN) for this
 
 ```yaml
 Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableUltraSSD
+Use UltraSSD disks for the VMs in the scale set.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SimpleParameterSet
 Aliases:
 

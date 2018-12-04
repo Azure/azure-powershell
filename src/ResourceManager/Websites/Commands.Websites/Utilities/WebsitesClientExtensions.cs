@@ -23,33 +23,8 @@ namespace Microsoft.Azure.Management.WebSites
 {
     public static class WebsitesClientExtensions
     {
-#if !NETSTANDARD
-        public static IWebAppsOperations WebApps(this WebSiteManagementClient client)
-        {
-            return client.WebApps;
-        }
-
-        public static IDeletedWebAppsOperations DeletedWebApps(this WebSiteManagementClient client)
-        {
-            return client.DeletedWebApps;
-        }
-
-        public static IAppServicePlansOperations AppServicePlans(this WebSiteManagementClient client)
-        {
-            return client.AppServicePlans;
-        }
-         
-        public static string ApiVersion(this WebSiteManagementClient client)
-        {
-            return client.ApiVersion();
-        }
-        
-        public static ICertificatesOperations Certificates(this WebSiteManagementClient client)
-        {
-            return client.Certificates;
-        }
-
-#else
+// TODO: Remove IfDef
+#if NETSTANDARD
         public static void Save(this System.Xml.Linq.XDocument xdoc, string fileName, System.Xml.Linq.SaveOptions options)
         {
             using (var fileStream = System.IO.File.Create(fileName))
@@ -507,8 +482,7 @@ namespace Microsoft.Azure.Management.WebSites
             bool temp;
             if (bool.TryParse(val, out temp))
                 return temp;
-            else
-                return null;
+            return null;
         }
 
         public static ICertificatesOperations Certificates(this WebSiteManagementClient client)
@@ -532,6 +506,31 @@ namespace Microsoft.Azure.Management.WebSites
             string resourceGroupName, string name)
         {
             certificate.Delete(resourceGroupName, name);
+        }
+#else
+        public static IWebAppsOperations WebApps(this WebSiteManagementClient client)
+        {
+            return client.WebApps;
+        }
+
+        public static IDeletedWebAppsOperations DeletedWebApps(this WebSiteManagementClient client)
+        {
+            return client.DeletedWebApps;
+        }
+
+        public static IAppServicePlansOperations AppServicePlans(this WebSiteManagementClient client)
+        {
+            return client.AppServicePlans;
+        }
+         
+        public static string ApiVersion(this WebSiteManagementClient client)
+        {
+            return client.ApiVersion();
+        }
+        
+        public static ICertificatesOperations Certificates(this WebSiteManagementClient client)
+        {
+            return client.Certificates;
         }
 #endif
     }
