@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Profile
                     string.Empty))
                 {
                     if (!AzureSession.Instance.DataStore.FileExists(Path) || Force ||
-                        ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
+                        ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path),
                         Resources.FileOverwriteCaption))
                     {
                         Profile.Save(Path);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Profile
                     }
 
                     if (!AzureSession.Instance.DataStore.FileExists(Path) || Force.IsPresent ||
-                        ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
+                        ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path),
                         Resources.FileOverwriteCaption))
                     {
                         AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().Save(Path);

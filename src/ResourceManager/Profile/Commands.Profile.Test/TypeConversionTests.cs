@@ -423,7 +423,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Null((PSAzureTenant)null);
             var tenant = (PSAzureTenant)(new AzureTenant());
             Assert.NotNull(tenant);
-            Assert.Null(tenant.Directory);
             Assert.Equal(Guid.Empty, tenant.GetId());
             Assert.Null(tenant.ToString());
         }
@@ -440,7 +439,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 Id = Guid.NewGuid().ToString(),
             };
             var tenant = (PSAzureTenant)oldTenant;
-            Assert.Equal(oldTenant.Directory, tenant.Directory);
             Assert.Equal(oldTenant.Id.ToString(), tenant.Id);
             Assert.NotNull(tenant.ToString());
             Assert.Equal(oldTenant.Id, tenant.TenantId);
@@ -457,19 +455,14 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(Guid.Empty, tenant.GetId());
         }
 
-        [Theory,
-        InlineData(null),
-        InlineData("contoso.org")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanConvertValidPSAzureTenants(string domain)
+        [Fact]
+        public void CanConvertValidPSAzureTenants()
         {
             var oldTenant = new PSAzureTenant()
             {
-                Directory = domain,
                 Id = Guid.NewGuid().ToString()
             };
             var tenant = (AzureTenant)oldTenant;
-            Assert.Equal(oldTenant.Directory, tenant.Directory);
             Assert.Equal(oldTenant.Id, tenant.Id.ToString());
         }
 
@@ -574,7 +567,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(oldContext.Account.Type.ToString(), context.Account.Type);
             Assert.Equal(oldContext.Account.Id, context.Account.Id);
             Assert.NotNull(context.Tenant);
-            Assert.Equal(oldContext.Tenant.Directory, context.Tenant.Directory);
             Assert.Equal(oldContext.Tenant.Id.ToString(), context.Tenant.Id);
             Assert.NotNull(context.Subscription);
             Assert.Equal(oldContext.Subscription.Name, context.Subscription.Name);
@@ -638,7 +630,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 },
                 Tenant = new PSAzureTenant
                 {
-                    Directory = domain,
                     Id = tenantId.ToString()
                 }
             };
@@ -648,7 +639,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(oldContext.Account.Type, context.Account.Type.ToString());
             Assert.Equal(oldContext.Account.Id, context.Account.Id);
             Assert.NotNull(context.Tenant);
-            Assert.Equal(oldContext.Tenant.Directory, context.Tenant.Directory);
             Assert.Equal(oldContext.Tenant.Id, context.Tenant.Id.ToString());
             Assert.NotNull(context.Subscription);
             Assert.Equal(oldContext.Subscription.Name, context.Subscription.Name);

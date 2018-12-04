@@ -24,7 +24,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
-    /// Cmdlet to get user tenant information. 
+    /// Cmdlet to get user tenant information.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Tenant")]
     [Alias("Get-AzureRmDomain", "Get-AzDomain")]
