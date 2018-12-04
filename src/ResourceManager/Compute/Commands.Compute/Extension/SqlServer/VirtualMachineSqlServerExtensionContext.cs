@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
-    /// SQL VM Extension's context object used by Get-AzureRmVMSqlServerExtension
+    /// SQL VM Extension's context object used by Get-AzVMSqlServerExtension
     /// </summary>
     public class VirtualMachineSqlServerExtensionContext : PSVirtualMachineExtension
     {

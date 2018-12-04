@@ -51,7 +51,7 @@ This command removes a container group by piping.
 
 ### Example 3: Removes a container group by resource Id.
 ```
-PS C:\> Find-AzureRmResource -ResourceGroupEquals MyResourceGroup -ResourceNameEquals MyContainer | Remove-AzContainerGroup
+PS C:\> Find-AzResource -ResourceGroupEquals MyResourceGroup -ResourceNameEquals MyContainer | Remove-AzContainerGroup
 ```
 
 This command removes a container group by resource Id.

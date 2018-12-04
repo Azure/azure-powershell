@@ -43,7 +43,7 @@ New-AzContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <St
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ExplicitIdentityParameterSet
+### CreateContainerGroupWithAzureFileMountParamSet
 ```
 New-AzContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
  [-RegistryCredential <PSCredential>] [-Location <String>] -IdentityType <ResourceIdentityType>
@@ -186,7 +186,7 @@ This commands creates a container group using a custom image from a custom conta
 ```
 PS C:\> $secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
 PS C:\> $mycred = New-Object System.Management.Automation.PSCredential ("username", $secpasswd)
-PS C:\> New-AzContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image alpine -AzureFileVolumeShareName myshare -AzureFileVolumeAccountKey $mycred -AzureFileVolumeMountPath /mnt/azfile
+PS C:\> New-AzContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image alpine -AzFileVolumeShareName myshare -AzFileVolumeAccountKey $mycred -AzFileVolumeMountPath /mnt/azfile
 
 ResourceGroupName        : demo
 Id                       : /subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/mycontainer

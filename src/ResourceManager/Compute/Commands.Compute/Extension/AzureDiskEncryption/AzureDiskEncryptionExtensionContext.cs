@@ -19,7 +19,7 @@ using System.Security;
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     /// <summary>
-    /// This class represents the extension context of AzureDiskEncryption VM extension. This is returned as an output of Get-AzureDiskEncryption cmdlet
+    /// This class represents the extension context of AzureDiskEncryption VM extension. This is returned as an output of Get-AzDiskEncryption cmdlet
     /// </summary>
     public class AzureDiskEncryptionExtensionContext : PSVirtualMachineExtension
     {
