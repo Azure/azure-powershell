@@ -134,16 +134,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingKeyVault,
+        [Parameter(Mandatory = false, ParameterSetName = ByExistingKeyVault,
                 HelpMessage = "Certificate common name")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
+        [Parameter(Mandatory = false, ParameterSetName = ByExistingPfxAndVaultName,
                 HelpMessage = "Certificate common name")]
         [Alias("CertCommonName")]
         public virtual string CertificateCommonName { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingKeyVault,
+        [Parameter(Mandatory = false, ParameterSetName = ByExistingKeyVault,
                 HelpMessage = "Certificate issuer thumbprint, separated by commas if more than one")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
+        [Parameter(Mandatory = false, ParameterSetName = ByExistingPfxAndVaultName,
                 HelpMessage = "Certificate issuer thumbprint, separated by commas if more than one")]
         [ValidateNotNullOrEmpty]
         [Alias("CertIssuerThumbprint")]
