@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     /// Cmdlet to export an Analysis Services server log to file
     /// </summary>
     [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AnalysisServicesInstanceLog", SupportsShouldProcess=true)]
-    [Alias("Export-AzureAsInstanceLog")]
+    [Alias("Export-AzureAsInstanceLog", "Export-AzAsInstanceLog")]
     [OutputType(typeof(void))]
     public class ExportAzureAnalysisServerLog : AzurePSCmdlet
     {

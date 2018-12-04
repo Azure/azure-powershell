@@ -88,7 +88,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// <inheritdoc />
         protected override void EndProcessing()
         {
-            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Set-AzureRmHDInsightDefaultStorage"));
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Set-AzHDInsightDefaultStorage"));
             this.command.EndProcessing().Wait();
             foreach (AzureHDInsightConfig output in this.command.Output)
             {

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (ShouldProcess(this.Name, VerbsCommon.Remove)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
-                                            "Remove-AzureRmGalleryImageVersion operation")))
+                                            "Remove-AzGalleryImageVersion operation")))
                 {
                     string resourceGroupName;
                     string galleryName;

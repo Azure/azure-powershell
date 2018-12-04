@@ -399,7 +399,7 @@ Please contact Microsoft for further assistance.</value>
     <value>{0} Uri value not found in Id {1}</value>
   </data>
   <data name="SetVaultContextFirst" xml:space="preserve">
-    <value>Set vault context first using cmdlet Set-AzureRmRecoveryServicesVaultContext</value>
+    <value>Set vault context first using cmdlet Set-AzRecoveryServicesVaultContext</value>
   </data>
   <data name="VirtualMachineIdIsEmptyOrNull" xml:space="preserve">
     <value>VirtualMachineId is NULL or Empty. Please enter valid VirtualMachineId</value>

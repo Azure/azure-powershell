@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
 {
     /// <summary>
-    /// 'Set-AzureRmServiceBusRule' Cmdlet updates the specified ServiceBus Rule
+    /// 'Set-AzServiceBusRule' Cmdlet updates the specified ServiceBus Rule
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusRule", SupportsShouldProcess = true), OutputType(typeof(PSRulesAttributes))]
     public class SetAzureRmServiceBusRule : AzureServiceBusCmdletBase
