@@ -51,7 +51,7 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.2'; },
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; },
         @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; },
         @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.2.0'; },
@@ -62,7 +62,7 @@
         @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.3.0'; },
         @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Network.Admin'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.2.1'; },
         @{ModuleName = 'Azs.Subscriptions'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.3.0'; },
         @{ModuleName = 'Azs.Update.Admin'; RequiredVersion = '0.2.1'; })

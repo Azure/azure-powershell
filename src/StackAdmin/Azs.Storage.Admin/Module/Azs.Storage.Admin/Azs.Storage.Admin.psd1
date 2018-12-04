@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Storage.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.2.0'
+    ModuleVersion     = '0.2.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -128,30 +128,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.9.10
-            * Module dependencies updated
-                * AzureRM.Profile
-                * AzureRM.Resources
-            * Support handling names of nested resources
-                * Get-AzsStorageAccount
-                * Get-AzsStorageContainer
-                * Get-AzsStorageDestinationShare
-                * Get-AzsStorageQuota
-                * Get-AzsStorageShare
-                * Get-AzsStorageShareMetric
-                * Get-AzsStorageShareMetricDefinition
-                * Remove-AzsStorageQuota
-                * Restore-AzsStorageAccount
-                * Set-AzsStorageQuota
-                * Start-AzsStorageContainerMigration
-            * Deprecations
-                * Get-AzsStorageShare, the parameter ShareName is now an alias for Name
-                * Get-AzsStorageShareMetric, the parameter ShareName is now an alias for Name
-                * Get-AzsStorageShareMetricDefinition, the parameter ShareName is now an alias for Name
-                * Start-AzsReclaimStorageCapacity, the parameter FarmName is now an alias for Name
-                * Start-AzsStorageContainerMigration, the parameter ContainerName is now an alias for Name
+            ReleaseNotes = '## 2018.12.3
             * Bug fixes
-                * Handle ErrrorAction correctly now
+                * New Storage Quota uses defaults if none provided.
             '
 
         } # End of PSData hashtable
