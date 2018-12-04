@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"AzureRM.MachineLearningCompute.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.MachineLearning.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
