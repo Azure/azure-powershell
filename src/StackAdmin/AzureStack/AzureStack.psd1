@@ -62,7 +62,7 @@
         @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.3.0'; },
         @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Network.Admin'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.2.1'; },
         @{ModuleName = 'Azs.Subscriptions'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.3.0'; },
         @{ModuleName = 'Azs.Update.Admin'; RequiredVersion = '0.2.1'; })
@@ -133,7 +133,9 @@
                 * Deprecation
                     * Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume
             * Azs.InfrastructureInsights.Admin
-                *  Added a new cmdlet Repair-AzsAlert'
+                *  Added a new cmdlet Repair-AzsAlert
+            * Azs.Storage.Admin
+                * Bug fix where default quota values are not being used'
 
 
             # External dependent modules of this module

@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.2.1
+* Bug fix
+    * New-AzureRmStorageQuota was not using default values
+
 ## Version 0.2.0
 * Module dependencies updated
 	* AzureRM.Profile

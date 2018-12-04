@@ -81,9 +81,7 @@ function New-AzsStorageQuota {
             $flattenedParameters = @('NumberOfStorageAccounts', 'CapacityInGb')
             $utilityCmdParams = @{}
             $flattenedParameters | ForEach-Object {
-                if ($PSBoundParameters.ContainsKey($_)) {
-                    $utilityCmdParams[$_] = $PSBoundParameters[$_]
-                }
+                $utilityCmdParams[$_] = Get-Variable -Name $_ -ValueOnly
             }
             $Parameters = New-StorageQuotaObject @utilityCmdParams
 
