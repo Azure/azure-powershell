@@ -54,7 +54,8 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.6.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.MachineLearning.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.MachineLearning.dll',
+    '.\Microsoft.Azure.Management.MachineLearningCompute.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -66,7 +67,8 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.MachineLearning.dll'
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.MachineLearning.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.MachineLearning.dll',
+    '.\Microsoft.Azure.Commands.MachineLearningCompute.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -80,7 +82,11 @@ CmdletsToExport = 'Move-AzMlCommitmentAssociation',
     'Get-AzMlWebService', 'Update-AzMlWebService', 
     'Export-AzMlWebService', 'Get-AzMlWebServiceKeys', 
     'Import-AzMlWebService', 'New-AzMlCommitmentPlan', 
-    'New-AzMlWebService', 'Add-AzMlWebServiceRegionalProperty'
+    'New-AzMlWebService', 'Add-AzMlWebServiceRegionalProperty', 
+    'Get-AzMlOpCluster', 'Get-AzMlOpClusterKey', 
+    'Test-AzMlOpClusterSystemServicesUpdateAvailability', 
+    'Update-AzMlOpClusterSystemService', 'New-AzMlOpCluster', 
+    'Remove-AzMlOpCluster', 'Set-AzMlOpCluster'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -103,7 +109,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'MachineLearning'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'MachineLearning', 'MachineLearningCompute'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'

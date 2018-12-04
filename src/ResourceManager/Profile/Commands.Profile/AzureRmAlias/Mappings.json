@@ -1176,9 +1176,7 @@
     "Import-AzMlWebService": "Import-AzureRmMlWebService",
     "New-AzMlCommitmentPlan": "New-AzureRmMlCommitmentPlan",
     "New-AzMlWebService": "New-AzureRmMlWebService",
-    "Add-AzMlWebServiceRegionalProperty": "Add-AzureRmMlWebServiceRegionalProperty"
-  },
-  "Az.MachineLearningCompute": {
+    "Add-AzMlWebServiceRegionalProperty": "Add-AzureRmMlWebServiceRegionalProperty",
     "Get-AzMlOpCluster": "Get-AzureRmMlOpCluster",
     "Get-AzMlOpClusterKey": "Get-AzureRmMlOpClusterKey",
     "Test-AzMlOpClusterSystemServicesUpdateAvailability": "Test-AzureRmMlOpClusterSystemServicesUpdateAvailability",
@@ -1988,7 +1986,10 @@
     "Remove-AzADServicePrincipalCredential": "Remove-AzureRmADServicePrincipalCredential",
     "Set-AzADApplication": "Set-AzureRmADApplication",
     "Set-AzADServicePrincipal": "Set-AzureRmADServicePrincipal",
-    "Set-AzADUser": "Set-AzureRmADUser"
+    "Set-AzADUser": "Set-AzureRmADUser",
+    "Remove-AzTag": "Remove-AzureRmTag",
+    "Get-AzTag": "Get-AzureRmTag",
+    "New-AzTag": "New-AzureRmTag"
   },
   "Az.Scheduler": {
     "Disable-AzSchedulerJobCollection": "Disable-AzureRmSchedulerJobCollection",
@@ -2409,11 +2410,6 @@
   },
   "Az.Subscription": {
     "New-AzSubscription": "New-AzureRmSubscription"
-  },
-  "Az.Tags": {
-    "Remove-AzTag": "Remove-AzureRmTag",
-    "Get-AzTag": "Get-AzureRmTag",
-    "New-AzTag": "New-AzureRmTag"
   },
   "Az.TrafficManager": {
     "Add-AzTrafficManagerCustomHeaderToEndpoint": "Add-AzureRmTrafficManagerCustomHeaderToEndpoint",
