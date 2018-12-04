@@ -13,9 +13,8 @@ Creates a new disabled rule group configuration.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName <String>
- [-Rules <System.Collections.Generic.List`1[System.Int32]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName <String> [-Rules <Int32[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +66,7 @@ The list of rules that will be disabled.
 If null, all rules of the rule group will be disabled.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.Int32]
+Type: System.Int32[]
 Parameter Sets: (All)
 Aliases:
 

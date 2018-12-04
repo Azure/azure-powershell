@@ -44,13 +44,11 @@ namespace Microsoft.Azure.Commands.Network
                 // Verify if the subnet exists in the NetworkSecurityGroup
                 var serviceEndpointPolicyDefinition = this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinitions.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-                if (serviceEndpointPolicyDefinition != null)
+                if (serviceEndpointPolicyDefinition == null)
                 {
-                    throw new ArgumentException("serviceEndpointPolicyDefinition with the specified name already exists");
+                    throw new ArgumentException("serviceEndpointPolicyDefinition with the specified name does not exist");
                 }
 
-                serviceEndpointPolicyDefinition = new PSServiceEndpointPolicyDefinition();
-                serviceEndpointPolicyDefinition.Name = this.Name;
                 serviceEndpointPolicyDefinition.Description = this.Description;
                 serviceEndpointPolicyDefinition.Service = this.Service;
                 serviceEndpointPolicyDefinition.serviceResources = new List<string>();
@@ -59,8 +57,6 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     serviceEndpointPolicyDefinition.serviceResources.Add(resource);
                 }
-
-                this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinitions.Add(serviceEndpointPolicyDefinition);
 
                 WriteObject(this.ServiceEndpointPolicy);
             }

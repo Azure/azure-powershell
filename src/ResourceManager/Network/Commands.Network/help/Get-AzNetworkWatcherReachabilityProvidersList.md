@@ -15,29 +15,28 @@ Lists all available internet service providers for a specified Azure region.
 ### SetByName (Default)
 ```
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName <String> -ResourceGroupName <String>
- [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
- [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Location <String[]>] [-Country <String>] [-State <String>] [-City <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
-Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcher <PSNetworkWatcher>
- [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
- [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcher <PSNetworkWatcher> [-Location <String[]>]
+ [-Country <String>] [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByLocation
 ```
-Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherLocation <String>
- [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
- [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherLocation <String> [-Location <String[]>]
+ [-Country <String>] [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-Get-AzNetworkWatcherReachabilityProvidersList -ResourceId <String>
- [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
- [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkWatcherReachabilityProvidersList -ResourceId <String> [-Location <String[]>] [-Country <String>]
+ [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,7 +140,7 @@ Accept wildcard characters: False
 Optional Azure regions to scope the query to.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

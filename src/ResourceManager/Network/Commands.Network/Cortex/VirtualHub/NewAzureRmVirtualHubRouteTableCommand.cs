@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
             
             var virtualHubRouteTable = new PSVirtualHubRouteTable
             {
-                Routes = this.Route == null ? new List<PSVirtualHubRoute> () : this.Route.ToList()
+                Routes = this.Route == null ? new List<PSVirtualHubRoute> () : this.Route?.ToList()
             };
 
             WriteObject(virtualHubRouteTable);
