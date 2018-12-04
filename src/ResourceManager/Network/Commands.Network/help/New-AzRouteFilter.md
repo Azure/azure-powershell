@@ -13,8 +13,7 @@ Creates a route filter.
 ## SYNTAX
 
 ```
-New-AzRouteFilter -Name <String> -ResourceGroupName <String> -Location <String>
- [-Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRouteFilterRule]>]
+New-AzRouteFilter -Name <String> -ResourceGroupName <String> -Location <String> [-Rule <PSRouteFilterRule[]>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -128,7 +127,7 @@ Accept wildcard characters: False
 Specifies an array of Route Filter Rule objects to associate with the route filter.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRouteFilterRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteFilterRule[]
 Parameter Sets: (All)
 Aliases:
 

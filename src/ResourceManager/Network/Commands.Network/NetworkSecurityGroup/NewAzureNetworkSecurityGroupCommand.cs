@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of NetworkSecurityRules")]
-        public List<PSSecurityRule> SecurityRules { get; set; }
+        public PSSecurityRule[] SecurityRules { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
             nsg.Name = this.Name;
             nsg.ResourceGroupName = this.ResourceGroupName;
             nsg.Location = this.Location;
-            nsg.SecurityRules = this.SecurityRules;
+            nsg.SecurityRules = this.SecurityRules?.ToList();
 
             // Map to the sdk object
             var nsgModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkSecurityGroup>(nsg);

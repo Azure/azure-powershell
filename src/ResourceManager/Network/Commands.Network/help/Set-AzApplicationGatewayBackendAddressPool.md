@@ -15,8 +15,7 @@ Updates a back-end address pool for an application gateway.
 
 ```
 Set-AzApplicationGatewayBackendAddressPool -ApplicationGateway <PSApplicationGateway> -Name <String>
- [-BackendIPAddresses <System.Collections.Generic.List`1[System.String]>]
- [-BackendFqdns <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [-BackendIPAddresses <String[]>] [-BackendFqdns <String[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,7 +64,7 @@ Accept wildcard characters: False
 Specifies a list of back-end IP addresses to use as a back-end server pool.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +77,7 @@ Accept wildcard characters: False
 
 ### -BackendIPAddresses
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

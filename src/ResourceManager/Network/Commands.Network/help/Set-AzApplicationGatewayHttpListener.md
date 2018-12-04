@@ -18,8 +18,8 @@ Modifies an HTTP listener for an application gateway.
 Set-AzApplicationGatewayHttpListener -ApplicationGateway <PSApplicationGateway> -Name <String>
  [-FrontendIPConfigurationId <String>] [-FrontendPortId <String>] [-SslCertificateId <String>]
  [-HostName <String>] [-RequireServerNameIndication <String>] -Protocol <String>
- [-CustomErrorConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -28,8 +28,8 @@ Set-AzApplicationGatewayHttpListener -ApplicationGateway <PSApplicationGateway> 
  [-FrontendIPConfiguration <PSApplicationGatewayFrontendIPConfiguration>]
  [-FrontendPort <PSApplicationGatewayFrontendPort>] [-SslCertificate <PSApplicationGatewaySslCertificate>]
  [-HostName <String>] [-RequireServerNameIndication <String>] -Protocol <String>
- [-CustomErrorConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Customer error of an application gateway
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError[]
 Parameter Sets: (All)
 Aliases:
 
