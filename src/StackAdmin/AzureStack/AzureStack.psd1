@@ -51,7 +51,7 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; },
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.2'; },
         @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; },
         @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.2.0'; },
@@ -133,7 +133,9 @@
                 * Deprecation
                     * Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume
             * Azs.InfrastructureInsights.Admin
-                *  Added a new cmdlet Repair-AzsAlert'
+                *  Added a new cmdlet Repair-AzsAlert
+            * Azs.Storage.Admin
+                * Bug fix where default quota values are not being used'
 
 
             # External dependent modules of this module
