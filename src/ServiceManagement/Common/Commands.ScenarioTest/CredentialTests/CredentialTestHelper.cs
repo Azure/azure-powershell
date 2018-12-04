@@ -39,31 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.CredentialTests
         public void SetupModules(AzureModule mode, params string[] testModules)
         {
             modules = new List<string>();
-            switch (mode)
-            {
-                case AzureModule.AzureProfile:
-                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
-                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
-                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1");
-                    modules.Add(@"Storage\Azure.Storage\Azure.Storage.psd1");
-                    modules.Add(@"ServiceManagement\Azure\Azure.psd1");
-                    break;
-
-                case AzureModule.AzureServiceManagement:
-                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
-                    modules.Add(@"Storage\Azure.Storage\Azure.Storage.psd1");
-                    modules.Add(@"ServiceManagement\Azure\Azure.psd1");
-                    break;
-
-                case AzureModule.AzureResourceManager:
-                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
-                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
-                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1");
-                    break;
-
-                default:
-                   throw new ArgumentException("Unknown command type for testing");
-            }
+            modules.Add(@"ServiceManagement\Azure\Azure.psd1");
             modules.Add("Assert.ps1");
             modules.Add("Common.ps1");
             modules.AddRange(testModules);
