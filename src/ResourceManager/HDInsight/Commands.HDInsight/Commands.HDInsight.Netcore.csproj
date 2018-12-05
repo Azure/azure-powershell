@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.HDInsight</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.HDInsight</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.HDInsight</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

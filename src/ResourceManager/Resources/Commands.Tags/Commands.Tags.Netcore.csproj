@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Tags</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Tags</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Tags</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
