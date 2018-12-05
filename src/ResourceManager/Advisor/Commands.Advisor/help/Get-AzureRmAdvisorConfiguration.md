@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmAdvisorConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Get the Azure Advisor configurations for the given subscription or resource group.
 
 ## SYNTAX
 
@@ -18,16 +18,29 @@ Get-AzureRmAdvisorConfiguration [-ResourceGroupName <String>] [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Configuration associated with a subscription are of two typoes,
+
+Subscription level configuration: There can be only one configration for this type for each subscription, lowCpuThreshold and exclude properties are taken into effect for configuration.
+ResourceGroup level configuration: There can be only one configration for each ResourceGroup in a subscription, only exclude property is taken into effect for configuration.
+
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\>$data = Get-AzureRmAdvisorConfiguration
+Id         : /subscriptions/658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/configurations/658c8950-e79d-4704-a903-1df66ba90258
+Name       : 658c8950-e79d-4704-a903-1df66ba90258
+Properties : Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties
+Type       : Microsoft.Advisor/Configurations
 
-{{ Add example description here }}
+PS C:\>$data[0].Properties
+AdditionalProperties :
+Exclude              : False
+LowCpuThreshold      : 20
+
+```
+Retrieves a list of Azure Advisor Configration.
 
 ## PARAMETERS
 
