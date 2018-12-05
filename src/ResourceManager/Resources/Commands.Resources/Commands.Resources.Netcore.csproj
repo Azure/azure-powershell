@@ -61,6 +61,9 @@
     <None Update="Microsoft.Azure.Commands.Resources.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Microsoft.Azure.Commands.ResourceManager.Cmdlets.generated.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
