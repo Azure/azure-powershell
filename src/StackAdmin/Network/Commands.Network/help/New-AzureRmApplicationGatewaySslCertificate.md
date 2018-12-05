@@ -14,7 +14,8 @@ Creates an SSL certificate for an Azure application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewaySslCertificate -Name <String> -CertificateFile <String> -Password <SecureString>
+New-AzureRmApplicationGatewaySslCertificate -Name <String> [-CertificateFile <String>]
+ [-Password <SecureString>] [-KeyVaultSecretId <String>] [-KeyVaultSecret <PSKeyVaultSecret>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -29,6 +30,15 @@ PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
 PS C:\> $cert = New-AzureRmApplicationGatewaySslCertificate -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 
+### Example 2: Create an SSL certificate using KeyVault Secret and add to an Application Gateway.
+```
+PS C:\> $secret = Get-AzureKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
+PS C:\> $cert = New-AzureRmApplicationGatewaySslCertificate -Name "Cert01" -KeyVaultSecret $secret
+```
+
+Get the secret and create an SSL Certificate using `New-AzureRmApplicationGatewaySslCertificate`.
+Secret is referenced without version. To reference a specific secret version, use `-KeyVaultSecretId`.
+
 This command creates a SSL certificate named Cert01 for the default application gateway and stores the result in the variable named $Cert.
 
 ## PARAMETERS
@@ -41,7 +51,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -55,6 +65,36 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultSecret
+KeyVault Secret Object. This option will use a version-less url for the certificate.
+
+```yaml
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultSecretId
+SecretId (uri) of the KeyVault Secret. Use this option when a specific version of secret needs to be used.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -86,7 +126,7 @@ Type: SecureString
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

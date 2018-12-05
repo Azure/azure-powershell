@@ -15,8 +15,8 @@ Adds an SSL certificate to an application gateway.
 
 ```
 Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway <PSApplicationGateway> -Name <String>
- -CertificateFile <String> -Password <SecureString> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-CertificateFile <String>] [-Password <SecureString>] [-KeyVaultSecretId <String>]
+ [-KeyVaultSecret <PSKeyVaultSecret>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ The **Add-AzureRmApplicationGatewaySslCertificate** cmdlet adds an SSL certifica
 
 ## EXAMPLES
 
-### Example 1: Add an SSL certificate to an application gateway.
+### Example 1: Create an SSL certificate using pfx and add to an application gateway.
 ```
 PS C:\> $AppGW = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
@@ -32,6 +32,16 @@ PS C:\> $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway
 ```
 
 This command gets an application gateway named ApplicationGateway01 and then adds an SSL certificate named Cert01 to it.
+
+### Example 2: Create an SSL certificate using KeyVault Secret and add to an application gateway.
+```
+PS C:\> $AppGW = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $secret = Get-AzureKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
+PS C:\> $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecret $secret
+```
+
+Get the secret and reference it in the `Add-AzureRmApplicationGatewaySslCertificate` to add it to the Application Gateway with name `Cert01`.
+Secret is referenced without version. To reference a specific secret version, use `-KeyVaultSecretId`.
 
 ## PARAMETERS
 
@@ -58,7 +68,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -72,6 +82,36 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultSecret
+KeyVault Secret Object. This option will use a version-less url for the certificate.
+
+```yaml
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultSecretId
+SecretId (uri) of the KeyVault Secret. Use this option when a specific version of secret needs to be used.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -103,7 +143,7 @@ Type: SecureString
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
