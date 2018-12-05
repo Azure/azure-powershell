@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         ///The data is anonymous and does not include commandline argument values.
         ///The data is collected by Microsoft.
         ///
-        ///Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzureRmDataCollection.
-        ///Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable  [rest of string was truncated]&quot;;.
+        ///Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Accounts module.  To disable data collection: PS &gt; Disable-AzureRmDataCollection.
+        ///Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Accounts module.  To enable  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ARMDataCollectionMessage {
             get {
