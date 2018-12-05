@@ -206,7 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagementGroupName
-The name of the management group of the new policy definition.
+The id of the management group of the new policy definition.
 
 ```yaml
 Type: System.String
