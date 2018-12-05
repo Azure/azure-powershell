@@ -213,7 +213,7 @@ Type: System.String
 Parameter Sets: ManagementGroupNameParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
