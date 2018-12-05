@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "RemoveByNameParameterSet",
             HelpMessage = "The name of the service endpoint policy")]
+        [ResourceNameCompleter("Microsoft.Network/serviceEndpointPolicies", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

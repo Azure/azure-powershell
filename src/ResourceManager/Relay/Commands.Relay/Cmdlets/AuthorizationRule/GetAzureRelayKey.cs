@@ -20,9 +20,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Relay.Commands
 {
     /// <summary>
-    /// 'Get-AzureRmRelayKey' Cmdlet gives key detials for the given Authorization Rule
+    /// 'Get-AzRelayKey' Cmdlet gives key detials for the given Authorization Rule
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(AuthorizationRuleKeysAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSAuthorizationRuleKeysAttributes))]
     public class GetAzureRelayKey : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -69,21 +69,21 @@ namespace Microsoft.Azure.Commands.Relay.Commands
             // Get a Namespace List Keys for the specified AuthorizationRule
             if (ParameterSetName == NamespaceAuthoRuleParameterSet)
             {
-                AuthorizationRuleKeysAttributes keys = Client.GetNamespaceListKeys(ResourceGroupName, Namespace, Name);
+                PSAuthorizationRuleKeysAttributes keys = Client.GetNamespaceListKeys(ResourceGroupName, Namespace, Name);
                 WriteObject(keys,true);
             }
 
             // Get a WcfRelay List Keys for the specified AuthorizationRule
             if (ParameterSetName == WcfRelayAuthoRuleParameterSet)              
             {
-                AuthorizationRuleKeysAttributes keys = Client.GetWcfRelayListKeys(ResourceGroupName, Namespace, WcfRelay, Name);
+                PSAuthorizationRuleKeysAttributes keys = Client.GetWcfRelayListKeys(ResourceGroupName, Namespace, WcfRelay, Name);
                 WriteObject(keys,true);
             }
 
             // Get a HybridConnection List Keys for the specified AuthorizationRule
             if (ParameterSetName == HybridConnectionAuthoRuleParameterSet)                
             {
-                AuthorizationRuleKeysAttributes keys = Client.GethybridConnectionsListKeys(ResourceGroupName, Namespace, HybridConnection, Name);
+                PSAuthorizationRuleKeysAttributes keys = Client.GethybridConnectionsListKeys(ResourceGroupName, Namespace, HybridConnection, Name);
                 WriteObject(keys,true);
             }           
             

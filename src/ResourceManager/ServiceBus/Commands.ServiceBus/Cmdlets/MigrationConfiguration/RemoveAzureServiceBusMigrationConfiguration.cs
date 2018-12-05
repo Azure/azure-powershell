@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 {
     /// <summary>
-    /// 'Remove-AzureRmServicebusMigrationConfiguration' Cmdlet Deletes Migration Coinfiguration)
+    /// 'Remove-AzServicebusMigrationConfiguration' Cmdlet Deletes Migration Coinfiguration)
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusMigration", DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase

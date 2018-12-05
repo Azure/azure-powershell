@@ -582,11 +582,10 @@ function Test-MultiTenantVNetPCRUD
     $vnet2Id = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/paryTestRG/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork1"
     $subnet1Name = Get-ResourceName
     $subnet2Name = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $rglocation = Get-ProviderLocation ResourceManagement "East US"
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent "East US"
 
-    $location = "eastus"
-    
 	# The remote VNet in this case lives under a different tenant and hence can is assumed to be created by the time the test is run
 	# Create the remote Virtual Network : This needs to e done ins a seperate subscription that lives under a different tenant
 	# As of now the steps are manual
@@ -597,7 +596,6 @@ function Test-MultiTenantVNetPCRUD
     try 
     {
         # Create the resource group
-        $rglocation = "eastus"
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network1
@@ -707,14 +705,13 @@ function Test-ResourceNavigationLinksCRUD
     $vnetName = Get-ResourceName
     $subnetName = Get-ResourceName
     $cacheName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $rglocation = Get-ProviderLocation ResourceManagement "West US"
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
     {
         # Create the resource group
-        $rglocation = "westus"
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
@@ -873,7 +870,10 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
     $serviceEndpoint = "Microsoft.Storage"
     $serviceEndpointPolicyDefinitionName = "ServiceEndpointPolicyDefinition1"
 	$serviceEndpointPolicyDefinitionDescription = "New Policy"
+    $serviceEndpointPolicyDefinitionDescription2 = "One more policy"
+    $updatedDescription = "Updated"
     $serviceEndpointPolicyName = "ServiceEndpointPolicy1"
+    $serviceEndpointPolicyDefinitionName2 = Get-ResourceName
     $serviceEndpointPolicyDefinitionResourceName = "/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount"
 	$provisioningStateSucceeded = "Succeeded"
 
@@ -885,6 +885,9 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
         # Create the Virtual Network
         $serviceEndpointDefinition = New-AzureRmServiceEndpointPolicyDefinition -Name $serviceEndpointPolicyDefinitionName -Service $serviceEndpoint -ServiceResource $serviceEndpointPolicyDefinitionResourceName -Description $serviceEndpointPolicyDefinitionDescription;
         $serviceEndpointPolicy = New-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ServiceEndpointPolicyDefinition $serviceEndpointDefinition -ResourceGroupName $rgname -Location $rglocation;
+
+        # Overwrite with the same values
+        $serviceEndpointPolicy = New-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ServiceEndpointPolicyDefinition $serviceEndpointDefinition -ResourceGroupName $rgname -Location $rglocation -Force;
 
         $getserviceEndpointPolicy = Get-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ResourceGroupName $rgname;
 
@@ -901,6 +904,20 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
         Assert-AreEqual $getserviceEndpointPolicyDefinition[0].ProvisioningState $provisioningStateSucceeded;
         Assert-AreEqual $getserviceEndpointPolicyDefinition[0].ServiceResources[0] $serviceEndpointPolicyDefinitionResourceName;
         Assert-AreEqual $getserviceEndpointPolicyDefinition[0].Service $serviceEndpoint;
+
+        $getserviceEndpointPolicyDefinitionList = Get-AzureRmServiceEndpointPolicyDefinition -ServiceEndpointPolicy $getserviceEndpointPolicy;
+        Assert-NotNull $getserviceEndpointPolicyDefinitionList;
+
+        $getserviceEndpointPolicyList = Get-AzureRmServiceEndpointPolicy -ResourceGroupName $rgname;
+        Assert-NotNull $getserviceEndpointPolicyList;
+
+        $getserviceEndpointPolicy = Get-AzureRmServiceEndpointPolicy -ResourceId $serviceEndpointPolicy.Id;
+        Assert-AreEqual $getserviceEndpointPolicy[0].Name $serviceEndpointPolicyName;
+        Assert-AreEqual $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].Service $serviceEndpoint;
+        Assert-AreEqual $serviceEndpointPolicyDefinitionName $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].Name;
+        Assert-AreEqual $serviceEndpointPolicyDefinitionDescription $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].Description;
+        Assert-AreEqual $serviceEndpointPolicyDefinitionResourceName $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].ServiceResources[0];
+        Assert-AreEqual $getserviceEndpointPolicy[0].ProvisioningState $provisioningStateSucceeded;
 
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $serviceEndpoint -ServiceEndpointPolicy $serviceEndpointPolicy;
         New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet;
@@ -920,7 +937,50 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
         Assert-Null $subnet.serviceEndpoints;
         Assert-Null $subnet.ServiceEndpointPolicies;
 
-        Remove-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ResourceGroupName $rgname -force
+        Remove-AzureRmServiceEndpointPolicyDefinition -ServiceEndpointPolicy $serviceEndpointPolicy -Name $serviceEndpointPolicyDefinitionName;
+        $serviceEndpointPolicy = Set-AzureRmServiceEndpointPolicy -ServiceEndpointPolicy $serviceEndpointPolicy
+        $getserviceEndpointPolicy = Get-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ResourceGroupName $rgname;
+
+        Assert-AreEqual 0 $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions.Count;
+
+        Add-AzureRmServiceEndpointPolicyDefinition -ServiceEndpointPolicy $serviceEndpointPolicy -Name $serviceEndpointPolicyDefinitionName -Service $serviceEndpoint -ServiceResource $serviceEndpointPolicyDefinitionResourceName -Description $serviceEndpointPolicyDefinitionDescription2;
+        Assert-ThrowsLike { Add-AzureRmServiceEndpointPolicyDefinition -ServiceEndpointPolicy $serviceEndpointPolicy -Name $serviceEndpointPolicyDefinitionName -Service $serviceEndpoint -ServiceResource $serviceEndpointPolicyDefinitionResourceName -Description $serviceEndpointPolicyDefinitionDescription2; } "*already exists*"
+        $serviceEndpointPolicy = Set-AzureRmServiceEndpointPolicy -ServiceEndpointPolicy $serviceEndpointPolicy
+        $getserviceEndpointPolicy = Get-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ResourceGroupName $rgname;
+
+        Assert-AreEqual $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].Service $serviceEndpoint;
+        Assert-AreEqual $serviceEndpointPolicyDefinitionName $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].Name;
+        Assert-AreEqual $serviceEndpointPolicyDefinitionDescription2 $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].Description;
+        Assert-AreEqual $serviceEndpointPolicyDefinitionResourceName $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].ServiceResources[0];
+
+        Set-AzureRmServiceEndpointPolicyDefinition -ServiceEndpointPolicy $serviceEndpointPolicy -Name $serviceEndpointPolicyDefinitionName -Service $serviceEndpoint -ServiceResource $serviceEndpointPolicyDefinitionResourceName -Description $updatedDescription;
+        Assert-ThrowsLike { Set-AzureRmServiceEndpointPolicyDefinition -ServiceEndpointPolicy $serviceEndpointPolicy -Name "fake name" -Service $serviceEndpoint -ServiceResource $serviceEndpointPolicyDefinitionResourceName -Description $serviceEndpointPolicyDefinitionDescription2; } "*does not exist*"
+        $serviceEndpointPolicy = Set-AzureRmServiceEndpointPolicy -ServiceEndpointPolicy $serviceEndpointPolicy
+        $getserviceEndpointPolicy = Get-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ResourceGroupName $rgname;
+        Assert-AreEqual $updatedDescription $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].Description;
+
+        Remove-AzureRmServiceEndpointPolicyDefinition -ServiceEndpointPolicy $serviceEndpointPolicy -ResourceId $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].Id
+        $serviceEndpointPolicy = Set-AzureRmServiceEndpointPolicy -ServiceEndpointPolicy $serviceEndpointPolicy
+        $getserviceEndpointPolicy = Get-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ResourceGroupName $rgname;
+        Assert-AreEqual 0 $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions.Count;
+
+        Remove-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ResourceGroupName $rgname -Force
+
+        Assert-ThrowsLike { Set-AzureRmServiceEndpointPolicy -ServiceEndpointPolicy $serviceEndpointPolicy } "*not*found*"
+
+        $serviceEndpointPolicy = New-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ServiceEndpointPolicyDefinition $serviceEndpointDefinition -ResourceGroupName $rgname -Location $rglocation;
+
+        Remove-AzureRmServiceEndpointPolicyDefinition -ServiceEndpointPolicy $serviceEndpointPolicy -InputObject $serviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0]
+        $serviceEndpointPolicy = Set-AzureRmServiceEndpointPolicy -ServiceEndpointPolicy $serviceEndpointPolicy
+        $getserviceEndpointPolicy = Get-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ResourceGroupName $rgname;
+        Assert-AreEqual 0 $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions.Count;
+
+        $deleted = Remove-AzureRmServiceEndpointPolicy -ResourceId $serviceEndpointPolicy.Id -Force -PassThru
+        Assert-AreEqual true $deleted
+
+        $serviceEndpointPolicy = New-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ServiceEndpointPolicyDefinition $serviceEndpointDefinition -ResourceGroupName $rgname -Location $rglocation;
+        $deleted = Remove-AzureRmServiceEndpointPolicy -InputObject $serviceEndpointPolicy -Force -PassThru
+        Assert-AreEqual true $deleted
     }
     finally
     {

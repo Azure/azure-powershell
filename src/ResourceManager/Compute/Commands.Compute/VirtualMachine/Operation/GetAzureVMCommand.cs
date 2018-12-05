@@ -19,12 +19,18 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute
 {
+#if NETSTANDARD
+    [CmdletOutputBreakingChange(typeof(PSVirtualMachineIdentity), DeprecatedOutputProperties = new string[] { "IdentityIds" })]
+#endif
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = ListAllVirtualMachinesParamSet)]
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
@@ -33,6 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string ListVirtualMachineInResourceGroupParamSet = "ListVirtualMachineInResourceGroupParamSet";
         protected const string ListAllVirtualMachinesParamSet = "ListAllVirtualMachinesParamSet";
         protected const string ListNextLinkVirtualMachinesParamSet = "ListNextLinkVirtualMachinesParamSet";
+        protected const string ListLocationVirtualMachinesParamSet = "ListLocationVirtualMachinesParamSet";
         private const string InfoNotAvailable = "Info Not Available";
 
         [Parameter(
@@ -45,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
             ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
            ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -55,8 +62,17 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ListLocationVirtualMachinesParamSet,
+            ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Compute/virtualMachines")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
 
         [Parameter(
             Position = 2)]
@@ -84,50 +100,25 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (string.IsNullOrEmpty(this.ResourceGroupName) && string.IsNullOrEmpty(this.Name))
+                if (this.ParameterSetName.Equals(ListLocationVirtualMachinesParamSet))
+                {   
+                    ReturnListVMObject(
+                        this.VirtualMachineClient.ListByLocationWithHttpMessagesAsync(this.Location).GetAwaiter().GetResult(),
+                        this.VirtualMachineClient.ListByLocationNextWithHttpMessagesAsync);
+                }
+                else if (string.IsNullOrEmpty(this.ResourceGroupName) && string.IsNullOrEmpty(this.Name))
                 {
-                    AzureOperationResponse<IPage<VirtualMachine>> vmListResult = null;
-
-                    if (this.NextLink != null)
+                    if (this.NextLink == null)
                     {
-                        vmListResult = this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync(this.NextLink.ToString())
-                            .GetAwaiter().GetResult();
+                        ReturnListVMObject(
+                            this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult(),
+                            this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync);
                     }
                     else
                     {
-                        vmListResult = this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult();
-                    }
-
-                    var psResultListStatus = new List<PSVirtualMachineListStatus>();
-
-                    while (vmListResult != null)
-                    {
-                        psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
-
-                        if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
-                        {
-                            vmListResult = this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync(vmListResult.Body.NextPageLink)
-                                 .GetAwaiter().GetResult();
-                        }
-                        else
-                        {
-                            vmListResult = null;
-                        }
-                    }
-
-                    if (this.Status.IsPresent)
-                    {
-                        WriteObject(psResultListStatus, true);
-                    }
-                    else
-                    {
-                        var psResultList = new List<PSVirtualMachineList>();
-                        foreach (var item in psResultListStatus)
-                        {
-                            var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(item);
-                            psResultList.Add(psItem);
-                        }
-                        WriteObject(psResultList, true);
+                        ReturnListVMObject(
+                            this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync(this.NextLink.ToString()).GetAwaiter().GetResult(),
+                            this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync);
                     }
                 }
                 else if (!string.IsNullOrEmpty(this.Name))
@@ -153,27 +144,9 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    AzureOperationResponse<IPage<VirtualMachine>> vmListResult = null;
-                    vmListResult = this.VirtualMachineClient.ListWithHttpMessagesAsync(this.ResourceGroupName)
-                            .GetAwaiter().GetResult();
-
-                    var psResultListStatus = new List<PSVirtualMachineListStatus>();
-                    psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
-
-                    if (this.Status.IsPresent)
-                    {
-                        WriteObject(psResultListStatus, true);
-                    }
-                    else
-                    {
-                        var psResultList = new List<PSVirtualMachineList>();
-                        foreach (var item in psResultListStatus)
-                        {
-                            var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(item);
-                            psResultList.Add(psItem);
-                        }
-                        WriteObject(psResultList, true);
-                    }
+                    ReturnListVMObject(
+                        this.VirtualMachineClient.ListWithHttpMessagesAsync(this.ResourceGroupName).GetAwaiter().GetResult(),
+                        this.VirtualMachineClient.ListNextWithHttpMessagesAsync);
                 }
             });
         }
@@ -226,6 +199,41 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             return psResultListStatus;
+        }
+
+        private void ReturnListVMObject(AzureOperationResponse<IPage<VirtualMachine>> vmListResult,
+            Func<string, Dictionary<string, List<string>>, CancellationToken, Task<AzureOperationResponse<IPage<VirtualMachine>>>> listNextFunction)
+        {
+            var psResultListStatus = new List<PSVirtualMachineListStatus>();
+
+            while (vmListResult != null)
+            {
+                psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
+
+                if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
+                {
+                    vmListResult = listNextFunction(vmListResult.Body.NextPageLink, null, default(CancellationToken)).GetAwaiter().GetResult();
+                }
+                else
+                {
+                    vmListResult = null;
+                }
+            }
+
+            if (this.Status.IsPresent)
+            {
+                WriteObject(psResultListStatus, true);
+            }
+            else
+            {
+                var psResultList = new List<PSVirtualMachineList>();
+                foreach (var item in psResultListStatus)
+                {
+                    var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(item);
+                    psResultList.Add(psItem);
+                }
+                WriteObject(psResultList, true);
+            }
         }
     }
 }

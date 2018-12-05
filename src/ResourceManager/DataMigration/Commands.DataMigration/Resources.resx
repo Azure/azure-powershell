@@ -148,7 +148,7 @@
     <value>The database '{0}' is not available on the target server.</value>
   </data>
   <data name="DatabaseNotSelectedForMigration" xml:space="preserve">
-    <value>The database '{0}' has not been selected for migration. Please first run Add-AzureRmDmsDatabase to add the database to the migration task.</value>
+    <value>The database '{0}' has not been selected for migration. Please first run Add-AzDmsDatabase to add the database to the migration task.</value>
   </data>
   <data name="InvalidCommandOperation" xml:space="preserve">
     <value>This command is not available for migration tasks from '{0}' to '{1}'</value>
@@ -197,5 +197,11 @@
   </data>
   <data name="createSelectedDB" xml:space="preserve">
     <value>Create Databases Info for Migration</value>
+  </data>
+  <data name="createCommand" xml:space="preserve">
+    <value>Creating Command</value>
+  </data>
+  <data name="SKUDeprecationWarningMessage" xml:space="preserve">
+    <value>The {0} SKU in service {1} is marked for deprecation and will be discontinued from 08/31/2018.</value>
   </data>
 </root>

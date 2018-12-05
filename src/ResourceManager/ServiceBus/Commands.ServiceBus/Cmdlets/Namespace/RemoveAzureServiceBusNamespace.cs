@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
     /// <summary>
-    /// 'Remove-AzureRmServiceBusNamespace' Cmdlet deletes the specified ServiceBus Namespace
+    /// 'Remove-AzServiceBusNamespace' Cmdlet deletes the specified ServiceBus Namespace
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNamespace", DefaultParameterSetName = NamespacePropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusNamespace : AzureServiceBusCmdletBase

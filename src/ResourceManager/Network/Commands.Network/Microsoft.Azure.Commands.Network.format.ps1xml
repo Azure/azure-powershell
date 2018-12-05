@@ -789,6 +789,10 @@
                 <PropertyName>ResourceNavigationLinksText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ServiceAssociationLinks</Label>
+                <PropertyName>ServiceAssociationLinksText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>NetworkSecurityGroup</Label>
                 <PropertyName>NetworkSecurityGroupText</PropertyName>
               </ListItem>
@@ -2419,6 +2423,176 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRoutePortsLocation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRoutePortsLOcation</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Address</Label>
+                <PropertyName>Address</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Contact</Label>
+                <PropertyName>Contact</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AvailableBandwidths</Label>
+                <PropertyName>AvailableBandwidthsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGuid</Label>
+                <PropertyName>ResourceGuid</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PeeringLocation</Label>
+                <PropertyName>PeeringLocation</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>BandwidthInGbps</Label>
+                <PropertyName>BandwidthInGbps</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisionedBandwidthInGbps</Label>
+                <PropertyName>ProvisionedBandwidthInGbps</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Encapsulation</Label>
+                <PropertyName>Encapsulation</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Mtu</Label>
+                <PropertyName>Mtu</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EtherType</Label>
+                <PropertyName>EtherType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AllocationDate</Label>
+                <PropertyName>AllocationDate</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Links</Label>
+                <PropertyName>LinksText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Circuits</Label>
+                <PropertyName>CircuitsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteLink</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteLink</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RouterName</Label>
+                <PropertyName>RouterName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>InterfaceName</Label>
+                <PropertyName>InterfaceName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PatchPanelId</Label>
+                <PropertyName>PatchPanelId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RackId</Label>
+                <PropertyName>RackId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ConnectorType</Label>
+                <PropertyName>ConnectorType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AdminState</Label>
+                <PropertyName>AdminState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit</TypeName>
@@ -2470,6 +2644,18 @@
                <ListItem>
                 <Label>ServiceProviderProperties</Label>
                 <PropertyName>ServiceProviderPropertiesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExpressRoutePort</Label>
+                <PropertyName>ExpressRoutePortText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>BandwidthInGbps</Label>
+                <PropertyName>BandwidthInGbps</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Stag</Label>
+                <PropertyName>Stag</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ServiceKey</Label>
@@ -3273,6 +3459,24 @@
               <ListItem>
                 <Label>Protocols</Label>
                 <PropertyName>ProtocolsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallFqdnTag</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallFqdnTag</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>FqdnTagName</Label>
+                <PropertyName>FqdnTagName</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

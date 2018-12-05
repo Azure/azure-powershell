@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Network
 
     public class AzureExpressRouteCircuitPeeringConfigBase : NetworkBaseCmdlet
     {
+        protected const string ParamSetByRouteFilterId = "MicrosoftPeeringConfigRoutFilterId";
+        protected const string ParamSetByRouteFilter = "MicrosoftPeeringConfigRoutFilter";
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "The name of the Peering")]
@@ -75,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The MircosoftConfigAdvertisedPublicPrefixes")]
         [ValidateNotNullOrEmpty]
-        public List<string> MicrosoftConfigAdvertisedPublicPrefixes { get; set; }
+        public string[] MicrosoftConfigAdvertisedPublicPrefixes { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -92,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "MicrosoftPeeringConfigRoutFilterId",
+            ParameterSetName = ParamSetByRouteFilterId,
             HelpMessage = "RouteFilterId")]
         [ValidateNotNullOrEmpty]
         public string RouteFilterId { get; set; }
@@ -100,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "MicrosoftPeeringConfigRoutFilter",
+            ParameterSetName = ParamSetByRouteFilter,
             HelpMessage = "RouteFilter")]
         [ValidateNotNullOrEmpty]
         public PSRouteFilter RouteFilter { get; set; }
@@ -128,7 +131,7 @@ namespace Microsoft.Azure.Commands.Network
                 if (PeerAddressType == IPv6)
                 {
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig = new PSPeeringConfig();
-                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
+                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes?.ToList();
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
                 }
@@ -136,7 +139,7 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
                     peering.MicrosoftPeeringConfig = new PSPeeringConfig();
-                    peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
+                    peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes?.ToList();
                     peering.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
                     peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
                 }

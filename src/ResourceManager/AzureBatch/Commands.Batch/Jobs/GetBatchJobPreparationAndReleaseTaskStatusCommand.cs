@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch
             ParameterSetName = Constants.InputObjectParameterSet,
             ValueFromPipeline = true,
             Mandatory = true,
-            HelpMessage = "Specifies a PSCloudJob object that represents the job to get the preparation and release task status from. To obtain a PSCloudJob object, use the Get-AzureBatchJob cmdlet.")]
+            HelpMessage = "Specifies a PSCloudJob object that represents the job to get the preparation and release task status from. To obtain a PSCloudJob object, use the Get-AzBatchJob cmdlet.")]
         [ValidateNotNullOrEmpty]
         public PSCloudJob InputObject { get; set; }
         

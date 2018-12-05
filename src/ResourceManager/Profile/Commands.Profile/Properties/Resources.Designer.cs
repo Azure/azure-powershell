@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Connect-AzureRmAccount..
+        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Connect-AzAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {
             get {
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Connect-AzureRmAccount..
+        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Connect-AzAccount..
         /// </summary>
         internal static string ContextCannotBeNull {
             get {
@@ -457,6 +457,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to import authentication information into the global cache.  Please try executing the command again..
+        /// </summary>
+        internal static string ImportAuthenticationFailure {
+            get {
+                return ResourceManager.GetString("ImportAuthenticationFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current context.
         /// </summary>
         internal static string ImportContextTarget {
@@ -493,6 +502,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the managed service identity found on this machine has proper permissions to the provided tenant domain..
+        /// </summary>
+        internal static string MSITenantDomainNotFound {
+            get {
+                return ResourceManager.GetString("MSITenantDomainNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (no account provided).
         /// </summary>
         internal static string NoAccountProvided {
@@ -502,7 +520,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Connect-AzureRmAccount..
+        ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Connect-AzAccount..
         /// </summary>
         internal static string NoValidTenant {
             get {
@@ -646,6 +664,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Module deletion failed. Please close all PowerShell sessions to ensure no AzureRM modules are currently loaded, and rerun this cmdlet in Administrator mode..
+        /// </summary>
+        internal static string RemoveModuleError {
+            get {
+                return ResourceManager.GetString("RemoveModuleError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rename context &apos;{0}&apos; to &apos;{1}&apos;.
         /// </summary>
         internal static string RenameContextMessage {
@@ -682,7 +709,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run Connect-AzureRmAccount to login..
+        ///   Looks up a localized string similar to Run Connect-AzAccount to login..
         /// </summary>
         internal static string RunLoginCmdlet {
             get {
@@ -763,11 +790,38 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the provided service principal &apos;{0}&apos; is found in the provided tenant domain..
+        /// </summary>
+        internal static string ServicePrincipalTenantDomainNotFound {
+            get {
+                return ResourceManager.GetString("ServicePrincipalTenantDomainNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided service principal secret will be included in the &apos;{0}&apos; file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections..
+        /// </summary>
+        internal static string ServicePrincipalWarning {
+            get {
+                return ResourceManager.GetString("ServicePrincipalWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting property &apos;{0}&apos;=&apos;{1}&apos;.
         /// </summary>
         internal static string SetPropertyAction {
             get {
                 return ResourceManager.GetString("SetPropertyAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing module &apos;{0}&apos; from your machine.
+        /// </summary>
+        internal static string ShouldRemoveModule {
+            get {
+                return ResourceManager.GetString("ShouldRemoveModule", resourceCulture);
             }
         }
         
@@ -826,7 +880,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Connect-AzureRmAccount.
+        ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Connect-AzAccount.
         /// </summary>
         internal static string TenantAuthFailed {
             get {
@@ -840,6 +894,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string TenantChangeWarning {
             get {
                 return ResourceManager.GetString("TenantChangeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find tenant id for provided tenant domain &apos;{0}&apos;..
+        /// </summary>
+        internal static string TenantDomainNotFound {
+            get {
+                return ResourceManager.GetString("TenantDomainNotFound", resourceCulture);
             }
         }
         
@@ -871,7 +934,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate user account &apos;{0}&apos; with tenant &apos;{1}&apos;. Subscriptions in this tenant will not be listed. Please login again using Connect-AzureRmAccount to view the subscriptions in this tenant..
+        ///   Looks up a localized string similar to Could not authenticate user account &apos;{0}&apos; with tenant &apos;{1}&apos;. Subscriptions in this tenant will not be listed. Please login again using Connect-AzAccount to view the subscriptions in this tenant..
         /// </summary>
         internal static string UnableToLogin {
             get {
@@ -885,6 +948,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string UnknownEnvironment {
             get {
                 return ResourceManager.GetString("UnknownEnvironment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the provided user is found in the provided tenant domain..
+        /// </summary>
+        internal static string UserTenantDomainNotFound {
+            get {
+                return ResourceManager.GetString("UserTenantDomainNotFound", resourceCulture);
             }
         }
     }

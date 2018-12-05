@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
     [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementHostnameCertificate"), OutputType(typeof(PsApiManagementHostnameCertificate))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
-        "Set-AzureRmApiManagement cmdlet from the AzureRM.ApiManagement module instead.",
+        "Set-AzApiManagement cmdlet from the AzureRM.ApiManagement module instead.",
         false)]
     public class ImportAzureApiManagementHostnameCertificate : AzureApiManagementCmdletBase
     {

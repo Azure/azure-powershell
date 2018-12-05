@@ -20,10 +20,6 @@ using Microsoft.Azure.Management.WebSites.Models;
 using System;
 using System.Management.Automation;
 
-#if NETSTANDARD
-using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
-#endif
-
 namespace Microsoft.Azure.Commands.WebApps
 {
     public abstract class AppServicePlanBaseCmdlet : WebAppBaseClientCmdLet
@@ -37,6 +33,7 @@ namespace Microsoft.Azure.Commands.WebApps
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = true, HelpMessage = "The name of the app service plan.")]
+        [ResourceNameCompleter("Microsoft.Web/serverfarms", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

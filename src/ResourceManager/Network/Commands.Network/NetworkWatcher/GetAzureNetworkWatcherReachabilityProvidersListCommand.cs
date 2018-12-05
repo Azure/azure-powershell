@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = false,
             HelpMessage = "Optional Azure regions to scope the query to.")]
         [LocationCompleter("Microsoft.Network/networkWatchers")]
-        public List<string> Location { get; set; }
+        public string[] Location { get; set; }
 
         [Parameter(
             Mandatory = false,

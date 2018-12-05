@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false)]
@@ -221,6 +221,10 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public int[] DataDiskSizeInGb { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public SwitchParameter EnableUltraSSD { get; set; }
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -315,6 +319,7 @@ namespace Microsoft.Azure.Commands.Compute
                         availabilitySet: availabilitySet,
                         dataDisks: _cmdlet.DataDiskSizeInGb,
                         zones: _cmdlet.Zone,
+                        ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                         identity: _cmdlet.GetVMIdentityFromArgs());
                 }
                 else
@@ -332,6 +337,7 @@ namespace Microsoft.Azure.Commands.Compute
                         availabilitySet: availabilitySet,
                         dataDisks: _cmdlet.DataDiskSizeInGb,
                         zones: _cmdlet.Zone,
+                        ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                         identity: _cmdlet.GetVMIdentityFromArgs());
                 }
             }

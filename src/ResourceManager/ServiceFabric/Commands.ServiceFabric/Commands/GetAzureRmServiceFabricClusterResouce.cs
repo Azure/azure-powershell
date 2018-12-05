@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -20,6 +21,7 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabric;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -56,7 +58,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 case ByResourceGroup:
                     {
                         var clusters = SFRPClient.Clusters.
-                            ListByResourceGroup(ResourceGroupName).
+                            ListByResourceGroup(ResourceGroupName).Value.
                             Select(c => new PSCluster(c)).ToList();
 
                         WriteObject(clusters, true);
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     }
                 default:
                     {
-                        var clusters = SFRPClient.Clusters.List().Select(c => new PSCluster(c)).ToList();
+                        var clusters = SFRPClient.Clusters.List().Value.Select(c => new PSCluster(c)).ToList();
                         WriteObject(clusters, true);
                         break;
                     }

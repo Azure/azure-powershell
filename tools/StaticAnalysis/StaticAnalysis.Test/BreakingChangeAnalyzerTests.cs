@@ -319,8 +319,7 @@ namespace StaticAnalysis.Test
 
             xunitOutput.WriteLine(output);
 
-            Assert.Equal(1, testReport.ProblemIdList.Count);
-            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputType)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedOutputType));
+            Assert.Equal(0, testReport.ProblemIdList.Count);
         }
 
         [Fact]
@@ -832,6 +831,20 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedValidateRangeMaximum))
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedValidateRangeMaximum));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ParameterReplacedByAlias()
+        {
+            cmdletBreakingChangeAnalyzer.Analyze(
+                new List<string> { _testCmdletDirPath },
+                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
+                (cmdletName) => cmdletName.Equals("Test-ParameterReplacedByAlias", StringComparison.OrdinalIgnoreCase));
+
+            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
+
+            Assert.Equal(0, testReport.ProblemIdList.Count);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name to which the VM belongs to")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the virtual machine")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -65,6 +66,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/extensions", "ResourceGroupName", "VMName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -188,7 +190,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         new ApplicationException(
                             string.Format(
                                 CultureInfo.CurrentUICulture,
-                                "Disable-AzureDiskEncryption can disable encryption only on a VM that was already created ")),
+                                "Disable-AzDiskEncryption can disable encryption only on a VM that was already created ")),
                         "InvalidResult",
                         ErrorCategory.InvalidResult,
                         null));
@@ -246,7 +248,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         new ApplicationException(
                             string.Format(
                                 CultureInfo.CurrentUICulture,
-                                "Set-AzureDiskEncryptionExtension can enable encryption only on a VM that was already created and has appropriate storageProfile and OS disk")),
+                                "Set-AzDiskEncryptionExtension can enable encryption only on a VM that was already created and has appropriate storageProfile and OS disk")),
                         "InvalidResult",
                         ErrorCategory.InvalidResult,
                         null));
@@ -292,7 +294,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             new ApplicationException(
                                 string.Format(
                                     CultureInfo.CurrentUICulture,
-                                    "Disable-AzureDiskEncryption can disable encryption only on a VM that was already created and has appropriate storageProfile and OS disk")),
+                                    "Disable-AzDiskEncryption can disable encryption only on a VM that was already created and has appropriate storageProfile and OS disk")),
                             "InvalidResult",
                             ErrorCategory.InvalidResult,
                             null));

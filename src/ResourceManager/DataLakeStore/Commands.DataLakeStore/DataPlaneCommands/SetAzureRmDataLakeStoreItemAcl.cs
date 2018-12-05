@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, ValueFromPipeline = true, Position = 2, Mandatory = true,
             HelpMessage =
-                "The ACL to set. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
+                "The ACL to set. This can be a modified ACL from Get-AzDataLakeStoreItemAcl or it can be the string " +
                 " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
                 "This cmdlet is not to be used for setting the owner or owning group.")]
         public DataLakeStoreItemAce[] Acl { get; set; }
@@ -80,9 +80,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 {
                         if (Recurse)
                         {
-                            DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
+                        // Currently SDK default thread calculation is not correct, so pass a default thread count
+                        int threadCount = Concurrency == -1 ? DataLakeStoreFileSystemClient.ImportExportMaxThreads : Concurrency;
+
+                        DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
                                 Account,
-                                Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.SetAcl, Concurrency, this, ShowProgress, CmdletCancellationToken);
+                                Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.SetAcl, threadCount, this, ShowProgress, CmdletCancellationToken);
                         }
                         else
                         {

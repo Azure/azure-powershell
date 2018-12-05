@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.Storage.Admin Module
 ## Description
-Preview release of the Azure Stack Storage administrator module.  
+Preview release of the Azure Stack Storage operator module.
 
 ## Azs.Storage.Admin Cmdlets
 ### [Get-AzsBlobService](Get-AzsBlobService.md)

@@ -20,8 +20,10 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +32,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+#if NETSTANDARD
+    [CmdletOutputBreakingChange(typeof(VirtualMachineInstanceView), ReplacementCmdletOutputTypeName = "VirtualMachineScaleSetVMInstanceView")]
+#endif
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVM", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSVirtualMachineScaleSetVM))]
     public partial class GetAzureRmVmssVM : ComputeAutomationBaseCmdlet
@@ -92,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "FriendMethod",
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -103,6 +108,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "FriendMethod",
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [Alias("Name")]
         public string VMScaleSetName { get; set; }
 

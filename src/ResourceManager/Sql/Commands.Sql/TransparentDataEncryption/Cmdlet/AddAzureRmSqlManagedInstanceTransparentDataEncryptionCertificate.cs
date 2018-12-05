@@ -29,7 +29,7 @@ using System.Security;
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
     /// <summary>
-    /// Defines the Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate cmdlet
+    /// Defines the Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate cmdlet
     /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             ParameterSetName = DefaultParameterSet,
             Position = 0,
             HelpMessage = "The Resource Group Name")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             ParameterSetName = DefaultParameterSet,
             Position = 1,
             HelpMessage = "The managed instance name")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string ManagedInstanceName { get; set; }
 

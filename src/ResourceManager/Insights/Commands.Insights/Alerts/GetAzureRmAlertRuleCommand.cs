@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         protected override void ProcessRecordInternal()
         {
             this.WriteIdentifiedWarning(
-                cmdletName: "Get-AzureRmAlertRule",
+                cmdletName: "Get-AzAlertRule",
                 topic: "Parameter deprecation", 
                 message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             if (string.IsNullOrWhiteSpace(this.Name))

@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.InfrastructureInsights.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.2.0'
+    ModuleVersion     = '0.3.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -56,8 +56,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; },
-        @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.2'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.InfrastructureInsights.Admin.dll')
@@ -76,7 +76,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = 'Close-AzsAlert', 'Get-AzsRegionHealth',
-    'Get-AzsAlert', 'Get-AzsRPHealth', 'Get-AzsRegistrationHealth'
+    'Get-AzsAlert', 'Get-AzsRPHealth', 'Get-AzsRegistrationHealth',
+    "Repair-AzsAlert"
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()
@@ -102,7 +103,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags         = @('AzureStack', 'Azure Stack', 'Admin', 'Infrastructure Insights', 'Azure Stack Health', 'Monitoring', 'HRP')
+            Tags         = @('AzureStack', 'Admin', 'InfrastructureInsights', 'Health', 'Monitoring', 'HRP')
 
             # A URL to the license for this module.
             LicenseUri   = 'https://aka.ms/azps-license'
@@ -114,7 +115,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.8.12
+            ReleaseNotes = '## 2018.9.10
             * Module dependencies updated
                 * AzureRM.Profile
                 * AzureRM.Resources

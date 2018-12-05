@@ -24,7 +24,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlServer cmdlet
+    /// Defines the Get-AzSqlServer cmdlet
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer",ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerModel))]
     public class NewAzureSqlServer : AzureSqlServerCmdletBase

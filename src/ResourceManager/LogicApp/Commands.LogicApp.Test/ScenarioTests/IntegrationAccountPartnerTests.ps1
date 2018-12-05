@@ -25,8 +25,8 @@ function Test-CreateIntegrationAccountPartner
 	
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName 
 
-	$integrationAccountPartnerName = getAssetname	
-	$integrationAccountPartnerName1 = getAssetname	
+	$integrationAccountPartnerName = getAssetname
+	$integrationAccountPartnerName1 = getAssetname
 
 	$businessIdentities = @(
              ("01","Test1"),
@@ -57,11 +57,11 @@ function Test-GetIntegrationAccountPartner
 	#Create App resource group
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
+	$integrationAccountName = getAssetname
 	
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName 
 
-	$integrationAccountPartnerName = getAssetname	
+	$integrationAccountPartnerName = getAssetname
 
 	$businessIdentities = @(
              ("ZZ","AA"),
@@ -119,11 +119,11 @@ function Test-RemoveIntegrationAccountPartner
 	#Create App resource group
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
+	$integrationAccountName = getAssetname
 	
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
-	$integrationAccountPartnerName = getAssetname	
+	$integrationAccountPartnerName = getAssetname
 	$businessIdentities = @(
              ("ZZ","AA"),
              ("XX","GG")
@@ -146,11 +146,11 @@ function Test-UpdateIntegrationAccountPartner
 	#Create App resource group
 
 	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
+	$integrationAccountName = getAssetname
 	
-	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName	
+	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
-	$integrationAccountPartnerName = getAssetname	
+	$integrationAccountPartnerName = getAssetname
 	$businessIdentities = @(
              ("ZZ","AA"),
              ("SS","FF")

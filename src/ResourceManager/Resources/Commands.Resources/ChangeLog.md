@@ -18,6 +18,27 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix for https://github.com/Azure/azure-powershell/issues/7679
+    - Update Get-AzureRmRoleAssignment to use the subscription scope if it is provided when requesting classic administrators.
+* Minor changes for upcoming AzureRM to Az transition
+
+## Version 6.7.2
+* Update help documentation for resource identity related parameters in `New-AzureRmPolicyAssignment` and `Set-AzureRmPolicyAssignment`
+* Add an example for New-AzureRmPolicyDefinition that uses -Metadata
+* Fix to allow case preservation in Tag keys in NetStandard: #7678 #7703
+
+## Version 6.7.1
+* Fix for https://github.com/Azure/azure-powershell/issues/7402
+    - Allow listing resources using the `-ResourceId` parameter for `Get-AzureRmResource`
+* Fix for https://github.com/Azure/azure-powershell/issues/7700
+    - Fix issue where `EndDate` parameter was not being honored for AD cmdlets
+
+## Version 6.7.0
+* Fix isssue where Get-AzureRMRoleDefinition throws an unintelligible exception (when the default profile has no subscription in it and no scope is specified) by adding a meaningful exception in the scenario. Also set the default param set to `RoleDefinitionNameParameterSet`.
+
+## Version 6.6.0
+* Add missing -Mode parameter to Set-AzureRmPolicyDefinition
+* Fix Get-AzureRmProviderOperation commandlet bug for operations with Origin containing User
 
 ## Version 6.5.0
 * Update New-AzureRmResourceGroupDeployment with new parameter RollbackAction

@@ -127,8 +127,27 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     this.certificateSubjectName = string.Concat("cn=", value);
                 }
+                else
+                {
+                    this.certificateSubjectName = value;
+                }
             }
         }
+
+        [Parameter(Mandatory = false, ParameterSetName = ByExistingKeyVault,
+                HelpMessage = "Certificate common name")]
+        [Parameter(Mandatory = false, ParameterSetName = ByExistingPfxAndVaultName,
+                HelpMessage = "Certificate common name")]
+        [Alias("CertCommonName")]
+        public virtual string CertificateCommonName { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ByExistingKeyVault,
+                HelpMessage = "Certificate issuer thumbprint, separated by commas if more than one")]
+        [Parameter(Mandatory = false, ParameterSetName = ByExistingPfxAndVaultName,
+                HelpMessage = "Certificate issuer thumbprint, separated by commas if more than one")]
+        [ValidateNotNullOrEmpty]
+        [Alias("CertIssuerThumbprint")]
+        public virtual string CertificateIssuerThumbprint { get; set; }
 
         private Lazy<IResourceManagementClient> resourceManagerClient;
 
@@ -341,7 +360,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         Vault vault = null;
                         CertificateBundle certificateBundle = null;
                         string pfxOutputPath = null;
-                        GetKeyVaultReady(out vault, out certificateBundle, out thumbprint, out pfxOutputPath, null);
+                        string commonName = null;
+                        GetKeyVaultReady(out vault, out certificateBundle, out thumbprint, out pfxOutputPath, out commonName, null);
 
                         certificateInformations.Add(new CertificateInformation()
                         {
@@ -368,7 +388,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             CertificateBundle certificateBundle = null;
                             string thumbprint = null;
                             string pfxOutputPath = null;
-                            GetKeyVaultReady(out vault, out certificateBundle, out thumbprint, out pfxOutputPath, srcPfx);
+                            string commonName = null;
+                            GetKeyVaultReady(out vault, out certificateBundle, out thumbprint, out pfxOutputPath, out commonName, srcPfx);
 
                             certificateInformations.Add(new CertificateInformation()
                             {
@@ -381,6 +402,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                 CertificateName = certificateBundle.CertificateIdentifier.Name,
                                 SecretUrl = certificateBundle.SecretIdentifier.Identifier,
                                 CertificateThumbprint = thumbprint,
+                                CertificateCommonName = commonName,
                                 SecretName = certificateBundle.SecretIdentifier.Name,
                                 Version = certificateBundle.SecretIdentifier.Version
                         });
@@ -400,6 +422,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             KeyVault = vault,
                             SecretUrl = this.SecretIdentifier,
                             CertificateThumbprint = GetThumbprintFromSecret(this.SecretIdentifier),
+                            CertificateCommonName = GetCommonNameFromSecret(this.SecretIdentifier),
                             SecretName = vaultSecretName,
                             Version = version
                         });
@@ -415,6 +438,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             var secretGroup = vmss.VirtualMachineProfile.OsProfile.Secrets.SingleOrDefault(
                 s => s.SourceVault.Id.Equals(certInformation.KeyVault.Id, StringComparison.OrdinalIgnoreCase));
+
+
+            string configStore = null;
+            if (vmss.VirtualMachineProfile.OsProfile.WindowsConfiguration != null)
+            {
+                configStore = Constants.DefaultCertificateStore;
+            }
+
             if (secretGroup == null)
             {
                 vmss.VirtualMachineProfile.OsProfile.Secrets.Add(
@@ -428,7 +459,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         {
                           new VaultCertificate()
                           {
-                          CertificateStore = Constants.DefaultCertificateStore,
+                          CertificateStore = configStore,
                           CertificateUrl = certInformation.SecretUrl
                           }
                         }
@@ -449,7 +480,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         secretGroup.VaultCertificates.Add(
                             new VaultCertificate()
                             {
-                                CertificateStore = Constants.DefaultCertificateStore,
+                                CertificateStore = configStore,
                                 CertificateUrl = certInformation.SecretUrl
                             });
                     }
@@ -460,7 +491,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     {
                         new VaultCertificate()
                         {
-                            CertificateStore = Constants.DefaultCertificateStore,
+                            CertificateStore = configStore,
                             CertificateUrl = certInformation.SecretUrl
                         }
                    };
@@ -473,7 +504,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                    vmss);
         }
 
-        protected void GetKeyVaultReady(out Vault vault, out CertificateBundle certificateBundle, out string thumbprint, out string pfxOutputPath, string srcPfxPath = null)
+        protected void GetKeyVaultReady(out Vault vault, out CertificateBundle certificateBundle, out string thumbprint, out string pfxOutputPath, out string commonName, string srcPfxPath = null)
         { 
             vault = TryGetKeyVault(this.KeyVaultResouceGroupName, this.KeyVaultName);
             pfxOutputPath = null;
@@ -486,6 +517,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             this.keyVaultCertificateName = CreateDefaultCertificateName(this.ResourceGroupName);
 
+            commonName = string.Empty;
             if (!string.IsNullOrEmpty(srcPfxPath))
             {
                 certificateBundle = ImportCertificateToAzureKeyVault(
@@ -493,7 +525,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     this.keyVaultCertificateName,
                     srcPfxPath,
                     GetPfxPassword(srcPfxPath),
-                    out thumbprint);
+                    out thumbprint,
+                    out commonName);
             }
             else
             {
@@ -575,18 +608,80 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             if (RunningTest)
             {
-                if (!string.IsNullOrWhiteSpace(TestThumbprint))
+                if (TestAppCert)
                 {
-                    return TestThumbprint;
+                    if (!string.IsNullOrWhiteSpace(TestThumbprintAppCert))
+                    {
+                        return TestThumbprintAppCert;
+                    }
+                }
+                else
+                {
+                    if (!string.IsNullOrWhiteSpace(TestThumbprint))
+                    {
+                        return TestThumbprint;
+                    }
                 }
             }
 
+            X509Certificate2Collection certCollection = GetCertCollectionFromSecret(secretUrl);
+           
+            var lastCert = certCollection.Count > 0 ? certCollection[certCollection.Count - 1] : null;
+            if (lastCert?.Thumbprint != null)
+            {
+                return lastCert.Thumbprint;
+            }
+
+            throw new PSInvalidOperationException(string.Format("Failed to find the thumbprint from {0}", secretUrl));
+        }
+
+        private string GetCommonNameFromSecret(string secretUrl)
+        {
+            if (RunningTest)
+            {
+                if (TestAppCert)
+                {
+                    if (!string.IsNullOrWhiteSpace(TestCommonNameAppCert))
+                    {
+                        return TestCommonNameAppCert;
+                    }
+                }
+                else
+                {
+                    if (!string.IsNullOrWhiteSpace(TestCommonNameCACert))
+                    {
+                        return TestCommonNameCACert;
+                    }
+                }
+            }
+
+            X509Certificate2Collection certCollection = GetCertCollectionFromSecret(secretUrl);
+            var lastCert = certCollection.Count > 0 ? certCollection[certCollection.Count - 1] : null;
+            if (lastCert != null)
+            {
+                return lastCert.GetNameInfo(X509NameType.SimpleName, false);
+            }
+
+            throw new PSInvalidOperationException(string.Format("Failed to find the common name from {0}", secretUrl));
+        }
+
+        private X509Certificate2Collection GetCertCollectionFromSecret(string secretUrl)
+        {
             if (string.IsNullOrWhiteSpace(secretUrl))
             {
                 throw new PSArgumentException("secretUrl");
             }
 
-            var secretBundle = this.KeyVaultClient.GetSecretAsync(secretUrl).Result;
+            SecretBundle secretBundle;
+            try
+            {
+                secretBundle = this.KeyVaultClient.GetSecretAsync(secretUrl).Result;
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
             var secretValue = secretBundle.Value;
             try
             {
@@ -597,11 +692,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     {
                         var certCollection = new X509Certificate2Collection();
                         certCollection.Import(secretBytes, null, X509KeyStorageFlags.Exportable);
-                        var lastCert = certCollection.Count > 0 ? certCollection[certCollection.Count - 1] : null;
-                        if (lastCert?.Thumbprint != null)
-                        {
-                            return lastCert.Thumbprint;
-                        }
+                        return certCollection;
                     }
                     catch (CryptographicException)
                     {
@@ -615,7 +706,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                 jsonBlob.Password,
                                 X509KeyStorageFlags.Exportable);
 
-                            return certCollection[0].Thumbprint;
+                            return certCollection;
                         }
                     }
                 }
@@ -631,7 +722,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw;
             }
 
-            throw new PSInvalidOperationException(string.Format("Failed to find the thumbprint from {0}", secretUrl));
+            throw new PSInvalidOperationException(string.Format("Failed to get certificate from {0}", secretUrl));
         }
 
         private void ExtractSecretNameFromSecretIdentifier(string secretIdentifier, out string vaultSecretName, out string version)
