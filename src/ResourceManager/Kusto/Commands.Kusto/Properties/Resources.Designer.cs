@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Kusto.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cluster name can not be empty.
+        /// </summary>
+        public static string ClusterCanNotBeEmptry {
+            get {
+                return ResourceManager.GetString("ClusterCanNotBeEmptry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot perform the requested operation because the specified cluster &apos;{0}&apos; does not exist..
         /// </summary>
         public static string ClusterDoesNotExist {
@@ -75,6 +84,15 @@ namespace Microsoft.Azure.Commands.Kusto.Properties {
         public static string CreateNewKustoCluster {
             get {
                 return ResourceManager.GetString("CreateNewKustoCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Kusto database.
+        /// </summary>
+        public static string CreateNewKustoDatabase {
+            get {
+                return ResourceManager.GetString("CreateNewKustoDatabase", resourceCulture);
             }
         }
         
@@ -97,11 +115,47 @@ namespace Microsoft.Azure.Commands.Kusto.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified cluster &apos;{0}&apos; does not exist..
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified cluster &apos;{0}&apos; exists..
         /// </summary>
         public static string KustoClusterExists {
             get {
                 return ResourceManager.GetString("KustoClusterExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified cluster &apos;{0}&apos; exists in region {1}..
+        /// </summary>
+        public static string KustoClusterNotExist {
+            get {
+                return ResourceManager.GetString("KustoClusterNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified database &apos;{0}&apos; exists..
+        /// </summary>
+        public static string KustoDatabaseExists {
+            get {
+                return ResourceManager.GetString("KustoDatabaseExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified database &apos;{0}&apos; doesn&apos;t exist..
+        /// </summary>
+        public static string KustoDatabaseNotExist {
+            get {
+                return ResourceManager.GetString("KustoDatabaseNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location can not be empty.
+        /// </summary>
+        public static string LocationCanNotBeEmptry {
+            get {
+                return ResourceManager.GetString("LocationCanNotBeEmptry", resourceCulture);
             }
         }
         
@@ -111,6 +165,51 @@ namespace Microsoft.Azure.Commands.Kusto.Properties {
         public static string RemovingKustoCluster {
             get {
                 return ResourceManager.GetString("RemovingKustoCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Kusto database.
+        /// </summary>
+        public static string RemovingKustoDatabase {
+            get {
+                return ResourceManager.GetString("RemovingKustoDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resume Kusto cluster.
+        /// </summary>
+        public static string ResumingKustoCluster {
+            get {
+                return ResourceManager.GetString("ResumingKustoCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suspend Kusto cluster.
+        /// </summary>
+        public static string SuspendingKustoCluster {
+            get {
+                return ResourceManager.GetString("SuspendingKustoCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Kusto cluster.
+        /// </summary>
+        public static string UpdatingKustoCluster {
+            get {
+                return ResourceManager.GetString("UpdatingKustoCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Kusto database.
+        /// </summary>
+        public static string UpdatingKustoDatabase {
+            get {
+                return ResourceManager.GetString("UpdatingKustoDatabase", resourceCulture);
             }
         }
     }

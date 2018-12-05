@@ -19,11 +19,11 @@ namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
     using Xunit;
     using Microsoft.Azure.Commands.ScenarioTest;
 
-    public class KustoTests : KustoTestsBase
+    public class KustoDatabaseTests : KustoTestsBase
     {
         public XunitTracingInterceptor _logger;
 
-        public KustoTests(Xunit.Abstractions.ITestOutputHelper output)
+        public KustoDatabaseTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -32,9 +32,17 @@ namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestKustoClusterLifecycle()
+        public void TestKustoDatabaseLifecycle()
         {
-            NewInstance.RunPsTest(_logger, "Test-KustoClusterLifecycle");
+            NewInstance.RunPsTest(_logger, "Test-KustoDatabaseLifecycle");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestKustoDatabaseAddRemoveGet()
+        {
+            NewInstance.RunPsTest(_logger, "Test-DatabaseAddRemoveGet");
+        }
+        
     }
 }

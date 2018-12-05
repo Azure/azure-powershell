@@ -123,6 +123,9 @@
   <data name="CreateNewKustoCluster" xml:space="preserve">
     <value>Create Kusto cluster</value>
   </data>
+  <data name="CreateNewKustoDatabase" xml:space="preserve">
+    <value>Create Kusto database</value>
+  </data>
   <data name="FailedToDiscoverResourceGroup" xml:space="preserve">
     <value>Could not find cluster: '{0}' in any resource group in the currently selected subscription: {1}. Please ensure this cluster exists and that the current user has access to it.</value>
   </data>
@@ -130,9 +133,42 @@
     <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
   </data>
   <data name="KustoClusterExists" xml:space="preserve">
-    <value>Cannot perform the requested operation because the specified cluster '{0}' does not exist.</value>
+    <value>Cannot perform the requested operation because the specified cluster '{0}' exists.</value>
+  </data>
+  <data name="KustoDatabaseExists" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified database '{0}' exists.</value>
+  </data>
+  <data name="KustoClusterNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified cluster '{0}' doesn't exist.</value>
+  </data>
+  <data name="KustoClusterNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified cluster '{0}' exists in region {1}.</value>
+  </data>
+  <data name="KustoDatabaseNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified database '{0}' doesn't exist.</value>
   </data>
   <data name="RemovingKustoCluster" xml:space="preserve">
     <value>Delete Kusto cluster</value>
+  </data>
+  <data name="RemovingKustoDatabase" xml:space="preserve">
+    <value>Delete Kusto database</value>
+  </data>
+  <data name="SuspendingKustoCluster" xml:space="preserve">
+    <value>Suspend Kusto cluster</value>
+  </data>
+  <data name="ResumingKustoCluster" xml:space="preserve">
+    <value>Resume Kusto cluster</value>
+  </data>
+  <data name="UpdatingKustoCluster" xml:space="preserve">
+    <value>Update Kusto cluster</value>
+  </data>
+  <data name="UpdatingKustoDatabase" xml:space="preserve">
+    <value>Update Kusto database</value>
+  </data>
+  <data name="ClusterCanNotBeEmptry" xml:space="preserve">
+    <value>Cluster name can not be empty</value>
+  </data>
+  <data name="LocationCanNotBeEmptry" xml:space="preserve">
+    <value>Location can not be empty</value>
   </data>
 </root>

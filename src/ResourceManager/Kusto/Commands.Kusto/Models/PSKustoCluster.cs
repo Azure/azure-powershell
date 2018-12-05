@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Kusto.Models
             get
             {
                 string resourceGroupName = string.Empty;
-                KustoUtils.GetResourceGroupName(Id, out resourceGroupName);
+                KustoUtils.GetResourceGroupNameFromClusterId(Id, out resourceGroupName);
                 return resourceGroupName;
             }
         }
@@ -76,6 +76,23 @@ namespace Microsoft.Azure.Commands.Kusto.Models
             get
             {
                 return (_cluster.Sku != null) ? _cluster.Sku.Name : null;
+            }
+        }
+        public string ProvisioningState
+        {
+            get
+            {
+                return _cluster.ProvisioningState;
+
+            }
+        }
+
+        public string State
+        {
+            get
+            {
+                return _cluster.State;
+
             }
         }
 

@@ -28,13 +28,13 @@ function Get-Location
 
 		if ($location -eq $null)
 		{
-			return "West Central US"
+			return "Central US"
 		} else
 		{
 			return $location.Locations[0]
 		}
 	}
-	return "West Central US"
+	return "Central US"
 }
 
 <#
@@ -43,7 +43,7 @@ Gets a resource group location for testing.
 #>
 function Get-RG-Location
 {
-	return "West US"
+	return "Central US"
 }
 
 <#
