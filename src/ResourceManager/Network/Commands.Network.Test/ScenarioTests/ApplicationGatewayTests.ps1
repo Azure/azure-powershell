@@ -587,6 +587,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 
 	$rewriteRuleName = Get-ResourceName
 	$rewriteRuleSetName = Get-ResourceName
+    $rewriteRuleSetName2 = Get-ResourceName
 	$rule01Name = Get-ResourceName
 
 	$probeHttpName = Get-ResourceName
@@ -643,6 +644,15 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		# Get Application Gateway
 		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 
+        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -ApplicationGateway $getgw
+        Assert-NotNull $rewriteRuleSet
+        Assert-AreEqual $rewriteRuleSet.RewriteRules.Count 1
+        Assert-NotNull $rewriteRuleSet.RewriteRules[0].ActionSet
+
+        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
+        Assert-NotNull $rewriteRuleSet
+        Assert-AreEqual $rewriteRuleSet.Count 1
+
 		# Operational State
 		Assert-AreEqual "Running" $getgw.OperationalState
 
@@ -683,6 +693,32 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 
 		# Set
 		$getgw01 = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+
+		#Rewrite Rule Set
+        Assert-ThrowsLike { Add-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw01 -Name $rewriteRuleSetName -RewriteRule $rewriteRule } "*already exists*"
+		$rewriteRuleSet = Add-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw01 -Name $rewriteRuleSetName2 -RewriteRule $rewriteRule
+        $getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw01
+
+        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
+        Assert-NotNull $rewriteRuleSet
+        Assert-AreEqual $rewriteRuleSet.Count 2
+
+        $rewriteRuleSet = Remove-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw01 -Name $rewriteRuleSetName2
+        $getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw01
+
+        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
+        Assert-NotNull $rewriteRuleSet
+        Assert-AreEqual $rewriteRuleSet.Count 1
+
+		$headerConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "ghi" -HeaderValue "jkl"
+		$actionSet = New-AzureRmApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $headerConfiguration
+		$rewriteRule2 = New-AzureRmApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet
+
+        Assert-ThrowsLike { Set-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw -Name "fakeName" -RewriteRule $rewriteRule2 } "*does not exist*"
+        $rewriteRuleSet = Set-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw -Name $rewriteRuleSetName -RewriteRule $rewriteRule2
+        $getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw01
+        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw -Name $rewriteRuleSetName
+        Assert-AreEqual $rewriteRuleSet.RewriteRules[0].Name $rewriteRule2.Name
 
 		# check sku
 		$sku01 = Get-AzureRmApplicationGatewaySku -ApplicationGateway $getgw01
