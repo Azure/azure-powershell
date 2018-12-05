@@ -16,6 +16,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Tools.Common.Loggers;
 using Tools.Common.Models;
+#if NETSTANDARD
+using StaticAnalysis.Netcore.Properties;
+#else
+using StaticAnalysis.Properties;
+#endif
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -89,13 +94,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // If the parameter cannot be found, log an issue
                 else
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedParameter,
-                        description: string.Format(Properties.Resources.RemovedParameterDescription,
+                        description: string.Format(Resources.RemovedParameterDescription,
                             cmdlet.Name, oldParameter.Name),
-                        remediation: string.Format(Properties.Resources.RemovedParameterRemediation,
+                        remediation: string.Format(Resources.RemovedParameterRemediation,
                             oldParameter.Name, cmdlet.Name));
                 }
             }
@@ -149,13 +154,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // If the alias cannot be found, log an issue
                 if (!aliasSet.Contains(oldAlias))
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterAlias,
-                        description: string.Format(Properties.Resources.RemovedParameterAliasDescription,
+                        description: string.Format(Resources.RemovedParameterAliasDescription,
                             cmdlet.Name, oldAlias, oldParameter.Name),
-                        remediation: string.Format(Properties.Resources.RemovedParameterAliasRemediation,
+                        remediation: string.Format(Resources.RemovedParameterAliasRemediation,
                             oldAlias, oldParameter.Name));
                 }
             }
@@ -187,13 +192,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             // one in the new assembly, log an issue
             if (oldValidateSet.Count == 0 && newValidateSet.Count > 0)
             {
-                issueLogger.LogBreakingChangeIssue(
+                issueLogger?.LogBreakingChangeIssue(
                     cmdlet: cmdlet,
                     severity: 0,
                     problemId: ProblemIds.BreakingChangeProblemId.AddedValidateSet,
-                    description: string.Format(Properties.Resources.AddedValidateSetDescription,
+                    description: string.Format(Resources.AddedValidateSetDescription,
                         oldParameter.Name, cmdlet.Name),
-                    remediation: string.Format(Properties.Resources.AddedValidateSetRemediation,
+                    remediation: string.Format(Resources.AddedValidateSetRemediation,
                         oldParameter.Name));
 
                 return;
@@ -215,13 +220,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // If the value cannot be found, log an issue
                 if (!valueSet.Contains(oldValue))
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedValidateSetValue,
-                        description: string.Format(Properties.Resources.RemovedValidateSetValueDescription,
+                        description: string.Format(Resources.RemovedValidateSetValueDescription,
                             oldParameter.Name, cmdlet.Name, oldValue),
-                        remediation: string.Format(Properties.Resources.RemovedValidateSetValueRemediation,
+                        remediation: string.Format(Resources.RemovedValidateSetValueRemediation,
                             oldValue, oldParameter.Name));
                 }
             }
@@ -246,13 +251,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // If the old parameter had no validation range, but the new parameter does, log an issue
                 if (oldParameter.ValidateRangeMin == null && oldParameter.ValidateRangeMax == null)
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.AddedValidateRange ,
-                        description: string.Format(Properties.Resources.AddedValidateRangeDescription,
+                        description: string.Format(Resources.AddedValidateRangeDescription,
                             oldParameter.Name, cmdlet.Name),
-                        remediation: string.Format(Properties.Resources.AddedValidateRangeRemediation,
+                        remediation: string.Format(Resources.AddedValidateRangeRemediation,
                             oldParameter.Name));
                 }
                 else
@@ -260,26 +265,26 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     // If the minimum value of the range has increased, log an issue
                     if (oldParameter.ValidateRangeMin < newParameter.ValidateRangeMin)
                     {
-                        issueLogger.LogBreakingChangeIssue(
+                        issueLogger?.LogBreakingChangeIssue(
                             cmdlet: cmdlet,
                             severity: 0,
                             problemId: ProblemIds.BreakingChangeProblemId.ChangedValidateRangeMinimum,
-                            description: string.Format(Properties.Resources.ChangedValidateRangeMinimumDescription,
+                            description: string.Format(Resources.ChangedValidateRangeMinimumDescription,
                                 oldParameter.Name, oldParameter.ValidateRangeMin, newParameter.ValidateRangeMin),
-                            remediation: string.Format(Properties.Resources.ChangedValidateRangeMinimumRemediation,
+                            remediation: string.Format(Resources.ChangedValidateRangeMinimumRemediation,
                                 oldParameter.Name, oldParameter.ValidateRangeMin));
                     }
 
                     // If the maximum value of the range has decreased, log an issue
                     if (oldParameter.ValidateRangeMax > newParameter.ValidateRangeMax)
                     {
-                        issueLogger.LogBreakingChangeIssue(
+                        issueLogger?.LogBreakingChangeIssue(
                             cmdlet: cmdlet,
                             severity: 0,
                             problemId: ProblemIds.BreakingChangeProblemId.ChangedValidateRangeMaximum,
-                            description: string.Format(Properties.Resources.ChangedValidateRangeMaximumDescription,
+                            description: string.Format(Resources.ChangedValidateRangeMaximumDescription,
                                 oldParameter.Name, oldParameter.ValidateRangeMax, newParameter.ValidateRangeMax),
-                            remediation: string.Format(Properties.Resources.ChangedValidateRangeMaximumRemediation,
+                            remediation: string.Format(Resources.ChangedValidateRangeMaximumRemediation,
                                 oldParameter.Name, oldParameter.ValidateRangeMax));
                     }
                 }
@@ -303,13 +308,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             // old assembly, but has it in the new assembly, log an issue
             if (!oldParameter.ValidateNotNullOrEmpty && newParameter.ValidateNotNullOrEmpty)
             {
-                issueLogger.LogBreakingChangeIssue(
+                issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.AddedValidateNotNullOrEmpty,
-                        description: string.Format(Properties.Resources.AddedValidateNotNullOrEmptyDescription,
+                        description: string.Format(Resources.AddedValidateNotNullOrEmptyDescription,
                             oldParameter.Name, cmdlet.Name),
-                        remediation: string.Format(Properties.Resources.AddedValidateNotNullOrEmptyRemediation,
+                        remediation: string.Format(Resources.AddedValidateNotNullOrEmptyRemediation,
                             oldParameter.Name));
             }
         }

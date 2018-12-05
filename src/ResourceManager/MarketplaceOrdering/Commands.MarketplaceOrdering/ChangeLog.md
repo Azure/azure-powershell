@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.2.6
+* update the examples description for marketplace cmdlets
+
 ## Version 0.2.5
 * Updated to the latest version of the Azure ClientRuntime.
 

@@ -19,6 +19,10 @@
 -->
 
 ## Current Release
+* Updated the Microsoft.DataTransfer.Gateway.Encryption version to 3.11.6898.1 for .NetStandard version.
+
+## Version 0.5.11
+* Updated the ADF .Net SDK version to 2.3.0.
 
 ## Version 0.5.10
 * Fixed issue with default resource groups not being set.

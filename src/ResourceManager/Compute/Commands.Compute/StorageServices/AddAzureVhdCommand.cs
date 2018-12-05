@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             Position = 0,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

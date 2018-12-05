@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -125,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              HelpMessage = "Filters for packet capture session.")]
         [ValidateNotNull]
-        public List<PSPacketCaptureFilter> Filter { get; set; }
+        public PSPacketCaptureFilter[] Filter { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Globalization;
 using System.Linq;
@@ -23,6 +24,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
+#if NETSTANDARD
+    [CmdletOutputBreakingChange(typeof(PSVirtualMachineIdentity), DeprecatedOutputProperties = new string[] { "IdentityIds" })]
+#endif
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDataDisk"),OutputType(typeof(PSVirtualMachine))]
     public class SetAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -77,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard_LRS", "Premium_LRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string StorageAccountType { get; set; }
 
         [Parameter(

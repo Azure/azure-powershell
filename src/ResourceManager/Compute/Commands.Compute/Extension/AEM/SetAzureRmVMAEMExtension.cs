@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Position = 0,
                 ValueFromPipelineByPropertyName = true,
                 HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
@@ -401,7 +402,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }).GetAwaiter().GetResult();
 
                 this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzureRmVMAEMExtension commandlet.");
+                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
 
                 var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);

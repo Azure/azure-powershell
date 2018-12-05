@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.Common;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
 {
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The Azure Sql Server name.")]
+        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 

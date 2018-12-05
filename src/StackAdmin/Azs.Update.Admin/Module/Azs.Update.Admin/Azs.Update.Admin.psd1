@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Update.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.2.0'
+    ModuleVersion     = '0.2.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -56,8 +56,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; },
-        @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.2'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.Update.Admin.dll')
@@ -102,7 +102,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags         = @('AzureStack', 'Azure Stack', 'Admin', 'Update', 'Azure Stack Update', 'URP')
+            Tags         = @('AzureStack', 'Admin', 'Update', 'URP')
 
             # A URL to the license for this module.
             LicenseUri   = 'https://aka.ms/azps-license'
@@ -114,19 +114,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.8.12
-            * Module dependencies updated
-                * AzureRM.Profile
-                * AzureRM.Resources
-            * Support handling names of nested resources
-                * Get-AzsUpdate
-                * Get-UpdateRun
-                * Install-AzsUpdate
-                * Resume-AzsUpdate
-            * Deprecations
-                * Get-AzsBackup, the parameter Update is now an alias for Name
-            * Bug fixes
-                * Handle ErrrorAction correctly now
+            ReleaseNotes = '## 2018.12
+            * Added a warning to recommend running Test-AzureStack before Install-AzsUpdate, supported with 1811 update
             '
 
         } # End of PSData hashtable

@@ -40,77 +40,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region SFRP
 
-        #region Temporary code until next SDK version is released
-        protected PSCluster SendPutRequest(Cluster clusterResource, bool runOnSameThread = true)
-        {
-            if (runOnSameThread)
-            {
-                WriteVerboseWithTimestamp("Begin to update the cluster");
-            }
-
-            Cluster cluster = null;
-            var tokenSource = new CancellationTokenSource();
-            try
-            {
-                var putRequest = Task.Factory.StartNew(() =>
-                {
-                    try
-                    {
-                        cluster = this.SFRPClient.Clusters.Create(this.ResourceGroupName, this.Name, clusterResource);
-                    }
-                    finally
-                    {
-                        tokenSource.Cancel();
-                    }
-                });
-
-                while (!tokenSource.IsCancellationRequested)
-                {
-                    if (runOnSameThread)
-                    {
-                        if (!RunningTest)
-                        {
-                            var c = SafeGetResource(this.GetCurrentCluster, true);
-                            if (c != null)
-                            {
-                                WriteVerboseWithTimestamp(
-                                    string.Format(
-                                        ServiceFabricProperties.Resources.ClusterStateVerbose,
-                                        c.ClusterState));
-                            }
-                        }
-                    }
-
-                    Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
-                }
-
-                if (putRequest.IsFaulted)
-                {
-                    throw putRequest.Exception;
-                }
-
-            }
-            catch (Exception e)
-            {
-                PrintSdkExceptionDetail(e);
-
-                if (e.InnerException != null)
-                {
-                    while (e.InnerException != null)
-                    {
-                        e = e.InnerException;
-                    }
-
-                    throw;
-                }
-
-                throw;
-            }
-
-            return new PSCluster(cluster);
-        }
-        #endregion
-
         protected PSCluster SendPatchRequest(ClusterUpdateParameters request, bool runOnSameThread = true)
         {
             if (runOnSameThread)
@@ -163,18 +92,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             catch (Exception e)
             {
                 PrintSdkExceptionDetail(e);
-
-                if (e.InnerException != null)
-                {
-                    while (e.InnerException != null)
-                    {
-                        e = e.InnerException;
-                    }
-
-                    throw;
-                }
-
-                throw;
+                throw GetInnerException(e);
             }
 
             return new PSCluster(cluster);
@@ -193,17 +111,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             catch (Exception e)
             {
-                if (e.InnerException != null)
-                {
-                    while (e.InnerException != null)
-                    {
-                        e = e.InnerException;
-                    }
-
-                    throw;
-                }
-
-                throw;
+                throw GetInnerException(e);
             }
         }
 
@@ -348,6 +256,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             exceptions.ForEach(PrintSdkExceptionDetail);
             task.Wait();
+        }
+
+        protected Exception GetInnerException(Exception exception)
+        {
+            while (exception.InnerException != null)
+            {
+                exception = exception.InnerException;
+            }
+
+            return exception;
         }
     }
 }

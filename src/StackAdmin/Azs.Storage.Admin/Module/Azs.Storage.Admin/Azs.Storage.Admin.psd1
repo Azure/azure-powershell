@@ -56,8 +56,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; },
-        @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.2'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.Storage.Admin.dll')
@@ -116,7 +116,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags         = @('AzureStack', 'Azure Stack', 'Admin', 'Storage', 'Azure Stack Storage', 'SRP')
+            Tags         = @('AzureStack', 'Admin', 'Storage', 'SRP')
 
             # A URL to the license for this module.
             LicenseUri   = 'https://aka.ms/azps-license'
@@ -128,7 +128,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.8.12
+            ReleaseNotes = '## 2018.9.10
             * Module dependencies updated
                 * AzureRM.Profile
                 * AzureRM.Resources

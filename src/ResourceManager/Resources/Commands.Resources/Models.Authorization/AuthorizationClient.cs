@@ -232,9 +232,25 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             if (options.IncludeClassicAdministrators)
             {
                 // Get classic administrator access assignments
-                List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators
-                    .List().ToList();
-                List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList();
+                var classicAdministratorsSubscription = currentSubscription;
+                if (options.Scope != null)
+                {
+                    classicAdministratorsSubscription = AuthorizationHelper.GetResourceSubscription(options.Scope) ?? currentSubscription;
+                }
+
+                List<ClassicAdministrator> classicAdministrators = new List<ClassicAdministrator>();
+                if (currentSubscription != classicAdministratorsSubscription)
+                {
+                    var client = AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(AzureRmProfileProvider.Instance.Profile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                    client.SubscriptionId = classicAdministratorsSubscription;
+                    classicAdministrators = client.ClassicAdministrators.List().ToList();
+                }
+                else
+                {
+                    classicAdministrators = AuthorizationManagementClient.ClassicAdministrators.List().ToList();
+                }
+
+                List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(classicAdministratorsSubscription)).ToList();
 
                 // Filter by principal if provided
                 if (options.ADObjectFilter.HasFilter)

@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.DataFactories
     [Cmdlet("Resume", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryPipeline", DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class ResumeAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
     {
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByFactoryObject)

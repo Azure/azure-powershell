@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Configuration;
 using System.Reflection;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using RecoveryServicesBackupNS = Microsoft.Azure.Management.RecoveryServices.Backup;
 using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using ResourcesNS = Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -31,9 +31,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         const string AzureFabricName = "Azure";
         public const string ResourceProviderProductionNamespace = "Microsoft.RecoveryServices";
 
-        ClientProxy<RecoveryServicesBackupNS.RecoveryServicesBackupClient> BmsAdapter;
+        public ClientProxy<RecoveryServicesBackupNS.RecoveryServicesBackupClient> BmsAdapter;
 
         ClientProxy<RecoveryServicesNS.RecoveryServicesClient> RSAdapter;
+
+        ClientProxy<ResourcesNS.ResourceManagementClient> RMAdapter;
+
+        public string SubscriptionId;
 
         /// <summary>
         /// Resource provider namespace that this adapter uses to 
@@ -67,6 +71,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             BmsAdapter = new ClientProxy<RecoveryServicesBackupNS.RecoveryServicesBackupClient>(context);
             RSAdapter = new ClientProxy<RecoveryServicesNS.RecoveryServicesClient>(context);
+            RMAdapter = new ClientProxy<ResourcesNS.ResourceManagementClient>(context);
+            SubscriptionId = context.Subscription.Id;
         }
     }
 }

@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
     /// <summary>
-    /// 'Set-AzureRmServicebusGeoDRConfigurationBreakPair' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespace
+    /// 'Set-AzServicebusGeoDRConfigurationBreakPair' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespace
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusGeoDRConfigurationBreakPair", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureServiceBusGeoDRConfigurationBreakPair : AzureServiceBusCmdletBase

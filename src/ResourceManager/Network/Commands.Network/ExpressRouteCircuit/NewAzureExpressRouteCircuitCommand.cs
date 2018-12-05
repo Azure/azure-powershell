@@ -19,12 +19,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuit", SupportsShouldProcess = true),OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuit", SupportsShouldProcess = true, DefaultParameterSetName = "ServiceProvider"),OutputType(typeof(PSExpressRouteCircuit))]
     public class NewAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.ExpressRouteCircuitSkuTier.Standard,
             MNM.ExpressRouteCircuitSkuTier.Premium,
+            MNM.ExpressRouteCircuitSkuTier.Basic,
             IgnoreCase = true)]
         public string SkuTier { get; set; }
 
@@ -70,31 +72,46 @@ namespace Microsoft.Azure.Commands.Network
         public string SkuFamily { get; set; }
 
         [Parameter(
+            ParameterSetName = "ServiceProvider",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ServiceProviderName { get; set; }
 
         [Parameter(
+             ParameterSetName = "ServiceProvider",
              Mandatory = true,
              ValueFromPipelineByPropertyName = true)]
         public string PeeringLocation { get; set; }
 
         [Parameter(
+             ParameterSetName = "ServiceProvider",
              Mandatory = true,
              ValueFromPipelineByPropertyName = true)]
         public int BandwidthInMbps { get; set; }
 
         [Parameter(
+            ParameterSetName = "ExpressRoutePort",
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        public PSExpressRoutePort ExpressRoutePort { get; set; }
+
+        [Parameter(
+             ParameterSetName = "ExpressRoutePort",
+             Mandatory = true,
+             ValueFromPipelineByPropertyName = true)]
+        public double BandwidthInGbps { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public List<PSPeering> Peering { get; set; }
+        public PSPeering[] Peering { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public List<PSExpressRouteCircuitAuthorization> Authorization { get; set; }
+        public PSExpressRouteCircuitAuthorization[] Authorization { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -160,8 +177,15 @@ namespace Microsoft.Azure.Commands.Network
                 circuit.ServiceProviderProperties.BandwidthInMbps = this.BandwidthInMbps;
             }
 
-            circuit.Peerings = this.Peering;
-            circuit.Authorizations = this.Authorization;
+            // construct the ExpressRoutePort properties
+            if (this.ExpressRoutePort != null)
+            {
+                circuit.ExpressRoutePort = this.ExpressRoutePort;
+                circuit.BandwidthInGbps = this.BandwidthInGbps;
+            }
+
+            circuit.Peerings = this.Peering?.ToList();
+            circuit.Authorizations = this.Authorization?.ToList();
             circuit.AllowClassicOperations = this.AllowClassicOperations;
 
             // Map to the sdk object

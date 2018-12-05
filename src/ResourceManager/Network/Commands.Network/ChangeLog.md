@@ -17,8 +17,61 @@
     * Overview of change #1
         - Additional information about change #1
 --->
-
 ## Current Release
+* Minor changes for upcoming AzureRM to Az transition
+* Added support for the configuring RewriteRuleSets in the Application Gateway
+    - New cmdlets added:
+        - Add-AzureRmApplicationGatewayRewriteRuleSet
+        - Get-AzureRmApplicationGatewayRewriteRuleSet
+        - New-AzureRmApplicationGatewayRewriteRuleSet
+        - Remove-AzureRmApplicationGatewayRewriteRuleSet
+        - Set-AzureRmApplicationGatewayRewriteRuleSet
+        - New-AzureRmApplicationGatewayRewriteRule
+        - New-AzureRmApplicationGatewayRewriteRuleActionSet
+        - New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration
+    - Cmdlets updated with optional parameter -RewriteRuleSet
+        - New-AzureRmApplicationGateway
+        - New-AzureRmApplicationGatewayRequestRoutingRule
+        - Add-AzureRmApplicationGatewayRequestRoutingRule
+        - New-AzureRmApplicationGatewayPathRuleConfig
+        - Add-AzureRmApplicationGatewayUrlPathMapConfig
+        - New-AzureRmApplicationGatewayUrlPathMapConfig
+
+## Version 6.11.0
+* Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
+* Added ICMP back to supported AzureFirewall Network Protocols
+* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, add validation on destination id, address and port. 
+* Fix issues with memory usage in VirtualNetwork map
+
+## Version 6.10.0
+* Changed PeeringType to be a mandatory parameter for the following cmdlets:-
+    - Get-AzureRmExpressRouteCircuitRouteTable
+    - Get-AzureRmExpressRouteCircuitARPTable
+    - Get-AzureRmExpressRouteCircuitRouteTableSummary
+    - Get-AzureRMExpressRouteCrossConnectionArpTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTable
+    - Get-AzureRMExpressRouteCrossConnectionRouteTableSummary
+
+## Version 6.9.1
+* Update cmdlet Test-AzureRmNetworkWatcherConnectivity, pass the protocol value to backend.
+* Added ResourceName argument completer to all cmdlets.
+* Added WhatIf support to Set-AzureRmNetworkSecurityGroup
+* Added ArgumentCompeter for Subnet's parameter ServiceEndpoints
+* Added cmdlet Get-AzureRmFirewallFqdnTag
+* Added Exclusion list and Global config functionality for application gateway WAF, new cmdlets added
+* Fixed issue with RouteFilter not being set if it was passed to ExpressRouteCircuit Peering as resource
+
+## Version 6.9.0
+* Added NetworkProfile functionality. new cmdlets added
+    - Get-AzureRMNetworkProfile
+    - New-AzureRMNetworkProfile
+    - Remove-AzureRMNetworkProfile
+    - Set-AzureRMNetworkProfile
+    - New-AzureRMContainerNicConfig
+    - New-AzureRmContainerNicConfigIpConfig
+* Added service association link on Subnet Model
+* Added cmdlet New-AzureRmVirtualNetworkTap, Get-AzureRmVirtualNetworkTap, Set-AzureRmVirtualNetworkTap, Remove-AzureRmVirtualNetworkTap
+* Added cmdlet Set-AzureRmNEtworkInterfaceTapConfig, Get-AzureRmNEtworkInterfaceTapConfig, Remove-AzureRmNEtworkInterfaceTapConfig
 
 ## Version 6.8.0
 * Replaced LoadBalancer cmdlets with generated code
@@ -95,6 +148,7 @@
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
 * Added cmdlets for Azure SdWan
+
 
 ## Version 6.6.1
 * Changed default cmdlet output presentation to table view

@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (ShouldProcess(this.Name, VerbsCommon.Remove)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
-                                            "Remove-AzureRmContainerService operation")))
+                                            "Remove-AzContainerService operation")))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string containerServiceName = this.Name;
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -77,6 +78,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceNameCompleter("Microsoft.ContainerService/containerServices", "ResourceGroupName")]
         public string Name { get; set; }
 
         [Parameter(

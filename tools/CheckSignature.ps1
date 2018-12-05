@@ -50,6 +50,7 @@ function Check-All {
     $invalidList = @()
 
     $files = Get-ChildItem $path\* -Include *.dll -Recurse | Where-Object { $_.FullName -like "*Azure*" }
+    $files = $files | Where-Object { ($_.FullName -notlike "*System.Management.Automation*") }
     Write-Host "Checking the strong name signature of $($files.Count) files (.dll)" -ForegroundColor Yellow
 
     $invalidStrongNameList = @()
@@ -76,7 +77,8 @@ function Check-All {
                                      ($_.FullName -notlike "*Security.Cryptography*") -and `
                                      ($_.FullName -notlike "*NLog*") -and `
                                      ($_.FullName -notlike "*YamlDotNet*") -and `
-                                     ($_.FullName -notlike "*BouncyCastle.Crypto*")}
+                                     ($_.FullName -notlike "*BouncyCastle.Crypto*") -and `
+                                     ($_.FullName -notlike "*System.Management.Automation*")}
     Write-Host "Checking the authenticode signature of $($files.Count) files (.dll, .ps1, .psm1)" -ForegroundColor Yellow
 
     $invalidAuthenticodeList = @()

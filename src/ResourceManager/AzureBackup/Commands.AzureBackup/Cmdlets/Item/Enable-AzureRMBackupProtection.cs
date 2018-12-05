@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.AzureBackup.Models;
-using Microsoft.Azure.Commands.AzureBackup.Properties;
-using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Enable Azure Backup protection
     /// </summary>
+    [CmdletDeprecation("This module is going to be deprecated. Please use AzureRM.RecoveryServices.Backup or Az.RecoveryServices.Backup moving forward.")]
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupProtection"), OutputType(typeof(AzureRMBackupJob))]
     public class EnableAzureRMBackupProtection : AzureRMBackupItemCmdletBase
     {

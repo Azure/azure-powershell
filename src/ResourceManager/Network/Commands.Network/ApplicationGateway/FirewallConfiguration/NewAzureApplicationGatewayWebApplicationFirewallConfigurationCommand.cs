@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -32,7 +33,11 @@ namespace Microsoft.Azure.Commands.Network
                     FirewallMode = this.FirewallMode,
                     RuleSetType = this.RuleSetType,
                     RuleSetVersion = this.RuleSetVersion,
-                    DisabledRuleGroups = this.DisabledRuleGroups
+                    DisabledRuleGroups = this.DisabledRuleGroup?.ToList(),
+                    RequestBodyCheck = this.RequestBodyCheck,
+                    MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
+                    FileUploadLimitInMb = this.FileUploadLimitInMb,
+                    Exclusions = this.Exclusion?.ToList()
                 };
 
                 WriteObject(firewallConfiguration);

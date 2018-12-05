@@ -31,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitStageCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitStageCRUD");
@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitCRUD");
@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitPrivatePublicPeeringCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitPrivatePublicPeeringCRUD");
@@ -55,7 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitMicrosoftPeeringCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitMicrosoftPeeringCRUD");
@@ -63,7 +63,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitAuthorizationCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitAuthorizationCRUD");
@@ -71,7 +71,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteBgpServiceCommunitiesGet()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteBGPServiceCommunities");
@@ -79,18 +79,26 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteRouteFilterCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteRouteFilters");
         }
 
-        [Fact(Skip = "Express Route Circuits need to be manually provisioned by Service Providers and the whole setup can't be automated.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitConnectionCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitConnectionCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestExpressRouteCircuitPeeringWithRouteFilter()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitPeeringWithRouteFilter");
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// Field that holds the resource client instance
         /// </summary>
         private ResourcesClient resourcesClient;
-
+// TODO: Remove IfDef code
 #if !NETSTANDARD
         /// <summary>
         /// Field that holds the gallery templates client instance
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             set { this.resourcesClient = value; }
         }
-
+// TODO: Remove IfDef code
 #if !NETSTANDARD
         /// <summary>
         /// Gets or sets the gallery templates client

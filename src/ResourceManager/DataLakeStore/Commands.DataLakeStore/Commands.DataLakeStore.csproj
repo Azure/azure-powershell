@@ -39,13 +39,11 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.DataLake.Store, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.DataLake.Store.1.1.9\lib\net452\Microsoft.Azure.DataLake.Store.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.DataLake.Store.1.1.13\lib\net452\Microsoft.Azure.DataLake.Store.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Store.2.3.0-preview\lib\net452\Microsoft.Azure.Management.DataLake.Store.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Store.2.4.2-preview\lib\net452\Microsoft.Azure.Management.DataLake.Store.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
@@ -53,10 +51,14 @@
     <Reference Include="System.Management" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddAzureRmDataLakeStoreVirtualNetworkRule.cs" />
     <Compile Include="Commands\EnableAzureRmDataLakeStoreKeyVault.cs" />
+    <Compile Include="Commands\GetAzureRmDataLakeStoreVirtualNetworkRule.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreTrustedIdProvider.cs" />
+    <Compile Include="Commands\RemoveAzureRmDataLakeStoreVirtualNetworkRule.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreFirewallRule.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeStoreVirtualNetworkRule.cs" />
     <Compile Include="DataPlaneCommands\ExportAzureRmDataLakeStoreChildItemProperties.cs" />
     <Compile Include="DataPlaneCommands\GetAzureRmDataLakeStoreChildItemSummary.cs" />
     <Compile Include="DataPlaneCommands\SetAzureRmDataLakeStoreItemExpiry.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="DataPlaneModels\DataLakeStoreFileSystemCmdletBase.cs" />
     <Compile Include="Models\DataLakeStoreTracingInterceptor.cs" />
     <Compile Include="Models\DataLakeStoreTraceLogger.cs" />
+    <Compile Include="Models\DataLakeStoreVirtualNetworkRule.cs" />
     <Compile Include="Models\FileSystemCmdletProviderEncoding.cs" />
     <Compile Include="Models\PSDataLakeStoreAccountBasic.cs" />
     <Compile Include="Models\PSDataLakeStoreAccount.cs" />

@@ -20,7 +20,7 @@ using Microsoft.PowerShell.Commands;
 namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlServerRecommendedActions cmdlet
+    /// Defines the Get-AzSqlServerRecommendedActions cmdlet
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerRecommendedAction")]
     [OutputType(typeof(AzureSqlServerRecommendedActionModel))]

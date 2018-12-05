@@ -4,8 +4,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.ResourceManager.Automation.Test</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.ResourceManager.Automation.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Automation.Test</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.Automation.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
@@ -26,8 +26,9 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.Automation" Version="2.0.6" />
+    <PackageReference Include="Microsoft.Azure.Management.Automation" Version="3.4.0-preview" />
   </ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
@@ -35,12 +36,21 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Commands.Automation">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll</HintPath>
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Automation\Microsoft.Azure.Commands.Automation.dll</HintPath>
     </Reference>
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="SessionRecords\**\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="ScenarioTests\*.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ScenarioTests\*.cer">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>    
+    <None Update="ScenarioTests\Resources\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

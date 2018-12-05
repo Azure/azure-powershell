@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 {
 	/// <summary>
-	/// Defines the Get-AzureRmSqlServerDnsAlias cmdlet
+	/// Defines the Get-AzSqlServerDnsAlias cmdlet
 	/// </summary>
 	[Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerDnsAlias", SupportsShouldProcess = true)]
 	[OutputType(typeof(AzureSqlServerDnsAliasModel))]

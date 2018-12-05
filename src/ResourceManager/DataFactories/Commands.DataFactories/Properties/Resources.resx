@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DataFactoryArgumentInvalid" xml:space="preserve">
-    <value>The data factory object provided is invalid. Use Get-AzureRmDataFactory to retrieve a specific data factory object, or use New-AzureRmDataFactory to create a new data factory object.</value>
+    <value>The data factory object provided is invalid. Use Get-AzDataFactory to retrieve a specific data factory object, or use New-AzDataFactory to create a new data factory object.</value>
   </data>
   <data name="DataFactoryGatewayConfirmationMessage" xml:space="preserve">
     <value>Are you sure you want to remove the gateway '{0}' in the data factory '{1}'?</value>
@@ -256,9 +256,9 @@ Are you sure you want to continue?</value>
 For data factory naming restrictions, please see http://msdn.microsoft.com/en-us/library/dn835027.aspx</value>
   </data>
   <data name="EndDateTimeNotSpecifiedForGetSlice" xml:space="preserve">
-    <value>EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Get-AzureRmDataFactorySlice command if you want to specify EndDateTime.</value>
+    <value>EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Get-AzDataFactorySlice command if you want to specify EndDateTime.</value>
   </data>
   <data name="EndDateTimeNotSpecifiedForSetSliceStatus" xml:space="preserve">
-    <value>EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Set-AzureRmDataFactorySliceStatus command if you want to specify EndDateTime.</value>
+    <value>EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Set-AzDataFactorySliceStatus command if you want to specify EndDateTime.</value>
   </data>
 </root>

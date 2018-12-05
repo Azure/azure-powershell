@@ -18,7 +18,18 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue that Copy File cmdlet can't reuse source context in destination when not input -DestContext
+    - Start-AzureStorageFileCopy
+* Support Static Website configuration
+    - Enable-AzureStorageStaticWebsite
+    - Disable-AzureStorageStaticWebsite
+* Minor changes for upcoming AzureRM to Az transition
 
+## Version 4.6.1
+* Fix Copy Blob/File won't copy metadata when destination has metadata issue
+    - Start-AzureStorageBlobCopy
+    - Start-AzureStorageFileCopy
+	
 ## Version 4.6.0
 * Upgrade to Azure Storage Client Library 9.3.0 and Azure Storage DataMovement Library 0.8.1
 * Support create Storage Context with OAuth. 
