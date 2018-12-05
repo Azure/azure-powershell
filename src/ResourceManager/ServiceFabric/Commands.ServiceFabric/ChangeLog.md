@@ -18,3 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Upgraded Service Fabric SDK dependency to version 1.1.0.
+    - This change allows the cmdlets to suport certifiates by common names.
+* Added optinal parameters -CertCommonName and -CertIssuerThumbprint to `New-AzureRmServiceFabricCluster` to support creating cluster with certificate by common name.
+* Added optional parameters -CertCommonName and -CertIssuerThumbprint to `Add-AzureRmServiceFabricClusterCertificate` to support adding certificate by common name.
