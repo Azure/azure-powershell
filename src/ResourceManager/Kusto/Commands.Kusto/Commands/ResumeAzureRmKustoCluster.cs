@@ -10,7 +10,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// ----------------------------------------------------------------------------------
 
 using System;
 using System.Management.Automation;
@@ -19,11 +18,11 @@ using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Properties;
 using Microsoft.Azure.Commands.Kusto.Utilities;
 
-namespace Microsoft.Azure.Commands.Kusto
+namespace Microsoft.Azure.Commands.Kusto.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet),
-        OutputType(typeof(PSKustoCluster))]
-    public class RemoveAzureRmKustoCluster : KustoCmdletBase
+    [Cmdlet("Resume", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", SupportsShouldProcess = true),
+     OutputType(typeof(PSKustoCluster))]
+    public class ResumeAzureRmKustoCluster: KustoCmdletBase
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";
         protected const string ObjectParameterSet = "ByInputObject";
@@ -33,13 +32,13 @@ namespace Microsoft.Azure.Commands.Kusto
             ParameterSetName = CmdletParametersSet,
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Name of cluster to be removed.")]
+            HelpMessage = "Name of cluster to be resume.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = CmdletParametersSet,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Name of resource group under which the cluster exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Commands.Kusto
                 WriteExceptionError(new PSArgumentNullException("Name", "Name of cluster not specified"));
             }
 
-            if (ShouldProcess(clusterName, Resources.RemovingKustoCluster))
+            if (ShouldProcess(clusterName, Resources.ResumingKustoCluster))
             {
                 PSKustoCluster cluster = null;
                 if (!KustoClient.CheckIfClusterExists(resourceGroupName, clusterName, out cluster))
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.Commands.Kusto
                     throw new InvalidOperationException(string.Format(Resources.ClusterDoesNotExist, clusterName));
                 }
 
-                KustoClient.DeleteCluster(resourceGroupName, clusterName);
+                KustoClient.ResumeKustoCluster(resourceGroupName, clusterName);
             }
         }
     }

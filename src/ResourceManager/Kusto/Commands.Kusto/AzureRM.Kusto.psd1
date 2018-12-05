@@ -72,7 +72,18 @@ NestedModules = @('.\Microsoft.Azure.Commands.Kusto.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmKustoCluster', 'Get-AzureRmKustoCluster', 'Remove-AzureRmKustoCluster' 
+CmdletsToExport = 'New-AzureRmKustoCluster', 
+	'Get-AzureRmKustoCluster', 
+	'Remove-AzureRmKustoCluster',
+	'Update-AzureRmKustoCluster',
+	'Suspend-AzureRmKustoCluster',
+	'Resume-AzureRmKustoCluster',
+	'Test-AzureRmKustoClusterName',
+	'New-AzureRmKustoDatabase',
+	'Get-AzureRmKustoDatabase', 
+	'Remove-AzureRmKustoDatabase',
+	'Update-AzureRmKustoDatabase'
+
 
 # Variables to export from this module
 # VariablesToExport = @()

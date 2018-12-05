@@ -38,11 +38,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Commands\GetAzureRmKustoCluster.cs" />
+    <Compile Include="Commands\GetAzureRmKustoDatabase.cs" />
     <Compile Include="Commands\NewAzureRmKustoCluster.cs" />
+    <Compile Include="Commands\NewAzureRmKustoDatabase.cs" />
     <Compile Include="Commands\RemoveAzureRmKustoCluster.cs" />
+    <Compile Include="Commands\RemoveAzureRmKustoDatabase.cs" />
+    <Compile Include="Commands\ResumeAzureRmKustoCluster.cs" />
+    <Compile Include="Commands\SuspendAzureRmKustoCluster.cs" />
+    <Compile Include="Commands\TestAzureRmKustoClusterName.cs" />
+    <Compile Include="Commands\UpdateAzureRmKustoCluster.cs" />
+    <Compile Include="Commands\UpdateAzureRmKustoDatabase.cs" />
     <Compile Include="Models\KustoClient.cs" />
     <Compile Include="Models\KustoCmdletBase.cs" />
+    <Compile Include="Models\PSKustoClusterNameAvailability.cs" />
     <Compile Include="Models\PSKustoCluster.cs" />
+    <Compile Include="Models\PSKustoDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -64,6 +74,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

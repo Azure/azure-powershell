@@ -134,6 +134,10 @@ namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
                         }
                     }
                 }
+                catch (Exception e)
+                {
+                    Console.Write(e.Message);
+                }
                 finally
                 {
                     if (cleanup != null)

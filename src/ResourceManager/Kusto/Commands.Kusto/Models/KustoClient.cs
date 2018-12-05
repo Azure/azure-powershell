@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Kusto.Models
 {
     public class KustoClient
     {
+        private const string clusterType = "Microsoft.Kusto/Clusters";
         private readonly KustoManagementClient _client;
         private readonly Guid _subscriptionId;
         private readonly string _currentUser;
@@ -53,6 +54,10 @@ namespace Microsoft.Azure.Commands.Kusto.Models
 
         #region Cluster Related Operations
 
+        public CheckNameResult CheckClusterNAmeAvailability(string clusterName, string location)
+        {
+            return _client.Clusters.CheckNameAvailability(location, new ClusterCheckNameRequest(clusterName));
+        }
         public PSKustoCluster CreateOrUpdateCluster(string resourceGroupName,
             string clusterName,
             string location,
@@ -84,7 +89,7 @@ namespace Microsoft.Azure.Commands.Kusto.Models
                     {
                         Location = location,
                         Tags = tags,
-                        Sku = new AzureSku(skuName)
+                        Sku = new AzureSku(skuName),
                     });
             }
 
@@ -99,6 +104,26 @@ namespace Microsoft.Azure.Commands.Kusto.Models
             }
 
             _client.Clusters.Delete(resourceGroupName, clusterName);
+        }
+
+        public void SuspendKustoCluster(string resourceGroupName, string clusterName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByCluster(clusterName);
+            }
+
+            _client.Clusters.Stop(resourceGroupName, clusterName);
+        }
+
+        public void ResumeKustoCluster(string resourceGroupName, string clusterName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByCluster(clusterName);
+            }
+
+            _client.Clusters.Start(resourceGroupName, clusterName);
         }
 
         public bool CheckIfClusterExists(string resourceGroupName, string clusterName, out PSKustoCluster cluster)
@@ -162,5 +187,101 @@ namespace Microsoft.Azure.Commands.Kusto.Models
         }
 
         #endregion
+
+        #region Database Related Operations
+        public PSKustoDatabase GetDatabase(string resourceGroupName, string clusterName, string databaseName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByCluster(clusterName);
+            }
+
+            return new PSKustoDatabase(_client.Databases.Get(resourceGroupName, clusterName, databaseName));
+        }
+
+        public PSKustoDatabase CreateOrUpdateDatabase(string resourceGroupName,
+            string clusterName,
+            string databaseName,
+            int hotCachePeriodInDays,
+            int softDeletePeriodInDays,
+            string location,
+            Hashtable customTags = null,
+            PSKustoDatabase existingDatbase = null)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByCluster(clusterName);
+            }
+
+            var tags = (customTags != null)
+                ? TagsConversionHelper.CreateTagDictionary(customTags, true)
+                : null;
+
+            Database newOrUpdatedDatabase;
+            if (existingDatbase != null)
+            {
+
+                var updateParameters = new DatabaseUpdate(){SoftDeletePeriodInDays = softDeletePeriodInDays, HotCachePeriodInDays = hotCachePeriodInDays};
+                newOrUpdatedDatabase = _client.Databases.Update(resourceGroupName, clusterName, databaseName, updateParameters);
+            }
+            else
+            {
+                newOrUpdatedDatabase = _client.Databases.CreateOrUpdate(
+                    resourceGroupName,
+                    clusterName,
+                    databaseName,
+                    new Database()
+                    {
+                       HotCachePeriodInDays = hotCachePeriodInDays,
+                        SoftDeletePeriodInDays = softDeletePeriodInDays,
+                        Location = location
+                    });
+            }
+
+            return new PSKustoDatabase(newOrUpdatedDatabase);
+        }
+
+        public void DeleteDatabase(string resourceGroupName, string clusterName, string databaseName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByCluster(clusterName);
+            }
+
+            _client.Databases.Delete(resourceGroupName, clusterName, databaseName);
+        }
+
+        public List<PSKustoDatabase> ListDatabases(string resourceGroupName, string clusterName)
+        {
+            var databases = new List<PSKustoDatabase>();
+            var response = _client.Databases.ListByCluster(resourceGroupName, clusterName);
+
+            response.ToList().ForEach(capacity => databases.Add(new PSKustoDatabase(capacity)));
+
+            return databases;
+        }
+
+        public bool CheckIfDatabaseExists(string resourceGroupName, string clusterName, string databaseName, out PSKustoDatabase database)
+        {
+            try
+            {
+                database = GetDatabase(resourceGroupName, clusterName, databaseName);
+                return true;
+            }
+            catch (CloudException ex)
+            {
+                if ((ex.Response != null && ex.Response.StatusCode == HttpStatusCode.NotFound) || ex.Message.Contains(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, clusterName,
+                        _subscriptionId)))
+                {
+                    database = null;
+                    return false;
+                }
+
+                throw;
+            }
+        }
+
+        #endregion
+
     }
 }

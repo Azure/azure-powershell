@@ -41,7 +41,8 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ScenarioTests\KustoTests.cs" />
+    <Compile Include="ScenarioTests\KustoDatabaseTests.cs" />
+    <Compile Include="ScenarioTests\KustoClusterTests.cs" />
     <Compile Include="ScenarioTests\KustoTestsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,16 +56,30 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\KustoTests.ps1">
+    <None Include="ScenarioTests\KustoDatabaseTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\KustoClusterTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Kusto.Test.ScenarioTests.KustoClusterTests\TestKustoClusterLifecycle.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Kusto.Test.ScenarioTests.KustoClusterTests\TestKustoClusterName.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Kusto.Test.ScenarioTests.KustoClusterTests\TestKustoClusterRemove.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Kusto.Test.ScenarioTests.KustoClusterTests\TestKustoClusterSuspendResume.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Kusto.Test.ScenarioTests.KustoClusterTests\TestKustoClusterUpdate.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Kusto.Test.ScenarioTests.KustoDatabaseTests\TestKustoDatabaseAddRemoveGet.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Kusto.Test.ScenarioTests.KustoDatabaseTests\TestKustoDatabaseLifecycle.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ArmManagementClient, Version=1.0.6.0, Culture=neutral, PublicKeyToken=829a00acde12d551, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Kusto.Management.1.0.6-beta\lib\net452\ArmManagementClient.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

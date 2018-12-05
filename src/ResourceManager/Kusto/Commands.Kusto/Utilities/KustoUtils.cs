@@ -18,37 +18,67 @@ namespace Microsoft.Azure.Commands.Kusto.Utilities
 {
     class KustoUtils
     {
-        public static void GetResourceGroupNameAndClusterName(
-            string resourceId,
+        public static void GetResourceGroupNameAndClusterNameFromClusterId(
+            string clusterId,
             out string resourceGroupName,
             out string clusterName)
         {
-            string[] tokens = ParseResourceId(resourceId);
+            string[] tokens = ParseClusterResourceId(clusterId);
             resourceGroupName = tokens[3];
             clusterName = tokens[7];
         }
 
-        public static void GetResourceGroupName(
-            string resourceId,
+        public static void GetResourceGroupNameClusterNameAndDatabaseNameFromDatabaseId(
+            string databaseId,
+            out string resourceGroupName,
+            out string clusterName,
+            out string databaseName)
+        {
+            string[] tokens = ParseDatabaseResourceId(databaseId);
+            resourceGroupName = tokens[3];
+            clusterName = tokens[7];
+            databaseName = tokens[9];
+        }
+
+        public static void GetResourceGroupNameFromClusterId(
+            string clusterId,
             out string resourceGroupName)
         {
-            string[] tokens = ParseResourceId(resourceId);
+            string[] tokens = ParseClusterResourceId(clusterId);
             resourceGroupName = tokens[3];
         }
 
-        private static string[] ParseResourceId(string resourceId)
+        private static string[] ParseClusterResourceId(string clusterId)
         {
-            if (string.IsNullOrEmpty(resourceId))
+            if (string.IsNullOrEmpty(clusterId))
             {
-                throw new ArgumentNullException(nameof(resourceId));
+                throw new ArgumentNullException(nameof(clusterId));
             }
 
             // ResourceID should be in the following format:
             // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.Kusto/clusters/{cluster}
-            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] tokens = clusterId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
             if (tokens.Length != 8)
             {
-                throw new Exception($"ResourceId {resourceId} not in the expected format");
+                throw new Exception($"ResourceId {clusterId} not in the expected format");
+            }
+
+            return tokens;
+        }
+
+        private static string[] ParseDatabaseResourceId(string databaseId)
+        {
+            if (string.IsNullOrEmpty(databaseId))
+            {
+                throw new ArgumentNullException(nameof(databaseId));
+            }
+
+            // ResourceID should be in the following format:
+            // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.Kusto/clusters/{cluster}/databases/{database}
+            string[] tokens = databaseId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length != 10)
+            {
+                throw new Exception($"ResourceId {databaseId} not in the expected format");
             }
 
             return tokens;

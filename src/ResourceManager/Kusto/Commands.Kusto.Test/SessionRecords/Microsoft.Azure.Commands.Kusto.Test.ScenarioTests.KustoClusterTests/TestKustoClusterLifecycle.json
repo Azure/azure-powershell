@@ -1,0 +1,4043 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/register?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vcmVnaXN0ZXI/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto\",\r\n  \"namespace\": \"Microsoft.Kusto\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"2746ea77-4702-4b45-80ca-3c97e680e8b7\",\r\n      \"roleDefinitionId\": \"dd9d4347-f397-45f2-b538-85f21c90037c\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"clusters\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"clusters/databases\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\",\r\n        \"2017-09-07-privatepreview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"clusters/databases/eventhubconnections\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\",\r\n        \"2017-09-07-privatepreview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\",\r\n        \"2017-09-07-privatepreview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkNameAvailability\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\",\r\n        \"2017-09-07-privatepreview\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3160"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "6d5e5d34-fe93-4321-b960-d7e40463e65a"
+        ],
+        "x-ms-correlation-request-id": [
+          "6d5e5d34-fe93-4321-b960-d7e40463e65a"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142152Z:6d5e5d34-fe93-4321-b960-d7e40463e65a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:21:51 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto\",\r\n  \"namespace\": \"Microsoft.Kusto\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"2746ea77-4702-4b45-80ca-3c97e680e8b7\",\r\n      \"roleDefinitionId\": \"dd9d4347-f397-45f2-b538-85f21c90037c\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"clusters\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"clusters/databases\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\",\r\n        \"2017-09-07-privatepreview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"clusters/databases/eventhubconnections\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\",\r\n        \"2017-09-07-privatepreview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\",\r\n        \"2017-09-07-privatepreview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkNameAvailability\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\",\r\n        \"2017-09-07-privatepreview\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3160"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "bcf82878-b347-40f9-a7a8-7cdc46b9e125"
+        ],
+        "x-ms-correlation-request-id": [
+          "bcf82878-b347-40f9-a7a8-7cdc46b9e125"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142152Z:bcf82878-b347-40f9-a7a8-7cdc46b9e125"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:21:51 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "36342f21-d048-40c0-b541-bcbe32b775ad"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto\",\r\n  \"namespace\": \"Microsoft.Kusto\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"2746ea77-4702-4b45-80ca-3c97e680e8b7\",\r\n      \"roleDefinitionId\": \"dd9d4347-f397-45f2-b538-85f21c90037c\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"clusters\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"clusters/databases\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\",\r\n        \"2017-09-07-privatepreview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"clusters/databases/eventhubconnections\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\",\r\n        \"2017-09-07-privatepreview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\",\r\n        \"2017-09-07-privatepreview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkNameAvailability\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"West US 2\",\r\n        \"South Central US\",\r\n        \"North Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Canada Central\",\r\n        \"UK South\",\r\n        \"Australia East\",\r\n        \"Brazil South\",\r\n        \"Japan West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Korea Central\",\r\n        \"France Central\",\r\n        \"UK West\",\r\n        \"Korea South\",\r\n        \"France South\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2018-09-07-preview\",\r\n        \"2017-09-07-privatepreview\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3160"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "1f1b67f2-a689-4501-8d0f-85c4d0bf7732"
+        ],
+        "x-ms-correlation-request-id": [
+          "1f1b67f2-a689-4501-8d0f-85c4d0bf7732"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142200Z:1f1b67f2-a689-4501-8d0f-85c4d0bf7732"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:21:59 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/KustoPSClientTestRG?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Jlc291cmNlZ3JvdXBzL0t1c3RvUFNDbGllbnRUZXN0Ukc/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"Central US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "32"
+        ],
+        "x-ms-client-request-id": [
+          "467238a8-d986-4631-89cc-415e9cf2174c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG\",\r\n  \"name\": \"KustoPSClientTestRG\",\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "194"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "7790a200-becb-4306-a4e1-05b46a20faac"
+        ],
+        "x-ms-correlation-request-id": [
+          "7790a200-becb-4306-a4e1-05b46a20faac"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142202Z:7790a200-becb-4306-a4e1-05b46a20faac"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:22:02 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/clusters/psclusterclienttest?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Jlc291cmNlR3JvdXBzL0t1c3RvUFNDbGllbnRUZXN0UkcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9jbHVzdGVycy9wc2NsdXN0ZXJjbGllbnR0ZXN0P2FwaS12ZXJzaW9uPTIwMTctMDktMDctcHJpdmF0ZXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "418b3e45-0579-42ad-aa7a-6793fae1ebe3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Kusto/clusters/psclusterclienttest' under resource group 'KustoPSClientTestRG' was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "167"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "817cb4be-406a-4e9d-aad9-dc52fc1da278"
+        ],
+        "x-ms-correlation-request-id": [
+          "817cb4be-406a-4e9d-aad9-dc52fc1da278"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142203Z:817cb4be-406a-4e9d-aad9-dc52fc1da278"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:22:02 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/clusters/psclusterclienttest?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Jlc291cmNlR3JvdXBzL0t1c3RvUFNDbGllbnRUZXN0UkcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9jbHVzdGVycy9wc2NsdXN0ZXJjbGllbnR0ZXN0P2FwaS12ZXJzaW9uPTIwMTctMDktMDctcHJpdmF0ZXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/Clusters/psclusterclienttest\",\r\n  \"name\": \"psclusterclienttest\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\",\r\n  \"etag\": \"\\\"\\\"\",\r\n  \"location\": \"Central US\",\r\n  \"sku\": {\r\n    \"name\": \"D13_v2\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"state\": \"Running\",\r\n    \"queryUri\": \"https://psclusterclienttest.centralus.kusto.windows.net\",\r\n    \"dataIngestionUri\": \"https://ingest-psclusterclienttest.centralus.kusto.windows.net\",\r\n    \"trustedExternalTenants\": [\r\n      {\r\n        \"value\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "610"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "299"
+        ],
+        "x-ms-request-id": [
+          "16f1e2b7-bdbf-4a6b-a8fc-9c55827993c1"
+        ],
+        "x-ms-correlation-request-id": [
+          "44891b2b-2937-45cc-9cc0-de47f02eae1c"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143850Z:44891b2b-2937-45cc-9cc0-de47f02eae1c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:38:49 GMT"
+        ],
+        "ETag": [
+          "\"\""
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/clusters/psclusterclienttest?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Jlc291cmNlR3JvdXBzL0t1c3RvUFNDbGllbnRUZXN0UkcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9jbHVzdGVycy9wc2NsdXN0ZXJjbGllbnR0ZXN0P2FwaS12ZXJzaW9uPTIwMTctMDktMDctcHJpdmF0ZXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e2d8ca11-d2a9-4f84-815f-e5eaf0e1f41d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/Clusters/psclusterclienttest\",\r\n  \"name\": \"psclusterclienttest\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\",\r\n  \"etag\": \"\\\"\\\"\",\r\n  \"location\": \"Central US\",\r\n  \"sku\": {\r\n    \"name\": \"D13_v2\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"state\": \"Running\",\r\n    \"queryUri\": \"https://psclusterclienttest.centralus.kusto.windows.net\",\r\n    \"dataIngestionUri\": \"https://ingest-psclusterclienttest.centralus.kusto.windows.net\",\r\n    \"trustedExternalTenants\": [\r\n      {\r\n        \"value\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "610"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "297"
+        ],
+        "x-ms-request-id": [
+          "5d01ebec-6be3-4083-84d7-68004565752e"
+        ],
+        "x-ms-correlation-request-id": [
+          "aecb7eef-8d41-411c-891d-9eeb5cb4fa9d"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143905Z:aecb7eef-8d41-411c-891d-9eeb5cb4fa9d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:39:05 GMT"
+        ],
+        "ETag": [
+          "\"\""
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/clusters/psclusterclienttest?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Jlc291cmNlR3JvdXBzL0t1c3RvUFNDbGllbnRUZXN0UkcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9jbHVzdGVycy9wc2NsdXN0ZXJjbGllbnR0ZXN0P2FwaS12ZXJzaW9uPTIwMTctMDktMDctcHJpdmF0ZXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/Clusters/psclusterclienttest\",\r\n  \"name\": \"psclusterclienttest\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\",\r\n  \"etag\": \"\\\"\\\"\",\r\n  \"location\": \"Central US\",\r\n  \"sku\": {\r\n    \"name\": \"D13_v2\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"state\": \"Running\",\r\n    \"queryUri\": \"https://psclusterclienttest.centralus.kusto.windows.net\",\r\n    \"dataIngestionUri\": \"https://ingest-psclusterclienttest.centralus.kusto.windows.net\",\r\n    \"trustedExternalTenants\": [\r\n      {\r\n        \"value\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "610"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "296"
+        ],
+        "x-ms-request-id": [
+          "da564fa2-b6c9-4e45-8293-259c06288d94"
+        ],
+        "x-ms-correlation-request-id": [
+          "193dff67-93f5-43f0-801a-d1bafa862dbb"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143938Z:193dff67-93f5-43f0-801a-d1bafa862dbb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:39:38 GMT"
+        ],
+        "ETag": [
+          "\"\""
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/clusters/psclusterclienttest?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Jlc291cmNlR3JvdXBzL0t1c3RvUFNDbGllbnRUZXN0UkcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9jbHVzdGVycy9wc2NsdXN0ZXJjbGllbnR0ZXN0P2FwaS12ZXJzaW9uPTIwMTctMDktMDctcHJpdmF0ZXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9b94587f-5829-4d29-9fbd-3764b65ee470"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/Clusters/psclusterclienttest\",\r\n  \"name\": \"psclusterclienttest\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\",\r\n  \"etag\": \"\\\"\\\"\",\r\n  \"location\": \"Central US\",\r\n  \"sku\": {\r\n    \"name\": \"D13_v2\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"state\": \"Running\",\r\n    \"queryUri\": \"https://psclusterclienttest.centralus.kusto.windows.net\",\r\n    \"dataIngestionUri\": \"https://ingest-psclusterclienttest.centralus.kusto.windows.net\",\r\n    \"trustedExternalTenants\": [\r\n      {\r\n        \"value\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "610"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "295"
+        ],
+        "x-ms-request-id": [
+          "8d24fae7-55b4-4d9d-8acc-4bd4bf2e46dc"
+        ],
+        "x-ms-correlation-request-id": [
+          "d4a49005-d183-4aa7-9b00-730906e0b218"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143938Z:d4a49005-d183-4aa7-9b00-730906e0b218"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:39:38 GMT"
+        ],
+        "ETag": [
+          "\"\""
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/clusters/psclusterclienttest?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Jlc291cmNlR3JvdXBzL0t1c3RvUFNDbGllbnRUZXN0UkcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9jbHVzdGVycy9wc2NsdXN0ZXJjbGllbnR0ZXN0P2FwaS12ZXJzaW9uPTIwMTctMDktMDctcHJpdmF0ZXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8fe936ca-3327-4376-9331-4efa75efe06c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Kusto/clusters/psclusterclienttest' under resource group 'KustoPSClientTestRG' was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "167"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "efa1cc2e-0267-4adf-aad4-ccea2bf5a63f"
+        ],
+        "x-ms-correlation-request-id": [
+          "efa1cc2e-0267-4adf-aad4-ccea2bf5a63f"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20181205T144845Z:efa1cc2e-0267-4adf-aad4-ccea2bf5a63f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:48:45 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/clusters/psclusterclienttest?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Jlc291cmNlR3JvdXBzL0t1c3RvUFNDbGllbnRUZXN0UkcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9jbHVzdGVycy9wc2NsdXN0ZXJjbGllbnR0ZXN0P2FwaS12ZXJzaW9uPTIwMTctMDktMDctcHJpdmF0ZXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"D13_v2\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"location\": \"Central US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "97"
+        ],
+        "x-ms-client-request-id": [
+          "0de5c4fd-aa36-41a1-bd59-39ce86308980"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/Clusters/psclusterclienttest\",\r\n  \"name\": \"psclusterclienttest\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\",\r\n  \"etag\": \"\\\"\\\"\",\r\n  \"location\": \"Central US\",\r\n  \"sku\": {\r\n    \"name\": \"D13_v2\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"state\": \"Creating\",\r\n    \"queryUri\": null,\r\n    \"dataIngestionUri\": null,\r\n    \"trustedExternalTenants\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "428"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f72202dc-7c9d-4885-b966-5a1ed48b6939"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "199"
+        ],
+        "x-ms-correlation-request-id": [
+          "d6f9a156-210e-4632-82d4-b64a74a442f6"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142207Z:d6f9a156-210e-4632-82d4-b64a74a442f6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:22:06 GMT"
+        ],
+        "ETag": [
+          "\"\""
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/clusters/psclusterclienttest?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Jlc291cmNlR3JvdXBzL0t1c3RvUFNDbGllbnRUZXN0UkcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9jbHVzdGVycy9wc2NsdXN0ZXJjbGllbnR0ZXN0P2FwaS12ZXJzaW9uPTIwMTctMDktMDctcHJpdmF0ZXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"D13_v2\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"location\": \"Central US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "97"
+        ],
+        "x-ms-client-request-id": [
+          "87dee5cf-82ed-4080-bbc1-1e962be6d1c2"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/Clusters/psclusterclienttest\",\r\n  \"name\": \"psclusterclienttest\",\r\n  \"type\": \"Microsoft.Kusto/Clusters\",\r\n  \"etag\": \"\\\"\\\"\",\r\n  \"location\": \"Central US\",\r\n  \"sku\": {\r\n    \"name\": \"D13_v2\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "339"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "198"
+        ],
+        "x-ms-request-id": [
+          "eb762484-c48f-4f6d-b69e-3c0f8e1e8c6d"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationResults/894b646d-409c-4193-a9b7-62a15b205b3d?api-version=2017-09-07-privatepreview"
+        ],
+        "x-ms-correlation-request-id": [
+          "0c68a155-d95d-4075-938d-bb0c14e6b60f"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143908Z:0c68a155-d95d-4075-938d-bb0c14e6b60f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:39:07 GMT"
+        ],
+        "ETag": [
+          "\"\""
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "299"
+        ],
+        "x-ms-request-id": [
+          "317392dc-8630-45df-9097-2d654a7f45b7"
+        ],
+        "x-ms-correlation-request-id": [
+          "b212caba-ef06-47dd-b02b-b13ceb067c63"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142237Z:b212caba-ef06-47dd-b02b-b13ceb067c63"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:22:37 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "298"
+        ],
+        "x-ms-request-id": [
+          "15393513-7cd0-48bf-bdb9-1948826acd9a"
+        ],
+        "x-ms-correlation-request-id": [
+          "b5975fdc-3a39-4a17-b26e-eb5593e7865d"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142307Z:b5975fdc-3a39-4a17-b26e-eb5593e7865d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:23:07 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "12ac9a97-dc0b-446b-ba86-fcb1e2e36386"
+        ],
+        "x-ms-request-id": [
+          "8497cd09-3d70-4512-8fef-238d6f703cc1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "297"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142337Z:12ac9a97-dc0b-446b-ba86-fcb1e2e36386"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:23:37 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "296"
+        ],
+        "x-ms-request-id": [
+          "7d393b0c-bc10-4630-af1c-7e29f2c1c6a6"
+        ],
+        "x-ms-correlation-request-id": [
+          "5f204eef-985f-4587-80b1-279f75b8777a"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142408Z:5f204eef-985f-4587-80b1-279f75b8777a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:24:08 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "295"
+        ],
+        "x-ms-request-id": [
+          "3fad51c5-4f6b-45f5-b53a-3998e11fcd5a"
+        ],
+        "x-ms-correlation-request-id": [
+          "e949de4a-b219-4440-9799-d17a951bfb12"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142439Z:e949de4a-b219-4440-9799-d17a951bfb12"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:24:38 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "294"
+        ],
+        "x-ms-request-id": [
+          "98acce54-9589-4728-813b-17b243d49c35"
+        ],
+        "x-ms-correlation-request-id": [
+          "5c4283b9-65d5-4782-a94f-09ef01cb2799"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142509Z:5c4283b9-65d5-4782-a94f-09ef01cb2799"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:25:08 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "0a7d019c-ffa2-435d-a9a0-24e703c2eba8"
+        ],
+        "x-ms-request-id": [
+          "82d2bba6-fb12-45b4-b4ce-42b8bae08a6f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "293"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142539Z:0a7d019c-ffa2-435d-a9a0-24e703c2eba8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:25:39 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "292"
+        ],
+        "x-ms-request-id": [
+          "0f1d9271-5ca8-4d00-96f0-775c62978f3e"
+        ],
+        "x-ms-correlation-request-id": [
+          "adb0d9dd-2986-434a-b0ca-692a1d4f09fa"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142610Z:adb0d9dd-2986-434a-b0ca-692a1d4f09fa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:26:10 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "291"
+        ],
+        "x-ms-request-id": [
+          "2c49885e-7388-461a-a16b-5f92cf47485b"
+        ],
+        "x-ms-correlation-request-id": [
+          "0a3cfcbe-4f0e-4bf0-9612-0c2d0fac398d"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142640Z:0a3cfcbe-4f0e-4bf0-9612-0c2d0fac398d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:26:40 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "290"
+        ],
+        "x-ms-request-id": [
+          "cfc707fc-ab66-4b37-9ead-4ad7e307cdae"
+        ],
+        "x-ms-correlation-request-id": [
+          "5b533199-0bb2-4067-b065-2fed193a7fab"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142710Z:5b533199-0bb2-4067-b065-2fed193a7fab"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:27:09 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "93d3ecea-95b0-418e-8ad3-4c4c9ea15521"
+        ],
+        "x-ms-request-id": [
+          "13deaff8-e227-489a-abd7-1c30a0d89b59"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "289"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142741Z:93d3ecea-95b0-418e-8ad3-4c4c9ea15521"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:27:41 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "288"
+        ],
+        "x-ms-request-id": [
+          "b73bb01d-ee9e-404e-ad3b-745e62f00efb"
+        ],
+        "x-ms-correlation-request-id": [
+          "1186abcb-51cf-463f-a22c-c025e8fbed6d"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142811Z:1186abcb-51cf-463f-a22c-c025e8fbed6d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:28:10 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "287"
+        ],
+        "x-ms-request-id": [
+          "b4f4759d-e5d2-4896-b919-516c97813453"
+        ],
+        "x-ms-correlation-request-id": [
+          "15b28967-2188-4b93-8766-c908430061cd"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142842Z:15b28967-2188-4b93-8766-c908430061cd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:28:41 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "286"
+        ],
+        "x-ms-request-id": [
+          "e9f2e373-0677-4fbc-80fc-8379dd869f9c"
+        ],
+        "x-ms-correlation-request-id": [
+          "0cf42d89-cffc-45f0-a854-7c7b9d5d8e6d"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142912Z:0cf42d89-cffc-45f0-a854-7c7b9d5d8e6d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:29:11 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "4f387b7c-e52a-4804-88cd-2818b9cdf02e"
+        ],
+        "x-ms-request-id": [
+          "44f181af-956f-4911-933e-75ddfd842670"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "285"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T142942Z:4f387b7c-e52a-4804-88cd-2818b9cdf02e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:29:41 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "289"
+        ],
+        "x-ms-request-id": [
+          "8cf37597-8fb4-4fad-bbe6-fb3f843d7d75"
+        ],
+        "x-ms-correlation-request-id": [
+          "a7b1c878-683e-420c-a2bf-244f5ac9df00"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143013Z:a7b1c878-683e-420c-a2bf-244f5ac9df00"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:30:12 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "288"
+        ],
+        "x-ms-request-id": [
+          "0741649b-cd7a-4a95-9e2d-0a0a142fd8b7"
+        ],
+        "x-ms-correlation-request-id": [
+          "8152c8a7-7359-4c90-b07a-996660a4fcd0"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143043Z:8152c8a7-7359-4c90-b07a-996660a4fcd0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:30:43 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "287"
+        ],
+        "x-ms-request-id": [
+          "8f063fe6-b551-40ec-ad88-a2d7538c14c4"
+        ],
+        "x-ms-correlation-request-id": [
+          "bbd7838b-8dee-4fae-9fab-c99e5da7f2c5"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143113Z:bbd7838b-8dee-4fae-9fab-c99e5da7f2c5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:31:13 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "b846f512-2d55-4f8a-925f-c62e917f713b"
+        ],
+        "x-ms-request-id": [
+          "ca4b4a87-e033-41e6-95b8-601dbfb23b82"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "286"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143144Z:b846f512-2d55-4f8a-925f-c62e917f713b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:31:43 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "285"
+        ],
+        "x-ms-request-id": [
+          "20e9a2e1-41dc-4da6-aa65-d8dc8a8b251c"
+        ],
+        "x-ms-correlation-request-id": [
+          "cf4ac79c-a793-4bb7-9470-082143face08"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143214Z:cf4ac79c-a793-4bb7-9470-082143face08"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:32:14 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "284"
+        ],
+        "x-ms-request-id": [
+          "06c9cb6e-c530-4e9e-b20f-d607f42a1bb0"
+        ],
+        "x-ms-correlation-request-id": [
+          "c36b974e-9ccc-4e41-9dcd-96fc94069d1d"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143245Z:c36b974e-9ccc-4e41-9dcd-96fc94069d1d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:32:44 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "283"
+        ],
+        "x-ms-request-id": [
+          "c44dcf4a-453d-40c9-bbc1-2866e8e928f3"
+        ],
+        "x-ms-correlation-request-id": [
+          "1ecc3fc8-62be-4107-bdaf-573c2955d29b"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143315Z:1ecc3fc8-62be-4107-bdaf-573c2955d29b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:33:14 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "1f01dffe-fa9c-431c-a708-0c181d373453"
+        ],
+        "x-ms-request-id": [
+          "b58733eb-f1d4-4c36-b653-452aec209ce7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "282"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143345Z:1f01dffe-fa9c-431c-a708-0c181d373453"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:33:45 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "281"
+        ],
+        "x-ms-request-id": [
+          "92f7e272-887c-4451-94a4-41c519466243"
+        ],
+        "x-ms-correlation-request-id": [
+          "19e3aecf-2c02-4916-add6-22c240a9cae2"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143416Z:19e3aecf-2c02-4916-add6-22c240a9cae2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:34:16 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "280"
+        ],
+        "x-ms-request-id": [
+          "d78ebaed-b92a-438c-87a6-c7512f4f9fa5"
+        ],
+        "x-ms-correlation-request-id": [
+          "ea8b043b-c0e1-4c5b-88c0-4ff11b578789"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143446Z:ea8b043b-c0e1-4c5b-88c0-4ff11b578789"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:34:46 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "289"
+        ],
+        "x-ms-request-id": [
+          "4eac1385-11b0-43b4-b516-3b56e07073b4"
+        ],
+        "x-ms-correlation-request-id": [
+          "f7c19e7b-75f8-44d2-a18c-38ff205affdc"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143516Z:f7c19e7b-75f8-44d2-a18c-38ff205affdc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:35:16 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "8b40cb7f-01dd-40a9-a2ed-1f7fab93ea2d"
+        ],
+        "x-ms-request-id": [
+          "575dda22-ebe4-4b4a-9ee4-c129466c621e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "288"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143547Z:8b40cb7f-01dd-40a9-a2ed-1f7fab93ea2d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:35:47 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "287"
+        ],
+        "x-ms-request-id": [
+          "0373447e-7a26-4e17-a50b-406f2ee5cb7b"
+        ],
+        "x-ms-correlation-request-id": [
+          "acca8035-5413-474a-9477-663ea8e01964"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143618Z:acca8035-5413-474a-9477-663ea8e01964"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:36:17 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "286"
+        ],
+        "x-ms-request-id": [
+          "c12fd73c-2ea3-4009-89fe-230dbc0691ea"
+        ],
+        "x-ms-correlation-request-id": [
+          "865eaef1-93d9-4a09-9291-5658772da146"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143648Z:865eaef1-93d9-4a09-9291-5658772da146"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:36:48 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "285"
+        ],
+        "x-ms-request-id": [
+          "41349768-d209-451b-8287-778c670dbd72"
+        ],
+        "x-ms-correlation-request-id": [
+          "908d2c6e-a62d-4ff2-9da1-c30b92444356"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143718Z:908d2c6e-a62d-4ff2-9da1-c30b92444356"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:37:17 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "b5f72363-5176-4e7f-af0c-7aee4c5090e0"
+        ],
+        "x-ms-request-id": [
+          "3d178804-1f66-4005-8e28-82f69b1b196b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "284"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143748Z:b5f72363-5176-4e7f-af0c-7aee4c5090e0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:37:47 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "283"
+        ],
+        "x-ms-request-id": [
+          "c86d221a-3f4e-481d-81b8-8a6743fc04e2"
+        ],
+        "x-ms-correlation-request-id": [
+          "31f9dca7-ada2-428f-9e08-0b4b311380ea"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143819Z:31f9dca7-ada2-428f-9e08-0b4b311380ea"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:38:19 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/e7ca4ffb-2947-45eb-92f9-54b592e875d5?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzL2U3Y2E0ZmZiLTI5NDctNDVlYi05MmY5LTU0YjU5MmU4NzVkNT9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"name\": \"e7ca4ffb-2947-45eb-92f9-54b592e875d5\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-12-05T14:22:06.3667261Z\",\r\n  \"endTime\": \"2018-12-05T14:38:31.2795508Z\",\r\n  \"percentComplete\": 1.0,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterCreate\",\r\n    \"RootActivityId\": \"a6f39003-b99b-481b-91c6-cc0db991ea23\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "437"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "282"
+        ],
+        "x-ms-request-id": [
+          "d4929edb-a82a-4c19-9a73-c729d5adec42"
+        ],
+        "x-ms-correlation-request-id": [
+          "b919f6c1-b343-4ca2-a565-c661b3f9dc42"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143849Z:b919f6c1-b343-4ca2-a565-c661b3f9dc42"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:38:49 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/clusters?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Jlc291cmNlR3JvdXBzL0t1c3RvUFNDbGllbnRUZXN0UkcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9jbHVzdGVycz9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9d0506c1-1b6d-4980-955d-71ae88714f50"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/Clusters/psclusterclienttest\",\r\n      \"name\": \"psclusterclienttest\",\r\n      \"type\": \"Microsoft.Kusto/Clusters\",\r\n      \"etag\": \"\\\"\\\"\",\r\n      \"location\": \"Central US\",\r\n      \"sku\": {\r\n        \"name\": \"D13_v2\",\r\n        \"tier\": \"Standard\",\r\n        \"capacity\": 2\r\n      },\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"state\": \"Running\",\r\n        \"queryUri\": \"https://psclusterclienttest.centralus.kusto.windows.net\",\r\n        \"dataIngestionUri\": \"https://ingest-psclusterclienttest.centralus.kusto.windows.net\",\r\n        \"trustedExternalTenants\": [\r\n          {\r\n            \"value\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n          }\r\n        ],\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "622"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "298"
+        ],
+        "x-ms-request-id": [
+          "7dcf9da7-ea39-4bd4-845d-68efacd45ed1"
+        ],
+        "x-ms-correlation-request-id": [
+          "1b57e366-10ed-4993-a3f3-3366f265cb58"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143903Z:1b57e366-10ed-4993-a3f3-3366f265cb58"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:39:02 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/894b646d-409c-4193-a9b7-62a15b205b3d?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzg5NGI2NDZkLTQwOWMtNDE5My1hOWI3LTYyYTE1YjIwNWIzZD9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/894b646d-409c-4193-a9b7-62a15b205b3d\",\r\n  \"name\": \"894b646d-409c-4193-a9b7-62a15b205b3d\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-12-05T14:39:07.1599402Z\",\r\n  \"endTime\": \"2018-12-05T14:39:08.0662677Z\",\r\n  \"percentComplete\": 1.0,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ServiceConfigurationAlter\",\r\n    \"RootActivityId\": \"52d1a89a-7e0a-42ff-88db-15c1e67a1959\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "449"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "281"
+        ],
+        "x-ms-request-id": [
+          "47e476d9-e045-4aee-be93-ebafee7adbfa"
+        ],
+        "x-ms-correlation-request-id": [
+          "bf6063c2-c1fd-464b-a966-22b3569d2f98"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143938Z:bf6063c2-c1fd-464b-a966-22b3569d2f98"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:39:38 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/KustoPSClientTestRG/providers/Microsoft.Kusto/clusters/psclusterclienttest?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Jlc291cmNlR3JvdXBzL0t1c3RvUFNDbGllbnRUZXN0UkcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9jbHVzdGVycy9wc2NsdXN0ZXJjbGllbnR0ZXN0P2FwaS12ZXJzaW9uPTIwMTctMDktMDctcHJpdmF0ZXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2801c226-8f00-4e83-87b0-4780932aeda6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "6b42c98d-b6e4-4b2f-9ca8-c584cd101e55"
+        ],
+        "x-ms-correlation-request-id": [
+          "6b42c98d-b6e4-4b2f-9ca8-c584cd101e55"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T143939Z:6b42c98d-b6e4-4b2f-9ca8-c584cd101e55"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:39:39 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview&operationResultResponseType=Location"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzExNTc3ZjI5LTQ3NWMtNDY1Yi1hMzcxLTMwYzk4YTYxYjI4Mj9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"name\": \"11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"endTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterDelete\",\r\n    \"RootActivityId\": \"c93741b9-20cf-452f-be03-469f00d79186\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "290"
+        ],
+        "x-ms-request-id": [
+          "4cea3421-df05-429c-bf70-740fa5b0470d"
+        ],
+        "x-ms-correlation-request-id": [
+          "adf1548b-9bbd-4a61-889e-94e225bf2950"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T144009Z:adf1548b-9bbd-4a61-889e-94e225bf2950"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:40:09 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzExNTc3ZjI5LTQ3NWMtNDY1Yi1hMzcxLTMwYzk4YTYxYjI4Mj9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"name\": \"11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"endTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterDelete\",\r\n    \"RootActivityId\": \"c93741b9-20cf-452f-be03-469f00d79186\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "9399c096-0e0d-4c60-ae02-a0aeaa07755a"
+        ],
+        "x-ms-request-id": [
+          "e828f35b-4ddf-4330-b828-774d867c7845"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "289"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T144040Z:9399c096-0e0d-4c60-ae02-a0aeaa07755a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:40:39 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzExNTc3ZjI5LTQ3NWMtNDY1Yi1hMzcxLTMwYzk4YTYxYjI4Mj9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"name\": \"11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"endTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterDelete\",\r\n    \"RootActivityId\": \"c93741b9-20cf-452f-be03-469f00d79186\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "288"
+        ],
+        "x-ms-request-id": [
+          "22398cbb-a1e0-443d-af88-e6b2a1ff8f26"
+        ],
+        "x-ms-correlation-request-id": [
+          "f86c11b1-afef-4787-aef2-f05dae9eafdc"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T144110Z:f86c11b1-afef-4787-aef2-f05dae9eafdc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:41:10 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzExNTc3ZjI5LTQ3NWMtNDY1Yi1hMzcxLTMwYzk4YTYxYjI4Mj9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"name\": \"11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"endTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterDelete\",\r\n    \"RootActivityId\": \"c93741b9-20cf-452f-be03-469f00d79186\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "287"
+        ],
+        "x-ms-request-id": [
+          "0ef51818-6ab8-4d3e-8b56-58bd40c994fa"
+        ],
+        "x-ms-correlation-request-id": [
+          "40dc5cd2-48e1-4466-82d6-c9efed2799ed"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T144141Z:40dc5cd2-48e1-4466-82d6-c9efed2799ed"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:41:40 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzExNTc3ZjI5LTQ3NWMtNDY1Yi1hMzcxLTMwYzk4YTYxYjI4Mj9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"name\": \"11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"endTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterDelete\",\r\n    \"RootActivityId\": \"c93741b9-20cf-452f-be03-469f00d79186\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "286"
+        ],
+        "x-ms-request-id": [
+          "1a98b15e-916e-4bf4-b2b2-01d2f2054ce9"
+        ],
+        "x-ms-correlation-request-id": [
+          "8f84a2b7-2da1-432e-8b0b-cc8a6364fba9"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T144211Z:8f84a2b7-2da1-432e-8b0b-cc8a6364fba9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:42:11 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzExNTc3ZjI5LTQ3NWMtNDY1Yi1hMzcxLTMwYzk4YTYxYjI4Mj9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"name\": \"11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"endTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterDelete\",\r\n    \"RootActivityId\": \"c93741b9-20cf-452f-be03-469f00d79186\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "995b264b-d395-49dd-8013-afbf06431c75"
+        ],
+        "x-ms-request-id": [
+          "42345f99-891d-4e20-abdb-56f8cf53d370"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "285"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T144241Z:995b264b-d395-49dd-8013-afbf06431c75"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:42:41 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzExNTc3ZjI5LTQ3NWMtNDY1Yi1hMzcxLTMwYzk4YTYxYjI4Mj9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"name\": \"11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"endTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterDelete\",\r\n    \"RootActivityId\": \"c93741b9-20cf-452f-be03-469f00d79186\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "284"
+        ],
+        "x-ms-request-id": [
+          "88bafd3c-d156-4382-b7ef-ce2e3642e52f"
+        ],
+        "x-ms-correlation-request-id": [
+          "95ee3c16-dab1-42d3-986f-284cc941e8f0"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T144312Z:95ee3c16-dab1-42d3-986f-284cc941e8f0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:43:11 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzExNTc3ZjI5LTQ3NWMtNDY1Yi1hMzcxLTMwYzk4YTYxYjI4Mj9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"name\": \"11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"endTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterDelete\",\r\n    \"RootActivityId\": \"c93741b9-20cf-452f-be03-469f00d79186\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "283"
+        ],
+        "x-ms-request-id": [
+          "1c8e305b-e387-434a-b838-42f6a83cd764"
+        ],
+        "x-ms-correlation-request-id": [
+          "e0bde3ef-3f79-4e18-bc58-6f7868d8dc91"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T144342Z:e0bde3ef-3f79-4e18-bc58-6f7868d8dc91"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:43:42 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzExNTc3ZjI5LTQ3NWMtNDY1Yi1hMzcxLTMwYzk4YTYxYjI4Mj9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"name\": \"11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"status\": \"Running\",\r\n  \"startTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"endTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"percentComplete\": 0.5,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterDelete\",\r\n    \"RootActivityId\": \"c93741b9-20cf-452f-be03-469f00d79186\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "435"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "282"
+        ],
+        "x-ms-request-id": [
+          "7ca69d5d-ae9f-4877-b989-c9b75c0faddf"
+        ],
+        "x-ms-correlation-request-id": [
+          "c9cb96f2-28c7-490e-9d4e-aa440b961fa7"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T144412Z:c9cb96f2-28c7-490e-9d4e-aa440b961fa7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:44:12 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzExNTc3ZjI5LTQ3NWMtNDY1Yi1hMzcxLTMwYzk4YTYxYjI4Mj9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central US/operationresults/11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"name\": \"11577f29-475c-465b-a371-30c98a61b282\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-12-05T14:39:39.4587416Z\",\r\n  \"endTime\": \"2018-12-05T14:44:34.6194114Z\",\r\n  \"percentComplete\": 1.0,\r\n  \"properties\": {\r\n    \"OperationKind\": \"ClusterDelete\",\r\n    \"RootActivityId\": \"c93741b9-20cf-452f-be03-469f00d79186\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "437"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "772098bb-c0e0-4676-80dc-5c6e46a14bd6"
+        ],
+        "x-ms-request-id": [
+          "72ab3d19-3cfd-4c78-881c-0041ef93e090"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "281"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T144443Z:772098bb-c0e0-4676-80dc-5c6e46a14bd6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:44:42 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/Central%20US/operationResults/11577f29-475c-465b-a371-30c98a61b282?api-version=2017-09-07-privatepreview&operationResultResponseType=Location",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Byb3ZpZGVycy9NaWNyb3NvZnQuS3VzdG8vbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25SZXN1bHRzLzExNTc3ZjI5LTQ3NWMtNDY1Yi1hMzcxLTMwYzk4YTYxYjI4Mj9hcGktdmVyc2lvbj0yMDE3LTA5LTA3LXByaXZhdGVwcmV2aWV3Jm9wZXJhdGlvblJlc3VsdFJlc3BvbnNlVHlwZT1Mb2NhdGlvbg==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Kusto.KustoManagementClient/1.0.6"
+        ]
+      },
+      "ResponseBody": "\"Completed\"",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "11"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "280"
+        ],
+        "x-ms-request-id": [
+          "52aa2d62-ac55-42d9-bd01-9a12e8cfcad7"
+        ],
+        "x-ms-correlation-request-id": [
+          "ea217d4f-d46d-4a33-a150-31e77df91833"
+        ],
+        "x-ms-routing-request-id": [
+          "UKWEST:20181205T144443Z:ea217d4f-d46d-4a33-a150-31e77df91833"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:44:42 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=abf0220645ea22573568610313bec0b920fd62831eeab85513f40eb93050918a;Path=/;HttpOnly;Domain=rp-kustorpcus-website.azurewebsites.net"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourcegroups/KustoPSClientTestRG?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL3Jlc291cmNlZ3JvdXBzL0t1c3RvUFNDbGllbnRUZXN0Ukc/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ff099fba-3046-4e5c-b607-112956b1fed1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "a11c250a-288d-498b-bc59-d41c7d20fd66"
+        ],
+        "x-ms-correlation-request-id": [
+          "a11c250a-288d-498b-bc59-d41c7d20fd66"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20181205T144849Z:a11c250a-288d-498b-bc59-d41c7d20fd66"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:48:48 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1LVVNUT1BTQ0xJRU5UVEVTVFJHLUNFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzIn0?api-version=2016-09-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1LVVNUT1BTQ0xJRU5UVEVTVFJHLUNFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFMVlZOVVQxQlRRMHhKUlU1VVZFVlRWRkpITFVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWTJWdWRISmhiSFZ6SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "62edc8ee-9699-41dd-8155-0fadb5787b7b"
+        ],
+        "x-ms-correlation-request-id": [
+          "62edc8ee-9699-41dd-8155-0fadb5787b7b"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20181205T144904Z:62edc8ee-9699-41dd-8155-0fadb5787b7b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:49:04 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1LVVNUT1BTQ0xJRU5UVEVTVFJHLUNFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzIn0?api-version=2016-09-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1LVVNUT1BTQ0xJRU5UVEVTVFJHLUNFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFMVlZOVVQxQlRRMHhKUlU1VVZFVlRWRkpITFVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWTJWdWRISmhiSFZ6SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "33bfa018-9b45-46c0-917a-4f22ae1fee3f"
+        ],
+        "x-ms-correlation-request-id": [
+          "33bfa018-9b45-46c0-917a-4f22ae1fee3f"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20181205T144920Z:33bfa018-9b45-46c0-917a-4f22ae1fee3f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:49:19 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1LVVNUT1BTQ0xJRU5UVEVTVFJHLUNFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzIn0?api-version=2016-09-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1LVVNUT1BTQ0xJRU5UVEVTVFJHLUNFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFMVlZOVVQxQlRRMHhKUlU1VVZFVlRWRkpITFVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWTJWdWRISmhiSFZ6SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "5ac60ed6-1097-44bc-85e7-5db3f8bbff26"
+        ],
+        "x-ms-correlation-request-id": [
+          "5ac60ed6-1097-44bc-85e7-5db3f8bbff26"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20181205T144935Z:5ac60ed6-1097-44bc-85e7-5db3f8bbff26"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:49:34 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1LVVNUT1BTQ0xJRU5UVEVTVFJHLUNFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoiY2VudHJhbHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFkNWYxNTktYTIxZC00YTZjLTgwNTMtYzNhYWUzMDA1N2NmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFMVlZOVVQxQlRRMHhKUlU1VVZFVlRWRkpITFVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWTJWdWRISmhiSFZ6SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17763",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "0ad848f2-9d08-4bd3-aa7d-e0d795386697"
+        ],
+        "x-ms-correlation-request-id": [
+          "0ad848f2-9d08-4bd3-aa7d-e0d795386697"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20181205T144935Z:0ad848f2-9d08-4bd3-aa7d-e0d795386697"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Dec 2018 14:49:35 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "11d5f159-a21d-4a6c-8053-c3aae30057cf"
+  }
+}

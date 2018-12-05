@@ -15,21 +15,23 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Utilities;
+using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.Kusto.Properties;
+using Microsoft.Azure.Management.Kusto.Models;
 
 namespace Microsoft.Azure.Commands.Kusto
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", DefaultParameterSetName = ParameterSet),
-        OutputType(typeof(PSKustoCluster))]
-    public class GetAzureRmKustoCluster : KustoCmdletBase
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoClusterName", DefaultParameterSetName = ParameterSet),
+        OutputType(typeof(PSKustoClusterNameAvailability))]
+    public class TestAzureRmKustoClusterName : KustoCmdletBase
     {
         protected const string ParameterSet = "ByClusterOrResourceGroupOrSubscription";
-        protected const string ResourceIdParameterSet = "ByResourceId";
 
         [Parameter(
             ParameterSetName = ParameterSet,
             Mandatory = false,
-            HelpMessage = "Name of resource group under which the user wants to retrieve the cluster.")]
-        public string ResourceGroupName { get; set; }
+            HelpMessage = "The location where to check.")]
+        public string Location { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSet,
@@ -37,35 +39,21 @@ namespace Microsoft.Azure.Commands.Kusto
             HelpMessage = "Name of a specific cluster.")]
         public string Name { get; set; }
 
-        [Parameter(
-            ParameterSetName = ResourceIdParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Kusto cluster ResourceID.")]
-        public string ResourceId { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            string resourceGroupName = ResourceGroupName;
+            string location = Location;
             string clusterName = Name;
-
-            if (!string.IsNullOrEmpty(ResourceId))
+            if (string.IsNullOrEmpty(location))
             {
-                KustoUtils.GetResourceGroupNameAndClusterNameFromClusterId(ResourceId, out resourceGroupName, out clusterName);
+                throw new CloudException(string.Format(Resources.KustoClusterExists, Name));
+            }
+            if (string.IsNullOrEmpty(clusterName))
+            {
+                throw new CloudException(string.Format(Resources.KustoClusterExists, Name));
             }
 
-            if (!string.IsNullOrEmpty(clusterName))
-            {
-                // Get for single cluster
-                var capacity = KustoClient.GetCluster(resourceGroupName, clusterName);
-                WriteObject(capacity);
-            }
-            else
-            {
-                // List all capacities in given resource group if available otherwise all capacities in the subscription
-                var list = KustoClient.ListClusters(resourceGroupName).ToArray();
-                WriteObject(list, true);
-            }
+            var result = KustoClient.CheckClusterNAmeAvailability(clusterName, location);
+            WriteObject(result);
         }
     }
 }
