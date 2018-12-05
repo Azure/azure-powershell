@@ -316,6 +316,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
                 Id = subscriptionId.ToString(),
                 Name = UnitTestSubscriptionName,
             };
+            account.ExtendedProperties.Add("Subscriptions", subscription.Id);
             subscription.SetEnvironment(UnitTestEnvironmentName);
             subscription.SetAccount(account.Id);
 
