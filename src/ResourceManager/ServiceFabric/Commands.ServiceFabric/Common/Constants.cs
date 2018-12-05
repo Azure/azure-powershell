@@ -53,6 +53,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public const string CertificateThumbprint = "certificateThumbprint";
         public const string CertificateUrlValue = "certificateUrlValue";
 
+        public const string CertificateCommonName = "certificateCommonName";
+        public const string CertificateIssuerThumbprint = "certificateIssuerThumbprint";
+
         public const string SecSourceVaultValue = "secSourceVaultValue";
         public const string SecCertificateThumbprint = "secCertificateThumbprint";
         public const string SecCertificateUrlValue = "secCertificateUrlValue";
