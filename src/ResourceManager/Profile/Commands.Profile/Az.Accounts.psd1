@@ -87,7 +87,7 @@ TypesToProcess = @()
 FormatsToProcess = @('.\Microsoft.Azure.Commands.Profile.format.ps1xml', '.\Microsoft.Azure.Commands.Profile.generated.format.ps1xml')
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Profile.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()

@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.DataFactoryV2</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.DataFactoryV2</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

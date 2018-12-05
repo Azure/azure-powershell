@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Batch</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Batch</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Batch</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

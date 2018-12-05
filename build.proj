@@ -131,11 +131,11 @@
     <Message Importance="high" Text="Cleaning Cmdlets..." />
 
     <!-- Clean out the NuGet cache -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path (Join-Path ($env:USERPROFILE) .nuget packages) -Recurse -Force&quot;" ContinueOnError="WarnAndContinue" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path (Join-Path ($env:USERPROFILE) .nuget packages) -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" />
 
     <!-- Remove Package, Publish, bin, obj, and TestResults directories -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path $(PackageDirectory),$(PublishDirectory) -Recurse -Force&quot;" ContinueOnError="WarnAndContinue" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj','TestResults' | Remove-Item -Recurse -Force&quot;" ContinueOnError="WarnAndContinue" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Remove-Item -Path $(PackageDirectory),$(PublishDirectory) -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj','TestResults' | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" ContinueOnError="WarnAndContinue" />
   </Target>
 
   <PropertyGroup>

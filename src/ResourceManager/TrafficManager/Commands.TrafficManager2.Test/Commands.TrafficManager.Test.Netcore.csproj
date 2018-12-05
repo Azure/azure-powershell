@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.Test.ScenarioTests</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>

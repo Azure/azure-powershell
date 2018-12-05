@@ -55,12 +55,12 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.6.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', 
-    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.dll', 
+    '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Models.dll', 
+    '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Helpers.dll', 
+    '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Logger.dll', 
+    '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Providers.dll', 
+    '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.ServiceClientAdapter.dll',
     '.\Microsoft.Azure.Management.RecoveryServices.Backup.dll', 
-    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers.dll', 
-    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Logger.dll', 
-    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Providers.dll', 
-    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter.dll',
     '.\Microsoft.Azure.Management.RecoveryServices.dll', 
     '.\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll', 
     '.\System.Configuration.ConfigurationManager.dll'
@@ -75,9 +75,9 @@ RequiredAssemblies = '.\AutoMapper.dll',
 FormatsToProcess = '.\Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.RecoveryServices.ARM.dll',
-    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.dll',
-    '.\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.ARM.dll',
+    '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll',
+    '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
