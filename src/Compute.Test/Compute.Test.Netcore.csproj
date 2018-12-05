@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Compute.Test</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Clients.Compute.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Compute.Tests</RootNamespace>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>

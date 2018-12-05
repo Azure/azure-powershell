@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
-    <id>Microsoft.Azure.PowerShell.Authorization</id>
+    <id>Microsoft.Azure.PowerShell.Clients.Authorization</id>
     <version>1.0.0</version>
-    <title>Microsoft Azure PowerShell Authorization</title>
+    <title>Microsoft Azure PowerShell Clients Authorization</title>
     <authors>Microsoft Corporation</authors>
     <owners>Microsoft Corporation</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://aka.ms/azps-common-license</licenseUrl>
     <projectUrl>https://github.com/Azure/azure-powershell-common</projectUrl>
-    <description>Microsoft Azure PowerShell Authorization library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</description>
+    <description>Microsoft Azure PowerShell Clients Authorization library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</description>
     <copyright>Copyright © Microsoft Corporation</copyright>
-    <tags>azure powershell authorization</tags>
+    <tags>azure powershell clients authorization</tags>
   </metadata>
 </package>

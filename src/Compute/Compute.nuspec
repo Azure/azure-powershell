@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
-    <id>Microsoft.Azure.PowerShell.Compute</id>
+    <id>Microsoft.Azure.PowerShell.Clients.Compute</id>
     <version>1.0.0</version>
-    <title>Microsoft Azure PowerShell Compute</title>
+    <title>Microsoft Azure PowerShell Clients Compute</title>
     <authors>Microsoft Corporation</authors>
     <owners>Microsoft Corporation</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://aka.ms/azps-common-license</licenseUrl>
     <projectUrl>https://github.com/Azure/azure-powershell-common</projectUrl>
-    <description>Microsoft Azure PowerShell Compute library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</description>
+    <description>Microsoft Azure PowerShell Clients Compute library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</description>
     <copyright>Copyright © Microsoft Corporation</copyright>
-    <tags>azure powershell compute</tags>
+    <tags>azure powershell clients compute</tags>
   </metadata>
 </package>
