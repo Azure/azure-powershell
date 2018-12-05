@@ -26,9 +26,10 @@
   <ItemGroup>
 
     <Reference Include="Microsoft.Azure.Commands.StorageSync">
-
       <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.StorageSync\Microsoft.Azure.Commands.StorageSync.dll</HintPath>
-
+    </Reference>
+	<Reference Include="Microsoft.Azure.Commands.StorageSync">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Storage\Microsoft.Azure.Commands.Storage.dll</HintPath>
     </Reference>
 
   </ItemGroup>
