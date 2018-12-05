@@ -184,6 +184,13 @@ namespace Microsoft.Azure.Commands.Network
         public Hashtable Tag { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ResourceId of the user assigned identity to be assigned to Application Gateway.")]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
@@ -320,6 +327,18 @@ namespace Microsoft.Azure.Commands.Network
             if (this.Zone != null)
             {
                 applicationGateway.Zones = this.Zone?.ToList();
+            }
+
+            if (this.UserAssignedIdentityId != null)
+            {
+                applicationGateway.Identity = new PSManagedServiceIdentity
+                {
+                    Type = PSResourceIdentityType.UserAssigned,
+                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
+                    {
+                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
+                    }
+                };
             }
 
             if (this.CustomErrorConfiguration != null)

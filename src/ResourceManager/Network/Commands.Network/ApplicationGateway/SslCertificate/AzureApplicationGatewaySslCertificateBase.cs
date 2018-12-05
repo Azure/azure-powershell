@@ -16,6 +16,7 @@ using System;
 using System.IO;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -29,24 +30,50 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-               Mandatory = true,
+               Mandatory = false,
                HelpMessage = "Path of certificate PFX file")]
         [ValidateNotNullOrEmpty]
         public string CertificateFile { get; set; }
 
         [Parameter(
-               Mandatory = true,
+               Mandatory = false,
                HelpMessage = "Certificate password")]
         [ValidateNotNullOrEmpty]
         public SecureString Password { get; set; }
+
+        [Parameter(
+               Mandatory = false,
+               HelpMessage = "SecretId (uri) of the KeyVault Secret. Use this option when a specific version of secret needs to be used.")]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultSecretId { get; set; }
+
+        [Parameter(
+               Mandatory = false,
+               HelpMessage = "KeyVault Secret Object. This option will use a version-less url for the certificate.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultSecret KeyVaultSecret { get; set; }
 
         public PSApplicationGatewaySslCertificate NewObject()
         {
             var sslCertificate = new PSApplicationGatewaySslCertificate();
 
             sslCertificate.Name = this.Name;
-            sslCertificate.Data = Convert.ToBase64String(File.ReadAllBytes(this.CertificateFile));
-            sslCertificate.Password = this.Password;
+            if (this.CertificateFile != null)
+            {
+                sslCertificate.Data = Convert.ToBase64String(File.ReadAllBytes(this.CertificateFile));
+                sslCertificate.Password = this.Password;
+            }
+            
+            if (this.KeyVaultSecret != null)
+            {
+                // Remove version from the secretId.
+                sslCertificate.KeyVaultSecretId = this.KeyVaultSecret.Id.Replace(this.KeyVaultSecret.Version, string.Empty);
+            }
+            else
+            {
+                sslCertificate.KeyVaultSecretId = this.KeyVaultSecretId;
+            }
+
             sslCertificate.Id =
                 ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                     this.NetworkClient.NetworkManagementClient.SubscriptionId,

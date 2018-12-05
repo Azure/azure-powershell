@@ -56,6 +56,12 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSResourceId, MNM.SubResource>();
                 cfg.CreateMap<MNM.SubResource, CNM.PSResourceId>();
 
+                // Managed Service Identity
+                cfg.CreateMap<CNM.PSManagedServiceIdentity, MNM.ManagedServiceIdentity>();
+                cfg.CreateMap<MNM.ManagedServiceIdentity, CNM.PSManagedServiceIdentity>();
+                cfg.CreateMap<CNM.PSManagedServiceIdentityUserAssignedIdentitiesValue, MNM.ManagedServiceIdentityUserAssignedIdentitiesValue>();
+                cfg.CreateMap<MNM.ManagedServiceIdentityUserAssignedIdentitiesValue, CNM.PSManagedServiceIdentityUserAssignedIdentitiesValue>();
+
                 // Route Filter 
                 cfg.CreateMap<CNM.PSRouteFilter, MNM.RouteFilter>();
                 cfg.CreateMap<MNM.RouteFilter, CNM.PSRouteFilter>();
