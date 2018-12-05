@@ -722,6 +722,8 @@ function Test-ApplicationGatewayCRUD3
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
+	$appgwIdentityName = Get-ResourceName
+	$keyVaultName = Get-ResourceName
 	$vnetName = Get-ResourceName
 	$gwSubnetName = Get-ResourceName
 	$publicIpName = Get-ResourceName
@@ -729,6 +731,7 @@ function Test-ApplicationGatewayCRUD3
 
 	$frontendPort01Name = Get-ResourceName
 	$fipconfigName = Get-ResourceName
+	$sslCert01Name = Get-ResourceName
 	$listener01Name = Get-ResourceName
 
 	$poolName = Get-ResourceName
@@ -752,12 +755,31 @@ function Test-ApplicationGatewayCRUD3
 		# Create public ip
 		$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
 
+		# Create UserAssignedIdentity
+		$identity = New-AzureRmResource -Name $appgwIdentityName -Location $location -ResourceType "Microsoft.ManagedIdentity/userAssignedIdentities" -ResourceGroupName $rgname -Force
+
+		# Create KeyVault
+		$keyVault = New-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $rgname -Location $location -EnableSoftDelete 
+
+		# Upload certificate to Key Vault as a secret.
+		$pw01 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+		$sslCert01Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert1.pfx"
+		$context = Get-AzureRmContext
+		Set-AzureRmEnvironment -Name $context.Environment.Name -AzureKeyVaultDnsSuffix "vault.azure.net"
+		$cert = Import-AzureKeyVaultCertificate -VaultName $keyVaultName -Name $sslCert01Name -FilePath $sslCert01Path -Password $pw01
+		$secret = Get-AzureKeyVaultSecret -VaultName $keyVaultName -Name $sslCert01Name
+
+		# Assign access policy to KeyVault using the User Assigned Identity. This allows Application Gateway instances to access KeyVault secret. 
+		Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $rgname -PermissionsToSecrets get -ObjectId $identity.Properties.principalId 
+
 		# Create ip configuration
 		$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
-
 		$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
-		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
-		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 443
+
+		#Create Ssl Certificate and Listener
+		$sslCert01 = New-AzureRmApplicationGatewaySslCertificate -Name $sslCert01Name -KeyVaultSecret $secret
+		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Https -SslCertificate $sslCert01 -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
 
 		# backend part
 		# trusted root cert part
@@ -780,7 +802,7 @@ function Test-ApplicationGatewayCRUD3
 		$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 
 		# Create Application Gateway
-		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy -TrustedRootCertificate $trustedRoot01 -AutoscaleConfiguration $autoscaleConfig
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -UserAssignedIdentityId $identity.ResourceId -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy -TrustedRootCertificate $trustedRoot01 -AutoscaleConfiguration $autoscaleConfig -sslCertificates $sslCert01
 
 		# Get Application Gateway
 		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
@@ -792,6 +814,12 @@ function Test-ApplicationGatewayCRUD3
 		$trustedRoot02 = Get-AzureRmApplicationGatewayTrustedRootCertificate -ApplicationGateway $getgw -Name $trustedRootCertName
 		Assert-NotNull $trustedRoot02
 		Assert-AreEqual $getgw.BackendHttpSettingsCollection[0].TrustedRootCertificates.Count 1
+
+		# Check SSLCertificates
+		$listener = Get-AzureRmApplicationGatewayHttpListener -ApplicationGateway $getgw -Name $listener01Name
+		Assert-NotNull $listener.SslCertificate
+		Assert-NotNull $getgw.SslCertificates[0]
+		Assert-Null $getgw.SslCertificates[0].KeyVaultSecretId
 
 		# check autoscale configuration
 		$autoscaleConfig01 = Get-AzureRmApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw

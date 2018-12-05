@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.ContainerInstance;
+using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Redis;
 using Microsoft.Azure.Management.Storage;
@@ -51,6 +52,8 @@ namespace Commands.Network.Test
         public RedisManagementClient RedisManagementClient { get; private set; }
 
         public OperationalInsightsManagementClient OperationalInsightsManagementClient { get; private set; }
+
+        public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
 
         public static NetworkResourcesController NewInstance => new NetworkResourcesController();
 
@@ -125,6 +128,7 @@ namespace Commands.Network.Test
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     psScriptPath,
+                    _helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath("AzureRM.Insights.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
@@ -173,6 +177,7 @@ namespace Commands.Network.Test
             RedisManagementClient = GetRedisManagementClient(context);
             SubscriptionClient = GetSubscriptionClient(context);
             OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
+            KeyVaultManagementClient = GetKeyVaultManagementClient(context);
 
             _helper.SetupManagementClients(
                 resourceManagerResourceManagementClient,
@@ -182,7 +187,8 @@ namespace Commands.Network.Test
                 StorageManagementClient,
                 RedisManagementClient,
                 SubscriptionClient,
-                OperationalInsightsManagementClient);
+                OperationalInsightsManagementClient,
+                KeyVaultManagementClient);
         }
 
         private static NetworkManagementClient GetNetworkManagementClient(RestTestFramework.MockContext context)
@@ -219,5 +225,10 @@ namespace Commands.Network.Test
         {
             return context.GetServiceClient<ContainerInstanceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
-}
+
+        private KeyVaultManagementClient GetKeyVaultManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<KeyVaultManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+    }
 }
