@@ -28,5 +28,6 @@ namespace Microsoft.Azure.Commands.TestFx
         ITestRunnerFactory WithNewRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList);
         ITestRunnerFactory WithExtraUserAgentsToIgnore(Dictionary<string, string> userAgentsToIgnore);
         ITestRunnerFactory WithRecordMatcher(RecordMatcherDelegate recordMatcher);
+        ITestRunnerFactory WithNewRecordMatcherArguments(Dictionary<string, string> userAgentsToIgnore, Dictionary<string, string> resourceProviders);
     }
 }
