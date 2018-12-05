@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -59,7 +59,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=19.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.6.1-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.7.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +112,18 @@
     <Compile Include="ApplicationGateway\FirewallExclusion\NewAzureApplicationGatewayFirewallExclusionConfigCommand.cs" />
     <Compile Include="ApplicationGateway\GetAzureApplicationGatewayAvailableSslOptions.cs" />
     <Compile Include="ApplicationGateway\GetAzureApplicationGatewaySslPredefinedPolicy.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleHeaderConfiguration\AzureApplicationGatewayRewriteRuleHeaderConfigurationBase.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleHeaderConfiguration\NewAzureApplicationGatewayRewriteRuleHeaderConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleActionSet\AzureApplicationGatewayRewriteRuleActionSetBase.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleActionSet\NewAzureApplicationGatewayRewriteRuleActionSetCommand.cs" />
+    <Compile Include="ApplicationGateway\RewriteRule\AzureApplicationGatewayRewriteRuleBase.cs" />
+    <Compile Include="ApplicationGateway\RewriteRule\NewAzureApplicationGatewayRewriteRuleCommand.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleSet\AddAzureApplicationGatewayRewriteRuleSetCommand.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleSet\AzureApplicationGatewayRewriteRuleSetBase.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleSet\GetAzureApplicationGatewayRewriteRuleSetCommand.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleSet\NewAzureApplicationGatewayRewriteRuleSetCommand.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleSet\RemoveAzureApplicationGatewayRewriteRuleSetCommand.cs" />
+    <Compile Include="ApplicationGateway\RewriteRuleSet\SetAzureApplicationGatewayRewriteRuleSetCommand.cs" />
     <Compile Include="ApplicationGateway\ProbeHealthResponseMatch\AzureApplicationGatewayProbeHealthResponseMatchBase.cs" />
     <Compile Include="ApplicationGateway\ProbeHealthResponseMatch\NewAzureApplicationGatewayProbeHealthResponseMatchCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendIPConfiguration\AddAzureApplicationGatewayFrontendIPConfigCommand.cs" />
@@ -216,6 +228,11 @@
     <Compile Include="ExpressRoutePort\NewAzureRMExpressRoutePortCommand.cs" />
     <Compile Include="ExpressRoutePort\RemoveAzureRMExpressRoutePortCommand.cs" />
     <Compile Include="ExpressRoutePort\SetAzureRMExpressRoutePortCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\LoadBalancerRule\AddAzureRmLoadBalancerRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\LoadBalancerRule\GetAzureRmLoadBalancerRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\LoadBalancerRule\NewAzureRmLoadBalancerRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\LoadBalancerRule\RemoveAzureRmLoadBalancerRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\LoadBalancerRule\SetAzureRmLoadBalancerRuleConfigCommand.cs" />
     <Compile Include="Generated\Models\PSExpressRouteLink.cs" />
     <Compile Include="Generated\Models\PSExpressRoutePort.cs" />
     <Compile Include="Generated\Models\PSExpressRoutePortsLocation.cs" />
@@ -311,11 +328,6 @@
     <Compile Include="Generated\LoadBalancer\InboundNatRule\NewAzureRmLoadBalancerInboundNatRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\InboundNatRule\RemoveAzureRmLoadBalancerInboundNatRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\InboundNatRule\SetAzureRmLoadBalancerInboundNatRuleConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\LoadBalancingRule\AddAzureRmLoadBalancerRuleConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\LoadBalancingRule\GetAzureRmLoadBalancerRuleConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\LoadBalancingRule\NewAzureRmLoadBalancerRuleConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\LoadBalancingRule\RemoveAzureRmLoadBalancerRuleConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\LoadBalancingRule\SetAzureRmLoadBalancerRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\NewAzureRMLoadBalancerCommand.cs" />
     <Compile Include="Generated\LoadBalancer\OutboundRule\AddAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\OutboundRule\GetAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
@@ -388,6 +400,10 @@
     <Compile Include="Models\PSApplicationGatewayFirewallExclusion.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewallFqdnTag.cs" />
     <Compile Include="Models\PSApplicationGatewayCustomError.cs" />
+    <Compile Include="Models\PSApplicationGatewayHeaderConfiguration.cs" />
+    <Compile Include="Models\PSApplicationGatewayRewriteRule.cs" />
+    <Compile Include="Models\PSApplicationGatewayRewriteRuleActionSet.cs" />
+    <Compile Include="Models\PSApplicationGatewayRewriteRuleSet.cs" />
     <Compile Include="Models\PSTrafficAnalyticsConfigurationProperties.cs" />
     <Compile Include="Models\PSTrafficAnalyticsProperties.cs" />
     <Compile Include="Generated\Models\PSTunnelConnectionHealth.cs" />
@@ -555,17 +571,17 @@
     <Compile Include="NetworkInterface\IpConfiguration\SetAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\AzureContainerNetworkInterfaceConfigBase.cs" />
     <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\NewAzureNetworkProfileContainerNetworkInterfaceConfigCommand.cs" />
-    <Compile Include="Generated\NetworkProfile\GetAzureNetworkProfileCommand.cs" />
+    <Compile Include="NetworkProfile\GetAzureNetworkProfileCommand.cs" />
     <Compile Include="NetworkProfile\IpConfigurationProfile\AzureNetworkProfileContainerNetworkInterfaceConfigIpConfigBase.cs" />
     <Compile Include="NetworkProfile\IpConfigurationProfile\NewAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand.cs" />
-    <Compile Include="Generated\NetworkProfile\NewAzureNetworkProfileCommand.cs" />
-    <Compile Include="Generated\NetworkProfile\RemoveAzureNetworkProfileCommand.cs" />
-    <Compile Include="Generated\NetworkProfile\SetAzureNetworkProfileCommand.cs" />
     <Compile Include="NetworkInterface\TapConfiguration\AddAzureRmNetworkInterfaceTapConfigCommand.cs" />
     <Compile Include="NetworkInterface\TapConfiguration\GetAzureRmNetworkInterfaceTapConfigCommand.cs" />
     <Compile Include="NetworkInterface\TapConfiguration\RemoveAzureRmNetworkInterfaceTapConfigCommand.cs" />
     <Compile Include="NetworkInterface\TapConfiguration\SetAzureRmNetworkInterfaceTapConfigCommand.cs" />
     <Compile Include="NetworkInterface\TapConfiguration\NetworkInterfaceTapConfigBase.cs" />
+    <Compile Include="NetworkProfile\NewAzureNetworkProfileCommand.cs" />
+    <Compile Include="NetworkProfile\RemoveAzureNetworkProfileCommand.cs" />
+    <Compile Include="NetworkProfile\SetAzureNetworkProfileCommand.cs" />
     <Compile Include="NetworkWatcher\ConnectionMonitor\ConnectionMonitorBaseCmdlet.cs" />
     <Compile Include="NetworkWatcher\ConnectionMonitor\ConnectionMonitorDetails.cs" />
     <Compile Include="NetworkWatcher\ConnectionMonitor\GetAzureNetworkWatcherConnectionMonitorCommand.cs" />
@@ -757,8 +773,6 @@
     <Compile Include="VirtualNetwork\VirtualNetworkListUsageMethod.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Generated\NetworkProfile\ContainerNetworkInterfaceConfiguration\" />
-    <Folder Include="Generated\NetworkProfile\IpConfigurationProfile\" />
     <Folder Include="Microsoft\Azure\Commands\Network\Models\" />
   </ItemGroup>
   <ItemGroup>
