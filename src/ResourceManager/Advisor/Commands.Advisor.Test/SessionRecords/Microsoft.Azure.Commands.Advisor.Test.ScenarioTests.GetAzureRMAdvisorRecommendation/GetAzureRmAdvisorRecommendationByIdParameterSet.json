@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a4894ddf-2716-4a57-9e7f-69d9553c6f23"
+          "15a0be57-816c-43ce-b858-3fcd13e6aa0c"
         ],
         "accept-language": [
           "en-US"
@@ -33,19 +33,19 @@
           "599"
         ],
         "x-ms-request-id": [
-          "7842ee1c-8c5a-4c0e-9bbd-22759faac042"
+          "2faeb657-32ee-4c47-810c-ed2dced85af2"
         ],
         "x-ms-correlation-request-id": [
-          "7842ee1c-8c5a-4c0e-9bbd-22759faac042"
+          "2faeb657-32ee-4c47-810c-ed2dced85af2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181204T012212Z:7842ee1c-8c5a-4c0e-9bbd-22759faac042"
+          "WESTUS2:20181204T230801Z:2faeb657-32ee-4c47-810c-ed2dced85af2"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 04 Dec 2018 01:22:11 GMT"
+          "Tue, 04 Dec 2018 23:08:01 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -60,7 +60,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7\",\r\n  \"name\": \"4fa2ff4f-dc90-9876-0723-1360fa9f4bd7\",\r\n  \"properties\": {\r\n    \"description\": \"After enabling Soft Delete, deleted data transitions to a soft deleted state instead of being permanently deleted. When data is overwritten, a soft deleted snapshot is generated to save the state of the overwritten data. You can configure the amount of time soft deleted data is recoverable before it permanently expires.\",\r\n    \"label\": \"Enable Soft Delete\",\r\n    \"learnMoreLink\": \"https://aka.ms/softdelete\",\r\n    \"potentialBenefits\": \"Save and recover your data when blobs or blob snapshots are accidentally overwritten or deleted\",\r\n    \"category\": \"HighAvailability\",\r\n    \"impact\": \"Medium\",\r\n    \"impactedField\": \"Microsoft.Storage/storageAccounts\",\r\n    \"impactedValue\": \"fontcjk\",\r\n    \"lastUpdated\": \"2018-12-03T22:47:42.3550961Z\",\r\n    \"recommendationTypeId\": \"42dbf883-9e4b-4f84-9da4-232b87c4b5e9\",\r\n    \"risk\": \"Error\",\r\n    \"shortDescription\": {\r\n      \"problem\": \"Enable Soft Delete to protect your blob data\",\r\n      \"solution\": \"Enable Soft Delete to protect your blob data\"\r\n    }\r\n  },\r\n  \"type\": \"Microsoft.Advisor/recommendations\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7\",\r\n  \"name\": \"4fa2ff4f-dc90-9876-0723-1360fa9f4bd7\",\r\n  \"properties\": {\r\n    \"description\": \"After enabling Soft Delete, deleted data transitions to a soft deleted state instead of being permanently deleted. When data is overwritten, a soft deleted snapshot is generated to save the state of the overwritten data. You can configure the amount of time soft deleted data is recoverable before it permanently expires.\",\r\n    \"label\": \"Enable Soft Delete\",\r\n    \"learnMoreLink\": \"https://aka.ms/softdelete\",\r\n    \"potentialBenefits\": \"Save and recover your data when blobs or blob snapshots are accidentally overwritten or deleted\",\r\n    \"category\": \"HighAvailability\",\r\n    \"impact\": \"Medium\",\r\n    \"impactedField\": \"Microsoft.Storage/storageAccounts\",\r\n    \"impactedValue\": \"fontcjk\",\r\n    \"lastUpdated\": \"2018-12-04T22:48:37.2731102Z\",\r\n    \"recommendationTypeId\": \"42dbf883-9e4b-4f84-9da4-232b87c4b5e9\",\r\n    \"risk\": \"Error\",\r\n    \"shortDescription\": {\r\n      \"problem\": \"Enable Soft Delete to protect your blob data\",\r\n      \"solution\": \"Enable Soft Delete to protect your blob data\"\r\n    }\r\n  },\r\n  \"type\": \"Microsoft.Advisor/recommendations\"\r\n}",
       "StatusCode": 200
     }
   ],

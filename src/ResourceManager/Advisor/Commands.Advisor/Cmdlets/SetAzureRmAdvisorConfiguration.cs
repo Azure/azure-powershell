@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Constant for LowCpuAndIncludeParameterSet
         /// </summary>
-        public const string LowCpuAndIncludeParameterSet = "LowCPUAndIncludeParameterSet";
+        // public const string LowCpuAndIncludeParameterSet = "LowCPUAndIncludeParameterSet";
 
         /// <summary>
         /// Constant for RgAndIncludeParameterSet
         /// </summary>
-        public const string RgAndIncludeParameterSet = "RgAndIncludeParameterSet";
+        // public const string RgAndIncludeParameterSet = "RgAndIncludeParameterSet";
 
         /// <summary>
         /// Constant for LowCpuAndExcludeParameterSet
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Constant for InputObjectLowCpuIncludeParameterSet
         /// </summary>
-        public const string InputObjectLowCpuIncludeParameterSet = "InputObjectLowCpuIncludeParameterSet";
+        // public const string InputObjectLowCpuIncludeParameterSet = "InputObjectLowCpuIncludeParameterSet";
 
         /// <summary>
         /// Constant for InputObjectLowCpuExcludeParameterSet
@@ -62,23 +62,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Constant for InputObjectRgIncludeParameterSet
         /// </summary>
-        public const string InputObjectRgIncludeParameterSet = "InputObjectRgIncludeParameterSet";
+        // public const string InputObjectRgIncludeParameterSet = "InputObjectRgIncludeParameterSet";
 
         /// <summary>
         /// Constant for InputObjectRgExcludeParameterSet
         /// </summary>
         public const string InputObjectRgExcludeParameterSet = "InputObjectRgExcludeParameterSet";
-
-        /// <summary>
-        /// Gets or sets the Include.
-        /// </summary>s
-        [Parameter(ParameterSetName = LowCpuAndIncludeParameterSet, Mandatory = true, HelpMessage = "Include in the recommendation generation.")]
-        [Parameter(ParameterSetName = RgAndIncludeParameterSet, Mandatory = true, HelpMessage = "Include in the recommendation generation.")]
-        [Parameter(ParameterSetName = InputObjectLowCpuIncludeParameterSet, Mandatory = true, HelpMessage = "Include in the recommendation generation.")]
-        [Parameter(ParameterSetName = InputObjectRgIncludeParameterSet, Mandatory = true, HelpMessage = "Include in the recommendation generation.")]
-        [Alias("I")]
-        [ValidateNotNullOrEmpty]
-        public string Include { get; set; }
 
         /// <summary>
         /// Gets or sets the Exclude.
@@ -89,14 +78,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         [Parameter(ParameterSetName = InputObjectRgExcludeParameterSet, Mandatory = false, HelpMessage = "Exclude from the recommendation generation.")]
         [Alias("E")]
         [ValidateNotNullOrEmpty]
-        public string Exclude { get; set; }
+        public SwitchParameter Exclude { get; set; }
 
         /// <summary>
         /// Gets or sets the LowCpuThreshold.
         /// </summary>s
-        [Parameter(ParameterSetName = LowCpuAndIncludeParameterSet, Mandatory = true, HelpMessage = "Value for Low Cpu threshold.")]
         [Parameter(ParameterSetName = LowCpuAndExcludeParameterSet, Mandatory = true, HelpMessage = "Value for Low Cpu threshold.")]
-        [Parameter(ParameterSetName = InputObjectLowCpuIncludeParameterSet, Mandatory = true, HelpMessage = "Value for Low Cpu threshold.")]
         [Parameter(ParameterSetName = InputObjectLowCpuExcludeParameterSet, Mandatory = true, HelpMessage = "Value for Low Cpu threshold.")]
         [Alias("L", "LowCpu")]
         [ValidateNotNullOrEmpty]
@@ -105,9 +92,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the include.
         /// </summary>
-        [Parameter(ParameterSetName = RgAndIncludeParameterSet, Mandatory = true, HelpMessage = "Resource Group name for the configuration.")]
         [Parameter(ParameterSetName = RgAndExcludeParameterSet, Mandatory = true, HelpMessage = "Resource Group name for the configuration.")]
-        [Parameter(ParameterSetName = InputObjectRgIncludeParameterSet, Mandatory = false, HelpMessage = "Resource Group name for the configuration.")]
         [Parameter(ParameterSetName = InputObjectRgExcludeParameterSet, Mandatory = false, HelpMessage = "Resource Group name for the configuration.")]
         [Alias("Rg", "ResoureGroup")]
         [ValidateNotNullOrEmpty]
@@ -116,9 +101,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Object passed on from the pipeline
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = InputObjectLowCpuIncludeParameterSet)]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = InputObjectLowCpuExcludeParameterSet)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = InputObjectRgIncludeParameterSet)]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = InputObjectRgExcludeParameterSet)]
         [ValidateNotNullOrEmpty]
         public List<PsAzureAdvisorConfigurationData> InputObject { get; set; }
@@ -196,18 +179,18 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            bool include;
-            bool exclude;
-            try
-            {
-                include = this.MyInvocation.BoundParameters.ContainsKey("Include") ? bool.Parse(this.Include) : false;
-                exclude = this.MyInvocation.BoundParameters.ContainsKey("Exclude") ? bool.Parse(this.Exclude) : false;
-            }
-            catch (Exception ex)
-            {
-                Exception e = new Exception("User provided input for -Include (or) -Exclude is not an accpeted value. Accepted values are true (or) false.", ex);
-                throw e;
-            }
+            // bool include;
+
+            //bool exclude;
+            //try
+            //{
+            //    exclude = this.MyInvocation.BoundParameters.ContainsKey("Exclude") ? bool.Parse(this.Exclude) : false;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Exception e = new Exception("User provided input for -Include (or) -Exclude is not an accpeted value. Accepted values are true (or) false.", ex);
+            //    throw e;
+            //}
 
             List<PsAzureAdvisorConfigurationData> results = new List<PsAzureAdvisorConfigurationData>();
 
@@ -216,7 +199,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
             try
             {
-                lowCpuThreshold = int.Parse(lowCpuThreshold).ToString(); 
+                lowCpuThreshold = int.Parse(lowCpuThreshold).ToString();
             }
             catch (Exception ex)
             {
@@ -238,21 +221,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
             switch (this.ParameterSetName)
             {
-                case LowCpuAndIncludeParameterSet:
-                    if (include)
+                case LowCpuAndExcludeParameterSet:
+                    if (Exclude)
                     {
                         configDataProperties.Exclude = true;
                     }
-
-                    configDataProperties.LowCpuThreshold = lowCpuThreshold;
-                    configData.Properties = configDataProperties;
-
-                    results = this.CreateConfigurationBySubscription(configData);
-
-                    break;
-
-                case LowCpuAndExcludeParameterSet:
-                    if (exclude)
+                    else
                     {
                         configDataProperties.Exclude = false;
                     }
@@ -261,21 +235,14 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     configData.Properties = configDataProperties;
 
                     results = this.CreateConfigurationBySubscription(configData);
-                    break;
-
-                case RgAndIncludeParameterSet:
-                    if (include)
-                    {
-                        configDataProperties.Exclude = true;
-                    }
-
-                    configData.Properties = configDataProperties;
-
-                    results = this.CreateConfigurationByResourceGroup(configData, this.ResourceGroupName);
                     break;
 
                 case RgAndExcludeParameterSet:
-                    if (exclude)
+                    if (Exclude)
+                    {
+                        configDataProperties.Exclude = true;
+                    }
+                    else
                     {
                         configDataProperties.Exclude = false;
                     }
@@ -285,29 +252,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     results = this.CreateConfigurationByResourceGroup(configData, this.ResourceGroupName);
                     break;
 
-                case InputObjectLowCpuIncludeParameterSet:
-                    if (include)
+                case InputObjectLowCpuExcludeParameterSet:
+                    if (Exclude)
                     {
                         configDataProperties.Exclude = true;
                     }
-
-                    configDataProperties.LowCpuThreshold = lowCpuThreshold;
-                    configData.Properties = configDataProperties;
-
-                    foreach (PsAzureAdvisorConfigurationData psConfigData in this.InputObject)
-                    {
-                        isSubsCriptionTypeConfiguration = SuppressionHelper.IsConfigurationSubscriptionLevel(psConfigData);
-
-                        if (isSubsCriptionTypeConfiguration)
-                        {
-                            results = this.CreateConfigurationBySubscription(configData);
-                        }
-                    }
-
-                    break;
-
-                case InputObjectLowCpuExcludeParameterSet:
-                    if (exclude)
+                    else
                     {
                         configDataProperties.Exclude = false;
                     }
@@ -323,31 +273,14 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                             results = this.CreateConfigurationBySubscription(configData);
                         }
                     }
-
-                    break;
-
-                case InputObjectRgIncludeParameterSet:
-                    if (include)
-                    {
-                        configDataProperties.Exclude = true;
-                    }
-
-                    configData.Properties = configDataProperties;
-
-                    foreach (PsAzureAdvisorConfigurationData psConfigData in this.InputObject)
-                    {
-                        isResourceGroupTypeConfiguration = SuppressionHelper.IsConfigurationResourceGroupLevel(psConfigData);
-
-                        if (isResourceGroupTypeConfiguration)
-                        {
-                            results = this.CreateConfigurationByResourceGroup(configData, RecommendationHelper.GetResourceGroupfromResoureID(psConfigData.Id));
-                        }
-                    }
-
                     break;
 
                 case InputObjectRgExcludeParameterSet:
-                    if (exclude)
+                    if (Exclude)
+                    {
+                        configDataProperties.Exclude = true;
+                    }
+                    else
                     {
                         configDataProperties.Exclude = false;
                     }
@@ -363,7 +296,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                             results = this.CreateConfigurationByResourceGroup(configData, RecommendationHelper.GetResourceGroupfromResoureID(psConfigData.Id));
                         }
                     }
-
                     break;
             }
 

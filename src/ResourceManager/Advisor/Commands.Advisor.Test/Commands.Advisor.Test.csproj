@@ -60,6 +60,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ScenarioTests\GetAzureRMAdvisorRecommendation.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\SetAzureRmAdvisorConfiguration.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -75,9 +78,73 @@
     <None Include="ScenarioTests\GetAzureRmAdvisorConfiguration.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\GetAzureRMAdvisorRecommendation.ps1">
+   
+    <!-->Start of Session Records entries-->
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.DisableAzureRMAdvisorRecommendation\DisableAzureRmAdvisorRecommendationByIdParameter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.DisableAzureRMAdvisorRecommendation\DisableAzureRmAdvisorRecommendationByNameParameter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.DisableAzureRMAdvisorRecommendation\DisableAzureRmAdvisorRecommendationPipelineScenario.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.DisableAzureRMAdvisorRecommendation\DisableAzureRmAdvisorRecommendationNoParameterSet.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.EnableAzureRMAdvisorRecommendation\EnableAzureRmAdvisorRecommendationByIdParameterSet.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.EnableAzureRMAdvisorRecommendation\EnableAzureRmAdvisorRecommendationByNameParameterSet.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.EnableAzureRMAdvisorRecommendation\EnableAzureRmAdvisorRecommendationPipeline.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.EnableAzureRMAdvisorRecommendation\EnableAzureRmAdvisorRecommendationNoParameterSet.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.GetAzureRmAdvisorConfiguration\GetConfigurationQuery.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.GetAzureRMAdvisorRecommendation\GetAzureRmAdvisorRecommendationByCategory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.GetAzureRMAdvisorRecommendation\GetAzureRmAdvisorRecommendationByIdParameterSet.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.GetAzureRMAdvisorRecommendation\GetAzureRmAdvisorRecommendationByNameParameterSet.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.GetAzureRMAdvisorRecommendation\GetAzureRmAdvisorRecommendationNoParameter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.SetAzureRmAdvisorConfiguration\SetAzureRmAdvisorConfigurationByLowCpu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.SetAzureRmAdvisorConfiguration\SetAzureRmAdvisorConfigurationByLowCpuExclude.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.SetAzureRmAdvisorConfiguration\SetAzureRmAdvisorConfigurationByRg.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.SetAzureRmAdvisorConfiguration\SetAzureRmAdvisorConfigurationByRgExclude.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.SetAzureRmAdvisorConfiguration\SetAzureRmAdvisorConfigurationPipelineByLowCpuExclude.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.SetAzureRmAdvisorConfiguration\SetAzureRmAdvisorConfigurationBadUserInputLowCpu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.SetAzureRmAdvisorConfiguration\SetAzureRmAdvisorConfigurationNoParameterSet.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <!-->End of Session Records-->
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

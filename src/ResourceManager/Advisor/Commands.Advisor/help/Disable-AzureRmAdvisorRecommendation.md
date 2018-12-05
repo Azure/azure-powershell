@@ -14,19 +14,19 @@ Disable an Azure Advisor recommendation.
 
 ### IdParameterSet (Default)
 ```
-Disable-AzureRmAdvisorRecommendation -ResourceId <String> [-SupressionName <String>] [-Days <String>]
+Disable-AzureRmAdvisorRecommendation -ResourceId <String> [-Days <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NameParameterSet
 ```
-Disable-AzureRmAdvisorRecommendation [-SupressionName <String>] [-Days <String>] -RecommendationName <String>
+Disable-AzureRmAdvisorRecommendation [-Days <String>] -RecommendationName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Disable-AzureRmAdvisorRecommendation [-SupressionName <String>] [-Days <String>]
+Disable-AzureRmAdvisorRecommendation [-Days <String>]
  -InputObject <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -43,26 +43,12 @@ PS C:\> Disable-AzureRMAdvisorRecommendation -Name "f380a3a8-9d18-cfad-78e0-5576
 SuppressionId : d1f70547-0e72-db29-443e-c1164d5d4377
 Ttl           : -1
 Id            : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations
-                /{recommendation_id}/suppressions/DefaultSuppressionName
-Name          : DefaultSuppressionName
+                /{recommendation_id}/suppressions/HardCodedSupressionName
+Name          : HardCodedSupressionName
 Type          : Microsoft.Advisor/suppressions
 ```
 
 Create a suppression for the given recomendation name with a default-SuppressionName and default days as -1.
-
-### Example 2
-```powershell
-PS C:\> Disable-AzureRMAdvisorRecommendation -Name "f380a3a8-9d18-cfad-78e0-55762c72a178" -SupressionName "suppression-test-one" -Days 10
-
-SuppressionId : 4cb60847-6d2e-cf00-78ae-d7d8d9ebe140
-Ttl           : 10.00:00:00
-Id            : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations
-                /{recommendation_id}/suppressions/suppression-test-one
-Name          : suppression-test-one
-Type          : Microsoft.Advisor/suppressions
-```
-
-Create a suppression for the given recomendation name with a user specified SuppressionName and Time-to-live as 10 days. After ten days recommendation is enabled back.
 
 ### Example 3
 ```powershell
@@ -71,8 +57,8 @@ PS C:\> Disable-AzureRMAdvisorRecommendation -ResourceId "/subscriptions/{user_s
 SuppressionId : 7d1f0547-0e72-db29-443e-c1164d5d4377
 Ttl           : 12.00:00:00
 Id            : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations
-                /{recommendation_id}/suppressions/DefaultSuppressionName
-Name          : DefaultSuppressionName
+                /{recommendation_id}/suppressions/HardCodedSupressionName
+Name          : HardCodedSupressionName
 Type          : Microsoft.Advisor/suppressions
 ```
 
@@ -81,22 +67,22 @@ A suppression is created for the given recommendation-Id
 ### Example 4
 ```powershell
 PS C:\>  Get-AzureRMAdvisorRecommendation -Id "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/AzExpertStg/providers/Microsoft.Cache/Redis/azacache/providers/Microsoft.Advisor/recommendations/f380a3a8-9d18-cfad-78e0-55762c72a178" | Disable-A
-zureRMAdvisorRecommendation -SName "piping-suppression-name"
+zureRMAdvisorRecommendation
 
 SuppressionId : daf24e78-af2d-e8d3-9c50-fa970edc2937
 Ttl           : -1
 Id            : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations
-                /{recommendation_id}/suppressions/piping-suppression-name
-Name          : piping-suppression-name
+                /{recommendation_id}/suppressions/HardCodedSupressionName
+Name          : HardCodedSupressionName
 Type          : Microsoft.Advisor/suppressions
 ```
 
-Creating a suppression by piping two cmdlet.
+Creating a suppression by piping two cmdlet. First cmdlet will return one recommendation and second cmdlet will create a suppression for the same.
 
 ## PARAMETERS
 
 ### -Days
-Days to disable
+Days to disable. If not specified, the recommendation is disabled forever.
 
 ```yaml
 Type: String
@@ -126,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Piping data passed through the previous cmdlet.
+{{Fill InputObject Description}}
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]
@@ -164,21 +150,6 @@ Parameter Sets: IdParameterSet
 Aliases: Id
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SupressionName
-Name of suppression
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: SName
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

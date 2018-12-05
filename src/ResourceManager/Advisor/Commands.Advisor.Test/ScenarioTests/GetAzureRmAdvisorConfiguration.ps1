@@ -27,9 +27,9 @@ function Get-AzureRmAdvisorConfigurationNoParameter
 	Assert-IsInstance $queryResult $cmdletReturnType
 	
 	Assert-NotNull  $queryResult
-
-	Assert-PropertiesCount $queryResult[0] $propertiesCount
-	
-	Assert-IsInstance $queryResult[0].id String
-	Assert-AreEqual $queryResult[0].Type $TypeValue
+	for ($i = 0; $i -lt $queryResult.Count; $i++){
+		Assert-PropertiesCount $queryResult[$i] $propertiesCount
+		Assert-IsInstance $queryResult[$i].id String
+		Assert-AreEqual $queryResult[$i].Type $TypeValue
+	}	
 }

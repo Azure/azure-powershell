@@ -112,4 +112,3 @@ function Get-AzureRmAdvisorRecommendationByNameParameterSet
 	Assert-PropertiesCount $queryResult[0].ShortDescription 2
 	Assert-PropertiesCount $queryResult[1].ShortDescription 2 
 }
-

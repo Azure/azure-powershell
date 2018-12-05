@@ -12,16 +12,16 @@ Enable an Azure Advisor recommendation.
 
 ## SYNTAX
 
-### IdParameterSet
+### NameParameterSet (Default)
 ```
-Enable-AzureRmAdvisorRecommendation -ResourceId <String> [-SuppressionName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Enable-AzureRmAdvisorRecommendation -RecommendationName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### NameParameterSet
+### IdParameterSet
 ```
-Enable-AzureRmAdvisorRecommendation [-SuppressionName <String>] [-RecommendationName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Enable-AzureRmAdvisorRecommendation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -35,33 +35,8 @@ Enable-AzureRmAdvisorRecommendation
 Enables a suppresed recomendation, the suppression for a recommendation are removed using this cmdlet. One can remove all the suppression associated with a recommendation.
 
 ## EXAMPLES
- 
+
 ### Example 1
-```powershell
-PS C:\> Enable-AzureRMAdvisorRecommendation -Id "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/AzExpertStg/providers/Microsoft.Cache/Redis/azacache/providers/Microsoft.Advisor/recommendations/f380a3a8-9d18-cfad-78e0-55762c72a178" 
--SName "suppression-test-one"
-
-Id                   : subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}
-Category             : Performance
-ExtendedProperties   : {}
-Impact               : Medium
-ImpactedField        : Microsoft.Cache/Redis
-ImpactedValue        : xyz
-LastUpdated          : 12/4/2018 12:06:47 AM
-Metadata             : {}
-RecommendationTypeId : 905a0026-8010-45b2-ab46-a92c3e4a5131
-Risk                 : None
-ShortDescription     : problem : Improve the performance and reliability of your Redis Cache instance
-                       solution :Follow Redis cache Advisor recommendations
-
-SuppressionIds       : {7d1f0547-0e72-db29-443e-c1164d5d4377, daf24e78-af2d-e8d3-9c50-fa970edc2937} 
-Name                 : {recommendation_id}
-Type                 : Microsoft.Advisor/recommendations
-```
-
-One suppression with the name "suppression-test-one" was removed for the recommendation.
-
-### Example 2
 ```powershell
 PS C:\> Enable-AzureRMAdvisorRecommendation -Id "{recommendation_id}" 
 
@@ -85,7 +60,7 @@ Type                 : Microsoft.Advisor/recommendations
 
 Removes all the suppression for the given recommendation with name "recommendation_id".
 
-### Example 3
+### Example 2
 ```powershell
 PS C:\> Get-AzureRMAdvisorRecommendation -Id "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" 
 | Enable-AzureRMAdvisorRecommendation
@@ -107,8 +82,6 @@ SuppressionIds       : {}
 Name                 : {recommendation_id}
 Type                 : Microsoft.Advisor/recommendations
 ```
-
-Removed all the suppression by piping two cmdlets. First cmdlet provides the recommenation(s) to act upon by the Enbale-AzureRMAdvisorRecommendation cmdlet.
 
 ## PARAMETERS
 
@@ -150,7 +123,7 @@ Type: String
 Parameter Sets: NameParameterSet
 Aliases: Name
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,21 +139,6 @@ Parameter Sets: IdParameterSet
 Aliases: Id
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SuppressionName
-Name of the suppression.
-
-```yaml
-Type: String
-Parameter Sets: IdParameterSet, NameParameterSet
-Aliases: SName
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

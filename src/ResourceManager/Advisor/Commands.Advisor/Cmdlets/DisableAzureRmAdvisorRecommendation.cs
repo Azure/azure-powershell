@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Default suppression name for the suppression API
         /// </summary>
-        public const string DefaultSuppressionName = "DefaultSuppressionName";
+        public const string DefaultSuppressionName = "HardcodedSuppressionName";
 
         /// <summary>
         /// Gets or sets the Resource Id.
@@ -57,15 +57,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         [Parameter(ParameterSetName = "IdParameterSet", Mandatory = true, HelpMessage = "ResourceID of the recommendation to be suppressed (space delimitited).")]
         [Alias("Id")]
         public string ResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Resource Id.
-        /// </summary>
-        [Parameter(ParameterSetName = IdParameterSet, Mandatory = false, HelpMessage = "Name of suppression")]
-        [Parameter(ParameterSetName = NameParameterSet, Mandatory = false, HelpMessage = "Name of suppression")]
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, HelpMessage = "Name of suppression")]
-        [Alias("SName")]
-        public string SupressionName { get; set; }
 
         /// <summary>
         /// Gets or sets the days to disable the recommendation.
@@ -107,16 +98,10 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             List<AzureOperationResponse<SuppressionContract>> azureOperationResponseSupression = new List<AzureOperationResponse<SuppressionContract>>();
             var returnSuppressionContract = new List<PsAzureAdvisorSuppressionContract>();
 
-            // Assign the default value
-            if (string.IsNullOrEmpty(this.SupressionName))
-            {
-                this.SupressionName = DefaultSuppressionName;
-            }
-
             // If the days is less than -1, we update it as empty. ASs our API only accepts -1 and positive values.
             try
             {
-                if (int.Parse(Days) < -1)
+                if (!string.IsNullOrEmpty(Days) && int.Parse(Days) < -1)
                 {
                     Days = string.Empty;
                 }
@@ -126,10 +111,10 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 Exception e = new Exception("User provided input for -Days is not a integer.", ex);
                 throw e;
             }
-            
+
 
             // Create the suppression contract
-            suppressionContract = new SuppressionContract(null, this.SupressionName, null, null, string.IsNullOrEmpty(this.Days) ? string.Empty : this.Days);
+            suppressionContract = new SuppressionContract(null, DefaultSuppressionName, null, null, string.IsNullOrEmpty(this.Days) ? string.Empty : this.Days);
 
             switch (this.ParameterSetName)
             {
@@ -138,7 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     resourceUri = RecommendationHelper.GetFullResourceUrifromResoureID(this.ResourceId);
                     recommendationId = RecommendationHelper.GetRecommendationIdfromResoureID(this.ResourceId);
 
-                    azureOperationResponseSupression.Add(this.ResourcAdvisorclient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, this.SupressionName, suppressionContract).Result);
+                    azureOperationResponseSupression.Add(this.ResourcAdvisorclient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, DefaultSuppressionName, suppressionContract).Result);
                     break;
 
                 case NameParameterSet:
@@ -146,7 +131,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     resourceUri = RecommendationHelper.GetFullResourceUrifromResoureID(recommendation.Body.Id);
 
                     // Make a get recommendation for this Name and get the ID
-                    azureOperationResponseSupression.Add(this.ResourcAdvisorclient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, this.RecommendationName, this.SupressionName, suppressionContract).Result);
+                    azureOperationResponseSupression.Add(this.ResourcAdvisorclient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, this.RecommendationName, DefaultSuppressionName, suppressionContract).Result);
                     break;
 
                 case InputObjectParameterSet:
@@ -156,7 +141,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                         resourceUri = RecommendationHelper.GetFullResourceUrifromResoureID(recommendationBase.Id);
                         recommendationId = RecommendationHelper.GetRecommendationIdfromResoureID(recommendationBase.Id);
 
-                        azureOperationResponseSupression.Add(this.ResourcAdvisorclient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, this.SupressionName, suppressionContract).Result);
+                        azureOperationResponseSupression.Add(this.ResourcAdvisorclient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, DefaultSuppressionName, suppressionContract).Result);
                     }
 
                     break;

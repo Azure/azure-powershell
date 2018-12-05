@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmAdvisorRecommendation
 
 ## SYNOPSIS
-Gets a list of Azure Advisor recommendations.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
@@ -25,92 +25,16 @@ Get-AzureRmAdvisorRecommendation [-Category <String>] [-ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-This dispays the list of recommendations.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRMAdvisorRecommendation -ResourceId "id1 id2"
-
-Id                   : id1
-Category             : Performance
-ExtendedProperties   : {}
-Impact               : Medium
-ImpactedField        : Microsoft.Cache/Redis
-ImpactedValue        : azacache
-LastUpdated          : 12/3/2018 11:04:50 PM
-Metadata             : {}
-RecommendationTypeId : 905a0026-8010-45b2-ab46-a92c3e4a5131
-Risk                 : None
-ShortDescription     : problem : Improve the performance and reliability of your Redis Cache instance
-                       solution :Follow Redis cache Advisor recommendations
-
-SuppressionIds       : {}
-Name                 : rec-name
-Type                 : Microsoft.Advisor/recommendations
-
-Id                   : id2
-Category             : Performance
-ExtendedProperties   : {}
-Impact               : Medium
-ImpactedField        : Microsoft.Cache/Redis
-ImpactedValue        : azacache
-LastUpdated          : 12/2/2018 11:04:50 PM
-Metadata             : {}
-RecommendationTypeId : 905a0026-8010-45b2-ab46-a92c3e4a5131
-Risk                 : None
-ShortDescription     : problem : Improve the performance and reliability of your Redis Cache instance
-                       solution :Follow Redis cache Advisor recommendations
-
-SuppressionIds       : {}
-Name                 : rec-name
-Type                 : Microsoft.Advisor/recommendations
+PS C:\> {{ Add example code here }}
 ```
 
-Get list of recommendation using the given -ResourceId's specified.
-
-
-### Example 2
-```powershell
-PS C:\> Get-AzureRMAdvisorRecommendation -ResourceGroupName "resourceGroupName" -Category Performance
-
-Id                   : id1
-Category             : Performance
-ExtendedProperties   : {}
-Impact               : Medium
-ImpactedField        : Microsoft.Cache/Redis
-ImpactedValue        : azacache
-LastUpdated          : 12/3/2018 11:04:50 PM
-Metadata             : {}
-RecommendationTypeId : 905a0026-8010-45b2-ab46-a92c3e4a5131
-Risk                 : None
-ShortDescription     : problem : Improve the performance and reliability of your Redis Cache instance
-                       solution :Follow Redis cache Advisor recommendations
-
-SuppressionIds       : {}
-Name                 : rec-name
-Type                 : Microsoft.Advisor/recommendations
-
-Id                   : id2
-Category             : Performance
-ExtendedProperties   : {}
-Impact               : Medium
-ImpactedField        : Microsoft.Cache/Redis
-ImpactedValue        : azacache
-LastUpdated          : 12/2/2018 11:04:50 PM
-Metadata             : {}
-RecommendationTypeId : 905a0026-8010-45b2-ab46-a92c3e4a5131
-Risk                 : None
-ShortDescription     : problem : Improve the performance and reliability of your Redis Cache instance
-                       solution :Follow Redis cache Advisor recommendations
-
-SuppressionIds       : {}
-Name                 : rec-name
-Type                 : Microsoft.Advisor/recommendations
-```
-
-Get list of recommendation using the given -ResourceGroupName, -Category specified.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -161,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-ResourceGroup name of the recommendation.
+ResourceGroup name of the recommendation
 
 ```yaml
 Type: String
@@ -196,7 +120,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 

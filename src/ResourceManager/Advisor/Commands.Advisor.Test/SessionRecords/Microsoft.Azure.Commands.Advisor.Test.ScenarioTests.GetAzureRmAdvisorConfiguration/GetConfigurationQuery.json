@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "27a25d61-dec3-4ca2-8d89-cc818ed1fd56"
+          "e35ba360-e9fa-4cde-bbef-67ddaa6b789c"
         ],
         "accept-language": [
           "en-US"
@@ -30,28 +30,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "27a25d61-dec3-4ca2-8d89-cc818ed1fd56"
+          "e35ba360-e9fa-4cde-bbef-67ddaa6b789c"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "596"
+          "599"
         ],
         "x-ms-correlation-request-id": [
-          "46467aa8-afec-4af2-afd4-958b65c00274"
+          "8f639654-fdd5-47d1-bbc7-51f201ef43a5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181204T012158Z:46467aa8-afec-4af2-afd4-958b65c00274"
+          "WESTUS2:20181204T230807Z:8f639654-fdd5-47d1-bbc7-51f201ef43a5"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 04 Dec 2018 01:21:58 GMT"
+          "Tue, 04 Dec 2018 23:08:06 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "Content-Length": [
-          "296"
+          "595"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -60,7 +60,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/configurations/658c8950-e79d-4704-a903-1df66ba90258\",\r\n      \"type\": \"Microsoft.Advisor/Configurations\",\r\n      \"name\": \"658c8950-e79d-4704-a903-1df66ba90258\",\r\n      \"properties\": {\r\n        \"low_cpu_threshold\": \"20\",\r\n        \"exclude\": false\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/configurations/658c8950-e79d-4704-a903-1df66ba90258\",\r\n      \"type\": \"Microsoft.Advisor/Configurations\",\r\n      \"name\": \"658c8950-e79d-4704-a903-1df66ba90258\",\r\n      \"properties\": {\r\n        \"low_cpu_threshold\": \"20\",\r\n        \"exclude\": false\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Advisor/configurations/658c8950-e79d-4704-a903-1df66ba90258-testing\",\r\n      \"type\": \"Microsoft.Advisor/Configurations\",\r\n      \"name\": \"658c8950-e79d-4704-a903-1df66ba90258-testing\",\r\n      \"properties\": {\r\n        \"exclude\": false\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],

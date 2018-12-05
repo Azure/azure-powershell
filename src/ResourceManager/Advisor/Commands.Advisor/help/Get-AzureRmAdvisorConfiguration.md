@@ -24,26 +24,10 @@ Get-AzureRmAdvisorConfiguration [-ResourceGroupName <String>] [-DefaultProfile <
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRMAdvisorConfiguration
-
-Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}
-Name       : {user_subscription}
-Properties : additionalProperties : null
-             exclude :  False
-             lowCpuThreshold : 20
-
-Type       : Microsoft.Advisor/Configurations
-
-Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}-resourceGroupName1
-Name       : {user_subscription}-resourceGroupName1
-Properties : additionalProperties : null
-             exclude :  False
-             lowCpuThreshold : null
-
-Type       : Microsoft.Advisor/Configurations
+PS C:\> {{ Add example code here }}
 ```
 
-Retreives the list of configuration associated with your scubscription.
+{{ Add example description here }}
 
 ## PARAMETERS
 

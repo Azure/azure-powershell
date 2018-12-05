@@ -14,6 +14,15 @@
 
 <#
 .SYNOPSIS
+Neagtive Test, no user input for the parameters. 
+#>
+function Set-AzureRmAdvisorConfigurationNoParameterSet
+{
+		Assert-ThrowsContains { Set-AzureRmAdvisorConfiguration } "Cannot process command because of one or more missing mandatory parameters: LowCpuThreshold."
+}
+
+<#
+.SYNOPSIS
 Sets configuration for lowCPUThreshold property for the current subscription set in powershell session.
 #>
 function Set-AzureRmAdvisorConfigurationWithLowCpu
@@ -28,19 +37,16 @@ function Set-AzureRmAdvisorConfigurationWithLowCpu
 	Assert-NotNull  $queryResult
 	Assert-IsInstance $queryResult $cmdletReturnType
 
-	Assert-PropertiesCount $queryResult[0] $propertiesCount	
-	Assert-IsInstance $queryResult[0].id String
-	Assert-NotNull $queryResult[0].Properties.exclude String
-	Assert-NotNull $queryResult[0].Properties.lowCpuThreshold String
-	Assert-AreEqual $queryResult[0].Properties.lowCpuThreshold 	$lowCpuThresholdParameter
-	Assert-AreEqual $queryResult[0].Type $TypeValue
-}
-
-# Negative Test, bad input for Exclude
-function Set-AzureRmAdvisorConfigurationBadUserInputExclude-Negative
-{
-	$lowCpuThresholdParameter = 20	
-	Assert-ThrowsContains { Set-AzureRMAdvisorConfiguration -L $lowCpuThresholdParameter -E trueeee  } "User provided input for -Include (or) -Exclude is not an accpeted value. Accepted values are true (or) false."   			
+	for ($i = 0; $i -lt $queryResult.Count; $i++)
+	{
+		Assert-PropertiesCount $queryResult[$i] $propertiesCount	
+		Assert-IsInstance $queryResult[$i].id String
+		Assert-NotNull $queryResult[$i].Properties.exclude String
+		Assert-NotNull $queryResult[$i].Properties.lowCpuThreshold String
+		Assert-AreEqual $queryResult[$i].Properties.lowCpuThreshold 	$lowCpuThresholdParameter
+		Assert-AreEqual $queryResult[$i].Type $TypeValue
+	}
+	
 }
 
 # Negative Test, bad input for LowCpuThreshold
@@ -50,93 +56,31 @@ function Set-AzureRmAdvisorConfigurationBadUserInputLowCpu-Negative
 	Assert-ThrowsContains { Set-AzureRMAdvisorConfiguration -L $lowCpuThresholdParameter  } "User provided input for -LowCpuThreshold is not an accpeted value. Accepted values are 0, 5, 10, 15, 20."   						
 }
 
-<#
-.SYNOPSIS
-Sets configuration for lowCPUThreshold property and also whether to include this at the filtering or not for the current subscription set in powershell session.
-#>
-function Set-AzureRmAdvisorConfigurationByLowCpuInclude
-{
-	try{
-		
-		$propertiesCount = 4
-		$lowCpuThresholdParameter = 20
-		$IncludeValue = "true"
-		$cmdletReturnType = "System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]"
-		$ExcludePropertyValue = "true"
-			$TypeValue = "Microsoft.Advisor/Configurations"
-
-		$queryResult = Set-AzureRmAdvisorConfiguration -L $lowCpuThresholdParameter -I $IncludeValue
-		
-		Assert-IsInstance $queryResult $cmdletReturnType
-	
-		Assert-NotNull  $queryResult
-
-		Assert-PropertiesCount $queryResult[0] $propertiesCount	
-		Assert-IsInstance $queryResult[0].id String
-		Assert-NotNull $queryResult[0].Properties.exclude String
-		Assert-NotNull $queryResult[0].Properties.lowCpuThreshold String
-		Assert-AreEqual $queryResult[0].Properties.exclude 	$ExcludePropertyValue
-		Assert-AreEqual $queryResult[0].Properties.lowCpuThreshold 	$lowCpuThresholdParameter
-		Assert-AreEqual $queryResult[0].Type $TypeValue
-
-		}Finally{
-			$queryResult = Set-AzureRmAdvisorConfiguration -L $lowCpuThresholdParameter -E true
-		}
-}
-
 function Set-AzureRmAdvisorConfigurationByLowCpuExclude
 {
 	try{
 		$propertiesCount = 4
 		$lowCpuThresholdParameter = 20
-		$ExcludeValue = "true"
 		$cmdletReturnType = "System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]"
 		$ExcludePropertyValue = "false"
 		$TypeValue = "Microsoft.Advisor/Configurations"
 
-		$queryResult = Set-AzureRmAdvisorConfiguration -L $lowCpuThresholdParameter -E $ExcludeValue
+		$queryResult = Set-AzureRmAdvisorConfiguration -L $lowCpuThresholdParameter -E
 		
 		Assert-IsInstance $queryResult $cmdletReturnType
 	
 		Assert-NotNull  $queryResult
-
-		Assert-PropertiesCount $queryResult[0] $propertiesCount	
-		Assert-IsInstance $queryResult[0].id String
-		Assert-NotNull $queryResult[0].Properties.exclude String
-		Assert-NotNull $queryResult[0].Properties.lowCpuThreshold String
-		Assert-AreEqual $queryResult[0].Properties.lowCpuThreshold 	$lowCpuThresholdParameter
-		Assert-AreEqual $queryResult[0].Type $TypeValue
+		for ($i = 0; $i -lt $queryResult.Count; $i++)
+		{
+			Assert-PropertiesCount $queryResult[$i] $propertiesCount	
+			Assert-IsInstance $queryResult[$i].id String
+			Assert-NotNull $queryResult[$i].Properties.exclude String
+			Assert-NotNull $queryResult[$i].Properties.lowCpuThreshold String
+			Assert-AreEqual $queryResult[$i].Properties.lowCpuThreshold 	$lowCpuThresholdParameter
+			Assert-AreEqual $queryResult[$i].Type $TypeValue
+		}
 	}Finally{
-		$queryResult = Set-AzureRmAdvisorConfiguration -L $lowCpuThresholdParameter -I true
-	}
-}
-
-function Set-AzureRmAdvisorConfigurationPipelineByLowCpuInclude
-{
-	try{
-		$propertiesCount = 4
-		$lowCpuThresholdParameter = 20
-		$IncludeValue = "true"
-		$cmdletReturnType = "System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]"
-		$ExcludePropertyValue = "true"
-			$TypeValue = "Microsoft.Advisor/Configurations"
-
-		$queryResult = Get-AzureRmAdvisorConfiguration | Set-AzureRmAdvisorConfiguration -L $lowCpuThresholdParameter -I $IncludeValue
-		
-		Assert-IsInstance $queryResult $cmdletReturnType
-	
-		Assert-NotNull  $queryResult
-
-		Assert-PropertiesCount $queryResult[0] $propertiesCount	
-		Assert-IsInstance $queryResult[0].id String
-		Assert-NotNull $queryResult[0].Properties.exclude String
-		Assert-NotNull $queryResult[0].Properties.lowCpuThreshold String
-		Assert-AreEqual $queryResult[0].Properties.exclude 	$ExcludePropertyValue
-		Assert-AreEqual $queryResult[0].Properties.lowCpuThreshold 	$lowCpuThresholdParameter
-		Assert-AreEqual $queryResult[0].Type $TypeValue
-	
-	}Finally{
-		$queryResult = Get-AzureRmAdvisorConfiguration | Set-AzureRmAdvisorConfiguration -L $lowCpuThresholdParameter -E true
+		$queryResult = Set-AzureRmAdvisorConfiguration -L $lowCpuThresholdParameter
 	}
 }
 
@@ -145,26 +89,27 @@ function Set-AzureRmAdvisorConfigurationPipelineByLowCpuExclude
 	try{
 		$propertiesCount = 4
 		$lowCpuThresholdParameter = 20
-		$ExcludeValue = "true"
 		$cmdletReturnType = "System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]"
 		$ExcludePropertyValue = "false"
 		$TypeValue = "Microsoft.Advisor/Configurations"
 
-		$queryResult = Get-AzureRmAdvisorConfiguration | Set-AzureRmAdvisorConfiguration -L $lowCpuThresholdParameter -E $ExcludeValue
+		$queryResult = Get-AzureRmAdvisorConfiguration | Set-AzureRmAdvisorConfiguration -L $lowCpuThresholdParameter -E 
 		
 		Assert-IsInstance $queryResult $cmdletReturnType
 	
 		Assert-NotNull  $queryResult
 
-		Assert-PropertiesCount $queryResult[0] $propertiesCount	
-		Assert-IsInstance $queryResult[0].id String
-		Assert-NotNull $queryResult[0].Properties.exclude String
-		Assert-NotNull $queryResult[0].Properties.lowCpuThreshold String
-		Assert-AreEqual $queryResult[0].Properties.lowCpuThreshold 	$lowCpuThresholdParameter
-		Assert-AreNotEqual  $queryResult[0].Properties.exclude 	true
-		Assert-AreEqual $queryResult[0].Type $TypeValue
+		for ($i = 0; $i -lt $queryResult.Count; $i++)
+		{
+			Assert-PropertiesCount $queryResult[$i] $propertiesCount	
+			Assert-IsInstance $queryResult[$i].id String
+			Assert-NotNull $queryResult[$i].Properties.exclude String
+			Assert-NotNull $queryResult[$i].Properties.lowCpuThreshold String
+			Assert-AreEqual $queryResult[$i].Properties.lowCpuThreshold 	$lowCpuThresholdParameter
+			Assert-AreEqual $queryResult[$i].Type $TypeValue
+		}
 	}Finally{
-		$queryResult = Get-AzureRmAdvisorConfiguration | Set-AzureRmAdvisorConfiguration -L $lowCpuThresholdParameter -E true
+		$queryResult = Get-AzureRmAdvisorConfiguration | Set-AzureRmAdvisorConfiguration -L $lowCpuThresholdParameter 
 	}
 }
 <#
@@ -186,53 +131,35 @@ function Set-AzureRmAdvisorConfigurationWithRg
 	
 	Assert-NotNull  $queryResult
 
-	Assert-PropertiesCount $queryResult[0] $propertiesCount	
-	Assert-IsInstance $queryResult[0].id String
-	Assert-NotNull $queryResult[0].Properties.exclude String
-	Assert-Null $queryResult[0].Properties.lowCpu String
-	Assert-AreEqual $queryResult[0].Type $TypeValue	
-}
-
-function Set-AzureRmAdvisorConfigurationByRgInclude
-{
-	$propertiesCount = 4
-	$RgName = "testing"
-	$IncludeValue = "true"
-	$cmdletReturnType = "System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]"
-	$ExcludePropertyValue = "true"
-	$TypeValue = "Microsoft.Advisor/Configurations"
-
-	$queryResult = Set-AzureRmAdvisorConfiguration -Rg $RgName -I $IncludeValue
-
-	Assert-NotNull  $queryResult
-	Assert-IsInstance $queryResult $cmdletReturnType
-	Assert-PropertiesCount $queryResult[0] $propertiesCount	
-	Assert-IsInstance $queryResult[0].id String
-	Assert-NotNull $queryResult[0].Properties.exclude String
-	Assert-Null $queryResult[0].Properties.lowCpu String
-	Assert-AreEqual $queryResult[0].Properties.exclude 	$ExcludePropertyValue
-	Assert-AreEqual $queryResult[0].Type $TypeValue
+	for ($i = 0; $i -lt $queryResult.Count; $i++)
+	{
+		Assert-PropertiesCount $queryResult[$i] $propertiesCount	
+		Assert-IsInstance $queryResult[$i].id String
+		Assert-NotNull $queryResult[$i].Properties.exclude String
+		Assert-Null $queryResult[$i].Properties.lowCpu String
+		Assert-AreEqual $queryResult[$i].Type $TypeValue
+	}
 }
 
 function Set-AzureRmAdvisorConfigurationByRgExclude
 {
 	$propertiesCount = 4
-	$ExcludeValue = "true"
 	$RgName = "testing"
 	$cmdletReturnType = "System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]"
-	$ExcludePropertyValue = "false"
 	$TypeValue = "Microsoft.Advisor/Configurations"
 
-	$queryResult = Set-AzureRmAdvisorConfiguration -Rg $RgName -E $ExcludeValue
+	$queryResult = Set-AzureRmAdvisorConfiguration -Rg $RgName 
 			
 	Assert-IsInstance $queryResult $cmdletReturnType
 	
 	Assert-NotNull  $queryResult
-
-	Assert-PropertiesCount $queryResult[0] $propertiesCount	
-	Assert-IsInstance $queryResult[0].id String
-	Assert-NotNull $queryResult[0].Properties.exclude String
-	Assert-Null $queryResult[0].Properties.lowCpu String
-	Assert-AreNotEqual  $queryResult[0].Properties.exclude 	true
-	Assert-AreEqual $queryResult[0].Type $TypeValue
+	for ($i = 0; $i -lt $queryResult.Count; $i++)
+	{
+		Assert-PropertiesCount $queryResult[$i] $propertiesCount	
+		Assert-IsInstance $queryResult[$i].id String
+		Assert-NotNull $queryResult[$i].Properties.exclude String
+		Assert-Null $queryResult[$i].Properties.lowCpu String
+		Assert-AreNotEqual $queryResult[$i].Properties.exclude 	True
+		Assert-AreEqual $queryResult[$i].Type $TypeValue
+	}
 }

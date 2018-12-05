@@ -12,59 +12,28 @@ Updates or creates the Aure Advisor Configration.
 
 ## SYNTAX
 
-### RgParameterSet (Default)
+### LowCpuAndExcludeParameterSet (Default)
 ```
-Set-AzureRmAdvisorConfiguration [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### LowCPUAndIncludeParameterSet
-```
-Set-AzureRmAdvisorConfiguration -Include <String> -LowCpuThreshold <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### RgAndIncludeParameterSet
-```
-Set-AzureRmAdvisorConfiguration -Include <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### InputObjectLowCpuIncludeParameterSet
-```
-Set-AzureRmAdvisorConfiguration -Include <String> -LowCpuThreshold <String>
- -InputObject <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### InputObjectRgIncludeParameterSet
-```
-Set-AzureRmAdvisorConfiguration -Include <String> [-ResourceGroupName <String>]
- -InputObject <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### LowCpuAndExcludeParameterSet
-```
-Set-AzureRmAdvisorConfiguration [-Exclude <String>] -LowCpuThreshold <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzureRmAdvisorConfiguration [-Exclude] -LowCpuThreshold <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### RgAndExcludeParameterSet
 ```
-Set-AzureRmAdvisorConfiguration [-Exclude <String>] -ResourceGroupName <String>
+Set-AzureRmAdvisorConfiguration [-Exclude] -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectLowCpuExcludeParameterSet
 ```
-Set-AzureRmAdvisorConfiguration [-Exclude <String>] -LowCpuThreshold <String>
+Set-AzureRmAdvisorConfiguration [-Exclude] -LowCpuThreshold <String>
  -InputObject <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectRgExcludeParameterSet
 ```
-Set-AzureRmAdvisorConfiguration [-Exclude <String>] [-ResourceGroupName <String>]
+Set-AzureRmAdvisorConfiguration [-Exclude] [-ResourceGroupName <String>]
  -InputObject <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -77,8 +46,7 @@ ResourceGroup level configuration: There can be only one configration for each R
 
 ## EXAMPLES
 
-
-### Example 1
+ Example 1
 ```powershell
 PS C:\> Set-AzureRMAdvisorConfiguration -LowCpuThreshold 10
 Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}
@@ -94,7 +62,7 @@ Updates the configuration(lowCpuThreshold) for subscription level configration.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzureRMAdvisorConfiguration -LowCpuThreshold 15 -Include true
+PS C:\> Set-AzureRMAdvisorConfiguration -LowCpuThreshold 15 -E 
 Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}
 Name       : {user_subscription}
 Properties : additionalProperties : null
@@ -104,26 +72,11 @@ Properties : additionalProperties : null
 Type       : Microsoft.Advisor/Configurations
 ```
 
-Updates the configuration(lowCpuThreshold, exclude) for subscription level configration and also includes in the filtering process. Finally all the recommnedations from this subscription will be filtered out in API.
+Updates the configuration(lowCpuThreshold, exclude) for subscription level configration and excludes from the recommendation generation.
 
 ### Example 3
 ```powershell
-PS C:\> Set-AzureRMAdvisorConfiguration -LowCpuThreshold 20 -Exclude true
-Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}
-Name       : {user_subscription}
-Properties : additionalProperties : null
-             exclude :  False
-             lowCpuThreshold : 20
-
-Type       : Microsoft.Advisor/Configurations
-```
-
-Updates the configuration(lowCpuThreshold, exclude) for subscription level configration and also excluded from the filtering process. Finally all the recommnedations from this subscription will be included in API.
-
-
-### Example 4
-```powershell
-PS C:\> Set-AzureRMAdvisorConfiguration -ResourceGroupName resourceGroupName1 -Include true
+PS C:\> Set-AzureRMAdvisorConfiguration -ResourceGroupName resourceGroupName1 -E
 
 Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}-resourceGroupName1
 Name       : {user_subscription}-resourceGroupName1
@@ -134,7 +87,7 @@ Properties : additionalProperties : null
 Type       : Microsoft.Advisor/Configurations
 ```
 
-Updates the configuration(exclude) for resourceGroupName1 to be included for the filtering process.
+Updates the configuration(exclude) for resourceGroupName1 to be excluded in the recommendation generation.
 
 ### Example 5
 ```powershell
@@ -149,13 +102,13 @@ Properties : additionalProperties : null
 Type       : Microsoft.Advisor/Configurations
 ```
 
-Updates the configuration(exclude) for resourceGroupName1 to be excluded from the filtering process.
+Updates the configuration(exclude) for resourceGroupName1 to be included in the recommendation generation.
 
 {{ Add example description here }}
 
 ### Example 6
 ```powershell
-PS C:\> Get-AzureRMAdvisorConfiguration | Set-AzureRMAdvisorConfiguration -E true
+PS C:\> Get-AzureRMAdvisorConfiguration | Set-AzureRMAdvisorConfiguration
 Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}-resourceGroupName1
 Name       : {user_subscription}-resourceGroupName1
 Properties : additionalProperties : null
@@ -172,7 +125,7 @@ Properties : additionalProperties : null
 Type       : Microsoft.Advisor/Configurations
 ```
 
-Makes all the resource-level configuration that are already updates by the user to be excluded from the filtering process. This will take into effect only if the user has updated in the exclude property of resourceGroup in the past, if not by default it will be excluded from the filtering.
+Makes all the resource-level configuration that are already updates by the user to be included in the recommendation generation. This will take into effect only if the user has updated in the exclude property of resourceGroup in the past, if not by default it will be included in the recommendation generation.
 
 ### Example 7
 ```powershell
@@ -184,10 +137,6 @@ Properties : additionalProperties : null
              lowCpuThreshold : 20
 
 Type       : Microsoft.Advisor/Configurations
-```
-
-Sets the subscription level configuration(lowCpuThreshold) to be updated.
-
 
 ## PARAMETERS
 
@@ -207,29 +156,15 @@ Accept wildcard characters: False
 ```
 
 ### -Exclude
-Exclude from the recommendation generation.
+Exclude from the recommendation generation. If this swtichParameter is specified, the exclude porperty will be set to true which excludes from the recommendation generation.
+By default, if not set by the user the exclude property assoicated with will be set to false and will be included in the recommendation generation.
 
 ```yaml
-Type: String
-Parameter Sets: LowCpuAndExcludeParameterSet, RgAndExcludeParameterSet, InputObjectLowCpuExcludeParameterSet, InputObjectRgExcludeParameterSet
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases: E
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Include
-Include in the recommendation generation.
-
-```yaml
-Type: String
-Parameter Sets: LowCPUAndIncludeParameterSet, RgAndIncludeParameterSet, InputObjectLowCpuIncludeParameterSet, InputObjectRgIncludeParameterSet
-Aliases: I
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -241,7 +176,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]
-Parameter Sets: InputObjectLowCpuIncludeParameterSet, InputObjectRgIncludeParameterSet, InputObjectLowCpuExcludeParameterSet, InputObjectRgExcludeParameterSet
+Parameter Sets: InputObjectLowCpuExcludeParameterSet, InputObjectRgExcludeParameterSet
 Aliases:
 
 Required: True
@@ -256,7 +191,7 @@ Value for Low Cpu threshold.
 
 ```yaml
 Type: String
-Parameter Sets: LowCPUAndIncludeParameterSet, InputObjectLowCpuIncludeParameterSet, LowCpuAndExcludeParameterSet, InputObjectLowCpuExcludeParameterSet
+Parameter Sets: LowCpuAndExcludeParameterSet, InputObjectLowCpuExcludeParameterSet
 Aliases: L, LowCpu
 
 Required: True
@@ -271,7 +206,7 @@ Resource Group name for the configuration.
 
 ```yaml
 Type: String
-Parameter Sets: RgAndIncludeParameterSet, RgAndExcludeParameterSet
+Parameter Sets: RgAndExcludeParameterSet
 Aliases: Rg, ResoureGroup
 
 Required: True
@@ -283,7 +218,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: InputObjectRgIncludeParameterSet, InputObjectRgExcludeParameterSet
+Parameter Sets: InputObjectRgExcludeParameterSet
 Aliases: Rg, ResoureGroup
 
 Required: False
