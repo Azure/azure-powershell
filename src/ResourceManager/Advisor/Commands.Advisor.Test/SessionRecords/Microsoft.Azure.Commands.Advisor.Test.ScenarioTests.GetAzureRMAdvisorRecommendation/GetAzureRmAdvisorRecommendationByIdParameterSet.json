@@ -1,0 +1,71 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions%2F658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7?api-version=2017-04-19",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMlMkY2NThjODk1MC1lNzlkLTQ3MDQtYTkwMy0xZGY2NmJhOTAyNTgvcHJvdmlkZXJzL01pY3Jvc29mdC5BZHZpc29yL3JlY29tbWVuZGF0aW9ucy80ZmEyZmY0Zi1kYzkwLTk4NzYtMDcyMy0xMzYwZmE5ZjRiZDc/YXBpLXZlcnNpb249MjAxNy0wNC0xOQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "15a0be57-816c-43ce-b858-3fcd13e6aa0c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows",
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Advisor.AdvisorManagementClient/0.9.5.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "599"
+        ],
+        "x-ms-request-id": [
+          "2faeb657-32ee-4c47-810c-ed2dced85af2"
+        ],
+        "x-ms-correlation-request-id": [
+          "2faeb657-32ee-4c47-810c-ed2dced85af2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181204T230801Z:2faeb657-32ee-4c47-810c-ed2dced85af2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 04 Dec 2018 23:08:01 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Content-Length": [
+          "1233"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7\",\r\n  \"name\": \"4fa2ff4f-dc90-9876-0723-1360fa9f4bd7\",\r\n  \"properties\": {\r\n    \"description\": \"After enabling Soft Delete, deleted data transitions to a soft deleted state instead of being permanently deleted. When data is overwritten, a soft deleted snapshot is generated to save the state of the overwritten data. You can configure the amount of time soft deleted data is recoverable before it permanently expires.\",\r\n    \"label\": \"Enable Soft Delete\",\r\n    \"learnMoreLink\": \"https://aka.ms/softdelete\",\r\n    \"potentialBenefits\": \"Save and recover your data when blobs or blob snapshots are accidentally overwritten or deleted\",\r\n    \"category\": \"HighAvailability\",\r\n    \"impact\": \"Medium\",\r\n    \"impactedField\": \"Microsoft.Storage/storageAccounts\",\r\n    \"impactedValue\": \"fontcjk\",\r\n    \"lastUpdated\": \"2018-12-04T22:48:37.2731102Z\",\r\n    \"recommendationTypeId\": \"42dbf883-9e4b-4f84-9da4-232b87c4b5e9\",\r\n    \"risk\": \"Error\",\r\n    \"shortDescription\": {\r\n      \"problem\": \"Enable Soft Delete to protect your blob data\",\r\n      \"solution\": \"Enable Soft Delete to protect your blob data\"\r\n    }\r\n  },\r\n  \"type\": \"Microsoft.Advisor/recommendations\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "658c8950-e79d-4704-a903-1df66ba90258"
+  }
+}

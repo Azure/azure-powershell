@@ -1,0 +1,260 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/configurations?api-version=2017-04-19",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjU4Yzg5NTAtZTc5ZC00NzA0LWE5MDMtMWRmNjZiYTkwMjU4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQWR2aXNvci9jb25maWd1cmF0aW9ucz9hcGktdmVyc2lvbj0yMDE3LTA0LTE5",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"exclude\": true,\r\n    \"low_cpu_threshold\": \"20\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ce98e349-7a1c-436a-9627-5c6c7582cc1e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows",
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Advisor.AdvisorManagementClient/0.9.5.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "81"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "ce98e349-7a1c-436a-9627-5c6c7582cc1e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "199"
+        ],
+        "x-ms-correlation-request-id": [
+          "c9137340-2b1b-40ea-8385-daae68347ba7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181204T230815Z:c9137340-2b1b-40ea-8385-daae68347ba7"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 04 Dec 2018 23:08:14 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/configurations?api-version=2017-04-19",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjU4Yzg5NTAtZTc5ZC00NzA0LWE5MDMtMWRmNjZiYTkwMjU4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQWR2aXNvci9jb25maWd1cmF0aW9ucz9hcGktdmVyc2lvbj0yMDE3LTA0LTE5",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"exclude\": false,\r\n    \"low_cpu_threshold\": \"20\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5dfe0216-dc54-46eb-b240-a8f1d0e2f41b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows",
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Advisor.AdvisorManagementClient/0.9.5.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "82"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "5dfe0216-dc54-46eb-b240-a8f1d0e2f41b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "198"
+        ],
+        "x-ms-correlation-request-id": [
+          "8be5f8a2-f3ac-4f89-bd30-c64fbf5e1c45"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181204T230815Z:8be5f8a2-f3ac-4f89-bd30-c64fbf5e1c45"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 04 Dec 2018 23:08:14 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/configurations?api-version=2017-04-19",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjU4Yzg5NTAtZTc5ZC00NzA0LWE5MDMtMWRmNjZiYTkwMjU4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQWR2aXNvci9jb25maWd1cmF0aW9ucz9hcGktdmVyc2lvbj0yMDE3LTA0LTE5",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5ce614d9-25d7-4d14-a9cf-47767ed7e8e4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows",
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Advisor.AdvisorManagementClient/0.9.5.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "5ce614d9-25d7-4d14-a9cf-47767ed7e8e4"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "599"
+        ],
+        "x-ms-correlation-request-id": [
+          "3f192425-cad7-4530-a064-046d8dc15ebc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181204T230815Z:3f192425-cad7-4530-a064-046d8dc15ebc"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 04 Dec 2018 23:08:14 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Content-Length": [
+          "295"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/configurations/658c8950-e79d-4704-a903-1df66ba90258\",\r\n      \"type\": \"Microsoft.Advisor/Configurations\",\r\n      \"name\": \"658c8950-e79d-4704-a903-1df66ba90258\",\r\n      \"properties\": {\r\n        \"low_cpu_threshold\": \"20\",\r\n        \"exclude\": true\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/configurations?api-version=2017-04-19",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjU4Yzg5NTAtZTc5ZC00NzA0LWE5MDMtMWRmNjZiYTkwMjU4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQWR2aXNvci9jb25maWd1cmF0aW9ucz9hcGktdmVyc2lvbj0yMDE3LTA0LTE5",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "de44f17c-3d7a-4974-a629-5a4a0780394c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows",
+          "OSVersion/6.3.9600.0",
+          "Microsoft.Azure.Management.Advisor.AdvisorManagementClient/0.9.5.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "de44f17c-3d7a-4974-a629-5a4a0780394c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "598"
+        ],
+        "x-ms-correlation-request-id": [
+          "58cdedd5-5818-4d3c-8f8c-94c9875b63cb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181204T230815Z:58cdedd5-5818-4d3c-8f8c-94c9875b63cb"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 04 Dec 2018 23:08:14 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Content-Length": [
+          "296"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/configurations/658c8950-e79d-4704-a903-1df66ba90258\",\r\n      \"type\": \"Microsoft.Advisor/Configurations\",\r\n      \"name\": \"658c8950-e79d-4704-a903-1df66ba90258\",\r\n      \"properties\": {\r\n        \"low_cpu_threshold\": \"20\",\r\n        \"exclude\": false\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "658c8950-e79d-4704-a903-1df66ba90258"
+  }
+}
