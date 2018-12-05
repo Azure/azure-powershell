@@ -104,8 +104,6 @@ Type       : Microsoft.Advisor/Configurations
 
 Updates the configuration(exclude) for resourceGroupName1 to be included in the recommendation generation.
 
-{{ Add example description here }}
-
 ### Example 6
 ```powershell
 PS C:\> Get-AzureRMAdvisorConfiguration | Set-AzureRMAdvisorConfiguration
@@ -172,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+The pipeline object returned by Get-AzureRmAdvisorConfiguration call.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]

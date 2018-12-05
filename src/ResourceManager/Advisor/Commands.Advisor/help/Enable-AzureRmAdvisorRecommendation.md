@@ -101,7 +101,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+The pipeline object returned by Get-AzureRmAdvisorRecommendation call.
+
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]

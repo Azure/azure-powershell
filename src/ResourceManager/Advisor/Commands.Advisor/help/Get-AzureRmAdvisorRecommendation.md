@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmAdvisorRecommendation
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a list of Azure Advisor recommendations.
 
 ## SYNTAX
 
@@ -25,16 +25,51 @@ Get-AzureRmAdvisorRecommendation [-Category <String>] [-ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Obtain the list of Azure Advisor recommendation. Can be filtered by Category, resour-ID, name etc.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmAdvisorRecommendation
+Id                   : /subscriptions/8c895065-a903-e79d-4704-1df66ba90258/resourceGroups/AzExpertStg/providers/Microsoft.Cache/Redis/azacache/providers/Microsoft.Advisor/recommen
+                       dations/0a3a8f38-cfad-9d18-78e0-55762c72a178
+Category             : Performance
+ExtendedProperties   : {}
+Impact               : Medium
+ImpactedField        : Microsoft.Cache/Redis
+ImpactedValue        : azacache
+LastUpdated          : 12/5/2018 4:45:55 PM
+Metadata             : {}
+RecommendationTypeId : 905a0026-8010-45b2-ab46-a92c3e4a5131
+Risk                 : None
+ShortDescription     : Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription
+SuppressionIds       : {}
+Name                 : 0a3a8f38-cfad-9d18-78e0-55762c72a178
+Type                 : Microsoft.Advisor/recommendations
 ```
+Gets the list of all recommendations.
 
-{{ Add example description here }}
+### Example 2
+```powershell
+PS C:\> Get-AzureRmAdvisorRecommendation -Category Performance
+Id                   : /subscriptions/8c895065-a903-e79d-4704-1df66ba90258/resourceGroups/AzExpertStg/providers/Microsoft.Cache/Redis/azacache/providers/Microsoft.Advisor/recommen
+                       dations/0a3a8f38-cfad-9d18-78e0-55762c72a178
+Category             : Performance
+ExtendedProperties   : {}
+Impact               : Medium
+ImpactedField        : Microsoft.Cache/Redis
+ImpactedValue        : azacache
+LastUpdated          : 12/5/2018 4:45:55 PM
+Metadata             : {}
+RecommendationTypeId : 905a0026-8010-45b2-ab46-a92c3e4a5131
+Risk                 : None
+ShortDescription     : Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsRecommendationBaseShortDescription
+SuppressionIds       : {}
+Name                 : 0a3a8f38-cfad-9d18-78e0-55762c72a178
+Type                 : Microsoft.Advisor/recommendations
+```
+Gets the list of all recommendations filtered by Category Performance.
 
 ## PARAMETERS
 
