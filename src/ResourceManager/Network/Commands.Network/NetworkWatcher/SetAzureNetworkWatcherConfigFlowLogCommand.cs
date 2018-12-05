@@ -217,8 +217,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceResourceId { get; set; }
-
-
+        
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -275,17 +274,26 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
+            ParameterSetName = SetFlowlogByResourceWithTAByResource)]
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
             ParameterSetName = SetFlowlogByResourceWithTAByDetails)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
+            ParameterSetName = SetFlowlogByNameWithTAByResource)]
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
             ParameterSetName = SetFlowlogByNameWithTAByDetails)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
+            ParameterSetName = SetFlowlogByLocationWithTAByResource)]
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
             ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
         [ValidateNotNull]
