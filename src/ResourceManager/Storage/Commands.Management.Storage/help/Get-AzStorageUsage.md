@@ -20,7 +20,7 @@ Get-AzStorageUsage -Location <String> [-DefaultProfile <IAzureContextContainer>]
 ## DESCRIPTION
 The **Get-AzStorageUsage** cmdlet gets the resource usage for Azure Storage for the current subscription.
 
-## EXAMPLES 
+## EXAMPLES
 
 ### Example 1: Get the storage resources usage of specified location
 ```
