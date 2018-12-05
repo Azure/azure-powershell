@@ -52,7 +52,7 @@ This command gets the TDE protector for the managed instance named ContosoManage
 
 ### Example 2: Using managed instance object
 ```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 PS C:\> Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance $managedInstance 'ContosoManagedInstanceName'
 
 ResourceGroupName              : ContosoResourceGroup
@@ -66,7 +66,7 @@ This command gets the TDE protector for the managed instance named ContosoManage
 
 ### Example 3: Using managed instance resource id
 ```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 PS C:\> Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstanceResourceId $managedInstance.ResourceId
 
 ResourceGroupName              : ContosoResourceGroup
@@ -80,7 +80,7 @@ This command gets the TDE protector for the managed instance named ContosoManage
 
 ### Example 4: Using piping
 ```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 PS C:\> $managedInstance | Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector
 
 ResourceGroupName              : ContosoResourceGroup

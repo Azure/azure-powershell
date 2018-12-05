@@ -66,7 +66,7 @@ This command updates the specified managed instance to use the Managed instance 
 
 ### Example 3: Set the Transparent Data Encryption protector type to Azure Key Vault using managed instance object
 ```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 PS C:\> Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance $managedInstance -Type AzureKeyVault -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName              : ContosoResourceGroup
@@ -80,7 +80,7 @@ This command updates the specified managed instance to use the Managed instance 
 
 ### Example 4: Set the Transparent Data Encryption protector type to Azure Key Vault using resource id
 ```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 PS C:\> Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstanceResourceId $managedInstance.ResourceId -Type AzureKeyVault -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName              : ContosoResourceGroup
@@ -94,7 +94,7 @@ This command updates the specified managed instance to use the Managed instance 
 
 ### Example 5: Set the Transparent Data Encryption protector type to Azure Key Vault using piping
 ```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 PS C:\> $managedInstance | Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName              : ContosoResourceGroup

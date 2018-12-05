@@ -68,7 +68,7 @@ This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/key
 
 ### Example 3: Using managed instance object
 ```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 PS C:\> Get-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstance $managedInstance -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName      : ContosoResourceGroup
@@ -84,7 +84,7 @@ This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/key
 
 ### Example 4: Using managed instance resource id
 ```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 PS C:\> Get-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstanceResourceId $managedInstance.ResourceId -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName      : ContosoResourceGroup
@@ -100,7 +100,7 @@ This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/key
 
 ### Example 5: Using piping
 ```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 PS C:\> $managedInstance | Get-AzureRmSqlManagedInstanceKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName      : ContosoResourceGroup
