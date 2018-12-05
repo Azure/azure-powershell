@@ -32,7 +32,7 @@ Add-AzureRmSqlManagedInstanceKeyVaultKey [-ManagedInstanceResourceId] <String> [
 
 ## DESCRIPTION
 The Add-AzureRmSqlManagedInstanceKeyVaultKey cmdlet adds a key vault key to the provided Managed Instance. The managed instance must have 'get, wrapKey, unwrapKey' permissions to the vault, use the following script to grant permission to the managed instance.
-$managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+$managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoVault -ObjectId $managedInstance.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
 
 ## EXAMPLES
@@ -54,7 +54,7 @@ This command adds the Key Vault key with Id 'https://contoso.vault.azure.net/key
 
 ### Example 2: Using managed instance object
 ```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 PS C:\> Add-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstance $managedInstance -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName      : ContosoResourceGroup
@@ -70,7 +70,7 @@ This command adds the Key Vault key with Id 'https://contoso.vault.azure.net/key
 
 ### Example 3: Using managed instance resource id
 ```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 PS C:\> Add-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstanceResourceId $managedInstance.ResourceId -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName      : ContosoResourceGroup
@@ -86,7 +86,7 @@ This command adds the Key Vault key with Id 'https://contoso.vault.azure.net/key
 
 ### Example 4: Using piping
 ```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 PS C:\> $managedInstance | Add-AzureRmSqlManagedInstanceKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName      : ContosoResourceGroup
