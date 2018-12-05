@@ -1,2 +1,1 @@
 AssemblyFileName,ClassName,Target,Severity,ProblemId,Description,Remediation
-Microsoft.Azure.Commands.ContainerInstance.dll,Microsoft.Azure.Commands.ContainerInstance.NewAzureContainerGroupCommand,New-AzureRmContainerGroup,0,1050,The parameter set 'CreateContainerGroupBaseParamSet' for cmdlet 'New-AzureRmContainerGroup' has been removed.,Add parameter set 'CreateContainerGroupBaseParamSet' back to cmdlet 'New-AzureRmContainerGroup'.
