@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+* Add completers for SkuName and Typem available on New-AzureRmCognitiveServicesAccount operation.
+
 ## Version 0.9.12
 
 * Add Get-AzureRmCognitiveServicesAccountSkus operation.

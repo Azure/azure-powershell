@@ -14,8 +14,8 @@ schema: 2.0.0
 
 ```
 Set-AzRouteFilterRuleConfig -RouteFilter <PSRouteFilter> [-Force] -Name <String> -Access <String>
- -RouteFilterRuleType <String> -CommunityList <System.Collections.Generic.List`1[System.String]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -RouteFilterRuleType <String> -CommunityList <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The list of community value that route filter will filter on
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
