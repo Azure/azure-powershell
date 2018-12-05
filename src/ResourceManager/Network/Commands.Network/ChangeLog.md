@@ -36,6 +36,12 @@
         - New-AzureRmApplicationGatewayPathRuleConfig
         - Add-AzureRmApplicationGatewayUrlPathMapConfig
         - New-AzureRmApplicationGatewayUrlPathMapConfig
+* Added KeyVault Support to Application Gateway using Identity.
+    - Cmdlets updated with optonal parameter -KeyVaultSecretId, -KeyVaultSecret
+        - Add-AzureRmApplicationGatewaySslCertificate
+        - New-AzureRmApplicationGatewaySslCertificate
+        - Set-AzureRmApplicationGatewaySslCertificate
+    - New-AzureRmApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId
 
 ## Version 6.11.0
 * Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
