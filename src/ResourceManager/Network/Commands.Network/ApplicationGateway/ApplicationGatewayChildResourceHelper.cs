@@ -19,22 +19,6 @@ namespace Microsoft.Azure.Commands.Network
 {
     public static class ApplicationGatewayChildResourceHelper
     {
-        public static string GetResourceId(
-            string subscriptionId,
-            string resourceGroupName,
-            string applicationGatewayName,
-            string resource,
-            string resourceName)
-        {
-            return string.Format(
-                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayChildResourceId,
-                subscriptionId,
-                resourceGroupName,
-                applicationGatewayName,
-                resource,
-                resourceName);
-        }
-
         public static string GetResourceNotSetId(string subscriptionId, string resource, string resourceName)
         {
             return string.Format(
