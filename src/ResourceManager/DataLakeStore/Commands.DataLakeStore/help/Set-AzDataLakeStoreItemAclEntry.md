@@ -59,7 +59,7 @@ This command recursively modifies the ACE for Patti Fuller to have all permissio
 Specifies the name of the Data Lake Store account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -79,7 +79,7 @@ The acceptable values for this parameter are:
 - Other
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType
+Type: AceType
 Parameter Sets: SetSpecificACE
 Aliases:
 Accepted values: User, Group, Mask, Other
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Specifies the ACL object that contains the entries to modify.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[]
+Type: DataLakeStoreItemAce[]
 Parameter Sets: SetByACLObject
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Number of files/directories processed in parallel. Optional: a reasonable default will be selected
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 Indicates that this operation modifies the default ACE from the specified ACL.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: SetSpecificACE
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 Specifies the object ID of the AzureActive Directory user, group, or service principal for which to modify an ACE.
 
 ```yaml
-Type: System.Guid
+Type: Guid
 Parameter Sets: SetSpecificACE
 Aliases:
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 Indicates the resulting ACL should be returned.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 Specifies the Data Lake Store path of the item for which to modify an ACE, starting with the root directory (/).
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Type: DataLakeStorePathInstance
 Parameter Sets: (All)
 Aliases:
 
@@ -209,7 +209,7 @@ The acceptable values for this parameter are:
 - All
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Permission
+Type: Permission
 Parameter Sets: SetSpecificACE
 Aliases:
 
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 Indicates the ACL to be modified recursively to the child subdirectories and files
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -239,7 +239,7 @@ Accept wildcard characters: False
 If passed then progress status is showed. Only applicable when recursive Acl modify is done.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -254,7 +254,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -270,7 +270,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

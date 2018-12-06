@@ -38,7 +38,7 @@ This command adds the specified tag to the Data Lake Store account named Contoso
 Optionally allow/block Azure originating IPs through the firewall.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState]
+Type: FirewallAllowAzureIpsState
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
@@ -55,7 +55,7 @@ Specifies the ID of an AzureActive Directory group.
 This group is the default group for files and folders that you create.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 Optionally enable or disable existing firewall rules.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState]
+Type: FirewallState
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 If the encryption type is User assigned, the user can rotate their key version with this parameter.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Specifies the name of a Data Lake Store account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the Data Lake Store account to modify.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +147,7 @@ Specifies tags as key-value pairs.
 You can use tags to identify a Data Lake Store account from other Azure resources.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 The desired commitment tier for this account to use.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.TierType]
+Type: TierType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Consumption, Commitment1TB, Commitment10TB, Commitment100TB, Commitment500TB, Commitment1PB, Commitment5PB
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 Optionally enable or disable the existing trusted ID providers.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState]
+Type: TrustedIdProviderState
 Parameter Sets: (All)
 Aliases:
 

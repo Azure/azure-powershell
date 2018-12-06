@@ -59,7 +59,7 @@ This command removes the user ACE for Patti Fuller from the root and recursively
 Specifies the name of the Data Lake Store account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -79,7 +79,7 @@ The acceptable values for this parameter are:
 - Other
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType
+Type: AceType
 Parameter Sets: RemoveSpecificACE
 Aliases:
 Accepted values: User, Group, Mask, Other
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Specifies the ACL object that contains the entries to be removed.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[]
+Type: DataLakeStoreItemAce[]
 Parameter Sets: RemoveByACLObject
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Number of files/directories processed in parallel. Optional: a reasonable default will be selected
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 Indicates that this operation removes the default ACE from the specified ACL.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: RemoveSpecificACE
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 Specifies the object ID of the AzureActive Directory user, group, or service principal for which to remove an ACE.
 
 ```yaml
-Type: System.Guid
+Type: Guid
 Parameter Sets: RemoveSpecificACE
 Aliases:
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 Indicates a boolean response should be returned indicating the result of the delete operation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 Specifies the Data Lake Store path of the item from which to remove an ACE, starting with the root directory (/).
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Type: DataLakeStorePathInstance
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +200,7 @@ Accept wildcard characters: False
 Indicates the ACL to be removed recursively to the child subdirectories and files
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -215,7 +215,7 @@ Accept wildcard characters: False
 If passed then progress status is showed. Only applicable when recursive Acl remove is done.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +230,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -246,7 +246,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
