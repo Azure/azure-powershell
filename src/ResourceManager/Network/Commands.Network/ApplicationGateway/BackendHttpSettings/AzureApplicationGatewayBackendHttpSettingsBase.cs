@@ -76,13 +76,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Application gateway Authentication Certificates")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
+        public PSApplicationGatewayAuthenticationCertificate[] AuthenticationCertificates { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Application gateway Trusted Root Certificates")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayTrustedRootCertificate> TrustedRootCertificate { get; set; }
+        public PSApplicationGatewayTrustedRootCertificate[] TrustedRootCertificate { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Network
                 backendHttpSettings.Probe.Id = this.ProbeId;
             }
 
-            if (this.AuthenticationCertificates != null && this.AuthenticationCertificates.Count > 0)
+            if (this.AuthenticationCertificates != null && this.AuthenticationCertificates.Length > 0)
             {
                 backendHttpSettings.AuthenticationCertificates = new List<PSResourceId>();
                 foreach (var authcert in this.AuthenticationCertificates)
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            if (this.TrustedRootCertificate != null && this.TrustedRootCertificate.Count > 0)
+            if (this.TrustedRootCertificate != null && this.TrustedRootCertificate.Length > 0)
             {
                 backendHttpSettings.TrustedRootCertificates = new List<PSResourceId>();
                 foreach (var trustedRootCert in this.TrustedRootCertificate)

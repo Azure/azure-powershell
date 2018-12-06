@@ -21,46 +21,82 @@ function Test-PublicIpPrefixCRUD
     # Setup
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
-    $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/publicIpPrefixes"
-    $location = Get-ProviderLocation $resourceTypeParent
-   
-    try 
+    $location = Get-ProviderLocation $resourceTypeParent "West Europe"
+    $ipTagType = "NetworkDomain"
+    $ipTagTag = "test"
+
+    try
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
-      
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        $ipTag = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefixTag
+        $ipTag.IpTagType = $ipTagType
+        $ipTag.Tag = $ipTagTag
+
         # Create publicIpPrefix
-        $job = New-AzureRmPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Sku Standard -PrefixLength 30 -AsJob
+        $job = New-AzureRmPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Sku Standard -PrefixLength 30 -IpAddressVersion IPv4 -IpTag $ipTag -AsJob
         $job | Wait-Job
         $actual = $job | Receive-Job
         $expected = Get-AzureRmPublicIpPrefix -ResourceGroupName $rgname -name $rname
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
-        Assert-AreEqual $expected.Name $actual.Name	
+        Assert-AreEqual $expected.Name $actual.Name
         Assert-AreEqual $expected.Location $actual.Location
         Assert-AreEqual 30 $expected.PrefixLength
         Assert-NotNull $expected.ResourceGuid
         Assert-AreEqual "Succeeded" $expected.ProvisioningState
+        Assert-AreEqual $ipTagType $expected.IpTags[0].IpTagType
+        Assert-AreEqual $ipTagTag $expected.IpTags[0].Tag
 
-      
         # list
         $list = Get-AzureRmPublicIpPrefix -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
-        Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName  
-        Assert-AreEqual $list[0].Name $actual.Name    
+        Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $list[0].Name $actual.Name
         Assert-AreEqual $list[0].Location $actual.Location
         Assert-AreEqual 30 $list[0].PrefixLength
         Assert-AreEqual "Succeeded" $list[0].ProvisioningState
-      
+
+        $expected = Get-AzureRmPublicIpPrefix -ResourceId $actual.Id
+        Assert-AreEqual 1 @($list).Count
+        Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $list[0].Name $actual.Name
+        Assert-AreEqual $list[0].Location $actual.Location
+        Assert-AreEqual 30 $list[0].PrefixLength
+        Assert-AreEqual "Succeeded" $list[0].ProvisioningState
+
+        $list = Get-AzureRmPublicIpPrefix
+        Assert-NotNull $list
+
+        $expected.Tag = @{ testtag = "testvalSet" }
+
+        $job = Set-AzureRmPublicIpPrefix -PublicIpPrefix $expected -AsJob
+        $job | Wait-Job
+        $actual = $job | Receive-Job
+
         # delete
-        $job = Remove-AzureRmPublicIpPrefix -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
+        $job = Remove-AzureRmPublicIpPrefix -InputObject $actual -PassThru -Force -AsJob
         $job | Wait-Job
         $delete = $job | Receive-Job
         Assert-AreEqual true $delete
-      
+
         $list = Get-AzureRmPublicIpPrefix -ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual 0 @($list).Count
+
+        # Try setting unexisting
+        Assert-ThrowsLike { Set-AzureRmPublicIpPrefix -PublicIpPrefix $expected } "*not found*"
+
+        # Create one more time to test deletion with another parameter set
+        $job = New-AzureRmPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Sku Standard -PrefixLength 30 -AsJob
+        $job | Wait-Job
+        $actual = $job | Receive-Job
+
+        $job = Remove-AzureRmPublicIpPrefix -ResourceId $actual.Id -PassThru -Force -AsJob
+        $job | Wait-Job
+        $delete = $job | Receive-Job
+        Assert-AreEqual true $delete
     }
     finally
     {
@@ -82,13 +118,13 @@ function Test-PublicIpPrefixAllocatePublicIpAddress
     $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/publicIpPrefixes"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation $resourceTypeParent "West Europe"
    
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
-      
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
         # Create publicIpPrefix
         $job = New-AzureRmPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Sku Standard -PrefixLength 30 -AsJob
         $job | Wait-Job

@@ -25,10 +25,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSCluster),
-    DeprecatedOutputProperties = new String[] { "UpgradeDescription.DeltaHealthPolicy.ApplicationHealthPolicies", "UpgradeDescription.OverrideUserUpgradePolicy", "SerivceTypeHealthPolicies" })]
-#endif
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricCluster", DefaultParameterSetName = "BySubscription"), OutputType(typeof(PSCluster))]
     public class GetAzureRmServiceFabricCluster : ServiceFabricClusterCmdlet
     {
@@ -62,7 +58,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 case ByResourceGroup:
                     {
                         var clusters = SFRPClient.Clusters.
-                            ListByResourceGroup(ResourceGroupName).
+                            ListByResourceGroup(ResourceGroupName).Value.
                             Select(c => new PSCluster(c)).ToList();
 
                         WriteObject(clusters, true);
@@ -70,7 +66,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     }
                 default:
                     {
-                        var clusters = SFRPClient.Clusters.List().Select(c => new PSCluster(c)).ToList();
+                        var clusters = SFRPClient.Clusters.List().Value.Select(c => new PSCluster(c)).ToList();
                         WriteObject(clusters, true);
                         break;
                     }

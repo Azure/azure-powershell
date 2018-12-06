@@ -45,12 +45,31 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVirtualHub GetVirtualHub(string resourceGroupName, string name)
         {
-            //// The following code will throw if resource is not found
-            var virtualHub = this.VirtualHubClient.Get(resourceGroupName, name);
-            var psVirtualHub = ToPsVirtualHub(virtualHub);
-            psVirtualHub.ResourceGroupName = resourceGroupName;
+            MNM.VirtualHub virtualHub = null;
+            PSVirtualHub psVirtualHub = null;
+
+            try
+            {
+                //// The following code will throw if resource is not found
+                virtualHub = this.VirtualHubClient.Get(resourceGroupName, name);
+
+                psVirtualHub = ToPsVirtualHub(virtualHub);
+                psVirtualHub.ResourceGroupName = resourceGroupName;
+            }
+            catch (Microsoft.Azure.Management.Network.Models.ErrorException)
+            {
+                    // Resource is not present
+                    return psVirtualHub;
+            }
 
             return psVirtualHub;
+        }
+
+        public bool IsVirtualHubPresent(string resourceGroupName, string name)
+        {
+            PSVirtualHub psVirtualHub = GetVirtualHub(resourceGroupName, name);
+
+            return psVirtualHub == null ? false : true;
         }
 
         public PSVirtualHub CreateOrUpdateVirtualHub(string resourceGroupName, string virtualHubName, PSVirtualHub virtualHub, Hashtable tags)
@@ -84,24 +103,6 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return hubsToReturn;
-        }
-
-        public bool IsVirtualHubPresent(string resourceGroupName, string name)
-        {
-            try
-            {
-                GetVirtualHub(resourceGroupName, name);
-            }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorException exception)
-            {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    // Resource is not present
-                    return false;
-                }
-            }
-
-            return true;
         }
     }
 }

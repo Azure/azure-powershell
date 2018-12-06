@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(this.LoadBalancer);
                 return;
             }
-            var vOutboundRules = this.LoadBalancer.OutboundRules.First
+            var vOutboundRules = this.LoadBalancer.OutboundRules.SingleOrDefault
                 (e =>
-                    (this.Name != null && e.Name == this.Name)
+                    string.Equals(e.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)
                 );
 
             if (vOutboundRules != null)
