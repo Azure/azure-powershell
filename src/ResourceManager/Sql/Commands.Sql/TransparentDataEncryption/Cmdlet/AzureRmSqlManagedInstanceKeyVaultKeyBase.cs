@@ -42,30 +42,30 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         protected const string ResourceIdParameterSet = "AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet";
 
         /// <summary>
-        /// Gets or sets the Managed instance Object
+        /// Gets or sets the instance Object
         /// </summary>
         [Parameter(
             Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = "The managed instance input object")]
+            HelpMessage = "The instance input object")]
         [ValidateNotNullOrEmpty]
         [Alias("InputObject")]
-        public AzureSqlManagedInstanceModel ManagedInstance { get; set; }
+        public AzureSqlManagedInstanceModel Instance { get; set; }
 
         /// <summary>
-        /// Gets or sets the Managed instance Resource Id
+        /// Gets or sets the instance Resource Id
         /// </summary>
         [Parameter(
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "The managed instance resource id")]
+            HelpMessage = "The instance resource id")]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceId")]
-        public string ManagedInstanceResourceId { get; set; }
+        public string InstanceResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group name
@@ -80,15 +80,15 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the managed instance name
+        /// Gets or sets the instance name
         /// </summary>
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
             Position = 1,
-            HelpMessage = "The managed instance name")]
+            HelpMessage = "The instance name")]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceName { get; set; }
+        public string InstanceName { get; set; }
 
         /// <summary>
         /// Gets or sets the AzureKeyVault key id
@@ -119,13 +119,13 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             switch (ParameterSetName)
             {
                 case InputObjectParameterSet:
-                    this.ResourceGroupName = ManagedInstance.ResourceGroupName;
-                    this.ManagedInstanceName = ManagedInstance.ManagedInstanceName;
+                    this.ResourceGroupName = Instance.ResourceGroupName;
+                    this.InstanceName = Instance.ManagedInstanceName;
                     break;
                 case ResourceIdParameterSet:
-                    var resourceInfo = new ResourceIdentifier(ManagedInstanceResourceId);
+                    var resourceInfo = new ResourceIdentifier(InstanceResourceId);
                     this.ResourceGroupName = resourceInfo.ResourceGroupName;
-                    this.ManagedInstanceName = resourceInfo.ResourceName;
+                    this.InstanceName = resourceInfo.ResourceName;
                     break;
                 default:
                     break;

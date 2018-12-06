@@ -28,32 +28,32 @@ $tdeKeyName = $keyVaultName + "_" + $keyName + "_" + $keyVersion
 #>
 function Test-SetGetManagedInstanceEncryptionProtectorCI
 {
-	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
 	# ServiceManaged with ResourceGroupName and ManagedInstanceName & ResourceId
-	$encryptionProtector = Set-AzSqlManagedInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -Type ServiceManaged
+	$encryptionProtector = Set-AzSqlInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -Type ServiceManaged
 	
 	Assert-AreEqual ServiceManaged $encryptionProtector.Type "Protector type mismatch after setting managed instance TDE protector"
 	Assert-AreEqual ServiceManaged $encryptionProtector.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after setting managed instance TDE protector"
 
-	$encryptionProtector2 = Get-AzSqlManagedInstanceTransparentDataEncryptionProtector  -ManagedInstanceResourceId $managedInstance.ResourceId
+	$encryptionProtector2 = Get-AzSqlInstanceTransparentDataEncryptionProtector  -InstanceResourceId $managedInstance.ResourceId
 	
 	Assert-AreEqual ServiceManaged $encryptionProtector2.Type "Protector type mismatch after getting managed instance TDE protector"
 	Assert-AreEqual ServiceManaged $encryptionProtector2.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after getting managed instance TDE protector"
 
-	$keyResult = Add-AzSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
+	$keyResult = Add-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $keyId
 
 	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after adding managed instance key vault key"
 	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyVaultKeyName mismatch after adding managed instance key vault key"
 	
 	# Byok with piping & inputobject
 
-	$byokEncryptionProtector = $managedInstance | Set-AzSqlManagedInstanceTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
+	$byokEncryptionProtector = $managedInstance | Set-AzSqlInstanceTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
 	
 	Assert-AreEqual AzureKeyVault $byokEncryptionProtector.Type "BYOK: Protector type mismatch after setting managed instance TDE protector"
 	Assert-AreEqual $keyResult.ManagedInstanceKeyName $byokEncryptionProtector.ManagedInstanceKeyVaultKeyName "BYOK:  mismatch after setting managed instance TDE protector"
 
-	$byokEncryptionProtector2 = Get-AzSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance $managedInstance
+	$byokEncryptionProtector2 = Get-AzSqlInstanceTransparentDataEncryptionProtector -Instance $managedInstance
 	
 	Assert-AreEqual AzureKeyVault $byokEncryptionProtector2.Type "BYOK: Protector type mismatch after getting managed instance TDE protector"
 	Assert-AreEqual $keyResult.ManagedInstanceKeyName $byokEncryptionProtector2.ManagedInstanceKeyVaultKeyName "BYOK: ManagedInstanceKeyVaultKeyName mismatch after getting managed instance TDE protector"
@@ -65,12 +65,12 @@ function Test-SetGetManagedInstanceEncryptionProtectorCI
 #>
 function Test-SetGetManagedInstanceEncryptionProtectorServiceManaged
 {
-	$encryptionProtector = Set-AzSqlManagedInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -Type ServiceManaged
+	$encryptionProtector = Set-AzSqlInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -Type ServiceManaged
 	
 	Assert-AreEqual ServiceManaged $encryptionProtector.Type "Protector type mismatch after setting managed instance TDE protector"
 	Assert-AreEqual ServiceManaged $encryptionProtector.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after setting managed instance TDE protector"
 
-	$encryptionProtector2 = Get-AzSqlManagedInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName
+	$encryptionProtector2 = Get-AzSqlInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName
 	
 	Assert-AreEqual ServiceManaged $encryptionProtector2.Type "Protector type mismatch after getting managed instance TDE protector"
 	Assert-AreEqual ServiceManaged $encryptionProtector2.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after getting managed instance TDE protector"
@@ -82,14 +82,14 @@ function Test-SetGetManagedInstanceEncryptionProtectorServiceManaged
 #>
 function Test-SetGetManagedInstanceEncryptionProtectorServiceManagedInputObject
 {
-	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
-	$encryptionProtector = Set-AzSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance $managedInstance -Type ServiceManaged
+	$encryptionProtector = Set-AzSqlInstanceTransparentDataEncryptionProtector -Instance $managedInstance -Type ServiceManaged
 	
 	Assert-AreEqual ServiceManaged $encryptionProtector.Type "Protector type mismatch after setting managed instance TDE protector"
 	Assert-AreEqual ServiceManaged $encryptionProtector.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after setting managed instance TDE protector"
 
-	$encryptionProtector2 = Get-AzSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance $managedInstance
+	$encryptionProtector2 = Get-AzSqlInstanceTransparentDataEncryptionProtector -Instance $managedInstance
 	
 	Assert-AreEqual ServiceManaged $encryptionProtector2.Type "Protector type mismatch after getting managed instance TDE protector"
 	Assert-AreEqual ServiceManaged $encryptionProtector2.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after getting managed instance TDE protector"
@@ -102,15 +102,15 @@ function Test-SetGetManagedInstanceEncryptionProtectorServiceManagedInputObject
 function Test-SetGetManagedInstanceEncryptionProtectorServiceManagedResourceId
 {
 
-	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 	$managedInstanceResourceId = $managedInstance.ResourceId
 
-	$encryptionProtector = Set-AzSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstanceResourceId $managedInstanceResourceId -Type ServiceManaged
+	$encryptionProtector = Set-AzSqlInstanceTransparentDataEncryptionProtector -InstanceResourceId $managedInstanceResourceId -Type ServiceManaged
 	
 	Assert-AreEqual ServiceManaged $encryptionProtector.Type "Protector type mismatch after setting managed instance TDE protector"
 	Assert-AreEqual ServiceManaged $encryptionProtector.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after setting managed instance TDE protector"
 
-	$encryptionProtector2 = Get-AzSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstanceResourceId $managedInstanceResourceId
+	$encryptionProtector2 = Get-AzSqlInstanceTransparentDataEncryptionProtector -InstanceResourceId $managedInstanceResourceId
 	
 	Assert-AreEqual ServiceManaged $encryptionProtector2.Type "Protector type mismatch after getting managed instance TDE protector"
 	Assert-AreEqual ServiceManaged $encryptionProtector2.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after getting managed instance TDE protector"
@@ -122,14 +122,14 @@ function Test-SetGetManagedInstanceEncryptionProtectorServiceManagedResourceId
 #>
 function Test-SetGetManagedInstanceEncryptionProtectorServiceManagedPiping
 {
-	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
-	$encryptionProtector = $managedInstance | Set-AzSqlManagedInstanceTransparentDataEncryptionProtector -Type ServiceManaged
+	$encryptionProtector = $managedInstance | Set-AzSqlInstanceTransparentDataEncryptionProtector -Type ServiceManaged
 	
 	Assert-AreEqual ServiceManaged $encryptionProtector.Type "Protector type mismatch after setting managed instance TDE protector"
 	Assert-AreEqual ServiceManaged $encryptionProtector.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after setting managed instance TDE protector"
 
-	$encryptionProtector2 = $managedInstance | Get-AzSqlManagedInstanceTransparentDataEncryptionProtector
+	$encryptionProtector2 = $managedInstance | Get-AzSqlInstanceTransparentDataEncryptionProtector
 	
 	Assert-AreEqual ServiceManaged $encryptionProtector2.Type "Protector type mismatch after getting managed instance TDE protector"
 	Assert-AreEqual ServiceManaged $encryptionProtector2.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after getting managed instance TDE protector"
@@ -144,17 +144,17 @@ function Test-SetGetManagedInstanceEncryptionProtectorServiceManagedPiping
 function Test-SetGetManagedInstanceEncryptionProtectorByok
 {
 	
-	$keyResult = Add-AzSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
+	$keyResult = Add-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $keyId
 
 	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after adding managed instance key vault key"
 	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyVaultKeyName mismatch after adding managed instance key vault key"
 
-	$encryptionProtector = Set-AzSqlManagedInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
+	$encryptionProtector = Set-AzSqlInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
 	
 	Assert-AreEqual AzureKeyVault $encryptionProtector.Type "Protector type mismatch after setting managed instance TDE protector"
 	Assert-AreEqual $keyResult.ManagedInstanceKeyName $encryptionProtector.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after setting managed instance TDE protector"
 
-	$encryptionProtector2 = Get-AzSqlManagedInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName
+	$encryptionProtector2 = Get-AzSqlInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName
 	
 	Assert-AreEqual AzureKeyVault $encryptionProtector2.Type "Protector type mismatch after getting managed instance TDE protector"
 	Assert-AreEqual $keyResult.ManagedInstanceKeyName $encryptionProtector2.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after getting managed instance TDE protector"
@@ -167,19 +167,19 @@ function Test-SetGetManagedInstanceEncryptionProtectorByok
 function Test-SetGetManagedInstanceEncryptionProtectorByokInputObject
 {
 	
-	$keyResult = Add-AzSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
+	$keyResult = Add-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $keyId
 
 	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after adding managed instance key vault key"
 	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyVaultKeyName mismatch after adding managed instance key vault key"
 
-	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
-	$encryptionProtector = Set-AzSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance $managedInstance -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
+	$encryptionProtector = Set-AzSqlInstanceTransparentDataEncryptionProtector -Instance $managedInstance -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
 	
 	Assert-AreEqual AzureKeyVault $encryptionProtector.Type "Protector type mismatch after setting managed instance TDE protector"
 	Assert-AreEqual $keyResult.ManagedInstanceKeyName $encryptionProtector.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after setting managed instance TDE protector"
 
-	$encryptionProtector2 = Get-AzSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance $managedInstance
+	$encryptionProtector2 = Get-AzSqlInstanceTransparentDataEncryptionProtector -Instance $managedInstance
 	
 	Assert-AreEqual AzureKeyVault $encryptionProtector2.Type "Protector type mismatch after getting managed instance TDE protector"
 	Assert-AreEqual $keyResult.ManagedInstanceKeyName $encryptionProtector2.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after getting managed instance TDE protector"
@@ -192,21 +192,21 @@ function Test-SetGetManagedInstanceEncryptionProtectorByokInputObject
 function Test-SetGetManagedInstanceEncryptionProtectorByokResourceId
 {
 	
-	$keyResult = Add-AzSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
+	$keyResult = Add-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $keyId
 
 	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after adding managed instance key vault key"
 	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyVaultKeyName mismatch after adding managed instance key vault key"
 
 
-	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 	$managedInstanceResourceId = $managedInstance.ResourceId
 
-	$encryptionProtector = Set-AzSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstanceResourceId $managedInstanceResourceId -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
+	$encryptionProtector = Set-AzSqlInstanceTransparentDataEncryptionProtector -InstanceResourceId $managedInstanceResourceId -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
 	
 	Assert-AreEqual AzureKeyVault $encryptionProtector.Type "Protector type mismatch after setting managed instance TDE protector"
 	Assert-AreEqual $keyResult.ManagedInstanceKeyName $encryptionProtector.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after setting managed instance TDE protector"
 
-	$encryptionProtector2 = Get-AzSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstanceResourceId $managedInstanceResourceId
+	$encryptionProtector2 = Get-AzSqlInstanceTransparentDataEncryptionProtector -InstanceResourceId $managedInstanceResourceId
 	
 	Assert-AreEqual AzureKeyVault $encryptionProtector2.Type "Protector type mismatch after getting managed instance TDE protector"
 	Assert-AreEqual $keyResult.ManagedInstanceKeyName $encryptionProtector2.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after getting managed instance TDE protector"
@@ -219,19 +219,19 @@ function Test-SetGetManagedInstanceEncryptionProtectorByokResourceId
 function Test-SetGetManagedInstanceEncryptionProtectorByokPiping
 {
 	
-	$keyResult = Add-AzSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
+	$keyResult = Add-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $keyId
 
 	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after adding managed instance key vault key"
 	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyVaultKeyName mismatch after adding managed instance key vault key"
 
-	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
-	$encryptionProtector = $managedInstance | Set-AzSqlManagedInstanceTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
+	$encryptionProtector = $managedInstance | Set-AzSqlInstanceTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
 	
 	Assert-AreEqual AzureKeyVault $encryptionProtector.Type "Protector type mismatch after setting managed instance TDE protector"
 	Assert-AreEqual $keyResult.ManagedInstanceKeyName $encryptionProtector.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after setting managed instance TDE protector"
 
-	$encryptionProtector2 = $managedInstance | Get-AzSqlManagedInstanceTransparentDataEncryptionProtector
+	$encryptionProtector2 = $managedInstance | Get-AzSqlInstanceTransparentDataEncryptionProtector
 	
 	Assert-AreEqual AzureKeyVault $encryptionProtector2.Type "Protector type mismatch after getting managed instance TDE protector"
 	Assert-AreEqual $keyResult.ManagedInstanceKeyName $encryptionProtector2.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after getting managed instance TDE protector"
@@ -245,14 +245,14 @@ function Test-SetGetManagedInstanceEncryptionProtectorByokPiping
 function Test-SetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId
 {
 	$correctExceptionCaught = $false
-	$keyResult = Add-AzSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
+	$keyResult = Add-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $keyId
 
 	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after adding managed instance key vault key"
 	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyVaultKeyName mismatch after adding managed instance key vault key"
 	
 	try
 	{
-		$encryptionProtector = Set-AzSqlManagedInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -Type AzureKeyVault -Force
+		$encryptionProtector = Set-AzSqlInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -Type AzureKeyVault -Force
 	}
 	Catch
 	{
@@ -264,6 +264,6 @@ function Test-SetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId
 	}
 
 	if(!$correctExceptionCaught){
-		throw [System.Exception] "Expected exception not thrown for cmdlet Set-AzSqlManagedInstanceTransparentDataEncryptionProtector when encryptor is AzureKeyVault and KeyId is not provided"
+		throw [System.Exception] "Expected exception not thrown for cmdlet Set-AzSqlInstanceTransparentDataEncryptionProtector when encryptor is AzureKeyVault and KeyId is not provided"
 	}
 }

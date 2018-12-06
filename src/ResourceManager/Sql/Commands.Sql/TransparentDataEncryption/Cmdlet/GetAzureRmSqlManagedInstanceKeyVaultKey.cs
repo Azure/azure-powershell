@@ -29,9 +29,9 @@ using System.Security;
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlManagedInstanceKeyVaultKey cmdlet
+    /// Defines the Get-AzureRmSqlInstanceKeyVaultKey cmdlet
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceKeyVaultKey", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceKeyVaultKey", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureRmSqlManagedInstanceKeyVaultKeyModel))]
     public class GetAzureRmSqlManagedInstanceKeyVaultKey : AzureRmSqlManagedInstanceKeyVaultKeyBase
     {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             //
             if (!this.MyInvocation.BoundParameters.ContainsKey("KeyId"))
             {
-                results = ModelAdapter.ListAzureRmSqlManagedInstanceKeyVaultKeys(this.ResourceGroupName, this.ManagedInstanceName);
+                results = ModelAdapter.ListAzureRmSqlManagedInstanceKeyVaultKeys(this.ResourceGroupName, this.InstanceName);
             }
             else
             {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 
                 AzureRmSqlManagedInstanceKeyVaultKeyModel azureRmSqlManagedInstanceKeyVaultKeyModel = new AzureRmSqlManagedInstanceKeyVaultKeyModel(
                     resourceGroupName: this.ResourceGroupName,
-                    managedInstanceName: this.ManagedInstanceName,
+                    managedInstanceName: this.InstanceName,
                     keyId: this.KeyId);
 
                 resultList.Add(ModelAdapter.GetAzureRmSqlManagedInstanceKeyVaultKey(azureRmSqlManagedInstanceKeyVaultKeyModel));
