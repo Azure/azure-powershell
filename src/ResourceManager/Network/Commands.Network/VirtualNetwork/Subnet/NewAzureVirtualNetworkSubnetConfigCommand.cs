@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var subnet = new PSSubnet();
             subnet.Name = this.Name;
-            subnet.AddressPrefix = this.AddressPrefix;
+            subnet.AddressPrefix = this.AddressPrefix?.ToList();
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
@@ -73,12 +74,12 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.ServiceEndpointPolicy != null)
             {
-                subnet.ServiceEndpointPolicies = this.ServiceEndpointPolicy;
+                subnet.ServiceEndpointPolicies = this.ServiceEndpointPolicy?.ToList();
             }
 
             if (this.Delegation != null)
             {
-                subnet.Delegations = this.Delegation;
+                subnet.Delegations = this.Delegation?.ToList();
             }
 
             WriteObject(subnet);

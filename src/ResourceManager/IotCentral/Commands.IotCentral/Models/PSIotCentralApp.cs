@@ -101,13 +101,11 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
         /// <summary>
         /// The Resource type.
         /// </summary>
-        [Ps1Xml(Label = "Type", Target = ViewControl.Table)]
         public string Type { get; private set; }
 
         /// <summary>
         /// The subscription identifier.
         /// </summary>
-        [Ps1Xml(Label = "Subscription Id", Target = ViewControl.Table)]
         public string SubscriptionId
         {
             get
@@ -131,7 +129,6 @@ namespace Microsoft.Azure.Commands.IotCentral.Models
         /// <summary>
         /// The Resource Id.
         /// </summary>
-        [Ps1Xml(Label = "Resource Id", Target = ViewControl.Table)]
         public string ResourceId { get; private set; }
 
         /// <summary>

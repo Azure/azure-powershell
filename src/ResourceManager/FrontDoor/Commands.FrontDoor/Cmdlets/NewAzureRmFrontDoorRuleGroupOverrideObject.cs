@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzureRmFrontDoorRuleGroupOverrideObject cmdlet.
+    /// Defines the New-AzFrontDoorRuleGroupOverrideObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorRuleGroupOverrideObject"), OutputType(typeof(PSAzureRuleGroupOverride))]
     public class NewAzureRmFrontDoorRuleGroupOverrideObject : AzureFrontDoorCmdletBase

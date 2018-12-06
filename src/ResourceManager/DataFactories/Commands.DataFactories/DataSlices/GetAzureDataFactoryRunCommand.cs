@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.DataFactories
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The start time of the data slice queried.")]
         public DateTime StartDateTime { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByFactoryObject)

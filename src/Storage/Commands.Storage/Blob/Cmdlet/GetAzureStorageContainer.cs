@@ -206,8 +206,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 return;
             }
 
-            // Only write warning for SAS when use cmdlet alias Get-AzureStorageContainerAcl, since the cmdlets alias specified get container ACL
-            if (this.MyInvocation.Line.ToLower().Contains("get-azurestoragecontaineracl"))
+            // Only write warning for SAS when use cmdlet alias Get-AzStorageContainerAcl, since the cmdlets alias specified get container ACL
+            if (this.MyInvocation.Line.ToLower().Contains("get-azstoragecontaineracl"))
             {
                 // Write warning when user SAS credential since get container ACL will fail
                 AzureStorageContext storageContext = this.GetCmdletStorageContext();

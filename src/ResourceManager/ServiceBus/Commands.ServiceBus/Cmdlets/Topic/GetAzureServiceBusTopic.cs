@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 {
     /// <summary>
-    /// 'Get-AzureRmServiceBusTopic' Cmdlet gives the details of a / List of ServiceBus Topic(s)
+    /// 'Get-AzServiceBusTopic' Cmdlet gives the details of a / List of ServiceBus Topic(s)
     /// <para> If ServiceBus Topic name provided, a single ServiceBus Topic detials will be returned</para>
     /// <para> If ServiceBus Topic name not provided, list of ServiceBus Topic will be returned</para>
     /// </summary>

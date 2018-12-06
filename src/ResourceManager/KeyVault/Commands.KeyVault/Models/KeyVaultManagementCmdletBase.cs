@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+// TODO: Remove IfDef
 #if NETSTANDARD
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 #else
@@ -47,20 +48,16 @@ namespace Microsoft.Azure.Commands.KeyVault
     public class KeyVaultManagementCmdletBase : AzureRMCmdlet
     {
 
-        private PSKeyVaultModels.VaultManagementClient _keyVaultManagementClient;
+        private VaultManagementClient _keyVaultManagementClient;
         private DataServiceCredential _dataServiceCredential;
-        public PSKeyVaultModels.VaultManagementClient KeyVaultManagementClient
+        public VaultManagementClient KeyVaultManagementClient
         {
             get
             {
-                if (this._keyVaultManagementClient == null)
-                {
-                    this._keyVaultManagementClient = new PSKeyVaultModels.VaultManagementClient(DefaultContext);
-                }
-                return this._keyVaultManagementClient;
+                return _keyVaultManagementClient ?? (_keyVaultManagementClient = new VaultManagementClient(DefaultContext));
             }
 
-            set { this._keyVaultManagementClient = value; }
+            set { _keyVaultManagementClient = value; }
         }
 
 
@@ -69,21 +66,21 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             get
             {
-                if (_activeDirectoryClient == null)
-                {
-                    _dataServiceCredential = new DataServiceCredential(AzureSession.Instance.AuthenticationFactory, DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
+                if (_activeDirectoryClient != null) return _activeDirectoryClient;
+
+                _dataServiceCredential = new DataServiceCredential(AzureSession.Instance.AuthenticationFactory, DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
+// TODO: Remove IfDef
 #if NETSTANDARD
-                    _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
+                _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
 #else
-                    _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
-                    DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph), _dataServiceCredential.TenantId)),
-                    () => Task.FromResult(_dataServiceCredential.GetToken()));
+                _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
+                DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph), _dataServiceCredential.TenantId)),
+                () => Task.FromResult(_dataServiceCredential.GetToken()));
 #endif
-                }
-                return this._activeDirectoryClient;
+                return _activeDirectoryClient;
             }
 
-            set { this._activeDirectoryClient = value; }
+            set { _activeDirectoryClient = value; }
         }
 
         private ResourceManagementClient _resourceClient;
@@ -91,22 +88,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             get
             {
-                if (_resourceClient == null)
-                {
-                    _resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-                }
-
-                return _resourceClient;
+                return _resourceClient ?? (_resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager));
             }
 
-            set { this._resourceClient = value; }
+            set { _resourceClient = value; }
         }
 
-        protected List<PSKeyVaultModels.PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
+        protected List<PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
         {
-            IResourceManagementClient armClient = this.ResourceClient;
-
-            PSTagValuePair tagValuePair = new PSTagValuePair();
+            var tagValuePair = new PSTagValuePair();
             if (tag != null && tag.Count > 0)
             {
                 tagValuePair = TagsConversionHelper.Create(tag);
@@ -115,32 +105,32 @@ namespace Microsoft.Azure.Commands.KeyVault
                     throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidTagFormat);
                 }
             }
-            var listResult = Enumerable.Empty<PSKeyVaultIdentityItem>();
+            IEnumerable<PSKeyVaultIdentityItem> listResult;
             var resourceType = KeyVaultManagementClient.VaultsResourceType;
             if (resourceGroupName != null)
             {
-                listResult = this.ListByResourceGroup(resourceGroupName,
+                listResult = ListByResourceGroup(resourceGroupName,
                     new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
                         r => r.ResourceType == resourceType));
             }
             else
             {
-                listResult = this.ListResources(
+                listResult = ListResources(
                     new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
                         r => r.ResourceType == resourceType));
             }
 
             if (!string.IsNullOrEmpty(tagValuePair.Name))
             {
-                listResult = listResult.Where(r => r.Tags != null && r.Tags.Keys != null && r.Tags.ConvertToDictionary().Keys.Where(k => string.Equals(k, tagValuePair.Name, StringComparison.OrdinalIgnoreCase)).Any());
+                listResult = listResult.Where(r => r.Tags?.Keys != null && r.Tags.ConvertToDictionary().Keys.Any(k => string.Equals(k, tagValuePair.Name, StringComparison.OrdinalIgnoreCase)));
             }
 
             if (!string.IsNullOrEmpty(tagValuePair.Value))
             {
-                listResult = listResult.Where(r => r.Tags != null && r.Tags.Values != null && r.Tags.ConvertToDictionary().Values.Where(v => string.Equals(v, tagValuePair.Value, StringComparison.OrdinalIgnoreCase)).Any());
+                listResult = listResult.Where(r => r.Tags?.Values != null && r.Tags.ConvertToDictionary().Values.Any(v => string.Equals(v, tagValuePair.Value, StringComparison.OrdinalIgnoreCase)));
             }
 
-            List<PSKeyVaultModels.PSKeyVaultIdentityItem> vaults = new List<PSKeyVaultModels.PSKeyVaultIdentityItem>();
+            var vaults = new List<PSKeyVaultIdentityItem>();
             if (listResult != null)
             {
                 vaults.AddRange(listResult);
@@ -151,13 +141,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public virtual IEnumerable<PSKeyVaultIdentityItem> ListResources(Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null, ulong first = ulong.MaxValue, ulong skip = ulong.MinValue)
         {
-            IResourceManagementClient armClient = this.ResourceClient;
+            IResourceManagementClient armClient = ResourceClient;
 
-            return new GenericPageEnumerable<GenericResource>(
-                delegate ()
-                {
-                    return armClient.Resources.List(filter);
-                }, armClient.Resources.ListNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
+            return new GenericPageEnumerable<GenericResource>(() => armClient.Resources.List(filter), armClient.Resources.ListNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
         }
 
         private IEnumerable<PSKeyVaultIdentityItem> ListByResourceGroup(
@@ -166,28 +152,26 @@ namespace Microsoft.Azure.Commands.KeyVault
             ulong first = ulong.MaxValue,
             ulong skip = ulong.MinValue)
         {
-            IResourceManagementClient armClient = this.ResourceClient;
+            IResourceManagementClient armClient = ResourceClient;
 
-            return new GenericPageEnumerable<GenericResource>(
-                delegate ()
-                {
-                    return armClient.ResourceGroups.ListResources(resourceGroupName, filter);
-                }, armClient.ResourceGroups.ListResourcesNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
+            return new GenericPageEnumerable<GenericResource>(() => armClient.ResourceGroups.ListResources(resourceGroupName, filter), armClient.ResourceGroups.ListResourcesNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
         }
 
         protected string GetResourceGroupName(string vaultName)
         {
-            string rg = null;
-            var resourcesByName = this.ResourceClient.FilterResources(new FilterResourcesOptions()
+            var resourcesByName = ResourceClient.FilterResources(new FilterResourcesOptions
             {
                 ResourceType = KeyVaultManagementClient.VaultsResourceType
             });
 
+            string rg = null;
             if (resourcesByName != null && resourcesByName.Count > 0)
             {
                 var vault = resourcesByName.FirstOrDefault(r => r.Name.Equals(vaultName, StringComparison.OrdinalIgnoreCase));
                 if (vault != null)
+                {
                     rg = new ResourceIdentifier(vault.Id).ResourceGroupName;
+                }
             }
 
             return rg;
@@ -229,6 +213,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             string objectId = null;
             if (DefaultContext.Account.Type == AzureAccount.AccountType.User)
             {
+// TODO: Remove IfDef
 #if NETSTANDARD
                 objectId = ActiveDirectoryClient.GetObjectId(new ADObjectFilterOptions {UPN = DefaultContext.Account.Id}).ToString();
 #else
@@ -253,73 +238,73 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private string GetObjectIdByUpn(string upn)
         {
+            if (string.IsNullOrWhiteSpace(upn)) return null;
+// TODO: Remove IfDef
+#if NETSTANDARD
+            var user = ActiveDirectoryClient.FilterUsers(new ADObjectFilterOptions { UPN = upn }).SingleOrDefault();
+#else
+            var user = ActiveDirectoryClient.Users.Where(u => u.UserPrincipalName.Equals(upn, StringComparison.OrdinalIgnoreCase))
+                 .ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult().CurrentPage.SingleOrDefault();
+#endif
             string objId = null;
-            if (!string.IsNullOrWhiteSpace(upn))
+            if (user != null)
             {
+// TODO: Remove IfDef
 #if NETSTANDARD
-                var user = ActiveDirectoryClient.FilterUsers(new ADObjectFilterOptions() { UPN = upn }).SingleOrDefault();
+                objId = user.Id.ToString();
 #else
-                var user = ActiveDirectoryClient.Users.Where(u => u.UserPrincipalName.Equals(upn, StringComparison.OrdinalIgnoreCase))
-                     .ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult().CurrentPage.SingleOrDefault();
+                objId = user.ObjectId;
 #endif
-                if (user != null)
-                {
-#if NETSTANDARD
-                    objId = user.Id.ToString();
-#else
-                    objId = user.ObjectId;
-#endif
-                }
             }
             return objId;
         }
 
         private string GetObjectIdBySpn(string spn)
         {
-            string objId = null;
-            if (!string.IsNullOrWhiteSpace(spn))
-            {
+            if (string.IsNullOrWhiteSpace(spn)) return null;
+
+// TODO: Remove IfDef
 #if NETSTANDARD
-                var odataQuery = new Rest.Azure.OData.ODataQuery<Graph.RBAC.Version1_6.Models.ServicePrincipal>(s => s.ServicePrincipalNames.Contains(spn));
-                var servicePrincipal = ActiveDirectoryClient.FilterServicePrincipals(odataQuery).SingleOrDefault();
-                objId = servicePrincipal?.Id.ToString();
+            var odataQuery = new Rest.Azure.OData.ODataQuery<Graph.RBAC.Version1_6.Models.ServicePrincipal>(s => s.ServicePrincipalNames.Contains(spn));
+            var servicePrincipal = ActiveDirectoryClient.FilterServicePrincipals(odataQuery).SingleOrDefault();
+            var objId = servicePrincipal?.Id.ToString();
 #else
-                var servicePrincipal = ActiveDirectoryClient.ServicePrincipals.Where(s =>
-                    s.ServicePrincipalNames.Any(n => n.Equals(spn, StringComparison.OrdinalIgnoreCase)))
-                     .ExecuteAsync().GetAwaiter().GetResult().CurrentPage.SingleOrDefault();
-                 objId = servicePrincipal?.ObjectId;
+            var servicePrincipal = ActiveDirectoryClient.ServicePrincipals.Where(s =>
+                s.ServicePrincipalNames.Any(n => n.Equals(spn, StringComparison.OrdinalIgnoreCase)))
+                 .ExecuteAsync().GetAwaiter().GetResult().CurrentPage.SingleOrDefault();
+            var objId = servicePrincipal?.ObjectId;
 #endif
-            }
             return objId;
         }
 
         private string GetObjectIdByEmail(string email)
         {
-            string objId = null;
             // In ADFS, Graph cannot handle this particular combination of filters.
-            if (!DefaultProfile.DefaultContext.Environment.OnPremise && !string.IsNullOrWhiteSpace(email))
-            {
+            if (DefaultProfile.DefaultContext.Environment.OnPremise || string.IsNullOrWhiteSpace(email)) return null;
+
+            string objId = null;
+// TODO: Remove IfDef
 #if NETSTANDARD
-                var users = ActiveDirectoryClient.FilterUsers(new ADObjectFilterOptions() { Mail = email });
-                if (users != null)
-                {
-                    ThrowIfMultipleObjectIds(users, email);
-                    var user = users.FirstOrDefault();
-                    objId = user?.Id.ToString();
-                }
-#else
-                var users = ActiveDirectoryClient.Users.Where(FilterByEmail(email)).ExecuteAsync().GetAwaiter().GetResult().CurrentPage;
-                if (users != null)
-                {
-                    ThrowIfMultipleObjectIds(users, email);
-                    var user = users.FirstOrDefault();
-                    objId = user?.ObjectId;
-                }
-#endif
+            var users = ActiveDirectoryClient.FilterUsers(new ADObjectFilterOptions { Mail = email });
+            if (users != null)
+            {
+                ThrowIfMultipleObjectIds(users, email);
+                var user = users.FirstOrDefault();
+                objId = user?.Id.ToString();
             }
+#else
+            var users = ActiveDirectoryClient.Users.Where(FilterByEmail(email)).ExecuteAsync().GetAwaiter().GetResult().CurrentPage;
+            if (users != null)
+            {
+                ThrowIfMultipleObjectIds(users, email);
+                var user = users.FirstOrDefault();
+                objId = user?.ObjectId;
+            }
+#endif
             return objId;
         }
 
+// TODO: Remove IfDef code
 #if !NETSTANDARD
         private Expression<Func<IUser, bool>> FilterByEmail(string email)
         {
@@ -329,20 +314,14 @@ namespace Microsoft.Azure.Commands.KeyVault
 #endif
         private bool ValidateObjectId(string objId)
         {
-            bool isValid = false;
-            if (!string.IsNullOrWhiteSpace(objId))
-            {
+            if (string.IsNullOrWhiteSpace(objId)) return false;
+// TODO: Remove IfDef
 #if NETSTANDARD
-                var objectCollection = ActiveDirectoryClient.GetObjectsByObjectId(new List<string> { objId });
+            var objectCollection = ActiveDirectoryClient.GetObjectsByObjectId(new List<string> { objId });
 #else
-                var objectCollection = ActiveDirectoryClient.GetObjectsByObjectIdsAsync(new[] { objId }, new string[] { }).GetAwaiter().GetResult();
+            var objectCollection = ActiveDirectoryClient.GetObjectsByObjectIdsAsync(new[] { objId }, new string[] { }).GetAwaiter().GetResult();
 #endif
-                if (objectCollection.Any())
-                {
-                    isValid = true;
-                }
-            }
-            return isValid;
+            return objectCollection.Any();
         }
 
         protected string GetObjectId(string objectId, string upn, string email, string spn)
@@ -374,7 +353,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             return objId;
         }
 
-        private bool IsValidGUid(string stringGuid)
+        private static bool IsValidGUid(string stringGuid)
         {
             Guid parsedGuid;
             return Guid.TryParse(stringGuid, out parsedGuid);
@@ -394,13 +373,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
 
             // In ADFS, object IDs have no additional syntax restrictions.
-            if (DefaultProfile.DefaultContext.Environment.OnPremise)
-            {
-                return true;
-            }
-
             // In AAD, object IDs must be parsable as Guids.
-            return IsValidGUid(objectId);
+            return DefaultProfile.DefaultContext.Environment.OnPremise || IsValidGUid(objectId);
         }
 
         protected readonly string[] DefaultPermissionsToKeys =

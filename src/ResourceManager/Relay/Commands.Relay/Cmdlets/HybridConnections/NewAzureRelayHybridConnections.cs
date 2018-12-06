@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnection
 {
     /// <summary>
-    /// 'New-AzureRmRelayHybridConnection' Cmdlet creates a new HybridConnections
+    /// 'New-AzRelayHybridConnection' Cmdlet creates a new HybridConnections
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayHybridConnection", SupportsShouldProcess = true), OutputType(typeof(PSHybridConnectionAttibutes))]
     public class NewAzureRmRelayHybridConnection : AzureRelayCmdletBase

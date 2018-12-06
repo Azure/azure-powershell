@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,24 @@
         - Additional information about change #1
 --->
 ## Current Release
+* Minor changes for upcoming AzureRM to Az transition
+* Added support for the configuring RewriteRuleSets in the Application Gateway
+    - New cmdlets added:
+        - Add-AzureRmApplicationGatewayRewriteRuleSet
+        - Get-AzureRmApplicationGatewayRewriteRuleSet
+        - New-AzureRmApplicationGatewayRewriteRuleSet
+        - Remove-AzureRmApplicationGatewayRewriteRuleSet
+        - Set-AzureRmApplicationGatewayRewriteRuleSet
+        - New-AzureRmApplicationGatewayRewriteRule
+        - New-AzureRmApplicationGatewayRewriteRuleActionSet
+        - New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration
+    - Cmdlets updated with optional parameter -RewriteRuleSet
+        - New-AzureRmApplicationGateway
+        - New-AzureRmApplicationGatewayRequestRoutingRule
+        - Add-AzureRmApplicationGatewayRequestRoutingRule
+        - New-AzureRmApplicationGatewayPathRuleConfig
+        - Add-AzureRmApplicationGatewayUrlPathMapConfig
+        - New-AzureRmApplicationGatewayUrlPathMapConfig
 
 ## Version 6.11.0
 * Added cmdlet New-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayCustomError, Get-AzureRmApplicationGatewayCustomError, Set-AzureRmApplicationGatewayCustomError, Remove-AzureRmApplicationGatewayCustomError, Add-AzureRmApplicationGatewayHttpListenerCustomError, Get-AzureRmApplicationGatewayHttpListenerCustomError, Set-AzureRmApplicationGatewayHttpListenerCustomError, Remove-AzureRmApplicationGatewayHttpListenerCustomError
