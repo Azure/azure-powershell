@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.6.0'; },
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.6.0'; },
     @{ModuleName = 'Az.Aks'; ModuleVersion = '0.6.0'; }, 
     @{ModuleName = 'Az.AnalysisServices'; ModuleVersion = '0.6.0'; },
     @{ModuleName = 'Az.ApiManagement'; ModuleVersion = '0.6.0'; }, 
@@ -72,13 +72,13 @@ RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.6.0'; },
     @{ModuleName = 'Az.EventGrid'; ModuleVersion = '0.6.0'; }, 
     @{ModuleName = 'Az.EventHub'; ModuleVersion = '0.6.0'; }, 
     @{ModuleName = 'Az.HDInsight'; RequiredVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Insights'; ModuleVersion = '0.6.0'; }, 
     @{ModuleName = 'Az.IotHub'; ModuleVersion = '0.6.0'; }, 
     @{ModuleName = 'Az.KeyVault'; ModuleVersion = '0.6.0'; }, 
     @{ModuleName = 'Az.LogicApp'; ModuleVersion = '0.6.0'; }, 
     @{ModuleName = 'Az.MachineLearning'; ModuleVersion = '0.6.0'; }, 
     @{ModuleName = 'Az.MarketplaceOrdering'; ModuleVersion = '0.6.0'; }, 
     @{ModuleName = 'Az.Media'; ModuleVersion = '0.6.0'; }, 
+    @{ModuleName = 'Az.Monitor'; ModuleVersion = '0.6.0'; }, 
     @{ModuleName = 'Az.Network'; ModuleVersion = '0.6.0'; }, 
     @{ModuleName = 'Az.NotificationHubs'; ModuleVersion = '0.6.0'; }, 
     @{ModuleName = 'Az.PolicyInsights'; ModuleVersion = '0.6.0'; }, 
