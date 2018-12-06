@@ -30,9 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.DataLakeStore">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.DataLakeStore\Microsoft.Azure.Commands.DataLakeStore.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.DataLakeStore\Commands.DataLakeStore.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

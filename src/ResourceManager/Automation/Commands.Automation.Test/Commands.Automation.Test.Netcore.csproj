@@ -33,11 +33,9 @@
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Automation">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Automation\Microsoft.Azure.Commands.Automation.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.Automation\Commands.Automation.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
