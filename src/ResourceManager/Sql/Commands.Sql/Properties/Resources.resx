@@ -384,8 +384,8 @@
   <data name="SetAzureSqlServerTransparentDataEncryptionProtectorWarning" xml:space="preserve">
     <value>Warning: This command sets the key '{0}' as the protector, removing access to this key in the future may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?</value>
   </data>
-  <data name="SetAzureSqlManagedInstanceTransparentDataEncryptionProtectorWarning" xml:space="preserve">
-    <value>Warning: This command sets the key '{0}' as the protector, removing access to this key in the future may result in data loss on this managed instance. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?</value>
+  <data name="SetAzureSqlInstanceTransparentDataEncryptionProtectorWarning" xml:space="preserve">
+    <value>Warning: This command sets the key '{0}' as the protector, removing access to this key in the future may result in data loss on this instance. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?</value>
   </data>
   <data name="ElasticPoolDatabaseActivityCancelNotSupported" xml:space="preserve">
     <value>Azure Sql Database Elastic Pool name cannot be specified for this operation</value>

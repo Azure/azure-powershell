@@ -34,21 +34,21 @@ function Test-ManagedInstanceKeyVaultKeyCI
 	$managedInstanceResourceId = $managedInstance.ResourceId
 
 	# Test Add
-	$keyResult = Add-AzureRmSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
+	$keyResult = Add-AzureRmSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $keyId
 
-	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzureRmSqlManagedInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzureRmSqlManagedInstanceKeyVaultKey"
+	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzureRmSqlInstanceKeyVaultKey"
+	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzureRmSqlInstanceKeyVaultKey"
 
 	
 	# Test Get
-	$keyResult2 = $managedInstance| Get-AzureRmSqlManagedInstanceKeyVaultKey -KeyId $keyId
+	$keyResult2 = $managedInstance| Get-AzureRmSqlInstanceKeyVaultKey -KeyId $keyId
 
-	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzureRmSqlManagedInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzureRmSqlManagedInstanceKeyVaultKey"
+	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzureRmSqlInstanceKeyVaultKey"
+	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzureRmSqlInstanceKeyVaultKey"
 		
 	# Test List
-	$keyResults = Get-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstanceResourceId $managedInstanceResourceId
-	Assert-True {$keyResults.Count -gt 0} "List count <= 0 after calling (List) Get-AzureRmSqlManagedInstanceKeyVaultKey without KeyId"
+	$keyResults = Get-AzureRmSqlInstanceKeyVaultKey -InstanceResourceId $managedInstanceResourceId
+	Assert-True {$keyResults.Count -gt 0} "List count <= 0 after calling (List) Get-AzureRmSqlInstanceKeyVaultKey without KeyId"
 }
 
 <#
@@ -58,21 +58,21 @@ function Test-ManagedInstanceKeyVaultKeyCI
 function Test-ManagedInstanceKeyVaultKey
 {
 	# Test Add
-	$keyResult = Add-AzureRmSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
+	$keyResult = Add-AzureRmSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $keyId
 
-	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzureRmSqlManagedInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzureRmSqlManagedInstanceKeyVaultKey"
+	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzureRmSqlInstanceKeyVaultKey"
+	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzureRmSqlInstanceKeyVaultKey"
 
 	
 	# Test Get
-	$keyResult2 = Get-AzureRmSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
+	$keyResult2 = Get-AzureRmSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $keyId
 
-	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzureRmSqlManagedInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzureRmSqlManagedInstanceKeyVaultKey"
+	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzureRmSqlInstanceKeyVaultKey"
+	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzureRmSqlInstanceKeyVaultKey"
 		
 	# Test List
-	$keyResults = Get-AzureRmSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName
-	Assert-True {$keyResults.Count -gt 0} "List count <= 0 after calling (List) Get-AzureRmSqlManagedInstanceKeyVaultKey without KeyId"
+	$keyResults = Get-AzureRmSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName
+	Assert-True {$keyResults.Count -gt 0} "List count <= 0 after calling (List) Get-AzureRmSqlInstanceKeyVaultKey without KeyId"
 }
 
 
@@ -82,26 +82,26 @@ function Test-ManagedInstanceKeyVaultKey
 #>
 function Test-ManagedInstanceKeyVaultKeyInputObject
 {
-	$managedInstance = Get-AzureRmSqlManagedInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
 	# Test Add
-	$keyResult = Add-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstance $managedInstance -KeyId $keyId
+	$keyResult = Add-AzureRmSqlInstanceKeyVaultKey -Instance $managedInstance -KeyId $keyId
 
-	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzureRmSqlManagedInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzureRmSqlManagedInstanceKeyVaultKey"
+	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzureRmSqlInstanceKeyVaultKey"
+	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzureRmSqlInstanceKeyVaultKey"
 
 	
 	# Test Get
-	$keyResult2 = Get-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstance $managedInstance -KeyId $keyId
+	$keyResult2 = Get-AzureRmSqlInstanceKeyVaultKey -Instance $managedInstance -KeyId $keyId
 
-	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzureRmSqlManagedInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzureRmSqlManagedInstanceKeyVaultKey"
+	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzureRmSqlInstanceKeyVaultKey"
+	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzureRmSqlInstanceKeyVaultKey"
 
 	
 	# Test List
-	$keyResults = Get-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstance $managedInstance 
+	$keyResults = Get-AzureRmSqlInstanceKeyVaultKey -Instance $managedInstance 
 	
-	Assert-True {$keyResults.Count -gt 0} "List count <= 0 after calling (List) Get-AzureRmSqlManagedInstanceKeyVaultKey without KeyId"
+	Assert-True {$keyResults.Count -gt 0} "List count <= 0 after calling (List) Get-AzureRmSqlInstanceKeyVaultKey without KeyId"
 }
 
 
@@ -111,27 +111,27 @@ function Test-ManagedInstanceKeyVaultKeyInputObject
 #>
 function Test-ManagedInstanceKeyVaultKeyResourceId
 {
-	$managedInstance = Get-AzureRmSqlManagedInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 	$managedInstanceResourceId = $managedInstance.ResourceId
 
 	# Test Add
-	$keyResult = Add-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstanceResourceId $managedInstanceResourceId -KeyId $keyId
+	$keyResult = Add-AzureRmSqlInstanceKeyVaultKey -InstanceResourceId $managedInstanceResourceId -KeyId $keyId
 
-	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzureRmSqlManagedInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzureRmSqlManagedInstanceKeyVaultKey"
+	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzureRmSqlInstanceKeyVaultKey"
+	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzureRmSqlInstanceKeyVaultKey"
 
 	
 	# Test Get
-	$keyResult2 = Get-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstanceResourceId $managedInstanceResourceId -KeyId $keyId
+	$keyResult2 = Get-AzureRmSqlInstanceKeyVaultKey -InstanceResourceId $managedInstanceResourceId -KeyId $keyId
 
-	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzureRmSqlManagedInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzureRmSqlManagedInstanceKeyVaultKey"
+	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzureRmSqlInstanceKeyVaultKey"
+	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzureRmSqlInstanceKeyVaultKey"
 
 	
 	# Test List
-	$keyResults = Get-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstanceResourceId $managedInstanceResourceId 
+	$keyResults = Get-AzureRmSqlInstanceKeyVaultKey -InstanceResourceId $managedInstanceResourceId 
 	
-	Assert-True {$keyResults.Count -gt 0} "List count <= 0 after calling (List) Get-AzureRmSqlManagedInstanceKeyVaultKey without KeyId"
+	Assert-True {$keyResults.Count -gt 0} "List count <= 0 after calling (List) Get-AzureRmSqlInstanceKeyVaultKey without KeyId"
 }
 
 
@@ -141,24 +141,24 @@ function Test-ManagedInstanceKeyVaultKeyResourceId
 #>
 function Test-ManagedInstanceKeyVaultKeyPiping
 {
-	$managedInstance = Get-AzureRmSqlManagedInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$managedInstance = Get-AzureRmSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
 	# Test Add
-	$keyResult = $managedInstance | Add-AzureRmSqlManagedInstanceKeyVaultKey -KeyId $keyId
+	$keyResult = $managedInstance | Add-AzureRmSqlInstanceKeyVaultKey -KeyId $keyId
 
-	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzureRmSqlManagedInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzureRmSqlManagedInstanceKeyVaultKey"
+	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzureRmSqlInstanceKeyVaultKey"
+	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzureRmSqlInstanceKeyVaultKey"
 
 	
 	# Test Get
-	$keyResult2 = $managedInstance | Get-AzureRmSqlManagedInstanceKeyVaultKey -KeyId $keyId
+	$keyResult2 = $managedInstance | Get-AzureRmSqlInstanceKeyVaultKey -KeyId $keyId
 
-	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzureRmSqlManagedInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzureRmSqlManagedInstanceKeyVaultKey"
+	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzureRmSqlInstanceKeyVaultKey"
+	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzureRmSqlInstanceKeyVaultKey"
 
 	
 	# Test List
-	$keyResults = $managedInstance | Get-AzureRmSqlManagedInstanceKeyVaultKey
+	$keyResults = $managedInstance | Get-AzureRmSqlInstanceKeyVaultKey
 	
-	Assert-True {$keyResults.Count -gt 0} "List count <= 0 after calling (List) Get-AzureRmSqlManagedInstanceKeyVaultKey without KeyId"
+	Assert-True {$keyResults.Count -gt 0} "List count <= 0 after calling (List) Get-AzureRmSqlInstanceKeyVaultKey without KeyId"
 }

@@ -38,6 +38,7 @@
 
 * Fixed issue with using Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings with storage account name parameter set
 * Support for custom collation on managed instance
+* Renaming ManagedInstace TDE cmdlets to be without 'Managed' in it's name
 
 ## Version 4.11.6-preview
 * Add DnsZonePartner Parameter for New-AzureRmSqlManagedInstance cmdlet to support AutoDr for Managed Instance.

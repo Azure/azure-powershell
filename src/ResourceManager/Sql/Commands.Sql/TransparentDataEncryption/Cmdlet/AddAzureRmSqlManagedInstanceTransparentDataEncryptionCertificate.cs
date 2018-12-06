@@ -29,16 +29,16 @@ using System.Security;
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
     /// <summary>
-    /// Defines the Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate cmdlet
+    /// Defines the Add-AzureRmSqlInstanceTransparentDataEncryptionCertificate cmdlet
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class AddAzureRmSqlManagedInstanceTransparentDataEncryptionCertificate : AzureSqlCmdletBase<IEnumerable<AzureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel>, AzureSqlDatabaseTransparentDataEncryptionArmAdapter>
     {
         /// <summary>
         /// Parameter sets
         /// </summary>
-        protected const string DefaultParameterSet = "AddAzureRmSqlManagedInstanceTransparentDataEncryptionCertificateDefaultParameterSet";
+        protected const string DefaultParameterSet = "AddAzureRmSqlInstanceTransparentDataEncryptionCertificateDefaultParameterSet";
         
         /// <summary>
         ///  Defines whether the certificate was successfully added
@@ -65,10 +65,10 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
             Position = 1,
-            HelpMessage = "The managed instance name")]
+            HelpMessage = "The instance name")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public virtual string ManagedInstanceName { get; set; }
+        public virtual string InstanceName { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             newEntity.Add(new Model.AzureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel()
             {
                 ResourceGroupName = this.ResourceGroupName,
-                ManagedInstanceName = this.ManagedInstanceName,
+                ManagedInstanceName = this.InstanceName,
                 PrivateBlob = this.PrivateBlob,
                 Password = this.Password
             });

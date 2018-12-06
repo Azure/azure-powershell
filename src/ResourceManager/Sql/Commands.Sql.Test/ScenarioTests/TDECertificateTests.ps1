@@ -96,9 +96,9 @@ function Test-AddTdeCertificateForManagedInstanceDefaultParameterSetNoPassword
 {
 	try
 	{
-		Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate `
+		Add-AzureRmSqlInstanceTransparentDataEncryptionCertificate `
 			-ResourceGroupName $mangedInstanceRg `
-			-ManagedInstanceName $managedInstanceName `
+			-InstanceName $managedInstanceName `
 			-PrivateBlob $securePrivateBlobNoPassword `
 			-Password $secureEmptyPassword
 	}
@@ -118,9 +118,9 @@ function Test-AddTdeCertificateForManagedInstanceDefaultParameterSetWithPassword
 {
 	try
 	{
-		Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate `
+		Add-AzureRmSqlInstanceTransparentDataEncryptionCertificate `
 			-ResourceGroupName $mangedInstanceRg `
-			-ManagedInstanceName $managedInstanceName `
+			-InstanceName $managedInstanceName `
 			-PrivateBlob $securePrivateBlobWithPassword `
 			-Password $securePassword
 	}

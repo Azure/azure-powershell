@@ -1,44 +1,43 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/Get-AzureRmSqlManagedInstanceKeyVaultKey
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/Remove-AzureRmSqlInstanceKeyVaultKey
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlManagedInstanceKeyVaultKey
+# Remove-AzureRmSqlInstanceKeyVaultKey
 
 ## SYNOPSIS
-Gets a SQL managed instance's Key Vault keys.
+Removes a Key Vault key from a SQL managed instance
 
 ## SYNTAX
 
 ### AddAzureRmSqlManagedInstanceKeyVaultKeyDefaultParameterSet (Default)
 ```
-Get-AzureRmSqlManagedInstanceKeyVaultKey [[-KeyId] <String>] [-ResourceGroupName] <String>
- [-ManagedInstanceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmSqlInstanceKeyVaultKey [-ResourceGroupName] <String> [-InstanceName] <String> [-KeyId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
 ```
-Get-AzureRmSqlManagedInstanceKeyVaultKey [[-KeyId] <String>] [-ManagedInstance] <AzureSqlManagedInstanceModel>
+Remove-AzureRmSqlInstanceKeyVaultKey [-Instance] <AzureSqlManagedInstanceModel> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
 ```
-Get-AzureRmSqlManagedInstanceKeyVaultKey [[-KeyId] <String>] [-ManagedInstanceResourceId] <String>
+Remove-AzureRmSqlInstanceKeyVaultKey [-InstanceResourceId] <String> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmSqlManagedInstanceKeyVaultKey cmdlet gets information about the Key Vault keys on a SQL managed instance. You can view all keys on a managed instance or view a specific key by providing the KeyId.
+The Remove-AzureRmSqlInstanceKeyVaultKey cmdlet  removes the Key Vault key from the specified Managed Instance. Note that the SQL managed instance's permissions to the key's vault are not changed. To change permissions, use Set-AzureRmKeyVaultAccessPolicy. Note that this cmdlet makes no changes to Key Vault. To remove a key from Key Vault, use Remove-AzureKeyVaultKey.
 
 ## EXAMPLES
 
-### Example 1: Get all Key Vault keys
+### Example 1
 ```powershell
-PS C:\> Get-AzureRmSqlManagedInstanceKeyVaultKey -ResourceGroupName 'ContosoResourceGroup' -ManagedInstanceName 'ContosoManagedInstanceName'
+PS C:\> Remove-AzureRmSqlInstanceKeyVaultKey -ResourceGroupName 'ContosoResourceGroup' -InstanceName 'ContosoManagedInstanceName' -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
@@ -49,27 +48,12 @@ Thumbprint             : 6AB10000F99E1B6A22222F39E3F11CB5DC5A55A1
 Type                   : AzureKeyVault
 ```
 
-This command gets all the Key Vault keys on a SQL managed instance.
+This command removes the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' from the specified managed instance. 
 
-### Example 2: Get a specific Key Vault key
-```powershell
-PS C:\> Get-AzureRmSqlManagedInstanceKeyVaultKey -ResourceGroupName 'ContosoResourceGroup' -ManagedInstanceName 'ContosoManagedInstanceName' -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
-
-ResourceGroupName      : ContosoResourceGroup
-ManagedInstanceName    : ContosoManagedInstanceName
-KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
-ManagedInstanceKeyName : contoso_contosokey_01234567890123456789012345678901
-CreationDate           : 9/1/2018 12:11:49 AM
-Thumbprint             : 6AB10000F99E1B6A22222F39E3F11CB5DC5A55A1
-Type                   : AzureKeyVault
-```
-
-This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'.
-
-### Example 3: Using managed instance object
+### Example 2: Using managed instance object
 ```powershell
 PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> Get-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstance $managedInstance -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+PS C:\> Remove-AzureRmSqlInstanceKeyVaultKey -Instance $managedInstance -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
@@ -80,12 +64,12 @@ Thumbprint             : 6AB10000F99E1B6A22222F39E3F11CB5DC5A55A1
 Type                   : AzureKeyVault
 ```
 
-This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'.
+This command removes the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' from the specified managed instance. 
 
-### Example 4: Using managed instance resource id
+### Example 3: Using managed instance resource id
 ```powershell
 PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> Get-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstanceResourceId $managedInstance.ResourceId -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+PS C:\> Remove-AzureRmSqlInstanceKeyVaultKey -InstanceResourceId $managedInstance.ResourceId -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
@@ -96,12 +80,12 @@ Thumbprint             : 6AB10000F99E1B6A22222F39E3F11CB5DC5A55A1
 Type                   : AzureKeyVault
 ```
 
-This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'.
+This command removes the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' from the specified managed instance. 
 
-### Example 5: Using piping
+### Example 4: Using piping
 ```powershell
 PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> $managedInstance | Get-AzureRmSqlManagedInstanceKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+PS C:\> $managedInstance | Remove-AzureRmSqlInstanceKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
 
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
@@ -112,7 +96,7 @@ Thumbprint             : 6AB10000F99E1B6A22222F39E3F11CB5DC5A55A1
 Type                   : AzureKeyVault
 ```
 
-This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'.
+This command removes the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' from the specified managed instance. 
 
 ## PARAMETERS
 
@@ -131,25 +115,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyId
-AzureKeyVault key id
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedInstance
-The managed instance input object
-
-```yaml
+### -Instance
+The instance input object```yaml
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
 Aliases: InputObject
@@ -161,10 +128,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceName
-The managed instance name
-
-```yaml
+### -InstanceName
+The instance name```yaml
 Type: String
 Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyDefaultParameterSet
 Aliases:
@@ -176,10 +141,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceResourceId
-The managed instance resource id
-
-```yaml
+### -InstanceResourceId
+The instance resource id```yaml
 Type: String
 Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
 Aliases: ResourceId
@@ -188,6 +151,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -KeyId
+AzureKeyVault key id
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

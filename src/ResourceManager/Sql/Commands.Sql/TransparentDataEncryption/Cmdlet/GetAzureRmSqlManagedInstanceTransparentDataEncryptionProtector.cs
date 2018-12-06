@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlServerTransparentDataEncryptionProtector cmdlet
+    /// Defines the Get-AzureRmSqlInstanceTransparentDataEncryptionProtector cmdlet
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceTransparentDataEncryptionProtector", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
-    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceTDEProtector")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceTransparentDataEncryptionProtector", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceTDEProtector")]
     [OutputType(typeof(AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel))]
     public class GetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector : AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorBase
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 
             AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel model = new AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel(
                 resourceGroupName: this.ResourceGroupName,
-                managedInstanceName: this.ManagedInstanceName);
+                managedInstanceName: this.InstanceName);
 
             resultList.Add(ModelAdapter.GetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector(model));
 

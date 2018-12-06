@@ -1,59 +1,43 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/Get-AzureRmSqlInstanceTransparentDataEncryptionProtector
 schema: 2.0.0
 ---
 
-# Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector
+# Get-AzureRmSqlInstanceTransparentDataEncryptionProtector
 
 ## SYNOPSIS
-Sets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
+Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
 ## SYNTAX
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorDefaultParameterSet (Default)
 ```
-Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector [-Type] <EncryptionProtectorType>
- [[-KeyId] <String>] [-Force] [-ResourceGroupName] <String> [-ManagedInstanceName] <String>
+Get-AzureRmSqlInstanceTransparentDataEncryptionProtector [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorInputObjectParameterSet
 ```
-Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector [-Type] <EncryptionProtectorType>
- [[-KeyId] <String>] [-Force] [-ManagedInstance] <AzureSqlManagedInstanceModel>
+Get-AzureRmSqlInstanceTransparentDataEncryptionProtector [-Instance] <AzureSqlManagedInstanceModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorResourceIdParameterSet
 ```
-Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector [-Type] <EncryptionProtectorType>
- [[-KeyId] <String>] [-Force] [-ManagedInstanceResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzureRmSqlInstanceTransparentDataEncryptionProtector [-InstanceResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector cmdlet sets the TDE protector for a SQL managed instance. Changing the TDE protector type will rotate the protector.
+The Get-AzureRmSqlInstanceTransparentDataEncryptionProtector cmdlet gets the TDE protector for the specified SQL managed instance.
 
 ## EXAMPLES
 
-### Example 1: Set the Transparent Data Encryption (TDE) protector type to ServiceManaged
+### Example 1
 ```powershell
-PS C:\> Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ResourceGroupName 'ContosoResourceGroup' -ManagedInstanceName 'ContosoManagedInstanceName' -Type ServiceManaged
-
-ResourceGroupName              : ContosoResourceGroup
-ManagedInstanceName            : ContosoManagedInstanceName
-Type                           : ServiceManaged
-ManagedInstanceKeyVaultKeyName : ServiceManaged
-KeyId                          :
-```
-
-This command updates a managed instance's TDE protector type to Service Managed.
-
-### Example 2: Set the Transparent Data Encryption protector type to Azure Key Vault
-```powershell
-PS C:\> Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ResourceGroupName 'ContosoResourceGroup' -ManagedInstanceName 'ContosoManagedInstanceName' -Type AzureKeyVault -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+PS C:\> Get-AzureRmSqlInstanceTransparentDataEncryptionProtector -ResourceGroupName 'ContosoResourceGroup' -InstanceName 'ContosoManagedInstanceName'
 
 ResourceGroupName              : ContosoResourceGroup
 ManagedInstanceName            : ContosoManagedInstanceName
@@ -62,12 +46,12 @@ ManagedInstanceKeyVaultKeyName : contoso_contosokey_0123456789012345678901234567
 KeyId                          : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
 ```
 
-This command updates the specified managed instance to use the Managed instance Key Vault Key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' as the TDE protector.
+This command gets the TDE protector for the managed instance named ContosoManagedInstanceName in resource group named ContosoResourceGroup.
 
-### Example 3: Set the Transparent Data Encryption protector type to Azure Key Vault using managed instance object
+### Example 2: Using managed instance object
 ```powershell
 PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance $managedInstance -Type AzureKeyVault -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+PS C:\> Get-AzureRmSqlInstanceTransparentDataEncryptionProtector -Instance $managedInstance 'ContosoManagedInstanceName'
 
 ResourceGroupName              : ContosoResourceGroup
 ManagedInstanceName            : ContosoManagedInstanceName
@@ -76,12 +60,12 @@ ManagedInstanceKeyVaultKeyName : contoso_contosokey_0123456789012345678901234567
 KeyId                          : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
 ```
 
-This command updates the specified managed instance to use the Managed instance Key Vault Key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' as the TDE protector.
+This command gets the TDE protector for the managed instance named ContosoManagedInstanceName in resource group named ContosoResourceGroup.
 
-### Example 4: Set the Transparent Data Encryption protector type to Azure Key Vault using resource id
+### Example 3: Using managed instance resource id
 ```powershell
 PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstanceResourceId $managedInstance.ResourceId -Type AzureKeyVault -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+PS C:\> Get-AzureRmSqlInstanceTransparentDataEncryptionProtector -InstanceResourceId $managedInstance.ResourceId
 
 ResourceGroupName              : ContosoResourceGroup
 ManagedInstanceName            : ContosoManagedInstanceName
@@ -90,12 +74,12 @@ ManagedInstanceKeyVaultKeyName : contoso_contosokey_0123456789012345678901234567
 KeyId                          : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
 ```
 
-This command updates the specified managed instance to use the Managed instance Key Vault Key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' as the TDE protector.
+This command gets the TDE protector for the managed instance named ContosoManagedInstanceName in resource group named ContosoResourceGroup.
 
-### Example 5: Set the Transparent Data Encryption protector type to Azure Key Vault using piping
+### Example 4: Using piping
 ```powershell
 PS C:\> $managedInstance = Get-AzureRmSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> $managedInstance | Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+PS C:\> $managedInstance | Get-AzureRmSqlInstanceTransparentDataEncryptionProtector
 
 ResourceGroupName              : ContosoResourceGroup
 ManagedInstanceName            : ContosoManagedInstanceName
@@ -104,7 +88,7 @@ ManagedInstanceKeyVaultKeyName : contoso_contosokey_0123456789012345678901234567
 KeyId                          : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
 ```
 
-This command updates the specified managed instance to use the Managed instance Key Vault Key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' as the TDE protector.
+This command gets the TDE protector for the managed instance named ContosoManagedInstanceName in resource group named ContosoResourceGroup.
 
 ## PARAMETERS
 
@@ -123,40 +107,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Skip confirmation message for performing the action
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyId
-The Azure Key Vault KeyId.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedInstance
-The managed instance input object
-
-```yaml
+### -Instance
+The instance input object```yaml
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorInputObjectParameterSet
 Aliases: InputObject
@@ -168,10 +120,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceName
-The managed instance name
-
-```yaml
+### -InstanceName
+The instance name```yaml
 Type: String
 Parameter Sets: AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorDefaultParameterSet
 Aliases:
@@ -183,10 +133,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceResourceId
-The managed instance resource id
-
-```yaml
+### -InstanceResourceId
+The instance resource id```yaml
 Type: String
 Parameter Sets: AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorResourceIdParameterSet
 Aliases: ResourceId
@@ -208,22 +156,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-The Azure Sql Database Transparent Data Encryption Protector type.
-
-```yaml
-Type: EncryptionProtectorType
-Parameter Sets: (All)
-Aliases:
-Accepted values: AzureKeyVault, ServiceManaged
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -265,9 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType
-
-### System.String
+### None
 
 ## OUTPUTS
 

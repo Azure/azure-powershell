@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/Add-AzureRmSqlInstanceTransparentDataEncryptionCertificate
 schema: 2.0.0
 ---
 
-# Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate
+# Add-AzureRmSqlInstanceTransparentDataEncryptionCertificate
 
 ## SYNOPSIS
 Adds a Transparent Data Encryption Certificate for the given managed instance
@@ -13,13 +13,13 @@ Adds a Transparent Data Encryption Certificate for the given managed instance
 ## SYNTAX
 
 ```
-Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate [-PassThru] [-ResourceGroupName] <String>
- [-ManagedInstanceName] <String> [-PrivateBlob] <SecureString> [-Password] <SecureString>
+Add-AzureRmSqlInstanceTransparentDataEncryptionCertificate [-PassThru] [-ResourceGroupName] <String>
+ [-InstanceName] <String> [-PrivateBlob] <SecureString> [-Password] <SecureString>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate adds a Transparent Data Encryption Certificate for the given managed instance
+The Add-AzureRmSqlInstanceTransparentDataEncryptionCertificate adds a Transparent Data Encryption Certificate for the given managed instance
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ PS C:\>     $privateBlob = "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcG
 PS C:\>     $securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
 PS C:\>     $password = "CertificatePassword"
 PS C:\>     $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
-PS C:\> Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -ManagedInstanceName "YourManagedInstanceName" -PrivateBlob $securePrivateBlob -Password $securePassword
+PS C:\> Add-AzureRmSqlInstanceTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -InstanceName "YourManagedInstanceName" -PrivateBlob $securePrivateBlob -Password $securePassword
 ```
 
 ## PARAMETERS
@@ -38,7 +38,7 @@ PS C:\> Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate -Resou
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -49,11 +49,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceName
-The managed instance name
-
-```yaml
-Type: System.String
+### -InstanceName
+The instance name```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -68,7 +66,7 @@ Accept wildcard characters: False
 On Successful execution, returns certificate object that was added.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +81,7 @@ Accept wildcard characters: False
 The Password for Transparent Data Encryption Certificate
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +96,7 @@ Accept wildcard characters: False
 The Private blob for Transparent Data Encryption Certificate
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +111,7 @@ Accept wildcard characters: False
 The Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +126,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -144,7 +142,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

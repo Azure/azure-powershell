@@ -22,10 +22,10 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
     /// <summary>
-    /// Defines the Set-AzureRmSqlServerTransparentDataEncryptionProtector cmdlet
+    /// Defines the Set-AzureRmSqlInstanceTransparentDataEncryptionProtector cmdlet
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceTransparentDataEncryptionProtector", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
-    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceTDEProtector")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceTransparentDataEncryptionProtector", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceTDEProtector")]
     [OutputType(typeof(AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel))]
     public class SetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector : AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorBase
     {
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 
             AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel model = new AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel(
                 resourceGroupName: this.ResourceGroupName,
-                managedInstanceName: this.ManagedInstanceName);
+                managedInstanceName: this.InstanceName);
 
             resultList.Add(ModelAdapter.GetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector(model));
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 
             newEntity.Add(new Model.AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel(
                 resourceGroupName: this.ResourceGroupName, 
-                managedInstanceName: this.ManagedInstanceName, 
+                managedInstanceName: this.InstanceName, 
                 type: this.Type, 
                 keyId: this.KeyId));
 

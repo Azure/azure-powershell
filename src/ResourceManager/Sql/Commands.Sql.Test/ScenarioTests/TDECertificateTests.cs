@@ -40,14 +40,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AddTdeCertificateForSqlServerDefaultParameterSetWithPassword");
         }
 
-        [Fact(Skip = "Skip due to long setup time for managed instance")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddTdeCertificateForManagedInstanceDefaultParameterSetNoPassword()
         {
             RunPowerShellTest("Test-AddTdeCertificateForManagedInstanceDefaultParameterSetNoPassword");
         }
 
-        [Fact(Skip = "Skip due to long setup time for managed instance")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddTdeCertificateForManagedInstanceDefaultParameterSetWithPassword()
         {

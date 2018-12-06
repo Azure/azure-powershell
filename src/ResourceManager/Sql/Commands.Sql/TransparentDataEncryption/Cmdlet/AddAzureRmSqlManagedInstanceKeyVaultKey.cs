@@ -29,10 +29,10 @@ using System.Security;
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
     /// <summary>
-    /// Defines the Add-AzureSqlManagedInstanceKeyVaultKey cmdlet
+    /// Defines the Add-AzureSqlInstanceKeyVaultKey cmdlet
     /// </summary>
     ///
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceKeyVaultKey", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceKeyVaultKey", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureRmSqlManagedInstanceKeyVaultKeyModel))]
     public class AddAzureRmSqlManagedInstanceKeyVaultKey : AzureRmSqlManagedInstanceKeyVaultKeyBase
     {
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             List<AzureRmSqlManagedInstanceKeyVaultKeyModel> newEntity = new List<AzureRmSqlManagedInstanceKeyVaultKeyModel>();
             newEntity.Add(new AzureRmSqlManagedInstanceKeyVaultKeyModel(
                 resourceGroupName: this.ResourceGroupName,
-                managedInstanceName: this.ManagedInstanceName,
+                managedInstanceName: this.InstanceName,
                 keyId: this.KeyId));
             return newEntity;
         }
