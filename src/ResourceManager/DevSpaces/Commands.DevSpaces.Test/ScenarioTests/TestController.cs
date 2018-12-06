@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.DevSpaces.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "ScenarioTests\\Common.ps1",
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"AzureRM.Tags.psd1"),
+                    _helper.RMResourceModule,
                     _helper.GetRMModulePath(@"AzureRM.DevSpaces.psd1"));
 
                 if (scripts != null)

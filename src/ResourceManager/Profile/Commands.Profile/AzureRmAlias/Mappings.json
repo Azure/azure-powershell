@@ -344,7 +344,16 @@
   "Az.Billing": {
     "Get-AzBillingInvoice": "Get-AzureRmBillingInvoice",
     "Get-AzBillingPeriod": "Get-AzureRmBillingPeriod",
-    "Get-AzEnrollmentAccount": "Get-AzureRmEnrollmentAccount"
+    "Get-AzEnrollmentAccount": "Get-AzureRmEnrollmentAccount",
+    "Get-AzConsumptionBudget": "Get-AzureRmConsumptionBudget",
+    "Get-AzConsumptionMarketplace": "Get-AzureRmConsumptionMarketplace",
+    "Get-AzConsumptionPriceSheet": "Get-AzureRmConsumptionPriceSheet",
+    "Get-AzConsumptionReservationDetail": "Get-AzureRmConsumptionReservationDetail",
+    "Get-AzConsumptionReservationSummary": "Get-AzureRmConsumptionReservationSummary",
+    "Get-AzConsumptionUsageDetail": "Get-AzureRmConsumptionUsageDetail",
+    "New-AzConsumptionBudget": "New-AzureRmConsumptionBudget",
+    "Remove-AzConsumptionBudget": "Remove-AzureRmConsumptionBudget",
+    "Set-AzConsumptionBudget": "Set-AzureRmConsumptionBudget"
   },
   "Az.Cdn": {
     "Get-AzCdnProfile": "Get-AzureRmCdnProfile",
@@ -579,17 +588,6 @@
   "Az.Compute.ManagedService": {
     "ConvertTo-AzVhd": "ConvertTo-AzureRmVhd"
   },
-  "Az.Consumption": {
-    "Get-AzConsumptionBudget": "Get-AzureRmConsumptionBudget",
-    "Get-AzConsumptionMarketplace": "Get-AzureRmConsumptionMarketplace",
-    "Get-AzConsumptionPriceSheet": "Get-AzureRmConsumptionPriceSheet",
-    "Get-AzConsumptionReservationDetail": "Get-AzureRmConsumptionReservationDetail",
-    "Get-AzConsumptionReservationSummary": "Get-AzureRmConsumptionReservationSummary",
-    "Get-AzConsumptionUsageDetail": "Get-AzureRmConsumptionUsageDetail",
-    "New-AzConsumptionBudget": "New-AzureRmConsumptionBudget",
-    "Remove-AzConsumptionBudget": "Remove-AzureRmConsumptionBudget",
-    "Set-AzConsumptionBudget": "Set-AzureRmConsumptionBudget"
-  },
   "Az.ContainerInstance": {
     "New-AzContainerGroup": "New-AzureRmContainerGroup",
     "Get-AzContainerGroup": "Get-AzureRmContainerGroup",
@@ -614,40 +612,7 @@
     "Remove-AzContainerRegistryWebhook": "Remove-AzureRmContainerRegistryWebhook",
     "Get-AzContainerRegistryWebhookEvent": "Get-AzureRmContainerRegistryWebhookEvent"
   },
-  "Az.DataFactories": {
-    "Remove-AzDataFactory": "Remove-AzureRmDataFactory",
-    "Get-AzDataFactoryRun": "Get-AzureRmDataFactoryRun",
-    "Get-AzDataFactorySlice": "Get-AzureRmDataFactorySlice",
-    "Save-AzDataFactoryLog": "Save-AzureRmDataFactoryLog",
-    "Set-AzDataFactorySliceStatus": "Set-AzureRmDataFactorySliceStatus",
-    "New-AzDataFactoryEncryptValue": "New-AzureRmDataFactoryEncryptValue",
-    "Get-AzDataFactoryGateway": "Get-AzureRmDataFactoryGateway",
-    "New-AzDataFactoryGateway": "New-AzureRmDataFactoryGateway",
-    "New-AzDataFactoryGatewayKey": "New-AzureRmDataFactoryGatewayKey",
-    "Get-AzDataFactoryGatewayAuthkey": "Get-AzureRmDataFactoryGatewayAuthkey",
-    "New-AzDataFactoryGatewayAuthkey": "New-AzureRmDataFactoryGatewayAuthkey",
-    "Remove-AzDataFactoryGateway": "Remove-AzureRmDataFactoryGateway",
-    "Set-AzDataFactoryGateway": "Set-AzureRmDataFactoryGateway",
-    "Get-AzDataFactoryHub": "Get-AzureRmDataFactoryHub",
-    "New-AzDataFactoryHub": "New-AzureRmDataFactoryHub",
-    "Remove-AzDataFactoryHub": "Remove-AzureRmDataFactoryHub",
-    "Get-AzDataFactoryLinkedService": "Get-AzureRmDataFactoryLinkedService",
-    "Get-AzDataFactoryActivityWindow": "Get-AzureRmDataFactoryActivityWindow",
-    "New-AzDataFactoryLinkedService": "New-AzureRmDataFactoryLinkedService",
-    "Remove-AzDataFactoryLinkedService": "Remove-AzureRmDataFactoryLinkedService",
-    "Get-AzDataFactory": "Get-AzureRmDataFactory",
-    "New-AzDataFactory": "New-AzureRmDataFactory",
-    "Get-AzDataFactoryPipeline": "Get-AzureRmDataFactoryPipeline",
-    "New-AzDataFactoryPipeline": "New-AzureRmDataFactoryPipeline",
-    "Remove-AzDataFactoryPipeline": "Remove-AzureRmDataFactoryPipeline",
-    "Resume-AzDataFactoryPipeline": "Resume-AzureRmDataFactoryPipeline",
-    "Set-AzDataFactoryPipelineActivePeriod": "Set-AzureRmDataFactoryPipelineActivePeriod",
-    "Suspend-AzDataFactoryPipeline": "Suspend-AzureRmDataFactoryPipeline",
-    "Get-AzDataFactoryDataset": "Get-AzureRmDataFactoryDataset",
-    "New-AzDataFactoryDataset": "New-AzureRmDataFactoryDataset",
-    "Remove-AzDataFactoryDataset": "Remove-AzureRmDataFactoryDataset"
-  },
-  "Az.DataFactoryV2": {
+  "Az.DataFactory": {
     "Set-AzDataFactoryV2": "Set-AzureRmDataFactoryV2",
     "Update-AzDataFactoryV2": "Update-AzureRmDataFactoryV2",
     "Get-AzDataFactoryV2": "Get-AzureRmDataFactoryV2",
@@ -690,7 +655,38 @@
     "New-AzDataFactoryV2Dataset": "New-AzureRmDataFactoryV2Dataset",
     "New-AzDataFactoryV2LinkedService": "New-AzureRmDataFactoryV2LinkedService",
     "New-AzDataFactoryV2Pipeline": "New-AzureRmDataFactoryV2Pipeline",
-    "New-AzDataFactoryV2Trigger": "New-AzureRmDataFactoryV2Trigger"
+    "New-AzDataFactoryV2Trigger": "New-AzureRmDataFactoryV2Trigger",
+    "Remove-AzDataFactory": "Remove-AzureRmDataFactory",
+    "Get-AzDataFactoryRun": "Get-AzureRmDataFactoryRun",
+    "Get-AzDataFactorySlice": "Get-AzureRmDataFactorySlice",
+    "Save-AzDataFactoryLog": "Save-AzureRmDataFactoryLog",
+    "Set-AzDataFactorySliceStatus": "Set-AzureRmDataFactorySliceStatus",
+    "New-AzDataFactoryEncryptValue": "New-AzureRmDataFactoryEncryptValue",
+    "Get-AzDataFactoryGateway": "Get-AzureRmDataFactoryGateway",
+    "New-AzDataFactoryGateway": "New-AzureRmDataFactoryGateway",
+    "New-AzDataFactoryGatewayKey": "New-AzureRmDataFactoryGatewayKey",
+    "Get-AzDataFactoryGatewayAuthkey": "Get-AzureRmDataFactoryGatewayAuthkey",
+    "New-AzDataFactoryGatewayAuthkey": "New-AzureRmDataFactoryGatewayAuthkey",
+    "Remove-AzDataFactoryGateway": "Remove-AzureRmDataFactoryGateway",
+    "Set-AzDataFactoryGateway": "Set-AzureRmDataFactoryGateway",
+    "Get-AzDataFactoryHub": "Get-AzureRmDataFactoryHub",
+    "New-AzDataFactoryHub": "New-AzureRmDataFactoryHub",
+    "Remove-AzDataFactoryHub": "Remove-AzureRmDataFactoryHub",
+    "Get-AzDataFactoryLinkedService": "Get-AzureRmDataFactoryLinkedService",
+    "Get-AzDataFactoryActivityWindow": "Get-AzureRmDataFactoryActivityWindow",
+    "New-AzDataFactoryLinkedService": "New-AzureRmDataFactoryLinkedService",
+    "Remove-AzDataFactoryLinkedService": "Remove-AzureRmDataFactoryLinkedService",
+    "Get-AzDataFactory": "Get-AzureRmDataFactory",
+    "New-AzDataFactory": "New-AzureRmDataFactory",
+    "Get-AzDataFactoryPipeline": "Get-AzureRmDataFactoryPipeline",
+    "New-AzDataFactoryPipeline": "New-AzureRmDataFactoryPipeline",
+    "Remove-AzDataFactoryPipeline": "Remove-AzureRmDataFactoryPipeline",
+    "Resume-AzDataFactoryPipeline": "Resume-AzureRmDataFactoryPipeline",
+    "Set-AzDataFactoryPipelineActivePeriod": "Set-AzureRmDataFactoryPipelineActivePeriod",
+    "Suspend-AzDataFactoryPipeline": "Suspend-AzureRmDataFactoryPipeline",
+    "Get-AzDataFactoryDataset": "Get-AzureRmDataFactoryDataset",
+    "New-AzDataFactoryDataset": "New-AzureRmDataFactoryDataset",
+    "Remove-AzDataFactoryDataset": "Remove-AzureRmDataFactoryDataset"
   },
   "Az.DataLakeAnalytics": {
     "Get-AzDataLakeAnalyticsDataSource": "Get-AzureRmDataLakeAnalyticsDataSource",
@@ -1176,9 +1172,7 @@
     "Import-AzMlWebService": "Import-AzureRmMlWebService",
     "New-AzMlCommitmentPlan": "New-AzureRmMlCommitmentPlan",
     "New-AzMlWebService": "New-AzureRmMlWebService",
-    "Add-AzMlWebServiceRegionalProperty": "Add-AzureRmMlWebServiceRegionalProperty"
-  },
-  "Az.MachineLearningCompute": {
+    "Add-AzMlWebServiceRegionalProperty": "Add-AzureRmMlWebServiceRegionalProperty",
     "Get-AzMlOpCluster": "Get-AzureRmMlOpCluster",
     "Get-AzMlOpClusterKey": "Get-AzureRmMlOpClusterKey",
     "Test-AzMlOpClusterSystemServicesUpdateAvailability": "Test-AzureRmMlOpClusterSystemServicesUpdateAvailability",
@@ -1988,7 +1982,10 @@
     "Remove-AzADServicePrincipalCredential": "Remove-AzureRmADServicePrincipalCredential",
     "Set-AzADApplication": "Set-AzureRmADApplication",
     "Set-AzADServicePrincipal": "Set-AzureRmADServicePrincipal",
-    "Set-AzADUser": "Set-AzureRmADUser"
+    "Set-AzADUser": "Set-AzureRmADUser",
+    "Remove-AzTag": "Remove-AzureRmTag",
+    "Get-AzTag": "Get-AzureRmTag",
+    "New-AzTag": "New-AzureRmTag"
   },
   "Az.Scheduler": {
     "Disable-AzSchedulerJobCollection": "Disable-AzureRmSchedulerJobCollection",
@@ -2410,11 +2407,6 @@
   "Az.Subscription": {
     "New-AzSubscription": "New-AzureRmSubscription"
   },
-  "Az.Tags": {
-    "Remove-AzTag": "Remove-AzureRmTag",
-    "Get-AzTag": "Get-AzureRmTag",
-    "New-AzTag": "New-AzureRmTag"
-  },
   "Az.TrafficManager": {
     "Add-AzTrafficManagerCustomHeaderToEndpoint": "Add-AzureRmTrafficManagerCustomHeaderToEndpoint",
     "Remove-AzTrafficManagerCustomHeaderFromEndpoint": "Remove-AzureRmTrafficManagerCustomHeaderFromEndpoint",
@@ -2439,7 +2431,6 @@
     "Get-AzTrafficManagerProfile": "Get-AzureRmTrafficManagerProfile",
     "New-AzTrafficManagerProfile": "New-AzureRmTrafficManagerProfile"
   },
-  "Az.UsageAggregates": {},
   "Az.Websites": {
     "Get-AzAppServicePlan": "Get-AzureRmAppServicePlan",
     "Set-AzAppServicePlan": "Set-AzureRmAppServicePlan",

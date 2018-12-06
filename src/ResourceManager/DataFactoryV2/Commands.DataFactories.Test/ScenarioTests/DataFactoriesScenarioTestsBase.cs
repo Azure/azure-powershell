@@ -13,25 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.DataFactories;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.DataFactory;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
-namespace Microsoft.Azure.Commands.DataFactoryV2.Test
+namespace Microsoft.Azure.Commands.DataFactories.Test
 {
     public abstract class DataFactoriesScenarioTestsBase : RMTestBase
     {
-        private const string TenantIdKey = "TenantId";
-
         private readonly EnvironmentSetupHelper _helper;
 
         protected DataFactoriesScenarioTestsBase()
@@ -41,8 +39,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         protected void SetupManagementClients(MockContext context)
         {
-            var resourceManagementClient = GetResourceManagementClient(context);
             var dataPipelineManagementClient = GetDataPipelineManagementClient(context);
+            var resourceManagementClient = GetResourceManagementClient(context);
 
             _helper.SetupManagementClients(dataPipelineManagementClient, resourceManagementClient);
         }
@@ -54,6 +52,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
             var mockName = sf.GetMethod().Name;
 
             _helper.TracingInterceptor = logger;
+
             var d = new Dictionary<string, string>
             {
                 {"Microsoft.Resources", null},
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
             };
             var providersToIgnore = new Dictionary<string, string>
             {
-                {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-07-01"},
                 {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
             };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
@@ -73,8 +71,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
                 SetupManagementClients(context);
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                UpdateDefaultContextForPlayback();
-
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + GetType().Name + ".ps1",
@@ -95,17 +91,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
-
-        private static void UpdateDefaultContextForPlayback()
-        {
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback && HttpMockServer.Variables.ContainsKey(TenantIdKey))
-            {
-                if (AzureRmProfileProvider.Instance?.Profile?.DefaultContext?.Tenant != null)
-                {
-                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = HttpMockServer.Variables[TenantIdKey];
-                }
-            }
-        }
     }
 }
-
