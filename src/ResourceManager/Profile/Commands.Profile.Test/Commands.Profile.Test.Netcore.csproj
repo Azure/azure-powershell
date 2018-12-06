@@ -29,16 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- <None Remove="App.config" /> -->
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="*.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <!-- <None Include="..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Profile\Microsoft.Azure.PowerShell.ResourceManager.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None> -->
   </ItemGroup>
 
 </Project>

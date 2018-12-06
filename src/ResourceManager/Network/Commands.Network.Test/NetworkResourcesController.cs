@@ -123,7 +123,7 @@ namespace Commands.Network.Test
                     "ScenarioTests\\Common.ps1",
                     psScriptPath,
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath("AzureRM.Insights.psd1"),
+                    _helper.GetRMModulePath("AzureRM.Monitor.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     _helper.GetRMModulePath("AzureRM.ContainerInstance.psd1"),
