@@ -47,6 +47,9 @@ Adds a redirect configuration to an Application Gateway.
 ### [Add-AzApplicationGatewayRequestRoutingRule](Add-AzApplicationGatewayRequestRoutingRule.md)
 Adds a request routing rule to an application gateway.
 
+### [Add-AzApplicationGatewayRewriteRuleSet](Add-AzApplicationGatewayRewriteRuleSet.md)
+Adds a rewrite rule set to an application gateway.
+
 ### [Add-AzApplicationGatewaySslCertificate](Add-AzApplicationGatewaySslCertificate.md)
 Adds an SSL certificate to an application gateway.
 
@@ -175,6 +178,9 @@ Gets an existing redirect configuration from an Application Gateway.
 
 ### [Get-AzApplicationGatewayRequestRoutingRule](Get-AzApplicationGatewayRequestRoutingRule.md)
 Gets the request routing rule of an application gateway.
+
+### [Get-AzApplicationGatewayRewriteRuleSet](Get-AzApplicationGatewayRewriteRuleSet.md)
+Gets the rewrite rule set of an application gateway.
 
 ### [Get-AzApplicationGatewaySku](Get-AzApplicationGatewaySku.md)
 Gets the SKU of an application gateway.
@@ -348,25 +354,25 @@ Gets the troubleshooting result from the previously run or currently running tro
 Gets a public IP address.
 
 ### [Get-AzPublicIpPrefix](Get-AzPublicIpPrefix.md)
-Gets a public IP prefix
+Gets a public IP prefix.
 
 ### [Get-AzRouteConfig](Get-AzRouteConfig.md)
 Gets routes from a route table.
 
 ### [Get-AzRouteFilter](Get-AzRouteFilter.md)
-{{Fill in the Synopsis}}
+Gets a route filter.
 
 ### [Get-AzRouteFilterRuleConfig](Get-AzRouteFilterRuleConfig.md)
-{{Fill in the Synopsis}}
+Gets route filter rules from a route filter.
 
 ### [Get-AzRouteTable](Get-AzRouteTable.md)
 Gets route tables.
 
 ### [Get-AzServiceEndpointPolicy](Get-AzServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
+Gets a service endpoint policy.
 
 ### [Get-AzServiceEndpointPolicyDefinition](Get-AzServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
+Gets service endpoint policy definitions from a service endpoint policy.
 
 ### [Get-AzVirtualHub](Get-AzVirtualHub.md)
 Gets an Azure VirtualHub by Name and ResourceGroupName or lists all Virtual Hubs by ResourceGroupName/Subscription.
@@ -505,6 +511,18 @@ Creates a redirect configuration for an application gateway.
 
 ### [New-AzApplicationGatewayRequestRoutingRule](New-AzApplicationGatewayRequestRoutingRule.md)
 Creates a request routing rule for an application gateway.
+
+### [New-AzApplicationGatewayRewriteRule](New-AzApplicationGatewayRewriteRule.md)
+Creates a rewrite rule for an application gateway.
+
+### [New-AzApplicationGatewayRewriteRuleActionSet](New-AzApplicationGatewayRewriteRuleActionSet.md)
+Creates a rewrite rule action set for an application gateway.
+
+### [New-AzApplicationGatewayRewriteRuleHeaderConfiguration](New-AzApplicationGatewayRewriteRuleHeaderConfiguration.md)
+Creates a rewrite rule header configuration for an application gateway.
+
+### [New-AzApplicationGatewayRewriteRuleSet](New-AzApplicationGatewayRewriteRuleSet.md)
+Creates a rewrite rule set for an application gateway.
 
 ### [New-AzApplicationGatewaySku](New-AzApplicationGatewaySku.md)
 Creates a SKU for an application gateway.
@@ -654,10 +672,10 @@ Creates a route filter rule for a route filter.
 Creates a route table.
 
 ### [New-AzServiceEndpointPolicy](New-AzServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
+Creates a service endpoint policy.
 
 ### [New-AzServiceEndpointPolicyDefinition](New-AzServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
+Create a service endpoint policy definition for service endpoint policy.
 
 ### [New-AzVirtualHub](New-AzVirtualHub.md)
 Creates an Azure VirtualHub resource.
@@ -762,6 +780,9 @@ Removes a redirect configuration from an existing Application Gateway.
 ### [Remove-AzApplicationGatewayRequestRoutingRule](Remove-AzApplicationGatewayRequestRoutingRule.md)
 Removes a request routing rule from an application gateway.
 
+### [Remove-AzApplicationGatewayRewriteRuleSet](Remove-AzApplicationGatewayRewriteRuleSet.md)
+Removes a rewrite rule set from an application gateway.
+
 ### [Remove-AzApplicationGatewaySslCertificate](Remove-AzApplicationGatewaySslCertificate.md)
 Removes an SSL certificate from an Azure application gateway.
 
@@ -865,19 +886,19 @@ Removes a public IP prefix
 Removes a route from a route table.
 
 ### [Remove-AzRouteFilter](Remove-AzRouteFilter.md)
-{{Fill in the Synopsis}}
+Removes a route filter.
 
 ### [Remove-AzRouteFilterRuleConfig](Remove-AzRouteFilterRuleConfig.md)
-{{Fill in the Synopsis}}
+Removes a route filter rule from a route filter.
 
 ### [Remove-AzRouteTable](Remove-AzRouteTable.md)
 Removes a route table.
 
 ### [Remove-AzServiceEndpointPolicy](Remove-AzServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
+Removes a service endpoint policy.
 
 ### [Remove-AzServiceEndpointPolicyDefinition](Remove-AzServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
+Removes a service endpoint policy definition from a service endpoint policy.
 
 ### [Remove-AzVirtualHub](Remove-AzVirtualHub.md)
 Removes an Azure VirtualHub resource.
@@ -984,6 +1005,9 @@ Sets the redirect configuration on an existing Application Gateway.
 ### [Set-AzApplicationGatewayRequestRoutingRule](Set-AzApplicationGatewayRequestRoutingRule.md)
 Modifies a request routing rule for an application gateway.
 
+### [Set-AzApplicationGatewayRewriteRuleSet](Set-AzApplicationGatewayRewriteRuleSet.md)
+Modifies a rewrite rule set for an application gateway.
+
 ### [Set-AzApplicationGatewaySku](Set-AzApplicationGatewaySku.md)
 Modifies the SKU of an application gateway.
 
@@ -1072,19 +1096,19 @@ Sets the Tags for an existing PublicIpPrefix
 Sets the goal state for a route.
 
 ### [Set-AzRouteFilter](Set-AzRouteFilter.md)
-{{Fill in the Synopsis}}
+Updates a route filter.
 
 ### [Set-AzRouteFilterRuleConfig](Set-AzRouteFilterRuleConfig.md)
-{{Fill in the Synopsis}}
+Modifies a route filter rule for a route filter.
 
 ### [Set-AzRouteTable](Set-AzRouteTable.md)
 Sets the goal state for a route table.
 
 ### [Set-AzServiceEndpointPolicy](Set-AzServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
+Updates a service endpoint policy.
 
 ### [Set-AzServiceEndpointPolicyDefinition](Set-AzServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
+Modifies a service endpoint policy definition for a service endpoint policy.
 
 ### [Set-AzVirtualNetwork](Set-AzVirtualNetwork.md)
 Sets the goal state for a virtual network.
