@@ -14,10 +14,9 @@ Creates a back-end address pool for an application gateway.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayBackendAddressPool -Name <String>
- [-BackendIPAddresses <System.Collections.Generic.List`1[System.String]>]
- [-BackendFqdns <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzApplicationGatewayBackendAddressPool -Name <String> [-BackendIPAddresses <String[]>]
+ [-BackendFqdns <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +45,7 @@ This command creates a back-end address pool named Pool02 by using the IP addres
 Specifies a list of back-end FQDNs that this cmdlet associates with the back-end server pool.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -61,7 +60,7 @@ Accept wildcard characters: False
 Specifies a list of back-end IP addresses that this cmdlet associates with the back-end server pool.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

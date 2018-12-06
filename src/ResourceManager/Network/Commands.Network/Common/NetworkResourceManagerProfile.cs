@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         if (src.AddressPrefixes != null && src.AddressPrefixes.Any())
                         {
-                            dest.AddressPrefix = src.AddressPrefixes.ToList();
+                            dest.AddressPrefix = src.AddressPrefixes?.ToList();
                         }
                         else if(!string.IsNullOrEmpty(src.AddressPrefix))
                         {
@@ -718,6 +718,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayIPConfiguration, MNM.ApplicationGatewayIPConfiguration>();
                 cfg.CreateMap<CNM.PSApplicationGatewayRequestRoutingRule, MNM.ApplicationGatewayRequestRoutingRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayRedirectConfiguration, MNM.ApplicationGatewayRedirectConfiguration>();
+                cfg.CreateMap<CNM.PSApplicationGatewayRewriteRuleSet, MNM.ApplicationGatewayRewriteRuleSet>();
+                cfg.CreateMap<CNM.PSApplicationGatewayRewriteRule, MNM.ApplicationGatewayRewriteRule>();
+                cfg.CreateMap<CNM.PSApplicationGatewayRewriteRuleActionSet, MNM.ApplicationGatewayRewriteRuleActionSet>();
+                cfg.CreateMap<CNM.PSApplicationGatewayHeaderConfiguration, MNM.ApplicationGatewayHeaderConfiguration>();
                 cfg.CreateMap<CNM.PSApplicationGatewayAuthenticationCertificate, MNM.ApplicationGatewayAuthenticationCertificate>();
                 cfg.CreateMap<CNM.PSApplicationGatewayTrustedRootCertificate, MNM.ApplicationGatewayTrustedRootCertificate>();
                 cfg.CreateMap<CNM.PSBackendAddressPool, MNM.BackendAddressPool>();
@@ -765,6 +769,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewayIPConfiguration, CNM.PSApplicationGatewayIPConfiguration>();
                 cfg.CreateMap<MNM.ApplicationGatewayRequestRoutingRule, CNM.PSApplicationGatewayRequestRoutingRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayRedirectConfiguration, CNM.PSApplicationGatewayRedirectConfiguration>();
+                cfg.CreateMap<MNM.ApplicationGatewayRewriteRuleSet, CNM.PSApplicationGatewayRewriteRuleSet>();
+                cfg.CreateMap<MNM.ApplicationGatewayRewriteRule, CNM.PSApplicationGatewayRewriteRule>();
+                cfg.CreateMap<MNM.ApplicationGatewayRewriteRuleActionSet, CNM.PSApplicationGatewayRewriteRuleActionSet>();
+                cfg.CreateMap<MNM.ApplicationGatewayHeaderConfiguration, CNM.PSApplicationGatewayHeaderConfiguration>();
                 cfg.CreateMap<MNM.ApplicationGatewayAuthenticationCertificate, CNM.PSApplicationGatewayAuthenticationCertificate>();
                 cfg.CreateMap<MNM.ApplicationGatewayTrustedRootCertificate, CNM.PSApplicationGatewayTrustedRootCertificate>();
                 cfg.CreateMap<MNM.BackendAddressPool, CNM.PSBackendAddressPool>();

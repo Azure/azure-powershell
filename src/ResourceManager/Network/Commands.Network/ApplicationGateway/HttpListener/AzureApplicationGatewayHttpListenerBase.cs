@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
                 HelpMessage = "Customer error of an application gateway")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayCustomError> CustomErrorConfiguration { get; set; }
+        public PSApplicationGatewayCustomError[] CustomErrorConfiguration { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -148,7 +149,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.CustomErrorConfiguration != null)
             {
-                httpListener.CustomErrorConfigurations = this.CustomErrorConfiguration;
+                httpListener.CustomErrorConfigurations = this.CustomErrorConfiguration?.ToList();
             }
 
             httpListener.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

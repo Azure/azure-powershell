@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(this.LoadBalancer);
                 return;
             }
-            var vFrontendIpConfigurations = this.LoadBalancer.FrontendIpConfigurations.First
+            var vFrontendIpConfigurations = this.LoadBalancer.FrontendIpConfigurations.SingleOrDefault
                 (e =>
-                    (this.Name != null && e.Name == this.Name)
+                    string.Equals(e.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)
                 );
 
             if (vFrontendIpConfigurations != null)
