@@ -31,9 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.KeyVault">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.KeyVault\Microsoft.Azure.Commands.KeyVault.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.KeyVault\Commands.KeyVault.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

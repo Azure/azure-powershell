@@ -29,12 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.ApplicationInsights">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.ApplicationInsights\Microsoft.Azure.Commands.ApplicationInsights.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

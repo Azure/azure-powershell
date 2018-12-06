@@ -27,13 +27,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Dns" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.6.1-preview" />
-    <!-- <PackageReference Include="Moq" Version="4.2.1510.2205" /> -->
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Dns">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Dns\Microsoft.Azure.Commands.Dns.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

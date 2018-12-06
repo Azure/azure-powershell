@@ -29,12 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.MarketplaceOrdering">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.MarketplaceOrdering\Microsoft.Azure.Commands.MarketplaceOrdering.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

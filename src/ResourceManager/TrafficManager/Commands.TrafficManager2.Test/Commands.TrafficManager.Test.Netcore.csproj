@@ -29,9 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.TrafficManager">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.TrafficManager\Microsoft.Azure.Commands.TrafficManager.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.TrafficManager2\Commands.TrafficManager.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

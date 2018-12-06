@@ -30,12 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.ARM">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.ARM.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.SiteRecovery">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.RecoveryServices.SiteRecovery\Commands.RecoveryServices.SiteRecovery.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.RecoveryServices\Commands.RecoveryServices.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

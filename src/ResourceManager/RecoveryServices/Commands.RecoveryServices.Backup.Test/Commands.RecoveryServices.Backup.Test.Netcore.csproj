@@ -32,27 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.ARM">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.ARM.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.Backup">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.Backup.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.Backup.Logger">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.Backup.Logger.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.Backup.Models">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.Backup.Providers">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.Backup.Providers.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

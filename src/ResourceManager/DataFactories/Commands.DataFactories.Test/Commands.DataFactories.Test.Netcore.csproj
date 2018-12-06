@@ -29,9 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.DataFactories">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.DataFactories\Microsoft.Azure.Commands.DataFactories.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.DataFactories\Commands.DataFactories.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

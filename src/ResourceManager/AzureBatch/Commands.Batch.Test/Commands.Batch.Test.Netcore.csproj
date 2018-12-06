@@ -36,9 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Batch">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Batch\Microsoft.Azure.Commands.Batch.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.Batch\Commands.Batch.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
