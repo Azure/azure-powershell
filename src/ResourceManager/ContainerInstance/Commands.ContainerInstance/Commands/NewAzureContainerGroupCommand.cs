@@ -253,8 +253,6 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     Identity = ParseIdentity()
                 };
 
-// TODO: Remove IfDef code
-#if !NETSTANDARD
                 if (!string.IsNullOrWhiteSpace(this.Command))
                 {
                     Collection<PSParseError> errors;
@@ -265,7 +263,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     }
                     creationParameter.ContainerCommand = commandTokens.Select(token => token.Content).ToList();
                 }
-#endif
+
                 creationParameter.Validate();
 
                 var psContainerGroup = PSContainerGroup.FromContainerGroup(
