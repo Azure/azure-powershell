@@ -16,56 +16,78 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.DataFactory;
+using Microsoft.Azure.Management.Consumption;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
-namespace Microsoft.Azure.Commands.DataFactoryV2.Test
+namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 {
-    public abstract class DataFactoriesScenarioTestsBase : RMTestBase
+    public class TestController : RMTestBase
     {
-        private const string TenantIdKey = "TenantId";
-
         private readonly EnvironmentSetupHelper _helper;
 
-        protected DataFactoriesScenarioTestsBase()
+        public ResourceManagementClient ResourceClient { get; private set; }
+
+        public ConsumptionManagementClient ConsumptionManagementClient { get; private set; }
+
+        public static TestController NewInstance => new TestController();
+
+        protected TestController()
         {
             _helper = new EnvironmentSetupHelper();
         }
 
         protected void SetupManagementClients(MockContext context)
         {
-            var resourceManagementClient = GetResourceManagementClient(context);
-            var dataPipelineManagementClient = GetDataPipelineManagementClient(context);
+            ResourceClient = GetResourceClient(context);
+            ConsumptionManagementClient = GetConsumptionManagementClient(context);
 
-            _helper.SetupManagementClients(dataPipelineManagementClient, resourceManagementClient);
+            _helper.SetupManagementClients(
+                ResourceClient,
+                ConsumptionManagementClient);
         }
 
-        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
 
             _helper.TracingInterceptor = logger;
-            var d = new Dictionary<string, string>
+
+            RunPsTestWorkflow(
+                () => scripts,
+                // no custom cleanup 
+                null,
+                callingClassType,
+                mockName);
+        }
+
+        public void RunPsTestWorkflow(
+            Func<string[]> scriptBuilder,
+            Action cleanup,
+            string callingClassType,
+            string mockName)
+        {
+            var providers = new Dictionary<string, string>
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Compute", null}
             };
             var providersToIgnore = new Dictionary<string, string>
             {
-                {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-07-01"},
                 {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
             };
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
+
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (var context = MockContext.Start(callingClassType, mockName))
@@ -73,39 +95,36 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
                 SetupManagementClients(context);
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                UpdateDefaultContextForPlayback();
 
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + GetType().Name + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath("AzureRM.DataFactory.psd1"),
+                    _helper.GetRMModulePath("AzureRM.Billing.psd1"),
+                    "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1");
-
-                _helper.RunPowerShellTest(scripts);
+                try
+                {
+                    var psScripts = scriptBuilder?.Invoke();
+                    if (psScripts != null)
+                    {
+                        _helper.RunPowerShellTest(psScripts);
+                    }
+                }
+                finally
+                {
+                    cleanup?.Invoke();
+                }
             }
         }
 
-        protected DataFactoryManagementClient GetDataPipelineManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<DataFactoryManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static ResourceManagementClient GetResourceClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static void UpdateDefaultContextForPlayback()
+        private static ConsumptionManagementClient GetConsumptionManagementClient(MockContext context)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback && HttpMockServer.Variables.ContainsKey(TenantIdKey))
-            {
-                if (AzureRmProfileProvider.Instance?.Profile?.DefaultContext?.Tenant != null)
-                {
-                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = HttpMockServer.Variables[TenantIdKey];
-                }
-            }
+            return context.GetServiceClient<ConsumptionManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
-

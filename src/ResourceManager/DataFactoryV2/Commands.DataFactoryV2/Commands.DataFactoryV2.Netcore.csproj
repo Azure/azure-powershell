@@ -10,7 +10,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(ProjectDir)..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.DataFactoryV2\</OutputPath>
+    <OutputPath>$(ProjectDir)..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.DataFactory\</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Az.DataFactoryV2.psd1">
+    <None Include="Az.DataFactory.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
