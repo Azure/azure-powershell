@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         public const string CmdletNameVerb = VerbsCommon.Get;
     }
 
-    [CmdletDeprecation(ReplacementCmdletName = "Get-AzureRMTestCmdlet2")]
+    [CmdletDeprecation(ReplacementCmdletName = "Get-AzTestCmdlet2")]
     [Cmdlet(VerbNameHolder.CmdletNameVerb, AzureRMTestCmdletWithCmdletDeprecationMarkerAttribute.CmdletName)]
     class AzureRMTestCmdletWithCmdletDeprecationMarkerAttribute : AzureRMCmdlet
     {
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Parameter(Mandatory = true)]
         public string Param1;
         //this deprecation marker should print the old way and new way of calling the cmdlet.
-        [CmdletParameterBreakingChange("Param2", IsBecomingMandatory = true, OldWay = "Get-AzureRMTestCmdlet2 -Param1=\"blah\"", NewWay = "Get-AzureRMTestCmdlet2 -Param1=\"blah\" -Param2=\"Yo Yo\"")]
+        [CmdletParameterBreakingChange("Param2", IsBecomingMandatory = true, OldWay = "Get-AzTestCmdlet2 -Param1=\"blah\"", NewWay = "Get-AzTestCmdlet2 -Param1=\"blah\" -Param2=\"Yo Yo\"")]
         [Parameter(Mandatory = false)]
         public string Param2;
     }
