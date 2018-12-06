@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.KeyVault</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Clients.KeyVault</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.KeyVault</RootNamespace>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -12,9 +12,9 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <Title>Microsoft Azure PowerShell KeyVault</Title>
-    <Description>Microsoft Azure PowerShell KeyVault library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
-    <PackageTags>azure;powershell;keyvault</PackageTags>
+    <Title>Microsoft Azure PowerShell Clients KeyVault</Title>
+    <Description>Microsoft Azure PowerShell Clients KeyVault library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
+    <PackageTags>azure;powershell;clients;keyvault</PackageTags>
     <Authors>Microsoft Corporation</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
     <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>

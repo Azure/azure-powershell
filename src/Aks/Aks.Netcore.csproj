@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Aks</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Clients.Aks</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Aks</RootNamespace>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>Microsoft Azure PowerShell Aks</Title>
-    <Description>Microsoft Azure PowerShell Aks library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
-    <PackageTags>azure;powershell;aks</PackageTags>
+    <Title>Microsoft Azure PowerShell Clients Aks</Title>
+    <Description>Microsoft Azure PowerShell Clients Aks library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
+    <PackageTags>azure;powershell;clients;aks</PackageTags>
     <Authors>Microsoft Corporation</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
     <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>

@@ -19,8 +19,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microsoft Azure PowerShell Authorization")]
-[assembly: AssemblyDescription("Microsoft Azure PowerShell Authorization library. Only for use with the Azure PowerShell runtime. Not intended for general development use.")]
+[assembly: AssemblyTitle("Microsoft Azure PowerShell Clients Authorization")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell Clients Authorization library. Only for use with the Azure PowerShell runtime. Not intended for general development use.")]
 [assembly: AssemblyProduct("Microsoft Azure PowerShell")]
 [assembly: AssemblyCompany("Microsoft Corporation")]
 [assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]
