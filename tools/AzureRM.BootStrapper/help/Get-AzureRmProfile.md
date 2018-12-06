@@ -1,6 +1,7 @@
 ---
 external help file: AzureRM.Bootstrapper-help.xml
-online version: 
+Module Name: AzureRM.BootStrapper
+online version:
 schema: 2.0.0
 ---
 
@@ -36,9 +37,9 @@ List all ARM profiles available to be installed.
 If specified, list all available profiles, not just the profiles currently installed.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -51,9 +52,9 @@ Accept wildcard characters: False
 If specified, updates Profiles available by querying Azure Endpoint
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -76,4 +77,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -617,7 +617,7 @@ Describe "Get-AllProfilesInstalled" {
     }
 }
 
-Describe "Update-ProfileHelper" {
+Describe "Remove-PreviousVersionHelper" {
     InModuleScope AzureRM.Bootstrapper {
         Mock Invoke-CommandWithRetry -Verifiable { $global:testProfileMap } 
         $script:LatestProfileMapPath = New-Object -TypeName PSObject
@@ -627,12 +627,12 @@ Describe "Update-ProfileHelper" {
 
         Context "Previous Versions were present" {
             It "Should invoke Remove-PreviousVersion" {
-                Update-ProfileHelper -profile 'Profile1'
+                Remove-PreviousVersionHelper -profile 'Profile1'
                 Assert-VerifiableMock
             }
             
             It "Invoke with -Module param: Should invoke Remove-PreviousVerison" {
-                Update-ProfileHelper -profile 'Profile1' -Module 'Module1' -RemovePreviousVersions
+                Remove-PreviousVersionHelper -profile 'Profile1' -Module 'Module1' -RemovePreviousVersions
                 Assert-VerifiableMock
             }
         }
@@ -945,7 +945,9 @@ Describe "Get-AzureRmModule" {
         Context "Module is installed" {
            Mock Get-Module -Verifiable { @( [PSCustomObject] @{ Name='Module1'; Version='1.0'; RepositorySourceLocation='foo\bar' }, [PSCustomObject] @{ Name='Module1'; Version='2.0'}) }
            It "Should return installed version" {
-                Get-AzureRmModule -Profile 'Profile1' -Module 'Module1' | Should Be "1.0"
+                $module = Get-AzureRmModule -Profile 'Profile1' -Module 'Module1' 
+                $module.Name | Should Be 'Module1'
+                $module.Version | Should Be '1.0'
                 Assert-VerifiableMock
             }
         }
@@ -979,11 +981,12 @@ Describe "Get-AzureRmModule" {
         }
 
         Context "ProfileMap has one profile" {
-            $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
             Mock Get-AzProfile -Verifiable { ("{`"Profile1`": { `"Module1`": [`"1.0`", `"0.1`"], `"Module2`": [`"1.0`", `"0.2`"] }}" ) | ConvertFrom-Json }
             Mock Get-Module -Verifiable { @( [PSCustomObject] @{ Name='Module1'; Version='1.0'; RepositorySourceLocation='foo\bar' }, [PSCustomObject] @{ Name='Module1'; Version='2.0'}) }
             It "Should return installed version" {
-                Get-AzureRmModule -Profile 'Profile1' -Module 'Module1' | Should Be "1.0"
+                $module = Get-AzureRmModule -Profile 'Profile1' -Module 'Module1' 
+                $module.Name | Should Be 'Module1'
+                $module.Version | Should Be '1.0'
                 Assert-VerifiableMock
             }
         }
@@ -1264,14 +1267,14 @@ Describe "Update-AzureRmProfile" {
         
         Context "Proper profile with '-RemovePreviousVersions' and '-Force' params" {
             Mock Use-AzureRmProfile -Verifiable {} -ParameterFilter { ($Force.IsPresent)}
-            Mock Update-ProfileHelper -Verifiable {}
+            Mock Remove-PreviousVersionHelper -Verifiable {}
     
-            It "Imports profile modules and invokes Update-ProfileHelper" {
+            It "Imports profile modules and invokes Remove-PreviousVersionHelper" {
                 Update-AzureRmProfile -Profile 'Profile2' -RemovePreviousVersions -Force
                 Assert-VerifiableMock
             }
 
-            It "Invoke with Module param: Imports profile modules and invokes Update-ProfileHelper" {
+            It "Invoke with Module param: Imports profile modules and invokes Remove-PreviousVersionHelper" {
                 Update-AzureRmProfile -Profile 'Profile2' -module 'Module1' -RemovePreviousVersions -Force
                 Assert-VerifiableMock
             }
@@ -1291,7 +1294,7 @@ Describe "Update-AzureRmProfile" {
 
         Context "Invoke with Scope as CurrentUser" {
             Mock Use-AzureRmProfile -Verifiable {} -ParameterFilter { ($Force.IsPresent) -and {$Scope -like 'CurrentUser'}}
-            Mock Update-ProfileHelper -Verifiable {}
+            Mock Remove-PreviousVersionHelper -Verifiable {}
             It "Should invoke Use-AzureRmProfile with scope currentuser" {
                 (Update-AzureRmProfile -Profile 'Profile1' -scope CurrentUser -Force -r)
                 Assert-VerifiableMock
@@ -1300,7 +1303,7 @@ Describe "Update-AzureRmProfile" {
         
         Context "Invoke with Scope as AllUsers" {
             Mock Use-AzureRmProfile -Verifiable {} -ParameterFilter { ($Force.IsPresent) -and {$Scope -like 'CurrentUser'}}
-            Mock Update-ProfileHelper -Verifiable {}
+            Mock Remove-PreviousVersionHelper -Verifiable {}
             It "Should invoke Use-AzureRmProfile with scope AllUsers" {
                 (Update-AzureRmProfile -Profile 'Profile1' -scope AllUsers -Force -r)
                 Assert-VerifiableMock
@@ -1459,4 +1462,51 @@ Describe "Remove-AzureRmDefaultProfile" {
             }
         }
     }    
+}
+
+Describe "Set-ProfileMapEndpoint" {
+    InModuleScope AzureRM.Bootstrapper {
+        Context "ProfileMap Endpoint is provided" {
+            It "Updates the ProfileMap endpoint" {
+                $ep = "http://foo.bar"
+                Set-ProfileMapEndpoint -Endpoint $ep -force
+                $Script:PSProfileMapEndpoint | Should Be $ep
+            }
+        }
+
+    }
+}
+
+Describe "Remove-PreviousVersions" {
+    InModuleScope AzureRM.BootStrapper {
+        # Arrange
+        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
+
+        Context "Proper profile with '-Force' params" {
+            Mock Remove-PreviousVersionHelper -Verifiable {} -ParameterFilter { ($Force.IsPresent)}
+    
+            It "Invokes Remove-PreviousVersionHelper" {
+                Remove-PreviousVersions -Profile 'Profile2' -Force
+                Assert-VerifiableMock
+            }
+
+            It "Invoke with Module param: invokes Remove-PreviousVersionHelper" {
+                Remove-PreviousVersions -Profile 'Profile2' -module 'Module1' -Force
+                Assert-VerifiableMock
+            }
+        }
+
+        Context "Invoke with invalid profile name" {
+            It "Should throw" {
+                { Remove-PreviousVersions -Profile 'WrongProfileName'} | Should Throw
+            }
+        }
+
+        Context "Invoke with null profile name" {
+            It "Should throw" {
+                { Remove-PreviousVersions -Profile $null } | Should Throw
+            }
+        }
+
+    }
 }

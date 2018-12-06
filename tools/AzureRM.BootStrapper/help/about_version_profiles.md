@@ -124,6 +124,15 @@ previously installed versions of the modules, use:
 Update-AzureRmProfile -Profile 'latest' -RemovePreviousVersions
 ```
 
+## Removing Old versions of modules in a profile
+
+If there are more than one version of modules in a profile that is installed,
+this can be uninstalled using the following cmdlet:
+
+```
+Remove-PreviousVersions -Profile '2018-03-01-hybrid' -Module  'Azure.Storage'
+```
+
 ## Setting and Removing Default Profiles
 
 To set or update a profile as a default to be used with all Azure PowerShell 

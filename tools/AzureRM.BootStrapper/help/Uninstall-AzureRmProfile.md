@@ -1,6 +1,7 @@
 ---
 external help file: AzureRM.Bootstrapper-help.xml
-online version: 
+Module Name: AzureRM.BootStrapper
+online version:
 schema: 2.0.0
 ---
 
@@ -33,9 +34,9 @@ Uninstall all modules associated with the '2017-03-09-profile' profile on the ma
 Automatically remove all given modules without propmpting.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -48,9 +49,9 @@ Accept wildcard characters: False
 The profile version to uninstall.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: 2016-09, 2017-03-09-profile, <others>
 
 Required: True
@@ -64,7 +65,7 @@ Accept wildcard characters: False
 Request confirmation for any change made by the cmdlet
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -79,7 +80,7 @@ Accept wildcard characters: False
 Print the changes that would be made in executing the cmdlets, but do not make any changes.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -104,4 +105,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

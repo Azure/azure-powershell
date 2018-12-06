@@ -12,32 +12,30 @@ Locale: en-US
 
 ## AzureRM.BootStrapper Cmdlets
 ### [Get-AzureRmModule](Get-AzureRmModule.md)
-{{Manually Enter Get-AzureRmModule Description Here}}
+Returns the versions of an AzureRM module that support a given profile.
 
 ### [Get-AzureRmProfile](Get-AzureRmProfile.md)
-{{Manually Enter Get-AzureRmProfile Description Here}}
-
-### [Get-ModuleVersion](Get-ModuleVersion.md)
-{{Manually Enter Get-ModuleVersion Description Here}}
+List the supported AzureRM profiles.
 
 ### [Install-AzureRmProfile](Install-AzureRmProfile.md)
-{{Manually Enter Install-AzureRmProfile Description Here}}
+Install all the latest modules associated with a particular AzureRM Profile on the machine.
 
 ### [Remove-AzureRmDefaultProfile](Remove-AzureRmDefaultProfile.md)
-{{Manually Enter Remove-AzureRmDefaultProfile Description Here}}
+Removes the default profile setting.
+
+### [Remove-PreviousVersions](Remove-PreviousVersions.md)
+If there are more than one version of modules in a profile that is installed,
+the older versions can be uninstalled using this cmdlet.
 
 ### [Set-AzureRmDefaultProfile](Set-AzureRmDefaultProfile.md)
-{{Manually Enter Set-AzureRmDefaultProfile Description Here}}
-
-### [Set-BootstrapRepo](Set-BootstrapRepo.md)
-{{Manually Enter Set-BootstrapRepo Description Here}}
+Sets the given profile as a default profile to be used with all API version profile cmdlets.
 
 ### [Uninstall-AzureRmProfile](Uninstall-AzureRmProfile.md)
-{{Manually Enter Uninstall-AzureRmProfile Description Here}}
+Uninstall all modules associated with the given profile version.
 
 ### [Update-AzureRmProfile](Update-AzureRmProfile.md)
-{{Manually Enter Update-AzureRmProfile Description Here}}
+Update modules to the latest versions consitent with the given profile and import updated modules to the current session. This should always be executed in a new PowerShell session.
 
 ### [Use-AzureRmProfile](Use-AzureRmProfile.md)
-{{Manually Enter Use-AzureRmProfile Description Here}}
+Load the modules associated with a particular profile in the current PowerShell session.  This should always be executed in a new PowerShell session.
 

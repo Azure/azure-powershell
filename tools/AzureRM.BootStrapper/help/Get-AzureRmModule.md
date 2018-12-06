@@ -1,6 +1,7 @@
 ---
 external help file: AzureRM.Bootstrapper-help.xml
-online version: 
+Module Name: AzureRM.BootStrapper
+online version:
 schema: 2.0.0
 ---
 
@@ -35,9 +36,9 @@ The version of the AzureRM.Storage module that supports profile 2017-03-09-profi
 The AzureRM module to retrieve the version for.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -50,9 +51,9 @@ Accept wildcard characters: False
 The profile version to check for the given module.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: 2017-03-09-profile, <others>
 
 Required: True
@@ -71,9 +72,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### PSModuleInfo
 
 ## NOTES
 
 ## RELATED LINKS
-

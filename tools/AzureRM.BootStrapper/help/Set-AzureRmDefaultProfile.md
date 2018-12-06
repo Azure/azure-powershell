@@ -1,6 +1,7 @@
 ---
 external help file: AzureRM.Bootstrapper-help.xml
-online version: 
+Module Name: AzureRM.BootStrapper
+online version:
 schema: 2.0.0
 ---
 
@@ -46,9 +47,9 @@ In this case, 'Install-AzureRmProfile'  will install profile '2017-03-09-profile
 Set the given profile as default without prompting for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -61,9 +62,9 @@ Accept wildcard characters: False
 The profile version to set as default.  You can get a list of available profile versions using *Get-AzureRmProfile -ListAvailable*
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: 2017-03-09-profile, latest, <others>
 
 Required: True
@@ -79,9 +80,9 @@ The AllUsers scope lets modules be installed in a location that is accessible to
 The CurrentUser scope lets modules be installed in a location that is available only to the current user.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: CurrentUser, AllUsers
 
 Required: False
@@ -95,7 +96,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -110,7 +111,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -135,4 +136,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

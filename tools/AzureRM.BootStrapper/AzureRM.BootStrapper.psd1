@@ -12,7 +12,7 @@
 RootModule = 'AzureRM.Bootstrapper.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.4.0'
+ModuleVersion = '0.5.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -73,13 +73,13 @@ FunctionsToExport = 'Set-BootstrapRepo', 'Update-AzureRmProfile',
                'Uninstall-AzureRmProfile', 'Install-AzureRmProfile', 
                'Use-AzureRmProfile', 'Get-AzureRmProfile', 'Get-AzureRmModule', 
                'Set-AzureRmDefaultProfile', 'Remove-AzureRmDefaultProfile', 
-               'Get-ModuleVersion'
+               'Get-ModuleVersion', 'Set-ProfileMapEndpoint', 'Remove-PreviousVersions'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Update-AzureRmProfile', 'Uninstall-AzureRmProfile', 
                'Install-AzureRmProfile', 'Use-AzureRmProfile', 'Get-AzureRmProfile', 
                'Get-AzureRmModule', 'Set-AzureRmDefaultProfile', 
-               'Remove-AzureRmDefaultProfile'
+               'Remove-AzureRmDefaultProfile', 'Set-ProfileMapEndpoint', 'Remove-PreviousVersions'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -114,7 +114,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '0.4.0: Updated for the stack release 2.3.0'
+        ReleaseNotes = '0.5.0: Updated for bug fixes in AzureRm.Bootstrapper module'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

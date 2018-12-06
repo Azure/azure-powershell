@@ -1,6 +1,7 @@
 ---
 external help file: AzureRM.Bootstrapper-help.xml
-online version: 
+Module Name: AzureRM.BootStrapper
+online version:
 schema: 2.0.0
 ---
 
@@ -41,9 +42,9 @@ Load the module 'AzureRM' associated with profile version 'Latest' in the curren
 Automatically install modules for the given profile if they are not already installed.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -56,9 +57,9 @@ Accept wildcard characters: False
 The module name to be used.
 
 ```yaml
-Type: Array
+Type: System.Array
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -71,9 +72,9 @@ Accept wildcard characters: False
 The profile version to load in the current PowerShell session.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: 2017-03-09-profile, 2017-03-09-profile, <others>
 
 Required: True
@@ -89,9 +90,9 @@ The AllUsers scope lets modules be installed in a location that is accessible to
 The CurrentUser scope lets modules be installed in a location that is available only to the current user.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: CurrentUser, AllUsers
 
 Required: False
@@ -105,7 +106,7 @@ Accept wildcard characters: False
 Request confrimation for any change made by the cmdlet
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -120,7 +121,7 @@ Accept wildcard characters: False
 Print the changes that would be made in executing the cmdlets, but do not make any changes.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -145,4 +146,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

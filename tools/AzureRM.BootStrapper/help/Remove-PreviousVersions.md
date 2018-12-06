@@ -5,28 +5,37 @@ online version:
 schema: 2.0.0
 ---
 
-# Install-AzureRmProfile
+# Remove-PreviousVersions
 
 ## SYNOPSIS
-Install all the latest modules associated with a particular AzureRM Profile on the machine.
+If there are more than one version of modules in a profile that is installed,
+the older versions can be uninstalled using this cmdlet.
 
 ## SYNTAX
 
 ```
-Install-AzureRmProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Scope <String>] [-Force] [<CommonParameters>]
+Remove-PreviousVersions [-WhatIf] [-Confirm] -Profile <String> [-Force] [-Module <Array>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Install all the latest modules associated with a particular AzureRM Profile on the machine.  Modules for a particular profile can be loaded in a new PowerShell session using 'Use-AzureRmProfile'.
+If there are more than one version of modules in a profile that is installed,
+the older versions can be uninstalled using this cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Install-AzureRmProfile -Profile '2017-03-09-profile'
+PS C:\> Remove-PreviousVersions -Profile '2017-03-09-profile'
 ```
 
-Install all the modules associated with profile '2017-03-09-profile'
+Removes older versions of profile 2017-03-09-profile if they are installed.
+
+### Example 2
+```
+PS C:\> Remove-PreviousVersions -Profile 'Latest' -Force -Module 'AzureRM.Compute', 'Azure.Storage'
+```
+
+Remove older versions of modules 'AzureRM.Compute', 'Azure.Storage' with profile version 'Latest'. 
 
 ## PARAMETERS
 
@@ -45,32 +54,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Profile
-The profile version to install.  You can get a list of available profile versions using *Get-AzureRmProfile -ListAvailable*
+### -Module
+The module name to be updated.
 
 ```yaml
-Type: System.String
+Type: System.Array
 Parameter Sets: (All)
 Aliases:
-Accepted values: 2017-03-09-profile, <others>
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Scope
-Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser.
-The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer.
-The CurrentUser scope lets modules be installed in a location that is available only to the current user.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: CurrentUser, AllUsers
 
 Required: False
 Position: Named
@@ -79,8 +69,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Profile
+The profile version to load in the current PowerShell session.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Request confrimation for any change made by the cmdlet
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -95,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Print the changes that would be made in executing the cmdlets, but do not make any changes.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

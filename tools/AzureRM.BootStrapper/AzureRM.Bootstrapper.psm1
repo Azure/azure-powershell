@@ -1,5 +1,5 @@
 $RollUpModule = "AzureRM"
-$PSProfileMapEndpoint = "https://azureprofile.azureedge.net/powershell/profilemap.json"
+$Script:PSProfileMapEndpoint = "https://azureprofile.azureedge.net/powershell/profilemap.json"
 $script:BootStrapRepo = "PSGallery"
 
 # Is it Powershell Core edition?
@@ -88,7 +88,7 @@ $script:LatestProfileMapPath = Get-LatestProfileMapPath
 function Get-AzureStorageBlob
 {
   $ScriptBlock = {
-    Invoke-WebRequest -uri $PSProfileMapEndpoint -ErrorVariable RestError
+    Invoke-WebRequest -uri $Script:PSProfileMapEndpoint -UseBasicParsing -ErrorVariable RestError
   }
 
   $WebResponse = Invoke-CommandWithRetry -ScriptBlock $ScriptBlock    
@@ -463,7 +463,7 @@ function Get-AllProfilesInstalled
 }
 
 # Helps to remove-previous versions of the update-profile and clean up cache
-function Update-ProfileHelper
+function Remove-PreviousVersionHelper
 {
   [CmdletBinding()]
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
@@ -471,7 +471,13 @@ function Update-ProfileHelper
 
   Write-Verbose "Attempting to clean up previous versions"
 
-  # Cache was updated before calling this function, so latestprofilemap will not be null. 
+  # If Cache is empty, use embedded source
+  if ($null -eq $script:LatestProfileMapPath)
+  {
+    $ModulePath = [System.IO.Path]::GetDirectoryName($PSCommandPath)
+    $script:LatestProfileMapPath = Get-Item -Path (Join-Path -Path $ModulePath -ChildPath "ProfileMap.json")
+  }
+
   $scriptBlock = {
     Get-Content -Raw -Path $script:LatestProfileMapPath.FullName -ErrorAction stop | ConvertFrom-Json 
   }
@@ -902,7 +908,7 @@ function Get-AzureRmModule
       {
         if ($version -eq $module.Version)
         {
-          return $version
+          return $module
         }
       }
     }
@@ -1180,9 +1186,42 @@ function Update-AzureRmProfile
     if ($Remove.IsPresent -and $PSCmdlet.ShouldProcess($profile, "Remove previous versions of profile")) 
     {
       # Remove-PreviousVersions and clean up cache
-      Update-ProfileHelper @PSBoundParameters -RemovePreviousVersions
+      Remove-PreviousVersionHelper @PSBoundParameters -RemovePreviousVersions
     }
   }
+}
+
+<#
+.ExternalHelp help\AzureRM.Bootstrapper-help.xml 
+#>
+function Remove-PreviousVersions
+{
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
+  [CmdletBinding(SupportsShouldProcess = $true)]
+  param()
+  DynamicParam
+  {
+    $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
+    Add-ProfileParam $params
+    Add-ForceParam $params
+    Add-ModuleParam $params
+    return $params
+  }
+
+  PROCESS {
+    $profile = $PSBoundParameters.Profile
+    $Force = $PSBoundParameters.Force
+
+    if ($PSCmdlet.ShouldProcess("$Profile", "Remove Previous Versions")) 
+    {
+      if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Remove Previous versions in $Profile", "Removing Old version of modules for profile $Profile")))
+      {
+        Write-Verbose "Trying to uninstall profile $profile"
+        $PSBoundParameters.Remove('Force') | Out-Null
+        Remove-PreviousVersionHelper @PSBoundParameters -RemovePreviousVersions
+      }
+    }
+  } 
 }
 
 function Set-BootstrapRepo
@@ -1307,6 +1346,22 @@ function Remove-AzureRmDefaultProfile
           Remove-ProfileSetting -profilePath $profilePath
         }
       }
+    }
+  }
+}
+
+# Configure profile map endpoint
+function Set-ProfileMapEndpoint
+{
+  [CmdletBinding(SupportsShouldProcess = $true)]
+  param([parameter(Mandatory = $true)] [string] $Endpoint,
+        [parameter(Mandatory = $false)] [Switch] $force)
+  
+  if ($PSCmdlet.ShouldProcess("ProfileMap Endpoint", "Set ProfileMap Endpoint")) 
+  {
+    if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Are you sure you would like to set profile map endpoint?", "Set ProfileMap Endpoint"))
+    {
+      $Script:PSProfileMapEndpoint = $Endpoint
     }
   }
 }
