@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.TestFx
         /// <returns></returns>
         public static ITestRunnerFactory CreateInstance(ITestOutputHelper output, [CallerFilePath] string callerFilePath = null)
         {
-            var callingClassName = string.IsNullOrEmpty(callerFilePath) 
+            var callingClassName = string.IsNullOrEmpty(callerFilePath)
                 ? null
                 : Path.GetFileNameWithoutExtension(callerFilePath);
             return new TestManager(callingClassName).WithTestOutputHelper(output);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.TestFx
         #region Builder impl
 
         /// <summary>
-        /// Sets a name of the subfolder where a test project keeps tests 
+        /// Sets a name of the subfolder where a test project keeps tests
         /// </summary>
         /// <param name="folderName"></param>
         /// <returns>self</returns>
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.TestFx
         }
 
         /// <summary>
-        /// Clears default RM modules list and sets a brand new 
+        /// Clears default RM modules list and sets a brand new
         /// </summary>
         /// <param name="buildModuleList"></param>
         /// <returns></returns>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.TestFx
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="userAgentsToIgnore">
         /// Dictionary to store pairs: {user agent name, version-api to ignore}.
@@ -265,7 +265,6 @@ namespace Microsoft.Azure.Commands.TestFx
             string tenantId =  null;
             string userDomain = null;
             string subscriptionId = null;
-
             switch (HttpMockServer.Mode)
             {
                 case HttpRecorderMode.Record:
@@ -295,7 +294,6 @@ namespace Microsoft.Azure.Commands.TestFx
             }
 
             AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = tenantId ?? undefined;
-            AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory = userDomain ?? undefined;
             AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id = subscriptionId ?? undefined;
         }
 

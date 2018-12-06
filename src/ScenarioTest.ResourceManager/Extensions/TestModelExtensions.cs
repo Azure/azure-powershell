@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.Extensions
         public static bool IsEqual(this IAzureTenant baseTenant, IAzureTenant other)
         {
             return (baseTenant == null && other == null) || (baseTenant.CheckExtensionsEqual(other)
-                && string.Equals(baseTenant.Directory, other.Directory, StringComparison.OrdinalIgnoreCase)
                 && string.Equals(baseTenant.Id, other.Id, StringComparison.OrdinalIgnoreCase));
         }
 
