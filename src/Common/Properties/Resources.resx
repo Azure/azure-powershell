@@ -1473,8 +1473,8 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
 The data is anonymous and does not include commandline argument values.
 The data is collected by Microsoft.
 
-Use the Disable-AzDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzDataCollection.
-Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable data collection: PS &gt; Enable-AzDataCollection.</value>
+Use the Disable-AzDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Az.Accounts module. To disable data collection: PS &gt; Disable-AzDataCollection.
+Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Az.Accounts module. To enable data collection: PS &gt; Enable-AzDataCollection.</value>
   </data>
   <data name="DataCollectionActivity" xml:space="preserve">
     <value>Microsoft Azure PowerShell Data Collection Confirmation</value>
@@ -1537,7 +1537,7 @@ Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be
     <value>User name needs to be specified.</value>
   </data>
   <data name="NoCurrentContextForDataCmdlet" xml:space="preserve">
-    <value>"There is no current context, please log in using Connect-AzAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management."</value>
+    <value>"There is no current context, please log in using Connect-AzAccount."</value>
   </data>
   <data name="NoSubscriptionFoundForTenant" xml:space="preserve">
     <value>No subscriptions are associated with the logged in account in Azure Service Management (RDFE). This means that the logged in user is not an administrator or co-administrator for any account.\r\nDid you mean to execute Connect-AzAccount?</value>

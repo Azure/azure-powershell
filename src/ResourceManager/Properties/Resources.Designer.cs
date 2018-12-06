@@ -64,8 +64,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         ///   Looks up a localized string similar to Azure PowerShell collects usage data in order to improve your experience.
         ///The data is anonymous and does not include commandline argument values.
         ///The data is collected by Microsoft.
-        ///Use the Disable-AzDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzDataCollection.
-        ///Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable  [rest of string was truncated]&quot;;.
+        ///Use the Disable-AzDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Az.Accounts module. To disable data collection: PS &gt; Disable-AzDataCollection.
+        ///Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Az.Accounts module. To enable  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ARMDataCollectionMessage {
             get {
