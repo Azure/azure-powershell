@@ -236,8 +236,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///The data is anonymous and does not include commandline argument values.
         ///The data is collected by Microsoft.
         ///
-        ///Use the Disable-AzDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzDataCollection.
-        ///Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable  [rest of string was truncated]&quot;;.
+        ///Use the Disable-AzDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Az.Accounts module. To disable data collection: PS &gt; Disable-AzDataCollection.
+        ///Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Az.Accounts module. To enable  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ARMDataCollectionMessage {
             get {
@@ -2160,7 +2160,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;There is no current context, please log in using Connect-AzAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management.&quot;.
+        ///   Looks up a localized string similar to &quot;There is no current context, please log in using Connect-AzAccount.&quot;.
         /// </summary>
         public static string NoCurrentContextForDataCmdlet {
             get {
