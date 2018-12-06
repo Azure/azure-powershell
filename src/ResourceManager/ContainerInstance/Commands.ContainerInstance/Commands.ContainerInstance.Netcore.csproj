@@ -30,9 +30,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="2.0.0" />
-    <PackageReference Include="Microsoft.PowerShell.Commands.Diagnostics" Version="6.1.0" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0" />
-    <PackageReference Include="Microsoft.WSMan.Management" Version="6.1.0" />
+    <PackageReference Include="System.Management.Automation" Version="6.1.0" />
   </ItemGroup>
 
   <ItemGroup>
