@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added client side validations for Azure File Share restore operations.
+* Made storageAccountName and storageAccountResourceGroupName optional for afs restore.
+* Fixed restore cmdlet while using Set-vaultContext.
 
 ## Version 4.5.1
 * Fix for modifying policy for a protected file share.

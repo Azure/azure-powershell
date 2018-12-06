@@ -26,7 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzureRmFrontDoorRoutingRuleObject cmdlet.
+    /// Defines the New-AzFrontDoorRoutingRuleObject cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorBackendObject"), OutputType(typeof(PSBackend))]
     public class NewAzureRmFrontDoorBackendObject : AzureFrontDoorCmdletBase

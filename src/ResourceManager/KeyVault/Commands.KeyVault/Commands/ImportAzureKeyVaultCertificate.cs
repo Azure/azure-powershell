@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Imports a certificate to the key vault. The certificate can be created by 
     /// adding the certificate after getting the CSR from 
-    /// Add-AzureKeyVaultCertificate issued by a Certificate Authority or by 
+    /// Add-AzKeyVaultCertificate issued by a Certificate Authority or by 
     /// importing an existing certificate package file that contains both the 
     /// certificate and private key (example: PFX or P12 files).
     /// </summary>

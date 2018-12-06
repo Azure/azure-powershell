@@ -22,10 +22,11 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSVirtualNetwork), DeprecatedOutputProperties = new string[] { "EnableVmProtection" })]
+    [CmdletOutputBreakingChange(typeof(PSVirtualNetwork), DeprecatedOutputProperties = new[] { "EnableVmProtection" })]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetwork", SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetwork))]
     public class NewAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
@@ -58,19 +59,19 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
         [ValidateNotNullOrEmpty]
-        public List<string> AddressPrefix { get; set; }
+        public string[] AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of Dns Servers")]
-        public List<string> DnsServer { get; set; }
+        public string[] DnsServer { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of subnets")]
-        public List<PSSubnet> Subnet { get; set; }
+        public PSSubnet[] Subnet { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -89,6 +90,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Reference to the DDoS protection plan resource associated with the virtual network.")]
         public string DdosProtectionPlanId { get; set; }
 
+// TODO: Remove IfDef code
 #if !NETSTANDARD
         [CmdletParameterBreakingChange("EnableVmProtection", ChangeDescription = "The EnableVMProtection setting is no longer supported. Setting this parameter has no impact. This parameter will be removed in a future release. Please remove it from your scripts")]
         [Parameter(
@@ -100,7 +102,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+            HelpMessage = "Do not ask for confirmation if you want to override a resource")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -109,7 +111,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = this.IsVirtualNetworkPresent(this.ResourceGroupName, this.Name);
+            var present = IsVirtualNetworkPresent(ResourceGroupName, Name);
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -125,36 +127,35 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSVirtualNetwork CreateVirtualNetwork()
         {
-            var vnet = new PSVirtualNetwork();
-            vnet.Name = this.Name;
-            vnet.ResourceGroupName = this.ResourceGroupName;
-            vnet.Location = this.Location;
-            vnet.AddressSpace = new PSAddressSpace();
-            vnet.AddressSpace.AddressPrefixes = this.AddressPrefix;
-
-            if (this.DnsServer != null)
+            var vnet = new PSVirtualNetwork
             {
-                vnet.DhcpOptions = new PSDhcpOptions();
-                vnet.DhcpOptions.DnsServers = this.DnsServer;
+                Name = Name,
+                ResourceGroupName = ResourceGroupName,
+                Location = Location,
+                AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
+            };
+
+            if (DnsServer != null)
+            {
+                vnet.DhcpOptions = new PSDhcpOptions {DnsServers = DnsServer?.ToList()};
             }
 
-            vnet.Subnets = this.Subnet;
-            vnet.EnableDdosProtection = this.EnableDdosProtection;
+            vnet.Subnets = this.Subnet?.ToList();
+            vnet.EnableDdosProtection = EnableDdosProtection;
             
-            if (!string.IsNullOrEmpty(this.DdosProtectionPlanId))
+            if (!string.IsNullOrEmpty(DdosProtectionPlanId))
             {
-                vnet.DdosProtectionPlan = new PSResourceId();
-                vnet.DdosProtectionPlan.Id = this.DdosProtectionPlanId;
+                vnet.DdosProtectionPlan = new PSResourceId {Id = DdosProtectionPlanId};
             }
 
             // Map to the sdk object
             var vnetModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetwork>(vnet);
-            vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+            vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
             // Execute the Create VirtualNetwork call
-            this.VirtualNetworkClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetModel);
+            VirtualNetworkClient.CreateOrUpdate(ResourceGroupName, Name, vnetModel);
 
-            var getVirtualNetwork = this.GetVirtualNetwork(this.ResourceGroupName, this.Name);
+            var getVirtualNetwork = GetVirtualNetwork(ResourceGroupName, Name);
 
             return getVirtualNetwork;
         }

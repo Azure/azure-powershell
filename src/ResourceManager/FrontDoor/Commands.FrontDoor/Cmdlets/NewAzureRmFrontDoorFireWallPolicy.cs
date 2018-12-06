@@ -28,7 +28,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzureRmFrontDoorFireWallPolicy cmdlet.
+    /// Defines the New-AzFrontDoorFireWallPolicy cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFireWallPolicy", SupportsShouldProcess = true), OutputType(typeof(PSPolicy))]
     public class NewAzureRmFrontDoorFireWallPolicy : AzureFrontDoorCmdletBase

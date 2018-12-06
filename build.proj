@@ -88,6 +88,7 @@
     <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'" />
     <StackSolution    Include="$(LibrarySourceFolder)\StackAdmin\Stack.sln" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
     <StaticAnalysis   Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
+    <StaticAnalysisNetcore   Include=".\tools\StaticAnalysis\StaticAnalysisNetcore.sln" />
     <LocalBuildTasks  Include="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.sln" />
     <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'" />
   </ItemGroup>
@@ -268,9 +269,9 @@
               Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
               ContinueOnError="false" />
 
-    <Exec Command="$(PowerShellCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) -FilteredModules '@(ModulesChanged)' &quot;"
+    <!--<Exec Command="$(PowerShellCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) -FilteredModules '@(ModulesChanged)' &quot;"
           Condition="'$(SkipHelp)' == 'false'"
-          ContinueOnError="false"/>
+          ContinueOnError="false"/>-->
 
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
           Condition="'$(CodeSign)' == 'false'"/>
@@ -281,9 +282,9 @@
       Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration) &quot;"
       Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'" />
 
-    <Message Importance="high" Text="Running Static Analyser" />
+    <!--<Message Importance="high" Text="Running Static Analyser" />
     <CallTarget targets="DependencyAnalysis" ContinueOnError="ErrorAndContinue" />
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />
+    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />-->
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
 
     <Exec ContinueOnError="false"
@@ -355,11 +356,26 @@
           ContinueOnError="false" />
     <!-- Generate the Help -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
-          Condition="'$(SkipHelp)' == 'false'"
+          Condition="'$(SkipHelp)' == 'false' And '$(RunStaticAnalysis)' == 'true'"
           ContinueOnError="false"/>
+
+    <Exec ContinueOnError="false"
+      Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration) &quot;" 
+      Condition="'$(CodeSign)' == 'true'"/>
+
+    <CallTarget targets="DependencyAnalysisNetcore" ContinueOnError="ErrorAndContinue" Condition="'$(RunStaticAnalysis)' == 'true'" />
+    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" Condition="'$(RunStaticAnalysis)' == 'true'" />
 
     <!-- Cleanup extraneous files. -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
+
+    <Exec ContinueOnError="false"
+          Command="$(PowerShellCoreCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;" 
+          Condition="'$(CodeSign)' == 'true'"/>
+    
+    <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
+
+    <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
     
     <CallTarget Targets="CodeSignBinaries" Condition="'$(CodeSign)' == 'true'" />
   </Target>
@@ -548,8 +564,27 @@
     <OnError ExecuteTargets="StaticAnalysisErrorMessage"/>
   </Target>
 
+  <!-- Run Validation -->
+  <Target Name="DependencyAnalysisNetcore"
+          Condition="'$(SkipDependencyAnalysis)' == 'false'">
+
+    <MSBuild  Projects="@(StaticAnalysisNetcore)"
+              Targets="Build"
+              Properties="Configuration=Debug;Platform=Any CPU"
+              ContinueOnError="false" />
+
+    <Message Importance="high" Text="Running dependency analysis..." />
+
+    <PropertyGroup>
+        <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
+    </PropertyGroup>
+    <Exec Command="dotnet $(MSBuildProjectDirectory)\src\Package\StaticAnalysis.Netcore.dll -p $(MSBuildProjectDirectory)\src\Package\$(Configuration) -r $(MSBuildProjectDirectory)\src\Package $(SkipHelpValue) -u -m @(ModulesChanged)" />
+
+    <OnError ExecuteTargets="StaticAnalysisErrorMessage"/>
+  </Target>
+
   <Target Name="StaticAnalysisErrorMessage">
-    <Error Text="StaticAnalysis has failed.  Please follow the instructions on this doc: https://github.com/Azure/azure-powershell/blob/preview/documentation/Debugging-StaticAnalysis-Errors.md"/>
+    <Error Text="StaticAnalysis has failed.  Please follow the instructions on this doc: https://github.com/Azure/azure-powershell/blob/master/documentation/Debugging-StaticAnalysis-Errors.md"/>
   </Target>
 
   <Target Name="ChangeLogCheck">
@@ -613,7 +648,7 @@
   </Target>
 
   <Target Name="BinScopeCheck">
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\CheckBinScope.ps1 -BuildConfig $(Configuration) -CIToolsPath $(CIToolsPath) -Scope $(Scope) &quot;"
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\CheckBinScope.ps1 -BuildConfig $(Configuration) -CIToolsPath $(CIToolsPath) &quot;"
           ContinueOnError="False"/>
     <OnError ExecuteTargets="BinScopeErrorMessage"/>
   </Target>

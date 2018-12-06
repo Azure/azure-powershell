@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else
             {
-                WriteWarning("VirtualMachineScaleSetVM parameter will be deprecated.  Use Add-AzureRmVmssVMDataDisk instead.");
+                WriteWarning("VirtualMachineScaleSetVM parameter will be deprecated.  Use Add-AzVmssVMDataDisk instead.");
 
                 var storageProfile = this.VirtualMachineScaleSetVM.StorageProfile;
 

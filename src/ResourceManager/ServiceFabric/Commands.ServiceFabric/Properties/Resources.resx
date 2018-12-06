@@ -162,6 +162,12 @@
   <data name="CannotUpdateSkuWithBronzeDurability" xml:space="preserve">
     <value>Cannot update Sku while durability level is Bronze, please update durability level to Silver or above first.</value>
   </data>
+  <data name="CertificateCommonNameMismatch" xml:space="preserve">
+    <value>Certificate common name mistmatch the name provided is: '{0}' and the common name found in the certificate is: '{1}'. Please make sure you're using the correct certificate and common name.</value>
+  </data>
+  <data name="CertificateMixTPAndCN" xml:space="preserve">
+    <value>Unable to mix certificates by common name and thumbprint. There is already a certificate, if this was set up by thumbprint you cannot add a new one by common name and vice versa.</value>
+  </data>
   <data name="CheckingDeploymentStatus" xml:space="preserve">
     <value>Checking deployment status in {0} seconds.</value>
   </data>
@@ -212,6 +218,12 @@
   </data>
   <data name="FileNotExist" xml:space="preserve">
     <value>File {0} doesn't exist.</value>
+  </data>
+  <data name="InvalidCertificateInfoCNAndTPInParameterFile" xml:space="preserve">
+    <value>Can not specify both certificate common name and thumbprint. If using common names non of the following should be specified in the parameters file: 'certificateThumbprint', 'secSourceVaultValue', 'secCertificateThumbprint', 'secCertificateUrlValue'.</value>
+  </data>
+  <data name="InvalidCertificateInformationCNInParameterFile" xml:space="preserve">
+    <value>If using common name, the parameter -UseCommonName and -IssuerThumbprint must be use and the parameter names in the parameters file should be specified with 'sourceVaultValue','certificateCommonName','certificateUrlValue', 'certificateIssuerThumbprint'.</value>
   </data>
   <data name="InvalidCertificateInformationInParameterFile" xml:space="preserve">
     <value>The primary certificate parameter names in the parameters file should be specified with 'sourceVaultValue','certificateThumbprint','certificateUrlValue'. If the secondary certificate parameters are specified in the parameters file, the parameter names should be specified with 'secSourceVaultValue','secCertificateThumbprint','secCertificateUrlValue'.</value>
@@ -283,7 +295,7 @@
     <value>Primary node count is {0}, which is less than the required node count of {1} for the target reliability level. Please use 'AutoAddNode' switch to automatically increase node count.</value>
   </data>
   <data name="VaultCreatedWithOutAccessPolicy" xml:space="preserve">
-    <value>Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies.</value>
+    <value>Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzKeyVaultAccessPolicy to set access policies.</value>
   </data>
   <data name="VmExtensionNotFound" xml:space="preserve">
     <value>The resource group should have a valid VM extension for Service Fabric.</value>

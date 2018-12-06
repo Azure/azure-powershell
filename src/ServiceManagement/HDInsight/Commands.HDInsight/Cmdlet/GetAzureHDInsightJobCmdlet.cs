@@ -128,7 +128,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         {
             try
             {
-                this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Get-AzureRmHDInsightJob"));
+                this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Get-AzHDInsightJob"));
                 this.command.CurrentSubscription = this.GetCurrentSubscription(this.Subscription, this.Certificate);
                 this.command.Logger = this.Logger;
                 Task task = this.command.EndProcessing();

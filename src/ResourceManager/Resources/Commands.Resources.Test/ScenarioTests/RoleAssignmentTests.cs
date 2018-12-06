@@ -49,6 +49,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaClassicAdminsWithScope()
+        {
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RaClassicAdminsWithScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletedPrincipals()
         {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-RaDeletedPrincipals");

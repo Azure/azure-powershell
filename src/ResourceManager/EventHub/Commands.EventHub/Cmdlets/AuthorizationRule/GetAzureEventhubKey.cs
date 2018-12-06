@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.EventHub.Commands
 {
     /// <summary>
-    /// 'Get-AzureRmRelayKey' Cmdlet gives key detials for the given Authorization Rule
+    /// 'Get-AzRelayKey' Cmdlet gives key detials for the given Authorization Rule
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSListKeysAttributes))]
     public class GetAzureEventhubKey : AzureEventHubsCmdletBase

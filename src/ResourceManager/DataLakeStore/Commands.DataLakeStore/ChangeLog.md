@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix the trailing slash of the domain of adls account
+* Update the sdk version of dataplane to 1.1.13
 * Change the type of Encoding parameter to system.Encoding for commandlets: New-AzureRmDataLakeStoreItem, Add-AzureRmDataLakeStoreItemContent, Get-AzureRmDataLakeStoreItemContent to make it compatible to .netcore
 
 ## Version 6.2.1

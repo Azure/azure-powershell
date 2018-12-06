@@ -21,7 +21,7 @@ using System.Xml;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 {
     /// <summary>
-    /// 'New-AzureRmServiceBusSubscription' Cmdlet creates a new Subscription
+    /// 'New-AzServiceBusSubscription' Cmdlet creates a new Subscription
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusSubscription", SupportsShouldProcess = true), OutputType(typeof(PSSubscriptionAttributes))]
     public class NewAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
