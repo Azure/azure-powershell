@@ -603,7 +603,7 @@ function Get-Location
         }
     }
     $locations = $resourceTypes.Locations
-    if($UseCanonical)
+    if($UseCanonical -and $locations -ne $null)
     {
         $locations = $locations | ForEach-Object { Normalize-Location $_ }
     }
