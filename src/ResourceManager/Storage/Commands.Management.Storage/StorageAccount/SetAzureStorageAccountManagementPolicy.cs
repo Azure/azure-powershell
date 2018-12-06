@@ -22,6 +22,9 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageAccountManagementPolicyNounStr, SupportsShouldProcess = true, DefaultParameterSetName = AccountNamePolicyStringParameterSet), OutputType(typeof(PSManagementPolicy))]
+#if NETSTANDARD
+    [Alias("Set-" + "AzureRm" + StorageAccountManagementPolicyNounStr)]
+#endif
     public class SetAzureStorageAccountManagementPolicyCommand : StorageAccountBaseCmdlet
     {
         /// <summary>

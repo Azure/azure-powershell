@@ -153,7 +153,10 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzStorageContainerAcl', 'Start-CopyAzureStorageBlob', 
     'Stop-CopyAzureStorageBlob', 'Enable-AzStorageSoftDelete', 
-    'Disable-AzStorageSoftDelete'
+    'Disable-AzStorageSoftDelete','Enable-AzureStorageStaticWebsite',
+    'Disable-AzureStorageStaticWebsite','Invoke-AzureRmStorageAccountFailover',
+    'Get-AzureRmStorageAccountManagementPolicy','Set-AzureRmStorageAccountManagementPolicy',
+	'Remove-AzureRmStorageAccountManagementPolicy'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
