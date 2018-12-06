@@ -587,6 +587,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 
 	$rewriteRuleName = Get-ResourceName
 	$rewriteRuleSetName = Get-ResourceName
+    $rewriteRuleSetName2 = Get-ResourceName
 	$rule01Name = Get-ResourceName
 
 	$probeHttpName = Get-ResourceName
@@ -643,6 +644,15 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		# Get Application Gateway
 		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 
+        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -ApplicationGateway $getgw
+        Assert-NotNull $rewriteRuleSet
+        Assert-AreEqual $rewriteRuleSet.RewriteRules.Count 1
+        Assert-NotNull $rewriteRuleSet.RewriteRules[0].ActionSet
+
+        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
+        Assert-NotNull $rewriteRuleSet
+        Assert-AreEqual $rewriteRuleSet.Count 1
+
 		# Operational State
 		Assert-AreEqual "Running" $getgw.OperationalState
 
@@ -683,6 +693,32 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 
 		# Set
 		$getgw01 = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+
+		#Rewrite Rule Set
+        Assert-ThrowsLike { Add-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw01 -Name $rewriteRuleSetName -RewriteRule $rewriteRule } "*already exists*"
+		$rewriteRuleSet = Add-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw01 -Name $rewriteRuleSetName2 -RewriteRule $rewriteRule
+        $getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw01
+
+        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
+        Assert-NotNull $rewriteRuleSet
+        Assert-AreEqual $rewriteRuleSet.Count 2
+
+        $rewriteRuleSet = Remove-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw01 -Name $rewriteRuleSetName2
+        $getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw01
+
+        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw
+        Assert-NotNull $rewriteRuleSet
+        Assert-AreEqual $rewriteRuleSet.Count 1
+
+		$headerConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "ghi" -HeaderValue "jkl"
+		$actionSet = New-AzureRmApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $headerConfiguration
+		$rewriteRule2 = New-AzureRmApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet
+
+        Assert-ThrowsLike { Set-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw -Name "fakeName" -RewriteRule $rewriteRule2 } "*does not exist*"
+        $rewriteRuleSet = Set-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw -Name $rewriteRuleSetName -RewriteRule $rewriteRule2
+        $getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw01
+        $rewriteRuleSet = Get-AzureRmApplicationGatewayRewriteRuleSet -ApplicationGateway $getgw -Name $rewriteRuleSetName
+        Assert-AreEqual $rewriteRuleSet.RewriteRules[0].Name $rewriteRule2.Name
 
 		# check sku
 		$sku01 = Get-AzureRmApplicationGatewaySku -ApplicationGateway $getgw01
@@ -1325,6 +1361,9 @@ function Test-ApplicationGatewayCRUDSubItems2
 	$redirectName = Get-ResourceName
 	$sslCert01Name = Get-ResourceName
 
+	$rewriteRuleName = Get-ResourceName
+	$rewriteRuleSetName = Get-ResourceName
+
 	try
 	{
 		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
@@ -1364,9 +1403,15 @@ function Test-ApplicationGatewayCRUDSubItems2
 
 		$redirectConfig = New-AzureRmApplicationGatewayRedirectConfiguration -Name $redirectName -RedirectType Permanent -TargetListener $listener01 -IncludePath $true -IncludeQueryString $true
 
-		$videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name $PathRuleName -Paths "/video" -RedirectConfiguration $redirectConfig
+		$headerConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "abc" -HeaderValue "def"
+		$actionSet = New-AzureRmApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $headerConfiguration
+		$rewriteRule = New-AzureRmApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet
+		$rewriteRuleSet = New-AzureRmApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -RewriteRule $rewriteRule
+
+		$videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name $PathRuleName -Paths "/video" -RedirectConfiguration $redirectConfig -RewriteRuleSet $rewriteRuleSet
+		$imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name $PathRule01Name -Paths "/image" -RedirectConfigurationId $redirectConfig.Id -RewriteRuleSetId $rewriteRuleSet.Id
 		$urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name $urlPathMapName -PathRules $videoPathRule -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting01
-		$urlPathMap2 = New-AzureRmApplicationGatewayUrlPathMapConfig -Name $urlPathMapName2 -PathRules $videoPathRule -DefaultRedirectConfiguration $redirectConfig
+		$urlPathMap2 = New-AzureRmApplicationGatewayUrlPathMapConfig -Name $urlPathMapName2 -PathRules $videoPathRule,$imagePathRule -DefaultRedirectConfiguration $redirectConfig -DefaultRewriteRuleSet $rewriteRuleSet
 		$probe = New-AzureRmApplicationGatewayProbeConfig -Name $probeName -Protocol Http -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -MinServers 1 -PickHostNameFromBackendHttpSettings
 
 		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
@@ -1375,7 +1420,7 @@ function Test-ApplicationGatewayCRUDSubItems2
 		$sslCert = New-AzureRmApplicationGatewaySslCertificate -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
 
 		# Create Application Gateway
-		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01,$fp02 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -UrlPathMap $urlPathMap,$urlPathMap2 -RedirectConfiguration $redirectConfig -Probe $probe -SslCertificate $sslCert
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01,$fp02 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -UrlPathMap $urlPathMap,$urlPathMap2 -RedirectConfiguration $redirectConfig -Probe $probe -SslCertificate $sslCert -RewriteRuleSet $rewriteRuleSet
 
 		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
 		$certFilePath2 = $basedir + "/ScenarioTests/Data/TrustedRootCertificate.cer"
