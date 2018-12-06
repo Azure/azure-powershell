@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Graph.Rbac</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Clients.Graph.Rbac</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Graph.RBAC</RootNamespace>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>Microsoft Azure PowerShell Graph Rbac</Title>
-    <Description>Microsoft Azure PowerShell Graph Rbac library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
-    <PackageTags>azure;powershell;graph;rbac</PackageTags>
+    <Title>Microsoft Azure PowerShell Clients Graph Rbac</Title>
+    <Description>Microsoft Azure PowerShell Clients Graph Rbac library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
+    <PackageTags>azure;powershell;clients;graph;rbac</PackageTags>
     <Authors>Microsoft Corporation</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
     <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>

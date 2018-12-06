@@ -16,8 +16,8 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure PowerShell ResourceManager")]
-[assembly: AssemblyDescription("Microsoft Azure PowerShell ResourceManager library. Only for use with the Azure PowerShell runtime. Not intended for general development use.")]
+[assembly: AssemblyTitle("Microsoft Azure PowerShell Clients ResourceManager")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell Clients ResourceManager library. Only for use with the Azure PowerShell runtime. Not intended for general development use.")]
 [assembly: AssemblyProduct("Microsoft Azure PowerShell")]
 [assembly: AssemblyCompany("Microsoft Corporation")]
 [assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]
