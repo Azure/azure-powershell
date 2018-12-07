@@ -51,15 +51,11 @@ Properties       : {
                        "Days": 0,
                        "Enabled": false
                      },
-                     "StorageId": "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123",
-					 "Format"         : {
-                       "Type ": "Json",
-                       "Version": 1
-                      }
+                     "StorageId": "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123"
                    }
 ```
 
-In this example we get the flow logging status for a Network Security Group. The specified NSG has flow logging enabled, default format and no retention policy set.
+In this example we get the flow logging status for a Network Security Group. The specified NSG has flow logging enabled, and no retention policy set.
 
 ### Example 2: Get the Flow Logging and Traffic Analytics Status for a Specified NSG
 ```
@@ -75,10 +71,6 @@ RetentionPolicy  : {
                      "Days": 0,
                      "Enabled": false
                    }
-Format           : {
-                     "Type ": "Json",
-                     "Version": 1
-                   }
 FlowAnalyticsConfiguration : {
             "networkWatcherFlowAnalyticsConfiguration": {
               "enabled": true,
@@ -89,7 +81,7 @@ FlowAnalyticsConfiguration : {
           }
 ```
 
-In this example we get the flow logging and Traffic Analytics status for a Network Security Group. The specified NSG has flow logging and Traffic Analytics enabled, default format and no retention policy set.
+In this example we get the flow logging and Traffic Analytics status for a Network Security Group. The specified NSG has flow logging and Traffic Analytics enabled, and no retention policy set.
 
 ## PARAMETERS
 
