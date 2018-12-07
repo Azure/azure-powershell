@@ -11,6 +11,7 @@
     <AssemblyName>Microsoft.Azure.Commands.Network.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Network.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <NoWarn>$(NoWarn);NU1605</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
