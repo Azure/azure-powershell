@@ -60,20 +60,19 @@
     <Compile Include="AfsDirectoryInfo.cs" />
     <Compile Include="AfsFileInfo.cs" />
     <Compile Include="AfsNamedObjectInfo.cs" />
+    <Compile Include="Formatting\StorageSyncValidationPowerShellFormatting.cs" />
     <Compile Include="Interfaces\IValidationDescription.cs" />
     <Compile Include="ListFiles.cs" />
+    <Compile Include="Models\PSStorageSyncValidation.cs" />
+    <Compile Include="OutputWriters\PSValidationResultOutputWriter.cs" />
     <Compile Include="Validations\BaseNamespaceValidation.cs" />
     <Compile Include="Cmdlets\InvokeCompatibilityCheckCmdlet.cs" />
     <Compile Include="Interfaces\INamespaceInfo.cs" />
     <Compile Include="Interfaces\IProgressReporter.cs" />
     <Compile Include="Models\PSValidationResult.cs" />
     <Compile Include="NamespaceInfo.cs" />
-    <Compile Include="OutputWriters\AFSConsoleWriter.cs" />
     <Compile Include="Interfaces\ICmdlet.cs" />
-    <Compile Include="Interfaces\IConsoleWriter.cs" />
     <Compile Include="Interfaces\IOutputWriter.cs" />
-    <Compile Include="OutputWriters\PSObjectsOutputWriter.cs" />
-    <Compile Include="OutputWriters\TextSummaryOutputWriter.cs" />
     <Compile Include="ProgressReporter.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Interfaces\IConfiguration.cs" />
@@ -104,6 +103,7 @@
     <Compile Include="Interfaces\ISystemValidation.cs" />
     <Compile Include="Validations\SystemValidations\OSVersionValidation.cs" />
     <Compile Include="Validations\ValidationResult.cs" />
+    <Compile Include="Validations\ValidationsFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="debug.ps1" />
@@ -111,6 +111,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <EmbeddedResource Include="Config.json" />
+    <None Include="Microsoft.Azure.Commands.StorageSync.Evaluation.format.ps1xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">

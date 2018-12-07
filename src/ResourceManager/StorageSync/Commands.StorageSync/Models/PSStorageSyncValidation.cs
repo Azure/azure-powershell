@@ -12,16 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
 {
-    using Interfaces;
-    using System;
+    using System.Collections.Generic;
 
-    class AfsConsoleWriter : IConsoleWriter
+    public class PSStorageSyncValidation
     {
-        public void WriteLine(string v)
+        #region Fields and Properties
+        public string ComputerName;
+        public string NamespacePath;
+        public long NamespaceFileCount;
+        public long NamespaceDirectoryCount;
+        public List<PSValidationResult> Results;
+        #endregion
+
+        #region Constructors
+        public PSStorageSyncValidation()
         {
-            Console.WriteLine(v);
+            this.Results = new List<PSValidationResult>();
         }
+        #endregion
     }
 }

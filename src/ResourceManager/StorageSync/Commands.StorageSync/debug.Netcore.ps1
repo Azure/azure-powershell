@@ -12,8 +12,11 @@ if (gcm Invoke-AzureRmStorageSyncCompatibilityCheck -ErrorAction SilentlyContinu
     throw "Invoke-AzureRmStorageSyncCompatibilityCheck is already available. Cannot continue with module debugging."
 }
 
-Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\AzureRM.StorageSync\AzureRM.Profile.psd1" -Verbose
-Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\AzureRM.StorageSync\AzureRM.StorageSync.psd1" -Verbose
+$azProfilePath = Join-Path $scriptDirectory "..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\Az.Profile\Az.Profile.psd1"
+Import-Module $azProfilePath -Verbose
+
+$azStorageSyncPath = Join-Path $scriptDirectory "..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\Az.StorageSync\Az.StorageSync.psd1"
+Import-Module $azStorageSyncPath -Verbose
 
 $VerbosePreference='Continue'
 
@@ -206,7 +209,7 @@ function Perform-Test
     }
 
     Write-Verbose "Invoking evaluation tool with path $dataSetLocation"
-    $result = Invoke-AzureRmStorageSyncCompatibilityCheck -Path $dataSetLocationForTest -SkipSystemChecks
+    $result = Invoke-AzStorageSyncCompatibilityCheck -Path $dataSetLocationForTest -SkipSystemChecks
     
     # displaying report
     $result | Format-Custom
