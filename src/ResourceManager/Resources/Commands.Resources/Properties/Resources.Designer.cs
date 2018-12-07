@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one application found with display name &apos;{0}&apos;. Please use the Get-AzureRmADApplication cmdlet to get the object id of the desired application..
+        ///   Looks up a localized string similar to More than one application found with display name &apos;{0}&apos;. Please use the Get-AzADApplication cmdlet to get the object id of the desired application..
         /// </summary>
         internal static string MultipleApplicationsWithDisplayNameFound {
             get {
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one group found with the display name &apos;{0}&apos;. Please use the Get-AzureRmADGroup cmdlet to get the object id of the desired group..
+        ///   Looks up a localized string similar to More than one group found with the display name &apos;{0}&apos;. Please use the Get-AzADGroup cmdlet to get the object id of the desired group..
         /// </summary>
         internal static string MultipleGroupsWithDisplayNameFound {
             get {
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one service principal found with display name &apos;{0}&apos;. Please use the Get-AzureRmADServicePrincipal cmdlet to get the object id of the desired service principal..
+        ///   Looks up a localized string similar to More than one service principal found with display name &apos;{0}&apos;. Please use the Get-AzADServicePrincipal cmdlet to get the object id of the desired service principal..
         /// </summary>
         internal static string MultipleServicePrincipalsWithDisplayNameFound {
             get {
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one user found with display name &apos;{0}&apos;. Please use the Get-AzureRmADUser cmdlet to get the object id of the desired user..
+        ///   Looks up a localized string similar to More than one user found with display name &apos;{0}&apos;. Please use the Get-AzADUser cmdlet to get the object id of the desired user..
         /// </summary>
         internal static string MultipleUsersWithDisplayNameFound {
             get {
