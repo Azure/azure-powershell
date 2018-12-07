@@ -32,7 +32,7 @@ PS C:\> $Job.Priority = 1
 PS C:\> Set-AzBatchJob -Job $Job -BatchContext $Context
 ```
 
-The first command gets a pool by using **Get-AzBatchJob**, and then stores it in the $Job variable.
+The first command gets a job by using **Get-AzBatchJob**, and then stores it in the $Job variable.
 The second command modifies the priority specification on the $Job object.
 The final command updates the Batch service to match the local object in $Job.
 
