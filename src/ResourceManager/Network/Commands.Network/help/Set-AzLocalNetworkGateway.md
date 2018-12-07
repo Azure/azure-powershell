@@ -14,10 +14,9 @@ Modifies a local network gateway.
 ## SYNTAX
 
 ```
-Set-AzLocalNetworkGateway -LocalNetworkGateway <PSLocalNetworkGateway>
- [-AddressPrefix <System.Collections.Generic.List`1[System.String]>] [-Asn <UInt32>]
- [-BgpPeeringAddress <String>] [-PeerWeight <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzLocalNetworkGateway -LocalNetworkGateway <PSLocalNetworkGateway> [-AddressPrefix <String[]>]
+ [-Asn <UInt32>] [-BgpPeeringAddress <String>] [-PeerWeight <Int32>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +52,7 @@ BgpSettings              : null
 
 ### -AddressPrefix
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

@@ -17,8 +17,7 @@ Creates an Azure express route circuit.
 ```
 New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String> [-SkuTier <String>]
  [-SkuFamily <String>] -ServiceProviderName <String> -PeeringLocation <String> -BandwidthInMbps <Int32>
- [-Peering <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]>]
- [-Authorization <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]>]
+ [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -27,8 +26,7 @@ New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <
 ```
 New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String> [-SkuTier <String>]
  [-SkuFamily <String>] -ExpressRoutePort <PSExpressRoutePort> -BandwidthInGbps <Double>
- [-Peering <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]>]
- [-Authorization <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]>]
+ [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
  [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -104,7 +102,7 @@ Accept wildcard characters: False
 A list of circuit authorizations.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization[]
 Parameter Sets: (All)
 Aliases:
 
@@ -224,7 +222,7 @@ Accept wildcard characters: False
 A list peer configurations.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]
+Type: Microsoft.Azure.Commands.Network.Models.PSPeering[]
 Parameter Sets: (All)
 Aliases:
 
@@ -300,7 +298,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-The tier of service for the circuit. Possible values for this parameter are: `Standard` or `Premium`.
+The tier of service for the circuit. Possible values for this parameter are: `Standard`, `Premium` or `Basic`.
 
 ```yaml
 Type: System.String

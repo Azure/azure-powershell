@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Network;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The list of peerings for the cross connection",
             ParameterSetName = "ModifyByParameterValues")]
-        public List<PSExpressRouteCrossConnectionPeering> Peerings { get; set; }
+        public PSExpressRouteCrossConnectionPeering[] Peerings { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -137,9 +138,9 @@ namespace Microsoft.Azure.Commands.Network
                             crossConnection.ServiceProviderProvisioningState = ServiceProviderProvisioningState;
                         }
 
-                        if (Peerings != null && Peerings.Count > 0)
+                        if (Peerings != null && Peerings.Length > 0)
                         {
-                            crossConnection.Peerings = Peerings;
+                            crossConnection.Peerings = Peerings?.ToList();
                         }
 
                         // Map to the sdk operation

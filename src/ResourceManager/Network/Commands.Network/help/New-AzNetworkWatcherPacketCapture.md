@@ -17,9 +17,8 @@ Creates a new packet capture resource and starts a packet capture session on a V
 New-AzNetworkWatcherPacketCapture -NetworkWatcher <PSNetworkWatcher> -PacketCaptureName <String>
  -TargetVirtualMachineId <String> [-StorageAccountId <String>] [-StoragePath <String>]
  [-LocalFilePath <String>] [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>]
- [-TimeLimitInSeconds <Int32>]
- [-Filter <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPacketCaptureFilter]>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TimeLimitInSeconds <Int32>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByName
@@ -27,9 +26,8 @@ New-AzNetworkWatcherPacketCapture -NetworkWatcher <PSNetworkWatcher> -PacketCapt
 New-AzNetworkWatcherPacketCapture -NetworkWatcherName <String> -ResourceGroupName <String>
  -PacketCaptureName <String> -TargetVirtualMachineId <String> [-StorageAccountId <String>]
  [-StoragePath <String>] [-LocalFilePath <String>] [-BytesToCapturePerPacket <Int32>]
- [-TotalBytesPerSession <Int32>] [-TimeLimitInSeconds <Int32>]
- [-Filter <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPacketCaptureFilter]>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TotalBytesPerSession <Int32>] [-TimeLimitInSeconds <Int32>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByLocation
@@ -37,9 +35,8 @@ New-AzNetworkWatcherPacketCapture -NetworkWatcherName <String> -ResourceGroupNam
 New-AzNetworkWatcherPacketCapture -Location <String> -PacketCaptureName <String>
  -TargetVirtualMachineId <String> [-StorageAccountId <String>] [-StoragePath <String>]
  [-LocalFilePath <String>] [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>]
- [-TimeLimitInSeconds <Int32>]
- [-Filter <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPacketCaptureFilter]>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TimeLimitInSeconds <Int32>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,7 +112,7 @@ Accept wildcard characters: False
 Filters for packet capture session.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPacketCaptureFilter]
+Type: Microsoft.Azure.Commands.Network.Models.PSPacketCaptureFilter[]
 Parameter Sets: (All)
 Aliases:
 
