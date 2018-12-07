@@ -52,7 +52,7 @@ Properties       : {
                        "Enabled": false
                      },
                      "StorageId": "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123",
-                     "Format"         : {
+					 "Format"         : {
                        "Type ": "Json",
                        "Version": 1
                       }
