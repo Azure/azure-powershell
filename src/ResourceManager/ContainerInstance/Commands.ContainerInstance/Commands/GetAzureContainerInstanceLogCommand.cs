@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.ContainerInstance
 {
     /// <summary>
-    /// Get-AzureRmContainerGroupLogs
+    /// Get-AzContainerGroupLogs
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerInstanceLog", DefaultParameterSetName = GetContainerInstanceLogByNamesParamSet)]
     [OutputType(typeof(string))]

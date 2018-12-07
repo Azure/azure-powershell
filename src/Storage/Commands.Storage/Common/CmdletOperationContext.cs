@@ -20,8 +20,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
     internal class CmdletOperationContext
     {
-        private static volatile bool inited;
-        private static object syncRoot = new Object();
+        private static volatile bool _inited;
+        private static readonly object SyncRoot = new Object();
 
         public static DateTime StartTime
         {
@@ -38,26 +38,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// started remote call counter
         /// </summary>
-        private static int startedRemoteCallCounter = 0;
+        private static int _startedRemoteCallCounter;
 
         public static int StartedRemoteCallCounter
         {
             get
             {
-                return startedRemoteCallCounter;
+                return _startedRemoteCallCounter;
             }
         }
 
         /// <summary>
         /// finished remote call counter
         /// </summary>
-        private static int finishedRemoteCallCounter = 0;
+        private static int _finishedRemoteCallCounter;
 
         public static int FinishedRemoteCallCounter
         {
             get
             {
-                return finishedRemoteCallCounter;
+                return _finishedRemoteCallCounter;
             }
         }
 
@@ -68,15 +68,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         public static void Init()
         {
-            if (!inited)
+            if (!_inited)
             {
-                lock (syncRoot)
+                lock (SyncRoot)
                 {
-                    if (!inited)
+                    if (!_inited)
                     {
                         StartTime = DateTime.Now;
                         ClientRequestId = GenClientRequestID();
-                        inited = true;
+                        _inited = true;
                     }
                 }
             }
@@ -88,45 +88,42 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <returns>A unique request id</returns>
         internal static string GenClientRequestID()
         {
-            string uniqueId = System.Guid.NewGuid().ToString();
+            var uniqueId = System.Guid.NewGuid().ToString();
             return string.Format(Resources.ClientRequestIdFormat, uniqueId);
         }
 
         /// <summary>
         /// Get Storage Operation Context for rest calls
         /// </summary>
-        /// <param name="outputWriter">Ouput writer for writing logs for each rest call</param>
+        /// <param name="outputWriter">Output writer for writing logs for each rest call</param>
         /// <returns>Storage operation context</returns>
         public static OperationContext GetStorageOperationContext(Action<string> outputWriter)
         {
-            if (!inited)
+            if (!_inited)
             {
-                CmdletOperationContext.Init();
+                Init();
             }
 
-            OperationContext context = new OperationContext();
-            context.ClientRequestID = ClientRequestId;
+            var context = new OperationContext {ClientRequestID = ClientRequestId};
 
             context.SendingRequest += (s, e) =>
             {
                 context.StartTime = DateTime.Now;
 
-                Interlocked.Increment(ref startedRemoteCallCounter);
+                Interlocked.Increment(ref _startedRemoteCallCounter);
+// TODO: Remove IfDef
 #if NETSTANDARD
                 //https://github.com/Azure/azure-storage-net/issues/658
-                string message = String.Format(Resources.StartRemoteCall,
-                    startedRemoteCallCounter, String.Empty, e.RequestUri.ToString());
+                var message = String.Format(Resources.StartRemoteCall,
+                    _startedRemoteCallCounter, String.Empty, e.RequestUri.ToString());
 #else
                 string message = String.Format(Resources.StartRemoteCall,
-                    startedRemoteCallCounter, e.Request.Method, e.Request.RequestUri.ToString());
+                    _startedRemoteCallCounter, e.Request.Method, e.Request.RequestUri.ToString());
 #endif
 
                 try
                 {
-                    if (outputWriter != null)
-                    {
-                        outputWriter(message);
-                    }
+                    outputWriter?.Invoke(message);
                 }
                 catch
                 {
@@ -137,12 +134,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             context.ResponseReceived += (s, e) =>
             {
                 context.EndTime = DateTime.Now;
-                Interlocked.Increment(ref finishedRemoteCallCounter);
+                Interlocked.Increment(ref _finishedRemoteCallCounter);
 
-                double elapsedTime = (context.EndTime - context.StartTime).TotalMilliseconds;
+                var elapsedTime = (context.EndTime - context.StartTime).TotalMilliseconds;
+// TODO: Remove IfDef
 #if NETSTANDARD
                 //https://github.com/Azure/azure-storage-net/issues/658
-                string message = String.Format(Resources.FinishRemoteCall,
+                var message = String.Format(Resources.FinishRemoteCall,
                     e.RequestUri.ToString(), String.Empty, String.Empty, e.RequestInformation.ServiceRequestID, elapsedTime);
 #else
                 string message = String.Format(Resources.FinishRemoteCall,
@@ -151,10 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 try
                 {
-                    if (outputWriter != null)
-                    {
-                        outputWriter(message);
-                    }
+                    outputWriter?.Invoke(message);
                 }
                 catch
                 {
@@ -166,20 +161,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Get the running ms from when operationcontext started
+        /// Get the running ms from when operation context started
         /// </summary>
         /// <returns>A time string in ms</returns>
         public static double GetRunningMilliseconds()
         {
-            if (!inited)
+            if (!_inited)
             {
                 return 0;
             }
-            else
-            {
-                TimeSpan span = DateTime.Now - StartTime;
-                return span.TotalMilliseconds;
-            }
+
+            var span = DateTime.Now - StartTime;
+            return span.TotalMilliseconds;
         }
     }
 }

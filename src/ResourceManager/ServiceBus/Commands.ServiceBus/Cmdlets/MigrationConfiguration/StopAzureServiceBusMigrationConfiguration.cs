@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 {
     /// <summary>
-    /// 'Stop-AzureRmServiceBusMigration' Cmdlet disables the Migration and stops replicating changes from standard to premium
+    /// 'Stop-AzServiceBusMigration' Cmdlet disables the Migration and stops replicating changes from standard to premium
     /// </summary>
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusMigration", DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class StopAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase

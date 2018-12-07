@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
 
     public class PSNamespaceLongRunningOperation
     {
-        public const string DeleteOperation = "Remove-AzureRmServiceBusNamespace";
+        public const string DeleteOperation = "Remove-AzServiceBusNamespace";
 
 
         internal static PSNamespaceLongRunningOperation CreateLongRunningOperation(

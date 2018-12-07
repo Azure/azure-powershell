@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
 {
     /// <summary>
-    /// Defines the Set-AzureRmSqlDatabaseRecommendedActionState cmdlet
+    /// Defines the Set-AzSqlDatabaseRecommendedActionState cmdlet
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseRecommendedActionState",SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseRecommendedActionModel))]
     public class SetAzureSqlDatabaseRecommendedActionState : AzureSqlDatabaseRecommendedActionCmdletBase

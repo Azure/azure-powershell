@@ -23,6 +23,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// <summary>
     /// Enable azure storage service StaticWebsite, currently only enabled on Blob service
     /// </summary>
+    [Cmdlet("Enable", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageStaticWebsite", SupportsShouldProcess = true),
+        OutputType(typeof(PSStaticWebsiteProperties))]
     public class EnableAzureStorageServiceStaticWebsiteCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "The name of the index document in each directory.")]
