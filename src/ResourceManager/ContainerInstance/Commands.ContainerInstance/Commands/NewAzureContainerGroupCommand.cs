@@ -17,6 +17,7 @@ using System.Collections;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Language;
 using Microsoft.Azure.Commands.ContainerInstance.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerInstance.Models;
@@ -255,13 +256,14 @@ namespace Microsoft.Azure.Commands.ContainerInstance
 
                 if (!string.IsNullOrWhiteSpace(this.Command))
                 {
-                    Collection<PSParseError> errors;
-                    var commandTokens = PSParser.Tokenize(this.Command, out errors);
+                    ParseError[] errors;
+                    Token[] tokens;
+                    Parser.ParseInput(this.Command, out tokens, out errors);
                     if (errors.Any())
                     {
                         throw new ArgumentException($"Invalid 'Command' parameter: {string.Join("; ", errors.Select(err => err.Message))}");
                     }
-                    creationParameter.ContainerCommand = commandTokens.Select(token => token.Content).ToList();
+                    creationParameter.ContainerCommand = tokens.Select(token => token.Text).ToList();
                 }
 
                 creationParameter.Validate();
