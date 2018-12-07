@@ -31,6 +31,7 @@
     <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="2.0.0" />
     <PackageReference Include="System.Management.Automation" Version="6.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
   <ItemGroup>
