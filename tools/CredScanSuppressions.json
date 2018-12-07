@@ -954,6 +954,10 @@
       "_justification": "Sample certificate only used in tests"
     },
     {
+      "file": "src\\ResourceManager\\Resources\\Commands.Resources\\ActiveDirectory\\Models\\ParameterSet.cs",
+      "_justification": "Flagged secrets are names of parameter sets."
+    },
+    {
       "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdateApplicationPackage.json",
       "hash": "7h1ZK3B30ya9x6svYsY3oaw3Je4LbyRpfSI/5qclGXM=",
       "_justification": "Expired test session storage SAS"

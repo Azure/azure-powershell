@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "The user object id.")]
         [ValidateNotNullOrEmpty]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
             HelpMessage = "The user UPN.")]
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     SearchString = this.IsParameterBound(c => c.StartsWith) ? StartsWith + "*" : DisplayName,
                     UPN = UserPrincipalName,
-                    Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
+                    Id = ObjectId,
                     Paging = true,
                     Mail = Mail
                 };

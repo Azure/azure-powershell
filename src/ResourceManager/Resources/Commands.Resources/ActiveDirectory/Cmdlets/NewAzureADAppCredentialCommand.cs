@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithCertValue, HelpMessage = "The application object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithPassword, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithCertValue, HelpMessage = "The application id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithPassword, HelpMessage = "The application id.")]
@@ -115,7 +114,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         KeyId = Guid.NewGuid().ToString(),
                         Value = decodedPassword
                     };
-                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateAppPasswordCredential(ObjectId, passwordCredential));
                     }
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         Type = "AsymmetricX509Cert",
                         Usage = "Verify"
                     };
-                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new certificate to application with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new certificate to application with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateAppKeyCredential(ObjectId, keyCredential));
                     }
