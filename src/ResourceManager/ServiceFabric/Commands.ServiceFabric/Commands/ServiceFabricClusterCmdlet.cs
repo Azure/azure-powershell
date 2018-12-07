@@ -40,66 +40,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region SFRP
 
-        #region Temporary code until next SDK version is released
-        protected PSCluster SendPutRequest(Cluster clusterResource, bool runOnSameThread = true)
-        {
-            if (runOnSameThread)
-            {
-                WriteVerboseWithTimestamp("Begin to update the cluster");
-            }
-
-            Cluster cluster = null;
-            var tokenSource = new CancellationTokenSource();
-            try
-            {
-                var putRequest = Task.Factory.StartNew(() =>
-                {
-                    try
-                    {
-                        cluster = this.SFRPClient.Clusters.Create(this.ResourceGroupName, this.Name, clusterResource);
-                    }
-                    finally
-                    {
-                        tokenSource.Cancel();
-                    }
-                });
-
-                while (!tokenSource.IsCancellationRequested)
-                {
-                    if (runOnSameThread)
-                    {
-                        if (!RunningTest)
-                        {
-                            var c = SafeGetResource(this.GetCurrentCluster, true);
-                            if (c != null)
-                            {
-                                WriteVerboseWithTimestamp(
-                                    string.Format(
-                                        ServiceFabricProperties.Resources.ClusterStateVerbose,
-                                        c.ClusterState));
-                            }
-                        }
-                    }
-
-                    Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
-                }
-
-                if (putRequest.IsFaulted)
-                {
-                    throw putRequest.Exception;
-                }
-
-            }
-            catch (Exception e)
-            {
-                PrintSdkExceptionDetail(e);
-                throw GetInnerException(e);
-            }
-
-            return new PSCluster(cluster);
-        }
-        #endregion
-
         protected PSCluster SendPatchRequest(ClusterUpdateParameters request, bool runOnSameThread = true)
         {
             if (runOnSameThread)
