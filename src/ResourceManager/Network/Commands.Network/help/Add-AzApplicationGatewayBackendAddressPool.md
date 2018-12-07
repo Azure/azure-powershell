@@ -15,8 +15,7 @@ Adds a back-end address pool to an application gateway.
 
 ```
 Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway <PSApplicationGateway> -Name <String>
- [-BackendIPAddresses <System.Collections.Generic.List`1[System.String]>]
- [-BackendFqdns <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [-BackendIPAddresses <String[]>] [-BackendFqdns <String[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -73,7 +72,7 @@ Accept wildcard characters: False
 Specifies a list of backend FQDNs which this cmdlet adds as a back-end server pool.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +87,7 @@ Accept wildcard characters: False
 Specifies a list of back-end IP addresses which this cmdlet adds as a back-end server pool.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

@@ -35,7 +35,6 @@ function Test-StorageBlobContainer
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        $loc = Get-ProviderLocation_Stage;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
 
@@ -49,7 +48,7 @@ function Test-StorageBlobContainer
 		Assert-AreEqual none $container.PublicAccess
 		
         $publicAccess = 'blob'
-		$metadata = @{tag0="value0";tag1="value1";tag2="value2"}
+		$metadata = @{tag0="value0"} # set 3 metadata will fail in server, so use 1 mentadata here. Can revert to 3 mentadata when server fixed
 
 		Update-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -PublicAccess $publicAccess -Metadata $metadata
 		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
@@ -115,7 +114,6 @@ function Test-StorageBlobContainerLegalHold
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        $loc = Get-ProviderLocation_Stage;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
 
@@ -191,13 +189,12 @@ function Test-StorageBlobContainerImmutabilityPolicy
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
         $loc = Get-ProviderLocation ResourceManagement;
-        $kind = 'Storage'
+        $kind = 'StorageV2'
 		$containerName = "container"+ $rgname
 
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        $loc = Get-ProviderLocation_Stage;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
 
@@ -251,12 +248,12 @@ function Test-StorageBlobContainerImmutabilityPolicy
         Remove-AzureRmStorageContainerImmutabilityPolicy -inputObject $policy 
 		$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 
 		Assert-AreEqual 0 $policy.ImmutabilityPeriodSinceCreationInDays
-		Assert-AreEqual Unlocked $policy.State
+		Assert-AreEqual Deleted $policy.State
 		Assert-AreEqual "" $policy.Etag
 		$container = Get-AzureRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName		
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual 0 $container.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays
-		Assert-AreEqual Unlocked $container.ImmutabilityPolicy.State
+		Assert-AreEqual Deleted $container.ImmutabilityPolicy.State
 		Assert-AreEqual 0 $container.ImmutabilityPolicy.UpdateHistory.Count
 		
 		$immutabilityPeriod =7

@@ -18,10 +18,9 @@ Saves a modified ExpressRoute peering configuration.
 Set-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
  -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
- [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
- [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
- [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-MicrosoftConfigAdvertisedPublicPrefixes <String[]>] [-MicrosoftConfigCustomerAsn <Int32>]
+ [-MicrosoftConfigRoutingRegistryName <String>] [-PeerAddressType <String>] [-LegacyMode <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### MicrosoftPeeringConfigRoutFilterId
@@ -29,10 +28,9 @@ Set-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSEx
 Set-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
  -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
- [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
- [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>] -RouteFilterId <String>
- [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-MicrosoftConfigAdvertisedPublicPrefixes <String[]>] [-MicrosoftConfigCustomerAsn <Int32>]
+ [-MicrosoftConfigRoutingRegistryName <String>] -RouteFilterId <String> [-PeerAddressType <String>]
+ [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### MicrosoftPeeringConfigRoutFilter
@@ -40,10 +38,9 @@ Set-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSEx
 Set-AzExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
  -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
- [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
- [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
- -RouteFilter <PSRouteFilter> [-PeerAddressType <String>] [-LegacyMode <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MicrosoftConfigAdvertisedPublicPrefixes <String[]>] [-MicrosoftConfigCustomerAsn <Int32>]
+ [-MicrosoftConfigRoutingRegistryName <String>] -RouteFilter <PSRouteFilter> [-PeerAddressType <String>]
+ [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +119,7 @@ separated list if you plan to send a set of prefixes. These prefixes must be reg
 a Routing Registry Name (RIR / IRR).
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

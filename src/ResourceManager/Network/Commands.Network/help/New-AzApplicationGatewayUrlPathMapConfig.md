@@ -15,18 +15,18 @@ Creates an array of URL path mappings to a backend server pool.
 
 ### SetByResourceId
 ```
-New-AzApplicationGatewayUrlPathMapConfig -Name <String>
- -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
+New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
  [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>]
- [-DefaultRedirectConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultRewriteRuleSetId <String>] [-DefaultRedirectConfigurationId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
-New-AzApplicationGatewayUrlPathMapConfig -Name <String>
- -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
+New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
  [-DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>]
  [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
+ [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
  [-DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -150,6 +150,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultRewriteRuleSet
+Application gateway default rewrite rule set
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultRewriteRuleSetId
+ID of the application gateway default rewrite rule set
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the URL path map name that this cmdlet creates.
 
@@ -170,7 +200,7 @@ Specifies a list of path rules.
 Note that the path rules are order sensitive, they are applied in order they are specified.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule[]
 Parameter Sets: (All)
 Aliases:
 

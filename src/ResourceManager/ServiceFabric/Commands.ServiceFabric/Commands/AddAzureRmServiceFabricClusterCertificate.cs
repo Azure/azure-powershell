@@ -27,10 +27,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSCluster),
-    DeprecatedOutputProperties = new String[] { "UpgradeDescription.DeltaHealthPolicy.ApplicationHealthPolicies", "UpgradeDescription.OverrideUserUpgradePolicy", "SerivceTypeHealthPolicies" })]
-#endif
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricClusterCertificate", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricClusterCertificate : ServiceFabricClusterCertificateCmdlet
     {
@@ -49,10 +45,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         this.Name));
             }
 
+            if ((this.CertificateCommonName != null && clusterResource.Certificate != null) ||
+                (this.CertificateCommonName == null && clusterResource.CertificateCommonNames != null))
+            {
+                throw new PSInvalidOperationException(
+                    string.Format(
+                        ServiceFabricProperties.Resources.CertificateMixTPAndCN,
+                        this.Name));
+            }
+
             if (ShouldProcess(target: this.Name, action: string.Format("Add cluster certificate")))
             {
                 var certInformations = base.GetOrCreateCertificateInformation();
                 var certInformation = certInformations[0];
+
+                if (this.CertificateCommonName != null && this.CertificateCommonName != certInformation.CertificateCommonName)
+                {
+                    throw new PSArgumentException(
+                        string.Format(ServiceFabricProperties.Resources.CertificateCommonNameMismatch,
+                        this.CertificateCommonName,
+                        certInformation.CertificateCommonName));
+                }
+
                 var allTasks = new List<Task>();
                 var vmssPages = ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
 
@@ -75,12 +89,23 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         var ext = FindFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions);
 
                         var extConfig = (JObject)ext.Settings;
-                        var input = string.Format(
-                            @"{{""thumbprint"":""{0}"",""x509StoreName"":""{1}""}}",
-                            certInformation.CertificateThumbprint,
-                            Constants.DefaultCertificateStore);
 
-                        extConfig["certificateSecondary"] = JObject.Parse(input);
+                        if (this.CertificateCommonName != null)
+                        {
+                            JArray newCommonNames = (JArray)extConfig.SelectToken("certificate.commonNames");
+                            newCommonNames.Add(this.CertificateCommonName);
+
+                            extConfig["certificate"]["commonNames"] = newCommonNames;
+                        }
+                        else
+                        {
+                            var input = string.Format(
+                                @"{{""thumbprint"":""{0}"",""x509StoreName"":""{1}""}}",
+                                certInformation.CertificateThumbprint,
+                                Constants.DefaultCertificateStore);
+
+                            extConfig["certificateSecondary"] = JObject.Parse(input);
+                        }
 
                         vmss.VirtualMachineProfile.ExtensionProfile.Extensions.Single(
                             extension =>
@@ -93,12 +118,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 WriteClusterAndVmssVerboseWhenUpdate(allTasks,false);
 
-                var patchRequest = new ClusterUpdateParameters
+                var patchRequest = new ClusterUpdateParameters();
+                if (this.CertificateCommonName != null)
                 {
-                    Certificate = clusterResource.Certificate
-                };
+                    string issuerTP = this.CertificateIssuerThumbprint != null ? this.CertificateIssuerThumbprint : String.Empty;
+                    patchRequest.CertificateCommonNames = clusterResource.CertificateCommonNames;
+                    patchRequest.CertificateCommonNames.CommonNames.Add(new ServerCertificateCommonName(this.CertificateCommonName, issuerTP));
+                }
+                else
+                {
+                    patchRequest.Certificate = clusterResource.Certificate;
+                    patchRequest.Certificate.ThumbprintSecondary = certInformation.CertificateThumbprint;
+                }
 
-                patchRequest.Certificate.ThumbprintSecondary = certInformation.CertificateThumbprint;
                 var cluster = SendPatchRequest(patchRequest);
                 WriteObject(cluster);
             }
