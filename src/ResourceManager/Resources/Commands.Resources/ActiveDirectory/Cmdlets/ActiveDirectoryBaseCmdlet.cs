@@ -23,21 +23,21 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 {
     public abstract class ActiveDirectoryBaseCmdlet : AzureRMCmdlet
     {
-        private ActiveDirectoryClient activeDirectoryClient;
+        private ActiveDirectoryClient _activeDirectoryClient;
 
         public ActiveDirectoryClient ActiveDirectoryClient
         {
             get
             {
-                if (activeDirectoryClient == null)
+                if (_activeDirectoryClient == null)
                 {
-                    activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
+                    _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
                 }
 
-                return activeDirectoryClient;
+                return _activeDirectoryClient;
             }
 
-            set { activeDirectoryClient = value; }
+            set { _activeDirectoryClient = value; }
         }
 
         /// <summary>

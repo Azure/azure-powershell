@@ -39,16 +39,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             GraphClient = AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
                 context, AzureEnvironment.Endpoint.Graph);
-
             GraphClient.TenantID = context.Tenant.Id.ToString();
         }
 
         public PSADObject GetADObject(ADObjectFilterOptions options)
         {
             PSADObject result = null;
-
             Debug.Assert(options != null);
-
             if (IsSet(options.Mail, options.UPN, options.Id))
             {
                 result = FilterUsers(options).FirstOrDefault();
@@ -115,7 +112,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             List<PSADServicePrincipal> servicePrincipals = new List<PSADServicePrincipal>();
             ServicePrincipal servicePrincipal = null;
-
             if (!string.IsNullOrEmpty(options.Id))
             {
                 try
@@ -246,7 +242,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             var groupsIds = GraphClient.Users.GetMemberGroups(objectId.ToString(), new UserGetMemberGroupsParameters());
             var groupsResult = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { ObjectIds = groupsIds.ToList() });
             result.AddRange(groupsResult.Select(g => g.ToPSADGroup()));
-
             return result;
         }
 
@@ -305,25 +300,29 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     }
                 }
                 catch {  /* The group does not exist, ignore the exception */ }
+
+                return new List<PSADGroup>();
+            }
+            else if (options.Mail != null)
+            {
+                Rest.Azure.OData.ODataQuery<ADGroup> odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.Mail == options.Mail);
+                return new GenericPageEnumerable<ADGroup>(
+                    delegate ()
+                    {
+                        return GraphClient.Groups.List(odataQuery);
+                    }, GraphClient.Groups.ListNext, first, skip).Select(g => g.ToPSADGroup());
             }
             else
             {
                 Rest.Azure.OData.ODataQuery<ADGroup> odataQuery = null;
-                if (options.Mail != null)
+                if (!string.IsNullOrEmpty(options.SearchString) && options.SearchString.EndsWith("*"))
                 {
-                    odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.Mail == options.Mail);
+                    options.SearchString = options.SearchString.TrimEnd('*');
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.DisplayName.StartsWith(options.SearchString));
                 }
                 else
                 {
-                    if (!string.IsNullOrEmpty(options.SearchString) && options.SearchString.EndsWith("*"))
-                    {
-                        options.SearchString = options.SearchString.TrimEnd('*');
-                        odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.DisplayName.StartsWith(options.SearchString));
-                    }
-                    else
-                    {
-                        odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.DisplayName == options.SearchString);
-                    }
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.DisplayName == options.SearchString);
                 }
 
                 return new GenericPageEnumerable<ADGroup>(
@@ -332,8 +331,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         return GraphClient.Groups.List(odataQuery);
                     }, GraphClient.Groups.ListNext, first, skip).Select(g => g.ToPSADGroup());
             }
-
-            return new List<PSADGroup>();
         }
 
         public IEnumerable<PSADGroup> FilterGroups()
@@ -485,41 +482,30 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public PSADCredential CreateAppKeyCredential(string appObjectId, KeyCredential credential)
         {
             ValidateKeyCredential(credential);
-
             var keyCredsList = GetAppKeyCredentials(appObjectId);
-
             // Add new KeyCredential to existing KeyCredential list
             keyCredsList.Add(credential);
-
             PatchAppKeyCredentials(appObjectId, keyCredsList);
-
             return credential.ToPSADCredential();
         }
 
         public PSADCredential CreateAppPasswordCredential(string appObjectId, PasswordCredential credential)
         {
             ValidatePasswordCredential(credential);
-
             var passwordCredsList = GetAppPasswordCredentials(appObjectId);
-
             // Add new PasswordCredential to existing KeyCredential list
             passwordCredsList.Add(credential);
-
             PatchAppPasswordCredentials(appObjectId, passwordCredsList);
-
             return credential.ToPSADCredential();
         }
 
         public List<PSADCredential> GetAppCredentials(string appObjectId)
         {
             List<PSADCredential> CredentialList = new List<PSADCredential>();
-
             var keyCredsList = GetAppKeyCredentials(appObjectId);
             CredentialList.AddRange(keyCredsList.Select(kc => kc.ToPSADCredential()));
-
             var passwordCredsList = GetAppPasswordCredentials(appObjectId);
             CredentialList.AddRange(passwordCredsList.Select(pc => pc.ToPSADCredential()));
-
             return CredentialList;
         }
 
@@ -527,9 +513,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public void RemoveAppCredentialByKeyId(string appObjectId, Guid keyId)
         {
             var keyCredsList = GetAppKeyCredentials(appObjectId);
-
             var toBeDeletedKeyCred = keyCredsList.Find(kc => Guid.Parse(kc.KeyId) == keyId);
-
             if (toBeDeletedKeyCred != null)
             {
                 keyCredsList.Remove(toBeDeletedKeyCred);
@@ -539,7 +523,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 var passwordCredsList = GetAppPasswordCredentials(appObjectId);
                 var toBeDeletedPasswwordCred = passwordCredsList.Find(pc => Guid.Parse(pc.KeyId) == keyId);
-
                 if (toBeDeletedPasswwordCred != null)
                 {
                     passwordCredsList.Remove(toBeDeletedPasswwordCred);
@@ -634,50 +617,37 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public PSADCredential CreateSpKeyCredential(string spObjectId, KeyCredential credential)
         {
             ValidateKeyCredential(credential);
-
             var keyCredsList = GetSpKeyCredentials(spObjectId);
-
             // Add new KeyCredential to existing KeyCredential list
             keyCredsList.Add(credential);
-
             PatchSpKeyCredentials(spObjectId, keyCredsList);
-
             return credential.ToPSADCredential();
         }
 
         public PSADCredential CreateSpPasswordCredential(string spObjectId, PasswordCredential credential)
         {
             ValidatePasswordCredential(credential);
-
             var passwordCredsList = GetSpPasswordCredentials(spObjectId);
-
             // Add new PasswordCredential to existing KeyCredential list
             passwordCredsList.Add(credential);
-
             PatchSpPasswordCredentials(spObjectId, passwordCredsList);
-
             return credential.ToPSADCredential();
         }
 
         public List<PSADCredential> GetSpCredentials(string spObjectId)
         {
             List<PSADCredential> CredentialList = new List<PSADCredential>();
-
             var keyCredsList = GetSpKeyCredentials(spObjectId);
             CredentialList.AddRange(keyCredsList.Select(kc => kc.ToPSADCredential()));
-
             var passwordCredsList = GetSpPasswordCredentials(spObjectId);
             CredentialList.AddRange(passwordCredsList.Select(pc => pc.ToPSADCredential()));
-
             return CredentialList;
         }
 
         public void RemoveSpCredentialByKeyId(string spObjectId, Guid keyId)
         {
             var keyCredsList = GetSpKeyCredentials(spObjectId);
-
             var toBeDeletedKeyCred = keyCredsList.Find(kc => Guid.Parse(kc.KeyId) == keyId);
-
             if (toBeDeletedKeyCred != null)
             {
                 keyCredsList.Remove(toBeDeletedKeyCred);
@@ -687,7 +657,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 var passwordCredsList = GetSpPasswordCredentials(spObjectId);
                 var toBeDeletedPasswwordCred = passwordCredsList.Find(pc => Guid.Parse(pc.KeyId) == keyId);
-
                 if (toBeDeletedPasswwordCred != null)
                 {
                     passwordCredsList.Remove(toBeDeletedPasswwordCred);
