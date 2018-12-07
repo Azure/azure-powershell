@@ -941,7 +941,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var profile = new AzureRmProfile(path);
             Assert.Equal(5, profile.Environments.Count());
             Assert.Equal("3c0ff8a7-e8bb-40e8-ae66-271343379af6", profile.DefaultContext.Tenant.Id.ToString());
-            Assert.Equal("contoso.com", profile.DefaultContext.Tenant.Directory);
             Assert.Equal("00000000-0000-0000-0000-000000000000", profile.DefaultContext.Subscription.Id.ToString());
             Assert.Equal("testCloud", profile.DefaultContext.Environment.Name);
             Assert.Equal("me@contoso.com", profile.DefaultContext.Account.Id);
