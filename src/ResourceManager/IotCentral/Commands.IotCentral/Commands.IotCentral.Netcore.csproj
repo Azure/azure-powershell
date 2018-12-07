@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.IotCentral</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.IotCentral</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.IotCentral</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>

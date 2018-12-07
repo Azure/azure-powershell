@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.Network.Test</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Network.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Network.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>

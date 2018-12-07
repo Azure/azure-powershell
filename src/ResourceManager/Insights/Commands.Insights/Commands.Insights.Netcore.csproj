@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Insights</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Monitor</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Insights</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

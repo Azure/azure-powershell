@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.SecurityCenter</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.SecurityCenter</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.SecurityCenter</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
