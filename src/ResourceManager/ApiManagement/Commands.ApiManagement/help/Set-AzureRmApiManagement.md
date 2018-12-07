@@ -29,7 +29,7 @@ PS C:\> $apim = Get-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Name
 PS C:\> $apim.Sku = "Premium"
 PS C:\> $apim.Capacity = 5
 PS C:\> $apim.AddRegion("Central US", "Premium", 3)
-PS C:\>Set-AzureRmApiManagement -ApiManagement $apim
+PS C:\>Set-AzureRmApiManagement -InputObject $apim
 ```
 
 This example gets an Api Management instance, scales it to five premium units and then adds an additional three units to the premium region.
@@ -40,7 +40,7 @@ PS C:\> $virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "East
 PS C:\> $apim = Get-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\> $apim.VpnType = "External"
 PS C:\> $apim.VirtualNetwork = $virtualNetwork
-PS C:\> Set-AzureRmApiManagement -ApiManagement $apim
+PS C:\> Set-AzureRmApiManagement -InputObject $apim
 ```
 
 This command updates an existing API Management deployment and joins to an external *VpnType*.
