@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -196,6 +196,24 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Certificate common name mistmatch the name provided is: &apos;{0}&apos; and the common name found in the certificate is: &apos;{1}&apos;. Please make sure you&apos;re using the correct certificate and common name..
+        /// </summary>
+        internal static string CertificateCommonNameMismatch {
+            get {
+                return ResourceManager.GetString("CertificateCommonNameMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to mix certificates by common name and thumbprint. There is already a certificate, if this was set up by thumbprint you cannot add a new one by common name and vice versa..
+        /// </summary>
+        internal static string CertificateMixTPAndCN {
+            get {
+                return ResourceManager.GetString("CertificateMixTPAndCN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Checking deployment status in {0} seconds..
         /// </summary>
         internal static string CheckingDeploymentStatus {
@@ -345,6 +363,24 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         internal static string FileNotExist {
             get {
                 return ResourceManager.GetString("FileNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can not specify both certificate common name and thumbprint. If using common names non of the following should be specified in the parameters file: &apos;certificateThumbprint&apos;, &apos;secSourceVaultValue&apos;, &apos;secCertificateThumbprint&apos;, &apos;secCertificateUrlValue&apos;..
+        /// </summary>
+        internal static string InvalidCertificateInfoCNAndTPInParameterFile {
+            get {
+                return ResourceManager.GetString("InvalidCertificateInfoCNAndTPInParameterFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If using common name, the parameter -UseCommonName and -IssuerThumbprint must be use and the parameter names in the parameters file should be specified with &apos;sourceVaultValue&apos;,&apos;certificateCommonName&apos;,&apos;certificateUrlValue&apos;, &apos;certificateIssuerThumbprint&apos;..
+        /// </summary>
+        internal static string InvalidCertificateInformationCNInParameterFile {
+            get {
+                return ResourceManager.GetString("InvalidCertificateInformationCNInParameterFile", resourceCulture);
             }
         }
         
@@ -556,7 +592,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies..
+        ///   Looks up a localized string similar to Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzKeyVaultAccessPolicy to set access policies..
         /// </summary>
         internal static string VaultCreatedWithOutAccessPolicy {
             get {

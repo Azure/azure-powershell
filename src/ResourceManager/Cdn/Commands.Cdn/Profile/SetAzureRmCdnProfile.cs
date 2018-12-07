@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Cdn;
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
     /// <summary>
-    /// Defines the New-AzureRmCdnProfile cmdlet.
+    /// Defines the New-AzCdnProfile cmdlet.
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnProfile", SupportsShouldProcess = true), OutputType(typeof(PSProfile))]
     public class SetAzureRmCdnProfile : AzureCdnCmdletBase

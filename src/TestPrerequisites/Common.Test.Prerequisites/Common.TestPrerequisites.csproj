@@ -23,7 +23,7 @@
     <PackageReference Include="Azure.Batch" Version="8.1.3" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Commerce.UsageAggregates" Version="1.5.3" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.5.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" PrivateAssets="All" />
@@ -55,7 +55,7 @@
     <PackageReference Include="Microsoft.Azure.Management.MarketplaceOrdering" Version="1.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Media" Version="0.1.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.21.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.6.2-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.7.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.NotificationHubs" Version="2.3.2-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.19.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.PolicyInsights" Version="2.0.1" PrivateAssets="All" />
@@ -69,9 +69,9 @@
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.SecurityCenter" Version="0.10.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="2.0.1" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.0.0.1-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.1.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.22.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.1-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="9.0.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.StreamAnalytics" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.TrafficManager" Version="2.5.3" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Websites" Version="2.0.1" PrivateAssets="All" />

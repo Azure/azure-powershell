@@ -148,7 +148,7 @@
     <value>The database '{0}' is not available on the target server.</value>
   </data>
   <data name="DatabaseNotSelectedForMigration" xml:space="preserve">
-    <value>The database '{0}' has not been selected for migration. Please first run Add-AzureRmDmsDatabase to add the database to the migration task.</value>
+    <value>The database '{0}' has not been selected for migration. Please first run Add-AzDmsDatabase to add the database to the migration task.</value>
   </data>
   <data name="InvalidCommandOperation" xml:space="preserve">
     <value>This command is not available for migration tasks from '{0}' to '{1}'</value>

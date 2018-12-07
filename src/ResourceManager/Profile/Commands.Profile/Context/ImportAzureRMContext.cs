@@ -15,14 +15,17 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 // TODO: Remove IfDef
 #if NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Core;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 #endif
 using Microsoft.Azure.Commands.Profile.Properties;
 using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -50,6 +53,55 @@ namespace Microsoft.Azure.Commands.Profile
             // Do not access the DefaultContext when loading a profile
         }
 
+        void CopyProfile(AzureRmProfile source, IProfileOperations target)
+        {
+            if (source == null || target == null)
+            {
+                return;
+            }
+
+            foreach (var environment in source.Environments)
+            {
+                IAzureEnvironment merged;
+                target.TrySetEnvironment(environment, out merged);
+            }
+
+            foreach (var context in source.Contexts)
+            {
+                target.TrySetContext(context.Key, context.Value);
+            }
+
+            if (!string.IsNullOrWhiteSpace(source.DefaultContextKey))
+            {
+                target.TrySetDefaultContext(source.DefaultContextKey);
+            }
+
+            AzureRmProfileProvider.Instance.SetTokenCacheForProfile(target.ToProfile());
+            EnsureProtectedCache(target, source.DefaultContext?.TokenCache?.CacheData);
+        }
+
+        void EnsureProtectedCache(IProfileOperations profile, byte[] cacheData)
+        {
+            if (profile == null || cacheData == null)
+            {
+                return;
+            }
+
+            AzureRmAutosaveProfile autosave = profile as AzureRmAutosaveProfile;
+            var protectedcache = AzureSession.Instance.TokenCache as ProtectedFileTokenCache;
+            if (autosave != null && protectedcache == null && cacheData.Any())
+            {
+                try
+                {
+                    var cache = new ProtectedFileTokenCache(cacheData, AzureSession.Instance.DataStore);
+                }
+                catch
+                {
+                    WriteWarning(Resources.ImportAuthenticationFailure);
+                }
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
             bool executionComplete = false;
@@ -65,11 +117,9 @@ namespace Microsoft.Azure.Commands.Profile
                             Path));
                     }
 
-                    ModifyContext((profile, client) =>
+                    ModifyProfile((profile) =>
                     {
-                        var newProfile = new AzureRmProfile(Path);
-                        profile.TryCopyProfile(newProfile);
-                        AzureRmProfileProvider.Instance.SetTokenCacheForProfile(newProfile);
+                        CopyProfile(new AzureRmProfile(Path), profile);
                         executionComplete = true;
                     });
                 });
@@ -78,10 +128,9 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 ConfirmAction(Resources.ProcessImportContextFromObject, Resources.ImportContextTarget, () =>
                 {
-                    ModifyContext((profile, client) =>
+                    ModifyProfile((profile) =>
                     {
-                        profile.TryCopyProfile(AzureContext);
-                        AzureRmProfileProvider.Instance.SetTokenCacheForProfile(AzureContext);
+                        CopyProfile(AzureContext, profile);
                         executionComplete = true;
                     });
                 });

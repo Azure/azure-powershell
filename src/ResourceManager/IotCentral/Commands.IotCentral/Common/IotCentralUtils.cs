@@ -37,7 +37,8 @@ namespace Microsoft.Azure.Commands.IotCentral.Common
             var copiedIotCenralApp = new AppPatch()
             {
                 DisplayName = iotCentralApp.DisplayName,
-                Tags = iotCentralApp.Tags
+                Tags = iotCentralApp.Tags,
+                Subdomain = iotCentralApp.Subdomain
             };
             return copiedIotCenralApp;
         }

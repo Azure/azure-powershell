@@ -399,7 +399,7 @@ Please contact Microsoft for further assistance.</value>
     <value>{0} Uri value not found in Id {1}</value>
   </data>
   <data name="SetVaultContextFirst" xml:space="preserve">
-    <value>Set vault context first using cmdlet Set-AzureRmRecoveryServicesVaultContext</value>
+    <value>Set vault context first using cmdlet Set-AzRecoveryServicesVaultContext</value>
   </data>
   <data name="VirtualMachineIdIsEmptyOrNull" xml:space="preserve">
     <value>VirtualMachineId is NULL or Empty. Please enter valid VirtualMachineId</value>
@@ -534,5 +534,17 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="ParentContainerFabricIdIsEmptyOrNull" xml:space="preserve">
     <value>ParentContainerFabricId is NULL or Empty. Please enter valid ParentContainerFabricId</value>
+  </data>
+  <data name="AzureFileSourceFilePathMissingException" xml:space="preserve">
+    <value>Provide SourceFilePath for File restore or remove SourceFileType for file share restore</value>
+  </data>
+  <data name="AzureFileSourceFileTypeMissingException" xml:space="preserve">
+    <value>Provide SourceFileType for File restore or remove SourceFilePath for file share restore</value>
+  </data>
+  <data name="AzureFileTargetFSNameMissingException" xml:space="preserve">
+    <value>Provide TargetFileShareName for Alternate Location restore or remove TargetStorageAccountName for Original Location restore</value>
+  </data>
+  <data name="AzureFileTargetSANameMissingException" xml:space="preserve">
+    <value>Provide TargetStorageAccountName for Alternate Location restore or remove TargetFileShareName for Original Location restore</value>
   </data>
 </root>
