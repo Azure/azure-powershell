@@ -64,7 +64,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         ///   Looks up a localized string similar to Azure PowerShell collects usage data in order to improve your experience.
         ///The data is anonymous and does not include commandline argument values.
         ///The data is collected by Microsoft.
-        ///
         ///Use the Disable-AzDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Az.Accounts module. To disable data collection: PS &gt; Disable-AzDataCollection.
         ///Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Az.Accounts module. To enable  [rest of string was truncated]&quot;;.
         /// </summary>
@@ -84,7 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Connect-AzureRmAccount..
+        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Connect-AzAccount..
         /// </summary>
         public static string ContextCannotBeNull {
             get {
@@ -201,7 +200,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile cannot be null.  Please run Connect-AzureRmAccount..
+        ///   Looks up a localized string similar to Profile cannot be null.  Please run Connect-AzAccount..
         /// </summary>
         public static string ProfileCannotBeNull {
             get {
@@ -296,7 +295,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run Connect-AzureRmAccount to login..
+        ///   Looks up a localized string similar to Run Connect-AzAccount to login..
         /// </summary>
         public static string RunConnectAccount {
             get {

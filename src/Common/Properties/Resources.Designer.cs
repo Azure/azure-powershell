@@ -2160,7 +2160,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;There is no current context, please log in using Connect-AzureRmAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management.&quot;.
+        ///   Looks up a localized string similar to &quot;There is no current context, please log in using Connect-AzAccount.&quot;.
         /// </summary>
         public static string NoCurrentContextForDataCmdlet {
             get {
@@ -2304,7 +2304,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No subscriptions are associated with the logged in account in Azure Service Management (RDFE). This means that the logged in user is not an administrator or co-administrator for any account.\r\nDid you mean to execute Connect-AzureRmAccount?.
+        ///   Looks up a localized string similar to No subscriptions are associated with the logged in account in Azure Service Management (RDFE). This means that the logged in user is not an administrator or co-administrator for any account.\r\nDid you mean to execute Connect-AzAccount?.
         /// </summary>
         public static string NoSubscriptionFoundForTenant {
             get {
