@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 {
     /// <summary>
-    /// 'Remove-AzureRmServiceBusTopic' Cmdlet removes the specified ServiceBus Topic
+    /// 'Remove-AzServiceBusTopic' Cmdlet removes the specified ServiceBus Topic
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusTopic", DefaultParameterSetName = TopicPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusTopic : AzureServiceBusCmdletBase

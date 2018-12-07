@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
 
         internal string CertificateThumbprint { get; set; }
 
+        internal string CertificateCommonName { get; set; }
+
         internal string CertificateOutputPath { get; set; }
     }
 }

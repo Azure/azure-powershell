@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -73,19 +74,19 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of AzureFirewallApplicationRuleCollections")]
-        public List<PSAzureFirewallApplicationRuleCollection> ApplicationRuleCollection { get; set; }
+        public PSAzureFirewallApplicationRuleCollection[] ApplicationRuleCollection { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of AzureFirewallNatRuleCollections")]
-        public List<PSAzureFirewallNatRuleCollection> NatRuleCollection { get; set; }
+        public PSAzureFirewallNatRuleCollection[] NatRuleCollection { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of AzureFirewallNetworkRuleCollections")]
-        public List<PSAzureFirewallNetworkRuleCollection> NetworkRuleCollection { get; set; }
+        public PSAzureFirewallNetworkRuleCollection[] NetworkRuleCollection { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -136,9 +137,9 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
-                ApplicationRuleCollections = this.ApplicationRuleCollection,
-                NatRuleCollections = this.NatRuleCollection,
-                NetworkRuleCollections = this.NetworkRuleCollection
+                ApplicationRuleCollections = this.ApplicationRuleCollection?.ToList(),
+                NatRuleCollections = this.NatRuleCollection?.ToList(),
+                NetworkRuleCollections = this.NetworkRuleCollection?.ToList()
             };
 
             if (this.virtualNetwork != null)

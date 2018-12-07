@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Relay.Commands
 {
     /// <summary>
-    /// 'New-AzureRmRelayAuthorizationRule' Cmdlet creates a new AuthorizationRule
+    /// 'New-AzRelayAuthorizationRule' Cmdlet creates a new AuthorizationRule
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAuthorizationRuleAttributes))]
     public class NewAzureRelayAuthorizationRule : AzureRelayCmdletBase

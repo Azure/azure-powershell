@@ -52,7 +52,7 @@ The following prerequisites should be completed before contributing to the Azure
 
 - Install [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 - Install the latest version of [Git](https://git-scm.com/downloads)
-- Install the [`platyPS` module](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/help-generation.md#installing-platyps)
+- Install the [`platyPS` module](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/help-generation.md#installing-platyps)
 - Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
     - `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
     - `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
@@ -85,10 +85,10 @@ You now be able to create your own branches, commit changes, and push commits to
 git remote add upstream https://github.com/Azure/azure-powershell.git
 ```
 
-Then, to pull changes from the **preview** branch in _Azure/azure-powershell_ into your local working branch, run the following command:
+Then, to pull changes from the **master** branch in _Azure/azure-powershell_ into your local working branch, run the following command:
 
 ```
-git pull upstream preview
+git pull upstream master
 ```
 
 ## Building the Environment
@@ -174,9 +174,9 @@ Add a new folder under `src/ResourceManager` with your service specific name (_e
 
  Once created, right click on the `Commands.<SERVICE>` project in the `Solution Explorer` and select `Unload project`. Right click on the unloaded project and select `Edit Commands.<SERVICE>.csproj`. Once opened, ensure that the following things are changed:
  - The `RootNamespace` and `AssemblyNamespace` attributes of the project _must_ be changed to `Microsoft.Azure.Commands.<SERVICE>`. If these changes are not made, then the assembly produced from this project is not be signed and results in errors when users try to use your module.
- - Under the `Debug|AnyCPU` property group, change the `OutputPath` attribute to `..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.<SERVICE>`
+ - Under the `Debug|AnyCPU` property group, change the `OutputPath` attribute to `..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Az.<SERVICE>`
  - Under the `Release|AnyCPU` property group, make the following changes:
-    - Change the `OutputPath` attribute to `..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.<SERVICE>`
+    - Change the `OutputPath` attribute to `..\..\..\Package\Release\ResourceManager\AzureResourceManager\Az.<SERVICE>`
     - Add the constant `SIGN` to the `DefineConstants` attribute
     - Add `<SignAssembly>true</SignAssembly>`
     - Add `<AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>`, making sure to copy the `MSSharedLibKey.snk` file from another project into the `Commands.<SERVICE>` folder
@@ -246,7 +246,7 @@ To import modules automatically when debug has started, follow the below steps:
 
 - In the **Debug** tab mentioned previously, go to **Start Options**
 - Import the Profile module, along with the module you are testing, by pasting the following in the **Command line arguments** box (_note_: you have to update the <PATH_TO_REPO> and <SERVICE> values provided below):
-    - `-NoExit -Command "Import-Module <PATH_TO_REPO>/src/Package/Debug/ResourceManager/AzureResourceManager/AzureRM.Profile/AzureRM.Profile.psd1;Import-Module <PATH_TO_REPO>/src/Package/Debug/ResourceManager/AzureResourceManager/AzureRM.<SERVICE>/AzureRM.<SERVICE>.psd1;$VerbosePreference='Continue'"`
+    - `-NoExit -Command "Import-Module <PATH_TO_REPO>/src/Package/Debug/ResourceManager/AzureResourceManager/Az.Profile/Az.Profile.psd1;Import-Module <PATH_TO_REPO>/src/Package/Debug/ResourceManager/AzureResourceManager/Az.<SERVICE>/Az.<SERVICE>.psd1;$VerbosePreference='Continue'"`
     
 - **Note**: if you do not see all of the changes you made to the cmdlets when importing your module in a PowerShell session (_e.g.,_ a cmdlet you added is not recognized as a cmdlet), you may need to delete any existing Azure PowerShell modules that you have on your machine (installed either through the PowerShell Gallery or by Web Platform Installer) before you import your module.
 
@@ -369,7 +369,7 @@ Create these environment variables for the AD scenario tests:
 
 # After Development
 
-Once all of your cmdlets have been created and the appropriate tests have been added, you can open a pull request in the Azure PowerShell repository to have your cmdlets added to the next release. Please make sure to read [CONTRIBUTING.md](https://github.com/Azure/azure-powershell/blob/preview/CONTRIBUTING.md) for more information on how to open a pull request, clean up commits, make sure appropriate files have been added/changed, and more.
+Once all of your cmdlets have been created and the appropriate tests have been added, you can open a pull request in the Azure PowerShell repository to have your cmdlets added to the next release. Please make sure to read [CONTRIBUTING.md](https://github.com/Azure/azure-powershell/blob/master/CONTRIBUTING.md) for more information on how to open a pull request, clean up commits, make sure appropriate files have been added/changed, and more.
 
 # Misc
 
@@ -394,14 +394,14 @@ Once you add the parameter, please manually test that the job is created and suc
 To ensure that `-AsJob` is not broken in future changes, please add a test for this parameter. To update tests to include this parameter, use the following pattern:
 
 ````powershell
-$job = Get-AzureRmSubscription
+$job = Get-AzSubscription
 $job | Wait-Job
 $subcriptions = $job | Receive-Job
 ````
 
 ## Argument Completers
 
-PowerShell uses Argument Completers to provide tab completion for users.  At the moment, Azure PowerShell has two specific argument completers that should be applied to relevant parameters, and one generic argument completer that can be used to tab complete with a given list of values.  To test the completers, run a complete build after you have added the completers (``` msbuild build.proj ```) and ensure that the psm1 file (AzureRM.\<Service\>.psm1) has been added to the psd1 file found in src/Package/Debug/ResourceManager/AzureResourceManager/AzureRM.\<Service\>/AzureRM.\<Service\>.psd1 under "Root Module".
+PowerShell uses Argument Completers to provide tab completion for users.  At the moment, Azure PowerShell has two specific argument completers that should be applied to relevant parameters, and one generic argument completer that can be used to tab complete with a given list of values.  To test the completers, run a complete build after you have added the completers (``` msbuild build.proj ```) and ensure that the psm1 file (Az.\<Service\>.psm1) has been added to the psd1 file found in src/Package/Debug/ResourceManager/AzureResourceManager/Az.\<Service\>/Az.\<Service\>.psd1 under "Root Module".
 
 ### Resource Group Completer
 
