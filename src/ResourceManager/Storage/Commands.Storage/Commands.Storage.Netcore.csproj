@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.WindowsAzure.Commands.Storage</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Storage</AssemblyName>
     <RootNamespace>Microsoft.WindowsAzure.Commands.Storage</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

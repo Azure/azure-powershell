@@ -55,7 +55,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.6.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Authorization.dll',
-    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
+    '.\Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll',
     '.\Microsoft.Azure.Management.ResourceManager.dll',
     '.\Microsoft.Azure.Management.ManagementGroups.dll',
     '.\Microsoft.Extensions.Caching.Abstractions.dll',
@@ -77,9 +77,9 @@ FormatsToProcess = '.\Microsoft.Azure.Commands.Resources.format.ps1xml',
     '.\Microsoft.Azure.Commands.Tags.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Resources.dll',
-    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
-    '.\Microsoft.Azure.Commands.Tags.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Resources.dll',
+    '.\Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll',
+    '.\Microsoft.Azure.PowerShell.Cmdlets.Tags.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()

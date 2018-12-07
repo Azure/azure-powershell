@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.ResourceGraph</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ResourceGraph</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Management.Search</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Management.Search</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Management.Search</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
