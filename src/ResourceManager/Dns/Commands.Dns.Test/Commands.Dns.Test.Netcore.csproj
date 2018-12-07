@@ -26,7 +26,7 @@
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
     <PackageReference Include="Microsoft.Azure.Management.Dns" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.6.2-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.7.0-preview" />
     <!-- <PackageReference Include="Moq" Version="4.2.1510.2205" /> -->
   </ItemGroup>
 

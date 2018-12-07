@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         public virtual string FileEndPoint { get; protected set; }
 
         /// <summary>
-        /// Self reference, it could enable New-AzureStorageContext can be used in pipeline 
+        /// Self reference, it could enable New-AzStorageContext can be used in pipeline 
         /// </summary>
         public IStorageContext Context { get; protected set; }
 
@@ -163,6 +163,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 if (account.Credentials.IsSAS)
                 {
                     StorageAccountName = "[SasToken]";
+                }
+                else if (account.Credentials.IsToken)
+                {
+                    StorageAccountName = "[AccessToken]";
                 }
                 else
                 {

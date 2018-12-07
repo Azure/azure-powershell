@@ -860,8 +860,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Message: For newly created vault download vault creds file and retry.
         ///Recommended Action: Install module AzureRm.RecoveryServices if not installed. And execute below cmdlets
-        ///$path = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $Vault
-        ///Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $path.filepath.
+        ///$path = Get-AzRecoveryServicesVaultSettingsFile -Vault $Vault
+        ///Import-AzRecoveryServicesAsrVaultSettingsFile -Path $path.filepath.
         /// </summary>
         internal static string TryDownloadingVaultFile {
             get {

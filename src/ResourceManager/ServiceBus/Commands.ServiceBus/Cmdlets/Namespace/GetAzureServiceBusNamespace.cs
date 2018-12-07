@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
     /// <summary>
-    /// 'Get-AzureRmServiceBusNamespace' Cmdlet gives the details of a / List of Servicebus Namespace(s)
+    /// 'Get-AzServiceBusNamespace' Cmdlet gives the details of a / List of Servicebus Namespace(s)
     /// <para> If Namespace name provided, a single Namespace detials will be returned</para>
     /// <para> If Namespace name not provided, list of Namespace will be returned</para>
     /// </summary>

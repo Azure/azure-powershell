@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                   upgradeMode: cluster.UpgradeMode,
                   clientCertificateThumbprints: cluster.ClientCertificateThumbprints,
                   clientCertificateCommonNames: cluster.ClientCertificateCommonNames,
+                  certificateCommonNames: cluster.CertificateCommonNames,
+                  reverseProxyCertificateCommonNames: cluster.ReverseProxyCertificateCommonNames,
                   fabricSettings: cluster.FabricSettings,
                   reverseProxyCertificate: cluster.ReverseProxyCertificate,
                   managementEndpoint: cluster.ManagementEndpoint,
@@ -50,7 +52,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                   vmImage: cluster.VmImage,
                   diagnosticsStorageAccountConfig: cluster.DiagnosticsStorageAccountConfig,
                   upgradeDescription: cluster.UpgradeDescription,
-                  azureActiveDirectory: cluster.AzureActiveDirectory
+                  azureActiveDirectory: cluster.AzureActiveDirectory,
+                  addOnFeatures: cluster.AddOnFeatures
                 )
         {
         }

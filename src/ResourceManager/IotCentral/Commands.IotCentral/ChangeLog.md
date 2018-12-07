@@ -18,6 +18,3 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 1.0.0
-* Preview Release
