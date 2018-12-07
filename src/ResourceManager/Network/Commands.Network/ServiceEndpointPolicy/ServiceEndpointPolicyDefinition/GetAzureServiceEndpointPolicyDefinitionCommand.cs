@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureServiceEndpointPolicyDefinitionCommand : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The name of the service endpoint policy definition")]
         public string Name { get; set; }
 

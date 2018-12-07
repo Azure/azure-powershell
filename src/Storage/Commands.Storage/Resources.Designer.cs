@@ -169,7 +169,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not get storage account  from subscription. Please check the subscription settings using &quot;Get-AzureSubscription&quot;..
+        ///   Looks up a localized string similar to Can not get storage account  from subscription. Please check the subscription settings using &quot;Get-AzSubscription&quot;..
         /// </summary>
         internal static string CannotGetSotrageAccountFromSubscription {
             get {
@@ -187,7 +187,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not upload the directory &apos;{0}&apos; to azure. If you want to upload directory, please use &quot;ls -File -Recurse | Set-AzureStorageBlobContent -Container containerName&quot;..
+        ///   Looks up a localized string similar to Can not upload the directory &apos;{0}&apos; to azure. If you want to upload directory, please use &quot;ls -File -Recurse | Set-AzStorageBlobContent -Container containerName&quot;..
         /// </summary>
         internal static string CannotSendDirectory {
             get {
@@ -421,7 +421,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current Storage Account not found in subscription &apos;{0}&apos;. Please set it use &quot;Set-AzureSubscription&quot;..
+        ///   Looks up a localized string similar to Current Storage Account not found in subscription &apos;{0}&apos;. Please set it use &quot;Set-AzSubscription&quot;..
         /// </summary>
         internal static string CurrentStorageAccountNameNotFound {
             get {
@@ -448,7 +448,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find your azure storage credential. Please set current storage account using &quot;Set-AzureSubscription&quot; or set the &quot;AZURE_STORAGE_CONNECTION_STRING&quot; environment variable..
+        ///   Looks up a localized string similar to Can not find your azure storage credential. Please set current storage account using &quot;Set-AzSubscription&quot; or set the &quot;AZURE_STORAGE_CONNECTION_STRING&quot; environment variable..
         /// </summary>
         internal static string DefaultStorageCredentialsNotFound {
             get {
@@ -646,7 +646,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get-AzureStorageContainerAcl.
+        ///   Looks up a localized string similar to Get-AzStorageContainerAcl.
         /// </summary>
         internal static string GetAzureStorageContainerAclCmdletName {
             get {
@@ -655,7 +655,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get-AzureStorageContainer.
+        ///   Looks up a localized string similar to Get-AzStorageContainer.
         /// </summary>
         internal static string GetAzureStorageContainerCmdletName {
             get {

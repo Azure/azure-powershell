@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "The user or group object id.")]
-        [ValidateGuidNotEmpty]
+        [ValidateNotNullOrEmpty]
         [Alias("Id", "PrincipalId")]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
             HelpMessage = "The user SignInName.")]
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Resources
                 {
                     UPN = SignInName,
                     SPN = ApplicationId,
-                    Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
+                    Id = ObjectId,
                 },
                 ResourceIdentifier = new ResourceIdentifier()
                 {
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = DefaultProfile.DefaultContext.Subscription.Id.ToString(),
+                    Subscription = DefaultProfile.DefaultContext.Subscription.Id,
                 },
                 CanDelegate = AllowDelegation.IsPresent ? true : false,
             };
