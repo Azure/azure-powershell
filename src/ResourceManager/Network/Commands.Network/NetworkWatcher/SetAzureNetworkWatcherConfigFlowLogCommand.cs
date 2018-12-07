@@ -165,7 +165,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Version of flow log format.")]
-        [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
         public int? FormatVersion { get; set; }
 
@@ -298,7 +297,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
-        public int? TrafficAnalyticsInterval { get; set; }
+        public int TrafficAnalyticsInterval { get; set; }
 
         public override void Execute()
         {
@@ -350,11 +349,21 @@ namespace Microsoft.Azure.Commands.Network
                         parameters.RetentionPolicy.Days = this.RetentionInDays;
                     }
 
-                    if (!string.IsNullOrWhiteSpace(this.FormatType) || this.FormatVersion != null)
+                    if (!string.IsNullOrWhiteSpace(this.FormatType) || this.FormatVersion == null)
                     {
                         parameters.Format = new MNM.FlowLogFormatParameters();
+
+                        if (!string.IsNullOrWhiteSpace(this.FormatType))
+                        {
+                            this.FormatType = "Json";
+                        }
+
                         parameters.Format.Type = this.FormatType;
-                        parameters.Format.Version = this.FormatVersion;
+
+                        if (this.FormatVersion == null)
+                        {
+                            parameters.Format.Version = 0;
+                        }
                     }
 
                     if (ParameterSetName.Contains(WithTA))
