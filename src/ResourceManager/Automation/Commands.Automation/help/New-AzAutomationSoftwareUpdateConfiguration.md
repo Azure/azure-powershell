@@ -57,8 +57,8 @@ New-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" `
                                                  -AutomationAccountName "myaccount" `
                                                  -Schedule $schedule `
                                                  -Windows `
-                                                 -AzVMResourceIds $targetMachines `
-                                                 -IncludedUpdateClassifications Critical `
+                                                 -AzVMResourceId $targetMachines `
+                                                 -IncludedUpdateClassification Critical `
                                                  -Duration $duration
 
 UpdateConfiguration   : Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration
