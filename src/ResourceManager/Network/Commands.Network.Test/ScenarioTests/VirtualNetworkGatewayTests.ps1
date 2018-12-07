@@ -206,10 +206,15 @@ param
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 	  Assert-AreEqual "200.168.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes
 
-	  $radiusCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
-      $vpnProfilePackageUrl = New-AzureRmVpnClientConfiguration -ResourceGroupName $rgname -name $rname -AuthenticationMethod $vpnclientAuthMethod -RadiusRootCertificateFile $radiusCertFilePath
-	  Write-Host $vpnProfilePackageUrl.VpnProfileSASUrl
-     }
+        $radiusCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
+        $vpnProfilePackageUrl = New-AzureRmVpnClientConfiguration -ResourceGroupName $rgname -name $rname -AuthenticationMethod $vpnclientAuthMethod -RadiusRootCertificateFile $radiusCertFilePath
+        Assert-NotNull $vpnProfilePackageUrl
+        Assert-NotNull $vpnProfilePackageUrl.VpnProfileSASUrl
+
+        $vpnProfilePackageUrl = Get-AzureRmVpnClientConfiguration -ResourceGroupName $rgname -name $rname
+        Assert-NotNull $vpnProfilePackageUrl
+        Assert-NotNull $vpnProfilePackageUrl.VpnProfileSASUrl
+    }
      finally
      {
         # Cleanup
