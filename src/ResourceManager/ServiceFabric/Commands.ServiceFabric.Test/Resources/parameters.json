@@ -6,7 +6,7 @@
       "value": "southcentralus"
     },
     "clusterName": {
-      "value": "azurermsfcluster2"
+      "value": "azurermsfclustertptest"
     },
     "adminUserName": {
       "value": "username"

@@ -22,10 +22,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSCluster),
-    DeprecatedOutputProperties = new String[] { "UpgradeDescription.DeltaHealthPolicy.ApplicationHealthPolicies", "UpgradeDescription.OverrideUserUpgradePolicy", "SerivceTypeHealthPolicies" })]
-#endif
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricClientCertificate", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricClientCertificate : ServiceFabricClientCertificateBase
     {

@@ -164,6 +164,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 {
                     StorageAccountName = "[SasToken]";
                 }
+                else if (account.Credentials.IsToken)
+                {
+                    StorageAccountName = "[AccessToken]";
+                }
                 else
                 {
                     StorageAccountName = "[Anonymous]";
