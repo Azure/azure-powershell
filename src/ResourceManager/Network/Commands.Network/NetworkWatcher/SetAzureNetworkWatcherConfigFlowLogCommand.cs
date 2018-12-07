@@ -353,14 +353,14 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         parameters.Format = new MNM.FlowLogFormatParameters();
 
-                        if (!string.IsNullOrWhiteSpace(this.FormatType))
+                        parameters.Format.Type = this.FormatType;
+                        if (string.IsNullOrWhiteSpace(parameters.Format.Type))
                         {
-                            this.FormatType = "Json";
+                            parameters.Format.Type = "Json";
                         }
 
-                        parameters.Format.Type = this.FormatType;
-
-                        if (this.FormatVersion == null)
+                        parameters.Format.Version = this.FormatVersion;
+                        if (parameters.Format.Version == null)
                         {
                             parameters.Format.Version = 0;
                         }
