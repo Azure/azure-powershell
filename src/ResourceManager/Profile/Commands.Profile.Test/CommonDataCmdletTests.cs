@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var tenantId = Guid.NewGuid();
             var subscriptionId = Guid.NewGuid();
-            var domain = "Contoso.com";
             var context = new PSAzureContext()
             {
                 Account = new PSAzureRmAccount
@@ -66,7 +65,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 },
                 Tenant = new PSAzureTenant
                 {
-                    Directory = domain,
                     Id = tenantId.ToString()
                 }
             };
@@ -148,7 +146,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                     Assert.True(string.IsNullOrEmpty(AzureSMProfileProvider.Instance.Profile.DefaultContext.GetCurrentStorageAccountName()));
                 });
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanClearStorageAccountForEmptyProfile()
