@@ -14,7 +14,7 @@ Gets the Storage resource usage of the current subscription.
 ## SYNTAX
 
 ```
-Get-AzStorageUsage [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzStorageUsage -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,15 +22,7 @@ The **Get-AzStorageUsage** cmdlet gets the resource usage for Azure Storage for 
 
 ## EXAMPLES
 
-### Example 1: Get the storage resources usage
-```
-PS C:\>Get-AzStorageUsage
-```
-
-This command gets the Storage resources usage of the current subscription.
- 
-
-### Example 2: Get the storage resources usage of specified location
+### Example 1: Get the storage resources usage of specified location
 ```
 PS C:\>Get-AzStorageUsage -Location 'West US'
 
@@ -69,7 +61,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

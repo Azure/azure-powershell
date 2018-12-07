@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -96,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "IpTag List.")]
-        public List<PSPublicIpTag> IpTag { get; set; }
+        public PSPublicIpTag[] IpTag { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -120,7 +121,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
             ValueFromPipelineByPropertyName = true)]
-            public List<string> Zone { get; set; }
+            public string[] Zone { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -160,7 +161,7 @@ namespace Microsoft.Azure.Commands.Network
             publicIp.Location = this.Location;
             publicIp.PublicIpAllocationMethod = this.AllocationMethod;
             publicIp.PublicIpAddressVersion = this.IpAddressVersion;
-            publicIp.Zones = this.Zone;
+            publicIp.Zones = this.Zone?.ToList();
             publicIp.PublicIpPrefix = this.PublicIpPrefix;
 
             if (!string.IsNullOrEmpty(this.Sku))
@@ -181,9 +182,9 @@ namespace Microsoft.Azure.Commands.Network
                 publicIp.DnsSettings.ReverseFqdn = this.ReverseFqdn;
             }
 
-            if (this.IpTag != null && this.IpTag.Count > 0)
+            if (this.IpTag != null && this.IpTag.Length > 0)
             {
-                publicIp.IpTags = this.IpTag;
+                publicIp.IpTags = this.IpTag?.ToList();
             }
 
             var publicIpModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPAddress>(publicIp);
