@@ -96,20 +96,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Settings\SessionSettings.cs" />
     <Compile Include="Interfaces\IStorageContext.cs" />
-    <Compile Include="Settings\ClientFactorySettings.cs" />
-    <Compile Include="Settings\AuthenticationFactorySettings.cs" />
-    <Compile Include="Settings\DataStorageSettings.cs" />
     <Compile Include="AzureEnvironment.cs" />
     <Compile Include="AzureTenant.cs" />
     <Compile Include="AzureSubscription.cs" />
     <Compile Include="AzureContext.cs" />
-    <Compile Include="Settings\ClientActionSettings.cs" />
     <Compile Include="Interfaces\IAzureContextContainer.cs" />
     <Compile Include="Interfaces\IStorageContextProvider.cs" />
-    <Compile Include="Settings\UserAgentSettings.cs" />
-    <Compile Include="Settings\HandlerSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\FileUtilities.cs" />
   </ItemGroup>

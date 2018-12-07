@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities
 
         private static string GetCommonTenant(IAzureAccount account)
         {
-            string result = AuthenticationFactorySettings.CommonAdTenant;
+            string result = AzureEnvironmentConstants.CommonAdTenant;
             if (account.IsPropertySet(AzureAccount.Property.Tenants))
             {
                 var candidate = account.GetTenants().FirstOrDefault();
