@@ -52,6 +52,7 @@
     <PublishDirectory>$(LibrarySourceFolder)\Publish</PublishDirectory>
     <Configuration Condition=" '$(Configuration)' != 'Release'">Debug</Configuration>
     <CodeSign Condition=" '$(CodeSign)' == '' ">false</CodeSign>
+    <CodeSignESRP>false</CodeSignESRP>
     <!--Set this true only if you want to test the code sign workflow locally-->
     <DelaySign Condition =" '$(DelaySign)' == '' ">false</DelaySign>
     <SignedOutputRootDir>$(LibraryRoot)signed</SignedOutputRootDir>
@@ -124,6 +125,7 @@
   <UsingTask Condition=" $(OnPremiseBuild) " TaskName="CodeSigningTask" AssemblyFile="$(CIToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <UsingTask Condition=" $(OnPremiseBuild) " TaskName="CorporateValidation" AssemblyFile="$(CIToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <Import Condition=" $(OnPremiseBuild) " Project="$(CIToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
+  <Import Project="CodeSignESRP.targets"/>
 
   <UsingTask
     AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runner.msbuild.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.runner.msbuild.dll"
@@ -277,6 +279,7 @@
           Condition="'$(CodeSign)' == 'false'"/>
 
     <CallTarget Targets="CodeSignBinaries" Condition="'$(CodeSign)' == 'true'" />
+    <CallTarget Targets="CodeSignBinariesESRP" Condition="'$(CodeSignESRP)' == 'true'" />
 
     <Exec ContinueOnError="false"
       Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration) &quot;"
@@ -507,6 +510,7 @@
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryRoot)\setup\generate.ps1 -repository MSIcreationrepository &quot; "/>
     <Exec Command="$(PowerShellCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot; "/>
     <CallTarget Targets="CodeSignInstaller" Condition=" '$(CodeSign)' == 'true'" />
+    <CallTarget Targets="CodeSignInstallerESRP" Condition=" '$(CodeSignESRP)' == 'true'" />
   </Target>
 
   <Target Name="CodeSignInstaller">
