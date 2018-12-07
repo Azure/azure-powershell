@@ -13,8 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithPassword, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]
         [Alias("ServicePrincipalObjectId")]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithCertValue, HelpMessage = "The servicePrincipal name.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithPassword, HelpMessage = "The servicePrincipal name.")]
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         KeyId = Guid.NewGuid().ToString(),
                         Value = decodedPassword
                     };
-                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateSpPasswordCredential(ObjectId, passwordCredential));
                     }
@@ -131,7 +130,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         Usage = "Verify"
                     };
 
-                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new caertificate to service principal with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new caertificate to service principal with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateSpKeyCredential(ObjectId, keyCredential));
                     }
@@ -150,7 +149,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         KeyId = Guid.NewGuid().ToString(),
                         Value = decodedPassword
                     };
-                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
                     {
                         var spCred = new PSADCredentialWrapper(ActiveDirectoryClient.CreateSpPasswordCredential(ObjectId, passwordCredential));
                         spCred.Secret = Password;

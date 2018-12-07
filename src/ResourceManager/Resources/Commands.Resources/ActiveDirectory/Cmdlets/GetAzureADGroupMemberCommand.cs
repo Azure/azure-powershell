@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "Object Id of the group.")]
         [ValidateNotNullOrEmpty]
         [Alias("Id", "ObjectId")]
-        public Guid GroupObjectId { get; set; }
+        public string GroupObjectId { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The display name of the group.")]
         [ValidateNotNullOrEmpty]
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 ADObjectFilterOptions options = new ADObjectFilterOptions
                 {
-                    Id = GroupObjectId == Guid.Empty ? null : GroupObjectId.ToString(),
+                    Id = GroupObjectId,
                     Paging = true
                 };
 
