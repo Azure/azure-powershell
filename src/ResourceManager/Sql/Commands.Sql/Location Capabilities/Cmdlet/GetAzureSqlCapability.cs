@@ -23,7 +23,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlCapability cmdlet
+    /// Defines the Get-AzSqlCapability cmdlet
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlCapability",ConfirmImpact = ConfirmImpact.None,DefaultParameterSetName = _filtered, SupportsShouldProcess = true)]
     [OutputType(typeof(LocationCapabilityModel))]

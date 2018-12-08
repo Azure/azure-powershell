@@ -177,3 +177,4 @@ The following guidelines must be followed in pull requests that make changes to 
 - No parameter is of type `object`
 - Each management cmdlet should have a parameter set that takes `ResourceGroupName` and `Name` from the pipeline by property value
 - For a given resource type, it should be possible to pipe the output of `Get` and `New` cmdlets to the input of `Set`, `Update`, `Remove` and other action cmdlets for that resource
+- More information can be found [here](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/piping-in-powershell.md)

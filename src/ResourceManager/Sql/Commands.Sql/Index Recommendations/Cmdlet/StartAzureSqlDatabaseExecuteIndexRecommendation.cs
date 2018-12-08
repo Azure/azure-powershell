@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Cmdlet
 {
     /// <summary>
-    /// Defines the Start-AzureRmSqlDatabaseExecuteIndexRecommendation cmdlet
+    /// Defines the Start-AzSqlDatabaseExecuteIndexRecommendation cmdlet
     /// </summary>
     [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseExecuteIndexRecommendation",ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(IndexRecommendation))]
     public class StartAzureSqlDatabaseExecuteIndexRecommendation : AzureSqlDatabaseExecuteIndexRecommendationCmdletBase

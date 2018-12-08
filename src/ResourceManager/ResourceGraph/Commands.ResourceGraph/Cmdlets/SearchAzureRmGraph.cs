@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     using Microsoft.Azure.Management.ResourceGraph.Models;
 
     /// <summary>
-    /// Search-AzureRmGraph cmdlet
+    /// Search-AzGraph cmdlet
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.ResourceGraph.Utilities.ResourceGraphBaseCmdlet" />
     [Cmdlet(VerbsCommon.Search, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Graph"), OutputType(typeof(PSObject))]

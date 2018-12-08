@@ -38,9 +38,4 @@ after_success:
 
     docker push $DOCKER_USER/$NAME:$TRAVIS_COMMIT;
     docker push $DOCKER_USER/$NAME:$TRAVIS_BRANCH;
-
-    if [ "$TRAVIS_BRANCH" == "master" ]; then
-     docker tag $DOCKER_USER/$NAME:$TRAVIS_COMMIT $DOCKER_USER/$NAME:latest;
-     docker push $DOCKER_USER/$NAME:latest;
-    fi;
    fi

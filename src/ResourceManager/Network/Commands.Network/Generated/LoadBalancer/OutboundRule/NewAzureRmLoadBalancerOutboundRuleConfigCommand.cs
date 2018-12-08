@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The Frontend IP addresses of the load balancer.",
             ValueFromPipelineByPropertyName = true)]
-        public List<PSResourceId> FrontendIpConfiguration { get; set; }
+        public PSResourceId[] FrontendIpConfiguration { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -109,10 +109,10 @@ namespace Microsoft.Azure.Commands.Network
             vOutboundRules.EnableTcpReset = this.EnableTcpReset;
             vOutboundRules.IdleTimeoutInMinutes = this.MyInvocation.BoundParameters.ContainsKey("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : 4;
             vOutboundRules.Name = this.Name;
-            if(this.FrontendIpConfiguration != null && this.FrontendIpConfiguration.Count > 0)
+            if(this.FrontendIpConfiguration?.ToList() != null && this.FrontendIpConfiguration?.ToList().Count > 0)
             {
                 vOutboundRules.FrontendIpConfigurations = new List<PSResourceId>();
-                foreach (var resource in this.FrontendIpConfiguration)
+                foreach (var resource in this.FrontendIpConfiguration?.ToList())
                 {
                     vOutboundRules.FrontendIpConfigurations.Add(
                         new PSResourceId()
