@@ -53,48 +53,28 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithIdentities");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Command parameter not available in NetStandard")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestContainerInstanceLog()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerInstanceLog");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Command parameter not available in NetStandard")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateContainerGroupWithVolume()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithVolume");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Command parameter not available in NetStandard")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateContainerGroupWithVolumeAndIdentity()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithVolumeAndIdentity");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Command parameter not available in NetStandard")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateContainerGroupWithVolumeAndIdentities()
         {
