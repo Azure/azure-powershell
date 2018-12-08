@@ -213,7 +213,6 @@
     <Compile Include="Models\PSAvailabilitySet.cs" />
     <Compile Include="Models\PSVirtualMachineImageResource.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
-    <Compile Include="Models\PSVirtualMachineIdentity.cs" />
     <Compile Include="Models\PSVirtualMachineList.cs" />
     <Compile Include="Models\PSVirtualMachineListStatus.cs" />
     <Compile Include="Models\PSVirtualMachineScaleSetExtension.cs" />

@@ -31,6 +31,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public int? DiskSizeGB { get; set; }
         public EncryptionSettings EncryptionSettings { get; set; }
         public IDictionary<string, string> Tags { get; set; }
-        //public SnapshotSku Sku { get; set; }
+        public SnapshotSku Sku { get; set; }
     }
 }

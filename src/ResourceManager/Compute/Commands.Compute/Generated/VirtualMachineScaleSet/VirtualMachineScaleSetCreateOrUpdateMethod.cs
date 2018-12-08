@@ -33,12 +33,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSUpgradePolicy),
-        DeprecatedOutputProperties = new string[] { "AutomaticOSUpgrade", "AutoOSUpgradePolicy" })]
-    [CmdletOutputBreakingChange(typeof(PSVirtualMachineScaleSetIdentity),
-        DeprecatedOutputProperties = new string[] { "IdentityIds" })]
-#endif
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
