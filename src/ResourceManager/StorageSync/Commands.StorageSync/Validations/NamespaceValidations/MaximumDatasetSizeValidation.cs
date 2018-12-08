@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                 {
                     Result = Result.Fail,
                     Type = this.ValidationType,
+                    Kind = this.ValidationKind,
                     Level = ResultLevel.Error,
                     Description = $"The dataset is too big. Maximum dataset size is {this._maxDataSetSize}.",
                     Path = namespaceInfo.Path 
