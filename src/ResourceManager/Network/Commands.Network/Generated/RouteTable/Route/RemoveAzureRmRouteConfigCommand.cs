@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(this.RouteTable);
                 return;
             }
-            var vRoutes = this.RouteTable.Routes.First
+            var vRoutes = this.RouteTable.Routes.SingleOrDefault
                 (e =>
-                    (this.Name != null && e.Name == this.Name)
+                    string.Equals(e.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)
                 );
 
             if (vRoutes != null)

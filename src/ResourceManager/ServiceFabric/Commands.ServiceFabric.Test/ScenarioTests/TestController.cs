@@ -24,6 +24,7 @@ using System.Linq;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
+using Microsoft.Azure.Commands.ServiceFabric.Commands;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -115,6 +116,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
                 }
                 finally
                 {
+                    ServiceFabricCmdletBase.TestAppCert = false;
                     cleanup?.Invoke();
                 }
             }

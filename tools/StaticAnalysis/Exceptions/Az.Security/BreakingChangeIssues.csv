@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.Commands.Batch.dll","Microsoft.Azure.Commands.Batch.GetBatchTaskCountsCommand","Get-AzBatchTaskCounts","0","3010","The property 'ValidationStatus' of type 'Microsoft.Azure.Commands.Batch.Models.PSTaskCounts' has been removed.","Add the property 'ValidationStatus' back to type 'Microsoft.Azure.Commands.Batch.Models.PSTaskCounts'."

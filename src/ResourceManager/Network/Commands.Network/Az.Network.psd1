@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.6.0'
+ModuleVersion = '0.7.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.6.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Network.dll'
@@ -147,6 +147,14 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'New-AzApplicationGatewayRequestRoutingRule', 
     'Remove-AzApplicationGatewayRequestRoutingRule', 
     'Set-AzApplicationGatewayRequestRoutingRule', 
+    'Add-AzApplicationGatewayRewriteRuleSet',
+    'Get-AzApplicationGatewayRewriteRuleSet',
+    'New-AzApplicationGatewayRewriteRuleSet',
+    'Remove-AzApplicationGatewayRewriteRuleSet',
+    'Set-AzApplicationGatewayRewriteRuleSet',
+    'New-AzApplicationGatewayRewriteRule',
+    'New-AzApplicationGatewayRewriteRuleActionSet',
+    'New-AzApplicationGatewayRewriteRuleHeaderConfiguration',
     'Add-AzApplicationGatewayRedirectConfiguration', 
     'Get-AzApplicationGatewayRedirectConfiguration', 
     'New-AzApplicationGatewayRedirectConfiguration', 

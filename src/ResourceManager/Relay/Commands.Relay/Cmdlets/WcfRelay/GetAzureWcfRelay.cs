@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
 {
     /// <summary>
-    /// 'Get-AzureRmWcfRelay' Cmdlet gives the details of a / List of WcfRelay(s)
+    /// 'Get-AzWcfRelay' Cmdlet gives the details of a / List of WcfRelay(s)
     /// <para> If WcfRelay name provided, a single WcfRelay detials will be returned</para>
     /// <para> If WcfRelay name not provided, list of WcfRelay will be returned</para>
     /// </summary>

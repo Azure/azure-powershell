@@ -952,6 +952,50 @@
     {
       "file": "src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
       "_justification": "Sample certificate only used in tests"
-    }
+    },
+    {
+      "file": "src\\ResourceManager\\Resources\\Commands.Resources\\ActiveDirectory\\Models\\ParameterSet.cs",
+      "_justification": "Flagged secrets are names of parameter sets."
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdateApplicationPackage.json",
+      "hash": "7h1ZK3B30ya9x6svYsY3oaw3Je4LbyRpfSI/5qclGXM=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdateApplicationPackage.json",
+      "hash": "b3IzFl8cz1vV/KM+AGc0K0gx+2DWAGQpn3D9WWEuhTQ=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestCreatePoolWithApplicationPackage.json",
+      "hash": "vs94ueh47ZpMVtcUc7DB198Pd1mzjmjIco3n8eFkCCc=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestCreatePoolWithApplicationPackage.json",
+      "hash": "LiJDVOUTh4oKiEX0lxrrlRX+W6XwSu+ghid0WgeU/mo=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUploadApplicationPackage.json",
+      "hash": "N6I3bzY5IuAF72bjVLz9I1aI3VRzwkUGW7EgBvgw7u0=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUploadApplicationPackage.json",
+      "hash": "N6I3bzY5IuAF72bjVLz9I1aI3VRzwkUGW7EgBvgw7u0=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdatePoolWithApplicationPackage.json",
+      "hash": "JrpBaBulKXHy4+GiNC9bcdEgs0IyteZBrol/WgUQV/c=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdatePoolWithApplicationPackage.json",
+      "hash": "SB0xdyGO1L0ed4yxyqzld6xXQfTuM3czfp05Si3bAzw=",
+      "_justification": "Expired test session storage SAS"
+    },
   ]
 }
