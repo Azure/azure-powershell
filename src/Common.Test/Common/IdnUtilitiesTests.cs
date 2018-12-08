@@ -14,7 +14,7 @@
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.ServiceManagement.Common.Models;
 using Xunit;
 using Xunit.Abstractions;
 

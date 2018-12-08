@@ -27,7 +27,7 @@ using System.Linq;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Microsoft.Azure.ServiceManagemenet.Common
+namespace Microsoft.Azure.ServiceManagement.Common
 {
     /// <summary>
     /// Convenience client for azure profile and subscriptions.

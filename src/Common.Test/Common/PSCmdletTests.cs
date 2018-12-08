@@ -29,7 +29,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using System.Net.Http;
 using Xunit.Abstractions;
-using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.ServiceManagement.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
