@@ -959,7 +959,15 @@ function Test-NetworkInterfaceTapConfigurationCRUD
         Assert-NotNull $vVirtualNetworkTap.NetworkInterfaceTapConfigurations[0]
         Assert-AreEqual $vVirtualNetworkTap.NetworkInterfaceTapConfigurations[0].Id $tapConfig.Id
 
-   
+        # set tap configuration
+        $job = Set-AzureRmNetworkInterfaceTapConfig -NetworkInterfaceTapConfig $tapConfig -AsJob -Force
+        $job | Wait-Job
+        $tapConfig = $job | Receive-Job
+        Assert-NotNull $tapConfig
+        Assert-AreEqual $tapConfig.ResourceGroupName $rgname
+        Assert-AreEqual $tapConfig.NetworkInterfaceName $sourceNicName
+        Assert-AreEqual $tapConfig.Name $rname
+
         # Remove NetworkInterfaceTapConfiguration
         $removeNetworkInterfaceTapConfiguration = Remove-AzureRmNetworkInterfaceTapConfig -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName -Name $rname -PassThru -Force;
         Assert-AreEqual $true $removeNetworkInterfaceTapConfiguration;
