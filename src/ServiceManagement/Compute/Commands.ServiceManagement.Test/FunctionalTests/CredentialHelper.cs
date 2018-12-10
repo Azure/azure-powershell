@@ -14,7 +14,6 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.Properties;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
@@ -279,13 +278,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             try
             {
                 vmPowershellCmdlets.RunPSScript(String.Format("{0}-{1} -Name {2}",
-                    VerbsCommon.Get, StorageNouns.Container, destContainer));
+                    VerbsCommon.Get, "AzureStorageContainer", destContainer));
             }
             catch
             {
                 // Create a container.
                 vmPowershellCmdlets.RunPSScript(String.Format("{0}-{1} -Name {2}",
-                    VerbsCommon.New, StorageNouns.Container, destContainer));
+                    VerbsCommon.New, "AzureStorageContainer", destContainer));
             }
 
             // Make SAS Uri for the source blob.
@@ -294,13 +293,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             if (string.IsNullOrEmpty(destBlob))
             {
                 vmPowershellCmdlets.RunPSScript(string.Format("{0}-{1} -SrcContainer {2} -SrcBlob {3} -DestContainer {4} -Force",
-                    VerbsLifecycle.Start, StorageNouns.CopyBlob, srcContainer, srcBlob, destContainer));
+                    VerbsLifecycle.Start, "AzureStorageBlobCopy", srcContainer, srcBlob, destContainer));
                 destBlob = srcBlob;
             }
             else
             {
                 vmPowershellCmdlets.RunPSScript(string.Format("{0}-{1} -SrcUri \"{2}\" -DestContainer {3} -DestBlob {4} -Force",
-                    VerbsLifecycle.Start, StorageNouns.CopyBlob, srcSasUri, destContainer, destBlob));
+                    VerbsLifecycle.Start, "AzureStorageBlobCopy", srcSasUri, destContainer, destBlob));
             }
 
             for (int i = 0; i < 60; i++)

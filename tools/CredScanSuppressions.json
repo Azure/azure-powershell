@@ -954,6 +954,10 @@
       "_justification": "Sample certificate only used in tests"
     },
     {
+      "file": "src\\ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\UnitTests\\UnitTestHelper.cs",
+      "_justification": "Mocked test credentials"
+    },
+    {
       "file": "src\\ResourceManager\\Resources\\Commands.Resources\\ActiveDirectory\\Models\\ParameterSet.cs",
       "_justification": "Flagged secrets are names of parameter sets."
     },
@@ -996,6 +1000,6 @@
       "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdatePoolWithApplicationPackage.json",
       "hash": "SB0xdyGO1L0ed4yxyqzld6xXQfTuM3czfp05Si3bAzw=",
       "_justification": "Expired test session storage SAS"
-    },
+    }
   ]
 }
