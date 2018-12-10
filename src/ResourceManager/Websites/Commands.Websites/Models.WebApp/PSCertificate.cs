@@ -41,8 +41,5 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
         {
 
         }
-
-        [CmdletParameterBreakingChange("GeoRegion", ChangeDescription = "This property is deprecated and will be removed in a future releases.")]
-        public string GeoRegion { get; set; }
     }
 }
