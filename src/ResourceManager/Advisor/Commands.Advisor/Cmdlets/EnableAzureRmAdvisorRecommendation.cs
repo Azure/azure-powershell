@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             {
                 case IdParameterSet:
                     resourceUri = RecommendationHelper.GetFullResourceUriFromResoureID(this.ResourceId);
-                    recommendationId = RecommendationHelper.GetRecommendationIdfromResoureID(this.ResourceId);
+                    recommendationId = RecommendationHelper.GetRecommendationIdFromResoureID(this.ResourceId);
 
                     responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, recommendationId));
                     break;
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 case InputObjectParameterSet:
                     // Parse out the Subscription-ID, Recommendation-ID from the ResourceId parameter.
                     resourceUri = RecommendationHelper.GetFullResourceUriFromResoureID(this.InputObject.Id);
-                    recommendationId = RecommendationHelper.GetRecommendationIdfromResoureID(this.InputObject.Id);
+                    recommendationId = RecommendationHelper.GetRecommendationIdFromResoureID(this.InputObject.Id);
 
                     responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, recommendationId));
                     break;

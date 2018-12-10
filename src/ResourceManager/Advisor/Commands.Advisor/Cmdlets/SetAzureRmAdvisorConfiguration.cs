@@ -21,23 +21,23 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     using Advisor.Utilities;
     using Microsoft.Azure.Management.Advisor.Models;
     using Microsoft.Rest.Azure;
-    using System;
+    using Management.Internal.Resources.Utilities.Models;
 
     /// <summary>
     /// Set-AzureRmAdvisorConfiguration cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorConfiguration", DefaultParameterSetName = LowCpuAndExcludeParameterSet), OutputType(typeof(List<PsAzureAdvisorConfigurationData>))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorConfiguration", DefaultParameterSetName = InputObjectLowCpuExcludeParameterSet), OutputType(typeof(List<PsAzureAdvisorConfigurationData>))]
     public class SetAzureRmAdvisorConfiguration : ResourceAdvisorBaseCmdlet
     {
-        /// <summary>
-        /// Constant for LowCpuAndExcludeParameterSet
-        /// </summary>
-        public const string LowCpuAndExcludeParameterSet = "LowCpuAndExcludeParameterSet";
+        ///// <summary>
+        ///// Constant for LowCpuAndExcludeParameterSet
+        ///// </summary>
+        //public const string LowCpuAndExcludeParameterSet = "LowCpuAndExcludeParameterSet";
 
-        /// <summary>
-        /// Constant for RgAndExcludeParameterSet
-        /// </summary>
-        public const string RgAndExcludeParameterSet = "RgAndExcludeParameterSet";
+        ///// <summary>
+        ///// Constant for RgAndExcludeParameterSet
+        ///// </summary>
+        //public const string RgAndExcludeParameterSet = "RgAndExcludeParameterSet";
 
         /// <summary>
         /// Constant for InputObjectLowCpuExcludeParameterSet
@@ -52,8 +52,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Exclude.
         /// </summary>s
-        [Parameter(ParameterSetName = LowCpuAndExcludeParameterSet, Mandatory = false, HelpMessage = "Exclude from the recommendation generation.")]
-        [Parameter(ParameterSetName = RgAndExcludeParameterSet, Mandatory = false, HelpMessage = "Exclude from the recommendation generation.")]
         [Parameter(ParameterSetName = InputObjectLowCpuExcludeParameterSet, Mandatory = false, HelpMessage = "Exclude from the recommendation generation.")]
         [Parameter(ParameterSetName = InputObjectRgExcludeParameterSet, Mandatory = false, HelpMessage = "Exclude from the recommendation generation.")]
         [ValidateNotNullOrEmpty]
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the LowCpuThreshold.
         /// </summary>s
-        [Parameter(ParameterSetName = LowCpuAndExcludeParameterSet, Mandatory = true, HelpMessage = "Value for Low Cpu threshold.")]
         [Parameter(ParameterSetName = InputObjectLowCpuExcludeParameterSet, Mandatory = true, HelpMessage = "Value for Low Cpu threshold.")]
         [Alias("LowCpu")]
         [ValidateSet("0", "5", "10", "15", "20")]
@@ -72,7 +69,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the include.
         /// </summary>
-        [Parameter(ParameterSetName = RgAndExcludeParameterSet, Mandatory = true, HelpMessage = "Resource Group name for the configuration.")]
         [Parameter(ParameterSetName = InputObjectRgExcludeParameterSet, Mandatory = false, HelpMessage = "Resource Group name for the configuration.")]
         [Alias("Rg", "ResoureGroup")]
         public string ResourceGroupName { get; set; }
@@ -80,8 +76,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Object passed on from the pipeline
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = InputObjectLowCpuExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = InputObjectRgExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = InputObjectLowCpuExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = InputObjectRgExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
         [ValidateNotNullOrEmpty]
         public PsAzureAdvisorConfigurationData InputObject { get; set; }
 
@@ -198,40 +194,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
             switch (this.ParameterSetName)
             {
-                case LowCpuAndExcludeParameterSet:
-                    if (Exclude)
-                    {
-                        configDataProperties.Exclude = true;
-                    }
-                    else
-                    {
-                        PsAzureAdvisorConfigurationData configurationData = this.GetConfigurationDataForCurrentSubscription();
-                        configDataProperties.Exclude = configurationData.Properties.Exclude;
-                    }
-
-                    configDataProperties.LowCpuThreshold = this.LowCpuThreshold;
-                    configData.Properties = configDataProperties;
-
-                    results = this.CreateConfigurationBySubscription(configData);
-                    break;
-
-                case RgAndExcludeParameterSet:
-                    if (Exclude)
-                    {
-                        configDataProperties.Exclude = true;
-                    }
-                    else
-                    {
-                        // Get the exisiting configrationData for the resource-group and assign the exclude property to preserve existing data.
-                        PsAzureAdvisorConfigurationData configurationData = this.GetConfigurationDataForResourceGroup(this.ResourceGroupName);
-                        configDataProperties.Exclude = configurationData.Properties.Exclude;
-                    }
-
-                    configData.Properties = configDataProperties;
-
-                    results = this.CreateConfigurationByResourceGroup(configData, this.ResourceGroupName);
-                    break;
-
                 case InputObjectLowCpuExcludeParameterSet:
                     if (Exclude)
                     {
@@ -246,12 +208,19 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     configDataProperties.LowCpuThreshold = this.LowCpuThreshold;
                     configData.Properties = configDataProperties;
 
-                    isSubsCriptionTypeConfiguration = SuppressionHelper.IsConfigurationSubscriptionLevel(this.InputObject);
-                    if (isSubsCriptionTypeConfiguration)
+                    // InputObject is not null, this is a piping scenario.
+                    if (this.InputObject != null)
+                    {
+                        isSubsCriptionTypeConfiguration = SuppressionHelper.IsConfigurationSubscriptionLevel(this.InputObject);
+                        if (isSubsCriptionTypeConfiguration)
+                        {
+                            results = this.CreateConfigurationBySubscription(configData);
+                        }
+                    }
+                    else
                     {
                         results = this.CreateConfigurationBySubscription(configData);
                     }
-
                     break;
 
                 case InputObjectRgExcludeParameterSet:
@@ -268,13 +237,19 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
                     configData.Properties = configDataProperties;
 
-                    isResourceGroupTypeConfiguration = SuppressionHelper.IsConfigurationResourceGroupLevel(this.InputObject);
-
-                    if (isResourceGroupTypeConfiguration)
+                    // InputObject is not null, this is a piping scenario.
+                    if (this.InputObject != null)
                     {
-                        results = this.CreateConfigurationByResourceGroup(configData, RecommendationHelper.GetResourceGroupfromResoureID(this.InputObject.Id));
+                        isResourceGroupTypeConfiguration = SuppressionHelper.IsConfigurationResourceGroupLevel(this.InputObject);
+                        if (isResourceGroupTypeConfiguration)
+                        {
+                            results = this.CreateConfigurationByResourceGroup(configData, RecommendationHelper.GetResourceGroupfromResoureID(this.InputObject.Id));
+                        }
                     }
-
+                    else
+                    {
+                        results = this.CreateConfigurationByResourceGroup(configData, this.ResourceGroupName);
+                    }
                     break;
             }
 
