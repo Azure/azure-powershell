@@ -16,7 +16,7 @@ Encrypts sensitive data.
 ### ByFactoryName (Default)
 ```
 New-AzDataFactoryEncryptValue [-DataFactoryName] <String> [[-Value] <SecureString>]
- [[-GatewayName] <String>] [[-Credential] <PSCredential>] [[-Type] <String>] [[-NonCredentialValue] <String>]
+ [-GatewayName] <String> [[-Credential] <PSCredential>] [[-Type] <String>] [[-NonCredentialValue] <String>]
  [[-AuthenticationType] <String>] [[-Server] <String>] [[-Database] <String>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -24,7 +24,7 @@ New-AzDataFactoryEncryptValue [-DataFactoryName] <String> [[-Value] <SecureStrin
 ### ByFactoryObject
 ```
 New-AzDataFactoryEncryptValue [-DataFactory] <PSDataFactory> [[-Value] <SecureString>]
- [[-GatewayName] <String>] [[-Credential] <PSCredential>] [[-Type] <String>] [[-NonCredentialValue] <String>]
+ [-GatewayName] <String> [[-Credential] <PSCredential>] [[-Type] <String>] [[-NonCredentialValue] <String>]
  [[-AuthenticationType] <String>] [[-Server] <String>] [[-Database] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -199,7 +199,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: False
