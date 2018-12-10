@@ -28,9 +28,6 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSVirtualMachineIdentity), DeprecatedOutputProperties = new string[] { "IdentityIds" })]
-#endif
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = ListAllVirtualMachinesParamSet)]
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
