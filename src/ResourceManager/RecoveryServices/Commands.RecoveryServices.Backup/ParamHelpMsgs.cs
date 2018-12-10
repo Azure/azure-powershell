@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         internal static class RestoreVM
         {
-            public const string TargetResourceGroupName = "The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks";
+            public const string TargetResourceGroupName = "The resource group to which the managed disks are restored. This parameter is mandatory for backup of VM with managed disks";
             public const string OsaOption = "Use this switch if the disks from the recovery point are to be restored to their original storage accounts";
         }
 
