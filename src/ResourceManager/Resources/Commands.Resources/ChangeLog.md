@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Remove -Sku parameter from New/Set-AzPolicyAssignment
