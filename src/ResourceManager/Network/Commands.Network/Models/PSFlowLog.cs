@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSRetentionPolicyParameters RetentionPolicy { get; set; }
 
+        public PSFlowLogFormatParameters Format { get; set; }
+
         public string StorageId { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -38,6 +40,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RetentionPolicyText
         {
             get { return JsonConvert.SerializeObject(RetentionPolicy, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string FormatText
+        {
+            get { return JsonConvert.SerializeObject(Format, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
