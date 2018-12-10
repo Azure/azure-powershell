@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
             circuitconnection.AddressPrefix = this.AddressPrefix;
 
             var peering =
-                    this.ExpressRouteCircuit.Peerings.First(
+                    this.ExpressRouteCircuit.Peerings.SingleOrDefault(
                         resource =>
                             string.Equals(resource.Name, "AzurePrivatePeering", System.StringComparison.CurrentCultureIgnoreCase));
 
