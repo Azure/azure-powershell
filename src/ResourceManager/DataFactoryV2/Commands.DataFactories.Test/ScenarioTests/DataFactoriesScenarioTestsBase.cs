@@ -24,7 +24,7 @@ using System.IO;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {

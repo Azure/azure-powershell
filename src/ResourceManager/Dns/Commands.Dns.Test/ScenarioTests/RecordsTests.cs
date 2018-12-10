@@ -17,7 +17,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using System.Diagnostics;
 
     public class RecordsTests : DnsTestsBase

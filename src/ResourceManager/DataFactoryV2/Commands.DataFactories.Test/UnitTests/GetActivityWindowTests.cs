@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 
         public GetActivityWindowTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            Azure.ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             this.expectedDf = new List<PSActivityWindow>();

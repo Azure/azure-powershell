@@ -27,7 +27,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Commands.Network.Test

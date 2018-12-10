@@ -25,7 +25,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
 
     public class ApiManagementTests : RMTestBase

@@ -19,7 +19,7 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;

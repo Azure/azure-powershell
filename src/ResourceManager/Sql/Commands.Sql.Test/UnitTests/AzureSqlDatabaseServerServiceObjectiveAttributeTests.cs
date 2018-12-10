@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet;
 using Microsoft.Azure.Commands.Sql.Test.Utilities;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using Xunit;

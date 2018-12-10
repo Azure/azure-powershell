@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
     {
         public PsApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
         }
     }
 }

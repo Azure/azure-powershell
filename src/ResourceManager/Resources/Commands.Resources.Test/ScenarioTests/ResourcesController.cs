@@ -29,7 +29,7 @@ using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
