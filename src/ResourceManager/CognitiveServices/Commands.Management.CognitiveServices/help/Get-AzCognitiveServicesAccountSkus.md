@@ -71,36 +71,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the account.
-
-```yaml
-Type: System.String
-Parameter Sets: GetSkusWithAccount
-Aliases: CognitiveServicesAccountName, AccountName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group the account is assigned to.
-
-```yaml
-Type: System.String
-Parameter Sets: GetSkusWithAccount
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Type
 Cognitive Services Account Type.
 
