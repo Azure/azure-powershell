@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
                     foreach (string resourceId in resourceIDList)
                     {
-                        string recommendationId = RecommendationHelper.GetRecommendationIdfromResoureID(resourceId);
+                        string recommendationId = RecommendationHelper.GetRecommendationIdFromResoureID(resourceId);
 
                         recommendation = this.ResourcAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourcAdvisorClient.SubscriptionId, recommendationId).Result;
                         results.Add(PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(recommendation.Body));

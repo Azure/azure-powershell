@@ -26,6 +26,26 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
     public static class RecommendationHelper
     {
         /// <summary>
+        /// Position of resource-group string in resource ID
+        /// </summary>
+        private const int RESOURCEGROUP_STRING_POSITION = 3;
+
+        /// <summary>
+        /// Position of resource-group value in resource ID
+        /// </summary>
+        private const int RESOURCEGROUP_VALUE_POSITION = 4;
+
+        /// <summary>
+        /// Position of recommendation-Id string in resource ID
+        /// </summary>
+        private const int RECOMMENDAION_STRING_POSITION = 11;
+
+        /// <summary>
+        /// Position of recommendation-Id value in resource ID
+        /// </summary>
+        private const int RECOMMENDAION_VALUE_POSITION = 12;
+
+        /// <summary>
         /// Filter recommendations by given category and resourceGroup name.
         /// </summary>
         /// <param name="recListTobeFiltered">List to be filtered</param>
@@ -44,7 +64,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
             // Filter by category only if its a valid input
             if (Category.Cost.Equals(category) || Category.HighAvailability.Equals(category) || Category.Performance.Equals(category) || Category.Security.Equals(category))
             {
-                if (!string.IsNullOrEmpty(category) && !string.IsNullOrEmpty(resourceGroup))
+                // If resourceGroup filtering is as well specified 
+                if (!string.IsNullOrEmpty(resourceGroup))
                 {
                     foreach (PsAzureAdvisorResourceRecommendationBase entry in recListTobeFiltered)
                     {
@@ -54,7 +75,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
                         }
                     }
                 }
-                else if (!string.IsNullOrEmpty(category))
+                else
                 {
                     foreach (PsAzureAdvisorResourceRecommendationBase entry in recListTobeFiltered)
                     {
@@ -122,36 +143,14 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// </summary>
         /// <param name="resourceID">ResourceId of recommendation</param>
         /// <returns>SubscriptionId as string</returns>
-        public static string GetSubscriptionIdfromResoureID(string resourceID)
-        {
-            string subscriptionID = string.Empty;
-
-            if (resourceID.Contains("subscriptions/") && !resourceID.Contains("resourceGroups/"))
-            {
-                int startIndex = resourceID.IndexOf("configurations/") + 16;
-
-                subscriptionID = resourceID.Substring(startIndex);
-            }
-
-            return subscriptionID;
-        }
-
-        /// <summary>
-        /// Parse the subscriptionId from the resourceId.
-        /// </summary>
-        /// <param name="resourceID">ResourceId of recommendation</param>
-        /// <returns>SubscriptionId as string</returns>
         public static string GetResourceGroupfromResoureID(string resourceID)
         {
             string resourceGroup = string.Empty;
+            string[] resourceIdSplit = resourceID.Split('/');
 
-            if (resourceID.Contains("resourceGroups/"))
+            if (resourceIdSplit[RESOURCEGROUP_STRING_POSITION].Equals("resourceGroups"))
             {
-                int startIndex = resourceID.IndexOf("resourceGroups/") + 15;
-                int endIndex = resourceID.IndexOf("providers/Microsoft.Advisor") - 2;
-
-                int cutLength = endIndex - startIndex + 1;
-                resourceGroup = resourceID.Substring(startIndex, cutLength);
+                resourceGroup = resourceIdSplit[RESOURCEGROUP_VALUE_POSITION];
             }
 
             return resourceGroup;
@@ -180,14 +179,14 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// </summary>
         /// <param name="resourceID">ResourceId of recommendation</param>
         /// <returns>RecommendationId as string</returns>
-        public static string GetRecommendationIdfromResoureID(string resourceID)
+        public static string GetRecommendationIdFromResoureID(string resourceID)
         {
             string recommendationId = string.Empty;
+            string[] resourceIdSplit = resourceID.Split('/');
 
-            if (resourceID.Contains("recommendations/"))
+            if (resourceIdSplit[RECOMMENDAION_STRING_POSITION].Equals("recommendations"))
             {
-                int startIndex = resourceID.IndexOf("recommendations/", StringComparison.Ordinal) + 16;
-                recommendationId = resourceID.Substring(startIndex);
+                recommendationId = resourceIdSplit[RECOMMENDAION_VALUE_POSITION];
             }
 
             return recommendationId;

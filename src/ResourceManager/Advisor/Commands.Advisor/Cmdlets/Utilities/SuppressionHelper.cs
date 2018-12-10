@@ -20,19 +20,35 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
     public class SuppressionHelper
     {
         /// <summary>
-        /// Parse the subscriptionId from the resourceId.
+        /// Position of subscription-id string in resource ID
+        /// </summary>
+        private const int SUBSCRIPTION_STRING_POSITION = 1;
+
+        /// <summary>
+        /// Position of subscription-id value in resource ID
+        /// </summary>
+        private const int SUBSCRIPTION_VALUE_POSITION = 2;
+
+        /// <summary>
+        /// Position of resource-group string in resource ID
+        /// </summary>
+        private const int RESOURCEGROUP_STRING_POSITION = 3;
+
+        /// <summary>
+        /// Parse the subscriptionId from the resourceId. 
+        /// This will return subscription-Id only for subscription level configuration, else empty will be returned.
         /// </summary>
         /// <param name="resourceID">ResourceId of recommendation</param>
         /// <returns>SubscriptionId as string</returns>
-        public static string GetSubscriptionIdfromResourceID(string resourceID)
+        public static string GetSubscriptionIdFromSubscriptionLevelConfig(string resourceID)
         {
             string subscriptionID = string.Empty;
 
-            if (resourceID.Contains("subscriptions/") && !resourceID.Contains("resourceGroups/"))
-            {
-                int startIndex = resourceID.IndexOf("configurations/") + 16;
+            string[] entries = resourceID.Split('/');
 
-                subscriptionID = resourceID.Substring(startIndex);
+            if (entries[SUBSCRIPTION_STRING_POSITION].Equals("subscriptions") && !entries[RESOURCEGROUP_STRING_POSITION].Contains("resourceGroups"))
+            {
+                subscriptionID = entries[SUBSCRIPTION_VALUE_POSITION];
             }
 
             return subscriptionID;
@@ -62,7 +78,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         {
             bool isConfigurationSubscriptionLevel = false;
 
-            string subscriptionId = GetSubscriptionIdfromResourceID(psConfigData.Id);
+            string subscriptionId = GetSubscriptionIdFromSubscriptionLevelConfig(psConfigData.Id);
             isConfigurationSubscriptionLevel = string.IsNullOrEmpty(subscriptionId) ? false : true;
 
             return isConfigurationSubscriptionLevel;

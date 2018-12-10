@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 case IdParameterSet:
                     // parse out the Subscription-ID, Recommendation-ID form the ResourceId parameter.
                     resourceUri = RecommendationHelper.GetFullResourceUriFromResoureID(this.ResourceId);
-                    recommendationId = RecommendationHelper.GetRecommendationIdfromResoureID(this.ResourceId);
+                    recommendationId = RecommendationHelper.GetRecommendationIdFromResoureID(this.ResourceId);
 
                     azureOperationResponseSupression.Add(this.ResourcAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, DefaultSuppressionName, suppressionContract).Result);
                     break;
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
                     // Parse out the Subscription-ID, Recommendation-ID from the ResourceId parameter.
                     resourceUri = RecommendationHelper.GetFullResourceUriFromResoureID(this.InputObject.Id);
-                    recommendationId = RecommendationHelper.GetRecommendationIdfromResoureID(this.InputObject.Id);
+                    recommendationId = RecommendationHelper.GetRecommendationIdFromResoureID(this.InputObject.Id);
 
                     azureOperationResponseSupression.Add(this.ResourcAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, DefaultSuppressionName, suppressionContract).Result);
                     break;
