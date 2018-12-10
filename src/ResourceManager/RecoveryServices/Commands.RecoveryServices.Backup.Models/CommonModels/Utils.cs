@@ -330,7 +330,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <returns>PS resource type type</returns>
         public static string GetWorkloadTypeFromArmType(string armType)
         {
-            if (string.Compare(armType, "Microsoft.Compute/virtualMachines", ignoreCase: true) == 0)
+            if (string.Compare(armType, "Microsoft.Compute/virtualMachines", ignoreCase: true) == 0 ||
+                string.Compare(armType, "Microsoft.ClassicCompute/virtualMachines", ignoreCase: true) == 0)
             {
                 return WorkloadType.AzureVM.ToString();
             }
