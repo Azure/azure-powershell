@@ -86,13 +86,6 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAccountSkusLegacy()
-        {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmCognitiveServicesAccountSkusLegacy");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountSkus()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmCognitiveServicesAccountSkus");
@@ -117,13 +110,6 @@ namespace CognitiveServices.Test.ScenarioTests
         public void TestPipingToSetAccount()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PipingToSetAzureAccount");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPipingToGetSkus()
-        {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PipingToGetAccountSkus");
         }
 
         [Fact]
