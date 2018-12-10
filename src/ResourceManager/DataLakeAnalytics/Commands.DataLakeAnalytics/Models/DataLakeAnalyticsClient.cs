@@ -997,25 +997,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-// TODO: Remove IfDef
-#if NETSTANDARD
         private USqlCredential GetCredential(string accountName, string databaseName, string credName)
         {
             return _catalogClient.Catalog.GetCredential(accountName, databaseName, credName);
         }
-#else
-        private ObsoleteUSqlCredential GetCredential(string accountName, string databaseName, string credName)
-        {
-            return new ObsoleteUSqlCredential(_catalogClient.Catalog.GetCredential(accountName, databaseName, credName), databaseName, computeAccountName: accountName);
-        }
-#endif
 
-// TODO: Remove IfDef
-#if NETSTANDARD
         private IList<USqlCredential> GetCredentials(string accountName, string databaseName)
-#else
-        private IList<ObsoleteUSqlCredential> GetCredentials(string accountName, string databaseName)
-#endif
         {
             var toReturn = new List<USqlCredential>();
             var response = _catalogClient.Catalog.ListCredentials(accountName, databaseName);
@@ -1026,12 +1013,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 toReturn.AddRange(response);
             }
 
-// TODO: Remove IfDef
-#if NETSTANDARD
             return toReturn;
-#else
-            return toReturn.Select(element => new ObsoleteUSqlCredential(element, databaseName, computeAccountName: accountName)).ToList();
-#endif
         }
 
         private USqlSchema GetSchema(string accountName, string databaseName,
