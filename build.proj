@@ -204,6 +204,9 @@
     <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)" ContinueOnError="false" />
   </Target>
 
+  <!-- Do everything possible except Publish -->
+  <Target Name="BuildNetCore" DependsOnTargets="Build;Test" />
+
   <!-- Build all flavors of the Cmdlets -->
   <!-- TODO: Reimplement the FilterBuild and update RepoTasks to NetStandard -->
   <!-- <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask;FilterBuild"> -->
