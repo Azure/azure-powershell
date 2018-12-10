@@ -94,7 +94,7 @@ Set-AzNetworkWatcherConfigFlowLog -Location <String> -TargetResourceId <String> 
 
 ## DESCRIPTION
 The Set-AzNetworkWatcherConfigFlowLog configures flow logging for a target resource. 
-Properties to configure include: whether or not flow logging is enabled for the resource provided, the configured storage account to send logs, and the retention policy for the logs. 
+Properties to configure include: whether or not flow logging is enabled for the resource provided, the configured storage account to send logs, the flow logging format and the retention policy for the logs. 
 Currently Network Security Groups are supported for flow logging. 
 
 ## EXAMPLES
@@ -115,19 +115,22 @@ RetentionPolicy  : {
                      "Days": 0,
                      "Enabled": false
                    }
+Format           : {
+                     "Type ": "Json",
+                     "Version": 1
+                   }
 ```
 
-In this example we configure flow logging status for a Network Security Group. In the response, we see the specified NSG has flow logging enabled, and no retention policy set.
+In this example we configure flow logging status for a Network Security Group. In the response, we see the specified NSG has flow logging enabled, format and no retention policy set.
 
-### Example 2: Configure Flow Logging and Traffic Analytics for a Specified NSG
+### Example 2: Configure Flow Logging for a Specified NSG and set the version of flow logging to 2.
 ```
 PS C:\> $NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
 PS C:\> $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName NSGRG -Name appNSG
 PS C:\> $storageId = "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123"
-PS C:\> $workspace = Get-AzOperationalInsightsWorkspace -Name WorkspaceName -ResourceGroupName WorkspaceRg
 
 
-PS C:\> Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -EnableFlowLog $true -StorageAccountId $storageID -EnableTrafficAnalytics -Workspace $workspace
+PS C:\> Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -EnableFlowLog $true -StorageAccountId $storageID -FormatVersion 2
 
 TargetResourceId : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Network/networkSecurityGroups/appNSG
 StorageId        : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123
@@ -135,6 +138,35 @@ Enabled          : True
 RetentionPolicy  : {
                      "Days": 0,
                      "Enabled": false
+                   }
+Format           : {
+                     "Type ": "Json",
+                     "Version": 2
+                   }
+```
+
+In this example we configure flow logging status for a Network Security Group. In the response, we see the specified NSG has flow logging enabled, flow logging version 2 set and no retention policy set. If the region does not suport version you specificed, Networkwatcher will return the default version.
+
+### Example 3: Configure Flow Logging and Traffic Analytics for a Specified NSG
+```
+PS C:\> $NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
+PS C:\> $nsg = Get-AzNetworkSecurityGroup -ResourceGroupName NSGRG -Name appNSG
+PS C:\> $storageId = "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123"
+PS C:\> $workspace = Get-AzOperationalInsightsWorkspace -Name WorkspaceName -ResourceGroupName WorkspaceRg
+
+
+PS C:\> Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -EnableFlowLog $true -StorageAccountId $storageID -EnableTrafficAnalytics -Workspace $workspace -TrafficAnalyticsInterval 60
+
+TargetResourceId : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Network/networkSecurityGroups/appNSG
+StorageId        : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123
+Enabled          : True
+RetentionPolicy  : {
+                     "Days": 0,
+                     "Enabled": false
+                   }
+Format           : {
+                     "Type ": "Json",
+                     "Version": 1
                    }
 FlowAnalyticsConfiguration : {
             "networkWatcherFlowAnalyticsConfiguration": {
@@ -146,7 +178,7 @@ FlowAnalyticsConfiguration : {
           }
 ```
 
-In this example we configure flow logging status and Traffic Analytics for a Network Security Group. In the response, we see the specified NSG has flow logging and Traffic Analytics enabled, and no retention policy set.
+In this example we configure flow logging status and Traffic Analytics for a Network Security Group. In the response, we see the specified NSG has flow logging and Traffic Analytics enabled, default format and no retention policy set.
 
 ## PARAMETERS
 
