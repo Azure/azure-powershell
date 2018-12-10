@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Advisor.dll-Help.xml
-Module Name: AzureRM.Advisor
+Module Name: Az.Advisor
 online version:
 schema: 2.0.0
 ---
@@ -23,7 +23,6 @@ Configuration associated with a subscription are of two typoes,
 Subscription level configuration: There can be only one configration for this type for each subscription, lowCpuThreshold and exclude properties are taken into effect for configuration.
 ResourceGroup level configuration: There can be only one configration for each ResourceGroup in a subscription, only exclude property is taken into effect for configuration.
 
-
 ## EXAMPLES
 
 ### Example 1
@@ -41,7 +40,6 @@ LowCpuThreshold      : 20
 
 ```
 Retrieves a list of Azure Advisor Configration.
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -84,7 +82,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.Commands.Advisor, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData
 
 ## NOTES
 

@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Advisor.dll-Help.xml
-Module Name: AzureRM.Advisor
+Module Name: Az.Advisor
 online version:
 schema: 2.0.0
 ---
@@ -14,13 +14,13 @@ Gets a list of Azure Advisor recommendations.
 
 ### IdParameterSet
 ```
-Get-AzureRmAdvisorRecommendation -ResourceId <String> [-Category <String>] [-Refresh <String>]
+Get-AzureRmAdvisorRecommendation [-ResourceId] <String> [-Category <String>] [-Refresh]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NameParameterSet
 ```
-Get-AzureRmAdvisorRecommendation [-Category <String>] [-ResourceGroupName <String>] [-Refresh <String>]
+Get-AzureRmAdvisorRecommendation [-Category <String>] [-ResourceGroupName <String>] [-Refresh]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -70,7 +70,6 @@ Name                 : 0a3a8f38-cfad-9d18-78e0-55762c72a178
 Type                 : Microsoft.Advisor/recommendations
 ```
 Gets the list of all recommendations filtered by Category Performance.
-
 ## PARAMETERS
 
 ### -Category
@@ -80,6 +79,7 @@ Category of the recommendation
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Cost, HighAvailability, Performance, Security
 
 Required: False
 Position: Named
@@ -105,10 +105,9 @@ Accept wildcard characters: False
 
 ### -Refresh
 Regenerates the recommendations.
-Accepted values are true or false.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -143,9 +142,9 @@ Parameter Sets: IdParameterSet
 Aliases: Id
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -155,11 +154,11 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.Commands.Advisor, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase
 
 ## NOTES
 

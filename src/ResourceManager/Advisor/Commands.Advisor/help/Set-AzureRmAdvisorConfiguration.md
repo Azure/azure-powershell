@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Advisor.dll-Help.xml
-Module Name: AzureRM.Advisor
+Module Name: Az.Advisor
 online version:
 schema: 2.0.0
 ---
@@ -12,30 +12,18 @@ Updates or creates the Aure Advisor Configration.
 
 ## SYNTAX
 
-### LowCpuAndExcludeParameterSet (Default)
+### InputObjectLowCpuExcludeParameterSet (Default)
 ```
-Set-AzureRmAdvisorConfiguration [-Exclude] -LowCpuThreshold <String> [-DefaultProfile <IAzureContextContainer>]
+Set-AzureRmAdvisorConfiguration [-Exclude] [-LowCpuThreshold] <String>
+ [[-InputObject] <PsAzureAdvisorConfigurationData>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
-```
-
-### RgAndExcludeParameterSet
-```
-Set-AzureRmAdvisorConfiguration [-Exclude] -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### InputObjectLowCpuExcludeParameterSet
-```
-Set-AzureRmAdvisorConfiguration [-Exclude] -LowCpuThreshold <String>
- -InputObject <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectRgExcludeParameterSet
 ```
-Set-AzureRmAdvisorConfiguration [-Exclude] [-ResourceGroupName <String>]
- -InputObject <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzureRmAdvisorConfiguration [-Exclude] [[-ResourceGroupName] <String>]
+ [[-InputObject] <PsAzureAdvisorConfigurationData>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +34,7 @@ ResourceGroup level configuration: There can be only one configration for each R
 
 ## EXAMPLES
 
- Example 1
+### Example 1
 ```powershell
 PS C:\> Set-AzureRMAdvisorConfiguration -LowCpuThreshold 10
 Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}
@@ -135,7 +123,6 @@ Properties : additionalProperties : null
              lowCpuThreshold : 20
 
 Type       : Microsoft.Advisor/Configurations
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -154,31 +141,30 @@ Accept wildcard characters: False
 ```
 
 ### -Exclude
-Exclude from the recommendation generation. If this swtichParameter is specified, the exclude porperty will be set to true which excludes from the recommendation generation.
-By default, if not set by the user the exclude property assoicated with will be set to false and will be included in the recommendation generation.
+Exclude from the recommendation generation.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: E
+Aliases:
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -InputObject
-The pipeline object returned by Get-AzureRmAdvisorConfiguration call.
+The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]
-Parameter Sets: InputObjectLowCpuExcludeParameterSet, InputObjectRgExcludeParameterSet
+Type: PsAzureAdvisorConfigurationData
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -189,11 +175,12 @@ Value for Low Cpu threshold.
 
 ```yaml
 Type: String
-Parameter Sets: LowCpuAndExcludeParameterSet, InputObjectLowCpuExcludeParameterSet
-Aliases: L, LowCpu
+Parameter Sets: InputObjectLowCpuExcludeParameterSet
+Aliases: LowCpu
+Accepted values: 0, 5, 10, 15, 20
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -204,23 +191,11 @@ Resource Group name for the configuration.
 
 ```yaml
 Type: String
-Parameter Sets: RgAndExcludeParameterSet
-Aliases: Rg, ResoureGroup
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
 Parameter Sets: InputObjectRgExcludeParameterSet
 Aliases: Rg, ResoureGroup
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -232,11 +207,11 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.Commands.Advisor, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.Commands.Advisor, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.Commands.Advisor, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 

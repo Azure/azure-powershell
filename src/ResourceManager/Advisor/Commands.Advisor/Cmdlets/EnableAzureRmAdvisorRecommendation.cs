@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the recommendation name.
         /// </summary>
-        [Parameter(ParameterSetName = "NameParameterSet", Position = 0, Mandatory = true, HelpMessage = "ResourceName of the recommendation.")]
+        [Parameter(Mandatory = true, ParameterSetName = "NameParameterSet", Position = 0,  HelpMessage = "ResourceName of the recommendation.")]
         [Alias("Name")]
         public string RecommendationName { get; set; }
 

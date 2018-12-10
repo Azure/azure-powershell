@@ -29,16 +29,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorConfiguration", DefaultParameterSetName = InputObjectLowCpuExcludeParameterSet), OutputType(typeof(List<PsAzureAdvisorConfigurationData>))]
     public class SetAzureRmAdvisorConfiguration : ResourceAdvisorBaseCmdlet
     {
-        ///// <summary>
-        ///// Constant for LowCpuAndExcludeParameterSet
-        ///// </summary>
-        //public const string LowCpuAndExcludeParameterSet = "LowCpuAndExcludeParameterSet";
-
-        ///// <summary>
-        ///// Constant for RgAndExcludeParameterSet
-        ///// </summary>
-        //public const string RgAndExcludeParameterSet = "RgAndExcludeParameterSet";
-
         /// <summary>
         /// Constant for InputObjectLowCpuExcludeParameterSet
         /// </summary>
@@ -52,8 +42,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Exclude.
         /// </summary>s
-        [Parameter(ParameterSetName = InputObjectLowCpuExcludeParameterSet, Mandatory = false, HelpMessage = "Exclude from the recommendation generation.")]
-        [Parameter(ParameterSetName = InputObjectRgExcludeParameterSet, Mandatory = false, HelpMessage = "Exclude from the recommendation generation.")]
+        [Parameter(ParameterSetName = InputObjectLowCpuExcludeParameterSet, Mandatory = false, Position = 2, HelpMessage = "Exclude from the recommendation generation.")]
+        [Parameter(ParameterSetName = InputObjectRgExcludeParameterSet, Mandatory = false, Position = 2, HelpMessage = "Exclude from the recommendation generation.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Exclude { get; set; }
 
@@ -69,15 +59,15 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the include.
         /// </summary>
-        [Parameter(ParameterSetName = InputObjectRgExcludeParameterSet, Mandatory = false, HelpMessage = "Resource Group name for the configuration.")]
+        [Parameter(ParameterSetName = InputObjectRgExcludeParameterSet, Mandatory = false, Position = 0, HelpMessage = "Resource Group name for the configuration.")]
         [Alias("Rg", "ResoureGroup")]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the Object passed on from the pipeline
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 0, ParameterSetName = InputObjectLowCpuExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 0, ParameterSetName = InputObjectRgExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 1, ParameterSetName = InputObjectLowCpuExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 1, ParameterSetName = InputObjectRgExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
         [ValidateNotNullOrEmpty]
         public PsAzureAdvisorConfigurationData InputObject { get; set; }
 
@@ -182,8 +172,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         public override void ExecuteCmdlet()
         {
             List<PsAzureAdvisorConfigurationData> results = new List<PsAzureAdvisorConfigurationData>();
-
-            string resourceGroupName = this.MyInvocation.BoundParameters.ContainsKey("ResourceGroupName") ? this.ResourceGroupName : string.Empty;
 
             ConfigData configData = new ConfigData();
             ConfigDataProperties configDataProperties = new ConfigDataProperties();
