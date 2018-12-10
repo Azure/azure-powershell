@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>The integration account callback URL object</returns>
         public CallbackUrl GetIntegrationAccountCallbackUrl(string resourceGroupName, string integrationAccountName, GetCallbackUrlParameters callbackUrl)
         {
-            return this.LogicManagementClient.IntegrationAccounts.GetCallbackUrl(resourceGroupName, integrationAccountName, callbackUrl);
+            return this.LogicManagementClient.IntegrationAccounts.ListCallbackUrl(resourceGroupName, integrationAccountName, callbackUrl);
         }
         
         /// <summary>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Boolean result indicating whether the integration account  exists or not.</returns>
         private bool DoesIntegrationAccountExist(string resourceGroupName, string integrationAccountName)
         {
-            bool result = false;
+            var result = false;
             try
             {
                 var account = this.LogicManagementClient.IntegrationAccounts.Get(resourceGroupName, integrationAccountName);

@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
     using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
     using System;
@@ -62,7 +61,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="client">client reference</param>
         public LogicAppClient(ILogicManagementClient client)
         {
-            this.LogicManagementClient = client;        }
+            this.LogicManagementClient = client;
+        }
 
         /// <summary>
         /// Gets or sets the Logic client instance
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="workflow">The Workflow object.</param>
         public void ValidateWorkflow(string resourceGroupName, string location, string workflowName, Workflow workflow)
         {
-            this.LogicManagementClient.Workflows.Validate(resourceGroupName, location, workflowName, workflow);
+            this.LogicManagementClient.Workflows.ValidateByLocation(resourceGroupName, location, workflowName, workflow);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Boolean result</returns>
         private bool DoesLogicAppExist(string resourceGroupName, string workflowName)
         {
-            bool result = false;
+            var result = false;
             try
             {
                 var workflow = this.LogicManagementClient.Workflows.GetAsync(resourceGroupName, workflowName).Result;

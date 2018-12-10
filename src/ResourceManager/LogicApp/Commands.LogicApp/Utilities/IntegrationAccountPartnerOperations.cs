@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using System.Management.Automation;
     using System.Globalization;
     using Microsoft.Rest.Azure;
-    using System.Collections.Generic;
 
     /// <summary>
     /// LogicApp client partial class for integration account partner operations.
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             if (!this.DoesIntegrationAccountPartnerExist(resourceGroupName, integrationAccountName, integrationAccountPartnerName))
             {
-                return this.LogicManagementClient.Partners.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountPartnerName, integrationAccountPartner);
+                return this.LogicManagementClient.IntegrationAccountPartners.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountPartnerName, integrationAccountPartner);
             }
             else
             {
@@ -56,10 +55,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Boolean result indicating whether the integration account partner exists or not.</returns>
         private bool DoesIntegrationAccountPartnerExist(string resourceGroupName, string integrationAccountName, string integrationAccountPartnerName)
         {
-            bool result = false;
+            var result = false;
             try
             {
-                var partner = this.LogicManagementClient.Partners.Get(resourceGroupName, integrationAccountName, integrationAccountPartnerName);
+                var partner = this.LogicManagementClient.IntegrationAccountPartners.Get(resourceGroupName, integrationAccountName, integrationAccountPartnerName);
                 result = partner != null;
             }
             catch
@@ -79,7 +78,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Updated integration account partner.</returns>
         public IntegrationAccountPartner UpdateIntegrationAccountPartner(string resourceGroupName, string integrationAccountName, string integrationAccountPartnerName, IntegrationAccountPartner integrationAccountPartner)
         {
-            return this.LogicManagementClient.Partners.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountPartnerName, integrationAccountPartner);
+            return this.LogicManagementClient.IntegrationAccountPartners.CreateOrUpdate(resourceGroupName, integrationAccountName, integrationAccountPartnerName, integrationAccountPartner);
         }
 
         /// <summary>
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Integration account partner object.</returns>
         public IntegrationAccountPartner GetIntegrationAccountPartner(string resourceGroupName, string integrationAccountName, string integrationAccountPartnerName)
         {
-            return this.LogicManagementClient.Partners.Get(resourceGroupName, integrationAccountName, integrationAccountPartnerName);
+            return this.LogicManagementClient.IntegrationAccountPartners.Get(resourceGroupName, integrationAccountName, integrationAccountPartnerName);
         }
 
         /// <summary>
@@ -102,7 +101,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>List of integration account partners.</returns>
         public IPage<IntegrationAccountPartner> ListIntegrationAccountPartners(string resourceGroupName, string integrationAccountName)
         {
-            return this.LogicManagementClient.Partners.ListByIntegrationAccounts(resourceGroupName, integrationAccountName, "$filter=partnerType eq 'B2B'&$top=1000");
+            return this.LogicManagementClient.IntegrationAccountPartners.List(resourceGroupName, integrationAccountName, "$filter=partnerType eq 'B2B'&$top=1000");
         }
 
         /// <summary>
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="integrationAccountPartnerName">The integration account partner name.</param>
         public void RemoveIntegrationAccountPartner(string resourceGroupName, string integrationAccountName, string integrationAccountPartnerName)
         {
-            this.LogicManagementClient.Partners.Delete(resourceGroupName, integrationAccountName, integrationAccountPartnerName);
+            this.LogicManagementClient.IntegrationAccountPartners.Delete(resourceGroupName, integrationAccountName, integrationAccountPartnerName);
         }
     }
 }

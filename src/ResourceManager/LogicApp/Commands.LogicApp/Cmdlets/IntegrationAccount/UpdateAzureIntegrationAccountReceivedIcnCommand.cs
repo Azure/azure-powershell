@@ -85,20 +85,20 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(AgreementType))
+            if (string.IsNullOrEmpty(this.AgreementType))
             {
                 this.WriteWarning(Constants.NoAgreementTypeParameterWarningMessage);
-                AgreementType = "X12";
+                this.AgreementType = "X12";
             }
 
             var integrationAccountReceivedIcn = this.IntegrationAccountClient.GetIntegrationAccountReceivedControlNumber(
                 resourceGroupName: this.ResourceGroupName,
                 integrationAccountName: this.Name,
                 integrationAccountAgreementName: this.AgreementName,
-                agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: AgreementType, ignoreCase: true),
+                agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: this.AgreementType, ignoreCase: true),
                 controlNumber: this.ControlNumberValue);
 
-            integrationAccountReceivedIcn.MessageType = (MessageType)Enum.Parse(enumType: typeof(MessageType), value: AgreementType, ignoreCase: true);
+            integrationAccountReceivedIcn.MessageType = (MessageType)Enum.Parse(enumType: typeof(MessageType), value: this.AgreementType, ignoreCase: true);
             integrationAccountReceivedIcn.ControlNumber = this.ControlNumberValue;
             integrationAccountReceivedIcn.IsMessageProcessingFailed = this.IsMessageProcessingFailed;
             integrationAccountReceivedIcn.ControlNumberChangedTime = DateTime.UtcNow > integrationAccountReceivedIcn.ControlNumberChangedTime ?
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                             resourceGroupName: this.ResourceGroupName,
                             integrationAccountName: this.Name,
                             integrationAccountAgreementName: this.AgreementName,
-                            agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: AgreementType, ignoreCase: true),
+                            agreementType: (AgreementType)Enum.Parse(enumType: typeof(AgreementType), value: this.AgreementType, ignoreCase: true),
                             integrationAccountControlNumber: integrationAccountReceivedIcn),
                         enumerateCollection: true);
                 });

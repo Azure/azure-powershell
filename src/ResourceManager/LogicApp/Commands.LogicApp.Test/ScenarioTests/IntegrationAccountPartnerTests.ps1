@@ -18,10 +18,8 @@ Test New-AzureRmIntegrationAccountPartner command
 #>
 function Test-CreateIntegrationAccountPartner
 {
-	#Create App resource group
-
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName 
 
@@ -54,10 +52,8 @@ Test Get-AzureRmIntegrationAccountPartner command
 #>
 function Test-GetIntegrationAccountPartner
 {
-	#Create App resource group
-
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName 
 
@@ -86,10 +82,8 @@ Test Get-AzureRmIntegrationAccountPartner command : Paging test
 #>
 function Test-ListIntegrationAccountPartner
 {
-	#Create App resource group
-
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName 
 
@@ -116,10 +110,8 @@ Test Remove-AzureRmIntegrationAccountPartner command
 #>
 function Test-RemoveIntegrationAccountPartner
 {
-	#Create App resource group
-
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
@@ -143,10 +135,8 @@ Test Set-AzureRmIntegrationAccountPartner command
 #>
 function Test-UpdateIntegrationAccountPartner
 {
-	#Create App resource group
-
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 

@@ -50,13 +50,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Logic, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Logic.3.0.1\lib\net452\Microsoft.Azure.Management.Logic.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountAgreementCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountAssemblyCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountBatchConfigurationCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountCallbackUrlCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountCertificateCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountCommand.cs" />
@@ -66,12 +62,16 @@
     <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountReceivedIcnCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountSchemaCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountAgreementCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountAssemblyCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountBatchConfigurationCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountCertificateCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountMapCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountPartnerCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountSchemaCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountAgreementCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountAssemblyCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountBatchConfigurationCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountCertificateCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountMapCommand.cs" />
@@ -79,6 +79,8 @@
     <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountReceivedIcnCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountSchemaCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountAgreementCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountAssemblyCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountBatchConfigurationCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountCertificateCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountGeneratedIcnCommand.cs" />
@@ -111,6 +113,8 @@
     </Compile>
     <Compile Include="Utilities\ControlNumberType.cs" />
     <Compile Include="Utilities\IntegrationAccountAgreementOperations.cs" />
+    <Compile Include="Utilities\IntegrationAccountAssemblyOperations.cs" />
+    <Compile Include="Utilities\IntegrationAccountBatchConfigurationOperations.cs" />
     <Compile Include="Utilities\IntegrationAccountCertificateOperations.cs" />
     <Compile Include="Utilities\IntegrationAccountClient.cs" />
     <Compile Include="Utilities\IntegrationAccountControlNumber.cs" />
@@ -136,9 +140,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
@@ -161,7 +163,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.Logic, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Logic.4.1.0\lib\net452\Microsoft.Azure.Management.Logic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>

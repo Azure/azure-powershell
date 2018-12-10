@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System;
     using System.Globalization;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
@@ -105,11 +104,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountSchema = IntegrationAccountClient.GetIntegrationAccountSchema(this.ResourceGroupName,
-                this.Name,
-                this.SchemaName);
+            var integrationAccountSchema = this.IntegrationAccountClient.GetIntegrationAccountSchema(this.ResourceGroupName, this.Name, this.SchemaName);
 
             var integrationAccountSchemaCopy = new IntegrationAccountSchema(schemaType: integrationAccountSchema.SchemaType,
                 id: integrationAccountSchema.Id,
@@ -129,8 +126,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.SchemaFilePath))
             {
-                integrationAccountSchemaCopy.Content =
-                    CmdletHelper.GetContentFromFile(this.TryResolvePath(this.SchemaFilePath));
+                integrationAccountSchemaCopy.Content = CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.SchemaFilePath));
             }
 
             if (!string.IsNullOrEmpty(this.SchemaDefinition))
@@ -140,7 +136,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.schemaType))
             {
-                integrationAccountSchemaCopy.SchemaType = (SchemaType)Enum.Parse(typeof(SchemaType), this.SchemaType);
+                integrationAccountSchemaCopy.SchemaType = this.SchemaType;
             }
 
             if (!string.IsNullOrEmpty(this.ContentType))
@@ -153,16 +149,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountSchemaCopy.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            ConfirmAction(Force.IsPresent,
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/integrationAccounts/schemas", this.Name),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/integrationAccounts/schemas", this.Name),
-                Name,
+            this.ConfirmAction(this.Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/integrationAccounts/schemas", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/integrationAccounts/schemas", this.Name),
+                this.Name,
                 () =>
                 {
                     this.WriteObject(
-                        IntegrationAccountClient.UpdateIntegrationAccountSchema(this.ResourceGroupName,
+                        this.IntegrationAccountClient.UpdateIntegrationAccountSchema(this.ResourceGroupName,
                             integrationAccount.Name,
                             this.SchemaName, integrationAccountSchemaCopy), true);
                 },

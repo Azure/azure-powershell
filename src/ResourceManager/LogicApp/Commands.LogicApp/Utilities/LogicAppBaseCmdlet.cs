@@ -35,12 +35,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             get
             {
-                this._integartionAccountClient = new IntegrationAccountClient(DefaultProfile.DefaultContext);
+                this._integartionAccountClient = new IntegrationAccountClient(this.DefaultProfile.DefaultContext);
 
-                this._integartionAccountClient.VerboseLogger = WriteVerboseWithTimestamp;
-                this._integartionAccountClient.ErrorLogger = WriteErrorWithTimestamp;
+                this._integartionAccountClient.VerboseLogger = this.WriteVerboseWithTimestamp;
+                this._integartionAccountClient.ErrorLogger = this.WriteErrorWithTimestamp;
                                 
-                return _integartionAccountClient;
+                return this._integartionAccountClient;
             }
 
             set
@@ -56,13 +56,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             get
             {
-                this._websitesClient = new WebsitesClient(DefaultProfile.DefaultContext)
+                this._websitesClient = new WebsitesClient(this.DefaultProfile.DefaultContext)
                 {
                     VerboseLogger = WriteVerboseWithTimestamp,
                     ErrorLogger = WriteErrorWithTimestamp
                 };
 
-                return _websitesClient;
+                return this._websitesClient;
             }
 
             set
@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             get
             {
-                this._logicAppClient = new LogicAppClient(DefaultProfile.DefaultContext)
+                this._logicAppClient = new LogicAppClient(this.DefaultProfile.DefaultContext)
                 {
                     VerboseLogger = WriteVerboseWithTimestamp,
                     ErrorLogger = WriteErrorWithTimestamp
                 };
 
-                return _logicAppClient;
+                return this._logicAppClient;
             }
 
             set
@@ -97,6 +97,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
                 this._logicAppClient = value;
             }
         }
-
     }
 }

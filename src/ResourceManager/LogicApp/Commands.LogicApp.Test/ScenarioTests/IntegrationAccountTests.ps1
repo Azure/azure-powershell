@@ -18,25 +18,31 @@ Test New-AzureRmIntegrationAccount command
 #>
 function Test-CreateIntegrationAccount
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname	
-
-	$location = Get-LocationName
-	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
-	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 	
-	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
+	$integrationAccountNameBasic = "IA-Basic-" + (getAssetname)
+	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameBasic -Location $location -Sku "Basic" 	
+	Assert-AreEqual $integrationAccountNameBasic $integrationAccount.Name 
+ 	
+	$integrationAccountNameStandard = "IA-Standard-" + (getAssetname)
+	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard -Location $location -Sku "Standard" 	
+	Assert-AreEqual $integrationAccountNameStandard $integrationAccount.Name 
+ 	
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameBasic -Force
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountNameStandard -Force
 }
 
 <#
 .SYNOPSIS
 Test Get-AzureRmIntegrationAccount command
 #>
-function Test-CreateAndGetIntegrationAccount
+function Test-GetIntegrationAccount
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
-	$location = Get-LocationName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
 	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
@@ -56,9 +62,9 @@ Test Remove-AzureRmIntegrationAccount command
 #>
 function Test-RemoveIntegrationAccount
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
-	$location = Get-LocationName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
 	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
@@ -73,9 +79,9 @@ Test Update-AzureRmIntegrationAccount command
 #>
 function Test-UpdateIntegrationAccount
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
-	$location = Get-LocationName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
 	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
@@ -101,9 +107,9 @@ Test Get-AzureRmIntegrationAccountCallbackUrl command
 #>
 function Test-GetIntegrationAccountCallbackUrl
 {
-	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
-	$integrationAccountName = getAssetname
-	$location = Get-LocationName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts"
 
 	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name

@@ -12,8 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$WORKFLOW_LOCATION = 'westus'
-
 <#
 .SYNOPSIS
 Test Get-AzureRmLogicAppTrigger for workflow triggers and test to get trigger by name
@@ -26,9 +24,10 @@ function Test-GetAzureLogicAppTrigger
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
 	$workflowName = getAssetname
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $location
 
 	$workflowTrigger = Get-AzureRmLogicAppTrigger -ResourceGroupName $resourceGroupName -Name $workflowName
 	Assert-NotNull $workflowTrigger
@@ -49,9 +48,10 @@ function Test-GetAzureLogicAppTriggerHistory
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
 	$workflowName = getAssetname
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $location
 	
 	[int]$counter = 0
 	do {
@@ -81,9 +81,10 @@ function Test-GetAzureLogicAppTriggerCallbackUrl
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
 	$workflowName = getAssetname
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $location
 	
 	[int]$counter = 0
 	do {
@@ -93,6 +94,9 @@ function Test-GetAzureLogicAppTriggerCallbackUrl
 	
 	$callbackUrlString = Get-AzureRmLogicAppTriggerCallbackUrl -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "manualTrigger"
 	Assert-NotNull $callbackUrlString
+
+	$curApiVersion = '*' + (CurrentApiVersion) + '*'
+	Assert-True { $callbackUrlString.Value -like $curApiVersion }
 }
 
 <#
@@ -107,9 +111,10 @@ function Test-StartAzureLogicAppTrigger
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 	
 	$workflowName = getAssetname
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $location
 	
 	[int]$counter = 0
 	do {

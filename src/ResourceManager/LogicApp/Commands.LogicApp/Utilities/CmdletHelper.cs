@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// Creates the definition object from file.
         /// </summary>
         /// <param name="definitionFilePath">File path of the definition</param>
-        /// <returns>Json model defintion object</returns>
+        /// <returns>JSON model definition object</returns>
         internal static JToken GetDefinitionFromFile(string definitionFilePath)
         {
             JToken definition = null;
@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
             {
                 if (!(new FileInfo(definitionFilePath)).Exists)
                 {
-                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,
-                        Properties.Resource.FileDoesNotExist, definitionFilePath));
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resource.FileDoesNotExist, definitionFilePath));
                 }
 
                 definition = JToken.Parse(File.ReadAllText(definitionFilePath));
@@ -58,19 +57,40 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// </summary>
         /// <param name="filePath">The File path.</param>
         /// <returns>String content</returns>
-        internal static string GetContentFromFile(string filePath)
+        internal static string GetStringContentFromFile(string filePath)
         {
-            string content = string.Empty;
+            var content = string.Empty;
 
             if (!string.IsNullOrEmpty(filePath))
             {
                 if (!(new FileInfo(filePath)).Exists)
                 {
-                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,
-                        Properties.Resource.FileDoesNotExist, filePath));
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resource.FileDoesNotExist, filePath));
                 }
 
                 content = File.ReadAllText(filePath);
+            }
+
+            return content;
+        }
+
+        /// <summary>
+        /// Get file content.
+        /// </summary>
+        /// <param name="filePath">The File path.</param>
+        /// <returns>Binary content</returns>
+        internal static byte[] GetBinaryContentFromFile(string filePath)
+        {
+            var content = new byte[0];
+
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                if (!(new FileInfo(filePath)).Exists)
+                {
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resource.FileDoesNotExist, filePath));
+                }
+
+                content = File.ReadAllBytes(filePath);
             }
 
             return content;
@@ -83,10 +103,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Boolean result indicating whether file exists.</returns>
         internal static bool FileExists(string filePath)
         {
-            if (!(new FileInfo(filePath)).Exists)
+            if (!new FileInfo(filePath).Exists)
             {
-                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,
-                    Properties.Resource.FileDoesNotExist, filePath));
+                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resource.FileDoesNotExist, filePath));
             }
             else
             {
@@ -112,7 +131,24 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         }
 
         /// <summary>
-        /// Build App service plan id using plan name and resourcegroup name
+        /// Convert string content to BatchConfigurationProperties object.
+        /// </summary>
+        /// <param name="content">The agreement content.</param>
+        /// <returns>AgreementContent object.</returns>
+        internal static BatchConfigurationProperties ConvertToBatchConfigurationProperties(string content)
+        {
+            BatchConfigurationProperties batchConfigurationProperties = null;
+
+            if (!string.IsNullOrEmpty(content))
+            {
+                batchConfigurationProperties = JsonConvert.DeserializeObject<BatchConfiguration>(content).Properties;
+            }
+
+            return batchConfigurationProperties;
+        }
+
+        /// <summary>
+        /// Build App service plan id using plan name and resource group name
         /// Null check for parameter not needed as both these parameters are required parameters.
         /// </summary>
         /// <param name="planName">App service plan name</param>
@@ -121,8 +157,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>App service plan id</returns>
         internal static string BuildAppServicePlanId(string planName, string resourceGroupName, string subscriptionId)
         {
-            return string.Format(CultureInfo.InvariantCulture,
-                Constants.ApplicationServicePlanIdFormat, subscriptionId, resourceGroupName, planName);
+            return string.Format(CultureInfo.InvariantCulture, Constants.ApplicationServicePlanIdFormat, subscriptionId, resourceGroupName, planName);
         }
 
         /// <summary>
@@ -175,12 +210,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
                     throw new PSArgumentException(Properties.Resource.InvalidBusinessIdentity, "BusinessIdentities");
                 }
 
-                var identities = new List<BusinessIdentity>();
-                identities.Add(new BusinessIdentity()
+                var identities = new List<BusinessIdentity>
                 {
-                    Qualifier = arr[0].ToString(),
-                    Value = arr[1].ToString(),
-                });
+                    new BusinessIdentity
+                    {
+                        Qualifier = arr[0].ToString(),
+                        Value = arr[1].ToString(),
+                    }
+                };
 
                 return identities;
             }
@@ -194,7 +231,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// Convert the valid metadata object.
         /// </summary>
         /// <param name="metadata">The metadata object.</param>
-        /// <returns>Json object</returns>
+        /// <returns>JSON object</returns>
         internal static JObject ConvertToMetadataJObject(object metadata)
         {
             try
@@ -243,8 +280,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// </summary>
         /// <param name="parametersObject">Parameters object</param>
         /// <returns>Workflow parameter dictionary</returns>
-        internal static Dictionary<string, WorkflowParameter> ConvertToWorkflowParameterDictionary(
-            object parametersObject)
+        internal static Dictionary<string, WorkflowParameter> ConvertToWorkflowParameterDictionary(object parametersObject)
         {
             Dictionary<string, WorkflowParameter> workflowParameters = null;
             if (parametersObject is Hashtable)

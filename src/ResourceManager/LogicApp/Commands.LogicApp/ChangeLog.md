@@ -18,3 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update to Logic App SDK 4.0.0
+* New cmdlets for Assemblies
+	- Get-AzureRmIntegrationAccountAssembly
+	- New-AzureRmIntegrationAccountAssembly
+	- Remove-AzureRmIntegrationAccountAssembly
+	- Set-AzureRmIntegrationAccountAssembly
+* New cmdlets for Batch Configuration
+	- Get-AzureRmIntegrationAccountBatchConfiguration
+	- New-AzureRmIntegrationAccountBatchConfiguration
+	- Remove-AzureRmIntegrationAccountBatchConfiguration
+	- Set-AzureRmIntegrationAccountBatchConfiguration

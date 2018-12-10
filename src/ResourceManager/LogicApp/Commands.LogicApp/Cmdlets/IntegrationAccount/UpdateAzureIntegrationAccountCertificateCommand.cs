@@ -88,11 +88,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
+            var integrationAccount = this.IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountCertificate =
-                IntegrationAccountClient.GetIntegrationAccountCertifcate(this.ResourceGroupName,
-                    this.Name, this.CertificateName);
+            var integrationAccountCertificate = this.IntegrationAccountClient.GetIntegrationAccountCertifcate(this.ResourceGroupName, this.Name, this.CertificateName);
 
             if (!string.IsNullOrEmpty(this.KeyName))
             {
@@ -132,18 +130,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountCertificate.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            ConfirmAction(Force.IsPresent,
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
-                    "Microsoft.Logic/integrationAccounts/certificates", this.Name),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
-                    "Microsoft.Logic/integrationAccounts/certificates", this.Name),
-                Name,
+            this.ConfirmAction(this.Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning, "Microsoft.Logic/integrationAccounts/certificates", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage, "Microsoft.Logic/integrationAccounts/certificates", this.Name),
+                this.Name,
                 () =>
                 {
                     this.WriteObject(
-                        IntegrationAccountClient.UpdateIntegrationAccountCertificate(this.ResourceGroupName,
-                            integrationAccount.Name,
-                            this.CertificateName, integrationAccountCertificate), true);
+                        this.IntegrationAccountClient.UpdateIntegrationAccountCertificate(this.ResourceGroupName,
+                            integrationAccount.Name, this.CertificateName, integrationAccountCertificate), true);
                 },
                 null);
         }

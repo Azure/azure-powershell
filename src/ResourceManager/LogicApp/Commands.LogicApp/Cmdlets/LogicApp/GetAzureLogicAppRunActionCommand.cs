@@ -60,13 +60,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.ActionName))
             {
-                var enumerator = LogicAppClient.GetWorkflowRunActions(this.ResourceGroupName, this.Name, this.RunName).GetEnumerator();
+                var enumerator = this.LogicAppClient.GetWorkflowRunActions(this.ResourceGroupName, this.Name, this.RunName).GetEnumerator();
                 this.WriteObject(enumerator.ToIEnumerable<WorkflowRunAction>(), true);
             }
             else
             {
                 this.WriteObject(
-                    LogicAppClient.GetWorkflowRunAction(this.ResourceGroupName, this.Name, this.RunName, this.ActionName),
+                    this.LogicAppClient.GetWorkflowRunAction(this.ResourceGroupName, this.Name, this.RunName, this.ActionName),
                     true);
             }
         }

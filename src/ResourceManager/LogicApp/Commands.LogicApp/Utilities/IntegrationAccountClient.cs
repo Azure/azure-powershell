@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
     using System;
     using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Management.Logic;
     using Common.Authentication.Abstractions;
 

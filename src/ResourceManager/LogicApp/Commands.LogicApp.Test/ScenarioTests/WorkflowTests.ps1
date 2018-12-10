@@ -278,12 +278,11 @@ function Test-UpdateLogicApp
 		$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Definition $null -Force
 	}
 	catch
-	{		
-		Assert-AreEqual $_.Exception.Message "Definition content needs to be specified."		
+	{
+		Assert-AreEqual $_.Exception.Message "Definition content needs to be specified."
 	}
 
 	#Case5: Update non-existing workflow
-
 	try
 	{
 		$workflowName = "82D2D842-C312-445C-8A4D-E3EE9542436D"
@@ -323,16 +322,6 @@ function Test-ValidateLogicApp
 	# Test 2: Using definition object and parameter file.
 	$definition = [IO.File]::ReadAllText($definitionFilePath)
 	Test-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $locationName -Definition $definition -ParameterFilePath $parameterFilePath
-    
-	# Test 3: Failure for an invalid definition.
-	try
-	{
-		Test-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $locationName -Definition '{}'
-	}
-	catch
-	{		
-		Assert-AreEqual $_.Exception.Message "Operation returned an invalid status code 'BadRequest'"
-	}
 
 	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force	
 }
@@ -384,4 +373,36 @@ function Test-GetUpgradedDefinitionForLogicApp
 	Set-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Definition $upgradedDefinition.ToString() -Force
 
 	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force	
+}
+
+<#
+.SYNOPSIS
+Test Set-AzureRmLogicApp command to update workflow with integration account.
+Test Set-AzureRmLogicApp command to remove integration account from a workflow.
+#>
+function Test-UpdateLogicAppWithIntegrationAccount
+{
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$workflowName = getAssetname
+	$resourceGroupName = $resourceGroup.ResourceGroupName
+	$integrationAccountName = "IA-" + (getAssetname)
+	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
+
+	$simpleDefinitionFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowDefinition.json"
+	$simpleParameterFilePath = Join-Path $TestOutputRoot "\Resources\TestSimpleWorkflowParameter.json"
+	$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath -IntegrationAccountId $integrationAccount.Id
+	Assert-NotNull $workflow
+
+	$updatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath -IntegrationAccountId $integrationAccount.Id -Force
+	Assert-AreEqual $integrationAccount.Id $updatedWorkflow.IntegrationAccount.Id
+
+	$updatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath -Force
+	Assert-AreEqual $integrationAccount.Id $updatedWorkflow.IntegrationAccount.Id
+
+	$integrationAccountName = "IA-" + (getAssetname)
+	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
+	$updatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath -IntegrationAccountId $integrationAccount.Id -Force
+	Assert-AreEqual $integrationAccount.Id $updatedWorkflow.IntegrationAccount.Id
+	
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
 }

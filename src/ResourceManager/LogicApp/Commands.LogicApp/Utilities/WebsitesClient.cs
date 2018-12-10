@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
     using System;
     using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Common.Authentication.Abstractions;
     using Microsoft.Azure.Management.WebSites.Version2016_09_01;
     using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Object represents the AppServicePlan</returns>
         public AppServicePlan GetAppServicePlan(string resourceGroupName, string appServicePlanName)
         {
-            return WrappedWebsitesClient.AppServicePlans.Get(resourceGroupName, appServicePlanName);
+            return this.WrappedWebsitesClient.AppServicePlans.Get(resourceGroupName, appServicePlanName);
         }
 
 
@@ -79,10 +78,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="args">Arguments to write verbose</param>
         private void WriteVerbose(string verboseFormat, params object[] args)
         {
-            if (VerboseLogger != null)
-            {
-                VerboseLogger(string.Format(verboseFormat, args));
-            }
+            this.VerboseLogger?.Invoke(string.Format(verboseFormat, args));
         }
 
         /// <summary>
@@ -92,10 +88,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="args">Arguments to write warning</param>
         private void WriteWarning(string warningFormat, params object[] args)
         {
-            if (WarningLogger != null)
-            {
-                WarningLogger(string.Format(warningFormat, args));
-            }
+            this.WarningLogger?.Invoke(string.Format(warningFormat, args));
         }
 
         /// <summary>
@@ -106,10 +99,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
 
         private void WriteError(string errorFormat, params object[] args)
         {
-            if (ErrorLogger != null)
-            {
-                ErrorLogger(string.Format(errorFormat, args));
-            }
+            this.ErrorLogger?.Invoke(string.Format(errorFormat, args));
         }
     }
 }

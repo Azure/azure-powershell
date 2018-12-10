@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
         }
 
         /// <summary>
-        /// This verifies the exception thrown by the commandlet when non-existing definition file is provided as input
+        /// This verifies the exception thrown by the cmdlet when non-existing definition file is provided as input
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
         }
 
         /// <summary>
-        /// This verifies the exception thrown by the commandlet when non-existing parameter file is provided as input
+        /// This verifies the exception thrown by the cmdlet when non-existing parameter file is provided as input
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

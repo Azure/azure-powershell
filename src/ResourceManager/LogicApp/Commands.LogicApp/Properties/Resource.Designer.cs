@@ -61,6 +61,24 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to At least one of ContentLink, AssemblyFilePath, or AssemblyData must be provided..
+        /// </summary>
+        internal static string AssemblyParameterNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("AssemblyParameterNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At least one release criteria must be provided..
+        /// </summary>
+        internal static string BatchConfigurationParameterNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("BatchConfigurationParameterNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancelling the LogicApp run..
         /// </summary>
         internal static string CancelLogicAppRunMessage {
