@@ -36,3 +36,6 @@
         - New-AzureRmApplicationGatewayPathRuleConfig
         - Add-AzureRmApplicationGatewayUrlPathMapConfig
         - New-AzureRmApplicationGatewayUrlPathMapConfig
+* Removed deprecated -ResourceId parameter from Get-AzServiceEndpointPolicyDefinition
+* Removed deprecated EnableVmProtection property from PSVirtualNetwork
+* Removed deprecated Set-AzVirtualNetworkGatewayVpnClientConfig cmdlet
