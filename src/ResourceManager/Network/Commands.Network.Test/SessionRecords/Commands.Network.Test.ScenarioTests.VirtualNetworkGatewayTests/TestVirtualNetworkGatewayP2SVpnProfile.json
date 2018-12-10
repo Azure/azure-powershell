@@ -17846,6 +17846,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "\"https://nfvprodsuppcy.blob.core.windows.net/cmakexe/ae4cc800-f72d-479d-9688-8ce04912fe2f/vpnclientconfiguration.zip?sv=2017-04-17&sr=b&sig=TwMZ6xnyuHjj3QNzQrVFXdQRxht0Ed2dAPWCm3%2BsuhY%3D&st=2018-12-07T12%3A42%3A39Z&se=2018-12-07T13%3A42%3A39Z&sp=r&fileExtension=.zip\"",
       "StatusCode": 200
     },
@@ -18644,6 +18645,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "\"https://nfvprodsuppcy.blob.core.windows.net/cmakexe/ae4cc800-f72d-479d-9688-8ce04912fe2f/vpnclientconfiguration.zip?sv=2017-04-17&sr=b&sig=FLraXZBR0Xry0Jd5osNDxpwomZv%2FZH4qQstLXS%2BgPvc%3D&st=2018-12-07T12%3A42%3A52Z&se=2018-12-07T13%3A42%3A52Z&sp=r&fileExtension=.zip\"",
       "StatusCode": 200
     },
