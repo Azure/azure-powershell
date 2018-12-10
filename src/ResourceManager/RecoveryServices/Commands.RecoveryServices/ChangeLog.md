@@ -18,3 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Remove -Encryption parameter from New/Set-AzRecoveryServicesAsrPolicy
+* Remove Set-AzRecoveryServicesVaultContext cmdlet from Az.RecoveryServices
+* Remove -Name parameter from Get-AzRecoveryServicesBackupContainer
