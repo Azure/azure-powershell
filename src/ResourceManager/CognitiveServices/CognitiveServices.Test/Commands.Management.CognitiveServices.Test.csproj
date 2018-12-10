@@ -58,9 +58,6 @@
     <None Include="SessionRecords\CognitiveServices.Test.ScenarioTests.CognitiveServicesAccountTests\TestAccountSkus.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\CognitiveServices.Test.ScenarioTests.CognitiveServicesAccountTests\TestAccountSkusLegacy.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\CognitiveServices.Test.ScenarioTests.CognitiveServicesAccountTests\TestCreateAllKindsOfAccounts.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -89,9 +86,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\CognitiveServices.Test.ScenarioTests.CognitiveServicesAccountTests\TestPipingToGetKey.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\CognitiveServices.Test.ScenarioTests.CognitiveServicesAccountTests\TestPipingToGetSkus.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\CognitiveServices.Test.ScenarioTests.CognitiveServicesAccountTests\TestPipingToSetAccount.json">
