@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Modified documentation of examples related to SQL Auditing cmdlets. 
