@@ -13,13 +13,7 @@ Gets the available SKUs for an account.
 
 ## SYNTAX
 
-### GetSkusWithAccount (Default)
-```
-Get-AzCognitiveServicesAccountSkus [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetSkusWithFilter
+### GetSkusWithFilter (Default)
 ```
 Get-AzCognitiveServicesAccountSkus [-Type <String>] [-Location <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -36,7 +30,7 @@ Paid tiers include S0, S1, S2, and so on.
 
 ### Example 1
 ```powershell
-PS C:\> (Get-AzCognitiveServicesAccountSkus -ResourceGroupName cognitive-services-resource-group -Name myluis).Value | Select-Object -E
+PS C:\> (Get-AzCognitiveServicesAccountSkus -Type 'TextAnalytics' -Location "westus").Value | Select-Object -E
 xpandProperty Sku;
 
 Name     Tier
@@ -131,7 +125,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesSkus
+### Microsoft.Azure.Commands.Management.CognitiveServices.Models.ResourceSku
 
 ## NOTES
 
