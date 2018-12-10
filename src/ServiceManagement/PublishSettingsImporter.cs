@@ -23,7 +23,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
 
-namespace Microsoft.Azure.ServiceManagemenet.Common
+namespace Microsoft.Azure.ServiceManagement.Common
 {
     /// <summary>
     /// Class that handles loading publishsettings files

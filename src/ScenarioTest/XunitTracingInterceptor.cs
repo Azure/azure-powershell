@@ -23,7 +23,7 @@ using Xunit.Abstractions;
 using System.IO;
 using System.Reflection;
 
-namespace Microsoft.WindowsAzure.ServiceManagemenet.Common.Models
+namespace Microsoft.WindowsAzure.ServiceManagement.Common.Models
 {
     public class XunitTracingInterceptor : Hyak.Common.ICloudTracingInterceptor
     {

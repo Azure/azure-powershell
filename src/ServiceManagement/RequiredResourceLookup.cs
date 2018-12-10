@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.ServiceManagemenet.Common
+namespace Microsoft.Azure.ServiceManagement.Common
 {
     /// <summary>
     /// This class handles mapping management client types
