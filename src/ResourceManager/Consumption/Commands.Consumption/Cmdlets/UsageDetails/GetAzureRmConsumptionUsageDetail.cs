@@ -76,11 +76,6 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
         [ValidateNotNull]
         public int? Top { get; set; }
 
-        [CmdletParameterBreakingChange("InvoiceName", ChangeDescription = "InvoiceName is being deprecated without being replaced.")]
-        [Parameter(Mandatory = false, HelpMessage = "Name of a specific invoice to get the usage details that associate with.")]
-        [ValidateNotNullOrEmpty]
-        public string InvoiceName { get; set; }
-
         public override void ExecuteCmdlet()
         {
             var expand = default(string);
