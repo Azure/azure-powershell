@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Removed plural names "Categories" and "Timegrains" parameter in favor of singular parameter names
