@@ -38,7 +38,7 @@ StorageAccountName           : mystorage
 StorageKeyType               : Primary
 RetentionInDays              : 0
 StorageAccountSubscriptionId : 7fe3301d-31d3-4668-af5e-211a890ba6e3
-PredicateExpression			 : statement <> 'select 1'
+PredicateExpression	         : statement <> 'select 1'
 ```
 
 ## PARAMETERS
