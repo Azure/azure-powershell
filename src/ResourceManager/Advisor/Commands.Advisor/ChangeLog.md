@@ -18,9 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+*Added new commendalets for Advidor recommendation
+    - Get-AzureRMAdvisorRecommendation
+    - Enable-AzureRMAdvisorRecommendation
+    - Disable-AzureRMAdvisorRecommendation
 
-## Version 0.1.1-preview
-* Fixed an issue with subscriptions not getting populated in Cloud Shell
-
-## Version 0.1.0-preview
-* Public preview release of Resource Graph cmdlets

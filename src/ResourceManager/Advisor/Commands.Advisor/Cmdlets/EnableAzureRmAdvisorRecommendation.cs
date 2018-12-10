@@ -53,31 +53,23 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Resource Id.
         /// </summary>
-        [Parameter(ParameterSetName = "IdParameterSet", Mandatory = true, HelpMessage = "Resource Id of the recommenation to be suppressed.")]
+        [Parameter(ParameterSetName = "IdParameterSet", Position = 0, Mandatory = true, HelpMessage = "Resource Id of the recommendation to be suppressed.")]
         [Alias("Id")]
-        public string ResourceId
-        {
-            get;
-            set;
-        }
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the object passed from the PowerShell piping
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = InputObjectParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzureRmAdvisorRecommendation call.")]
         [ValidateNotNullOrEmpty]
-        public List<PsAzureAdvisorResourceRecommendationBase> InputObject { get; set; }
+        public PsAzureAdvisorResourceRecommendationBase InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the recommendation name.
         /// </summary>
         [Parameter(ParameterSetName = "NameParameterSet", Mandatory = true, HelpMessage = "ResourceName of the recommendation.")]
         [Alias("Name")]
-        public string RecommendationName
-        {
-            get;
-            set;
-        }
+        public string RecommendationName { get; set; }
 
         /// <summary>
         /// Suppression delete utility for a given recommendation resource Id.
@@ -96,7 +88,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             List<AzureOperationResponse> response = new List<AzureOperationResponse>();
 
             // Get the list of all suppressions
-            suppresionList = this.ResourcAdvisorclient.Suppressions.ListWithHttpMessagesAsync().Result;
+            suppresionList = this.ResourcAdvisorClient.Suppressions.ListWithHttpMessagesAsync().Result;
             psSuppressionContractList = PsAzureAdvisorSuppressionContract.FromSuppressionContractList(suppresionList.Body.AsEnumerable());
 
             // Get all the suppression for this recommendationId
@@ -105,12 +97,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 // Delete only if the supression belongs to provided RecommendationName
                 if (contract.Id.Contains(recommendationId))
                 {
-                    response.Add(this.ResourcAdvisorclient.Suppressions.DeleteWithHttpMessagesAsync(resourceUri, recommendationId, contract.Name).Result);
+                    response.Add(this.ResourcAdvisorClient.Suppressions.DeleteWithHttpMessagesAsync(resourceUri, recommendationId, contract.Name).Result);
                 }
             }
 
             // Get all the recommendation and convert to its corresponding psobject
-            recommendationList = this.ResourcAdvisorclient.Recommendations.ListWithHttpMessagesAsync().Result;
+            recommendationList = this.ResourcAdvisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
             responseRecommendationList = PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(recommendationList.Body);
 
             // Add the particular recommendation to the response of cmdlet
@@ -141,35 +133,31 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             switch (this.ParameterSetName)
             {
                 case IdParameterSet:
-                    resourceUri = RecommendationHelper.GetFullResourceUrifromResoureID(this.ResourceId);
+                    resourceUri = RecommendationHelper.GetFullResourceUriFromResoureID(this.ResourceId);
                     recommendationId = RecommendationHelper.GetRecommendationIdfromResoureID(this.ResourceId);
 
                     responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, recommendationId));
                     break;
 
                 case NameParameterSet:
-                    recommendation = this.ResourcAdvisorclient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourcAdvisorclient.SubscriptionId, this.RecommendationName).Result;
-                    resourceUri = RecommendationHelper.GetFullResourceUrifromResoureID(recommendation.Body.Id);
-                    suppresionList = this.ResourcAdvisorclient.Suppressions.ListWithHttpMessagesAsync().Result;
+                    recommendation = this.ResourcAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourcAdvisorClient.SubscriptionId, this.RecommendationName).Result;
+                    resourceUri = RecommendationHelper.GetFullResourceUriFromResoureID(recommendation.Body.Id);
+                    suppresionList = this.ResourcAdvisorClient.Suppressions.ListWithHttpMessagesAsync().Result;
                     psSuppressionContractList = PsAzureAdvisorSuppressionContract.FromSuppressionContractList(suppresionList.Body.AsEnumerable());
 
                     responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, this.RecommendationName));
                     break;
 
                 case InputObjectParameterSet:
-                    foreach (PsAzureAdvisorResourceRecommendationBase recommendationBase in this.InputObject)
-                    {
-                        // Parse out the Subscription-ID, Recommendation-ID from the ResourceId parameter.
-                        resourceUri = RecommendationHelper.GetFullResourceUrifromResoureID(recommendationBase.Id);
-                        recommendationId = RecommendationHelper.GetRecommendationIdfromResoureID(recommendationBase.Id);
+                    // Parse out the Subscription-ID, Recommendation-ID from the ResourceId parameter.
+                    resourceUri = RecommendationHelper.GetFullResourceUriFromResoureID(this.InputObject.Id);
+                    recommendationId = RecommendationHelper.GetRecommendationIdfromResoureID(this.InputObject.Id);
 
-                        responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, recommendationId));
-                    }
-
+                    responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, recommendationId));
                     break;
             }
 
-            this.WriteObject(responseRecommendation);
+            this.WriteObject(responseRecommendation, true);
         }
     }
 }

@@ -32,19 +32,6 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Models
         /// </summary>
         public string Solution { get; set; }
 
-        // /// <summary>
-        // /// String representation of the object.
-        // /// </summary>
-        // /// <returns>String value, representing the object</returns>
-        // override
-        // public string ToString()
-        // {
-        //    StringBuilder sb = new StringBuilder();
-        //    sb.AppendLine("problem : " + this.Problem);
-        //    sb.AppendLine("solution :" + this.Solution);
-        //    return sb.ToString();
-        // }
-
         /// <summary>
         /// Parse the ShortDescription into PsObject
         /// </summary>

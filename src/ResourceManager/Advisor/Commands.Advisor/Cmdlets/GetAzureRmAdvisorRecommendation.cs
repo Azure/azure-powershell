@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     /// Search-AzureRmGraph cmdlet
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.ResourceGraph.Utilities.ResourceGraphBaseCmdlet" />
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation"), OutputType(typeof(List<PsAzureAdvisorResourceRecommendationBase>))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation"), OutputType(typeof(PsAzureAdvisorResourceRecommendationBase))]
     public class GetAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Id.
         /// </summary>s
-        [Parameter(ParameterSetName = "IdParameterSet", Mandatory = true, HelpMessage = "One or more recommendation-Id (space delimited)")]
+        [Parameter(ParameterSetName = "IdParameterSet", Mandatory = true, Position = 0, HelpMessage = "One or more recommendation-Id (space delimited)")]
         [Alias("Id")]
         public string ResourceId
         {
@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// </summary>
         [Parameter(ParameterSetName = "IdParameterSet", Mandatory = false, HelpMessage = "Category of the recommendation")]
         [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "Category of the recommendation")]
-        [AllowEmptyString]
         public string Category
         {
             get;
@@ -78,10 +77,9 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Refresh.
         /// </summary>
-        [Parameter(ParameterSetName = "IdParameterSet", Mandatory = false, HelpMessage = "Regenerates the recommendations. Accepted values are true or false.")]
-        [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "Regenerates the recommendations. Accepted values are true or false.")]
-        [AllowEmptyString]
-        public string Refresh
+        [Parameter(ParameterSetName = "IdParameterSet", Mandatory = false, HelpMessage = "Regenerates the recommendations.")]
+        [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "Regenerates the recommendations.")]
+        public SwitchParameter Refresh
         {
             get;
             set;
@@ -108,31 +106,31 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     {
                         string recommendationId = RecommendationHelper.GetRecommendationIdfromResoureID(resourceId);
 
-                        recommendation = this.ResourcAdvisorclient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourcAdvisorclient.SubscriptionId, recommendationId).Result;
+                        recommendation = this.ResourcAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourcAdvisorClient.SubscriptionId, recommendationId).Result;
                         results.Add(PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(recommendation.Body));
                     }
 
                     break;
 
                 case NameParameterSet:
-                    string nextPagelInk = string.Empty;
+                    string nextPagelink = string.Empty;
 
                     // Iterate the page-link if exists, if the first iteration retreives the data.
                     do
                     {
-                        if (string.IsNullOrEmpty(nextPagelInk))
+                        if (string.IsNullOrEmpty(nextPagelink))
                         {
-                            operationResponseRecommendation = this.ResourcAdvisorclient.Recommendations.ListWithHttpMessagesAsync().Result;
+                            operationResponseRecommendation = this.ResourcAdvisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
                         }
                         else
                         {
-                            operationResponseRecommendation = this.ResourcAdvisorclient.Recommendations.ListWithHttpMessagesAsync(nextPagelInk).Result;
+                            operationResponseRecommendation = this.ResourcAdvisorClient.Recommendations.ListWithHttpMessagesAsync(nextPagelink).Result;
                         }
-
+                        nextPagelink = operationResponseRecommendation.Body.NextPageLink;
                         // Add current page items to the List 
                         entirePageLinkRecommendationData.AddRange(operationResponseRecommendation.Body.ToList());
                     }
-                    while (operationResponseRecommendation.Body.NextPageLink != null);
+                    while (!string.IsNullOrEmpty(nextPagelink));
 
                     // Convert to PsAzureAdvisorResourceRecommendationBase list
                     results = PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(entirePageLinkRecommendationData);
@@ -151,23 +149,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 results = RecommendationHelper.ReccomendationFilterByCategoryAndResource(results, this.Category, string.Empty);
             }
 
-            bool isRefresh;
-            try
+            if (Refresh)
             {
-                isRefresh = !string.IsNullOrEmpty(this.Refresh) ? bool.Parse(this.Refresh) : false;
-            }
-            catch (Exception ex)
-            {
-                Exception e = new Exception("User provided input for -Refresh is not an accpeted value. Accepted values are true (or) false.", ex);
-                throw e;
+                AzureOperationHeaderResponse<RecommendationsGenerateHeaders> generateionResponse = this.ResourcAdvisorClient.Recommendations.GenerateWithHttpMessagesAsync().Result;
             }
 
-            if (isRefresh)
-            {
-                AzureOperationHeaderResponse<RecommendationsGenerateHeaders> generateionResponse = this.ResourcAdvisorclient.Recommendations.GenerateWithHttpMessagesAsync().Result;
-            }
-
-            this.WriteObject(results);
+            this.WriteObject(results, true);
         }
     }
 }
