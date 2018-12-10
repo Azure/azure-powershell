@@ -30,9 +30,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(DiskSku), ReplacementCmdletOutputTypeName = "SnapshotSku")]
-#endif
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotUpdateDiskEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
     public partial class SetAzureRmSnapshotUpdateDiskEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
