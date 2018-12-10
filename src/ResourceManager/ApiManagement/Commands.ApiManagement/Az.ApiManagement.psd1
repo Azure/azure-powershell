@@ -75,16 +75,11 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Add-AzApiManagementRegion', 'Get-AzApiManagementSsoToken', 
-    'New-AzApiManagementHostnameConfiguration', 
     'New-AzApiManagementCustomHostnameConfiguration', 
     'New-AzApiManagementSystemCertificate', 
     'New-AzApiManagementRegion', 
-    'New-AzApiManagementVirtualNetwork', 
     'Remove-AzApiManagementRegion', 
-    'Set-AzApiManagementHostnames', 
-    'Update-AzApiManagementDeployment', 
-    'Update-AzApiManagementRegion', 
-    'Import-AzApiManagementHostnameCertificate', 
+    'Update-AzApiManagementRegion',  
     'Backup-AzApiManagement', 'Get-AzApiManagement', 
     'New-AzApiManagement', 'Remove-AzApiManagement', 
     'Restore-AzApiManagement', 

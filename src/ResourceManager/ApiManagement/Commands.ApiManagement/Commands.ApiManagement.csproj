@@ -89,23 +89,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\NewAzureApiManagementCustomHostnameConfiguration.cs" />
-    <Compile Include="Commands\NewAzureApiManagementHostnameConfiguration.cs" />
     <Compile Include="Commands\NewAzureApiManagementRegion.cs" />
     <Compile Include="Commands\NewAzureApiManagementSystemCertificate.cs" />
-    <Compile Include="Commands\NewAzureApiManagementVirtualNetwork.cs" />
     <Compile Include="Commands\SetAzureApiManagement.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\Mappers.cs" />
     <Compile Include="Models\PsApiManagementCertificateInformation.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementRegion.cs" />
-    <Compile Include="Commands\SetAzureApiManagementHostnames.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Commands\UpdateAzureApiManagementDeployment.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\UpdateAzureApiManagementRegion.cs" />
-    <Compile Include="Commands\ImportAzureApiManagementHostnameCertificate.cs" />
     <Compile Include="Commands\BackupAzureApiManagement.cs" />
     <Compile Include="Commands\GetAzureApiManagement.cs" />
     <Compile Include="Commands\NewAzureApiManagement.cs" />

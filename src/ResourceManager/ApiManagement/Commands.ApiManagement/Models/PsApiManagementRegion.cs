@@ -49,9 +49,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             {
                 staticIPList.AddRange(additionalLocation.PrivateIPAddresses);
             }
-#pragma warning disable CS0618
-            StaticIPs = staticIPList.ToArray();
-#pragma warning restore CS0618
             if (additionalLocation.VirtualNetworkConfiguration != null)
             {
                 VirtualNetwork = new PsApiManagementVirtualNetwork(additionalLocation.VirtualNetworkConfiguration);
@@ -59,9 +56,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         }
 
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
-
-        [Obsolete("This property is deprecated and will be removed in a future release")]
-        public string[] StaticIPs { get; private set; }
 
         public string[] PublicIPAddresses { get; private set; }
 

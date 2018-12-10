@@ -18,3 +18,5 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Removed deprecated cmdlets: New-AzApiManagementHostnameConfiguration, Import-AzApiManagementHostnameCertificate, New-AzApiManagementVirtualNetwork, Set-AzApiManagementHostnames, Update-AzApiManagementDeployment
+* Removed deprecated properties from PSApiManagement and PSApiManagementRegion
