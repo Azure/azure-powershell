@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     using Advisor.Utilities;
     using Microsoft.Azure.Management.Advisor.Models;
     using Microsoft.Rest.Azure;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Search-AzureRmGraph cmdlet
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Id.
         /// </summary>s
-        [Parameter(ParameterSetName = "IdParameterSet", Mandatory = true, Position = 0, HelpMessage = "One or more recommendation-Id (space delimited)")]
+        [Parameter(ParameterSetName = "IdParameterSet", ValueFromPipelineByPropertyName = true, Mandatory = true, Position = 0, HelpMessage = "One or more recommendation-Id (space delimited)")]
         [Alias("Id")]
         public string ResourceId
         {
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// </summary>
         [Parameter(ParameterSetName = "IdParameterSet", Mandatory = false, HelpMessage = "Category of the recommendation")]
         [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "Category of the recommendation")]
+        [ValidateSet("Cost", "HighAvailability", "Performance", "Security")]
         public string Category
         {
             get;
@@ -68,6 +70,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// </summary>
         [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "ResourceGroup name of the recommendation")]
         [Alias("Name")]
+        [ResourceGroupCompleter]
         public string ResourceGroupName
         {
             get;
