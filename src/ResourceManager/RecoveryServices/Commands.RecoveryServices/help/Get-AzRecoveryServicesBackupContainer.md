@@ -15,8 +15,8 @@ Gets Backup containers.
 
 ```
 Get-AzRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-BackupManagementType] <String>]
- [[-Name] <String>] [[-FriendlyName] <String>] [[-ResourceGroupName] <String>]
- [[-Status] <ContainerRegistrationStatus>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [[-FriendlyName] <String>] [[-ResourceGroupName] <String>] [[-Status] <ContainerRegistrationStatus>] 
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -29,14 +29,14 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 
 ### Example 1: Get a specific container
 ```
-PS C:\>Get-AzRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "V2VM";
+PS C:\> Get-AzRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM";
 ```
 
 This command gets the container named V2VM of type AzureVM.
 
 ### Example 2: Get all containers of a specific type
 ```
-PS C:\>Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MARS
+PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MARS
 ```
 
 This command gets all Windows containers that are protected by Azure Backup agent.
@@ -105,21 +105,6 @@ Accept wildcard characters: False
 
 ### -FriendlyName
 Specifies the friendly name of the container to get.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the container to get.
 
 ```yaml
 Type: System.String
