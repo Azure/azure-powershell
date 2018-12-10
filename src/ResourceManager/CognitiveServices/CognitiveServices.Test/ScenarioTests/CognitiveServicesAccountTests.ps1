@@ -421,6 +421,7 @@ function Test-PipingToSetAzureAccount
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
 
 <#
 .SYNOPSIS
