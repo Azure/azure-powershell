@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     using Advisor.Cmdlets.Models;
     using Advisor.Utilities;
     using Management.Advisor.Models;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Get-AzureRmAdvisorConfiguration cmdlet
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// </summary>
         [Parameter(ParameterSetName = RgParameterSet, Mandatory = false, HelpMessage = "Resource Group name for the configuration ")]
         [Alias("Rg")]
+        [ResourceGroupCompleter]
         public string ResourceGroupName
         {
             get;

@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the LowCpuThreshold.
         /// </summary>s
-        [Parameter(ParameterSetName = InputObjectLowCpuExcludeParameterSet, Mandatory = true, HelpMessage = "Value for Low Cpu threshold.")]
+        [Parameter(ParameterSetName = InputObjectLowCpuExcludeParameterSet, Position = 0, Mandatory = true, HelpMessage = "Value for Low Cpu threshold.")]
         [Alias("LowCpu")]
         [ValidateSet("0", "5", "10", "15", "20")]
         [ValidateNotNullOrEmpty]
@@ -76,8 +76,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Object passed on from the pipeline
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = InputObjectLowCpuExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = InputObjectRgExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 0, ParameterSetName = InputObjectLowCpuExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 0, ParameterSetName = InputObjectRgExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
         [ValidateNotNullOrEmpty]
         public PsAzureAdvisorConfigurationData InputObject { get; set; }
 
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     configDataProperties.LowCpuThreshold = this.LowCpuThreshold;
                     configData.Properties = configDataProperties;
 
-                    // InputObject is not null, this is a piping scenario.
+                    // If InputObject is not null, this is a piping scenario.
                     if (this.InputObject != null)
                     {
                         isSubsCriptionTypeConfiguration = SuppressionHelper.IsConfigurationSubscriptionLevel(this.InputObject);

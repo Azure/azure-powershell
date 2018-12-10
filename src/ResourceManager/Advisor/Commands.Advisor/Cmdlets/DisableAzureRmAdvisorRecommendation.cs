@@ -54,23 +54,23 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Resource Id.
         /// </summary>
-        [Parameter(ParameterSetName = "IdParameterSet", ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "ResourceID of the recommendation to be suppressed (space delimitited).")]
+        [Parameter(ParameterSetName = "IdParameterSet", ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "ResourceID of the recommendation to be suppressed (space delimitited).")]
         [Alias("Id")]
         public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the days to disable the recommendation.
         /// </summary>
-        [Parameter(ParameterSetName = IdParameterSet, Mandatory = false, HelpMessage = "Days to disable")]
-        [Parameter(ParameterSetName = NameParameterSet, Mandatory = false, HelpMessage = "Days to disable")]
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, HelpMessage = "Days to disable")]
-        [ValidateRange(0, int.MaxValue)]
+        [Parameter(ParameterSetName = IdParameterSet, Mandatory = false, HelpMessage = "Days to disable.")]
+        [Parameter(ParameterSetName = NameParameterSet, Mandatory = false, HelpMessage = "Days to disable.")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, HelpMessage = "Days to disable.")]
+        [ValidateRange(1, int.MaxValue)]
         public string Days { get; set; }
 
         /// <summary>
         /// Gets or sets the object passed from the PowerShell piping
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzureRmAdvisorRecommendation call.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, ParameterSetName = InputObjectParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzureRmAdvisorRecommendation call.")]
         [ValidateNotNullOrEmpty]
         public PsAzureAdvisorResourceRecommendationBase InputObject { get; set; }
 
@@ -97,21 +97,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             // This list contains all the response for the auzre-operation
             List<AzureOperationResponse<SuppressionContract>> azureOperationResponseSupression = new List<AzureOperationResponse<SuppressionContract>>();
             var returnSuppressionContract = new List<PsAzureAdvisorSuppressionContract>();
-
-            // If the days is less than -1, we update it as empty. As our API only accepts -1 and positive values.
-            try
-            {
-                if (!string.IsNullOrEmpty(Days) && int.Parse(Days) < -1)
-                {
-                    Days = string.Empty;
-                }
-            }
-            catch (Exception ex)
-            {
-                Exception e = new Exception("User provided input for -Days is not a integer.", ex);
-                throw e;
-            }
-
 
             // Create the suppression contract
             suppressionContract = new SuppressionContract(null, DefaultSuppressionName, null, null, string.IsNullOrEmpty(this.Days) ? string.Empty : this.Days);

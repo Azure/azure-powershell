@@ -53,21 +53,21 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Resource Id.
         /// </summary>
-        [Parameter(ParameterSetName = "IdParameterSet", Position = 0, Mandatory = true, HelpMessage = "Resource Id of the recommendation to be suppressed.")]
+        [Parameter(ParameterSetName = "IdParameterSet", Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Resource Id of the recommendation to be suppressed.")]
         [Alias("Id")]
         public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the object passed from the PowerShell piping
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzureRmAdvisorRecommendation call.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, ParameterSetName = InputObjectParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzureRmAdvisorRecommendation call.")]
         [ValidateNotNullOrEmpty]
         public PsAzureAdvisorResourceRecommendationBase InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the recommendation name.
         /// </summary>
-        [Parameter(ParameterSetName = "NameParameterSet", Mandatory = true, HelpMessage = "ResourceName of the recommendation.")]
+        [Parameter(ParameterSetName = "NameParameterSet", Position = 0, Mandatory = true, HelpMessage = "ResourceName of the recommendation.")]
         [Alias("Name")]
         public string RecommendationName { get; set; }
 
