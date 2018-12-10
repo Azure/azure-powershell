@@ -12,7 +12,7 @@
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.18" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0-preview-06" PrivateAssets="All" />
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup Condition="'$(IncludeHyak)' == 'true'">
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.4.0" />
