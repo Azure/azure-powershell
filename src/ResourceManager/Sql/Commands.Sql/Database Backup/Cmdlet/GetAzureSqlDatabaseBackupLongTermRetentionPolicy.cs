@@ -28,14 +28,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     public class GetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
         /// <summary>
-        /// Gets or sets whether or not to use the Long Term Retention Vaults.
-        /// </summary>
-        [CmdletParameterBreakingChange("Current", "Parameter is being deprecated without being replaced. Future default behavior will assume -Current is always true.")]
-        [Parameter(Mandatory = false,
-            HelpMessage = "If not provided, the command returns the legacy Long Term Retention policy information. Otherwise, the command returns the current version of the Long Term Retention policy.")]
-        public SwitchParameter Current { get; set; }
-
-        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -47,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     this.ResourceGroupName,
                     this.ServerName,
                     this.DatabaseName,
-                    Current.IsPresent)
+                    true)
             };
         }
 
