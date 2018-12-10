@@ -694,7 +694,6 @@
     <Compile Include="VirtualNetworkGateway\ResizeAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVpnClientRevokedCertificateCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVpnClientRootCertificateCommand.cs" />
-    <Compile Include="VirtualNetworkGateway\SetAzureVirtualNetworkGatewayVpnClientConfig.cs" />
     <Compile Include="VirtualNetworkGateway\GenerateAzureVpnClientPackage.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureVirtualNetworkGatewayIpConfigCommand.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureRmVpnClientIpsecPolicyCommand.cs" />
