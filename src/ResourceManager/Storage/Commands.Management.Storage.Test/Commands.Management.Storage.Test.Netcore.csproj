@@ -1,5 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <IncludeManagementStorage>false</IncludeManagementStorage>
+  </PropertyGroup>
+
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
@@ -23,6 +27,10 @@
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="9.1.0-preview" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Update="SessionRecords\**\*.json">
