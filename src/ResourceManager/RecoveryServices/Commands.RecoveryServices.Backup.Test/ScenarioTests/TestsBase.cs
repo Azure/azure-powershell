@@ -30,7 +30,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {

@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.DevSpaces;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;

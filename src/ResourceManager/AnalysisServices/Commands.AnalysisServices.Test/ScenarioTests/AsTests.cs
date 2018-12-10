@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using Xunit;
 
     public class AsTests : AsTestsBase

@@ -12,7 +12,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Reflection;
 using System.IO;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Commands.Aks.Test.ScenarioTests
 {

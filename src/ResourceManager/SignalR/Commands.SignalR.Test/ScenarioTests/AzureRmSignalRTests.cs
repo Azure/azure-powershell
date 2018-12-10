@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.SignalR.Test.ScenarioTests
 {
     public class AzureRmSignalRTests : RMTestBase
     {
-        private readonly ServiceManagemenet.Common.Models.XunitTracingInterceptor _logger;
+        private readonly ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
 
         public AzureRmSignalRTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
+            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
 

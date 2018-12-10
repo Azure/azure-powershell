@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             _helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
+        public void RunPsTest(ServiceManagement.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();

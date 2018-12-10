@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.IotCentral.Test.ScenarioTests
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using Microsoft.Azure.Management.IotCentral;
     using TestEnvironmentFactory = Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 

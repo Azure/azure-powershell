@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0-preview-06" PrivateAssets="All" />
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" PrivateAssets="All" />
     <PackageReference Include="System.Runtime.Loader" Version="4.0.0" />
   </ItemGroup>
 

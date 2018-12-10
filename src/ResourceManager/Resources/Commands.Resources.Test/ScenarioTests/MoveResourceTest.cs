@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
     using Xunit.Abstractions;

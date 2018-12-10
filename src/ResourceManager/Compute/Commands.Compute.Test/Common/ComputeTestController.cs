@@ -28,7 +28,7 @@ using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Test;
 using TestBase = Microsoft.Azure.Test.TestBase;
 #endif
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using NetworkManagementClientInternal = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;

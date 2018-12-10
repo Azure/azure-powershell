@@ -24,7 +24,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
 {

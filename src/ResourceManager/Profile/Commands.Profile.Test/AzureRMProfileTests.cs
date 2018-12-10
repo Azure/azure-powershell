@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Test;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Internal.Subscriptions.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;

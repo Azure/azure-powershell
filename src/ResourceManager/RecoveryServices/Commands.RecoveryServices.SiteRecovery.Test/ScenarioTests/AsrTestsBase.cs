@@ -25,7 +25,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using System.Diagnostics;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
