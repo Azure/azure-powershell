@@ -38,36 +38,6 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Models
         /// </summary>
         public string LowCpuThreshold { get; set; }
 
-        // override
-        // /// <summary>
-        // /// String representation of the object.
-        // /// </summary>
-        // /// <returns>String value for the object</returns>
-        // public string ToString()
-        // {
-        //    StringBuilder sb = new StringBuilder();
-        //    if (this.AdditionalProperties == null)
-        //    {
-        //        sb.AppendLine("additionalProperties : null");
-        //    }
-        //    else
-        //    {
-        //        sb.AppendLine("additionalProperties : " + this.AdditionalProperties);
-        //    }
-
-        //    sb.AppendLine("exclude :  " + this.Exclude);
-        //    if (string.IsNullOrEmpty(this.LowCpuThreshold))
-        //    {
-        //        sb.AppendLine("lowCpuThreshold : null");
-        //    }
-        //    else
-        //    {
-        //        sb.AppendLine("lowCpuThreshold : " + this.LowCpuThreshold);
-        //    }
-
-        //    return sb.ToString();
-        // }
-
         /// <summary>
         /// Parse ConfigDataProperties to equivalent PSObject
         /// </summary>

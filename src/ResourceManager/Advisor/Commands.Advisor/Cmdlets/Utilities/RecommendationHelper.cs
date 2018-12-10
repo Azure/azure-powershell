@@ -109,9 +109,9 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         public static List<PsAzureAdvisorResourceRecommendationBase> RecomendationFilterByRecommendation(IEnumerable<PsAzureAdvisorResourceRecommendationBase> recListTobeFiltered, List<string> recommendationNameList)
         {
             List<PsAzureAdvisorResourceRecommendationBase> returnList = new List<PsAzureAdvisorResourceRecommendationBase>();
-            foreach (string recommendaitonName in recommendationNameList)
+            foreach (string recommendationName in recommendationNameList)
             {
-                returnList.Add(RecomendationFilterByRecommendation(recListTobeFiltered, recommendaitonName));
+                returnList.Add(RecomendationFilterByRecommendation(recListTobeFiltered, recommendationName));
             }
 
             return returnList;
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// </summary>
         /// <param name="resourceID">ResourceId of recommendation</param>
         /// <returns>SubscriptionId as string</returns>
-        public static string GetFullResourceUrifromResoureID(string resourceID)
+        public static string GetFullResourceUriFromResoureID(string resourceID)
         {
             string subscriptionID = string.Empty;
 

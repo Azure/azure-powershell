@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Models
         public string Impact { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource type identified by Advisor.        /// </summary>
+        /// Gets or sets the resource type identified by Advisor.       
+        /// </summary>
         public string ImpactedField { get; set; }
 
         /// <summary>

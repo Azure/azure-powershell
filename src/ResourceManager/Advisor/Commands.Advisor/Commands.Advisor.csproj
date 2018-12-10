@@ -32,7 +32,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Advisor</OutputPath>
+    <OutputPath>..\..\..\Package\Release\Advisor\Advisor\AzureRM.Advisor</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <CodeAnalysisLogFile>bin\Release\Microsoft.Azure.Commands.Management.AzureResourceManager.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
@@ -56,9 +56,7 @@
     <Compile Include="Cmdlets\Models\PsAzureAdvisorSuppressionContract.cs" />
     <Compile Include="Cmdlets\Models\PsRecommendationBaseShortDescription.cs" />
     <Compile Include="Cmdlets\SetAzureRmAdvisorConfiguration.cs" />
-    <Compile Include="Cmdlets\GetAzureRmAdvisorConfiguration.cs">
-      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
-    </Compile>
+    <Compile Include="Cmdlets\GetAzureRmAdvisorConfiguration.cs" />
     <Compile Include="Cmdlets\GetAzureRmAdvisorRecommendation.cs" />
     <Compile Include="Cmdlets\Utilities\RecommendationHelper.cs" />
     <Compile Include="Cmdlets\Utilities\SuppressionHelper.cs" />
@@ -66,7 +64,7 @@
     <Compile Include="Utilities\ResourceAdvisorBaseCmdlet.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AzureRM.Advisor.psd1">
+    <None Include="Az.Advisor.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Advisor.format.ps1xml">
@@ -88,10 +86,6 @@
     <Reference Include="Microsoft.Azure.Management.Advisor">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Advisor.0.9.5-preview\lib\net452\Microsoft.Azure.Management.Advisor.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
