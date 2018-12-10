@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Advisor.dll-Help.xml
-Module Name: AzureRM.Advisor
+Module Name: Az.Advisor
 online version:
 schema: 2.0.0
 ---
@@ -26,8 +26,7 @@ Enable-AzureRmAdvisorRecommendation -ResourceId <String> [-DefaultProfile <IAzur
 
 ### InputObjectParameterSet
 ```
-Enable-AzureRmAdvisorRecommendation
- -InputObject <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]>
+Enable-AzureRmAdvisorRecommendation -InputObject <PsAzureAdvisorResourceRecommendationBase>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -82,7 +81,6 @@ SuppressionIds       : {}
 Name                 : {recommendation_id}
 Type                 : Microsoft.Advisor/recommendations
 ```
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -101,16 +99,15 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The pipeline object returned by Get-AzureRmAdvisorRecommendation call.
-
+The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzureRmAdvisorRecommendation call.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]
+Type: PsAzureAdvisorResourceRecommendationBase
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -125,14 +122,14 @@ Parameter Sets: NameParameterSet
 Aliases: Name
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource Id of the recommenation to be suppressed.
+Resource Id of the recommendation to be suppressed.
 
 ```yaml
 Type: String
@@ -140,9 +137,9 @@ Parameter Sets: IdParameterSet
 Aliases: Id
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -152,11 +149,13 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.Commands.Advisor, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]]
+### System.String
+
+### Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.Commands.Advisor, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.Commands.Advisor, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 

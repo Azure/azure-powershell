@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Advisor.dll-Help.xml
-Module Name: AzureRM.Advisor
+Module Name: Az.Advisor
 online version:
 schema: 2.0.0
 ---
@@ -14,21 +14,21 @@ Disable an Azure Advisor recommendation.
 
 ### IdParameterSet (Default)
 ```
-Disable-AzureRmAdvisorRecommendation -ResourceId <String> [-Days <String>]
+Disable-AzureRmAdvisorRecommendation [-ResourceId] <String> [[-Days] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NameParameterSet
 ```
-Disable-AzureRmAdvisorRecommendation [-Days <String>] -RecommendationName <String>
+Disable-AzureRmAdvisorRecommendation [[-Days] <String>] [-RecommendationName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Disable-AzureRmAdvisorRecommendation [-Days <String>]
- -InputObject <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Disable-AzureRmAdvisorRecommendation [[-Days] <String>]
+ [-InputObject] <PsAzureAdvisorResourceRecommendationBase> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +82,7 @@ Creating a suppression by piping two cmdlet. First cmdlet will return one recomm
 ## PARAMETERS
 
 ### -Days
-Days to disable. If not specified, the recommendation is disabled forever.
+Days to disable.
 
 ```yaml
 Type: String
@@ -90,7 +90,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -112,15 +112,15 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The pipeline object returned by Get-AzureRmAdvisorRecommendation call.
+The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzureRmAdvisorRecommendation call.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]
+Type: PsAzureAdvisorResourceRecommendationBase
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -135,7 +135,7 @@ Parameter Sets: NameParameterSet
 Aliases: Name
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -150,9 +150,9 @@ Parameter Sets: IdParameterSet
 Aliases: Id
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -162,11 +162,13 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase, Microsoft.Azure.Commands.Advisor, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]]
+### System.String
+
+### Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract, Microsoft.Azure.Commands.Advisor, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract, Microsoft.Azure.Commands.Advisor, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 

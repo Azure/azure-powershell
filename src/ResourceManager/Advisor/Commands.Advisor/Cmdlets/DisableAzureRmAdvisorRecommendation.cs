@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
@@ -61,9 +60,9 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the days to disable the recommendation.
         /// </summary>
-        [Parameter(ParameterSetName = IdParameterSet, Mandatory = false, HelpMessage = "Days to disable.")]
-        [Parameter(ParameterSetName = NameParameterSet, Mandatory = false, HelpMessage = "Days to disable.")]
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, HelpMessage = "Days to disable.")]
+        [Parameter(ParameterSetName = IdParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
+        [Parameter(ParameterSetName = NameParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
         [ValidateRange(1, int.MaxValue)]
         public string Days { get; set; }
 
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the recommendation name.
         /// </summary>
-        [Parameter(ParameterSetName = "NameParameterSet", Mandatory = true, HelpMessage = "ResourceName of the recommendation")]
+        [Parameter(ParameterSetName = "NameParameterSet", Position = 0, Mandatory = true, HelpMessage = "ResourceName of the recommendation")]
         [Alias("Name")]
         public string RecommendationName
         {
