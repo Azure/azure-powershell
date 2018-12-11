@@ -14,16 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
-    using Interfaces;
-    using System;
-
-    internal class AfsConsoleWriter : IConsoleWriter
-    {
-        public void WriteLine(string message)
-        {
-            Console.WriteLine(message);
-        }
-	}
     public class PSADGroup : PSADObject
     {
         public bool? SecurityEnabled { get; set; }
