@@ -121,22 +121,6 @@ function Test-RestorePointInTimeBackup
 		-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -VCore 2 -ComputeGeneration 'Gen4'
 }
 
-function Test-ServerBackupLongTermRetentionVault
-{
-	$location = "North Europe"
-	$serverVersion = "12.0"
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung
-	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
-	$vaultResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault"
-
-	# set
-	Set-AzureRmSqlServerBackupLongTermRetentionVault -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ResourceId $vaultResourceId
-	# get
-	$result = Get-AzureRmSqlServerBackupLongTermRetentionVault -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName
-	#verify
-	Assert-True { $result.RecoveryServicesVaultResourceId -eq $vaultResourceId }
-}
-
 # LTR-V1 restore tests need to be removed once the service is retired completely
 # TODO update for LTRv2 backup
 function Test-RestoreLongTermRetentionBackup
@@ -170,14 +154,14 @@ function Test-LongTermRetentionV2Policy($location = "westcentralus")
 
 		# Basic Policy Test
 		Set-AzureRmSqlDatabaseLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention2
-		$policy = Get-AzureRmSqlDatabaseLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Current
+		$policy = Get-AzureRmSqlDatabaseLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 		Assert-AreEqual $policy.WeeklyRetention $weeklyRetention2
 		Assert-AreEqual $policy.MonthlyRetention $emptyRetention
 		Assert-AreEqual $policy.YearlyRetention $emptyRetention
 
 		# Alias Policy Test
 		Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention1
-		$policy = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Current
+		$policy = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 		Assert-AreEqual $policy.WeeklyRetention $weeklyRetention1
 		Assert-AreEqual $policy.MonthlyRetention $emptyRetention
 		Assert-AreEqual $policy.YearlyRetention $emptyRetention
