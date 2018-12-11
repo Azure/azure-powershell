@@ -55,7 +55,7 @@ PS C:\> New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 $StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -Location $Location -Type $StorageType
 
 # Media Service
-PS C:\> New-AzMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccountId $StorageAccount.Id -Tags $Tags
+PS C:\> New-AzMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccountId $StorageAccount.Id -Tag $Tags
 ```
 
 This example shows how to  create a media service with specifying primary storage account only.
@@ -94,7 +94,7 @@ PS C:\> $PrimaryStorageAccount = New-AzMediaServiceStorageConfig -StorageAccount
 PS C:\> $SecondaryStorageAccount = New-AzMediaServiceStorageConfig -StorageAccountId $StorageAccount2.Id
 PS C:\> $StorageAccounts = @($PrimaryStorageAccount, $SecondaryStorageAccount)
 
-## Create a media service.New-AzMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccounts $StorageAccounts -Tags $Tags
+## Create a media service.New-AzMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccounts $StorageAccounts -Tag $Tags
 ```
 
 This example shows how to create a media service with multiple storage accounts.
@@ -198,7 +198,7 @@ The tags associated with the media service account.
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named

@@ -22,3 +22,4 @@
 * Removed deprecated parameter "Current" from Get-AzSqlDatabaseBackupLongTermRetentionPolicy
 * Removed deprecated parameter "DatabaseName" from Get-AzSqlServerServiceObjective
 * Removed deprecated parameter "PrivilegedLogin" from Set-AzSqlDatabaseDataMaskingPolicy
+* Modified documentation of examples related to SQL Auditing cmdlets. 

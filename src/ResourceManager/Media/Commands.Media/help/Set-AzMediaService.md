@@ -27,7 +27,7 @@ The **Set-AzMediaService** cmdlet modifies specified properties of an existing m
 ### Example 1: Modify an existing media service
 ```
 PS C:\>$Tags = @{"tag1" = "value1"; "tag2" = "value2"}
-Set-AzMediaService -ResourceGroupName "ResourceGroup123" -AccountName "MediaService001" -Tags $Tags -StorageAccounts $StorageAccounts
+Set-AzMediaService -ResourceGroupName "ResourceGroup123" -AccountName "MediaService001" -Tag $Tags -StorageAccounts $StorageAccounts
 ```
 
 The first command creates a series of tags and stores those tags in the variable named $Tags.

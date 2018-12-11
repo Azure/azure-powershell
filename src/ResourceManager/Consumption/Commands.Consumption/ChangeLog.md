@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
+* InvoiceName parameter removed from the Get-AzConsumptionUsageDetail cmdlet
