@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Removed -State and -ResourceId parameters from Set-AzSqlDatabaseBackupLongTermRetentionPolicy
 * Minor changes for upcoming AzureRM to Az transition
 * Fixed issue with using Get-AzureRmSqlDatabaseVulnerabilityAssessment with DotNet core
 * Modified documentation of help messages related to SQL Auditing cmdlets.

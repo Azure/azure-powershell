@@ -46,8 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 ModelAdapter.GetDatabaseBackupLongTermRetentionPolicy(
                     this.ResourceGroupName,
                     this.ServerName,
-                    this.DatabaseName,
-                    Current.IsPresent)
+                    this.DatabaseName)
             };
         }
 
