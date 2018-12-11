@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
 {
     /// <summary>
-    /// 'Set-AzureRmEventHubConsumerGroup' Cmdlet updates the specified of Consumer Group
+    /// 'Set-AzEventHubConsumerGroup' Cmdlet updates the specified of Consumer Group
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(PSConsumerGroupAttributes))]
     public class SetAzureEventHubConsumerGroup : AzureEventHubsCmdletBase

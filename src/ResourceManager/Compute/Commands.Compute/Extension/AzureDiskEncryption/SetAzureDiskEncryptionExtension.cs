@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 (vmParameters.StorageProfile.OsDisk == null))
             {
                 //VM should have been created and have valid storageProfile and OSDisk by now
-                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Set-AzureDiskEncryptionExtension can enable encryption only on a VM that was already created and has appropriate storageProfile and OS disk")),
+                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Set-AzDiskEncryptionExtension can enable encryption only on a VM that was already created and has appropriate storageProfile and OS disk")),
                                                       "InvalidResult",
                                                       ErrorCategory.InvalidResult,
                                                       null));
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             if (vmParameters == null)
             {
-                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Set-AzureDiskEncryptionExtension can enable encryption only on a VM that was already created ")),
+                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Set-AzDiskEncryptionExtension can enable encryption only on a VM that was already created ")),
                                                       "InvalidResult",
                                                       ErrorCategory.InvalidResult,
                                                       null));

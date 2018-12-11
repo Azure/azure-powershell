@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ADGroupMoreThanOneFound" xml:space="preserve">
-    <value>More than one Active Directory group with the display name '{0}' was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzureRmADGroup -SearchString "{0}"</value>
+    <value>More than one Active Directory group with the display name '{0}' was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzADGroup -SearchString "{0}"</value>
   </data>
   <data name="ADObjectNotFound" xml:space="preserve">
-    <value>Cannot find the Azure Active Directory object '{0}'. Please make sure that the user or group you are authorizing is registered in the current subscription's Azure Active directory. To get a list of Azure Active Directory groups use Get-AzureRmADGroup, or to get a list of Azure Active Directory users use Get-AzureRmADUser.</value>
+    <value>Cannot find the Azure Active Directory object '{0}'. Please make sure that the user or group you are authorizing is registered in the current subscription's Azure Active directory. To get a list of Azure Active Directory groups use Get-AzADGroup, or to get a list of Azure Active Directory users use Get-AzADUser.</value>
   </data>
   <data name="ADUserMoreThanOneFound" xml:space="preserve">
-    <value>More than one Azure Active Directory user with the display name '{0}' was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzureRmADUser -SearchString "{0}"</value>
+    <value>More than one Azure Active Directory user with the display name '{0}' was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzADUser -SearchString "{0}"</value>
   </data>
   <data name="DatabaseNameExists" xml:space="preserve">
     <value>Database with name: '{0}' already exists in server '{1}'.</value>
@@ -160,7 +160,7 @@
     <value>Cannot use the None option with other event types.</value>
   </data>
   <data name="InvalidGraphEndpoint" xml:space="preserve">
-    <value>Please use Set-AzureRmEnvironment to set a valid GraphEndpoint for the current AzureEnvironment.</value>
+    <value>Please use Set-AzEnvironment to set a valid GraphEndpoint for the current AzureEnvironment.</value>
   </data>
   <data name="InvalidRetentionTypeSet" xml:space="preserve">
     <value>Cannot use audit table retention without specifying TableIdentifier. You may want to use '{0}'.</value>
@@ -409,10 +409,10 @@
     <value>Are you sure you want to remove the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'?</value>
   </data>
   <data name="ServerAdvancedThreatProtectionIsNotDefined" xml:space="preserve">
-    <value>Server Advanced Threat Protection is not defined. Please run Enable-AzureRmSqlServerAdvancedThreatProtection first.</value>
+    <value>Server Advanced Threat Protection is not defined. Please run Enable-AzSqlServerAdvancedThreatProtection first.</value>
   </data>
   <data name="RunSetVulnerabilityAssemenSettings" xml:space="preserve">
-    <value>Vulnerability assessment settings are not defined. Please run Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings first.</value>
+    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlDatabaseVulnerabilityAssessmentSettings first.</value>
   </data>
   <data name="InvalidBlobStorageSasUri" xml:space="preserve">
     <value>Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX."</value>
@@ -421,7 +421,7 @@
     <value>Please provide valid value for StorageAccountName or BlobStorageSasUri parameter.</value>
   </data>
   <data name="ScanIdParameterIsRequired" xml:space="preserve">
-    <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
+    <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
   </data>
   <data name="RetrievingStorageAccountIdUnderSubscriptionFailed" xml:space="preserve">
     <value>Failed retrieving id of storage account '{0}' under subscription '{1}'.</value>

@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
 {
     /// <summary>
-    /// 'Set-AzureRmWcfRelay' Cmdlet updates the specified WcfRelay
+    /// 'Set-AzWcfRelay' Cmdlet updates the specified WcfRelay
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WcfRelay", SupportsShouldProcess = true), OutputType(typeof(PSWcfRelayAttributes))]
     public class SetAzureWcfRelay : AzureRelayCmdletBase

@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
             subnet = new PSSubnet();
 
             subnet.Name = this.Name;
-            subnet.AddressPrefix = this.AddressPrefix;
+            subnet.AddressPrefix = this.AddressPrefix?.ToList();
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.Delegation != null)
             {
-                subnet.Delegations = this.Delegation;
+                subnet.Delegations = this.Delegation?.ToList();
             }
 
             this.VirtualNetwork.Subnets.Add(subnet);

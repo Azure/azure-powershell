@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 {
                                     WriteWarningMessage(string.Format(
                                         "TenantId '{0}' contains more than one active subscription. First one will be selected for further use. " +
-                                        "To select another subscription, use Set-AzureRmContext.",
+                                        "To select another subscription, use Set-AzContext.",
                                         tenantId));
                                 }
                                 subscriptionFromServer = subscriptions.First();

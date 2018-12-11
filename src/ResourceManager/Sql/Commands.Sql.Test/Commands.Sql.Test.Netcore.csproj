@@ -1,5 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <IncludeManagementStorage>false</IncludeManagementStorage>
+  </PropertyGroup>
+
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
@@ -25,7 +29,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.22.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.6.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.7.0-preview" />
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.2.0-preview" />
   </ItemGroup>
 

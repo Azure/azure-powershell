@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.6.0'
+ModuleVersion = '0.7.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.6.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Analysis.dll'
@@ -91,7 +91,9 @@ CmdletsToExport = 'Resume-AzAnalysisServicesServer',
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Resume-AzAs', 'Suspend-AzAs', 'Get-AzAs', 'Remove-AzAs', 
-    'Set-AzAs', 'Test-AzAs', 'New-AzAs'
+    'Set-AzAs', 'Test-AzAs', 'New-AzAs', 'Login-AzAsAccount', 'Login-AzureAsAccount',
+    'Export-AzAsInstanceLog', 'Export-AzureAsInstanceLog', 'Sync-AzAsInstance',
+    'Sync-AzureAsInstance', 'Restart-AzAsInstance', 'Restart-AzureAsInstance'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

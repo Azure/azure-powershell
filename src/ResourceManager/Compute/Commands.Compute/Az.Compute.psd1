@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.6.0'
+ModuleVersion = '0.7.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.6.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', 
@@ -147,8 +147,7 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
     'New-AzDiskConfig', 'Set-AzDiskDiskEncryptionKey', 
     'Set-AzDiskImageReference', 'Set-AzDiskKeyEncryptionKey', 
     'New-AzDiskUpdateConfig', 
-    'Set-AzDiskUpdateDiskEncryptionKey', 
-    'Set-AzDiskUpdateImageReference', 
+    'Set-AzDiskUpdateDiskEncryptionKey',
     'Set-AzDiskUpdateKeyEncryptionKey', 'New-AzSnapshot', 
     'Update-AzSnapshot', 'Get-AzSnapshot', 
     'Remove-AzSnapshot', 'Grant-AzSnapshotAccess', 
@@ -158,7 +157,6 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
     'Set-AzSnapshotKeyEncryptionKey', 
     'New-AzSnapshotUpdateConfig', 
     'Set-AzSnapshotUpdateDiskEncryptionKey', 
-    'Set-AzSnapshotUpdateImageReference', 
     'Set-AzSnapshotUpdateKeyEncryptionKey', 'New-AzImage', 
     'Update-AzImage', 'Get-AzImage', 'Remove-AzImage', 
     'New-AzImageConfig', 'Set-AzImageOsDisk', 

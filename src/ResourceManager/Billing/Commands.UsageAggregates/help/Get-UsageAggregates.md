@@ -1,6 +1,6 @@
 ---
-external help file: Microsoft.Azure.Commands.UsageAggregates.dll-Help.xml
-Module Name: AzureRM.UsageAggregates
+external help file: Microsoft.Azure.PowerShell.Cmdlets.UsageAggregates.dll-Help.xml
+Module Name: Az.UsageAggregates
 ms.assetid: 52B3ECCB-80E5-4E16-954A-B83D0BDC7E22
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.usageaggregates/get-usageaggregates
 schema: 2.0.0
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

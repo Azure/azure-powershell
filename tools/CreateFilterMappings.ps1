@@ -299,19 +299,8 @@ function Add-SolutionMappings
             foreach ($Solution in $Script:ProjectToSolutionMappings[$Project])
             {
                 $Solution = $Solution -replace "\\","\"
-                while ($true)
-                {
-                    $Index = $Solution.IndexOf("\")
-                    if ($Solution.Substring(0, $Index) -eq "src")
-                    {
-                        $Solution = ".\" + $Solution
-                        break
-                    }
-
-                    $Solution = $Solution.Substring($Index + 1)
-                }
-
-                $Values.Add($Solution) | Out-Null
+                $SolutionPath = "." + $Solution.Substring($Script:RootPath.length)
+                $Values.Add($SolutionPath) | Out-Null
             }
         }
 
@@ -395,20 +384,8 @@ function Add-TestDllMappings
             $AssemblyName = Get-AssemblyName -TestCsprojPath $TestProject.FullName
             if ($AssemblyName -ne $null)
             {
-                $TestBasePath = $TestProject.Directory.FullName
-                while ($true)
-                {
-                    $Index = $TestBasePath.IndexOf("\")
-                    if ($TestBasePath.Substring(0, $Index) -eq "src")
-                    {
-                        $TestBasePath = ".\" + $TestBasePath
-                        break
-                    }
-
-                    $TestBasePath = $TestBasePath.Substring($Index + 1)
-                }
-
-                $TestDllPath = $TestBasePath + "\bin\Debug\$AssemblyName.dll"
+                $TestBasePath = $TestProject.Directory.FullName.Substring($Script:RootPath.length)
+                $TestDllPath = "." + $TestBasePath + "\bin\Debug\$AssemblyName.dll"
                 $SolutionKeys | % { $Mappings[$_] += $TestDllPath }
             }
         }

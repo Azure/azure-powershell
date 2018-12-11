@@ -184,7 +184,7 @@
     <value>Invalid content passed in. Only byte[] and string content is supported. If bytes are passed in, 'Byte' encoding must be selected.</value>
   </data>
   <data name="InvalidDefaultSubscription" xml:space="preserve">
-    <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
+    <value>No default subscription has been designated. Use Select-AzSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
   </data>
   <data name="InvalidEncoding" xml:space="preserve">
     <value>Invalid encoding selected. 'Byte' encoding can only be used with byte content. Use text encoding instead.</value>
@@ -202,7 +202,7 @@
     <value>The source and destination path type must be the same. Both paths must be webhdfs compliant paths.</value>
   </data>
   <data name="InvalidParseAce" xml:space="preserve">
-    <value>Invalid ACE Supplied. Expected ACE format: '[default]:&lt;scope&gt;:&lt;identity&gt;:&lt;permissions&gt;'. Actual ACE: {0}. Note: parsing is only supported for user and group ACEs. The mask and other permissions are set through Set-AzureDataLakeItemOwner</value>
+    <value>Invalid ACE Supplied. Expected ACE format: '[default]:&lt;scope&gt;:&lt;identity&gt;:&lt;permissions&gt;'. Actual ACE: {0}. Note: parsing is only supported for user and group ACEs. The mask and other permissions are set through Set-AzDataLakeItemOwner</value>
   </data>
   <data name="InvalidPath" xml:space="preserve">
     <value>The specified path '{0}' is in an invalid format. The valid formats is an account relative full path: '/someFolder/someFile.txt', '/' (for the root). Please enter the path in valid format and try again."</value>
@@ -235,10 +235,10 @@
     <value>Failed to move source: '{0}' to destination: '{1}'. Please ensure the file or folder exists at the source and that the destination does not or force was used.</value>
   </data>
   <data name="NoSubscriptionInContext" xml:space="preserve">
-    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRMAccount to login.</value>
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login.</value>
   </data>
   <data name="ObsoleteWarningForAclObjects" xml:space="preserve">
-    <value>The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzureRMDataLakeStoreItemAclEntry</value>
+    <value>The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzDataLakeStoreItemAclEntry</value>
   </data>
   <data name="OffsetOutOfRange" xml:space="preserve">
     <value>The specified offset: {0} is greater than the length of the file to preview. Please select an offset less than: {1} and greater than or equal to zero.</value>

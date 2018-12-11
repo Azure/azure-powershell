@@ -78,78 +78,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// ArgumentException if type is null, empty, or does not represent one
         /// of the known encoding types.
         /// </throws>
-        private static byte[] GetBytes(string content, FileSystemCmdletProviderEncoding type)
+        private static byte[] GetBytes(string content, Encoding encoding)
         {
-            switch (type)
-            {
-                case FileSystemCmdletProviderEncoding.String:
-                    return Encoding.UTF8.GetBytes(content);
-                case FileSystemCmdletProviderEncoding.Unicode:
-                    return Encoding.Unicode.GetBytes(content);
-                case FileSystemCmdletProviderEncoding.BigEndianUnicode:
-                    return Encoding.BigEndianUnicode.GetBytes(content);
-                case FileSystemCmdletProviderEncoding.UTF8:
-                    return Encoding.UTF8.GetBytes(content);
-                case FileSystemCmdletProviderEncoding.UTF7:
-                    return Encoding.UTF7.GetBytes(content);
-                case FileSystemCmdletProviderEncoding.UTF32:
-                    return Encoding.UTF32.GetBytes(content);
-                case FileSystemCmdletProviderEncoding.Ascii:
-                    return Encoding.ASCII.GetBytes(content);
-                case FileSystemCmdletProviderEncoding.Default:
-                    return Encoding.UTF8.GetBytes(content);
-                case FileSystemCmdletProviderEncoding.Oem:
-                    { 
-                        return Encoding.GetEncoding((int)NativeMethods.GetOEMCP()).GetBytes(content);
-                    }
-                default:
-                    // Default to unicode encoding
-                    return Encoding.UTF8.GetBytes(content);
-            }
+            return encoding.GetBytes(content);
         }
 
-        /// <summary>
-        /// Gets the Byte Encoding status of the StreamType parameter.  Returns true
-        /// if the stream was opened with "Byte" encoding, false otherwise.
-        /// </summary>
-        internal static bool UsingByteEncoding(FileSystemCmdletProviderEncoding encoding)
+        internal static byte[] GetBytes(object content, Encoding encoding)
         {
-            return encoding == FileSystemCmdletProviderEncoding.Byte;
-        } // UsingByteEncoding
-
-        internal static byte[] GetBytes(object content, FileSystemCmdletProviderEncoding encoding)
-        {
-            if (UsingByteEncoding(encoding))
-            {
-                // first attempt to convert it directly into a byte array
-                var byteArray = content as byte[];
-                if (byteArray != null)
-                {
-                    return byteArray;
-                }
-
-                // attempt to convert the object into an object array
-                var contentArray = content as object[];
-                if (contentArray == null)
-                {
-                    throw new CloudException(Resources.InvalidEncoding);
-                }
-
-                // now, for each element in the content array, ensure it is of type byte
-                var byteList = new List<byte>();
-                foreach (var entry in contentArray)
-                {
-                    if (!(entry is byte))
-                    {
-                        throw new CloudException(Resources.InvalidEncoding);
-                    }
-
-                    byteList.Add((byte)entry);
-                }
-
-                return byteList.ToArray();
-            }
-
             var contentString = content as string;
             if (contentString == null)
             {
@@ -159,40 +94,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return GetBytes(contentString, encoding);
         }
 
-        internal static Encoding GetEncoding(FileSystemCmdletProviderEncoding type)
+        internal static string BytesToString(byte[] content, Encoding encoding)
         {
-            switch (type)
-            {
-                case FileSystemCmdletProviderEncoding.String:
-                    return Encoding.UTF8;
-                case FileSystemCmdletProviderEncoding.Unicode:
-                    return Encoding.Unicode;
-                case FileSystemCmdletProviderEncoding.BigEndianUnicode:
-                    return Encoding.BigEndianUnicode;
-                case FileSystemCmdletProviderEncoding.UTF8:
-                    return Encoding.UTF8;
-                case FileSystemCmdletProviderEncoding.UTF7:
-                    return Encoding.UTF7;
-                case FileSystemCmdletProviderEncoding.UTF32:
-                    return Encoding.UTF32;
-                case FileSystemCmdletProviderEncoding.Ascii:
-                    return Encoding.ASCII;
-                case FileSystemCmdletProviderEncoding.Default:
-                    return Encoding.UTF8;
-                case FileSystemCmdletProviderEncoding.Oem:
-                    {
-                        var oemCP = NativeMethods.GetOEMCP();
-                        return Encoding.GetEncoding((int)oemCP);
-                    }
-                default:
-                    // Default to unicode encoding
-                    return Encoding.UTF8;
-            }
-        }
-
-        internal static string BytesToString(byte[] content, FileSystemCmdletProviderEncoding type)
-        {
-            return GetEncoding(type).GetString(content);
+            return encoding.GetString(content);
         }
 
         /// <summary>
@@ -203,11 +107,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         protected CancellationToken CmdletCancellationToken;
     }
 
-    internal static class NativeMethods
-    {
-        [DllImport("api-ms-win-core-localization-l1-2-1.dll", SetLastError = false, CharSet = CharSet.Unicode)]
-        internal static extern uint GetOEMCP();
-    }
 
     #endregion
 }

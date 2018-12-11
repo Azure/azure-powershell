@@ -52,7 +52,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         public void SelectAzureProfileInMemory()
         {
             var profile = new AzureRmProfile { DefaultContext = new AzureContext() };
-            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
+            var env = new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            env.Name = "foo";
+            profile.EnvironmentTable.Add("foo", env);
             ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
             // Setup
             cmdlt.AzureContext = profile;

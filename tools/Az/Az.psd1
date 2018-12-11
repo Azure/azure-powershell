@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.6.0'
+ModuleVersion = '0.7.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,51 +51,51 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.6.0'; },
-    @{ModuleName = 'Az.Aks'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.AnalysisServices'; ModuleVersion = '0.6.0'; },
-    @{ModuleName = 'Az.ApiManagement'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.ApplicationInsights'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Automation'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Batch'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Billing'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Cdn'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.CognitiveServices'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Compute'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.ContainerInstance'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.ContainerRegistry'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.DataFactory'; RequiredVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.DataLakeAnalytics'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.DataLakeStore'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.DevTestLabs'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Dns'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.EventGrid'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.EventHub'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.HDInsight'; RequiredVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.IotHub'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.KeyVault'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.LogicApp'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.MachineLearning'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.MarketplaceOrdering'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Media'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Monitor'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Network'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.NotificationHubs'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.PolicyInsights'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.OperationalInsights'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.PowerBIEmbedded'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.RecoveryServices'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.RedisCache'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Relay'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Resources'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.ServiceBus'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.ServiceFabric'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.SignalR'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Sql'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Storage'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.StreamAnalytics'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.TrafficManager'; ModuleVersion = '0.6.0'; }, 
-    @{ModuleName = 'Az.Websites'; ModuleVersion = '0.6.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.7.0'; },
+    @{ModuleName = 'Az.Aks'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.AnalysisServices'; ModuleVersion = '0.7.0'; },
+    @{ModuleName = 'Az.ApiManagement'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.ApplicationInsights'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Automation'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Batch'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Billing'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Cdn'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.CognitiveServices'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Compute'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.ContainerInstance'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.ContainerRegistry'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.DataFactory'; RequiredVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.DataLakeAnalytics'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.DataLakeStore'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.DevTestLabs'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Dns'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.EventGrid'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.EventHub'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.HDInsight'; RequiredVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.IotHub'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.KeyVault'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.LogicApp'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.MachineLearning'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.MarketplaceOrdering'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Media'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Monitor'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Network'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.NotificationHubs'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.PolicyInsights'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.OperationalInsights'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.PowerBIEmbedded'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.RecoveryServices'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.RedisCache'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Relay'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Resources'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.ServiceBus'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.ServiceFabric'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.SignalR'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Sql'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Storage'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.StreamAnalytics'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.TrafficManager'; ModuleVersion = '0.7.0'; }, 
+    @{ModuleName = 'Az.Websites'; ModuleVersion = '0.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -151,7 +151,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Update release with latest Azure features and serialization fixes.'
+        ReleaseNotes = '0.7.0 - December 2018
+Update release with latest Azure features and serialization fixes.'
 
         # Prerelease string of this module
         # Prerelease = ''
