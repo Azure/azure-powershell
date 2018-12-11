@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.PolicyInsights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
 Module Name: Az.PolicyInsights
 online version: https://docs.microsoft.com/en-us/powershell/module/az.policyinsights/remove-azpolicyremediation
 schema: 2.0.0

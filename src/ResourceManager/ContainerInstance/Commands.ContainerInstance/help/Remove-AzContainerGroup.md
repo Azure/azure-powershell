@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.ContainerInstance.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.dll-Help.xml
 Module Name: Az.ContainerInstance
 online version: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance/remove-azcontainergroup
 schema: 2.0.0

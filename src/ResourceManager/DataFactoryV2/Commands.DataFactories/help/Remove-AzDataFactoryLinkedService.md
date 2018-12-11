@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactories
 ms.assetid: 9425D38D-5978-421F-A438-4463068C4628
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactorylinkedservice

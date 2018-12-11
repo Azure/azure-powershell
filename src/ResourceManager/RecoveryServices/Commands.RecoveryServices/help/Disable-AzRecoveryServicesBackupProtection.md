@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: ECD3F05A-9350-407E-8B48-67443547652F
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices.backup/disable-azrecoveryservicesbackupprotection

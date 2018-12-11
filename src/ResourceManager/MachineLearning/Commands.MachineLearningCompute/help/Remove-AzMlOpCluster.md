@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute.dll-Help.xml
 Module Name: Az.MachineLearningCompute
 online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearningcompute/remove-azmlopcluster
 schema: 2.0.0

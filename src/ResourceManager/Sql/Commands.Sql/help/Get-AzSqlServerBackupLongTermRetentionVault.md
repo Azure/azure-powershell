@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 686785F8-2085-4705-A74D-12B18A87E187
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverbackuplongtermretentionvault

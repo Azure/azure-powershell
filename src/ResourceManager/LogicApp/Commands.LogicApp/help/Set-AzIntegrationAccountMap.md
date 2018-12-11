@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 7EF87BE5-FB10-4E5D-A12F-7F50EE6DAD57
 online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/set-azintegrationaccountmap

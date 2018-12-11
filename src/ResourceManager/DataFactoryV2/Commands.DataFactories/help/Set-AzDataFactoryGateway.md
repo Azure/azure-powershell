@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactories
 ms.assetid: 663D27A3-0B51-48F5-81D0-8DDBC5A3A33C
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/set-azdatafactorygateway
