@@ -27,7 +27,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string ActivityName { get; set; }
 
         public string Status { get; set; }
-
-        public string LinkedServiceName { get; set; }
     }
 }

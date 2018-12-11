@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     Description = $"File {node.Name} is too big. Maximum allowed file size is {this._maxFileSizeInBytes} bytes",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = this.ValidationType
-
+                    Type = this.ValidationType,
+                    Kind = this.ValidationKind
                 };
             }
 

@@ -14,7 +14,7 @@
         #region Constructors
         public FileSystemValidation(IConfiguration configuration, string path): base(configuration, "File system check", ValidationType.FileSystem)
         {
-            this._driveLetter = new AfsPath(path).DriveLetter;
+            this._driveLetter = string.IsNullOrEmpty(path) ? null : new AfsPath(path).DriveLetter;
         }
         #endregion
 
@@ -49,7 +49,8 @@
                 Description = $"The {filesystem} filesystem is not supported.",
                 Level = ResultLevel.Error,
                 Result = Result.Fail,
-                Type = this.ValidationType
+                Type = this.ValidationType,
+                Kind = this.ValidationKind
             };
         }
         #endregion
@@ -62,7 +63,7 @@
 
         private IValidationResult UnableToRunBecause(string cause)
         {
-            return ValidationResult.UnavailableValidation(this.ValidationType, cause);
+            return ValidationResult.UnavailableValidation(this.ValidationType, this.ValidationKind, cause);
         }
         #endregion
     }

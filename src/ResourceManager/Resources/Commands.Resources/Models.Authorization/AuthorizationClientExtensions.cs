@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization.Models;
 using System;
 using System.Collections.Generic;
@@ -135,8 +135,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             foreach (RoleAssignment assignment in assignments)
             {
                 assignment.RoleDefinitionId = assignment.RoleDefinitionId.GuidFromFullyQualifiedId();
-                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == Guid.Parse(assignment.PrincipalId)) ??
-                    new PSADObject() { Id = Guid.Parse(assignment.PrincipalId) };
+                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == assignment.PrincipalId) ??
+                    new PSADObject() { Id = assignment.PrincipalId };
                 PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.RoleDefinitionId) ??
                     new PSRoleDefinition() { Id = assignment.RoleDefinitionId };
                 bool delegationFlag = assignment.CanDelegate.HasValue ? (bool)assignment.CanDelegate : false;

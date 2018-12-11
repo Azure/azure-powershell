@@ -7,6 +7,11 @@ $scriptpath = $MyInvocation.MyCommand.Path
 $scriptDirectory = Split-Path $scriptpath
 $scriptFileName = Split-Path $scriptpath -Leaf
 
+if (gcm Invoke-AzureRmStorageSyncCompatibilityCheck -ErrorAction SilentlyContinue)
+{
+    throw "Invoke-AzureRmStorageSyncCompatibilityCheck is already available. Cannot continue with module debugging."
+}
+
 Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\Az.Profile\Az.Profile.psd1" -Verbose
 #Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\Az.Storage\Az.Storage.psd1" -Verbose
 Import-Module "..\..\..\..\..\..\src\Package\$Configuraton\ResourceManager\AzureResourceManager\Az.StorageSync\Az.StorageSync.psd1" -Verbose
@@ -24,7 +29,7 @@ Write-Verbose 'Use Get-DataSetLocation to find location of the dataset'
 
 function Get-Configuration
 {
-    Get-Content -Raw -Path .\config.json | ConvertFrom-Json
+    Get-Content -Raw -Path (Join-Path $scriptDirectory "config.json") | ConvertFrom-Json
 }
 
 function Build-CharacterTable
@@ -202,12 +207,18 @@ function Perform-Test
     }
 
     Write-Verbose "Invoking evaluation tool with path $dataSetLocation"
-    $errors = Invoke-AzureRmStorageSyncCompatibilityCheck -Path $dataSetLocationForTest -SkipSystemChecks
-    Write-Verbose "Number of errors: $($errors.Count)"
+    $result = Invoke-AzureRmStorageSyncCompatibilityCheck -Path $dataSetLocationForTest -SkipSystemChecks
+    
+    # displaying report
+    $result | Format-Custom
+
+    # handling check results
+    $results = $result.Results
+    Write-Verbose "Number of results: $($results.Count)"
 
     $reportLocation = Join-Path $env:TEMP "EvalReport.csv"
     Write-Verbose "Exporting as CSV at $reportLocation"
-    $errors | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path $reportLocation -NoTypeInformation
+    $results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path $reportLocation -NoTypeInformation -Encoding Utf8
     
     Write-Verbose "Done"
 }

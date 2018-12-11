@@ -114,6 +114,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     Level = ResultLevel.Error,
                     Path = node.FullName,
                     Type = this.ValidationType,
+                    Kind = this.ValidationKind,
                     Description = description,
                     Positions = positions
                 };

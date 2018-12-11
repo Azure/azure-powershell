@@ -134,6 +134,7 @@
     <Compile Include="Common\StorageSyncClientCmdletBase.cs" />
     <Compile Include="Common\StorageSyncClient.cs" />
     <Compile Include="Common\SystemUtility.cs" />
+    <Compile Include="Formatting\StorageSyncValidationPowerShellFormatting.cs" />
     <Compile Include="Interfaces\IValidationDescription.cs" />
     <Compile Include="Interop\Clients\EcsManagementInteropClientPlayback.cs" />
     <Compile Include="Interop\Clients\EcsManagementInteropClient.cs" />
@@ -180,39 +181,16 @@
     <Compile Include="InternalObjects\ServerRoleType.cs" />
     <Compile Include="Common\JsonFormatter.cs" />
     <Compile Include="ListFiles.cs" />
-    <Compile Include="Models\PSResourceBase.cs" />
-    <Compile Include="Models\PSRegisteredServer.cs" />
-    <Compile Include="Models\PSCloudEndpoint.cs" />
-    <Compile Include="Models\PSServerEndpoint.cs" />
-    <Compile Include="Models\PSSyncGroup.cs" />
-    <Compile Include="Models\PSStorageSyncService.cs" />
-    <Compile Include="RegisteredServer\GetRegisteredServerCommand.cs" />
-    <Compile Include="RegisteredServer\RegisterServerCommand.cs" />
-    <Compile Include="RegisteredServer\UnregisterServerCommand.cs" />
-    <Compile Include="ServerCertificate\ResetServerCertificateCommand.cs" />
-    <Compile Include="ServerEndpoint\GetServerEndpointCommand.cs" />
-    <Compile Include="ServerEndpoint\InvokeStorageSyncFileRecallCommand.cs" />
-    <Compile Include="ServerEndpoint\SetServerEndpointCommand.cs" />
-    <Compile Include="ServerEndpoint\NewServerEndpointCommand.cs" />
-    <Compile Include="ServerEndpoint\RemoveServerEndpointCommand.cs" />
-    <Compile Include="StorageSyncService\RemoveStorageSyncServiceCommand.cs" />
-    <Compile Include="StorageSyncService\GetStorageSyncServiceCommand.cs" />
-    <Compile Include="StorageSyncService\NewStorageSyncServiceCommand.cs" />
-    <Compile Include="SyncGroup\GetSyncGroupCommand.cs" />
-    <Compile Include="SyncGroup\NewSyncGroupCommand.cs" />
-    <Compile Include="SyncGroup\RemoveSyncGroupCommand.cs" />
+    <Compile Include="Models\PSStorageSyncValidation.cs" />
+    <Compile Include="OutputWriters\PSValidationResultOutputWriter.cs" />
     <Compile Include="Validations\BaseNamespaceValidation.cs" />
     <Compile Include="Cmdlets\InvokeCompatibilityCheckCmdlet.cs" />
     <Compile Include="Interfaces\INamespaceInfo.cs" />
     <Compile Include="Interfaces\IProgressReporter.cs" />
     <Compile Include="Models\PSValidationResult.cs" />
     <Compile Include="NamespaceInfo.cs" />
-    <Compile Include="OutputWriters\AFSConsoleWriter.cs" />
     <Compile Include="Interfaces\ICmdlet.cs" />
-    <Compile Include="Interfaces\IConsoleWriter.cs" />
     <Compile Include="Interfaces\IOutputWriter.cs" />
-    <Compile Include="OutputWriters\PSObjectsOutputWriter.cs" />
-    <Compile Include="OutputWriters\TextSummaryOutputWriter.cs" />
     <Compile Include="ProgressReporter.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Interfaces\IConfiguration.cs" />
@@ -243,6 +221,7 @@
     <Compile Include="Interfaces\ISystemValidation.cs" />
     <Compile Include="Validations\SystemValidations\OSVersionValidation.cs" />
     <Compile Include="Validations\ValidationResult.cs" />
+    <Compile Include="Validations\ValidationsFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -276,6 +255,9 @@
     <EmbeddedResource Include="Config.json" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="Microsoft.Azure.Commands.StorageSync.Evaluation.format.ps1xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">

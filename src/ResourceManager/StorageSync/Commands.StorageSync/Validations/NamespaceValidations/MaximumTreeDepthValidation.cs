@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     Description = $"Directory tree depth limit exceeded. Maximum tree depth is {this._maxTreeDepth}.",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = this.ValidationType
-
+                    Type = this.ValidationType,
+                    Kind = this.ValidationKind
                 };
             }
 

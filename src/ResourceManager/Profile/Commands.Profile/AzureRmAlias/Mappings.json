@@ -2389,27 +2389,6 @@
     "Enable-AzStorageSoftDelete": "Enable-AzureStorageSoftDelete",
     "Disable-AzStorageSoftDelete": "Disable-AzureStorageSoftDelete"
   },
-  "Az.StorageSync": {
-    "Invoke-AzStorageSyncCompatibilityCheck": "Invoke-AzureRmStorageSyncCompatibilityCheck",
-    "New-AzStorageSyncService": "New-AzureRmStorageSyncService",
-    "Get-AzStorageSyncService": "Get-AzureRmStorageSyncService",
-    "Remove-AzStorageSyncService": "Remove-AzureRmStorageSyncService",
-    "New-AzStorageSyncGroup": "New-AzureRmStorageSyncGroup",
-    "Get-AzStorageSyncGroup": "Get-AzureRmStorageSyncGroup",
-    "Remove-AzStorageSyncGroup": "Remove-AzureRmStorageSyncGroup",
-    "New-AzStorageSyncCloudEndpoint": "New-AzureRmStorageSyncCloudEndpoint",
-    "Get-AzStorageSyncCloudEndpoint": "Get-AzureRmStorageSyncCloudEndpoint",
-    "Remove-AzStorageSyncCloudEndpoint": "Remove-AzureRmStorageSyncCloudEndpoint",
-    "New-AzStorageSyncServerEndpoint": "New-AzureRmStorageSyncServerEndpoint",
-    "Get-AzStorageSyncServerEndpoint": "Get-AzureRmStorageSyncServerEndpoint",
-    "Remove-AzStorageSyncServerEndpoint": "Remove-AzureRmStorageSyncServerEndpoint",
-    "Set-AzStorageSyncServerEndpoint": "Set-AzureRmStorageSyncServerEndpoint",
-    "Invoke-AzStorageSyncFileRecall": "Invoke-AzureRmStorageSyncFileRecall",
-    "Register-AzStorageSyncServer": "Register-AzureRmStorageSyncServer",
-    "Unregister-AzStorageSyncServer": "Unregister-AzureRmStorageSyncServer",
-    "Get-AzStorageSyncServer": "Get-AzureRmStorageSyncServer",
-    "Reset-AzStorageSyncServerCertificate": "Reset-AzureRmStorageSyncServerCertificate"
-  },
   "Az.StreamAnalytics": {
     "Get-AzStreamAnalyticsFunction": "Get-AzureRmStreamAnalyticsFunction",
     "Get-AzStreamAnalyticsDefaultFunctionDefinition": "Get-AzureRmStreamAnalyticsDefaultFunctionDefinition",

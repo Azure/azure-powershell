@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     Description = $"Filename {node.Name} is too long. Max length is {this._maxFilenameLength}",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = this.ValidationType
-
+                    Type = this.ValidationType,
+                    Kind = this.ValidationKind
                 };
             }
 

@@ -54,6 +54,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string WorkspaceResourceId { get; set; }
 
         /// <summary>
+        /// Gets or sets the interval in minutes which would decide how frequently TA service should do flow analytics
+        /// </summary>
+        [JsonProperty(PropertyName = "trafficAnalyticsInterval")]
+        public int? TrafficAnalyticsInterval { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">

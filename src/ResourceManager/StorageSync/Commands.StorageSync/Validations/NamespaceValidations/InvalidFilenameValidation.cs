@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     Description = $"The name {name} is not allowed.",
                     Level = ResultLevel.Error,
                     Path = path,
-                    Type = this.ValidationType
+                    Type = this.ValidationType,
+                    Kind = this.ValidationKind
                 };
             }
 

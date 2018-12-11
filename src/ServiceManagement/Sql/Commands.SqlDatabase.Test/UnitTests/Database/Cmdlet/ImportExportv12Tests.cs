@@ -16,10 +16,13 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdlet;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.Utilities;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -104,16 +107,13 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                             "Missing proper UserAgent string.");
                     });
 
-                PSObject storageContext = MockServerHelper.ExecuteWithMock(
-                    testSession,
-                    MockHttpServer.DefaultHttpsServerPrefixUri,
-                    () =>
-                    {
-                        return powershell.InvokeBatchScript(
-                            @"New-AzureStorageContext" +
-                            @" -StorageAccountName $storageAccountName" +
-                            @" -StorageAccountKey $storageAccountKey");
-                    }).FirstOrDefault();
+                StorageCredentials credential = new StorageCredentials(SqlDatabaseTestSettings.Instance.StorageName, SqlDatabaseTestSettings.Instance.AccessKey);
+                string blobEndpoint = String.Format("https://{0}.blob.{1}/", SqlDatabaseTestSettings.Instance.StorageName, "core.windows.net");
+                string tableEndpoint = String.Format("https://{0}.table.{1}/", SqlDatabaseTestSettings.Instance.StorageName, "core.windows.net");
+                string queueEndpoint = String.Format("http://{0}.queue.{1}/", SqlDatabaseTestSettings.Instance.StorageName, "core.windows.net");
+                string fileEndpoint = String.Format("https://{0}.file.{1}/", SqlDatabaseTestSettings.Instance.StorageName, "core.windows.net");
+                CloudStorageAccount account = new CloudStorageAccount(credential, new Uri(blobEndpoint), new Uri(queueEndpoint), new Uri(tableEndpoint), new Uri(fileEndpoint));
+                AzureStorageContext storageContext = new AzureStorageContext(account);
 
                 // Tell the sql auth factory to create a v12 context (skip checking sql version using select query).
                 //

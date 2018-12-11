@@ -19,13 +19,6 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy -WeeklyRetention <String> [-Serve
  [-Confirm] [<CommonParameters>]
 ```
 
-### Legacy
-```
-Set-AzSqlDatabaseBackupLongTermRetentionPolicy -State <String> -ResourceId <String> [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
 ### RemovePolicy
 ```
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-RemovePolicy] [-ServerName] <String> [-DatabaseName] <String>
@@ -66,8 +59,6 @@ WeeklyRetention                        : P2W
 MonthlyRetention                       : PT0S
 YearlyRetention                        : PT0S
 WeekOfYear                             : 0
-State                                  :
-RecoveryServicesBackupPolicyResourceId :
 Location                               :
 ```
 
@@ -85,8 +76,6 @@ WeeklyRetention                        : PT0S
 MonthlyRetention                       : P5Y
 YearlyRetention                        : PT0S
 WeekOfYear                             : 0
-State                                  :
-RecoveryServicesBackupPolicyResourceId :
 Location                               :
 ```
 
@@ -104,8 +93,6 @@ WeeklyRetention                        : PT0S
 MonthlyRetention                       : PT0S
 YearlyRetention                        : P10Y
 WeekOfYear                             : 26
-State                                  :
-RecoveryServicesBackupPolicyResourceId :
 Location                               :
 ```
 
@@ -123,8 +110,6 @@ WeeklyRetention                        : P14D
 MonthlyRetention                       : P24W
 YearlyRetention                        : P10Y
 WeekOfYear                             : 26
-State                                  :
-RecoveryServicesBackupPolicyResourceId :
 Location                               :
 ```
 
@@ -142,8 +127,6 @@ WeeklyRetention                        : PT0S
 MonthlyRetention                       : PT0S
 YearlyRetention                        : PT0S
 WeekOfYear                             : 0
-State                                  :
-RecoveryServicesBackupPolicyResourceId :
 Location                               :
 ```
 
@@ -162,8 +145,6 @@ WeeklyRetention                        : PT0S
 MonthlyRetention                       : PT0S
 YearlyRetention                        : PT0S
 WeekOfYear                             : 0
-State                                  :
-RecoveryServicesBackupPolicyResourceId :
 Location                               :
 ```
 
@@ -261,21 +242,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The Resource ID of the backup long term retention policy.
-
-```yaml
-Type: System.String
-Parameter Sets: Legacy
-Aliases: Id
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ServerName
 The name of the Azure SQL Server the database is in.
 
@@ -288,21 +254,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -State
-The state of the long term retention backup policy, 'Enabled' or 'Disabled'
-
-```yaml
-Type: System.String
-Parameter Sets: Legacy
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
