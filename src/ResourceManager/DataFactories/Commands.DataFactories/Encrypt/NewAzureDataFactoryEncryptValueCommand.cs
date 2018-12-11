@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.DataFactories
         [Parameter(ParameterSetName = ByFactoryName, Position = 2, Mandatory = false, HelpMessage = "The value to encrypt.")]
         public SecureString Value { get; set; }
 
-        [Parameter(ParameterSetName = ByFactoryObject, Position = 2, Mandatory = false, HelpMessage = "The gateway group name.")]
-        [Parameter(ParameterSetName = ByFactoryName, Position = 3, Mandatory = false, HelpMessage = "The gateway group name.")]
+        [Parameter(ParameterSetName = ByFactoryObject, Position = 2, Mandatory = true, HelpMessage = "The gateway group name.")]
+        [Parameter(ParameterSetName = ByFactoryName, Position = 3, Mandatory = true, HelpMessage = "The gateway group name.")]
         public string GatewayName { get; set; }
 
         [Parameter(ParameterSetName = ByFactoryObject, Position = 3, Mandatory = false, HelpMessage = "The windows authentication credential.")]
@@ -90,17 +90,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 
             string encryptedValue = String.Empty;
 
-            if (String.IsNullOrWhiteSpace(GatewayName))
-            {
-                // Cloud encryption without Gateway
-                WriteWarning("Cloud encryption has already been deprecated. Please run get-help new-Azdatafactoryencryptvalue to see other option of this command");
-            }
-            else
-            {
-                // On-premises encryption with Gateway
-                encryptedValue = DataFactoryClient.OnPremisesEncryptString(Value, ResourceGroupName, DataFactoryName,
-                    GatewayName, Credential, Type, NonCredentialValue, AuthenticationType, Server, Database);
-            }
+            // On-premises encryption with Gateway
+            encryptedValue = DataFactoryClient.OnPremisesEncryptString(Value, ResourceGroupName, DataFactoryName,
+                GatewayName, Credential, Type, NonCredentialValue, AuthenticationType, Server, Database);
 
             WriteObject(encryptedValue);
         }
