@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Insights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Insights
 ms.assetid: C7EC21C7-1C7E-49B2-9B33-486532FCDAEC
 online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/remove-azalertrule

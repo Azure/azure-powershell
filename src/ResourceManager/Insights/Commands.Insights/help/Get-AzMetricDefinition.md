@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Insights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Insights
 ms.assetid: 7915A7AC-5A47-4868-B846-2896BCEBFAB2
 online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azmetricdefinition
