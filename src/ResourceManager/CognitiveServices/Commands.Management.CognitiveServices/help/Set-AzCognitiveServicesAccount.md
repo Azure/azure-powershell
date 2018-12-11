@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Management.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: 11E2D82A-1DF1-4E19-8328-44674641D1BB
 online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices.backup/get-azrecoveryservicesbackuprpmountscript
 schema: 2.0.0

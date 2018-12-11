@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactoryV2
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactoryv2
 schema: 2.0.0

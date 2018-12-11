@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: D23BBF34-80C0-48B1-8E1C-6F345DEC61AD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azwebappslot

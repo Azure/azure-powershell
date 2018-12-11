@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.dll-Help.xml
 Module Name: Az.TrafficManager
 ms.assetid: B6E043FF-F4DD-44B7-BEAA-6B17C8F21D58
 online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/disable-aztrafficmanagerprofile

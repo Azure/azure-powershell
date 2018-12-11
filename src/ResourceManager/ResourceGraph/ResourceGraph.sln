@@ -1,19 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceGraph", "Commands.ResourceGraph\Commands.ResourceGraph.csproj", "{CDFD4E1B-BB5F-439B-8843-E6127CD9B8AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ResourceGraph.Netcore", "Commands.ResourceGraph\Commands.ResourceGraph.Netcore.csproj", "{CDFD4E1B-BB5F-439B-8843-E6127CD9B8AD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5130228E-4898-4046-B604-A254B284EBB1}"
-	ProjectSection(SolutionItems) = preProject
-		documentation\current-breaking-changes.md = documentation\current-breaking-changes.md
-		documentation\upcoming-breaking-changes.md = documentation\upcoming-breaking-changes.md
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{161E0CBC-10D6-4BA5-B9B9-7356931B8C3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceGraph.Test", "Commands.ResourceGraph.Test\Commands.ResourceGraph.Test.csproj", "{E628DC38-C7DE-4E2B-B9DF-36D0940EE6BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ResourceGraph.Test.Netcore", "Commands.ResourceGraph.Test\Commands.ResourceGraph.Test.Netcore.csproj", "{E628DC38-C7DE-4E2B-B9DF-36D0940EE6BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +32,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E628DC38-C7DE-4E2B-B9DF-36D0940EE6BA} = {161E0CBC-10D6-4BA5-B9B9-7356931B8C3B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DC153924-CDC0-4D45-93B4-8162BC0CD7F7}

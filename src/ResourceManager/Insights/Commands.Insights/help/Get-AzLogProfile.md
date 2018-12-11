@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Insights.dll-Help.xml
 Module Name: Az.Insights
 ms.assetid: 019EFD94-4087-45F6-812D-FBDFE1B2E48A
 online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azlogprofile

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 95731734-EDCA-432A-A7BF-94D1E3725FB2
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/start-azapplicationgateway

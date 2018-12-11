@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: C3DD193E-B8FE-468D-BEE7-00C3D99B469E
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azresourcegroupdeployment
