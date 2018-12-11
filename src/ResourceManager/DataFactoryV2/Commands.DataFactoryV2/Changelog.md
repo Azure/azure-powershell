@@ -19,3 +19,4 @@
 -->
 
 ## Current Release
+* Removed -LinkedServiceName parameter from Get-AzDataFactoryV2ActivityRun

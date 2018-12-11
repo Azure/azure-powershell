@@ -89,7 +89,6 @@
     <Compile Include="Gateway\GetAzureDataFactoryGatewayCommand.cs" />
     <Compile Include="Gateway\NewAzureDataFactoryGatewayAuthKeyCommand.cs" />
     <Compile Include="Gateway\NewAzureDataFactoryGatewayCommand.cs" />
-    <Compile Include="Gateway\NewAzureDataFactoryGatewayKeyCommand.cs" />
     <Compile Include="Gateway\RemoveAzureDataFactoryGatewayCommand.cs" />
     <Compile Include="Gateway\SetAzureDataFactoryGatewayCommand.cs" />
     <Compile Include="Hubs\GetAzureDataFactoryHubCommand.cs" />
