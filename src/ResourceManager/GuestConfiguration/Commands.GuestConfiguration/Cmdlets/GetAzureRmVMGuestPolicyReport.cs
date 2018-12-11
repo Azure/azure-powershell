@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
     /// Gets Vm Guest Policy reports (GuestConfiguration policy reports)
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMGuestPolicyReport", DefaultParameterSetName = ParameterSetNames.VmNameScope), 
-        OutputType(typeof(IList<GuestConfigurationAssignment>), typeof(IList<GuestConfigurationAssignmentReport>))]
+        OutputType(typeof(IList<GuestConfigurationAssignmentReport>))]
     public class GetAzureRmVMGuestPolicyReport : GuestConfigurationCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ResourceGroupName)]

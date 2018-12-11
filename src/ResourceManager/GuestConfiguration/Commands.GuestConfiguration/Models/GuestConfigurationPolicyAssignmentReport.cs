@@ -31,19 +31,16 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
             if(gcPolicyAssignment != null)
             {
                 this.PolicyDisplayName = gcPolicyAssignment.PolicyDisplayName;
-                this.LatestReportId = gcrpReport.Id;
                 this.Configuration = gcPolicyAssignment.Configuration;
-            }
-
-            if (gcrpReport.Properties != null)
-            {
-                this.ComplianceStatus = gcrpReport.Properties.ComplianceStatus;
+                this.ComplianceStatus = gcPolicyAssignment.ComplianceStatus;
+                this.EndTime = gcPolicyAssignment.LastUpdated;
             }
 
             this.ComplianceReasons = new List<ComplianceReasonDetails>();
 
-            if (gcrpReport.Properties.Details != null)
+            if (gcrpReport != null && gcrpReport.Properties != null && gcrpReport.Properties.Details != null)
             {
+                this.LatestReportId = gcrpReport.Id;
                 foreach (var gcrpResource in gcrpReport.Properties.Details.Resources)
                 {
                     if (gcrpResource == null)
@@ -97,20 +94,15 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
                     this.StartTime = Convert.ToDateTime(gcrpReport.Properties.Details.StartTime);
                 }
 
-                if (!string.IsNullOrEmpty(gcrpReport.Properties.Details.EndTime))
+                if (gcrpReport.Properties.Vm != null)
                 {
-                    this.EndTime = Convert.ToDateTime(gcrpReport.Properties.Details.EndTime);
+                    this.VM = new VMInfo()
+                    {
+                        Uuid = gcrpReport.Properties.Vm.Uuid,
+                        ResourceId = gcrpReport.Properties.Vm.Id,
+                    };
                 }
-            }
-
-            if (gcrpReport.Properties.Vm != null)
-            {
-                this.VM = new VMInfo()
-                {
-                    Uuid = gcrpReport.Properties.Vm.Uuid,
-                    ResourceId = gcrpReport.Properties.Vm.Id,
-                };
-            }
+            }   
         }
 
         public string PolicyDisplayName { get; set; }
