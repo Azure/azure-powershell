@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.Cmdlets.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 2970E81E-A788-4829-B1FF-B522A91DE4B1
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azproviderfeature

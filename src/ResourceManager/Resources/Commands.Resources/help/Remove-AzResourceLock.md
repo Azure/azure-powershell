@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.Cmdlets.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 42EEAAA8-F13B-486B-82BD-F646EF0DCDBA
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azresourcelock

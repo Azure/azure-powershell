@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Insights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Insights
 ms.assetid: 989CE245-FD1D-4E1D-90A2-2D7DA3975D0B
 online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azautoscalesetting
