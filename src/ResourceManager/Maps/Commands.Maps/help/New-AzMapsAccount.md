@@ -102,7 +102,7 @@ Maps Account Sku Name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: S0
+Accepted values: S0, S1
 
 Required: True
 Position: 2
