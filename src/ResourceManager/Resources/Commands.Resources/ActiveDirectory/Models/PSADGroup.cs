@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
-<<<<<<< HEAD:src/ResourceManager/StorageSync/Commands.StorageSync/OutputWriters/AFSConsoleWriter.cs
     using Interfaces;
     using System;
 
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             Console.WriteLine(message);
         }
-=======
+	}
     public class PSADGroup : PSADObject
     {
         public bool? SecurityEnabled { get; set; }
@@ -32,6 +31,5 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public string MailNickname { get; set; }
 
         public string ObjectType => "Group";
->>>>>>> a0fa6ac1b3130536628ae5c0ed8870f9f7a9eb63:src/ResourceManager/Resources/Commands.Resources/ActiveDirectory/Models/PSADGroup.cs
     }
 }
