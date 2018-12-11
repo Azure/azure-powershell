@@ -108,10 +108,7 @@ function Test-RecoveryServicesVaultCRUD
 		Assert-NotNull($vault1.ID)
 		Assert-NotNull($vault1.Type)
 
-		# 2. Set-AzureRmRecoveryServicesVaultContext
-		Set-AzureRmRecoveryServicesVaultContext -Vault $vault1
-
-		# 3. Get-AzureRmRecoveryServicesVault
+		# 2. Get-AzureRmRecoveryServicesVault
 		$vaults = Get-AzureRmRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
 
 		Assert-NotNull($vaults)
@@ -123,15 +120,15 @@ function Test-RecoveryServicesVaultCRUD
 			Assert-NotNull($vault.Type)
 		}
 
-		# 4. Get-AzureRmRecoveryServicesBackupProperty
+		# 3. Get-AzureRmRecoveryServicesBackupProperty
 		$vaultBackupProperties = Get-AzureRmRecoveryServicesBackupProperty -Vault $vault1
 
 		Assert-NotNull($vaultBackupProperties.BackupStorageRedundancy)
 
-		# 5. Set-AzureRmRecoveryServicesBackupProperties
+		# 4. Set-AzureRmRecoveryServicesBackupProperties
 		Set-AzureRmRecoveryServicesBackupProperties -Vault $vault1 -BackupStorageRedundancy LocallyRedundant
 
-		# 6. Remove-AzureRmRecoveryServicesVault
+		# 5. Remove-AzureRmRecoveryServicesVault
 		Remove-AzureRmRecoveryServicesVault -Vault $vault1
 
 		$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $name

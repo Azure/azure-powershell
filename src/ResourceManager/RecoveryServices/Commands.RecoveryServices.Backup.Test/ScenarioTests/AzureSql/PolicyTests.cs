@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class PolicyTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "This workload is not supported anymore")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestAzureSqlPolicy()
