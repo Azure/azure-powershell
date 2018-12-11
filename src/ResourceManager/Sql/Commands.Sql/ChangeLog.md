@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Added new Data_Exfiltration and Unsafe_Action detection types to Threat Detection's cmdlets
+* Removed -State and -ResourceId parameters from Set-AzSqlDatabaseBackupLongTermRetentionPolicy
 * Removed deprecated cmdlets: Get/Set-AzSqlServerBackupLongTermRetentionVault, Get/Start/Stop-AzSqlServerUpgrade, Get/Set-AzSqlDatabaseAuditingPolicy, Get/Set-AzSqlServerAuditingPolicy, Remove-AzSqlDatabaseAuditing, Remove-AzSqlServerAuditing
 * Removed deprecated parameter "Current" from Get-AzSqlDatabaseBackupLongTermRetentionPolicy
 * Removed deprecated parameter "DatabaseName" from Get-AzSqlServerServiceObjective
