@@ -17,4 +17,6 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Current Release
+* Added managed identity support

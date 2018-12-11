@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSomeCategories()
         {
-            cmdlet.Categories = new List<string> { "TestCategory1" };
+            cmdlet.Category = new List<string> { "TestCategory1" };
             cmdlet.Enabled = false;
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
             cmdlet.ExecuteCmdlet();
@@ -216,14 +216,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                         Enabled = false
                     }
                 });
-            cmdlet.Categories = new List<string> { "TestCategory3" };
+            cmdlet.Category = new List<string> { "TestCategory3" };
             cmdlet.Enabled = false;
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
             cmdlet.ExecuteCmdlet();
 
             // Testing the new metric categories must be known before the cmdlet can add them
             expectedSettings.Metrics[0].Enabled = false;
-            cmdlet.Categories = null;
+            cmdlet.Category = null;
             cmdlet.MetricCategory = new List<string> { "MetricCat1" };
             cmdlet.Enabled = false;
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSomeTimeGrains()
         {
-            cmdlet.Timegrains = new List<string> { "PT1H" };
+            cmdlet.Timegrain = new List<string> { "PT1H" };
             cmdlet.Enabled = false;
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
             cmdlet.ExecuteCmdlet();
