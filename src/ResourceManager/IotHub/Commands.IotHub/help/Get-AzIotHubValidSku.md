@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubvalidsku
 schema: 2.0.0

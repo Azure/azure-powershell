@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Insights.dll-Help.xml
 Module Name: Az.Insights
 ms.assetid: 9830CD16-D797-47EB-BEF5-6CFE3454BCAA
 online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azactiongroupreceiver

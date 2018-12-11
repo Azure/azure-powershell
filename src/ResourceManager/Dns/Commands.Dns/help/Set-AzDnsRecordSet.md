@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: 99E6C4DD-11AF-4DC0-848B-39811240BE06
 online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/set-azdnsrecordset

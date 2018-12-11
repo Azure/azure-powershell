@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Insights.dll-Help.xml
 Module Name: Az.Insights
 ms.assetid: B5B5F494-D912-40D0-99E2-A62FAACA3EC9
 online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azautoscalenotification

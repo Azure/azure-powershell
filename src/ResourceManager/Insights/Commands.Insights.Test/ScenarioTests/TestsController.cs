@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             _helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
+        public void RunPsTest(ServiceManagement.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                                         .Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath("AzureRM.Insights.psd1"),
+                    _helper.GetRMModulePath("AzureRM.Monitor.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
 

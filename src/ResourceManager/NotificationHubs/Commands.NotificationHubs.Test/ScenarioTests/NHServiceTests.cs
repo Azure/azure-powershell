@@ -15,7 +15,7 @@
 namespace Commands.NotificationHubs.Test
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.ServiceManagemenet.Common.Models;
+    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
     public class NHServiceTests : TestBaseClass

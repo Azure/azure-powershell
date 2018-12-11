@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 6396AEC3-DFE6-45DA-BCF4-69C55C5D051B
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azpolicydefinition

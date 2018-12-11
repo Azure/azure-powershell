@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Insights.dll-Help.xml
 Module Name: Az.Insights
 ms.assetid: A90564B5-57D7-48EB-976D-38C03D930289
 online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/add-azmetricalertrule

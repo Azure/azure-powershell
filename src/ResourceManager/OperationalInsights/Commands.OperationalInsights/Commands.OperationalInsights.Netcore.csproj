@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.OperationalInsights</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.OperationalInsights</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
