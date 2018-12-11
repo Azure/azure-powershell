@@ -59,7 +59,7 @@ Properties       : {
 				   }
 ```
 
-In this example we get the flow logging status for a Network Security Group. The specified NSG has flow logging enabled, default format and no retention policy set.
+In this example we get the flow logging status for a Network Security Group. The specified NSG has flow logging enabled, default format, and no retention policy set.
 
 ### Example 2: Get the Flow Logging and Traffic Analytics Status for a Specified NSG
 ```
