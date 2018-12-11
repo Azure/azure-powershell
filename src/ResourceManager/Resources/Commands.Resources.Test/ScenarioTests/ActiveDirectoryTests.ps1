@@ -660,7 +660,7 @@ function Test-NewADServicePrincipalWithCustomScope
 .SYNOPSIS
 Tests Creating and deleting application using Password Credentials.
 #>
-function Test-CreateDeleteAppPasswordCredentials
+function Test-CreateDeleteAppCredentials
 {
     # Setup
 	$getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
@@ -696,6 +696,37 @@ function Test-CreateDeleteAppPasswordCredentials
     $credCount = $cred2 | where {$_.KeyId -in $cred1.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 2
 
+	# Add 1 key credential to the same app
+	$cert = New-SelfSignedCertificate 
+	$binCert = $cert.GetRawCertData()
+	$credValue = [System.Convert]::ToBase64String($binCert)
+	$start = (Get-Date).ToUniversalTime()
+	$end = $start.AddDays(1)
+	$cred = New-AzureRmADAppCredential -ObjectId $application.ObjectId -CertValue $credValue -StartDate $start -EndDate $end
+    Assert-NotNull $cred
+
+    # Get credential should fetch 3 credentials
+    $cred3 = Get-AzureRmADAppCredential -ObjectId $application.ObjectId
+    Assert-NotNull $cred3
+    Assert-AreEqual $cred3.Count 3
+    $credCount = $cred3 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred.KeyId}
+    Assert-AreEqual $credCount.Count 3
+
+	# Add 1 more key credential to the same app
+	$binCert = $cert.GetRawCertData()
+	$credValue = [System.Convert]::ToBase64String($binCert)
+	$start = (Get-Date).ToUniversalTime()
+	$end = $start.AddDays(1)
+	$cred = New-AzureRmADAppCredential -ObjectId $application.ObjectId -CertValue $credValue -StartDate $start -EndDate $end
+    Assert-NotNull $cred
+
+    # Get credential should fetch 4 credentials
+    $cred4 = Get-AzureRmADAppCredential -ObjectId $application.ObjectId
+    Assert-NotNull $cred4
+    Assert-AreEqual $cred4.Count 4
+    $credCount = $cred4 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred3.KeyId, $cred.KeyId}
+    Assert-AreEqual $credCount.Count 4
+
     # Remove cred by KeyId
     Remove-AzureRmADAppCredential -ApplicationId $application.ApplicationId -KeyId $cred.KeyId -Force
     $cred3 = Get-AzureRmADAppCredential -ApplicationId $application.ApplicationId
@@ -723,8 +754,9 @@ Tests Creating and deleting application using Service Principal Credentials.
 function Test-CreateDeleteSpPasswordCredentials
 {
     # Setup
-    $displayName = getAssetName
-    $password = getAssetName
+	$getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
+    $displayName = $getAssetName
+	$password = $getAssetName
 
     # Test - Add SP with a password cred
     $servicePrincipal = New-AzureRmADServicePrincipal -DisplayName $displayName  -Password $password
@@ -743,7 +775,7 @@ function Test-CreateDeleteSpPasswordCredentials
     Assert-NotNull $cred1
     Assert-AreEqual $cred1.Count 1
 
-    # Add 1 more passowrd credential to the same app
+    # Add 1 more password credential to the same app
     $start = (Get-Date).ToUniversalTime()
     $end = $start.AddYears(1)
     $cred = New-AzureRmADSpCredential -ObjectId $servicePrincipal.Id -Password $password -StartDate $start -EndDate $end
@@ -755,6 +787,38 @@ function Test-CreateDeleteSpPasswordCredentials
     Assert-AreEqual $cred2.Count 2
     $credCount = $cred2 | where {$_.KeyId -in $cred1.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 2
+
+	# Add 1 key credential to the same app
+	$cert = New-SelfSignedCertificate 
+	$binCert = $cert.GetRawCertData()
+	$credValue = [System.Convert]::ToBase64String($binCert)
+	$start = (Get-Date).ToUniversalTime()
+	$end = $start.AddDays(1)
+	$cred = New-AzureRmADSpCredential -ObjectId $application.ObjectId -CertValue $credValue -StartDate $start -EndDate $end
+    Assert-NotNull $cred
+
+    # Get credential should fetch 3 credentials
+    $cred3 = Get-AzureRmADSpCredential -ObjectId $application.ObjectId
+    Assert-NotNull $cred3
+    Assert-AreEqual $cred3.Count 3
+    $credCount = $cred3 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred.KeyId}
+    Assert-AreEqual $credCount.Count 3
+
+	# Add 1 more key credential to the same app
+	$binCert = $cert.GetRawCertData()
+	$credValue = [System.Convert]::ToBase64String($binCert)
+	$start = (Get-Date).ToUniversalTime()
+	$end = $start.AddDays(1)
+	$cred = New-AzureRmADSpCredential -ObjectId $application.ObjectId -CertValue $credValue -StartDate $start -EndDate $end
+    Assert-NotNull $cred
+
+    # Get credential should fetch 4 credentials
+    $cred4 = Get-AzureRmADSpCredential -ObjectId $application.ObjectId
+    Assert-NotNull $cred4
+    Assert-AreEqual $cred4.Count 4
+    $credCount = $cred4 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred3.KeyId, $cred.KeyId}
+    Assert-AreEqual $credCount.Count 4
+
 
     # Remove cred by KeyId
     Remove-AzureRmADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0] -KeyId $cred.KeyId -Force
