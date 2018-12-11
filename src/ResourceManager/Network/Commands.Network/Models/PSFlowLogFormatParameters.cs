@@ -12,23 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.DataLake.Analytics.Models;
-using System;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using Newtonsoft.Json;
 
-namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
+namespace Microsoft.Azure.Commands.Network.Models
 {
-    /// <summary>
-    ///    A wrapper for all ADLA supported data sources.
-    ///    This object is returned from a GET
-    /// </summary>
-    public class PSStorageAccountInfo : StorageAccountInformation
+    public class PSFlowLogFormatParameters
     {
-        public PSStorageAccountInfo(StorageAccountInformation baseAccount) :
-            base(
-                id: baseAccount.Id,
-                name: baseAccount.Name,
-                type: baseAccount.Type,
-                suffix: baseAccount.Suffix)
-        { }
+        [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Type { get; set; }
+
+        [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? Version { get; set; }
     }
 }

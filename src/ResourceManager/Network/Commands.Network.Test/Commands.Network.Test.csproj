@@ -63,7 +63,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ContainerInstance">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.1.1.0\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.2.0.0\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime" />
   </ItemGroup>
