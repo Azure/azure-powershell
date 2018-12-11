@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Remove -Encryption parameter from New/Set-AzRecoveryServicesAsrPolicy
