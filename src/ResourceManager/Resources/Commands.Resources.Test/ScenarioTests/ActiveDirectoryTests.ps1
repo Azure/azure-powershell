@@ -794,11 +794,11 @@ function Test-CreateDeleteSpPasswordCredentials
 	$credValue = [System.Convert]::ToBase64String($binCert)
 	$start = (Get-Date).ToUniversalTime()
 	$end = $start.AddDays(1)
-	$cred = New-AzureRmADSpCredential -ObjectId $application.ObjectId -CertValue $credValue -StartDate $start -EndDate $end
+	$cred = New-AzureRmADSpCredential -ObjectId $servicePrincipal.Id -CertValue $credValue -StartDate $start -EndDate $end
     Assert-NotNull $cred
 
     # Get credential should fetch 3 credentials
-    $cred3 = Get-AzureRmADSpCredential -ObjectId $application.ObjectId
+    $cred3 = Get-AzureRmADSpCredential -ObjectId $servicePrincipal.Id
     Assert-NotNull $cred3
     Assert-AreEqual $cred3.Count 3
     $credCount = $cred3 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred.KeyId}
@@ -809,11 +809,11 @@ function Test-CreateDeleteSpPasswordCredentials
 	$credValue = [System.Convert]::ToBase64String($binCert)
 	$start = (Get-Date).ToUniversalTime()
 	$end = $start.AddDays(1)
-	$cred = New-AzureRmADSpCredential -ObjectId $application.ObjectId -CertValue $credValue -StartDate $start -EndDate $end
+	$cred = New-AzureRmADSpCredential -ObjectId $servicePrincipal.Id -CertValue $credValue -StartDate $start -EndDate $end
     Assert-NotNull $cred
 
     # Get credential should fetch 4 credentials
-    $cred4 = Get-AzureRmADSpCredential -ObjectId $application.ObjectId
+    $cred4 = Get-AzureRmADSpCredential -ObjectId $servicePrincipal.Id
     Assert-NotNull $cred4
     Assert-AreEqual $cred4.Count 4
     $credCount = $cred4 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred3.KeyId, $cred.KeyId}
