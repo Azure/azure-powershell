@@ -1000,6 +1000,10 @@
       "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdatePoolWithApplicationPackage.json",
       "hash": "SB0xdyGO1L0ed4yxyqzld6xXQfTuM3czfp05Si3bAzw=",
       "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\DataFactories\\Commands.DataFactories\\help\\New-AzDataFactoryEncryptValue.md",
+      "_justification": "Fake password"
     }
   ]
 }

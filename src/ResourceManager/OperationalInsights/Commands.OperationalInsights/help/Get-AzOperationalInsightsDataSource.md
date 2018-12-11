@@ -13,9 +13,10 @@ Get datasources under Azure Log Analytics workspace.
 
 ## SYNTAX
 
-### ByWorkspaceName (Default)
+### ByWorkspaceNameByKind (Default)
 ```
-Get-AzOperationalInsightsDataSource [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzOperationalInsightsDataSource [[-ResourceGroupName] <String>] [[-WorkspaceName] <String>]
+ [-Kind] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObjectByName
@@ -34,12 +35,6 @@ Get-AzOperationalInsightsDataSource [[-Workspace] <PSWorkspace>] [[-Kind] <Strin
 ```
 Get-AzOperationalInsightsDataSource [-ResourceGroupName] <String> [-WorkspaceName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByWorkspaceNameByKind
-```
-Get-AzOperationalInsightsDataSource [[-ResourceGroupName] <String>] [[-WorkspaceName] <String>]
- [-Kind] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

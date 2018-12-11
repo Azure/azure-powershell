@@ -121,25 +121,6 @@ function Test-RestorePointInTimeBackup
 		-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -VCore 2 -ComputeGeneration 'Gen4'
 }
 
-# TODO: Deprecate LTRv1
-function Test-DatabaseBackupLongTermRetentionPolicy
-{
-	$location = "North Europe"
-	$serverVersion = "12.0"
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung
-	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
-	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb -ResourceGroupName $rg.ResourceGroupName
-	$policyResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupPolicies/hchung-testpolicy"
-
-	# set
-	Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-		-DatabaseName $db.DatabaseName -State "Enabled" -ResourceId $policyResourceId
-	# get
-	$result = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName
-	#verify
-	Assert-True { $result.RecoveryServicesBackupPolicyResourceId -eq $policyResourceId }
-}
-
 # LTR-V1 restore tests need to be removed once the service is retired completely
 # TODO update for LTRv2 backup
 function Test-RestoreLongTermRetentionBackup

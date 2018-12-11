@@ -18,3 +18,5 @@
         - Additional information about change #1
 -->
 ## Current Release
+* -GatewayName parameter has become mandatory in the New-AzDataFactoryEncryptValue
+* Removed New-AzDataFactoryGatewayKey cmdlet
