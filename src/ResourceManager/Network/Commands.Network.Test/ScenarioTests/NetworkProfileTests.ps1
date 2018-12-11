@@ -60,6 +60,12 @@ function Test-NetworkProfileCRUDMinimalParameters
         Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkProfile" $vNetworkProfile };
         Assert-AreEqual $npName $vNetworkProfile.Name;
 
+        $vNetworkProfiles = Get-AzureRmNetworkProfile -ResourceGroupName $rgname;
+        Assert-NotNull $vNetworkProfiles;
+
+        $vNetworkProfilesAll = Get-AzureRmNetworkProfile;
+        Assert-NotNull $vNetworkProfilesAll;
+
         # Remove NetworkProfile
         $removeNetworkProfile = Remove-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $npName -Force;
 

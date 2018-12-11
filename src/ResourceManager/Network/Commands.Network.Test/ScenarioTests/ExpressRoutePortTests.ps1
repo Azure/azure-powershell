@@ -58,6 +58,18 @@ function Test-ExpressRoutePortCRUD
         Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRoutePort" $vExpressRoutePort }
         Assert-AreEqual $rname $vExpressRoutePort.Name
 
+        # Get ExpressRoutePort
+        $vExpressRoutePort = Get-AzureRmExpressRoutePort -ResourceId $vExpressRoutePort.Id
+        Assert-NotNull $vExpressRoutePort
+        Assert-True { Check-CmdletReturnType "Get-AzureRmExpressRoutePort" $vExpressRoutePort }
+        Assert-AreEqual $rname $vExpressRoutePort.Name
+
+        $vExpressRoutePorts = Get-AzureRmExpressRoutePort -ResourceGroupName $rgname
+        Assert-NotNull $vExpressRoutePorts
+
+        $vExpressRoutePortsAll = Get-AzureRmExpressRoutePort
+        Assert-NotNull $vExpressRoutePortsAll
+
 		# Update ExpressRoutePort
 		$vExpressRoutePort.Links[0].AdminState = "Enabled"
 		Set-AzureRmExpressRoutePort -ExpressRoutePort $vExpressRoutePort
