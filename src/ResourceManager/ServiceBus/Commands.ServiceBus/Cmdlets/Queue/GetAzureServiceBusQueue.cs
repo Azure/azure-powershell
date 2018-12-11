@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 {
     /// <summary>
-    /// 'Get-AzureRmServiceBusQueue' Cmdlet gives the details of a / List of ServiceBus Queue(s)
+    /// 'Get-AzServiceBusQueue' Cmdlet gives the details of a / List of ServiceBus Queue(s)
     /// <para> If Queue name provided, a single Queue detials will be returned</para>
     /// <para> If Queue name not provided, list of Queue will be returned</para>
     /// </summary>

@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="23.2.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.6.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.7.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.1-preview" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="3.0.1-preview" />
   </ItemGroup>

@@ -10,7 +10,7 @@ To get even more detailed data click "Console Output" and look for keywords like
 
 ### Message
 
-> c:\workspace\powershell\build.proj(278,5): error MSB3073: The command ""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NonInteractive -NoLogo -NoProfile -Command "$ProgressPreference = 'SilentlyContinue';. c:\workspace\powershell\tools\\**GenerateHelp.ps1** -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig Debug -FilteredModules 'AzureRM.Network;AzureRM.Profile' "" exited with code -1.
+> c:\workspace\powershell\build.proj(278,5): error MSB3073: The command ""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -NonInteractive -NoLogo -NoProfile -Command "$ProgressPreference = 'SilentlyContinue';. c:\workspace\powershell\tools\\**GenerateHelp.ps1** -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig Debug -FilteredModules 'Az.Network;Az.Profile' "" exited with code -1.
 
 This means there are issues with your help files.
 

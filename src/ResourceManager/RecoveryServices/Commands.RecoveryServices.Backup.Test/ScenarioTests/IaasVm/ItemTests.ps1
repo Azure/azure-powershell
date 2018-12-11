@@ -360,9 +360,10 @@ function Test-AzureVMSetVaultContext
 		# Setup
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$saName = Create-SA $resourceGroupName $location
 
 		# Sleep to give the service time to add the default policy to the vault
-        Start-TestSleep 5000
+		Start-TestSleep 5000
 
 		Set-AzureRmRecoveryServicesVaultContext -Vault $vault
 
@@ -383,6 +384,29 @@ function Test-AzureVMSetVaultContext
 		$item = Get-AzureRmRecoveryServicesBackupItem `
 			-Container $container `
 			-WorkloadType AzureVM
+
+		$job = Backup-AzureRmRecoveryServicesBackupItem `
+			-Item $item
+    
+		Wait-AzureRmRecoveryServicesBackupJob -Job $job
+
+		$backupJob = Get-AzureRmRecoveryServicesBackupJobDetails -Job $job
+
+		# Get Recovery Point
+		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
+		$rps = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+			-Item $item `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime
+
+		# Restore item
+		$restoreJob1 = Restore-AzureRmRecoveryServicesBackupItem `
+			-RecoveryPoint $rps[0] `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $resourceGroupName
+
+		Wait-AzureRmRecoveryServicesBackupJob -Job $restoreJob1
 
 		# Disable protection
 		Disable-AzureRmRecoveryServicesBackupProtection `

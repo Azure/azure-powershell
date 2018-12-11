@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 {
     /// <summary>
-    /// 'Get-AzureRmServiceBusSubscription' Cmdlet gives the details of a / List of Topic subscriptions(s)
+    /// 'Get-AzServiceBusSubscription' Cmdlet gives the details of a / List of Topic subscriptions(s)
     /// <para> If Subscription name provided, a single Subscription detials will be returned</para>
     /// <para> If Subscription name not provided, list of Subscription will be returned</para>
     /// </summary>
