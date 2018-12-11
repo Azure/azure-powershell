@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Insights.dll-Help.xml
 Module Name: Az.Insights
 ms.assetid: 5E854358-CA9D-4336-BA6A-BF7B1FADAB50
 online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azautoscalerule

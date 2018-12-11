@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Consumption.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Consumption.dll-Help.xml
 Module Name: Az.Consumption
 online version: https://docs.microsoft.com/en-us/powershell/module/az.consumption/new-azconsumptionbudget
 schema: 2.0.0

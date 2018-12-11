@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactories
 ms.assetid: 30C1AF6C-A8DC-4CA0-9E5F-10641A29D0E8
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/new-azdatafactorypipeline

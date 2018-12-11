@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: B407CF77-792B-40F8-87AB-49FB3DCEE646
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverfirewallrule

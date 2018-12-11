@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.UsageAggregates.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.UsageAggregates.dll-Help.xml
 Module Name: Az.UsageAggregates
 ms.assetid: 52B3ECCB-80E5-4E16-954A-B83D0BDC7E22
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.usageaggregates/get-usageaggregates

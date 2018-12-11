@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 606C5453-F841-4574-95F8-5CC29A4186E1
 online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/get-azhdinsightproperties

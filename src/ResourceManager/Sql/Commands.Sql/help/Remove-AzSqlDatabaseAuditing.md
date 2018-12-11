@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: D3BA6534-CAAC-41E2-8442-0606B712E2B8
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqldatabaseauditing

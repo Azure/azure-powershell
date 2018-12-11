@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactories
 ms.assetid: D853A91F-95E7-4C36-AC0F-2C10DFCF68F8
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/set-azdatafactorypipelineactiveperiod

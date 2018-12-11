@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Insights.dll-Help.xml
 Module Name: Az.Insights
 ms.assetid: 7436F31F-9DCB-4365-BA6D-41BDB5D7FCB6
 online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/set-azactivitylogalert

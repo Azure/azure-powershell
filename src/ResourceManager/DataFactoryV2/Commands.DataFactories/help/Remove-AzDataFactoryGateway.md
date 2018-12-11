@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactories
 ms.assetid: E1461540-DEAE-43C3-83DF-7DF3FE8D4EC0
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactorygateway
