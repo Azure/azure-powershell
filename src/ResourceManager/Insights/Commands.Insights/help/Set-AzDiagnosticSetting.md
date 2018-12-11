@@ -17,9 +17,9 @@ Sets the logs and metrics settings for the resource.
 ```
 Set-AzDiagnosticSetting -ResourceId <String> [-Name <String>] [-StorageAccountId <String>]
  [-ServiceBusRuleId <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleId <String>]
- [-Enabled <Boolean>] [-Categories <System.Collections.Generic.List`1[System.String]>]
+ [-Enabled <Boolean>] [-Category <System.Collections.Generic.List`1[System.String]>]
  [-MetricCategory <System.Collections.Generic.List`1[System.String]>]
- [-Timegrains <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
+ [-Timegrain <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
  [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -82,7 +82,7 @@ All the other categories remain the same.
 
 ### Example 4: Enable/disable multiple log categories
 ```
-PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $True -Categories Category1,Category2
+PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $True -Category Category1,Category2
 StorageAccountId   : <storageAccountId>
 StorageAccountName : <storageAccountName>
 Metrics
@@ -111,7 +111,7 @@ All the other metrics and logs categories remain the same.
 
 ### Example 4: Enable a time grain and multiple categories
 ```
-PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $True -Categories Category1,Category2 -Timegrains PT1M
+PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $True -Category Category1,Category2 -Timegrain PT1M
 ```
 
 This command enables only Category1, Category2, and time grain PT1M.
@@ -126,14 +126,14 @@ This command uses the PowerShell pipeline to set (not change made) a diagnostic 
 
 ## PARAMETERS
 
-### -Categories
+### -Category
 Specifies the list of log categories to enable or disable, according to the value of *Enabled*.
 If no category is specified, this command operates on all supported categories. 
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: OldSetDiagnosticSetting
-Aliases: Category
+Aliases:
 
 Required: False
 Position: Named
@@ -324,14 +324,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Timegrains
+### -Timegrain
 Specifies the time grains to enable or disable for metrics, according to the value of *Enabled*.
 If you do not specify a time grain, this command operates on all available time grains.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: OldSetDiagnosticSetting
-Aliases: Timegrain
+Aliases:
 
 Required: False
 Position: Named
