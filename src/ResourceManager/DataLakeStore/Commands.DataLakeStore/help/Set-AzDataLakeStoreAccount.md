@@ -149,7 +149,7 @@ You can use tags to identify a Data Lake Store account from other Azure resource
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: 2
