@@ -29,14 +29,15 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
            Mandatory = true,
            HelpMessage = "The mongo db database name"
                )]
-        [Alias("Name")]
-        public string DatabaseName { get; set; }
+        [Alias("DatabaseName")]
+        public string Name { get; set; }
 
         [Parameter(
            Mandatory = false,
            HelpMessage = "The database level shared RU at the target CosmosDb"
                )]
         [Alias("RU")]
+        [ValidateRange(400,1000000)]
         public int? TargetRequestUnit { get; set; }
 
         [Parameter(
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.DatabaseName, Resources.createDbInfo))
+            if (ShouldProcess(this.Name, Resources.createDbInfo))
             {
                 base.ExecuteCmdlet();
                 var dbInfo = new MongoDbDatabaseSettings()
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                     }
                 }
 
-                WriteObject(new MongoDbDatabaseSetting { Name = this.DatabaseName, Setting = dbInfo });
+                WriteObject(new MongoDbDatabaseSetting { Name = this.Name, Setting = dbInfo });
             }
         }
     }

@@ -26,7 +26,18 @@ the database level settings for migration.
 
 ### Example 1
 ```
-PS C:\> New-AzDataMigrationMongoDbCollectionSetting -Name myCollection -TargetRequestUnit 1000 -CanDelete -ShardKey "_id:-1,age:1,name"
+PS C:\> $x = New-AzDataMigrationMongoDbCollectionSetting -Name myCollection -TargetRequestUnit 1000 -CanDelete -ShardKey "_id:-1,age:1,name"
+PS C:\> $x
+
+Name         Setting                                                                  
+----         -------                                                                  
+myCollection Microsoft.Azure.Management.DataMigration.Models.MongoDbCollectionSettings
+
+PS C:\> $x.Setting
+
+CanDelete ShardKey                                                               TargetRUs
+--------- --------                                                               ---------
+     True Microsoft.Azure.Management.DataMigration.Models.MongoDbShardKeySetting      1000
 
 ```
 
@@ -38,7 +49,7 @@ Name of the collection
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: CollectionName
 
 Required: True
 Position: Named

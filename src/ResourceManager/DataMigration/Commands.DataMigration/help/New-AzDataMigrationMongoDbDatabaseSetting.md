@@ -24,7 +24,11 @@ The output is a key value pair with name of collection and value of the setting,
 
 ### Example 1
 ```
-PS C:\> New-AzDataMigrationMongoDbDatabaseSetting  -Name mycollection -RU 1000 -CollectionSetting @(coll1, coll2)
+PS C:\> New-AzDataMigrationMongoDbDatabaseSetting  -Name mycollection -RU 1000 -CollectionSetting @($coll1, $coll2)
+
+Name Setting                                                                
+---- -------                                                                
+test Microsoft.Azure.Management.DataMigration.Models.MongoDbDatabaseSettings
 
 ```
 
@@ -36,7 +40,7 @@ Name of the database
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: DatabaseName
 
 Required: True
 Position: Named

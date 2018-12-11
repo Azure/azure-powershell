@@ -30,14 +30,15 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             Mandatory = true,
             HelpMessage = "The name of the database collection.")]
         [ValidateNotNullOrEmpty]
-        [Alias("Name")]
-        public string CollectionName;
+        [Alias("CollectionName")]
+        public string Name;
 
         [Parameter(
            Mandatory = false,
            HelpMessage = "The database level shared RU at the target CosmosDb"
                )]
         [Alias("RU")]
+        [ValidateRange(400, 1000000)]
         public int? TargetRequestUnit { get; set; }
 
         [Parameter(
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.CollectionName, Resources.createCollectionSetting))
+            if (ShouldProcess(this.Name, Resources.createCollectionSetting))
             {
                 base.ExecuteCmdlet();
                 var setting = new MongoDbCollectionSettings()
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                     CanDelete = this.CanDelete.IsPresent,
                     ShardKey = new MongoDbShardKeySetting(this._parseShardKey(this.ShardKey), this.UniqueShard.IsPresent)
                 };
-                WriteObject(new MongoDbCollectionSetting { Name = this.CollectionName, Setting = setting });
+                WriteObject(new MongoDbCollectionSetting { Name = this.Name, Setting = setting });
             }
         }
 

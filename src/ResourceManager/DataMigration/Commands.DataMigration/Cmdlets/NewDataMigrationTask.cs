@@ -27,6 +27,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsTask")]
     public class NewDataMigrationTask : DataMigrationCmdlet, IDynamicParameters
     {
+        // under -wait flag, we wait 5 seconds in between the polls for
+        // new status of task progress
+        private const int TaskWaitSleepIntervalInSeconds = 5;
+
         [Parameter(
           Position = 0,
           Mandatory = true,
@@ -235,7 +239,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         while (this.Wait.IsPresent && response !=null && response.Properties != null &&
                             ( response.Properties.State == "Queued" || response.Properties.State == "Running" ) )
                         {
-                            System.Threading.Thread.Sleep(5000);
+                            System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(TaskWaitSleepIntervalInSeconds));
                             WriteVerbose($"{taskInput.Id} {taskInput.Name} {taskInput.Properties.State} Elapsed: {System.DateTime.UtcNow - utcStartedOn}");
                             response = DataMigrationClient.Tasks.Get(ResourceGroupName, ServiceName, ProjectName, Name, this.expandParameterOfTask);
                         }
