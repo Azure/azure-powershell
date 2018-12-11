@@ -53,36 +53,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         private const string RemovePolicySet = "RemovePolicy";
 
         /// <summary>
-        /// Parameter set for setting the legacy long term retention policy.
-        /// </summary>
-        private const string LegacySet = "Legacy";
-
-        /// <summary>
-        /// Gets or sets the backup long term retention state
-        /// </summary>
-        [CmdletParameterBreakingChange("State", "Parameter is being deprecated without being replaced.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = LegacySet,
-            HelpMessage = "The state of the long term retention backup policy, 'Enabled' or 'Disabled'")]
-        [ValidateNotNullOrEmpty]
-        public string State { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the backup long term retention policy
-        /// </summary>
-        /// <remarks>
-        /// The upcoming breaking change will need some logic changes of how the ResourceId is handled. Contact adeal or pixia for assistance.
-        /// </remarks>
-        [CmdletParameterBreakingChange("ResourceId", "ResourceId will no longer refer to RecoveryServicesBackupPolicyResourceId as it is no longer needed. Instead, it will refer to the ResourceId of the long term retention policy being set.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = LegacySet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Resource ID of the backup long term retention policy.")]
-        [ValidateNotNullOrEmpty]
-        [Alias("Id")]
-        public string ResourceId { get; set; }
-
-        /// <summary>
         /// Gets or sets whether or not to clear the Long Term Retention V2 policy.
         /// </summary>
         [Parameter(Mandatory = true,
@@ -153,8 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 ModelAdapter.GetDatabaseBackupLongTermRetentionPolicy(
                     this.ResourceGroupName,
                     this.ServerName,
-                    this.DatabaseName,
-                    !ParameterSetName.Equals(LegacySet))
+                    this.DatabaseName)
             };
         }
 
@@ -197,8 +166,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     ResourceGroupName = ResourceGroupName,
                     ServerName = ServerName,
                     DatabaseName = DatabaseName,
-                    State = State,
-                    RecoveryServicesBackupPolicyResourceId = ResourceId,
                     Location = model.FirstOrDefault().Location,
                     WeeklyRetention = WeeklyRetention,
                     MonthlyRetention = MonthlyRetention,

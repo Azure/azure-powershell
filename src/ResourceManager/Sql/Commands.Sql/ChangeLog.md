@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Removed -State and -ResourceId parameters from Set-AzSqlDatabaseBackupLongTermRetentionPolicy
 * Removed deprecated cmdlets: Get/Set-AzSqlServerBackupLongTermRetentionVault, Get/Start/Stop-AzSqlServerUpgrade, Get/Set-AzSqlDatabaseAuditingPolicy, Get/Set-AzSqlServerAuditingPolicy, Remove-AzSqlDatabaseAuditing, Remove-AzSqlServerAuditing
 * Removed deprecated parameter "Current" from Get-AzSqlDatabaseBackupLongTermRetentionPolicy
 * Removed deprecated parameter "DatabaseName" from Get-AzSqlServerServiceObjective
