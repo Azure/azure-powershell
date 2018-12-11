@@ -459,8 +459,7 @@ function Test-VirtualNetworkGatewayActiveActiveFeatureOperations
       Assert-AreEqual "RouteBased" $expected.VpnType
       Assert-AreEqual true $expected.ActiveActive
       Assert-AreEqual 2 @($expected.IpConfigurations).Count
-	  
-	  <# ToDo:- Enable this validation afterwards 
+
       # Update virtualNetworkGateway from Active-Active to Active-Standby
       $gw = Get-AzureRmVirtualNetworkGateway -Name $rname -ResourceGroupName $rgname
       Remove-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -VirtualNetworkGateway $gw 
@@ -468,15 +467,14 @@ function Test-VirtualNetworkGatewayActiveActiveFeatureOperations
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual false $expected.ActiveActive
       Assert-AreEqual 1 @($expected.IpConfigurations).Count
-	  
+
       # Update virtualNetworkGateway from Active-Standby to Active-Active
       $gw = Get-AzureRmVirtualNetworkGateway -Name $rname -ResourceGroupName $rgname
-      Add-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -VirtualNetworkGateway $gw 
+      Add-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -VirtualNetworkGateway $gw -PublicIpAddress $publicip2 -Subnet $subnet
       $expected = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku VpnGw3 -EnableActiveActiveFeature
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual true $expected.ActiveActive
       Assert-AreEqual 2 @($expected.IpConfigurations).Count
-      #> 
      }
      finally
      {
