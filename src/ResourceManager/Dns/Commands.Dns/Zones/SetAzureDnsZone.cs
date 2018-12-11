@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.Dns
 
         public override void ExecuteCmdlet()
         {
+
             DnsZone result = null;
             DnsZone zoneToUpdate = null;
 
