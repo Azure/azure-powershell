@@ -178,6 +178,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to rewriteRuleSets.
+        /// </summary>
+        public static string ApplicationGatewayRewriteRuleSetName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayRewriteRuleSetName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sslCertificates.
         /// </summary>
         public static string ApplicationGatewaySslCertificateName {

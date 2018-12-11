@@ -60,10 +60,7 @@
     <Compile Include="Commands\GetAzureRmDataLakeAnalyticsDataSource.cs" />
     <Compile Include="Commands\NewAzureRmDataLakeAnalyticsCatalogCredential.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsCatalogCredential.cs" />
-    <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsCatalogSecret.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeAnalyticsCatalogCredential.cs" />
-    <Compile Include="Commands\SetAzureRmDataLakeAnalyticsCatalogSecret.cs" />
-    <Compile Include="Commands\NewAzureRmDataLakeAnalyticsCatalogSecret.cs" />
     <Compile Include="Commands\TestAzureRmDataLakeAnalyticsCatalogItem.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeAnalyticsCatalogItem.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeAnalyticsDataSource.cs" />
@@ -88,7 +85,6 @@
     <Compile Include="Models\PSDataLakeStoreAccountInfo.cs" />
     <Compile Include="Models\PSStorageAccountInfo.cs" />
     <Compile Include="Models\PSDataLakeAnalyticsAccount.cs" />
-    <Compile Include="Models\ObsoleteUSqlCredential.cs" />
     <Compile Include="Models\AdlDataSource.cs" />
     <Compile Include="Models\CatalogPathInstance.cs" />
     <Compile Include="Models\DataLakeAnalyticsEnums.cs" />

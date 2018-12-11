@@ -22,7 +22,7 @@ using System.Net;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.WindowsAzure.Commands.Automation.Properties;
 using Microsoft.WindowsAzure.Management.Automation;
 using Microsoft.WindowsAzure.Management.Automation.Models;
 using Microsoft.WindowsAzure.Commands.Common;

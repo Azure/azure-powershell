@@ -61,7 +61,7 @@ function Get-ProviderLocation($provider, $preferredLocation = "West Central US")
 {
     if((Get-NetworkTestMode) -ne 'Playback')
     {
-        if($env:AZURE_NRP_TEST_LOCATION)
+        if($env:AZURE_NRP_TEST_LOCATION -and $env:AZURE_NRP_TEST_LOCATION -match "^[a-z0-9\s]+$")
         {
             return $env:AZURE_NRP_TEST_LOCATION;
         }

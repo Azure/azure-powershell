@@ -15,7 +15,7 @@
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Network.Common;
-
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network
 {

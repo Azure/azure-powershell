@@ -58,7 +58,8 @@ RequiredAssemblies = '.\Microsoft.Azure.Batch.dll',
     '.\Microsoft.Azure.Management.Batch.dll', 
     '.\Microsoft.Extensions.Primitives.dll', 
     '.\System.Runtime.CompilerServices.Unsafe.dll', 
-    '.\Microsoft.WindowsAzure.Storage.dll'
+    '.\Microsoft.WindowsAzure.Storage.dll', 
+    '.\Microsoft.AspNetCore.WebUtilities.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

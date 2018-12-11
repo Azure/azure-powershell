@@ -153,7 +153,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Update release with latest Azure features and serialization fixes.'
+        ReleaseNotes = '0.7.0 - December 2018
+Update release with latest Azure features and serialization fixes.'
 
         # Prerelease string of this module
         # Prerelease = ''
