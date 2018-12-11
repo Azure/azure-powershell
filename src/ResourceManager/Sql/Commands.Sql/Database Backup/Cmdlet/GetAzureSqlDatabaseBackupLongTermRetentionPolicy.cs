@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     this.ResourceGroupName,
                     this.ServerName,
                     this.DatabaseName,
-                    true)
+                    current: true)
             };
         }
 
