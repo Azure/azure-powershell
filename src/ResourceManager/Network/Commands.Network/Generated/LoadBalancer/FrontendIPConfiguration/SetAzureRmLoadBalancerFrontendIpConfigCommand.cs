@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
             ValueFromPipelineByPropertyName = true)]
-        public List<string> Zone { get; set; }
+        public string[] Zone { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             vFrontendIpConfigurations.Name = this.Name;
-            vFrontendIpConfigurations.Zones = this.Zone;
+            vFrontendIpConfigurations.Zones = this.Zone?.ToList();
             if(!string.IsNullOrEmpty(this.SubnetId))
             {
                 // Subnet

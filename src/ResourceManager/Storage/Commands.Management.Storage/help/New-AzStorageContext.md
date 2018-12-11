@@ -13,7 +13,13 @@ Creates an Azure Storage context.
 
 ## SYNTAX
 
-### AccountNameAndKey (Default)
+### OAuthAccount (Default)
+```
+New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
+ [-Endpoint <String>] [<CommonParameters>]
+```
+
+### AccountNameAndKey
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> [-Protocol <String>]
  [-Endpoint <String>] [<CommonParameters>]
@@ -47,12 +53,6 @@ New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> [-Protoco
 ```
 New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> -Environment <String>
  [<CommonParameters>]
-```
-
-### OAuthAccount
-```
-New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- [-Endpoint <String>] [<CommonParameters>]
 ```
 
 ### OAuthAccountEnvironment
@@ -198,7 +198,7 @@ Specifies the endpoint for the Azure Storage context.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameAndKey, AnonymousAccount, SasToken, OAuthAccount
+Parameter Sets: OAuthAccount, AccountNameAndKey, AnonymousAccount, SasToken
 Aliases:
 
 Required: False
@@ -257,7 +257,7 @@ Transfer Protocol (https/http).
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken, OAuthAccount, OAuthAccountEnvironment
+Parameter Sets: OAuthAccount, AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken, OAuthAccountEnvironment
 Aliases:
 Accepted values: Http, Https
 
@@ -305,7 +305,7 @@ This cmdlet creates a context for the account that this parameter specifies.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken, SasTokenWithAzureEnvironment, OAuthAccount, OAuthAccountEnvironment
+Parameter Sets: OAuthAccount, AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken, SasTokenWithAzureEnvironment, OAuthAccountEnvironment
 Aliases:
 
 Required: True

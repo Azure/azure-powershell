@@ -49,10 +49,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ArgumentCompleters\AccountSkuCompleterAttribute.cs" />
+    <Compile Include="ArgumentCompleters\AccountTypeCompleterAttribute.cs" />
     <Compile Include="CognitiveServicesAccount\GetAzureCognitiveServicesAccountType.cs" />
     <Compile Include="CognitiveServicesAccount\GetAzureCognitiveServicesAccountUsage.cs" />
     <Compile Include="Models\PSCognitiveServicesUsage.cs" />
-    <Compile Include="ObsoletedModels\ProvisioningState.cs" />
     <Compile Include="Models\PSCognitiveServicesAccount.cs" />
     <Compile Include="Models\PSCognitiveServicesAccountKeys.cs" />
     <Compile Include="Models\PSCognitiveServicesSkus.cs" />

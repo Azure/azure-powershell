@@ -39,28 +39,46 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroup");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Command parameter not available in NetStandard")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateContainerGroupWithIdentity()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateContainerGroupWithIdentities()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithIdentities");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestContainerInstanceLog()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerInstanceLog");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Command parameter not available in NetStandard")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateContainerGroupWithVolume()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithVolumeMount");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithVolume");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateContainerGroupWithVolumeAndIdentity()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithVolumeAndIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateContainerGroupWithVolumeAndIdentities()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithVolumeAndIdentities");
         }
 
         [Fact]
