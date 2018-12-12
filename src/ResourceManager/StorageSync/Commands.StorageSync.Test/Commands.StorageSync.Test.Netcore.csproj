@@ -28,7 +28,7 @@
     <Reference Include="Microsoft.Azure.Commands.StorageSync">
       <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.StorageSync\Microsoft.Azure.Commands.StorageSync.dll</HintPath>
     </Reference>
-	<Reference Include="Microsoft.Azure.Commands.StorageSync">
+	<Reference Include="Microsoft.Azure.Commands.Storage">
       <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Storage\Microsoft.Azure.Commands.Storage.dll</HintPath>
     </Reference>
 
@@ -40,7 +40,10 @@
 	<PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" />
   </ItemGroup>
 
-
+   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+    <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.2.0-preview" />
+  </ItemGroup>
+  
   <ItemGroup>
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
