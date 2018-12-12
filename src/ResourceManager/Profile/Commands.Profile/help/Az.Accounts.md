@@ -1,16 +1,16 @@
 ---
-Module Name: Az.Profile
+Module Name: Az.Accounts
 Module Guid: 342714fc-4009-4863-8afb-a9067e3db04b
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.profile
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.accounts
 Help Version: 4.6.0.0
 Locale: en-US
 ---
 
-# Az.Profile Module
+# Az.Accounts Module
 ## Description
 Manages credentials and common configuration for all Azure modules.
 
-## Az.Profile Cmdlets
+## Az.Accounts Cmdlets
 ### [Add-AzEnvironment](Add-AzEnvironment.md)
 Adds endpoints and metadata for an instance of Azure Resource Manager.
 

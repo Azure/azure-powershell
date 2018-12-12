@@ -1,16 +1,16 @@
 ---
-Module Name: Az.Consumption
+Module Name: Az.Billing
 Module Guid: c1f34ce9-bf46-4180-b36c-be232a1f8f65
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.consumption
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.billing
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.Consumption Module
+# Az.Billing Module
 ## Description
 The topics in this section document the Azure PowerShell cmdlets for Azure Consumption in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.Consumption namespace.
 
-## Az.Consumption Cmdlets
+## Az.Billing Cmdlets
 ### [Get-AzConsumptionBudget](Get-AzConsumptionBudget.md)
 Get a list of budgets in either a subscription or a resource group.
 
