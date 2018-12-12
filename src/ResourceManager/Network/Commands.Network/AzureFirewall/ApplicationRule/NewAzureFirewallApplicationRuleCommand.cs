@@ -44,28 +44,28 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> SourceAddress { get; set; }
+        public string[] SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The target FQDNs of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> TargetFqdn { get; set; }
+        public string[] TargetFqdn { get; set; }
 
         [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.FqdnTag,
             HelpMessage = "The FQDN Tags of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> FqdnTag { get; set; }
+        public string[] FqdnTag { get; set; }
 
         [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The protocols of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> Protocol { get; set; }
+        public string[] Protocol { get; set; }
 
         public override void Execute()
         {
@@ -73,27 +73,27 @@ namespace Microsoft.Azure.Commands.Network
 
             if (FqdnTag != null)
             {
-                this.Protocol = new List<string> { "http", "https" };
-                FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag, this.AzureFirewallFqdnTagClient);
+                this.Protocol = new string[] { "http", "https" };
+                FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag, this.AzureFirewallFqdnTagClient).ToArray();
             }
 
-            var protocolsAsWeExpectThem = MapUserProtocolsToFirewallProtocols(Protocol);
+            var protocolsAsWeExpectThem = MapUserProtocolsToFirewallProtocols(Protocol?.ToList());
 
             var applicationRule = new PSAzureFirewallApplicationRule
             {
                 Name = this.Name,
                 Description = this.Description,
-                SourceAddresses = this.SourceAddress,
+                SourceAddresses = this.SourceAddress?.ToList(),
                 Protocols = protocolsAsWeExpectThem,
-                TargetFqdns = this.TargetFqdn,
-                FqdnTags = this.FqdnTag
+                TargetFqdns = this.TargetFqdn?.ToList(),
+                FqdnTags = this.FqdnTag?.ToList()
             };
             WriteObject(applicationRule);
         }
 
         private List<PSAzureFirewallApplicationRuleProtocol> MapUserProtocolsToFirewallProtocols(List<string> userProtocols)
         {
-            return userProtocols.Select(PSAzureFirewallApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol).ToList();
+            return userProtocols.Select(PSAzureFirewallApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol)?.ToList();
         }
     }
 }

@@ -23,6 +23,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -98,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The set of physical links of the ExpressRoutePort resource",
             ValueFromPipelineByPropertyName = true)]
-        public List<PSExpressRouteLink> Link { get; set; }
+        public PSExpressRouteLink[] Link { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -125,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
                 BandwidthInGbps = this.BandwidthInGbps,
                 Encapsulation = this.Encapsulation,
                 Location = this.Location,
-                Links = this.Link,
+                Links = this.Link?.ToList(),
             };
 
             var vExpressRoutePortModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRoutePort>(vExpressRoutePort);

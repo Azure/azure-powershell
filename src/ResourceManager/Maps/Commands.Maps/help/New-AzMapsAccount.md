@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Maps.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Maps.dll-Help.xml
 Module Name: Az.Maps
 online version: https://docs.microsoft.com/en-us/powershell/module/az.maps/new-azmapsaccount
 schema: 2.0.0
@@ -102,7 +102,7 @@ Maps Account Sku Name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: S0
+Accepted values: S0, S1
 
 Required: True
 Position: 2

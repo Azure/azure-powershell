@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup.Providers</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Providers</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup.Providers</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

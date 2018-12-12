@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "List of service resources")]
         [ValidateNotNullOrEmpty]
-        public List<string> ServiceResource { get; set; }
+        public string[] ServiceResource { get; set; }
 
         [Parameter(
             Mandatory = false,

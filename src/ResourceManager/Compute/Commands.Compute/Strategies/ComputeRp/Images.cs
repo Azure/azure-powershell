@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             {
                                 Publisher = "OpenLogic",
                                 Offer = "CentOS",
-                                Sku = "7.3",
+                                Sku = "7.5",
                                 Version = "latest",
                             }
                         },
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             {
                                 Publisher = "SUSE",
                                 Offer = "openSUSE-Leap",
-                                Sku = "42.2",
+                                Sku = "42.3",
                                 Version = "latest",
                             }
                         },
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             {
                                 Publisher = "RedHat",
                                 Offer = "RHEL",
-                                Sku = "7.3",
+                                Sku = "7-RAW",
                                 Version = "latest"
                             }
                         },
@@ -103,6 +103,16 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     "Windows",
                     new Dictionary<string, ImageReference>
                     {
+                        {
+                            "Win2019Datacenter",
+                            new ImageReference
+                            {
+                                Publisher = "MicrosoftWindowsServer",
+                                Offer = "WindowsServer",
+                                Sku = "2019-Datacenter",
+                                Version = "latest",
+                            }
+                        },
                         {
                             "Win2016Datacenter",
                             new ImageReference

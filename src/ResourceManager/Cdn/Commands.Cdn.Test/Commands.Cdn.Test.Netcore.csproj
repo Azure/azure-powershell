@@ -3,8 +3,8 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.Cdn.Test.ScenarioTests</AssemblyName>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Test.ScenarioTests</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Cdn.Test.ScenarioTests</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -24,14 +24,8 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.Cdn" Version="4.0.2-preview" />
-  </ItemGroup>
-
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Cdn">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Cdn\Microsoft.Azure.Commands.Cdn.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Microsoft.Azure.Management.Cdn" Version="4.0.2-preview" />
   </ItemGroup>
 
   <ItemGroup>

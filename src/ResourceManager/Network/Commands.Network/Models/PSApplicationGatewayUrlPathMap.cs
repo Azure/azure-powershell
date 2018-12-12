@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public PSResourceId DefaultBackendAddressPool { get; set; }
         public PSResourceId DefaultBackendHttpSettings { get; set; }
+        public PSResourceId DefaultRewriteRuleSet { get; set; }
         public PSResourceId DefaultRedirectConfiguration { get; set; }
         public List<PSApplicationGatewayPathRule> PathRules { get; set; }
         public string Type { get; set; }

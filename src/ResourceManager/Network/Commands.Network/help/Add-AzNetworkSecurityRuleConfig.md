@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 9160A21D-0F83-415B-830B-F35C8B863E90
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-aznetworksecurityruleconfig
@@ -16,28 +16,21 @@ Adds a network security rule configuration to a network security group.
 ### SetByResource (Default)
 ```
 Add-AzNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
- [-Description <String>] [-Protocol <String>]
- [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
- [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
- [-SourceAddressPrefix <System.Collections.Generic.List`1[System.String]>]
- [-DestinationAddressPrefix <System.Collections.Generic.List`1[System.String]>]
- [-SourceApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
- [-DestinationApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
- [-Access <String>] [-Priority <Int32>] [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-Description <String>] [-Protocol <String>] [-SourcePortRange <String[]>] [-DestinationPortRange <String[]>]
+ [-SourceAddressPrefix <String[]>] [-DestinationAddressPrefix <String[]>]
+ [-SourceApplicationSecurityGroup <PSApplicationSecurityGroup[]>]
+ [-DestinationApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-Access <String>] [-Priority <Int32>]
+ [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Add-AzNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkSecurityGroup>
- [-Description <String>] [-Protocol <String>]
- [-SourcePortRange <System.Collections.Generic.List`1[System.String]>]
- [-DestinationPortRange <System.Collections.Generic.List`1[System.String]>]
- [-SourceAddressPrefix <System.Collections.Generic.List`1[System.String]>]
- [-DestinationAddressPrefix <System.Collections.Generic.List`1[System.String]>]
- [-SourceApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>]
- [-DestinationApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>] [-Access <String>]
- [-Priority <Int32>] [-Direction <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Description <String>] [-Protocol <String>] [-SourcePortRange <String[]>] [-DestinationPortRange <String[]>]
+ [-SourceAddressPrefix <String[]>] [-DestinationAddressPrefix <String[]>]
+ [-SourceApplicationSecurityGroupId <String[]>] [-DestinationApplicationSecurityGroupId <String[]>]
+ [-Access <String>] [-Priority <Int32>] [-Direction <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,7 +121,7 @@ The acceptable values for this parameter are:
 You can use tags such as VirtualNetwork, AzureLoadBalancer, and Internet.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +136,7 @@ Accept wildcard characters: False
 The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup[]
 Parameter Sets: SetByResource
 Aliases:
 
@@ -158,7 +151,7 @@ Accept wildcard characters: False
 The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -177,7 +170,7 @@ The acceptable values for this parameter are:
 - A wildcard character (*) to match any port
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -283,7 +276,7 @@ The acceptable values for this parameter are:
 You can also use tags such as VirtualNetwork, AzureLoadBalancer and Internet.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -298,7 +291,7 @@ Accept wildcard characters: False
 The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup[]
 Parameter Sets: SetByResource
 Aliases:
 
@@ -313,7 +306,7 @@ Accept wildcard characters: False
 The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -329,7 +322,7 @@ Specifies a source port or range.
 This value is expressed as an integer, as a range between 0 and 65535, or as a wildcard character (*) to match any source port.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: A420B3E7-2FE9-4D0B-803E-AC28E5F23C59
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-aznetworksecuritygroup
@@ -15,9 +15,8 @@ Creates a network security group.
 
 ```
 New-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String>
- [-SecurityRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SecurityRules <PSSecurityRule[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,7 +146,7 @@ Accept wildcard characters: False
 Specifies a list of network security rule objects to create in a network security group.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSSecurityRule[]
 Parameter Sets: (All)
 Aliases:
 

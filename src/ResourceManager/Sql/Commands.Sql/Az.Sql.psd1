@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.7.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
@@ -68,7 +68,7 @@ TypesToProcess = '.\Microsoft.Azure.Commands.Sql.Types.ps1xml'
 FormatsToProcess = '.\Microsoft.Azure.Commands.Sql.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Sql.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Sql.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -80,8 +80,6 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
     'Get-AzSqlDatabaseUpgradeHint', 
     'Get-AzSqlServerUpgradeHint', 
     'Get-AzSqlServerServiceObjective', 
-    'Get-AzSqlServerUpgrade', 'Start-AzSqlServerUpgrade', 
-    'Stop-AzSqlServerUpgrade', 
     'Get-AzSqlServerActiveDirectoryAdministrator', 
     'Remove-AzSqlServerActiveDirectoryAdministrator', 
     'Set-AzSqlServerActiveDirectoryAdministrator', 
@@ -133,23 +131,14 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
     'Set-AzSqlDatabaseGeoBackupPolicy', 
     'Get-AzSqlDatabaseBackupLongTermRetentionPolicy', 
     'Set-AzSqlDatabaseBackupLongTermRetentionPolicy', 
-    'Get-AzSqlServerBackupLongTermRetentionVault', 
-    'Set-AzSqlServerBackupLongTermRetentionVault', 
     'Get-AzSqlDatabaseLongTermRetentionBackup', 
     'Remove-AzSqlDatabaseLongTermRetentionBackup', 
     'Get-AzSqlDeletedDatabaseBackup', 
     'Get-AzSqlDatabaseGeoBackup', 
     'Restore-AzSqlDatabase', 
     'Get-AzSqlDatabaseRestorePoints', 
-    'Get-AzSqlDatabaseAuditingPolicy', 
-    'Get-AzSqlServerAuditingPolicy', 
     'Get-AzSqlDatabaseAuditing', 'Get-AzSqlServerAuditing', 
-    'Remove-AzSqlDatabaseAuditing', 
-    'Remove-AzSqlServerAuditing', 
-    'Set-AzSqlDatabaseAuditingPolicy', 
-    'Set-AzSqlServerAuditingPolicy', 
     'Set-AzSqlDatabaseAuditing', 'Set-AzSqlServerAuditing', 
-    'Use-AzSqlServerAuditingPolicy', 
     'Get-AzSqlDatabaseRecommendedAction', 
     'Get-AzSqlElasticPoolRecommendedAction', 
     'Get-AzSqlServerRecommendedAction', 

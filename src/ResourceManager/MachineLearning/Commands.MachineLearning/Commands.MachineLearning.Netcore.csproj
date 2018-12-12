@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.MachineLearning</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.MachineLearning</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.MachineLearning</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

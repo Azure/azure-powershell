@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 26B1921E-6052-471B-B5B6-F2853536A425
 online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/enable-azoperationalinsightsiislogcollection
