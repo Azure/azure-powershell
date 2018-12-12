@@ -11,18 +11,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Xunit;
 using Microsoft.Azure.Commands.ScenarioTest;
 
-
 namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
 {
-
     public class KustoDatabaseTests : KustoTestsBase
     {
-        public XunitTracingInterceptor _logger;
+        private readonly XunitTracingInterceptor _logger;
 
         public KustoDatabaseTests(Xunit.Abstractions.ITestOutputHelper output)
         {
@@ -44,6 +43,5 @@ namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
         {
             NewInstance.RunPsTest(_logger, "Test-DatabaseAddRemoveGet");
         }
-        
     }
 }
