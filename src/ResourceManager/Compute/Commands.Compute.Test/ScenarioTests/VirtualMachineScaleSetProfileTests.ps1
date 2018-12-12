@@ -113,8 +113,6 @@ function Test-VirtualMachineScaleSetProfile
     Assert-AreEqual 2 $vmss.Identity.UserAssignedIdentities.Keys.Count;
     Assert-True { $vmss.Identity.UserAssignedIdentities.ContainsKey($newUserId1) };
     Assert-True { $vmss.Identity.UserAssignedIdentities.ContainsKey($newUserId2) };
-    Assert-AreEqual $newUserId1 $vmss.Identity.IdentityIds[0];
-    Assert-AreEqual $newUserId2 $vmss.Identity.IdentityIds[1];
 
     # AdditionalCapabilities
     Assert-Null $vmss.VirtualMachineProfile.AdditionalCapabilities;

@@ -105,8 +105,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// </summary>
         [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The log categories")]
         [ValidateNotNullOrEmpty]
-        [Alias("Category")]
-        public List<string> Categories { get; set; }
+        public List<string> Category { get; set; }
 
         /// <summary>
         /// Gets or sets the metrics category parameter of the cmdlet
@@ -120,8 +119,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// </summary>
         [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The timegrains")]
         [ValidateNotNullOrEmpty]
-        [Alias("Timegrain")]
-        public List<string> Timegrains { get; set; }
+        public List<string> Timegrain { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether retention should be enabled
@@ -162,7 +160,6 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 target: string.Format("Create/update a diagnostic setting for resource Id: {0}", this.ResourceId),
                 action: "Create/update a diagnostic setting"))
             {
-                WriteWarningWithTimestamp("The arguments Categories and Timegrains now have aliases Category and Timegrain respectively. The plural names will be removed in future releases.");
                 DiagnosticSettingsResource properties;
 
                 // Name defaults to 'service'
@@ -275,7 +272,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
                     SetWorkspace(properties);
 
-                    if (this.Categories == null && this.MetricCategory == null && this.Timegrains == null)
+                    if (this.Category == null && this.MetricCategory == null && this.Timegrain == null)
                     {
                         WriteDebugWithTimestamp("Changing the enable properties");
                         SetAllCategoriesAndTimegrains(properties);
@@ -283,7 +280,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                     else
                     {
                         WriteDebugWithTimestamp("Setting categories and time grains");
-                        if (this.Categories != null)
+                        if (this.Category != null)
                         {
                             SetSelectedCategories(properties);
                         }
@@ -293,7 +290,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                             SetSelectedMetricsCategories(properties);
                         }
 
-                        if (this.Timegrains != null)
+                        if (this.Timegrain != null)
                         {
                             SetSelectedTimegrains(properties);
                         }
@@ -392,10 +389,10 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         {
             if (!this.isEnbledParameterPresent)
             {
-                throw new ArgumentException("Parameter 'Enabled' is required by 'Timegrains' parameter.");
+                throw new ArgumentException("Parameter 'Enabled' is required by 'Timegrain' parameter.");
             }
 
-            if (this.Timegrains != null && this.Timegrains.Count > 0)
+            if (this.Timegrain != null && this.Timegrain.Count > 0)
             {
                 if (properties.Metrics == null)
                 {
@@ -403,7 +400,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 }
 
                 WriteWarningWithTimestamp("Deprecation: The timegain argument for metrics will be deprecated since the back end supports only PT1M. Currently it is ignored for backwards compatibility.");
-                WriteDebugWithTimestamp("Setting Enabled property for metrics since timegrains argument is non-empty");
+                WriteDebugWithTimestamp("Setting Enabled property for metrics since timegrain argument is non-empty");
                 foreach (MetricSettings metric in properties.Metrics)
                 {
                     metric.Enabled = this.Enabled;
@@ -415,7 +412,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         {
             if (!this.isEnbledParameterPresent)
             {
-                throw new ArgumentException("Parameter 'Enabled' is required by 'Categories' parameter.");
+                throw new ArgumentException("Parameter 'Enabled' is required by 'Category' parameter.");
             }
 
             WriteDebugWithTimestamp("Setting log categories, including Enabled property");
@@ -424,7 +421,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 properties.Logs = new List<LogSettings>();
             }
 
-            foreach (string category in this.Categories)
+            foreach (string category in this.Category)
             {
                 LogSettings logSettings = properties.Logs.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
                 if (logSettings == null)

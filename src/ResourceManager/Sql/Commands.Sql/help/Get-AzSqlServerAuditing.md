@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverauditing
@@ -37,7 +37,7 @@ StorageAccountName           : mystorage
 StorageKeyType               : Primary
 RetentionInDays              : 0
 StorageAccountSubscriptionId : 7fe3301d-31d3-4668-af5e-211a890ba6e3
-PredicateExpression			 : statement <> 'select 1'
+PredicateExpression	         : statement <> 'select 1'
 ```
 
 ## PARAMETERS

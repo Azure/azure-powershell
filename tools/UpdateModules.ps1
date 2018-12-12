@@ -107,22 +107,6 @@ function New-ModulePsm1 {
             $template = $template -replace "%ISAZMODULE%", "`$false"
         }
 
-        # Add deprecation messages
-        if ($ModulePath -like "*Profile*") {
-            $WarningMessage = "`"PowerShell version 3 and 4 will no longer be supported starting in May 2018. Please update to the latest version of PowerShell 5.1`""
-            $template = $template -replace "%PSVersionDeprecationMessage%",
-            "`$SpecialFolderPath = Join-Path -Path ([Environment]::GetFolderPath('ApplicationData')) -ChildPath 'Windows Azure Powershell' `
-            `$DeprecationFile = Join-Path -Path `$SpecialFolderPath -ChildPath 'PSDeprecationWarning.txt' `
-            if (!(Test-Path `$DeprecationFile)) { `
-                Write-Warning $WarningMessage `
-                try { `
-                $WarningMessage | Out-File -FilePath `$DeprecationFile `
-                } catch {} `
-            }"
-        } else {
-            $template = $template -replace "%PSVersionDeprecationMessage%", ""
-        }
-
         # Handle
         $contructedCommands = Find-DefaultResourceGroupCmdlets -IsRMModule:$IsRMModule -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
         $template = $template -replace "%DEFAULTRGCOMMANDS%", $contructedCommands
@@ -404,14 +388,14 @@ function Update-Netcore {
     $AzureRMModules = Get-ChildItem -Path $script:AzureRMRoot -Directory
 
     # Publish the Netcore modules and rollup module, if specified.
-    Write-Host "Updating profile module"
-    New-ModulePsm1 -ModulePath "$script:AzureRMRoot\Az.Profile" -TemplatePath $script:TemplateLocation -IsRMModule -IsNetcore
-    Write-Host "Updated profile module"
+    Write-Host "Updating Accounts module"
+    New-ModulePsm1 -ModulePath "$script:AzureRMRoot\Az.Accounts" -TemplatePath $script:TemplateLocation -IsRMModule -IsNetcore
+    Write-Host "Updated Accounts module"
 
-    $env:PSModulePath += "$([IO.Path]::PathSeparator)$script:AzureRMRoot\Az.Profile";
+    $env:PSModulePath += "$([IO.Path]::PathSeparator)$script:AzureRMRoot\Az.Accounts";
 
     foreach ($module in $AzureRMModules) {
-        if (($module.Name -ne "Az.Profile")) {
+        if (($module.Name -ne "Az.Accounts")) {
             $modulePath = $module.FullName
             Write-Host "Updating $module module from $modulePath"
             New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsRMModule -IsNetcore

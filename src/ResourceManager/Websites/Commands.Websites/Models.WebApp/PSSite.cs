@@ -74,9 +74,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
         public string GitRemoteUsername { get; set; }
         public SecureString  GitRemotePassword { get; set; }
 
-        [CmdletParameterBreakingChange("SnapshotInfo", ChangeDescription = "This property is deprecated and will be removed in a future releases.")]
-        public string SnapshotInfo { get; set; }
-
         public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
     }
 }

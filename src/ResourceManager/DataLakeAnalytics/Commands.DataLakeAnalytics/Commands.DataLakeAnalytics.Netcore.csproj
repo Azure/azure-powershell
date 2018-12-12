@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.DataLakeAnalytics</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.DataLakeAnalytics</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

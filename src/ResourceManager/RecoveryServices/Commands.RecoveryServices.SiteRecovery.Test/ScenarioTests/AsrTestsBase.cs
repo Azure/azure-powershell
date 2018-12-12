@@ -24,11 +24,11 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using System.Diagnostics;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace RecoveryServices.SiteRecovery.Test
 {
@@ -120,7 +120,7 @@ namespace RecoveryServices.SiteRecovery.Test
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (var context = RestTestFramework.MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(scenario, context);
 
@@ -154,39 +154,34 @@ namespace RecoveryServices.SiteRecovery.Test
             }
         }
 
-        protected void SetupManagementClients(string scenario, RestTestFramework.MockContext context)
+        protected void SetupManagementClients(string scenario, MockContext context)
         {
             RmRestClient = GetRmRestClient(context);
             RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient(context);
-            SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient(scenario, context);
+            SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient(context);
             _helper.SetupManagementClients(
                 RmRestClient,
                 RecoveryServicesMgmtClient,
                 SiteRecoveryMgmtClient);
         }
 
-        private static RecoveryServicesClient GetRecoveryServicesManagementClient(RestTestFramework.MockContext context)
+        private static RecoveryServicesClient GetRecoveryServicesManagementClient(MockContext context)
         {
-            return context.GetServiceClient<RecoveryServicesClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<RecoveryServicesClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static ResourceManagementClient GetRmRestClient(RestTestFramework.MockContext context)
+        private static ResourceManagementClient GetRmRestClient(MockContext context)
         {
-            return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private SiteRecoveryManagementClient GetSiteRecoveryManagementClient(string scenario, RestTestFramework.MockContext context)
+        private SiteRecoveryManagementClient GetSiteRecoveryManagementClient(MockContext context)
         {
-            var client = GetSiteRecoveryManagementClient(context);
+            var client = context.GetServiceClient<SiteRecoveryManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             client.ResourceGroupName = _asrVaultCreds.ResourceGroupName;
             client.ResourceName = _asrVaultCreds.ResourceName;
 
             return client;
-        }
-
-        private static SiteRecoveryManagementClient GetSiteRecoveryManagementClient(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<SiteRecoveryManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Commands.Automation.Test
 {
     using Microsoft.Azure.Commands.Automation.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.ServiceManagemenet.Common.Models;
+    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Xunit;
 
     public class UpdateManagementTests : AutomationScenarioTestsBase

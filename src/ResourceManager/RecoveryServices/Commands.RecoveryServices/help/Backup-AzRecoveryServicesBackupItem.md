@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 04D7317E-2089-4197-909D-89F0CEC4851A
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices.backup/backup-azrecoveryservicesbackupitem

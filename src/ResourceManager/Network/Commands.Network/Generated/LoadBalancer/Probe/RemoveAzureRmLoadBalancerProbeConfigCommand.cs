@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(this.LoadBalancer);
                 return;
             }
-            var vProbes = this.LoadBalancer.Probes.First
+            var vProbes = this.LoadBalancer.Probes.SingleOrDefault
                 (e =>
-                    (this.Name != null && e.Name == this.Name)
+                    string.Equals(e.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)
                 );
 
             if (vProbes != null)

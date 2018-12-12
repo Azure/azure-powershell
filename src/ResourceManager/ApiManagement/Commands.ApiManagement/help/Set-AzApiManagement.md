@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagement
 schema: 2.0.0
@@ -29,7 +29,7 @@ PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "Con
 PS C:\> $apim.Sku = "Premium"
 PS C:\> $apim.Capacity = 5
 PS C:\> $apim.AddRegion("Central US", "Premium", 3)
-PS C:\>Set-AzApiManagement -ApiManagement $apim
+PS C:\>Set-AzApiManagement -InputObject $apim
 ```
 
 This example gets an Api Management instance, scales it to five premium units and then adds an additional three units to the premium region.
@@ -40,7 +40,7 @@ PS C:\> $virtualNetwork = New-AzApiManagementVirtualNetwork -Location "East US" 
 PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\> $apim.VpnType = "External"
 PS C:\> $apim.VirtualNetwork = $virtualNetwork
-PS C:\> Set-AzApiManagement -ApiManagement $apim
+PS C:\> Set-AzApiManagement -InputObject $apim
 ```
 
 This command updates an existing API Management deployment and joins to an external *VpnType*.

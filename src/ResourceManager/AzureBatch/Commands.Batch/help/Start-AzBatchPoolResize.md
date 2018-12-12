@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 82DC8DC4-D8EC-4847-A54C-B779256FD590
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/start-azbatchpoolresize
