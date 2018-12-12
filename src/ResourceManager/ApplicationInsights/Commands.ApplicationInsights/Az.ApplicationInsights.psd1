@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Application Insights management cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.  Creates and manages application insights in Azure Resource Manager.
 
-For more information on Application Insights, please visit the following: https://docs.microsoft.com/en-us/azure/application-insights/'
+For more information on Application Insights, please visit the following: https://docs.microsoft.com/azure/application-insights/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

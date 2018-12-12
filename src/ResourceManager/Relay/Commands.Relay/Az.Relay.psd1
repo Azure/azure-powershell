@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Relay service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Relay, please visit the following: https://docs.microsoft.com/en-us/azure/service-bus-relay/relay-what-is-it'
+For more information on Relay, please visit the following: https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

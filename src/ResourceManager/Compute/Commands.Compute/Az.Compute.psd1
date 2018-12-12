@@ -32,7 +32,8 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Compute service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.  Manages virtual machines, hosted services, and related resources in Azure Resource Manager.
 
-For more information on Compute, please visit the following: https://azure.microsoft.com/en-us/product-categories/compute/'
+For more information on Virtual Machines, please visit the following: https://docs.microsoft.com/azure/virtual-machines/
+For more information on Virtual Machine Scale Sets, please visit the following: https://docs.microsoft.com/azure/virtual-machine-scale-sets/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

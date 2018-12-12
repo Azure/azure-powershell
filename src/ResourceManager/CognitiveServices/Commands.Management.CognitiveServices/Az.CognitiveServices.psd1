@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Cognitive Services management cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core. Creates and manages cognitive services accounts in Azure Resource Manager.
 
-For more information on Cognitive Services, please visit the following: https://docs.microsoft.com/en-us/azure/cognitive-services/welcome'
+For more information on Cognitive Services, please visit the following: https://docs.microsoft.com/azure/cognitive-services/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

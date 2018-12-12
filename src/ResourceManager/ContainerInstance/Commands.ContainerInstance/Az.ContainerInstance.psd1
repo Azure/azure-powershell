@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Container Instance cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Container Instance, please visit the following: https://docs.microsoft.com/en-us/azure/container-instances/'
+For more information on Container Instance, please visit the following: https://docs.microsoft.com/azure/container-instances/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

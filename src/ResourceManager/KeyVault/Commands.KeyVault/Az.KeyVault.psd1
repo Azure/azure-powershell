@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Key Vault service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Key Vault, please visit the following: https://docs.microsoft.com/en-us/azure/key-vault/'
+For more information on Key Vault, please visit the following: https://docs.microsoft.com/azure/key-vault/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

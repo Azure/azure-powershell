@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Event Hubs service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Event Hubs, please visit the following: https://docs.microsoft.com/en-us/azure/event-hubs/'
+For more information on Event Hubs, please visit the following: https://docs.microsoft.com/azure/event-hubs/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
