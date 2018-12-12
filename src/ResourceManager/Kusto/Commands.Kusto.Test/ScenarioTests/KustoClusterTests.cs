@@ -51,7 +51,6 @@ namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
             NewInstance.RunPsTest(_logger, "Test-KustoClusterUpdate");
         }
 
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestKustoClusterSuspendResume()

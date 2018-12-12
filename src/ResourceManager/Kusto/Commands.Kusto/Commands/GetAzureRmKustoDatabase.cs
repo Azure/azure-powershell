@@ -14,6 +14,7 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
@@ -29,14 +30,17 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
 
         [Parameter(
             ParameterSetName = ParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Name of resource group under which the user wants to retrieve the cluster.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Name of cluster under which the database exists.")]
+        [ValidateNotNullOrEmpty]
         public string ClusterName { get; set; }
 
         [Parameter(
@@ -75,7 +79,6 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
             {
                 KustoUtils.GetResourceGroupNameAndClusterNameFromClusterId(InputObject.Id, out resourceGroupName, out clusterName);
             }
-
 
             if (!string.IsNullOrEmpty(databaseName))
             {

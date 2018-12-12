@@ -20,6 +20,8 @@ using System;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 
+using System.Management.Automation;
+
 namespace Microsoft.Azure.Commands.Kusto.Models
 {
     /// <summary>
@@ -42,6 +44,56 @@ namespace Microsoft.Azure.Commands.Kusto.Models
 
             set { kustoClient = value; }
         }
+
+        protected void EnsureResourceGroupSpecified(string resourceGroupName, string resourceGroupParameterName = "ResourceGroupName")
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                WriteExceptionError(new PSArgumentNullException(resourceGroupParameterName, Microsoft.Azure.Commands.Kusto.Properties.Resources.ResourceGroupNotSpecified));
+            }
+        }
+        protected void EnsureClusterAndResourceGroupSpecified(string resourceGroupName, string clusterName, string clusterParameterName = "Name")
+        {
+            EnsureResourceGroupSpecified(resourceGroupName);
+
+            EnsureClusterSpecified(clusterName, clusterParameterName);
+        }
+
+        protected void EnsureDatabaseClusterResourceGroupSpecified(string resourceGroupName, string clusterName,string databaseName , string databaseParameterName = "Name")
+        {
+            EnsureClusterAndResourceGroupSpecified(resourceGroupName, clusterName, "ClusterName");
+
+            if (string.IsNullOrEmpty(databaseParameterName))
+            {
+                WriteExceptionError(new PSArgumentNullException(databaseParameterName, Microsoft.Azure.Commands.Kusto.Properties.Resources.DatabaseNameNotSpecified));
+            }
+        }
+        protected void EnsureClusterSpecified(string clusterName, string clusterParameterName = "Name")
+        {
+            if (string.IsNullOrEmpty(clusterName))
+            {
+                WriteExceptionError(new PSArgumentNullException(clusterParameterName, Microsoft.Azure.Commands.Kusto.Properties.Resources.ClusterNameNotSpecified));
+            }
+        }
+
+        protected void EnsureLocationSpecified(string location, string locationParameterName = "Location")
+        {
+            if (string.IsNullOrEmpty(location))
+            {
+                WriteExceptionError(new PSArgumentNullException(locationParameterName, Microsoft.Azure.Commands.Kusto.Properties.Resources.DatabaseNameNotSpecified));
+            }
+        }
+
+        /***
+         *  if (string.IsNullOrEmpty(location))
+            {
+                throw new CloudException(string.Format(Resources.KustoClusterExists, Name));
+            }
+            if (string.IsNullOrEmpty(clusterName))
+            {
+                throw new CloudException(string.Format(Resources.KustoClusterExists, Name));
+            }
+         */
 
         internal static TClient CreateAsClient<TClient>(IAzureContext context, string endpoint, bool parameterizedBaseUri = false) where TClient : Rest.ServiceClient<TClient>
         {

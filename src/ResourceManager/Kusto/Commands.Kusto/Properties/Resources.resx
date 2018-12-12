@@ -150,6 +150,12 @@
   <data name="RemovingKustoCluster" xml:space="preserve">
     <value>Delete Kusto cluster</value>
   </data>
+  <data name="ClusterNameNotSpecified" xml:space="preserve">
+    <value>"Name of cluster not specified"</value>
+  </data>
+  <data name="DatabaseNameNotSpecified" xml:space="preserve">
+    <value>"Name of database not specified"</value>
+  </data>
   <data name="RemovingKustoDatabase" xml:space="preserve">
     <value>Delete Kusto database</value>
   </data>
@@ -170,5 +176,8 @@
   </data>
   <data name="LocationCanNotBeEmptry" xml:space="preserve">
     <value>Location can not be empty</value>
+  </data>
+  <data name="ResourceGroupNotSpecified" xml:space="preserve">
+    <value>Name of resource group not specified</value>
   </data>
 </root>

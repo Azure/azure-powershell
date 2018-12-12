@@ -21,7 +21,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoDatabase", SupportsShouldProcess = true),
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoDatabase", DefaultParameterSetName = CmdletParametersSet, SupportsShouldProcess = true),
      OutputType(typeof(PSKustoDatabase))]
     public class NewAzureRmKustoDatabase : KustoCmdletBase
     {
@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
            Mandatory = true,
            HelpMessage = "Name of resource group under which the cluster exists.")]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -52,24 +53,19 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
         public string Name { get; set; }
 
         [Parameter(
-            Position = 4,
             Mandatory = true,
             HelpMessage = "the amount of days.")]
-        [LocationCompleter("Microsoft.Kusto/databases")]
         public int SoftDeletePeriodInDays { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            Position = 5,
             Mandatory = true,
             HelpMessage = "Azure region where the cluster exists.")]
-        [LocationCompleter("Microsoft.Kusto/clusters")]
         public int HotCachePeriodInDays { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Kusto cluster ResourceID.")]
         [ValidateNotNullOrEmpty]
@@ -78,13 +74,12 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
         [Parameter(
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
-            Position = 2,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "Kusto cluster object.")]
         [ValidateNotNullOrEmpty]
         public PSKustoCluster InputObject { get; set; }
-
-
+        
         public override void ExecuteCmdlet()
         {
             string resourceGroupName = ResourceGroupName;
@@ -124,14 +119,15 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                     if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) && ex.Body.Code == "ResourceNotFound" ||
                         ex.Message.Contains("ResourceNotFound"))
                     {
-                        // database does not exists so go ahead and create one
+                        // there are 2 options:
+                        // -database does not exists so go ahead and create one
+                        // -cluster does not exist, so continue and let the command fail
                     }
                     else if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) &&
                              ex.Body.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
                     {
                         // resource group not found, let create throw error don't throw from here
                     }
-                    //TODO:Add check when cluster resource is not found
                     else
                     {
                         // all other exceptions should be thrown

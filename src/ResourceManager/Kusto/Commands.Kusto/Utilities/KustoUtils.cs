@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Kusto.Utilities
 {
@@ -23,9 +25,9 @@ namespace Microsoft.Azure.Commands.Kusto.Utilities
             out string resourceGroupName,
             out string clusterName)
         {
-            string[] tokens = ParseClusterResourceId(clusterId);
-            resourceGroupName = tokens[3];
-            clusterName = tokens[7];
+            var identifier = new ResourceIdentifier(clusterId);
+            resourceGroupName = identifier.ResourceGroupName;
+            clusterName = identifier.ResourceName;
         }
 
         public static void GetResourceGroupNameClusterNameAndDatabaseNameFromDatabaseId(
@@ -34,22 +36,24 @@ namespace Microsoft.Azure.Commands.Kusto.Utilities
             out string clusterName,
             out string databaseName)
         {
-            string[] tokens = ParseDatabaseResourceId(databaseId);
-            resourceGroupName = tokens[3];
-            clusterName = tokens[7];
-            databaseName = tokens[9];
+            var identifier = new ResourceIdentifier(databaseId);
+            resourceGroupName = identifier.ResourceGroupName;
+            clusterName = identifier.ParentResource.Split('/').Last();
+            databaseName = identifier.ResourceName;
         }
 
         public static void GetResourceGroupNameFromClusterId(
             string clusterId,
             out string resourceGroupName)
         {
-            string[] tokens = ParseClusterResourceId(clusterId);
-            resourceGroupName = tokens[3];
+            var identifier = new ResourceIdentifier(clusterId);
+            resourceGroupName = identifier.ResourceGroupName;
         }
 
         private static string[] ParseClusterResourceId(string clusterId)
         {
+            
+
             if (string.IsNullOrEmpty(clusterId))
             {
                 throw new ArgumentNullException(nameof(clusterId));

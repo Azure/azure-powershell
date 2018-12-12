@@ -110,7 +110,6 @@ namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
                 SetupManagementClients(context);
 
                 // register the namespace.
-                this.TryRegisterSubscriptionForResource();
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var callingClassName = callingClassType
@@ -122,6 +121,7 @@ namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
                     helper.RMProfileModule,
                     helper.GetRMModulePath(@"AzureRM.Kusto.psd1"),
                     "AzureRM.Resources.ps1");
+                var a = helper.GetRMModulePath(@"AzureRM.Kusto.psd1");
                 try
                 {
                     if (scriptBuilder != null)
@@ -199,23 +199,6 @@ namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
         #endregion
 
         #region private helper methods
-
-        private void TryRegisterSubscriptionForResource(string providerName = "Microsoft.Kusto")
-        {
-            var reg = ResourceManagementClient.Providers.Register(providerName);
-            ThrowIfTrue(reg == null, "resourceManagementClient.Providers.Register returned null.");
-            ThrowIfTrue(reg.StatusCode != HttpStatusCode.OK, string.Format("resourceManagementClient.Providers.Register returned with status code {0}", reg.StatusCode));
-
-            var resultAfterRegister = ResourceManagementClient.Providers.Get(providerName);
-            ThrowIfTrue(resultAfterRegister == null, "resourceManagementClient.Providers.Get returned null.");
-            ThrowIfTrue(string.IsNullOrEmpty(resultAfterRegister.Provider.Id), "Provider.Id is null or empty.");
-            ThrowIfTrue(!providerName.Equals(resultAfterRegister.Provider.Namespace), string.Format("Provider name is not equal to {0}.", providerName));
-            ThrowIfTrue(ProviderRegistrationState.Registered != resultAfterRegister.Provider.RegistrationState &&
-                ProviderRegistrationState.Registering != resultAfterRegister.Provider.RegistrationState,
-                string.Format("Provider registration state was not 'Registered' or 'Registering', instead it was '{0}'", resultAfterRegister.Provider.RegistrationState));
-            ThrowIfTrue(resultAfterRegister.Provider.ResourceTypes == null || resultAfterRegister.Provider.ResourceTypes.Count == 0, "Provider.ResourceTypes is empty.");
-        }
-
         private void ThrowIfTrue(bool condition, string message)
         {
             if (condition)

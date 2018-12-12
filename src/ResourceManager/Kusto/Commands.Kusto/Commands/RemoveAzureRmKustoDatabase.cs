@@ -17,12 +17,12 @@ using System.Security.Permissions;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Properties;
 using Microsoft.Azure.Commands.Kusto.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
     
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoDatabase", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet),
-      OutputType(typeof(PSKustoDatabase))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoDatabase", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet), OutputType(typeof(bool))]
     public class RemoveAzureRmKustoDatabase : KustoCmdletBase
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";
@@ -33,13 +33,14 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
             ParameterSetName = CmdletParametersSet,
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Name of database to be removed.")]
+            HelpMessage = "Name of resource group under which the cluster exists.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        [ResourceGroupCompleter]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = CmdletParametersSet,
-            Position = 0,
+            Position = 1,
             Mandatory = true,
             HelpMessage = "Name of the cluster under which the database exists.")]
         [ValidateNotNullOrEmpty]
@@ -47,15 +48,15 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
 
         [Parameter(
             ParameterSetName = CmdletParametersSet,
-            Mandatory = false,
-            HelpMessage = "Name of resource group under which the cluster exists.")]
+            Mandatory = true,
+            HelpMessage = "Name of database to be removed.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
+        public string Name { get; set; }
+        
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Kusto database ResourceID.")]
         [ValidateNotNullOrEmpty]
@@ -64,13 +65,17 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
         [Parameter(
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
-            Position = 2,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "Kusto database object.")]
         [ValidateNotNullOrEmpty]
         public PSKustoDatabase InputObject { get; set; }
 
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Return whether the specified database was successfully suspended or not.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             string databaseName = Name;
@@ -86,11 +91,6 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                 KustoUtils.GetResourceGroupNameClusterNameAndDatabaseNameFromDatabaseId(InputObject.Id, out resourceGroupName, out clusterName, out databaseName);
             }
 
-            if (string.IsNullOrEmpty(databaseName))
-            {
-                WriteExceptionError(new PSArgumentNullException("Name", "Name of cluster not specified"));
-            }
-
             if (ShouldProcess(databaseName, Resources.RemovingKustoDatabase))
             {
                 PSKustoDatabase database = null;
@@ -100,8 +100,12 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                 }
 
                 KustoClient.DeleteDatabase(resourceGroupName, clusterName, databaseName);
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }
-
 }

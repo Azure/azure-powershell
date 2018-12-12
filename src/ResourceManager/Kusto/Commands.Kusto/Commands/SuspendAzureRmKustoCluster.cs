@@ -17,11 +17,11 @@ using System.Security.Permissions;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Properties;
 using Microsoft.Azure.Commands.Kusto.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
-    [Cmdlet("Suspend", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", SupportsShouldProcess = true),
-     OutputType(typeof(PSKustoCluster))]
+    [Cmdlet("Suspend", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster",DefaultParameterSetName = CmdletParametersSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SuspendAzureRmKustoCluster : KustoCmdletBase
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";
@@ -32,21 +32,23 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
             ParameterSetName = CmdletParametersSet,
             Position = 0,
             Mandatory = true,
+            HelpMessage = "Name of resource group under which the cluster exists.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            ParameterSetName = CmdletParametersSet,
+            Position = 1,
+            Mandatory = true,
             HelpMessage = "Name of cluster to be suspend.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = CmdletParametersSet,
-            Mandatory = false,
-            HelpMessage = "Name of resource group under which the cluster exists.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
             ParameterSetName = ResourceIdParameterSet,
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Kusto cluster ResourceID.")]
         [ValidateNotNullOrEmpty]
@@ -55,13 +57,17 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
         [Parameter(
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
-            Position = 2,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "Kusto cluster object.")]
         [ValidateNotNullOrEmpty]
         public PSKustoCluster InputObject { get; set; }
 
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Return whether the specified cluster was successfully suspended or not.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             string clusterName = Name;
@@ -76,10 +82,7 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                 KustoUtils.GetResourceGroupNameAndClusterNameFromClusterId(InputObject.Id, out resourceGroupName, out clusterName);
             }
 
-            if (string.IsNullOrEmpty(clusterName))
-            {
-                WriteExceptionError(new PSArgumentNullException("Name", "Name of cluster not specified"));
-            }
+            EnsureClusterAndResourceGroupSpecified(resourceGroupName, clusterName);
 
             if (ShouldProcess(clusterName, Resources.SuspendingKustoCluster))
             {
@@ -90,6 +93,11 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                 }
 
                 KustoClient.SuspendKustoCluster(resourceGroupName, clusterName);
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }
