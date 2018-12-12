@@ -1,0 +1,1429 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AzureStack.Management.Subscription</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperations">
+            <summary>
+            DelegatedProviderOffersOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperations.#ctor(Microsoft.AzureStack.Management.Subscription.SubscriptionClient)">
+            <summary>
+            Initializes a new instance of the DelegatedProviderOffersOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperations.Client">
+            <summary>
+            Gets a reference to the SubscriptionClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of offers for the specified delegated provider.
+            </summary>
+            <param name='delegatedProviderId'>
+            Id of the delegated provider.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the specified offer for the delegated provider.
+            </summary>
+            <param name='delegatedProviderId'>
+            Id of the delegated provider.
+            </param>
+            <param name='offerName'>
+            Name of the offer.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of offers for the specified delegated provider.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperationsExtensions">
+            <summary>
+            Extension methods for DelegatedProviderOffersOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperationsExtensions.List(Microsoft.AzureStack.Management.Subscription.IDelegatedProviderOffersOperations,System.String)">
+            <summary>
+            Get the list of offers for the specified delegated provider.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='delegatedProviderId'>
+            Id of the delegated provider.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Subscription.IDelegatedProviderOffersOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of offers for the specified delegated provider.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='delegatedProviderId'>
+            Id of the delegated provider.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperationsExtensions.Get(Microsoft.AzureStack.Management.Subscription.IDelegatedProviderOffersOperations,System.String,System.String)">
+            <summary>
+            Get the specified offer for the delegated provider.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='delegatedProviderId'>
+            Id of the delegated provider.
+            </param>
+            <param name='offerName'>
+            Name of the offer.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Subscription.IDelegatedProviderOffersOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the specified offer for the delegated provider.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='delegatedProviderId'>
+            Id of the delegated provider.
+            </param>
+            <param name='offerName'>
+            Name of the offer.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperationsExtensions.ListNext(Microsoft.AzureStack.Management.Subscription.IDelegatedProviderOffersOperations,System.String)">
+            <summary>
+            Get the list of offers for the specified delegated provider.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.DelegatedProviderOffersOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.Subscription.IDelegatedProviderOffersOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of offers for the specified delegated provider.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.IDelegatedProviderOffersOperations">
+            <summary>
+            DelegatedProviderOffersOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.IDelegatedProviderOffersOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of offers for the specified delegated provider.
+            </summary>
+            <param name='delegatedProviderId'>
+            Id of the delegated provider.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.IDelegatedProviderOffersOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the specified offer for the delegated provider.
+            </summary>
+            <param name='delegatedProviderId'>
+            Id of the delegated provider.
+            </param>
+            <param name='offerName'>
+            Name of the offer.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.IDelegatedProviderOffersOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of offers for the specified delegated provider.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.IOffersOperations">
+            <summary>
+            OffersOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.IOffersOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of public offers for the root provider.
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.IOffersOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of public offers for the root provider.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.IOperations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.IOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of Operations.
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient">
+            <summary>
+            Subscription Management Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient.ApiVersion">
+            <summary>
+            Client Api Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running
+            Operations. Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated
+            and included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient.Subscriptions">
+            <summary>
+            Gets the ISubscriptionsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient.DelegatedProviderOffers">
+            <summary>
+            Gets the IDelegatedProviderOffersOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.ISubscriptionClient.Offers">
+            <summary>
+            Gets the IOffersOperations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations">
+            <summary>
+            SubscriptionsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of subscriptions.
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations.GetWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets details about particular subscription.
+            </summary>
+            <param name='subscriptionId'>
+            Id of the subscription.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations.CreateOrUpdateWithHttpMessagesAsync(System.String,Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Create or updates a subscription.
+            </summary>
+            <param name='subscriptionId'>
+            Id of the subscription.
+            </param>
+            <param name='newSubscription'>
+            Subscription parameter.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations.DeleteWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete the specifed subscription.
+            </summary>
+            <param name='subscriptionId'>
+            Id of the subscription.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.Models.Offer">
+            <summary>
+            Represents an offering of services against which a subscription can be
+            created.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.Offer.#ctor">
+            <summary>
+            Initializes a new instance of the Offer class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.Offer.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Offer class.
+            </summary>
+            <param name="displayName">Display name of offer.</param>
+            <param name="description">Description of offer.</param>
+            <param name="name">The name of the offer.</param>
+            <param name="id">The offer ID</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Offer.DisplayName">
+            <summary>
+            Gets or sets display name of offer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Offer.Description">
+            <summary>
+            Gets or sets description of offer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Offer.Name">
+            <summary>
+            Gets or sets the name of the offer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Offer.Id">
+            <summary>
+            Gets or sets the offer ID
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.Models.Operation">
+            <summary>
+            Supported REST operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.Operation.#ctor">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.Operation.#ctor(Microsoft.AzureStack.Management.Subscription.Models.OperationDisplay,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+            <param name="display">Display information for the
+            operation.</param>
+            <param name="name">Name of the operation being performed on an
+            object.</param>
+            <param name="origin">Origin for the operation.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Operation.Display">
+            <summary>
+            Gets or sets display information for the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Operation.Name">
+            <summary>
+            Gets name of the operation being performed on an object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Operation.Origin">
+            <summary>
+            Gets origin for the operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.Models.OperationDisplay">
+            <summary>
+            Display information for the operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.OperationDisplay.#ctor">
+            <summary>
+            Initializes a new instance of the OperationDisplay class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.OperationDisplay.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the OperationDisplay class.
+            </summary>
+            <param name="description">Description for the operation.</param>
+            <param name="operation">Display name of the operation.</param>
+            <param name="provider">Resource provider display name.</param>
+            <param name="resource">Resource type display name related to the
+            operation.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.OperationDisplay.Description">
+            <summary>
+            Gets description for the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.OperationDisplay.Operation">
+            <summary>
+            Gets display name of the operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.OperationDisplay.Provider">
+            <summary>
+            Gets resource provider display name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.OperationDisplay.Resource">
+            <summary>
+            Gets resource type display name related to the operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.Models.OperationList">
+            <summary>
+            List of supported operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.OperationList.#ctor">
+            <summary>
+            Initializes a new instance of the OperationList class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.OperationList.#ctor(System.Collections.Generic.IList{Microsoft.AzureStack.Management.Subscription.Models.Operation})">
+            <summary>
+            Initializes a new instance of the OperationList class.
+            </summary>
+            <param name="value">List of supported operations.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.OperationList.Value">
+            <summary>
+            Gets or sets list of supported operations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.Models.Page`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Page`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.Page`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.Page`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.Models.Page1`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Page1`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.Page1`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.Page1`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.Models.Resource">
+            <summary>
+            Base Resource Object
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.Resource.#ctor">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.Resource.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Location of the resource</param>
+            <param name="tags">List of key-value pairs.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Resource.Id">
+            <summary>
+            Gets URI of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Resource.Name">
+            <summary>
+            Gets name of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Resource.Type">
+            <summary>
+            Gets type of resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Resource.Location">
+            <summary>
+            Gets or sets location of the resource
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.Resource.Tags">
+            <summary>
+            Gets list of key-value pairs.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel">
+            <summary>
+            List of supported operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel.#ctor">
+            <summary>
+            Initializes a new instance of the SubscriptionModel class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the SubscriptionModel class.
+            </summary>
+            <param name="displayName">Subscription name.</param>
+            <param name="id">Fully qualified identifier.</param>
+            <param name="offerId">Identifier of the offer under the scope of a
+            delegated provider.</param>
+            <param name="state">Subscription state. Possible values include:
+            'NotDefined', 'Enabled', 'Warned', 'PastDue', 'Disabled',
+            'Deleted'</param>
+            <param name="subscriptionId">Subscription identifier.</param>
+            <param name="tenantId">Directory tenant identifier.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel.DisplayName">
+            <summary>
+            Gets or sets subscription name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel.Id">
+            <summary>
+            Gets or sets fully qualified identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel.OfferId">
+            <summary>
+            Gets or sets identifier of the offer under the scope of a delegated
+            provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel.State">
+            <summary>
+            Gets or sets subscription state. Possible values include:
+            'NotDefined', 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel.SubscriptionId">
+            <summary>
+            Gets or sets subscription identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel.TenantId">
+            <summary>
+            Gets or sets directory tenant identifier.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.Models.SubscriptionState">
+            <summary>
+            Defines values for SubscriptionState.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.OffersOperations">
+            <summary>
+            OffersOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.OffersOperations.#ctor(Microsoft.AzureStack.Management.Subscription.SubscriptionClient)">
+            <summary>
+            Initializes a new instance of the OffersOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.OffersOperations.Client">
+            <summary>
+            Gets a reference to the SubscriptionClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.OffersOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of public offers for the root provider.
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.OffersOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of public offers for the root provider.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.OffersOperationsExtensions">
+            <summary>
+            Extension methods for OffersOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.OffersOperationsExtensions.List(Microsoft.AzureStack.Management.Subscription.IOffersOperations)">
+            <summary>
+            Get the list of public offers for the root provider.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.OffersOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Subscription.IOffersOperations,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of public offers for the root provider.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.OffersOperationsExtensions.ListNext(Microsoft.AzureStack.Management.Subscription.IOffersOperations,System.String)">
+            <summary>
+            Get the list of public offers for the root provider.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.OffersOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.Subscription.IOffersOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of public offers for the root provider.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.Operations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Operations.#ctor(Microsoft.AzureStack.Management.Subscription.SubscriptionClient)">
+            <summary>
+            Initializes a new instance of the Operations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.Operations.Client">
+            <summary>
+            Gets a reference to the SubscriptionClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.Operations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of Operations.
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.OperationsExtensions">
+            <summary>
+            Extension methods for Operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.OperationsExtensions.List(Microsoft.AzureStack.Management.Subscription.IOperations)">
+            <summary>
+            Get the list of Operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.OperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Subscription.IOperations,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of Operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.SubscriptionClient">
+            <summary>
+            Subscription Management Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.ApiVersion">
+            <summary>
+            Client Api Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running Operations.
+            Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated and
+            included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.Subscriptions">
+            <summary>
+            Gets the ISubscriptionsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.DelegatedProviderOffers">
+            <summary>
+            Gets the IDelegatedProviderOffersOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.Offers">
+            <summary>
+            Gets the IOffersOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.#ctor(System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the SubscriptionClient class.
+            </summary>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.#ctor(System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the SubscriptionClient class.
+            </summary>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.#ctor(System.Uri,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the SubscriptionClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.#ctor(System.Uri,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the SubscriptionClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the SubscriptionClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the SubscriptionClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the SubscriptionClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the SubscriptionClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionClient.Initialize">
+            <summary>
+            Initializes client properties.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperations">
+            <summary>
+            SubscriptionsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperations.#ctor(Microsoft.AzureStack.Management.Subscription.SubscriptionClient)">
+            <summary>
+            Initializes a new instance of the SubscriptionsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperations.Client">
+            <summary>
+            Gets a reference to the SubscriptionClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of subscriptions.
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperations.GetWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets details about particular subscription.
+            </summary>
+            <param name='subscriptionId'>
+            Id of the subscription.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperations.CreateOrUpdateWithHttpMessagesAsync(System.String,Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Create or updates a subscription.
+            </summary>
+            <param name='subscriptionId'>
+            Id of the subscription.
+            </param>
+            <param name='newSubscription'>
+            Subscription parameter.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperations.DeleteWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete the specifed subscription.
+            </summary>
+            <param name='subscriptionId'>
+            Id of the subscription.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperationsExtensions">
+            <summary>
+            Extension methods for SubscriptionsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperationsExtensions.List(Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations)">
+            <summary>
+            Get the list of subscriptions.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of subscriptions.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperationsExtensions.Get(Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations,System.String)">
+            <summary>
+            Gets details about particular subscription.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='subscriptionId'>
+            Id of the subscription.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets details about particular subscription.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='subscriptionId'>
+            Id of the subscription.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperationsExtensions.CreateOrUpdate(Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations,System.String,Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel)">
+            <summary>
+            Create or updates a subscription.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='subscriptionId'>
+            Id of the subscription.
+            </param>
+            <param name='newSubscription'>
+            Subscription parameter.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperationsExtensions.CreateOrUpdateAsync(Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations,System.String,Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel,System.Threading.CancellationToken)">
+            <summary>
+            Create or updates a subscription.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='subscriptionId'>
+            Id of the subscription.
+            </param>
+            <param name='newSubscription'>
+            Subscription parameter.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperationsExtensions.Delete(Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations,System.String)">
+            <summary>
+            Delete the specifed subscription.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='subscriptionId'>
+            Id of the subscription.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Subscription.SubscriptionsOperationsExtensions.DeleteAsync(Microsoft.AzureStack.Management.Subscription.ISubscriptionsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete the specifed subscription.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='subscriptionId'>
+            Id of the subscription.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,2542 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AzureStack.Management.InfrastructureInsights.Admin</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperations">
+            <summary>
+            AlertsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperations.#ctor(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient)">
+            <summary>
+            Initializes a new instance of the AlertsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperations.Client">
+            <summary>
+            Gets a reference to the InfrastructureInsightsAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperations.ListWithHttpMessagesAsync(System.String,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all alerts in a given region.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested an alert.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='alertName'>
+            Name of the alert.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperations.CloseWithHttpMessagesAsync(System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Closes the given alert.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='alertName'>
+            Name of the alert.
+            </param>
+            <param name='user'>
+            The username used to perform the operation.
+            </param>
+            <param name='alert'>
+            Updated alert parameter.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all alerts in a given region.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperationsExtensions">
+            <summary>
+            Extension methods for AlertsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperationsExtensions.List(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations,System.String,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert})">
+            <summary>
+            Returns the list of all alerts in a given region.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations,System.String,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all alerts in a given region.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperationsExtensions.Get(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations,System.String,System.String,System.String)">
+            <summary>
+            Returns the requested an alert.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='alertName'>
+            Name of the alert.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested an alert.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='alertName'>
+            Name of the alert.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperationsExtensions.Close(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert)">
+            <summary>
+            Closes the given alert.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='alertName'>
+            Name of the alert.
+            </param>
+            <param name='user'>
+            The username used to perform the operation.
+            </param>
+            <param name='alert'>
+            Updated alert parameter.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperationsExtensions.CloseAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert,System.Threading.CancellationToken)">
+            <summary>
+            Closes the given alert.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='alertName'>
+            Name of the alert.
+            </param>
+            <param name='user'>
+            The username used to perform the operation.
+            </param>
+            <param name='alert'>
+            Updated alert parameter.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperationsExtensions.ListNext(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations,System.String)">
+            <summary>
+            Returns the list of all alerts in a given region.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.AlertsOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all alerts in a given region.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations">
+            <summary>
+            AlertsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations.ListWithHttpMessagesAsync(System.String,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all alerts in a given region.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested an alert.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='alertName'>
+            Name of the alert.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations.CloseWithHttpMessagesAsync(System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Closes the given alert.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='alertName'>
+            Name of the alert.
+            </param>
+            <param name='user'>
+            The username used to perform the operation.
+            </param>
+            <param name='alert'>
+            Updated alert parameter.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IAlertsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all alerts in a given region.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient">
+            <summary>
+            InfrastructureInsights Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials that uniquely identify Microsoft Azure
+            subscription. The subscription ID forms part of the URI for every
+            service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.ApiVersion">
+            <summary>
+            Client API Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running
+            Operations. Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated
+            and included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.Alerts">
+            <summary>
+            Gets the IAlertsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.RegionHealths">
+            <summary>
+            Gets the IRegionHealthsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.ResourceHealths">
+            <summary>
+            Gets the IResourceHealthsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IInfrastructureInsightsAdminClient.ServiceHealths">
+            <summary>
+            Gets the IServiceHealthsOperations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient">
+            <summary>
+            InfrastructureInsights Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials that uniquely identify Microsoft Azure
+            subscription. The subscription ID forms part of the URI for every service
+            call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.ApiVersion">
+            <summary>
+            Client API Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running Operations.
+            Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated and
+            included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.Alerts">
+            <summary>
+            Gets the IAlertsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.RegionHealths">
+            <summary>
+            Gets the IRegionHealthsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.ResourceHealths">
+            <summary>
+            Gets the IResourceHealthsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.ServiceHealths">
+            <summary>
+            Gets the IServiceHealthsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.#ctor(System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the InfrastructureInsightsAdminClient class.
+            </summary>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.#ctor(System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the InfrastructureInsightsAdminClient class.
+            </summary>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.#ctor(System.Uri,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the InfrastructureInsightsAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.#ctor(System.Uri,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the InfrastructureInsightsAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the InfrastructureInsightsAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the InfrastructureInsightsAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the InfrastructureInsightsAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the InfrastructureInsightsAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient.Initialize">
+            <summary>
+            Initializes client properties.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IOperations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of support REST operations.
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of support REST operations.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IRegionHealthsOperations">
+            <summary>
+            RegionHealthsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IRegionHealthsOperations.ListWithHttpMessagesAsync(System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all health status for the region.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IRegionHealthsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested health status of a region.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IRegionHealthsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all health status for the region.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IResourceHealthsOperations">
+            <summary>
+            ResourceHealthsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IResourceHealthsOperations.ListWithHttpMessagesAsync(System.String,System.String,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of each resource's health under a service.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='serviceRegistrationId'>
+            Service registration ID.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IResourceHealthsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested health information about a resource.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='serviceRegistrationId'>
+            Service registration ID.
+            </param>
+            <param name='resourceRegistrationId'>
+            Resource registration ID.
+            </param>
+            <param name='filter'>
+            OData filter parameter.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IResourceHealthsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of each resource's health under a service.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IServiceHealthsOperations">
+            <summary>
+            ServiceHealthsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IServiceHealthsOperations.ListWithHttpMessagesAsync(System.String,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all resource provider health states.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IServiceHealthsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested service health object.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='serviceHealth'>
+            Service Health name.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IServiceHealthsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all resource provider health states.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert">
+            <summary>
+            This object represents an alert resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.#ctor">
+            <summary>
+            Initializes a new instance of the Alert class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.#ctor(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,System.String,System.Collections.Generic.IList{System.Collections.Generic.IDictionary{System.String,System.String}},System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{System.Collections.Generic.IDictionary{System.String,System.String}},System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Alert class.
+            </summary>
+            <param name="id">Fully qualified resource Id for the
+            resource</param>
+            <param name="name">The name of the resource</param>
+            <param name="type">The type of the resource.</param>
+            <param name="tags">Resource tags.</param>
+            <param name="location">The Azure Region where the resource
+            lives</param>
+            <param name="closedTimestamp">Timestamp when the alert was
+            closed.</param>
+            <param name="createdTimestamp">Timestamp when the alert was
+            created.</param>
+            <param name="description">Description of the alert.</param>
+            <param name="faultId">Gets or sets the fault ID of the
+            alert.</param>
+            <param name="alertId">Gets or sets the ID of the alert.</param>
+            <param name="faultTypeId">Gets or sets the fault type ID of the
+            alert.</param>
+            <param name="lastUpdatedTimestamp">Timestamp when the alert was
+            last updated.</param>
+            <param name="alertProperties">Properties of the alert.</param>
+            <param name="remediation">Gets or sets the admin friendly
+            remediation instructions for the alert.</param>
+            <param name="resourceRegistrationId">Gets or sets the registration
+            ID of the resource associated with the alert. If the alert is not
+            associated with a resource, the resource registration ID is
+            null.</param>
+            <param name="resourceProviderRegistrationId">Gets or sets the
+            registration ID of the service the alert belongs to.</param>
+            <param name="severity">Severity of the alert.</param>
+            <param name="state">State of the alert.</param>
+            <param name="title">Gets or sets the Resource ID for the impacted
+            item.</param>
+            <param name="impactedResourceId">Gets or sets the Resource ID for
+            the impacted item.</param>
+            <param name="impactedResourceDisplayName">Display name for the
+            impacted item.</param>
+            <param name="closedByUserAlias">User alias who closed the
+            alert.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.ClosedTimestamp">
+            <summary>
+            Gets or sets timestamp when the alert was closed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.CreatedTimestamp">
+            <summary>
+            Gets or sets timestamp when the alert was created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.Description">
+            <summary>
+            Gets or sets description of the alert.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.FaultId">
+            <summary>
+            Gets or sets the fault ID of the alert.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.AlertId">
+            <summary>
+            Gets or sets the ID of the alert.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.FaultTypeId">
+            <summary>
+            Gets or sets the fault type ID of the alert.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.LastUpdatedTimestamp">
+            <summary>
+            Gets or sets timestamp when the alert was last updated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.AlertProperties">
+            <summary>
+            Gets or sets properties of the alert.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.Remediation">
+            <summary>
+            Gets or sets the admin friendly remediation instructions for the
+            alert.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.ResourceRegistrationId">
+            <summary>
+            Gets or sets the registration ID of the resource associated with
+            the alert. If the alert is not associated with a resource, the
+            resource registration ID is null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.ResourceProviderRegistrationId">
+            <summary>
+            Gets or sets the registration ID of the service the alert belongs
+            to.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.Severity">
+            <summary>
+            Gets or sets severity of the alert.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.State">
+            <summary>
+            Gets or sets state of the alert.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.Title">
+            <summary>
+            Gets or sets the Resource ID for the impacted item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.ImpactedResourceId">
+            <summary>
+            Gets or sets the Resource ID for the impacted item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.ImpactedResourceDisplayName">
+            <summary>
+            Gets or sets display name for the impacted item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.ClosedByUserAlias">
+            <summary>
+            Gets or sets user alias who closed the alert.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.AlertSummary">
+            <summary>
+            Summary of the alerts.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.AlertSummary.#ctor">
+            <summary>
+            Initializes a new instance of the AlertSummary class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.AlertSummary.#ctor(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Initializes a new instance of the AlertSummary class.
+            </summary>
+            <param name="criticalAlertCount">The number of critical alerts for
+            the service.</param>
+            <param name="warningAlertCount">The number of warning alerts for
+            the service.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.AlertSummary.CriticalAlertCount">
+            <summary>
+            Gets or sets the number of critical alerts for the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.AlertSummary.WarningAlertCount">
+            <summary>
+            Gets or sets the number of warning alerts for the service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.BaseHealth">
+            <summary>
+            Models the base properties for health resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.BaseHealth.#ctor">
+            <summary>
+            Initializes a new instance of the BaseHealth class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.BaseHealth.#ctor(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.AlertSummary,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the BaseHealth class.
+            </summary>
+            <param name="alertSummary">Alert summary.</param>
+            <param name="healthState">Health state.</param>
+            <param name="namespaceProperty">Namespace of the health
+            resource.</param>
+            <param name="registrationId">Registration ID.</param>
+            <param name="routePrefix">Route prefix.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.BaseHealth.AlertSummary">
+            <summary>
+            Gets or sets alert summary.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.BaseHealth.HealthState">
+            <summary>
+            Gets or sets health state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.BaseHealth.NamespaceProperty">
+            <summary>
+            Gets or sets namespace of the health resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.BaseHealth.RegistrationId">
+            <summary>
+            Gets or sets registration ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.BaseHealth.RoutePrefix">
+            <summary>
+            Gets or sets route prefix.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Display">
+            <summary>
+            Contains the localized display information for this particular
+            operation / action.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Display.#ctor">
+            <summary>
+            Initializes a new instance of the Display class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Display.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Display class.
+            </summary>
+            <param name="provider">The localized, friendly version of the
+            resource provider name. The provider name is expected to include
+            the name of the publisher or company responsible. The provider name
+            format should use title case and begin with "Microsoft" for
+            first-party services. For example, the provider name may
+            be"Microsoft Monitoring Insights" or "Microsoft Compute".</param>
+            <param name="resource">The localized, friendly version of the
+            resource type related to this action or operation; the resource
+            type should match the public documentation for the resource
+            provider.</param>
+            <param name="operation">The localized, friendly name for the
+            operation. Use the name as it will be displayed to the
+            user.</param>
+            <param name="description">The localized, friendly description for
+            the operation. The description will be displayed to the user. It
+            should be thorough and concise for used in both tooltips and
+            detailed views.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Display.Provider">
+            <summary>
+            Gets or sets the localized, friendly version of the resource
+            provider name. The provider name is expected to include the name of
+            the publisher or company responsible. The provider name format
+            should use title case and begin with "Microsoft" for first-party
+            services. For example, the provider name may be"Microsoft
+            Monitoring Insights" or "Microsoft Compute".
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Display.Resource">
+            <summary>
+            Gets or sets the localized, friendly version of the resource type
+            related to this action or operation; the resource type should match
+            the public documentation for the resource provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Display.Operation">
+            <summary>
+            Gets or sets the localized, friendly name for the operation. Use
+            the name as it will be displayed to the user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Display.Description">
+            <summary>
+            Gets or sets the localized, friendly description for the operation.
+            The description will be displayed to the user. It should be
+            thorough and concise for used in both tooltips and detailed views.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Metrics">
+            <summary>
+            Metrics for a source.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Metrics.#ctor">
+            <summary>
+            Initializes a new instance of the Metrics class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Metrics.#ctor(System.String,System.String,System.Nullable{System.DateTime},System.String,System.String,System.String,System.Nullable{System.Double})">
+            <summary>
+            Initializes a new instance of the Metrics class.
+            </summary>
+            <param name="name">Name of the usage metric.</param>
+            <param name="maCounterName">Name of the counter.</param>
+            <param name="observedTimestamp">Time counter was observed.</param>
+            <param name="sourceType">Type of the source.</param>
+            <param name="sourceName">Name of the source. Possible values
+            include: 'PhysicalNode', 'VirtualMachine',
+            'ResourceProvider'</param>
+            <param name="unit">Unit for the metric. Possible values include:
+            'One', 'Percentage', 'B', 'KB', 'MB', 'GB', 'TB'</param>
+            <param name="value">Name of the usage metric.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Metrics.Name">
+            <summary>
+            Gets or sets name of the usage metric.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Metrics.MaCounterName">
+            <summary>
+            Gets or sets name of the counter.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Metrics.ObservedTimestamp">
+            <summary>
+            Gets or sets time counter was observed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Metrics.SourceType">
+            <summary>
+            Gets or sets type of the source.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Metrics.SourceName">
+            <summary>
+            Gets or sets name of the source. Possible values include:
+            'PhysicalNode', 'VirtualMachine', 'ResourceProvider'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Metrics.Unit">
+            <summary>
+            Gets or sets unit for the metric. Possible values include: 'One',
+            'Percentage', 'B', 'KB', 'MB', 'GB', 'TB'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Metrics.Value">
+            <summary>
+            Gets or sets name of the usage metric.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.MetricsSourceType">
+            <summary>
+            Defines values for MetricsSourceType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.MetricsUnit">
+            <summary>
+            Defines values for MetricsUnit.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Operation">
+            <summary>
+            Describes the supported REST operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Operation.#ctor">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Operation.#ctor(System.String,Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Display)">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+            <param name="name">The name of the operation performed on the
+            object. The name should match the action name that appears in RBAC
+            or the event service.</param>
+            <param name="display">Contains the localized display information
+            for this particular operation or action.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Operation.Name">
+            <summary>
+            Gets or sets the name of the operation performed on the object. The
+            name should match the action name that appears in RBAC or the event
+            service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Operation.Display">
+            <summary>
+            Gets or sets contains the localized display information for this
+            particular operation or action.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Page`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Page`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Page`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Page`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.RegionHealth">
+            <summary>
+            Contains information related to the health of a region.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.RegionHealth.#ctor">
+            <summary>
+            Initializes a new instance of the RegionHealth class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.RegionHealth.#ctor(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.AlertSummary,System.Collections.Generic.IList{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.UsageMetrics})">
+            <summary>
+            Initializes a new instance of the RegionHealth class.
+            </summary>
+            <param name="id">Fully qualified resource Id for the
+            resource</param>
+            <param name="name">The name of the resource</param>
+            <param name="type">The type of the resource.</param>
+            <param name="tags">Resource tags.</param>
+            <param name="location">The Azure Region where the resource
+            lives</param>
+            <param name="alertSummary">Summary of alerts.</param>
+            <param name="usageMetrics">List of usage metrics for the
+            region.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.RegionHealth.AlertSummary">
+            <summary>
+            Gets or sets summary of alerts.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.RegionHealth.UsageMetrics">
+            <summary>
+            Gets or sets list of usage metrics for the region.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Resource">
+            <summary>
+            The core properties of ARM resources
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Resource.#ctor">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Resource.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+            <param name="id">Fully qualified resource Id for the
+            resource</param>
+            <param name="name">The name of the resource</param>
+            <param name="type">The type of the resource.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Resource.Id">
+            <summary>
+            Gets fully qualified resource Id for the resource
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Resource.Name">
+            <summary>
+            Gets the name of the resource
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Resource.Type">
+            <summary>
+            Gets the type of the resource.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth">
+            <summary>
+            Health information related to a resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.#ctor">
+            <summary>
+            Initializes a new instance of the ResourceHealth class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.#ctor(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.AlertSummary,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.IList{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.UsageMetrics})">
+            <summary>
+            Initializes a new instance of the ResourceHealth class.
+            </summary>
+            <param name="id">Fully qualified resource Id for the
+            resource</param>
+            <param name="name">The name of the resource</param>
+            <param name="type">The type of the resource.</param>
+            <param name="tags">Resource tags.</param>
+            <param name="location">The Azure Region where the resource
+            lives</param>
+            <param name="alertSummary">Alert summary.</param>
+            <param name="healthState">Health state.</param>
+            <param name="namespaceProperty">Namespace of the health
+            resource.</param>
+            <param name="registrationId">Registration ID.</param>
+            <param name="routePrefix">Route prefix.</param>
+            <param name="resourceLocation">Resource location.</param>
+            <param name="resourceName">Resource name.</param>
+            <param name="resourceDisplayName">Resource display name.</param>
+            <param name="resourceType">Resource type.</param>
+            <param name="resourceURI">Gets or sets the resource URI.</param>
+            <param name="rpRegistrationId">Gets or sets the resource provider
+            registration ID.</param>
+            <param name="usageMetrics">Usage metrics.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.AlertSummary">
+            <summary>
+            Gets or sets alert summary.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.HealthState">
+            <summary>
+            Gets or sets health state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.NamespaceProperty">
+            <summary>
+            Gets or sets namespace of the health resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.RegistrationId">
+            <summary>
+            Gets or sets registration ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.RoutePrefix">
+            <summary>
+            Gets or sets route prefix.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.ResourceLocation">
+            <summary>
+            Gets or sets resource location.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.ResourceName">
+            <summary>
+            Gets or sets resource name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.ResourceDisplayName">
+            <summary>
+            Gets or sets resource display name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.ResourceType">
+            <summary>
+            Gets or sets resource type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.ResourceURI">
+            <summary>
+            Gets or sets the resource URI.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.RpRegistrationId">
+            <summary>
+            Gets or sets the resource provider registration ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth.UsageMetrics">
+            <summary>
+            Gets or sets usage metrics.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth">
+            <summary>
+            Holds information about the health of a service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth.#ctor">
+            <summary>
+            Initializes a new instance of the ServiceHealth class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth.#ctor(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.AlertSummary,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ServiceHealth class.
+            </summary>
+            <param name="id">Fully qualified resource Id for the
+            resource</param>
+            <param name="name">The name of the resource</param>
+            <param name="type">The type of the resource.</param>
+            <param name="tags">Resource tags.</param>
+            <param name="location">The Azure Region where the resource
+            lives</param>
+            <param name="alertSummary">Alert summary.</param>
+            <param name="healthState">Health state.</param>
+            <param name="namespaceProperty">Namespace of the health
+            resource.</param>
+            <param name="registrationId">Registration ID.</param>
+            <param name="routePrefix">Route prefix.</param>
+            <param name="displayName">Name of the service.</param>
+            <param name="serviceLocation">Location of the service.</param>
+            <param name="infraURI">The route prefix to the service.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth.AlertSummary">
+            <summary>
+            Gets or sets alert summary.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth.HealthState">
+            <summary>
+            Gets or sets health state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth.NamespaceProperty">
+            <summary>
+            Gets or sets namespace of the health resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth.RegistrationId">
+            <summary>
+            Gets or sets registration ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth.RoutePrefix">
+            <summary>
+            Gets or sets route prefix.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth.DisplayName">
+            <summary>
+            Gets or sets name of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth.ServiceLocation">
+            <summary>
+            Gets or sets location of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth.InfraURI">
+            <summary>
+            Gets or sets the route prefix to the service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.TrackedResource">
+            <summary>
+            The resource model definition for a ARM tracked top level resource
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.TrackedResource.#ctor">
+            <summary>
+            Initializes a new instance of the TrackedResource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.TrackedResource.#ctor(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String)">
+            <summary>
+            Initializes a new instance of the TrackedResource class.
+            </summary>
+            <param name="id">Fully qualified resource Id for the
+            resource</param>
+            <param name="name">The name of the resource</param>
+            <param name="type">The type of the resource.</param>
+            <param name="tags">Resource tags.</param>
+            <param name="location">The Azure Region where the resource
+            lives</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.TrackedResource.Tags">
+            <summary>
+            Gets or sets resource tags.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.TrackedResource.Location">
+            <summary>
+            Gets or sets the Azure Region where the resource lives
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.UsageMetrics">
+            <summary>
+            Metrics of resource usage.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.UsageMetrics.#ctor">
+            <summary>
+            Initializes a new instance of the UsageMetrics class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.UsageMetrics.#ctor(System.String,System.Collections.Generic.IList{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Metrics})">
+            <summary>
+            Initializes a new instance of the UsageMetrics class.
+            </summary>
+            <param name="name">Name of the usage metric.</param>
+            <param name="metricsValue">List of usage metrics.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.UsageMetrics.Name">
+            <summary>
+            Gets or sets name of the usage metric.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.UsageMetrics.MetricsValue">
+            <summary>
+            Gets or sets list of usage metrics.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Operations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Operations.#ctor(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient)">
+            <summary>
+            Initializes a new instance of the Operations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Operations.Client">
+            <summary>
+            Gets a reference to the InfrastructureInsightsAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Operations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of support REST operations.
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Operations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of support REST operations.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.OperationsExtensions">
+            <summary>
+            Extension methods for Operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.OperationsExtensions.List(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IOperations)">
+            <summary>
+            Returns a list of support REST operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.OperationsExtensions.ListAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IOperations,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of support REST operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.OperationsExtensions.ListNext(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IOperations,System.String)">
+            <summary>
+            Returns a list of support REST operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.OperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of support REST operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperations">
+            <summary>
+            RegionHealthsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperations.#ctor(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient)">
+            <summary>
+            Initializes a new instance of the RegionHealthsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperations.Client">
+            <summary>
+            Gets a reference to the InfrastructureInsightsAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperations.ListWithHttpMessagesAsync(System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all health status for the region.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested health status of a region.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all health status for the region.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperationsExtensions">
+            <summary>
+            Extension methods for RegionHealthsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperationsExtensions.List(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IRegionHealthsOperations,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert})">
+            <summary>
+            Returns the list of all health status for the region.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IRegionHealthsOperations,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all health status for the region.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperationsExtensions.Get(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IRegionHealthsOperations,System.String,System.String)">
+            <summary>
+            Returns the requested health status of a region.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IRegionHealthsOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested health status of a region.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperationsExtensions.ListNext(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IRegionHealthsOperations,System.String)">
+            <summary>
+            Returns the list of all health status for the region.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.RegionHealthsOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IRegionHealthsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all health status for the region.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperations">
+            <summary>
+            ResourceHealthsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperations.#ctor(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient)">
+            <summary>
+            Initializes a new instance of the ResourceHealthsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperations.Client">
+            <summary>
+            Gets a reference to the InfrastructureInsightsAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperations.ListWithHttpMessagesAsync(System.String,System.String,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of each resource's health under a service.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='serviceRegistrationId'>
+            Service registration ID.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested health information about a resource.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='serviceRegistrationId'>
+            Service registration ID.
+            </param>
+            <param name='resourceRegistrationId'>
+            Resource registration ID.
+            </param>
+            <param name='filter'>
+            OData filter parameter.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of each resource's health under a service.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperationsExtensions">
+            <summary>
+            Extension methods for ResourceHealthsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperationsExtensions.List(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IResourceHealthsOperations,System.String,System.String,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth})">
+            <summary>
+            Returns a list of each resource's health under a service.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='serviceRegistrationId'>
+            Service registration ID.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IResourceHealthsOperations,System.String,System.String,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ResourceHealth},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of each resource's health under a service.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='serviceRegistrationId'>
+            Service registration ID.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperationsExtensions.Get(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IResourceHealthsOperations,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Returns the requested health information about a resource.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='serviceRegistrationId'>
+            Service registration ID.
+            </param>
+            <param name='resourceRegistrationId'>
+            Resource registration ID.
+            </param>
+            <param name='filter'>
+            OData filter parameter.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IResourceHealthsOperations,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested health information about a resource.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='serviceRegistrationId'>
+            Service registration ID.
+            </param>
+            <param name='resourceRegistrationId'>
+            Resource registration ID.
+            </param>
+            <param name='filter'>
+            OData filter parameter.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperationsExtensions.ListNext(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IResourceHealthsOperations,System.String)">
+            <summary>
+            Returns a list of each resource's health under a service.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ResourceHealthsOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IResourceHealthsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of each resource's health under a service.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperations">
+            <summary>
+            ServiceHealthsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperations.#ctor(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient)">
+            <summary>
+            Initializes a new instance of the ServiceHealthsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperations.Client">
+            <summary>
+            Gets a reference to the InfrastructureInsightsAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperations.ListWithHttpMessagesAsync(System.String,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all resource provider health states.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested service health object.
+            </summary>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='serviceHealth'>
+            Service Health name.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all resource provider health states.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperationsExtensions">
+            <summary>
+            Extension methods for ServiceHealthsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperationsExtensions.List(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IServiceHealthsOperations,System.String,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth})">
+            <summary>
+            Returns the list of all resource provider health states.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IServiceHealthsOperations,System.String,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.ServiceHealth},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all resource provider health states.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperationsExtensions.Get(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IServiceHealthsOperations,System.String,System.String,System.String)">
+            <summary>
+            Returns the requested service health object.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='serviceHealth'>
+            Service Health name.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IServiceHealthsOperations,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested service health object.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            The name of the resource group.
+            </param>
+            <param name='location'>
+            Name of the region
+            </param>
+            <param name='serviceHealth'>
+            Service Health name.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperationsExtensions.ListNext(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IServiceHealthsOperations,System.String)">
+            <summary>
+            Returns the list of all resource provider health states.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.InfrastructureInsights.Admin.ServiceHealthsOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.InfrastructureInsights.Admin.IServiceHealthsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of all resource provider health states.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+    </members>
+</doc>

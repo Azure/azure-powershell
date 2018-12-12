@@ -1,0 +1,3596 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AzureStack.Management.Compute.Admin</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient">
+            <summary>
+            Compute Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials that uniquely identify Microsoft Azure
+            subscription. The subscription ID forms part of the URI for every service
+            call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.AcceptLanguage">
+            <summary>
+            The preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            The retry timeout in seconds for Long Running Operations. Default value is
+            30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.GenerateClientRequestId">
+            <summary>
+            Whether a unique x-ms-client-request-id should be generated. When set to
+            true a unique x-ms-client-request-id value is generated and included in
+            each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.PlatformImages">
+            <summary>
+            Gets the IPlatformImagesOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.Quotas">
+            <summary>
+            Gets the IQuotasOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.VMExtensions">
+            <summary>
+            Gets the IVMExtensionsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.Disks">
+            <summary>
+            Gets the IDisksOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.DiskMigrationJobs">
+            <summary>
+            Gets the IDiskMigrationJobsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.#ctor(System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the ComputeAdminClient class.
+            </summary>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.#ctor(System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the ComputeAdminClient class.
+            </summary>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.#ctor(System.Uri,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the ComputeAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.#ctor(System.Uri,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the ComputeAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the ComputeAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the ComputeAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the ComputeAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the ComputeAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient.Initialize">
+            <summary>
+            Initializes client properties.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperations">
+            <summary>
+            DiskMigrationJobsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperations.#ctor(Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient)">
+            <summary>
+            Initializes a new instance of the DiskMigrationJobsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperations.Client">
+            <summary>
+            Gets a reference to the ComputeAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperations.ListWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of disk migration jobs.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='status'>
+            The parameters of disk migration job status.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested disk migration job.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='migrationId'>
+            The migration job guid name.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperations.CreateWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.IList{Microsoft.AzureStack.Management.Compute.Admin.Models.Disk},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Create a disk migration job.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='migrationId'>
+            The migration job guid name.
+            </param>
+            <param name='targetShare'>
+            The target share name.
+            </param>
+            <param name='disks'>
+            The parameters of disk list.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperations.CancelWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Cancel a disk migration job.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='migrationId'>
+            The migration job guid name.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperationsExtensions">
+            <summary>
+            Extension methods for DiskMigrationJobsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperationsExtensions.List(Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations,System.String,System.String)">
+            <summary>
+            Returns a list of disk migration jobs.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='status'>
+            The parameters of disk migration job status.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of disk migration jobs.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='status'>
+            The parameters of disk migration job status.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperationsExtensions.Get(Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations,System.String,System.String)">
+            <summary>
+            Returns the requested disk migration job.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='migrationId'>
+            The migration job guid name.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested disk migration job.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='migrationId'>
+            The migration job guid name.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperationsExtensions.Create(Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations,System.String,System.String,System.String,System.Collections.Generic.IList{Microsoft.AzureStack.Management.Compute.Admin.Models.Disk})">
+            <summary>
+            Create a disk migration job.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='migrationId'>
+            The migration job guid name.
+            </param>
+            <param name='targetShare'>
+            The target share name.
+            </param>
+            <param name='disks'>
+            The parameters of disk list.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperationsExtensions.CreateAsync(Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations,System.String,System.String,System.String,System.Collections.Generic.IList{Microsoft.AzureStack.Management.Compute.Admin.Models.Disk},System.Threading.CancellationToken)">
+            <summary>
+            Create a disk migration job.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='migrationId'>
+            The migration job guid name.
+            </param>
+            <param name='targetShare'>
+            The target share name.
+            </param>
+            <param name='disks'>
+            The parameters of disk list.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperationsExtensions.Cancel(Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations,System.String,System.String)">
+            <summary>
+            Cancel a disk migration job.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='migrationId'>
+            The migration job guid name.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DiskMigrationJobsOperationsExtensions.CancelAsync(Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Cancel a disk migration job.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='migrationId'>
+            The migration job guid name.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.DisksOperations">
+            <summary>
+            DisksOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DisksOperations.#ctor(Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient)">
+            <summary>
+            Initializes a new instance of the DisksOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.DisksOperations.Client">
+            <summary>
+            Gets a reference to the ComputeAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DisksOperations.ListWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of disks.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='userSubscriptionId'>
+            User Subscription Id which the resource belongs to.
+            </param>
+            <param name='status'>
+            The parameters of disk state.
+            </param>
+            <param name='sharePath'>
+            The source share which the resource belongs to.
+            </param>
+            <param name='count'>
+            The maximum number of disks to return.
+            </param>
+            <param name='start'>
+            The start index of disks in query.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DisksOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the disk.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='diskId'>
+            The disk guid as identity.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.DisksOperationsExtensions">
+            <summary>
+            Extension methods for DisksOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DisksOperationsExtensions.List(Microsoft.AzureStack.Management.Compute.Admin.IDisksOperations,System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Returns a list of disks.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='userSubscriptionId'>
+            User Subscription Id which the resource belongs to.
+            </param>
+            <param name='status'>
+            The parameters of disk state.
+            </param>
+            <param name='sharePath'>
+            The source share which the resource belongs to.
+            </param>
+            <param name='count'>
+            The maximum number of disks to return.
+            </param>
+            <param name='start'>
+            The start index of disks in query.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DisksOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Compute.Admin.IDisksOperations,System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of disks.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='userSubscriptionId'>
+            User Subscription Id which the resource belongs to.
+            </param>
+            <param name='status'>
+            The parameters of disk state.
+            </param>
+            <param name='sharePath'>
+            The source share which the resource belongs to.
+            </param>
+            <param name='count'>
+            The maximum number of disks to return.
+            </param>
+            <param name='start'>
+            The start index of disks in query.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DisksOperationsExtensions.Get(Microsoft.AzureStack.Management.Compute.Admin.IDisksOperations,System.String,System.String)">
+            <summary>
+            Returns the disk.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='diskId'>
+            The disk guid as identity.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.DisksOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Compute.Admin.IDisksOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the disk.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='diskId'>
+            The disk guid as identity.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient">
+            <summary>
+            Compute Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials that uniquely identify Microsoft Azure
+            subscription. The subscription ID forms part of the URI for every
+            service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.AcceptLanguage">
+            <summary>
+            The preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            The retry timeout in seconds for Long Running Operations. Default
+            value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.GenerateClientRequestId">
+            <summary>
+            Whether a unique x-ms-client-request-id should be generated. When
+            set to true a unique x-ms-client-request-id value is generated and
+            included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.PlatformImages">
+            <summary>
+            Gets the IPlatformImagesOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.Quotas">
+            <summary>
+            Gets the IQuotasOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.VMExtensions">
+            <summary>
+            Gets the IVMExtensionsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.Disks">
+            <summary>
+            Gets the IDisksOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.IComputeAdminClient.DiskMigrationJobs">
+            <summary>
+            Gets the IDiskMigrationJobsOperations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations">
+            <summary>
+            DiskMigrationJobsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations.ListWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of disk migration jobs.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='status'>
+            The parameters of disk migration job status.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested disk migration job.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='migrationId'>
+            The migration job guid name.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations.CreateWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.IList{Microsoft.AzureStack.Management.Compute.Admin.Models.Disk},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Create a disk migration job.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='migrationId'>
+            The migration job guid name.
+            </param>
+            <param name='targetShare'>
+            The target share name.
+            </param>
+            <param name='disks'>
+            The parameters of disk list.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IDiskMigrationJobsOperations.CancelWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Cancel a disk migration job.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='migrationId'>
+            The migration job guid name.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.IDisksOperations">
+            <summary>
+            DisksOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IDisksOperations.ListWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of disks.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='userSubscriptionId'>
+            User Subscription Id which the resource belongs to.
+            </param>
+            <param name='status'>
+            The parameters of disk state.
+            </param>
+            <param name='sharePath'>
+            The source share which the resource belongs to.
+            </param>
+            <param name='count'>
+            The maximum number of disks to return.
+            </param>
+            <param name='start'>
+            The start index of disks in query.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IDisksOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the disk.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='diskId'>
+            The disk guid as identity.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.IOperations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations">
+            <summary>
+            PlatformImagesOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns all platform images.
+            </summary>
+            <remarks>
+            Returns a list of all platform images.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested platform image.
+            </summary>
+            <remarks>
+            Returns the specific platform image matching publisher, offer, skus
+            and version.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations.CreateWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Creates a platform image.
+            </summary>
+            <remarks>
+            Creates a new platform image with given publisher, offer, skus and
+            version.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='newImage'>
+            New platform image.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Deletes a platform image matching publisher, offer, skus and
+            version
+            </summary>
+            <remarks>
+            Delete a platform image
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations.BeginCreateWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Creates a platform image.
+            </summary>
+            <remarks>
+            Creates a new platform image with given publisher, offer, skus and
+            version.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='newImage'>
+            New platform image.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations">
+            <summary>
+            QuotasOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested Compute quota.
+            </summary>
+            <remarks>
+            Get an existing Compute Quota.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='quotaName'>
+            Name of the quota.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations.CreateOrUpdateWithHttpMessagesAsync(System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.Quota,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Creates or Updates a Compute Quota.
+            </summary>
+            <remarks>
+            Creates or Updates a Compute Quota with the provided quota
+            parameters.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='quotaName'>
+            Name of the quota.
+            </param>
+            <param name='newQuota'>
+            New quota to create.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Deletes specified Compute quota
+            </summary>
+            <remarks>
+            Delete an existing Compute quota.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='quotaName'>
+            Name of the quota.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists all Compute quotas.
+            </summary>
+            <remarks>
+            Get a list of existing Compute quotas.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations">
+            <summary>
+            VMExtensionsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns requested Virtual Machine Extension Image.
+            </summary>
+            <remarks>
+            Returns requested Virtual Machine Extension Image matching
+            publisher, type, version.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='type'>
+            Type of extension.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations.CreateWithHttpMessagesAsync(System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Create a Virtual Machine Extension Image.
+            </summary>
+            <remarks>
+            Create a Virtual Machine Extension Image with publisher, version.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='type'>
+            Type of extension.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='extension'>
+            Virtual Machine Extension Image creation properties.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Deletes a Virtual Machine Extension Image.
+            </summary>
+            <remarks>
+            Deletes specified Virtual Machine Extension Image.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='type'>
+            Type of extension.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of all Virtual Machine Extension Images.
+            </summary>
+            <remarks>
+            List of all Virtual Machine Extension Images for the current
+            location are returned.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.AccountType">
+            <summary>
+            Defines values for AccountType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.AzureBlob">
+            <summary>
+            Azure or AzureStack blob information.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.AzureBlob.#ctor">
+            <summary>
+            Initializes a new instance of the AzureBlob class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.AzureBlob.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the AzureBlob class.
+            </summary>
+            <param name="uri">URI to Azure or AzureStack blob.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.AzureBlob.Uri">
+            <summary>
+            Gets or sets URI to Azure or AzureStack blob.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.DataDisk">
+            <summary>
+            Information about datadisk.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.DataDisk.#ctor">
+            <summary>
+            Initializes a new instance of the DataDisk class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.DataDisk.#ctor(System.Nullable{System.Int32},System.String)">
+            <summary>
+            Initializes a new instance of the DataDisk class.
+            </summary>
+            <param name="lun">Logical unit number.</param>
+            <param name="uri">Location of the disk template.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.DataDisk.Lun">
+            <summary>
+            Gets or sets logical unit number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.DataDisk.Uri">
+            <summary>
+            Gets or sets location of the disk template.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.Disk">
+            <summary>
+            Managed Disk.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Disk.#ctor">
+            <summary>
+            Initializes a new instance of the Disk class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Disk.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Disk class.
+            </summary>
+            <param name="id">ID of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of Resource.</param>
+            <param name="location">Location of the resource.</param>
+            <param name="diskId">The disk id.</param>
+            <param name="status">The disk status. Possible values include:
+            'Undefined', 'Unattached', 'Attached', 'Reserved', 'ActiveSAS',
+            'Unknown', 'All', 'Recommended', 'OfflineMigration',
+            'OnlineMigration'</param>
+            <param name="sharePath">The disk share path.</param>
+            <param name="actualSizeGB">The actual size of disk in GB.</param>
+            <param name="provisionSizeGB">The provision size of disk in
+            GB.</param>
+            <param name="managedBy">Compute resource Uri which owns this
+            disk.</param>
+            <param name="userResourceId">The disk resource Uri from user
+            view.</param>
+            <param name="diskType">The type of the disk resource. Possible
+            values include: 'Undefined', 'Disk', 'Snapshot', 'RestorePoint',
+            'ManagedBlob'</param>
+            <param name="diskSku">the disk sku. Possible values include:
+            'Standard_LRS', 'Standard_ZRS', 'Standard_GRS', 'Standard_RAGRS',
+            'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Disk.DiskId">
+            <summary>
+            Gets or sets the disk id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Disk.Status">
+            <summary>
+            Gets or sets the disk status. Possible values include: 'Undefined',
+            'Unattached', 'Attached', 'Reserved', 'ActiveSAS', 'Unknown',
+            'All', 'Recommended', 'OfflineMigration', 'OnlineMigration'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Disk.SharePath">
+            <summary>
+            Gets or sets the disk share path.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Disk.ActualSizeGB">
+            <summary>
+            Gets the actual size of disk in GB.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Disk.ProvisionSizeGB">
+            <summary>
+            Gets the provision size of disk in GB.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Disk.ManagedBy">
+            <summary>
+            Gets compute resource Uri which owns this disk.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Disk.UserResourceId">
+            <summary>
+            Gets the disk resource Uri from user view.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Disk.DiskType">
+            <summary>
+            Gets the type of the disk resource. Possible values include:
+            'Undefined', 'Disk', 'Snapshot', 'RestorePoint', 'ManagedBlob'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Disk.DiskSku">
+            <summary>
+            Gets the disk sku. Possible values include: 'Standard_LRS',
+            'Standard_ZRS', 'Standard_GRS', 'Standard_RAGRS', 'Premium_LRS',
+            'StandardSSD_LRS', 'UltraSSD_LRS'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob">
+            <summary>
+            Disk migration job.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob.#ctor">
+            <summary>
+            Initializes a new instance of the DiskMigrationJob class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.IList{Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Initializes a new instance of the DiskMigrationJob class.
+            </summary>
+            <param name="id">ID of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of Resource.</param>
+            <param name="location">Location of the resource.</param>
+            <param name="migrationId">The disk migration id.</param>
+            <param name="status">The current status of disk migration job.
+            Possible values include: 'Undefined', 'Running', 'Succeeded',
+            'Failed', 'Canceled', 'Pending'</param>
+            <param name="subtasks">The list of child migration tasks.</param>
+            <param name="creationTime">The job creation time.</param>
+            <param name="startTime">The job start time.</param>
+            <param name="endTime">The job end time.</param>
+            <param name="targetShare">The target share of migration
+            job.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob.MigrationId">
+            <summary>
+            Gets or sets the disk migration id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob.Status">
+            <summary>
+            Gets the current status of disk migration job. Possible values
+            include: 'Undefined', 'Running', 'Succeeded', 'Failed', 'Canceled',
+            'Pending'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob.Subtasks">
+            <summary>
+            Gets the list of child migration tasks.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob.CreationTime">
+            <summary>
+            Gets the job creation time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob.StartTime">
+            <summary>
+            Gets the job start time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob.EndTime">
+            <summary>
+            Gets the job end time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob.TargetShare">
+            <summary>
+            Gets the target share of migration job.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.DiskResourceType">
+            <summary>
+            Defines values for DiskResourceType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.DiskState">
+            <summary>
+            Defines values for DiskState.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.Display">
+            <summary>
+            Contains the localized display information for this particular
+            operation or action.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Display.#ctor">
+            <summary>
+            Initializes a new instance of the Display class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Display.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Display class.
+            </summary>
+            <param name="provider">The localized, friendly version of the
+            resource provider name. The provider name is expected to include
+            the name of the publisher or company responsible. The provider name
+            format should use title case and begin with "Microsoft" for
+            first-party services. For example, the provider name may
+            be"Microsoft Monitoring Insights" or "Microsoft Compute."</param>
+            <param name="resource">The localized, friendly version of the
+            resource type related to this action or operation; the resource
+            type should match the public documentation for the resource
+            provider.</param>
+            <param name="operation">The localized, friendly name for the
+            operation. Use the name as it will displayed to the user.</param>
+            <param name="description">The localized, friendly description for
+            the operation. The description will be displayed to the user. It
+            should be thorough and concise for used in both tooltips and
+            detailed views.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Display.Provider">
+            <summary>
+            Gets or sets the localized, friendly version of the resource
+            provider name. The provider name is expected to include the name of
+            the publisher or company responsible. The provider name format
+            should use title case and begin with "Microsoft" for first-party
+            services. For example, the provider name may be"Microsoft
+            Monitoring Insights" or "Microsoft Compute."
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Display.Resource">
+            <summary>
+            Gets or sets the localized, friendly version of the resource type
+            related to this action or operation; the resource type should match
+            the public documentation for the resource provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Display.Operation">
+            <summary>
+            Gets or sets the localized, friendly name for the operation. Use
+            the name as it will displayed to the user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Display.Description">
+            <summary>
+            Gets or sets the localized, friendly description for the operation.
+            The description will be displayed to the user. It should be
+            thorough and concise for used in both tooltips and detailed views.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.ImageDetails">
+            <summary>
+            Information about the disk image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.ImageDetails.#ctor">
+            <summary>
+            Initializes a new instance of the ImageDetails class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.ImageDetails.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ImageDetails class.
+            </summary>
+            <param name="billingPartNumber">The part number is used to bill for
+            software costs.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.ImageDetails.BillingPartNumber">
+            <summary>
+            Gets or sets the part number is used to bill for software costs.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationJobStatus">
+            <summary>
+            Defines values for MigrationJobStatus.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask">
+            <summary>
+            Disk migration child task.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask.#ctor">
+            <summary>
+            Initializes a new instance of the MigrationSubTask class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask.#ctor(System.String,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the MigrationSubTask class.
+            </summary>
+            <param name="migrationSubTaskId">The id of migration child
+            task.</param>
+            <param name="migrationSubtaskStatus">The disk migration child task
+            status. Possible values include: 'Undefined', 'Running',
+            'Succeeded', 'Failed', 'Canceled', 'Pending', 'Skipped'</param>
+            <param name="reason">The reason of task failure.</param>
+            <param name="startTime">The task start time.</param>
+            <param name="endTime">The task end time.</param>
+            <param name="targetShare">The target share of migration
+            task.</param>
+            <param name="sourceShare">The source share of migration
+            task.</param>
+            <param name="targetDiskStateForMigration">The disk status. Possible
+            values include: 'Undefined', 'Unattached', 'Attached', 'Reserved',
+            'ActiveSAS', 'Unknown', 'All', 'Recommended', 'OfflineMigration',
+            'OnlineMigration'</param>
+            <param name="diskId">The id of disk.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask.MigrationSubTaskId">
+            <summary>
+            Gets the id of migration child task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask.MigrationSubtaskStatus">
+            <summary>
+            Gets the disk migration child task status. Possible values include:
+            'Undefined', 'Running', 'Succeeded', 'Failed', 'Canceled',
+            'Pending', 'Skipped'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask.Reason">
+            <summary>
+            Gets the reason of task failure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask.StartTime">
+            <summary>
+            Gets the task start time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask.EndTime">
+            <summary>
+            Gets the task end time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask.TargetShare">
+            <summary>
+            Gets the target share of migration task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask.SourceShare">
+            <summary>
+            Gets the source share of migration task.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask.TargetDiskStateForMigration">
+            <summary>
+            Gets the disk status. Possible values include: 'Undefined',
+            'Unattached', 'Attached', 'Reserved', 'ActiveSAS', 'Unknown',
+            'All', 'Recommended', 'OfflineMigration', 'OnlineMigration'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTask.DiskId">
+            <summary>
+            Gets the id of disk.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.MigrationSubTaskStatus">
+            <summary>
+            Defines values for MigrationSubTaskStatus.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.Operation">
+            <summary>
+            Describes the supported REST operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Operation.#ctor">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Operation.#ctor(System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.Display)">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+            <param name="name">The name of the operation being performed on
+            this particular object. This name should match the name that
+            appears in RBAC or the event service.</param>
+            <param name="display">Contains the localized display information
+            for this particular operation or action.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Operation.Name">
+            <summary>
+            Gets or sets the name of the operation being performed on this
+            particular object. This name should match the name that appears in
+            RBAC or the event service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Operation.Display">
+            <summary>
+            Gets or sets contains the localized display information for this
+            particular operation or action.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.OsDisk">
+            <summary>
+            Operating system disk.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.OsDisk.#ctor">
+            <summary>
+            Initializes a new instance of the OsDisk class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.OsDisk.#ctor(System.Nullable{Microsoft.AzureStack.Management.Compute.Admin.Models.OsType},System.String)">
+            <summary>
+            Initializes a new instance of the OsDisk class.
+            </summary>
+            <param name="osType">Operating system type. Possible values
+            include: 'Unknown', 'Windows', 'Linux'</param>
+            <param name="uri">Location of the disk.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.OsDisk.OsType">
+            <summary>
+            Gets or sets operating system type. Possible values include:
+            'Unknown', 'Windows', 'Linux'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.OsDisk.Uri">
+            <summary>
+            Gets or sets location of the disk.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.OsType">
+            <summary>
+            Defines values for OsType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.Page`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Page`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Page`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Page`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.Page1`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Page1`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Page1`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Page1`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImage">
+            <summary>
+            Platform image represents a virtual machine.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImage.#ctor">
+            <summary>
+            Initializes a new instance of the PlatformImage class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImage.#ctor(System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.OsDisk,System.Collections.Generic.IList{Microsoft.AzureStack.Management.Compute.Admin.Models.DataDisk},Microsoft.AzureStack.Management.Compute.Admin.Models.ImageDetails,System.Nullable{Microsoft.AzureStack.Management.Compute.Admin.Models.ProvisioningState})">
+            <summary>
+            Initializes a new instance of the PlatformImage class.
+            </summary>
+            <param name="id">ID of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of Resource.</param>
+            <param name="location">Location of the resource.</param>
+            <param name="osDisk">Operating system used for this platform
+            image.</param>
+            <param name="dataDisks">Data disks used by the platform
+            image.</param>
+            <param name="details">Information about the image.</param>
+            <param name="provisioningState">Provisioning status of the platform
+            image. Possible values include: 'Creating', 'Failed', 'Succeeded',
+            'Canceled'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImage.OsDisk">
+            <summary>
+            Gets or sets operating system used for this platform image.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImage.DataDisks">
+            <summary>
+            Gets or sets data disks used by the platform image.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImage.Details">
+            <summary>
+            Gets or sets information about the image.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImage.ProvisioningState">
+            <summary>
+            Gets or sets provisioning status of the platform image. Possible
+            values include: 'Creating', 'Failed', 'Succeeded', 'Canceled'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters">
+            <summary>
+            Parameters used to create a new platform image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters.#ctor">
+            <summary>
+            Initializes a new instance of the PlatformImageParameters class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters.#ctor(Microsoft.AzureStack.Management.Compute.Admin.Models.OsDisk,System.Collections.Generic.IList{Microsoft.AzureStack.Management.Compute.Admin.Models.DataDisk},Microsoft.AzureStack.Management.Compute.Admin.Models.ImageDetails,System.Nullable{Microsoft.AzureStack.Management.Compute.Admin.Models.ProvisioningState})">
+            <summary>
+            Initializes a new instance of the PlatformImageParameters class.
+            </summary>
+            <param name="osDisk">Operating system used for this platform
+            image.</param>
+            <param name="dataDisks">Data disks used by the platform
+            image.</param>
+            <param name="details">Information about the image.</param>
+            <param name="provisioningState">Provisioning status of the platform
+            image. Possible values include: 'Creating', 'Failed', 'Succeeded',
+            'Canceled'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters.OsDisk">
+            <summary>
+            Gets or sets operating system used for this platform image.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters.DataDisks">
+            <summary>
+            Gets or sets data disks used by the platform image.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters.Details">
+            <summary>
+            Gets or sets information about the image.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters.ProvisioningState">
+            <summary>
+            Gets or sets provisioning status of the platform image. Possible
+            values include: 'Creating', 'Failed', 'Succeeded', 'Canceled'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.ProvisioningState">
+            <summary>
+            Defines values for ProvisioningState.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.Quota">
+            <summary>
+            Holds Compute quota information used to control resource allocation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Quota.#ctor">
+            <summary>
+            Initializes a new instance of the Quota class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Quota.#ctor(System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Initializes a new instance of the Quota class.
+            </summary>
+            <param name="id">ID of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of Resource.</param>
+            <param name="location">Location of the resource.</param>
+            <param name="availabilitySetCount">Maximum number of availability
+            sets allowed.</param>
+            <param name="coresLimit">Maximum number of cores allowed.</param>
+            <param name="virtualMachineCount">Maximum number of virtual
+            machines allowed.</param>
+            <param name="vmScaleSetCount">Maximum number of scale sets
+            allowed.</param>
+            <param name="maxAllocationStandardManagedDisksAndSnapshots">Maximum
+            number of managed disks and snapshots of type standard
+            allowed.</param>
+            <param name="maxAllocationPremiumManagedDisksAndSnapshots">Maximum
+            number of managed disks and snapshots of type premium
+            allowed.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Quota.AvailabilitySetCount">
+            <summary>
+            Gets or sets maximum number of availability sets allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Quota.CoresLimit">
+            <summary>
+            Gets or sets maximum number of cores allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Quota.VirtualMachineCount">
+            <summary>
+            Gets or sets maximum number of virtual machines allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Quota.VmScaleSetCount">
+            <summary>
+            Gets or sets maximum number of scale sets allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Quota.MaxAllocationStandardManagedDisksAndSnapshots">
+            <summary>
+            Gets or sets maximum number of managed disks and snapshots of type
+            standard allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Quota.MaxAllocationPremiumManagedDisksAndSnapshots">
+            <summary>
+            Gets or sets maximum number of managed disks and snapshots of type
+            premium allowed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Quota.Validate">
+            <summary>
+            Validate the object.
+            </summary>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown if validation fails
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.Resource">
+            <summary>
+            Base resource object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Resource.#ctor">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.Resource.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+            <param name="id">ID of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of Resource.</param>
+            <param name="location">Location of the resource.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Resource.Id">
+            <summary>
+            Gets ID of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Resource.Name">
+            <summary>
+            Gets name of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Resource.Type">
+            <summary>
+            Gets type of Resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.Resource.Location">
+            <summary>
+            Gets or sets location of the resource.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtension">
+            <summary>
+            Virtual Machine Extension Image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtension.#ctor">
+            <summary>
+            Initializes a new instance of the VMExtension class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtension.#ctor(System.String,System.String,System.String,System.String,System.Nullable{Microsoft.AzureStack.Management.Compute.Admin.Models.OsType},System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},Microsoft.AzureStack.Management.Compute.Admin.Models.AzureBlob,System.Nullable{Microsoft.AzureStack.Management.Compute.Admin.Models.ProvisioningState})">
+            <summary>
+            Initializes a new instance of the VMExtension class.
+            </summary>
+            <param name="id">ID of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of Resource.</param>
+            <param name="location">Location of the resource.</param>
+            <param name="vmOsType">Target virtual machine operating system type
+            necessary for deploying the extension handler. Possible values
+            include: 'Unknown', 'Windows', 'Linux'</param>
+            <param name="computeRole">Compute role</param>
+            <param name="vmScaleSetEnabled">Value indicating whether the
+            extension is enabled for virtual machine scale set support.</param>
+            <param name="supportMultipleExtensions">True if supports multiple
+            extensions.</param>
+            <param name="isSystemExtension">Indicates if the extension is for
+            the system.</param>
+            <param name="sourceBlob">URI to Azure or AzureStack blob.</param>
+            <param name="provisioningState">Provisioning state of extension.
+            Possible values include: 'Creating', 'Failed', 'Succeeded',
+            'Canceled'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtension.VmOsType">
+            <summary>
+            Gets or sets target virtual machine operating system type necessary
+            for deploying the extension handler. Possible values include:
+            'Unknown', 'Windows', 'Linux'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtension.ComputeRole">
+            <summary>
+            Gets or sets compute role
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtension.VmScaleSetEnabled">
+            <summary>
+            Gets or sets value indicating whether the extension is enabled for
+            virtual machine scale set support.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtension.SupportMultipleExtensions">
+            <summary>
+            Gets or sets true if supports multiple extensions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtension.IsSystemExtension">
+            <summary>
+            Gets or sets indicates if the extension is for the system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtension.SourceBlob">
+            <summary>
+            Gets or sets URI to Azure or AzureStack blob.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtension.ProvisioningState">
+            <summary>
+            Gets or sets provisioning state of extension. Possible values
+            include: 'Creating', 'Failed', 'Succeeded', 'Canceled'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters">
+            <summary>
+            Parameters used to create a new Virtual Machine Extension Image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters.#ctor">
+            <summary>
+            Initializes a new instance of the VMExtensionParameters class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters.#ctor(System.Nullable{Microsoft.AzureStack.Management.Compute.Admin.Models.OsType},System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},Microsoft.AzureStack.Management.Compute.Admin.Models.AzureBlob,System.Nullable{Microsoft.AzureStack.Management.Compute.Admin.Models.ProvisioningState})">
+            <summary>
+            Initializes a new instance of the VMExtensionParameters class.
+            </summary>
+            <param name="vmOsType">Target virtual machine operating system type
+            necessary for deploying the extension handler. Possible values
+            include: 'Unknown', 'Windows', 'Linux'</param>
+            <param name="computeRole">Compute role</param>
+            <param name="vmScaleSetEnabled">Value indicating whether the
+            extension is enabled for virtual machine scale set support.</param>
+            <param name="supportMultipleExtensions">True if supports multiple
+            extensions.</param>
+            <param name="isSystemExtension">Indicates if the extension is for
+            the system.</param>
+            <param name="sourceBlob">URI to Azure or AzureStack blob.</param>
+            <param name="provisioningState">Provisioning state of extension.
+            Possible values include: 'Creating', 'Failed', 'Succeeded',
+            'Canceled'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters.VmOsType">
+            <summary>
+            Gets or sets target virtual machine operating system type necessary
+            for deploying the extension handler. Possible values include:
+            'Unknown', 'Windows', 'Linux'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters.ComputeRole">
+            <summary>
+            Gets or sets compute role
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters.VmScaleSetEnabled">
+            <summary>
+            Gets or sets value indicating whether the extension is enabled for
+            virtual machine scale set support.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters.SupportMultipleExtensions">
+            <summary>
+            Gets or sets true if supports multiple extensions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters.IsSystemExtension">
+            <summary>
+            Gets or sets indicates if the extension is for the system.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters.SourceBlob">
+            <summary>
+            Gets or sets URI to Azure or AzureStack blob.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters.ProvisioningState">
+            <summary>
+            Gets or sets provisioning state of extension. Possible values
+            include: 'Creating', 'Failed', 'Succeeded', 'Canceled'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.Operations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Operations.#ctor(Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient)">
+            <summary>
+            Initializes a new instance of the Operations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.Operations.Client">
+            <summary>
+            Gets a reference to the ComputeAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Operations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.Operations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.OperationsExtensions">
+            <summary>
+            Extension methods for Operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.OperationsExtensions.List(Microsoft.AzureStack.Management.Compute.Admin.IOperations)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.OperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Compute.Admin.IOperations,System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.OperationsExtensions.ListNext(Microsoft.AzureStack.Management.Compute.Admin.IOperations,System.String)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.OperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.Compute.Admin.IOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperations">
+            <summary>
+            PlatformImagesOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperations.#ctor(Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient)">
+            <summary>
+            Initializes a new instance of the PlatformImagesOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperations.Client">
+            <summary>
+            Gets a reference to the ComputeAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns all platform images.
+            </summary>
+            <remarks>
+            Returns a list of all platform images.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested platform image.
+            </summary>
+            <remarks>
+            Returns the specific platform image matching publisher, offer, skus and
+            version.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperations.CreateWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Creates a platform image.
+            </summary>
+            <remarks>
+            Creates a new platform image with given publisher, offer, skus and version.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='newImage'>
+            New platform image.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Deletes a platform image matching publisher, offer, skus and version
+            </summary>
+            <remarks>
+            Delete a platform image
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperations.BeginCreateWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Creates a platform image.
+            </summary>
+            <remarks>
+            Creates a new platform image with given publisher, offer, skus and version.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='newImage'>
+            New platform image.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperationsExtensions">
+            <summary>
+            Extension methods for PlatformImagesOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperationsExtensions.List(Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations,System.String)">
+            <summary>
+            Returns all platform images.
+            </summary>
+            <remarks>
+            Returns a list of all platform images.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns all platform images.
+            </summary>
+            <remarks>
+            Returns a list of all platform images.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperationsExtensions.Get(Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Returns the requested platform image.
+            </summary>
+            <remarks>
+            Returns the specific platform image matching publisher, offer, skus and
+            version.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested platform image.
+            </summary>
+            <remarks>
+            Returns the specific platform image matching publisher, offer, skus and
+            version.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperationsExtensions.Create(Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations,System.String,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters)">
+            <summary>
+            Creates a platform image.
+            </summary>
+            <remarks>
+            Creates a new platform image with given publisher, offer, skus and version.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='newImage'>
+            New platform image.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperationsExtensions.CreateAsync(Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations,System.String,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters,System.Threading.CancellationToken)">
+            <summary>
+            Creates a platform image.
+            </summary>
+            <remarks>
+            Creates a new platform image with given publisher, offer, skus and version.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='newImage'>
+            New platform image.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperationsExtensions.Delete(Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Deletes a platform image matching publisher, offer, skus and version
+            </summary>
+            <remarks>
+            Delete a platform image
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperationsExtensions.DeleteAsync(Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a platform image matching publisher, offer, skus and version
+            </summary>
+            <remarks>
+            Delete a platform image
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperationsExtensions.BeginCreate(Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations,System.String,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters)">
+            <summary>
+            Creates a platform image.
+            </summary>
+            <remarks>
+            Creates a new platform image with given publisher, offer, skus and version.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='newImage'>
+            New platform image.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.PlatformImagesOperationsExtensions.BeginCreateAsync(Microsoft.AzureStack.Management.Compute.Admin.IPlatformImagesOperations,System.String,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImageParameters,System.Threading.CancellationToken)">
+            <summary>
+            Creates a platform image.
+            </summary>
+            <remarks>
+            Creates a new platform image with given publisher, offer, skus and version.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='offer'>
+            Name of the offer.
+            </param>
+            <param name='sku'>
+            Name of the SKU.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='newImage'>
+            New platform image.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperations">
+            <summary>
+            QuotasOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperations.#ctor(Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient)">
+            <summary>
+            Initializes a new instance of the QuotasOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperations.Client">
+            <summary>
+            Gets a reference to the ComputeAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested Compute quota.
+            </summary>
+            <remarks>
+            Get an existing Compute Quota.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='quotaName'>
+            Name of the quota.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperations.CreateOrUpdateWithHttpMessagesAsync(System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.Quota,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Creates or Updates a Compute Quota.
+            </summary>
+            <remarks>
+            Creates or Updates a Compute Quota with the provided quota parameters.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='quotaName'>
+            Name of the quota.
+            </param>
+            <param name='newQuota'>
+            New quota to create.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Deletes specified Compute quota
+            </summary>
+            <remarks>
+            Delete an existing Compute quota.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='quotaName'>
+            Name of the quota.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists all Compute quotas.
+            </summary>
+            <remarks>
+            Get a list of existing Compute quotas.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperationsExtensions">
+            <summary>
+            Extension methods for QuotasOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperationsExtensions.Get(Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations,System.String,System.String)">
+            <summary>
+            Returns the requested Compute quota.
+            </summary>
+            <remarks>
+            Get an existing Compute Quota.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='quotaName'>
+            Name of the quota.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested Compute quota.
+            </summary>
+            <remarks>
+            Get an existing Compute Quota.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='quotaName'>
+            Name of the quota.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperationsExtensions.CreateOrUpdate(Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.Quota)">
+            <summary>
+            Creates or Updates a Compute Quota.
+            </summary>
+            <remarks>
+            Creates or Updates a Compute Quota with the provided quota parameters.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='quotaName'>
+            Name of the quota.
+            </param>
+            <param name='newQuota'>
+            New quota to create.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperationsExtensions.CreateOrUpdateAsync(Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.Quota,System.Threading.CancellationToken)">
+            <summary>
+            Creates or Updates a Compute Quota.
+            </summary>
+            <remarks>
+            Creates or Updates a Compute Quota with the provided quota parameters.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='quotaName'>
+            Name of the quota.
+            </param>
+            <param name='newQuota'>
+            New quota to create.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperationsExtensions.Delete(Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations,System.String,System.String)">
+            <summary>
+            Deletes specified Compute quota
+            </summary>
+            <remarks>
+            Delete an existing Compute quota.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='quotaName'>
+            Name of the quota.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperationsExtensions.DeleteAsync(Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes specified Compute quota
+            </summary>
+            <remarks>
+            Delete an existing Compute quota.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='quotaName'>
+            Name of the quota.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperationsExtensions.List(Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations,System.String)">
+            <summary>
+            Lists all Compute quotas.
+            </summary>
+            <remarks>
+            Get a list of existing Compute quotas.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.QuotasOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Compute.Admin.IQuotasOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Lists all Compute quotas.
+            </summary>
+            <remarks>
+            Get a list of existing Compute quotas.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperations">
+            <summary>
+            VMExtensionsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperations.#ctor(Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient)">
+            <summary>
+            Initializes a new instance of the VMExtensionsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperations.Client">
+            <summary>
+            Gets a reference to the ComputeAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns requested Virtual Machine Extension Image.
+            </summary>
+            <remarks>
+            Returns requested Virtual Machine Extension Image matching publisher, type,
+            version.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='type'>
+            Type of extension.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperations.CreateWithHttpMessagesAsync(System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Create a Virtual Machine Extension Image.
+            </summary>
+            <remarks>
+            Create a Virtual Machine Extension Image with publisher, version.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='type'>
+            Type of extension.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='extension'>
+            Virtual Machine Extension Image creation properties.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Deletes a Virtual Machine Extension Image.
+            </summary>
+            <remarks>
+            Deletes specified Virtual Machine Extension Image.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='type'>
+            Type of extension.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of all Virtual Machine Extension Images.
+            </summary>
+            <remarks>
+            List of all Virtual Machine Extension Images for the current location are
+            returned.
+            </remarks>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperationsExtensions">
+            <summary>
+            Extension methods for VMExtensionsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperationsExtensions.Get(Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Returns requested Virtual Machine Extension Image.
+            </summary>
+            <remarks>
+            Returns requested Virtual Machine Extension Image matching publisher, type,
+            version.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='type'>
+            Type of extension.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns requested Virtual Machine Extension Image.
+            </summary>
+            <remarks>
+            Returns requested Virtual Machine Extension Image matching publisher, type,
+            version.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='type'>
+            Type of extension.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperationsExtensions.Create(Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters)">
+            <summary>
+            Create a Virtual Machine Extension Image.
+            </summary>
+            <remarks>
+            Create a Virtual Machine Extension Image with publisher, version.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='type'>
+            Type of extension.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='extension'>
+            Virtual Machine Extension Image creation properties.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperationsExtensions.CreateAsync(Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtensionParameters,System.Threading.CancellationToken)">
+            <summary>
+            Create a Virtual Machine Extension Image.
+            </summary>
+            <remarks>
+            Create a Virtual Machine Extension Image with publisher, version.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='type'>
+            Type of extension.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='extension'>
+            Virtual Machine Extension Image creation properties.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperationsExtensions.Delete(Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Deletes a Virtual Machine Extension Image.
+            </summary>
+            <remarks>
+            Deletes specified Virtual Machine Extension Image.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='type'>
+            Type of extension.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperationsExtensions.DeleteAsync(Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a Virtual Machine Extension Image.
+            </summary>
+            <remarks>
+            Deletes specified Virtual Machine Extension Image.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='publisher'>
+            Name of the publisher.
+            </param>
+            <param name='type'>
+            Type of extension.
+            </param>
+            <param name='version'>
+            The version of the resource.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperationsExtensions.List(Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations,System.String)">
+            <summary>
+            Returns a list of all Virtual Machine Extension Images.
+            </summary>
+            <remarks>
+            List of all Virtual Machine Extension Images for the current location are
+            returned.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Compute.Admin.VMExtensionsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Compute.Admin.IVMExtensionsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of all Virtual Machine Extension Images.
+            </summary>
+            <remarks>
+            List of all Virtual Machine Extension Images for the current location are
+            returned.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+    </members>
+</doc>

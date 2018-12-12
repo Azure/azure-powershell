@@ -1,0 +1,1499 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AzureStack.Management.Gallery.Admin</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient">
+            <summary>
+            Gallery Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials that uniquely identify Microsoft Azure
+            subscription. The subscription ID forms part of the URI for every service
+            call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.ApiVersion">
+            <summary>
+            Client API Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running Operations.
+            Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated and
+            included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.GalleryItems">
+            <summary>
+            Gets the IGalleryItemsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.#ctor(System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the GalleryAdminClient class.
+            </summary>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.#ctor(System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the GalleryAdminClient class.
+            </summary>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.#ctor(System.Uri,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the GalleryAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.#ctor(System.Uri,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the GalleryAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the GalleryAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the GalleryAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the GalleryAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the GalleryAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient.Initialize">
+            <summary>
+            Initializes client properties.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperations">
+            <summary>
+            GalleryItemsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperations.#ctor(Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient)">
+            <summary>
+            Initializes a new instance of the GalleryItemsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperations.Client">
+            <summary>
+            Gets a reference to the GalleryAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists gallery items.
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperations.CreateWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Uploads a provider gallery item to the storage.
+            </summary>
+            <param name='galleryItemUri'>
+            URI for your gallery package that has already been uploaded online.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperations.GetWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a specific gallery item.
+            </summary>
+            <param name='galleryItemName'>
+            Identity of the gallery item. Includes publisher name, item name, and may
+            include version separated by period character.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperations.DeleteWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete a specific gallery item.
+            </summary>
+            <param name='galleryItemName'>
+            Identity of the gallery item. Includes publisher name, item name, and may
+            include version separated by period character.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperationsExtensions">
+            <summary>
+            Extension methods for GalleryItemsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperationsExtensions.List(Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations)">
+            <summary>
+            Lists gallery items.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations,System.Threading.CancellationToken)">
+            <summary>
+            Lists gallery items.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperationsExtensions.Create(Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations,System.String)">
+            <summary>
+            Uploads a provider gallery item to the storage.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='galleryItemUri'>
+            URI for your gallery package that has already been uploaded online.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperationsExtensions.CreateAsync(Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Uploads a provider gallery item to the storage.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='galleryItemUri'>
+            URI for your gallery package that has already been uploaded online.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperationsExtensions.Get(Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations,System.String)">
+            <summary>
+            Get a specific gallery item.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='galleryItemName'>
+            Identity of the gallery item. Includes publisher name, item name, and may
+            include version separated by period character.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get a specific gallery item.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='galleryItemName'>
+            Identity of the gallery item. Includes publisher name, item name, and may
+            include version separated by period character.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperationsExtensions.Delete(Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations,System.String)">
+            <summary>
+            Delete a specific gallery item.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='galleryItemName'>
+            Identity of the gallery item. Includes publisher name, item name, and may
+            include version separated by period character.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.GalleryItemsOperationsExtensions.DeleteAsync(Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete a specific gallery item.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='galleryItemName'>
+            Identity of the gallery item. Includes publisher name, item name, and may
+            include version separated by period character.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryAdminClient">
+            <summary>
+            Gallery Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials that uniquely identify Microsoft Azure
+            subscription. The subscription ID forms part of the URI for every
+            service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryAdminClient.ApiVersion">
+            <summary>
+            Client API Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running
+            Operations. Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated
+            and included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryAdminClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryAdminClient.GalleryItems">
+            <summary>
+            Gets the IGalleryItemsOperations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations">
+            <summary>
+            GalleryItemsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Lists gallery items.
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations.CreateWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Uploads a provider gallery item to the storage.
+            </summary>
+            <param name='galleryItemUri'>
+            URI for your gallery package that has already been uploaded online.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations.GetWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a specific gallery item.
+            </summary>
+            <param name='galleryItemName'>
+            Identity of the gallery item. Includes publisher name, item name,
+            and may include version separated by period character.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.IGalleryItemsOperations.DeleteWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete a specific gallery item.
+            </summary>
+            <param name='galleryItemName'>
+            Identity of the gallery item. Includes publisher name, item name,
+            and may include version separated by period character.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.IOperations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.IOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets the available gallery admin operations.
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.Artifact">
+            <summary>
+            Represents gallery item artifacts.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Artifact.#ctor">
+            <summary>
+            Initializes a new instance of the Artifact class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Artifact.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Artifact class.
+            </summary>
+            <param name="name">Name of the artifact.</param>
+            <param name="uri">URI to the artifact.</param>
+            <param name="type">Artifact type. Possible values include:
+            'template', 'fragment', 'custom', 'metadata'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Artifact.Name">
+            <summary>
+            Gets or sets name of the artifact.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Artifact.Uri">
+            <summary>
+            Gets or sets URI to the artifact.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Artifact.Type">
+            <summary>
+            Gets or sets artifact type. Possible values include: 'template',
+            'fragment', 'custom', 'metadata'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.ArtifactType">
+            <summary>
+            Defines values for ArtifactType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.DefinitionTemplates">
+            <summary>
+            Holds UI definition file Uri and deployment template file URIs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.DefinitionTemplates.#ctor">
+            <summary>
+            Initializes a new instance of the DefinitionTemplates class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.DefinitionTemplates.#ctor(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the DefinitionTemplates class.
+            </summary>
+            <param name="uiDefinitionFileUri">UI definition file URI.</param>
+            <param name="defaultDeploymentTemplateId">Default deployment
+            template ID.</param>
+            <param name="deploymentTemplateFileUris">List of key-value
+            containing the deployment template file IDs defined in the package
+            manifest.</param>
+            <param name="deploymentFragmentFileUris">List of key-value pairs
+            containing the deployment fragment file IDs defined in the package
+            manifest.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.DefinitionTemplates.UiDefinitionFileUri">
+            <summary>
+            Gets or sets UI definition file URI.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.DefinitionTemplates.DefaultDeploymentTemplateId">
+            <summary>
+            Gets or sets default deployment template ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.DefinitionTemplates.DeploymentTemplateFileUris">
+            <summary>
+            Gets list of key-value containing the deployment template file IDs
+            defined in the package manifest.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.DefinitionTemplates.DeploymentFragmentFileUris">
+            <summary>
+            Gets list of key-value pairs containing the deployment fragment
+            file IDs defined in the package manifest.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.Filter">
+            <summary>
+            Represents a filter item.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Filter.#ctor">
+            <summary>
+            Initializes a new instance of the Filter class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Filter.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Filter class.
+            </summary>
+            <param name="type">Filter type.</param>
+            <param name="value">Filter value.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Filter.Type">
+            <summary>
+            Gets or sets filter type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Filter.Value">
+            <summary>
+            Gets or sets filter value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem">
+            <summary>
+            Properties of a gallery item.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.#ctor">
+            <summary>
+            Initializes a new instance of the GalleryItem class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},Microsoft.AzureStack.Management.Gallery.Admin.Models.MarketingMaterial,System.String,System.Collections.Generic.IList{System.String},System.Collections.Generic.IList{System.String},System.Collections.Generic.IList{Microsoft.AzureStack.Management.Gallery.Admin.Models.LinkProperties},System.Collections.Generic.IList{Microsoft.AzureStack.Management.Gallery.Admin.Models.Filter},Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemPropertiesIconFileUris,System.Collections.Generic.IList{Microsoft.AzureStack.Management.Gallery.Admin.Models.Artifact},Microsoft.AzureStack.Management.Gallery.Admin.Models.OpenProperty,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Microsoft.AzureStack.Management.Gallery.Admin.Models.ImageGroup},System.Collections.Generic.IList{Microsoft.AzureStack.Management.Gallery.Admin.Models.Product},System.String,Microsoft.AzureStack.Management.Gallery.Admin.Models.DefinitionTemplates,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the GalleryItem class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of the resource.</param>
+            <param name="location">Location of the resource.</param>
+            <param name="tags">List of key-value pairs.</param>
+            <param name="identity">Identity of the gallery item.</param>
+            <param name="publisher">The publisher of the gallery item.</param>
+            <param name="publisherDisplayName">Display name of the
+            publisher.</param>
+            <param name="itemName">The display name for the gallery item, for
+            the locale of the request.</param>
+            <param name="itemDisplayName">Displayed name in the portal.</param>
+            <param name="version">The version identifier of the gallery item,
+            in Major.Minor.Build format.</param>
+            <param name="summary">Short summary of the gallery item.</param>
+            <param name="longSummary">Long summary of the gallery item.</param>
+            <param name="description">The description of the gallery
+            item.</param>
+            <param name="uiDefinitionUri">The URL of the view definition object
+            that defines the UI information that is used when an instance of
+            the gallery item resource definition is created.</param>
+            <param name="createdTime">The date and time that the gallery item
+            was created.</param>
+            <param name="changedTime">Last update time of gallery item.</param>
+            <param name="marketingMaterial">Marketing materials for the gallery
+            item.</param>
+            <param name="itemType">Describes the type of the gallery item,
+            either GalleryItem or ItemGroup. Possible values include:
+            'GalleryItem', 'ItemGroup'</param>
+            <param name="categoryIds">List of category IDs the gallery item
+            belongs to.</param>
+            <param name="screenshotUris">List of screenshot image URIs provided
+            for the item.</param>
+            <param name="links">Links provided for the item.</param>
+            <param name="filters">List of filters for the gallery item.</param>
+            <param name="iconFileUris">URIs to icon files.</param>
+            <param name="artifacts">List of artifacts for the gallery
+            item.</param>
+            <param name="metadata">Custom item metdata.</param>
+            <param name="properties">List of properties provided for the
+            gallery item.</param>
+            <param name="images">List of images.</param>
+            <param name="products">List of products.</param>
+            <param name="resourceGroupName">Resource group name the gallery
+            item belongs too.</param>
+            <param name="definitionTemplates">Definition template for gallery
+            item.</param>
+            <param name="additionalProperties">List of additional properties
+            provided for the item.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.Identity">
+            <summary>
+            Gets or sets identity of the gallery item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.Publisher">
+            <summary>
+            Gets or sets the publisher of the gallery item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.PublisherDisplayName">
+            <summary>
+            Gets or sets display name of the publisher.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.ItemName">
+            <summary>
+            Gets or sets the display name for the gallery item, for the locale
+            of the request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.ItemDisplayName">
+            <summary>
+            Gets or sets displayed name in the portal.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.Version">
+            <summary>
+            Gets or sets the version identifier of the gallery item, in
+            Major.Minor.Build format.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.Summary">
+            <summary>
+            Gets or sets short summary of the gallery item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.LongSummary">
+            <summary>
+            Gets or sets long summary of the gallery item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.Description">
+            <summary>
+            Gets or sets the description of the gallery item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.UiDefinitionUri">
+            <summary>
+            Gets or sets the URL of the view definition object that defines the
+            UI information that is used when an instance of the gallery item
+            resource definition is created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.CreatedTime">
+            <summary>
+            Gets or sets the date and time that the gallery item was created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.ChangedTime">
+            <summary>
+            Gets or sets last update time of gallery item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.MarketingMaterial">
+            <summary>
+            Gets or sets marketing materials for the gallery item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.ItemType">
+            <summary>
+            Gets or sets describes the type of the gallery item, either
+            GalleryItem or ItemGroup. Possible values include: 'GalleryItem',
+            'ItemGroup'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.CategoryIds">
+            <summary>
+            Gets list of category IDs the gallery item belongs to.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.ScreenshotUris">
+            <summary>
+            Gets list of screenshot image URIs provided for the item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.Links">
+            <summary>
+            Gets links provided for the item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.Filters">
+            <summary>
+            Gets list of filters for the gallery item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.IconFileUris">
+            <summary>
+            Gets uRIs to icon files.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.Artifacts">
+            <summary>
+            Gets list of artifacts for the gallery item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.Metadata">
+            <summary>
+            Gets custom item metdata.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.Properties">
+            <summary>
+            Gets list of properties provided for the gallery item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.Images">
+            <summary>
+            Gets list of images.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.Products">
+            <summary>
+            Gets list of products.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.ResourceGroupName">
+            <summary>
+            Gets or sets resource group name the gallery item belongs too.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.DefinitionTemplates">
+            <summary>
+            Gets definition template for gallery item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItem.AdditionalProperties">
+            <summary>
+            Gets list of additional properties provided for the item.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemMenuReferenceType">
+            <summary>
+            Defines values for GalleryItemMenuReferenceType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemPropertiesIconFileUris">
+            <summary>
+            URIs to icon files.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemPropertiesIconFileUris.#ctor">
+            <summary>
+            Initializes a new instance of the GalleryItemPropertiesIconFileUris
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemPropertiesIconFileUris.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the GalleryItemPropertiesIconFileUris
+            class.
+            </summary>
+            <param name="small">URI to the small icon.</param>
+            <param name="medium">URI to the medium icon.</param>
+            <param name="large">URI to the large icon.</param>
+            <param name="wide">URI to the wide icon.</param>
+            <param name="hero">URI to the hero icon.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemPropertiesIconFileUris.Small">
+            <summary>
+            Gets or sets URI to the small icon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemPropertiesIconFileUris.Medium">
+            <summary>
+            Gets or sets URI to the medium icon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemPropertiesIconFileUris.Large">
+            <summary>
+            Gets or sets URI to the large icon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemPropertiesIconFileUris.Wide">
+            <summary>
+            Gets or sets URI to the wide icon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemPropertiesIconFileUris.Hero">
+            <summary>
+            Gets or sets URI to the hero icon.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemUriPayload">
+            <summary>
+            Location of gallery item payload.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemUriPayload.#ctor">
+            <summary>
+            Initializes a new instance of the GalleryItemUriPayload class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemUriPayload.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the GalleryItemUriPayload class.
+            </summary>
+            <param name="galleryItemUri">URI for your gallery package that has
+            already been uploaded online.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.GalleryItemUriPayload.GalleryItemUri">
+            <summary>
+            Gets or sets URI for your gallery package that has already been
+            uploaded online.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.Image">
+            <summary>
+            Represents an image item.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Image.#ctor">
+            <summary>
+            Initializes a new instance of the Image class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Image.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Image class.
+            </summary>
+            <param name="id">ID of the image.</param>
+            <param name="uri">URI to the image.</param>
+            <param name="type">Type of image.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Image.Id">
+            <summary>
+            Gets or sets ID of the image.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Image.Uri">
+            <summary>
+            Gets or sets URI to the image.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Image.Type">
+            <summary>
+            Gets or sets type of image.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.ImageGroup">
+            <summary>
+            Group of images.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.ImageGroup.#ctor">
+            <summary>
+            Initializes a new instance of the ImageGroup class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.ImageGroup.#ctor(System.String,System.Collections.Generic.IList{Microsoft.AzureStack.Management.Gallery.Admin.Models.Image})">
+            <summary>
+            Initializes a new instance of the ImageGroup class.
+            </summary>
+            <param name="context">Image group identifier.</param>
+            <param name="items">List of images.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.ImageGroup.Context">
+            <summary>
+            Gets or sets image group identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.ImageGroup.Items">
+            <summary>
+            Gets list of images.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.LinkProperties">
+            <summary>
+            Represents a link item read from the gallery item package.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.LinkProperties.#ctor">
+            <summary>
+            Initializes a new instance of the LinkProperties class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.LinkProperties.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the LinkProperties class.
+            </summary>
+            <param name="id">ID of the link.</param>
+            <param name="displayName">Display name of the link.</param>
+            <param name="uri">URI of the link.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.LinkProperties.Id">
+            <summary>
+            Gets or sets ID of the link.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.LinkProperties.DisplayName">
+            <summary>
+            Gets or sets display name of the link.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.LinkProperties.Uri">
+            <summary>
+            Gets or sets URI of the link.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.MarketingMaterial">
+            <summary>
+            Marketing material for a gallery item.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.MarketingMaterial.#ctor">
+            <summary>
+            Initializes a new instance of the MarketingMaterial class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.MarketingMaterial.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the MarketingMaterial class.
+            </summary>
+            <param name="path">Path to the marketing site.</param>
+            <param name="learnUri">URI to educational material.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.MarketingMaterial.Path">
+            <summary>
+            Gets or sets path to the marketing site.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.MarketingMaterial.LearnUri">
+            <summary>
+            Gets or sets URI to educational material.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.OfferDetails">
+            <summary>
+            Represents a offer details item read from the gallery item package.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.OfferDetails.#ctor">
+            <summary>
+            Initializes a new instance of the OfferDetails class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.OfferDetails.#ctor(System.String,System.String,System.Collections.Generic.IList{Microsoft.AzureStack.Management.Gallery.Admin.Models.Plan})">
+            <summary>
+            Initializes a new instance of the OfferDetails class.
+            </summary>
+            <param name="publisherId">Publisher identifier.</param>
+            <param name="offerId">Offer identifier.</param>
+            <param name="plans">List of plans available for the offer.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.OfferDetails.PublisherId">
+            <summary>
+            Gets or sets publisher identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.OfferDetails.OfferId">
+            <summary>
+            Gets or sets offer identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.OfferDetails.Plans">
+            <summary>
+            Gets list of plans available for the offer.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.OpenProperty">
+            <summary>
+            Open type used to define dynamic properties.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.OpenProperty.#ctor">
+            <summary>
+            Initializes a new instance of the OpenProperty class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.OpenProperty.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new instance of the OpenProperty class.
+            </summary>
+            <param name="properties">Dictionary of dynamic properties.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.OpenProperty.Properties">
+            <summary>
+            Gets dictionary of dynamic properties.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.Operation">
+            <summary>
+            Represents a REST operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Operation.#ctor">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Operation.#ctor(System.String,System.String,Microsoft.AzureStack.Management.Gallery.Admin.Models.OperationDisplayDefinition)">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+            <param name="name">Name of the REST operation.</param>
+            <param name="origin">Origin of the REST operation.</param>
+            <param name="display">Information about the REST operation.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Operation.Name">
+            <summary>
+            Gets or sets name of the REST operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Operation.Origin">
+            <summary>
+            Gets or sets origin of the REST operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Operation.Display">
+            <summary>
+            Gets or sets information about the REST operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.OperationDisplayDefinition">
+            <summary>
+            Information about the REST operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.OperationDisplayDefinition.#ctor">
+            <summary>
+            Initializes a new instance of the OperationDisplayDefinition class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.OperationDisplayDefinition.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the OperationDisplayDefinition class.
+            </summary>
+            <param name="description">Description of the REST
+            operation.</param>
+            <param name="operation">Type of REST operation.</param>
+            <param name="provider">Provider of the REST operation.</param>
+            <param name="resource">Resource returned by the REST
+            operation.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.OperationDisplayDefinition.Description">
+            <summary>
+            Gets or sets description of the REST operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.OperationDisplayDefinition.Operation">
+            <summary>
+            Gets or sets type of REST operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.OperationDisplayDefinition.Provider">
+            <summary>
+            Gets or sets provider of the REST operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.OperationDisplayDefinition.Resource">
+            <summary>
+            Gets or sets resource returned by the REST operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.Page`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Page`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Page`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Page`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.Plan">
+            <summary>
+            Represents a plan item read from the gallery item package.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Plan.#ctor">
+            <summary>
+            Initializes a new instance of the Plan class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Plan.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Plan class.
+            </summary>
+            <param name="planId">Plan identifier.</param>
+            <param name="displayName">Display name of the plan.</param>
+            <param name="summary">Summary of the plan.</param>
+            <param name="description">Description of the plan.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Plan.PlanId">
+            <summary>
+            Gets or sets plan identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Plan.DisplayName">
+            <summary>
+            Gets or sets display name of the plan.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Plan.Summary">
+            <summary>
+            Gets or sets summary of the plan.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Plan.Description">
+            <summary>
+            Gets or sets description of the plan.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.Product">
+            <summary>
+            Represents a product item read from the gallery item package.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Product.#ctor">
+            <summary>
+            Initializes a new instance of the Product class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Product.#ctor(System.String,System.String,System.String,Microsoft.AzureStack.Management.Gallery.Admin.Models.OfferDetails,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Product class.
+            </summary>
+            <param name="displayName">Display name of the product.</param>
+            <param name="publisherDisplayName">Publisher display name of the
+            product.</param>
+            <param name="pricingDetailsUri">URI to the pricing details of the
+            product.</param>
+            <param name="offerDetails">Offer details of the product.</param>
+            <param name="legalTerms">Legal terms of the product.</param>
+            <param name="privacyPolicy">Privacy policy of the product.</param>
+            <param name="legalTermsUri">URI to the legal terms of the
+            product.</param>
+            <param name="privacyPolicyUri">URI to the privacy policy of the
+            product.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Product.DisplayName">
+            <summary>
+            Gets or sets display name of the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Product.PublisherDisplayName">
+            <summary>
+            Gets or sets publisher display name of the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Product.PricingDetailsUri">
+            <summary>
+            Gets or sets URI to the pricing details of the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Product.OfferDetails">
+            <summary>
+            Gets or sets offer details of the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Product.LegalTerms">
+            <summary>
+            Gets or sets legal terms of the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Product.PrivacyPolicy">
+            <summary>
+            Gets or sets privacy policy of the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Product.LegalTermsUri">
+            <summary>
+            Gets or sets URI to the legal terms of the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Product.PrivacyPolicyUri">
+            <summary>
+            Gets or sets URI to the privacy policy of the product.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Models.Resource">
+            <summary>
+            Base Resource Object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Resource.#ctor">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Models.Resource.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of the resource.</param>
+            <param name="location">Location of the resource.</param>
+            <param name="tags">List of key-value pairs.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Resource.Id">
+            <summary>
+            Gets URI of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Resource.Name">
+            <summary>
+            Gets name of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Resource.Type">
+            <summary>
+            Gets type of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Resource.Location">
+            <summary>
+            Gets location of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Models.Resource.Tags">
+            <summary>
+            Gets list of key-value pairs.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.Operations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Operations.#ctor(Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient)">
+            <summary>
+            Initializes a new instance of the Operations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Gallery.Admin.Operations.Client">
+            <summary>
+            Gets a reference to the GalleryAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.Operations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets the available gallery admin operations.
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Gallery.Admin.OperationsExtensions">
+            <summary>
+            Extension methods for Operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.OperationsExtensions.List(Microsoft.AzureStack.Management.Gallery.Admin.IOperations)">
+            <summary>
+            Gets the available gallery admin operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Gallery.Admin.OperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Gallery.Admin.IOperations,System.Threading.CancellationToken)">
+            <summary>
+            Gets the available gallery admin operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+    </members>
+</doc>

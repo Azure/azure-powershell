@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 3BCEADF3-15DC-4033-A94A-4C8B4F5E7340
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azwebappslotmetrics

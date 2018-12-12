@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices.dll-Help.xml
 Module Name: Az.DeviceProvisioningServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/update-aziotdeviceprovisioningservicelinkedhub
 schema: 2.0.0

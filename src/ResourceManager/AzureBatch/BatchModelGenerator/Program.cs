@@ -238,8 +238,6 @@ namespace PSModelGenerator
 
             ConstructorInfo[] constructors = t.GetConstructors();
             ConstructorInfo publicParameterless = null;
-            ConstructorInfo publicSystemParams = null;
-            ConstructorInfo publicEnumParams = null;
             List<ConstructorInfo> publicGeneralParams = new List<ConstructorInfo>();
             foreach (ConstructorInfo con in constructors.Where(c => c.IsPublic || c.IsStatic))
             {

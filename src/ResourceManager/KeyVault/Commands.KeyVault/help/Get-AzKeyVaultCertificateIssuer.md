@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 5F856280-C561-47B5-AA96-27E34C86D604
 online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultcertificateissuer

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 0C8C07CA-6720-452F-A952-48C76EBF3BBD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadserviceprincipal

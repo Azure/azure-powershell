@@ -1,0 +1,2070 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AzureStack.Management.Network.Admin</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.ILoadBalancersOperations">
+            <summary>
+            LoadBalancersOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.ILoadBalancersOperations.ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.LoadBalancer},System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all load balancers.
+            </summary>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='inlineCount'>
+            OData inline count parameter.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.ILoadBalancersOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all load balancers.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient">
+            <summary>
+            Network Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials which uniquely identify Microsoft Azure
+            subscription. The subscription ID forms part of the URI for every
+            service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.ApiVersion">
+            <summary>
+            Client API Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running
+            Operations. Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated
+            and included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.ResourceProviderState">
+            <summary>
+            Gets the IResourceProviderStateOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.LoadBalancers">
+            <summary>
+            Gets the ILoadBalancersOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.PublicIPAddresses">
+            <summary>
+            Gets the IPublicIPAddressesOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.Quotas">
+            <summary>
+            Gets the IQuotasOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.INetworkAdminClient.VirtualNetworks">
+            <summary>
+            Gets the IVirtualNetworksOperations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.IPublicIPAddressesOperations">
+            <summary>
+            PublicIPAddressesOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.IPublicIPAddressesOperations.ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress},System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            List of public ip addresses.
+            </summary>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='inlineCount'>
+            OData inline count parameter.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.IPublicIPAddressesOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            List of public ip addresses.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations">
+            <summary>
+            QuotasOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations.ListWithHttpMessagesAsync(System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.Quota},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            List all quotas.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a quota by name.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations.CreateOrUpdateWithHttpMessagesAsync(System.String,System.String,Microsoft.AzureStack.Management.Network.Admin.Models.Quota,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Create or update a quota.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='quota'>
+            New network quota to create.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete a quota by name.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations.BeginDeleteWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete a quota by name.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.IResourceProviderStateOperations">
+            <summary>
+            ResourceProviderStateOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.IResourceProviderStateOperations.GetWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get an overview of the state of the network resource provider.
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.IVirtualNetworksOperations">
+            <summary>
+            VirtualNetworksOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.IVirtualNetworksOperations.ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetwork},System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all virtual networks.
+            </summary>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='inlineCount'>
+            OData inline count parameter.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.IVirtualNetworksOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all virtual networks.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.LoadBalancersOperations">
+            <summary>
+            LoadBalancersOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.LoadBalancersOperations.#ctor(Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient)">
+            <summary>
+            Initializes a new instance of the LoadBalancersOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.LoadBalancersOperations.Client">
+            <summary>
+            Gets a reference to the NetworkAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.LoadBalancersOperations.ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.LoadBalancer},System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all load balancers.
+            </summary>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='inlineCount'>
+            OData inline count parameter.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.LoadBalancersOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all load balancers.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.LoadBalancersOperationsExtensions">
+            <summary>
+            Extension methods for LoadBalancersOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.LoadBalancersOperationsExtensions.List(Microsoft.AzureStack.Management.Network.Admin.ILoadBalancersOperations,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.LoadBalancer},System.String)">
+            <summary>
+            Get a list of all load balancers.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='inlineCount'>
+            OData inline count parameter.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.LoadBalancersOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Network.Admin.ILoadBalancersOperations,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.LoadBalancer},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all load balancers.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='inlineCount'>
+            OData inline count parameter.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.LoadBalancersOperationsExtensions.ListNext(Microsoft.AzureStack.Management.Network.Admin.ILoadBalancersOperations,System.String)">
+            <summary>
+            Get a list of all load balancers.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.LoadBalancersOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.Network.Admin.ILoadBalancersOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all load balancers.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverview">
+            <summary>
+            Admin overview resource object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverview.#ctor">
+            <summary>
+            Initializes a new instance of the AdminOverview class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverview.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceHealth,Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceHealth,Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceHealth,Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceUsage,Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceUsage,Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceUsage)">
+            <summary>
+            Initializes a new instance of the AdminOverview class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Region location of resource.</param>
+            <param name="tags">List of key value pairs.</param>
+            <param name="provisioningState">The provisioning state.</param>
+            <param name="virtualNetworkHealth">Health for all virtual networks
+            as reported by the NC.</param>
+            <param name="loadBalancerMuxHealth">Health for all LB MUXes as
+            reported by the NC.</param>
+            <param name="virtualGatewayHealth">Health for all gateways as
+            reported by the NC.</param>
+            <param name="publicIpAddressUsage">Total Public IP usage as
+            reported by the NC.</param>
+            <param name="backendIpUsage">Total Backend IP usage as reported by
+            the NC.</param>
+            <param name="macAddressUsage">Total MAC address usage as reported
+            by the NC.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverview.ProvisioningState">
+            <summary>
+            Gets the provisioning state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverview.VirtualNetworkHealth">
+            <summary>
+            Gets or sets health for all virtual networks as reported by the NC.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverview.LoadBalancerMuxHealth">
+            <summary>
+            Gets or sets health for all LB MUXes as reported by the NC.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverview.VirtualGatewayHealth">
+            <summary>
+            Gets or sets health for all gateways as reported by the NC.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverview.PublicIpAddressUsage">
+            <summary>
+            Gets or sets total Public IP usage as reported by the NC.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverview.BackendIpUsage">
+            <summary>
+            Gets or sets total Backend IP usage as reported by the NC.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverview.MacAddressUsage">
+            <summary>
+            Gets or sets total MAC address usage as reported by the NC.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceHealth">
+            <summary>
+            Resource health information.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceHealth.#ctor">
+            <summary>
+            Initializes a new instance of the AdminOverviewResourceHealth
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceHealth.#ctor(System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            Initializes a new instance of the AdminOverviewResourceHealth
+            class.
+            </summary>
+            <param name="totalResourceCount">Total number of resources.</param>
+            <param name="healthyResourceCount">Number of resources in the
+            success state.</param>
+            <param name="errorResourceCount">Number of resources in the error
+            state.</param>
+            <param name="warningResourceCount">Number of resources in the
+            warning state.</param>
+            <param name="healthUnknownCount">Number of resources in an unknown
+            state.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceHealth.TotalResourceCount">
+            <summary>
+            Gets total number of resources.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceHealth.HealthyResourceCount">
+            <summary>
+            Gets number of resources in the success state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceHealth.ErrorResourceCount">
+            <summary>
+            Gets number of resources in the error state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceHealth.WarningResourceCount">
+            <summary>
+            Gets number of resources in the warning state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceHealth.HealthUnknownCount">
+            <summary>
+            Gets number of resources in an unknown state.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceUsage">
+            <summary>
+            Resource usage information.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceUsage.#ctor">
+            <summary>
+            Initializes a new instance of the AdminOverviewResourceUsage class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceUsage.#ctor(System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            Initializes a new instance of the AdminOverviewResourceUsage class.
+            </summary>
+            <param name="totalResourceCount">Total number of resources.</param>
+            <param name="inUseResourceCount">Number of resources in
+            use.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceUsage.TotalResourceCount">
+            <summary>
+            Gets total number of resources.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.AdminOverviewResourceUsage.InUseResourceCount">
+            <summary>
+            Gets number of resources in use.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.AllocationMethodType">
+            <summary>
+            Defines values for AllocationMethodType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.LoadBalancer">
+            <summary>
+            Representation of a load balancer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.LoadBalancer.#ctor">
+            <summary>
+            Initializes a new instance of the LoadBalancer class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.LoadBalancer.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Initializes a new instance of the LoadBalancer class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Region location of resource.</param>
+            <param name="tags">List of key value pairs.</param>
+            <param name="provisioningState">The provisioning state.</param>
+            <param name="subscriptionId">The subscription ID.</param>
+            <param name="tenantResourceUri">The tenant resource URI.</param>
+            <param name="publicIpAddresses">List of public IP
+            addresses.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.LoadBalancer.ProvisioningState">
+            <summary>
+            Gets the provisioning state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.LoadBalancer.SubscriptionId">
+            <summary>
+            Gets the subscription ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.LoadBalancer.TenantResourceUri">
+            <summary>
+            Gets the tenant resource URI.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.LoadBalancer.PublicIpAddresses">
+            <summary>
+            Gets or sets list of public IP addresses.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.MigrationPhaseType">
+            <summary>
+            Defines values for MigrationPhaseType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.Page`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Page`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.Page`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.Page`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.Page1`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Page1`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.Page1`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.Page1`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.ProvisionedResource">
+            <summary>
+            Objects which have a provisioning state.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.ProvisionedResource.#ctor">
+            <summary>
+            Initializes a new instance of the ProvisionedResource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.ProvisionedResource.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ProvisionedResource class.
+            </summary>
+            <param name="provisioningState">The provisioning state.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.ProvisionedResource.ProvisioningState">
+            <summary>
+            Gets the provisioning state.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress">
+            <summary>
+            This resource represents an IP Address.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress.#ctor">
+            <summary>
+            Initializes a new instance of the PublicIpAddress class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the PublicIpAddress class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Region location of resource.</param>
+            <param name="tags">List of key value pairs.</param>
+            <param name="provisioningState">The provisioning state.</param>
+            <param name="subscriptionId">The subscription ID.</param>
+            <param name="tenantResourceUri">The tenant resource URI.</param>
+            <param name="ipAddress">The IP address.</param>
+            <param name="ipPool">The IP pool.</param>
+            <param name="allocationMethod">The allocation method. Possible
+            values include: 'Dynamic', 'Static'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress.ProvisioningState">
+            <summary>
+            Gets the provisioning state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress.SubscriptionId">
+            <summary>
+            Gets the subscription ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress.TenantResourceUri">
+            <summary>
+            Gets the tenant resource URI.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress.IpAddress">
+            <summary>
+            Gets or sets the IP address.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress.IpPool">
+            <summary>
+            Gets or sets the IP pool.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress.AllocationMethod">
+            <summary>
+            Gets or sets the allocation method. Possible values include:
+            'Dynamic', 'Static'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.Quota">
+            <summary>
+            Network quota resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.Quota.#ctor">
+            <summary>
+            Initializes a new instance of the Quota class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.Quota.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64},System.String)">
+            <summary>
+            Initializes a new instance of the Quota class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Region location of resource.</param>
+            <param name="tags">List of key value pairs.</param>
+            <param name="provisioningState">The provisioning state.</param>
+            <param name="maxPublicIpsPerSubscription">Maximum number of public
+            IP addresses a tenant subscription can provision.</param>
+            <param name="maxVnetsPerSubscription">Maximum number of virtual
+            networks a tenant subscription can provision.</param>
+            <param name="maxVirtualNetworkGatewaysPerSubscription">Maximum
+            number of virtual network gateways a tenant subscription can
+            provision.</param>
+            <param
+            name="maxVirtualNetworkGatewayConnectionsPerSubscription">Maximum
+            number of virtual network gateway Connections a tenant subscription
+            can provision.</param>
+            <param name="maxLoadBalancersPerSubscription">Maximum number of
+            load balancers a tenant subscription can provision.</param>
+            <param name="maxNicsPerSubscription">Maximum number of NICs a
+            tenant subscription can provision.</param>
+            <param name="maxSecurityGroupsPerSubscription">Maximum number of
+            security groups a tenant subscription can provision.</param>
+            <param name="migrationPhase">State of migration such as None,
+            Prepare, Commit, and Abort. Possible values include: 'None',
+            'Prepare', 'Commit', 'Abort'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Quota.ProvisioningState">
+            <summary>
+            Gets the provisioning state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Quota.MaxPublicIpsPerSubscription">
+            <summary>
+            Gets or sets maximum number of public IP addresses a tenant
+            subscription can provision.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Quota.MaxVnetsPerSubscription">
+            <summary>
+            Gets or sets maximum number of virtual networks a tenant
+            subscription can provision.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Quota.MaxVirtualNetworkGatewaysPerSubscription">
+            <summary>
+            Gets or sets maximum number of virtual network gateways a tenant
+            subscription can provision.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Quota.MaxVirtualNetworkGatewayConnectionsPerSubscription">
+            <summary>
+            Gets or sets maximum number of virtual network gateway Connections
+            a tenant subscription can provision.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Quota.MaxLoadBalancersPerSubscription">
+            <summary>
+            Gets or sets maximum number of load balancers a tenant subscription
+            can provision.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Quota.MaxNicsPerSubscription">
+            <summary>
+            Gets or sets maximum number of NICs a tenant subscription can
+            provision.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Quota.MaxSecurityGroupsPerSubscription">
+            <summary>
+            Gets or sets maximum number of security groups a tenant
+            subscription can provision.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Quota.MigrationPhase">
+            <summary>
+            Gets state of migration such as None, Prepare, Commit, and Abort.
+            Possible values include: 'None', 'Prepare', 'Commit', 'Abort'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.Resource">
+            <summary>
+            Base Resource Object
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.Resource.#ctor">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.Resource.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Region location of resource.</param>
+            <param name="tags">List of key value pairs.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Resource.Id">
+            <summary>
+            Gets URI of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Resource.Name">
+            <summary>
+            Gets name of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Resource.Type">
+            <summary>
+            Gets type of resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Resource.Location">
+            <summary>
+            Gets region location of resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.Resource.Tags">
+            <summary>
+            Gets or sets list of key value pairs.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.TenantResource">
+            <summary>
+            These resources are utilized by a single tenant.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.TenantResource.#ctor">
+            <summary>
+            Initializes a new instance of the TenantResource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.TenantResource.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the TenantResource class.
+            </summary>
+            <param name="subscriptionId">The subscription ID.</param>
+            <param name="tenantResourceUri">The tenant resource URI.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.TenantResource.SubscriptionId">
+            <summary>
+            Gets the subscription ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.TenantResource.TenantResourceUri">
+            <summary>
+            Gets the tenant resource URI.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetwork">
+            <summary>
+            This represents a virtual network.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetwork.#ctor">
+            <summary>
+            Initializes a new instance of the VirtualNetwork class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetwork.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,System.String,Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationState)">
+            <summary>
+            Initializes a new instance of the VirtualNetwork class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Region location of resource.</param>
+            <param name="tags">List of key value pairs.</param>
+            <param name="provisioningState">The provisioning state.</param>
+            <param name="subscriptionId">The subscription ID.</param>
+            <param name="tenantResourceUri">The tenant resource URI.</param>
+            <param name="configurationState">The virtual network configuration
+            state.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetwork.ProvisioningState">
+            <summary>
+            Gets the provisioning state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetwork.SubscriptionId">
+            <summary>
+            Gets the subscription ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetwork.TenantResourceUri">
+            <summary>
+            Gets the tenant resource URI.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetwork.ConfigurationState">
+            <summary>
+            Gets or sets the virtual network configuration state.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationState">
+            <summary>
+            The virtual network configuration state.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationState.#ctor">
+            <summary>
+            Initializes a new instance of the VirtualNetworkConfigurationState
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationState.#ctor(System.String,System.Nullable{System.DateTime},System.Collections.Generic.IList{Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationStatus},System.Collections.Generic.IList{Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationStatus})">
+            <summary>
+            Initializes a new instance of the VirtualNetworkConfigurationState
+            class.
+            </summary>
+            <param name="status">The virtual network status. Possible values
+            include: 'Failure', 'Warning', 'Success', 'Uninitialized',
+            'InProgress', 'Unknown'</param>
+            <param name="lastUpdatedTime">Last updated time for the running
+            state.</param>
+            <param name="virtualNetworkInterfaceErrors">List of NIC errors
+            associated with the resource.</param>
+            <param name="hostErrors">List of NIC errors associated with the
+            resource.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationState.Status">
+            <summary>
+            Gets the virtual network status. Possible values include:
+            'Failure', 'Warning', 'Success', 'Uninitialized', 'InProgress',
+            'Unknown'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationState.LastUpdatedTime">
+            <summary>
+            Gets last updated time for the running state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationState.VirtualNetworkInterfaceErrors">
+            <summary>
+            Gets or sets list of NIC errors associated with the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationState.HostErrors">
+            <summary>
+            Gets or sets list of NIC errors associated with the resource.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationStateStatusType">
+            <summary>
+            Defines values for VirtualNetworkConfigurationStateStatusType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationStatus">
+            <summary>
+            Virtual network configuration status.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationStatus.#ctor">
+            <summary>
+            Initializes a new instance of the VirtualNetworkConfigurationStatus
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationStatus.#ctor(System.String,System.Nullable{System.DateTime})">
+            <summary>
+            Initializes a new instance of the VirtualNetworkConfigurationStatus
+            class.
+            </summary>
+            <param name="status">The virtual network configuration status.
+            Possible values include: 'Failure', 'Warning', 'Success',
+            'Uninitialized', 'InProgress', 'Unknown'</param>
+            <param name="lastUpdatedTime">Last updated time for the
+            configuration status.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationStatus.Status">
+            <summary>
+            Gets the virtual network configuration status. Possible values
+            include: 'Failure', 'Warning', 'Success', 'Uninitialized',
+            'InProgress', 'Unknown'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationStatus.LastUpdatedTime">
+            <summary>
+            Gets last updated time for the configuration status.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationStatusType">
+            <summary>
+            Defines values for VirtualNetworkConfigurationStatusType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient">
+            <summary>
+            Network Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials which uniquely identify Microsoft Azure
+            subscription. The subscription ID forms part of the URI for every service
+            call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.ApiVersion">
+            <summary>
+            Client API Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running Operations.
+            Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated and
+            included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.ResourceProviderState">
+            <summary>
+            Gets the IResourceProviderStateOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.LoadBalancers">
+            <summary>
+            Gets the ILoadBalancersOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.PublicIPAddresses">
+            <summary>
+            Gets the IPublicIPAddressesOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.Quotas">
+            <summary>
+            Gets the IQuotasOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.VirtualNetworks">
+            <summary>
+            Gets the IVirtualNetworksOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.#ctor(System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the NetworkAdminClient class.
+            </summary>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.#ctor(System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the NetworkAdminClient class.
+            </summary>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.#ctor(System.Uri,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the NetworkAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.#ctor(System.Uri,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the NetworkAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the NetworkAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the NetworkAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the NetworkAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the NetworkAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient.Initialize">
+            <summary>
+            Initializes client properties.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.PublicIPAddressesOperations">
+            <summary>
+            PublicIPAddressesOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.PublicIPAddressesOperations.#ctor(Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient)">
+            <summary>
+            Initializes a new instance of the PublicIPAddressesOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.PublicIPAddressesOperations.Client">
+            <summary>
+            Gets a reference to the NetworkAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.PublicIPAddressesOperations.ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress},System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            List of public ip addresses.
+            </summary>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='inlineCount'>
+            OData inline count parameter.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.PublicIPAddressesOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            List of public ip addresses.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.PublicIPAddressesOperationsExtensions">
+            <summary>
+            Extension methods for PublicIPAddressesOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.PublicIPAddressesOperationsExtensions.List(Microsoft.AzureStack.Management.Network.Admin.IPublicIPAddressesOperations,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress},System.String)">
+            <summary>
+            List of public ip addresses.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='inlineCount'>
+            OData inline count parameter.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.PublicIPAddressesOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Network.Admin.IPublicIPAddressesOperations,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.PublicIpAddress},System.String,System.Threading.CancellationToken)">
+            <summary>
+            List of public ip addresses.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='inlineCount'>
+            OData inline count parameter.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.PublicIPAddressesOperationsExtensions.ListNext(Microsoft.AzureStack.Management.Network.Admin.IPublicIPAddressesOperations,System.String)">
+            <summary>
+            List of public ip addresses.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.PublicIPAddressesOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.Network.Admin.IPublicIPAddressesOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            List of public ip addresses.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.QuotasOperations">
+            <summary>
+            QuotasOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperations.#ctor(Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient)">
+            <summary>
+            Initializes a new instance of the QuotasOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.QuotasOperations.Client">
+            <summary>
+            Gets a reference to the NetworkAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperations.ListWithHttpMessagesAsync(System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.Quota},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            List all quotas.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a quota by name.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperations.CreateOrUpdateWithHttpMessagesAsync(System.String,System.String,Microsoft.AzureStack.Management.Network.Admin.Models.Quota,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Create or update a quota.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='quota'>
+            New network quota to create.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete a quota by name.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperations.BeginDeleteWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete a quota by name.
+            </summary>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.QuotasOperationsExtensions">
+            <summary>
+            Extension methods for QuotasOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperationsExtensions.List(Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.Quota})">
+            <summary>
+            List all quotas.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations,System.String,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.Quota},System.Threading.CancellationToken)">
+            <summary>
+            List all quotas.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperationsExtensions.Get(Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations,System.String,System.String)">
+            <summary>
+            Get a quota by name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get a quota by name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperationsExtensions.CreateOrUpdate(Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations,System.String,System.String,Microsoft.AzureStack.Management.Network.Admin.Models.Quota)">
+            <summary>
+            Create or update a quota.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='quota'>
+            New network quota to create.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperationsExtensions.CreateOrUpdateAsync(Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations,System.String,System.String,Microsoft.AzureStack.Management.Network.Admin.Models.Quota,System.Threading.CancellationToken)">
+            <summary>
+            Create or update a quota.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='quota'>
+            New network quota to create.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperationsExtensions.Delete(Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations,System.String,System.String)">
+            <summary>
+            Delete a quota by name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperationsExtensions.DeleteAsync(Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete a quota by name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperationsExtensions.BeginDelete(Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations,System.String,System.String)">
+            <summary>
+            Delete a quota by name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.QuotasOperationsExtensions.BeginDeleteAsync(Microsoft.AzureStack.Management.Network.Admin.IQuotasOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete a quota by name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            Location of the resource.
+            </param>
+            <param name='resourceName'>
+            Name of the resource.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.ResourceProviderStateOperations">
+            <summary>
+            ResourceProviderStateOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.ResourceProviderStateOperations.#ctor(Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient)">
+            <summary>
+            Initializes a new instance of the ResourceProviderStateOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.ResourceProviderStateOperations.Client">
+            <summary>
+            Gets a reference to the NetworkAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.ResourceProviderStateOperations.GetWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get an overview of the state of the network resource provider.
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.ResourceProviderStateOperationsExtensions">
+            <summary>
+            Extension methods for ResourceProviderStateOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.ResourceProviderStateOperationsExtensions.Get(Microsoft.AzureStack.Management.Network.Admin.IResourceProviderStateOperations)">
+            <summary>
+            Get an overview of the state of the network resource provider.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.ResourceProviderStateOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Network.Admin.IResourceProviderStateOperations,System.Threading.CancellationToken)">
+            <summary>
+            Get an overview of the state of the network resource provider.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.VirtualNetworksOperations">
+            <summary>
+            VirtualNetworksOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.VirtualNetworksOperations.#ctor(Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient)">
+            <summary>
+            Initializes a new instance of the VirtualNetworksOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Network.Admin.VirtualNetworksOperations.Client">
+            <summary>
+            Gets a reference to the NetworkAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.VirtualNetworksOperations.ListWithHttpMessagesAsync(Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetwork},System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all virtual networks.
+            </summary>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='inlineCount'>
+            OData inline count parameter.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.VirtualNetworksOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all virtual networks.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Network.Admin.VirtualNetworksOperationsExtensions">
+            <summary>
+            Extension methods for VirtualNetworksOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.VirtualNetworksOperationsExtensions.List(Microsoft.AzureStack.Management.Network.Admin.IVirtualNetworksOperations,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetwork},System.String)">
+            <summary>
+            Get a list of all virtual networks.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='inlineCount'>
+            OData inline count parameter.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.VirtualNetworksOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Network.Admin.IVirtualNetworksOperations,Microsoft.Rest.Azure.OData.ODataQuery{Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetwork},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all virtual networks.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='odataQuery'>
+            OData parameters to apply to the operation.
+            </param>
+            <param name='inlineCount'>
+            OData inline count parameter.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.VirtualNetworksOperationsExtensions.ListNext(Microsoft.AzureStack.Management.Network.Admin.IVirtualNetworksOperations,System.String)">
+            <summary>
+            Get a list of all virtual networks.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Network.Admin.VirtualNetworksOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.Network.Admin.IVirtualNetworksOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all virtual networks.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+    </members>
+</doc>
