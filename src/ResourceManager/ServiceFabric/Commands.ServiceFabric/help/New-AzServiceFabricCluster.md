@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/new-azservicefabriccluster
 schema: 2.0.0

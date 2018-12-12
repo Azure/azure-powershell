@@ -3,8 +3,8 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.Compute.Test</AssemblyName>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Compute.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -23,19 +23,15 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="23.2.0" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.2" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.7.0-preview" />
- 	  <PackageReference Include="Microsoft.Azure.Management.Storage" Version="9.0.0-preview" />
-    <PackageReference Include="Moq" Version="4.7.145" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Compute">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Compute\Microsoft.Azure.Commands.Compute.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.Compute\Commands.Compute.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -67,4 +63,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
 </Project>

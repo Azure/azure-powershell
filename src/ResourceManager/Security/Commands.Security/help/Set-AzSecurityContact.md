@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.SecurityCenter.dll-Help.xml
 Module Name: Az.Security
 online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Set-AzSecurityContact.md
 schema: 2.0.0

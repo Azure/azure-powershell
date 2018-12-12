@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Default parameter set for Get-AzOperationalInsightsDataSource is removed, and ByWorkspaceNameByKind has become the default parameter set
