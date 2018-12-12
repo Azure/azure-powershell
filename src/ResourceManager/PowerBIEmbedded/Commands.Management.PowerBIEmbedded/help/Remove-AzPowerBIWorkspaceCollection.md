@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded.dll-Help.xml
 Module Name: Az.PowerBIEmbedded
 ms.assetid: 2D63CC6D-AB02-4299-A922-4057D6F595D7
 online version: https://docs.microsoft.com/en-us/powershell/module/az.powerbiembedded/remove-azpowerbiworkspacecollection

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Insights
 ms.assetid: 60B497F6-98A2-4C60-B142-FF5CD123362D
 online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azdiagnosticsetting

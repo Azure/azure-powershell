@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added support for `S1` SKU

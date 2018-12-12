@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: B396388D-F91C-4BC9-A211-ABFF5DFC1693
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqldatabase

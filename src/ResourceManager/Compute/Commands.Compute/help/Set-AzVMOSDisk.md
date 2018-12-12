@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 8F7AF1B8-D769-452C-92CF-4486C3EB894D
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmosdisk

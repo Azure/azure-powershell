@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: C0B24E18-9163-458A-8297-93CB5C2003FA
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/remove-azautomationcertificate

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.ManagedServiceIdentity.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.dll-Help.xml
 Module Name: Az.ManagedServiceIdentity
 online version: https://docs.microsoft.com/en-us/powershell/module/az.managedserviceidentity/new-azuserassignedidentity
 schema: 2.0.0

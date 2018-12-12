@@ -102,7 +102,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning(Resources.IncorrectOutputTypeWarning);
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                 ? Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList()
                 : new List<AclEntry> { new AclEntry((AclType)AceType, Id.ToString(), Default ? AclScope.Default : AclScope.Access, (AclAction)Permissions) };

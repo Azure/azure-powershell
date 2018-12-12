@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: B02CEAC8-C838-4890-8C21-9897CA39EF45
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmsqlserverextension

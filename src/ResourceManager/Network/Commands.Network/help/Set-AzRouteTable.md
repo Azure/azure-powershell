@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 1CE2A30A-6DF8-4C4C-8348-C3C1CD4D0146
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azroutetable

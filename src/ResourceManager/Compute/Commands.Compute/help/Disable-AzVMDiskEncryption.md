@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 979E956B-4C74-426E-A617-E50C4EBC8A20
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/disable-azvmdiskencryption

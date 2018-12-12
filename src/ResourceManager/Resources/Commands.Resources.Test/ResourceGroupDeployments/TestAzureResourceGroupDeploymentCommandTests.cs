@@ -23,7 +23,7 @@ using System.IO;
 using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
