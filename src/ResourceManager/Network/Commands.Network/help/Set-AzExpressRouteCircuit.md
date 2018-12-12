@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2A3B7343-9AA0-4505-AEDE-31C0C5B98694
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azexpressroutecircuit

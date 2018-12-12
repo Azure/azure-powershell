@@ -2,17 +2,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Management.PowerBIEmbedded", "Commands.Management.PowerBIEmbedded\Commands.Management.PowerBIEmbedded.csproj", "{50C2BA13-7203-4A70-9058-19FB15C730DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Management.PowerBIEmbedded.Netcore", "Commands.Management.PowerBIEmbedded\Commands.Management.PowerBIEmbedded.Netcore.csproj", "{50C2BA13-7203-4A70-9058-19FB15C730DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{13BB1C60-A70E-4780-ABEF-D5EE36754085}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.PowerBIEmbedded.Test", "Commands.PowerBIEmbedded.Test\Commands.PowerBIEmbedded.Test.csproj", "{A6978F77-A97B-414E-BA5A-66E2E6EBC1A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.PowerBIEmbedded.Test.Netcore", "Commands.PowerBIEmbedded.Test\Commands.PowerBIEmbedded.Test.Netcore.csproj", "{A6978F77-A97B-414E-BA5A-66E2E6EBC1A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.PowerBI", "Commands.PowerBI\Commands.PowerBI.csproj", "{B1B26198-8A48-4457-A969-831B2A871A0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.PowerBI.Netcore", "Commands.PowerBI\Commands.PowerBI.Netcore.csproj", "{B1B26198-8A48-4457-A969-831B2A871A0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.PowerBI.Test", "Commands.PowerBI.Test\Commands.PowerBI.Test.csproj", "{9156F1E3-0B1D-46CA-A435-F1E9AAE6DCC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.PowerBI.Test.Netcore", "Commands.PowerBI.Test\Commands.PowerBI.Test.Netcore.csproj", "{9156F1E3-0B1D-46CA-A435-F1E9AAE6DCC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

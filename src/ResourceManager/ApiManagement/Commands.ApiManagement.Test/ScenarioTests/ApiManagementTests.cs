@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -29,7 +29,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
-    using ApiManagementClient = Azure.Management.ApiManagement.ApiManagementClient;
+    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
 
     public class ApiManagementTests : RMTestBase
     {
@@ -53,17 +53,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             _helper.SetupSomeOfManagementClients(resourceManagementClient, armStorageManagementClient, apiManagementClient);
         }
 
-        protected StorageManagementClient GetArmStorageManagementClient(MockContext context)
+        private static StorageManagementClient GetArmStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private ApiManagementClient GetApiManagementManagementClient(MockContext context)
+        private static ApiManagementClient GetApiManagementManagementClient(MockContext context)
         {
             return context.GetServiceClient<ApiManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
 
-            Dictionary<string, string> d = new Dictionary<string, string>
+            var d = new Dictionary<string, string>
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
 
@@ -150,9 +150,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + GetType().Name + ".ps1",
                     _helper.RMProfileModule,
-#if NETSTANDARD
-                    _helper.RMStorageModule,
-#else
+#if !NETSTANDARD
                     _helper.RMStorageDataPlaneModule,
 #endif
                     _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"),
