@@ -2062,7 +2062,7 @@ function Backend-CrudTest {
         Assert-AreEqual 1 $backend.Properties.Count
 
         #backend with proxy
-        $secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
+        $secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Secret used in recorded tests only")]#>
         $proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)
         $credential = New-AzureRmApiManagementBackendProxy -Url "http://12.168.1.1:8080" -ProxyCredential $proxyCreds
 
