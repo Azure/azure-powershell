@@ -12,22 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
+namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Advisor.Cmdlets.Models;
-    using Advisor.Cmdlets.Utilities;
-    using Advisor.Utilities;
-    using Management.Advisor.Models;
-    using Rest.Azure;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Models;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.Advisor.Properties;
+    using Microsoft.Azure.Commands.Advisor.Utilities;
+    using Microsoft.Azure.Management.Advisor.Models;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Disable-AzureRmAdvisorRecommendation cmdlet
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.ResourceGraph.Utilities.ResourceGraphBaseCmdlet" />
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation", DefaultParameterSetName = IdParameterSet), OutputType(typeof(PsAzureAdvisorSuppressionContract))]
+    /// <seealso cref="Microsoft.Azure.Commands.Advisor.Utilities.ResourceGraphBaseCmdlet" />
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation", DefaultParameterSetName = IdParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsAzureAdvisorSuppressionContract))]
     public class DisableAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Resource Id.
         /// </summary>
-        [Parameter(ParameterSetName = "IdParameterSet", ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "ResourceID of the recommendation to be suppressed (space delimitited).")]
+        [Parameter(ParameterSetName = IdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "ResourceID of the recommendation to be suppressed.")]
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -91,6 +92,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             string recommendationId = string.Empty;
             SuppressionContract suppressionContract = null;
 
+            WriteVerbose(Resources.SuppressionCreate);
+
             // This list contains all the response for the auzre-operation
             List<AzureOperationResponse<SuppressionContract>> azureOperationResponseSuppression = new List<AzureOperationResponse<SuppressionContract>>();
             var returnSuppressionContract = new List<PsAzureAdvisorSuppressionContract>();
@@ -105,7 +108,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(this.ResourceId);
                     recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.ResourceId);
 
-                    azureOperationResponseSuppression.Add(this.ResourecAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, DefaultSuppressionName, suppressionContract).Result);
+                    if (ShouldProcess(recommendationId, string.Format(Resources.DisableRecommendationWarningMessage, recommendationId)))
+                    {
+                        azureOperationResponseSuppression.Add(this.ResourecAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, DefaultSuppressionName, suppressionContract).Result);
+                    }
+
                     break;
 
                 case NameParameterSet:
@@ -113,7 +120,10 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(recommendation.Body.Id);
 
                     // Make a get recommendation for this Name and get the ID
-                    azureOperationResponseSuppression.Add(this.ResourecAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, this.RecommendationName, DefaultSuppressionName, suppressionContract).Result);
+                    if (ShouldProcess(this.RecommendationName, string.Format(Resources.DisableRecommendationWarningMessage, this.RecommendationName)))
+                    {
+                        azureOperationResponseSuppression.Add(this.ResourecAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, this.RecommendationName, DefaultSuppressionName, suppressionContract).Result);
+                    }
                     break;
 
                 case InputObjectParameterSet:
@@ -122,7 +132,10 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(this.InputObject.Id);
                     recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.InputObject.Id);
 
-                    azureOperationResponseSuppression.Add(this.ResourecAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, DefaultSuppressionName, suppressionContract).Result);
+                    if (ShouldProcess(recommendationId, string.Format(Resources.DisableRecommendationWarningMessage, recommendationId)))
+                    {
+                        azureOperationResponseSuppression.Add(this.ResourecAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, DefaultSuppressionName, suppressionContract).Result);
+                    }
                     break;
             }
 
