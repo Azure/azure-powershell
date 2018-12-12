@@ -17,7 +17,7 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {

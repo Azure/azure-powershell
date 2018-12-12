@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;

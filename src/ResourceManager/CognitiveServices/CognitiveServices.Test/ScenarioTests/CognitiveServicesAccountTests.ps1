@@ -292,42 +292,6 @@ function Test-NewAzureRmCognitiveServicesAccountKey
     }
 }
 
-
-<#
-.SYNOPSIS
-Test Get-AzureRmCognitiveServicesAccountSkus
-#>
-function Test-GetAzureRmCognitiveServicesAccountSkusLegacy
-{
-    # Setup
-    $rgname = Get-CognitiveServicesManagementTestResourceName;
-    
-    try
-    {
-        # Test
-        $accountname = 'csa' + $rgname;
-        $skuname = 'S2';
-        $accounttype = 'TextAnalytics';
-        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
-
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
-        
-        $skus = (Get-AzureRmCognitiveServicesAccountSkus -ResourceGroupName $rgname -Name $accountname).Value | Select-Object -ExpandProperty Sku;
-        $skuNames = $skus | Select-Object -ExpandProperty Name
-        
-        $expectedSkus = "F0", "S0", "S1", "S2", "S3", "S4"
-        Assert-AreEqualArray $expectedSkus $skuNames
-
-        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
 <#
 .SYNOPSIS
 Test Get-AzureRmCognitiveServicesAccountSkus
@@ -450,42 +414,6 @@ function Test-PipingToSetAzureAccount
         $updatedAccount = Get-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname;
         Assert-AreEqual 'S3' $updatedAccount.Sku.Name;
 
-        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Test Get-AzureRmCognitiveServicesAccount | Get-AzureRmCognitiveServicesAccountSkus
-#>
-function Test-PipingToGetAccountSkus
-{
-	# Setup
-    $rgname = Get-CognitiveServicesManagementTestResourceName
-
-    try
-    {
-        # Test
-        $accountname = 'csa' + $rgname;
-        $skuname = 'S2';
-        $accounttype = 'TextAnalytics';
-        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
-
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
-
-        $account = Get-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname;
-		$sku = ($account | Get-AzureRmCognitiveServicesAccountSkus).Value | Select-Object -ExpandProperty Sku;
-        $skuNames = $sku | Select-Object -ExpandProperty Name
-        
-        $expectedSkus = "F0", "S1", "S2", "S3", "S4"
-        Assert-AreEqualArray $expectedSkus $skuNames
-        
         Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }
     finally

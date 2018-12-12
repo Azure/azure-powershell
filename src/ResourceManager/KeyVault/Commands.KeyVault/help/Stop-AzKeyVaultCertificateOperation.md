@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 3B042D79-658F-41F0-BD4D-9955F2E71CA1
 online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/stop-azkeyvaultcertificateoperation

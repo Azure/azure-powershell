@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Reservations.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Reservations.dll-Help.xml
 Module Name: Az.Reservations
 online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/get-azreservationorderid
 schema: 2.0.0

@@ -19,3 +19,4 @@
 -->
 ## Current Release
 * Add completers for SkuName and Typem available on New-AzureRmCognitiveServicesAccount operation.
+* Removed GetSkusWithAccountParamSetName parameter set from Get-AzCognitiveServicesAccountSkus

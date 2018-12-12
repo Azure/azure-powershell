@@ -2,15 +2,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Dns.Netcore", "Commands.Dns\Commands.Dns.Netcore.csproj", "{3CAE1B57-FFEC-4945-A6C5-6E5E8DEA4BA9}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Dns", "Commands.Dns\Commands.Dns.csproj", "{3CAE1B57-FFEC-4945-A6C5-6E5E8DEA4BA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Dns.Test.Netcore", "Commands.Dns.Test\Commands.Dns.Test.Netcore.csproj", "{133561EC-99AF-4ADC-AF41-39C4D3AD323B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Dns.Test", "Commands.Dns.Test\Commands.Dns.Test.csproj", "{133561EC-99AF-4ADC-AF41-39C4D3AD323B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Network", "..\Network\Commands.Network\Commands.Network.csproj", "{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Network.Netcore", "..\Network\Commands.Network\Commands.Network.Netcore.csproj", "{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

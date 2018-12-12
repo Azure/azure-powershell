@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.dll-Help.xml
 Module Name: Az.StreamAnalytics
 ms.assetid: E711FBFF-FB6D-4DFD-BAE8-7961EB4FD16B
 online version: https://docs.microsoft.com/en-us/powershell/module/az.streamanalytics/test-azstreamanalyticsfunction

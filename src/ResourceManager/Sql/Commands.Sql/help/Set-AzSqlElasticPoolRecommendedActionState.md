@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: EFDFCE12-F39C-4F52-9962-4601F0C4FD47
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlelasticpoolrecommendedactionstate
