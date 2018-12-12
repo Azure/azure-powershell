@@ -30,7 +30,7 @@ function Disable-AzureRmAdvisorRecommendationByNameParameter
 	$TTLValue = "30.00:00:00"
 	$NameValue = "HardcodedSuppressionName"
 
-	$queryResult = Disable-AzureRmAdvisorRecommendation -Name $RecommendationId -Days $DaysParam 
+	$queryResult = Disable-AzAdvisorRecommendation -Name $RecommendationId -Days $DaysParam 
 	
 	## Assert type of object returned 
 	Assert-IsInstance $queryResult System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract]

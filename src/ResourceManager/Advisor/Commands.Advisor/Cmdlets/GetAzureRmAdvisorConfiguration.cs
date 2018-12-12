@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// Gets or sets the resource-group name.
         /// </summary>
         [Parameter(ParameterSetName = RgParameterSet, Mandatory = false, HelpMessage = "Resource Group name for the configuration ")]
-        [Alias("Rg")]
         [ResourceGroupCompleter]
         public string ResourceGroupName
         {
@@ -54,11 +53,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
             if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                responseData = this.ResourcAdvisorClient.Configurations.ListBySubscriptionWithHttpMessagesAsync().Result.Body.AsEnumerable();
+                responseData = this.ResourecAdvisorClient.Configurations.ListBySubscriptionWithHttpMessagesAsync().Result.Body.AsEnumerable();
             }
             else
             {
-                responseData = this.ResourcAdvisorClient.Configurations.ListByResourceGroupWithHttpMessagesAsync(this.ResourceGroupName).Result.Body;
+                responseData = this.ResourecAdvisorClient.Configurations.ListByResourceGroupWithHttpMessagesAsync(this.ResourceGroupName).Result.Body;
             }
 
             // Parse the response data from the API to PS object

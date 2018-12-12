@@ -18,9 +18,9 @@ Get-AzureRmAdvisorConfiguration [-ResourceGroupName <String>] [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-Configuration associated with a subscription are of two typoes,
+Configuration associated with a subscription are of two types,
 
-Subscription level configuration: There can be only one configration for this type for each subscription, lowCpuThreshold and exclude properties are taken into effect for configuration.
+Subscription level configuration: There can be only one configration for this type for each subscription. lowCpuThreshold and exclude properties are taken into effect for configuration.
 ResourceGroup level configuration: There can be only one configration for each ResourceGroup in a subscription, only exclude property is taken into effect for configuration.
 
 ## EXAMPLES
@@ -28,8 +28,13 @@ ResourceGroup level configuration: There can be only one configration for each R
 ### Example 1
 ```powershell
 PS C:\>$data = Get-AzureRmAdvisorConfiguration
-Id         : /subscriptions/658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/configurations/658c8950-e79d-4704-a903-1df66ba90258
-Name       : 658c8950-e79d-4704-a903-1df66ba90258
+Id         : /subscriptions/{user_subscription}/providers/Microsoft.Advisor/configurations/{user_subscription}
+Name       : {user_subscription}
+Properties : Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties
+Type       : Microsoft.Advisor/Configurations
+
+Id         : /subscriptions/{user_subscription}/providers/Microsoft.Advisor/configurations/{user_subscription}-{resourceGroupName}
+Name       : {user_subscription}-{resourceGroupName}
 Properties : Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties
 Type       : Microsoft.Advisor/Configurations
 
@@ -37,6 +42,11 @@ PS C:\>$data[0].Properties
 AdditionalProperties :
 Exclude              : False
 LowCpuThreshold      : 20
+
+PS C:\>$data[0].Properties
+AdditionalProperties :
+Exclude              : True
+LowCpuThreshold      : null
 
 ```
 Retrieves a list of Azure Advisor Configration.
@@ -78,7 +88,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 

@@ -7,7 +7,6 @@
 #
 
 @{
-
         # Script module or binary module file associated with this manifest.
         # RootModule = ''
 
@@ -51,7 +50,7 @@
         # ProcessorArchitecture = ''
 
         # Modules that must be imported into the global environment prior to importing this module
-        RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.0'; })
+        RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.7.0'; })
 
         # Assemblies that must be loaded prior to importing this module
         RequiredAssemblies = '.\Microsoft.Azure.Management.Advisor.dll'
@@ -72,11 +71,9 @@
         FunctionsToExport = @()
 
         # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-        CmdletsToExport = 'Get-AzureRmAdvisorRecommendation', 
-							'Enable-AzureRmAdvisorRecommendation', 
-							'Disable-AzureRmAdvisorRecommendation',
-							'Get-AzureRmAdvisorConfiguration', 
-							'Set-AzureRmAdvisorConfiguration'
+        CmdletsToExport = 'Get-AzAdvisorRecommendation', 'Enable-AzAdvisorRecommendation', 
+			'Disable-AzAdvisorRecommendation','Get-AzAdvisorConfiguration', 
+			'Set-AzAdvisorConfiguration'
 							
 
         # Variables to export from this module
@@ -100,7 +97,7 @@
             PSData = @{
 
                 # Tags applied to this module. These help with module discovery in online galleries.
-                Tags = 'Azure','ResourceManager','ARM','Provider','Resource','Graph'
+                Tags = 'Azure','Advisor'
 
                 # A URL to the license for this module.
                 LicenseUri = 'https://aka.ms/azps-license'

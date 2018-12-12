@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="IBM864"?>
 <Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.targets" />

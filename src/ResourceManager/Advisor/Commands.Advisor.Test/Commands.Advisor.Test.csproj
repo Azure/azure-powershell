@@ -79,7 +79,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
    
-    <!-->Start of Session Records entries-->
+    <!-->Start of Session Records entries--><!--
     <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.DisableAzureRMAdvisorRecommendation\DisableAzureRmAdvisorRecommendationByIdParameter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -144,7 +144,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Advisor.Test.ScenarioTests.SetAzureRmAdvisorConfiguration\SetAzureRmAdvisorConfigurationNoParameterSet.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <!-->End of Session Records-->
+    --><!-->End of Session Records-->
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Advisor.Utilities
         /// <summary>
         /// Gets the resource advisor client.
         /// </summary>
-        public IAdvisorManagementClient ResourcAdvisorClient
+        public IAdvisorManagementClient ResourecAdvisorClient
         {
             get
             {

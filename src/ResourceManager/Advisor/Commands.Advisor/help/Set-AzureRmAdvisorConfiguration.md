@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmAdvisorConfiguration
 
 ## SYNOPSIS
-Updates or creates the Aure Advisor Configration.
+Updates or creates the Azure Advisor Configration.
 
 ## SYNTAX
 
@@ -27,10 +27,10 @@ Set-AzureRmAdvisorConfiguration [-Exclude] [[-ResourceGroupName] <String>]
 ```
 
 ## DESCRIPTION
-Used to update the configuration of the advisors. Two types of configration are present Subscription level configuration and ResourceGroup level configuration. 
+Used to update the configuration of the advisors. Two types of configration are present: Subscription level configuration and ResourceGroup level configuration. 
 
-Subscription level configuration: There can be only one configration for this type, lowCpuThreshold and exclude properties can be updated using cmdlet.
-ResourceGroup level configuration: There can be only one configration for each ResourceGroup, only exclude property could be updated using cmdlet.
+Subscription level configuration: There can be only one configration for this type and LowCpuThreshold & exclude properties can be updated using cmdlet.
+ResourceGroup level configuration: There can be only one configration for each ResourceGroup and only exclude property can be updated using cmdlet.
 
 ## EXAMPLES
 
@@ -207,11 +207,13 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
+### System.String
+
 ### Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData, Microsoft.Azure.Commands.Advisor, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData
 
 ## NOTES
 

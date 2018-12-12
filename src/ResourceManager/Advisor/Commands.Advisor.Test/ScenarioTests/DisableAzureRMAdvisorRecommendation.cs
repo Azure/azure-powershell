@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableAzureRmAdvisorRecommendationByIdParameter()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzureRmAdvisorRecommendationByIdParameter");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzureRmAdvisorRecommentionByIdParameter");
         }
 
         [Fact]
