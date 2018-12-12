@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Billing</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Billing</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Billing</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

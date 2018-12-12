@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Management.Advisor;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
             _helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPowerShellTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
 
             var sf = new StackTrace().GetFrame(1);

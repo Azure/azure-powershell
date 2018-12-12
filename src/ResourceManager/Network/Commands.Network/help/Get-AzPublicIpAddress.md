@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 0CD03BF8-8DB6-44BC-91F0-D863949DBD17
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azpublicipaddress

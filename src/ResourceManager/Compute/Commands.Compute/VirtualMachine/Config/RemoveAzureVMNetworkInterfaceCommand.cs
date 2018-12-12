@@ -24,9 +24,6 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Setup the network interface.
     /// </summary>
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSVirtualMachineIdentity), DeprecatedOutputProperties = new string[] { "IdentityIds" })]
-#endif
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMNetworkInterface",SupportsShouldProcess = true),OutputType(typeof(PSVirtualMachine))]
     public class RemoveAzureVMNetworkInterfaceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {

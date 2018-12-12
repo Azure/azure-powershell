@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Media", "Commands.Media\Commands.Media.csproj", "{A505E64B-6AA8-43AC-90E7-22A94FD38A0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Media.Netcore", "Commands.Media\Commands.Media.Netcore.csproj", "{A505E64B-6AA8-43AC-90E7-22A94FD38A0F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{7D07C7D2-E4ED-4B71-AABB-75C94F803EDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Media.Test", "Commands.Media.Test\Commands.Media.Test.csproj", "{05587C05-F75A-4B91-ADD4-EB8D84F90CF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Media.Test.Netcore", "Commands.Media.Test\Commands.Media.Test.Netcore.csproj", "{05587C05-F75A-4B91-ADD4-EB8D84F90CF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

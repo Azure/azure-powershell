@@ -3,8 +3,8 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.PowerBI.Test</AssemblyName>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.PowerBI.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.PowerBI.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -24,17 +24,8 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.PowerBIDedicated" Version="0.11.0-preview" />
-  </ItemGroup>
-
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.PowerBI">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.PowerBIEmbedded\Microsoft.Azure.Commands.PowerBI.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.Management.PowerBIEmbedded">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.PowerBIEmbedded\Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Microsoft.Azure.Management.PowerBIDedicated" Version="0.11.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

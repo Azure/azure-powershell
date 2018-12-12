@@ -32,12 +32,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSUpgradePolicy),
-        DeprecatedOutputProperties = new string[] { "AutomaticOSUpgrade", "AutoOSUpgradePolicy" })]
-    [CmdletOutputBreakingChange(typeof(PSVirtualMachineScaleSetIdentity),
-        DeprecatedOutputProperties = new string[] { "IdentityIds" })]
-#endif
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class GetAzureRmVmss : ComputeAutomationBaseCmdlet

@@ -20,14 +20,6 @@
 
 ## Current Release
 * Fixed a typo in the progress message.
-
-## Version 0.1.2
-* Updated list of unsupported file name characters.
-
-## Version 0.1.1
-* Updated to the latest version of the Azure ClientRuntime.
-
-## Version 0.1.0
-* Add Azure File Sync evaluation cmdlet
-    - Invoke-AzureRmStorageSyncCompatibilityCheck
-
+* Introduced the following breaking changes in Invoke-AzureRmStorageSyncCompatibilityCheck cmdlet:
+    - Parameter 'Quiet' had been removed.
+    - Return type has changed from list of PSValidationResult to PSStorageSyncValidation. Validation results are now stored in PSStorageSyncValidation.Results member.
