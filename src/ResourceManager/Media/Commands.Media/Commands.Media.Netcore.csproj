@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Media</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Media</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Media</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

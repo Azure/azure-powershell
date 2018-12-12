@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 1F094EBA-E4AE-4B3E-BA20-858818C6FD12
 online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource
@@ -13,9 +13,10 @@ Get datasources under Azure Log Analytics workspace.
 
 ## SYNTAX
 
-### ByWorkspaceName (Default)
+### ByWorkspaceNameByKind (Default)
 ```
-Get-AzOperationalInsightsDataSource [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzOperationalInsightsDataSource [[-ResourceGroupName] <String>] [[-WorkspaceName] <String>]
+ [-Kind] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObjectByName
@@ -34,12 +35,6 @@ Get-AzOperationalInsightsDataSource [[-Workspace] <PSWorkspace>] [[-Kind] <Strin
 ```
 Get-AzOperationalInsightsDataSource [-ResourceGroupName] <String> [-WorkspaceName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByWorkspaceNameByKind
-```
-Get-AzOperationalInsightsDataSource [[-ResourceGroupName] <String>] [[-WorkspaceName] <String>]
- [-Kind] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

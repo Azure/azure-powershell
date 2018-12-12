@@ -1,7 +1,7 @@
 ﻿using Microsoft.Azure.Commands.ManagedServiceIdentity.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ManagedServiceIdentity.Test.ScenarioTests

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 929F4593-2A71-49B9-87F8-F24FA9F6E314
 online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/test-azlogicapp

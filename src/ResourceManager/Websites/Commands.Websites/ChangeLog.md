@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Removed deprecated properties from PS models

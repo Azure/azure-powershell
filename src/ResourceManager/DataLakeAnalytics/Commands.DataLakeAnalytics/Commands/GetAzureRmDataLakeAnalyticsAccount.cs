@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsAccount", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(PSDataLakeAnalyticsAccount))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsAccount", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(PSDataLakeAnalyticsAccount), typeof(PSDataLakeAnalyticsAccountBasic))]
     [Alias("Get-AdlAnalyticsAccount")]
     public class GetAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             }
             else
             {
-                WriteWarning(Resources.IncorrectOutputTypeWarning);
                 // List all accounts in given resource group if avaliable otherwise all accounts in the subscription
                 WriteObject(DataLakeAnalyticsClient.ListAccounts(ResourceGroupName, null, null, null)
                     .Select(element => new PSDataLakeAnalyticsAccountBasic(element))

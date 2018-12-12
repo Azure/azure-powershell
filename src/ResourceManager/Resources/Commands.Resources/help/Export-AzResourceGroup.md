@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 63BBDF98-75FC-4A44-9FD0-95AD21ED93A6
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/export-azresourcegroup

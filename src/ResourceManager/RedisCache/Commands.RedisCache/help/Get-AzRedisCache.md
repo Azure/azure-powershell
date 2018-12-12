@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
 ms.assetid: 8EF45FCE-5475-4A18-BFB0-C016E239612E
 online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/get-azrediscache

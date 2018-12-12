@@ -26,9 +26,6 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Setup the network interface.
     /// </summary>
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSVirtualMachineIdentity), DeprecatedOutputProperties = new string[] { "IdentityIds" })]
-#endif
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMNetworkInterface",DefaultParameterSetName = NicIdParamSetName),OutputType(typeof(PSVirtualMachine))]
     public class AddAzureVMNetworkInterfaceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
