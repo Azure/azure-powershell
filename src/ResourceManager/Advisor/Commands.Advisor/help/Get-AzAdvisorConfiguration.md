@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmAdvisorConfiguration
+# Get-AzAdvisorConfiguration
 
 ## SYNOPSIS
 Get the Azure Advisor configurations for the given subscription or resource group.
@@ -13,7 +13,7 @@ Get the Azure Advisor configurations for the given subscription or resource grou
 ## SYNTAX
 
 ```
-Get-AzureRmAdvisorConfiguration [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzAdvisorConfiguration [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ ResourceGroup level configuration: There can be only one configration for each R
 
 ### Example 1
 ```powershell
-PS C:\>$data = Get-AzureRmAdvisorConfiguration
+PS C:\>$data = Get-AzAdvisorConfiguration
 Id         : /subscriptions/{user_subscription}/providers/Microsoft.Advisor/configurations/{user_subscription}
 Name       : {user_subscription}
 Properties : Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationProperties
@@ -43,13 +43,14 @@ AdditionalProperties :
 Exclude              : False
 LowCpuThreshold      : 20
 
-PS C:\>$data[0].Properties
+PS C:\>$data[1].Properties
 AdditionalProperties :
 Exclude              : True
 LowCpuThreshold      : null
 
 ```
 Retrieves a list of Azure Advisor Configration.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -73,7 +74,7 @@ Resource Group name for the configuration
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: Rg
+Aliases:
 
 Required: False
 Position: Named
@@ -88,7 +89,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 

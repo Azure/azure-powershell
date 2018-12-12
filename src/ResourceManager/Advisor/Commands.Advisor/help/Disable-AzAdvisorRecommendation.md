@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Disable-AzureRmAdvisorRecommendation
+# Disable-AzAdvisorRecommendation
 
 ## SYNOPSIS
 Disable an Azure Advisor recommendation.
@@ -14,21 +14,20 @@ Disable an Azure Advisor recommendation.
 
 ### IdParameterSet (Default)
 ```
-Disable-AzureRmAdvisorRecommendation [-ResourceId] <String> [[-Days] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Disable-AzAdvisorRecommendation [-ResourceId] <String> [[-Days] <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NameParameterSet
 ```
-Disable-AzureRmAdvisorRecommendation [[-Days] <String>] [-RecommendationName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Disable-AzAdvisorRecommendation [[-Days] <Int32>] [-RecommendationName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Disable-AzureRmAdvisorRecommendation [[-Days] <String>]
- [-InputObject] <PsAzureAdvisorResourceRecommendationBase> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Disable-AzAdvisorRecommendation [[-Days] <Int32>] [-InputObject] <PsAzureAdvisorResourceRecommendationBase>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +37,7 @@ Create suppression for recomendation, this enables a particular recommendation t
 
 ### Example 1
 ```powershell
-PS C:\> Disable-AzureRMAdvisorRecommendation -Name "f380a3a8-9d18-cfad-78e0-55762c72a178"
+PS C:\> Disable-AzAdvisorRecommendation -Name "f380a3a8-9d18-cfad-78e0-55762c72a178"
 
 SuppressionId : d1f70547-0e72-db29-443e-c1164d5d4377
 Ttl           : -1
@@ -50,9 +49,9 @@ Type          : Microsoft.Advisor/suppressions
 
 Create a suppression for the given recomendation name with a default-SuppressionName and default days as -1.
 
-### Example 3
+### Example 2
 ```powershell
-PS C:\> Disable-AzureRMAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" -Days 12
+PS C:\> Disable-AzAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" -Days 12
 
 SuppressionId : 7d1f0547-0e72-db29-443e-c1164d5d4377
 Ttl           : 12.00:00:00
@@ -62,12 +61,12 @@ Name          : HardCodedSupressionName
 Type          : Microsoft.Advisor/suppressions
 ```
 
-A suppression is created for the given recommendation-Id
+A suppression is created for the given recommendation-Id.
 
-### Example 4
+### Example 3
 ```powershell
-PS C:\>  Get-AzureRMAdvisorRecommendation -Id "/subscriptions/user_subscription/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" | Disable-A
-zureRMAdvisorRecommendation
+PS C:\>  Get-AzAdvisorRecommendation -Id "/subscriptions/user_subscription/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" | Disable-A
+zAdvisorRecommendation
 
 SuppressionId : daf24e78-af2d-e8d3-9c50-fa970edc2937
 Ttl           : -1
@@ -77,15 +76,30 @@ Name          : HardCodedSupressionName
 Type          : Microsoft.Advisor/suppressions
 ```
 
-Creating a suppression by piping two cmdlet. First cmdlet will return one recommendation and second cmdlet will create a suppression for the same.
+Creating a suppression by piping two cmdlet. First cmdlet will return a recommendation and second cmdlet will create a suppression for the same.
 
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Days
 Days to disable.
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzureRmAdvisorRecommendation call.
+The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.
 
 ```yaml
 Type: PsAzureAdvisorResourceRecommendationBase
@@ -132,7 +146,7 @@ ResourceName of the recommendation
 ```yaml
 Type: String
 Parameter Sets: NameParameterSet
-Aliases: Name
+Aliases:
 
 Required: True
 Position: 0
@@ -142,17 +156,33 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ResourceID of the recommendation to be suppressed (space delimitited).
+ResourceID of the recommendation to be suppressed.
 
 ```yaml
 Type: String
 Parameter Sets: IdParameterSet
-Aliases: Id
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

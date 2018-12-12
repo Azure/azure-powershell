@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Enable-AzureRmAdvisorRecommendation
+# Enable-AzAdvisorRecommendation
 
 ## SYNOPSIS
 Enable an Azure Advisor recommendation.
@@ -14,20 +14,20 @@ Enable an Azure Advisor recommendation.
 
 ### NameParameterSet (Default)
 ```
-Enable-AzureRmAdvisorRecommendation -RecommendationName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Enable-AzAdvisorRecommendation [-RecommendationName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Enable-AzureRmAdvisorRecommendation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Enable-AzAdvisorRecommendation [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Enable-AzureRmAdvisorRecommendation -InputObject <PsAzureAdvisorResourceRecommendationBase>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Enable-AzAdvisorRecommendation [-InputObject] <PsAzureAdvisorResourceRecommendationBase>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Enables a suppresed recomendation, the suppression for a recommendation are remo
 
 ### Example 1
 ```powershell
-PS C:\> Enable-AzureRMAdvisorRecommendation -Id "{recommendation_id}" 
+PS C:\> Enable-AzAdvisorRecommendation -Id "{recommendation_id}" 
 
 Id                   : subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}
 Category             : Performance
@@ -61,8 +61,8 @@ Removes all the suppression for the given recommendation with name "recommendati
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRMAdvisorRecommendation -Id "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" 
-| Enable-AzureRMAdvisorRecommendation
+PS C:\> Get-AzAdvisorRecommendation -Id "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" 
+| Enable-AzAdvisorRecommendation
 
 Id                   : subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}
 Category             : Performance
@@ -81,7 +81,25 @@ SuppressionIds       : {}
 Name                 : {recommendation_id}
 Type                 : Microsoft.Advisor/recommendations
 ```
+
+Removes all the suppression for the given recommendation passed on from the pipeline.
+
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -99,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzureRmAdvisorRecommendation call.
+The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.
 
 ```yaml
 Type: PsAzureAdvisorResourceRecommendationBase
@@ -119,7 +137,7 @@ ResourceName of the recommendation.
 ```yaml
 Type: String
 Parameter Sets: NameParameterSet
-Aliases: Name
+Aliases:
 
 Required: True
 Position: 0
@@ -134,12 +152,28 @@ Resource Id of the recommendation to be suppressed.
 ```yaml
 Type: String
 Parameter Sets: IdParameterSet
-Aliases: Id
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
