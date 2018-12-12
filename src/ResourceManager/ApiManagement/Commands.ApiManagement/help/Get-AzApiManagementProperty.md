@@ -9,6 +9,7 @@ schema: 2.0.0
 # Get-AzApiManagementProperty
 
 ## SYNOPSIS
+Gets a list or a particular Property (Named-Value).
 
 ## SYNTAX
 
@@ -37,6 +38,7 @@ Get-AzApiManagementProperty -Context <PsApiManagementContext> [-Tag <String>]
 ```
 
 ## DESCRIPTION
+The **Get-AzApiManagementProperty** cmdlet gets a list or a particular property.
 
 ## EXAMPLES
 
