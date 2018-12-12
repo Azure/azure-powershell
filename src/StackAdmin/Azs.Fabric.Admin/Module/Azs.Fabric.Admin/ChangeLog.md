@@ -26,6 +26,8 @@
 	* Get-AzsStorageSubSystem
 * Deprecation
 	* Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume
+    * Get-AzsStorageSystem will be deprecated in a future release
+    * Get-AzsStoragePool will be deprecated in a future release
 
 ## Version 0.2.1
 * Bug fixes
