@@ -1,0 +1,14 @@
+{
+    name: "foo1",
+    properties: {
+        type: "CustomDataSet",
+        typeProperties: {
+            tableName: "myTable"
+        },
+        linkedServiceName: "foo2",
+        availability: {
+            frequency: "Hour",
+            interval: 1
+        }
+    }
+}
