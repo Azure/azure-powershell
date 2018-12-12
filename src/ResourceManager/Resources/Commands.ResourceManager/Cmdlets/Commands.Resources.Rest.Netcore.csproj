@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.ResourceManager.Cmdlets</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.ResourceManager</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ResourceManager.Cmdlets</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -30,10 +30,6 @@
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.1-preview" />
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="1.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Tags\Commands.Tags\Commands.Tags.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: E066BBFA-2E03-431D-85D1-99F230B6AC59
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkinterface

@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.ServiceBus</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ServiceBus</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

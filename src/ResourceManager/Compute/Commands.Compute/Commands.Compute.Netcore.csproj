@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Compute</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Compute</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Compute</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>

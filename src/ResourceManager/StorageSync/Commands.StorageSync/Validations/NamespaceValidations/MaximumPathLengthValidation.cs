@@ -56,8 +56,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     Description = $"Path length limit exceeded. Maximum length is {this._maxPathLength}.",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = this.ValidationType
-
+                    Type = this.ValidationType,
+                    Kind = this.ValidationKind
                 };
             }
 

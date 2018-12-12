@@ -49,8 +49,5 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
         {
 
         }
-
-        [CmdletParameterBreakingChange("AppServicePlanName", ChangeDescription = "This property is deprecated and will be removed in a future releases. Use 'Name' property instead.")]
-        public string AppServicePlanName { get { return Name; } }
     }
 }
