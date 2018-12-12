@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     using Microsoft.Azure.Management.Advisor.Models;
     using Microsoft.Rest.Azure;
     using Management.Internal.Resources.Utilities.Models;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Set-AzureRmAdvisorConfiguration cmdlet
@@ -51,7 +52,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// Gets or sets the LowCpuThreshold.
         /// </summary>s
         [Parameter(ParameterSetName = InputObjectLowCpuExcludeParameterSet, Position = 0, Mandatory = true, HelpMessage = "Value for Low Cpu threshold.")]
-        [Alias("LowCpu")]
         [ValidateSet("0", "5", "10", "15", "20")]
         [ValidateNotNullOrEmpty]
         public string LowCpuThreshold { get; set; }
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// Gets or sets the include.
         /// </summary>
         [Parameter(ParameterSetName = InputObjectRgExcludeParameterSet, Mandatory = false, Position = 0, HelpMessage = "Resource Group name for the configuration.")]
-        [Alias("Rg", "ResoureGroup")]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -83,12 +83,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             AzureOperationResponse<ARMErrorResponseBody> response = null;
             AzureOperationResponse<IPage<ConfigData>> azureOperationResponseBySubscription = null;
 
-            response = this.ResourcAdvisorClient.Configurations.CreateInSubscriptionWithHttpMessagesAsync(configData).Result;
-            azureOperationResponseBySubscription = this.ResourcAdvisorClient.Configurations.ListBySubscriptionWithHttpMessagesAsync().Result;
+            response = this.ResourecAdvisorClient.Configurations.CreateInSubscriptionWithHttpMessagesAsync(configData).Result;
+            azureOperationResponseBySubscription = this.ResourecAdvisorClient.Configurations.ListBySubscriptionWithHttpMessagesAsync().Result;
 
             foreach (ConfigData entry in azureOperationResponseBySubscription.Body)
             {
-                if (entry.Name.Equals(this.ResourcAdvisorClient.SubscriptionId))
+                if (entry.Name.Equals(this.ResourecAdvisorClient.SubscriptionId))
                 {
                     results.Add(PsAzureAdvisorConfigurationData.GetFromConfigurationData(entry));
                 }
@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             AzureOperationResponse<ARMErrorResponseBody> response = null;
             AzureOperationResponse<IEnumerable<ConfigData>> azureOperationResponse = null;
 
-            response = this.ResourcAdvisorClient.Configurations.CreateInResourceGroupWithHttpMessagesAsync(configData, resourceGroupName).Result;
-            azureOperationResponse = this.ResourcAdvisorClient.Configurations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName).Result;
+            response = this.ResourecAdvisorClient.Configurations.CreateInResourceGroupWithHttpMessagesAsync(configData, resourceGroupName).Result;
+            azureOperationResponse = this.ResourecAdvisorClient.Configurations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName).Result;
 
             foreach (ConfigData entry in azureOperationResponse.Body)
             {
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         private PsAzureAdvisorConfigurationData GetConfigurationDataForResourceGroup(string resourceGroupName)
         {
             PsAzureAdvisorConfigurationData returnConfigurationData = null;
-            AzureOperationResponse<IEnumerable<ConfigData>> azureOperationResponse = this.ResourcAdvisorClient.Configurations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName).Result;
+            AzureOperationResponse<IEnumerable<ConfigData>> azureOperationResponse = this.ResourecAdvisorClient.Configurations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName).Result;
 
             foreach (ConfigData entry in azureOperationResponse.Body)
             {
@@ -153,11 +153,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         private PsAzureAdvisorConfigurationData GetConfigurationDataForCurrentSubscription()
         {
             PsAzureAdvisorConfigurationData returnConfigurationData = null;
-            AzureOperationResponse<IPage<ConfigData>> azureOperationResponse = this.ResourcAdvisorClient.Configurations.ListBySubscriptionWithHttpMessagesAsync().Result;
+            AzureOperationResponse<IPage<ConfigData>> azureOperationResponse = this.ResourecAdvisorClient.Configurations.ListBySubscriptionWithHttpMessagesAsync().Result;
 
             foreach (ConfigData entry in azureOperationResponse.Body)
             {
-                if (entry.Name.Equals(this.ResourcAdvisorClient.SubscriptionId))
+                if (entry.Name.Equals(this.ResourecAdvisorClient.SubscriptionId))
                 {
                     returnConfigurationData = PsAzureAdvisorConfigurationData.GetFromConfigurationData(entry);
                 }
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             ConfigDataProperties configDataProperties = new ConfigDataProperties();
 
             // Used to store type of configuration 
-            bool isSubsCriptionTypeConfiguration = false;
+            bool isSubscriptionTypeConfiguration = false;
             bool isResourceGroupTypeConfiguration = false;
 
             switch (this.ParameterSetName)
@@ -199,8 +199,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     // If InputObject is not null, this is a piping scenario.
                     if (this.InputObject != null)
                     {
-                        isSubsCriptionTypeConfiguration = SuppressionHelper.IsConfigurationSubscriptionLevel(this.InputObject);
-                        if (isSubsCriptionTypeConfiguration)
+                        isSubscriptionTypeConfiguration = SuppressionHelper.IsConfigurationSubscriptionLevel(this.InputObject);
+                        if (isSubscriptionTypeConfiguration)
                         {
                             results = this.CreateConfigurationBySubscription(configData);
                         }

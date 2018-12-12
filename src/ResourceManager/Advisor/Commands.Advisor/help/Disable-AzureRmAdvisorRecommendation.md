@@ -52,7 +52,7 @@ Create a suppression for the given recomendation name with a default-Suppression
 
 ### Example 3
 ```powershell
-PS C:\> Disable-AzureRMAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{}" -Days 12
+PS C:\> Disable-AzureRMAdvisorRecommendation -ResourceId "/subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" -Days 12
 
 SuppressionId : 7d1f0547-0e72-db29-443e-c1164d5d4377
 Ttl           : 12.00:00:00
@@ -66,7 +66,7 @@ A suppression is created for the given recommendation-Id
 
 ### Example 4
 ```powershell
-PS C:\>  Get-AzureRMAdvisorRecommendation -Id "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/AzExpertStg/providers/Microsoft.Cache/Redis/azacache/providers/Microsoft.Advisor/recommendations/f380a3a8-9d18-cfad-78e0-55762c72a178" | Disable-A
+PS C:\>  Get-AzureRMAdvisorRecommendation -Id "/subscriptions/user_subscription/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}" | Disable-A
 zureRMAdvisorRecommendation
 
 SuppressionId : daf24e78-af2d-e8d3-9c50-fa970edc2937
@@ -168,7 +168,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract, Microsoft.Azure.Commands.Advisor, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract
 
 ## NOTES
 

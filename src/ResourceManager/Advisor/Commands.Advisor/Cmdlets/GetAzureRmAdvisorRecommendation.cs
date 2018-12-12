@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// Gets or sets the Id.
         /// </summary>s
         [Parameter(ParameterSetName = "IdParameterSet", ValueFromPipelineByPropertyName = true, Mandatory = true, Position = 0, HelpMessage = "One or more recommendation-Id (space delimited)")]
-        [Alias("Id")]
         public string ResourceId
         {
             get;
@@ -69,7 +68,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// Gets or sets the ResourceGroupName.
         /// </summary>
         [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "ResourceGroup name of the recommendation")]
-        [Alias("Name")]
         [ResourceGroupCompleter]
         public string ResourceGroupName
         {
@@ -107,9 +105,9 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
                     foreach (string resourceId in resourceIDList)
                     {
-                        string recommendationId = RecommendationHelper.GetRecommendationIdFromResoureID(resourceId);
+                        string recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(resourceId);
 
-                        recommendation = this.ResourcAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourcAdvisorClient.SubscriptionId, recommendationId).Result;
+                        recommendation = this.ResourecAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourecAdvisorClient.SubscriptionId, recommendationId).Result;
                         results.Add(PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(recommendation.Body));
                     }
 
@@ -123,11 +121,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     {
                         if (string.IsNullOrEmpty(nextPagelink))
                         {
-                            operationResponseRecommendation = this.ResourcAdvisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
+                            operationResponseRecommendation = this.ResourecAdvisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
                         }
                         else
                         {
-                            operationResponseRecommendation = this.ResourcAdvisorClient.Recommendations.ListWithHttpMessagesAsync(nextPagelink).Result;
+                            operationResponseRecommendation = this.ResourecAdvisorClient.Recommendations.ListWithHttpMessagesAsync(nextPagelink).Result;
                         }
                         nextPagelink = operationResponseRecommendation.Body.NextPageLink;
                         // Add current page items to the List 
@@ -141,7 +139,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     // Filter out the resourcegroupname recommendations
                     if (!string.IsNullOrEmpty(this.ResourceGroupName))
                     {
-                        results = RecommendationHelper.ReccomendationFilterByCategoryAndResource(results, string.Empty, this.ResourceGroupName);
+                        results = RecommendationHelper.RecomendationFilterByCategoryAndResource(results, string.Empty, this.ResourceGroupName);
                     }
 
                     break;
@@ -149,12 +147,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
             if (!string.IsNullOrEmpty(this.Category))
             {
-                results = RecommendationHelper.ReccomendationFilterByCategoryAndResource(results, this.Category, string.Empty);
+                results = RecommendationHelper.RecomendationFilterByCategoryAndResource(results, this.Category, string.Empty);
             }
 
             if (Refresh)
             {
-                AzureOperationHeaderResponse<RecommendationsGenerateHeaders> generateionResponse = this.ResourcAdvisorClient.Recommendations.GenerateWithHttpMessagesAsync().Result;
+                AzureOperationHeaderResponse<RecommendationsGenerateHeaders> generateionResponse = this.ResourecAdvisorClient.Recommendations.GenerateWithHttpMessagesAsync().Result;
             }
 
             this.WriteObject(results, true);

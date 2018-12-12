@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// <param name="category">Category name</param>
         /// <param name="resourceGroup">Resource group name</param>
         /// <returns>Filtered list of recommendations</returns>
-        public static List<PsAzureAdvisorResourceRecommendationBase> ReccomendationFilterByCategoryAndResource(IEnumerable<PsAzureAdvisorResourceRecommendationBase> recListTobeFiltered, string category, string resourceGroup)
+        public static List<PsAzureAdvisorResourceRecommendationBase> RecomendationFilterByCategoryAndResource(IEnumerable<PsAzureAdvisorResourceRecommendationBase> recListTobeFiltered, string category, string resourceGroup)
         {
             if (recListTobeFiltered == null || recListTobeFiltered.Count() == 0)
             {
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// </summary>
         /// <param name="resourceID">ResourceId of recommendation</param>
         /// <returns>SubscriptionId as string</returns>
-        public static string GetFullResourceUriFromResoureID(string resourceID)
+        public static string GetFullResourceUriFromResourceID(string resourceID)
         {
             string subscriptionID = string.Empty;
 
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// </summary>
         /// <param name="resourceID">ResourceId of recommendation</param>
         /// <returns>RecommendationId as string</returns>
-        public static string GetRecommendationIdFromResoureID(string resourceID)
+        public static string GetRecommendationIdFromResourceID(string resourceID)
         {
             string recommendationId = string.Empty;
             string[] resourceIdSplit = resourceID.Split('/');

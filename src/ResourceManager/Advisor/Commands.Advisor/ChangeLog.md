@@ -18,8 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
-*Added new commendalets for Advidor recommendation
+*Added new commendalets for Advidor Recommendation
     - Get-AzureRMAdvisorRecommendation
     - Enable-AzureRMAdvisorRecommendation
     - Disable-AzureRMAdvisorRecommendation
-
+*Added new commendalets for Advidor Configuration
+    - Get-AzureRMAdvisorConfiguration
+    - Set-AzureRMAdvisorConfiguration
