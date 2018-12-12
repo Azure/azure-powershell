@@ -18,3 +18,5 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Removed -Sku parameter from New/Set-AzPolicyAssignment
+* Removed -Password parameter from New-AzADServicePrincipal and New-AzADSpCredential
