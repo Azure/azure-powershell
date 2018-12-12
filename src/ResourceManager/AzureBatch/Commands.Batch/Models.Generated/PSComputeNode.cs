@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IReadOnlyList<PSComputeNodeError> errors;
         
+        private PSNodeAgentInformation nodeAgentInformation;
+        
         private IReadOnlyList<PSTaskInformation> recentTasks;
         
         private PSStartTask startTask;
@@ -159,6 +161,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.LastBootTime;
+            }
+        }
+        
+        public PSNodeAgentInformation NodeAgentInformation
+        {
+            get
+            {
+                if (((this.nodeAgentInformation == null) 
+                            && (this.omObject.NodeAgentInformation != null)))
+                {
+                    this.nodeAgentInformation = new PSNodeAgentInformation(this.omObject.NodeAgentInformation);
+                }
+                return this.nodeAgentInformation;
             }
         }
         
