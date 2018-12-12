@@ -204,7 +204,6 @@ namespace Microsoft.Azure.Commands.Kusto.Models
             int hotCachePeriodInDays,
             int softDeletePeriodInDays,
             string location,
-            Hashtable customTags = null,
             PSKustoDatabase existingDatbase = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -212,15 +211,11 @@ namespace Microsoft.Azure.Commands.Kusto.Models
                 resourceGroupName = GetResourceGroupByCluster(clusterName);
             }
 
-            var tags = (customTags != null)
-                ? TagsConversionHelper.CreateTagDictionary(customTags, true)
-                : null;
-
             Database newOrUpdatedDatabase;
             if (existingDatbase != null)
             {
 
-                var updateParameters = new DatabaseUpdate(){SoftDeletePeriodInDays = softDeletePeriodInDays, HotCachePeriodInDays = hotCachePeriodInDays, Tags = tags};
+                var updateParameters = new DatabaseUpdate(){SoftDeletePeriodInDays = softDeletePeriodInDays, HotCachePeriodInDays = hotCachePeriodInDays};
                 newOrUpdatedDatabase = _client.Databases.Update(resourceGroupName, clusterName, databaseName, updateParameters);
             }
             else
