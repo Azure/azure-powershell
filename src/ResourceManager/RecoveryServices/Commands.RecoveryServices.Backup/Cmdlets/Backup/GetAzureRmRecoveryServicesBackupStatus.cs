@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(ParameterSetName = IdWorkloadParamSet, ValueFromPipelineByPropertyName = true,
           HelpMessage = ParamHelpMsgs.ProtectionCheck.ProtectableObjName, Mandatory = true)]
-        public string ProtectableObjName { get; set; }
+        public string ProtectableObjectName { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 GenericResource resource = ServiceClientAdapter.GetAzureResource(resourceId);
 
-                BackupStatusResponse backupStatus = ServiceClientAdapter.CheckBackupStatus(Type, resourceId, resource.Location, ProtectableObjName).Body;
+                BackupStatusResponse backupStatus = ServiceClientAdapter.CheckBackupStatus(Type, resourceId, resource.Location, ProtectableObjectName).Body;
 
                 Boolean isProtected = String.Equals(backupStatus.ProtectionStatus, "Protected", StringComparison.OrdinalIgnoreCase);
 
