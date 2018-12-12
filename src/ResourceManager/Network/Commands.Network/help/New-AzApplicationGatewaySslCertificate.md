@@ -14,8 +14,8 @@ Creates an SSL certificate for an Azure application gateway.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewaySslCertificate -Name <String> -CertificateFile <String> -Password <SecureString>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewaySslCertificate -Name <String> [-CertificateFile <String>] [-Password <SecureString>]
+ [-KeyVaultSecretId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +31,26 @@ PS C:\> $cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -Certifica
 
 This command creates a SSL certificate named Cert01 for the default application gateway and stores the result in the variable named $Cert.
 
+### Example 2: Create an SSL certificate using KeyVault Secret (version-less secretId) and add to an application gateway.
+```
+PS C:\> $secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
+PS C:\> $secretId = $secret.Id.Replace($secret.Version, "") # https://<keyvaultname>.vault.azure.net/secrets/
+PS C:\> $cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -KeyVaultSecretId $secretId
+```
+
+Get the secret and create an SSL Certificate using `New-AzApplicationGatewaySslCertificate`.
+Note: As version-less secretId is provided here, Application Gateway will sync the certificate in regular intervals with the KeyVault.
+
+### Example 3: Create an SSL certificate using KeyVault Secret and add to an Application Gateway.
+```
+PS C:\> $secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
+PS C:\> $secretId = $secret.Id # https://<keyvaultname>.vault.azure.net/secrets/<hash>
+PS C:\> $cert = New-AzApplicationGatewaySslCertificate -Name "Cert01" -KeyVaultSecretId $secretId
+```
+
+Get the secret and create an SSL Certificate using `New-AzApplicationGatewaySslCertificate`.
+Note: If it is required that Application Gateway syncs the certificate with the KeyVault, please provide the version-less secretId.
+
 ## PARAMETERS
 
 ### -CertificateFile
@@ -41,7 +61,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -54,7 +74,22 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultSecretId
+SecretId (uri) of the KeyVault Secret. Use this option when a specific version of secret needs to be used.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -86,7 +121,7 @@ Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
