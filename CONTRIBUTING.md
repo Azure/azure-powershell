@@ -1,10 +1,10 @@
 # Contribute Code or Provide Feedback for Azure PowerShell
 
-This repository contains a set of PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
+This repository contains PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
 
 ## Basics
 
-If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.io/guidelines/).
+If you would like to become an active contributor to this project, please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.io/guidelines/).
 
 In the Azure Developer Experience, you are at Step 5:
 
@@ -90,7 +90,7 @@ For more information on how to make changes to the SDK for .NET repository and p
 
 A pull request template will automatically be included as a part of your PR. Please fill out the checklist as specified. Pull requests **will not be reviewed** unless they include a properly completed checklist.
 
-The following is a list of guidelines that pull requests opened in the Azure PowerShell repository must adhere to. You can find a more complete discussion of Azure PowerShell design guidelines [here](./documentation/development-docs/azure-powershell-design-guidelines.md).
+The following is a list of guidelines that pull requests opened in the Azure PowerShell repository must adhere to. You can find a more complete discussion of Azure PowerShell design guidelines [here](documentation/development-docs/azure-powershell-design-guidelines.md).
 
 #### Cleaning up Commits
 
@@ -102,15 +102,13 @@ If you find yourself creating a pull request and are unable to see all the chang
 
 If splitting up the pull request is not an option, we recommend **creating individual commits for different parts of the pull request, which can be reviewed individually on GitHub**.
 
-For more information on cleaning up the commits in a pull request, such as how to rebase, squash, and cherry-pick, click [here](./documentation/development-docs/cleaning-up-commits.md).
+For more information on cleaning up the commits in a pull request, such as how to rebase, squash, and cherry-pick, click [here](documentation/development-docs/cleaning-up-commits.md).
 
 #### Updating the change log
 
 Any changes that are made must be reflected in the respecitve service's change log. This change log will allow customers to easily track what has been changed between releases of a service.
 
-For ARM service projects, the change log is located at `src\ResourceManager\{{service}}\ChangeLog.md`.
-
-For RDFE service projects, the change log is located at `src\ServiceManagement\ChangeLog.md`.
+For ARM service projects, the change log is located at `src/ResourceManager/{{service}}/Commands.{{service}}/ChangeLog.md`.
 
 #### Breaking Changes
 
@@ -127,7 +125,7 @@ The following guidelines must be followed in **EVERY** pull request that is open
 - A description of the changes the pull request makes is included, and a reference to the bug/issue the pull request fixes is included, if applicable
 - All files have the Microsoft copyright header
 - Cmdlets refer to the management libraries through NuGet references - no dlls are checked in
-- The pull request does not introduce [breaking changes](https://github.com/Azure/azure-powershell/blob/master/documentation/breaking-changes/breaking-changes-definition.md) (unless a major version change occurs in the assembly and module)
+- The pull request does not introduce [breaking changes](documentation/breaking-changes/breaking-changes-definition.md) (unless a major version change occurs in the assembly and module)
 
 #### Testing guidelines
 
@@ -139,7 +137,7 @@ The following guidelines must be followed in **EVERY** pull request that is open
 - PowerShell scripts used in tests must do any necessary setup as part of the test or suite setup, and should not use hard-coded values for existing resources
 - Test should not use App.config files for settings
 - Tests should use the built-in PowerShell functions for generating random names when unique names are necessary - this will store names in the test recording
-- Tests should use `Start-Sleep` to pause rather than `Thread.Sleep`
+- Tests should use `Wait-Seconds` for PowerShell and `TestUtilities.Wait` for C# to pause rather than `Start-Sleep` or `Thread.Sleep` respectively
 
 #### Cmdlet signature guidelines
 
@@ -150,7 +148,7 @@ The following guidelines must be followed in pull requests that add, edit, or re
     - When a verb you would like to use is not in the list of approved verbs, or to get ideas on how to use verbs, consult the [Approved Verbs for Windows PowerShell Commands](https://msdn.microsoft.com/en-us/library/ms714428\(v=vs.85\).aspx) documentation where you will find descriptions of approved verbs as well as related verbs in the comments so that you can find one appropriate for your command
 - Cmdlet noun name uses the AzureRm prefix for management cmdlets, and the Azure prefix for data plane cmdlets
 - Cmdlet specifies the `OutputType` attribute; if the cmdlet produces no output, it should have an `OutputType` of `bool` and implement a `PassThrough` parameter
-- If the cmdlet makes changes or has side effects, it should implement `ShouldProcess` and have `SupportsShouldProcess = true` specified in the cmdlet attribute. See a discussion about correct `ShouldProcess` implementation [here](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/should-process-confirm-impact.md).
+- If the cmdlet makes changes or has side effects, it should implement `ShouldProcess` and have `SupportsShouldProcess = true` specified in the cmdlet attribute. See a discussion about correct `ShouldProcess` implementation [here](documentation/development-docs/should-process-confirm-impact.md).
 - Cmdlets should derive from [`AzureRmCmdlet`](https://github.com/Azure/azure-powershell-common/blob/master/src/ResourceManager/Version2016_09_01/AzureRMCmdlet.cs) class for management cmdlets, and [`AzureDataCmdlet`](https://github.com/Azure/azure-powershell-common/blob/master/src/Common/AzureDataCmdlet.cs) for data cmdlets
 - If multiple parameter sets are implemented, the cmdlet should specify a `DefaultParameterSetName` in its cmdlet attribute
 

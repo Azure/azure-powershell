@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 230DAE05-C197-451F-A24C-F4A2DAE4AD04
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmssstorageprofile

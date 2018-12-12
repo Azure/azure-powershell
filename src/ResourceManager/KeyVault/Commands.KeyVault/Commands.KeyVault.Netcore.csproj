@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.KeyVault</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.KeyVault</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.KeyVault</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

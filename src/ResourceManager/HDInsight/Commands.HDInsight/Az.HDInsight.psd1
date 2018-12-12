@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.7.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.HDInsight.dll', 
@@ -68,7 +68,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.HDInsight.dll',
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.HDInsight.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -86,7 +86,8 @@ CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition',
     'Add-AzHDInsightSecurityProfile', 
     'Set-AzHDInsightDefaultStorage', 'Add-AzHDInsightStorage', 
     'Add-AzHDInsightScriptAction', 'Add-AzHDInsightMetastore', 
-    'Add-AzHDInsightConfigValues', 'Get-AzHDInsightProperties', 
+    'Add-AzHDInsightConfigValues', 
+    'Get-AzHDInsightProperties', 
     'Revoke-AzHDInsightRdpServicesAccess', 
     'Revoke-AzHDInsightHttpServicesAccess', 
     'Grant-AzHDInsightRdpServicesAccess', 
@@ -97,8 +98,9 @@ CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition',
     'Get-AzHDInsightScriptActionHistory', 
     'Remove-AzHDInsightPersistedScriptAction', 
     'Set-AzHDInsightPersistedScriptAction', 
-    'Submit-AzHDInsightScriptAction', 'Get-AzHDInsightCluster', 
-    'New-AzHDInsightCluster', 'Add-AzHDInsightClusterIdentity', 
+    'Submit-AzHDInsightScriptAction', 
+    'Get-AzHDInsightCluster', 'New-AzHDInsightCluster', 
+    'Add-AzHDInsightClusterIdentity', 
     'Enable-AzHDInsightOperationsManagementSuite', 
     'Disable-AzHDInsightOperationsManagementSuite', 
     'Get-AzHDInsightOperationsManagementSuite'

@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using Xunit;
 
     public class AdlsTests : AdlsTestsBase

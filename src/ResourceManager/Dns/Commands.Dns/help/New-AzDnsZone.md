@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: B78F3E8B-C7D2-458C-AB23-06F584FE97E0
 online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/new-azdnszone

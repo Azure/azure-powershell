@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5AECCBD7-1FDE-4217-9F59-36328062E669
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworksecuritygroup

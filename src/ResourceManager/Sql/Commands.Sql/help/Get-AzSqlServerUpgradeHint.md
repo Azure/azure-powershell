@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: BFEAE1F7-56E3-4EA9-B39A-ED09582C8A09
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverupgradehint
