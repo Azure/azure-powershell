@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
 
         public RemoveAzureRmActivityLogAlertTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
             insightsOperationsMock = new Mock<IActivityLogAlertsOperations>();
             monitorClientMock = new Mock<MonitorManagementClient>() { CallBase = true };

@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Remove deprecated PurgeDisabled property from PS models

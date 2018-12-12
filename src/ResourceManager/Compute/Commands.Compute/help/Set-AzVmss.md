@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 6442E5BB-D59D-483B-8AC5-2586C6C1E925
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmss
