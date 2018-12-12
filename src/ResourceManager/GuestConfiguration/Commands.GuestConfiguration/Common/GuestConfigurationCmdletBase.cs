@@ -252,7 +252,11 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 foreach (var gcPolicyAssignment in gcPolicyAssignmentsArray)
                 {
                     var reportGuid = CommonHelpers.GetReportGUIDFromID(gcPolicyAssignment.LatestReportId);
-                    var gcrpReport = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
+                    GuestConfigurationAssignmentReport gcrpReport = null; 
+                    if (gcPolicyAssignment.LatestReportId != null)
+                    {
+                        gcrpReport = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
+                    }
                     gcPolicyAssignmentReportList.Add(new GuestConfigurationPolicyAssignmentReport(gcrpReport, gcPolicyAssignment));
                 }
             }
