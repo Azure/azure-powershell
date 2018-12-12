@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmAdvisorRecommendation
+# Get-AzAdvisorRecommendation
 
 ## SYNOPSIS
 Gets a list of Azure Advisor recommendations.
@@ -14,13 +14,13 @@ Gets a list of Azure Advisor recommendations.
 
 ### IdParameterSet
 ```
-Get-AzureRmAdvisorRecommendation [-ResourceId] <String> [-Category <String>] [-Refresh]
+Get-AzAdvisorRecommendation [-ResourceId] <String> [-Category <String>] [-Refresh]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NameParameterSet
 ```
-Get-AzureRmAdvisorRecommendation [-Category <String>] [-ResourceGroupName <String>] [-Refresh]
+Get-AzAdvisorRecommendation [-Category <String>] [-ResourceGroupName <String>] [-Refresh]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Obtain the list of Azure Advisor recommendations. Can be filtered by Category, r
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmAdvisorRecommendation
+PS C:\> Get-AzAdvisorRecommendation
 Id                   : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommen
                        dations/{recommendation-Id}
 Category             : Performance
@@ -52,7 +52,7 @@ Gets the list of all recommendations.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmAdvisorRecommendation -Category Performance
+PS C:\> Get-AzAdvisorRecommendation -Category Performance
 Id                   : /subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommen
                        dations/{recommendation-Id}
 Category             : Performance
@@ -125,7 +125,7 @@ ResourceGroup name of the recommendation
 ```yaml
 Type: String
 Parameter Sets: NameParameterSet
-Aliases: Name
+Aliases:
 
 Required: False
 Position: Named
@@ -135,12 +135,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-One or more recommendation-Id (space delimited)
+Recommendation-Id
 
 ```yaml
 Type: String
 Parameter Sets: IdParameterSet
-Aliases: Id
+Aliases:
 
 Required: True
 Position: 0
