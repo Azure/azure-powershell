@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 00CCA9B8-7C57-4FC0-9BD1-5FC16010E820
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/move-azdatalakestoreitem

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 952967EB-AEAD-4597-B837-6669CE73739E
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseexpanded

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Management.Search.dll-Help.xml
 Module Name: Az.Search
 online version: https://docs.microsoft.com/en-us/powershell/module/az.search/new-azsearchadminkey
 schema: 2.0.0

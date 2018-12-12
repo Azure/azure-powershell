@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.IO;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Commands.NotificationHubs.Test
 {

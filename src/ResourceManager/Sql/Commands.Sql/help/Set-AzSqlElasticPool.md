@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 555D58AB-1361-4BB1-ACD0-905C3C6F4F7E
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlelasticpool

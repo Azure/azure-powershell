@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Automation</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Automation</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Automation</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.EventGrid</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.EventGrid</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.EventGrid</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
