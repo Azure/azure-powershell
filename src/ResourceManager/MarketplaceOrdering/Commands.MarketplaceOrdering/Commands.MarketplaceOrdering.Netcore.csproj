@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.MarketplaceOrdering</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.MarketplaceOrdering</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

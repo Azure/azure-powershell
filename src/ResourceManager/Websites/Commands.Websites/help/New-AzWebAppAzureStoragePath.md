@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azwebappazurestoragepath
 schema: 2.0.0

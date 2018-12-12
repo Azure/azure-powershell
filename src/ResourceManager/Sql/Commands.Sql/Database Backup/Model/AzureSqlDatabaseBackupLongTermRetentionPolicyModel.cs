@@ -42,16 +42,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         public int? WeekOfYear { get; set; }
 
         /// <summary>
-        /// Gets or sets the backup archival state
-        /// </summary>
-        public string State { get; set; }
-
-        /// <summary>
-        /// Gets or sets the backup archival policy resource ID
-        /// </summary>
-        public string RecoveryServicesBackupPolicyResourceId { get; set; }
-
-        /// <summary>
         /// Gets or sets the location
         /// </summary>
         public string Location { get; set; }

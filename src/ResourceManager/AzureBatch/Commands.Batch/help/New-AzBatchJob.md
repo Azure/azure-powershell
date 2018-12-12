@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: B6229D26-D38C-44CD-B9CA-7F39365C8B9D
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/new-azbatchjob

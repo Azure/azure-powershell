@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 7690143F-5F09-4739-9F66-B2ACDF8305F4
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadspcredential

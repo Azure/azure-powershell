@@ -22,9 +22,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(VirtualMachineInstanceView), ReplacementCmdletOutputTypeName = "VirtualMachineScaleSetVMInstanceView")]
-#endif
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVMDataDisk")]
     [OutputType(typeof (PSVirtualMachineScaleSetVM))]
     public class AddAzureRmVmssVMDataDiskCommand : ComputeClientBaseCmdlet

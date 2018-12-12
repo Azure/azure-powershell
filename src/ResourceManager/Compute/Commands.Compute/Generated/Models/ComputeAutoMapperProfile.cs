@@ -80,8 +80,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.Snapshot, TO.PSSnapshotList>();
                 cfg.CreateMap<TO.PSSnapshotList, TO.PSSnapshot>();
                 cfg.CreateMap<TO.PSSnapshot, TO.PSSnapshotList>();
-                cfg.CreateMap<FROM.UpgradePolicy, TO.PSUpgradePolicy>();
-                cfg.CreateMap<TO.PSUpgradePolicy, FROM.UpgradePolicy>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetList, TO.PSVirtualMachineScaleSet>()
@@ -137,16 +135,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSRunCommandDocumentBase, FROM.RunCommandDocumentBase>();
                 cfg.CreateMap<FROM.RollingUpgradeStatusInfo, TO.PSRollingUpgradeStatusInfo>();
                 cfg.CreateMap<TO.PSRollingUpgradeStatusInfo, FROM.RollingUpgradeStatusInfo>();
-                cfg.CreateMap<FROM.VirtualMachineScaleSetIdentity, TO.PSVirtualMachineScaleSetIdentity>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (src.UserAssignedIdentities == null) dest.UserAssignedIdentities = null;
-                    });
-                cfg.CreateMap<TO.PSVirtualMachineScaleSetIdentity, FROM.VirtualMachineScaleSetIdentity>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (src.UserAssignedIdentities == null) dest.UserAssignedIdentities = null;
-                    });
                 cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSet>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSet, FROM.VirtualMachineScaleSet>()

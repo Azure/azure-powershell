@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 93D8A341-540A-43F1-8C62-28323EAA58E0
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetwork

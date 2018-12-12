@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: F344D8D1-5593-4C09-A1CA-37579D2A3A61
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationvariable

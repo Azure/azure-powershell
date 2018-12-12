@@ -70,7 +70,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning(Resources.IncorrectOutputTypeWarning);
             if (Uri != null && Uri.Port <= 0)
             {
                 WriteWarning(string.Format(Resources.NoPortSpecified, Uri));
