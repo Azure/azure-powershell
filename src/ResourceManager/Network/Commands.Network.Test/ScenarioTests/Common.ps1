@@ -93,7 +93,7 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
     if ((Get-NetworkTestMode) -ne 'Playback') {
-        Remove-AzureRmResourceGroup -Name $rgname -Force
+        Remove-AzResourceGroup -Name $rgname -Force
     }
 }
 
