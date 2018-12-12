@@ -13,16 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Xunit;
 using Microsoft.Azure.Commands.ScenarioTest;
+
 namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
 {
-
-
     public class KustoClusterTests : KustoTestsBase
     {
-        public Microsoft.Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor _logger;
+        private readonly XunitTracingInterceptor _logger;
 
         public KustoClusterTests(Xunit.Abstractions.ITestOutputHelper output)
         {
