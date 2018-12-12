@@ -11,11 +11,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Xunit;
 using Microsoft.Azure.Commands.ScenarioTest;
-
 
 namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
 {
