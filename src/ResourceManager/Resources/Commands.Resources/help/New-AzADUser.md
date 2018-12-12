@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 86D8965D-D999-48A4-A4EE-9E054E5486EE
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azaduser

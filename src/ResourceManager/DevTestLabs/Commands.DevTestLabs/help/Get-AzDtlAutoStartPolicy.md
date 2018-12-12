@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.DevTestLabs.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs.dll-Help.xml
 Module Name: Az.DevTestLabs
 ms.assetid: 9FD4DB8C-B242-4F9A-92E5-0B3EDED00521
 online version: https://docs.microsoft.com/en-us/powershell/module/az.devtestlabs/get-azdtlautostartpolicy

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: A29E9921-C1B9-42C2-B816-5D4873AC6688
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallnetworkrulecollection
@@ -14,8 +14,7 @@ Creates a Azure Firewall Network Collection of Network rules.
 ## SYNTAX
 
 ```
-New-AzFirewallNetworkRuleCollection -Name <String> -Priority <UInt32>
- -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRule]>
+New-AzFirewallNetworkRuleCollection -Name <String> -Priority <UInt32> -Rule <PSAzureFirewallNetworkRule[]>
  -ActionType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -137,7 +136,7 @@ Accept wildcard characters: False
 Specifies the list of rules to be grouped under this collection.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRule[]
 Parameter Sets: (All)
 Aliases:
 

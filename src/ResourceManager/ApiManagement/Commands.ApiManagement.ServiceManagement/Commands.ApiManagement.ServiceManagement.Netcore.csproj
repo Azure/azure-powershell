@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.ApiManagement.ServiceManagement</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ApiManagement.ServiceManagement</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

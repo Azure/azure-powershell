@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of NAT rules")]
         [ValidateNotNullOrEmpty]
-        public List<PSAzureFirewallNatRule> Rule { get; set; }
+        public PSAzureFirewallNatRule[] Rule { get; set; }
 
         public override void Execute()
         {
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Priority = this.Priority,
-                Rules = this.Rule,
+                Rules = this.Rule?.ToList(),
                 Action = new PSAzureFirewallNatRCAction { Type = MNM.AzureFirewallNatRCActionType.Dnat }
             };
 

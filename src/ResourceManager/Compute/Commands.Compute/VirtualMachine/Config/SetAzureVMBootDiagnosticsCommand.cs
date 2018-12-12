@@ -27,9 +27,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSVirtualMachineIdentity), DeprecatedOutputProperties = new string[] { "IdentityIds" })]
-#endif
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMBootDiagnostics"),OutputType(typeof(PSVirtualMachine))]
     public class SetAzureVMBootDiagnosticsCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {

@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of network rules")]
         [ValidateNotNullOrEmpty]
-        public List<PSAzureFirewallNetworkRule> Rule { get; set; }
+        public PSAzureFirewallNetworkRule[] Rule { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Priority = this.Priority,
-                Rules = this.Rule,
+                Rules = this.Rule?.ToList(),
                 Action = new PSAzureFirewallRCAction { Type = ActionType }
             };
 

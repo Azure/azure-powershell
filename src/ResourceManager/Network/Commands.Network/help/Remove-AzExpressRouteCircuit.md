@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: EDB94194-650C-4892-8DDC-E67D435522DD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azexpressroutecircuit

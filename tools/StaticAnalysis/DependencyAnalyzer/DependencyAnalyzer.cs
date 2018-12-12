@@ -246,6 +246,12 @@ namespace StaticAnalysis.DependencyAnalyzer
                 || FrameworkAssemblies.Contains(name.Name);
         }
 
+        private static bool IsFrameworkAssembly(string name)
+        {
+            return name.StartsWith("System") || name.Equals("mscorlib") || name.Equals("netstandard")
+                || FrameworkAssemblies.Contains(name);
+        }
+
         private void ProcessDirectory(string directoryPath)
         {
             var savedDirectory = Directory.GetCurrentDirectory();
@@ -284,8 +290,7 @@ namespace StaticAnalysis.DependencyAnalyzer
 
             foreach (var assembly in _assemblies.Values)
             {
-                if (!assembly.Name.Contains("System") && !assembly.Name.Contains("Microsoft.IdentityModel") 
-                    && !assembly.Name.Equals("Newtonsoft.Json") && !assembly.Name.Equals("Microsoft.AspNetCore.WebUtilities"))
+                if (!assembly.Name.Contains("Microsoft.IdentityModel") && !assembly.Name.Equals("Newtonsoft.Json") && !IsFrameworkAssembly(assembly.Name))
                 {
                     foreach (var parent in assembly.ReferencingAssembly)
                     {
@@ -327,7 +332,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             {
                 return;
             }
- 
+
             foreach (var assembly in _assemblies.Values.Where(a => 
                 !IsCommandAssembly(a)
                 && (a.ReferencingAssembly == null

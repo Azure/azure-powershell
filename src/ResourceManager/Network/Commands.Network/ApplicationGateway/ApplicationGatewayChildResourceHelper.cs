@@ -238,6 +238,14 @@ namespace Microsoft.Azure.Commands.Network
                                                         applicationGateway.ResourceGroupName,
                                                         applicationGateway.Name);
                     }
+                    if (null != urlPathMap.DefaultRewriteRuleSet)
+                    {
+
+                        urlPathMap.DefaultRewriteRuleSet.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                        urlPathMap.DefaultRewriteRuleSet.Id,
+                                                        applicationGateway.ResourceGroupName,
+                                                        applicationGateway.Name);
+                    }
 
                     foreach (var pathRule in urlPathMap.PathRules)
                     {
@@ -261,6 +269,14 @@ namespace Microsoft.Azure.Commands.Network
                         {
                             pathRule.RedirectConfiguration.Id = NormalizeApplicationGatewayNameChildResourceIds(
                                                         pathRule.RedirectConfiguration.Id,
+                                                        applicationGateway.ResourceGroupName,
+                                                        applicationGateway.Name);
+                        }
+
+                        if (null != pathRule.RewriteRuleSet)
+                        {
+                            pathRule.RewriteRuleSet.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                        pathRule.RewriteRuleSet.Id,
                                                         applicationGateway.ResourceGroupName,
                                                         applicationGateway.Name);
                         }
@@ -310,6 +326,32 @@ namespace Microsoft.Azure.Commands.Network
                                                                     requestRoutingRule.RedirectConfiguration.Id,
                                                                     applicationGateway.ResourceGroupName,
                                                                     applicationGateway.Name);
+                    }
+
+                    if (null != requestRoutingRule.RewriteRuleSet)
+                    {
+                        requestRoutingRule.RewriteRuleSet.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                    requestRoutingRule.RewriteRuleSet.Id,
+                                                                    applicationGateway.ResourceGroupName,
+                                                                    applicationGateway.Name);
+                    }
+                }
+
+                // Normalize RewriteRuleSets
+                if (applicationGateway.RewriteRuleSets != null)
+                {
+                    foreach (var rewriteRuleSet in applicationGateway.RewriteRuleSets)
+                    {
+                        rewriteRuleSet.Id = string.Empty;
+                    }
+                }
+
+                // Normalize RewriteRuleSets
+                if (applicationGateway.RewriteRuleSets != null)
+                {
+                    foreach (var rewriteRuleSet in applicationGateway.RewriteRuleSets)
+                    {
+                        rewriteRuleSet.Id = string.Empty;
                     }
                 }
 

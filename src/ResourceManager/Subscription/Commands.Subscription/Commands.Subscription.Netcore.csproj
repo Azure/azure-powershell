@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Subscription</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Subscription</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Subscription</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
