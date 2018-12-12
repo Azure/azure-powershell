@@ -15,6 +15,10 @@
             Remove-Item -Path $pathToInstallationChecks -ErrorAction Stop
         }
 
+        $installationChecksDirectory = Split-Path -Path $pathToInstallationChecks -Parent -ErrorAction Stop
+        if (-not (Test-Path $installationChecksDirectory -ErrorAction Ignore)) {
+            New-Item -Path $installationChecksDirectory -ErrorAction Stop -ItemType Directory
+        }
         New-Item -Path $pathToInstallationChecks -ErrorAction Stop -ItemType File -Value ($installationchecks | ConvertTo-Json -ErrorAction Stop)
     }
     catch
