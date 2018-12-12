@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
 schema: 2.0.0
@@ -21,7 +21,7 @@ Add-AzKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <String
 ## DESCRIPTION
 Sets up an existing Azure Storage Account with Key Vault for Storage Account keys to be managed by
 Key Vault. The Storage Account must already exist. The Storage Keys are never exposed to caller.
-Key Vault auto regenerates and switches the active key based on the regeneration period.
+Key Vault auto regenerates and switches the active key based on the regeneration period. See [Azure Key Vault managed storage account - PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-overview-storage-keys-powershell) for an overview of this feature.
 
 ## EXAMPLES
 

@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.7.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Network.dll'
@@ -66,7 +66,7 @@ RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Network.d
 FormatsToProcess = '.\Microsoft.Azure.Commands.Network.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Network.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Network.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -147,6 +147,14 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'New-AzApplicationGatewayRequestRoutingRule', 
     'Remove-AzApplicationGatewayRequestRoutingRule', 
     'Set-AzApplicationGatewayRequestRoutingRule', 
+    'Add-AzApplicationGatewayRewriteRuleSet',
+    'Get-AzApplicationGatewayRewriteRuleSet',
+    'New-AzApplicationGatewayRewriteRuleSet',
+    'Remove-AzApplicationGatewayRewriteRuleSet',
+    'Set-AzApplicationGatewayRewriteRuleSet',
+    'New-AzApplicationGatewayRewriteRule',
+    'New-AzApplicationGatewayRewriteRuleActionSet',
+    'New-AzApplicationGatewayRewriteRuleHeaderConfiguration',
     'Add-AzApplicationGatewayRedirectConfiguration', 
     'Get-AzApplicationGatewayRedirectConfiguration', 
     'New-AzApplicationGatewayRedirectConfiguration', 

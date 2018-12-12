@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.dll-Help.xml
 Module Name: Az.AnalysisServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/resume-azanalysisservicesserver
 schema: 2.0.0

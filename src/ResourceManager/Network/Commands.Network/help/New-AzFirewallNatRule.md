@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: C0E1D4DF-232F-49C6-BE4C-05C8E8038329
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallnatrule
@@ -14,11 +14,8 @@ Creates a Firewall NAT Rule.
 ## SYNTAX
 
 ```
-New-AzFirewallNatRule -Name <String> [-Description <String>]
- -SourceAddress <System.Collections.Generic.List`1[System.String]>
- -DestinationAddress <System.Collections.Generic.List`1[System.String]>
- -DestinationPort <System.Collections.Generic.List`1[System.String]>
- -Protocol <System.Collections.Generic.List`1[System.String]> -TranslatedAddress <String>
+New-AzFirewallNatRule -Name <String> [-Description <String>] -SourceAddress <String[]>
+ -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]> -TranslatedAddress <String>
  -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -70,7 +67,7 @@ Accept wildcard characters: False
 The destination addresses of the rule.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +82,7 @@ Accept wildcard characters: False
 The destination ports of the rule
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +114,7 @@ The supported protocols are TCP and UDP.
 A special value "Any" is allowed, meaning it will match both TCP and UDP, but no other protocols.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Any, TCP, UDP
@@ -133,7 +130,7 @@ Accept wildcard characters: False
 The source addresses of the rule
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

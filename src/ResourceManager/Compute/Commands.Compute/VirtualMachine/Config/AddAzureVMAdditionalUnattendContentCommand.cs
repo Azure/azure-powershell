@@ -25,9 +25,6 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Add an Additional Unattend Content Object to VM
     /// </summary>
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSVirtualMachineIdentity), DeprecatedOutputProperties = new string[] { "IdentityIds" })]
-#endif
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAdditionalUnattendContent"),OutputType(typeof(PSVirtualMachine))]
     public class NewAzureAdditionalUnattendContentCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: F1522074-7EEA-4DCF-AC16-26FE8E654720
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azloadbalancer
@@ -15,15 +15,11 @@ Creates a load balancer.
 
 ```
 New-AzLoadBalancer -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
- [-Sku <String>]
- [-FrontendIpConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration]>]
- [-BackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]>]
- [-LoadBalancingRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSLoadBalancingRule]>]
- [-Probe <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSProbe]>]
- [-InboundNatRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]>]
- [-InboundNatPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatPool]>]
- [-OutboundRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSOutboundRule]>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Sku <String>] [-FrontendIpConfiguration <PSFrontendIPConfiguration[]>]
+ [-BackendAddressPool <PSBackendAddressPool[]>] [-LoadBalancingRule <PSLoadBalancingRule[]>]
+ [-Probe <PSProbe[]>] [-InboundNatRule <PSInboundNatRule[]>] [-InboundNatPool <PSInboundNatPool[]>]
+ [-OutboundRule <PSOutboundRule[]>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +69,7 @@ Accept wildcard characters: False
 Specifies a backend address pool to associate with a load balancer.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]
+Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool[]
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +114,7 @@ Accept wildcard characters: False
 Specifies a list of front-end IP addresses to associate with a load balancer.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration]
+Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +127,7 @@ Accept wildcard characters: False
 
 ### -InboundNatPool
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatPool]
+Type: Microsoft.Azure.Commands.Network.Models.PSInboundNatPool[]
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +142,7 @@ Accept wildcard characters: False
 Specifies a list of inbound network address translation (NAT) rules to associate with a load balancer.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSInboundNatRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +157,7 @@ Accept wildcard characters: False
 Specifies a list of load balancing rules to associate with a load balancer.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSLoadBalancingRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancingRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +202,7 @@ Accept wildcard characters: False
 The outbound rules.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSOutboundRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSOutboundRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -221,7 +217,7 @@ Accept wildcard characters: False
 Specifies a list of probes to associate with a load balancer.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSProbe]
+Type: Microsoft.Azure.Commands.Network.Models.PSProbe[]
 Parameter Sets: (All)
 Aliases:
 
