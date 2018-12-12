@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 3F321D94-2B0B-48CA-9778-8090373F7FE0
 online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/grant-azhdinsighthttpservicesaccess

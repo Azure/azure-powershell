@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
@@ -24,10 +24,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using RM = Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -44,10 +42,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
 
         public GraphRbacManagementClient GraphClient { get; private set; }
-
-        public NetworkManagementClient NetworkManagementClient { get; private set; }
-
-        public RM.ResourceManagementClient ResourceClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -85,42 +79,38 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             Action initialize = null)
         {
             _helper.TracingInterceptor = logger;
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10");
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
+                {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
-
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
                 initialize?.Invoke();
                 SetupManagementClients(context);
 
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "Scripts\\ControlPlane\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
                     _helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
-                    _helper.RMNetworkModule);
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
-                    if (scriptBuilder != null)
+                    var psScripts = scriptBuilder?.Invoke();
+                    if (psScripts != null)
                     {
-                        var psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            _helper.RunPowerShellTest(psScripts);
-                        }
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
@@ -133,35 +123,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         private void SetupManagementClients(MockContext context)
         {
             NewResourceManagementClient = GetResourceManagementClient(context);
-            ResourceClient = GetResourceClient(context);
-            NetworkManagementClient = GetNetworkManagementClient(context);
             GraphClient = GetGraphClient(context);
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             _helper.SetupManagementClients(
                 NewResourceManagementClient,
-                ResourceClient,
-                NetworkManagementClient,
                 KeyVaultManagementClient,
-                GraphClient
-                );
+                GraphClient);
         }
 
-        private NetworkManagementClient GetNetworkManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private RM.ResourceManagementClient GetResourceClient(MockContext context)
-        {
-            return context.GetServiceClient<RM.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
+        private static KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
         {
             return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }

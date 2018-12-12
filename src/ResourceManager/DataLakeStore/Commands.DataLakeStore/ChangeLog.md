@@ -20,3 +20,5 @@
 ## Current Release
 * Update the sdk version of dataplane to 1.1.13
 * Change the type of Encoding parameter to system.Encoding for commandlets: New-AzureRmDataLakeStoreItem, Add-AzureRmDataLakeStoreItemContent, Get-AzureRmDataLakeStoreItemContent to make it compatible to .netcore
+* Removed deprecated -Tags alias from New/Set-AzDataLakeStoreAccount
+* Removed deprecated properties from PSDataLakeStoreAccountBasic model

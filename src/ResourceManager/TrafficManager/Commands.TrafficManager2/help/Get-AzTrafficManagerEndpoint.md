@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.dll-Help.xml
 Module Name: Az.TrafficManager
 ms.assetid: 4556C345-55D0-431C-B980-219D5ED14E5F
 online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint

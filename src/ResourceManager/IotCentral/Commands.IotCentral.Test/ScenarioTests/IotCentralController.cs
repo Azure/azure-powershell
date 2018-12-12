@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Diagnostics;
 using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.IotCentral.Test.ScenarioTests
@@ -24,27 +25,19 @@ namespace Microsoft.Azure.Commands.IotCentral.Test.ScenarioTests
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using Microsoft.Azure.Management.IotCentral;
     using TestEnvironmentFactory = Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 
     public sealed class IotCentralController
     {
-        private EnvironmentSetupHelper _helper;
+        private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public IotCentralClient IotCentralClient { get; private set; }
 
-        public string UserDomain { get; private set; }
-
-        public static IotCentralController NewInstance
-        {
-            get
-            {
-                return new IotCentralController();
-            }
-        }
+        public static IotCentralController NewInstance => new IotCentralController();
 
         public IotCentralController()
         {
@@ -53,8 +46,9 @@ namespace Microsoft.Azure.Commands.IotCentral.Test.ScenarioTests
 
         public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             RunPsTestWorkflow(
                 logger,
@@ -77,41 +71,39 @@ namespace Microsoft.Azure.Commands.IotCentral.Test.ScenarioTests
             string mockName)
         {
             _helper.TracingInterceptor = logger;
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10");
-            providersToIgnore.Add("Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-09-01");
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
+                {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"},
+                {"Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-09-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
-                this._helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 SetupManagementClients(context);
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-                this._helper.SetupModules(AzureModule.AzureResourceManager,
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    this._helper.RMProfileModule,
-                    this._helper.GetRMModulePath(@"AzureRM.IoTCentral.psd1"),
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.IotCentral.psd1"),
                     "AzureRM.Resources.ps1");
                 try
                 {
-                    if (scriptBuilder != null)
+                    var psScripts = scriptBuilder?.Invoke();
+                    if (psScripts != null)
                     {
-                        var psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            this._helper.RunPowerShellTest(psScripts);
-                        }
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
@@ -123,23 +115,18 @@ namespace Microsoft.Azure.Commands.IotCentral.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            this.ResourceManagementClient = GetResourceManagementClient(context);
-            this.IotCentralClient = GetIotCentralClient(context);
+            ResourceManagementClient = GetResourceManagementClient(context);
+            IotCentralClient = GetIotCentralClient(context);
 
-            this._helper.SetupManagementClients(
-                this.ResourceManagementClient,
-                this.IotCentralClient
-                );
+            _helper.SetupManagementClients(ResourceManagementClient,IotCentralClient);
         }
 
-        private ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            var env = TestEnvironmentFactory.GetTestEnvironment();
-
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private IotCentralClient GetIotCentralClient(MockContext context)
+        private static IotCentralClient GetIotCentralClient(MockContext context)
         {
             return context.GetServiceClient<IotCentralClient>(TestEnvironmentFactory.GetTestEnvironment());
         }

@@ -38,21 +38,6 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
-        /// Gets or sets the name of the database to use.
-        /// </summary>
-        /// <remarks>
-        /// This parameter is not needed or used. It will be removed in a future release.
-        /// </remarks>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "SQL Database name.",
-            DontShow = true)]
-        [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter is not needed or used. It will be removed in the next breaking change release.")]
-        [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
-        public string DatabaseName { get; set; }
-
         /// <summary>
         /// Intializes the model adapter
         /// </summary>

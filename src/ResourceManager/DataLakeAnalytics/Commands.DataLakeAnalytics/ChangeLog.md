@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Removed deprecated cmdlets: New-AzDataLakeAnalyticsCatalogSecret, Remove-AzDataLakeAnalyticsCatalogSecret, and Set-AzDataLakeAnalyticsCatalogSecret

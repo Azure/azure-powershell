@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Management.PowerBIEmbedded</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Management.PowerBIEmbedded</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.StorageSync</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.StorageSync</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.StorageSync</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
