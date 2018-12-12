@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 38917534-49C6-47EA-B815-240F794EE655
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/update-azvm

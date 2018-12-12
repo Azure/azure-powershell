@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.SignalR.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
 online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/get-azsignalr
 schema: 2.0.0

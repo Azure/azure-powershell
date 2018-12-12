@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Test.ScenarioTests
             _helper.SetupManagementClients(ResourceManagementClient, MarketplaceOrderingManagementClient);
         }
 
-        public void RunPowerShellTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
+        public void RunPowerShellTest(ServiceManagement.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();

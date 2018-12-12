@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: D6325A22-2D1B-4228-A5BC-3F1071E26FB2
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationcredential

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 86E0D477-DD32-49BD-82E7-1CF191E4F612
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/stop-azwebappslot

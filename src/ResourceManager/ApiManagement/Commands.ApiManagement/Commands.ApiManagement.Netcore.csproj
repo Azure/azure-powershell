@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.ApiManagement</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.ApiManagement</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ApiManagement</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

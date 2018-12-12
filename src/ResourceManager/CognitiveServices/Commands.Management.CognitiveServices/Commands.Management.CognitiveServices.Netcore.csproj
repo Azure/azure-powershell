@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Management.CognitiveServices</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Management.CognitiveServices</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Management.CognitiveServices</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
