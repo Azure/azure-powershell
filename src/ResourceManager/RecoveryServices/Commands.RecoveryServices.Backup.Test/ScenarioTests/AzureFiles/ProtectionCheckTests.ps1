@@ -50,7 +50,7 @@ function Test-AzureFSProtectionCheck
 	{
   $status = Get-AzureRmRecoveryServicesBackupStatus `
 			-ResourceId $storageAccountId `
-			-ProtectableObjName $fileShareFriendlyName `
+			-ProtectableObjectName $fileShareFriendlyName `
 			-Type AzureFiles
 
 		Assert-NotNull $status
@@ -61,7 +61,7 @@ function Test-AzureFSProtectionCheck
 		
 		$status = Get-AzureRmRecoveryServicesBackupStatus `
 			-ResourceId $storageAccountId `
-			-ProtectableObjName $fileShareFriendlyName `
+			-ProtectableObjectName $fileShareFriendlyName `
 			-Type AzureFiles
 
 		Assert-NotNull $status
