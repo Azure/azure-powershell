@@ -12,23 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
+namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Advisor.Cmdlets.Models;
-    using Advisor.Cmdlets.Utilities;
-    using Advisor.Utilities;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Models;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.Advisor.Utilities;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Advisor.Models;
     using Microsoft.Rest.Azure;
-    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Search-AzureRmGraph cmdlet
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.ResourceGraph.Utilities.ResourceGraphBaseCmdlet" />
+    /// <seealso cref="Microsoft.Azure.Commands.Advisor.Utilities.ResourceGraphBaseCmdlet" />
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation"), OutputType(typeof(PsAzureAdvisorResourceRecommendationBase))]
     public class GetAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
     {
@@ -45,12 +44,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the Id.
         /// </summary>s
-        [Parameter(ParameterSetName = "IdParameterSet", ValueFromPipelineByPropertyName = true, Mandatory = true, Position = 0, HelpMessage = "One or more recommendation-Id (space delimited)")]
-        public string ResourceId
-        {
-            get;
-            set;
-        }
+        [Parameter(ParameterSetName = "IdParameterSet", ValueFromPipelineByPropertyName = true, Mandatory = true, Position = 0, HelpMessage = "Recommendation-Id")]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the Category.
@@ -58,33 +53,21 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         [Parameter(ParameterSetName = "IdParameterSet", Mandatory = false, HelpMessage = "Category of the recommendation")]
         [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "Category of the recommendation")]
         [ValidateSet("Cost", "HighAvailability", "Performance", "Security")]
-        public string Category
-        {
-            get;
-            set;
-        }
+        public string Category { get; set; }
 
         /// <summary>
         /// Gets or sets the ResourceGroupName.
         /// </summary>
         [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "ResourceGroup name of the recommendation")]
         [ResourceGroupCompleter]
-        public string ResourceGroupName
-        {
-            get;
-            set;
-        }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the Refresh.
         /// </summary>
         [Parameter(ParameterSetName = "IdParameterSet", Mandatory = false, HelpMessage = "Regenerates the recommendations.")]
         [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "Regenerates the recommendations.")]
-        public SwitchParameter Refresh
-        {
-            get;
-            set;
-        }
+        public SwitchParameter Refresh { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -100,17 +83,10 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             switch (this.ParameterSetName)
             {
                 case IdParameterSet:
-                    List<string> resourceIDList = new List<string>();
-                    resourceIDList = this.ResourceId.Split(' ').ToList();
+                    string recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.ResourceId);
 
-                    foreach (string resourceId in resourceIDList)
-                    {
-                        string recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(resourceId);
-
-                        recommendation = this.ResourecAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourecAdvisorClient.SubscriptionId, recommendationId).Result;
-                        results.Add(PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(recommendation.Body));
-                    }
-
+                    recommendation = this.ResourecAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourecAdvisorClient.SubscriptionId, recommendationId).Result;
+                    results.Add(PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(recommendation.Body));
                     break;
 
                 case NameParameterSet:

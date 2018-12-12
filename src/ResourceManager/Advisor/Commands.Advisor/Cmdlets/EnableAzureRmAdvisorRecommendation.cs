@@ -12,22 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
+namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Advisor.Cmdlets.Models;
-    using Advisor.Cmdlets.Utilities;
-    using Advisor.Utilities;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Models;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.Advisor.Properties;
+    using Microsoft.Azure.Commands.Advisor.Utilities;
     using Microsoft.Azure.Management.Advisor.Models;
     using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Enable-AzureRmAdvisorRecommendation cmdlet
     /// </summary>
-    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation", DefaultParameterSetName = NameParameterSet), OutputType(typeof(List<PsAzureAdvisorResourceRecommendationBase>))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsAzureAdvisorResourceRecommendationBase))]
     public class EnableAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the recommendation name.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = "NameParameterSet", Position = 0,  HelpMessage = "ResourceName of the recommendation.")]
+        [Parameter(Mandatory = true, ParameterSetName = "NameParameterSet", Position = 0, HelpMessage = "ResourceName of the recommendation.")]
         public string RecommendationName { get; set; }
 
         /// <summary>
@@ -116,6 +116,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             string resourceUri = string.Empty;
             string recommendationId = string.Empty;
 
+            WriteVerbose(Resources.SuppressionRemove);
+
             AzureOperationResponse<IPage<SuppressionContract>> suppressionList = null;
 
             // This i used for the recommendation call, to collect supression ID data associated.
@@ -134,7 +136,10 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(this.ResourceId);
                     recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.ResourceId);
 
-                    responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, recommendationId));
+                    if (ShouldProcess(recommendationId, string.Format(Resources.EnableRecommendationWarningMessage, this.RecommendationName)))
+                    {
+                        responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, recommendationId));
+                    }
                     break;
 
                 case NameParameterSet:
@@ -143,15 +148,20 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     suppressionList = this.ResourecAdvisorClient.Suppressions.ListWithHttpMessagesAsync().Result;
                     psSuppressionContractList = PsAzureAdvisorSuppressionContract.FromSuppressionContractList(suppressionList.Body.AsEnumerable());
 
-                    responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, this.RecommendationName));
+                    if (ShouldProcess(this.RecommendationName, string.Format(Resources.EnableRecommendationWarningMessage, this.RecommendationName)))
+                    {
+                        responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, this.RecommendationName));
+                    }
                     break;
 
                 case InputObjectParameterSet:
                     // Parse out the Subscription-ID, Recommendation-ID from the ResourceId parameter.
                     resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(this.InputObject.Id);
                     recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.InputObject.Id);
-
-                    responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, recommendationId));
+                    if (ShouldProcess(recommendationId, string.Format(Resources.EnableRecommendationWarningMessage, recommendationId)))
+                    {
+                        responseRecommendation.AddRange(this.SuppressionDelete(resourceUri, recommendationId));
+                    }
                     break;
             }
 

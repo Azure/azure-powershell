@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
+namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Advisor.Cmdlets.Models;
-    using Advisor.Utilities;
-    using Management.Advisor.Models;
-    using ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Models;
+    using Microsoft.Azure.Commands.Advisor.Utilities;
+    using Microsoft.Azure.Management.Advisor.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Get-AzureRmAdvisorConfiguration cmdlet
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.ResourceGraph.Utilities.ResourceGraphBaseCmdlet" />
+    /// <seealso cref="Microsoft.Azure.Commands.Advisor.Utilities.ResourceGraphBaseCmdlet" />
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorConfiguration", DefaultParameterSetName = "RgParameterSet"),
         OutputType(typeof(PsAzureAdvisorConfigurationData))]
     public class GetAzureRmAdvisorConfiguration : ResourceAdvisorBaseCmdlet

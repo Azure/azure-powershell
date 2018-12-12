@@ -12,22 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
+namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 {
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Advisor.Cmdlets.Models;
-    using Advisor.Cmdlets.Utilities;
-    using Advisor.Utilities;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Models;
+    using Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.Advisor.Properties;
+    using Microsoft.Azure.Commands.Advisor.Utilities;
     using Microsoft.Azure.Management.Advisor.Models;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Rest.Azure;
-    using Management.Internal.Resources.Utilities.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Set-AzureRmAdvisorConfiguration cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorConfiguration", DefaultParameterSetName = InputObjectLowCpuExcludeParameterSet), OutputType(typeof(List<PsAzureAdvisorConfigurationData>))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorConfiguration", DefaultParameterSetName = InputObjectLowCpuExcludeParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsAzureAdvisorConfigurationData))]
     public class SetAzureRmAdvisorConfiguration : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
@@ -176,6 +177,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             ConfigData configData = new ConfigData();
             ConfigDataProperties configDataProperties = new ConfigDataProperties();
 
+            WriteVerboseWithTimestamp(string.Format(Resources.ConfigurationUpdate, this.ResourecAdvisorClient.SubscriptionId));
+
             // Used to store type of configuration 
             bool isSubscriptionTypeConfiguration = false;
             bool isResourceGroupTypeConfiguration = false;
@@ -202,12 +205,20 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                         isSubscriptionTypeConfiguration = SuppressionHelper.IsConfigurationSubscriptionLevel(this.InputObject);
                         if (isSubscriptionTypeConfiguration)
                         {
-                            results = this.CreateConfigurationBySubscription(configData);
+                            if (ShouldProcess(this.ResourecAdvisorClient.SubscriptionId, string.Format(Resources.ConfigurationUpdateSubscriptionLevel, this.ResourecAdvisorClient.SubscriptionId)))
+                            {
+                                results = this.CreateConfigurationBySubscription(configData);
+                            }
                         }
                     }
                     else
                     {
-                        results = this.CreateConfigurationBySubscription(configData);
+                        if (ShouldProcess(this.ResourecAdvisorClient.SubscriptionId, string.Format(Resources.ConfigurationUpdateSubscriptionLevel, this.ResourecAdvisorClient.SubscriptionId)))
+                        {
+                            results = this.CreateConfigurationBySubscription(configData);
+                        }
+
+
                     }
                     break;
 
@@ -231,12 +242,19 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                         isResourceGroupTypeConfiguration = SuppressionHelper.IsConfigurationResourceGroupLevel(this.InputObject);
                         if (isResourceGroupTypeConfiguration)
                         {
-                            results = this.CreateConfigurationByResourceGroup(configData, RecommendationHelper.GetResourceGroupfromResoureID(this.InputObject.Id));
+                            string resourceGroup = RecommendationHelper.GetResourceGroupfromResoureID(this.InputObject.Id);
+                            if (ShouldProcess(resourceGroup, string.Format(Resources.ConfigurationUpdateResourceGroupLevel, this.ResourecAdvisorClient.SubscriptionId, resourceGroup)))
+                            {
+                                results = this.CreateConfigurationByResourceGroup(configData, resourceGroup);
+                            }
                         }
                     }
                     else
                     {
-                        results = this.CreateConfigurationByResourceGroup(configData, this.ResourceGroupName);
+                        if (ShouldProcess(this.ResourceGroupName, string.Format(Resources.ConfigurationUpdateResourceGroupLevel, this.ResourecAdvisorClient.SubscriptionId, this.ResourceGroupName)))
+                        {
+                            results = this.CreateConfigurationByResourceGroup(configData, this.ResourceGroupName);
+                        }
                     }
                     break;
             }
