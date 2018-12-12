@@ -32,8 +32,8 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Recovery Services cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Recovery Services Backup, please visit the following: https://docs.microsoft.com/en-us/azure/backup/
-For more information on Site Recovery, please visit the following: https://docs.microsoft.com/en-us/azure/site-recovery/'
+For more information on Recovery Services Backup, please visit the following: https://docs.microsoft.com/azure/backup/
+For more information on Site Recovery, please visit the following: https://docs.microsoft.com/azure/site-recovery/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

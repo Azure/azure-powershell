@@ -32,7 +32,7 @@ Copyright = '(c) 2017 Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Reservations service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.  Manages Reservations, Reservation Orders, and related resources in Azure Resource Manager.
 
-For more information on Reservations, please visit the following: https://docs.microsoft.com/en-us/azure/billing/billing-save-compute-costs-reservations'
+For more information on Reservations, please visit the following: https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

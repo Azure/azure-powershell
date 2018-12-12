@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Managed Service Identity cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.  Manages user assigned identities in Azure Resource Manager.
 
-For more information on Managed Service Indentity, please visit the following: https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview'
+For more information on Managed Service Indentity, please visit the following: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

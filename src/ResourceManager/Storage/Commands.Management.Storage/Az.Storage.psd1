@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Storage service data plane and management cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.  Creates and manages storage accounts in Azure Resource Manager.
 
-For more information on Storage, please visit the following: https://docs.microsoft.com/en-us/azure/storage/'
+For more information on Storage, please visit the following: https://docs.microsoft.com/azure/storage/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

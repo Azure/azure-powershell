@@ -32,8 +32,8 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Azure Resource Manager and Active Directory cmdlets in Windows PowerShell and PowerShell Core.  Manages subscriptions, tenants, resource groups, deployment templates, providers, and resource permissions in Azure Resource Manager.  Provides cmdlets for managing resources generically across resource providers.
 
-For more information on Resource Manager, please visit the following: https://docs.microsoft.com/en-us/azure/azure-resource-manager/
-For more information on Active Directory, please visit the following: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis'
+For more information on Resource Manager, please visit the following: https://docs.microsoft.com/azure/azure-resource-manager/
+For more information on Active Directory, please visit the following: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

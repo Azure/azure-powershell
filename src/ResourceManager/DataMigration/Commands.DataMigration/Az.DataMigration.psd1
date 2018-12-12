@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Database Migration Service cmdlets for Azure Sql in Windows PowerShell and PowerShell Core.
 
-For more information on Database Migration Service, please visit the following: https://docs.microsoft.com/en-us/azure/dms/dms-overview'
+For more information on Database Migration Service, please visit the following: https://docs.microsoft.com/azure/dms/dms-overview'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

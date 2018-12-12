@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Service Bus service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Service Bus, please visit the following: https://docs.microsoft.com/en-us/azure/service-bus/'
+For more information on Service Bus, please visit the following: https://docs.microsoft.com/azure/service-bus/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

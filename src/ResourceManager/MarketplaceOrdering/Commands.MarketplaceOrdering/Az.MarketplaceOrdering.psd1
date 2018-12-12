@@ -30,7 +30,9 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Marketplace Ordering agreements service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.'
+Description = 'Microsoft Azure PowerShell - Marketplace Ordering agreements service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
+
+For more information on Marketplace Ordering, please visit the following: https://docs.microsoft.com/azure/marketplace/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
