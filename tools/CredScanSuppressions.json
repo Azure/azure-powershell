@@ -1002,7 +1002,7 @@
       "_justification": "Expired test session storage SAS"
     },
     {
-      "file": "\\src\\ResourceManager\\DataFactories\\Commands.DataFactories\\help\\New-AzDataFactoryEncryptValue.md",
+      "file": "\\src\\ResourceManager\\DataFactoryV2\\Commands.DataFactories\\help\\New-AzDataFactoryEncryptValue.md",
       "_justification": "Fake password"
     }
   ]
