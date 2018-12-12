@@ -29,10 +29,10 @@ function Test-Dataset
     {
         Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
         $linkedServicename = "foo1"
-        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $linkedServicename -Force
+        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File (Join-Path 'Resources' 'linkedService.json') -Name $linkedServicename -Force
    
         $datasetname = "foo2"
-        $expected = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
+        $expected = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File (Join-Path 'Resources' 'dataset.json') -Force
         $actual = Get-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname
 
         Verify-AdfSubResource $expected $actual $rgname $dfname $datasetname
@@ -63,10 +63,10 @@ function Test-DatasetWithResourceId
     {
         $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
         $linkedServicename = "foo1"
-        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $linkedServicename -Force
+        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File (Join-Path 'Resources' 'linkedService.json') -Name $linkedServicename -Force
    
         $dsname = "foo2"
-        $expected = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $dsname -File .\Resources\dataset.json -Force
+        $expected = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $dsname -File (Join-Path 'Resources' 'dataset.json') -Force
         $actual = Get-AzureRmDataFactoryV2Dataset -ResourceId $expected.Id
 
         Verify-AdfSubResource $expected $actual $rgname $dfname $dsname
@@ -97,10 +97,10 @@ function Test-DatasetWithDataFactoryParameter
     {
         $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
         $linkedServicename = "foo1"
-        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $linkedServicename -Force
+        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File (Join-Path 'Resources' 'linkedService.json') -Name $linkedServicename -Force
    
         $datasetname = "foo2"
-        $actual = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
+        $actual = Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File (Join-Path 'Resources' 'dataset.json') -Force
         $expected = Get-AzureRmDataFactoryV2Dataset -DataFactory $df -Name $datasetname
 
         Verify-AdfSubResource $expected $actual $rgname $dfname $datasetname
@@ -130,10 +130,10 @@ function Test-DatasetPiping
     {
         Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
         $linkedServicename = "foo1"
-        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Name $linkedServicename -Force
+        Set-AzureRmDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File (Join-Path 'Resources' 'linkedService.json') -Name $linkedServicename -Force
    
         $datasetname = "foo2"
-        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
+        Set-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File (Join-Path 'Resources' 'dataset.json') -Force
         
         Get-AzureRmDataFactoryV2Dataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname | Remove-AzureRmDataFactoryV2Dataset -Force
 

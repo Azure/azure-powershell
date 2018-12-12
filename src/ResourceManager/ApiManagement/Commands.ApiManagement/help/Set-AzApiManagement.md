@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagement
 schema: 2.0.0

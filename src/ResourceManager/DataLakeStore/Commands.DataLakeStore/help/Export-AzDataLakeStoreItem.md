@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: B10B1F5D-5566-4129-9D42-05A6D3B72C9E
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/export-azdatalakestoreitem

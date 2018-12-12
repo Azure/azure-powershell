@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         public ConfigurationTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
         }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             CustomizeSpark(2);
         }
 
-        public void CreateNewConfig(bool setEdgeNodeVmSize = false)
+        private void CreateNewConfig(bool setEdgeNodeVmSize = false)
         {
             var newconfigcmdlet = new NewAzureHDInsightClusterConfigCommand
             {
