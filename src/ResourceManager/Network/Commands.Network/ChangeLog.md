@@ -39,3 +39,9 @@
 * Removed deprecated -ResourceId parameter from Get-AzServiceEndpointPolicyDefinition
 * Removed deprecated EnableVmProtection property from PSVirtualNetwork
 * Removed deprecated Set-AzVirtualNetworkGatewayVpnClientConfig cmdlet
+* Added KeyVault Support to Application Gateway using Identity.
+    - Cmdlets updated with optonal parameter -KeyVaultSecretId, -KeyVaultSecret
+        - Add-AzApplicationGatewaySslCertificate
+        - New-AzApplicationGatewaySslCertificate
+        - Set-AzApplicationGatewaySslCertificate
+    - New-AzApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId, -UserAssignedIdentity
