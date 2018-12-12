@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
 online version: https://docs.microsoft.com/en-us/powershell/module/az.eventgrid/new-azeventgridtopickey
 schema: 2.0.0

@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using System.Diagnostics;
 using Microsoft.Azure.Management.Internal.Resources;
 

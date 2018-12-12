@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.dll-Help.xml
 Module Name: Az.TrafficManager
 ms.assetid: 5A4D685F-B904-4C85-8B68-C9936B0627FA
 online version: https://docs.microsoft.com/en-us/powershell/module/az.trafficmanager/remove-aztrafficmanagerprofile

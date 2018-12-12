@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 1B2AA717-ECD6-4CC0-AB6D-A199AF21A4A5
 online version: https://docs.microsoft.com/en-us/powershell/module/az.notificationhubs/set-aznotificationhubsnamespace
