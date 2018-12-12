@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.NotificationHubs</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.NotificationHubs</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

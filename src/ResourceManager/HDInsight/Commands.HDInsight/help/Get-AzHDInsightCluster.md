@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: FA154E07-EA26-4688-986E-C53C3A9E4F06
 online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/get-azhdinsightcluster

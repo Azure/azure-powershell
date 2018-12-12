@@ -3,8 +3,8 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.Automation.Test</AssemblyName>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Automation.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Automation.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -25,19 +25,17 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.Automation" Version="3.4.0-preview" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Automation" Version="3.4.1-preview" />
   </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Automation">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Automation\Microsoft.Azure.Commands.Automation.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.Automation\Commands.Automation.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

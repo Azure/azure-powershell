@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: EF155949-5766-4BC4-9C8A-2B97E8EA032D
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/restart-azvm

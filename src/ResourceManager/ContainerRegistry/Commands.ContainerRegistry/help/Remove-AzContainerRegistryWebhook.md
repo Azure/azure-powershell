@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
 online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/remove-azcontainerregistry
 schema: 2.0.0

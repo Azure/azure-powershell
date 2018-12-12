@@ -4,12 +4,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Profile</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Accounts</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Profile</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(ProjectDir)..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Profile\</OutputPath>
+    <OutputPath>$(ProjectDir)..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Accounts\</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
@@ -28,7 +28,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Az.Profile.psd1">
+    <None Include="Az.Accounts.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -44,12 +44,10 @@
     <NetCoreAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory\3.19.2\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
   </ItemGroup>
 
-
   <ItemGroup>
     <StorageDependencies Include="$(ProjectDir)..\..\..\lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
     <StorageDependencies Include="$(ProjectDir)..\..\..\lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
   </ItemGroup>
-
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

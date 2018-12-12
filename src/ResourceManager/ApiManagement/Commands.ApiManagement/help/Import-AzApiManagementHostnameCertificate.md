@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 98367100-4FFD-46F6-8974-603B32533626
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/import-azapimanagementhostnamecertificate

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.ManagementPartner.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner.dll-Help.xml
 Module Name: Az.ManagementPartner
 online version: http://go.microsoft.com/fwlink/?LinkID=393054
 schema: 2.0.0

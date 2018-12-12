@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 37E41DA2-B65B-4AA2-B6AB-F93CCA881C72
 online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/set-azhdinsightdefaultstorage

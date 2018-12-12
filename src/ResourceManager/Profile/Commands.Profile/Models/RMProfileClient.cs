@@ -603,7 +603,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                     tenant = new AzureTenant();
                     tenant.Id = accessToken.TenantId;
-                    tenant.Directory = accessToken.GetDomain();
                     return true;
                 }
 
@@ -613,14 +612,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 {
                     tenant = new AzureTenant();
                     tenant.Id = accessToken.TenantId;
-                    if (accessToken.UserId != null)
-                    {
-                        var domain = accessToken.UserId.Split(new[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
-                        if (domain.Length == 2)
-                        {
-                            tenant.Directory = domain[1];
-                        }
-                    }
                     return true;
                 }
 
