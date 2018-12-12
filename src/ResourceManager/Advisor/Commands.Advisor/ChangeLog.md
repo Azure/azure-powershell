@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
-*Added new commendalets for Advidor Recommendation
-    - Get-AzureRMAdvisorRecommendation
-    - Enable-AzureRMAdvisorRecommendation
-    - Disable-AzureRMAdvisorRecommendation
-*Added new commendalets for Advidor Configuration
-    - Get-AzureRMAdvisorConfiguration
-    - Set-AzureRMAdvisorConfiguration
+*Added new cmdlets for Advidor Recommendation
+    - Get-AzAdvisorRecommendation
+    - Enable-AzAdvisorRecommendation
+    - Disable-AzAdvisorRecommendation
+*Added new cmdlets for Advidor Configuration
+    - Get-AzAdvisorConfiguration
+    - Set-AzAdvisorConfiguration
