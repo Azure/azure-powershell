@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 60023C8D-EA37-41DA-97E6-AF89F7F9BADD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/set-azautomationdscnode

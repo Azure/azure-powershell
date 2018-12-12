@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 910239BE-9E48-4DC5-85EA-CC6D466FE62F
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azwebappsslbinding

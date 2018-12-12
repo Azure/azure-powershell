@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.SignalR</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.SignalR</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.SignalR</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
