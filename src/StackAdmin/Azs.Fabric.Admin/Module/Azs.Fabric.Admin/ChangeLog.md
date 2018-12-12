@@ -21,48 +21,48 @@
 
 ## Version 0.3.0
 * New cmdlet (The features are supported by Azure Stack 1811+)
-	* Get-AzsDrive
-	* Get-AzsVolume
-	* Get-AzsStorageSubSystem
+    * Get-AzsDrive
+    * Get-AzsVolume
+    * Get-AzsStorageSubSystem
 * Deprecation
-	* Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume
+    * Get-AzsInfrastructureVolume is an alias now to the cmdlet Get-AzsVolume
     * Get-AzsStorageSystem will be deprecated in a future release
     * Get-AzsStoragePool will be deprecated in a future release
 
 ## Version 0.2.1
 * Bug fixes
-	* Fixed a bug in Add-AzsScaleUnitNode
+    * Fixed a bug in Add-AzsScaleUnitNode
 
 ## Version 0.2.0
 * New Module dependencies
-	* AzureRM.Profile
-	* AzureRM.Resources
+    * AzureRM.Profile
+    * AzureRM.Resources
 * New cmdlet
-	* Add-AzsScaleUnitNode
-	* New-AzsScaleUnitNodeObject
+    * Add-AzsScaleUnitNode
+    * New-AzsScaleUnitNodeObject
 * Support handling names of nested resources
-	* Add-AzsScaleUnitNode
-	* Disable-AzsScaleUnitNode
-	* Enable-AzsScaleUnitNode
-	* Get-AzsEdgeGateway
-	* Get-AzsEdgeGatewayPool
-	* Get-AzsInfrastructureRole
-	* Get-AzsInfrastructureRoleInstance
-	* Get-AzsInfrastructureShare
-	* Get-AzsInfrastructureVolume
-	* Get-AzsIpPool
-	* Get-AzsLogicalNetwork
-	* Get-AzsLogicalSubnet
-	* Get-AzsMacAddressPool
-	* Get-AzsScaleUnit
-	* Get-AzsScaleUnitNode
-	* Get-AzsSlbMuxInstance
-	* Get-AzsStoragePool
-	* Get-AzsStorageSystem
-	* Repair-AzsScaleUnitNode
-	* Restart-AzsInfrastructureRole
-	* Restart-AzsInfrastructureRoleInstance
-	* Start-AzsInfrastructureRoleInstance
-	* Start-AzsScaleUnitNode
-	* Stop-AzsInfrastructureRoleInstance
-	* Stop-AzsScaleUnitNode
+    * Add-AzsScaleUnitNode
+    * Disable-AzsScaleUnitNode
+    * Enable-AzsScaleUnitNode
+    * Get-AzsEdgeGateway
+    * Get-AzsEdgeGatewayPool
+    * Get-AzsInfrastructureRole
+    * Get-AzsInfrastructureRoleInstance
+    * Get-AzsInfrastructureShare
+    * Get-AzsInfrastructureVolume
+    * Get-AzsIpPool
+    * Get-AzsLogicalNetwork
+    * Get-AzsLogicalSubnet
+    * Get-AzsMacAddressPool
+    * Get-AzsScaleUnit
+    * Get-AzsScaleUnitNode
+    * Get-AzsSlbMuxInstance
+    * Get-AzsStoragePool
+    * Get-AzsStorageSystem
+    * Repair-AzsScaleUnitNode
+    * Restart-AzsInfrastructureRole
+    * Restart-AzsInfrastructureRoleInstance
+    * Start-AzsInfrastructureRoleInstance
+    * Start-AzsScaleUnitNode
+    * Stop-AzsInfrastructureRoleInstance
+    * Stop-AzsScaleUnitNode
