@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
 
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoDatabase",
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoDatabase", DefaultParameterSetName = CmdletParametersSet, 
          SupportsShouldProcess = true),
      OutputType(typeof(PSKustoDatabase))]
     public class UpdateAzureRmKustoDatabase : KustoCmdletBase
@@ -33,12 +33,13 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
         protected const string ResourceIdParameterSet = "ByResourceId";
 
         [Parameter(
-            ParameterSetName = CmdletParametersSet,  
+            ParameterSetName = CmdletParametersSet,
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Name of the database to update")]
+            HelpMessage = "Name of resource group under which the cluster exists.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        [ResourceGroupCompleter]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = CmdletParametersSet,
@@ -49,32 +50,29 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
         public string ClusterName { get; set; }
 
         [Parameter(
-            ParameterSetName = CmdletParametersSet,
-            Mandatory = false,
-            HelpMessage = "Name of resource group under which the cluster exists.")]
+            ParameterSetName = CmdletParametersSet,  
+            Position = 2,
+            Mandatory = true,
+            HelpMessage = "Name of the database to update")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Position = 4,
             Mandatory = true,
-            HelpMessage = "the amount of days for the data .")] //TODO:Add here and in create a valid help message
-        [LocationCompleter("Microsoft.Kusto/databases")]
+            HelpMessage = "The number of days that data should be kept before it stops being accessible to queries")]
         public int SoftDeletePeriodInDays { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Position = 5,
             Mandatory = true,
-            HelpMessage = ".")] //TODO:Add here and in create a valid help message
-        [LocationCompleter("Microsoft.Kusto/clusters")]
+            HelpMessage = "The number of days that data should be kept in cache for fast queries")]
         public int HotCachePeriodInDays { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Kusto database ResourceID.")]
         [ValidateNotNullOrEmpty]
@@ -83,13 +81,12 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
         [Parameter(
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
-            Position = 2,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "Kusto database object.")]
         [ValidateNotNullOrEmpty]
         public PSKustoDatabase InputObject { get; set; }
 
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
             string databaseName = Name;
@@ -106,14 +103,7 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                 KustoUtils.GetResourceGroupNameClusterNameAndDatabaseNameFromDatabaseId(InputObject.Id, out resourceGroupName, out clusterName, out databaseName);
             }
 
-            if (string.IsNullOrEmpty(clusterName))
-            {
-                WriteExceptionError(new PSArgumentNullException("Name", "Name of cluster not specified"));
-            }
-            if (string.IsNullOrEmpty(databaseName))
-            {
-                WriteExceptionError(new PSArgumentNullException("Name", "Name of database not specified"));
-            }
+            EnsureDatabaseClusterResourceGroupSpecified(resourceGroupName, clusterName, databaseName);
 
             if (ShouldProcess(databaseName, Resources.UpdatingKustoDatabase))
             {

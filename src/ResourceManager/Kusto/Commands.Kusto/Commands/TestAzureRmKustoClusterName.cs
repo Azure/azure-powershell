@@ -29,28 +29,23 @@ namespace Microsoft.Azure.Commands.Kusto
 
         [Parameter(
             ParameterSetName = ParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The location where to check.")]
+        [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSet,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Name of a specific cluster.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            string location = Location;
-            string clusterName = Name;
-            if (string.IsNullOrEmpty(location))
-            {
-                throw new CloudException(string.Format(Resources.KustoClusterExists, Name));
-            }
-            if (string.IsNullOrEmpty(clusterName))
-            {
-                throw new CloudException(string.Format(Resources.KustoClusterExists, Name));
-            }
+           string location = Location;
+           string clusterName = Name;
+           EnsureClusterSpecified(clusterName);
 
             var result = KustoClient.CheckClusterNAmeAvailability(clusterName, location);
             WriteObject(result);

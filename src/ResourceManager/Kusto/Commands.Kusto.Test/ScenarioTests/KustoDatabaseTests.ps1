@@ -6,22 +6,28 @@ function Test-KustoDatabaseLifecycle
 {
 	try
 	{  
-		# Creating capacity
-		$RGlocation = Get-RG-Location
-		$location = Get-Location
-		$resourceGroupName = "KustoClientTest"
-		$clusterName = "kustopsclienttest"
-		$databaseName = "dbTest"
-		$resourceType =  "Microsoft.Kusto/Clusters/Databases"
-		$softDeletePeriodInDays = 4
-		$hotCachePeriodInDays = 2
-		$resourceId =   "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/databases/$databaseName"
+		$subscription = Get-Subscription
+		#$RGlocation = Get-RG-Location
+		$RGlocation = "Central US"
+		#$location = Get-Location
+		$location = "Central US"
+		$resourceGroupName = Get-RG-Name
+		$clusterName = "ofertestgroup"
+		#$clusterName = Get-Cluster-Name
+		$sku = Get-Sku
+		$databaseName = Get-Database-Name
+		$resourceType =  Get-Database-Type
+		$softDeletePeriodInDays =  Get-Soft-Delete-Period-In-Days
+		$hotCachePeriodInDays =  Get-Hot-Cache-Period-In-Days
 		$databaseFullName = "$clusterName/$databaseName"
+		$expectedException = Get-Database-Not-Exist-Message -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName
 		
-		$softDeletePeriodInDaysUpdated = 6
-		$hotCachePeriodInDaysUpdated = 3
+		$softDeletePeriodInDaysUpdated = Get-Updated-Soft-Delete-Period-In-Days
+		$hotCachePeriodInDaysUpdated = Get-Updated-Hot-Cache-Period-In-Days
 
-		$expectedException = "The Resource 'Microsoft.Kusto/clusters/$clusterName/databases/$databaseName' under resource group '$clusterName' was not found."
+		#create cluster for the databases
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
+		$clusterCreated = New-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
 
 		$databaseCreated = New-AzureRmKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -SoftDeletePeriodInDays $softDeletePeriodInDays -HotCachePeriodInDays $hotCachePeriodInDays
 		Validate_Database $databaseCreated $databaseFullName $location $type $softDeletePeriodInDays $hotCachePeriodInDays;
@@ -32,7 +38,7 @@ function Test-KustoDatabaseLifecycle
 		$databaseUpdatedWithParameters = Update-AzureRmKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -SoftDeletePeriodInDays $softDeletePeriodInDaysUpdated -HotCachePeriodInDays $hotCachePeriodInDaysUpdated
 		Validate_Database $databaseUpdatedWithParameters $databaseFullName $location $type $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated;
 
-		$databaseUpdatedWithResourceId = Update-AzureRmKustoDatabase -ResourceId $resourceId -SoftDeletePeriodInDays $softDeletePeriodInDays -HotCachePeriodInDays $hotCachePeriodInDays
+		$databaseUpdatedWithResourceId = Update-AzureRmKustoDatabase -ResourceId $databaseUpdatedWithParameters.Id -SoftDeletePeriodInDays $softDeletePeriodInDays -HotCachePeriodInDays $hotCachePeriodInDays
 		Validate_Database $databaseUpdatedWithResourceId $databaseFullName $location $type $softDeletePeriodInDays $hotCachePeriodInDays;
 
 		$databaseUpdatedObject = Update-AzureRmKustoDatabase -InputObject $databaseUpdatedWithResourceId -SoftDeletePeriodInDays $softDeletePeriodInDaysUpdated -HotCachePeriodInDays $hotCachePeriodInDaysUpdated
@@ -40,27 +46,13 @@ function Test-KustoDatabaseLifecycle
 
 		Remove-AzureRmKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
 
-		try
-        {
-			$databaseGetItemDeleted = Get-AzureRmKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
-        }
-        catch
-        {
-            if ($_ -like $expectedErrorMessage)
-            {
-                $expectedException = $true;
-            }
-        }
-        
-        if (-not $expectedException)
-        {
-            throw "Expected exception from calling Get-AzureRmKustoCluster was not caught: '$expectedErrorMessage'.";
-        }
+		Ensure_Database_Not_Exist $resourceGroupName $clusterName $databaseName $expectedException
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName capacityName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
 
@@ -69,18 +61,27 @@ function Test-KustoDatabaseLifecycle
 Tests Kusto Add Get and Remove using resourceId and InputObject
 #>
 function Test-DatabaseAddRemoveGet {
-		$RGlocation = Get-RG-Location
-		$location = Get-Location
-		$resourceGroupName = "KustoClientTest"
-		$clusterName = "kustopsclienttest"
-		$databaseName = "dbTest"
-		$resourceType =  "Microsoft.Kusto/Clusters/Databases"
-		$softDeletePeriodInDays = 4
-		$hotCachePeriodInDays = 2
-		$clusterResourceId = "/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName"
-		$databaseResourceId = "$clusterResourceId/databases/$databaseName"
+	try
+	{
+		$subscription = Get-Subscription
+		#$RGlocation = Get-RG-Location
+		$RGlocation = "Central US"
+		#$location = Get-Location
+		$location = "Central US"
+		$resourceGroupName = Get-RG-Name
+		$clusterName = Get-Cluster-Name
+		$sku = Get-Sku
+		$databaseName = Get-Database-Name
+		$resourceType =  Get-Database-Type
+		$softDeletePeriodInDays =  Get-Soft-Delete-Period-In-Days
+		$hotCachePeriodInDays =  Get-Hot-Cache-Period-In-Days
+		$clusterResourceId = Get-Cluster-Resource-Id -Subscription $subscription -ResourceGroupName $resourceGroupName -ClusterName $clusterName
 		$databaseFullName = "$clusterName/$databaseName"
-		$expectedException = "The Resource 'Microsoft.Kusto/clusters/$clusterName/databases/$databaseName' under resource group '$resourceGroupName' was not found."
+		$expectedException = Get-Database-Not-Exist-Message -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName
+
+		#create cluster for the databases
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
+		$clusterCreated = New-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
 
 		#create and remove using ResourceId
 		$databaseCreated = New-AzureRmKustoDatabase -ResourceId $clusterResourceId -Name $databaseName -SoftDeletePeriodInDays $softDeletePeriodInDays -HotCachePeriodInDays $hotCachePeriodInDays
@@ -89,8 +90,8 @@ function Test-DatabaseAddRemoveGet {
 		$databaseGetItem = Get-AzureRmKustoDatabase -ResourceId $clusterResourceId -Name $databaseName
 		Validate_Database $databaseGetItem $databaseFullName $location $type $softDeletePeriodInDays $hotCachePeriodInDays;
 		
-		Remove-AzureRmKustoDatabase -ResourceId $databaseCreated.Id
-		Ensure_Database_Exists $resourceGroupName $clusterName $databaseName $expectedException
+		Remove-AzureRmKustoDatabase -ResourceId $databaseGetItem.Id
+		Ensure_Database_Not_Exist $resourceGroupName $clusterName $databaseName $expectedException
 
 		#create and remove using InputObject
 		$cluster = Get-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
@@ -102,7 +103,14 @@ function Test-DatabaseAddRemoveGet {
 		Validate_Database $databaseGetItem $databaseFullName $location $type $softDeletePeriodInDays $hotCachePeriodInDays;
 
 		Remove-AzureRmKustoDatabase -InputObject $databaseCreated
-		Ensure_Database_Exists $resourceGroupName $clusterName $databaseName $expectedException
+		Ensure_Database_Not_Exist $resourceGroupName $clusterName $databaseName $expectedException
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
 		
 }
 
@@ -120,7 +128,7 @@ function Validate_Database {
 		Assert-AreEqual $HotCachePeriodInDays $Database.HotCachePeriodInDays 
 }
 
-function Ensure_Database_Exists {
+function Ensure_Database_Not_Exist {
 	Param ([String]$ResourceGroupName,
 			[String]$ClusterName,
 			[string]$DatabaseName,
@@ -141,5 +149,4 @@ function Ensure_Database_Exists {
         {
             throw "Expected exception from calling Get-AzureRmKustoDatabase was not caught: '$expectedErrorMessage'.";
         }
-
 }

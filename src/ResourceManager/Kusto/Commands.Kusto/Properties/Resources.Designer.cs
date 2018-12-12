@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.Kusto.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;Name of cluster not specified&quot;.
+        /// </summary>
+        public static string ClusterNameNotSpecified {
+            get {
+                return ResourceManager.GetString("ClusterNameNotSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Kusto cluster.
         /// </summary>
         public static string CreateNewKustoCluster {
@@ -93,6 +102,15 @@ namespace Microsoft.Azure.Commands.Kusto.Properties {
         public static string CreateNewKustoDatabase {
             get {
                 return ResourceManager.GetString("CreateNewKustoDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Name of database not specified&quot;.
+        /// </summary>
+        public static string DatabaseNameNotSpecified {
+            get {
+                return ResourceManager.GetString("DatabaseNameNotSpecified", resourceCulture);
             }
         }
         
@@ -174,6 +192,15 @@ namespace Microsoft.Azure.Commands.Kusto.Properties {
         public static string RemovingKustoDatabase {
             get {
                 return ResourceManager.GetString("RemovingKustoDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name of resource group not specified.
+        /// </summary>
+        public static string ResourceGroupNotSpecified {
+            get {
+                return ResourceManager.GetString("ResourceGroupNotSpecified", resourceCulture);
             }
         }
         

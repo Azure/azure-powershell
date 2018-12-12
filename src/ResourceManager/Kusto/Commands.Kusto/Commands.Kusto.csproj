@@ -62,6 +62,9 @@
     <Compile Include="Utilities\KustoUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Az.Kusto.psd1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="AzureRM.Kusto.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

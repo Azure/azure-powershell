@@ -23,8 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
 
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster",
-         SupportsShouldProcess = true),
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", DefaultParameterSetName = CmdletParametersSet, SupportsShouldProcess = true),
      OutputType(typeof(PSKustoCluster))]
     public class UpdateAzureRmKustoCluster : KustoCmdletBase
     {
@@ -34,45 +33,38 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
 
         [Parameter(
             ParameterSetName = CmdletParametersSet,
+            Position = 0,
+            Mandatory = true,
+            HelpMessage = "Name of resource group under which the cluster exists.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            ParameterSetName = CmdletParametersSet,
+            Position = 1,
             Mandatory = true,
             HelpMessage = "Name of cluster to be updated.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = CmdletParametersSet,
-            Mandatory = false,
-            HelpMessage = "Name of resource group under which the cluster exists.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CmdletParametersSet,
-            Mandatory = true,
-            HelpMessage = "Azure region where the cluster exists.")]
-        [LocationCompleter("Microsoft.Kusto/clusters")]
-        public string Location { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of the Sku used to create the cluster")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("KC8", "KC16", "KS8", "KS16", "L8", "L16", "D14_v2", "D13_v2", IgnoreCase = true)]
+        [PSArgumentCompleter("KC8", "KC16", "KS8", "KS16", "L8", "L16", "D14_v2", "D13_v2")]
         public string SkuName { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Name of the Tier used to create the cluster")]
-        [ValidateSet("Standard", IgnoreCase = true)]
+        [PSArgumentCompleter("Standard")]
         public string Tier { get; set; }
         
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Kusto cluster ResourceID.")]
         [ValidateNotNullOrEmpty]
@@ -81,18 +73,17 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
         [Parameter(
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
-            Position = 2,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "Kusto cluster object.")]
         [ValidateNotNullOrEmpty]
         public PSKustoCluster InputObject { get; set; }
 
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
             string clusterName = Name;
             string resourceGroupName = ResourceGroupName;
-            string location = Location;
+            string location = null;
 
             if (!string.IsNullOrEmpty(ResourceId))
             {
@@ -101,11 +92,6 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
             else if (InputObject != null)
             {
                 KustoUtils.GetResourceGroupNameAndClusterNameFromClusterId(InputObject.Id, out resourceGroupName, out clusterName);
-            }
-
-            if (string.IsNullOrEmpty(clusterName))
-            {
-                WriteExceptionError(new PSArgumentNullException("Name", "Name of cluster not specified"));
             }
 
             if (ShouldProcess(clusterName, Resources.UpdatingKustoCluster))
@@ -118,10 +104,6 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                         throw new CloudException(string.Format(Resources.KustoClusterNotExist, Name));
                     }
 
-                    if (location != null && location != cluster.Location)
-                    {
-                        throw new CloudException(string.Format(Resources.KustoClusterNotExist, Name, cluster.Location));
-                    }
                     location = cluster.Location;
                 }
                 catch (CloudException ex)

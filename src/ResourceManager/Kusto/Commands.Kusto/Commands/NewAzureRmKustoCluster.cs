@@ -26,15 +26,14 @@ namespace Microsoft.Azure.Commands.Kusto
     public class NewKustoCluster : KustoCmdletBase
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
             Mandatory = true,
             HelpMessage = "Name of resource group under which you want to create the cluster.")]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             Mandatory = true,
             HelpMessage = "Name of the cluster to be created.")]
@@ -42,31 +41,25 @@ namespace Microsoft.Azure.Commands.Kusto
         public string Name { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
             Mandatory = true,
             HelpMessage = "Azure region where the cluster should be created.")]
         [LocationCompleter("Microsoft.Kusto/clusters")]
         public string Location { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
             Mandatory = true,
             HelpMessage = "Name of the Sku used to create the cluster")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("KC8", "KC16", "KS8", "KS16", "L8", "L16", "D14_v2", "D13_v2", IgnoreCase = true)]
+        [PSArgumentCompleter("KC8", "KC16", "KS8", "KS16", "L8", "L16", "D14_v2", "D13_v2")]
         public string Sku { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Name of the Tier used to create the cluster")]
-        [ValidateSet("Standard", IgnoreCase = true)]
+        [PSArgumentCompleter("Standard")]
         public string Tier { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this cluster")]
         [ValidateNotNull]

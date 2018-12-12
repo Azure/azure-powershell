@@ -16,35 +16,195 @@
 .SYNOPSIS
 Gets resource location for testing.
 #>
-function Get-Location
+function Get-Cluster-Location
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
-        [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-	{
-		$namespace = "Microsoft.Kusto"
-		$type = "operations"
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace `
-        | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+	return "Central US"
+}
 
-		if ($location -eq $null)
-		{
-			return "Central US"
-		} else
-		{
-			return $location.Locations[0]
-		}
-	}
+function Get-RG-Locationa
+{
 	return "Central US"
 }
 
 <#
 .SYNOPSIS
-Gets a resource group location for testing.
+Gets a name of the resource group testing.
+#>
+function Get-RG-Name
+{
+	return "KustoPSClientTest"
+}
+
+<#
+.SYNOPSIS
+Gets a name of the cluster testing.
+#>
+function Get-Cluster-Name
+{
+	return "kustopsclienttest"
+}
+
+<#
+.SYNOPSIS
+Gets a sku name
+#>
+function Get-Sku
+{
+	return "D13_v2"
+}
+
+<#
+.SYNOPSIS
+Gets a sku diferent sku name.
+#>
+function Get-Updated-Sku
+{
+	return "D14_v2"
+}
+
+<#
+.SYNOPSIS
+Gets a name of a not existing resource group for testing.
+#>
+function Get-Cluster-Resource-Type
+{
+	return "Microsoft.Kusto/Clusters"
+}
+
+<#
+.SYNOPSIS
+Gets a resource group Location for testing.
 #>
 function Get-RG-Location
 {
-	return "Central US"
+	return Get-Location
 }
+
+<#
+.SYNOPSIS
+Gets a resource group Location for testing.
+#>
+function Get-Subscription
+{
+	return "11d5f159-a21d-4a6c-8053-c3aae30057cf"
+}
+
+
+<#
+.SYNOPSIS
+Gets a cluster resource id
+#>
+function Get-Cluster-Resource-Id
+{
+	Param([string]$Subscription,
+		[string]$ResourceGroupName,
+		[string]$ClusterName)
+	return "/subscriptions/$Subscription/resourceGroups/$ResourceGroupName/providers/Microsoft.Kusto/clusters/$ClusterName"
+}
+
+<#
+.SYNOPSIS
+Gets a database resource id
+#>
+function Get-Database-Resource-Id
+{
+	Param([string]$Subscription,
+		[string]$ResourceGroupName,
+		[string]$ClusterName,
+		[string]$DatabaseName)
+	$clusterResourceId = Get-Cluster-Resource-Id -Subscription $Subscription -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
+	return "$clusterResourceId/databases/$DatabaseName"
+}
+
+
+<#
+.SYNOPSIS
+Gets a database name
+#>
+function Get-Database-Name
+{
+	return "dbTest"
+}
+
+<#
+.SYNOPSIS
+Gets a database type
+#>
+function Get-Database-Type
+{
+	return "Microsoft.Kusto/Clusters/Databases"
+}
+
+<#
+.SYNOPSIS
+Gets a database soft delet perios in days parameter
+#>
+function Get-Soft-Delete-Period-In-Days
+{
+	return 4
+}
+
+<#
+.SYNOPSIS
+Gets a database hot cache period in days
+#>
+function Get-Hot-Cache-Period-In-Days
+{
+	return 2
+}
+
+<#
+.SYNOPSIS
+Gets a different  database soft delet perios in days parameter ( for testing update)
+#>
+function Get-Updated-Soft-Delete-Period-In-Days
+{
+	return 6
+}
+
+<#
+.SYNOPSIS
+Gets a different database hot cache period in days (for testring update)
+#>
+function Get-Updated-Hot-Cache-Period-In-Days
+{
+	return 3
+}
+
+<#
+.SYNOPSIS
+Gets a the database does not exist message
+#>
+function Get-Database-Not-Exist-Message
+{
+	Param([string]$ResourceGroupName,
+		[string]$ClusterName,
+	[string]$DatabaseName)
+	return "The Resource 'Microsoft.Kusto/clusters/$ClusterName/databases/$DatabaseName' under resource group '$ResourceGroupName' was not found."
+}
+
+<#
+.SYNOPSIS
+Gets a the cluster does not exist message
+#>
+function Get-Cluster-Not-Exist-Message
+{
+	Param([string]$ResourceGroupName,
+		[string]$ClusterName)
+	return "The Resource 'Microsoft.Kusto/clusters/$ClusterName' under resource group '$ResourceGroupName' was not found."
+}
+
+
+<#
+.SYNOPSIS
+Gets a the cluster does not exist message
+#>
+function Get-Cluster-Name-Exists-Message
+{
+	Param([string]$ClusterName)
+	return "Name '$ClusterName' with type Engine is already taken. Please specify a different name"
+}
+
 
 <#
 .SYNOPSIS

@@ -185,7 +185,6 @@ namespace Microsoft.Azure.Commands.Kusto.Models
                 throw new CloudException(string.Format(Resources.FailedToDiscoverResourceGroup, clusterName, _subscriptionId));
             }
         }
-
         #endregion
 
         #region Database Related Operations
@@ -221,7 +220,7 @@ namespace Microsoft.Azure.Commands.Kusto.Models
             if (existingDatbase != null)
             {
 
-                var updateParameters = new DatabaseUpdate(){SoftDeletePeriodInDays = softDeletePeriodInDays, HotCachePeriodInDays = hotCachePeriodInDays};
+                var updateParameters = new DatabaseUpdate(){SoftDeletePeriodInDays = softDeletePeriodInDays, HotCachePeriodInDays = hotCachePeriodInDays, Tags = tags};
                 newOrUpdatedDatabase = _client.Databases.Update(resourceGroupName, clusterName, databaseName, updateParameters);
             }
             else
