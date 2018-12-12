@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Storage Sync cmdlets in PowerShell and PowerShell Core. Manages operations pertaining to Azure File Sync in PowerShell.'
+Description = 'Microsoft Azure PowerShell - Storage Sync cmdlets in PowerShell and PowerShell Core. Manages client operations pertaining to Azure File Sync in PowerShell.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'
