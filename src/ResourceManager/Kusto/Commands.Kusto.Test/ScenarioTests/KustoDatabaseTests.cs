@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Xunit;
