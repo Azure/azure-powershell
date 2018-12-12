@@ -3,8 +3,8 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.RecoveryServicesArm.Test</AssemblyName>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.RecoveryServicesArm.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.RecoveryServicesArm.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -24,14 +24,8 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.1-preview" />
-  </ItemGroup>
-
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.RecoveryServices.ARM">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.ARM.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.1-preview" />
   </ItemGroup>
 
   <ItemGroup>

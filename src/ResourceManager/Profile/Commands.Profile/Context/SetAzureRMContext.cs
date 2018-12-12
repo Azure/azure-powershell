@@ -95,24 +95,22 @@ namespace Microsoft.Azure.Commands.Profile
             }
             else if (TenantOnlyParameters())
             {
-                var tenantId = Tenant ?? TenantObject?.Directory;
-                if (string.IsNullOrWhiteSpace(tenantId))
+                if (string.IsNullOrWhiteSpace(Tenant))
                 {
                     throw new ArgumentException("You must supply a valid tenant object with a valid Id or a valid tenant id string. Please check the input tenant value and try again.");
                 }
-                if (DefaultContext != null && ShouldProcess(string.Format(Resources.ChangingContextTenant, tenantId),
+                if (DefaultContext != null && ShouldProcess(string.Format(Resources.ChangingContextTenant, Tenant),
                     Resources.TenantChangeWarning, string.Empty))
                 {
                     SetContextWithOverwritePrompt((profile, client, name) =>
                     {
-                        client.SetCurrentContext(null, tenantId, name);
+                        client.SetCurrentContext(null, Tenant, name);
                         CompleteContextProcessing(profile);
                     });
                 }
             }
             else
             {
-                var tenantId = Tenant ?? TenantObject?.Directory;
                 var subscriptionId = Subscription ?? SubscriptionObject?.Id ?? SubscriptionObject?.Name;
                 if (DefaultContext != null && !string.IsNullOrWhiteSpace(subscriptionId))
                 {
@@ -121,7 +119,7 @@ namespace Microsoft.Azure.Commands.Profile
                     {
                         SetContextWithOverwritePrompt((profile, client, name) =>
                         {
-                            client.SetCurrentContext(subscriptionId, tenantId, name);
+                            client.SetCurrentContext(subscriptionId, Tenant, name);
                             CompleteContextProcessing(profile);
                         });
                     }

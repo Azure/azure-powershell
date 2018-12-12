@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 8180092D-5B1D-43A0-B830-D009B30E2DDF
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azcontainerservice

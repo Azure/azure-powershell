@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: BBF12B16-C5FD-4AE2-B5D7-AFDC29CEE4D3
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices.backup/unregister-azrecoveryservicesbackupmanagementserver

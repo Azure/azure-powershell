@@ -51,11 +51,11 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.7.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '0.7.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Authorization.dll',
-    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
+    '.\Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll',
     '.\Microsoft.Azure.Management.ResourceManager.dll',
     '.\Microsoft.Azure.Management.ManagementGroups.dll',
     '.\Microsoft.Extensions.Caching.Abstractions.dll',
@@ -73,11 +73,14 @@ TypesToProcess = '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xm
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = '.\Microsoft.Azure.Commands.Resources.format.ps1xml',
-    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml'
+    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml',
+    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.generated.format.ps1xml',
+    '.\Microsoft.Azure.Commands.Tags.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Resources.dll',
-    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Resources.dll',
+    '.\Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll',
+    '.\Microsoft.Azure.PowerShell.Cmdlets.Tags.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -137,7 +140,8 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
     'New-AzDeployment', 'Get-AzDeployment', 'Test-AzDeployment',
     'Remove-AzDeployment', 'Stop-AzDeployment',
     'Save-AzDeploymentTemplate',
-    'Get-AzDeploymentOperation', 'Get-AzPolicyAlias'
+    'Get-AzDeploymentOperation', 'Get-AzPolicyAlias',
+    'Remove-AzTag', 'Get-AzTag', 'New-AzTag'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -167,7 +171,7 @@ PrivateData = @{
         # Tags applied to this module. These help with module discovery in online galleries.
         Tags = 'Azure', 'ResourceManager', 'ARM', 'Provider', 'ResourceGroup',
             'Deployment', 'ActiveDirectory', 'Authorization', 'Management',
-            'ManagementGroups'
+            'ManagementGroups', 'Tags'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'

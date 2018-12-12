@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
     public class NamespaceTests : RMTestBase

@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Websites</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Websites</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.WebApps</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>

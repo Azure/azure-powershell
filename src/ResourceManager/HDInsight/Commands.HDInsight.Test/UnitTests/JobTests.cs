@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         public JobTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForData();
         }
 
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             WaitForJobCompletion_Internal(JobCompletionType.TimeOut, expectedExceptionMessage);
         }
 
-        public void WaitForJobCompletion_Internal(JobCompletionType completionType, string expectedMessageFormat)
+        private void WaitForJobCompletion_Internal(JobCompletionType completionType, string expectedMessageFormat)
         {
             var cmdlet = GetWaitAzureHDInsightJobCommandDefinition(completionType);
 

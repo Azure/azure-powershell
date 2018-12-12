@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.DataMigration</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.DataMigration</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

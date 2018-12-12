@@ -20,7 +20,7 @@ namespace Commands.Automation.Test
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.Azure.Commands.Automation.Test;
-    using Microsoft.Azure.ServiceManagemenet.Common.Models;
+    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
     public class CertificateTests : AutomationScenarioTestsBase
