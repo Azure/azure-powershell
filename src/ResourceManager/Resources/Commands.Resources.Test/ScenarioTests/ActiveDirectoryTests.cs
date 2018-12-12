@@ -605,16 +605,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateDeleteAppPasswordCredentials()
+        public void TestCreateDeleteAppCredentials()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-CreateDeleteAppPasswordCredentials");
+            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-CreateDeleteAppCredentials");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateDeleteSpPasswordCredentials()
+        public void TestCreateDeleteSpCredentials()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-CreateDeleteSpPasswordCredentials");
+            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-CreateDeleteSpCredentials");
         }
 
         [Fact]

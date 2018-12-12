@@ -658,7 +658,7 @@ function Test-NewADServicePrincipalWithCustomScope
 
 <#
 .SYNOPSIS
-Tests Creating and deleting application using Password Credentials.
+Tests Creating and deleting application using App Credentials.
 #>
 function Test-CreateDeleteAppCredentials
 {
@@ -673,7 +673,7 @@ function Test-CreateDeleteAppCredentials
 
     # Assert
     Assert-NotNull $application
-
+	Try {
     # Get Application by ObjectId
     $app1 =  Get-AzureRmADApplication -ObjectId $application.ObjectId
     Assert-NotNull $app1
@@ -695,9 +695,12 @@ function Test-CreateDeleteAppCredentials
     Assert-AreEqual $cred2.Count 2
     $credCount = $cred2 | where {$_.KeyId -in $cred1.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 2
+	$cred2 = $cred
 
 	# Add 1 key credential to the same app
+	$certCreated = 0
 	$cert = New-SelfSignedCertificate 
+	$certCreated = 1
 	$binCert = $cert.GetRawCertData()
 	$credValue = [System.Convert]::ToBase64String($binCert)
 	$start = (Get-Date).ToUniversalTime()
@@ -711,6 +714,7 @@ function Test-CreateDeleteAppCredentials
     Assert-AreEqual $cred3.Count 3
     $credCount = $cred3 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 3
+	$cred3 = $cred
 
 	# Add 1 more key credential to the same app
 	$binCert = $cert.GetRawCertData()
@@ -729,21 +733,28 @@ function Test-CreateDeleteAppCredentials
 
     # Remove cred by KeyId
     Remove-AzureRmADAppCredential -ApplicationId $application.ApplicationId -KeyId $cred.KeyId -Force
-    $cred3 = Get-AzureRmADAppCredential -ApplicationId $application.ApplicationId
-    Assert-NotNull $cred3
-    Assert-AreEqual $cred3.Count 1
-    Assert-AreEqual $cred3[0].KeyId $cred1.KeyId
+    $cred5 = Get-AzureRmADAppCredential -ApplicationId $application.ApplicationId
+    Assert-NotNull $cred5
+    Assert-AreEqual $cred5.Count 3
+    Assert-AreEqual $cred5[2].KeyId $cred1.KeyId
 
     # Remove All creds
-    Remove-AzureRmADAppCredential -ObjectId $application.ObjectId -All -Force
-    $cred3 = Get-AzureRmADAppCredential -ObjectId $application.ObjectId
-    Assert-Null $cred3
-
+    Remove-AzureRmADAppCredential -ObjectId $application.ObjectId -Force
+    $cred5 = Get-AzureRmADAppCredential -ObjectId $application.ObjectId
+    Assert-Null $cred5                     
+	 
     $newApplication = Get-AzureRmADApplication -DisplayNameStartWith "PowershellTestingApp"
     Assert-Throws { New-AzureRmADAppCredential -ApplicationId $newApplication.ApplicationId -Password "Somedummypwd"}
-
-    # Remove App
-    Remove-AzureRmADApplication -ObjectId $application.ObjectId -Force
+	}
+	Finally{
+		# Remove App
+		Remove-AzureRmADApplication -ObjectId $application.ObjectId -Force
+	
+		# Remove Cert
+		If ($certCreated -eq 1) {
+			Remove-Item .\certificate.pfx
+		}
+	}
 }
 
 
@@ -751,7 +762,7 @@ function Test-CreateDeleteAppCredentials
 .SYNOPSIS
 Tests Creating and deleting application using Service Principal Credentials.
 #>
-function Test-CreateDeleteSpPasswordCredentials
+function Test-CreateDeleteSpCredentials
 {
     # Setup
 	$getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
@@ -787,9 +798,12 @@ function Test-CreateDeleteSpPasswordCredentials
     Assert-AreEqual $cred2.Count 2
     $credCount = $cred2 | where {$_.KeyId -in $cred1.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 2
+	$cred2 = $cred
 
 	# Add 1 key credential to the same app
+	$certCreated = 0
 	$cert = New-SelfSignedCertificate 
+	$certCreated = 1
 	$binCert = $cert.GetRawCertData()
 	$credValue = [System.Convert]::ToBase64String($binCert)
 	$start = (Get-Date).ToUniversalTime()
@@ -803,6 +817,7 @@ function Test-CreateDeleteSpPasswordCredentials
     Assert-AreEqual $cred3.Count 3
     $credCount = $cred3 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 3
+	$cred3 = $cred
 
 	# Add 1 more key credential to the same app
 	$binCert = $cert.GetRawCertData()
@@ -822,20 +837,25 @@ function Test-CreateDeleteSpPasswordCredentials
 
     # Remove cred by KeyId
     Remove-AzureRmADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0] -KeyId $cred.KeyId -Force
-    $cred3 = Get-AzureRmADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
-    Assert-NotNull $cred3
-    Assert-AreEqual $cred3.Count 1
-    Assert-AreEqual $cred3[0].KeyId $cred1.KeyId
+    $cred5 = Get-AzureRmADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
+    Assert-NotNull $cred5
+    Assert-AreEqual $cred5.Count 3
+    Assert-AreEqual $cred5[2].KeyId $cred1.KeyId
 
     # Remove All creds
-    Remove-AzureRmADSpCredential -ObjectId $servicePrincipal.Id -All -Force
-    $cred3 = Get-AzureRmADSpCredential -ObjectId $servicePrincipal.Id
-    Assert-Null $cred3
+    Remove-AzureRmADSpCredential -ObjectId $servicePrincipal.Id -Force
+    $cred5 = Get-AzureRmADSpCredential -ObjectId $servicePrincipal.Id
+    Assert-Null $cred5
     }
     Finally
     {
-      # Remove App
-      $app =  Get-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId
-      Remove-AzureRmADApplication -ObjectId $app.ObjectId -Force
+		# Remove App
+		$app =  Get-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId
+		Remove-AzureRmADApplication -ObjectId $app.ObjectId -Force
+
+		# Remove Cert
+		If ($certCreated -eq 1) {
+			Remove-Item .\certificate.pfx
+		}
     }
 }
