@@ -1,8 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
-Module Name: Az.DataFactories
+Module Name: Az.DataFactory
 ms.assetid: F8C67F7B-64C5-45E4-A0BF-32212BEBE885
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryactivitywindow
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/get-azdatafactoryactivitywindow
 schema: 2.0.0
 ---
 
@@ -390,6 +390,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure Data Factories Cmdlets](./Az.DataFactories.md)
+[Azure Data Factories Cmdlets](./Az.DataFactory.md)
 
 
