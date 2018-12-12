@@ -15,7 +15,7 @@
 namespace Commands.Automation.Test
 {
     using Microsoft.Azure.Commands.Automation.Test;
-    using Microsoft.Azure.ServiceManagemenet.Common.Models;
+    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System.IO;
     using Xunit;

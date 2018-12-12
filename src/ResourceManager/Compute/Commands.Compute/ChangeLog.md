@@ -19,3 +19,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Breaking changes
+    - IdentityIds are removed from Identity property in PSVirtualMachine and PSVirtualMachineScaleSet object.
+    - The type of InstanceView property of PSVirtualMachineScaleSetVM object is changed from VirtualMachineInstanceView to VirtualMachineScaleSetVMInstanceView.
+    - AutoOSUpgradePolicy and AutomaticOSUpgrade properties are removed from UpgradePolicy property.
+    - The type of Sku property in PSSnapshotUpdate object is changed from DiskSku to SnapshotSku.
+    - VmScaleSetVMParameterSet is removed from Add-AzVMDataDisk.

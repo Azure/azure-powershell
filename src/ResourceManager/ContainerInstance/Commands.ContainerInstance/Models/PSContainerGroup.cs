@@ -125,6 +125,11 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
         public IList<PSEvent> Events { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed identity.
+        /// </summary>
+        public ContainerGroupIdentity Identity { get; set; }
+
+        /// <summary>
         /// Build a PSContainerGroup from a ContainerGroup object.
         /// </summary>
         public static PSContainerGroup FromContainerGroup(ContainerGroup containerGroup)
@@ -147,7 +152,8 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
                 OsType = containerGroup?.OsType,
                 Volumes = containerGroup?.Volumes,
                 State = containerGroup?.InstanceView?.State,
-                Events = containerGroup?.InstanceView?.Events?.Select(e => ContainerInstanceAutoMapperProfile.Mapper.Map<PSEvent>(e)).ToList()
+                Events = containerGroup?.InstanceView?.Events?.Select(e => ContainerInstanceAutoMapperProfile.Mapper.Map<PSEvent>(e)).ToList(),
+                Identity = containerGroup?.Identity
             };
         }
     }

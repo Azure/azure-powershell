@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2AE5E9B8-7344-407B-9317-47709F10FCD8
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azloadbalancerruleconfig

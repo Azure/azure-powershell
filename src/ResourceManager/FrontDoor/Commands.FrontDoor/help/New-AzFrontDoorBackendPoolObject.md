@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.FrontDoor.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorbackendpoolobject
 schema: 2.0.0

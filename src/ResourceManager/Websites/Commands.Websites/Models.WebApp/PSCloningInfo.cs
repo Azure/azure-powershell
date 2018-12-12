@@ -36,8 +36,5 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
         {
 
         }
-
-        [CmdletParameterBreakingChange("IgnoreQuotas", ChangeDescription = "This property is deprecated and will be removed in a future releases.")]
-        public bool? IgnoreQuotas { get; set; }
     }
 }

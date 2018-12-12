@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Billing.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Billing.dll-Help.xml
 Module Name: Az.Billing
 online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azbillinginvoice
 schema: 2.0.0
