@@ -1,8 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
-Module Name: Az.DataFactories
+Module Name: Az.DataFactory
 ms.assetid: E1E0919A-062B-4794-ADE7-E17133A40604
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/remove-azdatafactorypipeline
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/remove-azdatafactorypipeline
 schema: 2.0.0
 ---
 

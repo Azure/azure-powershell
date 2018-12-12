@@ -1,8 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
-Module Name: Az.Insights
+Module Name: Az.Monitor
 ms.assetid: DDA137FD-4EB3-4FB7-A202-978922038AFC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/remove-azlogprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azlogprofile
 schema: 2.0.0
 ---
 

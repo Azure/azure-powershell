@@ -1,8 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
-Module Name: Az.DataFactories
+Module Name: Az.DataFactory
 ms.assetid: 1FF0B0F9-4B2C-46BC-8BED-12BE865E4480
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/suspend-azdatafactorypipeline
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/suspend-azdatafactorypipeline
 schema: 2.0.0
 ---
 

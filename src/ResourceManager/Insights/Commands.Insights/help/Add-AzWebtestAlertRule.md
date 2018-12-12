@@ -1,8 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
-Module Name: Az.Insights
+Module Name: Az.Monitor
 ms.assetid: FBAE5F75-1E28-4F1C-A9ED-20075FFD4AC7
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/add-azwebtestalertrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/add-azwebtestalertrule
 schema: 2.0.0
 ---
 

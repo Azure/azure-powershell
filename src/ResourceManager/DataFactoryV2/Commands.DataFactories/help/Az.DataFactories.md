@@ -1,16 +1,16 @@
 ---
-Module Name: Az.DataFactories
+Module Name: Az.DataFactory
 Module Guid: e3c0f6bc-fe96-41a0-88f4-5e490a91f05d
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datafactories
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datafactory
 Help Version: 4.2.2.0
 Locale: en-US
 ---
 
-# Az.DataFactories Module
+# Az.DataFactory Module
 ## Description
 The cmdlets in the Azure Data Factory module enable you to manage data factories in Windows PowerShell.
 
-## Az.DataFactories Cmdlets
+## Az.DataFactory Cmdlets
 ### [Get-AzDataFactory](Get-AzDataFactory.md)
 Gets information about Data Factories.
 

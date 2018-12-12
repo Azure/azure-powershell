@@ -1,8 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.UsageAggregates.dll-Help.xml
-Module Name: Az.UsageAggregates
+Module Name: Az.Billing
 ms.assetid: 52B3ECCB-80E5-4E16-954A-B83D0BDC7E22
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.usageaggregates/get-usageaggregates
+online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/get-usageaggregates
 schema: 2.0.0
 ---
 
