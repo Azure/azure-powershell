@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         [Parameter(ParameterSetName = NameParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
         [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, Position = 1, HelpMessage = "Days to disable.")]
         [ValidateRange(1, int.MaxValue)]
-        public string Days { get; set; }
+        public int Days { get; set; }
 
         /// <summary>
         /// Gets or sets the object passed from the PowerShell piping
@@ -98,8 +98,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
             List<AzureOperationResponse<SuppressionContract>> azureOperationResponseSuppression = new List<AzureOperationResponse<SuppressionContract>>();
             var returnSuppressionContract = new List<PsAzureAdvisorSuppressionContract>();
 
-            // Create the suppression contract
-            suppressionContract = new SuppressionContract(null, DefaultSuppressionName, null, null, string.IsNullOrEmpty(this.Days) ? string.Empty : this.Days);
+            // Create the suppression contract           
+            suppressionContract = new SuppressionContract(null, DefaultSuppressionName, null, null, string.IsNullOrEmpty(this.Days.ToString()) ? string.Empty : this.Days.ToString());
 
             switch (this.ParameterSetName)
             {

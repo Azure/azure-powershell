@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         [Parameter(ParameterSetName = InputObjectLowCpuExcludeParameterSet, Position = 0, Mandatory = true, HelpMessage = "Value for Low Cpu threshold.")]
         [ValidateSet("0", "5", "10", "15", "20")]
         [ValidateNotNullOrEmpty]
-        public string LowCpuThreshold { get; set; }
+        public int LowCpuThreshold { get; set; }
 
         /// <summary>
         /// Gets or sets the include.
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                         configDataProperties.Exclude = configurationData.Properties.Exclude;
                     }
 
-                    configDataProperties.LowCpuThreshold = this.LowCpuThreshold;
+                    configDataProperties.LowCpuThreshold = this.LowCpuThreshold.ToString();
                     configData.Properties = configDataProperties;
 
                     // If InputObject is not null, this is a piping scenario.
