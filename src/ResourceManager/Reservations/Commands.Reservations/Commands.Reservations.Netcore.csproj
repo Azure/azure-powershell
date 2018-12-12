@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Reservations</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Reservations</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Reservations</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

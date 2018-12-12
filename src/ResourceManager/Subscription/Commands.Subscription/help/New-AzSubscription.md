@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Subscription.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Subscription.dll-Help.xml
 Module Name: Az.Subscription
 online version: https://docs.microsoft.com/en-us/powershell/module/az.subscription/new-azsubscription
 schema: 2.0.0

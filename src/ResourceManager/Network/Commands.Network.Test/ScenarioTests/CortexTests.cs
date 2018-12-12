@@ -17,7 +17,7 @@ namespace Commands.Network.Test.ScenarioTests
     using System;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
-    using Microsoft.Azure.ServiceManagemenet.Common.Models;
+    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Xunit.Abstractions;
 
     public class CortexTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
