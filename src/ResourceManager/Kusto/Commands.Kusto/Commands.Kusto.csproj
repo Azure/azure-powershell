@@ -81,8 +81,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ArmManagementClient, Version=1.0.6.0, Culture=neutral, PublicKeyToken=829a00acde12d551, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Kusto.Management.1.0.6-beta\lib\net452\ArmManagementClient.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Kusto">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Kusto.0.9.0-preview\lib\net452\Microsoft.Azure.Management.Kusto.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
