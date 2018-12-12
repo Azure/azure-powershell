@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: A1EA7D34-A8B4-4FA0-BD8C-3E846715AFBA
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmplan

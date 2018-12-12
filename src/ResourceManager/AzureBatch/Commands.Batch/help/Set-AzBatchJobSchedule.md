@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 14026F0E-4959-4150-A31F-A94BC56ED808
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/set-azbatchjobschedule
@@ -22,6 +22,16 @@ Set-AzBatchJobSchedule [-JobSchedule] <PSCloudJobSchedule> -BatchContext <BatchA
 The **Set-AzBatchJobSchedule** cmdlet sets a job schedule in the Azure Batch service.
 
 ## EXAMPLES
+
+### Example 1: Update a job schedule
+```
+PS C:\> $JobSchedule = Get-AzBatchJobSchedule -Id "MyJobSchedule" -BatchContext $Context
+PS C:\> $JobSchedule.Schedule.RecurrenceInterval = New-TimeSpan -Days 2
+PS C:\> Set-AzBatchJobSchedule -JobSchedule $Job -BatchContext $Context
+```
+The first command gets a job by using **Get-AzBatchJobSchedule**, and then stores it in the $JobSchedule variable.
+The second command modifies the recurrence interval on the `$JobSchedule.Schedule` object.
+The final command updates the Batch service to match the local object in $JobSchedule.
 
 ## PARAMETERS
 

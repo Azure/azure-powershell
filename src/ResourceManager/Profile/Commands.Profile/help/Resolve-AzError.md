@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/resolve-azerror
 schema: 2.0.0

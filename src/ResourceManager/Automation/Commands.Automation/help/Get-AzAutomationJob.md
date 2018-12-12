@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: BD32B909-296B-4E46-A24F-6E2BD4B9764B
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationjob

@@ -188,18 +188,6 @@ namespace Microsoft.Azure.Commands.Compute
                 // PSVmssDiskEncryptionStatusContext <=> PSVmssDiskEncryptionStatusContextList
                 cfg.CreateMap<TO.PSVmssDiskEncryptionStatusContext, TO.PSVmssDiskEncryptionStatusContextList>();
                 cfg.CreateMap<TO.PSVmssVMDiskEncryptionStatusContext, TO.PSVmssVMDiskEncryptionStatusContextList>();
-
-                // PSVirtualMachineIdentity <=> VirtualMachineIdentity
-                cfg.CreateMap<FROM.VirtualMachineIdentity, TO.PSVirtualMachineIdentity>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (src.UserAssignedIdentities == null) dest.UserAssignedIdentities = null;
-                    });
-                cfg.CreateMap<TO.PSVirtualMachineIdentity, FROM.VirtualMachineIdentity>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (src.UserAssignedIdentities == null) dest.UserAssignedIdentities = null;
-                    });
             });
 
             _mapper = config.CreateMapper();

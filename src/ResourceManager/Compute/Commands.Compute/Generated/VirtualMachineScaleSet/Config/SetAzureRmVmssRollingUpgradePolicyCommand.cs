@@ -30,12 +30,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSUpgradePolicy),
-        DeprecatedOutputProperties = new string[] { "AutomaticOSUpgrade", "AutoOSUpgradePolicy" })]
-    [CmdletOutputBreakingChange(typeof(PSVirtualMachineScaleSetIdentity),
-        DeprecatedOutputProperties = new string[] { "IdentityIds" })]
-#endif
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssRollingUpgradePolicy", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class SetAzureRmVmssRollingUpgradePolicyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -85,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // UpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new UpgradePolicy();
                 }
                 // RollingUpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
@@ -100,7 +94,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // UpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new UpgradePolicy();
                 }
                 // RollingUpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
@@ -115,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // UpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new UpgradePolicy();
                 }
                 // RollingUpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
@@ -130,7 +124,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // UpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new UpgradePolicy();
                 }
                 // RollingUpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)

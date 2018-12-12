@@ -25,16 +25,15 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using ManagedGroups = Microsoft.Azure.Management.ManagementGroups;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
-        public ManagedGroups.ManagementGroupsAPIClient ManagementGroupsApiClient { get; private set; }
+        public ManagementGroupsAPIClient ManagementGroupsApiClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -90,18 +89,22 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             string mockName)
         {
             _helper.TracingInterceptor = interceptor;
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            d.Add("Providers.Test", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-07-01");
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null},
+                {"Providers.Test", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-07-01"},
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new ResourcesRecordMatcher(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
@@ -115,18 +118,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     _helper.RMResourceModule,
-                    _helper.RMInsightsModule);
+                    _helper.GetRMModulePath("AzureRM.Monitor.psd1"));
 
                 try
                 {
-                    if (scriptBuilder != null)
+                    var psScripts = scriptBuilder?.Invoke();
+                    if (psScripts != null)
                     {
-                        var psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            _helper.RunPowerShellTest(psScripts);
-                        }
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
@@ -199,29 +198,29 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return client;
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
+        private static AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
             return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private FeatureClient GetFeatureClient(MockContext context)
+        private static FeatureClient GetFeatureClient(MockContext context)
         {
             return context.GetServiceClient<FeatureClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private Internal.Subscriptions.SubscriptionClient GetSubscriptionClient(MockContext context)
+        private static Internal.Subscriptions.SubscriptionClient GetSubscriptionClient(MockContext context)
         {
             return context.GetServiceClient<Internal.Subscriptions.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private ManagedGroups.ManagementGroupsAPIClient GetManagementGroupsApiClient(MockContext context)
+        private static ManagementGroupsAPIClient GetManagementGroupsApiClient(MockContext context)
         {
-            return context.GetServiceClient<ManagedGroups.ManagementGroupsAPIClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ManagementGroupsAPIClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         /// <summary>
@@ -232,7 +231,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             /// <summary>
             /// The subscription cloud credentials.
             /// </summary>
-            private readonly SubscriptionCloudCredentials credential;
+            private readonly SubscriptionCloudCredentials _credential;
 
             /// <summary>
             /// Initializes a new instance of the <see cref="TestHttpClientHelperFactory"/> class.
@@ -240,7 +239,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             /// <param name="credentials"></param>
             public TestHttpClientHelperFactory(SubscriptionCloudCredentials credentials)
             {
-                credential = credentials;
+                _credential = credentials;
             }
 
             /// <summary>
@@ -250,7 +249,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             /// <param name="headerValues">The headers.</param>
             public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
             {
-                return new HttpClientHelperImpl(credentials: credential, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
+                return new HttpClientHelperImpl(credentials: _credential, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
             }
 
             /// <summary>

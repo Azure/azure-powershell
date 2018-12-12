@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: E2A56E55-30A3-4A2F-80AE-9D166840909E
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azremotedesktopfile
