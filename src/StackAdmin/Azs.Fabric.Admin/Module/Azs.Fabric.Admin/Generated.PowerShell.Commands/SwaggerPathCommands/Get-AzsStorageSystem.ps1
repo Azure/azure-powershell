@@ -86,7 +86,7 @@ function Get-AzsStorageSystem {
 
     Begin {
 
-        Write-Warning "Get-AzsStoragePool will be deperecated in a future release."
+        Write-Warning "Get-AzsStorageSystem will be deperecated in a future release."
 
         Initialize-PSSwaggerDependencies -Azure
         $tracerObject = $null
