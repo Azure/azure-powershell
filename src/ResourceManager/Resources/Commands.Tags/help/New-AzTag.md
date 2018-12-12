@@ -1,8 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Tags.dll-Help.xml
-Module Name: Az.Tags
+Module Name: Az.Resources
 ms.assetid: 23DB0AD2-7EB7-4373-BB8D-BB6CB651DD54
-online version: https://docs.microsoft.com/en-us/powershell/module/az.tags/new-aztag
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-aztag
 schema: 2.0.0
 ---
 

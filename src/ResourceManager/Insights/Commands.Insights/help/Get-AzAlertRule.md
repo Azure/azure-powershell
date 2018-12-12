@@ -1,8 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
-Module Name: Az.Insights
+Module Name: Az.Monitor
 ms.assetid: A837077C-0A79-431C-93D2-799B2134EE69
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azalertrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azalertrule
 schema: 2.0.0
 ---
 
