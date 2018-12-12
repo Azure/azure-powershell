@@ -14,21 +14,20 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Management.Kusto;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
-namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
 {
-    public class KustoTestsBase : RMTestBase
+    public class KustoTestsBase
     {
         private readonly EnvironmentSetupHelper _helper;
 
@@ -43,17 +42,14 @@ namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
             _helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor traceInterceptor, params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
 
-            _helper.TracingInterceptor = logger;
-
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
