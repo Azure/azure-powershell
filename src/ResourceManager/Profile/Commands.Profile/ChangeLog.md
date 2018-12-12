@@ -18,3 +18,5 @@
         - Additional information about change #1
 -->
 ## Current Release
+    * Correct error generated when the path pointed to by $pathToInstallationChecks does not exist
+        - Although this error is trapped by the try/catch block an error is still generated and added to $Error which can cause issues in certain situations.
