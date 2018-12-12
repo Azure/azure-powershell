@@ -13,19 +13,21 @@
 // limitations under the License.
 //
 
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Security;
-    using WindowsAzure.Commands.Common.Attributes;
-
-    public class PSApplicationGatewaySslCertificate : PSChildResource
+    public class PSManagedServiceIdentity
     {
-        public string Data { get; set; }
-        public SecureString Password { get; set; }
-        public string PublicCertData { get; set; }
-        public string KeyVaultSecretId { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
-        public string ProvisioningState { get; set; }
-        public string Type { get; set; }
+        public ResourceIdentityType? Type { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string PrincipalId { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string TenantId { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue> UserAssignedIdentities { get; set; }
     }
 }
