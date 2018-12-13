@@ -30,7 +30,7 @@ $secureEmptyPassword = (new-object System.Security.SecureString)
 $location = "WestEurope"
 $exceptionHeader = "##### Following exception occurred causing test failure #####"
 $mangedInstanceRg = "MlAndzic_RG"
-$managedInstanceName = "midemoinstancebc"
+$managedInstanceName = "midemoinstancebc" 
 
 function Test-AddTdeCertificateForSqlServerDefaultParameterSetNoPassword
 {
