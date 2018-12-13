@@ -30,7 +30,7 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
- [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -493,6 +493,21 @@ Specifies URL path maps for the application gateway.
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+ResourceId of the user assigned identity to be assigned to Application Gateway.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: UserAssignedIdentity
 
 Required: False
 Position: Named
