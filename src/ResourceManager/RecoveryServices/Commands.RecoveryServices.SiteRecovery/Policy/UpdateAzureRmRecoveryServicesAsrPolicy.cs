@@ -195,19 +195,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryAzureStorageAccountId { get; set; }
 
         /// <summary>
-        ///     Gets or sets encryption should be enabled or disabled.
-        /// </summary>
-        
-        [Parameter(ParameterSetName = ASRParameterSets.HyperVToAzure)]
-        [Parameter(ParameterSetName = ASRParameterSets.Default)]
-        [Obsolete("cmdlet parameter will be removed in upcoming breaking release")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            Constants.Enable,
-            Constants.Disable)]
-        public string Encryption { get; set; }
-
-        /// <summary>
         ///     Gets or sets multiVm sync status for the policy.
         /// </summary>
         [Parameter(DontShow = true, ParameterSetName = ASRParameterSets.VMwareToAzure)]
@@ -352,8 +339,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 ApplicationConsistentSnapshotFrequencyInHours =
                     this.applicationConsistentSnapshotFrequencyInHours,
-// encryption is removed from latest API . Service is setting the default vault internally.
-// todo :: Warning.
                 OnlineReplicationStartTime = this.replicationStartTime.ToString(),
                 RecoveryPointHistoryDuration = this.recoveryPoints,
                 ReplicationInterval = this.replicationFrequencyInSeconds
