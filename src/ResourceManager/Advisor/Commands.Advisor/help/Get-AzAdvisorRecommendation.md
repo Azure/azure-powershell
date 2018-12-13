@@ -69,7 +69,7 @@ SuppressionIds       : {}
 Name                 : {recommendation-Id}
 Type                 : Microsoft.Advisor/recommendations
 ```
-Gets the list of all recommendations filtered by Category Performance.
+Gets the list of all recommendations filtered by category Performance.
 
 ## PARAMETERS
 

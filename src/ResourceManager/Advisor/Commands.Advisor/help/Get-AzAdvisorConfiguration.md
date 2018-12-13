@@ -20,7 +20,8 @@ Get-AzAdvisorConfiguration [-ResourceGroupName <String>] [-DefaultProfile <IAzur
 ## DESCRIPTION
 Configuration associated with a subscription are of two types,
 
-Subscription level configuration: There can be only one configration for this type for each subscription. lowCpuThreshold and exclude properties are taken into effect for configuration.
+Subscription level configuration: There can be only one configration for this type for each subscription. LowCpuThreshold and exclude properties are taken into effect for configuration.
+
 ResourceGroup level configuration: There can be only one configration for each ResourceGroup in a subscription, only exclude property is taken into effect for configuration.
 
 ## EXAMPLES

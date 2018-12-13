@@ -31,7 +31,7 @@ Disable-AzAdvisorRecommendation [[-Days] <Int32>] [-InputObject] <PsAzureAdvisor
 ```
 
 ## DESCRIPTION
-Create suppression for recomendation, this enables a particular recommendation to be postponed for a specific duration or infinitely.
+Creates a suppression for recomendation(s), this enables a particular recommendation to be postponed for a specific duration or infinitely.
 
 ## EXAMPLES
 
