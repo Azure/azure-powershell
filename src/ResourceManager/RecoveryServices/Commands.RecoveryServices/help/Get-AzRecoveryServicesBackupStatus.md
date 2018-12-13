@@ -18,6 +18,12 @@ Get-AzRecoveryServicesBackupStatus -Name <String> -ResourceGroupName <String> -T
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### IdWorkload
+```
+Get-AzureRmRecoveryServicesBackupStatus -Type <String> -ResourceId <String> -ProtectableObjName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### Id
 ```
 Get-AzRecoveryServicesBackupStatus -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
@@ -72,6 +78,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProtectableObjName
+Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: IdWorkload
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of the resource group of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.
 
@@ -92,7 +113,7 @@ ID of the Azure Resource whose representative item needs to be checked if it is 
 
 ```yaml
 Type: System.String
-Parameter Sets: Id
+Parameter Sets: IdWorkload, Id
 Aliases:
 
 Required: True
@@ -107,7 +128,7 @@ Name of the Azure Resource whose representative item needs to be checked if it i
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
+Parameter Sets: Name, IdWorkload
 Aliases:
 Accepted values: AzureVM, AzureFiles
 

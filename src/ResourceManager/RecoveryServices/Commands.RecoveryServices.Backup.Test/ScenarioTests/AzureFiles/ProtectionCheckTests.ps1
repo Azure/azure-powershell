@@ -20,6 +20,7 @@ $fileShareName = "AzureFileShare;pstestfs1bca8f8e"
 $saName = "pstestsa1bca8f8e"
 $skuName="Standard_LRS"
 $policyName = "AFSBackupPolicy"
+$storageAccountId = "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestFSRG1bca8f8e/providers/Microsoft.Storage/storageAccounts/pstestsa1bca8f8e"
 
 # Setup Instructions:
 # 1. Create a resource group
@@ -47,9 +48,9 @@ function Test-AzureFSProtectionCheck
 {
 	try
 	{
-		$status = Get-AzureRmRecoveryServicesBackupStatus `
-			-Name $fileShareFriendlyName `
-			-ResourceGroupName $resourceGroupName `
+  $status = Get-AzureRmRecoveryServicesBackupStatus `
+			-ResourceId $storageAccountId `
+			-ProtectableObjectName $fileShareFriendlyName `
 			-Type AzureFiles
 
 		Assert-NotNull $status
@@ -59,8 +60,8 @@ function Test-AzureFSProtectionCheck
 		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 		
 		$status = Get-AzureRmRecoveryServicesBackupStatus `
-			-Name $fileShareFriendlyName `
-			-ResourceGroupName $resourceGroupName `
+			-ResourceId $storageAccountId `
+			-ProtectableObjectName $fileShareFriendlyName `
 			-Type AzureFiles
 
 		Assert-NotNull $status
