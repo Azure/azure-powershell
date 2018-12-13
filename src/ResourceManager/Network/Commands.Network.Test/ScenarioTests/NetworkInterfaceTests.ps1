@@ -895,7 +895,6 @@ Test creating new NetworkInterfaceTapConfiguration using minimal set of paramete
 function Test-NetworkInterfaceTapConfigurationCRUD
 {
     # Setup
-    # Setup
     $rgname = Get-ResourceGroupName
     $vnetName = Get-ResourceName
     $subnetName = Get-ResourceName
@@ -915,11 +914,11 @@ function Test-NetworkInterfaceTapConfigurationCRUD
     {
         # Create the resource group
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
-        
+
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-        
+
         # Create the publicip
         $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
@@ -947,7 +946,16 @@ function Test-NetworkInterfaceTapConfigurationCRUD
         Assert-AreEqual $tapConfig.NetworkInterfaceName $sourceNicName
         Assert-AreEqual $tapConfig.Name $rname
 
-        # get nic and check back reference        
+        $tapConfigs = Get-AzureRmNetworkInterfaceTapConfig -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName
+        Assert-NotNull $tapConfigs
+
+        $tapConfig = Get-AzureRmNetworkInterfaceTapConfig -ResourceId $tapConfig.Id
+        Assert-NotNull $tapConfig
+        Assert-AreEqual $tapConfig.ResourceGroupName $rgname
+        Assert-AreEqual $tapConfig.NetworkInterfaceName $sourceNicName
+        Assert-AreEqual $tapConfig.Name $rname
+
+        # get nic and check back reference
         $sourceNic = Get-AzureRmNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname
         Assert-NotNull $sourceNic.TapConfigurations
         Assert-NotNull $sourceNic.TapConfigurations[0]
