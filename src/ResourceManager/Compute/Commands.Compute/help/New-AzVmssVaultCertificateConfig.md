@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 5CC89899-00B6-424A-8896-FD32DE9DDA28
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmssvaultcertificateconfig

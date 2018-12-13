@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: D602F910-B26F-473D-B5B6-C7BDFB0A14CB
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadserviceprincipal
@@ -15,8 +15,8 @@ Creates a new azure active directory service principal.
 
 ### SimpleParameterSet (Default)
 ```
-New-AzADServicePrincipal [-ApplicationId <Guid>] [-DisplayName <String>] [-Password <SecureString>]
- [-StartDate <DateTime>] [-EndDate <DateTime>] [-Scope <String>] [-Role <String>] [-SkipAssignment]
+New-AzADServicePrincipal [-ApplicationId <Guid>] [-DisplayName <String>] [-StartDate <DateTime>] 
+ [-EndDate <DateTime>] [-Scope <String>] [-Role <String>] [-SkipAssignment]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,8 +28,8 @@ New-AzADServicePrincipal -ApplicationId <Guid> [-DefaultProfile <IAzureContextCo
 
 ### ApplicationWithPasswordPlainParameterSet
 ```
-New-AzADServicePrincipal -ApplicationId <Guid> -Password <SecureString> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADServicePrincipal -ApplicationId <Guid> [-StartDate <DateTime>] [-EndDate <DateTime>] 
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordCredentialParameterSet
@@ -58,8 +58,8 @@ New-AzADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureContextCo
 
 ### DisplayNameWithPasswordPlainParameterSet
 ```
-New-AzADServicePrincipal -DisplayName <String> -Password <SecureString> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADServicePrincipal -DisplayName <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameWithPasswordCredentialParameterSet
@@ -88,8 +88,8 @@ New-AzADServicePrincipal -ApplicationObject <PSADApplication> [-DefaultProfile <
 
 ### ApplicationObjectWithPasswordPlainParameterSet
 ```
-New-AzADServicePrincipal -ApplicationObject <PSADApplication> -Password <SecureString> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADServicePrincipal -ApplicationObject <PSADApplication> [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithPasswordCredentialParameterSet
@@ -374,21 +374,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Password
-The password to be associated with the service principal. If a password is not provided, a random GUID will be generated and used as the password.
-
-```yaml
-Type: System.Security.SecureString
-Parameter Sets: SimpleParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

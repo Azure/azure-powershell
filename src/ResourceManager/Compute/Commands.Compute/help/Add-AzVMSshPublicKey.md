@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 3CE367B1-7685-4046-8E9C-CE680B5AE03F
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmsshpublickey

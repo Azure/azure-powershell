@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.AnalysisServices.Dataplane</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.AnalysisServices.Dataplane</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

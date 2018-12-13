@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkwatcherflowlogstatus
 schema: 2.0.0
@@ -59,7 +59,7 @@ Properties       : {
 				   }
 ```
 
-In this example we get the flow logging status for a Network Security Group. The specified NSG has flow logging enabled, default format and no retention policy set.
+In this example we get the flow logging status for a Network Security Group. The specified NSG has flow logging enabled, default format, and no retention policy set.
 
 ### Example 2: Get the Flow Logging and Traffic Analytics Status for a Specified NSG
 ```

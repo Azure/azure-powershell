@@ -1,8 +1,8 @@
 ---
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: Az.Insights
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+Module Name: Az.Monitor
 ms.assetid: B1000C10-265E-4465-B167-F1251470BE3E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azalertruleemail
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azalertruleemail
 schema: 2.0.0
 ---
 

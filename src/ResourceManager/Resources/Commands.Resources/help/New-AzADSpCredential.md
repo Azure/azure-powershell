@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 063BAA79-484D-48CF-9170-3808813752BD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadspcredential
@@ -15,7 +15,7 @@ Adds a credential to an existing service principal.
 
 ### SpObjectIdWithPasswordParameterSet (Default)
 ```
-New-AzADSpCredential -ObjectId <Guid> [-Password <SecureString>] [-StartDate <DateTime>] [-EndDate <DateTime>]
+New-AzADSpCredential -ObjectId <Guid> [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,8 +33,8 @@ New-AzADSpCredential -ServicePrincipalName <String> -CertValue <String> [-StartD
 
 ### SPNWithPasswordParameterSet
 ```
-New-AzADSpCredential -ServicePrincipalName <String> [-Password <SecureString>] [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADSpCredential -ServicePrincipalName <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectWithCertValueParameterSet
@@ -45,9 +45,8 @@ New-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> -CertValue <
 
 ### ServicePrincipalObjectWithPasswordParameterSet
 ```
-New-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-Password <SecureString>]
- [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,33 +166,6 @@ Parameter Sets: SpObjectIdWithPasswordParameterSet, SpObjectIdWithCertValueParam
 Aliases: ServicePrincipalObjectId
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Password
-The password to be associated with the application.
-
-```yaml
-Type: System.Security.SecureString
-Parameter Sets: SpObjectIdWithPasswordParameterSet, SPNWithPasswordParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Security.SecureString
-Parameter Sets: ServicePrincipalObjectWithPasswordParameterSet
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

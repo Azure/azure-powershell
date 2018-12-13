@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 488229AF-FD6D-4E1B-B3DA-E57CA781D91E
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroleassignment

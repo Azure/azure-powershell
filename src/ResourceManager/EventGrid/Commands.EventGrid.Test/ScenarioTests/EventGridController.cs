@@ -25,7 +25,7 @@ using Microsoft.Azure.Management.EventGrid;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
 {

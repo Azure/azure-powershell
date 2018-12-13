@@ -69,8 +69,6 @@ namespace Microsoft.Azure.Commands.Dns
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
             if (this.Name.EndsWith("."))
             {
                 this.Name = this.Name.TrimEnd('.');

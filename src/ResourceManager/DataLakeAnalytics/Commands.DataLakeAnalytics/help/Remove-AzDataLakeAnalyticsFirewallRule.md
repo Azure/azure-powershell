@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakeanalytics/remove-azdatalakeanalyticsfirewallrule
 schema: 2.0.0
