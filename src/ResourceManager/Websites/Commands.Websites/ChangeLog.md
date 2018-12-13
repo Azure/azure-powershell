@@ -18,4 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 1.0.0
+* General availability of `Az.Websites` module
 * Removed deprecated properties from PS models

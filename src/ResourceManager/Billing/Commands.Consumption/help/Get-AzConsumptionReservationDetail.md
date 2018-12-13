@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Consumption.dll-Help.xml
-Module Name: Az.Consumption
-online version: https://docs.microsoft.com/en-us/powershell/module/az.consumption/get-azconsumptionreservationdetail
+Module Name: Az.Billing
+online version: https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azconsumptionreservationdetail
 schema: 2.0.0
 ---
 

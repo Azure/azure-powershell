@@ -57,6 +57,15 @@ PS C:\>$apim.ProxyCustomHostnameConfiguration = $proxyCustomConfig
 PS C:\>Set-AzApiManagement -InputObject $apim -AssignIdentity
 ```
 
+### Example 4: Update Publisher Email, NotificationSender Email and Organization Name
+```powershell
+PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "api-Default-West-US" -Name "Contoso"
+PS C:\> $apim.PublisherEmail = "foobar@contoso.com"
+PS C:\> $apim.NotificationSenderEmail = "notification@contoso.com"
+PS C:\> $apim.OrganizationName = "Contoso"
+PS C:\> Set-AzApiManagement -InputObject $apim -PassThru
+```
+
 ## PARAMETERS
 
 ### -AsJob
