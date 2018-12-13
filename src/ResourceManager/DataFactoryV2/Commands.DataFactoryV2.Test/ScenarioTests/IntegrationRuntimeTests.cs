@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
             RunPowerShellTest(_logger, "Test-SsisAzure-IntegrationRuntime");
         }
 
-        [Fact]
+        [Fact(Skip = "New-AzureRMRoleAssignmentWithId and Remove-AzureRmRoleAssignment rely on Resources module. Needs fixed in AzureRM.Resources.ps1.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSharedIntegrationRuntime()
         {

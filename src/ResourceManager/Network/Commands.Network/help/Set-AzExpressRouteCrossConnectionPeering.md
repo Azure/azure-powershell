@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 6C0281EC-4D23-4BD0-A268-4C278ABC7B1A
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azexpressroutecrossconnectionpeering

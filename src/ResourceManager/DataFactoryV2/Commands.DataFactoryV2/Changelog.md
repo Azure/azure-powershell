@@ -19,3 +19,7 @@
 -->
 
 ## Current Release
+
+## Version 1.0.0
+* General availability of `Az.DataFactory` module
+* Removed -LinkedServiceName parameter from Get-AzDataFactoryV2ActivityRun

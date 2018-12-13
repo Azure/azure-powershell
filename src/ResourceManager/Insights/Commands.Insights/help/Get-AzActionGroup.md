@@ -1,8 +1,8 @@
 ---
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: Az.Insights
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+Module Name: Az.Monitor
 ms.assetid: 1CA26790-C791-4BFD-B986-70F28E3B095B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azactiongroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azactiongroup
 schema: 2.0.0
 ---
 

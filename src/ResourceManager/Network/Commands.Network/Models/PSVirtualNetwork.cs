@@ -36,9 +36,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableDdosProtection { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
-        public bool? EnableVmProtection { get; set; }
-
         public PSResourceId DdosProtectionPlan { get; set; }
 
         [JsonIgnore]
@@ -75,12 +72,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DdosProtectionPlanText
         {
             get { return JsonConvert.SerializeObject(DdosProtectionPlan, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string EnableVmProtectionText
-        {
-            get { return JsonConvert.SerializeObject(EnableVmProtection, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

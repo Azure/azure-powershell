@@ -1,7 +1,7 @@
 ---
-external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: Az.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/disable-azurermalias
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
+Module Name: Az.Accounts
+online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/disable-azurermalias
 schema: 2.0.0
 ---
 
@@ -31,10 +31,10 @@ Disables all AzureRm prefixes for the current PowerShell session.
 
 ### Example 1
 ```
-PS C:\> Disable-AzureRmAlias -Module Az.Profile -Scope CurrentUser
+PS C:\> Disable-AzureRmAlias -Module Az.Accounts -Scope CurrentUser
 ```
 
-Disables AzureRm aliases for the Az.Profile module for both the current process and for the current user.
+Disables AzureRm aliases for the Az.Accounts module for both the current process and for the current user.
 
 ## PARAMETERS
 

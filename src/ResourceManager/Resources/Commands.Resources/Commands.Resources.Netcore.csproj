@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Resources</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Resources</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Resources</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -40,7 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.Netcore.csproj" />
     <ProjectReference Include="..\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.Netcore.csproj" />
   </ItemGroup>
 
@@ -61,6 +60,9 @@
 
   <ItemGroup>
     <None Update="Microsoft.Azure.Commands.Resources.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Microsoft.Azure.Commands.ResourceManager.Cmdlets.generated.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

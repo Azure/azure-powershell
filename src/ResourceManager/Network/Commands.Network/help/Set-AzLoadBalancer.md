@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 494E185D-3746-4959-846E-660017A1F392
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azloadbalancer

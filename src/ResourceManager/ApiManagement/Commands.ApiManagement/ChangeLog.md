@@ -18,3 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 1.0.0
+* General availability of `Az.ApiManagement` module
+* Removing cmdlets which have been marked Obsolete in May 2018
+    - New-AzureRmApiManagementHostnameConfiguration
+    - Set-AzureRmApiManagementHostnames
+    - Update-AzureRmApiManagementDeployment
+    - Import-AzureRmApiManagementHostnameCertificate
+    Please refer to examples of **Set-AzureRmApiManagement** cmdlet instead.
+* Following properties were removed
+    - Removed property `PortalHostnameConfiguration`, `ProxyHostnameConfiguration`, `ManagementHostnameConfiguration` and `ScmHostnameConfiguration` of type `PsApiManagementHostnameConfiguration` from PsApiManagementContext. Instead use `PortalCustomHostnameConfiguration`, `ProxyCustomHostnameConfiguration`, `ManagementCustomHostnameConfiguration` and `ScmCustomHostnameConfiguration` of type `PsApiManagementCustomHostNameConfiguration`.
+    - Removed property `StaticIPs` from PsApiManagementContext. The property has been split into `PublicIPAddresses` and `PrivateIPAddresses`.
+    - Removed required property `Location` from NewAzureApiManagementVirtualNetwork cmdlet, as it was redundant parameter.
+* Fix for issue https://github.com/Azure/azure-powershell/issues/7002
