@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute.dll-Help.xml
-Module Name: Az.MachineLearningCompute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearningcompute/new-azmlopcluster
+Module Name: Az.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/new-azmlopcluster
 schema: 2.0.0
 ---
 

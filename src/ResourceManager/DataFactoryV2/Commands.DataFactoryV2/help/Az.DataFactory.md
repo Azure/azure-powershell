@@ -1,16 +1,16 @@
 ---
-Module Name: Az.DataFactoryV2
+Module Name: Az.DataFactory
 Module Guid: e3c0f6bc-fe96-41a0-88f4-5e490a91f05d
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datafactoryv2
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datafactory
 Help Version: 0.5.3.0
 Locale: en-US
 ---
 
-# Az.DataFactoryV2 Module
+# Az.DataFactory Module
 ## Description
 Azure Data Factory V2 is the data integration platform that goes beyond Azure Data Factory V1's orchestration and batch-processing of time-series log data, with a general purpose app model supporting modern data warehousing patterns and scenarios, lift-and-shift SSIS, and data-driven SaaS applications. Compose and manage reliable and secure data integration workflows at scale. Use native ADF data connectors and Integration Runtimes to move and transform cloud and on-premises data that can be unstructured, semi-structured, and structured with Hadoop, Azure Data Lake, Spark, SQL Server, Cosmos DB and many other data platforms.
 
-## Az.DataFactoryV2 Cmdlets
+## Az.DataFactory Cmdlets
 ### [Get-AzDataFactoryV2](Get-AzDataFactoryV2.md)
 Gets information about Data Factory.
 

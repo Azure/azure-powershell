@@ -1,8 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
-Module Name: Az.DataFactories
+Module Name: Az.DataFactory
 ms.assetid: 663D27A3-0B51-48F5-81D0-8DDBC5A3A33C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/set-azdatafactorygateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/set-azdatafactorygateway
 schema: 2.0.0
 ---
 
