@@ -12,32 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Management.Storage.Test
 {
-    public class ResourceLockTests : ResourceTestRunner
+    public class StorageTestRunner
     {
-        public ResourceLockTests(ITestOutputHelper output) : base(output)
-        {
-        }
+        protected readonly ITestRunner TestRunner;
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResourceLockCRUDTest()
+        protected StorageTestRunner(ITestOutputHelper output)
         {
-            TestRunner.RunTestScript("Test-ResourceLockCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResourceLockNonExisting()
-        {
-            TestRunner.RunTestScript("Test-ResourceLockNonExisting");
+            TestRunner = TestManager.CreateInstance(output)
+                .WithNewPsScriptFilename($"{GetType().Name}.ps1")
+                .WithProjectSubfolderForTests("ScenarioTests")
+                .WithCommonPsScripts(new[]
+                {
+                    @"Common.ps1",
+                })
+                .WithExtraRmModules(helper => new[]
+                {
+#if !NETSTANDARD
+                    helper.RMStorageDataPlaneModule,
+#endif
+                    helper.RMStorageModule,
+                })
+                .Build();
         }
     }
 }
