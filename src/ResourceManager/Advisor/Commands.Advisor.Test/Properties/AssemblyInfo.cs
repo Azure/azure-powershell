@@ -24,7 +24,7 @@ using Xunit;
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: Guid("E031CCF2-454D-4DCB-B5DE-6DAFD7219F3B")]
+[assembly: Guid("55B4F1B2-AD1A-461F-927D-6CFEBF06EFF2")]
 
 [assembly: AssemblyVersion("0.1.0")]
 [assembly: AssemblyFileVersion("0.1.0")]

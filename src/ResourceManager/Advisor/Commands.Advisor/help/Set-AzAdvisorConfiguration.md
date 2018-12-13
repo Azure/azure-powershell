@@ -87,6 +87,7 @@ Properties : additionalProperties : null
              lowCpuThreshold : 20
 
 Type       : Microsoft.Advisor/Configurations
+```
 
 ## PARAMETERS
 
