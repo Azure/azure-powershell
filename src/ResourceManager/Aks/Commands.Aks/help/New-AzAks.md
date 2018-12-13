@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Aks.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
 online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/new-azaks
 schema: 2.0.0

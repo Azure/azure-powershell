@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: D7065B04-1A01-4BB4-A519-1DA9002CDE02
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetworkgatewayconnection
@@ -15,9 +15,8 @@ Configures a virtual network gateway connection.
 
 ```
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtualNetworkGatewayConnection>
- [-EnableBgp <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-IpsecPolicies <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableBgp <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>] [-Force]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +124,7 @@ Accept wildcard characters: False
 A list of IPSec policies.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]
+Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
 Parameter Sets: (All)
 Aliases:
 

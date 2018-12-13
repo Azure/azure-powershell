@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azexpressrouteport
 schema: 2.0.0
@@ -16,16 +16,15 @@ Creates an Azure ExpressRoutePort.
 ```
 New-AzExpressRoutePort -ResourceGroupName <String> -Name <String> -PeeringLocation <String>
  -BandwidthInGbps <Int32> -Encapsulation <String> -Location <String> [-Tag <Hashtable>]
- [-Link <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteLink]>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Link <PSExpressRouteLink[]>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 New-AzExpressRoutePort -ResourceId <String> -PeeringLocation <String> -BandwidthInGbps <Int32>
- -Encapsulation <String> -Location <String> [-Tag <Hashtable>]
- [-Link <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteLink]>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Encapsulation <String> -Location <String> [-Tag <Hashtable>] [-Link <PSExpressRouteLink[]>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,7 +138,7 @@ Accept wildcard characters: False
 The set of physical links of the ExpressRoutePort resource
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteLink]
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteLink[]
 Parameter Sets: (All)
 Aliases:
 

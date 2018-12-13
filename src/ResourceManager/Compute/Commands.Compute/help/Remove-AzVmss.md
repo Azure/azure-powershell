@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: E6F2EE87-97C4-416A-9AE1-9FBD72062F0F
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/remove-azvmss

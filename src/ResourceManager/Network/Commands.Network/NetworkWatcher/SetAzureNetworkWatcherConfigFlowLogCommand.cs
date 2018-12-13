@@ -153,6 +153,21 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateRange(1, int.MaxValue)]
         public int RetentionInDays { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Type of flow log format.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Json")]
+        public string FormatType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Version of flow log format.")]
+        [ValidateRange(1, int.MaxValue)]
+        public int? FormatVersion { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -201,8 +216,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceResourceId { get; set; }
-
-
+        
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -257,6 +271,34 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public IOperationalInsightWorkspace Workspace { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
+            ParameterSetName = SetFlowlogByResourceWithTAByResource)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
+            ParameterSetName = SetFlowlogByResourceWithTAByDetails)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
+            ParameterSetName = SetFlowlogByNameWithTAByResource)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
+            ParameterSetName = SetFlowlogByNameWithTAByDetails)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
+            ParameterSetName = SetFlowlogByLocationWithTAByResource)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets the interval (in minutes) which would decide how frequently TA service should do flow analytics.",
+            ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
+        public int TrafficAnalyticsInterval { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -307,6 +349,23 @@ namespace Microsoft.Azure.Commands.Network
                         parameters.RetentionPolicy.Days = this.RetentionInDays;
                     }
 
+                    if (!string.IsNullOrWhiteSpace(this.FormatType) || this.FormatVersion == null)
+                    {
+                        parameters.Format = new MNM.FlowLogFormatParameters();
+
+                        parameters.Format.Type = this.FormatType;
+                        if (string.IsNullOrWhiteSpace(parameters.Format.Type))
+                        {
+                            parameters.Format.Type = "Json";
+                        }
+
+                        parameters.Format.Version = this.FormatVersion;
+                        if (parameters.Format.Version == null)
+                        {
+                            parameters.Format.Version = 0;
+                        }
+                    }
+
                     if (ParameterSetName.Contains(WithTA))
                     {
                         parameters.FlowAnalyticsConfiguration = new MNM.TrafficAnalyticsProperties();
@@ -339,7 +398,8 @@ namespace Microsoft.Azure.Commands.Network
 
                         parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId = WorkspaceResourceId;
                         parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId = WorkspaceGUID;
-                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion = WorkspaceLocation;                        
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion = WorkspaceLocation;
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.TrafficAnalyticsInterval = TrafficAnalyticsInterval;
                     }
 
                     PSFlowLog flowLog = new PSFlowLog();

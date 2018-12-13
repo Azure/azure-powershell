@@ -87,43 +87,43 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Object representing the frontend IPs to be used for the load balancer",
             ValueFromPipelineByPropertyName = true)]
-        public List<PSFrontendIPConfiguration> FrontendIpConfiguration { get; set; }
+        public PSFrontendIPConfiguration[] FrontendIpConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Collection of backend address pools used by a load balancer",
             ValueFromPipelineByPropertyName = true)]
-        public List<PSBackendAddressPool> BackendAddressPool { get; set; }
+        public PSBackendAddressPool[] BackendAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Object collection representing the load balancing rules Gets the provisioning ",
             ValueFromPipelineByPropertyName = true)]
-        public List<PSLoadBalancingRule> LoadBalancingRule { get; set; }
+        public PSLoadBalancingRule[] LoadBalancingRule { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Collection of probe objects used in the load balancer",
             ValueFromPipelineByPropertyName = true)]
-        public List<PSProbe> Probe { get; set; }
+        public PSProbe[] Probe { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Collection of inbound NAT Rules used by a load balancer. Defining inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an Inbound NAT pool. They have to reference individual inbound NAT rules.",
             ValueFromPipelineByPropertyName = true)]
-        public List<PSInboundNatRule> InboundNatRule { get; set; }
+        public PSInboundNatRule[] InboundNatRule { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Defines an external port range for inbound NAT to a single backend port on NICs associated with a load balancer. Inbound NAT rules are created automatically for each NIC associated with the Load Balancer using an external port from this range. Defining an Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound Nat rules. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an inbound NAT pool. They have to reference individual inbound NAT rules.",
             ValueFromPipelineByPropertyName = true)]
-        public List<PSInboundNatPool> InboundNatPool { get; set; }
+        public PSInboundNatPool[] InboundNatPool { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The outbound rules.",
             ValueFromPipelineByPropertyName = true)]
-        public List<PSOutboundRule> OutboundRule { get; set; }
+        public PSOutboundRule[] OutboundRule { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -196,13 +196,13 @@ namespace Microsoft.Azure.Commands.Network
             var vLoadBalancer = new PSLoadBalancer
             {
                 Location = this.Location,
-                FrontendIpConfigurations = this.FrontendIpConfiguration,
-                BackendAddressPools = this.BackendAddressPool,
-                LoadBalancingRules = this.LoadBalancingRule,
-                Probes = this.Probe,
-                InboundNatRules = this.InboundNatRule,
-                InboundNatPools = this.InboundNatPool,
-                OutboundRules = this.OutboundRule,
+                FrontendIpConfigurations = this.FrontendIpConfiguration?.ToList(),
+                BackendAddressPools = this.BackendAddressPool?.ToList(),
+                LoadBalancingRules = this.LoadBalancingRule?.ToList(),
+                Probes = this.Probe?.ToList(),
+                InboundNatRules = this.InboundNatRule?.ToList(),
+                InboundNatPools = this.InboundNatPool?.ToList(),
+                OutboundRules = this.OutboundRule?.ToList(),
                 Sku = vSku,
             };
 

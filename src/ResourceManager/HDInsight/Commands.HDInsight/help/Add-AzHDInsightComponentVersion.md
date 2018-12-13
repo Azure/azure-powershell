@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 774848C9-47A1-4C43-B6FA-B3C0C3C76470
 online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightcomponentversion

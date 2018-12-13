@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: AA3EF369-C724-4D32-A56E-503CBE191320
 online version: https://docs.microsoft.com/en-us/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearchresults

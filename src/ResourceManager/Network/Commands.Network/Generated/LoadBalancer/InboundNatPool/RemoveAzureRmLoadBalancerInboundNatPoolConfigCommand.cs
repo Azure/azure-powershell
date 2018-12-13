@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(this.LoadBalancer);
                 return;
             }
-            var vInboundNatPools = this.LoadBalancer.InboundNatPools.First
+            var vInboundNatPools = this.LoadBalancer.InboundNatPools.SingleOrDefault
                 (e =>
-                    (this.Name != null && e.Name == this.Name)
+                    string.Equals(e.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase)
                 );
 
             if (vInboundNatPools != null)

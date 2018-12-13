@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Relay</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Relay</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Relay</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

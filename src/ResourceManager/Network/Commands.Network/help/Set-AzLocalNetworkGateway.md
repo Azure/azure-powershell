@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: F8C1DF39-1DAF-4BDB-8B0E-1BC3B5E82185
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azlocalnetworkgateway
@@ -14,10 +14,9 @@ Modifies a local network gateway.
 ## SYNTAX
 
 ```
-Set-AzLocalNetworkGateway -LocalNetworkGateway <PSLocalNetworkGateway>
- [-AddressPrefix <System.Collections.Generic.List`1[System.String]>] [-Asn <UInt32>]
- [-BgpPeeringAddress <String>] [-PeerWeight <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzLocalNetworkGateway -LocalNetworkGateway <PSLocalNetworkGateway> [-AddressPrefix <String[]>]
+ [-Asn <UInt32>] [-BgpPeeringAddress <String>] [-PeerWeight <Int32>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +52,7 @@ BgpSettings              : null
 
 ### -AddressPrefix
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

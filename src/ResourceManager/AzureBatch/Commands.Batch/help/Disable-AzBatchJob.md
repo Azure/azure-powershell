@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: C831F934-7513-4882-A155-816E56CD9807
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/disable-azbatchjob

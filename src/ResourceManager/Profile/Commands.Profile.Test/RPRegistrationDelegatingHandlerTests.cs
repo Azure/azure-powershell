@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: AF8CC409-2EA7-4EC1-86C9-E7A773DE9201
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayhttplistener
@@ -18,8 +18,8 @@ Creates an HTTP listener for an application gateway.
 New-AzApplicationGatewayHttpListener -Name <String> [-FrontendIPConfigurationId <String>]
  [-FrontendPortId <String>] [-SslCertificateId <String>] [-HostName <String>]
  [-RequireServerNameIndication <String>] -Protocol <String>
- [-CustomErrorConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -28,8 +28,8 @@ New-AzApplicationGatewayHttpListener -Name <String>
  [-FrontendIPConfiguration <PSApplicationGatewayFrontendIPConfiguration>]
  [-FrontendPort <PSApplicationGatewayFrontendPort>] [-SslCertificate <PSApplicationGatewaySslCertificate>]
  [-HostName <String>] [-RequireServerNameIndication <String>] -Protocol <String>
- [-CustomErrorConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +58,7 @@ The command stores the result in the variable named $Listener.
 Customer error of an application gateway
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError[]
 Parameter Sets: (All)
 Aliases:
 

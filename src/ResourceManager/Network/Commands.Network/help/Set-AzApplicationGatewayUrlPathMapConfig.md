@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 9F5EC8E7-12E9-40E5-B98D-AAFD8F9F3C37
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgatewayurlpathmapconfig
@@ -16,17 +16,18 @@ Sets configuration for an array of URL path mappings to a backend server pool.
 ### SetByResourceId
 ```
 Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
- [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>]
+ -PathRules <PSApplicationGatewayPathRule[]> [-DefaultBackendAddressPoolId <String>]
+ [-DefaultBackendHttpSettingsId <String>] [-DefaultRewriteRuleSetId <String>]
  [-DefaultRedirectConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 Set-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
+ -PathRules <PSApplicationGatewayPathRule[]>
  [-DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>]
  [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
+ [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
  [-DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -158,6 +159,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultRewriteRuleSet
+Application gateway default rewrite rule set
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultRewriteRuleSetId
+ID of the application gateway default rewrite rule set
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the URL path map name in which this cmdlet sets configuration for.
 
@@ -178,7 +209,7 @@ Specifies a list of path rules.
 Note that the path rules are order sensitive, they are applied in order they are specified.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule[]
 Parameter Sets: (All)
 Aliases:
 
