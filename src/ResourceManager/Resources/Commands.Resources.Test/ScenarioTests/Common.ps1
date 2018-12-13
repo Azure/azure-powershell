@@ -179,3 +179,127 @@ function New-AzureRmRoleDefinitionWithId
 
     $cmdlet.ExecuteCmdlet()
 }
+
+function New-AzADAppCredentialWithId
+{
+    [CmdletBinding()]
+    param(
+        [string] [Parameter()] $ObjectId,
+        [Guid] [Parameter()] $ApplicationId,
+        [string] [Parameter()] $DisplayName,
+        [PSADApplication] [Parameter()] $ApplicationObject,
+        [SecureString] [Parameter()] $Password,
+        [string] [Parameter()] $CertValue,
+        [DateTime] [Parameter()] $StartDate,
+        [DateTime] [Parameter()] $EndDate,
+        [Guid] [Parameter()] $KeyId
+    )
+
+    $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.Resources.NewAzureADAppCredentialCommand
+    $cmdlet.DefaultProfile = $profile
+	$cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
+
+    if (-not ([string]::IsNullOrEmpty($ObjectId)))
+    {
+        $cmdlet.ObjectId = $ObjectId
+    }
+
+    if ($ApplicationId -ne $null -and $ApplicationId -ne [System.Guid]::Empty)
+    {
+        $cmdlet.ApplicationId = $ApplicationId
+    }
+
+    if (-not ([string]::IsNullOrEmpty($DisplayName)))
+    {
+        $cmdlet.DisplayName = $DisplayName
+    }
+
+    if ($ApplicationObject -ne $null)
+    {
+        $cmdlet.ApplicationObject = $ApplicationObject
+    }
+
+    if ($Password -ne $null)
+    {
+        $cmdlet.Password = $Password
+    }
+
+    if (-not ([string]::IsNullOrEmpty($CertValue)))
+    {
+        $cmdlet.CertValue = $CertValue
+    }
+
+    if ($StartDate -ne $null)
+    {
+        $cmdlet.StartDate = $StartDate
+    }
+
+    if ($EndDate -ne $null)
+    {
+        $cmdlet.EndDate = $EndDate
+    }
+
+    if ($KeyId -ne $null -and $KeyId -ne [System.Guid]::Empty)
+    {
+        $cmdlet.KeyId = $KeyId
+    }
+
+    $cmdlet.ExecuteCmdlet()
+}
+
+function New-AzADSpCredentialWithId
+{
+    [CmdletBinding()]
+    param(
+        [string] [Parameter()] $ObjectId,
+        [string] [Parameter()] $ServicePrincipalName,
+        [PSADServicePrincipal] [Parameter()] $ServicePrincipalObject,
+        [string] [Parameter()] $CertValue,
+        [DateTime] [Parameter()] $StartDate,
+        [DateTime] [Parameter()] $EndDate,
+        [Guid] [Parameter()] $KeyId
+    )
+
+    $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.Resources.NewAzureADSpCredentialCommand 
+    $cmdlet.DefaultProfile = $profile
+	$cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
+
+    if (-not ([string]::IsNullOrEmpty($ObjectId)))
+    {
+        $cmdlet.ObjectId = $ObjectId
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ServicePrincipalName)))
+    {
+        $cmdlet.ServicePrincipalName = $ServicePrincipalName
+    }
+
+    if ($ServicePrincipalObject -ne $null)
+    {
+        $cmdlet.ServicePrincipalObject = $ServicePrincipalObject
+    }
+
+    if (-not ([string]::IsNullOrEmpty($CertValue)))
+    {
+        $cmdlet.CertValue = $CertValue
+    }
+
+    if ($StartDate -ne $null)
+    {
+        $cmdlet.StartDate = $StartDate
+    }
+
+    if ($EndDate -ne $null)
+    {
+        $cmdlet.EndDate = $EndDate
+    }
+
+    if ($KeyId -ne $null -and $KeyId -ne [System.Guid]::Empty)
+    {
+        $cmdlet.KeyId = $KeyId
+    }
+
+    $cmdlet.ExecuteCmdlet()
+}

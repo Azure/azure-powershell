@@ -74,6 +74,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The end date till which password or key is valid. Default value is one year after the start date.")]
         public DateTime EndDate { get; set; }
 
+        public Guid KeyId { get; set; } = default(Guid);
+
         public NewAzureADAppCredentialCommand()
         {
             DateTime currentTime = DateTime.UtcNow;
@@ -111,7 +113,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     {
                         EndDate = EndDate,
                         StartDate = StartDate,
-                        KeyId = Guid.NewGuid().ToString(),
+                        KeyId = KeyId == default(Guid) ? Guid.NewGuid().ToString() : KeyId.ToString(),
                         Value = decodedPassword
                     };
                     if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
@@ -126,7 +128,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     {
                         EndDate = EndDate,
                         StartDate = StartDate,
-                        KeyId = Guid.NewGuid().ToString(),
+                        KeyId = KeyId == default(Guid) ? Guid.NewGuid().ToString() : KeyId.ToString(),
                         Value = CertValue,
                         Type = "AsymmetricX509Cert",
                         Usage = "Verify"
