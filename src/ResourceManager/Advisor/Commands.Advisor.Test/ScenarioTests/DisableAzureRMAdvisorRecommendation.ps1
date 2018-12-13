@@ -12,14 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-<#
-.SYNOPSIS
-Neagtive Test, no user input for the parameters. 
-#>
-function Disable-AzureRmAdvisorRecommendationNoParameterSet
-{
-		Assert-ThrowsContains { Disable-AzureRmAdvisorRecommendation } "Cannot process command because of one or more missing mandatory parameters: ResourceId."
-}
 
 function Disable-AzureRmAdvisorRecommendationByNameParameter
 {
@@ -30,10 +22,10 @@ function Disable-AzureRmAdvisorRecommendationByNameParameter
 	$TTLValue = "30.00:00:00"
 	$NameValue = "HardcodedSuppressionName"
 
-	$queryResult = Disable-AzAdvisorRecommendation -Name $RecommendationId -Days $DaysParam 
+	$queryResult = Disable-AzAdvisorRecommendation -RecommendationName $RecommendationId -Days $DaysParam 
 	
 	## Assert type of object returned 
-	Assert-IsInstance $queryResult System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract]
+	Assert-IsInstance $queryResult Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract
 	
 	## Assert number of key in the body of a single response
 	for ($i = 0; $i -lt $queryResult.Count; $i++)
@@ -53,10 +45,10 @@ function Disable-AzureRmAdvisorRecommendationByIdParameter
 	$TTLValue = "30.00:00:00"
 	$NameValue = "HardcodedSuppressionName"
 
-	$queryResult = Disable-AzureRmAdvisorRecommendation -Id $RecommendationId -Days $DaysParam 
+	$queryResult = Disable-AzAdvisorRecommendation -ResourceId $RecommendationId -Days $DaysParam 
 	
 	## Assert type of object returned 
-	Assert-IsInstance $queryResult System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract]
+	Assert-IsInstance $queryResult Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract
 		
 	for ($i = 0; $i -lt $queryResult.Count; $i++)
     {
@@ -75,10 +67,10 @@ function Disable-AzureRmAdvisorRecommendationPipelineScenario
 	$TTLValue = "30.00:00:00"
 	$NameValue = "HardcodedSuppressionName"
 
-	$queryResult = Disable-AzureRmAdvisorRecommendation -Name $RecommendationId -Days $DaysParam 
+	$queryResult = Disable-AzAdvisorRecommendation -RecommendationName $RecommendationId -Days $DaysParam 
 	
 	## Assert type of object returned 
-	Assert-IsInstance $queryResult System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract]
+	Assert-IsInstance $queryResult Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorSuppressionContract
 	
 	## Assert the data from the list which has only one entry.
 	for ($i = 0; $i -lt $queryResult.Count; $i++)

@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
                 _helper.SetupModules(
                     AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"AzureRM.Advisor.psd1"),
+                    _helper.GetRMModulePath(@"Az.Advisor.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
 

@@ -192,8 +192,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                     }
                     else
                     {
-                        PsAzureAdvisorConfigurationData configurationData = this.GetConfigurationDataForCurrentSubscription();
-                        configDataProperties.Exclude = configurationData.Properties.Exclude;
+                        // PsAzureAdvisorConfigurationData configurationData = this.GetConfigurationDataForCurrentSubscription();
+                        configDataProperties.Exclude = false;
                     }
 
                     configDataProperties.LowCpuThreshold = this.LowCpuThreshold.ToString();
@@ -230,8 +230,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                     else
                     {
                         // Get the exisiting configrationData for the resource-group and assign the exclude property to preserve existing data.
-                        PsAzureAdvisorConfigurationData configurationData = this.GetConfigurationDataForResourceGroup(this.ResourceGroupName);
-                        configDataProperties.Exclude = configurationData.Properties.Exclude;
+                        // PsAzureAdvisorConfigurationData configurationData = this.GetConfigurationDataForResourceGroup(this.ResourceGroupName);
+                        configDataProperties.Exclude = false;
                     }
 
                     configData.Properties = configDataProperties;

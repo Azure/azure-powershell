@@ -35,13 +35,6 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DisableAzureRmAdvisorRecommendationNoParameterSet()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzureRmAdvisorRecommendationNoParameterSet");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableAzureRmAdvisorRecommendationByNameParameter()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzureRmAdvisorRecommendationByNameParameter");
@@ -51,7 +44,7 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableAzureRmAdvisorRecommendationByIdParameter()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzureRmAdvisorRecommentionByIdParameter");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzureRmAdvisorRecommendationByIdParameter");
         }
 
         [Fact]

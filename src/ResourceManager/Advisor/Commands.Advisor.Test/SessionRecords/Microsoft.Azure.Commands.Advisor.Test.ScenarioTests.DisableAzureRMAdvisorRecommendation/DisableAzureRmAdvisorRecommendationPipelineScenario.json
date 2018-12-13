@@ -1,0 +1,203 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions%2F658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7?api-version=2017-04-19",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMlMkY2NThjODk1MC1lNzlkLTQ3MDQtYTkwMy0xZGY2NmJhOTAyNTgvcHJvdmlkZXJzL01pY3Jvc29mdC5BZHZpc29yL3JlY29tbWVuZGF0aW9ucy80ZmEyZmY0Zi1kYzkwLTk4NzYtMDcyMy0xMzYwZmE5ZjRiZDc/YXBpLXZlcnNpb249MjAxNy0wNC0xOQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2fb40171-1f4e-4e3c-9229-d31e90eb7450"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17134.",
+          "Microsoft.Azure.Management.Advisor.AdvisorManagementClient/0.9.5.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "598"
+        ],
+        "x-ms-request-id": [
+          "0fd07da0-83f1-4425-a9af-c07cd2a56588"
+        ],
+        "x-ms-correlation-request-id": [
+          "0fd07da0-83f1-4425-a9af-c07cd2a56588"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181213T165333Z:0fd07da0-83f1-4425-a9af-c07cd2a56588"
+        ],
+        "Date": [
+          "Thu, 13 Dec 2018 16:53:33 GMT"
+        ],
+        "Content-Length": [
+          "1233"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7\",\r\n  \"name\": \"4fa2ff4f-dc90-9876-0723-1360fa9f4bd7\",\r\n  \"properties\": {\r\n    \"description\": \"After enabling Soft Delete, deleted data transitions to a soft deleted state instead of being permanently deleted. When data is overwritten, a soft deleted snapshot is generated to save the state of the overwritten data. You can configure the amount of time soft deleted data is recoverable before it permanently expires.\",\r\n    \"label\": \"Enable Soft Delete\",\r\n    \"learnMoreLink\": \"https://aka.ms/softdelete\",\r\n    \"potentialBenefits\": \"Save and recover your data when blobs or blob snapshots are accidentally overwritten or deleted\",\r\n    \"category\": \"HighAvailability\",\r\n    \"impact\": \"Medium\",\r\n    \"impactedField\": \"Microsoft.Storage/storageAccounts\",\r\n    \"impactedValue\": \"fontcjk\",\r\n    \"lastUpdated\": \"2018-12-13T14:37:43.9248722Z\",\r\n    \"recommendationTypeId\": \"42dbf883-9e4b-4f84-9da4-232b87c4b5e9\",\r\n    \"risk\": \"Error\",\r\n    \"shortDescription\": {\r\n      \"problem\": \"Enable Soft Delete to protect your blob data\",\r\n      \"solution\": \"Enable Soft Delete to protect your blob data\"\r\n    }\r\n  },\r\n  \"type\": \"Microsoft.Advisor/recommendations\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions%2F658c8950-e79d-4704-a903-1df66ba90258%2FresourceGroups%2Ftesting%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Ffontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7/suppressions/HardcodedSuppressionName?api-version=2017-04-19",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMlMkY2NThjODk1MC1lNzlkLTQ3MDQtYTkwMy0xZGY2NmJhOTAyNTglMkZyZXNvdXJjZUdyb3VwcyUyRnRlc3RpbmclMkZwcm92aWRlcnMlMkZNaWNyb3NvZnQuU3RvcmFnZSUyRnN0b3JhZ2VBY2NvdW50cyUyRmZvbnRjamsvcHJvdmlkZXJzL01pY3Jvc29mdC5BZHZpc29yL3JlY29tbWVuZGF0aW9ucy80ZmEyZmY0Zi1kYzkwLTk4NzYtMDcyMy0xMzYwZmE5ZjRiZDcvc3VwcHJlc3Npb25zL0hhcmRjb2RlZFN1cHByZXNzaW9uTmFtZT9hcGktdmVyc2lvbj0yMDE3LTA0LTE5",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"ttl\": \"30\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "41ddab9e-5ca5-4fb6-b049-ebe32a898477"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17134.",
+          "Microsoft.Azure.Management.Advisor.AdvisorManagementClient/0.9.5.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "45"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "da0cd169-05ab-46c1-b5a7-6028e7f463c2"
+        ],
+        "x-ms-correlation-request-id": [
+          "da0cd169-05ab-46c1-b5a7-6028e7f463c2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181213T165334Z:da0cd169-05ab-46c1-b5a7-6028e7f463c2"
+        ],
+        "Date": [
+          "Thu, 13 Dec 2018 16:53:34 GMT"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"suppressionId\": \"23f2ae3d-f99a-6935-2cfb-1e8ffd82ede5\",\r\n    \"ttl\": \"30\",\r\n    \"expirationTimeStamp\": \"2019-01-12T16:53:34.1021113Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/providers/Microsoft.Advisor/suppressions?api-version=2017-04-19",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjU4Yzg5NTAtZTc5ZC00NzA0LWE5MDMtMWRmNjZiYTkwMjU4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQWR2aXNvci9zdXBwcmVzc2lvbnM/YXBpLXZlcnNpb249MjAxNy0wNC0xOQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "aaed9bd8-58f9-418c-98f6-85e37c260ade"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27019.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17134.",
+          "Microsoft.Azure.Management.Advisor.AdvisorManagementClient/0.9.5.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "597"
+        ],
+        "x-ms-request-id": [
+          "93e00ae3-8830-4c64-85c6-e829e7d57233"
+        ],
+        "x-ms-correlation-request-id": [
+          "93e00ae3-8830-4c64-85c6-e829e7d57233"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181213T165334Z:93e00ae3-8830-4c64-85c6-e829e7d57233"
+        ],
+        "Date": [
+          "Thu, 13 Dec 2018 16:53:34 GMT"
+        ],
+        "Content-Length": [
+          "1371"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourcegroups/testing/providers/microsoft.storage/storageaccounts/fontcjk/providers/Microsoft.Advisor/recommendations/b0569f30-0351-b3ee-cce6-7a49ae76a06b/suppressions/HardcodedSuppressionName\",\r\n      \"name\": \"HardcodedSuppressionName\",\r\n      \"type\": \"Microsoft.Advisor/suppressions\",\r\n      \"properties\": {\r\n        \"suppressionId\": \"d58d5271-8bc5-9709-20bf-b1b150c8193b\",\r\n        \"ttl\": \"-1\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/xiaoyuh-dev/providers/Microsoft.Network/expressRouteCircuits/test/providers/Microsoft.Advisor/recommendations/5a4b5c09-0537-e36a-caa0-17686b1f680c/suppressions/HardcodedSuppressionName\",\r\n      \"name\": \"HardcodedSuppressionName\",\r\n      \"type\": \"Microsoft.Advisor/suppressions\",\r\n      \"properties\": {\r\n        \"suppressionId\": \"36403fa0-cf40-fb8e-2b90-83629a19e9fa\",\r\n        \"ttl\": \"10.00:00:00\",\r\n        \"expirationTimeStamp\": \"2018-12-22T17:38:21.5033712Z\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7/suppressions/HardcodedSuppressionName\",\r\n      \"name\": \"HardcodedSuppressionName\",\r\n      \"type\": \"Microsoft.Advisor/suppressions\",\r\n      \"properties\": {\r\n        \"suppressionId\": \"23f2ae3d-f99a-6935-2cfb-1e8ffd82ede5\",\r\n        \"ttl\": \"30.00:00:00\",\r\n        \"expirationTimeStamp\": \"2019-01-12T16:53:34.1021113Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "658c8950-e79d-4704-a903-1df66ba90258"
+  }
+}
