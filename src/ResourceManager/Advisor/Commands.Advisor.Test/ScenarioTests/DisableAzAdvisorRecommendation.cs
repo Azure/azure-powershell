@@ -33,6 +33,14 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DisableAzAdvisorRecommendationBadUserInput()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzAdvisorRecommendationBadUserInput-Negative");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableAzAdvisorRecommendationByNameParameter()

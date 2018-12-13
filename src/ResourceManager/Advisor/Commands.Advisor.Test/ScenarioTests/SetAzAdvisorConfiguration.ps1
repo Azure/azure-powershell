@@ -14,15 +14,6 @@
 
 <#
 .SYNOPSIS
-Neagtive Test, no user input for the parameters. 
-#>
-function Set-AzAdvisorConfigurationNoParameterSet
-{
-		Assert-ThrowsContains { Set-AzAdvisorConfiguration } "Cannot process command because of one or more missing mandatory parameters: LowCpuThreshold."
-}
-
-<#
-.SYNOPSIS
 Sets configuration for lowCPUThreshold property for the current subscription set in powershell session.
 #>
 function Set-AzAdvisorConfigurationWithLowCpu
