@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.Billing
 Module Guid: a1f34ce9-bf46-4180-b36c-be232a1f8f63
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.billing
@@ -17,6 +17,36 @@ Get billing invoices of the subscription.
 ### [Get-AzBillingPeriod](Get-AzBillingPeriod.md)
 Get billing periods of the subscription.
 
+### [Get-AzConsumptionBudget](Get-AzConsumptionBudget.md)
+Get a list of budgets in either a subscription or a resource group.
+
+### [Get-AzConsumptionMarketplace](Get-AzConsumptionMarketplace.md)
+Get marketplaces of the subscription.
+
+### [Get-AzConsumptionPriceSheet](Get-AzConsumptionPriceSheet.md)
+Get price sheets of the subscription.
+
+### [Get-AzConsumptionReservationDetail](Get-AzConsumptionReservationDetail.md)
+Get reservations details for provided date range.
+
+### [Get-AzConsumptionReservationSummary](Get-AzConsumptionReservationSummary.md)
+Get reservation summaries for daily or monthly grain.
+
+### [Get-AzConsumptionUsageDetail](Get-AzConsumptionUsageDetail.md)
+Get usage details of the subscription.
+
 ### [Get-AzEnrollmentAccount](Get-AzEnrollmentAccount.md)
 Get enrollment accounts.
+
+### [Get-UsageAggregates](Get-UsageAggregates.md)
+Gets the reported Azure subscription usage details.
+
+### [New-AzConsumptionBudget](New-AzConsumptionBudget.md)
+Create a budget in either a subscription or a resource group.
+
+### [Remove-AzConsumptionBudget](Remove-AzConsumptionBudget.md)
+Remove a budget in either a subscription or a resource group.
+
+### [Set-AzConsumptionBudget](Set-AzConsumptionBudget.md)
+Update a budget in either a subscription or a resource group.
 
