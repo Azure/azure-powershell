@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azpublicipprefix
 schema: 2.0.0
@@ -12,9 +12,15 @@ Gets a public IP prefix
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### ListParameterSet (Default)
 ```
-Get-AzPublicIpPrefix [-Name <String>] -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzPublicIpPrefix [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### GetByNameParameterSet
+```
+Get-AzPublicIpPrefix -Name <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -60,7 +66,7 @@ Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -69,6 +75,18 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ListParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ```yaml
 Type: System.String

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/add-azservicefabricclustercertificate
 schema: 2.0.0
@@ -15,6 +15,7 @@ Add a secondary cluster certificate to the cluster.
 ### ByExistingKeyVault
 ```
 Add-AzServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String> -SecretIdentifier <String>
+ [-CertificateCommonName <String>] [-CertificateIssuerThumbprint <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,7 +31,8 @@ Add-AzServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <Str
 ```
 Add-AzServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
  [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] -CertificateFile <String>
- [-CertificatePassword <SecureString>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-CertificatePassword <SecureString>] [-CertificateCommonName <String>]
+ [-CertificateIssuerThumbprint <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -59,6 +61,21 @@ This command will create a self-signed certificate in the Azure key vault and up
 
 ## PARAMETERS
 
+### -CertificateCommonName
+Certificate common name
+
+```yaml
+Type: System.String
+Parameter Sets: ByExistingKeyVault, ByExistingPfxAndVaultName
+Aliases: CertCommonName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CertificateFile
 The existing certificate file path.
 
@@ -68,6 +85,21 @@ Parameter Sets: ByExistingPfxAndVaultName
 Aliases: Source
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -CertificateIssuerThumbprint
+Certificate issuer thumbprint, separated by commas if more than one
+
+```yaml
+Type: System.String
+Parameter Sets: ByExistingKeyVault, ByExistingPfxAndVaultName
+Aliases: CertIssuerThumbprint
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

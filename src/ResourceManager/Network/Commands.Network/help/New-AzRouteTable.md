@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 6A278F91-C078-4DD4-82D0-2E4FA549A089
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azroutetable
@@ -15,9 +15,8 @@ Creates a route table.
 
 ```
 New-AzRouteTable -ResourceGroupName <String> -Name <String> [-DisableBgpRoutePropagation] -Location <String>
- [-Tag <Hashtable>]
- [-Route <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Route <PSRoute[]>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -170,7 +169,7 @@ Accept wildcard characters: False
 Specifies an array of **Route** objects to associate with the route table.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]
+Type: Microsoft.Azure.Commands.Network.Models.PSRoute[]
 Parameter Sets: (All)
 Aliases:
 

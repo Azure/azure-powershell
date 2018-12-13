@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
     using System.Collections.Generic;
     using Validations;
     using Interfaces;
+    using System.Linq;
 
     public class NamespaceValidationsProcessor : INamespaceEnumeratorListener
     {
@@ -71,7 +72,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 
         public void UnauthorizedDir(IDirectoryInfo dir)
         {
-            Broadcast(ValidationResult.UnauthorizedAccessDir(dir));
+            var firstValidation = this._validations.FirstOrDefault() as IValidationDescription;
+            if (firstValidation != null)
+            {
+                Broadcast(ValidationResult.UnauthorizedAccessDir(firstValidation.ValidationType, firstValidation.ValidationKind, dir));
+            }
         }
 
         public void NamespaceHint(long directoryCount, long fileCount)

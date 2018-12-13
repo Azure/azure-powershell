@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
 online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/update-azmlwebservice
 schema: 2.0.0

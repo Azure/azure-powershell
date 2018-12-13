@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 01F56553-1685-43D4-89E6-DDCDF17D1E00
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznetworksecuritygroup

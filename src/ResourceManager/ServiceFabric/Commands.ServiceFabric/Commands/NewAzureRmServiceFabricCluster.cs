@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override SecureString CertificatePassword { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
-                HelpMessage = "The existing certificate file path for the secondary cluster certificate")]
+                   HelpMessage = "The existing certificate file path for the secondary cluster certificate")]
         [ValidateNotNullOrEmpty]
         [Alias("SecSource")]
         public string SecondaryCertificateFile { get; set; }
@@ -175,6 +175,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 HelpMessage = "Azure key vault name, if not given it will be defaulted to the resource group name")]
         [ValidateNotNullOrEmpty]
         public override string KeyVaultName { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ByExistingKeyVault,
+                HelpMessage = "Certificate common name")]
+        [Parameter(Mandatory = false, ParameterSetName = ByExistingPfxAndVaultName,
+                HelpMessage = "Certificate common name")]
+        [Alias("CertCommonName")]
+        public override string CertificateCommonName { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ByExistingKeyVault,
+                HelpMessage = "Certificate issuer thumbprint, separated by commas if more than one")]
+        [Parameter(Mandatory = false, ParameterSetName = ByExistingPfxAndVaultName,
+                HelpMessage = "Certificate issuer thumbprint, separated by commas if more than one")]
+        [ValidateNotNullOrEmpty]
+        [Alias("CertIssuerThumbprint")]
+        public override string CertificateIssuerThumbprint { get; set; }
 
         #region ByDefaultArmTemplate
 
@@ -493,55 +508,122 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private JObject FillCertificateInformationInParameters(JObject parameters, out List<CertificateInformation> certificateInformations)
         {
+            ValidateCertParameters(parameters);
+
             certificateInformations = new List<CertificateInformation>();
             var sourceVaultValue = TryGetParameter(parameters, Constants.SourceVaultValue);
             var certificateThumbprint = TryGetParameter(parameters, Constants.CertificateThumbprint);
             var certificateUrlValue = TryGetParameter(parameters, Constants.CertificateUrlValue);
+            var certificateCommonName = TryGetParameter(parameters, Constants.CertificateCommonName);
+            var certificateIssuerThumbprint = TryGetParameter(parameters, Constants.CertificateIssuerThumbprint);
 
             var secSourceVaultValue = TryGetParameter(parameters, Constants.SecSourceVaultValue);
             var secCertificateThumbprint = TryGetParameter(parameters, Constants.SecCertificateThumbprint);
             var secCertificateUrlValue = TryGetParameter(parameters, Constants.SecCertificateUrlValue);
 
-            if (sourceVaultValue != null && certificateThumbprint != null && certificateUrlValue != null)
-            {
-                WriteVerboseWithTimestamp("Found primary certificate parameters in parameters file");
-            }
-            else
-            {
-                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidCertificateInformationInParameterFile);
-            }
-
-            if (secSourceVaultValue != null && secCertificateThumbprint != null && secCertificateUrlValue != null)
-            {
-                WriteVerboseWithTimestamp("Found secondary certificate parameters in parameters file");
-            }
-            else if (secSourceVaultValue == null && secCertificateThumbprint == null && secCertificateUrlValue == null)
-            {
-                WriteVerboseWithTimestamp("There is no secondary certificate parameters in parameters file");
-            }
-            else
-            {
-                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidCertificateInformationInParameterFile);
-            }
-
-            var firstCert = GetOrCreateCertificateInformation()[0];
+            List<CertificateInformation> certInfo = GetOrCreateCertificateInformation();
+            var firstCert = certInfo[0];
             certificateInformations.Add(firstCert);
 
             SetParameter(ref parameters, Constants.SourceVaultValue, firstCert.KeyVault.Id);
-            SetParameter(ref parameters, Constants.CertificateThumbprint, firstCert.CertificateThumbprint);
             SetParameter(ref parameters, Constants.CertificateUrlValue, firstCert.SecretUrl);
+
+            if (this.CertificateCommonName != null)
+            {
+                if (this.CertificateCommonName != firstCert.CertificateCommonName)
+                {
+                    throw new PSArgumentException(
+                        string.Format(ServiceFabricProperties.Resources.CertificateCommonNameMismatch, 
+                        this.CertificateCommonName, 
+                        firstCert.CertificateCommonName));
+                }
+
+                SetParameter(ref parameters, Constants.CertificateCommonName, firstCert.CertificateCommonName);
+                string issuerTP = this.CertificateIssuerThumbprint != null ? this.CertificateIssuerThumbprint : String.Empty;
+                SetParameter(ref parameters, Constants.CertificateIssuerThumbprint, issuerTP);
+            }
+            else
+            {
+                SetParameter(ref parameters, Constants.CertificateThumbprint, firstCert.CertificateThumbprint);
+            }
+
 
             if (secSourceVaultValue != null)
             {
-                var secCert = GetOrCreateCertificateInformation()[0];
-                certificateInformations.Add(firstCert);
+                if (certInfo.Count > 1)
+                {
+                    var secCert = certInfo[1];
+                    certificateInformations.Add(secCert);
 
-                SetParameter(ref parameters, Constants.SecSourceVaultValue, secCert.KeyVault.Id);
-                SetParameter(ref parameters, Constants.SecCertificateThumbprint, secCert.CertificateThumbprint);
-                SetParameter(ref parameters, Constants.SecCertificateUrlValue, secCert.SecretUrl);
+                    SetParameter(ref parameters, Constants.SecSourceVaultValue, secCert.KeyVault.Id);
+                    SetParameter(ref parameters, Constants.SecCertificateThumbprint, secCert.CertificateThumbprint);
+                    SetParameter(ref parameters, Constants.SecCertificateUrlValue, secCert.SecretUrl);
+                }
             }
 
             return parameters;
+        }
+
+        private void ValidateCertParameters(JObject parameters)
+        {
+            var sourceVaultValue = TryGetParameter(parameters, Constants.SourceVaultValue);
+            var certificateThumbprint = TryGetParameter(parameters, Constants.CertificateThumbprint);
+            var certificateUrlValue = TryGetParameter(parameters, Constants.CertificateUrlValue);
+            var certificateCommonName = TryGetParameter(parameters, Constants.CertificateCommonName);
+            var certificateIssuerThumbprint = TryGetParameter(parameters, Constants.CertificateIssuerThumbprint);
+
+            var secSourceVaultValue = TryGetParameter(parameters, Constants.SecSourceVaultValue);
+            var secCertificateThumbprint = TryGetParameter(parameters, Constants.SecCertificateThumbprint);
+            var secCertificateUrlValue = TryGetParameter(parameters, Constants.SecCertificateUrlValue);
+
+            if (this.CertificateCommonName != null)
+            {
+                if (certificateThumbprint != null || secSourceVaultValue != null || secCertificateThumbprint != null || secCertificateUrlValue != null)
+                {
+                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidCertificateInfoCNAndTPInParameterFile);
+                }
+
+                if (sourceVaultValue != null && certificateCommonName != null && certificateUrlValue != null && certificateIssuerThumbprint != null)
+                {
+                    WriteVerboseWithTimestamp("Found primary certificate parameters with common name in parameters file");
+                }
+                else
+                {
+                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidCertificateInformationCNInParameterFile);
+                }
+            }
+            else
+            {
+                if (certificateCommonName != null)
+                {
+                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidCertificateInfoCNAndTPInParameterFile);
+                }
+
+                if (sourceVaultValue != null && certificateThumbprint != null && certificateUrlValue != null)
+                {
+                    if (certificateThumbprint != null)
+                    {
+                        WriteVerboseWithTimestamp("Found primary certificate parameters with thumbprint in parameters file");
+                    }
+                }
+                else
+                {
+                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidCertificateInformationInParameterFile);
+                }
+
+                if (secSourceVaultValue != null && secCertificateThumbprint != null && secCertificateUrlValue != null)
+                {
+                    WriteVerboseWithTimestamp("Found secondary certificate parameters in parameters file");
+                }
+                else if (secSourceVaultValue == null && secCertificateThumbprint == null && secCertificateUrlValue == null)
+                {
+                    WriteVerboseWithTimestamp("There is no secondary certificate parameters in parameters file");
+                }
+                else
+                {
+                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidCertificateInformationInParameterFile);
+                }
+            }
         }
 
         private void WaitForDeployment(Deployment deployment, List<CertificateInformation> certInformations)
@@ -861,7 +943,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             var extSetting = (JObject) extProperty.SelectToken("settings", true);
                             if (extSetting["durabilityLevel"] == null ||
                                 extSetting["certificate"] == null ||
-                                extSetting["certificate"]["thumbprint"] == null)
+                                (extSetting["certificate"]["thumbprint"] == null &&
+                                extSetting["certificate"]["commonNames"] == null))
                             {
                                 throw new PSArgumentException(
                                     ServiceFabricProperties.Resources.InvalidTemplateFile);

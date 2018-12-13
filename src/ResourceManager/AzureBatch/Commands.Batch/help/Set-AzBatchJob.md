@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 75483BC7-440A-437B-9EDE-D270D87CF3C5
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/set-azbatchjob
@@ -32,7 +32,7 @@ PS C:\> $Job.Priority = 1
 PS C:\> Set-AzBatchJob -Job $Job -BatchContext $Context
 ```
 
-The first command gets a pool by using **Get-AzBatchJob**, and then stores it in the $Job variable.
+The first command gets a job by using **Get-AzBatchJob**, and then stores it in the $Job variable.
 The second command modifies the priority specification on the $Job object.
 The final command updates the Batch service to match the local object in $Job.
 
