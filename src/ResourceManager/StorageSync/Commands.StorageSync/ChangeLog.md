@@ -19,6 +19,8 @@
 -->
 
 ## Current Release
+
+## Version 0.7.1
 * Fixed a typo in the progress message.
 * Introduced the following breaking changes in Invoke-AzureRmStorageSyncCompatibilityCheck cmdlet:
     - Parameter 'Quiet' had been removed.

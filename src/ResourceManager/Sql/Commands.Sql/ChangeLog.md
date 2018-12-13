@@ -18,10 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 1.0.0
+* General availability of `Az.Sql` module
 * Added new Data_Exfiltration and Unsafe_Action detection types to Threat Detection's cmdlets
 * Removed -State and -ResourceId parameters from Set-AzSqlDatabaseBackupLongTermRetentionPolicy
 * Removed deprecated cmdlets: Get/Set-AzSqlServerBackupLongTermRetentionVault, Get/Start/Stop-AzSqlServerUpgrade, Get/Set-AzSqlDatabaseAuditingPolicy, Get/Set-AzSqlServerAuditingPolicy, Remove-AzSqlDatabaseAuditing, Remove-AzSqlServerAuditing
 * Removed deprecated parameter "Current" from Get-AzSqlDatabaseBackupLongTermRetentionPolicy
 * Removed deprecated parameter "DatabaseName" from Get-AzSqlServerServiceObjective
 * Removed deprecated parameter "PrivilegedLogin" from Set-AzSqlDatabaseDataMaskingPolicy
-* Modified documentation of examples related to SQL Auditing cmdlets. 
+* Modified documentation of examples related to SQL Auditing cmdlets.
