@@ -22,11 +22,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 {
-    public class GetAzureRmAdvisorConfiguration
+    public class DisableAzAdvisorRecommendation
     {
         private readonly XunitTracingInterceptor _logger;
 
-        public GetAzureRmAdvisorConfiguration(Xunit.Abstractions.ITestOutputHelper output)
+        public DisableAzAdvisorRecommendation(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -35,9 +35,23 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetConfigurationQuery()
+        public void DisableAzAdvisorRecommendationByNameParameter()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmAdvisorConfigurationNoParameter");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzAdvisorRecommendationByNameParameter");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DisableAzAdvisorRecommendationByIdParameter()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzAdvisorRecommendationByIdParameter");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DisableAzAdvisorRecommendationPipelineScenario()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzAdvisorRecommendationPipelineScenario");
         }
     }
 }

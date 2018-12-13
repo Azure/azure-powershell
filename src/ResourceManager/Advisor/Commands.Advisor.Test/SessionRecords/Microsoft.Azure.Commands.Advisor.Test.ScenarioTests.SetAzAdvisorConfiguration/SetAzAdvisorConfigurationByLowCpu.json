@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"exclude\": false,\r\n    \"low_cpu_threshold\": \"20\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3a3eafe6-0ca2-4bcf-a7c9-f5fe86f24339"
+          "ee1a6a26-8758-411a-a1af-dd5469474412"
         ],
         "Accept-Language": [
           "en-US"
@@ -39,22 +39,22 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "3a3eafe6-0ca2-4bcf-a7c9-f5fe86f24339"
+          "ee1a6a26-8758-411a-a1af-dd5469474412"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "199"
+          "197"
         ],
         "x-ms-correlation-request-id": [
-          "7e4c485f-29d7-41aa-b616-52386884c64f"
+          "9c916e59-84e8-4583-af9e-0e2ffb18e1d5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181213T165341Z:7e4c485f-29d7-41aa-b616-52386884c64f"
+          "WESTUS2:20181213T170627Z:9c916e59-84e8-4583-af9e-0e2ffb18e1d5"
         ],
         "Date": [
-          "Thu, 13 Dec 2018 16:53:40 GMT"
+          "Thu, 13 Dec 2018 17:06:27 GMT"
         ],
         "Expires": [
           "-1"
@@ -70,7 +70,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0cca9854-2a0a-46b7-a58b-f998bafd9435"
+          "0b530531-c4e9-4a87-85f3-7af55dcd9901"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,22 +96,22 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "0cca9854-2a0a-46b7-a58b-f998bafd9435"
+          "0b530531-c4e9-4a87-85f3-7af55dcd9901"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "599"
+          "595"
         ],
         "x-ms-correlation-request-id": [
-          "2f720a3b-06ad-46fb-a656-9713dce3752e"
+          "8bcfa561-5152-4776-aa98-9596a0fccb26"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181213T165341Z:2f720a3b-06ad-46fb-a656-9713dce3752e"
+          "WESTUS2:20181213T170627Z:8bcfa561-5152-4776-aa98-9596a0fccb26"
         ],
         "Date": [
-          "Thu, 13 Dec 2018 16:53:40 GMT"
+          "Thu, 13 Dec 2018 17:06:27 GMT"
         ],
         "Content-Length": [
           "296"

@@ -14,9 +14,9 @@
 
 <#
 .SYNOPSIS
-Enable-AzureRmAdvisorRecommendationPipeline scenario, given a recommendation name (stable-Id) enable all of its corresponding suppressions.
+Enable-AzAdvisorRecommendationPipeline scenario, given a recommendation name (stable-Id) enable all of its corresponding suppressions.
 #>
-function Enable-AzureRmAdvisorRecommendationByNameParameterSet
+function Enable-AzAdvisorRecommendationByNameParameterSet
 {
 	# All of our API data updates data-resource. Since this CMDLET does not update/create/delete any azure-resource, we have these hardcoded strings to test data and cmdlet.  
 	$RecommendationName = "4fa2ff4f-dc90-9876-0723-1360fa9f4bd7"
@@ -36,9 +36,9 @@ function Enable-AzureRmAdvisorRecommendationByNameParameterSet
 
 <#
 .SYNOPSIS
-Enable-AzureRmAdvisorRecommendationPipeline scenario, given a recommendation ID enable all of its corresponding suppressions.
+Enable-AzAdvisorRecommendationPipeline scenario, given a recommendation ID enable all of its corresponding suppressions.
 #>
-function Enable-AzureRmAdvisorRecommendationByIdParameterSet
+function Enable-AzAdvisorRecommendationByIdParameterSet
 {
 	# All of our API data updates data-resource. Since this CMDLET does not update/create/delete any azure-resource, we have these hardcoded strings to test data and cmdlet.  
 	$RecommendationId = "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7"
@@ -59,9 +59,9 @@ function Enable-AzureRmAdvisorRecommendationByIdParameterSet
 
 <#
 .SYNOPSIS
-Enable-AzureRmAdvisorRecommendationPipeline scenario, get a recommendation and enable all of it suppressions.
+Enable-AzAdvisorRecommendationPipeline scenario, get a recommendation and enable all of it suppressions.
 #>
-function Enable-AzureRmAdvisorRecommendationPipeline
+function Enable-AzAdvisorRecommendationPipeline
 {
 	# All of our API data updates data-resource. Since this CMDLET does not update/create/delete any azure-resource, we have these hardcoded strings to test data and cmdlet.  
 	$RecommendationId = "4fa2ff4f-dc90-9876-0723-1360fa9f4bd7"
