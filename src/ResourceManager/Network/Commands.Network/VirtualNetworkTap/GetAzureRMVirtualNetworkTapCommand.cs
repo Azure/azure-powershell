@@ -21,12 +21,19 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Rest.Azure;
+using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkTap", SupportsShouldProcess = true, DefaultParameterSetName = "GetByNameParameterSet"), OutputType(typeof(PSVirtualNetworkTap))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkTap", SupportsShouldProcess = true, DefaultParameterSetName = "ListParameterSet"), OutputType(typeof(PSVirtualNetworkTap))]
     public partial class GetAzureRmVirtualNetworkTap : NetworkBaseCmdlet
     {
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "ListParameterSet",
+            HelpMessage = "The resource group name of the virtual network tap.",
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = true,
             ParameterSetName = "GetByNameParameterSet",
@@ -37,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = "GetByNameParameterSet",
             HelpMessage = "The name of the tap.",
             ValueFromPipelineByPropertyName = true)]
@@ -73,17 +80,38 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var vVirtualNetworkTapList = this.NetworkClient.NetworkManagementClient.VirtualNetworkTaps.ListAll();
-                List<PSVirtualNetworkTap> psVirtualNetworkTapList = new List<PSVirtualNetworkTap>();
-                foreach (var vVirtualNetworkTap in vVirtualNetworkTapList)
+                IPage<VirtualNetworkTap> vtapPage;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
-                    var vVirtualNetworkTapModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualNetworkTap>(vVirtualNetworkTap);
-                    vVirtualNetworkTapModel.ResourceGroupName = this.ResourceGroupName;
-                    vVirtualNetworkTapModel.Tag = TagsConversionHelper.CreateTagHashtable(vVirtualNetworkTap.Tags);
-                    psVirtualNetworkTapList.Add(vVirtualNetworkTapModel);
+                    vtapPage = this.NetworkClient.NetworkManagementClient.VirtualNetworkTaps.ListByResourceGroup(this.ResourceGroupName);
                 }
-                WriteObject(psVirtualNetworkTapList, true);
+                else
+                {
+                    vtapPage = this.NetworkClient.NetworkManagementClient.VirtualNetworkTaps.ListAll();
+                }
+
+                // Get all resources by polling on next page link
+                var vtapList = ListNextLink<VirtualNetworkTap>.GetAllResourcesByPollingNextLink(vtapPage, this.NetworkClient.NetworkManagementClient.VirtualNetworkTaps.ListByResourceGroupNext);
+
+                var psVtaps = new List<PSVirtualNetworkTap>();
+                foreach (var vtap in vtapList)
+                {
+                    var psVtap = this.ToPsVirtualNetworkTap(vtap);
+                    psVtap.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vtap.Id);
+                    psVtaps.Add(psVtap);
+                }
+
+                WriteObject(psVtaps, true);
             }
+        }
+
+        public PSVirtualNetworkTap ToPsVirtualNetworkTap(VirtualNetworkTap vtap)
+        {
+            var psVtap = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetworkTap>(vtap);
+
+            psVtap.Tag = TagsConversionHelper.CreateTagHashtable(vtap.Tags);
+
+            return psVtap;
         }
     }
 }
