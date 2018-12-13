@@ -149,7 +149,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -304,7 +304,7 @@ The tier of service for the circuit. Possible values for this parameter are: `St
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard, Premium
+Accepted values: Standard, Premium, Basic
 
 Required: False
 Position: Named
