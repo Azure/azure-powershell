@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         ///The data is anonymous and does not include commandline argument values.
         ///The data is collected by Microsoft.
         ///
-        ///Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzureRmDataCollection.
-        ///Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable  [rest of string was truncated]&quot;;.
+        ///Use the Disable-AzDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzDataCollection.
+        ///Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ARMDataCollectionMessage {
             get {
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run Login-AzureAsAccount to login to Analysis Services server {0}.
+        ///   Looks up a localized string similar to Run Login-AzAsAccount to login to Analysis Services server {0}.
         /// </summary>
         internal static string NotLoggedInMessage {
             get {

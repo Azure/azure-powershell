@@ -30,12 +30,11 @@ namespace Commands.Network.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "TODO, #7260: needs to be re-recorded")]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestCortexCRUD()
         {
-            //// WARNING - Until Ignite, please use only the Jenkins sub c9cbd920-c00c-427c-852b-8aaf38badaeb to record this test case
-            //// If using any other sub, please reach out to Brooklyn team.
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexCRUD");
         }
 
@@ -44,6 +43,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestCortexExpressRouteCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexExpressRouteCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.Owner, Category.brooklynft)]
+        public void TestCortexDownloadConfig()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexDownloadConfig");
         }
     }
 }

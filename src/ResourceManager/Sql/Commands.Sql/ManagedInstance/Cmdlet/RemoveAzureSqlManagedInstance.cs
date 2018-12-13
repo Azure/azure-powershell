@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlInstance cmdlet
+    /// Defines the Get-AzSqlInstance cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = RemoveByNameAndResourceGroupParameterSet,

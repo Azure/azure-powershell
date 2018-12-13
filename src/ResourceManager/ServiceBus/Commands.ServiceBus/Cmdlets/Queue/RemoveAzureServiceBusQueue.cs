@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 {
     /// <summary>
-    /// 'Remove-AzureRmServiceBusQueue' Cmdlet removes the specified Queue
+    /// 'Remove-AzServiceBusQueue' Cmdlet removes the specified Queue
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusQueue", DefaultParameterSetName = QueuePropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusQueue : AzureServiceBusCmdletBase

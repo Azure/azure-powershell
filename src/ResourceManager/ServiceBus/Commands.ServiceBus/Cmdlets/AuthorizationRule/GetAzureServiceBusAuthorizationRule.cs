@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands
 {
     /// <summary>
-    /// 'Get-AzureRmServiceBusAuthorizationRule' Cmdlet gives the details of a / List of AuthorizationRule(s)
+    /// 'Get-AzServiceBusAuthorizationRule' Cmdlet gives the details of a / List of AuthorizationRule(s)
     /// <para> If AuthorizationRule name provided, a single AuthorizationRule detials will be returned</para>
     /// <para> If AuthorizationRule name not provided, list of AuthorizationRules will be returned</para>
     /// </summary>
