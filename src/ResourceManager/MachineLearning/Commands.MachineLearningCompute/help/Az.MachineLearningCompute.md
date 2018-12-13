@@ -1,16 +1,16 @@
 ---
-Module Name: Az.MachineLearningCompute
+Module Name: Az.MachineLearning
 Module Guid: bb030259-49f9-46ef-806f-2a3f5a2e018f
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.machinelearningcompute
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning
 Help Version: 0.4.2.0
 Locale: en-US
 ---
 
-# Az.MachineLearningCompute Module
+# Az.MachineLearning Module
 ## Description
 This topic displays help topics for the Azure Machine Learning Compute Cmdlets.
 
-## Az.MachineLearningCompute Cmdlets
+## Az.MachineLearning Cmdlets
 ### [Get-AzMlOpCluster](Get-AzMlOpCluster.md)
 Gets an operationalization cluster object.
 

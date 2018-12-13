@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
-Module Name: Az.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/rename-azcontext
+Module Name: Az.Accounts
+online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/rename-azcontext
 schema: 2.0.0
 ---
 
@@ -131,7 +131,7 @@ The name of the context
 Type: System.String
 Parameter Sets: RenameByName
 Aliases:
-Accepted values: Core-ES-BLD (54e18c35-3863-4a17-8e52-b5aa1e65847e) - maclayto@microsoft.com, DDXLABDTL-01 (e2dc3810-f8e5-4337-a41c-8b9ec7d954ee) - maclayto@microsoft.com, Pay-As-You-Go (92ad8d84-3287-4990-b83d-5e983832f7ce) - maclayto@microsoft.com, DevDiv Key Vault (bd62906c-0a81-43c3-a2f8-126e4cf66ada) - maclayto@microsoft.com, Azure SDK Powershell Test (c9cbd920-c00c-427c-852b-8aaf38badaeb) - maclayto@microsoft.com, Azure SDK Infrastructure (6b085460-5f21-477e-ba44-1035046e9101) - maclayto@microsoft.com, Azure SDK Powershell Test - Manual (9e223dbe-3399-4e19-88eb-0975f02ac87f) - maclayto@microsoft.com, Cosmos_WDG_Core_BnB_100348 (dae41bd3-9db4-4b9b-943e-832b57cac828) - maclayto@microsoft.com, Node CLI Test (2c224e7e-3ef5-431d-a57b-e71f4662e3a6) - maclayto@microsoft.com, Key Vault Engineering Subscription (33f39d49-6173-49bf-9789-db5548ee6d73) - maclayto@microsoft.com, VS Telemetry - Data Catalog (a7bb576c-291e-4553-965a-1c588b3f29d8) - maclayto@microsoft.com
+Accepted values:
 
 Required: True
 Position: 0

@@ -1,16 +1,16 @@
 ---
-Module Name: Az.Insights
+Module Name: Az.Monitor
 Module Guid: 698c387c-bd6b-41c6-82ce-721f1ef39548
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.insights
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.monitor
 Help Version: 4.0.4.0
 Locale: en-US
 ---
 
-# Az.Insights Module
+# Az.Monitor Module
 ## Description
 This topic displays help topics for the Azure Insights Cmdlets.
 
-## Az.Insights Cmdlets
+## Az.Monitor Cmdlets
 ### [Add-AzAutoscaleSetting](Add-AzAutoscaleSetting.md)
 Creates an Autoscale setting.
 
