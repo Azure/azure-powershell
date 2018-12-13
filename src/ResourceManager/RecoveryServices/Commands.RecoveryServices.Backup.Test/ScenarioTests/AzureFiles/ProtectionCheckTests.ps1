@@ -71,7 +71,7 @@ function Test-AzureFSProtectionCheck
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
-			-Name $saName
+			-FriendlyName $saName
 	}
 	finally
 	{

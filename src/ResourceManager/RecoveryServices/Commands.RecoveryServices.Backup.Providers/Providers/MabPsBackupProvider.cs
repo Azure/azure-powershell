@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
-            string name = (string)ProviderData[ContainerParams.Name];
+            string name = (string)ProviderData[ContainerParams.FriendlyName];
 
             ODataQuery<BMSContainerQueryObject> queryParams =
                 new ODataQuery<BMSContainerQueryObject>(
