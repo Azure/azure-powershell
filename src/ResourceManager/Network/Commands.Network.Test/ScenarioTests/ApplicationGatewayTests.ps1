@@ -97,7 +97,7 @@ function Test-ApplicationGatewayCRUD
 	try 
 	{
 		# Create the resource group
-		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"} 
+		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"} 
       
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
@@ -443,7 +443,7 @@ function Test-ApplicationGatewayCRUD2
 	try 
 	{
 		# Create the resource group
-		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"} 
+		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"} 
       
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
@@ -594,7 +594,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 	try
 	{
 		# Create the resource group
-		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
 		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
@@ -745,7 +745,7 @@ function Test-ApplicationGatewayCRUD3
 	try
 	{
 		# Create the resource group
-		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
 		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
@@ -1064,7 +1064,7 @@ function Test-ApplicationGatewayCRUDSubItems
 
 	try
 	{
-		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
 		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
@@ -1354,7 +1354,7 @@ function Test-ApplicationGatewayCRUDSubItems2
 
 	try
 	{
-		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
 		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
