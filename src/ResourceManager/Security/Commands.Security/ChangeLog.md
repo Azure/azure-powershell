@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update Set-AzSecurityContact. Phone, AlertAdmin, NotifyOnAlert parameters are no longer mandatory
