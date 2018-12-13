@@ -36,6 +36,14 @@ function Disable-AzAdvisorRecommendationByNameParameter
     }
 }
 
+function Disable-AzAdvisorRecommendationBadUserInput-Negative
+{
+	$DaysParam = -4
+	$RecommendationName = "4fa2ff4f-dc90-9876-0723-1360fa9f4bd7"
+
+	Assert-ThrowsContains { Disable-AzAdvisorRecommendation -RecommendationName $RecommendationName -Days $DaysParam  }  "Cannot validate argument on parameter 'Days'. The -4 argument is less than the minimum allowed range of 1. Supply an argument that is greater than or equal to 1 and then try the command again."
+}
+
 function Disable-AzAdvisorRecommendationByIdParameter
 {
 	# All of our API data updates data-resource. Since this CMDLET does not update/create/delete any azure-resource, we have these hardcoded strings to test data and cmdlet.  

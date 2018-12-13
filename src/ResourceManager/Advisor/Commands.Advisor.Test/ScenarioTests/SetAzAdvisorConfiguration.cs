@@ -33,14 +33,6 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
-        // No user input for paratmeters
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetAzAdvisorConfigurationNoParameterSet()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationNoParameterSet");
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzAdvisorConfigurationBadUserInputLowCpu()
