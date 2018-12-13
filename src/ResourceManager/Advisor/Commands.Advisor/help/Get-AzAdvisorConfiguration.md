@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Advisor.dll-Help.xml
 Module Name: Az.Advisor
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.Advisor/Get-AzAdvisorConfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.advisor/get-azadvisorconfiguration
 schema: 2.0.0
 ---
 
