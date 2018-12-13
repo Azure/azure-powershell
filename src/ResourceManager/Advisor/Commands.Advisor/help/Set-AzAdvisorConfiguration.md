@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Advisor.dll-Help.xml
 Module Name: Az.Advisor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.Advisor/Set-AzAdvisorConfiguration
 schema: 2.0.0
 ---
 
 # Set-AzAdvisorConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates or creates the Aure Advisor Configration.
 
 ## SYNTAX
 
@@ -27,16 +27,66 @@ Set-AzAdvisorConfiguration [-Exclude] [[-ResourceGroupName] <String>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Used to update the configuration of the advisors. Two types of configration are present Subscription level configuration and ResourceGroup level configuration. 
+
+Subscription level configuration: There can be only one configration for this type, lowCpuThreshold and exclude properties can be updated using cmdlet.
+ResourceGroup level configuration: There can be only one configration for each ResourceGroup, only exclude property could be updated using cmdlet.
 
 ## EXAMPLES
 
-### Example 1
+###  Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRMAdvisorConfiguration -LowCpuThreshold 10
+Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}
+Name       : {user_subscription}
+Properties : additionalProperties : null
+             exclude :  False
+             lowCpuThreshold : 10
+
+Type       : Microsoft.Advisor/Configurations
 ```
 
-{{ Add example description here }}
+Updates the configuration(lowCpuThreshold) for subscription level configration.
+
+### Example 2
+```powershell
+PS C:\> Set-AzureRMAdvisorConfiguration -LowCpuThreshold 15 -Exclude 
+Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}
+Name       : {user_subscription}
+Properties : additionalProperties : null
+             exclude :  True
+             lowCpuThreshold : 15
+
+Type       : Microsoft.Advisor/Configurations
+```
+
+Updates the configuration(lowCpuThreshold, exclude) for subscription level configration and excludes from the recommendation generation.
+
+### Example 3
+```powershell
+PS C:\> Set-AzureRMAdvisorConfiguration -ResourceGroupName resourceGroupName1 -Exclude
+
+Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}-resourceGroupName1
+Name       : {user_subscription}-resourceGroupName1
+Properties : additionalProperties : null
+             exclude :  True
+             lowCpuThreshold : null
+
+Type       : Microsoft.Advisor/Configurations
+```
+
+Updates the configuration(exclude) for resourceGroupName1 to be excluded in the recommendation generation.
+
+### Example 4
+```powershell
+PS C:\> Get-AzureRMAdvisorConfiguration | Set-AzureRMAdvisorConfiguration -LowCpuThreshold 20
+Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}
+Name       : {user_subscription}
+Properties : additionalProperties : null
+             exclude :  False
+             lowCpuThreshold : 20
+
+Type       : Microsoft.Advisor/Configurations
 
 ## PARAMETERS
 
@@ -71,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -Exclude
-Exclude from the recommendation generation.
+Exclude from the recommendation generation. If not specified exclude property will be set to false.
 
 ```yaml
 Type: SwitchParameter
