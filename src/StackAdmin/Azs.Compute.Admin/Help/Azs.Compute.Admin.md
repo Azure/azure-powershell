@@ -38,7 +38,7 @@ Create a new compute quota used to limit compute resources.
 ### [New-AzsDiskMigrationJob](New-AzsDiskMigrationJob.md)
 Starts a managed disk migration job to migrate managed disks to the specified destination share.
 
-### [New-DataDiskObject](New-DataDiskObject.md)
+### [New-AzsDataDiskObject](New-AzsDataDiskObject.md)
 Creates a data disk which is used to create a new virtual machine platform image.
 
 ### [Remove-AzsComputeQuota](Remove-AzsComputeQuota.md)

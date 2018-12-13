@@ -32,3 +32,5 @@ if (Test-Path -Path $ClrPath -PathType Container) {
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ResourceNameSuffix.ps1')
 $allPs1FilesPath = Join-Path -Path $PSScriptRoot -ChildPath 'Generated.PowerShell.Commands' | Join-Path -ChildPath '*.ps1'
 Get-ChildItem -Path $allPs1FilesPath -Recurse -File | ForEach-Object { . $_.FullName}
+
+New-Alias -Name 'New-AddonPlanDefinitionObject' -Value 'New-AzsAddonPlanDefinitionObject' -Description 'Azs.Compute.Admin Alias'

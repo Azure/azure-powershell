@@ -92,7 +92,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Remove-AzsOfferDelegation', 'Get-AzsOfferDelegation',
     'Get-AzsUserSubscription', 'Set-AzsOffer',
     'Remove-AzsPlan', 'Set-AzsPlan',
-    'New-AddonPlanDefinitionObject'
+    'New-AzsAddonPlanDefinitionObject'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()

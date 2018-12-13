@@ -80,7 +80,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Remove-AzsVMExtension',
     'Get-AzsPlatformImage', 'Get-AzsComputeQuota',
     'Add-AzsVMExtension', 'Set-AzsComputeQuota',
-    'Remove-AzsPlatformImage', 'New-DataDiskObject',
+    'Remove-AzsPlatformImage', 'New-AzsDataDiskObject',
     'Get-AzsDisk', 'Get-AzsDiskMigrationJob',
     'New-AzsDiskMigrationJob', 'Stop-AzsDiskMigrationJob'
 
