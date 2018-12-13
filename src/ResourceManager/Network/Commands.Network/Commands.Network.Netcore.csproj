@@ -68,4 +68,8 @@
   <ItemGroup>
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ManagedServiceIdentity\Commands.ManagedServiceIdentity\Commands.ManagedServiceIdentity.Netcore.csproj" />
+  </ItemGroup>
 </Project>
