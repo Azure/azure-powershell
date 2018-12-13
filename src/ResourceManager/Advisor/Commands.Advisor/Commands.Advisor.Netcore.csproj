@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Advisor</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Advisor</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Advisor</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
