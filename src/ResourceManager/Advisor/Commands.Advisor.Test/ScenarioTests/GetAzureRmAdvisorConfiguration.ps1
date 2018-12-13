@@ -19,10 +19,10 @@ Get list of configurations for this subscription
 function Get-AzureRmAdvisorConfigurationNoParameter
 {
 	$propertiesCount = 4
-	$cmdletReturnType = "System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData]"
+	$cmdletReturnType = "Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorConfigurationData"
 	$TypeValue = "Microsoft.Advisor/Configurations"
 
-	$queryResult = Get-AzureRmAdvisorConfiguration 
+	$queryResult = Get-AzAdvisorConfiguration 
 		
 	Assert-IsInstance $queryResult $cmdletReturnType
 	

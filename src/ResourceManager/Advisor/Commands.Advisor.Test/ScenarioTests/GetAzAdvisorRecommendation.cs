@@ -19,14 +19,13 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
-
 namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 {
-    public class GetAzureRMAdvisorRecommendation
+    public class GetAzAdvisorRecommendation
     {
         private readonly XunitTracingInterceptor _logger;
 
-        public GetAzureRMAdvisorRecommendation(Xunit.Abstractions.ITestOutputHelper output)
+        public GetAzAdvisorRecommendation(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -35,30 +34,30 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureRmAdvisorRecommendationNoParameter()
+        public void GetAzAdvisorRecommendationNoParameter()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmAdvisorRecommendationNoParameter");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzAdvisorRecommendationNoParameter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureRmAdvisorRecommendationByCategory()
+        public void GetAzAdvisorRecommendationByCategory()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmAdvisorRecommendationByCategory");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzAdvisorRecommendationByCategory");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureRmAdvisorRecommendationByNameParameterSet()
+        public void GetAzAdvisorRecommendationByNameParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmAdvisorRecommendationByNameParameterSet");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzAdvisorRecommendationByNameParameterSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureRmAdvisorRecommendationByIdParameterSet()
+        public void GetAzAdvisorRecommendationByIdParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmAdvisorRecommendationByIdParameterSet");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzAdvisorRecommendationByIdParameterSet");
         }
     }
 }

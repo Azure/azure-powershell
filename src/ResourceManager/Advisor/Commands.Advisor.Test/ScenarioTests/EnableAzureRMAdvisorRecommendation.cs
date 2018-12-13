@@ -35,13 +35,6 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void EnableAzureRmAdvisorRecommendationNoParameterSet()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Enable-AzureRmAdvisorRecommendationNoParameterSet");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureRmAdvisorRecommendationByNameParameterSet()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Enable-AzureRmAdvisorRecommendationByNameParameterSet");

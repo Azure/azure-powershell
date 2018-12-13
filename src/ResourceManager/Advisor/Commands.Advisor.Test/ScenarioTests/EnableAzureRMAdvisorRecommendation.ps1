@@ -14,15 +14,6 @@
 
 <#
 .SYNOPSIS
-Neagtive Test, no user input for the parameters. 
-#>
-function Enable-AzureRmAdvisorRecommendationNoParameterSet
-{
-		Assert-ThrowsContains { Enable-AzureRmAdvisorRecommendation } "Cannot process command because of one or more missing mandatory parameters: RecommendationName."
-}
-
-<#
-.SYNOPSIS
 Enable-AzureRmAdvisorRecommendationPipeline scenario, given a recommendation name (stable-Id) enable all of its corresponding suppressions.
 #>
 function Enable-AzureRmAdvisorRecommendationByNameParameterSet
@@ -30,9 +21,9 @@ function Enable-AzureRmAdvisorRecommendationByNameParameterSet
 	# All of our API data updates data-resource. Since this CMDLET does not update/create/delete any azure-resource, we have these hardcoded strings to test data and cmdlet.  
 	$RecommendationName = "4fa2ff4f-dc90-9876-0723-1360fa9f4bd7"
 
-	$queryResult = Enable-AzureRmAdvisorRecommendation -Name $RecommendationName
+	$queryResult = Enable-AzAdvisorRecommendation -RecommendationName $RecommendationName
 	
-	Assert-IsInstance $queryResult System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]
+	Assert-IsInstance $queryResult Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase
 	
 	for ($i = 0; $i -lt $queryResult.Count; $i++)
 	{
@@ -53,9 +44,9 @@ function Enable-AzureRmAdvisorRecommendationByIdParameterSet
 	$RecommendationId = "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7"
 
 	$RecommendationId = "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7"
-	$queryResult = Enable-AzureRmAdvisorRecommendation -Id $RecommendationId
+	$queryResult = Enable-AzAdvisorRecommendation -ResourceId $RecommendationId
 	
-	Assert-IsInstance $queryResult System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]
+	Assert-IsInstance $queryResult Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase
 	
 	for ($i = 0; $i -lt $queryResult.Count; $i++)
     {
@@ -76,9 +67,9 @@ function Enable-AzureRmAdvisorRecommendationPipeline
 	$RecommendationId = "4fa2ff4f-dc90-9876-0723-1360fa9f4bd7"
 
 	$RecommendationId = "/subscriptions/658c8950-e79d-4704-a903-1df66ba90258/resourceGroups/testing/providers/Microsoft.Storage/storageAccounts/fontcjk/providers/Microsoft.Advisor/recommendations/4fa2ff4f-dc90-9876-0723-1360fa9f4bd7"
-	$queryResult = Get-AzureRmAdvisorRecommendation -Id $RecommendationId | Enable-AzureRmAdvisorRecommendation
+	$queryResult = Get-AzAdvisorRecommendation -ResourceId $RecommendationId | Enable-AzAdvisorRecommendation
 	
-	Assert-IsInstance $queryResult System.Collections.Generic.List[Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase]
+	Assert-IsInstance $queryResult Microsoft.Azure.Commands.Advisor.Cmdlets.Models.PsAzureAdvisorResourceRecommendationBase
 	
 	for ($i = 0; $i -lt $queryResult.Count; $i++)
     {
