@@ -16,7 +16,7 @@
 .SYNOPSIS
 Neagtive Test, no user input for the parameters. 
 #>
-function Set-AzureRmAdvisorConfigurationNoParameterSet
+function Set-AzAdvisorConfigurationNoParameterSet
 {
 		Assert-ThrowsContains { Set-AzAdvisorConfiguration } "Cannot process command because of one or more missing mandatory parameters: LowCpuThreshold."
 }
@@ -25,7 +25,7 @@ function Set-AzureRmAdvisorConfigurationNoParameterSet
 .SYNOPSIS
 Sets configuration for lowCPUThreshold property for the current subscription set in powershell session.
 #>
-function Set-AzureRmAdvisorConfigurationWithLowCpu
+function Set-AzAdvisorConfigurationWithLowCpu
 {
 	$propertiesCount = 4
 	$lowCpuThresholdParameter = 20
@@ -50,13 +50,13 @@ function Set-AzureRmAdvisorConfigurationWithLowCpu
 }
 
 # Negative Test, bad input for LowCpuThreshold
-function Set-AzureRmAdvisorConfigurationBadUserInputLowCpu-Negative
+function Set-AzAdvisorConfigurationBadUserInputLowCpu-Negative
 {
 	$lowCpuThresholdParameter = 25
 	Assert-ThrowsContains { Set-AzAdvisorConfiguration -LowCpuThreshold $lowCpuThresholdParameter }  "Cannot validate argument on parameter 'LowCpuThreshold'. The argument "25" does not belong to the set "0,5,10,15,20" specified by the ValidateSet attribute"
 }
 
-function Set-AzureRmAdvisorConfigurationByLowCpuExclude
+function Set-AzAdvisorConfigurationByLowCpuExclude
 {
 	try{
 		$propertiesCount = 4
@@ -83,7 +83,7 @@ function Set-AzureRmAdvisorConfigurationByLowCpuExclude
 	}
 }
 
-function Set-AzureRmAdvisorConfigurationPipelineByLowCpuExclude
+function Set-AzAdvisorConfigurationPipelineByLowCpuExclude
 {
 	try{
 		$propertiesCount = 4
@@ -114,7 +114,7 @@ function Set-AzureRmAdvisorConfigurationPipelineByLowCpuExclude
 Run simple query
 #>
 
-function Set-AzureRmAdvisorConfigurationWithRg
+function Set-AzAdvisorConfigurationWithRg
 {
 	$propertiesCount = 4
 	$RgName = "testing"
@@ -137,7 +137,7 @@ function Set-AzureRmAdvisorConfigurationWithRg
 	}
 }
 
-function Set-AzureRmAdvisorConfigurationByRgExclude
+function Set-AzAdvisorConfigurationByRgExclude
 {
 	$propertiesCount = 4
 	$RgName = "testing"

@@ -22,11 +22,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 {
-    public class SetAzureRmAdvisorConfiguration
+    public class SetAzAdvisorConfiguration
     {
         private readonly XunitTracingInterceptor _logger;
 
-        public SetAzureRmAdvisorConfiguration(Xunit.Abstractions.ITestOutputHelper output)
+        public SetAzAdvisorConfiguration(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -36,52 +36,52 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
         // No user input for paratmeters
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetAzureRmAdvisorConfigurationNoParameterSet()
+        public void SetAzAdvisorConfigurationNoParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmAdvisorConfigurationNoParameterSet");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationNoParameterSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetAzureRmAdvisorConfigurationBadUserInputLowCpu()
+        public void SetAzAdvisorConfigurationBadUserInputLowCpu()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmAdvisorConfigurationBadUserInputLowCpu-Negative");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationBadUserInputLowCpu-Negative");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetAzureRmAdvisorConfigurationByLowCpu()
+        public void SetAzAdvisorConfigurationByLowCpu()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmAdvisorConfigurationWithLowCpu");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationWithLowCpu");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetAzureRmAdvisorConfigurationByLowCpuExclude()
+        public void SetAzAdvisorConfigurationByLowCpuExclude()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmAdvisorConfigurationByLowCpuExclude");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationByLowCpuExclude");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetAzureRmAdvisorConfigurationPipelineByLowCpuExclude()
+        public void SetAzAdvisorConfigurationPipelineByLowCpuExclude()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmAdvisorConfigurationPipelineByLowCpuExclude");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationPipelineByLowCpuExclude");
         }
 
         // ResourceGroupParameterSets
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetAzureRmAdvisorConfigurationByRg()
+        public void SetAzAdvisorConfigurationByRg()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmAdvisorConfigurationWithRg");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationWithRg");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetAzureRmAdvisorConfigurationByRgExclude()
+        public void SetAzAdvisorConfigurationByRgExclude()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmAdvisorConfigurationByRgExclude");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzAdvisorConfigurationByRgExclude");
         }
 
     }

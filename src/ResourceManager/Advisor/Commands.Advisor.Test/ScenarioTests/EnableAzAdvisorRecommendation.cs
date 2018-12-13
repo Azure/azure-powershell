@@ -22,11 +22,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 {
-    public class DisableAzureRMAdvisorRecommendation
+    public class EnableAzAdvisorRecommendation
     {
         private readonly XunitTracingInterceptor _logger;
 
-        public DisableAzureRMAdvisorRecommendation(Xunit.Abstractions.ITestOutputHelper output)
+        public EnableAzAdvisorRecommendation(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -35,23 +35,23 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DisableAzureRmAdvisorRecommendationByNameParameter()
+        public void EnableAzAdvisorRecommendationByNameParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzureRmAdvisorRecommendationByNameParameter");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Enable-AzAdvisorRecommendationByNameParameterSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DisableAzureRmAdvisorRecommendationByIdParameter()
+        public void EnableAzAdvisorRecommendationByIdParameterSet()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzureRmAdvisorRecommendationByIdParameter");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Enable-AzAdvisorRecommendationByIdParameterSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DisableAzureRmAdvisorRecommendationPipelineScenario()
+        public void EnableAzAdvisorRecommendationPipeline()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Disable-AzureRmAdvisorRecommendationPipelineScenario");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Enable-AzAdvisorRecommendationPipeline");
         }
     }
 }

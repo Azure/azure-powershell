@@ -22,11 +22,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 {
-    public class EnableAzureRMAdvisorRecommendation
+    public class GetAzAdvisorConfiguration
     {
         private readonly XunitTracingInterceptor _logger;
 
-        public EnableAzureRMAdvisorRecommendation(Xunit.Abstractions.ITestOutputHelper output)
+        public GetAzAdvisorConfiguration(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -35,23 +35,9 @@ namespace Microsoft.Azure.Commands.Advisor.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void EnableAzureRmAdvisorRecommendationByNameParameterSet()
+        public void GetConfigurationQuery()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Enable-AzureRmAdvisorRecommendationByNameParameterSet");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void EnableAzureRmAdvisorRecommendationByIdParameterSet()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Enable-AzureRmAdvisorRecommendationByIdParameterSet");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void EnableAzureRmAdvisorRecommendationPipeline()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Enable-AzureRmAdvisorRecommendationPipeline");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzAdvisorConfigurationNoParameter");
         }
     }
 }
