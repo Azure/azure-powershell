@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.WindowsAzure.Commands.Storage.Adapters;
     using System.Management.Automation;
     using ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.WindowsAzure.Storage;
 
     [Cmdlet("Backup", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement"), OutputType(typeof(PsApiManagement))]
     public class BackupAzureApiManagement : AzureApiManagementCmdletBase
@@ -66,18 +67,25 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
-            var account = StorageContext.GetCloudStorageAccount();
-            var apiManagementResource = Client.BackupApiManagement(
-                ResourceGroupName,
-                Name,
-                account.Credentials.AccountName,
-                account.Credentials.ExportBase64EncodedKey(),
-                TargetContainerName,
-                TargetBlobName);
-
-            if (PassThru.IsPresent)
+            CloudStorageAccount account = null;
+            if (CloudStorageAccount.TryParse(StorageContext.ConnectionString, out account))
             {
-                this.WriteObject(apiManagementResource);
+                var apiManagementResource = Client.BackupApiManagement(
+                    ResourceGroupName,
+                    Name,
+                    account.Credentials.AccountName,
+                    account.Credentials.ExportBase64EncodedKey(),
+                    TargetContainerName,
+                    TargetBlobName);
+
+                if (PassThru.IsPresent)
+                {
+                    this.WriteObject(apiManagementResource);
+                }
+            }
+            else
+            {
+                throw new PSArgumentException("Failed to parse the storage connection string.", nameof(StorageContext));
             }
         }
     }

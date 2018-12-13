@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
-Module Name: Az.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/invoke-azdatafactoryv2integrationruntimeupgrade
+Module Name: Az.DataFactory
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/invoke-azdatafactoryv2integrationruntimeupgrade
 schema: 2.0.0
 ---
 
