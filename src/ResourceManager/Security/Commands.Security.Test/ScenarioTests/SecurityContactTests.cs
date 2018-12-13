@@ -60,6 +60,13 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetSubscriptionLevelResourceSecondary()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecurityContact-SubscriptionLevelResource-Secondary");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSubscriptionLevelResource()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzureRmSecurityContact-SubscriptionLevelResource");

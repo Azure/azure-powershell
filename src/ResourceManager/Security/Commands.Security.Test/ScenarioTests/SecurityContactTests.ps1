@@ -59,6 +59,15 @@ function Set-AzureRmSecurityContact-SubscriptionLevelResource
 
 <#
 .SYNOPSIS
+Set a security contact on a subscription
+#>
+function Set-AzureRmSecurityContact-SubscriptionLevelResource-Secondary
+{
+    Set-AzureRmSecurityContact -Name "default2" -Email "ascasc@microsoft.com"
+}
+
+<#
+.SYNOPSIS
 Delete a security contact on a subscription
 #>
 function Remove-AzureRmSecurityContact-SubscriptionLevelResource
