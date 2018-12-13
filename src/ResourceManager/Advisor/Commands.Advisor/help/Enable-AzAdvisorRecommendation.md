@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzAdvisorRecommendation
 
 ## SYNOPSIS
-Enable an Azure Advisor recommendation.
+Enables Azure Advisor recommendation(s).
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Enable-AzAdvisorRecommendation [-InputObject] <PsAzureAdvisorResourceRecommendat
 ```
 
 ## DESCRIPTION
-Enables a suppresed recomendation, the suppression for a recommendation are removed using this cmdlet. One can remove all the suppression associated with a recommendation.
+Enables a suppresed recommendation, the suppression for a recommendation are removed using this cmdlet. One can remove all the suppression associated with a recommendation.
 
 ## EXAMPLES
 

@@ -18,7 +18,7 @@ Gets a list of Azure Advisor recommendations.
 Disable an Azure Advisor recommendation.
 
 ### [Enable-AzAdvisorRecommendation](Enable-AzAdvisorRecommendation.md)
-Create a new managed Kubernetes cluster.
+Enables Azure Advisor recommendation(s).
 
 ### [Get-AzAdvisorConfiguration](Get-AzAdvisorConfiguration.md)
 Get the Azure Advisor configurations for the given subscription or resource group.

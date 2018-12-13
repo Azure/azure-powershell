@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzAdvisorConfiguration
 
 ## SYNOPSIS
-Updates or creates the Aure Advisor Configration.
+Updates or creates the Azure Advisor Configration.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Set-AzAdvisorConfiguration [-Exclude] [[-ResourceGroupName] <String>]
 ```
 
 ## DESCRIPTION
-Used to update the configuration of the advisors. Two types of configration are present Subscription level configuration and ResourceGroup level configuration. 
+Used to update the configuration of the Azure Advisor. Two types of configration are present Subscription level configuration and ResourceGroup level configuration. 
 
 Subscription level configuration: There can be only one configration for this type, lowCpuThreshold and exclude properties can be updated using cmdlet.
 ResourceGroup level configuration: There can be only one configration for each ResourceGroup, only exclude property could be updated using cmdlet.
