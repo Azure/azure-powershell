@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Advisor.Netcore", "Commands.Advisor\Commands.Advisor.Netcore.csproj", "{3EC36A66-9B32-4D15-A6FC-5804AA15D52C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Advisor.Netcore", "Commands.Advisor\Commands.Advisor.Netcore.csproj", "{860B550A-20CE-4FB1-BAE7-EF10E9221BCE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3CBF88D6-8961-439C-9936-33F5732B73E2}"
 EndProject
@@ -17,10 +17,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3EC36A66-9B32-4D15-A6FC-5804AA15D52C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3EC36A66-9B32-4D15-A6FC-5804AA15D52C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3EC36A66-9B32-4D15-A6FC-5804AA15D52C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3EC36A66-9B32-4D15-A6FC-5804AA15D52C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{860B550A-20CE-4FB1-BAE7-EF10E9221BCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{860B550A-20CE-4FB1-BAE7-EF10E9221BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{860B550A-20CE-4FB1-BAE7-EF10E9221BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{860B550A-20CE-4FB1-BAE7-EF10E9221BCE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{55B4F1B2-AD1A-461F-927D-6CFEBF06EFF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{55B4F1B2-AD1A-461F-927D-6CFEBF06EFF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55B4F1B2-AD1A-461F-927D-6CFEBF06EFF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
