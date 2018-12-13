@@ -17,10 +17,10 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Release
-* Added SDK support to check backup status cmdlet.
-* TargetStorageAccountName is now mandatory for managed disk restores.
-* Removed StorageAccountName and StorageAccountResourceGroupName parameters in AzureFileShareRestore.
 
 ## Version 1.0.0
 * General availability of `Az.RecoveryServices` module
+* Removed Name Parameter in Get-Container cmdlet.
+* Added SDK support to check backup status cmdlet.
+* TargetStorageAccountName is now mandatory for managed disk restores.
+* Removed StorageAccountName and StorageAccountResourceGroupName parameters in AzureFileShareRestore.
