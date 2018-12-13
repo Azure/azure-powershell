@@ -378,4 +378,7 @@
   <data name="NoNetworkWatcherInLocation" xml:space="preserve">
     <value>There is no network watcher in location {0}</value>
   </data>
+  <data name="ApplicationGatewayRewriteRuleSetName" xml:space="preserve">
+    <value>rewriteRuleSets</value>
+  </data>
 </root>

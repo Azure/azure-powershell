@@ -189,22 +189,22 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ParameterSetName = FromPointInTimeBackupSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service level objective to use for the restored database." +
-            "Refer Get-AzureRmSqlCapability cmdlet to see what ServiceObjectiveNames are valid")]
+            "Refer Get-AzSqlCapability cmdlet to see what ServiceObjectiveNames are valid")]
         [Parameter(Mandatory = false,
             ParameterSetName = FromDeletedDatabaseBackupSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service level objective to use for the restored database." +
-            "Refer Get-AzureRmSqlCapability cmdlet to see what ServiceObjectiveNames are valid")]
+            "Refer Get-AzSqlCapability cmdlet to see what ServiceObjectiveNames are valid")]
         [Parameter(Mandatory = false,
             ParameterSetName = FromGeoBackupSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service level objective to use for the restored database." +
-            "Refer Get-AzureRmSqlCapability cmdlet to see what ServiceObjectiveNames are valid")]
+            "Refer Get-AzSqlCapability cmdlet to see what ServiceObjectiveNames are valid")]
         [Parameter(Mandatory = false,
             ParameterSetName = FromLongTermRetentionBackupSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service level objective to use for the restored database." +
-            "Refer Get-AzureRmSqlCapability cmdlet to see what ServiceObjectiveNames are valid")]
+            "Refer Get-AzSqlCapability cmdlet to see what ServiceObjectiveNames are valid")]
         public string ServiceObjectiveName { get; set; }
 
         /// <summary>

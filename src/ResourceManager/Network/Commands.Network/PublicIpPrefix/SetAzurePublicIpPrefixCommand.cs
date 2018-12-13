@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.PublicIpPrefix
+namespace Microsoft.Azure.Commands.Network
 {
     using AutoMapper;
     using Microsoft.Azure.Commands.Network.Models;

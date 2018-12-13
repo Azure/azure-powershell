@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
 {
     /// <summary>
-    /// 'New-AzureRmWcfRelay' Cmdlet creates a new WcfRelay
+    /// 'New-AzWcfRelay' Cmdlet creates a new WcfRelay
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WcfRelay", SupportsShouldProcess = true), OutputType(typeof(PSWcfRelayAttributes))]
     public class NewAzureRmWcfRelay : AzureRelayCmdletBase

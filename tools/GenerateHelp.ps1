@@ -14,7 +14,7 @@ Param(
 Import-Module "$PSScriptRoot\HelpGeneration\HelpGeneration.psm1"
 $UnfilteredHelpFolders = Get-ChildItem "help" -Recurse -Directory | where { $_.FullName -like "*$BuildConfig*" -and $_.FullName -notlike "*Stack*" }
 $FilteredHelpFolders = $UnfilteredHelpFolders
-if ($FilteredModules -ne $null)
+if (![string]::IsNullOrEmpty($FilteredModules))
 {
     $FilteredModulesList = $FilteredModules -split ';'
     $FilteredHelpFolders = @()
