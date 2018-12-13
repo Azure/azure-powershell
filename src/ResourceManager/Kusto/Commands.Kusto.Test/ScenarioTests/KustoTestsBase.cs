@@ -25,7 +25,8 @@ using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Management.Kusto;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
-namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
+// Why is this Search????
+namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
 {
     public class KustoTestsBase
     {
@@ -95,10 +96,6 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
                     {
                         _helper.RunPowerShellTest(psScripts);
                     }
-                }
-                catch (Exception e)
-                {
-                    Console.Write(e.Message);
                 }
                 finally
                 {

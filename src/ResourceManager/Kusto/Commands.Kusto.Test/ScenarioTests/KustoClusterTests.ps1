@@ -17,17 +17,17 @@ function Test-KustoClusterLifecycle
 
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
 		
-		$clusterCreated = New-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
+		$clusterCreated = New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
 		Validate_Cluster $clusterCreated $clusterName $resourceGroupName  $location  "Running" "Succeeded" $resourceType $sku;
 	
-		[array]$clusterGet = Get-AzureRmKustoCluster -ResourceGroupName $resourceGroupName
+		[array]$clusterGet = Get-AzKustoCluster -ResourceGroupName $resourceGroupName
 		$clusterGetItem = $clusterGet[0]
 		Validate_Cluster $clusterGetItem $clusterName $resourceGroupName  $location "Running" "Succeeded" $resourceType $sku;
 
-		$updatedCluster = Update-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -SkuName $updatedSku -Tier "standard"
+		$updatedCluster = Update-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -SkuName $updatedSku -Tier "standard"
 		Validate_Cluster $updatedCluster $clusterName $resourceGroupName  $location "Running" "Succeeded" $resourceType $updatedSku;
 
-		Remove-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+		Remove-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 		Ensure_Cluster_Not_Exist $resourceGroupName $clusterName $expectedException
 	}
 	finally
