@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// <summary>
         /// Gets or sets the Exclude.
         /// </summary>s
-        [Parameter(ParameterSetName = InputObjectLowCpuExcludeParameterSet, Mandatory = false, Position = 2, HelpMessage = "Exclude from the recommendation generation.")]
-        [Parameter(ParameterSetName = InputObjectRgExcludeParameterSet, Mandatory = false, Position = 2, HelpMessage = "Exclude from the recommendation generation.")]
+        [Parameter(ParameterSetName = InputObjectLowCpuExcludeParameterSet, Mandatory = false, Position = 2, HelpMessage = "Exclude from the recommendation generation. If not specified exclude property will be set to false.")]
+        [Parameter(ParameterSetName = InputObjectRgExcludeParameterSet, Mandatory = false, Position = 2, HelpMessage = "Exclude from the recommendation generation. If not specified exclude property will be set to false.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Exclude { get; set; }
 
@@ -192,7 +192,6 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                     }
                     else
                     {
-                        // PsAzureAdvisorConfigurationData configurationData = this.GetConfigurationDataForCurrentSubscription();
                         configDataProperties.Exclude = false;
                     }
 
@@ -229,8 +228,6 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                     }
                     else
                     {
-                        // Get the exisiting configrationData for the resource-group and assign the exclude property to preserve existing data.
-                        // PsAzureAdvisorConfigurationData configurationData = this.GetConfigurationDataForResourceGroup(this.ResourceGroupName);
                         configDataProperties.Exclude = false;
                     }
 
