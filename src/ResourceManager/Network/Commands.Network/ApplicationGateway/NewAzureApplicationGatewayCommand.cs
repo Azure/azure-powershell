@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ManagedServiceIdentity.Models;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -188,14 +187,9 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "ResourceId of the user assigned identity to be assigned to Application Gateway.")]
         [ValidateNotNullOrEmpty]
+        [Alias("UserAssignedIdentity")]
         public string UserAssignedIdentityId { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "user assigned identity to be assigned to Application Gateway.")]
-        [ValidateNotNullOrEmpty]
-        public PsUserAssignedIdentity UserAssignedIdentity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -334,11 +328,6 @@ namespace Microsoft.Azure.Commands.Network
             if (this.Zone != null)
             {
                 applicationGateway.Zones = this.Zone?.ToList();
-            }
-
-            if (this.UserAssignedIdentity != null)
-            {
-                this.UserAssignedIdentityId = this.UserAssignedIdentity.Id;
             }
 
             if (this.UserAssignedIdentityId != null)
