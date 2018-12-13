@@ -79,7 +79,6 @@
     <Compile Include="ScenarioTests\DdosProtectionPlanTests.cs" />
     <Compile Include="ScenarioTests\ApplicationSecurityGroupTests.cs" />
     <Compile Include="ScenarioTests\AvailableEndpointServicesTests.cs" />
-    <Compile Include="ScenarioTests\ExpressRouteCrossConnectionTests.cs" />
     <Compile Include="ScenarioTests\ExpressRoutePortsLocationTests.cs" />
     <Compile Include="ScenarioTests\ExpressRoutePortTests.cs" />
     <Compile Include="ScenarioTests\Generated\ApplicationSecurityGroupTestsGenerated.cs" />
@@ -155,9 +154,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Data\VmssDeploymentTemplate.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ExpressRouteCrossConnectionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ExpressRoutePortsLocationTests.ps1">
