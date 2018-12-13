@@ -56,7 +56,7 @@
         @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.1'; },
         @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.3.0'; },
         @{ModuleName = 'Azs.Gallery.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.3.0'; },
@@ -64,7 +64,7 @@
         @{ModuleName = 'Azs.Network.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.2.1'; },
         @{ModuleName = 'Azs.Subscriptions'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.3.0'; },
+        @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.3.1'; },
         @{ModuleName = 'Azs.Update.Admin'; RequiredVersion = '0.2.1'; })
 
     # Assemblies that must be loaded prior to importing this module
@@ -123,6 +123,8 @@
             # ReleaseNotes of this module
             ReleaseNotes = '## 2018.12 - Version 1.6.0
             * Supported with 1811 update
+            * Azs.Compute.Admin Module
+                * Fixed missing Azs prefix for New-DataDiskObject and added alias with warning of future deprecation.
             * Azs.Update.Admin Module
                 * Added a warning to recommend running Test-AzureStack before Install-AzsUpdate
             * Azs.Fabric.Admin
@@ -135,7 +137,10 @@
             * Azs.InfrastructureInsights.Admin
                 *  Added a new cmdlet Repair-AzsAlert
             * Azs.Storage.Admin
-                * Bug fix where default quota values are not being used'
+                * Bug fix where default quota values are not being used
+            * Azs.Subscriptions.Admin Module
+                * Fixed missing Azs prefix for New-AddonPlanDefinitionObject and added alias with warning of future deprecation.'
+
 
 
             # External dependent modules of this module
