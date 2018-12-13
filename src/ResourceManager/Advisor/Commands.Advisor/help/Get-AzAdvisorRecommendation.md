@@ -18,7 +18,7 @@ Get-AzAdvisorRecommendation [-ResourceId] <String> [-Category <String>] [-Refres
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### NameParameterSet
+### NameParameterSet (Default)
 ```
 Get-AzAdvisorRecommendation [-Category <String>] [-ResourceGroupName <String>] [-Refresh]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

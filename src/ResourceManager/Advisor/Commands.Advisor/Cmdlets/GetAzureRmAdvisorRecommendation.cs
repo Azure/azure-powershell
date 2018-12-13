@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     /// Search-AzureRmGraph cmdlet
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.Advisor.Utilities.ResourceGraphBaseCmdlet" />
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation"), OutputType(typeof(PsAzureAdvisorResourceRecommendationBase))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PsAzureAdvisorResourceRecommendationBase))]
     public class GetAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
