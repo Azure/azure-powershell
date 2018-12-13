@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: EB4DF001-AD05-4747-972B-5E4194A404C8
@@ -242,7 +242,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-Parameters: LoadBalancer (ByValue)
+
+### System.String
+
+### System.Int32
+
+### Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
 
 ## OUTPUTS
 

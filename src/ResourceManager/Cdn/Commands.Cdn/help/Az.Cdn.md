@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.Cdn
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.cdn

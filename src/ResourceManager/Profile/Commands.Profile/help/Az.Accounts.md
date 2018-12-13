@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.Accounts
 Module Guid: 342714fc-4009-4863-8afb-a9067e3db04b
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.accounts
@@ -31,7 +31,7 @@ Opts out of collecting data to improve the AzurePowerShell cmdlets.
 Data is not collected unless you explicitly opt in.
 
 ### [Disable-AzureRmAlias](Disable-AzureRmAlias.md)
-{{Fill in the Synopsis}}
+Disables AzureRm prefix aliases for Az modules.
 
 ### [Disconnect-AzAccount](Disconnect-AzAccount.md)
 Disconnects a connected Azure account and removes all credentials and contexts associated with that account.
@@ -45,7 +45,7 @@ Executing this cmdlet opts in to data collection for the current user on the cur
 No data is collected unless you explicitly opt in.
 
 ### [Enable-AzureRmAlias](Enable-AzureRmAlias.md)
-{{Fill in the Synopsis}}
+Enables AzureRm prefix aliases for Az modules.
 
 ### [Get-AzContext](Get-AzContext.md)
 Gets the metadata used to authenticate Azure Resource Manager requests.
@@ -100,5 +100,5 @@ Sets a default in the current context
 Sets properties for an Azure environment.
 
 ### [Uninstall-AzureRm](Uninstall-AzureRm.md)
-{{Fill in the Synopsis}}
+Removes all AzureRm modules from a machine.
 

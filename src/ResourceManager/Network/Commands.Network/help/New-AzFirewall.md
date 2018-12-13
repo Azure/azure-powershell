@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: A3D60CF1-2E66-4EE5-9C68-932DD8DF80BD
@@ -282,12 +282,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection[]
+
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRuleCollection[]
+
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRuleCollection[]
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSFirewall
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewall
 
 ## NOTES
 

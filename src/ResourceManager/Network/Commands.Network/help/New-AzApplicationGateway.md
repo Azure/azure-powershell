@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 1F5066C6-9756-47B4-886C-C52755809926
@@ -595,6 +595,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate[]
 
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate[]
+
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort[]
@@ -616,6 +618,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallConfiguration
+
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAutoscaleConfiguration
 
 ### System.Collections.Hashtable
 
