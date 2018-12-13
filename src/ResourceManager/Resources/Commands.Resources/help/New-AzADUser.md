@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 86D8965D-D999-48A4-A4EE-9E054E5486EE
@@ -41,7 +41,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -189,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
+### Microsoft.Azure.Commands.ActiveDirectory.PSADUser
 
 ## NOTES
 

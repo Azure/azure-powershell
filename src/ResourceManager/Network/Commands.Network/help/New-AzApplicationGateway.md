@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 1F5066C6-9756-47B4-886C-C52755809926
@@ -191,7 +191,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -580,6 +580,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate[]
 
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate[]
+
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort[]
@@ -601,6 +603,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallConfiguration
+
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAutoscaleConfiguration
 
 ### System.Collections.Hashtable
 

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: FBAE5F75-1E28-4F1C-A9ED-20075FFD4AC7
@@ -61,7 +61,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -265,7 +265,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Management.Automation.SwitchParameter
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.Commands.Insights, Version=5.1.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

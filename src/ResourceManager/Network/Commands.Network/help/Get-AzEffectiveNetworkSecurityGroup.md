@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: B9409AD6-F761-4B80-8E08-DBB2356F567D
@@ -38,7 +38,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

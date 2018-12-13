@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 0C8C07CA-6720-452F-A952-48C76EBF3BBD
@@ -15,7 +15,7 @@ Deletes the azure active directory service principal.
 
 ### ObjectIdParameterSet (Default)
 ```
-Remove-AzADServicePrincipal -ObjectId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzADServicePrincipal -ObjectId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 The application object whose service principal is being removed.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectParameterSet
 Aliases:
 
@@ -132,7 +132,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -175,7 +175,7 @@ Accept wildcard characters: False
 The service principal object.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 The object id of the service principal to delete.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: ObjectIdParameterSet
 Aliases: PrincipalId, Id
 
@@ -267,19 +267,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Guid
-
 ### System.String
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
-Parameters: InputObject (ByValue)
+### System.Guid
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
-Parameters: ApplicationObject (ByValue)
+### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+
+### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
 
 ## OUTPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment

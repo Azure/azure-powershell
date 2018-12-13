@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azaduser
@@ -28,9 +28,9 @@ Update-AzADUser -UserPrincipalName <String> [-DisplayName <String>] [-EnableAcco
 
 ### ObjectIdParameterSet
 ```
-Update-AzADUser -ObjectId <Guid> [-DisplayName <String>] [-EnableAccount <Boolean>] [-Password <SecureString>]
- [-ForceChangePasswordNextLogin] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzADUser -ObjectId <String> [-DisplayName <String>] [-EnableAccount <Boolean>]
+ [-Password <SecureString>] [-ForceChangePasswordNextLogin] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -78,7 +78,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 The object representing the user to be updated.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADUser
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 The object id of the user to be updated.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -282,18 +282,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Guid
+### Microsoft.Azure.Commands.ActiveDirectory.PSADUser
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
-Parameters: InputObject (ByValue)
-
-### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ### System.Security.SecureString
 
 ## OUTPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
+### Microsoft.Azure.Commands.ActiveDirectory.PSADUser
 
 ## NOTES
 
