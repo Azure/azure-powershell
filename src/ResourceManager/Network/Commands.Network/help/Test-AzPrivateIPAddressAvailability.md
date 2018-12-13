@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 0780CB09-9C3B-468A-A718-3A646FE3D152
@@ -121,7 +121,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
-Parameters: VirtualNetwork (ByValue)
 
 ## OUTPUTS
 

@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.DevSpaces
 Module Guid: 4ff83407-3957-414b-9855-6808a10e8955
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.devspaces

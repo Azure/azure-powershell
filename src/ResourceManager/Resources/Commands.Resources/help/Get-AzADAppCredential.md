@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 6AC9DA05-756D-4D59-BD97-DBAAFBB3C7AC
@@ -15,7 +15,7 @@ Retrieves a list of credentials associated with an application.
 
 ### ApplicationObjectIdParameterSet (Default)
 ```
-Get-AzADAppCredential -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzADAppCredential -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 The application object to retrieve credentials from.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectParameterSet
 Aliases:
 
@@ -94,7 +94,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 The object id of the application to retrieve credentials from.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: ApplicationObjectIdParameterSet
 Aliases:
 
@@ -138,16 +138,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Guid
-
 ### System.String
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
-Parameters: ApplicationObject (ByValue)
+### System.Guid
+
+### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
 
 ## OUTPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADCredential
+### Microsoft.Azure.Commands.ActiveDirectory.PSADCredential
 
 ## NOTES
 

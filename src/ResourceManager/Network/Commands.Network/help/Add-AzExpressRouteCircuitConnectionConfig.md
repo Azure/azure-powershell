@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 7b4a8c9f-874c-4a27-b87e-c8ad7e73188d
@@ -180,7 +180,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
-Parameters: ExpressRouteCircuit (ByValue)
 
 ### System.String
 

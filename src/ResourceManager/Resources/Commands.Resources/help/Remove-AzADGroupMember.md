@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadgroupmember
@@ -20,19 +20,19 @@ Remove-AzADGroupMember [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-
 
 ### MemberObjectIdWithGroupDisplayName
 ```
-Remove-AzADGroupMember -MemberObjectId <Guid[]> -GroupDisplayName <String> [-PassThru]
+Remove-AzADGroupMember -MemberObjectId <String[]> -GroupDisplayName <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberObjectIdWithGroupObject
 ```
-Remove-AzADGroupMember -MemberObjectId <Guid[]> -GroupObject <PSADGroup> [-PassThru]
+Remove-AzADGroupMember -MemberObjectId <String[]> -GroupObject <PSADGroup> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MemberObjectIdWithGroupObjectId
 ```
-Remove-AzADGroupMember -MemberObjectId <Guid[]> -GroupObjectId <Guid> [-PassThru]
+Remove-AzADGroupMember -MemberObjectId <String[]> -GroupObjectId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ Remove-AzADGroupMember -MemberUserPrincipalName <String[]> -GroupObject <PSADGro
 
 ### MemberUPNWithGroupObjectIdParameterSet
 ```
-Remove-AzADGroupMember -MemberUserPrincipalName <String[]> -GroupObjectId <Guid> [-PassThru]
+Remove-AzADGroupMember -MemberUserPrincipalName <String[]> -GroupObjectId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -83,7 +83,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The object representation of the group to remove the member from.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
 Parameter Sets: MemberObjectIdWithGroupObject, MemberUPNWithGroupObjectParameterSet
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 The object id of the group to remove the member from.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: MemberObjectIdWithGroupObjectId, MemberUPNWithGroupObjectIdParameterSet
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 The object id of the member.
 
 ```yaml
-Type: System.Guid[]
+Type: System.String[]
 Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberObjectIdWithGroupObject, MemberObjectIdWithGroupObjectId
 Aliases:
 
@@ -218,8 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
-Parameters: GroupObject (ByValue)
+### Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
 
 ## OUTPUTS
 

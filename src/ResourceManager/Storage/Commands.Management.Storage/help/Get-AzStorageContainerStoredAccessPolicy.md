@@ -1,5 +1,5 @@
----
-external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 10D5B7E0-242B-4DC0-A527-8F6388E72E0A
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azstoragecontainerstoredaccesspolicy

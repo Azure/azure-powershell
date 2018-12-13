@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azloadbalanceroutboundruleconfig
@@ -234,10 +234,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-System.Int32
-System.String
-System.Collections.Generic.List\`1[[Microsoft.Azure.Commands.Network.Models.PSResourceId, Microsoft.Azure.Commands.Network, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null]]
-Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
+
+### System.Int32
+
+### System.String
+
+### Microsoft.Azure.Commands.Network.Models.PSResourceId[]
+
+### Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
 
 ## OUTPUTS
 

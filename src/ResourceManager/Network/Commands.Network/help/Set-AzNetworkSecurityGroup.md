@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 9F69DAEF-F2ED-449B-B75F-FCA7ED73D98F
@@ -114,7 +114,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
-Parameters: NetworkSecurityGroup (ByValue)
 
 ## OUTPUTS
 
