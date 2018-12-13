@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "This workload is not supported anymore")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestAzureSqlGetContainers()
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.AzureSql, "Test-AzureSqlGetContainers");
         }
 
-        [Fact]
+        [Fact(Skip = "This workload is not supported anymore")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureSql)]
         public void TestAzureSqlUnregisterContainer()

@@ -18,7 +18,9 @@
         - Additional information about change #1
 --->
 ## Current Release
-* Minor changes for upcoming AzureRM to Az transition
+
+## Version 1.0.0
+* General availability of `Az.Network` module
 * Added support for the configuring RewriteRuleSets in the Application Gateway
     - New cmdlets added:
         - Add-AzureRmApplicationGatewayRewriteRuleSet
@@ -39,3 +41,9 @@
 * Removed deprecated -ResourceId parameter from Get-AzServiceEndpointPolicyDefinition
 * Removed deprecated EnableVmProtection property from PSVirtualNetwork
 * Removed deprecated Set-AzVirtualNetworkGatewayVpnClientConfig cmdlet
+* Added KeyVault Support to Application Gateway using Identity.
+    - Cmdlets updated with optonal parameter -KeyVaultSecretId, -KeyVaultSecret
+        - Add-AzApplicationGatewaySslCertificate
+        - New-AzApplicationGatewaySslCertificate
+        - Set-AzApplicationGatewaySslCertificate
+    - New-AzApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId, -UserAssignedIdentity
