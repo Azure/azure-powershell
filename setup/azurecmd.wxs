@@ -78,7 +78,7 @@
       </Directory>
     </Directory>
 
-    <Feature Id="azurecmd" Title="Microsoft Azure PowerShell" Level="1" Description="Azure PowerShell commandlets">
+    <Feature Id="azurecmd" Title="Microsoft Azure PowerShell" Level="1" Description="Azure PowerShell cmdlets">
       <?if $(sys.BUILDARCH) = "x64" ?>  
         <ComponentGroupRef Id="azurecmdfilesx64" />
       <?endif?>      
