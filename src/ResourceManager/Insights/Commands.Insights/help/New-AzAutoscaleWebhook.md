@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
-Module Name: Az.Insights
+Module Name: Az.Monitor
 ms.assetid: 674A11E4-36B9-4075-9F4E-952BD9FF07A7
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azautoscalewebhook
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azautoscalewebhook
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

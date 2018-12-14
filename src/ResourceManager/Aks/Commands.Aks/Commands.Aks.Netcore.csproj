@@ -61,4 +61,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

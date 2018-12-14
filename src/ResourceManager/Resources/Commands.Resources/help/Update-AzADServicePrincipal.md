@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipal
@@ -14,7 +14,7 @@ Updates an existing azure active directory service principal.
 
 ### SpObjectIdWithDisplayNameParameterSet (Default)
 ```
-Update-AzADServicePrincipal -ObjectId <Guid> [-DisplayName <String>] [-Homepage <String>]
+Update-AzADServicePrincipal -ObjectId <String> [-DisplayName <String>] [-Homepage <String>]
  [-IdentifierUri <String[]>] [-KeyCredential <KeyCredential[]>] [-PasswordCredential <PasswordCredential[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -86,7 +86,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 The object representing the service principal to update.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
 Parameter Sets: InputObjectWithDisplayNameParameterSet
 Aliases:
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 The key credential(s) for the service principal.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.Models.KeyCredential[]
+Type: Microsoft.Azure.Graph.RBAC.Models.KeyCredential[]
 Parameter Sets: (All)
 Aliases:
 
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 The object id of the service principal to update.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: SpObjectIdWithDisplayNameParameterSet
 Aliases: ServicePrincipalObjectId
 
@@ -201,7 +201,7 @@ Accept wildcard characters: False
 The password credential(s) for the service principal.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.Models.PasswordCredential[]
+Type: Microsoft.Azure.Graph.RBAC.Models.PasswordCredential[]
 Parameter Sets: (All)
 Aliases:
 
@@ -263,16 +263,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Guid
-
 ### System.String
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
-Parameters: InputObject (ByValue)
+### System.Guid
+
+### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
 
 ## OUTPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
 
 ## NOTES
 

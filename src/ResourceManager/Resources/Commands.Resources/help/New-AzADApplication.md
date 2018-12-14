@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: F58FD77E-2946-44B1-B410-6E983FC20E21
@@ -110,7 +110,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 The list of certificate credentials associated with the application.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADKeyCredential[]
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]
 Parameter Sets: ApplicationWithKeyCredentialParameterSet
 Aliases:
 
@@ -215,7 +215,7 @@ Accept wildcard characters: False
 The list of password credentials associated with the application.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADPasswordCredential[]
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]
 Parameter Sets: ApplicationWithPasswordCredentialParameterSet
 Aliases:
 
@@ -300,9 +300,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Boolean
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADPasswordCredential[]
+### Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADKeyCredential[]
+### Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]
 
 ### System.Security.SecureString
 
@@ -310,7 +310,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment

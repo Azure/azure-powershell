@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
-Module Name: Az.Insights
+Module Name: Az.Monitor
 ms.assetid: EAFB9C98-000C-4EAC-A32D-6B0F1939AA2F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azmetric
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azmetric
 schema: 2.0.0
 ---
 
@@ -217,7 +217,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -416,13 +416,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.TimeSpan
 
-### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.AggregationType, Microsoft.Azure.Management.Monitor, Version=0.19.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.AggregationType, Microsoft.Azure.Management.Monitor, Version=0.21.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ### System.DateTime
 
-### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
-### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.ResultType, Microsoft.Azure.Management.Monitor, Version=0.19.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.ResultType, Microsoft.Azure.Management.Monitor, Version=0.21.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ### System.String[]
 
