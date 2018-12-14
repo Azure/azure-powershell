@@ -18,7 +18,7 @@ The Azure PowerShell Developer Guide was created to help with the development an
         - [Creating the Project](#creating-the-project)
         - [Adding Project References](#adding-project-references)
 - [Creating Cmdlets](#creating-cmdlets)
-    - [PowerShell Cmdlet Design Guidelines](#powershell-cmdlet-design-guidelines)  
+    - [PowerShell Cmdlet Design Guidelines](#powershell-cmdlet-design-guidelines)
     - [Enable Running PowerShell when Debugging](#enable-running-powershell-when-debugging)
         - [Importing Modules](#importing-modules)
     - [Adding Help Content](#adding-help-content)
@@ -124,7 +124,7 @@ PS C:\azure-powershell> dotnet msbuild build.proj /t:Test
 
 ## .NET SDK
 
-Before adding a new project to Azure PowerShell, you must have generated an [SDK for .NET](https://github.com/Azure/azure-sdk-for-net) using [AutoRest](https://github.com/Azure/autorest) for your service, and it must have been merged into the repository. 
+Before adding a new project to Azure PowerShell, you must have generated an [SDK for .NET](https://github.com/Azure/azure-sdk-for-net) using [AutoRest](https://github.com/Azure/autorest) for your service, and it must have been merged into the repository.
 
 For more information about on-boarding a new library in the SDK for .NET repository, click [here](https://github.com/Azure/azure-sdk-for-net#to-on-board-new-libraries).
 
@@ -219,7 +219,7 @@ _Note_: As mentioned in the prerequisites section, set the PowerShell [execution
 
 ## Using Azure TestFramework
 
-Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-test-framework.md) for information on how to setup the appropriate connection string and record tests using the `Microsoft.Rest.ClientRuntime.Azure.TestFramework` package. 
+Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-test-framework.md) for information on how to setup the appropriate connection string and record tests using the `Microsoft.Rest.ClientRuntime.Azure.TestFramework` package.
 
 ## Scenario Tests
 
@@ -262,7 +262,7 @@ Create these environment variables for the AD scenario tests:
 - `AZURE_SERVICE_PRINCIPAL` should be a service principal - an application defined in the subscription's tenant - that has management access to the subscription (or at least to a resource group in the tenant)
   - `AZURE_SERVICE_PRINCIPAL=UserId=<UserGuid>;Password=<Password>;AADTenant=<TenantGuid>;SubscriptionId=<SubscriptionId>`
 
-### Recording/Running Tests 
+### Recording/Running Tests
 
 - Set up environment variables using New-TestCredential as described [here](../testing-docs/using-azure-test-framework.md#new-testcredential)
 - Run the test in Visual Studio in the Test Explorer window and make sure you got a generated JSON file that matches the test name in the bin folder under the `SessionRecords` folder
@@ -273,6 +273,10 @@ Create these environment variables for the AD scenario tests:
 # After Development
 
 Once all of your cmdlets have been created and the appropriate tests have been added, you can open a pull request in the Azure PowerShell repository to have your cmdlets added to the next release. Please make sure to read [CONTRIBUTING.md](../../CONTRIBUTING.md) for more information on how to open a pull request, clean up commits, make sure appropriate files have been added/changed, and more.
+
+## Change Log
+
+Whenver you make updates to a project, please make sure to update the corresponding service's `ChangeLog.md` file with a snippet of what you changed under the `Upcoming Release` header. This information is later used for the release notes that goes out with each module the next time they are released, and provides users with more information as to what has changed in the module from the previous release. For more information on updating change logs can be found in [`CONTRIBUTING.md`](../../CONTRIBUTING.md#updating-the-change-log)
 
 # Misc
 
