@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworkwatcherconfigflowlog
@@ -145,7 +145,7 @@ Format           : {
                    }
 ```
 
-In this example we configure flow logging status for a Network Security Group. In the response, we see the specified NSG has flow logging enabled, flow logging version 2 set and no retention policy set. If the region does not suport version you specificed, Networkwatcher will return the default version.
+In this example, we configure flow logging on a Network Security Group (NSG) with version 2 logs specified. In the response, we see the specified NSG has flow logging enabled, the format is set, and there is no retention policy configured. If the region does not support version you specificed, Network Watcher will write the default supported version in the region.
 
 ### Example 3: Configure Flow Logging and Traffic Analytics for a Specified NSG
 ```
@@ -179,7 +179,7 @@ FlowAnalyticsConfiguration : {
           }
 ```
 
-In this example we configure flow logging status and Traffic Analytics for a Network Security Group. In the response, we see the specified NSG has flow logging and Traffic Analytics enabled, default format and no retention policy set.
+In this example we configure flow logging status and Traffic Analytics for a Network Security Group. In the response, we see the specified NSG has flow logging and Traffic Analytics enabled, default format, and no retention policy set.
 
 ## PARAMETERS
 
@@ -204,7 +204,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -516,14 +516,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-Parameters: NetworkWatcher (ByValue)
 
 ### System.String
-Parameters: NetworkWatcherName (ByValue)
 
 ### System.Boolean
 
 ### System.Int32
+
+### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ### Microsoft.Azure.Management.Internal.Network.Common.IOperationalInsightWorkspace
 

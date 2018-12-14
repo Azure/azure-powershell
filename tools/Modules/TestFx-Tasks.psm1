@@ -323,12 +323,12 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
 
     # Retrieve the environment variable
     Write-Host ""
-    Write-Host "Below connection string was set. Start Visual Studio by typing devenv" -ForegroundColor Green
+    Write-Host "Below connection string was set. Please open your service's solution in Visual Studio and run your tests from the Test Explorer." -ForegroundColor Green
     [Environment]::GetEnvironmentVariable($envVariableName)
     Write-Host ""
     
     Write-Host "If your needs demand you to set connection string differently, for all the supported Key/Value pairs in connection string"
-    Write-Host "Please visit https://github.com/Azure/azure-powershell/blob/dev/documentation/Using-Azure-TestFramework.md" -ForegroundColor Yellow
+    Write-Host "Please visit https://github.com/Azure/azure-powershell/blob/master/documentation/testing-docs/using-azure-test-framework.md" -ForegroundColor Yellow
 }
 
 Function Print-ConnectionString([string]$uid, [string]$subId, [string]$aadTenant, [string]$spn, [string]$spnSecret, [string]$recordMode, [string]$targetEnvironment)

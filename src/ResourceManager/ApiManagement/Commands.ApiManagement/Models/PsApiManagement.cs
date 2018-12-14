@@ -66,9 +66,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             {
                 staticIPList.AddRange(apiServiceResource.PrivateIPAddresses);
             }
-#pragma warning disable CS0618
-            StaticIPs = staticIPList.ToArray();
-#pragma warning restore CS0618
+
             VpnType = ApiManagementClient.Mapper.Map<string, PsApiManagementVpnType>(apiServiceResource.VirtualNetworkType);            
 
             if (apiServiceResource.AdditionalLocations != null)
@@ -90,18 +88,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 var portalHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Portal);
                 if (portalHostnameResource != null)
                 {
-#pragma warning disable CS0618
-                    PortalHostnameConfiguration = new PsApiManagementHostnameConfiguration(portalHostnameResource);
-#pragma warning restore CS0618
                     PortalCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(portalHostnameResource);
                 }
 
                 var proxyHostnameResources = apiServiceResource.HostnameConfigurations.Where(conf => conf.Type == HostnameType.Proxy);
                 if (proxyHostnameResources != null && proxyHostnameResources.Any())
                 {
-#pragma warning disable CS0618
-                    ProxyHostnameConfiguration = new PsApiManagementHostnameConfiguration(proxyHostnameResources.First());
-#pragma warning restore CS0618
                     var proxyCustomHostnameResources = new List<PsApiManagementCustomHostNameConfiguration>();
                     foreach (var proxyHostNameResource in proxyHostnameResources)
                     {
@@ -114,18 +106,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 var managementHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Management);
                 if (managementHostnameResource != null)
                 {
-#pragma warning disable CS0618
-                    ManagementHostnameConfiguration = new PsApiManagementHostnameConfiguration(managementHostnameResource);
-#pragma warning restore CS0618
                     ManagementCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(managementHostnameResource);
                 }
 
                 var scmHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Scm);
                 if (scmHostnameResource != null)
                 {
-#pragma warning disable CS0618
-                    ScmHostnameConfiguration = new PsApiManagementHostnameConfiguration(scmHostnameResource);
-#pragma warning restore CS0618
                     ScmCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(scmHostnameResource);
                 }
             }
@@ -150,9 +136,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 this.Identity = new PsApiManagementServiceIdentity(apiServiceResource.Identity);
             }
         }
-
-        [Obsolete("This property is deprecated and will be removed in a future releases.")]
-        public string[] StaticIPs { get; private set; }
 
         public string[] PublicIPAddresses { get; private set; }
 
@@ -189,18 +172,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         public PsApiManagementVpnType VpnType { get; set; }
-
-        [Obsolete("deprecated. Please use PortalCustomHostnameConfiguration instead.")]
-        public PsApiManagementHostnameConfiguration PortalHostnameConfiguration { get; set; }
-
-        [Obsolete("deprecated. Please use ProxyCustomHostnameConfiguration instead.")]
-        public PsApiManagementHostnameConfiguration ProxyHostnameConfiguration { get; set; }
-
-        [Obsolete("deprecated. Please use ManagementCustomHostnameConfiguration instead.")]
-        public PsApiManagementHostnameConfiguration ManagementHostnameConfiguration { get; set; }
-
-        [Obsolete("deprecated. Please use ScmCustomHostnameConfiguration instead.")]
-        public PsApiManagementHostnameConfiguration ScmHostnameConfiguration { get; set; }
 
         public PsApiManagementCustomHostNameConfiguration PortalCustomHostnameConfiguration { get; set; }
 

@@ -1,5 +1,5 @@
----
-external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 54585346-04E2-4FB4-B5FD-833A85C46ACB
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/start-azstorageblobcopy
@@ -551,7 +551,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFile
-Parameters: SrcFile (ByValue)
 
 ### System.String
 

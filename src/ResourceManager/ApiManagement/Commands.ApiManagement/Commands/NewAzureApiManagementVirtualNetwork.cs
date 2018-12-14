@@ -27,16 +27,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = true,
-            HelpMessage = "Location of the virtual network.")]
-        [LocationCompleter("Microsoft.ApiManagement/service")]
-        [ValidateNotNullOrEmpty]
-        [Obsolete("The location property will be deprecated in future" +
-            "breaking change release. It is no longer required.")]
-        public string Location { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = false,
-            Mandatory = true,
             HelpMessage = "The full resource ID of a subnet in a virtual network to deploy the Api Management service in. Example format:" +
                           "/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1.")]
         [ValidateNotNullOrEmpty]
@@ -47,9 +37,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             WriteObject(
                 new PsApiManagementVirtualNetwork
                 {
-#pragma warning disable CS0618
-                    Location = Location,
-#pragma warning restore CS0618
                     SubnetResourceId = SubnetResourceId
                 });
         }
