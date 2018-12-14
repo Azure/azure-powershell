@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (!this.IsParameterBound(c => c.EndDate))
+                if (this.EndDate == null)
                 {
                     WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
                     EndDate = StartDate.AddYears(1);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         WriteObject(ActiveDirectoryClient.CreateAppPasswordCredential(ObjectId, passwordCredential));
                     }
                 }
-                else if (this.IsParameterBound(c => c.CertValue))
+                else if (CertValue != null)
                 {
                     // Create object for key credential
                     var keyCredential = new KeyCredential()
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
                 else
                 {
-                    throw new InvalidOperationException("No valid keyCredential or passowrdCredential to update!!");
+                    throw new InvalidOperationException("No valid keyCredential or passwordCredential to update!!");
                 }
             });
         }
