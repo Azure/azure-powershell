@@ -112,7 +112,7 @@ function Test-AzureFirewallCRUD
         Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
         Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
         Assert-NotNull $getAzureFirewall.Location
-        Assert-AreEqual $location $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
         Assert-NotNull $getAzureFirewall.Etag
         Assert-AreEqual 1 @($getAzureFirewall.IpConfigurations).Count
         Assert-NotNull $getAzureFirewall.IpConfigurations[0].Subnet.Id
