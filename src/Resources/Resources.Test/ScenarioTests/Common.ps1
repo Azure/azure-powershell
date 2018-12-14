@@ -187,16 +187,14 @@ function New-AzADAppCredentialWithId
         [string] [Parameter()] $ObjectId,
         [Guid] [Parameter()] $ApplicationId,
         [string] [Parameter()] $DisplayName,
-        [PSADApplication] [Parameter()] $ApplicationObject,
         [SecureString] [Parameter()] $Password,
         [string] [Parameter()] $CertValue,
         [DateTime] [Parameter()] $StartDate,
         [DateTime] [Parameter()] $EndDate,
         [Guid] [Parameter()] $KeyId
     )
-
     $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
-    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.Resources.NewAzureADAppCredentialCommand
+    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.ActiveDirectory.NewAzureADAppCredentialCommand
     $cmdlet.DefaultProfile = $profile
 	$cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
 
@@ -213,11 +211,6 @@ function New-AzADAppCredentialWithId
     if (-not ([string]::IsNullOrEmpty($DisplayName)))
     {
         $cmdlet.DisplayName = $DisplayName
-    }
-
-    if ($ApplicationObject -ne $null)
-    {
-        $cmdlet.ApplicationObject = $ApplicationObject
     }
 
     if ($Password -ne $null)
@@ -254,7 +247,6 @@ function New-AzADSpCredentialWithId
     param(
         [string] [Parameter()] $ObjectId,
         [string] [Parameter()] $ServicePrincipalName,
-        [PSADServicePrincipal] [Parameter()] $ServicePrincipalObject,
         [string] [Parameter()] $CertValue,
         [DateTime] [Parameter()] $StartDate,
         [DateTime] [Parameter()] $EndDate,
@@ -262,7 +254,7 @@ function New-AzADSpCredentialWithId
     )
 
     $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
-    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.Resources.NewAzureADSpCredentialCommand 
+    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.ActiveDirectory.NewAzureADSpCredentialCommand 
     $cmdlet.DefaultProfile = $profile
 	$cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
 
@@ -274,11 +266,6 @@ function New-AzADSpCredentialWithId
     if (-not ([string]::IsNullOrEmpty($ServicePrincipalName)))
     {
         $cmdlet.ServicePrincipalName = $ServicePrincipalName
-    }
-
-    if ($ServicePrincipalObject -ne $null)
-    {
-        $cmdlet.ServicePrincipalObject = $ServicePrincipalObject
     }
 
     if (-not ([string]::IsNullOrEmpty($CertValue)))
