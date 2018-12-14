@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 4DC26C26-6162-4A15-BFCB-4D2B6B52DD81
@@ -33,7 +33,7 @@ Get-AzADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureContextCo
 
 ### ObjectIdParameterSet
 ```
-Get-AzADServicePrincipal -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+Get-AzADServicePrincipal -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 The application object whose service principal is being retrieved.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectParameterSet
 Aliases:
 
@@ -138,7 +138,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 Object id of the service principal.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -261,12 +261,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Guid
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
-Parameters: ApplicationObject (ByValue)
+### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
 
 ## OUTPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
 
 ## NOTES
 
