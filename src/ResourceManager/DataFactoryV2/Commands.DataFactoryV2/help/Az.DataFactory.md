@@ -1,16 +1,46 @@
----
-Module Name: Az.DataFactoryV2
+﻿---
+Module Name: Az.DataFactory
 Module Guid: e3c0f6bc-fe96-41a0-88f4-5e490a91f05d
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datafactoryv2
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datafactory
 Help Version: 0.5.3.0
 Locale: en-US
 ---
 
-# Az.DataFactoryV2 Module
+# Az.DataFactory Module
 ## Description
 Azure Data Factory V2 is the data integration platform that goes beyond Azure Data Factory V1's orchestration and batch-processing of time-series log data, with a general purpose app model supporting modern data warehousing patterns and scenarios, lift-and-shift SSIS, and data-driven SaaS applications. Compose and manage reliable and secure data integration workflows at scale. Use native ADF data connectors and Integration Runtimes to move and transform cloud and on-premises data that can be unstructured, semi-structured, and structured with Hadoop, Azure Data Lake, Spark, SQL Server, Cosmos DB and many other data platforms.
 
-## Az.DataFactoryV2 Cmdlets
+## Az.DataFactory Cmdlets
+### [Get-AzDataFactory](Get-AzDataFactory.md)
+Gets information about Data Factories.
+
+### [Get-AzDataFactoryActivityWindow](Get-AzDataFactoryActivityWindow.md)
+Gets information about activity windows associated with a data factory.
+
+### [Get-AzDataFactoryDataset](Get-AzDataFactoryDataset.md)
+Gets information about datasets in Azure Data Factory.
+
+### [Get-AzDataFactoryGateway](Get-AzDataFactoryGateway.md)
+Gets information about logical gateways in Azure Data Factory.
+
+### [Get-AzDataFactoryGatewayAuthKey](Get-AzDataFactoryGatewayAuthKey.md)
+Gets gateway auth key for an Azure Data Factory.
+
+### [Get-AzDataFactoryHub](Get-AzDataFactoryHub.md)
+Gets information about hubs in Azure Data Factory.
+
+### [Get-AzDataFactoryLinkedService](Get-AzDataFactoryLinkedService.md)
+Gets information about linked services in Azure Data Factory.
+
+### [Get-AzDataFactoryPipeline](Get-AzDataFactoryPipeline.md)
+Gets information about pipelines in Azure Data Factory.
+
+### [Get-AzDataFactoryRun](Get-AzDataFactoryRun.md)
+Gets runs for a data slice of a dataset in Azure Data Factory.
+
+### [Get-AzDataFactorySlice](Get-AzDataFactorySlice.md)
+Gets data slices for a dataset in Azure Data Factory.
+
 ### [Get-AzDataFactoryV2](Get-AzDataFactoryV2.md)
 Gets information about Data Factory.
 
@@ -53,11 +83,53 @@ Upgrades self-hosted integration runtime.
 ### [Invoke-AzDataFactoryV2Pipeline](Invoke-AzDataFactoryV2Pipeline.md)
   Invokes a pipeline to start a run for it.
 
+### [New-AzDataFactory](New-AzDataFactory.md)
+Creates a data factory.
+
+### [New-AzDataFactoryDataset](New-AzDataFactoryDataset.md)
+Creates a dataset in Data Factory.
+
+### [New-AzDataFactoryEncryptValue](New-AzDataFactoryEncryptValue.md)
+Encrypts sensitive data.
+
+### [New-AzDataFactoryGateway](New-AzDataFactoryGateway.md)
+Creates a gateway for an Azure Data Factory.
+
+### [New-AzDataFactoryGatewayAuthKey](New-AzDataFactoryGatewayAuthKey.md)
+Creates auth key for an Azure Data Factory Gateway.
+
+### [New-AzDataFactoryHub](New-AzDataFactoryHub.md)
+Creates a hub for an Azure Data Factory.
+
+### [New-AzDataFactoryLinkedService](New-AzDataFactoryLinkedService.md)
+Links a data store or a cloud service to an Azure Data Factory.
+
+### [New-AzDataFactoryPipeline](New-AzDataFactoryPipeline.md)
+Creates a pipeline in Data Factory.
+
 ### [New-AzDataFactoryV2IntegrationRuntimeKey](New-AzDataFactoryV2IntegrationRuntimeKey.md)
 Regenerate self-hosted integration runtime key.
 
 ### [New-AzDataFactoryV2LinkedServiceEncryptedCredential](New-AzDataFactoryV2LinkedServiceEncryptedCredential.md)
 Encrypt credential in linked service with specified integration runtime.
+
+### [Remove-AzDataFactory](Remove-AzDataFactory.md)
+Removes a data factory.
+
+### [Remove-AzDataFactoryDataset](Remove-AzDataFactoryDataset.md)
+Removes a dataset from Azure Data Factory.
+
+### [Remove-AzDataFactoryGateway](Remove-AzDataFactoryGateway.md)
+Removes a gateway from Azure Data Factory.
+
+### [Remove-AzDataFactoryHub](Remove-AzDataFactoryHub.md)
+Removes a hub from Azure Data Factory.
+
+### [Remove-AzDataFactoryLinkedService](Remove-AzDataFactoryLinkedService.md)
+Removes a linked service from Azure Data Factory.
+
+### [Remove-AzDataFactoryPipeline](Remove-AzDataFactoryPipeline.md)
+Removes a pipeline from Azure Data Factory.
 
 ### [Remove-AzDataFactoryV2](Remove-AzDataFactoryV2.md)
 Removes a data factory.
@@ -79,6 +151,21 @@ Removes a pipeline from Data Factory.
 
 ### [Remove-AzDataFactoryV2Trigger](Remove-AzDataFactoryV2Trigger.md)
 Removes a trigger from a data factory.
+
+### [Resume-AzDataFactoryPipeline](Resume-AzDataFactoryPipeline.md)
+Resumes a suspended pipeline in Data Factory.
+
+### [Save-AzDataFactoryLog](Save-AzDataFactoryLog.md)
+Downloads log files from Azure HDInsight processing.
+
+### [Set-AzDataFactoryGateway](Set-AzDataFactoryGateway.md)
+Sets the description for a gateway in Azure Data Factory.
+
+### [Set-AzDataFactoryPipelineActivePeriod](Set-AzDataFactoryPipelineActivePeriod.md)
+Configures the active period for data slices.
+
+### [Set-AzDataFactorySliceStatus](Set-AzDataFactorySliceStatus.md)
+Sets the status of slices for a dataset in Azure Data Factory.
 
 ### [Set-AzDataFactoryV2](Set-AzDataFactoryV2.md)
 Creates a data factory.
@@ -112,6 +199,9 @@ Stops a pieline run in a data factory.
 
 ### [Stop-AzDataFactoryV2Trigger](Stop-AzDataFactoryV2Trigger.md)
 Stops a trigger in a data factory.
+
+### [Suspend-AzDataFactoryPipeline](Suspend-AzDataFactoryPipeline.md)
+Suspends a pipeline in Azure Data Factory.
 
 ### [Sync-AzDataFactoryV2IntegrationRuntimeCredential](Sync-AzDataFactoryV2IntegrationRuntimeCredential.md)
 Synchronizes credentials among integration runtime nodes.

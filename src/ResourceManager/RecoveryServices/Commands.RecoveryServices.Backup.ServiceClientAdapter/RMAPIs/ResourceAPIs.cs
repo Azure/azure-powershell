@@ -24,6 +24,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
     public partial class ServiceClientAdapter
     {
 
+
+        /// <summary>
+        /// Get azure resource
+        /// </summary>
+        /// <param name="resourceId">Resource id of the Azure resource to get</param>
+        /// <returns>Generic resource returned from the service</returns>
+        public GenericResource GetAzureResource(string resourceId)
+        {
+            GenericResource resource = RMAdapter.Client.Resources.GetByIdWithHttpMessagesAsync(
+                resourceId,
+                "2015-06-15", 
+                null,
+                cancellationToken: RMAdapter.CmdletCancellationToken).Result.Body;
+            return resource;
+        }
+
         /// <summary>
         /// Get storage accounts according to the query params
         /// </summary>

@@ -19,6 +19,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 1.0.0
+* General availability of `Az.Compute` module
 * Breaking changes
     - IdentityIds are removed from Identity property in PSVirtualMachine and PSVirtualMachineScaleSet object.
     - The type of InstanceView property of PSVirtualMachineScaleSetVM object is changed from VirtualMachineInstanceView to VirtualMachineScaleSetVMInstanceView.

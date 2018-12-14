@@ -55,8 +55,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = AzureVMParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
-        [Parameter(Mandatory = false, Position = 1, ParameterSetName = AzureFileParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
@@ -65,13 +63,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, Position = 2, ParameterSetName = AzureVMParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
-        [Parameter(Mandatory = false, Position = 2, ParameterSetName = AzureFileParameterSet,
-            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceGroupName { get; set; }
 
         /// <summary> 
-        /// The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks.
+        /// The resource group to which the managed disks are restored. This parameter is mandatory for backup of VM with managed disks.
         /// </summary>
         [Parameter(Mandatory = false, Position = 3, ParameterSetName = AzureVMParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.TargetResourceGroupName)]

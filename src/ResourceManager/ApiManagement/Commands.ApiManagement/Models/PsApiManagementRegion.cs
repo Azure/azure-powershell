@@ -40,18 +40,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             RuntimeRegionalUrl = additionalLocation.GatewayRegionalUrl;
             PublicIPAddresses = additionalLocation.PublicIPAddresses != null ? additionalLocation.PublicIPAddresses.ToArray() : null;
             PrivateIPAddresses = additionalLocation.PrivateIPAddresses != null ? additionalLocation.PrivateIPAddresses.ToArray() : null;
-            var staticIPList = new List<string>();
-            if (additionalLocation.PublicIPAddresses != null)
-            {
-                staticIPList.AddRange(additionalLocation.PublicIPAddresses);
-            }
-            if (additionalLocation.PrivateIPAddresses != null)
-            {
-                staticIPList.AddRange(additionalLocation.PrivateIPAddresses);
-            }
-#pragma warning disable CS0618
-            StaticIPs = staticIPList.ToArray();
-#pragma warning restore CS0618
             if (additionalLocation.VirtualNetworkConfiguration != null)
             {
                 VirtualNetwork = new PsApiManagementVirtualNetwork(additionalLocation.VirtualNetworkConfiguration);
@@ -59,9 +47,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         }
 
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
-
-        [Obsolete("This property is deprecated and will be removed in a future release")]
-        public string[] StaticIPs { get; private set; }
 
         public string[] PublicIPAddresses { get; private set; }
 
