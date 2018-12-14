@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -20,29 +21,45 @@ namespace Microsoft.Azure.Commands.Network
 {
     public static class AzureFirewallNetworkRuleProtocolHelper
     {
-        private static readonly IDictionary<string, string> SupportedNetworkProtocols = new Dictionary<string, string>
-        {
-            { MNM.AzureFirewallNetworkRuleProtocol.Any.ToUpper(), MNM.AzureFirewallNetworkRuleProtocol.Any },
-            { MNM.AzureFirewallNetworkRuleProtocol.TCP.ToUpper(), MNM.AzureFirewallNetworkRuleProtocol.TCP },
-            { MNM.AzureFirewallNetworkRuleProtocol.UDP.ToUpper(), MNM.AzureFirewallNetworkRuleProtocol.UDP },
-        };
+        private static readonly IDictionary<string, string> SupportedNetworkRuleProtocols = (new string[]{
+            MNM.AzureFirewallNetworkRuleProtocol.Any,
+            MNM.AzureFirewallNetworkRuleProtocol.TCP,
+            MNM.AzureFirewallNetworkRuleProtocol.UDP,
+            MNM.AzureFirewallNetworkRuleProtocol.ICMP
+        }).ToDictionary(item => item.ToUpper());
 
-        internal static string MapUserInputToNetworkProtocol(string protocolType)
+        private static readonly IDictionary<string, string> SupportedNatRuleProtocols = (new string[]{
+            MNM.AzureFirewallNetworkRuleProtocol.Any,
+            MNM.AzureFirewallNetworkRuleProtocol.TCP,
+            MNM.AzureFirewallNetworkRuleProtocol.UDP
+        }).ToDictionary(item => item.ToUpper());
+
+        private static string MapUserInputToProtocol(string protocolType, IDictionary<string, string> supportedProtocols)
         {
-            if (protocolType == null)
+            if (protocolType == null || protocolType == string.Empty)
             {
                 throw new ArgumentException("A protocol must be provided", nameof(protocolType));
             }
 
             var userInputKey = protocolType.ToUpper();
-            if (!SupportedNetworkProtocols.ContainsKey(userInputKey))
+            if (!supportedProtocols.ContainsKey(userInputKey))
             {
                 throw new ArgumentException(
-                    $"Invalid protocol {protocolType}. Accepted values are {string.Join(", ", SupportedNetworkProtocols.Values)}.",
+                    $"Invalid protocol {protocolType}. Accepted values are {string.Join(", ", supportedProtocols.Values)}.",
                     nameof(protocolType));
             }
 
-            return SupportedNetworkProtocols[userInputKey];
+            return supportedProtocols[userInputKey];
+        }
+
+        internal static string MapUserInputToNetworkRuleProtocol(string protocolType)
+        {
+            return MapUserInputToProtocol(protocolType, SupportedNetworkRuleProtocols);
+        }
+
+        internal static string MapUserInputToNatRuleProtocol(string protocolType)
+        {
+            return MapUserInputToProtocol(protocolType, SupportedNatRuleProtocols);
         }
     }
 }

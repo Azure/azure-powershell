@@ -152,13 +152,30 @@ function Test-AzureFirewallCRUD
         $appRc2 = New-AzureRmFirewallApplicationRuleCollection -Name $appRc2Name -Priority $appRc2Priority -Rule $appRule -ActionType $appRc2ActionType
 
         # Create Network Rule
-        $networkRule = New-AzureRmFirewallNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1, $networkRule1Protocol2, $networkRule1Protocol3 -SourceAddress $networkRule1SourceAddress1, $networkRule1SourceAddress2 -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $networkRule1DestinationPort1
+        $networkRule = New-AzureRmFirewallNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1, $networkRule1Protocol2 -SourceAddress $networkRule1SourceAddress1, $networkRule1SourceAddress2 -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $networkRule1DestinationPort1
+        $networkRule.AddProtocol($networkRule1Protocol3)
+
+        # Test handling of incorrect values
+        Assert-ThrowsContains { $networkRule.AddProtocol() } "Cannot find an overload"
+        Assert-ThrowsContains { $networkRule.AddProtocol($null) } "A protocol must be provided"
+        Assert-ThrowsContains { $networkRule.AddProtocol("ABCD") } "Invalid protocol"
 
         # Create Network Rule Collection
         $netRc = New-AzureRmFirewallNetworkRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule -ActionType $networkRcActionType
 
         # Create a NAT rule
-        $natRule = New-AzureRmFirewallNatRule -Name $natRule1Name -Description $natRule1Desc -Protocol $natRule1Protocol1, $natRule1Protocol2 -SourceAddress $natRule1SourceAddress1, $natRule1SourceAddress2 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
+        $natRule = New-AzureRmFirewallNatRule -Name $natRule1Name -Description $natRule1Desc -Protocol $natRule1Protocol1 -SourceAddress $natRule1SourceAddress1, $natRule1SourceAddress2 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
+        $natRule.AddProtocol($natRule1Protocol2)
+
+        # Test handling of incorrect values
+        Assert-ThrowsContains { $natRule.AddProtocol() } "Cannot find an overload"
+        Assert-ThrowsContains { $natRule.AddProtocol($null) } "A protocol must be provided"
+        Assert-ThrowsContains { $natRule.AddProtocol("ABCD") } "Invalid protocol"
+        # Test handling of ICMP protocol
+        Assert-ThrowsContains {
+            New-AzureRmFirewallNatRule -Name $natRule1Name -Protocol $natRule1Protocol1,"ICMP" -SourceAddress $natRule1SourceAddress1 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
+        } "The argument `"ICMP`" does not belong to the set"
+        Assert-ThrowsContains { $natRule.AddProtocol("ICMP") } "Invalid protocol"
 
         # Create a NAT Rule Collection
         $natRc = New-AzureRmFirewallNatRuleCollection -Name $natRcName -Priority $natRcPriority -Rule $natRule
