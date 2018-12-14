@@ -1,15 +1,15 @@
 # Announcing New Module 'Az'
-In August 2018 we released a new module, 'Az' which combines the functionality of the AzureRM and AzureRM.Netcore modules.  Az runs on both PowerShell 5.1 and PowerShell Core.  'Az' ensures that the PowerShell and PowerShell Core cmdlets for managing Azure resources will always be in sync and up to date.  In addition, Az will simplify and regularize the naming of Azure cmdlets, and the organization of Azure modules.  Az is intended as a replacement for the AzureRM.Netcore and AzureRM modules.
+In August 2018 we released a new module, 'Az' which combines the functionality of the AzureRM and AzureRM.Netcore modules.  Az will got to version 1.0 on 12/18/2018. Az runs on both PowerShell 5.1 and PowerShell Core.  'Az' ensures that the PowerShell and PowerShell Core cmdlets for managing Azure resources will always be in sync and up to date.  In addition, Az will simplify and regularize the naming of Azure cmdlets, and the organization of Azure modules.  Az is intended as a replacement for the AzureRM.Netcore and AzureRM modules.
 
 Az currently ships in Cloud Shell, and can be found on the PowerShell Gallery [here](https://www.powershellgallery.com/packages/Az/)
 
 Az is a new module, and reorganizing and simplifying cmdlet names involves breaking changes, so we have [added features to Az to make it easier to transition to the simplified, normalized names in your existing scripts](#migrating-from-azurerm). 
 
 ## New Features
-  - PowerShell 5.1 and PowerShell Core support in the same module
-  - PowerShell Core Edition and PowerShell Desktop Edition cmdlets always in sync and up to date with latest Azure capabilities
+  - Windows PowerShell 5.1 and PowerShell Core support in the same module
+  - PowerShell Core and Windows PowerShell cmdlets are always in sync and up to date with latest Azure capabilities
   - Shortened and normalized cmdlet names - all cmdlets use the noun prefix 'Az'
-  - Normalized module organization - data plane and management plane cmdlets in the same module for each service
+  - Simplified and normalized module organization - data plane and management plane cmdlets in the same module for each service
   - Enhanced authentication for Netcore
     * Self-renewing Service Principal Authentication
     * Service Principal Certificate Authentication (in the future)
@@ -24,7 +24,10 @@ Az is a new module, and reorganizing and simplifying cmdlet names involves break
   - Initial Release - August 2018
   - Az at functional parity with AzureRM - November 2018
   - Last version of AzureRM with new Azure features - December 2018
-  
+  - Az 1.0: December 2018
+  - New Authentication mechanisms for Windows PowerShell
+    - Username + password non-interactive authentication
+    - Web broswer dialog authentication by default
 
 ## AzureRM Module Support
 AzureRM will continue to be supported, and important bugs will be fixed, but new development and new Azure capabilities will be shipped only in Az starting December 2018.
