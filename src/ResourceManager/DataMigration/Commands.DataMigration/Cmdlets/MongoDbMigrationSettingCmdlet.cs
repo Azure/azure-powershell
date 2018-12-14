@@ -12,25 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.DataMigration.Models
+using Microsoft.Azure.Management.DataMigration.Models;
+using System.Management.Automation;
+
+namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public enum TaskTypeEnum
+    public abstract class MongoDbMigrationSettingCmdlet : DynamicCmdlet
     {
-        MigrateSqlServerSqlDb,
-        ConnectToSourceSqlServer,
-        ConnectToTargetSqlDb,
-        GetUserTablesSql,
-        ConnectToTargetSqlDbMi,
-        MigrateSqlServerSqlDbMi,
-        ValidateSqlServerSqlDbMi,
-        MigrateSqlServerSqlDbSync,
-        ConnectToSourceSqlServerSync,
-        ConnectToTargetSqlSync,
-        GetUserTablesSqlSync,
-        ValidateSqlServerSqlDbSync,
-        ConnectToSourceMongoDb,
-        ConnectToTargetMongoDb,
-        MigrateMongoDb,
-        ValidateMongoDbMigration
+
+        public MongoDbMigrationSettingCmdlet(InvocationInfo myInvocation) : base(myInvocation)
+        {
+        }
+
+        public abstract object ProcessMigrationSettingCmdlet();
+
     }
 }
