@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
-*Added new cmdlets for Advidor Recommendation
+*Added new cmdlets for Advisor Recommendation
     - Get-AzAdvisorRecommendation
     - Enable-AzAdvisorRecommendation
     - Disable-AzAdvisorRecommendation
-*Added new cmdlets for Advidor Configuration
+*Added new cmdlets for Advisor Configuration
     - Get-AzAdvisorConfiguration
     - Set-AzAdvisorConfiguration

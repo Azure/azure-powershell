@@ -25,7 +25,7 @@ Get-AzAdvisorRecommendation [-Category <String>] [-ResourceGroupName <String>] [
 ```
 
 ## DESCRIPTION
-Obtain the list of Azure Advisor recommendations. Can be filtered by Category, resource-ID, name etc.
+Obtains the list of Azure Advisor recommendations. Can be filtered by Category, resource-ID, name etc.
 
 ## EXAMPLES
 

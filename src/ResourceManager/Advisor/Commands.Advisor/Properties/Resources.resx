@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ParameterSetError" xml:space="preserve">
-    <value>The parameter set could not be determined from the provided parameters. Please check the documentation for appropriate parameters, and report this issue at https://github.com/azure/azure-powershell/issues</value>
-  </data>
    <data name="SuppressionCreate" xml:space="preserve">
     <value>Create a suppression for a recommendation.</value>
   </data>
@@ -136,10 +133,10 @@
     <value>Updates are going to be made to Azure Advisor recommendation {0}; removing the suppression(s).</value>
   </data>
   <data name="ConfigurationUpdateSubscriptionLevel" xml:space="preserve">
-    <value>Updates are going to be made to Adzure Advisor configuration associated with subscription-id {0}; updating Subscription-level configuration.</value>
+    <value>Updates are going to be made to Azure Advisor configuration associated with subscription-id {0}; updating Subscription-level configuration.</value>
   </data>
   <data name="ConfigurationUpdateResourceGroupLevel" xml:space="preserve">
-    <value>Updates are going to be made to Adzure Advisor configuration associated with subscription-id {0}; updating resourceGroup {1} configuration in the subscription.</value>
+    <value>Updates are going to be made to Azure Advisor configuration associated with subscription-id {0}; updating resourceGroup {1} configuration in the subscription.</value>
   </data>
   
 </root>

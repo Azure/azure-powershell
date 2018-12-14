@@ -37,9 +37,9 @@ Enables a suppresed recommendation, the suppression for a recommendation are rem
 
 ### Example 1
 ```powershell
-PS C:\> Enable-AzAdvisorRecommendation -Id "{recommendation_id}" 
+PS C:\> Enable-AzAdvisorRecommendation -Id c3621337-f131-4bf4-92f2-3fb9c8cfa0d8 
 
-Id                   : subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/{recommendation_id}
+Id                   : subscriptions/{user_subscription}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz/providers/Microsoft.Advisor/recommendations/c3621337-f131-4bf4-92f2-3fb9c8cfa0d8
 Category             : Performance
 ExtendedProperties   : {}
 Impact               : Medium
@@ -50,10 +50,10 @@ Metadata             : {}
 RecommendationTypeId : 905a0026-8010-45b2-ab46-a92c3e4a5131
 Risk                 : None
 ShortDescription     : problem : Improve the performance and reliability of your Redis Cache instance
-                       solution :Follow Redis cache Advisor recommendations
+                       solution : Follow Redis cache Advisor recommendations
 
 SuppressionIds       : {} 
-Name                 : {recommendation_id}
+Name                 : c3621337-f131-4bf4-92f2-3fb9c8cfa0d8
 Type                 : Microsoft.Advisor/recommendations
 ```
 
@@ -75,14 +75,14 @@ Metadata             : {}
 RecommendationTypeId : 905a0026-8010-45b2-ab46-a92c3e4a5131
 Risk                 : None
 ShortDescription     : problem : Improve the performance and reliability of your Redis Cache instance
-                       solution :Follow Redis cache Advisor recommendations
+                       solution : Follow Redis cache Advisor recommendations
 
 SuppressionIds       : {} 
 Name                 : {recommendation_id}
 Type                 : Microsoft.Advisor/recommendations
 ```
 
-Removes all the suppression for the given recommendation passed on from the pipeline.
+Removes all the suppressions for the given recommendation passed from the pipeline.
 
 ## PARAMETERS
 

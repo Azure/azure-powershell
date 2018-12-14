@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// <summary>
         /// Gets or sets the resource-group name.
         /// </summary>
-        [Parameter(ParameterSetName = RgParameterSet, Mandatory = false, HelpMessage = "Resource Group name for the configuration ")]
+        [Parameter(ParameterSetName = RgParameterSet, Mandatory = false, HelpMessage = "Resource Group name of the configuration ")]
         [ResourceGroupCompleter]
         public string ResourceGroupName
         {

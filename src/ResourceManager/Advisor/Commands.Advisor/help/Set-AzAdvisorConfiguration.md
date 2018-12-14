@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzAdvisorConfiguration
 
 ## SYNOPSIS
-Updates or creates the Azure Advisor Configration.
+Updates or creates the Azure Advisor Configuration.
 
 ## SYNTAX
 
@@ -27,10 +27,10 @@ Set-AzAdvisorConfiguration [-Exclude] [[-ResourceGroupName] <String>]
 ```
 
 ## DESCRIPTION
-Used to update the configuration of the Azure Advisor. Two types of configration are present Subscription level configuration and ResourceGroup level configuration. 
+Used to update the configuration of the Azure Advisor. Two types of Configuration are present: Subscription level configuration and ResourceGroup level configuration. 
 
-Subscription level configuration: There can be only one configration for this type, lowCpuThreshold and exclude properties can be updated using cmdlet.
-ResourceGroup level configuration: There can be only one configration for each ResourceGroup, only exclude property could be updated using cmdlet.
+Subscription level configuration: There can be only one Configuration for this type for a subscription. LowCpuThreshold and Exclude are properties of this type of configuration.
+ResourceGroup level configuration: There can be only one configuration for each ResourceGroup. Exclude is the only property of this type of configuration.
 
 ## EXAMPLES
 
@@ -46,7 +46,7 @@ Properties : additionalProperties : null
 Type       : Microsoft.Advisor/Configurations
 ```
 
-Updates the configuration(lowCpuThreshold) for subscription level configration.
+Updates the configuration(lowCpuThreshold) for subscription level Configuration.
 
 ### Example 2
 ```powershell
@@ -60,7 +60,7 @@ Properties : additionalProperties : null
 Type       : Microsoft.Advisor/Configurations
 ```
 
-Updates the configuration(lowCpuThreshold, exclude) for subscription level configration and excludes from the recommendation generation.
+Updates the configuration(lowCpuThreshold, exclude) for subscription level Configuration and excludes from the recommendation generation.
 
 ### Example 3
 ```powershell
@@ -88,6 +88,8 @@ Properties : additionalProperties : null
 
 Type       : Microsoft.Advisor/Configurations
 ```
+
+Updates the configuration for the given recommendation passed on from the pipeline.
 
 ## PARAMETERS
 
