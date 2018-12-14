@@ -35,12 +35,13 @@ namespace InstallerChecks
                     var moduleName = module.Split('\\').LastOrDefault();
                     if (AzureModules.Any(x => x.Equals(moduleName, StringComparison.OrdinalIgnoreCase)))
                     {
-                        session["CONTAINSAZURERM"] = "true";
-                        return ActionResult.Success;
+                        Record record = new Record(2);
+                        record.FormatString = "AzureRM modules detected on your machine, please remove all AzureRM modules before running Az installer.";
+                        session.Message(InstallMessage.Error, record);
+                        return ActionResult.Failure;
                     }
                 }
             }
-            session["CONTAINSAZURERM"] = "false";
             return ActionResult.Success;
         }
     }

@@ -47,11 +47,9 @@
     <Condition Message="This setup requires the .NET Framework version 4.7.2 or greater to be installed.">
         <![CDATA[NETFRAMEWORK472 >= "#$(var.NetFx472MinRelease)"]]>
     </Condition>
-
-    <Property Id='CONTAINSAZURERM' Secure='yes' />
     
     <Binary Id="InstallerChecks.CA.dll"
-            src="InstallerChecks\InstallerChecks\bin\x64\Debug\InstallerChecks.CA.dll" />
+            src="InstallerChecks.CA.dll" />
 
     <CustomAction Id="InstallerChecks" 
                   Return="check" 
@@ -66,10 +64,6 @@
     <CustomAction Id="Test" Script="vbscript">
       <![CDATA[MsgBox Session.Property("CONTAINSAZURERM")]]>
     </CustomAction>
-
-    <!--<Condition Message="AzureRM modules detected on your machine, please remove all AzureRM modules before running Az installer.">
-        <![CDATA[CONTAINSAZURERM = "true"]]>
-    </Condition>-->
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       <!-- x64 files -->
