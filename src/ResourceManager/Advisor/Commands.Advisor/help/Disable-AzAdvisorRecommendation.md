@@ -31,7 +31,7 @@ Disable-AzAdvisorRecommendation [[-Days] <Int32>] [-InputObject] <PsAzureAdvisor
 ```
 
 ## DESCRIPTION
-Creates a suppression for recomendation(s), this enables a particular recommendation to be postponed for a specific duration or infinitely.
+Creates a suppression for recommendation(s), this enables a particular recommendation to be postponed for a specific duration or infinitely.
 
 ## EXAMPLES
 
@@ -47,7 +47,7 @@ Name          : HardCodedSupressionName
 Type          : Microsoft.Advisor/suppressions
 ```
 
-Create a suppression for the given recomendation name with a default-SuppressionName and default days as -1.
+Create a suppression for the given recommendation name with a default-SuppressionName and default days as -1.
 
 ### Example 2
 ```powershell

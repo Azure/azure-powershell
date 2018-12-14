@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 
             if (Refresh)
             {
-                AzureOperationHeaderResponse<RecommendationsGenerateHeaders> generateionResponse = this.ResourecAdvisorClient.Recommendations.GenerateWithHttpMessagesAsync().Result;
+                this.ResourecAdvisorClient.Recommendations.GenerateWithHttpMessagesAsync().Result;
             }
 
             this.WriteObject(results, true);

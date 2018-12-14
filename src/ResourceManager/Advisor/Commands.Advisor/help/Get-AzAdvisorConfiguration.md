@@ -18,9 +18,9 @@ Get-AzAdvisorConfiguration [-ResourceGroupName <String>] [-DefaultProfile <IAzur
 ```
 
 ## DESCRIPTION
-Configuration associated with a subscription are of two types,
+The configurations associated with a subscription have two types:
 
-Subscription level configuration: There can be only one configration for this type for each subscription. LowCpuThreshold and exclude properties are taken into effect for configuration.
+ResourceGroup level configuration: There can be only one configuration for each ResourceGroup in a subscription. Exclude is the only property of this type of configuration.
 
 ResourceGroup level configuration: There can be only one configration for each ResourceGroup in a subscription, only exclude property is taken into effect for configuration.
 
@@ -50,7 +50,7 @@ Exclude              : True
 LowCpuThreshold      : null
 
 ```
-Retrieves a list of Azure Advisor Configration.
+Retrieves a list of Azure Advisor Configration(s).
 
 ## PARAMETERS
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group name for the configuration
+Resource Group name of the configuration
 
 ```yaml
 Type: String

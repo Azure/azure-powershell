@@ -24,4 +24,4 @@ Enables Azure Advisor recommendation(s).
 Get the Azure Advisor configurations for the given subscription or resource group.
 
 ### [Set-AzAdvisorConfiguration](Set-AzAdvisorConfiguration.md)
-Updates or creates the Azure Advisor Configration.
+Updates or creates the Azure Advisor Configuration.
