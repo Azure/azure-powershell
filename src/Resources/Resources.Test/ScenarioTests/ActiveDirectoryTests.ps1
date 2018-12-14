@@ -771,6 +771,9 @@ function Test-CreateDeleteSpCredentials
 	$getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
     $displayName = $getAssetName
 	$password = $getAssetName
+	$keyId1 = "316af45c-83ff-42a5-a1d1-8fe9b2de3ac1"
+	$keyId2 = "9b7fda23-cb39-4504-8aa6-3570c4239620"
+	$keyId3 = "4141b479-4ca0-4919-8451-7e155de6aa0f"
 
     # Test - Add SP with a password cred
     $servicePrincipal = New-AzureRmADServicePrincipal -DisplayName $displayName  -Password $password
@@ -792,7 +795,7 @@ function Test-CreateDeleteSpCredentials
     # Add 1 more password credential to the same app
     $start = (Get-Date).ToUniversalTime()
     $end = $start.AddYears(1)
-    $cred = New-AzureRmADSpCredential -ObjectId $servicePrincipal.Id -Password $password -StartDate $start -EndDate $end
+    $cred = New-AzADSpCredentialWithId -ObjectId $servicePrincipal.Id -Password $password -StartDate $start -EndDate $end -KeyId $keyId1
     Assert-NotNull $cred
 
     # Get credential should fetch 2 credentials
@@ -811,7 +814,7 @@ function Test-CreateDeleteSpCredentials
 	$credValue = [System.Convert]::ToBase64String($binCert)
 	$start = (Get-Date).ToUniversalTime()
 	$end = $start.AddDays(1)
-	$cred = New-AzureRmADSpCredential -ObjectId $servicePrincipal.Id -CertValue $credValue -StartDate $start -EndDate $end
+	$cred = New-AzADSpCredentialWithId -ObjectId $servicePrincipal.Id -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId2
     Assert-NotNull $cred
 
     # Get credential should fetch 3 credentials
@@ -827,7 +830,7 @@ function Test-CreateDeleteSpCredentials
 	$credValue = [System.Convert]::ToBase64String($binCert)
 	$start = (Get-Date).ToUniversalTime()
 	$end = $start.AddDays(1)
-	$cred = New-AzureRmADSpCredential -ObjectId $servicePrincipal.Id -CertValue $credValue -StartDate $start -EndDate $end
+	$cred = New-AzADSpCredentialWithId -ObjectId $servicePrincipal.Id -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId3
     Assert-NotNull $cred
 
     # Get credential should fetch 4 credentials
