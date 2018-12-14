@@ -76,7 +76,7 @@ Name          : HardCodedSupressionName
 Type          : Microsoft.Advisor/suppressions
 ```
 
-Creating a suppression by piping two cmdlet. First cmdlet will return a recommendation and second cmdlet will create a suppression for the same.
+Creating a suppression, piping from Get-AzAdvisorRecommendation to Disable-AzAdvisorRecommendation.
 
 ## PARAMETERS
 

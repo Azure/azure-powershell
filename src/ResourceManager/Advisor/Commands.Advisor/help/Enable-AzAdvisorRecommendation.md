@@ -31,7 +31,7 @@ Enable-AzAdvisorRecommendation [-InputObject] <PsAzureAdvisorResourceRecommendat
 ```
 
 ## DESCRIPTION
-Enables a suppresed recommendation, the suppression for a recommendation are removed using this cmdlet. One can remove all the suppression associated with a recommendation.
+This cmdlet enables a previously suppressed recommendation. You can aswell remove all the suppressions associated with a recommendation.
 
 ## EXAMPLES
 
