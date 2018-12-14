@@ -12,25 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.DataMigration.Models
+namespace Microsoft.Azure.Commands.DataMigration.Models.MongoDb
 {
-    public enum TaskTypeEnum
+    public class MongoDbCollectionSetting 
     {
-        MigrateSqlServerSqlDb,
-        ConnectToSourceSqlServer,
-        ConnectToTargetSqlDb,
-        GetUserTablesSql,
-        ConnectToTargetSqlDbMi,
-        MigrateSqlServerSqlDbMi,
-        ValidateSqlServerSqlDbMi,
-        MigrateSqlServerSqlDbSync,
-        ConnectToSourceSqlServerSync,
-        ConnectToTargetSqlSync,
-        GetUserTablesSqlSync,
-        ValidateSqlServerSqlDbSync,
-        ConnectToSourceMongoDb,
-        ConnectToTargetMongoDb,
-        MigrateMongoDb,
-        ValidateMongoDbMigration
+        public string Name { get; set; }
+
+        public Microsoft.Azure.Management.DataMigration.Models.MongoDbCollectionSettings Setting { get; set; }
     }
 }
