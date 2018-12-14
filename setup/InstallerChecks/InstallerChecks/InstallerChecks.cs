@@ -29,16 +29,19 @@ namespace InstallerChecks
             var paths = Environment.GetEnvironmentVariable("PSModulePath").Split(';');
             foreach (var path in paths)
             {
-                var modules = Directory.GetDirectories(path);
-                foreach (var module in modules)
+                if (Directory.Exists(path))
                 {
-                    var moduleName = module.Split('\\').LastOrDefault();
-                    if (AzureModules.Any(x => x.Equals(moduleName, StringComparison.OrdinalIgnoreCase)))
+                    var modules = Directory.GetDirectories(path);
+                    foreach (var module in modules)
                     {
-                        Record record = new Record(2);
-                        record.FormatString = "AzureRM modules detected on your machine, please remove all AzureRM modules before running Az installer.";
-                        session.Message(InstallMessage.Error, record);
-                        return ActionResult.Failure;
+                        var moduleName = module.Split(Path.DirectorySeparatorChar).LastOrDefault();
+                        if (AzureModules.Any(x => string.Equals(x, moduleName, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            Record record = new Record(2);
+                            record.FormatString = Properties.Resources.AzureRmDetected;
+                            session.Message(InstallMessage.Error, record);
+                            return ActionResult.Failure;
+                        }
                     }
                 }
             }
