@@ -120,7 +120,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial Release with PowerShell and PowerShell Core Support'
+        ReleaseNotes = 'Update Set-AzSecurityContact. Phone, AlertAdmin, NotifyOnAlert parameters are no longer mandatory'
 
         # Prerelease string of this module
         # Prerelease = ''
