@@ -248,6 +248,7 @@ function New-AzADSpCredentialWithId
         [string] [Parameter()] $ObjectId,
         [string] [Parameter()] $ServicePrincipalName,
         [string] [Parameter()] $CertValue,
+        [SecureString] [Parameter()] $Password,
         [DateTime] [Parameter()] $StartDate,
         [DateTime] [Parameter()] $EndDate,
         [Guid] [Parameter()] $KeyId
@@ -271,6 +272,11 @@ function New-AzADSpCredentialWithId
     if (-not ([string]::IsNullOrEmpty($CertValue)))
     {
         $cmdlet.CertValue = $CertValue
+    }
+
+	if ($Password -ne $null)
+    {
+        $cmdlet.Password = $Password
     }
 
     if ($StartDate -ne $null)
