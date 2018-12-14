@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.dll-Help.xml
 Module Name: Az.TrafficManager
 ms.assetid: 5A4D685F-B904-4C85-8B68-C9936B0627FA
@@ -59,7 +59,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -166,13 +166,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.TrafficManagerProfile
-This cmdlet accepts a **TrafficManagerProfile** object.
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
 
 ## OUTPUTS
 
-### Boolean
-This cmdlet returns a value of $True, if it succeeds or, if the deletion fails, a value of $False.
+### System.Boolean
 
 ## NOTES
 

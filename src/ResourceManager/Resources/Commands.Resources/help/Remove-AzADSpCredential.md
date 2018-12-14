@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 04B1E3A6-6D52-46A3-8241-2CCDB5E71642
@@ -15,7 +15,7 @@ Removes a credential from a service principal.
 
 ### ObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzADSpCredential -ObjectId <Guid> [-KeyId <Guid>] [-PassThru] [-Force]
+Remove-AzADSpCredential -ObjectId <String> [-KeyId <Guid>] [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -76,7 +76,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 The object id of the service principal to remove the credentials from.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: ObjectIdWithKeyIdParameterSet
 Aliases:
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 The service principal object to remove the credentials from.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
 Parameter Sets: ServicePrincipalObjectParameterSet
 Aliases:
 
@@ -227,12 +227,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Guid
-
 ### System.String
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
-Parameters: ServicePrincipalObject (ByValue)
+### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+
+### System.Guid
 
 ## OUTPUTS
 

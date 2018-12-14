@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
-Module Name: Az.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/enable-azurermalias
+Module Name: Az.Accounts
+online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/enable-azurermalias
 schema: 2.0.0
 ---
 
@@ -31,10 +31,10 @@ Enables all AzureRm prefixes for the current PowerShell session.
 
 ### Example 1
 ```
-PS C:\> Enable-AzureRmAlias -Module Az.Profile -Scope CurrentUser
+PS C:\> Enable-AzureRmAlias -Module Az.Accounts -Scope CurrentUser
 ```
 
-Enables AzureRm aliases for the Az.Profile module for both the current process and for the current user.
+Enables AzureRm aliases for the Az.Accounts module for both the current process and for the current user.
 
 ## PARAMETERS
 
@@ -44,7 +44,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

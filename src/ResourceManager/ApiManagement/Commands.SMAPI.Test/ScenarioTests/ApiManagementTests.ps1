@@ -1612,6 +1612,13 @@ function Logger-CrudTest {
          }
  
          Assert-Null $logger
+
+		 # remove all properties
+		 $properties = Get-AzureRmApiManagementProperty -Context $context
+		 for ($i = 0; $i -lt $properties.Count; $i++) {
+
+			Remove-AzureRmApiManagementProperty -Context $context -PropertyId $properties[$i].PropertyId
+		}
     }
 }
 

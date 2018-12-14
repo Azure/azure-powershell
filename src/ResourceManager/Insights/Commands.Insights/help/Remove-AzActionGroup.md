@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
-Module Name: Az.Insights
+Module Name: Az.Monitor
 ms.assetid: 8D8FE2FE-03E7-453E-B968-E28B07E42EF2
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/remove-azactiongroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azactiongroup
 schema: 2.0.0
 ---
 
@@ -52,7 +52,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -159,7 +159,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource
-Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
