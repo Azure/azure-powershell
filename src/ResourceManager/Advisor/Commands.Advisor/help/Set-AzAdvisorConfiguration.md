@@ -29,8 +29,8 @@ Set-AzAdvisorConfiguration [-Exclude] [[-ResourceGroupName] <String>]
 ## DESCRIPTION
 Used to update the configuration of the Azure Advisor. Two types of Configuration are present: Subscription level configuration and ResourceGroup level configuration. 
 
-Subscription level configuration: There can be only one Configuration for this type for a subscription. LowCpuThreshold and Exclude are properties of this type of configuration.
-ResourceGroup level configuration: There can be only one configuration for each ResourceGroup. Exclude is the only property of this type of configuration.
+Subscription level configuration: There can be only one Configuration for this type for a subscription. LowCpuThreshold and Exclude properties can be updated using this cmdlet.
+ResourceGroup level configuration: There can be only one configuration for each ResourceGroup. Only Exclude property can be updated using this cmdlet.
 
 ## EXAMPLES
 
