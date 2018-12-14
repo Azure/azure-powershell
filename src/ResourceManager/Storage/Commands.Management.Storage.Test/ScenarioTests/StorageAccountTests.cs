@@ -128,5 +128,14 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureStorageLocationUsage");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPipingNewUpdateAccount()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-PipingNewUpdateAccount");
+        }
+
+        
     }
 }
