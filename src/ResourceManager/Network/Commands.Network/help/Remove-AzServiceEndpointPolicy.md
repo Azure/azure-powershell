@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzServiceEndpointPolicy
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a service endpoint policy.
 
 ## SYNTAX
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+The service endpoint policy object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns an object representing the item with which you are working.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{Fill ResourceId Description}}
+The ID of service endpoint policy.
 
 ```yaml
 Type: System.String

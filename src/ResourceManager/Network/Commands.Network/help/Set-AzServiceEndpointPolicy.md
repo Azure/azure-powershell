@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzServiceEndpointPolicy
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates a service endpoint policy.
 
 ## SYNTAX
 

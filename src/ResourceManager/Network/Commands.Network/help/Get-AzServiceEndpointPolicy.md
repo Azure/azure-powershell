@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceEndpointPolicy
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a service endpoint policy.
 
 ## SYNTAX
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{Fill ResourceId Description}}
+The ID of the service endpoint policy.
 
 ```yaml
 Type: System.String

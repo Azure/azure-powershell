@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzRouteFilter
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates a route filter.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Set-AzRouteFilter -RouteFilter <PSRouteFilter> [-Force] [-AsJob] [-DefaultProfil
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzApplicationGateway** cmdlet updates a route filter
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+PS C:\> Set-AzRouteFilter -RouteFilter $rf
 ```
 
-{{ Add example description here }}
+This command updates the route filter with settings in the $rf variable.
 
 ## PARAMETERS
 

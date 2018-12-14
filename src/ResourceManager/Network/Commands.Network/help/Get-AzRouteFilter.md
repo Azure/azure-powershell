@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRouteFilter
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a route filter.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Get-AzRouteFilter -Name <String> -ResourceGroupName <String> -ExpandResource <St
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzRouteFilter** cmdlet gets a route filter.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+PS C:\> $rf = Get-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
 ```
 
-{{ Add example description here }}
+This command gets the route filter named RouteFilter01 that belongs to the resource group named ResourceGroup01 and stores it in the $rf variable.
 
 ## PARAMETERS
 

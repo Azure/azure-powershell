@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzRouteFilterRuleConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Modifies the route filter rule of a route filter.
 
 ## SYNTAX
 
@@ -19,16 +19,20 @@ Set-AzRouteFilterRuleConfig -RouteFilter <PSRouteFilter> [-Force] -Name <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzRouteFilterRuleConfig** cmdlet modifies the route filter rule of a route filter.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+PS C:\> $rf = Get-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $rf = Set-AzRouteFilterRuleConfig -RouteFilter $rf -Name "Rule01" -Access Deny -RouteFilterRuleType Community -CommunityList "12076:5010","12076:5040"
+PS C:\> Set-AzRouteFilter -RouteFilter $rf
 ```
 
-{{ Add example description here }}
+The first command gets the route filter named RouteFilter01 and stores it in the $rf variable.
+The second command modifies the route filter rule named Rule01 and stores updated route filter in the $rf variable.
+The third command saves updated route filter.
 
 ## PARAMETERS
 
