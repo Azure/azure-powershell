@@ -64,13 +64,21 @@ namespace Microsoft.Azure.Commands.Network
 
         public IEnumerable<PSServiceEndpointPolicy> ListServiceEndpointPolicies(string resourceGroupName)
         {
-            var serviceEndpointPolicies = this.ServiceEndpointPolicyClient.ListByResourceGroup(resourceGroupName);
+            IPage<ServiceEndpointPolicy> serviceEndpointPolicies;
+            if (!string.IsNullOrEmpty(resourceGroupName))
+            {
+                serviceEndpointPolicies = this.ServiceEndpointPolicyClient.ListByResourceGroup(resourceGroupName);
+            }
+            else
+            {
+                serviceEndpointPolicies = this.ServiceEndpointPolicyClient.List();
+            }
 
             List<PSServiceEndpointPolicy> psserviceEndpointPolicies = new List<PSServiceEndpointPolicy>();
             foreach (var policy in serviceEndpointPolicies)
             {
                 var pSServiceEndpointPolicy = ToServiceEndpointPolicy(policy);
-                pSServiceEndpointPolicy.ResourceGroupName = resourceGroupName;
+                pSServiceEndpointPolicy.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(policy.Id);
                 psserviceEndpointPolicies.Add(pSServiceEndpointPolicy);
             }
             

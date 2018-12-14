@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceEndpointPolicy", SupportsShouldProcess = true, DefaultParameterSetName = "GetByNameParameterSet"), OutputType(typeof(PSServiceEndpointPolicy))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceEndpointPolicy", SupportsShouldProcess = true, DefaultParameterSetName = "ListParameterSet"), OutputType(typeof(PSServiceEndpointPolicy))]
     public class GetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(
@@ -37,6 +37,11 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.",
            ParameterSetName = "GetByNameParameterSet")]
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.",
+           ParameterSetName = "ListParameterSet")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -73,6 +78,10 @@ namespace Microsoft.Azure.Commands.Network
                     if (!string.IsNullOrEmpty(this.ResourceGroupName))
                     {
                         serviceEndpointPolicies = ListServiceEndpointPolicies(this.ResourceGroupName);
+                    }
+                    else
+                    {
+                        serviceEndpointPolicies = ListServiceEndpointPolicies(string.Empty);
                     }
 
                     WriteObject(serviceEndpointPolicies, true);
