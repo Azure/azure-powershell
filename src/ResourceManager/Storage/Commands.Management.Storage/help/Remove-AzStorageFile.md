@@ -1,5 +1,5 @@
----
-external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 811671E9-592E-4E58-8174-34D665206A65
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/remove-azstoragefile
@@ -284,13 +284,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFileShare
-Parameters: Share (ByValue)
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
-Parameters: Directory (ByValue)
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFile
-Parameters: File (ByValue)
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 

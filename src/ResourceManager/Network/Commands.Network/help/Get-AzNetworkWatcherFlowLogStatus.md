@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkwatcherflowlogstatus
@@ -59,7 +59,7 @@ Properties       : {
 				   }
 ```
 
-In this example we get the flow logging status for a Network Security Group. The specified NSG has flow logging enabled, default format and no retention policy set.
+In this example we get the flow logging status for a Network Security Group. The specified NSG has flow logging enabled, default format, and no retention policy set.
 
 ### Example 2: Get the Flow Logging and Traffic Analytics Status for a Specified NSG
 ```
@@ -115,7 +115,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -205,10 +205,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-Parameters: NetworkWatcher (ByValue)
 
 ### System.String
-Parameters: NetworkWatcherName (ByValue)
 
 ## OUTPUTS
 

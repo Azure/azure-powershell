@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 894297BF-2771-4871-9E4C-8684364DAC4B
@@ -9,6 +9,7 @@ schema: 2.0.0
 # Get-AzApiManagementProperty
 
 ## SYNOPSIS
+Gets a list or a particular Property (Named-Value).
 
 ## SYNTAX
 
@@ -37,6 +38,7 @@ Get-AzApiManagementProperty -Context <PsApiManagementContext> [-Tag <String>]
 ```
 
 ## DESCRIPTION
+The **Get-AzApiManagementProperty** cmdlet gets a list or a particular property.
 
 ## EXAMPLES
 
@@ -67,7 +69,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

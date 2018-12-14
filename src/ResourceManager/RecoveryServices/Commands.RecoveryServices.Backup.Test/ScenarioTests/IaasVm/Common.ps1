@@ -171,7 +171,7 @@ function Enable-Protection(
 	$container = Get-AzureRmRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType AzureVM `
-		-Name $vm.Name;
+		-FriendlyName $vm.Name;
 
 	if ($container -eq $null)
 	{
@@ -188,7 +188,7 @@ function Enable-Protection(
 		$container = Get-AzureRmRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
-			-Name $vm.Name;
+			-FriendlyName $vm.Name;
 	}
 	
 	$item = Get-AzureRmRecoveryServicesBackupItem `

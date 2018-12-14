@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
-Module Name: Az.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/az.profile/import-azcontext
+Module Name: Az.Accounts
+online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/import-azcontext
 schema: 2.0.0
 ---
 
@@ -75,7 +75,7 @@ The credentials, tenant, and subscription used for communication with azure
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -156,7 +156,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Profile.Models.PSAzureProfile
+### Microsoft.Azure.Commands.Profile.Models.Core.PSAzureProfile
 
 ## NOTES
 

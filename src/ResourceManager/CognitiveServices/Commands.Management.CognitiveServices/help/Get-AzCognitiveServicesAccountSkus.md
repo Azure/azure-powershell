@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Management.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: 386F09F0-2EEC-4B55-825C-F2E88D3B60AA
@@ -13,7 +13,6 @@ Gets the available SKUs for an account.
 
 ## SYNTAX
 
-### GetSkusWithFilter (Default)
 ```
 Get-AzCognitiveServicesAccountSkus [-Type <String>] [-Location <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -47,7 +46,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -61,7 +60,7 @@ Cognitive Services Account Location.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSkusWithFilter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -76,7 +75,7 @@ Cognitive Services Account Type.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSkusWithFilter
+Parameter Sets: (All)
 Aliases: CognitiveServicesAccountType, AccountType, Kind
 
 Required: False
@@ -95,8 +94,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.CognitiveServices.Models.ResourceSku
+### Microsoft.Azure.Management.CognitiveServices.Models.ResourceSku
 
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS
