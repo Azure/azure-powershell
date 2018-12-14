@@ -12,7 +12,13 @@ Gets a service endpoint policy.
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### ListParameterSet (Default)
+```
+Get-AzServiceEndpointPolicy [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### GetByNameParameterSet
 ```
 Get-AzServiceEndpointPolicy [-Name <String>] -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -77,6 +83,18 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ListParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ```yaml
 Type: System.String
