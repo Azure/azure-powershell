@@ -9,7 +9,7 @@ This document describes the changes between the 6.x versions of AzureRM and Az v
   - [Removed modules](#removed-modules)
   - [Windows PowerShell 5.1 and .NET 4.7.2](#windows-powershell-51-and-net-472)
   - [Temporary removal of User login using PSCredential](#temporary-removal-of-user-login-using-pscredential)
-  - [Temporary default Device Code login instead of Web Browser prompt](#temporary-default-device-code-login-instead-of-web-browser-prompt)
+  - [Default Device Code login instead of Web Browser prompt](#temporary-default-device-code-login-instead-of-web-browser-prompt)
 - [Module breaking changes](#module-breaking-changes)
   - [Az.ApiManagement (previously AzureRM.ApiManagement)](#azapimanagement-previously-azurermapimanagement)
   - [Az.Billing (previously AzureRM.Billing, AzureRM.Consumption, and AzureRM.UsageAggregates)](#azbilling-previously-azurermbilling-azurermconsumption-and-azurermusageaggregates)
@@ -47,7 +47,7 @@ Get-AzKeyVaultSecret
 
 To make the transition to these new cmdlet names simpler, Az introduces two new cmdlets, ```Enable-AzureRmAlias``` and ```Disable-AzureRmAlias```.  ```Enable-AzureRmAlias``` creates aliases from the older cmdlet names in AzureRM to the newer Az cmdlet names.  The cmdlet allows creating aliases in the current session, or across all sessions by changing your user or machine profile. 
 
-For example, the followign script in AzureRM:
+For example, the following script in AzureRM:
 ```powershell
 #Requires -Modules AzureRM.Storage
 Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
@@ -60,7 +60,7 @@ Enable-AzureRmAlias
 Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 ```
 
-Running ```Enable-AzureRmALias -Scope CurrentUser``` will enable the aliases for all powershell sessions you open, so that after executing thsi cmdlet, a script like this would not need to be changed at all.:
+Running ```Enable-AzureRmAlias -Scope CurrentUser``` will enable the aliases for all powershell sessions you open, so that after executing this cmdlet, a script like this would not need to be changed at all:
 ```powershell
 Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 ```
@@ -145,10 +145,10 @@ The tooling for these services are no longer actively supported.  Customers are 
 - Using Az with Windows PowerShell 5.1 requires the installation of .NET 4.7.2. However, using Az with PowerShell Core does not require .NET 4.7.2. 
 
 ### Temporary removal of User login using PSCredential
-- Due to changes in the authentication flow for .NET Standard, we are temporarily removing user login via PSCredential. This capability will be re-introduced in the 1/15/2019 release for WIndows PowerShell 5.1. 
+- Due to changes in the authentication flow for .NET Standard, we are temporarily removing user login via PSCredential. This capability will be re-introduced in the 1/15/2019 release for Windows PowerShell 5.1. This is duscussed in detail in [this issue.](https://github.com/Azure/azure-powershell/issues/7430)
 
 ### Default Device Code login instead of Web Browser prompt
-- Due to changes in the authentication flow for .NET Standard, we are using device login as the default login flow during interactive login. Web browser based login will be re-introduced for WIndows PowerShell 5.1 as the default in the 1/15/2019 release. At that time, device login will available via a parameter.
+- Due to changes in the authentication flow for .NET Standard, we are using device login as the default login flow during interactive login. Web browser based login will be re-introduced for Windows PowerShell 5.1 as the default in the 1/15/2019 release. At that time, users will be able to choose device login using a Switch parameter.
 
 ## Module breaking changes
 
@@ -162,7 +162,7 @@ The tooling for these services are no longer actively supported.  Customers are 
 - Following properties were removed
   - Removed property `PortalHostnameConfiguration`, `ProxyHostnameConfiguration`, `ManagementHostnameConfiguration` and `ScmHostnameConfiguration` of type `PsApiManagementHostnameConfiguration` from `PsApiManagementContext`. Instead use `PortalCustomHostnameConfiguration`, `ProxyCustomHostnameConfiguration`, `ManagementCustomHostnameConfiguration` and `ScmCustomHostnameConfiguration` of type `PsApiManagementCustomHostNameConfiguration`.
   - Removed property `StaticIPs` from PsApiManagementContext. The property has been split into `PublicIPAddresses` and `PrivateIPAddresses`.
-  - Removed required property `Location` from New-AzureApiManagementVirtualNetwork cmdlet, as it was redundant parameter.
+  - Removed required property `Location` from New-AzureApiManagementVirtualNetwork cmdlet.
 
 ### Az.Billing (previously AzureRM.Billing, AzureRM.Consumption, and AzureRM.UsageAggregates)
 - The `InvoiceName` parameter was removed from the `Get-AzConsumptionUsageDetail` cmdlet.  Scripts will need to use other identity parameters for the invoice.
@@ -305,7 +305,7 @@ Scripts shoudl no longer make processing decisions based on the values fo these 
 - To support creating an Oauth storage context with only the storage account name, the default parameter set has been changed to `OAuthParameterSet`
   - Example: `$ctx = New-AzureStorageContext -StorageAccountName $accountName`
 - The `Location` parameter has become mandatory in the `Get-AzStorageUsage` cmdlet
-- The XSCL API changes include, but not limited to:
+- The Storage API methods now use the Task-based Asynchronous Pattern (TAP), instead of synchronous API calls.
 #### 1. Blob Snapshot
 ##### Before:
 ```powershell
