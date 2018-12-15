@@ -140,15 +140,17 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                 Tags = parameters.Tags,
                 Containers = new List<Container>() { container },
                 OsType = parameters.OsType,
-                RestartPolicy = parameters.RestartPolicy
+                RestartPolicy = parameters.RestartPolicy,
+                Identity = parameters.Identity
             };
 
-            if (string.Equals(IpAddress.Type, parameters.IpAddressType, StringComparison.OrdinalIgnoreCase) || 
+            if (string.Equals("Public", parameters.IpAddressType, StringComparison.OrdinalIgnoreCase) || 
                 !string.IsNullOrEmpty(parameters.DnsNameLabel))
             {
                 container.Ports = parameters.Ports.Select(p => new ContainerPort(p)).ToList();
                 containerGroup.IpAddress = new IpAddress(
                     ports: parameters.Ports.Select(p => new Port(p)).ToList(),
+                    type: "Public",
                     dnsNameLabel: parameters.DnsNameLabel);
             }
 

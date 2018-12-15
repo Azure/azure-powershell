@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Fetches containers registered to the vault according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupContainer"),OutputType(typeof(ContainerBase))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupContainer"), OutputType(typeof(ContainerBase))]
     public class GetAzureRmRecoveryServicesBackupContainer : RSBackupVaultCmdletBase
     {
         /// <summary>
@@ -43,14 +43,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         [ValidateSet("AzureVM", "MARS", "AzureSQL", "AzureStorage")]
         public string BackupManagementType { get; set; }
-
-        /// <summary>
-        /// Friendly name of the container(s) to be fetched. This will be deprecated.
-        /// </summary>
-        [Parameter(Mandatory = false, Position = 3,
-            HelpMessage = ParamHelpMsgs.Container.Name)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
 
         /// <summary>
         /// Friendly name of the container(s) to be fetched.
@@ -106,7 +98,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { VaultParams.ResourceGroupName, resourceGroupName },
                         { ContainerParams.ContainerType, ContainerType },
                         { ContainerParams.BackupManagementType, backupManagementTypeNullable },
-                        { ContainerParams.Name, Name },
                         { ContainerParams.FriendlyName, FriendlyName },
                         { ContainerParams.ResourceGroupName, ResourceGroupName },
                         { ContainerParams.Status, Status },

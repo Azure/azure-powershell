@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null,
             string vaultLocation = null)
         {
-            vaultLocation = vaultLocation ?? BmsAdapter.GetResourceLocation();
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
             string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);

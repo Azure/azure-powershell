@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands
 {
     /// <summary>
-    /// 'Get-AzureRmServiceBusKey' Cmdlet gives key detials for the given Authorization Rule
+    /// 'Get-AzServiceBusKey' Cmdlet gives key detials for the given Authorization Rule
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSListKeysAttributes))]
     public class GetAzureServiceBusKey : AzureServiceBusCmdletBase

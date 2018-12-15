@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 {
 	/// <summary>
-	/// Defines the Set-AzureRmSqlServerDnsAlias cmdlet
+	/// Defines the Set-AzSqlServerDnsAlias cmdlet
 	/// </summary>
 	[Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerDnsAlias",SupportsShouldProcess = true)]
 	[OutputType(typeof(Model.AzureSqlServerDnsAliasModel))]

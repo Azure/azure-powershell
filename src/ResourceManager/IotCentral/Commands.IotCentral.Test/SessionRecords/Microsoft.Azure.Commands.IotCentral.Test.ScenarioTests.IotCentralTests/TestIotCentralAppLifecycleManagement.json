@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4802955f-267b-43f0-8dff-0548b0d28938"
+          "f66c7901-1402-4a21-b431-d119a9126500"
         ],
         "accept-language": [
           "en-US"
@@ -27,13 +27,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "9eedb0e5-7384-45d0-aade-09b61c64173e"
+          "dd22575f-315f-40a9-bc2a-d6a1f9c37e6c"
         ],
         "x-ms-correlation-request-id": [
-          "9eedb0e5-7384-45d0-aade-09b61c64173e"
+          "dd22575f-315f-40a9-bc2a-d6a1f9c37e6c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181641Z:9eedb0e5-7384-45d0-aade-09b61c64173e"
+          "WESTUS2:20181115T175446Z:dd22575f-315f-40a9-bc2a-d6a1f9c37e6c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:16:40 GMT"
+          "Thu, 15 Nov 2018 17:54:46 GMT"
         ],
         "Content-Length": [
           "976"
@@ -61,13 +61,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourcegroups/ps5920?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlZ3JvdXBzL3BzNTkyMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourcegroups/ps6502?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlZ3JvdXBzL3BzNjUwMj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West Europe\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3d1497d1-13d4-4052-8929-756c34f1e529"
+          "f1ab013a-fc74-4bd6-be59-792c0e68ff2d"
         ],
         "accept-language": [
           "en-US"
@@ -93,13 +93,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "af7245ae-9f63-4a48-9064-d7362077ef2f"
+          "0214fea9-1282-42fd-ad1b-51f869e64c06"
         ],
         "x-ms-correlation-request-id": [
-          "af7245ae-9f63-4a48-9064-d7362077ef2f"
+          "0214fea9-1282-42fd-ad1b-51f869e64c06"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181644Z:af7245ae-9f63-4a48-9064-d7362077ef2f"
+          "WESTUS2:20181115T175449Z:0214fea9-1282-42fd-ad1b-51f869e64c06"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:16:43 GMT"
+          "Thu, 15 Nov 2018 17:54:49 GMT"
         ],
         "Content-Length": [
           "169"
@@ -123,17 +123,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920\",\r\n  \"name\": \"ps5920\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502\",\r\n  \"name\": \"ps6502\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
       "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/providers/Microsoft.IoTCentral/checkNameAvailability?api-version=2018-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW9UQ2VudHJhbC9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"ps3523\",\r\n  \"type\": \"IotApps\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"ps816\",\r\n  \"type\": \"IoTApps\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "428498a2-95fe-42e6-9661-5732ac5528af"
+          "c3ab938b-ade7-41cc-ac4b-1184143754ef"
         ],
         "accept-language": [
           "en-US"
@@ -148,7 +148,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "46"
+          "45"
         ]
       },
       "ResponseHeaders": {
@@ -159,40 +159,46 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "0ef81045-35f1-4d91-8731-e9b7f5f11415"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodnortheurope01"
+          "183d425d-95a9-4abc-8fe0-8e2aa8b1e96d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodnortheurope02"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: E5EFD7CF94C34E8C9D25F7513B3EA22F Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:16:45Z"
+          "Ref A: 90E3D0C8F5C84970BBB848269605A1C4 Ref B: CO1EDGE0118 Ref C: 2018-11-15T17:54:51Z"
         ],
         "x-ms-correlation-request-id": [
-          "4423fd69-abce-46c6-814a-a05bbfc916dd"
+          "796f0e30-f03f-4aeb-b015-471258cd0eb1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181645Z:4423fd69-abce-46c6-814a-a05bbfc916dd"
+          "WESTUS2:20181115T175451Z:796f0e30-f03f-4aeb-b015-471258cd0eb1"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:16:45 GMT"
+          "Thu, 15 Nov 2018 17:54:50 GMT"
         ],
         "ETag": [
           "W/\"16-4/x+wI91pK3bZiWtoOg+Zr/n2HE\""
-        ],
-        "X-Powered-By": [
-          "Express"
         ],
         "Content-Length": [
           "22"
@@ -208,10 +214,10 @@
       "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/providers/Microsoft.IoTCentral/checkNameAvailability?api-version=2018-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW9UQ2VudHJhbC9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"ps3523-2\",\r\n  \"type\": \"IotApps\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"ps816-2\",\r\n  \"type\": \"IoTApps\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "05dd9a93-0ee1-4bc9-8cee-1d4ad91de9bb"
+          "005253fc-cf24-4bfe-ba4f-a3a7f6914c17"
         ],
         "accept-language": [
           "en-US"
@@ -226,7 +232,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "48"
+          "47"
         ]
       },
       "ResponseHeaders": {
@@ -234,43 +240,49 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1196"
         ],
         "x-ms-request-id": [
-          "4eb2cb3c-27b0-4e88-916c-85e92585b35a"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodeastus02"
+          "decd6923-c0df-4099-8cbf-9b50893e9dde"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodeastus03"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 0ECC207099D347C28D59C671070C02B5 Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:17:24Z"
+          "Ref A: E5D7285121334F4793C31CE152392DB3 Ref B: CO1EDGE0118 Ref C: 2018-11-15T17:55:30Z"
         ],
         "x-ms-correlation-request-id": [
-          "24d80bd0-8854-493a-977b-f57735786805"
+          "e0815b5b-24bd-4f14-a815-aa57b061ccc3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181724Z:24d80bd0-8854-493a-977b-f57735786805"
+          "WESTUS2:20181115T175530Z:e0815b5b-24bd-4f14-a815-aa57b061ccc3"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:17:23 GMT"
+          "Thu, 15 Nov 2018 17:55:29 GMT"
         ],
         "ETag": [
           "W/\"16-4/x+wI91pK3bZiWtoOg+Zr/n2HE\""
-        ],
-        "X-Powered-By": [
-          "Express"
         ],
         "Content-Length": [
           "22"
@@ -283,13 +295,181 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourcegroups/ps5920?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlZ3JvdXBzL3BzNTkyMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/providers/Microsoft.IoTCentral/checkSubdomainAvailability?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW9UQ2VudHJhbC9jaGVja1N1YmRvbWFpbkF2YWlsYWJpbGl0eT9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"name\": \"ps816subdomain\",\r\n  \"type\": \"IoTApps\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3111d1f5-273e-4b9a-866a-1c850629c41d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.IotCentral.IotCentralClient/2.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "54"
+        ]
+      },
+      "ResponseHeaders": {
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "cdf43321-bac2-4356-9fcc-2ebe4cd4b9bd"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodwesteurope01"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 500AA5360E1A4E8E8EC9FF717C5A9A78 Ref B: CO1EDGE0118 Ref C: 2018-11-15T17:54:52Z"
+        ],
+        "x-ms-correlation-request-id": [
+          "146eed00-828a-4b1e-b1aa-550cc337a4a1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181115T175452Z:146eed00-828a-4b1e-b1aa-550cc337a4a1"
+        ],
+        "Cache-Control": [
+          "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
+        ],
+        "Date": [
+          "Thu, 15 Nov 2018 17:54:51 GMT"
+        ],
+        "ETag": [
+          "W/\"16-4/x+wI91pK3bZiWtoOg+Zr/n2HE\""
+        ],
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"nameAvailable\": true\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/providers/Microsoft.IoTCentral/checkSubdomainAvailability?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW9UQ2VudHJhbC9jaGVja1N1YmRvbWFpbkF2YWlsYWJpbGl0eT9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"name\": \"ps816-2\",\r\n  \"type\": \"IoTApps\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e19617a1-0679-475a-ba73-911ea1a9beae"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.IotCentral.IotCentralClient/2.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "47"
+        ]
+      },
+      "ResponseHeaders": {
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-request-id": [
+          "f64ea370-d34c-4460-bb49-43a49be310d5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodwesteurope03"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B4E45E27BD5F4B81BFD4D676F911DB24 Ref B: CO1EDGE0118 Ref C: 2018-11-15T17:55:31Z"
+        ],
+        "x-ms-correlation-request-id": [
+          "d100fe5a-3935-42c7-96e4-4306118c2a2d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181115T175531Z:d100fe5a-3935-42c7-96e4-4306118c2a2d"
+        ],
+        "Cache-Control": [
+          "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
+        ],
+        "Date": [
+          "Thu, 15 Nov 2018 17:55:31 GMT"
+        ],
+        "ETag": [
+          "W/\"16-4/x+wI91pK3bZiWtoOg+Zr/n2HE\""
+        ],
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"nameAvailable\": true\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourcegroups/ps6502?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlZ3JvdXBzL3BzNjUwMj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "72c58bf3-6567-4515-adfc-66ed4d51dcac"
+          "0f9ce63a-f050-4e49-a7b0-13ab0bee0ab2"
         ],
         "accept-language": [
           "en-US"
@@ -309,13 +489,13 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "49eb1713-c44c-4254-80c5-37c8acf9ab17"
+          "fcd65f53-46d9-4fea-ab75-25fd266e7094"
         ],
         "x-ms-correlation-request-id": [
-          "49eb1713-c44c-4254-80c5-37c8acf9ab17"
+          "fcd65f53-46d9-4fea-ab75-25fd266e7094"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181645Z:49eb1713-c44c-4254-80c5-37c8acf9ab17"
+          "WESTUS2:20181115T175452Z:fcd65f53-46d9-4fea-ab75-25fd266e7094"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -327,7 +507,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:16:45 GMT"
+          "Thu, 15 Nov 2018 17:54:52 GMT"
         ],
         "Content-Length": [
           "169"
@@ -339,17 +519,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920\",\r\n  \"name\": \"ps5920\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502\",\r\n  \"name\": \"ps6502\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourcegroups/ps5920?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlZ3JvdXBzL3BzNTkyMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourcegroups/ps6502?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlZ3JvdXBzL3BzNjUwMj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "02553295-a952-4901-a407-dab2c260121e"
+          "8c8aebb2-5d64-468a-9397-65a83c3fc6f9"
         ],
         "accept-language": [
           "en-US"
@@ -369,13 +549,13 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "ff18f252-0ea4-4969-8ab8-d611c01312ba"
+          "0266422f-9a89-4276-a48b-ce13d82c1615"
         ],
         "x-ms-correlation-request-id": [
-          "ff18f252-0ea4-4969-8ab8-d611c01312ba"
+          "0266422f-9a89-4276-a48b-ce13d82c1615"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181724Z:ff18f252-0ea4-4969-8ab8-d611c01312ba"
+          "WESTUS2:20181115T175531Z:0266422f-9a89-4276-a48b-ce13d82c1615"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -387,7 +567,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:17:23 GMT"
+          "Thu, 15 Nov 2018 17:55:31 GMT"
         ],
         "Content-Length": [
           "169"
@@ -399,17 +579,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920\",\r\n  \"name\": \"ps5920\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502\",\r\n  \"name\": \"ps6502\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczM1MjM/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczgxNj9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Custom IoT Central App DisplayName\",\r\n    \"subdomain\": \"ps3523subdomain\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Custom IoT Central App DisplayName\",\r\n    \"subdomain\": \"ps816subdomain\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c8945005-f01d-44ef-8edd-0f30a54ecba0"
+          "26e8577c-62a1-4092-b032-c5e463bec0ad"
         ],
         "accept-language": [
           "en-US"
@@ -424,62 +604,68 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "228"
+          "227"
         ]
       },
       "ResponseHeaders": {
         "x-ms-request-id": [
-          "10755e4f-ff7a-4dbb-b3fe-e8bbf07f50d8"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodwesteurope02"
+          "6b27218f-1afb-4b04-8d92-58e4fa1df1cd"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodeastus203"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 3D6D64DC762E439B8AC18B9DDB62811A Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:16:50Z"
+          "Ref A: AAD03A1AAD644E19948B3BCEFAD89AC5 Ref B: CO1EDGE0118 Ref C: 2018-11-15T17:54:56Z"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "d5919f23-7c82-42c1-8148-7eeac9cfd0f3"
+          "a678e98d-5206-4915-97ad-ca9c8de7af4f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181651Z:d5919f23-7c82-42c1-8148-7eeac9cfd0f3"
+          "WESTUS2:20181115T175457Z:a678e98d-5206-4915-97ad-ca9c8de7af4f"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:16:50 GMT"
+          "Thu, 15 Nov 2018 17:54:56 GMT"
         ],
         "ETag": [
-          "\"6000a3c5-0000-0000-0000-5bdb43120000\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "\"17000006-0000-0000-0000-5bedb2ef0000\""
         ],
         "Content-Length": [
-          "591"
+          "606"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523\",\r\n  \"name\": \"ps3523\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"ce683678-f588-4ed0-a34e-5d73cc3c2937\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"Custom IoT Central App DisplayName\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"subdomain\": \"ps3523subdomain\",\r\n    \"createdDate\": \"2018-11-01T18:16:50.23Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"6000a3c5-0000-0000-0000-5bdb43120000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816\",\r\n  \"name\": \"ps816\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"03281e96-49d2-4c13-827d-8f47b2348c84\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"Custom IoT Central App DisplayName\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"capabilities\": {},\r\n    \"subdomain\": \"ps816subdomain\",\r\n    \"createdDate\": \"2018-11-15T17:54:55.683Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"17000006-0000-0000-0000-5bedb2ef0000\\\"\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczM1MjM/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczgxNj9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -498,59 +684,65 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "545ca638-4fef-41bf-a853-49757c339439"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodnortheurope01"
+          "6136a682-721c-4790-bb51-1670f8b08b8c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodwestus02"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 39541CB560F645B9B7E7D2ADA8E27E69 Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:17:22Z"
+          "Ref A: 21687BC3CD4549D1B37A37337C789381 Ref B: CO1EDGE0118 Ref C: 2018-11-15T17:55:27Z"
         ],
         "x-ms-correlation-request-id": [
-          "f4338a7b-3ceb-4a4f-9e4a-3f65a1ad70c4"
+          "5dfd4e28-6960-4684-accf-5e5de67c9fb9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181722Z:f4338a7b-3ceb-4a4f-9e4a-3f65a1ad70c4"
+          "WESTUS2:20181115T175527Z:5dfd4e28-6960-4684-accf-5e5de67c9fb9"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:17:21 GMT"
+          "Thu, 15 Nov 2018 17:55:27 GMT"
         ],
         "ETag": [
-          "W/\"6000a3c5-0000-0000-0000-5bdb43120000\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "W/\"17000006-0000-0000-0000-5bedb2ef0000\""
         ],
         "Content-Length": [
-          "591"
+          "606"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523\",\r\n  \"name\": \"ps3523\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"ce683678-f588-4ed0-a34e-5d73cc3c2937\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"Custom IoT Central App DisplayName\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"subdomain\": \"ps3523subdomain\",\r\n    \"createdDate\": \"2018-11-01T18:16:50.23Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"6000a3c5-0000-0000-0000-5bdb43120000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816\",\r\n  \"name\": \"ps816\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"03281e96-49d2-4c13-827d-8f47b2348c84\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"Custom IoT Central App DisplayName\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"capabilities\": {},\r\n    \"subdomain\": \"ps816subdomain\",\r\n    \"createdDate\": \"2018-11-15T17:54:55.683Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"17000006-0000-0000-0000-5bedb2ef0000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczM1MjM/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczgxNj9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "86b2bab5-f35b-4e41-b700-62f248a7474e"
+          "8afe4767-a3f4-4583-a68f-fe0c15adcf89"
         ],
         "accept-language": [
           "en-US"
@@ -570,59 +762,65 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "6349dffb-b16a-4b2b-bd75-b999daa9c413"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodwesteurope02"
+          "66d58762-14ba-43bd-b808-e33234a4de15"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodnortheurope02"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 5ECE9BD3D96E4591A7DD5E3049E9D161 Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:17:22Z"
+          "Ref A: 5E23A228C3564ABC994E7CA488D1675E Ref B: CO1EDGE0118 Ref C: 2018-11-15T17:55:28Z"
         ],
         "x-ms-correlation-request-id": [
-          "e8528af7-1096-4ff8-a6ed-1f0fc755ed85"
+          "3f3604fb-2be8-4641-ad99-f3c8c1d271b6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181722Z:e8528af7-1096-4ff8-a6ed-1f0fc755ed85"
+          "WESTUS2:20181115T175528Z:3f3604fb-2be8-4641-ad99-f3c8c1d271b6"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:17:22 GMT"
+          "Thu, 15 Nov 2018 17:55:27 GMT"
         ],
         "ETag": [
-          "W/\"6000a3c5-0000-0000-0000-5bdb43120000\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "W/\"17000006-0000-0000-0000-5bedb2ef0000\""
         ],
         "Content-Length": [
-          "591"
+          "606"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523\",\r\n  \"name\": \"ps3523\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"ce683678-f588-4ed0-a34e-5d73cc3c2937\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"Custom IoT Central App DisplayName\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"subdomain\": \"ps3523subdomain\",\r\n    \"createdDate\": \"2018-11-01T18:16:50.23Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"6000a3c5-0000-0000-0000-5bdb43120000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816\",\r\n  \"name\": \"ps816\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"03281e96-49d2-4c13-827d-8f47b2348c84\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"Custom IoT Central App DisplayName\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"capabilities\": {},\r\n    \"subdomain\": \"ps816subdomain\",\r\n    \"createdDate\": \"2018-11-15T17:54:55.683Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"17000006-0000-0000-0000-5bedb2ef0000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczM1MjM/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczgxNj9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "244ac22c-893f-4eee-be7e-1ca1dbfeeb72"
+          "6fb57d1f-1d43-4898-a544-8c4a536ce305"
         ],
         "accept-language": [
           "en-US"
@@ -642,59 +840,65 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "8bbec07e-1f53-4163-b1a2-19822f165be2"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodeastus01"
+          "36810e21-c9a7-4406-a9a1-b681b9351da5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodwesteurope01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: A642E11E810545A695FC106ABA8E3D8C Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:17:23Z"
+          "Ref A: 90778869FCBD4673B1561DEF0D6B945B Ref B: CO1EDGE0118 Ref C: 2018-11-15T17:55:29Z"
         ],
         "x-ms-correlation-request-id": [
-          "b2701d6a-7bb2-452a-b9e5-8f786ed34dab"
+          "eec5524f-e18a-4778-840e-0c34331b8476"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181723Z:b2701d6a-7bb2-452a-b9e5-8f786ed34dab"
+          "WESTUS2:20181115T175529Z:eec5524f-e18a-4778-840e-0c34331b8476"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:17:23 GMT"
+          "Thu, 15 Nov 2018 17:55:28 GMT"
         ],
         "ETag": [
-          "W/\"6000a3c5-0000-0000-0000-5bdb43120000\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "W/\"17000006-0000-0000-0000-5bedb2ef0000\""
         ],
         "Content-Length": [
-          "591"
+          "606"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523\",\r\n  \"name\": \"ps3523\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"ce683678-f588-4ed0-a34e-5d73cc3c2937\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"Custom IoT Central App DisplayName\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"subdomain\": \"ps3523subdomain\",\r\n    \"createdDate\": \"2018-11-01T18:16:50.23Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"6000a3c5-0000-0000-0000-5bdb43120000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816\",\r\n  \"name\": \"ps816\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"03281e96-49d2-4c13-827d-8f47b2348c84\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"Custom IoT Central App DisplayName\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"capabilities\": {},\r\n    \"subdomain\": \"ps816subdomain\",\r\n    \"createdDate\": \"2018-11-15T17:54:55.683Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"17000006-0000-0000-0000-5bedb2ef0000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczM1MjM/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczgxNj9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a3445747-96ed-4ddb-bfeb-28e044ce1cec"
+          "8c1906c3-250a-4d49-ba29-b1905ff12a17"
         ],
         "accept-language": [
           "en-US"
@@ -714,59 +918,65 @@
           "11991"
         ],
         "x-ms-request-id": [
-          "f4b23784-102c-4440-a0ad-21ee36a33bfb"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodnortheurope01"
+          "252994ac-34c2-4701-ad18-7e3306810419"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodwestus02"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 121DBB7026C54536BE69733DDA35DB07 Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:18:03Z"
+          "Ref A: 2D9EEC0C2A8842F28FCA6B0811D6B24E Ref B: CO1EDGE0319 Ref C: 2018-11-15T17:56:11Z"
         ],
         "x-ms-correlation-request-id": [
-          "86133b37-52e6-4ff1-a415-8b9ee199e5b5"
+          "b194f473-b866-480f-b1d8-443fa4133a08"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181803Z:86133b37-52e6-4ff1-a415-8b9ee199e5b5"
+          "WESTUS2:20181115T175611Z:b194f473-b866-480f-b1d8-443fa4133a08"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:18:02 GMT"
+          "Thu, 15 Nov 2018 17:56:11 GMT"
         ],
         "ETag": [
-          "W/\"6000a3c5-0000-0000-0000-5bdb43120000\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "W/\"17000006-0000-0000-0000-5bedb2ef0000\""
         ],
         "Content-Length": [
-          "591"
+          "606"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523\",\r\n  \"name\": \"ps3523\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"ce683678-f588-4ed0-a34e-5d73cc3c2937\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"Custom IoT Central App DisplayName\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"subdomain\": \"ps3523subdomain\",\r\n    \"createdDate\": \"2018-11-01T18:16:50.23Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"6000a3c5-0000-0000-0000-5bdb43120000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816\",\r\n  \"name\": \"ps816\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"03281e96-49d2-4c13-827d-8f47b2348c84\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"Custom IoT Central App DisplayName\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"capabilities\": {},\r\n    \"subdomain\": \"ps816subdomain\",\r\n    \"createdDate\": \"2018-11-15T17:54:55.683Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"17000006-0000-0000-0000-5bedb2ef0000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczM1MjM/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczgxNj9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1666ab2b-2845-4f66-b11e-53f421fff9a2"
+          "00f4a8d8-476f-4239-9329-226f18a9a53c"
         ],
         "accept-language": [
           "en-US"
@@ -786,59 +996,65 @@
           "11990"
         ],
         "x-ms-request-id": [
-          "83cca573-7e3e-4088-aa8c-3e07744c1139"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodwesteurope02"
+          "aa84796b-2bad-4a88-afc1-382d14d0262e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodeastus203"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 1F722E1473354503A5DC3583DC49D3FA Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:18:05Z"
+          "Ref A: 3527B527AA2C4ABA9A121C88E4C42845 Ref B: CO1EDGE0319 Ref C: 2018-11-15T17:56:14Z"
         ],
         "x-ms-correlation-request-id": [
-          "e7043e5d-1914-482e-97e8-3dcd9aaa3ec6"
+          "69109e6d-9752-45d9-808c-60a0c5dd078b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181805Z:e7043e5d-1914-482e-97e8-3dcd9aaa3ec6"
+          "WESTUS2:20181115T175613Z:69109e6d-9752-45d9-808c-60a0c5dd078b"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:18:04 GMT"
+          "Thu, 15 Nov 2018 17:56:13 GMT"
         ],
         "ETag": [
-          "W/\"600070d2-0000-0000-0000-5bdb435c0000\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "W/\"17001506-0000-0000-0000-5bedb33c0000\""
         ],
         "Content-Length": [
-          "593"
+          "649"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523\",\r\n  \"name\": \"ps3523\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"tt2\": \"tv2\",\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"ce683678-f588-4ed0-a34e-5d73cc3c2937\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"New Custom Display Name.\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"subdomain\": \"ps3523subdomain\",\r\n    \"createdDate\": \"2018-11-01T18:18:04.047Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"600070d2-0000-0000-0000-5bdb435c0000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816\",\r\n  \"name\": \"ps816\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"tt2\": \"tv2\",\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"03281e96-49d2-4c13-827d-8f47b2348c84\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"New Custom Display Name.\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"capabilities\": {},\r\n    \"subdomain\": \"ps816subdomain\",\r\n    \"createdDate\": \"2018-11-15T17:54:55.683Z\",\r\n    \"lastUpdated\": \"2018-11-15T17:56:12.439Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"17001506-0000-0000-0000-5bedb33c0000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcz9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcz9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ae513e27-1abb-4cd4-afae-0185f31dc0f4"
+          "aaee4621-cc60-4d69-9cde-a3f544fbab7e"
         ],
         "accept-language": [
           "en-US"
@@ -858,59 +1074,65 @@
           "11996"
         ],
         "x-ms-request-id": [
-          "3f881287-b4f0-4259-b2db-44e0fd3e9419"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodeastus02"
+          "1fdf2bc8-5f49-4e8a-9099-d5320479e267"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodwestus03"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 54A6EA386AA241B391CA8E1E18AD1EC6 Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:17:23Z"
+          "Ref A: 5C1031D6A1584DFB9F5B30D063AB9DDC Ref B: CO1EDGE0118 Ref C: 2018-11-15T17:55:30Z"
         ],
         "x-ms-correlation-request-id": [
-          "765e7b36-46b7-41b6-b6b1-75bfeac1a2a7"
+          "05de52b6-8b8d-400d-b7ae-12824b2f5177"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181723Z:765e7b36-46b7-41b6-b6b1-75bfeac1a2a7"
+          "WESTUS2:20181115T175530Z:05de52b6-8b8d-400d-b7ae-12824b2f5177"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:17:23 GMT"
+          "Thu, 15 Nov 2018 17:55:29 GMT"
         ],
         "ETag": [
-          "W/\"26b-7LdfQgShXGh5yhzfeJIKJka9n1w\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "W/\"27a-UNhpL2rVNcqbFdyPUnWvqvZKt64\""
         ],
         "Content-Length": [
-          "619"
+          "634"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523\",\r\n      \"name\": \"ps3523\",\r\n      \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n      \"location\": \"westeurope\",\r\n      \"tags\": {\r\n        \"key1\": \"value1\"\r\n      },\r\n      \"properties\": {\r\n        \"applicationId\": \"ce683678-f588-4ed0-a34e-5d73cc3c2937\",\r\n        \"state\": \"created\",\r\n        \"displayName\": \"Custom IoT Central App DisplayName\",\r\n        \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"subdomain\": \"ps3523subdomain\",\r\n        \"createdDate\": \"2018-11-01T18:16:50.23Z\",\r\n        \"template\": \"iotc-default@1.0.0\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S1\"\r\n      },\r\n      \"etag\": \"\\\"6000a3c5-0000-0000-0000-5bdb43120000\\\"\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816\",\r\n      \"name\": \"ps816\",\r\n      \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n      \"location\": \"westeurope\",\r\n      \"tags\": {\r\n        \"key1\": \"value1\"\r\n      },\r\n      \"properties\": {\r\n        \"applicationId\": \"03281e96-49d2-4c13-827d-8f47b2348c84\",\r\n        \"state\": \"created\",\r\n        \"displayName\": \"Custom IoT Central App DisplayName\",\r\n        \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"capabilities\": {},\r\n        \"subdomain\": \"ps816subdomain\",\r\n        \"createdDate\": \"2018-11-15T17:54:55.683Z\",\r\n        \"template\": \"iotc-default@1.0.0\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S1\"\r\n      },\r\n      \"etag\": \"\\\"17000006-0000-0000-0000-5bedb2ef0000\\\"\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcz9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcz9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e76e9f6a-dc28-47a9-aa95-6dd593180897"
+          "3d69fcff-69dd-4094-aec2-3378d7446849"
         ],
         "accept-language": [
           "en-US"
@@ -930,59 +1152,65 @@
           "11993"
         ],
         "x-ms-request-id": [
-          "2f9daa78-ca42-48f9-acbb-ca46040cdd51"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodwesteurope03"
+          "c8e34f9d-4114-4b8e-843c-3cecf6faeca5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodeastus03"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 7F4A433968D245D8AF6AA3F41959B25B Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:18:00Z"
+          "Ref A: 3E3379DC2A1841F9B7D1F9ED76CE8C3D Ref B: CO1EDGE0319 Ref C: 2018-11-15T17:56:09Z"
         ],
         "x-ms-correlation-request-id": [
-          "017f6a4e-ff42-454b-8d4a-dd0731224d12"
+          "8fade3c0-bc90-4815-bc9c-07d39829e0fa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181800Z:017f6a4e-ff42-454b-8d4a-dd0731224d12"
+          "WESTUS2:20181115T175609Z:8fade3c0-bc90-4815-bc9c-07d39829e0fa"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:17:59 GMT"
+          "Thu, 15 Nov 2018 17:56:08 GMT"
         ],
         "ETag": [
-          "W/\"485-Lw3ApSrb4QimpubkMaNm4P4wu/A\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "W/\"4a2-vgokHHzN5hNSvAr9Sy92uzbjyKA\""
         ],
         "Content-Length": [
-          "1157"
+          "1186"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523\",\r\n      \"name\": \"ps3523\",\r\n      \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n      \"location\": \"westeurope\",\r\n      \"tags\": {\r\n        \"key1\": \"value1\"\r\n      },\r\n      \"properties\": {\r\n        \"applicationId\": \"ce683678-f588-4ed0-a34e-5d73cc3c2937\",\r\n        \"state\": \"created\",\r\n        \"displayName\": \"Custom IoT Central App DisplayName\",\r\n        \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"subdomain\": \"ps3523subdomain\",\r\n        \"createdDate\": \"2018-11-01T18:16:50.23Z\",\r\n        \"template\": \"iotc-default@1.0.0\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S1\"\r\n      },\r\n      \"etag\": \"\\\"6000a3c5-0000-0000-0000-5bdb43120000\\\"\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523-2\",\r\n      \"name\": \"ps3523-2\",\r\n      \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n      \"location\": \"westeurope\",\r\n      \"properties\": {\r\n        \"applicationId\": \"bd6b0f73-75b2-44f8-a06e-b597c394be77\",\r\n        \"state\": \"created\",\r\n        \"displayName\": \"ps3523-2\",\r\n        \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"subdomain\": \"ps3523-2\",\r\n        \"createdDate\": \"2018-11-01T18:17:26.641Z\",\r\n        \"template\": \"iotc-default@1.0.0\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S1\"\r\n      },\r\n      \"etag\": \"\\\"010005d2-0000-0000-0000-5bdb43360000\\\"\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816\",\r\n      \"name\": \"ps816\",\r\n      \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n      \"location\": \"westeurope\",\r\n      \"tags\": {\r\n        \"key1\": \"value1\"\r\n      },\r\n      \"properties\": {\r\n        \"applicationId\": \"03281e96-49d2-4c13-827d-8f47b2348c84\",\r\n        \"state\": \"created\",\r\n        \"displayName\": \"Custom IoT Central App DisplayName\",\r\n        \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"capabilities\": {},\r\n        \"subdomain\": \"ps816subdomain\",\r\n        \"createdDate\": \"2018-11-15T17:54:55.683Z\",\r\n        \"template\": \"iotc-default@1.0.0\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S1\"\r\n      },\r\n      \"etag\": \"\\\"17000006-0000-0000-0000-5bedb2ef0000\\\"\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816-2\",\r\n      \"name\": \"ps816-2\",\r\n      \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n      \"location\": \"westeurope\",\r\n      \"properties\": {\r\n        \"applicationId\": \"d1e75b0b-535c-4342-ae01-787a2162f4d0\",\r\n        \"state\": \"created\",\r\n        \"displayName\": \"ps816-2\",\r\n        \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"capabilities\": {},\r\n        \"subdomain\": \"ps816-2\",\r\n        \"createdDate\": \"2018-11-15T17:55:36.584Z\",\r\n        \"template\": \"iotc-default@1.0.0\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S1\"\r\n      },\r\n      \"etag\": \"\\\"09000099-0000-0000-0000-5bedb3180000\\\"\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcz9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcz9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8cecd041-bfec-4b01-a1e7-984eea5d8346"
+          "7dc55cf7-ac02-4e78-8e39-cf63cf721b34"
         ],
         "accept-language": [
           "en-US"
@@ -1002,59 +1230,65 @@
           "11989"
         ],
         "x-ms-request-id": [
-          "c55c4628-7aaf-46f9-b5f6-95f99113ecc7"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodnortheurope01"
+          "59c6552e-a90e-4c1b-9417-84ccf1dcb3f8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodeastus203"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 5878A86FEE16419ABF75811CD9B89C6C Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:18:06Z"
+          "Ref A: 11737926889546F5B43CD6474404BDD4 Ref B: CO1EDGE0319 Ref C: 2018-11-15T17:56:14Z"
         ],
         "x-ms-correlation-request-id": [
-          "0c8448bd-2721-412c-add5-874338b1c2cb"
+          "5ecb24ac-882a-4a41-aa2a-f20b0b5bdde4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181806Z:0c8448bd-2721-412c-add5-874338b1c2cb"
+          "WESTUS2:20181115T175614Z:5ecb24ac-882a-4a41-aa2a-f20b0b5bdde4"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:18:05 GMT"
+          "Thu, 15 Nov 2018 17:56:13 GMT"
         ],
         "ETag": [
-          "W/\"487-3VSfv8qAyDJ+ZZ2zh78HoUyJtgs\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "W/\"4cd-1gPJ+DK7LwCZG+IZxtecCMU9RaI\""
         ],
         "Content-Length": [
-          "1159"
+          "1229"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523\",\r\n      \"name\": \"ps3523\",\r\n      \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n      \"location\": \"westeurope\",\r\n      \"tags\": {\r\n        \"tt2\": \"tv2\",\r\n        \"key1\": \"value1\"\r\n      },\r\n      \"properties\": {\r\n        \"applicationId\": \"ce683678-f588-4ed0-a34e-5d73cc3c2937\",\r\n        \"state\": \"created\",\r\n        \"displayName\": \"New Custom Display Name.\",\r\n        \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"subdomain\": \"ps3523subdomain\",\r\n        \"createdDate\": \"2018-11-01T18:18:04.047Z\",\r\n        \"template\": \"iotc-default@1.0.0\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S1\"\r\n      },\r\n      \"etag\": \"\\\"600070d2-0000-0000-0000-5bdb435c0000\\\"\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523-2\",\r\n      \"name\": \"ps3523-2\",\r\n      \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n      \"location\": \"westeurope\",\r\n      \"properties\": {\r\n        \"applicationId\": \"bd6b0f73-75b2-44f8-a06e-b597c394be77\",\r\n        \"state\": \"created\",\r\n        \"displayName\": \"ps3523-2\",\r\n        \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"subdomain\": \"ps3523-2\",\r\n        \"createdDate\": \"2018-11-01T18:17:26.641Z\",\r\n        \"template\": \"iotc-default@1.0.0\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S1\"\r\n      },\r\n      \"etag\": \"\\\"010005d2-0000-0000-0000-5bdb43360000\\\"\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816\",\r\n      \"name\": \"ps816\",\r\n      \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n      \"location\": \"westeurope\",\r\n      \"tags\": {\r\n        \"tt2\": \"tv2\",\r\n        \"key1\": \"value1\"\r\n      },\r\n      \"properties\": {\r\n        \"applicationId\": \"03281e96-49d2-4c13-827d-8f47b2348c84\",\r\n        \"state\": \"created\",\r\n        \"displayName\": \"New Custom Display Name.\",\r\n        \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"capabilities\": {},\r\n        \"subdomain\": \"ps816subdomain\",\r\n        \"createdDate\": \"2018-11-15T17:54:55.683Z\",\r\n        \"lastUpdated\": \"2018-11-15T17:56:12.439Z\",\r\n        \"template\": \"iotc-default@1.0.0\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S1\"\r\n      },\r\n      \"etag\": \"\\\"17001506-0000-0000-0000-5bedb33c0000\\\"\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816-2\",\r\n      \"name\": \"ps816-2\",\r\n      \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n      \"location\": \"westeurope\",\r\n      \"properties\": {\r\n        \"applicationId\": \"d1e75b0b-535c-4342-ae01-787a2162f4d0\",\r\n        \"state\": \"created\",\r\n        \"displayName\": \"ps816-2\",\r\n        \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"capabilities\": {},\r\n        \"subdomain\": \"ps816-2\",\r\n        \"createdDate\": \"2018-11-15T17:55:36.584Z\",\r\n        \"template\": \"iotc-default@1.0.0\"\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"S1\"\r\n      },\r\n      \"etag\": \"\\\"09000099-0000-0000-0000-5bedb3180000\\\"\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcz9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcz9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b3903ce1-45bf-4e2e-b50f-e01b3dd9b35d"
+          "227f14d6-f6c5-4638-b3ca-31862b4e64c3"
         ],
         "accept-language": [
           "en-US"
@@ -1074,40 +1308,46 @@
           "11988"
         ],
         "x-ms-request-id": [
-          "75a52771-0dda-4c35-9a7f-3c318a736bfe"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodeastus01"
+          "a20644c1-ca84-4dc5-b2e0-447957c41c04"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodeastus203"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: AF4CF85597FF4C7EB91647535D55B84C Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:18:11Z"
+          "Ref A: 1B1FF28588FC466E93E3626A43D6A7D1 Ref B: CO1EDGE0319 Ref C: 2018-11-15T17:56:19Z"
         ],
         "x-ms-correlation-request-id": [
-          "4e3296d1-dcf6-469f-b7d0-cc8225c1135f"
+          "53e6619d-a8f5-4f0b-986d-687668710a4f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181811Z:4e3296d1-dcf6-469f-b7d0-cc8225c1135f"
+          "WESTUS2:20181115T175619Z:53e6619d-a8f5-4f0b-986d-687668710a4f"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:18:10 GMT"
+          "Thu, 15 Nov 2018 17:56:19 GMT"
         ],
         "ETag": [
           "W/\"1c-dKqXbMdy5UZTdLpCh8Bd74BJ2U8\""
-        ],
-        "X-Powered-By": [
-          "Express"
         ],
         "Content-Length": [
           "28"
@@ -1120,13 +1360,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523-2?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczM1MjMtMj9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816-2?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczgxNi0yP2FwaS12ZXJzaW9uPTIwMTgtMDktMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"ps3523-2\",\r\n    \"subdomain\": \"ps3523-2\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"location\": \"westeurope\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"ps816-2\",\r\n    \"subdomain\": \"ps816-2\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"location\": \"westeurope\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d27bf840-0a91-47a6-81b8-e2e583b4bed1"
+          "a2d5b318-30b8-44ea-84b0-396c30634543"
         ],
         "accept-language": [
           "en-US"
@@ -1141,62 +1381,68 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "154"
+          "152"
         ]
       },
       "ResponseHeaders": {
         "x-ms-request-id": [
-          "36f754fa-3f0c-49b7-aca3-61762ff87bee"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodwesteurope02"
+          "34039a01-29bd-4f51-a9a6-6ab5833903a6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodnortheurope03"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 0794E3A3268E472993969A2C8E937A63 Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:17:27Z"
+          "Ref A: 6AF48AF3CF7C4B9686FA555720305D1B Ref B: CO1EDGE0118 Ref C: 2018-11-15T17:55:37Z"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
-          "a816f27a-d3c6-408e-8c11-112fdfab7951"
+          "eb8b2e23-4863-49dc-aeac-245ca3364ecc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181727Z:a816f27a-d3c6-408e-8c11-112fdfab7951"
+          "WESTUS2:20181115T175537Z:eb8b2e23-4863-49dc-aeac-245ca3364ecc"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:17:27 GMT"
+          "Thu, 15 Nov 2018 17:55:36 GMT"
         ],
         "ETag": [
-          "\"010005d2-0000-0000-0000-5bdb43360000\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "\"09000099-0000-0000-0000-5bedb3180000\""
         ],
         "Content-Length": [
-          "537"
+          "551"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523-2\",\r\n  \"name\": \"ps3523-2\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"applicationId\": \"bd6b0f73-75b2-44f8-a06e-b597c394be77\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"ps3523-2\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"subdomain\": \"ps3523-2\",\r\n    \"createdDate\": \"2018-11-01T18:17:26.641Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"010005d2-0000-0000-0000-5bdb43360000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816-2\",\r\n  \"name\": \"ps816-2\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"applicationId\": \"d1e75b0b-535c-4342-ae01-787a2162f4d0\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"ps816-2\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"capabilities\": {},\r\n    \"subdomain\": \"ps816-2\",\r\n    \"createdDate\": \"2018-11-15T17:55:36.584Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"09000099-0000-0000-0000-5bedb3180000\\\"\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523-2?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczM1MjMtMj9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816-2?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczgxNi0yP2FwaS12ZXJzaW9uPTIwMTgtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1212,62 +1458,68 @@
           "Accept-Encoding"
         ],
         "x-ms-correlation-request-id": [
-          "227986bb-0db9-4b2c-91f7-fd11ac81795c"
+          "16903a62-5c7b-4b23-92a2-354d972d34c8"
         ],
         "x-ms-request-id": [
-          "de157c3e-9670-4421-b2d8-415788c09214"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodwesteurope03"
+          "cf0ba125-f6e7-4597-83c8-8a30d12e0100"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodeastus203"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 4BEE304397B54A9DB7C18EED419A9536 Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:17:59Z"
+          "Ref A: 2EDDCD44E9A845C8986B301F0C9858A1 Ref B: CO1EDGE0118 Ref C: 2018-11-15T17:56:08Z"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11995"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181759Z:227986bb-0db9-4b2c-91f7-fd11ac81795c"
+          "WESTUS2:20181115T175608Z:16903a62-5c7b-4b23-92a2-354d972d34c8"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:17:58 GMT"
+          "Thu, 15 Nov 2018 17:56:08 GMT"
         ],
         "ETag": [
-          "W/\"010005d2-0000-0000-0000-5bdb43360000\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "W/\"09000099-0000-0000-0000-5bedb3180000\""
         ],
         "Content-Length": [
-          "537"
+          "551"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523-2\",\r\n  \"name\": \"ps3523-2\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"applicationId\": \"bd6b0f73-75b2-44f8-a06e-b597c394be77\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"ps3523-2\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"subdomain\": \"ps3523-2\",\r\n    \"createdDate\": \"2018-11-01T18:17:26.641Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"010005d2-0000-0000-0000-5bdb43360000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816-2\",\r\n  \"name\": \"ps816-2\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"applicationId\": \"d1e75b0b-535c-4342-ae01-787a2162f4d0\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"ps816-2\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"capabilities\": {},\r\n    \"subdomain\": \"ps816-2\",\r\n    \"createdDate\": \"2018-11-15T17:55:36.584Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"09000099-0000-0000-0000-5bedb3180000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523-2?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczM1MjMtMj9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816-2?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczgxNi0yP2FwaS12ZXJzaW9uPTIwMTgtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "abd678d4-4dfe-4e89-999d-d488e98234e3"
+          "8c536065-4e78-4fa4-94fa-ec2af43cba68"
         ],
         "accept-language": [
           "en-US"
@@ -1287,59 +1539,65 @@
           "11994"
         ],
         "x-ms-request-id": [
-          "89f30db2-d02e-4c19-a43d-e7fbebae368b"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodeastus201"
+          "448fbf76-baa1-4954-8be3-7f04bd5fff17"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodeastus203"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: E3D733C135FD43B5AD46FE072FAAC04E Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:17:59Z"
+          "Ref A: 6A56FA33DFDD46CC93B95F5420CEA0F4 Ref B: CO1EDGE0319 Ref C: 2018-11-15T17:56:08Z"
         ],
         "x-ms-correlation-request-id": [
-          "b1a49a32-118a-4900-923d-cdfe34e8bdb3"
+          "02f7737d-f977-4ef5-8e3c-9fc2c8239c37"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181759Z:b1a49a32-118a-4900-923d-cdfe34e8bdb3"
+          "WESTUS2:20181115T175608Z:02f7737d-f977-4ef5-8e3c-9fc2c8239c37"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:17:58 GMT"
+          "Thu, 15 Nov 2018 17:56:08 GMT"
         ],
         "ETag": [
-          "W/\"010005d2-0000-0000-0000-5bdb43360000\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "W/\"09000099-0000-0000-0000-5bedb3180000\""
         ],
         "Content-Length": [
-          "537"
+          "551"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523-2\",\r\n  \"name\": \"ps3523-2\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"applicationId\": \"bd6b0f73-75b2-44f8-a06e-b597c394be77\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"ps3523-2\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"subdomain\": \"ps3523-2\",\r\n    \"createdDate\": \"2018-11-01T18:17:26.641Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"010005d2-0000-0000-0000-5bdb43360000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816-2\",\r\n  \"name\": \"ps816-2\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"applicationId\": \"d1e75b0b-535c-4342-ae01-787a2162f4d0\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"ps816-2\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"capabilities\": {},\r\n    \"subdomain\": \"ps816-2\",\r\n    \"createdDate\": \"2018-11-15T17:55:36.584Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"09000099-0000-0000-0000-5bedb3180000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourcegroups/ps5920empty?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlZ3JvdXBzL3BzNTkyMGVtcHR5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourcegroups/ps6502empty?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlZ3JvdXBzL3BzNjUwMmVtcHR5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West Europe\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1ceb5d23-1b25-41dc-9375-5c7bfa25516f"
+          "670b0956-ff3b-492c-8fb7-9c8373b6dafd"
         ],
         "accept-language": [
           "en-US"
@@ -1365,13 +1623,13 @@
           "1198"
         ],
         "x-ms-request-id": [
-          "11c5be95-6dfe-4aa8-92d9-2cd69dcbf87e"
+          "47fa3a5d-ad46-4cce-9d23-756569c1916e"
         ],
         "x-ms-correlation-request-id": [
-          "11c5be95-6dfe-4aa8-92d9-2cd69dcbf87e"
+          "47fa3a5d-ad46-4cce-9d23-756569c1916e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181802Z:11c5be95-6dfe-4aa8-92d9-2cd69dcbf87e"
+          "WESTUS2:20181115T175611Z:47fa3a5d-ad46-4cce-9d23-756569c1916e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1383,7 +1641,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:18:01 GMT"
+          "Thu, 15 Nov 2018 17:56:10 GMT"
         ],
         "Content-Length": [
           "179"
@@ -1395,17 +1653,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920empty\",\r\n  \"name\": \"ps5920empty\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502empty\",\r\n  \"name\": \"ps6502empty\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920empty/providers/Microsoft.IoTCentral/IoTApps?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMGVtcHR5L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW9UQ2VudHJhbC9Jb1RBcHBzP2FwaS12ZXJzaW9uPTIwMTgtMDktMDE=",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502empty/providers/Microsoft.IoTCentral/IoTApps?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMmVtcHR5L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW9UQ2VudHJhbC9Jb1RBcHBzP2FwaS12ZXJzaW9uPTIwMTgtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fa3b61ed-52ff-4518-b3de-2f09e72b6f06"
+          "c9b26e24-11b0-4339-8eb6-7d5142437710"
         ],
         "accept-language": [
           "en-US"
@@ -1425,40 +1683,46 @@
           "11992"
         ],
         "x-ms-request-id": [
-          "5d6765eb-63d6-49d6-839c-9f6a62a86b7a"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodeastus201"
+          "2b6a33bd-d465-40cd-baca-4b66c209a82b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodeastus03"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: B0BD9E9840B84B508802D744D316EE58 Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:18:02Z"
+          "Ref A: 4470E4E8EBCE4DB3B0B4DE92913FEE93 Ref B: CO1EDGE0319 Ref C: 2018-11-15T17:56:11Z"
         ],
         "x-ms-correlation-request-id": [
-          "7f841144-25d3-4ac7-a344-29513f54c8c5"
+          "83f5d4a1-eae6-4816-8d0e-5de1ce83bbec"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181802Z:7f841144-25d3-4ac7-a344-29513f54c8c5"
+          "WESTUS2:20181115T175611Z:83f5d4a1-eae6-4816-8d0e-5de1ce83bbec"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:18:01 GMT"
+          "Thu, 15 Nov 2018 17:56:10 GMT"
         ],
         "ETag": [
           "W/\"1c-dKqXbMdy5UZTdLpCh8Bd74BJ2U8\""
-        ],
-        "X-Powered-By": [
-          "Express"
         ],
         "Content-Length": [
           "28"
@@ -1471,13 +1735,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczM1MjM/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczgxNj9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"tags\": {\r\n    \"tt2\": \"tv2\",\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"displayName\": \"New Custom Display Name.\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"tags\": {\r\n    \"tt2\": \"tv2\",\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"displayName\": \"New Custom Display Name.\",\r\n    \"subdomain\": \"ps816subdomain\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b36000e6-5220-45c4-9274-677d9c2a8cac"
+          "a66da8b6-3cb7-4d70-84b4-a2130a86518f"
         ],
         "accept-language": [
           "en-US"
@@ -1492,7 +1756,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "135"
+          "171"
         ]
       },
       "ResponseHeaders": {
@@ -1500,62 +1764,68 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1193"
         ],
         "x-ms-request-id": [
-          "efc1f3cd-fdf1-4add-8b65-7145ca047888"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodwesteurope02"
+          "c7b31913-e1d6-4f22-a681-f004f546fcc9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodeastus02"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 85AFDEFD716B4BC7BF07BB8046A3FB72 Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:18:04Z"
+          "Ref A: 29DFACAD916641299D7B0F172C5C8198 Ref B: CO1EDGE0319 Ref C: 2018-11-15T17:56:12Z"
         ],
         "x-ms-correlation-request-id": [
-          "1dea2e1b-6d2d-4427-8310-6eb0e10f8275"
+          "df3468e5-15e6-4664-b658-01640a07a106"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181804Z:1dea2e1b-6d2d-4427-8310-6eb0e10f8275"
+          "WESTUS2:20181115T175613Z:df3468e5-15e6-4664-b658-01640a07a106"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:18:03 GMT"
+          "Thu, 15 Nov 2018 17:56:13 GMT"
         ],
         "ETag": [
-          "W/\"600070d2-0000-0000-0000-5bdb435c0000\""
-        ],
-        "X-Powered-By": [
-          "Express"
+          "W/\"17001506-0000-0000-0000-5bedb33c0000\""
         ],
         "Content-Length": [
-          "593"
+          "649"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523\",\r\n  \"name\": \"ps3523\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"tt2\": \"tv2\",\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"ce683678-f588-4ed0-a34e-5d73cc3c2937\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"New Custom Display Name.\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"subdomain\": \"ps3523subdomain\",\r\n    \"createdDate\": \"2018-11-01T18:18:04.047Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"600070d2-0000-0000-0000-5bdb435c0000\\\"\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816\",\r\n  \"name\": \"ps816\",\r\n  \"type\": \"Microsoft.IoTCentral/IoTApps\",\r\n  \"location\": \"westeurope\",\r\n  \"tags\": {\r\n    \"tt2\": \"tv2\",\r\n    \"key1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"applicationId\": \"03281e96-49d2-4c13-827d-8f47b2348c84\",\r\n    \"state\": \"created\",\r\n    \"displayName\": \"New Custom Display Name.\",\r\n    \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"capabilities\": {},\r\n    \"subdomain\": \"ps816subdomain\",\r\n    \"createdDate\": \"2018-11-15T17:54:55.683Z\",\r\n    \"lastUpdated\": \"2018-11-15T17:56:12.439Z\",\r\n    \"template\": \"iotc-default@1.0.0\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"etag\": \"\\\"17001506-0000-0000-0000-5bedb33c0000\\\"\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczM1MjM/YXBpLXZlcnNpb249MjAxOC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczgxNj9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6f19d1ac-17dd-4d1d-a822-094ad4ac8d64"
+          "3009a2ec-e52d-41b9-a0a1-95bdc3ed83f9"
         ],
         "accept-language": [
           "en-US"
@@ -1569,56 +1839,65 @@
       },
       "ResponseHeaders": {
         "x-ms-request-id": [
-          "7512574e-9084-4900-9e10-0733565f617d"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodeastus201"
+          "30cf3dc9-950d-40cc-bab6-1855505ffab6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodeastus203"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 50546F0D54D844069263465D28E2DCC2 Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:18:07Z"
+          "Ref A: 208D8B65C2F0402CB667B5789DB80BE0 Ref B: CO1EDGE0319 Ref C: 2018-11-15T17:56:15Z"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "264f0deb-0b90-43f1-997b-dbc19f700c33"
+          "54d21b23-e466-4e37-aa0a-4424e5a743fc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181809Z:264f0deb-0b90-43f1-997b-dbc19f700c33"
+          "WESTUS2:20181115T175616Z:54d21b23-e466-4e37-aa0a-4424e5a743fc"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:18:08 GMT"
-        ],
-        "X-Powered-By": [
-          "Express"
+          "Thu, 15 Nov 2018 17:56:16 GMT"
         ],
         "Content-Length": [
           "0"
+        ],
+        "Content-Type": [
+          "text/plain"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps5920/providers/Microsoft.IoTCentral/IoTApps/ps3523-2?api-version=2018-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNTkyMC9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczM1MjMtMj9hcGktdmVyc2lvbj0yMDE4LTA5LTAx",
+      "RequestUri": "/subscriptions/c75f6a44-0c50-4e42-b7ec-9ff5590b0944/resourceGroups/ps6502/providers/Microsoft.IoTCentral/IoTApps/ps816-2?api-version=2018-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzc1ZjZhNDQtMGM1MC00ZTQyLWI3ZWMtOWZmNTU5MGIwOTQ0L3Jlc291cmNlR3JvdXBzL3BzNjUwMi9wcm92aWRlcnMvTWljcm9zb2Z0LklvVENlbnRyYWwvSW9UQXBwcy9wczgxNi0yP2FwaS12ZXJzaW9uPTIwMTgtMDktMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d1cbbc8f-e21d-4f41-a67b-b78784484d15"
+          "14959766-4cf9-45fe-b03b-7aaaa6df9239"
         ],
         "accept-language": [
           "en-US"
@@ -1632,43 +1911,52 @@
       },
       "ResponseHeaders": {
         "x-ms-request-id": [
-          "90325d34-7d06-4ea4-83a4-5ed8bc957fea"
-        ],
-        "X-IoT-Version": [
-          "20181031.7"
-        ],
-        "X-IoT-Cluster": [
-          "iotcprodeastus02"
+          "1ccbe5c4-064f-4dd7-a902-7d67b4a3e095"
         ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "X-Download-Options": [
+          "noopen"
+        ],
+        "X-Frame-Options": [
+          "deny"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "X-IoT-Version": [
+          "20181114.4"
+        ],
+        "X-IoT-Cluster": [
+          "iotcprodwestus02"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 08240615C64242D3AB0398F521DC7786 Ref B: CO1EDGE0317 Ref C: 2018-11-01T18:18:09Z"
+          "Ref A: 2465EE159E524F77BF232FA656BCD93D Ref B: CO1EDGE0319 Ref C: 2018-11-15T17:56:18Z"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "e53519ca-e956-4a02-9372-76ef2c8120fb"
+          "1ea95203-3265-4d32-b036-61054085806e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20181101T181810Z:e53519ca-e956-4a02-9372-76ef2c8120fb"
+          "WESTUS2:20181115T175619Z:1ea95203-3265-4d32-b036-61054085806e"
         ],
         "Cache-Control": [
           "no-store, must-revalidate, no-cache, max-stale=0, private, post-check=0, pre-check=0"
         ],
         "Date": [
-          "Thu, 01 Nov 2018 18:18:10 GMT"
-        ],
-        "X-Powered-By": [
-          "Express"
+          "Thu, 15 Nov 2018 17:56:18 GMT"
         ],
         "Content-Length": [
           "0"
+        ],
+        "Content-Type": [
+          "text/plain"
         ]
       },
       "ResponseBody": "",
@@ -1677,8 +1965,8 @@
   ],
   "Names": {
     "Test-IotCentralAppLifecycleManagement": [
-      "ps5920",
-      "ps3523"
+      "ps6502",
+      "ps816"
     ]
   },
   "Variables": {

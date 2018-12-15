@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.DataMigration</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.DataMigration</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.DataMigration</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -28,7 +28,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.DataMigration" Version="0.5.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.DataMigration" Version="0.6.0-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 

@@ -22,6 +22,7 @@
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -483,9 +484,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,
                 Plan = vPlan,
-                UpgradePolicy = (vUpgradePolicy == null) ? null : new PSUpgradePolicy(vUpgradePolicy),
+                UpgradePolicy = vUpgradePolicy,
                 VirtualMachineProfile = vVirtualMachineProfile,
-                Identity = (vIdentity == null) ? null : new PSVirtualMachineScaleSetIdentity(vIdentity),
+                Identity = vIdentity,
             };
 
             WriteObject(vVirtualMachineScaleSet);

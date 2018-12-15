@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Network
             if ((int)statusCode != 202)
             {
                 string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1}",
+                throw new Exception(string.Format("Get-AzVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1}",
                     statusCode, string.IsNullOrEmpty(responseContent) ? "NotAvailable" : responseContent));
             }
 
@@ -194,12 +194,12 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation Failed as no valid Location header received in response!"));
+                throw new Exception(string.Format("Get-AzVpnClientPackage Operation Failed as no valid Location header received in response!"));
             }
 
             if (string.IsNullOrEmpty(locationResultsUrl))
             {
-                throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation Failed as no valid Location header value received in response!"));
+                throw new Exception(string.Format("Get-AzVpnClientPackage Operation Failed as no valid Location header value received in response!"));
             }
             #endregion
 
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         string newResponseContent = await newHttpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                        throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
+                        throw new Exception(string.Format("Get-AzVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
                             "the Vpnclient PackageUrl!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
                     }
                     else
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.Network
             if ((int)statusCode != 202)
             {
                 string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1}",
+                throw new Exception(string.Format("Get-AzVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1}",
                     statusCode, string.IsNullOrEmpty(responseContent) ? "NotAvailable" : responseContent));
             }
 
@@ -348,12 +348,12 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                throw new Exception(string.Format("Get-AzureRmVpnClientConfiguration Operation Failed as no valid Location header received in response!"));
+                throw new Exception(string.Format("Get-AzVpnClientConfiguration Operation Failed as no valid Location header received in response!"));
             }
 
             if (string.IsNullOrEmpty(locationResultsUrl))
             {
-                throw new Exception(string.Format("Get-AzureRmVpnClientConfiguration Operation Failed as no valid Location header value received in response!"));
+                throw new Exception(string.Format("Get-AzVpnClientConfiguration Operation Failed as no valid Location header value received in response!"));
             }
             #endregion
 
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         string newResponseContent = await newHttpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                        throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
+                        throw new Exception(string.Format("Get-AzVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
                                                           "the Vpnclient PackageUrl!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
                     }
                     else
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Commands.Network
             if ((int)statusCode != 202)
             {
                 string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1}",
+                throw new Exception(string.Format("Get-AzVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1}",
                     statusCode, string.IsNullOrEmpty(responseContent) ? "NotAvailable" : responseContent));
             }
 
@@ -487,12 +487,12 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                throw new Exception(string.Format("Get-AzureRmVpnClientConfiguration Operation Failed as no valid Location header received in response!"));
+                throw new Exception(string.Format("Get-AzVpnClientConfiguration Operation Failed as no valid Location header received in response!"));
             }
 
             if (string.IsNullOrEmpty(locationResultsUrl))
             {
-                throw new Exception(string.Format("Get-AzureRmVpnClientConfiguration Operation Failed as no valid Location header value received in response!"));
+                throw new Exception(string.Format("Get-AzVpnClientConfiguration Operation Failed as no valid Location header value received in response!"));
             }
             #endregion
 
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         string newResponseContent = await newHttpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                        throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
+                        throw new Exception(string.Format("Get-AzVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
                                                           "the Vpnclient PackageUrl!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
                     }
                     else
