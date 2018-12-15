@@ -82,9 +82,8 @@ namespace Microsoft.Azure.Commands.Network
             var expressRouteGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteGateway>(expressRouteGateway);
             expressRouteGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
-            var expressRouteGatewayCreatedOrUpdated = this.ExpressRouteGatewayClient.CreateOrUpdate(resourceGroupName, expressRouteGatewayName, expressRouteGatewayModel);
-            PSExpressRouteGateway gatewayToReturn = this.ToPsExpressRouteGateway(expressRouteGatewayCreatedOrUpdated);
-            gatewayToReturn.ResourceGroupName = resourceGroupName;
+            this.ExpressRouteGatewayClient.CreateOrUpdate(resourceGroupName, expressRouteGatewayName, expressRouteGatewayModel);
+            PSExpressRouteGateway gatewayToReturn = this.GetExpressRouteGateway(resourceGroupName, expressRouteGatewayName);
 
             return gatewayToReturn;
         }

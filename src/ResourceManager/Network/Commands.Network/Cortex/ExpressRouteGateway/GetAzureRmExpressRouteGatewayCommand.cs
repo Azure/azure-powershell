@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureRmExpressRouteGatewayCommand : ExpressRouteGatewayBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = "ListByResourceGroupName",
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]

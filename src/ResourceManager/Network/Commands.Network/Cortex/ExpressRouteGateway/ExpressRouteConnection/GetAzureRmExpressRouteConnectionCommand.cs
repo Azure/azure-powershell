@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
             ParameterSetName = CortexParameterSetNames.ByExpressRouteGatewayName,
             HelpMessage = "The parent resource name.")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceName { get; set; }
+        public string ParentExpressRouteGatewayName { get; set; }
 
         [Alias("ParentExpressRouteGateway", "ExpressRouteGateway")]
         [Parameter(
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
             ParameterSetName = CortexParameterSetNames.ByExpressRouteGatewayObject,
             HelpMessage = "The parent ExpressRouteGateway for this connection.")]
         [ValidateNotNullOrEmpty]
-        public PSExpressRouteGateway ParentObject { get; set; }
+        public PSExpressRouteGateway ParentExpressRouteGatewayObject { get; set; }
 
         [Alias("ParentExpressRouteGatewayId", "ExpressRouteGatewayId")]
         [Parameter(
@@ -83,23 +83,23 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
 
             if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteGatewayObject, StringComparison.OrdinalIgnoreCase))
             {
-                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
-                this.ParentResourceName = this.ParentObject.Name;
+                this.ResourceGroupName = this.ParentExpressRouteGatewayObject.ResourceGroupName;
+                this.ParentExpressRouteGatewayName = this.ParentExpressRouteGatewayObject.Name;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteGatewayResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ResourceName;
+                this.ParentExpressRouteGatewayName = parsedResourceId.ResourceName;
             }
 
             if (!string.IsNullOrWhiteSpace(this.Name))
             {
-                WriteObject(this.GetExpressRouteConnection(this.ResourceGroupName, this.ParentResourceName, this.Name));
+                WriteObject(this.GetExpressRouteConnection(this.ResourceGroupName, this.ParentExpressRouteGatewayName, this.Name));
             }
             else
             {
-                WriteObject(this.ListExpressRouteConnections(this.ResourceGroupName, this.ParentResourceName), true);
+                WriteObject(this.ListExpressRouteConnections(this.ResourceGroupName, this.ParentExpressRouteGatewayName), true);
             }
         }
     }

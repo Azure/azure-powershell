@@ -251,6 +251,10 @@ function Test-CortexExpressRouteCRUD
 		$expressRouteGateway = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName
         Write-Debug "Retrieved ExpressRoute Gateway $expressRouteGatewayName successfully"
 
+        # List the ExpressRouteGateway
+        $expressRouteGateways = Get-AzureRmExpressRouteGateway
+        $expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName
+
         # Create the ExpressRouteCircuit with peering to which the connection needs to be established to
         $peering = New-AzureRmExpressRouteCircuitPeeringConfig -Name AzurePrivatePeering -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.2.3.4/30" -SecondaryPeerAddressPrefix "11.2.3.4/30" -VlanId 22
         #$circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $rglocation -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 1000 -Peering $peering
