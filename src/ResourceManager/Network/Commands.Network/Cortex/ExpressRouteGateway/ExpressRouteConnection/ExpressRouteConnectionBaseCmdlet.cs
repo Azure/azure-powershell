@@ -62,8 +62,8 @@ namespace Microsoft.Azure.Commands.Network
         {
             var expressRouteConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteConnection>(expressRouteConnection);
 
-            var expressRouteConnectionCreatedOrUpdated = this.ExpressRouteConnectionClient.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, expressRouteConnection.Name, expressRouteConnectionModel).GetAwaiter().GetResult();
-            var connectionToReturn = this.ToPsExpressRouteConnection(expressRouteConnectionCreatedOrUpdated.Body);
+            this.ExpressRouteConnectionClient.CreateOrUpdate(resourceGroupName, expressRouteGatewayName, expressRouteConnection.Name, expressRouteConnectionModel);
+            var connectionToReturn = this.GetExpressRouteConnection(resourceGroupName, expressRouteGatewayName, expressRouteConnection.Name);
             return connectionToReturn;
         }
 

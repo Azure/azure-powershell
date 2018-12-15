@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
             Mandatory = true,
             HelpMessage = "The parent resource name.")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceName { get; set; }
+        public string ParentExpressRouteGatewayName { get; set; }
 
         [Alias("ResourceName", "ExpressRouteConnectionName")]
         [Parameter(
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByExpressRouteConnectionObject,
-            HelpMessage = "The ExpressRouteConenction object to update.")]
+            HelpMessage = "The ExpressRouteConnection object to update.")]
         public PSExpressRouteConnection InputObject { get; set; }
 
         [Parameter(
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
             if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteConnectionName, StringComparison.OrdinalIgnoreCase))
             {
                 this.ResourceGroupName = this.ResourceGroupName;
-                this.ParentResourceName = this.ParentResourceName;
+                this.ParentExpressRouteGatewayName = this.ParentExpressRouteGatewayName;
                 this.Name = this.Name;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteConnectionObject, StringComparison.OrdinalIgnoreCase))
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
             }
 
             //// Get the expressRoutegateway object - this will throw not found if the object is not found
-            PSExpressRouteGateway parentExpressRouteGateway = this.GetExpressRouteGateway(this.ResourceGroupName, this.ParentResourceName);
+            PSExpressRouteGateway parentExpressRouteGateway = this.GetExpressRouteGateway(this.ResourceGroupName, this.ParentExpressRouteGatewayName);
 
             if (parentExpressRouteGateway == null || 
                 parentExpressRouteGateway.ExpressRouteConnections == null ||
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-                    this.CreateOrUpdateExpressRouteConnection(this.ResourceGroupName, this.ParentResourceName, expressRouteConnectionToModify, parentExpressRouteGateway.Tag);
+                    this.CreateOrUpdateExpressRouteConnection(this.ResourceGroupName, this.ParentExpressRouteGatewayName, expressRouteConnectionToModify, parentExpressRouteGateway.Tag);
                 });
         }
 
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
 
             var parsedResourceId = new ResourceIdentifier(this.ResourceId);
             this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-            this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+            this.ParentExpressRouteGatewayName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             this.Name = parsedResourceId.ResourceName;
         }
     }
