@@ -21,21 +21,25 @@ Az is a new module, and reorganizing and simplifying cmdlet names involves break
   - PowerShell Core 6.1 - Windows, Linux, macOS
 
 ## Timeline
-  - Initial Release - August 2018
-  - Az at functional parity with AzureRM - November 2018
-  - Last version of AzureRM with new Azure features - December 2018
-  - Az 1.0: December 2018
-  - New Authentication mechanisms for Windows PowerShell
-    - Username + password non-interactive authentication
-    - Web broswer dialog authentication by default
+
+| Date | Feature |
+-------|----------
+| **August 2018** | Initial Release |
+| **November 2018** | Functional arity with AzureRM |
+| **December 2018** | Az 1.0 Release |
+| **January 2019** | New Authentication mechanisms for Windows PowerShell
+|  | - Username + password authentication
+|  | - Web broswer control authentication |
+
+ 
 
 ## AzureRM Module Support
 AzureRM will continue to be supported, and important bugs will be fixed, but new development and new Azure capabilities will be shipped only in Az starting December 2018.
 
 ## Authentication Changes
-   - ADAL has removed support for the "not recommended" user credential auth flow.
-     - Connect-AzAccount will no longer accept PSCredential from Get-Credential
-     - Here are a couple issues that describe why ADAL has removed this support   
+   - ADAL has limited support for the "not recommended" user credential non-interactive auth flow.
+     - Connect-AzAccount in Az 1.0 will not accept PSCredential, but will support this for Windows PowerShell only in Az 1.1.0 (January 15, 2019)
+     - Here are a couple issues that describe why ADAL has limited this support   
         - [Azure ActiveDirectory UserPasswordCredential doesn't support .NET core](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/482#issuecomment-262256236)
         - [Connect-AzureRmAccount with user credential login does not work in Az](https://github.com/Azure/azure-powershell/issues/7430#issuecomment-426480499)
 
@@ -51,7 +55,7 @@ AzureRM will continue to be supported, and important bugs will be fixed, but new
 
 To make it easier for existing scripts to migrate from AzureRM to Az, we have provided cmdlets to create aliases that map the cmdlet names in AzureRM into the appropriate cmdlets in Az.  When the aliases are enabled, any script that uses AzureRM cmdlet names should run against Az without modification.
 
-Note: Connect-AzAccount aka Connect-AzureRmAccount no longer supports $pscredential. See [Authentication Changes](#authentication-changes) for more
+Note: Connect-AzAccount aka Connect-AzureRmAccount no does not ```PSCredential``` in version 1.0, but will in version 1.1. See [Authentication Changes](#authentication-changes) for more details
 
 ```powershell
 PS C:\> Enable-AzureRmAlias
@@ -88,92 +92,92 @@ PS C:\> Disable-AzureRmAlias -Scope LocalMachine
 ```
 
 ### Module Name Changes
-For scripts that import modules directly, or use ```#Requires``` statements to specify required modules, references to ```AzureRM.*``` will need to be changed to the appropriate ```Az``` module.  A current list of AzureRM modules and their Az equivalents are listed below.  Note that this list is subject to change as module names in Az are updated through November 2018.
+For scripts that import modules directly, or use ```#Requires``` statements to specify required modules, references to ```AzureRM.*``` will need to be changed to the appropriate ```Az``` module.  A current list of AzureRM modules and their Az equivalents are listed below.
 
 | AzureRM Module Name | Az Module Name|
 | -------------------------------------- | ------------------------------- |
 | AzureRM | Az |
 | Azure.AnalysisServices | Az.AnalysisServices |
-| Azure.Storage | Az.Storage |
+| Azure.Storage | **Az.Storage** |
 | AzureRM.Aks | Az.Aks |
 | AzureRM.AnalysisServices | Az.AnalysisServices |
 | AzureRM.ApiManagement | Az.ApiManagement |
-| AzureRM.ApplicationInsights | Az.ApplicationInsights* |
+| AzureRM.ApplicationInsights | Az.ApplicationInsights |
 | AzureRM.Automation | Az.Automation |
-| AzureRM.Backup | Az.Backup*** |
+| ~~AzureRM.Backup~~ | **REMOVED** |
 | AzureRM.Batch | Az.Batch |
 | AzureRM.Billing | Az.Billing |
 | AzureRM.Cdn | Az.Cdn |
 | AzureRM.CognitiveServices | Az.CognitiveServices |
 | AzureRM.Compute | Az.Compute |
-| AzureRM.Compute.ManagedService | Az.Compute.ManagedService*** |
-| AzureRM.Consumption | Az.Consumption* |
-| AzureRM.ContainerInstance | Az.ContainerInstance* |
-| AzureRM.ContainerRegistry | Az.ContainerRegistry* |
-| AzureRM.DataFactories | Az.DataFactory |
-| AzureRM.DataFactoryV2 | Az.DataFactory |
+| ~~AzureRM.Compute.ManagedService~~ | **REMOVED** |
+| **AzureRM.Consumption** | **Az.Billing** |
+| AzureRM.ContainerInstance | Az.ContainerInstance |
+| AzureRM.ContainerRegistry | Az.ContainerRegistry |
+| **AzureRM.DataFactories** | **Az.DataFactory** |
+| **AzureRM.DataFactoryV2** | **Az.DataFactory** |
 | AzureRM.DataLakeAnalytics | Az.DataLakeAnalytics |
 | AzureRM.DataLakeStore | Az.DataLakeStore |
 | AzureRM.DataMigration | Az.DataMigration |
-| AzureRM.DeviceProvisioningServices | Az.DeviceProvisioningServices* |
+| AzureRM.DeviceProvisioningServices | Az.DeviceProvisioningServices |
 | AzureRM.DevSpaces | Az.DevSpaces |
 | AzureRM.DevTestLabs | Az.DevTestLabs |
 | AzureRM.Dns | Az.Dns |
 | AzureRM.EventGrid | Az.EventGrid |
 | AzureRM.EventHub | Az.EventHub |
-| AzureRM.HDInsight | Az.HDInsight** |
-| AzureRM.Insights | Az.Insights* |
+| AzureRM.HDInsight | Az.HDInsight |
+| **AzureRM.Insights** | **Az.Monitor** |
 | AzureRM.IotHub | Az.IoTHub |
 | AzureRM.KeyVault | Az.KeyVault |
-| AzureRM.LogicApp | Az.LogicApp*** |
+| AzureRM.LogicApp | Az.LogicApp |
 | AzureRM.MachineLearning | Az.MachineLearning |
-| AzureRM.MachineLearningCompute | Az.MachineLearningCompute* |
-| AzureRM.ManagedServiceIdentity | Az.ManagedServiceIdentity* |
-| AzureRM.ManagementPartner | Az.ManagementPartner* |
+| **AzureRM.MachineLearningCompute** | **Az.MachineLearning** |
+| AzureRM.ManagedServiceIdentity | Az.ManagedServiceIdentity |
+| AzureRM.ManagementPartner | Az.ManagementPartner |
 | AzureRM.Maps | Az.Maps |
-| AzureRM.MarketplaceOrdering | Az.MarketplaceOrdering* |
+| AzureRM.MarketplaceOrdering | Az.MarketplaceOrdering |
 | AzureRM.Media | Az.Media |
-| AzureRM.Network | Az.Network* |
-| AzureRM.NotificationHubs | Az.NotificationHubs* |
+| AzureRM.Network | Az.Network |
+| AzureRM.NotificationHubs | Az.NotificationHubs |
 | AzureRM.OperationalInsights | Az.OperationalIsights |
-| AzureRM.PolicyInsights | Az.PolicyInsights* |
+| AzureRM.PolicyInsights | Az.PolicyInsights |
 | AzureRM.PowerBIEmbedded | Az.PowerBIEmbedded* |
-| AzureRM.Profile | Az.Profile* |
-| AzureRM.RecoveryServices | Az.RecoveryServices** |
-| AzureRM.RecoveryServices.Backup | Az.RecoveryServices** |
-| AzureRM.RecoveryServices.SiteRecovery | Az.RecoveryServices** |
-| AzureRM.RedisCache | Az.RedisCache** |
-| AzureRM.Relay | Az.Relay* |
-| AzureRM.Reservations | Az.Reservations* |
+| **AzureRM.Profile** | **Az.Accounts** |
+| AzureRM.RecoveryServices | Az.RecoveryServices |
+| **AzureRM.RecoveryServices.Backup** | **Az.RecoveryServices** |
+| **AzureRM.RecoveryServices.SiteRecovery**| **Az.RecoveryServices** |
+| AzureRM.RedisCache | Az.RedisCache |
+| AzureRM.Relay | Az.Relay |
+| AzureRM.Reservations | Az.Reservations |
 | AzureRM.Resources | Az. Resources |
-| AzureRM.Scheduler | Az.Scheduler*** |
+| ~~AzureRM.Scheduler~~ | **REMOVED** |
 | AzureRM.Search | Az.Search |
-| AzureRM.Security | Az.Security* |
+| AzureRM.Security | Az.Security |
 | AzureRM.ServiceBus | Az.ServiceBus |
-| AzureRM.ServiceFabric | Az.ServiceFabric** |
+| AzureRM.ServiceFabric | Az.ServiceFabric |
 | AzureRM.SignalR | Az.SignalR |
 | AzureRM.Sql | Az.Sql |
 | AzureRM.Storage | Az.Storage |
 | AzureRM.StorageSync | Az.StorageSync |
 | AzureRM.StreamAnalytics | Az.StreamAnalytics |
-| AzureRM.Subscription | Az.Subscription* |
-| AzureRM.Tags | Az.Tags* |
-| AzureRM.TrafficManager | Az.TrafficManager* |
+| AzureRM.Subscription | Az.Subscription |
+| **AzureRM.Tags** | **Az.Resources** |
+| AzureRM.TrafficManager | Az.TrafficManager |
 | AzureRM.UsageAggregates | Az.UsageAggregates |
 | AzureRM.Websites | Az.Websites |
 
 
-  ```*``` Module name may change for 1.0
+### Installing Az and AzureRM Side-by-Side
 
-  ```**``` Module not yet available
+Az and AzureRM cannot be imported side-by-side into the same PowerShell session.  If you do not want to migrate your scripts from AzureRM to Az right away, there are three main options:
+- Install Az in PowerShell Core, and leave AzureRM in Windows PowerShell
+- Install Az and AzureRM side-by-side in Windows PowerShell and ensure scripts do not mix the modules
 
-  ```***``` Module may not appear in 1.0
+#### Install Az in PowerShell Core
+You can follow the instructions in [Installing PowerShell Core on Windows](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6
+) to install PowerSHell Core, then use ```Install-Module Az``` in PowerShell Core to acquire the Az module.  Since Windows PowerShell and PowerSHell Core can exist side-by-side and do not share module directories, this will effectively isolate the two modules.
 
-
-### Installing Az and AzureRM Side-by-Side - Discouraged
-
-It is discouraged for AzureRM and Az to be installed on the same machine, but there may be limited circumstances where this is needed for certain older scripts.
-
+#### Install Az and AzureRM Side-by-Side
 If you need to have both modules installed:
 - Do not use the Enable-AzureRmAlias cmdlet with -Scope CurrentUser or LocalMachine
 - When installing Az on a machine with AzureRM previously installed, you must specify ```AllowClobber``` in the Install-Module cmdlet invocation.
@@ -182,8 +186,22 @@ If you need to have both modules installed:
   PS C:\> Install-Module -Name Az -AllowClobber
   ```
 
-- You cannot load Az and AzureRM modules in the same PowerShell session, but they can be used in seperate sessions as follows
+##### Interactive Usage
+You cannot load Az and AzureRM modules in the same PowerShell session, but they can be used in seperate sessions as follows
   - In AzureRM session:  ```Import-Module AzureRM```
-  - In Az session:  Use cmdlets with Az noun, do not use cmdlets with AzureRm noun
+  - In Az session:  Begin the session with ```Enable-AzureRmAlias```, which will prevent inadvertently loading AzureRM modules.  Alternately, you can use cmdlets with Az noun prefix, and avoid using cmdlets with Azure or AzureRm noun
+
+##### Usage in Scripts
+
+Declare the modules used in yout script at the beginning of your script.
+- For Az:
+  ```powershell
+  #Requires -Modules Az.Accounts, Az.Storage, Az.Compute
+  ```
+
+- For AzureRM:
+  ```powershell
+  #Requires -Modules AzureRM.Profile, AzureRM.Strage, Azure.Storage, AzureRM.Compute
+  ```
 
 
