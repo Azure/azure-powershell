@@ -106,7 +106,7 @@ function Test-AddServerTargetWithDefaultParam ($a1)
 	$targetServerName1 = Get-ServerName
 
 	# Include targetServer
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
@@ -115,7 +115,7 @@ function Test-AddServerTargetWithDefaultParam ($a1)
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Exclude targetServer
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
@@ -124,13 +124,13 @@ function Test-AddServerTargetWithDefaultParam ($a1)
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Exclude targetServer again - no errors and no resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-Null $resp
 
 	# Include targetServer - no errors and resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
@@ -151,25 +151,25 @@ function Test-AddServerTargetWithParentObject ($a1)
 	$targetServerName1 = Get-ServerName
 
 	# Include targetServer
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Exclude targetServer
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Exclude"
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Exclude targetServer again - no errors and no resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-Null $resp
 
 	# Include targetServer - no errors and resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Include"
@@ -188,25 +188,25 @@ function Test-AddServerTargetWithParentResourceId ($a1)
 	$targetServerName1 = Get-ServerName
 
 	# Include targetServer
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Exclude targetServer
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Exclude"
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Exclude targetServer again - no errors and no resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-Null $resp
 
 	# Include targetServer - no errors and resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Include"
@@ -225,33 +225,33 @@ function Test-AddServerTargetWithPiping ($a1)
 	$targetServerName1 = Get-ServerName
 
 	# Include targetServer
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Exclude targetServer
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Exclude"
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Exclude targetServer again - no errors and no resp
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-Null $resp
 
 	# Include targetServer - no errors and resp
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Add all server targets in resource group
-	$allServers = Get-AzureRmSqlServer -ResourceGroupName $a1.ResourceGroupName
-	$resp = $allServers | Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -RefreshCredentialName $jc1.CredentialName
+	$allServers = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName
+	$resp = $allServers | Add-AzSqlElasticJobTarget -ParentObject $tg1 -RefreshCredentialName $jc1.CredentialName
 	Assert-NotNull $resp
 }
 
@@ -267,16 +267,16 @@ function Test-RemoveServerTargetWithDefaultParam ($a1)
 	$targetServerName1 = Get-ServerName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 
-	$resp = Remove-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName	$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName	$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Try remove again - should have no resp
-	$resp = Remove-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName $a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName $a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-Null $resp
 }
 
@@ -292,17 +292,17 @@ function Test-RemoveServerTargetWithParentObject ($a1)
 	$targetServerName1 = Get-ServerName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 
 	# Remove s2
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Try remove again - should have no resp
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-Null $resp
 }
 
@@ -318,17 +318,17 @@ function Test-RemoveServerTargetWithParentResourceId ($a1)
 	$targetServerName1 = Get-ServerName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 
 	# Remove s2
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Exclude"
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Try remove again - should have no resp
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-Null $resp
 }
 
@@ -344,22 +344,22 @@ function Test-RemoveServerTargetWithPiping ($a1)
 	$targetServerName1 = Get-ServerName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $a1.ServerName -RefreshCredentialName $jc1.CredentialName # Add agent server
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -RefreshCredentialName $jc1.CredentialName # Add agent server
 
-	$resp = $tg1 | Remove-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = $tg1 | Remove-AzSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlServer"
 
 	# Try remove again - should have no resp
-	$resp = $tg1 | Remove-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = $tg1 | Remove-AzSqlElasticJobTarget -ServerName $targetServerName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-Null $resp
 
 	# Try remove all server targets in resource group
-	$allServers = Get-AzureRmSqlServer -ResourceGroupName $a1.ResourceGroupName
-	$resp = $allServers | Remove-AzureRmSqlElasticJobTarget -ParentObject $tg1 -RefreshCredentialName $jc1.CredentialName
+	$allServers = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName
+	$resp = $allServers | Remove-AzSqlElasticJobTarget -ParentObject $tg1 -RefreshCredentialName $jc1.CredentialName
 	Assert-NotNull $resp
 }
 
@@ -375,7 +375,7 @@ function Test-AddDatabaseTargetWithDefaultParam ($a1)
 	$targetDatabaseName1 = Get-DatabaseName
 
 	# Include targetDatabaseName
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-DatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
@@ -384,7 +384,7 @@ function Test-AddDatabaseTargetWithDefaultParam ($a1)
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Exclude targetDatabaseName
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-DatabaseName $targetDatabaseName1 -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
@@ -393,13 +393,13 @@ function Test-AddDatabaseTargetWithDefaultParam ($a1)
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Exclude targetDatabaseName again - no errors and no resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-DatabaseName $targetDatabaseName1 -Exclude
 	Assert-Null $resp
 
 	# Include targetDatabaseName - no errors and resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-DatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
@@ -420,25 +420,25 @@ function Test-AddDatabaseTargetWithParentObject ($a1)
 	$targetDatabaseName1 = Get-DatabaseName
 
 	# Include targetDatabaseName
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Exclude targetDatabaseName
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1 -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1 -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Exclude"
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Exclude targetDatabaseName again - no errors and no resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1 -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1 -Exclude
 	Assert-Null $resp
 
 	# Include targetDatabaseName - no errors and resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Include"
@@ -457,25 +457,25 @@ function Test-AddDatabaseTargetWithParentResourceId ($a1)
 	$targetDatabaseName1 = Get-DatabaseName
 
 	# Include targetDatabaseName
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Exclude targetDatabaseName
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1 -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1 -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Exclude"
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Exclude targetDatabaseName again - no errors and no resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1 -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1 -Exclude
 	Assert-Null $resp
 
 	# Include targetDatabaseName - no errors and resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Include"
@@ -494,33 +494,33 @@ function Test-AddDatabaseTargetWithPiping ($a1)
 	$targetDatabaseName1 = Get-DatabaseName
 
 	# Include targetDatabaseName
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Exclude targetDatabaseName
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1 -Exclude
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1 -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Exclude"
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Exclude targetDatabaseName again - no errors and no resp
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1 -Exclude
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1 -Exclude
 	Assert-Null $resp
 
 	# Include targetDatabaseName - no errors and resp
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Add all dbs
-	$allDbs = Get-AzureRmSqlServer -ResourceGroupName $a1.ResourceGroupName | Get-AzureRmSqlDatabase
-	$resp = $allDbs | Add-AzureRmSqlElasticJobTarget -ParentObject $tg1
+	$allDbs = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName | Get-AzSqlDatabase
+	$resp = $allDbs | Add-AzSqlElasticJobTarget -ParentObject $tg1
 	Assert-NotNull $resp
 }
 
@@ -536,16 +536,16 @@ function Test-RemoveDatabaseTargetWithDefaultParam ($a1)
 	$targetDatabaseName1 = Get-DatabaseName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 
-	$resp = Remove-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName	$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = Remove-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName	$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Try remove again - should have no resp
-	$resp = Remove-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName $a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = Remove-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName $a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-Null $resp
 }
 
@@ -561,16 +561,16 @@ function Test-RemoveDatabaseTargetWithParentObject ($a1)
 	$targetDatabaseName1 = Get-DatabaseName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = Remove-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Try remove again - should have no resp
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = Remove-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-Null $resp
 }
 
@@ -586,16 +586,16 @@ function Test-RemoveDatabaseTargetWithParentResourceId ($a1)
 	$targetDatabaseName1 = Get-DatabaseName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = Remove-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Try remove again - should have no resp
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = Remove-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-Null $resp
 }
 
@@ -611,22 +611,22 @@ function Test-RemoveDatabaseTargetWithPiping ($a1)
 	$targetDatabaseName1 = Get-DatabaseName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
 
-	$resp = $tg1 | Remove-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = $tg1 | Remove-AzSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
 	Assert-AreEqual $resp.MembershipType "Include"
 	Assert-AreEqual $resp.TargetType "SqlDatabase"
 
 	# Try remove again - should have no resp
-	$resp = $tg1 | Remove-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
+	$resp = $tg1 | Remove-AzSqlElasticJobTarget -ServerName $targetServerName1 -DatabaseName $targetDatabaseName1
 	Assert-Null $resp
 
   # Remove all dbs in group - should only have a1.ServerName and a1.DatabaseName
-	$allDbs = Get-AzureRmSqlServer -ResourceGroupName $a1.ResourceGroupName | Get-AzureRmSqlDatabase
-	$resp = $allDbs | Remove-AzureRmSqlElasticJobTarget -ParentObject $tg1
+	$allDbs = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName | Get-AzSqlDatabase
+	$resp = $allDbs | Remove-AzSqlElasticJobTarget -ParentObject $tg1
 	Assert-NotNull $resp
 }
 
@@ -643,7 +643,7 @@ function Test-AddElasticPoolTargetWithDefaultParam ($a1)
   $targetElasticPoolName1 = Get-ElasticPoolName
 
 	# Include targetElasticPool
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
@@ -653,7 +653,7 @@ function Test-AddElasticPoolTargetWithDefaultParam ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Exclude targetElasticPool
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
@@ -663,13 +663,13 @@ function Test-AddElasticPoolTargetWithDefaultParam ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Exclude targetElasticPool again - no errors and no resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-Null $resp
 
 	# Include targetElasticPool - no errors and resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
@@ -692,7 +692,7 @@ function Test-AddElasticPoolTargetWithParentObject ($a1)
   $targetElasticPoolName1 = Get-ElasticPoolName
 
 	# Include targetElasticPool
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -700,7 +700,7 @@ function Test-AddElasticPoolTargetWithParentObject ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Exclude targetServer
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -708,11 +708,11 @@ function Test-AddElasticPoolTargetWithParentObject ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Exclude targetServer again - no errors and no resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-Null $resp
 
 	# Include targetElasticPool - no errors and resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -733,7 +733,7 @@ function Test-AddElasticPoolTargetWithParentResourceId ($a1)
   $targetElasticPoolName1 = Get-ElasticPoolName
 
 	# Include targetElasticPool
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -741,7 +741,7 @@ function Test-AddElasticPoolTargetWithParentResourceId ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Exclude targetServer
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -749,11 +749,11 @@ function Test-AddElasticPoolTargetWithParentResourceId ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Exclude targetServer again - no errors and no resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-Null $resp
 
 	# Include targetElasticPool - no errors and resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -775,7 +775,7 @@ function Test-AddElasticPoolTargetWithPiping ($a1)
   $targetElasticPoolName1 = Get-ElasticPoolName
 
 	# Include targetElasticPool
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -783,7 +783,7 @@ function Test-AddElasticPoolTargetWithPiping ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Exclude targetServer
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -791,11 +791,11 @@ function Test-AddElasticPoolTargetWithPiping ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Exclude targetServer again - no errors and no resp
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-Null $resp
 
 	# Include targetElasticPool - no errors and resp
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -803,8 +803,8 @@ function Test-AddElasticPoolTargetWithPiping ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Add all pools
-	$allEps = Get-AzureRmSqlServer -ResourceGroupName $a1.ResourceGroupName | Get-AzureRmSqlElasticPool
-	$resp = $allEps | Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -RefreshCredentialName $jc1.CredentialName
+	$allEps = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName | Get-AzSqlElasticPool
+	$resp = $allEps | Add-AzSqlElasticJobTarget -ParentObject $tg1 -RefreshCredentialName $jc1.CredentialName
 	Assert-NotNull $resp
 }
 
@@ -821,9 +821,9 @@ function Test-RemoveElasticPoolTargetWithDefaultParam ($a1)
   $targetElasticPoolName1 = Get-ElasticPoolName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 
-	$resp = Remove-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName	$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName	$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -831,7 +831,7 @@ function Test-RemoveElasticPoolTargetWithDefaultParam ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Try remove again - should have no resp
-	$resp = Remove-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName $a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName $a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-Null $resp
 }
 
@@ -848,10 +848,10 @@ function Test-RemoveElasticPoolTargetWithParentObject ($a1)
   $targetElasticPoolName1 = Get-ElasticPoolName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 
 	# Remove s2
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -859,7 +859,7 @@ function Test-RemoveElasticPoolTargetWithParentObject ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Try remove again - should have no resp
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-Null $resp
 }
 
@@ -876,10 +876,10 @@ function Test-RemoveElasticPoolTargetWithParentResourceId ($a1)
   $targetElasticPoolName1 = Get-ElasticPoolName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 
 	# Remove s2
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -887,7 +887,7 @@ function Test-RemoveElasticPoolTargetWithParentResourceId ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Try remove again - should have no resp
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-Null $resp
 }
 
@@ -905,11 +905,11 @@ function Test-RemoveElasticPoolTargetWithPiping ($a1)
   $targetElasticPoolName1 = Get-ElasticPoolName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $ep1.ServerName -ElasticPoolName $ep1.ElasticPoolName -RefreshCredentialName $jc1.CredentialName
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $ep1.ServerName -ElasticPoolName $ep1.ElasticPoolName -RefreshCredentialName $jc1.CredentialName
 
 	# Remove s2
-	$resp = $tg1 | Remove-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = $tg1 | Remove-AzSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetElasticPoolName $targetElasticPoolName1
 	Assert-AreEqual $resp.RefreshCredentialName $jc1.CredentialName
@@ -917,12 +917,12 @@ function Test-RemoveElasticPoolTargetWithPiping ($a1)
 	Assert-AreEqual $resp.TargetType "SqlElasticPool"
 
 	# Try remove again - should have no resp
-	$resp = $tg1 | Remove-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = $tg1 | Remove-AzSqlElasticJobTarget -ServerName $targetServerName1 -ElasticPoolName $targetElasticPoolName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-Null $resp
 
 	# Remove all pools
-	$allEps = Get-AzureRmSqlServer -ResourceGroupName $a1.ResourceGroupName | Get-AzureRmSqlElasticPool
-	$resp = $allEps | Remove-AzureRmSqlElasticJobTarget -ParentObject $tg1 -RefreshCredentialName $jc1.CredentialName
+	$allEps = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName | Get-AzSqlElasticPool
+	$resp = $allEps | Remove-AzSqlElasticJobTarget -ParentObject $tg1 -RefreshCredentialName $jc1.CredentialName
 	Assert-NotNull $resp
 }
 
@@ -940,7 +940,7 @@ function Test-AddShardMapTargetWithDefaultParam ($a1)
   $targetDatabaseName1 = Get-DatabaseName
 
 	# Include targetShardMap
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
@@ -951,7 +951,7 @@ function Test-AddShardMapTargetWithDefaultParam ($a1)
 	Assert-AreEqual $resp.TargetType "SqlShardMap"
 
 	# Exclude targetShardMap
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
@@ -962,13 +962,13 @@ function Test-AddShardMapTargetWithDefaultParam ($a1)
 	Assert-AreEqual $resp.TargetType "SqlShardMap"
 
 	# Exclude targetShardMap again - no errors and no resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-Null $resp
 
 	# Include targetShardMap - no errors and resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
+	$resp = Add-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName `
 		$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 `
 		-ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
@@ -993,7 +993,7 @@ function Test-AddShardMapTargetWithParentObject ($a1)
   $targetDatabaseName1 = Get-DatabaseName
 
 	# Include targetShardMap
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1002,7 +1002,7 @@ function Test-AddShardMapTargetWithParentObject ($a1)
 	Assert-AreEqual $resp.TargetType "SqlShardMap"
 
 	# Exclude targetServer
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1011,11 +1011,11 @@ function Test-AddShardMapTargetWithParentObject ($a1)
 	Assert-AreEqual $resp.TargetType "SqlShardMap"
 
 	# Exclude targetServer again - no errors and no resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-Null $resp
 
 	# Include targetShardMap - no errors and resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Add-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1038,7 +1038,7 @@ function Test-AddShardMapTargetWithParentResourceId ($a1)
   $targetDatabaseName1 = Get-DatabaseName
 
 	# Include targetShardMap
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1047,7 +1047,7 @@ function Test-AddShardMapTargetWithParentResourceId ($a1)
 	Assert-AreEqual $resp.TargetType "SqlShardMap"
 
 	# Exclude targetServer
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1056,11 +1056,11 @@ function Test-AddShardMapTargetWithParentResourceId ($a1)
 	Assert-AreEqual $resp.TargetType "SqlShardMap"
 
 	# Exclude targetServer again - no errors and no resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-Null $resp
 
 	# Include targetShardMap - no errors and resp
-	$resp = Add-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Add-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1083,7 +1083,7 @@ function Test-AddShardMapTargetWithPiping ($a1)
   $targetDatabaseName1 = Get-DatabaseName
 
 	# Include targetShardMap
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1092,7 +1092,7 @@ function Test-AddShardMapTargetWithPiping ($a1)
 	Assert-AreEqual $resp.TargetType "SqlShardMap"
 
 	# Exclude targetServer
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1101,11 +1101,11 @@ function Test-AddShardMapTargetWithPiping ($a1)
 	Assert-AreEqual $resp.TargetType "SqlShardMap"
 
 	# Exclude targetServer again - no errors and no resp
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 	Assert-Null $resp
 
 	# Include targetShardMap - no errors and resp
-	$resp = $tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = $tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1128,9 +1128,9 @@ function Test-RemoveShardMapTargetWithDefaultParam ($a1)
   $targetDatabaseName1 = Get-DatabaseName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 
-	$resp = Remove-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName	$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName	$a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1139,7 +1139,7 @@ function Test-RemoveShardMapTargetWithDefaultParam ($a1)
 	Assert-AreEqual $resp.TargetType "SqlShardMap"
 
 	# Try remove again - should have no resp
-	$resp = Remove-AzureRmSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName $a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ResourceGroupName $a1.ResourceGroupName -AgentServerName $a1.ServerName -AgentName $a1.AgentName -TargetGroupName $tg1.TargetGroupName -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-Null $resp
 }
 
@@ -1157,10 +1157,10 @@ function Test-RemoveShardMapTargetWithParentObject ($a1)
   $targetDatabaseName1 = Get-DatabaseName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 
 	# Remove s2
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1169,7 +1169,7 @@ function Test-RemoveShardMapTargetWithParentObject ($a1)
 	Assert-AreEqual $resp.TargetType "SqlShardMap"
 
 	# Try remove again - should have no resp
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ParentObject $tg1 -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-Null $resp
 }
 
@@ -1187,10 +1187,10 @@ function Test-RemoveShardMapTargetWithParentResourceId ($a1)
   $targetDatabaseName1 = Get-DatabaseName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName -Exclude
 
 	# Remove s2
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1199,7 +1199,7 @@ function Test-RemoveShardMapTargetWithParentResourceId ($a1)
 	Assert-AreEqual $resp.TargetType "SqlShardMap"
 
 	# Try remove again - should have no resp
-	$resp = Remove-AzureRmSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobTarget -ParentResourceId $tg1.ResourceId -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-Null $resp
 }
 
@@ -1217,10 +1217,10 @@ function Test-RemoveShardMapTargetWithPiping ($a1)
   $targetDatabaseName1 = Get-DatabaseName
 
 	# Add targets
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 
 	# Remove s2
-	$resp = $tg1 | Remove-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = $tg1 | Remove-AzSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-AreEqual $resp.TargetServerName $targetServerName1
 	Assert-AreEqual $resp.TargetShardMapName $targetShardMapName1
 	Assert-AreEqual $resp.TargetDatabaseName $targetDatabaseName1
@@ -1229,6 +1229,6 @@ function Test-RemoveShardMapTargetWithPiping ($a1)
 	Assert-AreEqual $resp.TargetType "SqlShardMap"
 
 	# Try remove again - should have no resp
-	$resp = $tg1 | Remove-AzureRmSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
+	$resp = $tg1 | Remove-AzSqlElasticJobTarget -ServerName $targetServerName1 -ShardMapName $targetShardMapName1 -DatabaseName $targetDatabaseName1 -RefreshCredentialName $jc1.CredentialName
 	Assert-Null $resp
 }

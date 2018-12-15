@@ -108,7 +108,7 @@ function Test-CreateJobCredentialWithDefaultParam ($a1)
 	$c1 = Get-ServerCredential
 
 	# Create using default params
-	$resp = New-AzureRmSqlElasticJobCredential -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $cn1 -Credential $c1
+	$resp = New-AzSqlElasticJobCredential -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $cn1 -Credential $c1
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.CredentialName $cn1
@@ -126,7 +126,7 @@ function Test-CreateJobCredentialWithParentObject ($a1)
 	$c1 = Get-ServerCredential
 
 	# Create using agent input object
-	$resp = New-AzureRmSqlElasticJobCredential -ParentObject $a1 -Name $cn1 -Credential $c1
+	$resp = New-AzSqlElasticJobCredential -ParentObject $a1 -Name $cn1 -Credential $c1
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.CredentialName $cn1
@@ -144,7 +144,7 @@ function Test-CreateJobCredentialWithParentResourceId ($a1)
 	$c1 = Get-ServerCredential
 
 	# Create using agent resource id
-	$resp = New-AzureRmSqlElasticJobCredential -ParentResourceId $a1.ResourceId -Name $cn1 -Credential $c1
+	$resp = New-AzSqlElasticJobCredential -ParentResourceId $a1.ResourceId -Name $cn1 -Credential $c1
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.CredentialName $cn1
@@ -162,7 +162,7 @@ function Test-CreateJobCredentialWithPiping ($a1)
 	$c1 = Get-ServerCredential
 
 	# Tests using piping
-	$resp = $a1 | New-AzureRmSqlElasticJobCredential -Name $cn1 -Credential $c1
+	$resp = $a1 | New-AzSqlElasticJobCredential -Name $cn1 -Credential $c1
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.CredentialName $cn1
@@ -180,7 +180,7 @@ function Test-UpdateJobCredentialWithDefaultParam ($a1)
 
 	# Test default parameters
 	$newCred = Get-Credential
-	$resp = Set-AzureRmSqlElasticJobCredential -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $jc1.CredentialName -Credential $newCred
+	$resp = Set-AzSqlElasticJobCredential -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $jc1.CredentialName -Credential $newCred
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.AgentName $a1.AgentName
@@ -199,7 +199,7 @@ function Test-UpdateJobCredentialWithInputObject ($a1)
 
 	# Test job credential input object
 	$newCred = Get-Credential
-	$resp = Set-AzureRmSqlElasticJobCredential -InputObject $jc1 -Credential $newCred
+	$resp = Set-AzSqlElasticJobCredential -InputObject $jc1 -Credential $newCred
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.AgentName $a1.AgentName
@@ -218,7 +218,7 @@ function Test-UpdateJobCredentialWithResourceId ($a1)
 
 	# Test job credential resource id
 	$newCred = Get-Credential
-	$resp = Set-AzureRmSqlElasticJobCredential -ResourceId $jc1.ResourceId -Credential $newCred
+	$resp = Set-AzSqlElasticJobCredential -ResourceId $jc1.ResourceId -Credential $newCred
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.AgentName $a1.AgentName
@@ -237,7 +237,7 @@ function Test-UpdateJobCredentialWithPiping ($a1)
 
 	# Test piping
 	$newCred = Get-Credential
-	$resp = $jc1 | Set-AzureRmSqlElasticJobCredential -Credential $newCred
+	$resp = $jc1 | Set-AzSqlElasticJobCredential -Credential $newCred
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.AgentName $a1.AgentName
@@ -256,7 +256,7 @@ function Test-GetJobCredentialWithDefaultParam ($a1)
 	$jc2 = Create-JobCredentialForTest $a1
 
 	# Test default parameters - get specific credential
-	$resp = Get-AzureRmSqlElasticJobCredential -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $jc1.CredentialName
+	$resp = Get-AzSqlElasticJobCredential -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $jc1.CredentialName
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.AgentName $a1.AgentName
@@ -264,7 +264,7 @@ function Test-GetJobCredentialWithDefaultParam ($a1)
 	Assert-AreEqual $resp.UserName $jc1.UserName
 
 	# Test default parameters - get credentials
-	$resp = Get-AzureRmSqlElasticJobCredential -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName
+	$resp = Get-AzSqlElasticJobCredential -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName
 	Assert-True { $resp.Count -ge 2 }
 }
 
@@ -279,7 +279,7 @@ function Test-GetJobCredentialWithParentObject ($a1)
 	$jc2 = Create-JobCredentialForTest $a1
 
 	# Test job credential input object
-	$resp = Get-AzureRmSqlElasticJobCredential -ParentObject $a1 -Name $jc1.CredentialName
+	$resp = Get-AzSqlElasticJobCredential -ParentObject $a1 -Name $jc1.CredentialName
 
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
@@ -288,7 +288,7 @@ function Test-GetJobCredentialWithParentObject ($a1)
 	Assert-AreEqual $resp.UserName $jc1.UserName
 
 	# Test job credential input object - get credentials
-	$resp = Get-AzureRmSqlElasticJobCredential -ParentObject $a1
+	$resp = Get-AzSqlElasticJobCredential -ParentObject $a1
 	Assert-True { $resp.Count -ge 2 }
 }
 
@@ -303,7 +303,7 @@ function Test-GetJobCredentialWithParentResourceId ($a1)
 	$jc2 = Create-JobCredentialForTest $a1
 
 		# Test job credential resource id
-	$resp = Get-AzureRmSqlElasticJobCredential -ParentResourceId $a1.ResourceId -Name $jc1.CredentialName
+	$resp = Get-AzSqlElasticJobCredential -ParentResourceId $a1.ResourceId -Name $jc1.CredentialName
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.AgentName $a1.AgentName
@@ -311,7 +311,7 @@ function Test-GetJobCredentialWithParentResourceId ($a1)
 	Assert-AreEqual $resp.UserName $jc1.UserName
 
 	# Test job credential resource id - get credentials
-	$resp = Get-AzureRmSqlElasticJobCredential -ParentResourceId $a1.ResourceId
+	$resp = Get-AzSqlElasticJobCredential -ParentResourceId $a1.ResourceId
 	Assert-True { $resp.Count -ge 2 }
 }
 
@@ -326,7 +326,7 @@ function Test-GetJobCredentialWithPiping ($a1)
 	$jc2 = Create-JobCredentialForTest $a1
 
 		# Test piping - get job credential
-	$resp = $a1 | Get-AzureRmSqlElasticJobCredential -Name $jc1.CredentialName
+	$resp = $a1 | Get-AzSqlElasticJobCredential -Name $jc1.CredentialName
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.AgentName $a1.AgentName
@@ -334,7 +334,7 @@ function Test-GetJobCredentialWithPiping ($a1)
 	Assert-AreEqual $resp.UserName $jc1.UserName
 
 	# Test piping - get all credentials - should have at least 2
-	$resp = $a1 | Get-AzureRmSqlElasticJobCredential
+	$resp = $a1 | Get-AzSqlElasticJobCredential
 	Assert-True { $resp.Count -ge 2 }
 }
 
@@ -348,7 +348,7 @@ function Test-RemoveJobCredentialWithDefaultParam ($a1)
 	$jc1 = Create-JobCredentialForTest $a1
 
 	# Test default parameters - Remove credential
-	$resp = Remove-AzureRmSqlElasticJobCredential -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $jc1.CredentialName
+	$resp = Remove-AzSqlElasticJobCredential -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $jc1.CredentialName
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.AgentName $a1.AgentName
@@ -366,7 +366,7 @@ function Test-RemoveJobCredentialWithInputObject ($a1)
 	$jc1 = Create-JobCredentialForTest $a1
 
 	# Test input object
-	$resp = Remove-AzureRmSqlElasticJobCredential -InputObject $jc1
+	$resp = Remove-AzSqlElasticJobCredential -InputObject $jc1
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.AgentName $a1.AgentName
@@ -384,7 +384,7 @@ function Test-RemoveJobCredentialWithResourceId ($a1)
 	$jc1 = Create-JobCredentialForTest $a1
 
 	# Test resource id
-	$resp = Remove-AzureRmSqlElasticJobCredential -ResourceId $jc1.ResourceId
+	$resp = Remove-AzSqlElasticJobCredential -ResourceId $jc1.ResourceId
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.AgentName $a1.AgentName
@@ -403,7 +403,7 @@ function Test-RemoveJobCredentialWithPiping ($a1)
 	$jc2 = Create-JobCredentialForTest $a1
 
 	# Test piping
-	$resp = $jc1 | Remove-AzureRmSqlElasticJobCredential
+	$resp = $jc1 | Remove-AzSqlElasticJobCredential
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.AgentName $a1.AgentName
@@ -411,10 +411,10 @@ function Test-RemoveJobCredentialWithPiping ($a1)
 	Assert-AreEqual $resp.UserName $jc1.UserName
 
 	# Test remove all - should have removed at least 1
-	$all = $a1 | Get-AzureRmSqlElasticJobCredential
-	$resp = $all | Remove-AzureRmSqlElasticJobCredential
+	$all = $a1 | Get-AzSqlElasticJobCredential
+	$resp = $all | Remove-AzSqlElasticJobCredential
 	Assert-True { $resp.Count -ge 1 }
 
 	# Test get credential and assert it doesn't exist anymore
-	Assert-Throws { $a1 | Get-AzureRmSqlElasticJobCredential -Name $jc1.CredentialName }
+	Assert-Throws { $a1 | Get-AzSqlElasticJobCredential -Name $jc1.CredentialName }
 }

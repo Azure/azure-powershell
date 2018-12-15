@@ -23,20 +23,20 @@ function Test-StartJob
 
 	# Setup SELECT 1 script on control db
 	$script = "SELECT 1"
-	$s1 = Get-AzureRmSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
+	$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
 	$serverLogin = $s1.SqlAdministratorLogin
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credential = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
-	$jc1 = $a1 | New-AzureRmSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
-	$tg1 = $a1 | New-AzureRmSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
+	$jc1 = $a1 | New-AzSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
+	$tg1 = $a1 | New-AzSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
 	$j1 = Create-JobForTest $a1
 	$js1 = Create-JobStepForTest $j1 $tg1 $jc1 $script
 
 	try
 	{
 		# Start job
-		$je = Start-AzureRmSqlElasticJob -ResourceGroupName $j1.ResourceGroupName -ServerName $j1.ServerName -AgentName $j1.AgentName -JobName $j1.JobName
+		$je = Start-AzSqlElasticJob -ResourceGroupName $j1.ResourceGroupName -ServerName $j1.ServerName -AgentName $j1.AgentName -JobName $j1.JobName
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
 		Assert-AreEqual $je.AgentName $j1.AgentName
@@ -47,7 +47,7 @@ function Test-StartJob
 		Assert-AreEqual Created $je.ProvisioningState
 
 		# Start job with job object
-		$je = Start-AzureRmSqlElasticJob -ParentObject $j1
+		$je = Start-AzSqlElasticJob -ParentObject $j1
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
 		Assert-AreEqual $je.AgentName $j1.AgentName
@@ -58,7 +58,7 @@ function Test-StartJob
 		Assert-AreEqual Created $je.ProvisioningState
 
 		# Start job with job resource id
-		$je = Start-AzureRmSqlElasticJob -ParentResourceId $j1.ResourceId
+		$je = Start-AzSqlElasticJob -ParentResourceId $j1.ResourceId
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
 		Assert-AreEqual $je.AgentName $j1.AgentName
@@ -69,7 +69,7 @@ function Test-StartJob
 		Assert-AreEqual Created $je.ProvisioningState
 
 		# Start job with piping
-		$je = $j1 | Start-AzureRmSqlElasticJob
+		$je = $j1 | Start-AzSqlElasticJob
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
 		Assert-AreEqual $je.AgentName $j1.AgentName
@@ -97,20 +97,20 @@ function Test-StartJobWait
 
 	# Setup SELECT 1 script on control db
 	$script = "SELECT 1"
-	$s1 = Get-AzureRmSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
+	$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
 	$serverLogin = $s1.SqlAdministratorLogin
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credential = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
-	$jc1 = $a1 | New-AzureRmSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
-	$tg1 = $a1 | New-AzureRmSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
+	$jc1 = $a1 | New-AzSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
+	$tg1 = $a1 | New-AzSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
 	$j1 = Create-JobForTest $a1
 	$js1 = Create-JobStepForTest $j1 $tg1 $jc1 $script
 
 	try
 	{
 		# Start job - test wait
-		$je = $j1 | Start-AzureRmSqlElasticJob -Wait
+		$je = $j1 | Start-AzSqlElasticJob -Wait
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
 		Assert-AreEqual $je.AgentName $j1.AgentName
@@ -136,23 +136,23 @@ function Test-StopJob
 	$a1 = Create-ElasticJobAgentTestEnvironment
 
 	$script = "WAITFOR DELAY '00:10:00'"
-	$s1 = Get-AzureRmSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
+	$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
 	$serverLogin = $s1.SqlAdministratorLogin
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credential = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
-	$jc1 = $a1 | New-AzureRmSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
-	$tg1 = $a1 | New-AzureRmSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
+	$jc1 = $a1 | New-AzSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
+	$tg1 = $a1 | New-AzSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
 	$j1 = Create-JobForTest $a1
 	$js1 = Create-JobStepForTest $j1 $tg1 $jc1 $script
 
 	# Start
-	$je = $j1 | Start-AzureRmSqlElasticJob
+	$je = $j1 | Start-AzSqlElasticJob
 
 	try
 	{
 		# Stop with default param
-		$resp = Stop-AzureRmSqlElasticJob -ResourceGroupName $je.ResourceGroupName -ServerName $je.ServerName `
+		$resp = Stop-AzSqlElasticJob -ResourceGroupName $je.ResourceGroupName -ServerName $je.ServerName `
 			-AgentName $je.AgentName -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
@@ -161,7 +161,7 @@ function Test-StopJob
 		Assert-NotNull $je.JobExecutionId
 
 		# Stop with job execution object
-		$resp = Stop-AzureRmSqlElasticJob -ParentObject $je
+		$resp = Stop-AzSqlElasticJob -ParentObject $je
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
 		Assert-AreEqual $je.AgentName $j1.AgentName
@@ -169,7 +169,7 @@ function Test-StopJob
 		Assert-NotNull $je.JobExecutionId
 
 		# Stop with job execution resource id
-		$resp = Stop-AzureRmSqlElasticJob -ParentResourceId $je.ResourceId
+		$resp = Stop-AzSqlElasticJob -ParentResourceId $je.ResourceId
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
 		Assert-AreEqual $je.AgentName $j1.AgentName
@@ -177,7 +177,7 @@ function Test-StopJob
 		Assert-NotNull $je.JobExecutionId
 
 		# Stop with piping
-		$resp = $je | Stop-AzureRmSqlElasticJob
+		$resp = $je | Stop-AzSqlElasticJob
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
 		Assert-AreEqual $je.AgentName $j1.AgentName
@@ -201,25 +201,25 @@ function Test-GetJobExecution
 	$a1 = Create-ElasticJobAgentTestEnvironment
 
 	$script = "SELECT 1"
-	$s1 = Get-AzureRmSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
+	$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
 	$serverLogin = $s1.SqlAdministratorLogin
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credential = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
-	$jc1 = $a1 | New-AzureRmSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
-	$tg1 = $a1 | New-AzureRmSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
+	$jc1 = $a1 | New-AzSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
+	$tg1 = $a1 | New-AzSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
 	$j1 = Create-JobForTest $a1
 	$js1 = Create-JobStepForTest $j1 $tg1 $jc1 $script
-	$je = $j1 | Start-AzureRmSqlElasticJob -Wait
+	$je = $j1 | Start-AzSqlElasticJob -Wait
 
 	try
 	{
 		# Get with default param
-		$allExecutions = Get-AzureRmSqlElasticJobExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName `
+		$allExecutions = Get-AzSqlElasticJobExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName `
 			-AgentName $a1.AgentName -Count 10
-		$jobExecutions = Get-AzureRmSqlElasticJobExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName `
+		$jobExecutions = Get-AzSqlElasticJobExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName `
 			-AgentName $a1.AgentName -JobName $j1.JobName -Count 10
-		$jobExecution = Get-AzureRmSqlElasticJobExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName `
+		$jobExecution = Get-AzSqlElasticJobExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName `
 			-AgentName $a1.AgentName -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
 
 		# Test values from job execution model
@@ -237,9 +237,9 @@ function Test-GetJobExecution
 		Assert-AreEqual $je.JobVersion $jobExecution.JobVersion
 
 		# Test agent resource id
-		$allExecutions = Get-AzureRmSqlElasticJobExecution -ParentObject $a1 -Count 10
-		$jobExecutions = Get-AzureRmSqlElasticJobExecution -ParentObject $a1 -JobName $j1.JobName -Count 10
-		$jobExecution = Get-AzureRmSqlElasticJobExecution -ParentObject $a1 -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
+		$allExecutions = Get-AzSqlElasticJobExecution -ParentObject $a1 -Count 10
+		$jobExecutions = Get-AzSqlElasticJobExecution -ParentObject $a1 -JobName $j1.JobName -Count 10
+		$jobExecution = Get-AzSqlElasticJobExecution -ParentObject $a1 -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
 
 		# Test values from job execution model
 		Assert-AreEqual $je.ResourceGroupName $jobExecution.ResourceGroupName
@@ -256,9 +256,9 @@ function Test-GetJobExecution
 		Assert-AreEqual $je.JobVersion $jobExecution.JobVersion
 
 		# Test agent resource id
-		$allExecutions = Get-AzureRmSqlElasticJobExecution -ParentResourceId $a1.ResourceId -Count 10
-		$jobExecutions = Get-AzureRmSqlElasticJobExecution -ParentResourceId $a1.ResourceId -JobName $j1.JobName -Count 10
-		$jobExecution = Get-AzureRmSqlElasticJobExecution -ParentResourceId $a1.ResourceId -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
+		$allExecutions = Get-AzSqlElasticJobExecution -ParentResourceId $a1.ResourceId -Count 10
+		$jobExecutions = Get-AzSqlElasticJobExecution -ParentResourceId $a1.ResourceId -JobName $j1.JobName -Count 10
+		$jobExecution = Get-AzSqlElasticJobExecution -ParentResourceId $a1.ResourceId -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
 
 		# Test values from job execution model
 		Assert-AreEqual $je.ResourceGroupName $jobExecution.ResourceGroupName
@@ -275,9 +275,9 @@ function Test-GetJobExecution
 		Assert-AreEqual $je.JobVersion $jobExecution.JobVersion
 
 		# Test piping
-		$allExecutions = $a1 | Get-AzureRmSqlElasticJobExecution -Count 10
-		$jobExecutions = $a1 | Get-AzureRmSqlElasticJobExecution -JobName $j1.JobName -Count 10
-		$jobExecution = $a1 | Get-AzureRmSqlElasticJobExecution -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
+		$allExecutions = $a1 | Get-AzSqlElasticJobExecution -Count 10
+		$jobExecutions = $a1 | Get-AzSqlElasticJobExecution -JobName $j1.JobName -Count 10
+		$jobExecution = $a1 | Get-AzSqlElasticJobExecution -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
 
 		# Test values from job execution model
 		Assert-AreEqual $je.ResourceGroupName $jobExecution.ResourceGroupName
@@ -294,8 +294,8 @@ function Test-GetJobExecution
 		Assert-AreEqual $je.JobVersion $jobExecution.JobVersion
 
 		# There should be no active executions
-		$allExecutions = $a1 | Get-AzureRmSqlElasticJobExecution -Count 10 -CreateTimeMin "2018-05-31T23:58:57" -CreateTimeMax "2018-07-31T23:58:57" -EndTimeMin "2018-06-30T23:58:57" -EndTimeMax "2018-07-31T23:58:57" -Active
-		$jobExecutions = $a1 | Get-AzureRmSqlElasticJobExecution -Count 10 -CreateTimeMin "2018-05-31T23:58:57" -CreateTimeMax "2018-07-31T23:58:57" -EndTimeMin "2018-06-30T23:58:57" -EndTimeMax "2018-07-31T23:58:57" -Active
+		$allExecutions = $a1 | Get-AzSqlElasticJobExecution -Count 10 -CreateTimeMin "2018-05-31T23:58:57" -CreateTimeMax "2018-07-31T23:58:57" -EndTimeMin "2018-06-30T23:58:57" -EndTimeMax "2018-07-31T23:58:57" -Active
+		$jobExecutions = $a1 | Get-AzSqlElasticJobExecution -Count 10 -CreateTimeMin "2018-05-31T23:58:57" -CreateTimeMax "2018-07-31T23:58:57" -EndTimeMin "2018-06-30T23:58:57" -EndTimeMax "2018-07-31T23:58:57" -Active
 		Assert-Null $allExecutions
 		Assert-Null $jobExecutions
 	}
@@ -315,22 +315,22 @@ function Test-GetJobStepExecution
 	$a1 = Create-ElasticJobAgentTestEnvironment
 
 	$script = "SELECT 1"
-	$s1 = Get-AzureRmSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
+	$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
 	$serverLogin = $s1.SqlAdministratorLogin
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credential = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
-	$jc1 = $a1 | New-AzureRmSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
-	$tg1 = $a1 | New-AzureRmSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
+	$jc1 = $a1 | New-AzSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
+	$tg1 = $a1 | New-AzSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
 	$j1 = Create-JobForTest $a1
 	$js1 = Create-JobStepForTest $j1 $tg1 $jc1 $script
-	$je = $j1 | Start-AzureRmSqlElasticJob -Wait
+	$je = $j1 | Start-AzSqlElasticJob -Wait
 
 	try
 	{
 		# Test job step execution default param
-		$allStepExecutions = Get-AzureRmSqlElasticJobStepExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
-		$stepExecution = Get-AzureRmSqlElasticJobStepExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -JobName $j1.JobName -JobExecutionId $je.JobExecutionId -StepName $js1.StepName
+		$allStepExecutions = Get-AzSqlElasticJobStepExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
+		$stepExecution = Get-AzSqlElasticJobStepExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -JobName $j1.JobName -JobExecutionId $je.JobExecutionId -StepName $js1.StepName
 
 		# Test values from job execution model
 		Assert-AreEqual $stepExecution.ResourceGroupName $a1.ResourceGroupName
@@ -341,8 +341,8 @@ function Test-GetJobStepExecution
 		Assert-AreEqual $stepExecution.StepName $js1.StepName
 
 		# Test job step job execution object
-		$allStepExecutions = Get-AzureRmSqlElasticJobStepExecution -ParentObject $je
-		$stepExecution = Get-AzureRmSqlElasticJobStepExecution -ParentObject $je -StepName $js1.StepName
+		$allStepExecutions = Get-AzSqlElasticJobStepExecution -ParentObject $je
+		$stepExecution = Get-AzSqlElasticJobStepExecution -ParentObject $je -StepName $js1.StepName
 
 		# Test values from job execution model
 		Assert-AreEqual $stepExecution.ResourceGroupName $a1.ResourceGroupName
@@ -354,8 +354,8 @@ function Test-GetJobStepExecution
 
 
 		# Test job step job execution resource id
-		$allStepExecutions = Get-AzureRmSqlElasticJobStepExecution -ParentResourceId $je.ResourceId
-		$stepExecution = Get-AzureRmSqlElasticJobStepExecution -ParentResourceId $je.ResourceId -StepName $js1.StepName
+		$allStepExecutions = Get-AzSqlElasticJobStepExecution -ParentResourceId $je.ResourceId
+		$stepExecution = Get-AzSqlElasticJobStepExecution -ParentResourceId $je.ResourceId -StepName $js1.StepName
 
 		# Test values from job execution model
 		Assert-AreEqual $stepExecution.ResourceGroupName $a1.ResourceGroupName
@@ -366,8 +366,8 @@ function Test-GetJobStepExecution
 		Assert-AreEqual $stepExecution.StepName $js1.StepName
 
 		# Test job step execution piping
-		$allStepExecutions = $je | Get-AzureRmSqlElasticJobStepExecution
-		$stepExecution = $je | Get-AzureRmSqlElasticJobStepExecution -StepName $js1.StepName
+		$allStepExecutions = $je | Get-AzSqlElasticJobStepExecution
+		$stepExecution = $je | Get-AzSqlElasticJobStepExecution -StepName $js1.StepName
 
 		# Test values from job execution model
 		Assert-AreEqual $stepExecution.ResourceGroupName $a1.ResourceGroupName
@@ -378,7 +378,7 @@ function Test-GetJobStepExecution
 		Assert-AreEqual $stepExecution.StepName $js1.StepName
 
 		# Test filters
-		$allStepExecutions = $je | Get-AzureRmSqlElasticJobStepExecution -CreateTimeMin "2018-05-31T23:58:57" `
+		$allStepExecutions = $je | Get-AzSqlElasticJobStepExecution -CreateTimeMin "2018-05-31T23:58:57" `
 			-CreateTimeMax "2018-07-31T23:58:57" -EndTimeMin "2018-06-30T23:58:57" -EndTimeMax "2018-07-31T23:58:57" -Active
 		Assert-Null $allStepExecutions
 	}
@@ -398,36 +398,36 @@ function Test-GetJobTargetExecution
 	$a1 = Create-ElasticJobAgentTestEnvironment
 
 	$script = "SELECT 1"
-	$s1 = Get-AzureRmSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
+	$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
 	$serverLogin = $s1.SqlAdministratorLogin
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credential = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
-	$jc1 = $a1 | New-AzureRmSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
-	$tg1 = $a1 | New-AzureRmSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
-	$tg1 | Add-AzureRmSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
+	$jc1 = $a1 | New-AzSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
+	$tg1 = $a1 | New-AzSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
+	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
 	$j1 = Create-JobForTest $a1
 	$js1 = Create-JobStepForTest $j1 $tg1 $jc1 $script
-	$je = $j1 | Start-AzureRmSqlElasticJob -Wait
+	$je = $j1 | Start-AzSqlElasticJob -Wait
 
 	try
 	{
 		# Test job target execution default param
-		$allTargetExecutions = Get-AzureRmSqlElasticJobTargetExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName `
+		$allTargetExecutions = Get-AzSqlElasticJobTargetExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName `
 			-AgentName $a1.AgentName -JobName $j1.JobName -JobExecutionId $je.JobExecutionId -Count 10
-		$stepTargetExecutions = Get-AzureRmSqlElasticJobTargetExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName `
+		$stepTargetExecutions = Get-AzSqlElasticJobTargetExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName `
 			-AgentName $a1.AgentName -JobName $j1.JobName -JobExecutionId $je.JobExecutionId -StepName $js1.StepName -Count 10
 
 		# Test job target job execution object
-		$allTargetExecutions = Get-AzureRmSqlElasticJobTargetExecution -ParentObject $je -Count 10
-		$stepTargetExecutions = Get-AzureRmSqlElasticJobTargetExecution -ParentObject $je -StepName $js1.StepName -Count 10
+		$allTargetExecutions = Get-AzSqlElasticJobTargetExecution -ParentObject $je -Count 10
+		$stepTargetExecutions = Get-AzSqlElasticJobTargetExecution -ParentObject $je -StepName $js1.StepName -Count 10
 
 		# Test job target job execution resource id
-		$allTargetExecutions = Get-AzureRmSqlElasticJobTargetExecution -ParentResourceId $je.ResourceId -Count 10
-		$stepTargetExecutions = Get-AzureRmSqlElasticJobTargetExecution -ParentResourceId $je.ResourceId -StepName $js1.StepName -Count 10
+		$allTargetExecutions = Get-AzSqlElasticJobTargetExecution -ParentResourceId $je.ResourceId -Count 10
+		$stepTargetExecutions = Get-AzSqlElasticJobTargetExecution -ParentResourceId $je.ResourceId -StepName $js1.StepName -Count 10
 
 		# Test job target execution piping
-		$allTargetExecutions = $je | Get-AzureRmSqlElasticJobTargetExecution -Count 10
-		$stepTargetExecutions = $je | Get-AzureRmSqlElasticJobTargetExecution -StepName $js1.StepName -Count 10
+		$allTargetExecutions = $je | Get-AzSqlElasticJobTargetExecution -Count 10
+		$stepTargetExecutions = $je | Get-AzSqlElasticJobTargetExecution -StepName $js1.StepName -Count 10
 
 		$targetExecution = $stepTargetExecutions[0]
 
@@ -442,8 +442,8 @@ function Test-GetJobTargetExecution
 		Assert-AreEqual $targetExecution.TargetDatabaseName $a1.DatabaseName
 
 		# Test job target execution piping
-		$allTargetExecutions = $je | Get-AzureRmSqlElasticJobTargetExecution -Count 10 -CreateTimeMin "2018-05-31T23:58:57" -CreateTimeMax "2018-07-31T23:58:57" -EndTimeMin "2018-06-30T23:58:57" -EndTimeMax "2018-07-31T23:58:57" -Active
-		$stepTargetExecutions = $je | Get-AzureRmSqlElasticJobTargetExecution -StepName $js1.StepName -Count 10 -CreateTimeMin "2018-05-31T23:58:57" -CreateTimeMax "2018-07-31T23:58:57" -EndTimeMin "2018-06-30T23:58:57" -EndTimeMax "2018-07-31T23:58:57" -Active
+		$allTargetExecutions = $je | Get-AzSqlElasticJobTargetExecution -Count 10 -CreateTimeMin "2018-05-31T23:58:57" -CreateTimeMax "2018-07-31T23:58:57" -EndTimeMin "2018-06-30T23:58:57" -EndTimeMax "2018-07-31T23:58:57" -Active
+		$stepTargetExecutions = $je | Get-AzSqlElasticJobTargetExecution -StepName $js1.StepName -Count 10 -CreateTimeMin "2018-05-31T23:58:57" -CreateTimeMax "2018-07-31T23:58:57" -EndTimeMin "2018-06-30T23:58:57" -EndTimeMax "2018-07-31T23:58:57" -Active
 		Assert-Null $allTargetExecutions
 		Assert-Null $stepTargetExecutions
 	}

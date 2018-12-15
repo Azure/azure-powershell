@@ -642,7 +642,7 @@ function Create-DatabaseForTest ($server)
 function Create-AgentForTest ($db)
 {
 	$agentName = Get-AgentName
-	return New-AzureRmSqlElasticJobAgent -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -AgentName $agentName
+	return New-AzSqlElasticJobAgent -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -AgentName $agentName
 }
 
 <#
@@ -654,7 +654,7 @@ function Create-JobCredentialForTest ($a)
 	$credentialName = Get-JobCredentialName
 	$credential = Get-ServerCredential
 
-	$jobCredential = New-AzureRmSqlElasticJobCredential -ResourceGroupName $a.ResourceGroupName -ServerName $a.ServerName -AgentName $a.AgentName -CredentialName $credentialName -Credential $credential
+	$jobCredential = New-AzSqlElasticJobCredential -ResourceGroupName $a.ResourceGroupName -ServerName $a.ServerName -AgentName $a.AgentName -CredentialName $credentialName -Credential $credential
 	return $jobCredential
 }
 
@@ -665,7 +665,7 @@ function Create-JobCredentialForTest ($a)
 function Create-TargetGroupForTest ($a)
 {
 	$targetGroupName = Get-TargetGroupName
-	$tg = New-AzureRmSqlElasticJobTargetGroup -ResourceGroupName $a.ResourceGroupName -ServerName $a.ServerName -AgentName $a.AgentName -TargetGroupName $targetGroupName
+	$tg = New-AzSqlElasticJobTargetGroup -ResourceGroupName $a.ResourceGroupName -ServerName $a.ServerName -AgentName $a.AgentName -TargetGroupName $targetGroupName
 	return $tg
 }
 
@@ -676,7 +676,7 @@ function Create-TargetGroupForTest ($a)
 function Create-JobForTest ($a, $enabled = $false)
 {
 	$jobName = Get-JobName
-	$job = New-AzureRmSqlElasticJob -ResourceGroupName $a.ResourceGroupName -ServerName $a.ServerName -AgentName $a.AgentName -Name $jobName
+	$job = New-AzSqlElasticJob -ResourceGroupName $a.ResourceGroupName -ServerName $a.ServerName -AgentName $a.AgentName -Name $jobName
 	return $job
 }
 
@@ -687,7 +687,7 @@ function Create-JobForTest ($a, $enabled = $false)
 function Create-JobStepForTest ($j, $tg, $c, $ct)
 {
 	$jobStepName = Get-JobStepName
-	$jobStep = Add-AzureRmSqlElasticJobStep -ResourceGroupName $j.ResourceGroupName -ServerName $j.ServerName -AgentName $j.AgentName -JobName $j.jobName -Name $jobStepName -TargetGroupName $tg.TargetGroupName -CredentialName $c.CredentialName -CommandText $ct
+	$jobStep = Add-AzSqlElasticJobStep -ResourceGroupName $j.ResourceGroupName -ServerName $j.ServerName -AgentName $j.AgentName -JobName $j.jobName -Name $jobStepName -TargetGroupName $tg.TargetGroupName -CredentialName $c.CredentialName -CommandText $ct
 	return $jobStep
 }
 
