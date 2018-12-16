@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
-Module Name: Az.Insights
+Module Name: Az.Monitor
 ms.assetid: 18D5B95E-4CF1-4C79-AE8B-9F4DA49B46A9
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/add-azlogprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/add-azlogprofile
 schema: 2.0.0
 ---
 
@@ -58,7 +58,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -182,9 +182,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
-### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ## OUTPUTS
 

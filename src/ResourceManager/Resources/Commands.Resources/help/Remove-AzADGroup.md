@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadgroup
@@ -14,7 +14,7 @@ Deletes an active directory group.
 
 ### ObjectIdParameterSet (Default)
 ```
-Remove-AzADGroup -ObjectId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzADGroup -ObjectId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The object representation of the group to be removed.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 The object id of the group to be removed.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -179,10 +179,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Guid
+### System.String
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
-Parameters: InputObject (ByValue)
+### Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
 
 ## OUTPUTS
 

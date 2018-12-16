@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SecurityCenter.dll-Help.xml
 Module Name: Az.Security
 online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Set-AzSecurityAlert.md
@@ -83,7 +83,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -218,11 +218,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Security.Cmdlets.Alerts.PSSetAlertInputObject
+
+### Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Security.Models.Alerts.PSSecurityAlert
+### System.Boolean
 
 ## NOTES
 
