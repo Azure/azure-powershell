@@ -16,8 +16,8 @@ function Test-KustoClusterLifecycle
 		$expectedException = Get-Cluster-Not-Exist-Message -ResourceGroupName $resourceGroupName -ClusterName $clusterName 
 
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
-		
-		$clusterCreated = New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
+
+		$clusterCreated = New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku 
 		Validate_Cluster $clusterCreated $clusterName $resourceGroupName  $location  "Running" "Succeeded" $resourceType $sku;
 	
 		[array]$clusterGet = Get-AzKustoCluster -ResourceGroupName $resourceGroupName
@@ -33,7 +33,7 @@ function Test-KustoClusterLifecycle
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
@@ -53,24 +53,24 @@ function Test-KustoClusterRemove
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
 		
 		#create and remove cluster using parameters
-		New-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
-		Remove-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+		New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
+		Remove-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName		
 		Ensure_Cluster_Not_Exist $resourceGroupName $clusterName $expectedException
 
 		#create and remove cluster using ResourceId
-		$createdCluster = New-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
-		Remove-AzureRmKustoCluster -ResourceId $createdCluster.Id
+		$createdCluster = New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
+		Remove-AzKustoCluster -ResourceId $createdCluster.Id
 		Ensure_Cluster_Not_Exist $resourceGroupName $clusterName $expectedException
 
 		#create and remove cluster using InputObject
-		$createdCluster = New-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
-		Remove-AzureRmKustoCluster -InputObject $createdCluster
+		$createdCluster = New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
+		Remove-AzKustoCluster -InputObject $createdCluster
 		Ensure_Cluster_Not_Exist $resourceGroupName $clusterName $expectedException
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
@@ -89,19 +89,19 @@ function Test-KustoClusterName
 
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
 
-		$validNameResult = Test-AzureRmKustoClusterName -Name $clusterName -Location $location
+		$validNameResult = Test-AzKustoClusterName -Name $clusterName -Location $location
 		Assert-True{$validNameResult.NameAvailable}
 
-		New-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
+		New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
 
-		$takenNameResult = Test-AzureRmKustoClusterName -Name $clusterName -Location $location
+		$takenNameResult = Test-AzKustoClusterName -Name $clusterName -Location $location
 		Assert-False{$takenNameResult.NameAvailable}
 		Assert-AreEqual $failureMessage $takenNameResult.Message
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
@@ -110,7 +110,6 @@ function Test-KustoClusterUpdate{
 	
 	try
 	{	
-		$subscription = Get-Subscription
 		$RGlocation = Get-RG-Location
 		$location = Get-Cluster-Location
 		$resourceGroupName = Get-RG-Name
@@ -120,24 +119,24 @@ function Test-KustoClusterUpdate{
 		$resourceType =  Get-Cluster-Resource-Type
 
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
-		$clusterCreated = New-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
+		$clusterCreated = New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
 
 		#Test update with parameters
-		$updatedClusterWithParameters = Update-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -SkuName $updatedSku -Tier "standard"
+		$updatedClusterWithParameters = Update-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -SkuName $updatedSku -Tier "standard"
 		Validate_Cluster $updatedClusterWithParameters $clusterName $resourceGroupName  $location "Running" "Succeeded" $resourceType $updatedSku;
 
 		#Test update with ResourceId
-		$updatedWithResourceId = Update-AzureRmKustoCluster -ResourceId $updatedClusterWithParameters.Id -SkuName $sku -Tier "standard"
+		$updatedWithResourceId = Update-AzKustoCluster -ResourceId $updatedClusterWithParameters.Id -SkuName $sku -Tier "standard"
 		Validate_Cluster $updatedWithResourceId $clusterName $resourceGroupName  $location "Running" "Succeeded" $resourceType $sku ;
 		
 		#Test update with InputObject
-		$updatedClusterWithInputObject = Update-AzureRmKustoCluster -InputObject $updatedWithResourceId -SkuName $updatedSku -Tier "standard"
+		$updatedClusterWithInputObject = Update-AzKustoCluster -InputObject $updatedWithResourceId -SkuName $updatedSku -Tier "standard"
 		Validate_Cluster $updatedClusterWithInputObject $clusterName $resourceGroupName  $location "Running" "Succeeded" $resourceType $updatedSku;
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 
@@ -146,7 +145,6 @@ function Test-KustoClusterUpdate{
 function Test-KustoClusterSuspendResume{
 	try
 	{
-		$subscription = Get-Subscription
 		$RGlocation = Get-RG-Location
 		$location = Get-Cluster-Location
 		$resourceGroupName = Get-RG-Name
@@ -154,39 +152,39 @@ function Test-KustoClusterSuspendResume{
 		$sku = Get-Sku
 
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $RGlocation
-		$clusterCreated = New-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
+		$clusterCreated = New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $location -Sku $sku
 	
 		#Suspend and resume cluster using parameters
-		Suspend-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName 
-		$suspendedClusterWithParameters  = Get-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+		Suspend-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName 
+		$suspendedClusterWithParameters  = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 		Validate_Cluster $suspendedClusterWithParameters $clusterName $resourceGroupName  $suspendedClusterWithParameters.Location "Stopped" "Succeeded" $suspendedClusterWithParameters.Type $suspendedClusterWithParameters.Sku;
 
-		Resume-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName 
-		$runningClusterWithParameters = Get-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+		Resume-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName 
+		$runningClusterWithParameters = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 		Validate_Cluster $runningClusterWithParameters $clusterName $resourceGroupName  $runningClusterWithParameters.Location "Running" "Succeeded" $runningClusterWithParameters.Type $runningClusterWithParameters.Sku;
 
 		#Suspend and resume cluster using ResourceId
-		Suspend-AzureRmKustoCluster -ResourceId $runningClusterWithParameters.Id
-		$suspendedClusterWithResourceId = Get-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+		Suspend-AzKustoCluster -ResourceId $runningClusterWithParameters.Id
+		$suspendedClusterWithResourceId = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 		Validate_Cluster $suspendedClusterWithResourceId $clusterName $resourceGroupName  $suspendedClusterWithResourceId.Location "Stopped" "Succeeded" $suspendedClusterWithResourceId.Type $suspendedClusterWithResourceId.Sku;
 
-		Resume-AzureRmKustoCluster -ResourceId $suspendedClusterWithResourceId.Id
-		$runningClusterWithResourceId = Get-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+		Resume-AzKustoCluster -ResourceId $suspendedClusterWithResourceId.Id
+		$runningClusterWithResourceId = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 		Validate_Cluster $runningClusterWithResourceId $clusterName $resourceGroupName  $runningClusterWithResourceId.Location "Running" "Succeeded" $suspendedClusterWithResourceId.Type $runningClusterWithResourceId.Sku;
 
 		#Suspend and resume cluster using InputObject
-		Suspend-AzureRmKustoCluster -InputObject $runningClusterWithResourceId
-		$suspendedClusterWithInputObject = Get-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+		Suspend-AzKustoCluster -InputObject $runningClusterWithResourceId
+		$suspendedClusterWithInputObject = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 		Validate_Cluster $suspendedClusterWithInputObject $clusterName $resourceGroupName  $suspendedClusterWithInputObject.Location "Stopped" "Succeeded" $suspendedClusterWithInputObject.Type $suspendedClusterWithInputObject.Sku;
 
-		Resume-AzureRmKustoCluster -InputObject $runningClusterWithResourceId
-		$runningClusterWithInputObject = Get-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+		Resume-AzKustoCluster -InputObject $runningClusterWithResourceId
+		$runningClusterWithInputObject = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 		Validate_Cluster $runningClusterWithInputObject $clusterName $resourceGroupName  $runningClusterWithInputObject.Location "Running" "Succeeded" $runningClusterWithInputObject.Type $runningClusterWithInputObject.Sku;
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRmKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }
@@ -216,17 +214,17 @@ function Ensure_Cluster_Not_Exist {
 		$expectedException = $false;
 		try
         {
-			$databaseGetItemDeleted = Get-AzureRmKustoCluster -ResourceGroupName $ResourceGroupName -Name $ClusterName
+			$databaseGetItemDeleted = Get-AzKustoCluster -ResourceGroupName $ResourceGroupName -Name $ClusterName
         }
         catch
         {
-            if ($_ -like $ExpectedErrorMessage)
+            if ($_ -Match $ExpectedErrorMessage)
             {
                 $expectedException = $true;
             }
         }
         if (-not $expectedException)
         {
-            throw "Expected exception from calling Get-AzureRmKustoCluster was not caught: '$expectedErrorMessage'.";
+            throw "Expected exception from calling Get-AzKustoCluster was not caught: '$expectedErrorMessage'.";
         }
 }

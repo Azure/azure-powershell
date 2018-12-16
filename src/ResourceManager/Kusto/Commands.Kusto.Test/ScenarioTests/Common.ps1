@@ -18,12 +18,12 @@ Gets resource location for testing.
 #>
 function Get-Cluster-Location
 {
-	return "Central US"
+	return Get-Location "Microsoft.Kusto" "operations" "Central US"
 }
 
-function Get-RG-Locationa
+function Get-RG-Location
 {
-	return "Central US"
+	Get-Location "Microsoft.Resources" "resourceGroups" "Central US"
 }
 
 <#
@@ -32,7 +32,8 @@ Gets a name of the resource group testing.
 #>
 function Get-RG-Name
 {
-	return "KustoPSClientTest"
+	return getAssetname
+	#return "KustoPSClientTest"
 }
 
 <#
@@ -41,7 +42,8 @@ Gets a name of the cluster testing.
 #>
 function Get-Cluster-Name
 {
-	return "kustopsclienttest"
+	return getAssetName
+	#return "kustopsclienttest"
 }
 
 <#
@@ -82,16 +84,6 @@ function Get-RG-Location
 
 <#
 .SYNOPSIS
-Gets a resource group Location for testing.
-#>
-function Get-Subscription
-{
-	return "11d5f159-a21d-4a6c-8053-c3aae30057cf"
-}
-
-
-<#
-.SYNOPSIS
 Gets a cluster resource id
 #>
 function Get-Cluster-Resource-Id
@@ -123,7 +115,7 @@ Gets a database name
 #>
 function Get-Database-Name
 {
-	return "dbTest"
+	return getAssetName
 }
 
 <#
@@ -177,10 +169,9 @@ Gets a the database does not exist message
 #>
 function Get-Database-Not-Exist-Message
 {
-	Param([string]$ResourceGroupName,
-		[string]$ClusterName,
-	[string]$DatabaseName)
-	return "The Resource 'Microsoft.Kusto/clusters/$ClusterName/databases/$DatabaseName' under resource group '$ResourceGroupName' was not found."
+	Param([string]$DatabaseName)
+#	return "$DatabaseName' is not found"
+	return "$DatabaseName' is not found"
 }
 
 <#
@@ -191,7 +182,7 @@ function Get-Cluster-Not-Exist-Message
 {
 	Param([string]$ResourceGroupName,
 		[string]$ClusterName)
-	return "The Resource 'Microsoft.Kusto/clusters/$ClusterName' under resource group '$ResourceGroupName' was not found."
+	return "'Microsoft.Kusto/clusters/$ClusterName' under resource group '$ResourceGroupName' was not found"
 }
 
 

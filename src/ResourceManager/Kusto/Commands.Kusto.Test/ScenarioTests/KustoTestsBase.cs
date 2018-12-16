@@ -24,11 +24,11 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Management.Kusto;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
-// Why is this Search????
 namespace Microsoft.Azure.Commands.Kusto.Test.ScenarioTests
 {
-    public class KustoTestsBase
+    public class KustoTestsBase : RMTestBase
     {
         private readonly EnvironmentSetupHelper _helper;
 
