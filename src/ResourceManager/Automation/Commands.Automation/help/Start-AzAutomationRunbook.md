@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: B2D9FF7B-EA3B-4853-814C-00FC4E328957
@@ -71,7 +71,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -175,10 +175,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Automation.Model.Job
--This cmdlet returns a **Job** object, unless you specify the _Wait_ parameter.
--If you do not specify _Wait_, Azure PowerShell returns a **Job** object immediately.
--If you specify _Wait_, Azure PowerShell completes the job, and then returns the result.
--The result is not a **Job** object.
 
 ### System.Management.Automation.PSObject
 

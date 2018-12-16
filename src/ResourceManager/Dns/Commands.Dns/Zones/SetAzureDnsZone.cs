@@ -74,7 +74,6 @@ namespace Microsoft.Azure.Commands.Dns
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
             DnsZone result = null;
             DnsZone zoneToUpdate = null;

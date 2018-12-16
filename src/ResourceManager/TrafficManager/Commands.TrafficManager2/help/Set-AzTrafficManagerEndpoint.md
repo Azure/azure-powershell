@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.dll-Help.xml
 Module Name: Az.TrafficManager
 ms.assetid: 5287D4DB-2709-4A3C-97D5-DB494CEEFD18
@@ -51,7 +51,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -81,13 +81,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.TrafficManagerEndpoint
-This cmdlet accepts a **TrafficManagerEndpoint** object.
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.TrafficManagerEndpoint
-This cmdlet returns a **TrafficManagerEndpoint** object.
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint
 
 ## NOTES
 

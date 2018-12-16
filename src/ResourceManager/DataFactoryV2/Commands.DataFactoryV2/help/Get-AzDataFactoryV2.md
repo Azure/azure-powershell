@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
-Module Name: Az.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactories/get-azdatafactoryv2
+Module Name: Az.DataFactory
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/get-azdatafactoryv2
 schema: 2.0.0
 ---
 
@@ -19,8 +19,8 @@ Get-AzDataFactoryV2 [-DefaultProfile <IAzureContextContainer>] [<CommonParameter
 
 ### ByFactoryName
 ```
-Get-AzDataFactoryV2 [-ResourceGroupName] <String> [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataFactoryV2 [-ResourceGroupName] <String> [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,9 +76,9 @@ Specify the DataFactory parameter in subsequent cmdlets to use the data factory 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

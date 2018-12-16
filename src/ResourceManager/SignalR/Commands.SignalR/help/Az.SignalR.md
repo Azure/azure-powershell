@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.SignalR
 Module Guid: 7aa1b2c0-72cb-448a-9c12-c45bdf3e088d
 Download Help Link: {{Please enter FwLink manually}}

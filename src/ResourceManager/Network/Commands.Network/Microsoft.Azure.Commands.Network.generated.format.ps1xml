@@ -4348,10 +4348,6 @@
             <Alignment>Left</Alignment>
             <Label>EnableDdosProtection</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>EnableVmProtection</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>

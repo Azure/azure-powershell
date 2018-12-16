@@ -18,5 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 1.0.0
+* General availability of `Az.CognitiveServices` module
 * Add completers for SkuName and Typem available on New-AzureRmCognitiveServicesAccount operation.
 * Removed GetSkusWithAccountParamSetName parameter set from Get-AzCognitiveServicesAccountSkus

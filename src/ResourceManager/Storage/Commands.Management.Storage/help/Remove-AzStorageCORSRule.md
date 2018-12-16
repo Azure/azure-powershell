@@ -1,5 +1,5 @@
----
-external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 26E06BA3-C550-40A5-B8E3-FEC8E9BF3867
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/remove-azstoragecorsrule
