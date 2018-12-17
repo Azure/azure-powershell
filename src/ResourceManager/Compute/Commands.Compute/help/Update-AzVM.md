@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 38917534-49C6-47EA-B815-240F794EE655
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/update-azvm
@@ -94,7 +94,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -269,6 +269,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### System.Boolean
 
 ## OUTPUTS
 

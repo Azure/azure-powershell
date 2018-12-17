@@ -146,7 +146,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning(Resources.IncorrectOutputTypeWarning);
             string processMessage = string.Empty;
             string target = string.Empty;
             switch (this.ParameterSetName)

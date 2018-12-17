@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azroledefinition
@@ -83,7 +83,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -130,7 +130,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
-Parameters: Role (ByValue)
 
 ## OUTPUTS
 

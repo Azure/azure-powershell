@@ -1,5 +1,5 @@
----
-external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/enable-azstoragstaticwebsite
 schema: 2.0.0

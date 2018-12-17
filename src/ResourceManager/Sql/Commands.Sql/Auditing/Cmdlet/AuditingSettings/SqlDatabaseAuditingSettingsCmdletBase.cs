@@ -56,15 +56,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override DatabaseBlobAuditingSettingsModel PersistChanges(DatabaseBlobAuditingSettingsModel model)
         {
-            if (Array.IndexOf(model.AuditActionGroup, AuditActionGroups.AUDIT_CHANGE_GROUP) > -1)
-            {
-                // AUDIT_CHANGE_GROUP is not supported.
-                WriteWarning(Resources.auditChangeGroupDeprecationMessage);
-
-                // Remove it
-                model.AuditActionGroup = model.AuditActionGroup.Where(v => v != AuditActionGroups.AUDIT_CHANGE_GROUP).ToArray();
-            }
-
             ModelAdapter.SetDatabaseBlobAuditingPolicyV2(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
            
             return null;

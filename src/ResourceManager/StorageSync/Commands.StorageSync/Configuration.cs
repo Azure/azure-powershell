@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
+
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     using Interfaces;
@@ -64,7 +66,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         public Configuration()
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = $"{assembly.GetName().Name}.{ConfigFilename}";
+            //https://stackoverflow.com/a/4885945/294804
+            var resourceName = assembly.GetManifestResourceNames().Single(n => n.EndsWith(ConfigFilename));
 
             using (Stream configStream = assembly.GetManifestResourceStream(resourceName))
             {

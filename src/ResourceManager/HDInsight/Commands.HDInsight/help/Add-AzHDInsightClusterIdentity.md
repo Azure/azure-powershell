@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: A40AB6AB-D3CB-4A6C-B614-0B22085759DA
 online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/add-azhdinsightclusteridentity
@@ -161,9 +161,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -194,10 +194,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
-Parameters: Config (ByValue)
 
 ### System.Guid
-Parameters: ObjectId (ByValue)
 
 ## OUTPUTS
 

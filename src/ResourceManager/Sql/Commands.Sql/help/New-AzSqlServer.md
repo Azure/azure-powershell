@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 7039528F-42AE-45DB-BF81-FE5003F8AEE2
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/new-azsqlserver
@@ -76,7 +76,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

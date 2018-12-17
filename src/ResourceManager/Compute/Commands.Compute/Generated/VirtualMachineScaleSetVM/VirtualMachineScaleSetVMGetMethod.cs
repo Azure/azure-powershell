@@ -32,9 +32,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(VirtualMachineInstanceView), ReplacementCmdletOutputTypeName = "VirtualMachineScaleSetVMInstanceView")]
-#endif
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVM", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSVirtualMachineScaleSetVM))]
     public partial class GetAzureRmVmssVM : ComputeAutomationBaseCmdlet

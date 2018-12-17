@@ -1,5 +1,5 @@
----
-external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 22975A89-CAFF-4F18-8DCE-B695413FBAC7
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/remove-azstoragequeue

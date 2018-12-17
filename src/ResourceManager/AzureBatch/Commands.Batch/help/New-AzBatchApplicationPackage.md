@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: D53DAEB6-DC4F-473C-A193-A1E2A65326D4
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/new-azbatchapplicationpackage
@@ -107,7 +107,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
