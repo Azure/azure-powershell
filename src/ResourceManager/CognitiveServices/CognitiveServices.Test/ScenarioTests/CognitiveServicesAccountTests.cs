@@ -15,7 +15,7 @@
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTests;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
@@ -86,13 +86,6 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAccountSkusLegacy()
-        {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmCognitiveServicesAccountSkusLegacy");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountSkus()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmCognitiveServicesAccountSkus");
@@ -117,13 +110,6 @@ namespace CognitiveServices.Test.ScenarioTests
         public void TestPipingToSetAccount()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PipingToSetAzureAccount");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPipingToGetSkus()
-        {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PipingToGetAccountSkus");
         }
 
         [Fact]

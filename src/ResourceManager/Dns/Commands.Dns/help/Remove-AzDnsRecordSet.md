@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: 505562A4-30BC-44E7-94EF-579763B8D794
 online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/remove-azdnsrecordset
@@ -75,7 +75,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -268,10 +268,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.Dns.DnsZone
-Parameters: Zone (ByValue)
 
 ### Microsoft.Azure.Commands.Dns.DnsRecordSet
-Parameters: RecordSet (ByValue)
 
 ## OUTPUTS
 

@@ -22,7 +22,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {

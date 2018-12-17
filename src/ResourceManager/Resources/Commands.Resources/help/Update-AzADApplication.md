@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadapplication
 schema: 2.0.0
@@ -14,7 +14,7 @@ Updates an existing azure active directory application.
 
 ### ApplicationObjectIdWithUpdateParamsParameterSet (Default)
 ```
-Update-AzADApplication -ObjectId <Guid> [-DisplayName <String>] [-HomePage <String>]
+Update-AzADApplication -ObjectId <String> [-DisplayName <String>] [-HomePage <String>]
  [-IdentifierUri <String[]>] [-ReplyUrl <String[]>] [-AvailableToOtherTenants <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -113,7 +113,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -207,7 +207,7 @@ Accept wildcard characters: False
 The object representing the application to update.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
 Parameter Sets: InputObjectWithUpdateParamsParameterSet
 Aliases:
 
@@ -222,7 +222,7 @@ Accept wildcard characters: False
 The object id of the application to update.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: ApplicationObjectIdWithUpdateParamsParameterSet
 Aliases:
 
@@ -296,12 +296,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ### System.Guid
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
-Parameters: InputObject (ByValue)
-
-### System.String
+### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
 
 ### System.String[]
 
@@ -309,7 +308,7 @@ Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
 
 ## NOTES
 

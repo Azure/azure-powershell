@@ -3,8 +3,8 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.NotificationHubs.Test</AssemblyName>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.Test</AssemblyName>
     <RootNamespace>Commands.NotificationHubs.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -24,14 +24,8 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.NotificationHubs" Version="2.3.2-preview" />
-  </ItemGroup>
-
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.NotificationHubs">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.NotificationHubs\Microsoft.Azure.Commands.NotificationHubs.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Microsoft.Azure.Management.NotificationHubs" Version="2.3.2-preview" />
   </ItemGroup>
 
   <ItemGroup>

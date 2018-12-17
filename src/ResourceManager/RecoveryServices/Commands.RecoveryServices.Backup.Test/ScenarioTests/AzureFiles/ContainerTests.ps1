@@ -62,7 +62,7 @@ function Test-AzureFSContainer
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
-			-Name $saName;
+			-FriendlyName $saName;
 		Assert-True { $containers.FriendlyName -contains $saName }
 
 		# VARIATION-3: Get Containers with resource group filter
@@ -78,7 +78,7 @@ function Test-AzureFSContainer
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
-			-Name $saName `
+			-FriendlyName $saName `
 			-ResourceGroupName $resourceGroupName;
 		Assert-True { $containers.FriendlyName -contains $saName }
 	}

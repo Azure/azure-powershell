@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public Sku Sku { get; set; }
         public bool? LatestModelApplied { get; set; }
         public string VmId { get; set; }
-        //public VirtualMachineScaleSetVMInstanceView InstanceView { get; set; }
+        public VirtualMachineScaleSetVMInstanceView InstanceView { get; set; }
         public HardwareProfile HardwareProfile { get; set; }
         public StorageProfile StorageProfile { get; set; }
         public AdditionalCapabilities AdditionalCapabilities { get; set; }

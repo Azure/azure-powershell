@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagement
 schema: 2.0.0
@@ -29,7 +29,7 @@ PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "Con
 PS C:\> $apim.Sku = "Premium"
 PS C:\> $apim.Capacity = 5
 PS C:\> $apim.AddRegion("Central US", "Premium", 3)
-PS C:\>Set-AzApiManagement -ApiManagement $apim
+PS C:\>Set-AzApiManagement -InputObject $apim
 ```
 
 This example gets an Api Management instance, scales it to five premium units and then adds an additional three units to the premium region.
@@ -40,7 +40,7 @@ PS C:\> $virtualNetwork = New-AzApiManagementVirtualNetwork -Location "East US" 
 PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\> $apim.VpnType = "External"
 PS C:\> $apim.VirtualNetwork = $virtualNetwork
-PS C:\> Set-AzApiManagement -ApiManagement $apim
+PS C:\> Set-AzApiManagement -InputObject $apim
 ```
 
 This command updates an existing API Management deployment and joins to an external *VpnType*.
@@ -55,6 +55,15 @@ PS C:\>$apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "Cont
 PS C:\>$apim.PortalCustomHostnameConfiguration = $portal
 PS C:\>$apim.ProxyCustomHostnameConfiguration = $proxyCustomConfig 
 PS C:\>Set-AzApiManagement -InputObject $apim -AssignIdentity
+```
+
+### Example 4: Update Publisher Email, NotificationSender Email and Organization Name
+```powershell
+PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "api-Default-West-US" -Name "Contoso"
+PS C:\> $apim.PublisherEmail = "foobar@contoso.com"
+PS C:\> $apim.NotificationSenderEmail = "notification@contoso.com"
+PS C:\> $apim.OrganizationName = "Contoso"
+PS C:\> Set-AzApiManagement -InputObject $apim -PassThru
 ```
 
 ## PARAMETERS
@@ -95,7 +104,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -170,7 +179,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
-Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

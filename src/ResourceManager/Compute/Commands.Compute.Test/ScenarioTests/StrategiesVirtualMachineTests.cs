@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Diagnostics;
 using System.Reflection;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests

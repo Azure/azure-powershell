@@ -66,7 +66,7 @@ function New-AzureRmRoleAssignmentWithId
 {
     [CmdletBinding()]
     param(
-        [Guid]   [Parameter()] [alias("Id", "PrincipalId")] $ObjectId,
+        [string] [Parameter()] [alias("Id", "PrincipalId")] $ObjectId,
         [string] [Parameter()] [alias("Email", "UserPrincipalName")] $SignInName,
         [string] [Parameter()] [alias("SPN", "ServicePrincipalName")] $ApplicationId,
         [string] [Parameter()] $ResourceGroupName,
@@ -85,7 +85,7 @@ function New-AzureRmRoleAssignmentWithId
     $cmdlet.DefaultProfile = $profile
 	$cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
 
-    if ($ObjectId -ne $null -and $ObjectId -ne [System.Guid]::Empty)
+    if (-not ([string]::IsNullOrEmpty($ObjectId)))
     {
         $cmdlet.ObjectId = $ObjectId
     }

@@ -1,8 +1,8 @@
----
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: Az.Insights
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+Module Name: Az.Monitor
 ms.assetid: 0137ECA3-37E1-4064-8A65-A582519E9017
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azalertrulewebhook
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azalertrulewebhook
 schema: 2.0.0
 ---
 
@@ -45,7 +45,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

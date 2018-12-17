@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
 ms.assetid: 7ADF4CDE-638B-4E00-88B1-688702B084A5
 online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/remove-azcdnendpoint
@@ -53,7 +53,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -175,7 +175,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
-Parameters: CdnEndpoint (ByValue)
 
 ### System.Management.Automation.SwitchParameter
 

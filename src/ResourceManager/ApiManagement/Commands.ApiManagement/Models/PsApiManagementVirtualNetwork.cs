@@ -40,8 +40,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             }
         }
 
-        public string Location { get; set; }
-
         public string SubnetResourceId { get; set; }
 
         public string SubnetName { get; set; }
