@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SecurityCenter.dll-Help.xml
 Module Name: Az.Security
-online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Set-AzSecurityPricing.md
+online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzSecurityPricing
 schema: 2.0.0
 ---
 
@@ -64,7 +64,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -168,8 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.Security.Cmdlets.Pricings.PSAddPricingInputObject
+### Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing
 
 ## OUTPUTS
 

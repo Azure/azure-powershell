@@ -68,19 +68,20 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         public object GetDynamicParameters()
         {
+            // make sure the commands are relate to the project type, so read project to ensure right method to invoke.
+            Project resp = this.DataMigrationClient.Projects.Get(ResourceGroupName, ServiceName, ProjectName);            
             RuntimeDefinedParameterDictionary dynamicParams = null;
-            
-            if (CommandType.Equals(CommandTypeEnum.Complete.ToString()))
+            string cmd = string.IsNullOrWhiteSpace(CommandType) ? " " : CommandType.ToLowerInvariant();
+            if (resp.SourcePlatform.ToLowerInvariant() == "mongodb")
             {
-                commandCmdlet = new CompleteCommandCmdlet(this.MyInvocation);
+                commandCmdlet = new MongoDbObjectCommandCmdlet(this.MyInvocation, cmd);
             }
             else
             {
-                throw new PSArgumentException();
+                commandCmdlet = new CompleteCommandCmdlet(this.MyInvocation);
             }
 
             dynamicParams = commandCmdlet.RuntimeDefinedParams;
-
             return dynamicParams;
         }
 

@@ -19,18 +19,18 @@ function Test-CreateAndGetService
 		$service = Create-DataMigrationService($rg)
 
 		#Get all service
-		$all = Get-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName
+		$all = Get-AzDataMigrationService -ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual 1 $all.Count
 		
 		#Get specific service
-		$all = Get-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name
+		$all = Get-AzDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name
 
 		Assert-AreEqual $service.Name $all[0].Name
 		Assert-AreEqual $rg.Location $all[0].Location
 		Assert-AreEqual $service.Service.VirtualSubnetId $all[0].Service.VirtualSubnetId
 
 		#Get random service - should get Not Found
-		Assert-ThrowsContains { $all = Get-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -Name Get-ServiceName;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDataMigrationService -ResourceGroupName $rg.ResourceGroupName -Name Get-ServiceName;} "NotFound"
 	}
 	finally
 	{
@@ -45,16 +45,16 @@ function Test-StopStartDataMigrationService
 	{
 		$service = Create-DataMigrationService($rg)
 		#Stop Service
-		Stop-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name
+		Stop-AzDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name
 
-		$all = Get-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name
+		$all = Get-AzDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name
 		Assert-AreEqual 1 $all.Count
 		Assert-AreEqual "Stopped" $all[0].Service.ProvisioningState
 
 		#Start Service
-		Start-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name
+		Start-AzDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name
 		
-		$all = Get-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name
+		$all = Get-AzDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name
 		Assert-AreEqual 1 $all.Count
 		Assert-AreEqual "Succeeded" $all[0].Service.ProvisioningState
 	}
@@ -74,7 +74,7 @@ function Test-CreateAndGetProjectSqlSqlDb
 		$project = Create-ProjectSqlSqlDb $rg $service
 
 		#Get Project for a service
-		$all = Get-AzureRmDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name
+		$all = Get-AzDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name
 
         Write-Host $all
 
@@ -83,14 +83,14 @@ function Test-CreateAndGetProjectSqlSqlDb
 		Assert-AreEqual $all.Count 1
 		
 		#Get specific projet
-		$all = Get-AzureRmDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name
+		$all = Get-AzDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name
 
 		Assert-AreEqual $project.Name $all[0].Name
 		Assert-AreEqual SQL $all[0].Project.SourcePlatform
 		Assert-AreEqual SQLDB $all[0].Project.TargetPlatform
 
 		#Get random project should get Not Found
-		Assert-ThrowsContains { $all = Get-AzureRmDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName Get-ProjectName;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName Get-ProjectName;} "NotFound"
 	}
 	finally
 	{
@@ -107,9 +107,9 @@ function Test-RemoveService
 	{
 		$service = Create-DataMigrationService($rg)
 		# Test using parameters
-		Remove-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -Force
+		Remove-AzDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name ;} "NotFound"
 	}
 	finally
 	{
@@ -127,9 +127,9 @@ function Test-RemoveProject
 		$service = Create-DataMigrationService($rg)
 		$project = Create-ProjectSqlSqlDb $rg $service
 		# Test using parameters
-		Remove-AzureRmDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -Force
+		Remove-AzDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name ;} "NotFound"
 	}
 	finally
 	{
@@ -151,9 +151,9 @@ function Test-ConnectToSourceSqlServer
 		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_PASSWORD")
 		$cred = Get-Creds $userName $password
 
-		$task = New-AzureRmDataMigrationTask -TaskType ConnectToSourceSqlServer -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -SourceCred $cred
+		$task = New-AzDataMigrationTask -TaskType ConnectToSourceSqlServer -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -SourceCred $cred
 
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual 1 $task.Count
@@ -161,14 +161,14 @@ function Test-ConnectToSourceSqlServer
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
 			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
@@ -190,9 +190,9 @@ function Test-ConnectToTargetSqlDb
 		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_PASSWORD") 
 		$cred = Get-Creds $userName $password
 
-		$task = New-AzureRmDataMigrationTask -TaskType ConnectToTargetSqlDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -TargetConnection $connectioninfo -TargetCred $cred
+		$task = New-AzDataMigrationTask -TaskType ConnectToTargetSqlDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -TargetConnection $connectioninfo -TargetCred $cred
 
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual 1 $task.Count
@@ -200,14 +200,14 @@ function Test-ConnectToTargetSqlDb
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
 			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
@@ -230,9 +230,9 @@ function Test-GetUserTableTask
 		$cred = Get-Creds $userName $password
 		$selectedDbs = @("JasmineTest")
 
-		$task = New-AzureRmDataMigrationTask -TaskType GetUserTablesSql -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -SourceCred $cred -SelectedDatabase $selectedDbs
+		$task = New-AzDataMigrationTask -TaskType GetUserTablesSql -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -SourceCred $cred -SelectedDatabase $selectedDbs
 
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual 1 $task.Count
@@ -240,14 +240,14 @@ function Test-GetUserTableTask
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
 			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
@@ -284,16 +284,16 @@ function Test-MigrateSqlSqlDB
 		$sourceDbName = "MigrateOneTime"
 		$targetDbName = "JasmineTest"
 
-		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDb -Name $sourceDbName -TargetDatabaseName $targetDbName -TableMap $tableMap
+		$selectedDbs = New-AzDataMigrationSelectedDB -MigrateSqlServerSqlDb -Name $sourceDbName -TargetDatabaseName $targetDbName -TableMap $tableMap
 		Assert-AreEqual $sourceDbName $selectedDbs[0].Name
 		Assert-AreEqual $targetDbName $selectedDbs[0].TargetDatabaseName
 		Assert-AreEqual 2 $selectedDbs[0].TableMap.Count
 		Assert-AreEqual true $selectedDbs[0].TableMap.ContainsKey("dbo.TestTable1")
 		Assert-AreEqual "dbo.TestTable1" $selectedDbs[0].TableMap["dbo.TestTable1"]
 
-		$migTask = New-AzureRmDmsTask -TaskType MigrateSqlServerSqlDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -SourceCred $sourceCred -TargetConnection $targetConnectionInfo -TargetCred $targetCred -SelectedDatabase  $selectedDbs
+		$migTask = New-AzDmsTask -TaskType MigrateSqlServerSqlDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -SourceCred $sourceCred -TargetConnection $targetConnectionInfo -TargetCred $targetCred -SelectedDatabase  $selectedDbs
 
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual 1 $task.Count		
@@ -303,14 +303,14 @@ function Test-MigrateSqlSqlDB
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
 			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
@@ -332,9 +332,9 @@ function Test-ConnectToTargetSqlDbMi
 		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_PASSWORD")
 		$cred = Get-Creds $userName $password
 
-		$task = New-AzureRmDataMigrationTask -TaskType ConnectToTargetSqlDbMi -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -TargetConnection $connectioninfo -TargetCred $cred
+		$task = New-AzDataMigrationTask -TaskType ConnectToTargetSqlDbMi -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -TargetConnection $connectioninfo -TargetCred $cred
 
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual 1 $task.Count
@@ -342,14 +342,14 @@ function Test-ConnectToTargetSqlDbMi
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
 			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
@@ -385,7 +385,7 @@ function Test-MigrateSqlSqlDBMi
 		$fileSharePassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_PASSWORD")
 		$fileShareCred = Get-Creds $fileShareUsername $fileSharePassword
 
-		$backupFileShare = New-AzureRmDmsFileShare -Path $fileSharePath -Credential $fileShareCred
+		$backupFileShare = New-AzDmsFileShare -Path $fileSharePath -Credential $fileShareCred
 		Assert-AreEqual $fileSharePath $backupFileShare.Path
 		Assert-AreEqual $fileShareUserName $backupFileShare.Username
 		Assert-AreEqual $fileSharePassword $backupFileShare.Password
@@ -394,7 +394,7 @@ function Test-MigrateSqlSqlDBMi
 		$targetDbName = "TestMI6"
         $backupMode = "CreateBackup"
 
-		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name $sourceDbName -TargetDatabaseName $targetDbName -BackupFileShare $backupFileShare
+		$selectedDbs = New-AzDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name $sourceDbName -TargetDatabaseName $targetDbName -BackupFileShare $backupFileShare
 
 		Assert-AreEqual $sourceDbName $selectedDbs[0].Name
 		Assert-AreEqual $targetDbName $selectedDbs[0].RestoreDatabaseName
@@ -407,7 +407,7 @@ function Test-MigrateSqlSqlDBMi
         #$selectedJobs = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MI_AGENTJOBS")
         #$selectedJobs = $selectedJobs -split ","
 
-		$migTask = New-AzureRmDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
+		$migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
 		  -ResourceGroupName $rg.ResourceGroupName `
 		  -ServiceName $service.Name `
 		  -ProjectName $project.Name `
@@ -421,7 +421,7 @@ function Test-MigrateSqlSqlDBMi
 		  -SelectedDatabase $selectedDbs `
           -BackupMode $backupMode
 
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual $backupFileShare.Path $task.ProjectTask.Properties.Input.BackupFileShare.Path
@@ -435,14 +435,14 @@ function Test-MigrateSqlSqlDBMi
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
 			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
@@ -478,15 +478,15 @@ function Test-ValidateMigrationInputSqlSqlDbMi
 		$fileSharePassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_PASSWORD")
 		$fileShareCred = Get-Creds $fileShareUsername $fileSharePassword
 
-		$backupFileShare = New-AzureRmDmsFileShare -Path $fileSharePath -Credential $fileShareCred
+		$backupFileShare = New-AzDmsFileShare -Path $fileSharePath -Credential $fileShareCred
 
 		$sourceDbName = "TestMI"
 		$targetDbName = "TestTarget"
         $backupMode = "CreateBackup"
 
-		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name $sourceDbName -TargetDatabaseName $targetDbName -BackupFileShare $backupFileShare
+		$selectedDbs = New-AzDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name $sourceDbName -TargetDatabaseName $targetDbName -BackupFileShare $backupFileShare
 
-		$migTask = New-AzureRmDataMigrationTask -TaskType ValidateSqlServerSqlDbMi `
+		$migTask = New-AzDataMigrationTask -TaskType ValidateSqlServerSqlDbMi `
 		  -ResourceGroupName $rg.ResourceGroupName `
 		  -ServiceName $service.Name `
 		  -ProjectName $project.Name `
@@ -500,7 +500,7 @@ function Test-ValidateMigrationInputSqlSqlDbMi
 		  -SelectedDatabase $selectedDbs `
           -BackupMode $backupMode
 
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual 1 $task.Count
@@ -508,14 +508,14 @@ function Test-ValidateMigrationInputSqlSqlDbMi
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
 			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
@@ -537,9 +537,9 @@ function Test-ConnectToSourceSqlServerSync
 		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_PASSWORD")
 		$cred = Get-Creds $userName $password
 
-		$task = New-AzureRmDataMigrationTask -TaskType ConnectToSourceSqlServerSync -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -SourceCred $cred
+		$task = New-AzDataMigrationTask -TaskType ConnectToSourceSqlServerSync -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -SourceCred $cred
 
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual 1 $task.Count
@@ -547,14 +547,14 @@ function Test-ConnectToSourceSqlServerSync
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
 			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
@@ -582,9 +582,9 @@ function Test-ConnectToTargetSqlDbSync
 		$targetPassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_PASSWORD")
 		$targetCred = Get-Creds $targetUserName $targetPassword
 
-		$task = New-AzureRmDataMigrationTask -TaskType ConnectToTargetSqlSync -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -SourceCred $sourceCred -TargetConnection $targetConnectionInfo -TargetCred $targetCred
+		$task = New-AzDataMigrationTask -TaskType ConnectToTargetSqlSync -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -SourceCred $sourceCred -TargetConnection $targetConnectionInfo -TargetCred $targetCred
 
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual 1 $task.Count
@@ -592,14 +592,14 @@ function Test-ConnectToTargetSqlDbSync
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
 			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
@@ -630,7 +630,7 @@ function Test-GetUserTableSyncTask
 		$selectedSourceDb = @("MigrateOneTime")
 		$selectedTargetDb = @("JasmineTest")
 
-		$task = New-AzureRmDataMigrationTask -TaskType GetUserTablesSqlSync `
+		$task = New-AzDataMigrationTask -TaskType GetUserTablesSqlSync `
 			-ResourceGroupName $rg.ResourceGroupName `
 			-ServiceName $service.Name `
 			-ProjectName $project.Name `
@@ -642,7 +642,7 @@ function Test-GetUserTableSyncTask
 			-SelectedSourceDatabases $selectedSourceDb `
 			-SelectedTargetDatabases $selectedTargetDb
 
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual 1 $task.Count
@@ -650,14 +650,14 @@ function Test-GetUserTableSyncTask
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
 			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
@@ -692,12 +692,12 @@ function Test-ValidateMigrationInputSqlSqlDbSync
         $sourceDb = "MigrateOneTime"
         $targetDb = "JasmineTest"
 
-		$selectedDbs = New-AzureRmDmsSyncSelectedDB -TargetDatabaseName $targetDb `
+		$selectedDbs = New-AzDmsSyncSelectedDB -TargetDatabaseName $targetDb `
 		  -SchemaName dbo `
 		  -TableMap $tableMap `
 		  -Name $sourceDb
 
-		$migTask = New-AzureRmDataMigrationTask -TaskType ValidateSqlServerSqlDbSync `
+		$migTask = New-AzDataMigrationTask -TaskType ValidateSqlServerSqlDbSync `
 		  -ResourceGroupName $rg.ResourceGroupName `
 		  -ServiceName $service.Name `
 		  -ProjectName $project.Name `
@@ -708,7 +708,7 @@ function Test-ValidateMigrationInputSqlSqlDbSync
 		  -TargetCred $targetCred `
 		  -SelectedDatabase  $selectedDbs
 
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual 1 $task.Count
@@ -716,14 +716,14 @@ function Test-ValidateMigrationInputSqlSqlDbSync
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
 			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
 	}
 	finally
 	{
@@ -758,12 +758,12 @@ function Test-MigrateSqlSqlDBSync
         $sourceDb = "MigrateOneTime"
         $targetDb = "JasmineTest"
 
-		$selectedDbs = New-AzureRmDmsSyncSelectedDB -TargetDatabaseName $targetDb `
+		$selectedDbs = New-AzDmsSyncSelectedDB -TargetDatabaseName $targetDb `
 		  -SchemaName dbo `
 		  -TableMap $tableMap `
 		  -SourceDatabaseName $sourceDb
 
-		$migTask = New-AzureRmDmsTask -TaskType MigrateSqlServerSqlDbSync `
+		$migTask = New-AzDmsTask -TaskType MigrateSqlServerSqlDbSync `
 			-ResourceGroupName $rg.ResourceGroupName `
 			-ServiceName $service.Name `
 			-ProjectName $project.Name `
@@ -774,7 +774,7 @@ function Test-MigrateSqlSqlDBSync
 			-TargetCred $targetCred `
 			-SelectedDatabase  $selectedDbs
 
-		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual 1 $task.Count
@@ -788,7 +788,7 @@ function Test-MigrateSqlSqlDBSync
 
 				    if ($output.MigrationState -eq "READY_TO_COMPLETE")
 				    {
-					    $command = Invoke-AzureRmDmsCommand -CommandType Complete `
+					    $command = Invoke-AzDmsCommand -CommandType Complete `
 						    -ResourceGroupName $rg.ResourceGroupName `
 						    -ServiceName $service.Name `
 						    -ProjectName $project.Name `
@@ -799,14 +799,116 @@ function Test-MigrateSqlSqlDBSync
             }
 
 			SleepTask 15
-			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
 		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 
-		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
 		
-		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-ConnectToSourceMongoDb
+{
+	$rg = Create-ResourceGroupForTest
+	
+	try
+	{
+		$service = Create-DataMigrationService($rg)
+		$project = Create-ProjectMongoDbMongoDb $rg $service
+		$taskName = Get-TaskName
+		$connectionInfo = New-SourceMongoDbConnectionInfo
+
+		$task = New-AzDataMigrationTask -TaskType ConnectToSourceMongoDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -Wait
+
+		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
+
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+
+}
+
+function Test-ConnectToTargetCosmosDb
+{
+	$rg = Create-ResourceGroupForTest
+	
+	try
+	{
+		$service = Create-DataMigrationService($rg)
+		$project = Create-ProjectMongoDbMongoDb $rg $service
+		$taskName = Get-TaskName
+		$connectionInfo = New-TargetMongoDbConnectionInfo
+
+		$task = New-AzDataMigrationTask -TaskType ConnectToSourceMongoDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -Wait
+
+		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
+
+		Remove-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		
+		Assert-ThrowsContains { $all = Get-AzDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-MigrateMongoDb
+{
+	$rg = Create-ResourceGroupForTest
+	
+	try
+	{
+		$service = Create-DataMigrationService($rg)
+		$project = Create-ProjectMongoDbMongoDb $rg $service
+		$taskName = Get-TaskName
+
+		$sourceConnectionInfo = New-SourceMongoDbConnectionInfo
+		$targetConnectionInfo = New-TargetMongoDbConnectionInfo
+
+		#----------------------
+		# MIGRATION SETUP
+		#----------------------
+		$testColSettingA = New-AzDataMigrationMongoDbCollectionSetting -Name large -RU 1000 -CanDelete -ShardKey "_id"
+		$testColSettingB = New-AzDataMigrationMongoDbCollectionSetting -Name many -RU 1000 -CanDelete -ShardKey "_id"
+		$testDbSetting = New-AzDataMigrationMongoDbDatabaseSetting -Name test -CollectionSetting @($testColSettingA, $testColSettingB)
+
+		#----------------------
+		# MIGRATION VALIDATION
+		#----------------------
+		$validationTask = New-AzDmsTask -TaskType ValidateMongoDbMigration -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -TargetConnection $targetConnectionInfo  -SelectedDatabase  @($testDbSetting) -Wait
+		$taskName = Get-TaskName
+		$migTask = New-AzDmsTask -TaskType MigrateMongoDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -TargetConnection $targetConnectionInfo  -SelectedDatabase  @($testDbSetting) -MigrationValidation $validationTask -Replication Disabled
+
+		$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+
+		Assert-AreEqual $taskName $task[0].Name
+		Assert-AreEqual 1 $task.Count
+		
+		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
+		{
+			SleepTask 15
+			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+
+			if($task.ProjectTask.Properties.State -eq "Running") {
+				$res = Invoke-AzDataMigrationCommand  -CommandType cancel -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -ObjectName "test.many"
+				Assert-AreEqual "Accepted" $res.State
+			}
+		}
+
+		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
 	}
 	finally
 	{

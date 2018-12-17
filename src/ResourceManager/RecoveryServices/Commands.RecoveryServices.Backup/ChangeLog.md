@@ -1,9 +1,9 @@
 <!--
     Please leave this section at the top of the change log.
 
-    Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
+    Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
-    ## Current Release
+    ## Upcoming Release
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
@@ -17,4 +17,10 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Release
+
+## Version 1.0.0
+* General availability of `Az.RecoveryServices` module
+* Removed Name Parameter in Get-Container cmdlet.
+* Added SDK support to check backup status cmdlet.
+* TargetStorageAccountName is now mandatory for managed disk restores.
+* Removed StorageAccountName and StorageAccountResourceGroupName parameters in AzureFileShareRestore.

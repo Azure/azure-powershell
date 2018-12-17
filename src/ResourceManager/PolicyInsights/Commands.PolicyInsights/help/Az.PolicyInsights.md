@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.PolicyInsights
 Module Guid: B1876B47-3652-4265-9AD5-782EC3E98319
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.policyinsights

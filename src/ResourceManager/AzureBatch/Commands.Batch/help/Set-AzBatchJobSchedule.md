@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 14026F0E-4959-4150-A31F-A94BC56ED808
@@ -29,6 +29,7 @@ PS C:\> $JobSchedule = Get-AzBatchJobSchedule -Id "MyJobSchedule" -BatchContext 
 PS C:\> $JobSchedule.Schedule.RecurrenceInterval = New-TimeSpan -Days 2
 PS C:\> Set-AzBatchJobSchedule -JobSchedule $Job -BatchContext $Context
 ```
+
 The first command gets a job by using **Get-AzBatchJobSchedule**, and then stores it in the $JobSchedule variable.
 The second command modifies the recurrence interval on the `$JobSchedule.Schedule` object.
 The final command updates the Batch service to match the local object in $JobSchedule.
@@ -57,7 +58,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -88,10 +89,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Batch.Models.PSCloudJobSchedule
-Parameters: JobSchedule (ByValue)
 
 ### Microsoft.Azure.Commands.Batch.BatchAccountContext
-Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 

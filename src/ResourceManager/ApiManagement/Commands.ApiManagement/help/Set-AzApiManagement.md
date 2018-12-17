@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/set-azapimanagement
@@ -57,6 +57,15 @@ PS C:\>$apim.ProxyCustomHostnameConfiguration = $proxyCustomConfig
 PS C:\>Set-AzApiManagement -InputObject $apim -AssignIdentity
 ```
 
+### Example 4: Update Publisher Email, NotificationSender Email and Organization Name
+```powershell
+PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "api-Default-West-US" -Name "Contoso"
+PS C:\> $apim.PublisherEmail = "foobar@contoso.com"
+PS C:\> $apim.NotificationSenderEmail = "notification@contoso.com"
+PS C:\> $apim.OrganizationName = "Contoso"
+PS C:\> Set-AzApiManagement -InputObject $apim -PassThru
+```
+
 ## PARAMETERS
 
 ### -AsJob
@@ -95,7 +104,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -170,7 +179,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
-Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

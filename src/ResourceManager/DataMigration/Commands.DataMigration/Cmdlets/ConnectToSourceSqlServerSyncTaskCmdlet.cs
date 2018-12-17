@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class ConnectToSourceSqlServerSyncTaskCmdlet : TaskCmdlet
+    public class ConnectToSourceSqlServerSyncTaskCmdlet : TaskCmdlet<ConnectionInfo>
     {
         public ConnectToSourceSqlServerSyncTaskCmdlet(InvocationInfo myInvocation) : base(myInvocation)
         {
