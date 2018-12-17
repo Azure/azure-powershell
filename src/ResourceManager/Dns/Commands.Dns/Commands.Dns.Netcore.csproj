@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Dns</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Dns</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Dns</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

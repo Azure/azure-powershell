@@ -19,7 +19,7 @@ using System.Diagnostics;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.TrafficManager;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using System;
 using System.IO;
 using System.Linq;

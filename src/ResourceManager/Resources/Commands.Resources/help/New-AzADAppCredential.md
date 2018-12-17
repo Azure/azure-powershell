@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 98836BC0-AB4F-4F24-88BE-E7DD350B71E8
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadappcredential
@@ -15,13 +15,13 @@ Adds a credential to an existing application.
 
 ### ApplicationObjectIdWithPasswordParameterSet (Default)
 ```
-New-AzADAppCredential -ObjectId <Guid> -Password <SecureString> [-StartDate <DateTime>] [-EndDate <DateTime>]
+New-AzADAppCredential -ObjectId <String> -Password <SecureString> [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdWithCertValueParameterSet
 ```
-New-AzADAppCredential -ObjectId <Guid> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
+New-AzADAppCredential -ObjectId <String> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The application object to add the credentials to.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectWithCertValueParameterSet, ApplicationObjectWithPasswordParameterSet
 Aliases:
 
@@ -162,7 +162,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 The object id of the application to add the credentials to.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: ApplicationObjectIdWithPasswordParameterSet, ApplicationObjectIdWithCertValueParameterSet
 Aliases:
 
@@ -294,12 +294,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Guid
-
 ### System.String
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
-Parameters: ApplicationObject (ByValue)
+### System.Guid
+
+### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
 
 ### System.Security.SecureString
 
@@ -307,7 +306,7 @@ Parameters: ApplicationObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADCredential
+### Microsoft.Azure.Commands.ActiveDirectory.PSADCredential
 
 ## NOTES
 

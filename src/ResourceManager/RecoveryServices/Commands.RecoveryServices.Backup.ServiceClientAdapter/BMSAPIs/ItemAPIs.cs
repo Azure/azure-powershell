@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
 using RestAzureNS = Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -142,6 +143,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 containerName,
                 itemName,
                 triggerBackupRequest,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+        }
+
+        /// <summary>
+        /// Checks backup status for a given resource
+        /// </summary>
+        /// <param name="type">Resource type</param>
+        /// <param name="resourceId">Resource id</param>
+        /// <param name="resourceLocation">Resource location</param>
+        /// <param name="protectableObjName">Protectable object name</param>
+        /// <returns>Backup status</returns>
+        public RestAzureNS.AzureOperationResponse<BackupStatusResponse> CheckBackupStatus(
+            string type,
+            string resourceId,
+            string resourceLocation,
+            string protectableObjName)
+    {
+            ODataQuery<ProtectionPolicyQueryObject> queryParams =
+             new ODataQuery<ProtectionPolicyQueryObject>();
+
+            BackupStatusRequest request = new BackupStatusRequest();
+            request.ResourceType = ConversionUtils.GetServiceClientWorkloadType(type);
+            request.ResourceId = resourceId;
+            if(!string.IsNullOrWhiteSpace(protectableObjName))
+            {
+                request.PoLogicalName = protectableObjName;
+            }
+
+            return BmsAdapter.Client.BackupStatus.GetWithHttpMessagesAsync(
+                resourceLocation,
+                request,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
     }

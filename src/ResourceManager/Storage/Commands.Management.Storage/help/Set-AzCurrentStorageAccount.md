@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Management.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 15973FE8-16C1-4B71-A3A8-6D6F67A96FDF
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azcurrentstorageaccount
@@ -62,7 +62,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

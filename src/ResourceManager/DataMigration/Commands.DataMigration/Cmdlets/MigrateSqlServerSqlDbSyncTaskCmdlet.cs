@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class MigrateSqlServerSqlDbSyncTaskCmdlet : TaskCmdlet
+    public class MigrateSqlServerSqlDbSyncTaskCmdlet : TaskCmdlet<ConnectionInfo>
     {
         private readonly string SchemaValidation = "SchemaValidation";
         private readonly string DataIntegrityValidation = "DataIntegrityValidation";

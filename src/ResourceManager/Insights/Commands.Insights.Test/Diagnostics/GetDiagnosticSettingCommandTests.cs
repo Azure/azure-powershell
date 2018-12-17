@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
 
         public GetDiagnosticSettingCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             insightsDiagnosticsOperationsMock = new Mock<IDiagnosticSettingsOperations>();
             insightsManagementClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();

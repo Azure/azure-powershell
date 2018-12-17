@@ -35,14 +35,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Service endpoint policy")]
         public PSServiceEndpointPolicy ServiceEndpointPolicy { get; set; }
 
-        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "Parameter is being deprecated without being replaced")]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "GetByResourceIdParameterSet")]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceId { get; set; }
-
         public override void Execute()
         {
             if (this.ShouldProcess(Name, VerbsLifecycle.Restart))

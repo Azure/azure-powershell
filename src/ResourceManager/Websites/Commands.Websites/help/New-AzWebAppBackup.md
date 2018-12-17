@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: D3FE0440-C663-4379-8F5F-2E66EF024E5D
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azwebappbackup
@@ -75,7 +75,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -166,8 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Management.WebSites.Models.Site
-Parameters: WebApp (ByValue)
+### Microsoft.Azure.Commands.WebApps.Models.PSSite
 
 ### Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]
 

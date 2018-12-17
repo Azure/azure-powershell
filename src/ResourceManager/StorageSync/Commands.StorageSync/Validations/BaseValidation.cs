@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
             this.DisplayName = validationName;
             this.ValidationKind = validationKind;
             this.ValidationType = validationType;
-            this.SuccessfulResult = ValidationResult.SuccessfullValidationResult(validationType);
+            this.SuccessfulResult = ValidationResult.SuccessfullValidationResult(validationType, validationKind);
         }
         #endregion
     }

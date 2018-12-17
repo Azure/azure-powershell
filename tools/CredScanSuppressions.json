@@ -954,6 +954,14 @@
       "_justification": "Sample certificate only used in tests"
     },
     {
+      "file": "src\\ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\UnitTests\\UnitTestHelper.cs",
+      "_justification": "Mocked test credentials"
+    },
+    {
+      "file": "src\\ResourceManager\\Resources\\Commands.Resources\\ActiveDirectory\\Models\\ParameterSet.cs",
+      "_justification": "Flagged secrets are names of parameter sets."
+    },
+    {
       "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdateApplicationPackage.json",
       "hash": "7h1ZK3B30ya9x6svYsY3oaw3Je4LbyRpfSI/5qclGXM=",
       "_justification": "Expired test session storage SAS"
@@ -993,5 +1001,18 @@
       "hash": "SB0xdyGO1L0ed4yxyqzld6xXQfTuM3czfp05Si3bAzw=",
       "_justification": "Expired test session storage SAS"
     },
+    {
+      "file": "\\src\\ResourceManager\\DataFactoryV2\\Commands.DataFactories\\help\\New-AzDataFactoryEncryptValue.md",
+      "_justification": "Fake password"
+    },
+    {
+      "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\\TestVirtualNetworkGatewayP2SAndSKU.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch\\help\\New-AzBatchTask.md",
+      "hash": "9DiQS2GhPQXk8u3D2jadP/YcW2ZysE6slHg0yDqxByg=",
+      "_justification": "Markdown example and not a real credential"
+    }
   ]
 }

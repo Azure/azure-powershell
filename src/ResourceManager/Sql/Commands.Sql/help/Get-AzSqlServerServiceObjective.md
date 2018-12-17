@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: AC2D64B9-5BCD-45D3-8650-538633F5BBBC
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverserviceobjective
@@ -15,8 +15,8 @@ Gets service objectives for an Azure SQL Database server.
 
 ```
 Get-AzSqlServerServiceObjective [[-ServiceObjectiveName] <String>] [-ServerName] <String>
- [[-DatabaseName] <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ The **Get-AzSqlServerServiceObjective** cmdlet gets the available service object
 
 ### Example 1: Get service objectives
 ```
-PS C:\>Get-AzSqlServerServiceObjective -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+PS C:\>Get-AzSqlServerServiceObjective -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ResourceGroupName ServerName ServiceObjectiveName Description Enabled IsDefault IsSystem
 ----------------- ---------- -------------------- ----------- ------- --------- --------
 resourcegroup01   server01   ElasticPool                         True     False    False
@@ -45,24 +45,9 @@ resourcegroup01   server01   P3                                  True     False 
 resourcegroup01   server01   P4                                  True     False    False
 ```
 
-This command gets the service objectives for the server named Server01 and the database named Database01.
+This command gets the service objectives for the server named Server01.
 
 ## PARAMETERS
-
-### -DatabaseName
-SQL Database name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -70,7 +55,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

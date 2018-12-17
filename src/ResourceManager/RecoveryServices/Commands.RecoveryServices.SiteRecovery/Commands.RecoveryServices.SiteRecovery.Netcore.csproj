@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.SiteRecovery</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.SiteRecovery</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

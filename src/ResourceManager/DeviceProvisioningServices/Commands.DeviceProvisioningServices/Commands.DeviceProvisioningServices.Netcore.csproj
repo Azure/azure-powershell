@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.DeviceProvisioningServices</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.DeviceProvisioningServices</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
