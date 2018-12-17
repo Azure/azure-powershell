@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     /// <summary>
     /// Disable-AzureRmAdvisorRecommendation cmdlet
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.Advisor.Utilities.ResourceGraphBaseCmdlet" />
     [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation", DefaultParameterSetName = IdParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsAzureAdvisorSuppressionContract))]
     public class AzDisableAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
     {

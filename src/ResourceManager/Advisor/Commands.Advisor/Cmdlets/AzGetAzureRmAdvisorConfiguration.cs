@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     /// <summary>
     /// Get-AzureRmAdvisorConfiguration cmdlet
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.Advisor.Utilities.ResourceGraphBaseCmdlet" />
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorConfiguration", DefaultParameterSetName = "RgParameterSet"),
         OutputType(typeof(PsAzureAdvisorConfigurationData))]
     public class AzGetAzureRmAdvisorConfiguration : ResourceAdvisorBaseCmdlet
