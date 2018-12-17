@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public abstract class TaskCmdlet : DynamicCmdlet
+    public abstract class TaskCmdlet<T> : DynamicCmdlet, ITaskCmdlet
     {
         protected readonly string SourceConnection = "SourceConnection";
         protected readonly string SourceCred = "SourceCred";
@@ -36,29 +36,19 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         protected void SourceConnectionInfoParam(bool mandatory = false)
         {
-            this.SimpleParam(SourceConnection, typeof(ConnectionInfo), "Connection Info Detail", mandatory);
+            this.SimpleParam(SourceConnection, typeof(T), "Connection Info Detail", mandatory);
             this.SimpleParam(SourceCred, typeof(PSCredential), "Credential Detail", mandatory);
         }
 
         protected void TargetConnectionInfoParam(bool mandatory = false)
         {
-            this.SimpleParam(TargetConnection, typeof(ConnectionInfo), "Connection Info Detail", mandatory);
+            this.SimpleParam(TargetConnection, typeof(T), "Connection Info Detail", mandatory);
             this.SimpleParam(TargetCred, typeof(PSCredential), "Credential Detail", mandatory);
         }
 
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         internal static string Decrypt(SecureString secureString)
         {
-            IntPtr unmanagedString = IntPtr.Zero;
-            try
-            {
-                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(secureString);
-                return Marshal.PtrToStringUni(unmanagedString);
-            }
-            finally
-            {
-                Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
-            }
+            return Microsoft.Azure.Commands.DataMigration.Cmdlets.ConnectionInfoCmdlet.Decrypt(secureString);
         }
     }
 }

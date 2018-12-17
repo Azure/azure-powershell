@@ -1,7 +1,7 @@
 ﻿---
 Module Name: Az.Security
 Module Guid: 5e312bb4-9d3a-4c88-94c3-8e5bbb2e3da4
-Download Help Link: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Az.Security.md
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.security
 Help Version: 0.1.0
 Locale: en-US
 ---
