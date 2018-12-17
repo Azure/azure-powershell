@@ -241,7 +241,7 @@ function Validate-MarkdownHelp
             # If the markdown file had any missing help, add them to the list to be printed later
             if ($fileErrors.Count -gt 0)
             {
-                $fileExceptions = $Exceptions | where { $_.Target -eq "$file" }
+                $fileExceptions = $Exceptions | where { $_.Target -eq "$($file.Name)" }
                 $fileErrors | foreach {
                     $error = $_
 
@@ -251,7 +251,7 @@ function Validate-MarkdownHelp
                     }
                     else
                     {
-                        $errors += "$file,$error"
+                        $errors += "$($file.Name),$error"
                     }
                 }
             }

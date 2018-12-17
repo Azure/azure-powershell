@@ -108,9 +108,9 @@ function Test-RecoveryServicesVaultCRUD
 		Assert-NotNull($vault1.ID)
 		Assert-NotNull($vault1.Type)
 
-		# 2. Set-AzureRmRecoveryServicesVaultContext
+		# 2. Set-AzureRmRecoveryServicesVault
 		Set-AzureRmRecoveryServicesVaultContext -Vault $vault1
-
+		
 		# 3. Get-AzureRmRecoveryServicesVault
 		$vaults = Get-AzureRmRecoveryServicesVault -Name $name -ResourceGroupName $resourceGroupName
 

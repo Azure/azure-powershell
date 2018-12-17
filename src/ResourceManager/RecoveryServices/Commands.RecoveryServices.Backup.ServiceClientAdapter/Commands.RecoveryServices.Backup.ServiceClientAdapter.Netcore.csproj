@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.ServiceClientAdapter</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

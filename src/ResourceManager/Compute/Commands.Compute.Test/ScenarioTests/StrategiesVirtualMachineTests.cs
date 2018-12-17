@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Diagnostics;
 using System.Reflection;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
@@ -38,6 +38,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestSimpleNewVm()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVm");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmFromSIGImage()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmFromSIGImage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmWithUltraSSD()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmWithUltraSSD");
         }
 
         [Fact]

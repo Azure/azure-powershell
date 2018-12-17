@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Automation</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Automation</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Automation</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -28,7 +28,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Automation" Version="3.4.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Automation" Version="3.4.1-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 

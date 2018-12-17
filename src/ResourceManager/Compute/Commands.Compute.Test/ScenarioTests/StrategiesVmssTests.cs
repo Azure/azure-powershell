@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
@@ -38,6 +38,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestSimpleNewVmss()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmss");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssFromSIGImage()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssFromSIGImage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssWithUltraSSD()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssWithUltraSSD");
         }
 
         [Fact]

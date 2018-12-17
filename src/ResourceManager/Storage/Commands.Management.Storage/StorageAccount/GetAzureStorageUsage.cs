@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
     public class GetAzureStorageUsageCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
-        Mandatory = true,
-        ValueFromPipelineByPropertyName = true,
-        HelpMessage = "Storage Accounts Location.")]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Accounts Location.")]
         [LocationCompleter("Microsoft.Storage/storageAccounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }

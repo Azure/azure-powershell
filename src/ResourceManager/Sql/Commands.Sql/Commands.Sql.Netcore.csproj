@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Sql</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Sql</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Sql</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

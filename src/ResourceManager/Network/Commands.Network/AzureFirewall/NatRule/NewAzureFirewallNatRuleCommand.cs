@@ -41,19 +41,19 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> SourceAddress { get; set; }
+        public string[] SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> DestinationAddress { get; set; }
+        public string[] DestinationAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination ports of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> DestinationPort { get; set; }
+        public string[] DestinationPort { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.AzureFirewallNetworkRuleProtocol.TCP,
             MNM.AzureFirewallNetworkRuleProtocol.UDP,
             IgnoreCase = false)]
-        public List<string> Protocol { get; set; }
+        public string[] Protocol { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -84,12 +84,12 @@ namespace Microsoft.Azure.Commands.Network
             // Add some validation based on the type of RuleCollection (SNAT will be supported later)
             // if (MNM.AzureFirewallNatRCActionType.Dnat.Equals(ActionType))
             {
-                if (DestinationAddress.Count != 1)
+                if (DestinationAddress.Length != 1)
                 {
                     throw new ArgumentException("Only one destination address is accepted.", nameof(DestinationAddress));
                 }
 
-                if (DestinationPort.Count != 1)
+                if (DestinationPort.Length != 1)
                 {
                     throw new ArgumentException("Only one destination port is accepted.", nameof(DestinationPort));
                 }
@@ -105,10 +105,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Description = this.Description,
-                Protocols = this.Protocol,
-                SourceAddresses = this.SourceAddress,
-                DestinationAddresses = this.DestinationAddress,
-                DestinationPorts = this.DestinationPort,
+                Protocols = this.Protocol?.ToList(),
+                SourceAddresses = this.SourceAddress?.ToList(),
+                DestinationAddresses = this.DestinationAddress?.ToList(),
+                DestinationPorts = this.DestinationPort?.ToList(),
                 TranslatedAddress = this.TranslatedAddress,
                 TranslatedPort = this.TranslatedPort
             };
