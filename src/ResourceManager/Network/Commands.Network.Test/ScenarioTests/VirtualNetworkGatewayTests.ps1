@@ -198,18 +198,16 @@ param
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "Vpn" $expected.GatewayType
       Assert-AreEqual "RouteBased" $expected.VpnType
-      
-      # Update P2S VPNClient Configuration
-      #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-	  $Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
-      Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $expected -VpnClientAddressPool 200.168.0.0/16 -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd 
-      $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-	  Assert-AreEqual "200.168.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes
 
-	  $radiusCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
-      $vpnProfilePackageUrl = New-AzureRmVpnClientConfiguration -ResourceGroupName $rgname -name $rname -AuthenticationMethod $vpnclientAuthMethod -RadiusRootCertificateFile $radiusCertFilePath
-	  Write-Host $vpnProfilePackageUrl.VpnProfileSASUrl
-     }
+        $radiusCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
+        $vpnProfilePackageUrl = New-AzureRmVpnClientConfiguration -ResourceGroupName $rgname -name $rname -AuthenticationMethod $vpnclientAuthMethod -RadiusRootCertificateFile $radiusCertFilePath
+        Assert-NotNull $vpnProfilePackageUrl
+        Assert-NotNull $vpnProfilePackageUrl.VpnProfileSASUrl
+
+        $vpnProfilePackageUrl = Get-AzureRmVpnClientConfiguration -ResourceGroupName $rgname -name $rname
+        Assert-NotNull $vpnProfilePackageUrl
+        Assert-NotNull $vpnProfilePackageUrl.VpnProfileSASUrl
+    }
      finally
      {
         # Cleanup
@@ -359,11 +357,6 @@ function Test-VirtualNetworkGatewayP2SAndSKU
 	  $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname	  
       Assert-AreEqual "VpnGw2" $expected.Sku.Tier
 
-      # Update P2S VPNClient Address Pool
-      Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $expected -VpnClientAddressPool 200.168.0.0/16
-      $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-	  Assert-AreEqual "200.168.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes[0]
-
      # Get, list client Root certificates
      $rootCert = Get-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $clientRootCertName -VirtualNetworkGatewayName $expected.Name -ResourceGroupName $expected.ResourceGroupName
      Assert-AreEqual $clientRootCertName $rootCert.Name
@@ -454,8 +447,7 @@ function Test-VirtualNetworkGatewayActiveActiveFeatureOperations
       Assert-AreEqual "RouteBased" $expected.VpnType
       Assert-AreEqual true $expected.ActiveActive
       Assert-AreEqual 2 @($expected.IpConfigurations).Count
-	  
-	  <# ToDo:- Enable this validation afterwards 
+
       # Update virtualNetworkGateway from Active-Active to Active-Standby
       $gw = Get-AzureRmVirtualNetworkGateway -Name $rname -ResourceGroupName $rgname
       Remove-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -VirtualNetworkGateway $gw 
@@ -463,15 +455,14 @@ function Test-VirtualNetworkGatewayActiveActiveFeatureOperations
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual false $expected.ActiveActive
       Assert-AreEqual 1 @($expected.IpConfigurations).Count
-	  
+
       # Update virtualNetworkGateway from Active-Standby to Active-Active
       $gw = Get-AzureRmVirtualNetworkGateway -Name $rname -ResourceGroupName $rgname
-      Add-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -VirtualNetworkGateway $gw 
+      Add-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -VirtualNetworkGateway $gw -PublicIpAddress $publicip2 -Subnet $subnet
       $expected = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku VpnGw3 -EnableActiveActiveFeature
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual true $expected.ActiveActive
       Assert-AreEqual 2 @($expected.IpConfigurations).Count
-      #> 
      }
      finally
      {

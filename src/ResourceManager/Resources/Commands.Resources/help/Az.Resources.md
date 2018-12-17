@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.Resources
 Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.resources
@@ -102,6 +102,9 @@ Use respective parameters to list assignments to a specific user, or to list ass
 ### [Get-AzRoleDefinition](Get-AzRoleDefinition.md)
 Lists all Azure RBAC roles that are available for assignment.
 
+### [Get-AzTag](Get-AzTag.md)
+Gets predefined Azure tags.
+
 ### [Invoke-AzResourceAction](Invoke-AzResourceAction.md)
 Invokes an action on a resource.
 
@@ -171,6 +174,9 @@ Provide either a JSON role definition file or a PSRoleDefinition object as input
 First, use the Get-AzRoleDefinition command to generate a baseline role definition object.
 Then, modify its properties as required.
 Finally, use this command to create a custom role using role definition.
+
+### [New-AzTag](New-AzTag.md)
+Creates a predefined Azure tag or adds values to an existing tag.
 
 ### [Register-AzProviderFeature](Register-AzProviderFeature.md)
 Registers an Azure provider feature in your account.
@@ -242,6 +248,9 @@ Removes a role assignment to the specified principal who is assigned to a partic
 Deletes a custom role in Azure RBAC.
 The role to be deleted is specified using the Id property of the role.
 Delete will fail if there are existing role assignments made to the custom role.
+
+### [Remove-AzTag](Remove-AzTag.md)
+Deletes predefined Azure tags or values.
 
 ### [Save-AzDeploymentTemplate](Save-AzDeploymentTemplate.md)
 Saves a deployment template to a file.

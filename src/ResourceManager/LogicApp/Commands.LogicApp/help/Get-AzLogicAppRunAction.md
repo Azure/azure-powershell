@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 2EA28B90-4BAE-45DF-BD2E-60C74F53FB7B
 online version: https://docs.microsoft.com/en-us/powershell/module/az.logicapp/get-azlogicapprunaction
@@ -87,7 +87,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

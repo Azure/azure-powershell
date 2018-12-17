@@ -77,8 +77,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this account",
             ParameterSetName = EncryptionDisabledParameterSetName)]
-        [CmdletParameterBreakingChange("Tags", ReplaceMentCmdletParameterName = "Tag", ChangeDescription = "Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 

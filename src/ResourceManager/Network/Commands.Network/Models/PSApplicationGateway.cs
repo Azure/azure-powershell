@@ -75,6 +75,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public PSManagedServiceIdentity Identity { get; set; }
+
         [JsonIgnore]
         public string GatewayIpConfigurationsText
         {

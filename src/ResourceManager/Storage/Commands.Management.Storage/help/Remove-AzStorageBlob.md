@@ -1,5 +1,5 @@
----
-external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 03EC0D20-C737-4B2B-B8D9-71D06A938FAD
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/remove-azstorageblob

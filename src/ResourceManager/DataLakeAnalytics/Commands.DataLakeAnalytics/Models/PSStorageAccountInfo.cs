@@ -23,9 +23,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
     /// </summary>
     public class PSStorageAccountInfo : StorageAccountInformation
     {
-        [Obsolete("This property is no longer populated and will be removed in a future release")]
-        public string AccessKey { get; set; }
-
         public PSStorageAccountInfo(StorageAccountInformation baseAccount) :
             base(
                 id: baseAccount.Id,

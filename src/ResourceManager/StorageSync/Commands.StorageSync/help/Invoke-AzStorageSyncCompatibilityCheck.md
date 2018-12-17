@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storagesync/invoke-azstoragesynccompatibilitycheck
 schema: 2.0.0
@@ -15,13 +15,13 @@ Checks for potential compatibility issues between your system and Azure File Syn
 ### PathBased (Default)
 ```
 Invoke-AzStorageSyncCompatibilityCheck [-Path] <String> [-Credential <PSCredential>] [-SkipSystemChecks]
- [-SkipNamespaceChecks] [-Quiet] [<CommonParameters>]
+ [-SkipNamespaceChecks] [<CommonParameters>]
 ```
 
 ### ComputerNameBased
 ```
 Invoke-AzStorageSyncCompatibilityCheck [-Credential <PSCredential>] [-ComputerName] <String>
- [-SkipSystemChecks] [-Quiet] [<CommonParameters>]
+ [-SkipSystemChecks] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,8 +54,8 @@ This command checks the compatibility of files and folders in C:\DATA, but does 
 
 ### Example 3
 ```powershell
-PS C:\> $errors = Invoke-AzStorageSyncCompatibilityCheck C:\DATA
-PS C:\> $errors | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results
+PS C:\> $validation = Invoke-AzStorageSyncCompatibilityCheck C:\DATA
+PS C:\> $validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results.csv -Encoding utf8
 ```
 
 This command checks the compatibility of the system and also of files and folders in C:\DATA, and then exports the results as a CSV file to C:\results.
@@ -107,21 +107,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Quiet
-Suppresses writing output report to console.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SkipNamespaceChecks
 Set this flag to skip file namespace validations and only perform system validations.
 
@@ -161,7 +146,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationResult
+### Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSStorageSyncValidation
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, storagesync, filesync

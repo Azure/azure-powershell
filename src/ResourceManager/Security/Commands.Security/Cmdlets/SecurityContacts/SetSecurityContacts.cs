@@ -32,26 +32,24 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.SecurityContacts
         [ValidateNotNullOrEmpty]
         public string Email { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.Phone)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.Phone)]
         public string Phone { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AlertsToAdmins)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.AlertsToAdmins)]
         public SwitchParameter AlertAdmin { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.AlertNotifications)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.AlertNotifications)]
         public SwitchParameter NotifyOnAlert { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var alertAdmin = AlertAdmin.IsPresent ? "On" : "Off";
             var alertNotification = NotifyOnAlert.IsPresent ? "On" : "Off";
+            var phone = Phone ?? string.Empty;
 
             if (ShouldProcess(Name, VerbsCommon.Set))
             {
-                var contact = new SecurityContact(Email, Phone, alertNotification, alertAdmin);
+                var contact = new SecurityContact(Email, phone, alertNotification, alertAdmin);
                 var sc = SecurityCenterClient.SecurityContacts.CreateWithHttpMessagesAsync(Name, contact).GetAwaiter().GetResult().Body;
 
                 WriteObject(sc.ConvertToPSType(), enumerateCollection: true); 

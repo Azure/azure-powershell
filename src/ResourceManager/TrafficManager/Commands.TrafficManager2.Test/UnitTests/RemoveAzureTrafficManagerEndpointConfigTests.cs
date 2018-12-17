@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
     using Microsoft.Azure.Commands.TrafficManager;
     using Microsoft.Azure.Commands.TrafficManager.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using System.Collections.Generic;
     using System.Management.Automation;
     using WindowsAzure.Commands.Test.Utilities.Common;

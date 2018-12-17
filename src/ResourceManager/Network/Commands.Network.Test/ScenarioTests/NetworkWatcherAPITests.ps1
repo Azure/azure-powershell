@@ -566,7 +566,10 @@ function Test-FlowLog
 	$workspaceName = Get-NrpResourceName
     $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "West Central US"
     $workspaceLocation = Get-ProviderLocation ResourceManagement "East US"
-
+	$flowlogFormatType = "Json"
+	$flowlogFormatVersion = "1"	
+	$trafficAnalyticsInterval = 10;
+	
     try 
     {
         # Create Resource group
@@ -597,33 +600,43 @@ function Test-FlowLog
 
 		New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -Location $workspaceLocation -Sku $workspaceSku;
 		$workspace = Get-AzureRmOperationalInsightsWorkspace -Name $workspaceName -ResourceGroupName $resourceGroupName
-
-        $job = Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcher $nw -TargetResourceId $getNsg.Id -EnableFlowLog $true -StorageAccountId $sto.Id -EnableTrafficAnalytics:$true -Workspace $workspace -AsJob
+		
+		# set operation
+        $job = Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcher $nw -TargetResourceId $getNsg.Id -EnableFlowLog $true -StorageAccountId $sto.Id -EnableTrafficAnalytics:$true -Workspace $workspace -AsJob -FormatType $flowlogFormatType -FormatVersion $flowlogFormatVersion -TrafficAnalyticsInterval $trafficAnalyticsInterval
         $job | Wait-Job
         $config = $job | Receive-Job
+		# get operation
         $job = Get-AzureRmNetworkWatcherFlowLogStatus -NetworkWatcher $nw -TargetResourceId $getNsg.Id -AsJob
         $job | Wait-Job
         $status = $job | Receive-Job
 
-        # Validation
+        # Validation set operation
         Assert-AreEqual $config.TargetResourceId $getNsg.Id
         Assert-AreEqual $config.StorageId $sto.Id
         Assert-AreEqual $config.Enabled $true
         Assert-AreEqual $config.RetentionPolicy.Days 0
         Assert-AreEqual $config.RetentionPolicy.Enabled $false
+		Assert-AreEqual $config.Format.Type $flowlogFormatType
+		Assert-AreEqual $config.Format.Version $flowlogFormatVersion
 		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled $true
 		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId $workspace.ResourceId
 		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId $workspace.CustomerId.ToString()
 		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion $workspace.Location
+		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.TrafficAnalyticsInterval $trafficAnalyticsInterval
+		
+		# Validation get operation
         Assert-AreEqual $status.TargetResourceId $getNsg.Id
         Assert-AreEqual $status.StorageId $sto.Id
         Assert-AreEqual $status.Enabled $true
         Assert-AreEqual $status.RetentionPolicy.Days 0
         Assert-AreEqual $status.RetentionPolicy.Enabled $false
+		Assert-AreEqual $status.Format.Type  $flowlogFormatType
+		Assert-AreEqual $status.Format.Version $flowlogFormatVersion
 		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled $true
 		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId $workspace.ResourceId
 		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId $workspace.CustomerId.ToString()
 		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion $workspace.Location
+		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.TrafficAnalyticsInterval $trafficAnalyticsInterval
     }
     finally
     {
@@ -798,7 +811,9 @@ function Test-ConnectionMonitor
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     $cmName1 = Get-NrpResourceName
     $cmName2 = Get-NrpResourceName
-	
+    # We need location version w/o spaces to work with ByLocationParamSet
+    $locationMod = ($location -replace " ","").ToLower()
+
     try 
     {
         . ".\AzureRM.Resources.ps1"
@@ -809,17 +824,17 @@ function Test-ConnectionMonitor
         # Deploy resources
         Get-TestResourcesDeployment -rgn "$resourceGroupName"
 
-		# Create Resource group for Network Watcher
+        # Create Resource group for Network Watcher
         New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
         
-		# Get Network Watcher
-		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
 
         #Get Vm
         $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
         
         #Install networkWatcherAgent on Vm
-		Set-AzureRmVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
+        Set-AzureRmVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
 
         #Create connection monitor
         $job1 = New-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -AsJob
@@ -843,34 +858,137 @@ function Test-ConnectionMonitor
         Assert-AreEqual $cm2.Destination.Port 80
         Assert-AreEqual $cm2.MonitoringStatus Running
 
-        #Stop connection monitor
-        Stop-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
+        # Need to run stop before Set operations
 
-        #Get connection monitor
+        Stop-AzureRmNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
+        $cm1 = Set-AzureRmNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 81 -ConfigureOnly -MonitoringIntervalInSeconds 50
+        Assert-AreEqual $cm1.Destination.Port 81
+        Assert-AreEqual $cm1.MonitoringIntervalInSeconds 50
+
+        Stop-AzureRmNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
+        $cm1 = Set-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 81 -MonitoringIntervalInSeconds 50
+        Assert-AreEqual $cm1.Destination.Address test.com
+
+        Stop-AzureRmNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
+        $cm1 = Set-AzureRmNetworkWatcherConnectionMonitor -ResourceId $cm1.Id -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 50
+        Assert-AreEqual $cm1.Destination.Port 80
+
+        Stop-AzureRmNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
+        $cm1Job = Set-AzureRmNetworkWatcherConnectionMonitor -InputObject $cm1 -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 81 -MonitoringIntervalInSeconds 42 -AsJob
+        $cm1Job | Wait-Job
+        $cm1 = $cm1Job | Receive-Job
+        Assert-AreEqual $cm1.MonitoringIntervalInSeconds 42
+
+        Stop-AzureRmNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1
+        $cm1 = Set-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42
+        Assert-AreEqual $cm1.Destination.Port 80
+
+        # Stop connection monitor
+        $stopJob = Stop-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2 -AsJob -PassThru
+        $stopJob | Wait-Job
+        $stopResult = $stopJob | Receive-Job
+        Assert-AreEqual true $stopResult
         $cm2 = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
-
-        #Validation
         Assert-AreEqual $cm2.MonitoringStatus Stopped
 
-        #Start connection monitor
-        Start-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
-
-        #Get connection monitor
+        # Start connection monitor
+        $startJob = Start-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2 -AsJob -PassThru
+        $startJob | Wait-Job
+        $startResult = $startJob | Receive-Job
+        Assert-AreEqual true $startResult
         $cm2 = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
-
-        #Validation
         Assert-AreEqual $cm2.MonitoringStatus Running
 
+        # Stop connection monitor by Location
+        Stop-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cm2.Name
+        $cm2 = Get-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cm2.Name
+        Assert-AreEqual $cm2.MonitoringStatus Stopped
+        
+        # Start connection monitor by location
+        Start-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cm2.Name
+        $cm2 = Get-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cm2.Name
+        Assert-AreEqual $cm2.MonitoringStatus Running
+
+        # Stop connection monitor by Id
+        Stop-AzureRmNetworkWatcherConnectionMonitor -ResourceId $cm2.Id
+        $cm2 = Get-AzureRmNetworkWatcherConnectionMonitor -ResourceId $cm2.Id
+        Assert-AreEqual $cm2.MonitoringStatus Stopped
+
+        # Start connection monitor by Id
+        Start-AzureRmNetworkWatcherConnectionMonitor -ResourceId $cm2.Id
+        $cm2 = Get-AzureRmNetworkWatcherConnectionMonitor -ResourceId $cm2.Id
+        Assert-AreEqual $cm2.MonitoringStatus Running
+
+        # Stop connection monitor by object
+        Stop-AzureRmNetworkWatcherConnectionMonitor -InputObject $cm2
+        $cm2 = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
+        Assert-AreEqual $cm2.MonitoringStatus Stopped
+
+        # Start connection monitor by object
+        Start-AzureRmNetworkWatcherConnectionMonitor -InputObject $cm2
+        $cm2 = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName2
+        Assert-AreEqual $cm2.MonitoringStatus Running
+
+        # Get List
+        $cms = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw
+        Assert-NotNull $cms
+
         #Query connection monitor
-        Get-AzureRmNetworkWatcherConnectionMonitorReport -NetworkWatcher $nw -Name $cmName1
+        $report = Get-AzureRmNetworkWatcherConnectionMonitorReport -NetworkWatcher $nw -Name $cmName1
+        Assert-NotNull $report
+
+        $report = Get-AzureRmNetworkWatcherConnectionMonitorReport -Location $locationMod -Name $cmName1
+        Assert-NotNull $report
+
+        $report = Get-AzureRmNetworkWatcherConnectionMonitorReport -ResourceId $cm1.Id
+        Assert-NotNull $report
+
+        $reportJob = Get-AzureRmNetworkWatcherConnectionMonitorReport -InputObject $cm1 -AsJob
+        $reportJob | Wait-Job
+        $report = $reportJob | Receive-Job
+        Assert-NotNull $report
 
         #Remove connection monitor
         Remove-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1
+
+        #Create connection monitor
+        $job1 = New-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
+        $job1 | Wait-Job
+        ###
+        $cm1 = $job1 | Receive-Job
+        Remove-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1
+
+        $job1 = New-AzureRmNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
+        $job1 | Wait-Job
+        $cm1 = $job1 | Receive-Job
+
+        Remove-AzureRmNetworkWatcherConnectionMonitor -ResourceId $cm1.Id
+
+        $job1 = New-AzureRmNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
+        $job1 | Wait-Job
+        $cm1 = $job1 | Receive-Job
+
+        $rmJob = Remove-AzureRmNetworkWatcherConnectionMonitor -InputObject $cm1 -AsJob -PassThru
+        $rmJob | Wait-Job
+        $result = $rmJob | Receive-Job
+
+        Assert-ThrowsLike { Set-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name "fakeName" -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42 } "*not*found*"
+
+        # TODO: check if really deleted
+        Remove-AzureRmNetworkWatcher -ResourceGroupName $nw.ResourceGroupName -Name $nw.Name
+
+        Assert-ThrowsLike { New-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 } "*There is no*"
+        Assert-ThrowsLike { Remove-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
+        Assert-ThrowsLike { Get-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
+        Assert-ThrowsLike { Set-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42 } "*There is no*"
+        Assert-ThrowsLike { Get-AzureRmNetworkWatcherConnectionMonitorReport -Location $locationMod -Name $cmName1 } "*There is no*"
+        Assert-ThrowsLike { Stop-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
+        Assert-ThrowsLike { Start-AzureRmNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 } "*There is no*"
     }
     finally
     {
         # Cleanup
         Clean-ResourceGroup $resourceGroupName
         Clean-ResourceGroup $nwRgName
-    }  
+    }
 }

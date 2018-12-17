@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.ApiManagement.ServiceManagement</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ApiManagement.ServiceManagement</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="4.0.5-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="4.0.6-preview" />
   </ItemGroup>
 
   <ItemGroup>

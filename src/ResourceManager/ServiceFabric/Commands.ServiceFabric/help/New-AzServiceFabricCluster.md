@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/new-azservicefabriccluster
 schema: 2.0.0
@@ -24,8 +24,9 @@ New-AzServiceFabricCluster [-ResourceGroupName] <String> [-CertificateOutputFold
 ### ByExistingKeyVault
 ```
 New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
- [-VmPassword <SecureString>] -SecretIdentifier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-CertificateCommonName <String>] [-CertificateIssuerThumbprint <String>] [-VmPassword <SecureString>]
+ -SecretIdentifier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
@@ -41,8 +42,8 @@ New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> 
 New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  -CertificateFile <String> [-CertificatePassword <SecureString>] [-SecondaryCertificateFile <String>]
  [-SecondaryCertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
- [-VmPassword <SecureString>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-CertificateCommonName <String>] [-CertificateIssuerThumbprint <String>] [-VmPassword <SecureString>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,6 +114,21 @@ This command will let you bring your own Certificate and custom template and cre
 
 ## PARAMETERS
 
+### -CertificateCommonName
+Certificate common name
+
+```yaml
+Type: System.String
+Parameter Sets: ByExistingKeyVault, ByExistingPfxAndVaultName
+Aliases: CertCommonName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CertificateFile
 The existing certificate file path for the primary cluster certificate.
 
@@ -125,6 +141,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -CertificateIssuerThumbprint
+Certificate issuer thumbprint, separated by commas if more than one
+
+```yaml
+Type: System.String
+Parameter Sets: ByExistingKeyVault, ByExistingPfxAndVaultName
+Aliases: CertIssuerThumbprint
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -194,7 +225,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -462,13 +493,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: CertificateFile (ByValue), CertificateOutputFolder (ByValue), CertificateSubjectName (ByValue), KeyVaultName (ByValue), KeyVaultResouceGroupName (ByValue), Location (ByValue), Name (ByValue), ParameterFile (ByValue), SecondaryCertificateFile (ByValue), SecretIdentifier (ByValue), TemplateFile (ByValue), VmUserName (ByValue)
 
 ### System.Security.SecureString
-Parameters: CertificatePassword (ByValue), SecondaryCertificatePassword (ByValue)
 
 ### System.Int32
-Parameters: ClusterSize (ByValue)
 
 ### Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem
 

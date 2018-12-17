@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 6493186F-064B-45B7-8DFD-7799B1F2E5C9
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/get-azautomationdscnode
@@ -122,7 +122,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
