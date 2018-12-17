@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 5B17A241-BF36-48A6-BC29-4C32C08F5F94
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourcegroup
@@ -90,7 +90,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -180,11 +180,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManagement.PSResourceGroup
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup
 
 ## NOTES
 

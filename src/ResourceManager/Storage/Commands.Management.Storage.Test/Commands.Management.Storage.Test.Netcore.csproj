@@ -1,14 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <IncludeManagementStorage>false</IncludeManagementStorage>
+  </PropertyGroup>
+
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.Management.Storage.Test</AssemblyName>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Management.Storage.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Management.Storage.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,8 +28,8 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.1-preview" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="9.1.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 556A9F12-DF72-468F-9C3F-A747CC70BD2F
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/test-azdnsavailability
@@ -36,7 +36,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

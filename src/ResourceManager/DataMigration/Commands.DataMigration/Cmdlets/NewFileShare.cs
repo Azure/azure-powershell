@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         public override void ExecuteCmdlet()
         {
             var userName = Credential.UserName;
-            var password = TaskCmdlet.Decrypt(Credential.Password);
+            var password = TaskCmdlet<ConnectionInfo>.Decrypt(Credential.Password);
 
             var fileShare = new FileShare
             {

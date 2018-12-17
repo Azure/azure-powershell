@@ -84,15 +84,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Metadata { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy sku object.
-        /// </summary>
-        [Alias("SkuObject")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentSkuHelp)]
-        [ValidateNotNullOrEmpty]
-        [CmdletParameterBreakingChange("Sku", ChangeDescription = "The -Sku parameter is deprecated and ignored")]
-        public Hashtable Sku { get; set; }
-
-        /// <summary>
         /// Gets or sets a flag indicating whether a system assigned identity should be added to the policy assignment.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentAssignIdentityHelp)]
@@ -148,7 +139,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var policyAssignmentObject = new PolicyAssignment
             {
                 Name = this.Name ?? resource.Name,
-                Sku = Sku?.ToDictionary(addValueLayer: false).ToJson().FromJson<PolicySku>(),  // only store Sku if it was provided by user
                 Identity = this.AssignIdentity.IsPresent ? new ResourceIdentity { Type = ResourceIdentityType.SystemAssigned } : null,
                 Location = this.Location ?? resource.Location,
                 Properties = new PolicyAssignmentProperties

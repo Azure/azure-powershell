@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.DataMigration {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create CosmosDb collection setting.
+        /// </summary>
+        public static string createCollectionSetting {
+            get {
+                return ResourceManager.GetString("createCollectionSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating Command.
         /// </summary>
         public static string createCommand {

@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Network</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Network</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Network</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>

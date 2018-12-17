@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 5B7B285A-6418-44D7-BD78-E14AFFAA7765
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/update-azapimanagementregion
@@ -25,6 +25,17 @@ This cmdlet does not deploy anything but updates an instance of **PsApiManagemen
 To update a deployment of an API Management use the modified **PsApiManagementInstance** to the Update-AzApiManagementDeployment cmdlet.
 
 ## EXAMPLES
+
+### Example 1: Increases capacity of Additional Region in a PsApiManagement instance
+```powershell
+PS C:\>$apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+PS C:\>$apimService = Update-AzApiManagementRegion -ApiManagement $apimService -Location "North Central US" -Capacity 2 -Sku Premium
+
+# Set the ApiManagement service and Enable Msi idenity on the service
+PS C:\>$updatedService = Set-AzApiManagement -InputObject $apimService -PassThru
+```
+
+This command gets the API Management Premium SKU service, having regions in South Central US and North Central US. It then increases the Capacity of the North Central US region to 2 using the **Update-AzApiManagementRegion**. The next cmdlet Set-AzApiManagement applies the configuration change to the the Api Management service.
 
 ## PARAMETERS
 
@@ -64,7 +75,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -133,7 +144,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
-Parameters: ApiManagement (ByValue)
 
 ### System.String
 

@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.FrontDoor</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.FrontDoor</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.FrontDoor</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

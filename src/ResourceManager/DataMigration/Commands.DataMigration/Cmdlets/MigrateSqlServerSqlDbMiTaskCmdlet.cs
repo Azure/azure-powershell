@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class MigrateSqlServerSqlDbMiTaskCmdlet : TaskCmdlet
+    public class MigrateSqlServerSqlDbMiTaskCmdlet : TaskCmdlet<ConnectionInfo>
     {
         private readonly string SelectedDatabase = "SelectedDatabase";
         private readonly string BackupBlobSasUri = "BackupBlobSasUri";

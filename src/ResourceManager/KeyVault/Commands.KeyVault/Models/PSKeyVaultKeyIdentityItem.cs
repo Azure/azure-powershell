@@ -71,9 +71,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public DateTime? Updated { get; protected set; }
 
-        [Obsolete( "The PurgeDisabled property is being deprecated and will be removed in a future release. Please use the RecoveryLevel property instead." )]
-        public bool PurgeDisabled { get; protected set; }
-
         public string RecoveryLevel { get; protected set; }
 
         public Hashtable Tags { get; set; }

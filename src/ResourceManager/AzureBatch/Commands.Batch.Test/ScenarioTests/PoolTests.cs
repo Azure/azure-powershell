@@ -15,7 +15,7 @@
 using System.Reflection;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string testPoolId = ScenarioTestHelpers.SharedPool;
 
         // Get from WATaskOSFamilyVersions table, which lags behind https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/
-        private const string specificOSVersion = "WA-GUEST-OS-2.51_201605-01";
+        private const string specificOSVersion = "WA-GUEST-OS-4.56_201807-02";
         public XunitTracingInterceptor _logger;
 
         public PoolTests(Xunit.Abstractions.ITestOutputHelper output)

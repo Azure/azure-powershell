@@ -41,7 +41,7 @@ function Test-AzureVMGetContainers
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
 			-Status Registered `
-			-Name $vm.Name;
+			-FriendlyName $vm.Name;
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
 
 		# VARIATION-3: Get Containers with friendly name and resource group filters
@@ -49,7 +49,7 @@ function Test-AzureVMGetContainers
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
 			-Status Registered `
-			-Name $vm.Name `
+			-FriendlyName $vm.Name `
 			-ResourceGroupName $vm.ResourceGroupName;
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
 

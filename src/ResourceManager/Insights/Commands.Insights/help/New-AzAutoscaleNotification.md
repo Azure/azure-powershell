@@ -1,8 +1,8 @@
----
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: Az.Insights
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+Module Name: Az.Monitor
 ms.assetid: B5B5F494-D912-40D0-99E2-A62FAACA3EC9
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azautoscalenotification
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azautoscalenotification
 schema: 2.0.0
 ---
 
@@ -61,7 +61,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
