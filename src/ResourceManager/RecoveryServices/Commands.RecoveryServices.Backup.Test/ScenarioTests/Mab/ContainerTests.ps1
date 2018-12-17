@@ -26,7 +26,7 @@ function Test-MabGetContainers
 		-VaultId $vault.ID `
 		-ContainerType "Windows" `
 		-BackupManagementType "MARS" `
-		-Name "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
+		-FriendlyName "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 	Assert-AreEqual $namedContainer.FriendlyName "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 }
 
@@ -38,7 +38,7 @@ function Test-MabUnregisterContainer
 		-VaultId $vault.ID `
 		-ContainerType "Windows" `
 		-BackupManagementType "MARS" `
-		-Name "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
+		-FriendlyName "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 	Assert-AreEqual $container.FriendlyName "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 
 	Unregister-AzureRmRecoveryServicesBackupContainer -VaultId $vault.ID -Container $container;
@@ -46,6 +46,6 @@ function Test-MabUnregisterContainer
 		-VaultId $vault.ID `
 		-ContainerType "Windows" `
 		-BackupManagementType "MARS" `
-		-Name "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
+		-FriendlyName "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 	Assert-Null $container;
 }

@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Media.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Media.dll-Help.xml
 Module Name: Az.Media
 ms.assetid: 6AB6C366-4925-4370-A33E-EDAF4BE1E230
 online version: https://docs.microsoft.com/en-us/powershell/module/az.media/remove-azmediaservice
@@ -53,7 +53,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

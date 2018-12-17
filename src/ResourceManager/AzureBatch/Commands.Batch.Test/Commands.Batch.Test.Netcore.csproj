@@ -7,8 +7,8 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.Batch.Test</AssemblyName>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Batch.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Batch.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -28,17 +28,15 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Azure.Batch" Version="8.1.3" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Batch" Version="9.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.Batch" Version="4.2.1" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.1.1" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Batch">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Batch\Microsoft.Azure.Commands.Batch.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.Batch\Commands.Batch.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

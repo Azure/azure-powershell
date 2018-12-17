@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.RedisCache.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
 ms.assetid: 1F86CE62-AA01-44FB-A935-484EC51DDE5A
 online version: https://docs.microsoft.com/en-us/powershell/module/az.rediscache/new-azrediscachekey
@@ -52,7 +52,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
