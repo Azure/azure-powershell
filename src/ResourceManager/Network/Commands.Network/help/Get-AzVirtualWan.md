@@ -107,3 +107,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzVirtualWan](./New-AzVirtualWan.md)
+
+[Remove-AzVirtualWan](./Remove-AzVirtualWan.md)
+
+[Update-AzVirtualWan](./Update-AzVirtualWan.md)

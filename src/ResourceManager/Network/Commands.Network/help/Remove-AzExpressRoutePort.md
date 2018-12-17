@@ -226,3 +226,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzExpressRoutePort](./Get-AzExpressRoutePort.md)
+
+[New-AzExpressRoutePort](./New-AzExpressRoutePort.md)
+
+[Set-AzExpressRoutePort](./Set-AzExpressRoutePort.md)

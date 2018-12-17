@@ -162,3 +162,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkProfile](./New-AzNetworkProfile.md)
+
+[Remove-AzNetworkProfile](./Remove-AzNetworkProfile.md)
+
+[Set-AzNetworkProfile](./Set-AzNetworkProfile.md)

@@ -136,3 +136,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzRouteFilter](./New-AzRouteFilter.md)
+
+[Remove-AzRouteFilter](./Remove-AzRouteFilter.md)
+
+[Set-AzRouteFilter](./Set-AzRouteFilter.md)
+
+[Add-AzRouteFilterRuleConfig](./Add-AzRouteFilterRuleConfig.md)
+
+[Get-AzRouteFilterRuleConfig](./Get-AzRouteFilterRuleConfig.md)
+
+[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
+
+[Remove-AzRouteFilterRuleConfig](./Remove-AzRouteFilterRuleConfig.md)
+
+[Set-AzRouteFilterRuleConfig](./Set-AzRouteFilterRuleConfig.md)

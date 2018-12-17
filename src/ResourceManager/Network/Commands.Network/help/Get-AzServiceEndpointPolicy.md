@@ -149,3 +149,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzServiceEndpointPolicy](./New-AzServiceEndpointPolicy.md)
+
+[Remove-AzServiceEndpointPolicy](./Remove-AzServiceEndpointPolicy.md)
+
+[Set-AzServiceEndpointPolicy](./Set-AzServiceEndpointPolicy.md)

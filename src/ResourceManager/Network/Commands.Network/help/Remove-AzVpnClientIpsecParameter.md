@@ -168,3 +168,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVpnClientIpsecParameter](./Get-AzVpnClientIpsecParameter.md)
+
+[New-AzVpnClientIpsecParameter](./New-AzVpnClientIpsecParameter.md)
+
+[Set-AzVpnClientIpsecParameter](./Set-AzVpnClientIpsecParameter.md)

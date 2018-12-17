@@ -88,3 +88,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzLocalNetworkGateway](./New-AzLocalNetworkGateway.md)
+
+[Remove-AzLocalNetworkGateway](./Remove-AzLocalNetworkGateway.md)
+
+[Set-AzLocalNetworkGateway](./Set-AzLocalNetworkGateway.md)
