@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -107,21 +108,21 @@ namespace Microsoft.Azure.Commands.Compute
                     Id = this.AvailabilitySetId
                 },
                 LicenseType = this.LicenseType,
-                Identity = this.AssignIdentity.IsPresent ? new PSVirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : null,
+                Identity = this.AssignIdentity.IsPresent ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : null,
                 Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
                 Zones = this.Zone,
             };
 
             if (this.MyInvocation.BoundParameters.ContainsKey("IdentityType"))
             {
-                vm.Identity = new PSVirtualMachineIdentity(null, null, this.IdentityType);
+                vm.Identity = new VirtualMachineIdentity(null, null, this.IdentityType);
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("IdentityId"))
             {
                 if (vm.Identity == null)
                 {
-                    vm.Identity = new PSVirtualMachineIdentity();
+                    vm.Identity = new VirtualMachineIdentity();
                 }
 
                 vm.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>();

@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 {
     /// <summary>
-    /// 'Set-AzureRmServiceBusSubscription' Cmdlet updates the specified ServiceBus Subscription
+    /// 'Set-AzServiceBusSubscription' Cmdlet updates the specified ServiceBus Subscription
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusSubscription", SupportsShouldProcess = true), OutputType(typeof(PSSubscriptionAttributes))]
     public class SetAzureRmServiceBusSubscription : AzureServiceBusCmdletBase

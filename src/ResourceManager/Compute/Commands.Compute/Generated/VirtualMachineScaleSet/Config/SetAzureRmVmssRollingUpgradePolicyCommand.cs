@@ -21,6 +21,7 @@
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // UpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new UpgradePolicy();
                 }
                 // RollingUpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
@@ -93,7 +94,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // UpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new UpgradePolicy();
                 }
                 // RollingUpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
@@ -108,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // UpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new UpgradePolicy();
                 }
                 // RollingUpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
@@ -123,7 +124,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // UpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
                 {
-                    this.VirtualMachineScaleSet.UpgradePolicy = new PSUpgradePolicy();
+                    this.VirtualMachineScaleSet.UpgradePolicy = new UpgradePolicy();
                 }
                 // RollingUpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)

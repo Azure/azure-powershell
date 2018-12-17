@@ -17,29 +17,33 @@ using System.Collections;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Language;
 using Microsoft.Azure.Commands.ContainerInstance.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerInstance.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ContainerInstance
 {
     /// <summary>
-    /// New-AzureRmContainerGroup
+    /// New-AzContainerGroup
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerGroup", SupportsShouldProcess = true, DefaultParameterSetName = CreateContainerGroupBaseParamSet)]
     [OutputType(typeof(PSContainerGroup))]
     public class NewAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {
+        private const string CreateContainerGroupBaseWithExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
         protected const string CreateContainerGroupBaseParamSet = "CreateContainerGroupBaseParamSet";
         protected const string CreateContainerGroupWithAzureFileVolumeParamSet = "CreateContainerGroupWithAzureFileMountParamSet";
+        protected const string CreateContainerGroupWithAzureFileVolumeAndExplicitIdentityParamSet = "CreateContainerGroupWithAzureFileMountAndExplicitIdentityParamSet";
 
         [Parameter(
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -68,6 +72,10 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             Mandatory = true,
             ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
             HelpMessage = "The name of the Azure File share to mount.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndExplicitIdentityParamSet,
+            HelpMessage = "The name of the Azure File share to mount.")]
         [ValidateNotNullOrEmpty]
         public string AzureFileVolumeShareName { get; set; }
 
@@ -75,12 +83,20 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             Mandatory = true,
             ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
             HelpMessage = "The storage account credential of the Azure File share to mount where the username is the storage account name and the key is the storage account key.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndExplicitIdentityParamSet,
+            HelpMessage = "The storage account credential of the Azure File share to mount where the username is the storage account name and the key is the storage account key.")]
         [ValidateNotNullOrEmpty]
         public PSCredential AzureFileVolumeAccountCredential { get; set; }
 
         [Parameter(
             Mandatory = true,
             ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
+            HelpMessage = "The mount path for the Azure File volume.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndExplicitIdentityParamSet,
             HelpMessage = "The mount path for the Azure File volume.")]
         [ValidateNotNullOrEmpty]
         public string AzureFileVolumeMountPath { get; set; }
@@ -91,6 +107,43 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [LocationCompleter("Microsoft.ContainerInstance/containerGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupBaseWithExplicitIdentityParameterSet,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "The managed identity type")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndExplicitIdentityParamSet,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "The managed identity type")]
+        [ValidateNotNullOrEmpty]
+        public ResourceIdentityType IdentityType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CreateContainerGroupBaseWithExplicitIdentityParameterSet,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "The user assigned identity IDs")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeAndExplicitIdentityParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The user assigned identity IDs")]
+        [ValidateNotNullOrEmpty]
+        public string[] IdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CreateContainerGroupBaseParamSet,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Enable system assigned identity")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CreateContainerGroupWithAzureFileVolumeParamSet,
+            HelpMessage = "Enable system assigned identity")]
+        public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -149,13 +202,10 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [ValidateNotNullOrEmpty]
         public int[] Port { get; set; }
 
- #if !NETSTANDARD
        [Parameter(
             Mandatory = false,
             HelpMessage = "The command to run in the container.")]
-        [ValidateNotNullOrEmpty]
         public string Command { get; set; }
-#endif
 
         [Parameter(
             Mandatory = false,
@@ -177,51 +227,81 @@ namespace Microsoft.Azure.Commands.ContainerInstance
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, "Create Container Group"))
+            if (ShouldProcess(Name, "Create Container Group"))
             {
-                var creationParameter = new ContainerGroupCreationParameters()
+                var creationParameter = new ContainerGroupCreationParameters
                 {
-                    Name = this.Name,
-                    ResourceGroupName = this.ResourceGroupName,
-                    Location = this.Location ?? this.GetResourceGroupLocation(this.ResourceGroupName),
-                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
-                    OsType = this.OsType ?? ContainerGroupCreationParameters.DefaultOsType,
-                    RestartPolicy = this.RestartPolicy ?? ContainerGroupRestartPolicy.Always,
-                    IpAddressType = this.IpAddressType,
-                    DnsNameLabel = this.DnsNameLabel,
-                    Ports = this.Port ?? ContainerGroupCreationParameters.DefaultPorts,
-                    ContainerImage = this.Image,
-                    EnvironmentVariables = this.ConvertHashtableToDictionary(this.EnvironmentVariable),
-                    Cpu = this.Cpu ?? ContainerGroupCreationParameters.DefaultCpu,
-                    MemoryInGb = this.MemoryInGB ?? ContainerGroupCreationParameters.DefaultMemory,
-                    RegistryServer = this.RegistryServerDomain,
-                    RegistryUsername = this.RegistryCredential?.UserName,
-                    RegistryPassword = ContainerGroupCreationParameters.ConvertToString(this.RegistryCredential?.Password),
-                    AzureFileVolumeShareName = this.AzureFileVolumeShareName,
-                    AzureFileVolumeAccountName = this.AzureFileVolumeAccountCredential?.UserName,
-                    AzureFileVolumeAccountKey = ContainerGroupCreationParameters.ConvertToString(this.AzureFileVolumeAccountCredential?.Password),
-                    AzureFileVolumeMountPath = this.AzureFileVolumeMountPath
+                    Name = Name,
+                    ResourceGroupName = ResourceGroupName,
+                    Location = Location ?? GetResourceGroupLocation(ResourceGroupName),
+                    Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
+                    OsType = OsType ?? ContainerGroupCreationParameters.DefaultOsType,
+                    RestartPolicy = RestartPolicy ?? ContainerGroupRestartPolicy.Always,
+                    IpAddressType = IpAddressType,
+                    DnsNameLabel = DnsNameLabel,
+                    Ports = Port ?? ContainerGroupCreationParameters.DefaultPorts,
+                    ContainerImage = Image,
+                    EnvironmentVariables = ConvertHashtableToDictionary(EnvironmentVariable),
+                    Cpu = Cpu ?? ContainerGroupCreationParameters.DefaultCpu,
+                    MemoryInGb = MemoryInGB ?? ContainerGroupCreationParameters.DefaultMemory,
+                    RegistryServer = RegistryServerDomain,
+                    RegistryUsername = RegistryCredential?.UserName,
+                    RegistryPassword = ContainerGroupCreationParameters.ConvertToString(RegistryCredential?.Password),
+                    AzureFileVolumeShareName = AzureFileVolumeShareName,
+                    AzureFileVolumeAccountName = AzureFileVolumeAccountCredential?.UserName,
+                    AzureFileVolumeAccountKey = ContainerGroupCreationParameters.ConvertToString(AzureFileVolumeAccountCredential?.Password),
+                    AzureFileVolumeMountPath = AzureFileVolumeMountPath,
+                    Identity = ParseIdentity()
                 };
-#if !NETSTANDARD
 
                 if (!string.IsNullOrWhiteSpace(this.Command))
                 {
-                    Collection<PSParseError> errors;
-                    var commandTokens = PSParser.Tokenize(this.Command, out errors);
+                    ParseError[] errors;
+                    Token[] tokens;
+                    Parser.ParseInput(this.Command, out tokens, out errors);
                     if (errors.Any())
                     {
                         throw new ArgumentException($"Invalid 'Command' parameter: {string.Join("; ", errors.Select(err => err.Message))}");
                     }
-                    creationParameter.ContainerCommand = commandTokens.Select(token => token.Content).ToList();
+                    creationParameter.ContainerCommand = tokens.Select(token => token.Text.Trim('\'', '"')).ToList();
                 }
-#endif
+
                 creationParameter.Validate();
 
                 var psContainerGroup = PSContainerGroup.FromContainerGroup(
-                    this.CreateContainerGroup(creationParameter));
+                    CreateContainerGroup(creationParameter));
 
-                this.WriteObject(psContainerGroup);
+                WriteObject(psContainerGroup);
             }
+        }
+
+        /// <summary>
+        /// Parse the identity
+        /// </summary>
+        private ContainerGroupIdentity ParseIdentity()
+        {
+            if (this.AssignIdentity.IsPresent)
+            {
+                return new ContainerGroupIdentity { Type = ResourceIdentityType.SystemAssigned };
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("IdentityType"))
+            {
+                var identity = new ContainerGroupIdentity { Type = this.IdentityType };
+
+                if (this.MyInvocation.BoundParameters.ContainsKey("IdentityId"))
+                {
+                    identity.UserAssignedIdentities = new Dictionary<string, ContainerGroupIdentityUserAssignedIdentitiesValue>();
+                    foreach (var id in this.IdentityId)
+                    {
+                        identity.UserAssignedIdentities.Add(id, new ContainerGroupIdentityUserAssignedIdentitiesValue());
+                    }
+                }
+
+                return identity;
+            }
+
+            return null;
         }
     }
 }

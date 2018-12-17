@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -50,6 +50,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         public void TestEnableContainerContinuousDeploymentAndGetUrl()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-EnableContainerContinuousDeploymentAndGetUrl");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureStorageWebAppHyperV()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-SetAzureStorageWebAppHyperV");
         }
 
         [Fact]

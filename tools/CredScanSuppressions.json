@@ -1,6 +1,6 @@
 {
-  "tool": "Credential Scanner",
-  "suppressions": [
+    "tool": "Credential Scanner",
+    "suppressions": [
     {
       "file": "\\documentation\\development-docs\\azure-powershell-developer-guide.md",
       "_justification": "Documentation with non-live passwords in sample connection strings"
@@ -942,8 +942,77 @@
       "_justification": "Legitimate test session record"
     },
     {
-       "file": "\\src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
-       "_justification": "Mocked credential"
+      "file": "\\src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
+      "_justification": "Mocked credential"
     },
+    {
+      "file": "src\\ResourceManager\\Automation\\Commands.Automation.Test\\ScenarioTests\\SourceControlTests.ps1",
+      "_justification": "Legitimate personal access tokens. After recording the tests, the tokens were revoked"
+    },
+    {
+      "file": "src\\ServiceManagement\\Services\\Commands.Test\\Profile\\ProfileCmdltsTests.cs",
+      "_justification": "Sample certificate only used in tests"
+    },
+    {
+      "file": "src\\ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\UnitTests\\UnitTestHelper.cs",
+      "_justification": "Mocked test credentials"
+    },
+    {
+      "file": "src\\ResourceManager\\Resources\\Commands.Resources\\ActiveDirectory\\Models\\ParameterSet.cs",
+      "_justification": "Flagged secrets are names of parameter sets."
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdateApplicationPackage.json",
+      "hash": "7h1ZK3B30ya9x6svYsY3oaw3Je4LbyRpfSI/5qclGXM=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdateApplicationPackage.json",
+      "hash": "b3IzFl8cz1vV/KM+AGc0K0gx+2DWAGQpn3D9WWEuhTQ=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestCreatePoolWithApplicationPackage.json",
+      "hash": "vs94ueh47ZpMVtcUc7DB198Pd1mzjmjIco3n8eFkCCc=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestCreatePoolWithApplicationPackage.json",
+      "hash": "LiJDVOUTh4oKiEX0lxrrlRX+W6XwSu+ghid0WgeU/mo=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUploadApplicationPackage.json",
+      "hash": "N6I3bzY5IuAF72bjVLz9I1aI3VRzwkUGW7EgBvgw7u0=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUploadApplicationPackage.json",
+      "hash": "N6I3bzY5IuAF72bjVLz9I1aI3VRzwkUGW7EgBvgw7u0=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdatePoolWithApplicationPackage.json",
+      "hash": "JrpBaBulKXHy4+GiNC9bcdEgs0IyteZBrol/WgUQV/c=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdatePoolWithApplicationPackage.json",
+      "hash": "SB0xdyGO1L0ed4yxyqzld6xXQfTuM3czfp05Si3bAzw=",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "\\src\\ResourceManager\\DataFactoryV2\\Commands.DataFactories\\help\\New-AzDataFactoryEncryptValue.md",
+      "_justification": "Fake password"
+    },
+    {
+      "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\\TestVirtualNetworkGatewayP2SAndSKU.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
+      "file": "\\src\\ResourceManager\\AzureBatch\\Commands.Batch\\help\\New-AzBatchTask.md",
+      "hash": "9DiQS2GhPQXk8u3D2jadP/YcW2ZysE6slHg0yDqxByg=",
+      "_justification": "Markdown example and not a real credential"
+    }
   ]
 }

@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -104,10 +105,18 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         MaxPercentUpgradeDomainDeltaUnhealthyNodes = 0
                     };**/
 
-                    cluster = SendPutRequest(cluster);
+                    var patchRequest = new ClusterUpdateParameters
+                    {
+                        NodeTypes = cluster.NodeTypes
+                    };
+
+                    var psCluster = SendPatchRequest(patchRequest);
+                    WriteObject(psCluster, true);
                 }
-                
-                WriteObject((PSCluster)cluster, true);
+                else
+                {
+                    WriteObject((PSCluster)cluster, true);
+                }
             }
         }
     }

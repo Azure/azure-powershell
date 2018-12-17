@@ -261,43 +261,22 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         internal AzureSqlDatabaseBackupLongTermRetentionPolicyModel GetDatabaseBackupLongTermRetentionPolicy(
             string resourceGroup,
             string serverName,
-            string databaseName,
-            bool current)
+            string databaseName)
         {
-            if (!current)
-            {
-                var baPolicy = Communicator.GetDatabaseBackupLongTermRetentionPolicy(
-                    resourceGroup,
-                    serverName,
-                    databaseName,
-                    "Default");
-                return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
-                {
-                    Location = baPolicy.Location,
-                    ResourceGroupName = resourceGroup,
-                    ServerName = serverName,
-                    DatabaseName = databaseName,
-                    State = baPolicy.Properties.State,
-                    RecoveryServicesBackupPolicyResourceId = baPolicy.Properties.RecoveryServicesBackupPolicyResourceId,
-                };
-            }
-            else
-            {
-                Management.Sql.Models.BackupLongTermRetentionPolicy response = Communicator.GetDatabaseLongTermRetentionPolicy(
+            Management.Sql.Models.BackupLongTermRetentionPolicy response = Communicator.GetDatabaseLongTermRetentionPolicy(
                     resourceGroup,
                     serverName,
                     databaseName);
-                return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
-                {
-                    ResourceGroupName = resourceGroup,
-                    ServerName = serverName,
-                    DatabaseName = databaseName,
-                    WeeklyRetention = response.WeeklyRetention,
-                    MonthlyRetention = response.MonthlyRetention,
-                    YearlyRetention = response.YearlyRetention,
-                    WeekOfYear = response.WeekOfYear
-                };
-            }
+            return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                DatabaseName = databaseName,
+                WeeklyRetention = response.WeeklyRetention,
+                MonthlyRetention = response.MonthlyRetention,
+                YearlyRetention = response.YearlyRetention,
+                WeekOfYear = response.WeekOfYear
+            };
         }
 
         /// <summary>
@@ -345,35 +324,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string databaseName,
             AzureSqlDatabaseBackupLongTermRetentionPolicyModel model)
         {
-            if (!string.IsNullOrWhiteSpace(model.RecoveryServicesBackupPolicyResourceId))
-            {
-                var baPolicy = Communicator.SetDatabaseBackupLongTermRetentionPolicy(
-                    resourceGroup,
-                    serverName,
-                    databaseName,
-                    "Default",
-                    new DatabaseBackupLongTermRetentionPolicyCreateOrUpdateParameters()
-                    {
-                        Location = model.Location,
-                        Properties = new DatabaseBackupLongTermRetentionPolicyProperties()
-                        {
-                            State = model.State,
-                            RecoveryServicesBackupPolicyResourceId = model.RecoveryServicesBackupPolicyResourceId,
-                        }
-                    });
-                return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
-                {
-                    Location = baPolicy.Location,
-                    ResourceGroupName = resourceGroup,
-                    ServerName = serverName,
-                    DatabaseName = databaseName,
-                    State = baPolicy.Properties.State,
-                    RecoveryServicesBackupPolicyResourceId = baPolicy.Properties.RecoveryServicesBackupPolicyResourceId,
-                };
-            }
-            else
-            {
-                Management.Sql.Models.BackupLongTermRetentionPolicy response = Communicator.SetDatabaseLongTermRetentionPolicy(
+            Management.Sql.Models.BackupLongTermRetentionPolicy response = Communicator.SetDatabaseLongTermRetentionPolicy(
                     resourceGroup,
                     serverName,
                     databaseName,
@@ -384,17 +335,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                         YearlyRetention = model.YearlyRetention,
                         WeekOfYear = model.WeekOfYear
                     });
-                return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
-                {
-                    ResourceGroupName = resourceGroup,
-                    ServerName = serverName,
-                    DatabaseName = databaseName,
-                    WeeklyRetention = response.WeeklyRetention,
-                    MonthlyRetention = response.MonthlyRetention,
-                    YearlyRetention = response.YearlyRetention,
-                    WeekOfYear = response.WeekOfYear
-                };
-            }
+            return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
+            {
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                DatabaseName = databaseName,
+                WeeklyRetention = response.WeeklyRetention,
+                MonthlyRetention = response.MonthlyRetention,
+                YearlyRetention = response.YearlyRetention,
+                WeekOfYear = response.WeekOfYear
+            };
         }
 
         /// <summary>

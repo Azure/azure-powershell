@@ -13,10 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using System;
@@ -127,7 +126,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The created role assignment object</returns>
         public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters, Guid roleAssignmentId = default(Guid))
         {
-            Guid principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
+            string principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
             roleAssignmentId = roleAssignmentId == default(Guid) ? Guid.NewGuid() : roleAssignmentId;
             string scope = parameters.Scope;
             string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
@@ -232,9 +231,25 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             if (options.IncludeClassicAdministrators)
             {
                 // Get classic administrator access assignments
-                List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators
-                    .List().ToList();
-                List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList();
+                var classicAdministratorsSubscription = currentSubscription;
+                if (options.Scope != null)
+                {
+                    classicAdministratorsSubscription = AuthorizationHelper.GetResourceSubscription(options.Scope) ?? currentSubscription;
+                }
+
+                List<ClassicAdministrator> classicAdministrators = new List<ClassicAdministrator>();
+                if (currentSubscription != classicAdministratorsSubscription)
+                {
+                    var client = AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(AzureRmProfileProvider.Instance.Profile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                    client.SubscriptionId = classicAdministratorsSubscription;
+                    classicAdministrators = client.ClassicAdministrators.List().ToList();
+                }
+                else
+                {
+                    classicAdministrators = AuthorizationManagementClient.ClassicAdministrators.List().ToList();
+                }
+
+                List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(classicAdministratorsSubscription)).ToList();
 
                 // Filter by principal if provided
                 if (options.ADObjectFilter.HasFilter)

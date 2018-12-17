@@ -26,7 +26,7 @@ using System.Security;
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
     /// <summary>
-    /// Defines the New-AzureRmSqlInstance cmdlet
+    /// Defines the New-AzSqlInstance cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = NewByEditionAndComputeGenerationParameterSet,

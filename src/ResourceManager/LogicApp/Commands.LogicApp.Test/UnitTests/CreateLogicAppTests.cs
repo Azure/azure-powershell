@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Cmdlets;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
 

@@ -12,59 +12,40 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using TestUtilities = Microsoft.Azure.Test.TestUtilities;
-using TestBase = Microsoft.Azure.Test.TestBase;
-using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using System.Linq;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.SignalR;
-using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.SignalR.Test
 {
-    class TestController : RMTestBase
+    internal class TestController : RMTestBase
     {
         public static TestController NewInstance => new TestController();
 
-        private CSMTestEnvironmentFactory _csmTestFactory;
+        private readonly EnvironmentSetupHelper _helper = new EnvironmentSetupHelper();
 
-        private readonly EnvironmentSetupHelper _helper 
-            = new EnvironmentSetupHelper();
-
-        public Management.Resources.ResourceManagementClient ResourceManagementClient { get; private set; }
-
-        public Management.Internal.Resources.ResourceManagementClient InternalResourceManagementClient { get; private set; }
-
-        public SubscriptionClient SubscriptionClient { get; private set; }
-
-        public GalleryClient GalleryClient { get; private set; }
-
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
+        public ResourceManagementClient InternalResourceManagementClient { get; private set; }
 
         public SignalRManagementClient SignalRManagementClient { get; private set; }
 
-        public void RunPowerShellTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
+        public void RunPowerShellTest(ServiceManagement.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             _helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom initializer
-                null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -73,101 +54,64 @@ namespace Microsoft.Azure.Commands.SignalR.Test
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
 
-            var providers = new Dictionary<string, string>();
-            providers.Add("Microsoft.Resources", null);
-            providers.Add("Microsoft.Features", null);
-            providers.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            var providers = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (var context = MockContext.Start(callingClassType, mockName))
             {
-
-                _csmTestFactory = new CSMTestEnvironmentFactory();
-
-                if (initialize != null)
-                {
-                    initialize(_csmTestFactory);
-                }
-
                 SetupManagementClients(context);
-
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(
                     AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    "AzureRM.SignalR.psd1",
+                    _helper.GetRMModulePath("AzureRM.SignalR.psd1"),
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1",
                     "ScenarioTests\\Common.ps1");
                 try
                 {
-                    if (scriptBuilder != null)
+                    var psScripts = scriptBuilder?.Invoke();
+                    if (psScripts != null)
                     {
-                        var psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            _helper.RunPowerShellTest(psScripts);
-                        }
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }
 
         protected void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
             InternalResourceManagementClient = GetResourceManagementClientInternal(context);
             SignalRManagementClient = GetSignalRManagementClient(context);
 
-            _helper.SetupManagementClients(
-                ResourceManagementClient,
-                InternalResourceManagementClient,
-                SignalRManagementClient);
+            _helper.SetupManagementClients(InternalResourceManagementClient, SignalRManagementClient);
         }
 
-        bool testViaCsm = true; // Currently set to true, we will get this from Environment varialbe.
+        private static ResourceManagementClient GetResourceManagementClientInternal(MockContext context)
+            => context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
 
-        private Management.Internal.Resources.ResourceManagementClient GetResourceManagementClientInternal(MockContext context)
-            => testViaCsm
-                ? context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment())
-                : TestBase.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(new RDFETestEnvironmentFactory());
-
-        protected Management.Resources.ResourceManagementClient GetResourceManagementClient()
-            => TestBase.GetServiceClient<Management.Resources.ResourceManagementClient>(_csmTestFactory);
-
-        private SubscriptionClient GetSubscriptionClient()
-            => TestBase.GetServiceClient<SubscriptionClient>(_csmTestFactory);
-
-        private GalleryClient GetGalleryClient()
-            => TestBase.GetServiceClient<GalleryClient>(_csmTestFactory);
-
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-            => TestBase.GetServiceClient<AuthorizationManagementClient>(_csmTestFactory);
-
-        private SignalRManagementClient GetSignalRManagementClient(MockContext context)
+        private static SignalRManagementClient GetSignalRManagementClient(MockContext context)
             => context.GetServiceClient<SignalRManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
     }
 }

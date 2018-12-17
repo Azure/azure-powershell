@@ -29,7 +29,7 @@ using Microsoft.Azure.Commands.ResourceManager;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the Remove-AzureRmFrontDoor cmdlet.
+    /// Defines the Remove-AzFrontDoor cmdlet.
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureRmFrontDoor : AzureFrontDoorCmdletBase

@@ -31,7 +31,7 @@ function Test-CreateAgent
     {
         # Test using default parameters
         $agentName = Get-AgentName
-        $resp = New-AzureRmSqlElasticJobAgent -ResourceGroupName $rg1.ResourceGroupName -ServerName $s1.ServerName -DatabaseName $db1.DatabaseName -AgentName $agentName
+        $resp = New-AzSqlElasticJobAgent -ResourceGroupName $rg1.ResourceGroupName -ServerName $s1.ServerName -DatabaseName $db1.DatabaseName -AgentName $agentName
         Assert-AreEqual $resp.AgentName $agentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db1.DatabaseName
@@ -41,7 +41,7 @@ function Test-CreateAgent
 
         # Test using database object
         $agentName = Get-AgentName
-        $resp = New-AzureRmSqlElasticJobAgent -DatabaseObject $db2 -Name $agentName
+        $resp = New-AzSqlElasticJobAgent -DatabaseObject $db2 -Name $agentName
         Assert-AreEqual $resp.AgentName $agentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db2.DatabaseName
@@ -51,7 +51,7 @@ function Test-CreateAgent
 
         # Test using database resource id
         $agentName = Get-AgentName
-        $resp = New-AzureRmSqlElasticJobAgent -DatabaseResourceId $db3.ResourceId -Name $agentName
+        $resp = New-AzSqlElasticJobAgent -DatabaseResourceId $db3.ResourceId -Name $agentName
         Assert-AreEqual $resp.AgentName $agentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db3.DatabaseName
@@ -61,7 +61,7 @@ function Test-CreateAgent
 
         # Test piping - Create using piping
         $agentName = Get-AgentName
-        $resp = $db4 | New-AzureRmSqlElasticJobAgent -Name $agentName
+        $resp = $db4 | New-AzSqlElasticJobAgent -Name $agentName
         Assert-AreEqual $resp.AgentName $agentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db4.DatabaseName
@@ -93,7 +93,7 @@ function Test-UpdateAgent
     try
     {
         # Test using default parameters
-        $resp = Set-AzureRmSqlElasticJobAgent -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Tag $tags
+        $resp = Set-AzSqlElasticJobAgent -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Tag $tags
         Assert-AreEqual $resp.AgentName $a1.AgentName
         Assert-AreEqual $resp.ServerName $a1.ServerName
         Assert-AreEqual $resp.DatabaseName $a1.DatabaseName
@@ -103,7 +103,7 @@ function Test-UpdateAgent
         Assert-AreEqual $resp.Tags.Octopus "Agent"
 
         # Test using input object
-        $resp = Set-AzureRmSqlElasticJobAgent -InputObject $a1 -Tag $tags
+        $resp = Set-AzSqlElasticJobAgent -InputObject $a1 -Tag $tags
         Assert-AreEqual $resp.AgentName $a1.AgentName
         Assert-AreEqual $resp.ServerName $a1.ServerName
         Assert-AreEqual $resp.DatabaseName $a1.DatabaseName
@@ -113,7 +113,7 @@ function Test-UpdateAgent
         Assert-AreEqual $resp.Tags.Octopus "Agent"
 
         # Test using resource id
-        $resp = Set-AzureRmSqlElasticJobAgent -ResourceId $a1.ResourceId -Tag $tags
+        $resp = Set-AzSqlElasticJobAgent -ResourceId $a1.ResourceId -Tag $tags
         Assert-AreEqual $resp.AgentName $a1.AgentName
         Assert-AreEqual $resp.ServerName $a1.ServerName
         Assert-AreEqual $resp.DatabaseName $a1.DatabaseName
@@ -123,7 +123,7 @@ function Test-UpdateAgent
         Assert-AreEqual $resp.Tags.Octopus "Agent"
 
         # Test using piping
-        $resp = $a1 | Set-AzureRmSqlElasticJobAgent -Tag $tags
+        $resp = $a1 | Set-AzSqlElasticJobAgent -Tag $tags
         Assert-AreEqual $resp.AgentName $a1.AgentName
         Assert-AreEqual $resp.ServerName $a1.ServerName
         Assert-AreEqual $resp.DatabaseName $a1.DatabaseName
@@ -160,7 +160,7 @@ function Test-GetAgent
     try
     {
         # Test using default parameters
-        $resp = Get-AzureRmSqlElasticJobAgent -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName
+        $resp = Get-AzSqlElasticJobAgent -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName
         Assert-AreEqual $resp.AgentName $a1.AgentName
         Assert-AreEqual $resp.ServerName $a1.ServerName
         Assert-AreEqual $resp.DatabaseName $a1.DatabaseName
@@ -169,7 +169,7 @@ function Test-GetAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test using input object
-        $resp = Get-AzureRmSqlElasticJobAgent -ParentObject $s1 -AgentName $a1.AgentName
+        $resp = Get-AzSqlElasticJobAgent -ParentObject $s1 -AgentName $a1.AgentName
         Assert-AreEqual $resp.AgentName $a1.AgentName
         Assert-AreEqual $resp.ServerName $a1.ServerName
         Assert-AreEqual $resp.DatabaseName $a1.DatabaseName
@@ -178,7 +178,7 @@ function Test-GetAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test using server resource id
-        $resp = Get-AzureRmSqlElasticJobAgent -ParentResourceId $s1.ResourceId -AgentName $a1.AgentName
+        $resp = Get-AzSqlElasticJobAgent -ParentResourceId $s1.ResourceId -AgentName $a1.AgentName
         Assert-AreEqual $resp.AgentName $a1.AgentName
         Assert-AreEqual $resp.ServerName $a1.ServerName
         Assert-AreEqual $resp.DatabaseName $a1.DatabaseName
@@ -187,7 +187,7 @@ function Test-GetAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test using piping
-        $resp = $s1 | Get-AzureRmSqlElasticJobAgent -Name $a1.AgentName
+        $resp = $s1 | Get-AzSqlElasticJobAgent -Name $a1.AgentName
         Assert-AreEqual $resp.AgentName $a1.AgentName
         Assert-AreEqual $resp.ServerName $a1.ServerName
         Assert-AreEqual $resp.DatabaseName $a1.DatabaseName
@@ -196,11 +196,11 @@ function Test-GetAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Get all in s1
-        $resp = $s1 | Get-AzureRmSqlElasticJobAgent
+        $resp = $s1 | Get-AzSqlElasticJobAgent
         Assert-AreEqual $resp.Count 2
 
         # Get all agents in servers in rg1
-        $resp = Get-AzureRmSqlServer -ResourceGroupName $rg1.ResourceGroupName | Get-AzureRmSqlElasticJobAgent
+        $resp = Get-AzSqlServer -ResourceGroupName $rg1.ResourceGroupName | Get-AzSqlElasticJobAgent
         Assert-AreEqual $resp.Count 3
     }
     finally
@@ -231,7 +231,7 @@ function Test-RemoveAgent
     try
     {
         # Test using parameters
-        $resp = Remove-AzureRmSqlElasticJobAgent -ResourceGroupName $rg1.ResourceGroupName -ServerName $s1.ServerName -AgentName $a1.AgentName -Force
+        $resp = Remove-AzSqlElasticJobAgent -ResourceGroupName $rg1.ResourceGroupName -ServerName $s1.ServerName -AgentName $a1.AgentName -Force
         Assert-AreEqual $resp.AgentName $a1.AgentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db1.DatabaseName
@@ -240,7 +240,7 @@ function Test-RemoveAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test using input object
-        $resp = Remove-AzureRmSqlElasticJobAgent -InputObject $a2 -Force
+        $resp = Remove-AzSqlElasticJobAgent -InputObject $a2 -Force
         Assert-AreEqual $resp.AgentName $a2.AgentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db2.DatabaseName
@@ -249,7 +249,7 @@ function Test-RemoveAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test using resource id
-        $resp = Remove-AzureRmSqlElasticJobAgent -ResourceId $a3.ResourceId -Force
+        $resp = Remove-AzSqlElasticJobAgent -ResourceId $a3.ResourceId -Force
         Assert-AreEqual $resp.AgentName $a3.AgentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db3.DatabaseName
@@ -258,7 +258,7 @@ function Test-RemoveAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test using piping
-        $resp = $a4 | Remove-AzureRmSqlElasticJobAgent -Force
+        $resp = $a4 | Remove-AzSqlElasticJobAgent -Force
         Assert-AreEqual $resp.AgentName $a4.AgentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db4.DatabaseName
@@ -267,10 +267,10 @@ function Test-RemoveAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test that agents are indeed gone
-        Assert-Throws { $s1 | Get-AzureRmSqlElasticJobAgent -Name $a1.AgentName }
-        Assert-Throws { $s1 | Get-AzureRmSqlElasticJobAgent -Name $a2.AgentName }
-        Assert-Throws { $s1 | Get-AzureRmSqlElasticJobAgent -Name $a3.AgentName }
-        Assert-Throws { $s1 | Get-AzureRmSqlElasticJobAgent -Name $a4.AgentName }
+        Assert-Throws { $s1 | Get-AzSqlElasticJobAgent -Name $a1.AgentName }
+        Assert-Throws { $s1 | Get-AzSqlElasticJobAgent -Name $a2.AgentName }
+        Assert-Throws { $s1 | Get-AzSqlElasticJobAgent -Name $a3.AgentName }
+        Assert-Throws { $s1 | Get-AzSqlElasticJobAgent -Name $a4.AgentName }
     }
     finally
     {

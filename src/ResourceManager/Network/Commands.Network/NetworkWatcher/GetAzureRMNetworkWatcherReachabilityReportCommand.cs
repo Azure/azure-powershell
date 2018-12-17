@@ -76,13 +76,13 @@ namespace Microsoft.Azure.Commands.Network.Automation
         [Parameter(
             Mandatory = false,
             HelpMessage = "List of Internet service providers.")]
-        public List<string> Provider { get; set; }
+        public string[] Provider { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Optional Azure regions to scope the query to.")]
         [LocationCompleter("Microsoft.Network/networkWatchers")]
-        public List<string> Location { get; set; }
+        public string[] Location { get; set; }
 
         [Parameter(
             Mandatory = true,
