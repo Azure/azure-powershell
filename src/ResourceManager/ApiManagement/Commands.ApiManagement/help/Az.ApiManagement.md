@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.ApiManagement
 Module Guid: f875725d-8ce4-423f-a6af-ea880bc63f13
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement
@@ -75,7 +75,7 @@ Gets the specified scope policy.
 Gets a list or a particular product.
 
 ### [Get-AzApiManagementProperty](Get-AzApiManagementProperty.md)
-
+Gets a list or a particular Property (Named-Value).
 
 ### [Get-AzApiManagementSsoToken](Get-AzApiManagementSsoToken.md)
 Gets a link with an SSO token to a deployed management portal of an API Management service.
@@ -100,9 +100,6 @@ Generates an SSO URL for a user.
 
 ### [Import-AzApiManagementApi](Import-AzApiManagementApi.md)
 Imports an API from a file or a URL.
-
-### [Import-AzApiManagementHostnameCertificate](Import-AzApiManagementHostnameCertificate.md)
-Imports a certificate in a PFX format for an API Management Service.
 
 ### [New-AzApiManagement](New-AzApiManagement.md)
 Creates an API Management deployment.
@@ -145,9 +142,6 @@ Creates an instance of `PsApiManagementCustomHostNameConfiguration`.
 
 ### [New-AzApiManagementGroup](New-AzApiManagementGroup.md)
 Creates an API management group.
-
-### [New-AzApiManagementHostnameConfiguration](New-AzApiManagementHostnameConfiguration.md)
-Creates an instance of PsApiManagementHostnameConfiguration.
 
 ### [New-AzApiManagementIdentityProvider](New-AzApiManagementIdentityProvider.md)
 Creates a new Identity Provider configuration.
@@ -281,9 +275,6 @@ Modifies an API Management certificate which is configured for mutual authentica
 ### [Set-AzApiManagementGroup](Set-AzApiManagementGroup.md)
 Configures an API management group.
 
-### [Set-AzApiManagementHostnames](Set-AzApiManagementHostnames.md)
-Sets a custom hostname configuration for an API Management service proxy or portal.
-
 ### [Set-AzApiManagementIdentityProvider](Set-AzApiManagementIdentityProvider.md)
 Updates the Configuration of an existing Identity Provider.
 
@@ -316,9 +307,6 @@ Sets user details.
 
 ### [Update-AzApiManagementApiRelease](Update-AzApiManagementApiRelease.md)
 Updates a particular Api Release.
-
-### [Update-AzApiManagementDeployment](Update-AzApiManagementDeployment.md)
-Updates deployment of an API Management Service.
 
 ### [Update-AzApiManagementRegion](Update-AzApiManagementRegion.md)
 Updates existing deployment region in PsApiManagement instance.

@@ -92,20 +92,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Alias("KeyCredentials")]
         public PSADKeyCredential[] KeyCredential { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
-            HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithPasswordPlain,
-            HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
-        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordPlain,
-            HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
-        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The value for the password credential associated with the application. If a " +
-            "password is not provided, a random GUID will be generated and used as the password.")]
-        [ValidateNotNullOrEmpty]
-#if NETSTANDARD
-        [CmdletParameterBreakingChange("Password", ChangeDescription = "Password parameter will be removed in an upcoming breaking change release.  After this point, the password will always be automatically generated.")]
-#endif
-        public SecureString Password { get; set; }
-
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
             HelpMessage = "The base64 encoded cert value for the key credentials associated with the application that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithKeyPlain,
@@ -230,21 +216,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     AccountEnabled = true
                 };
 
-                if (this.IsParameterBound(c => c.Password))
-                {
-                    string decodedPassword = SecureStringExtensions.ConvertToString(Password);
-                    createParameters.PasswordCredentials = new PSADPasswordCredential[]
-                        {
-                            new PSADPasswordCredential
-                            {
-                                StartDate = StartDate,
-                                EndDate = EndDate,
-                                KeyId = Guid.NewGuid(),
-                                Password = decodedPassword
-                            }
-                        };
-                }
-                else if (this.IsParameterBound(c => c.PasswordCredential))
+                if (this.IsParameterBound(c => c.PasswordCredential))
                 {
                     createParameters.PasswordCredentials = PasswordCredential;
                 }
@@ -313,11 +285,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             var identifierUri = "http://" + DisplayName;
 
             // Handle credentials
-            if (!this.IsParameterBound(c => c.Password))
-            {
-                // If no credentials provided, set the password to a randomly generated GUID
-                Password = Guid.NewGuid().ToString().ConvertToSecureString();
-            }
+            var Password = Guid.NewGuid().ToString().ConvertToSecureString();
 
             // Create an application and get the applicationId
             var passwordCredential = new PSADPasswordCredential()

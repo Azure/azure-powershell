@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maps.dll-Help.xml
 Module Name: Az.Maps
 online version: https://docs.microsoft.com/en-us/powershell/module/az.maps/remove-azmapsaccount
@@ -67,7 +67,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -190,7 +190,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
-Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

@@ -194,22 +194,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string vaultName = (string)providerData[CmdletModel.VaultParams.VaultName];
             string vaultResourceGroupName = (string)providerData[CmdletModel.VaultParams.ResourceGroupName];
-            string name = (string)providerData[CmdletModel.ContainerParams.Name];
             string friendlyName = (string)providerData[CmdletModel.ContainerParams.FriendlyName];
             CmdletModel.ContainerRegistrationStatus status =
                 (CmdletModel.ContainerRegistrationStatus)providerData[CmdletModel.ContainerParams.Status];
 
             string nameQueryFilter = friendlyName;
-
-            if (!string.IsNullOrEmpty(name))
-            {
-                Logger.Instance.WriteWarning(Resources.GetContainerNameParamDeprecated);
-
-                if (string.IsNullOrEmpty(friendlyName))
-                {
-                    nameQueryFilter = name;
-                }
-            }
 
             ODataQuery<ServiceClientModel.BMSContainerQueryObject> queryParams = null;
             if (status == 0)

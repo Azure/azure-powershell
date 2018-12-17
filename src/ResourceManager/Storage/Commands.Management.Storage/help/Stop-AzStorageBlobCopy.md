@@ -1,5 +1,5 @@
----
-external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: C274DFBD-6C93-4043-AF93-DAF7BEA1F11F
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/stop-azstorageblobcopy

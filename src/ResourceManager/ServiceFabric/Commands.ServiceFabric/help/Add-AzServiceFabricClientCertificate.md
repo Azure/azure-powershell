@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/add-azservicefabricclientcertificate
@@ -126,7 +126,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -246,16 +246,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Admin (ByValue)
 
 ### System.String
-Parameters: CommonName (ByValue), IssuerThumbprint (ByValue), Thumbprint (ByValue)
 
 ### System.String[]
-Parameters: AdminClientThumbprint (ByValue), ReadonlyClientThumbprint (ByValue)
 
 ### Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]
-Parameters: ClientCertificateCommonName (ByValue)
 
 ## OUTPUTS
 

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datamigration/New-AzDataMigrationConnectionInfo
@@ -37,7 +37,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerType
-Enum that describes server type to connect to. Currently supported values are SQL for SQL Server, Azure SQL Managed Instance and Azure SQL Database. 
+Enum that describes server type to connect to. Currently supported values are SQL for SQL Server, Azure SQL Managed Instance, MongoDb, CosmosDb and Azure SQL Database. 
 
 ```yaml
 Type: Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum

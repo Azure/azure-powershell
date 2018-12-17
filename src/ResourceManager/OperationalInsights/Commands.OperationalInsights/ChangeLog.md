@@ -1,9 +1,9 @@
 <!--
     Please leave this section at the top of the change log.
 
-    Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
+    Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
-    ## Current Release
+    ## Upcoming Release
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
@@ -17,5 +17,8 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Release
+## Upcoming Release
+
+## Version 1.0.0
+* General availability of `Az.OperationalInsights` module
 * Default parameter set for Get-AzOperationalInsightsDataSource is removed, and ByWorkspaceNameByKind has become the default parameter set
