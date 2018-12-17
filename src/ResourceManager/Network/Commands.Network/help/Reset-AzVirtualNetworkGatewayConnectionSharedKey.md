@@ -153,5 +153,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVirtualNetworkGatewayConnectionSharedKey](./Get-AzVirtualNetworkGatewayConnectionSharedKey.md)
 
 [Set-AzVirtualNetworkGatewayConnectionSharedKey](./Set-AzVirtualNetworkGatewayConnectionSharedKey.md)
-
-

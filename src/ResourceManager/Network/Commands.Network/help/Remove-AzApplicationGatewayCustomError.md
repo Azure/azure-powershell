@@ -90,3 +90,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzApplicationGatewayCustomError](./Add-AzApplicationGatewayCustomError.md)
+
+[Get-AzApplicationGatewayCustomError](./Get-AzApplicationGatewayCustomError.md)
+
+[New-AzApplicationGatewayCustomError](./New-AzApplicationGatewayCustomError.md)
+
+[Set-AzApplicationGatewayCustomError](./Set-AzApplicationGatewayCustomError.md)

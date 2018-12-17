@@ -25,7 +25,7 @@ Creates an Azure Virtual Hub Route object.
 ### Example 1
 
 ```powershell
-PS C:\> $route1 = 
+PS C:\> $route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.0.0/16", "11.0.0.0/16") -NextHopIpAddress "12.0.0.5"
 
 AddressPrefixes            NextHopIpAddress
 ---------------            ----------------
@@ -97,3 +97,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzVirtualHubRouteTable](./New-AzVirtualHubRouteTable.md)

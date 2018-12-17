@@ -125,3 +125,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzPublicIpPrefix](./Get-AzPublicIpPrefix.md)
+
+[New-AzPublicIpPrefix](./New-AzPublicIpPrefix.md)
+
+[Remove-AzPublicIpPrefix](./Remove-AzPublicIpPrefix.md)

@@ -179,3 +179,10 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Set-AzRouteFilterRuleConfig](./Set-AzRouteFilterRuleConfig.md)
 
+[Get-AzRouteFilter](./Get-AzRouteFilter.md)
+
+[New-AzRouteFilter](./New-AzRouteFilter.md)
+
+[Remove-AzRouteFilter](./Remove-AzRouteFilter.md)
+
+[Set-AzRouteFilter](./Set-AzRouteFilter.md)

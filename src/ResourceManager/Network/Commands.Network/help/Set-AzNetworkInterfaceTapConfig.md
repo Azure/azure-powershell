@@ -136,3 +136,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzNetworkInterfaceTapConfig](./Add-AzNetworkInterfaceTapConfig.md)
+
+[Get-AzNetworkInterfaceTapConfig](./Get-AzNetworkInterfaceTapConfig.md)
+
+[Remove-AzNetworkInterfaceTapConfig](./Remove-AzNetworkInterfaceTapConfig.md)

@@ -220,3 +220,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVpnSite](./Get-AzVpnSite.md)
+
+[New-AzVpnSite](./New-AzVpnSite.md)
+
+[Update-AzVpnSite](./Update-AzVpnSite.md)
