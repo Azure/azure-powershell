@@ -1,4 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsTestProject>false</IsTestProject>
+  </PropertyGroup>
 
   <Import Project="$(ProjectDir)..\Dependencies.Test.targets" />
 
@@ -9,7 +12,6 @@
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
-    <IsTestProject>false</IsTestProject>
   </PropertyGroup>
 
   <PropertyGroup>
