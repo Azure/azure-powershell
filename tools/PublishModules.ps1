@@ -104,13 +104,9 @@ function Get-Directories {
     )
 
     PROCESS {
-        $packageFolder = "$PSScriptRoot\..\src\Package"
+        $packageFolder = "$PSScriptRoot\..\artifacts"
 
-        if ($Scope -eq "Stack") {
-            $packageFolder = "$PSScriptRoot\..\src\Stack"
-        }
-
-        $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
+        $resourceManagerRootFolder = "$packageFolder\$buildConfig"
 
         Write-Output -InputObject $packageFolder, $resourceManagerRootFolder
     }
@@ -859,7 +855,7 @@ Get-PackageProvider -Name NuGet -Force
 Write-Host " "
 
 # NOTE: Can only be Azure or Azure Stack, not both.
-$packageFolder = "$PSScriptRoot\..\src\Package"
+$packageFolder = "$PSScriptRoot\..\artifacts"
 if ($Scope -eq 'Stack') {
     $packageFolder = "$PSScriptRoot\..\src\Stack"
 }

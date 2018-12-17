@@ -1,6 +1,6 @@
 # Azure PowerShell specific
 src/Publish/
-src/Package/
+artifacts/
 src/Stack/
 src/local-artifacts/*
 /tools/AzureRM/AzureRM.psm1
