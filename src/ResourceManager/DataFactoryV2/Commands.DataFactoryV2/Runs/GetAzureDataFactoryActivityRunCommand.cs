@@ -59,14 +59,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNullOrEmpty]
         public string Status { get; set; }
 
-        [CmdletParameterBreakingChange("LinkedServiceName", ChangeDescription = Constants.DeprecatingParameter)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 6, Mandatory = false,
-            HelpMessage = Constants.HelpLinkedServiceName)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 7, Mandatory = false,
-            HelpMessage = Constants.HelpLinkedServiceName)]
-        [ValidateNotNullOrEmpty]
-        public string LinkedServiceName { get; set; }
-
         public override void ExecuteCmdlet()
         {
             ByFactoryObject();
@@ -79,7 +71,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 RunStartedAfter = RunStartedAfter,
                 RunStartedBefore = RunStartedBefore,
                 ActivityName = ActivityName,
-                LinkedServiceName = LinkedServiceName,
                 Status = Status
             };
             WriteObject(DataFactoryClient.ListActivityRuns(activityRunFilter));

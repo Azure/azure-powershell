@@ -19,7 +19,7 @@ using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
 using System.Diagnostics;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources;

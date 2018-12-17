@@ -90,9 +90,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureProfile</Name>
+      <Name>Microsoft.Azure.Commands.Profile.Models.Core.PSAzureProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureProfile</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Profile.Models.Core.PSAzureProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -138,9 +138,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureContext</Name>
+      <Name>Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureContext</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Profile.Models.Core.PSAzureContext</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

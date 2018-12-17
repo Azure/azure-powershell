@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.Compute
 Module Guid: 0a83c907-1ffb-4d87-a492-c65ac7d7ed37
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.compute
@@ -24,7 +24,7 @@ Uploads a virtual hard disk from an on-premises virtual machine to a blob in a c
 Adds information to the unattended Windows Setup answer file.
 
 ### [Add-AzVMDataDisk](Add-AzVMDataDisk.md)
-Adds a data disk to a virtual machine or a Vmss VM.
+Adds a data disk to a virtual machine.
 
 ### [Add-AzVMNetworkInterface](Add-AzVMNetworkInterface.md)
 Adds a network interface to a virtual machine.

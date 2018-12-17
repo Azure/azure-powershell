@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Maps.Properties;
 using Microsoft.Azure.Management.Maps;
 using Microsoft.Azure.Management.Maps.Models;
 using Microsoft.Azure.Commands.Maps.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Maps.MapsAccount
 {
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Maps Account Sku Name.")]
-        [ValidateSet("S0")]
+        [PSArgumentCompleter("S0", "S1")]
         public string SkuName { get; set; }
 
         [Parameter(

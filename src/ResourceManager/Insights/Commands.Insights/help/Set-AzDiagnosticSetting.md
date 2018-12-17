@@ -1,8 +1,8 @@
----
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: Az.Insights
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+Module Name: Az.Monitor
 ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/set-azdiagnosticsetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azdiagnosticsetting
 schema: 2.0.0
 ---
 
@@ -17,9 +17,9 @@ Sets the logs and metrics settings for the resource.
 ```
 Set-AzDiagnosticSetting -ResourceId <String> [-Name <String>] [-StorageAccountId <String>]
  [-ServiceBusRuleId <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleId <String>]
- [-Enabled <Boolean>] [-Categories <System.Collections.Generic.List`1[System.String]>]
+ [-Enabled <Boolean>] [-Category <System.Collections.Generic.List`1[System.String]>]
  [-MetricCategory <System.Collections.Generic.List`1[System.String]>]
- [-Timegrains <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
+ [-Timegrain <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
  [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -82,7 +82,7 @@ All the other categories remain the same.
 
 ### Example 4: Enable/disable multiple log categories
 ```
-PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $True -Categories Category1,Category2
+PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $True -Category Category1,Category2
 StorageAccountId   : <storageAccountId>
 StorageAccountName : <storageAccountName>
 Metrics
@@ -111,7 +111,7 @@ All the other metrics and logs categories remain the same.
 
 ### Example 4: Enable a time grain and multiple categories
 ```
-PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $True -Categories Category1,Category2 -Timegrains PT1M
+PS C:\>Set-AzDiagnosticSetting -ResourceId "Resource01" -Enabled $True -Category Category1,Category2 -Timegrain PT1M
 ```
 
 This command enables only Category1, Category2, and time grain PT1M.
@@ -126,14 +126,14 @@ This command uses the PowerShell pipeline to set (not change made) a diagnostic 
 
 ## PARAMETERS
 
-### -Categories
+### -Category
 Specifies the list of log categories to enable or disable, according to the value of *Enabled*.
 If no category is specified, this command operates on all supported categories. 
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: OldSetDiagnosticSetting
-Aliases: Category
+Aliases:
 
 Required: False
 Position: Named
@@ -148,7 +148,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -324,14 +324,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Timegrains
+### -Timegrain
 Specifies the time grains to enable or disable for metrics, according to the value of *Enabled*.
 If you do not specify a time grain, this command operates on all available time grains.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: OldSetDiagnosticSetting
-Aliases: Timegrain
+Aliases:
 
 Required: False
 Position: Named
@@ -391,17 +391,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings
-Parameters: InputObject (ByValue)
 
 ### System.String
 
 ### System.Boolean
 
-### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
-### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
-### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ## OUTPUTS
 

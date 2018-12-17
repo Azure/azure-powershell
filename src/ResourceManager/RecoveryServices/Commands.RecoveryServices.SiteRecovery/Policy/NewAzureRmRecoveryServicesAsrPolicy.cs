@@ -212,18 +212,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryAzureStorageAccountId { get; set; }
 
         /// <summary>
-        ///     Gets or sets if encryption should be enabled or disabled.
-        ///  todo : vipin add in breaking changes list.Mark obsolete for now.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.HyperVToAzure)]
-        [DefaultValue(Constants.Disable)]
-        [Obsolete("cmdlet parameter will be removed in upcoming breaking release")]
-        [ValidateSet(
-            Constants.Enable,
-            Constants.Disable)]
-        public string Encryption { get; set; }
-
-        /// <summary>
         ///     Gets or sets the multiVm sync status for the policy.
         /// </summary>
         [Parameter(DontShow = true, ParameterSetName = ASRParameterSets.VMwareToAzure)]

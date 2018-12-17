@@ -3,8 +3,8 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.Resources.Test</AssemblyName>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Resources.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Resources.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -23,7 +23,8 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.5.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.8.1-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.1-preview" />
   </ItemGroup>
@@ -32,14 +33,8 @@
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.1.0" />
   </ItemGroup>
 
-
-    <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Resources">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Resources\Microsoft.Azure.Commands.Resources.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll</HintPath>
-    </Reference>
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.Resources\Commands.Resources.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

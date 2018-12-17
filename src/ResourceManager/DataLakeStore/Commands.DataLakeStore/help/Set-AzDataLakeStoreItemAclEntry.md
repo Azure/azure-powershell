@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 0671D833-8B3A-4480-A576-92F1A9E8CE92
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry
@@ -142,7 +142,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -305,7 +305,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce
-If PassThru is specified, will return the resulting list of ACL entries.
 
 ## NOTES
 

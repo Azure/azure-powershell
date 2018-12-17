@@ -1,5 +1,5 @@
----
-external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: BB139312-A536-4B61-A005-6CAF02BE1637
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azstoragefilesastoken
@@ -271,7 +271,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.WindowsAzure.Storage.File.CloudFile
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameters: Context (ByValue)
 
 ## OUTPUTS
 
