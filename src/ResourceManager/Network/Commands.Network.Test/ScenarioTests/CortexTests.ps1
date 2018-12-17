@@ -247,11 +247,14 @@ function Test-CortexExpressRouteCRUD
 		$createdExpressRouteGateway = New-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName -VirtualHub $virtualHub -MinScaleUnits 2
         Write-Debug "Created ExpressRoute Gateway $expressRouteGatewayName successfully"
 		$expressRouteGateway = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName
+        Assert-NotNull $expressRouteGateway
         Write-Debug "Retrieved ExpressRoute Gateway $expressRouteGatewayName successfully"
 
         # List the ExpressRouteGateway
         $expressRouteGateways = Get-AzureRmExpressRouteGateway
+        Assert-True { $expressRouteGateways.Count -gt 0 }
         $expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName
+        Assert-True { $expressRouteGateways.Count -gt 0 }
 
         # Create the ExpressRouteCircuit with peering to which the connection needs to be established to
         $peering = New-AzureRmExpressRouteCircuitPeeringConfig -Name AzurePrivatePeering -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.2.3.4/30" -SecondaryPeerAddressPrefix "11.2.3.4/30" -VlanId 22
@@ -270,6 +273,7 @@ function Test-CortexExpressRouteCRUD
 		$createdExpressRouteConnection = Set-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ParentResourceName $expressRouteGatewayName -Name $expressRouteConnectionName -RoutingWeight 30
         Write-Debug "Updated ExpressRoute Connection with Private Peering $expressRouteConnectionName successfully"
 		$expressRouteConnection = Get-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ParentResourceName $expressRouteGatewayName -Name $expressRouteConnectionName
+        Assert-NotNull $expressRouteConnection
         Write-Debug "Retrieved ExpressRoute Connection with Private Peering $expressRouteConnectionName successfully"
 		Assert-AreEqual $expressRouteConnectionName $expressRouteConnection.Name
 		Assert-AreEqual 30 $expressRouteConnection.RoutingWeight
