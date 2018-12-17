@@ -193,7 +193,7 @@ You cannot load Az and AzureRM modules in the same PowerShell session, but they 
 
 ##### Usage in Scripts
 
-Declare the modules used in yout script at the beginning of your script.
+Declare the modules used in your script at the beginning of your script.
 - For Az:
   ```powershell
   #Requires -Modules Az.Accounts, Az.Storage, Az.Compute
@@ -201,7 +201,7 @@ Declare the modules used in yout script at the beginning of your script.
 
 - For AzureRM:
   ```powershell
-  #Requires -Modules AzureRM.Profile, AzureRM.Strage, Azure.Storage, AzureRM.Compute
+  #Requires -Modules AzureRM.Profile, AzureRM.Storage, Azure.Storage, AzureRM.Compute
   ```
 
 
