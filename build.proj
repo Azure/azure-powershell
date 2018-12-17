@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  Available Targets:
+
+  /t:Clean
+    Removes temporary build outputs.
+
+  /t:Build
+    Builds assemblies.
+
+  /t:Test
+    Runs tests
+
+  /t:Publish
+    Creates local nuget packages and MSI
+
+  /p:CodeSign=True
+    Code sign binaries, mainly for official release. Default is false.
+
+  /p:CodeSign=True;DelaySign=True
+    Test the code sign workflow locally.
+
+  /p:Scope
+    'ServiceManagement': service management
+    'AzureStorage': storage data plane cmdlets
+    'Stack': Azure Stack cmdlets
+    'Subfolder under src\ResourceManager': An individual cmdlet module
+    By default, it builds everything
+
+  /p:SkipHelp=True
+    Skips help generation, mainly for local builds to save time.
+
+  /p:SkipNugetRestore=True
+    Skips nuget restore, mainly for local builds to save time when you have already restored nugets.
+
+  /p:SkipDependencyAnalysis=True
+    Skips build validation, mainly for local builds to save time.
+
+  /p:QuickBuild=true
+    Same thing as doing SkipHelp, SkipNugetRestore, and SkipDependencyAnalysis
+-->
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!--
-    Available Targets:
-
-    /t:Clean
-      Removes temporary build outputs.
-
-    /t:Build
-      Builds assemblies.
-
-    /t:Test
-      Runs tests
-
-    /t:Publish
-      Creates local nuget packages and MSI
-
-    /p:CodeSign=True
-      Code sign binaries, mainly for official release. Default is false.
-
-    /p:CodeSign=True;DelaySign=True
-      Test the code sign workflow locally.
-
-    /p:Scope
-      'ServiceManagement': service management
-      'AzureStorage': storage data plane cmdlets
-      'Stack': Azure Stack cmdlets
-      'Subfolder under src\ResourceManager': An individual cmdlet module
-      By default, it builds everything
-
-    /p:SkipHelp=True
-      Skips help generation, mainly for local builds to save time.
-
-    /p:SkipNugetRestore=True
-      Skips nuget restore, mainly for local builds to save time when you have already restored nugets.
-
-    /p:SkipDependencyAnalysis=True
-      Skips build validation, mainly for local builds to save time.
-
-    /p:QuickBuild=true
-      Same thing as doing SkipHelp, SkipNugetRestore, and SkipDependencyAnalysis
-
-  -->
+  <Import Project="$(MSBuildThisFileDirectory)Repo.props" />
 
   <!-- Define default build properties -->
   <PropertyGroup>
@@ -255,15 +255,6 @@
       <Artifacts Include="@(GetAllFiles->'%(RootDir)%(Directory)'->Distinct())" />
     </ItemGroup>
     <RemoveDir Directories="%(Artifacts.Identity)" ContinueOnError="true" />
-
-    <ItemGroup>
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Resources\Az.Tags.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Websites\Az.Resources.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Websites\Az.Tags.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Network\Az.Resources.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\Az.Network\Az.Tags.psd1" />
-    </ItemGroup>
-    <Delete Files="@(ExtraPsdFiles->'%(FullPath)')" />
     <!-- TODO: </REMOVE THIS SECTION> -->
 
 
@@ -430,7 +421,7 @@
         <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
     </PropertyGroup>
     <!-- TODO: Use '-m @(ModulesChanged)' in command when FilterBuild is fixed. -->
-    <!-- <Exec Command="dotnet $(MSBuildThisFileDirectory)src/Package/StaticAnalysis/StaticAnalysis.Netcore.dll -p $(MSBuildThisFileDirectory)src/Package/$(Configuration) -r $(MSBuildThisFileDirectory)src/Package/StaticAnalysis $(SkipHelpValue) -u" /> -->
+    <!-- <Exec Command="dotnet $(MSBuildThisFileDirectory)artifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $(MSBuildThisFileDirectory)artifacts/$(Configuration) -r $(MSBuildThisFileDirectory)artifacts/StaticAnalysis $(SkipHelpValue) -u" /> -->
 
     <OnError ExecuteTargets="StaticAnalysisErrorMessage" />
   </Target>
@@ -449,7 +440,7 @@
     <PropertyGroup>
         <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
     </PropertyGroup>
-    <Exec Command="dotnet $(MSBuildProjectDirectory)\src\Package\StaticAnalysis.Netcore.dll -p $(MSBuildProjectDirectory)\src\Package\$(Configuration) -r $(MSBuildProjectDirectory)\src\Package $(SkipHelpValue) -u -m @(ModulesChanged)" />
+    <Exec Command="dotnet $(MSBuildProjectDirectory)\artifacts\StaticAnalysis.Netcore.dll -p $(MSBuildProjectDirectory)\artifacts\$(Configuration) -r $(MSBuildProjectDirectory)\artifacts $(SkipHelpValue) -u -m @(ModulesChanged)" />
 
     <OnError ExecuteTargets="StaticAnalysisErrorMessage"/>
   </Target>
@@ -514,7 +505,7 @@
   </Target>
 
   <Target Name="BinScopeErrorMessage">
-    <Error Text="Binscope failed, please check the files in src/Package/BinScope" />
+    <Error Text="Binscope failed, please check the files in artifacts/BinScope" />
   </Target>
 
   <Target Name="RunPoliCheck">
@@ -523,7 +514,7 @@
   </Target>
 
   <Target Name="PoliCheckErrorMessage">
-    <Error Text="PoliCheck failed with a Severity 1 issue, please check the report at in src/Package/PoliCheck-Scan.html" />
+    <Error Text="PoliCheck failed with a Severity 1 issue, please check the report at in artifacts/PoliCheck-Scan.html" />
   </Target>
 
 </Project>

@@ -15,7 +15,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(RepoArtifacts)$(Configuration)\ResourceManager\AzureResourceManager\Az.$(PsModuleName)\</OutputPath>
+    <OutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
