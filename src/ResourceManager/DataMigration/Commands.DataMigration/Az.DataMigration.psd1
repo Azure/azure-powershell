@@ -75,30 +75,55 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'New-AzDataMigrationDatabaseInfo', 
-               'New-AzDataMigrationConnectionInfo', 'New-AzDataMigrationProject', 
-               'Remove-AzDataMigrationProject', 'Get-AzDataMigrationProject', 
-               'Get-AzDataMigrationService', 'New-AzDataMigrationService', 
-               'Remove-AzDataMigrationService', 'New-AzDataMigrationTask', 
-               'Get-AzDataMigrationTask', 'Remove-AzDataMigrationTask', 
-               'Start-AzDataMigrationService', 'Stop-AzDataMigrationService', 
-               'Stop-AzDataMigrationTask', 'New-AzDataMigrationSelectedDBObject', 
+               'New-AzDataMigrationConnectionInfo', 
+               'New-AzDataMigrationProject', 
+               'Remove-AzDataMigrationProject', 
+               'Get-AzDataMigrationProject', 
+               'Get-AzDataMigrationService', 
+               'New-AzDataMigrationService', 
+               'Remove-AzDataMigrationService', 
+               'New-AzDataMigrationTask', 
+               'Get-AzDataMigrationTask', 
+               'Remove-AzDataMigrationTask', 
+               'Start-AzDataMigrationService', 
+               'Stop-AzDataMigrationService', 
+               'Stop-AzDataMigrationTask', 
+               'New-AzDataMigrationSelectedDBObject', 
                'New-AzDataMigrationFileShare', 
                'New-AzDataMigrationSyncSelectedDBObject', 
+               'New-AzDataMigrationMongoDbDatabaseSetting', 
+               'New-AzDataMigrationMongoDbCollectionSetting', 
                'Invoke-AzDataMigrationCommand'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzDms', 'Get-AzDmsTask', 'Get-AzDmsProject', 'New-AzDms', 
-               'New-AzDmsConnInfo', 'New-AzDmsDBInfo', 'New-AzDmsTask', 
-               'New-AzDmsProject', 'Remove-AzDmsProject', 'Remove-AzDms', 
-               'Remove-AzDmsTask', 'Start-AzDmsService', 'Stop-AzDmsTask', 
-               'Stop-AzDmsService', 'New-AzDmsSelectedDB', 'New-AzDmsSyncSelectedDB', 
-               'New-AzDmsFileShare', 'Invoke-AzDmsCommand', 
+
+AliasesToExport = 'Get-AzDms', 
+                'Get-AzDmsTask', 
+                'Get-AzDmsProject', 
+               'New-AzDms', 
+               'New-AzDmsConnInfo', 
+               'New-AzDmsDBInfo', 
+               'New-AzDmsTask', 
+               'New-AzDmsProject', 
+               'Remove-AzDmsProject', 
+               'Remove-AzDms', 
+               'Remove-AzDmsTask', 
+               'Start-AzDmsService', 
+               'Stop-AzDmsTask', 
+               'Stop-AzDmsService', 
+               'New-AzDmsSelectedDB', 
+               'New-AzDmsSyncSelectedDB', 
+               'New-AzDmsFileShare', 
+               'Invoke-AzDmsCommand', 
                'New-AzDataMigrationSelectedDB', 
-               'New-AzDataMigrationSyncSelectedDB', 'New-AzDmsSelectedDBObject', 
-               'New-AzDmsSyncSelectedDBObject'
+               'New-AzDataMigrationSyncSelectedDB', 
+               'New-AzDmsSelectedDBObject', 
+               'New-AzDmsSyncSelectedDBObject',
+               'New-AzDmsMongoDbDatabaseSetting',
+               'New-AzDmsMongoDbCollectionSetting'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

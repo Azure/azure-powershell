@@ -35,7 +35,7 @@ This document describes the changes between the 6.x versions of AzureRM and Az v
 In AzureRM, cmdlets used either 'AzureRM' or 'Azure' as a noun prefix.  Az simplifies and normalizes cmndlet names, so that all cmdlets use 'Az' as their cmdlet noun prefix. 
 For example:
 ```powershell
-Get-AzureRMVM
+Get-AzureRmVM
 Get-AzureKeyVaultSecret
 ```
 
@@ -60,14 +60,14 @@ Enable-AzureRmAlias
 Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 ```
 
-Running ```Enable-AzureRmAlias -Scope CurrentUser``` will enable the aliases for all powershell sessions you open, so that after executing this cmdlet, a script like this would not need to be changed at all:
+Running ```Enable-AzureRmAlias -Scope CurrentUser``` will enable the aliases for all PowerShell sessions you open, so that after executing this cmdlet, a script like this would not need to be changed at all:
 ```powershell
 Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 ```
 
-For complete details on the usage of the alias cmdlets, execute ```Get-Help -Online Enable-AzureRmAlias``` from the powershell prompt.
+For complete details on the usage of the alias cmdlets, execute ```Get-Help Enable-AzureRmAlias -Online``` from the PowerShell prompt.
 
-```Disable-AzureRmAlias``` removes AzureRM cmdlet aliases created by ```Enable-AzureRmAlias```.  For complete details, execute ```Get-Help -Online Disable-AzureRmAlias``` from the powershell prompt.
+```Disable-AzureRmAlias``` removes AzureRM cmdlet aliases created by ```Enable-AzureRmAlias```.  For complete details, execute ```Get-Help Disable-AzureRmAlias -Online``` from the PowerShell prompt.
 
 ### Module Name Changes
 - The module names have changed from `AzureRM.*` to `Az.*`, except for the following modules:
@@ -122,7 +122,7 @@ Az.Compute\Get-AzVM
 ```
 
 ### Migrating Module Manifest Dependencies
-Modules that express dependencies on AzureRM modules through a module manifest (.psd1) file will need to updated the module names in their 'RequiredModules' section
+Modules that express dependencies on AzureRM modules through a module manifest (.psd1) file will need to update the module names in their 'RequiredModules' section
 
 ```powershell
 RequiredModules = @(@{ModuleName="AzureRM.Profile"; ModuleVersion="5.8.2"})
@@ -131,7 +131,7 @@ RequiredModules = @(@{ModuleName="AzureRM.Profile"; ModuleVersion="5.8.2"})
 Should be changed to
 
 ```powershell
-RequiredModules = @(@{ModuleName="Az.Profile"; ModuleVersion="1.0.0"})
+RequiredModules = @(@{ModuleName="Az.Accounts"; ModuleVersion="1.0.0"})
 ```
 
 ### Removed modules
@@ -141,14 +141,14 @@ RequiredModules = @(@{ModuleName="Az.Profile"; ModuleVersion="1.0.0"})
 
 The tooling for these services are no longer actively supported.  Customers are encouraged to move to alternative services as soon as it is convenient.
 
-### Windows PowerShell 5.1 and .NET 4.7.2
-- Using Az with Windows PowerShell 5.1 requires the installation of .NET 4.7.2. However, using Az with PowerShell Core does not require .NET 4.7.2. 
+### Windows PowerShell 5.1 and .NET Framework 4.7.2
+- Using Az with Windows PowerShell 5.1 requires the installation of .NET Framework 4.7.2. However, using Az with PowerShell Core does not require .NET Framework 4.7.2. 
 
 ### Temporary removal of User login using PSCredential
 - Due to changes in the authentication flow for .NET Standard, we are temporarily removing user login via PSCredential. This capability will be re-introduced in the 1/15/2019 release for Windows PowerShell 5.1. This is duscussed in detail in [this issue.](https://github.com/Azure/azure-powershell/issues/7430)
 
 ### Default Device Code login instead of Web Browser prompt
-- Due to changes in the authentication flow for .NET Standard, we are using device login as the default login flow during interactive login. Web browser based login will be re-introduced for Windows PowerShell 5.1 as the default in the 1/15/2019 release. At that time, users will be able to choose device login using a Switch parameter.
+- Due to changes in the authentication flow for .NET Standard, we are using device login as the default login flow during interactive login. Web browser based login will be re-introduced for Windows PowerShell 5.1 as the default in the 1/15/2019 release. At that time, users will be able to choose device login using a switch parameter.
 
 ## Module breaking changes
 
@@ -171,17 +171,17 @@ The tooling for these services are no longer actively supported.  Customers are 
 - Removed `GetSkusWithAccountParamSetName` parameter set from `Get-AzCognitiveServicesAccountSkus` cmdlet.  You must get Skus by Account Type and Location, instead of using ResourceGroupName and Account Name.
 
 ### Az.Compute (previously AzureRM.Compute)
-- `IdentityIds` are removed from `Identity` property in `PSVirtualMachine` and `PSVirtualMachineScaleSet` objects
+- `IdentityIds` are removed from `Identity` property in `PSVirtualMachine` and `PSVirtualMachineScaleSet` objects.
   Scripts should no longer use the value of this field to make processing decisions.
 - The type of `InstanceView` property of `PSVirtualMachineScaleSetVM` object is changed from `VirtualMachineInstanceView` to `VirtualMachineScaleSetVMInstanceView`
 - `AutoOSUpgradePolicy` and `AutomaticOSUpgrade` properties are removed from `UpgradePolicy` property
 - The type of `Sku` property in `PSSnapshotUpdate` object is changed from `DiskSku` to `SnapshotSku`
-- `VmScaleSetVMParameterSet` is removed from `Add-AzVMDataDisk` cmdlet, you cna no longer add a data disk individually to a ScaleSet VM.
+- `VmScaleSetVMParameterSet` is removed from `Add-AzVMDataDisk` cmdlet, you can no longer add a data disk individually to a ScaleSet VM.
 
 ### Az.DataFactory (previously AzureRM.DataFactories and AzureRM.DataFactoryV2)
 - The `GatewayName` parameter has become mandatory in the `New-AzDataFactoryEncryptValue` cmdlet
 - Removed `New-AzDataFactoryGatewayKey` cmdlet
-- Removed `LinkedServiceName` parameter from `Get-AzDataFactoryV2ActivityRun` cmdlet
+- Removed `LinkedServiceName` parameter from `Get-AzDataFactoryV2ActivityRun` cmdlet.
   Scripts should no longer use the value of this field to make processing decisions.
 
 ### Az.DataLakeAnalytics (previously AzureRM.DataLakeAnalytics)
@@ -208,8 +208,8 @@ The tooling for these services are no longer actively supported.  Customers are 
 uses the ```PSDatalakeStoreAccount``` returned from ```Get-AzDataLakeStoreAccount``` should not reference these properties.
 
 ### Az.KeyVault (previously AzureRM.KeyVault)
-- The `PurgeDisabled` property was removed from the `PSKeyVaultKeyAttributes`, `PSKeyVaultKeyIdentityItem`, and `PSKeyVaultSecretAttributes` objects
-  Scripts shoudl no longer reference the ```PurgeDisabled``` property to make processing decisions.
+- The `PurgeDisabled` property was removed from the `PSKeyVaultKeyAttributes`, `PSKeyVaultKeyIdentityItem`, and `PSKeyVaultSecretAttributes` objects.
+  Scripts should no longer reference the ```PurgeDisabled``` property to make processing decisions.
 
 ### Az.Media (previously AzureRM.Media)
 - Remove deprecated `Tags` property alias from `New-AzMediaService` cmdlet
@@ -223,7 +223,7 @@ uses the ```PSDatalakeStoreAccount``` returned from ```Get-AzDataLakeStoreAccoun
   New-AzMMediaService -Tag @{TagName="TagValue"}
   ```
 ### Az.Monitor (previously AzureRM.Insights)
-- Removed plural names `Categories` and `Timegrains` parameter in favor of singular parameter names from `Set-AzDiagnosticSetting` cmdlet
+- Removed plural names `Categories` and `Timegrains` parameter in favor of singular parameter names from `Set-AzDiagnosticSetting` cmdlet.
   Scripts using
   ```powershell
   Set-AzureRmDiagnosticSetting -Timegrains PT1M -Categories Category1, Category2
@@ -238,7 +238,7 @@ uses the ```PSDatalakeStoreAccount``` returned from ```Get-AzDataLakeStoreAccoun
 - Removed deprecated `EnableVmProtection` property from `PSVirtualNetwork` object
 - Removed deprecated `Set-AzVirtualNetworkGatewayVpnClientConfig` cmdlet
   
-Scripts shoudl no longer make processing decisions based on the values fo these fields.
+Scripts should no longer make processing decisions based on the values for these fields.
 
 ### Az.OperationalInsights (previously AzureRM.OperationalInsights)
 - Default parameter set for `Get-AzOperationalInsightsDataSource` is removed, and `ByWorkspaceNameByKind` has become the default parameter set
@@ -254,20 +254,20 @@ Scripts shoudl no longer make processing decisions based on the values fo these 
   ```
 
 ### Az.RecoveryServices (previously AzureRM.RecoveryServices, AzureRM.RecoveryServices.Backup, and AzureRM.RecoveryServices.SiteRecovery)
-- Removed `Encryption` parameter from `New/Set-AzRecoveryServicesAsrPolicy` cmdlet
+- Removed `Encryption` parameter from `New/Set-AzRecoveryServicesAsrPolicy` cmdlets
 - `TargetStorageAccountName` parameter is now mandatory for managed disk restores in `Restore-AzRecoveryServicesBackupItem` cmdlet
 - Removed `StorageAccountName` and `StorageAccountResourceGroupName` parameters in `Restore-AzRecoveryServicesBackupItem` cmdlet
 - Removed `Name`parameter in `Get-AzRecoveryServicesBackupContainer` cmdlet
 
 ### Az.Resources (previously AzureRM.Resources)
-- Removed `Sku` parameter from `New/Set-AzPolicyAssignment` cmdlet
-- Removed `Password` parameter from `New-AzADServicePrincipal` and `New-AzADSpCredential` cmdlet
+- Removed `Sku` parameter from `New/Set-AzPolicyAssignment` cmdlets
+- Removed `Password` parameter from `New-AzADServicePrincipal` and `New-AzADSpCredential` cmdlets.
   Passwords are automatically generated, scripts that provided the password:
   ```powershell
   New-AzAdSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 -Password $secPassword
   ```
 
-  Should be changed to retriedve the password from the output:
+  Should be changed to retrieve the password from the output:
   ```powershell
   $credential = New-AzAdSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476
   $secPassword = $credential.Secret
@@ -275,7 +275,7 @@ Scripts shoudl no longer make processing decisions based on the values fo these 
 
 ### Az.ServiceFabric (previously AzureRM.ServiceFabric)
 - The following cmdlet return types have been changed:
-  - The property `SerivceTypeHealthPolicies` of type `ApplicationHealthPolicy` has been removed.
+  - The property `ServiceTypeHealthPolicies` of type `ApplicationHealthPolicy` has been removed.
   - The property `ApplicationHealthPolicies` of type `ClusterUpgradeDeltaHealthPolicy` has been removed.
   - The property `OverrideUserUpgradePolicy` of type `ClusterUpgradePolicy` has been removed.
   - These changes affect the following cmdlets:
@@ -302,8 +302,8 @@ Scripts shoudl no longer make processing decisions based on the values fo these 
 - Removed deprecated parameter `PrivilegedLogin` from `Set-AzSqlDatabaseDataMaskingPolicy` cmdlet
 
 ### Az.Storage (previously Azure.Storage and AzureRM.Storage)
-- To support creating an Oauth storage context with only the storage account name, the default parameter set has been changed to `OAuthParameterSet`
-  - Example: `$ctx = New-AzureStorageContext -StorageAccountName $accountName`
+- To support creating an OAuth storage context with only the storage account name, the default parameter set has been changed to `OAuthParameterSet`
+  - Example: `$ctx = New-AzStorageContext -StorageAccountName $accountName`
 - The `Location` parameter has become mandatory in the `Get-AzStorageUsage` cmdlet
 - The Storage API methods now use the Task-based Asynchronous Pattern (TAP), instead of synchronous API calls.
 #### 1. Blob Snapshot
@@ -315,7 +315,7 @@ $b.ICloudBlob.Snapshot()
 
 ##### After:
 ```powershell
-$b = Get-AzureStorageBlob -Container $containerName -Blob $blobName -Context $ctx
+$b = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
 $task = $b.ICloudBlob.SnapshotAsync()
 $task.Wait()
 $snapshot = $task.Result
@@ -330,7 +330,7 @@ $snapshot = $Share.Snapshot()
 #####  After:
 ```powershell
 
-$Share = Get-AzureStorageShare -Name $containerName -Context $ctx
+$Share = Get-AzStorageShare -Name $containerName -Context $ctx
 $task = $Share.SnapshotAsync()
 $task.Wait()
 $snapshot = $task.Result
@@ -344,7 +344,7 @@ $b.ICloudBlob.Undelete()
 ```
 ##### After:
 ```powershell
-$b = Get-AzureStorageBlob -Container $containerName -Blob $blobName -IncludeDeleted -Context $ctx
+$b = Get-AzStorageBlob -Container $containerName -Blob $blobName -IncludeDeleted -Context $ctx
 $task = $b.ICloudBlob.UndeleteAsync()
 $task.Wait()
 ```
@@ -361,11 +361,11 @@ $pageBlob.ICloudBlob.SetPremiumBlobTier("P4")
 
 ##### After:
 ```powershell
-$blockBlob = Get-AzureStorageBlob -Container $containerName -Blob $blockBlobName -Context $ctx
+$blockBlob = Get-AzStorageBlob -Container $containerName -Blob $blockBlobName -Context $ctx
 $task = $blockBlob.ICloudBlob.SetStandardBlobTierAsync("hot")
 $task.Wait()
 
-$pageBlob = Get-AzureStorageBlob -Container $containerName -Blob $pageBlobName -Context $ctx
+$pageBlob = Get-AzStorageBlob -Container $containerName -Blob $pageBlobName -Context $ctx
 $task = $pageBlob.ICloudBlob.SetPremiumBlobTierAsync("P4")
 $task.Wait()
 ```
