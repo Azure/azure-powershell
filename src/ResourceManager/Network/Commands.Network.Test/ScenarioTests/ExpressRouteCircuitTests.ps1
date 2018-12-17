@@ -508,18 +508,18 @@ function Test-ExpressRouteCircuitAuthorizationCRUD
 		
 
 		# get authorization
-		#$a = $circuit | Get-AzureRmExpressRouteCircuitAuthorization -Name $authorizationName
-		#Assert-AreEqual $authorizationName $a.Name
+		$a = $circuit | Get-AzureRmExpressRouteCircuitAuthorization -Name $authorizationName
+		Assert-AreEqual $authorizationName $a.Name
 
 		# add a new authorization
-		#$circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Add-AzureRmExpressRouteCircuitAuthorization -Name "testkey2" | Set-AzureRmExpressRouteCircuit
+		$circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Add-AzureRmExpressRouteCircuitAuthorization -Name "testkey2" | Set-AzureRmExpressRouteCircuit
 
-		#$a = $circuit | Get-AzureRmExpressRouteCircuitAuthorization -Name "testkey2"
-		#Assert-AreEqual "testkey2" $a.Name
+		$a = $circuit | Get-AzureRmExpressRouteCircuitAuthorization -Name "testkey2"
+		Assert-AreEqual "testkey2" $a.Name
 		
 
-		#$listAuthorization = $circuit | Get-AzureRmExpressRouteCircuitAuthorization
-		#Assert-AreEqual 2 @($listAuthorization).Count
+		$listAuthorization = $circuit | Get-AzureRmExpressRouteCircuitAuthorization
+		Assert-AreEqual 2 @($listAuthorization).Count
 
         # Delete Circuit
         $delete = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
@@ -600,7 +600,7 @@ function Test-ExpressRouteCircuitConnectionCRUD
         Assert-AreEqual "1000" $peerckt.ServiceProviderProperties.BandwidthInMbps
 
 		#Create the circuit connection Resource
-		Add-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initckt -PeerExpressRouteCircuitPeering $peerckt.Peerings[0].Id -AddressPrefix $addressPrefix
+		Add-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initckt -PeerExpressRouteCircuitPeering $peerckt.Peerings[0].Id -AddressPrefix $addressPrefix -AuthorizationKey test
 
 		#Set on Express Route Circuit
 		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $initckt
@@ -618,6 +618,15 @@ function Test-ExpressRouteCircuitConnectionCRUD
 		#Get Express Route Circuit Resource
 		$initckt = Get-AzureRmExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
 
+        $connection = Get-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initckt
+		Assert-AreEqual $connectionName $connection.Name
+		Assert-AreEqual "Succeeded" $connection.ProvisioningState
+		Assert-AreEqual "Connected" $connection.CircuitConnectionStatus
+
+        $connections = Get-AzureRmExpressRouteCircuitConnectionConfig -ExpressRouteCircuit $initckt
+        Assert-NotNull $connections
+        Assert-AreEqual 1 $connections.Count
+
 		#Delete the circuit connection Resource
 		Remove-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initckt
 
@@ -630,6 +639,13 @@ function Test-ExpressRouteCircuitConnectionCRUD
 
 		#Verify Circuit Connection does not exist
 		Assert-AreEqual 0 $initckt.Peerings[0].Connections.Count
+
+        Remove-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $initckt -Name AzurePrivatePeering
+        $initckt = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $initckt
+
+        Assert-ThrowsLike { Get-AzureRmExpressRouteCircuitConnectionConfig -ExpressRouteCircuit $initckt } "*does not exist*"
+        Assert-ThrowsLike { Add-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initckt -PeerExpressRouteCircuitPeering $peerckt.Peerings[0].Id -AddressPrefix $addressPrefix } "*needs to be configured*"
+        Assert-ThrowsLike { Remove-AzureRmExpressRouteCircuitConnectionConfig -ExpressRouteCircuit $initckt -Name $connectionName } "*does not exist*"
 
         # Delete Circuits
         $deleteinit = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $initCircuitName -PassThru -Force
