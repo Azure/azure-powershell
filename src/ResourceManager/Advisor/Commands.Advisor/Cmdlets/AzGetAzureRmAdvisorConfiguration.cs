@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     /// <seealso cref="Microsoft.Azure.Commands.Advisor.Utilities.ResourceGraphBaseCmdlet" />
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorConfiguration", DefaultParameterSetName = "RgParameterSet"),
         OutputType(typeof(PsAzureAdvisorConfigurationData))]
-    public class GetAzureRmAdvisorConfiguration : ResourceAdvisorBaseCmdlet
+    public class AzGetAzureRmAdvisorConfiguration : ResourceAdvisorBaseCmdlet
     {
         public const string RgParameterSet = "RgParameterSet";
 
@@ -53,11 +53,11 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 
             if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                responseData = this.ResourecAdvisorClient.Configurations.ListBySubscriptionWithHttpMessagesAsync().Result.Body.AsEnumerable();
+                responseData = this.ResourceAdvisorClient.Configurations.ListBySubscriptionWithHttpMessagesAsync().Result.Body.AsEnumerable();
             }
             else
             {
-                responseData = this.ResourecAdvisorClient.Configurations.ListByResourceGroupWithHttpMessagesAsync(this.ResourceGroupName).Result.Body;
+                responseData = this.ResourceAdvisorClient.Configurations.ListByResourceGroupWithHttpMessagesAsync(this.ResourceGroupName).Result.Body;
             }
 
             // Parse the response data from the API to PS object

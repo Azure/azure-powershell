@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     /// Enable-AzureRmAdvisorRecommendation cmdlet
     /// </summary>
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsAzureAdvisorResourceRecommendationBase))]
-    public class EnableAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
+    public class AzEnableAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
         /// Constant for IdParameterSet
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
             List<AzureOperationResponse> response = new List<AzureOperationResponse>();
 
             // Get the list of all suppressions
-            suppressionList = this.ResourecAdvisorClient.Suppressions.ListWithHttpMessagesAsync().Result;
+            suppressionList = this.ResourceAdvisorClient.Suppressions.ListWithHttpMessagesAsync().Result;
             psSuppressionContractList = PsAzureAdvisorSuppressionContract.FromSuppressionContractList(suppressionList.Body.AsEnumerable());
 
             // Get all the suppression for this recommendationId
@@ -95,16 +95,16 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                 // Delete only if the supression belongs to provided RecommendationName
                 if (contract.Id.Contains(recommendationId))
                 {
-                    response.Add(this.ResourecAdvisorClient.Suppressions.DeleteWithHttpMessagesAsync(resourceUri, recommendationId, contract.Name).Result);
+                    response.Add(this.ResourceAdvisorClient.Suppressions.DeleteWithHttpMessagesAsync(resourceUri, recommendationId, contract.Name).Result);
                 }
             }
 
             // Get all the recommendation and convert to its corresponding psobject
-            recommendationList = this.ResourecAdvisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
+            recommendationList = this.ResourceAdvisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
             responseRecommendationList = PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(recommendationList.Body);
 
             // Add the particular recommendation to the response of cmdlet
-            responseRecommendation.Add(RecommendationHelper.RecomendationFilterByRecommendation(responseRecommendationList, recommendationId));
+            responseRecommendation.Add(RecommendationHelper.RecommendationFilterByRecommendation(responseRecommendationList, recommendationId));
             return responseRecommendation;
         }
 
@@ -143,9 +143,9 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                     break;
 
                 case NameParameterSet:
-                    recommendation = this.ResourecAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourecAdvisorClient.SubscriptionId, this.RecommendationName).Result;
+                    recommendation = this.ResourceAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourceAdvisorClient.SubscriptionId, this.RecommendationName).Result;
                     resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(recommendation.Body.Id);
-                    suppressionList = this.ResourecAdvisorClient.Suppressions.ListWithHttpMessagesAsync().Result;
+                    suppressionList = this.ResourceAdvisorClient.Suppressions.ListWithHttpMessagesAsync().Result;
                     psSuppressionContractList = PsAzureAdvisorSuppressionContract.FromSuppressionContractList(suppressionList.Body.AsEnumerable());
 
                     if (ShouldProcess(this.RecommendationName, string.Format(Resources.EnableRecommendationWarningMessage, this.RecommendationName)))
