@@ -12,198 +12,191 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class PolicyTests : RMTestBase
+    public class PolicyTests : ResourceTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public PolicyTests(ITestOutputHelper output)
+        public PolicyTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyDefinitionCRUD()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicyDefinitionCRUD");
+            TestRunner.RunTestScript("Test-PolicyDefinitionCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyDefinitionMode()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicyDefinitionMode");
+            TestRunner.RunTestScript("Test-PolicyDefinitionMode");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyDefinitionCRUDAtManagementGroup()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicyDefinitionCRUDAtManagementGroup");
+            TestRunner.RunTestScript("Test-PolicyDefinitionCRUDAtManagementGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyDefinitionCRUDAtSubscription()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicyDefinitionCRUDAtSubscription");
+            TestRunner.RunTestScript("Test-PolicyDefinitionCRUDAtSubscription");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyAssignmentCRUD()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicyAssignmentCRUD");
+            TestRunner.RunTestScript("Test-PolicyAssignmentCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyAssignmentIdentity()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicyAssignmentIdentity");
+            TestRunner.RunTestScript("Test-PolicyAssignmentIdentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyDefinitionWithParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicyDefinitionWithParameters");
+            TestRunner.RunTestScript("Test-PolicyDefinitionWithParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicySetDefinitionWithParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicySetDefinitionWithParameters");
+            TestRunner.RunTestScript("Test-PolicySetDefinitionWithParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyAssignmentWithParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicyAssignmentWithParameters");
+            TestRunner.RunTestScript("Test-PolicyAssignmentWithParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicySetDefinitionCRUD()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicySetDefinitionCRUD");
+            TestRunner.RunTestScript("Test-PolicySetDefinitionCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicySetDefinitionCRUDAtManagementGroup()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicySetDefinitionCRUDAtManagementGroup");
+            TestRunner.RunTestScript("Test-PolicySetDefinitionCRUDAtManagementGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicySetDefinitionCRUDAtSubscription()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicySetDefinitionCRUDAtSubscription");
+            TestRunner.RunTestScript("Test-PolicySetDefinitionCRUDAtSubscription");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyDefinitionWithUri()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-PolicyDefinitionWithUri");
+            TestRunner.RunTestScript("Test-PolicyDefinitionWithUri");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPolicyAssignmentParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetPolicyAssignmentParameters");
+            TestRunner.RunTestScript("Test-GetPolicyAssignmentParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewPolicyAssignmentParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewPolicyAssignmentParameters");
+            TestRunner.RunTestScript("Test-NewPolicyAssignmentParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemovePolicyAssignmentParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RemovePolicyAssignmentParameters");
+            TestRunner.RunTestScript("Test-RemovePolicyAssignmentParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetPolicyAssignmentParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-SetPolicyAssignmentParameters");
+            TestRunner.RunTestScript("Test-SetPolicyAssignmentParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPolicyDefinitionParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetPolicyDefinitionParameters");
+            TestRunner.RunTestScript("Test-GetPolicyDefinitionParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewPolicyDefinitionParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewPolicyDefinitionParameters");
+            TestRunner.RunTestScript("Test-NewPolicyDefinitionParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemovePolicyDefinitionParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RemovePolicyDefinitionParameters");
+            TestRunner.RunTestScript("Test-RemovePolicyDefinitionParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetPolicyDefinitionParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-SetPolicyDefinitionParameters");
+            TestRunner.RunTestScript("Test-SetPolicyDefinitionParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPolicySetDefinitionParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetPolicySetDefinitionParameters");
+            TestRunner.RunTestScript("Test-GetPolicySetDefinitionParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewPolicySetDefinitionParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewPolicySetDefinitionParameters");
+            TestRunner.RunTestScript("Test-NewPolicySetDefinitionParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemovePolicySetDefinitionParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RemovePolicySetDefinitionParameters");
+            TestRunner.RunTestScript("Test-RemovePolicySetDefinitionParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetPolicySetDefinitionParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-SetPolicySetDefinitionParameters");
+            TestRunner.RunTestScript("Test-SetPolicySetDefinitionParameters");
         }
     }
 }
