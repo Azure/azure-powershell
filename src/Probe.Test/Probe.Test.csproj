@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(ProjectDir)..\Dependencies.Test.Netcore.targets" />
+  <Import Project="$(ProjectDir)..\Dependencies.Test.targets" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Strategies.Test</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.Common.Strategies.UnitTest</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.Probe.Test</AssemblyName>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
@@ -20,8 +19,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Strategies\Strategies.Netcore.csproj" />
-    <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.Netcore.csproj" />
+    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
   </ItemGroup>
 
   <ItemGroup>

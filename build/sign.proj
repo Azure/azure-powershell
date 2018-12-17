@@ -18,15 +18,6 @@
   <UsingTask TaskName="CodeSigningTask" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <Import Project="$(SigningToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
 
-  <Target Name="net452">
-    <Message Importance="high" Text="Sign: net452 started" />
-    <ItemGroup>
-      <UnsignedFiles Include="$(OutputDir)net452\Microsoft.Azure.Commands*.dll" />
-      <UnsignedFiles Include="$(OutputDir)net452\Microsoft.WindowsAzure.Commands*.dll" />
-      <UnsignedFiles Include="$(OutputDir)net452\Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)net452\Microsoft.Azure.PowerShell*.Test.dll" />
-    </ItemGroup>
-  </Target>
-
   <Target Name="netstandard20">
     <Message Importance="high" Text="Sign: netstandard20 started" />
     <ItemGroup>
@@ -34,7 +25,7 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="SignFiles" AfterTargets="net452;netstandard20;All" Condition="'$(DisableSigning)' != 'true'">
+  <Target Name="SignFiles" AfterTargets="netstandard20;All" Condition="'$(DisableSigning)' != 'true'">
     <Message Importance="high" Text="Sign: task started" />
     <CodeSigningTask
       Description="$(Description)"
@@ -54,7 +45,7 @@
     </PropertyGroup>
   </Target>
 
-  <Target Name="All" DependsOnTargets="BeforeAll;net452;netstandard20">
+  <Target Name="All" DependsOnTargets="BeforeAll;netstandard20">
     <Message Importance="high" Text="Sign: All started" />
     <PropertyGroup>
       <DisableSigning>false</DisableSigning>

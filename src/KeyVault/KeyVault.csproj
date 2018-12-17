@@ -1,84 +1,53 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <Import Project="$(ProjectDir)..\Dependencies.targets" />
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{836965C0-B198-4D01-B3D7-757DB62B49A0}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Azure.PowerShell.Clients.KeyVault</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.KeyVault</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Common.KeyVault</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <BaseIntermediateOutputPath>$(ProjectDir)obj\$(Configuration)\net452</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)\net452</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)\net452</OutputPath>
-    <DefineConstants>TRACE;SIGN</DefineConstants>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisLogFile>$(ProjectDir)..\..\artifacts\$(Configuration)\net452\Management.Utilities.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
-    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
-    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRuleSetDirectories>;$(MSBuildProgramFiles32)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Static Analysis Tools\Rule Sets\;$(MSBuildProgramFiles32)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\Rule Sets\</CodeAnalysisRuleSetDirectories>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
-    <DelaySign>true</DelaySign>
+    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <Prefer32Bit>false</Prefer32Bit>
+    <WarningsAsErrors />
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <Title>Microsoft Azure PowerShell Clients KeyVault</Title>
+    <Description>Microsoft Azure PowerShell Clients KeyVault library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
+    <PackageTags>azure;powershell;clients;keyvault</PackageTags>
+    <Authors>Microsoft Corporation</Authors>
+    <Copyright>Copyright © Microsoft Corporation</Copyright>
+    <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Azure/azure-powershell-common</PackageProjectUrl>
+    <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>..\MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="Version2016-10-1\IKeyVaultManagementClient.cs" />
-    <Compile Include="Version2016-10-1\IOperations.cs" />
-    <Compile Include="Version2016-10-1\IVaultsOperations.cs" />
-    <Compile Include="Version2016-10-1\KeyVaultManagementClient.cs" />
-    <Compile Include="Version2016-10-1\Models\AccessPolicyEntry.cs" />
-    <Compile Include="Version2016-10-1\Models\AccessPolicyUpdateKind.cs" />
-    <Compile Include="Version2016-10-1\Models\CertificatePermissions.cs" />
-    <Compile Include="Version2016-10-1\Models\CheckNameAvailabilityResult.cs" />
-    <Compile Include="Version2016-10-1\Models\CreateMode.cs" />
-    <Compile Include="Version2016-10-1\Models\DeletedVault.cs" />
-    <Compile Include="Version2016-10-1\Models\DeletedVaultProperties.cs" />
-    <Compile Include="Version2016-10-1\Models\KeyPermissions.cs" />
-    <Compile Include="Version2016-10-1\Models\LogSpecification.cs" />
-    <Compile Include="Version2016-10-1\Models\Operation.cs" />
-    <Compile Include="Version2016-10-1\Models\OperationDisplay.cs" />
-    <Compile Include="Version2016-10-1\Models\Page.cs" />
-    <Compile Include="Version2016-10-1\Models\Permissions.cs" />
-    <Compile Include="Version2016-10-1\Models\Reason.cs" />
-    <Compile Include="Version2016-10-1\Models\Resource.cs" />
-    <Compile Include="Version2016-10-1\Models\SecretPermissions.cs" />
-    <Compile Include="Version2016-10-1\Models\ServiceSpecification.cs" />
-    <Compile Include="Version2016-10-1\Models\Sku.cs" />
-    <Compile Include="Version2016-10-1\Models\SkuName.cs" />
-    <Compile Include="Version2016-10-1\Models\StoragePermissions.cs" />
-    <Compile Include="Version2016-10-1\Models\Vault.cs" />
-    <Compile Include="Version2016-10-1\Models\VaultAccessPolicyParameters.cs" />
-    <Compile Include="Version2016-10-1\Models\VaultAccessPolicyProperties.cs" />
-    <Compile Include="Version2016-10-1\Models\VaultCheckNameAvailabilityParameters.cs" />
-    <Compile Include="Version2016-10-1\Models\VaultCreateOrUpdateParameters.cs" />
-    <Compile Include="Version2016-10-1\Models\VaultPatchParameters.cs" />
-    <Compile Include="Version2016-10-1\Models\VaultPatchProperties.cs" />
-    <Compile Include="Version2016-10-1\Models\VaultProperties.cs" />
-    <Compile Include="Version2016-10-1\Operations.cs" />
-    <Compile Include="Version2016-10-1\OperationsExtensions.cs" />
-    <Compile Include="Version2016-10-1\VaultsOperations.cs" />
-    <Compile Include="Version2016-10-1\VaultsOperationsExtensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+    <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
+    <PackageReference Include="System.Reflection" Version="4.3.0" />
+    <PackageReference Include="System.Security.SecureString" Version="4.3.0" />
+    <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
+    <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
+    <None Remove="Properties\AssemblyInfo.cs" />
+    <Content Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
 </Project>

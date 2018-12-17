@@ -7,39 +7,10 @@
     <TestFilter>"AcceptanceType=CheckIn"</TestFilter>
   </PropertyGroup>
 
-  <Target Name="net452">
-    <Message Importance="high" Text="Build: net452 started" />
-    <PropertyGroup>
-      <Framework>net452</Framework>
-      <Tools>$(Root)tools\</Tools>
-      <NuGet>$(Tools)NuGet-4.7.0\nuget.exe</NuGet>
-      <Solution>$(Root)Azure.PowerShell.Common.sln</Solution>
-      <NuGetConfig>$(Root)NuGet.config</NuGetConfig>
-      <OutputDir>$(Artifacts)$(Configuration)\$(Framework)\</OutputDir>
-      <xUnitRunner>$(Tools)xunit.runner.console.2.3.1\$(Framework)\xunit.console.exe</xUnitRunner>
-      <TestOutput>$(Artifacts)Test\$(Framework)\TestResults.html</TestOutput>
-    </PropertyGroup>
-
-    <Message Importance="high" Text="net452: Restoring $([System.IO.Path]::GetFileName($(Solution)))" />
-    <Exec Command="$(NuGet) restore $(Solution) -ConfigFile $(NuGetConfig)" />
-    <Message Importance="high" Text="net452: Building $([System.IO.Path]::GetFileName($(Solution)))" />
-    <MSBuild Projects="$(Solution)" Properties="Configuration=$(Configuration)" />
-
-    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-      <CurrentDate>$([System.DateTime]::Now.ToString(yyyy-MM-dd_hh_mm_ss))</CurrentDate>
-      <TestOutput>$(Artifacts)Test\$(Framework)\TestResults_$(CurrentDate).html</TestOutput>
-    </PropertyGroup>
-    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-      <TestAssemblies Include="$(OutputDir)*.Tests.dll;$(OutputDir)*.Test.dll;$(OutputDir)*.UnitTest.dll" />
-    </ItemGroup>
-    <Message Condition="'$(Configuration)' == 'Debug'" Importance="high" Text="net452: Testing %(TestAssemblies.Filename)" />
-    <Exec Condition="'$(Configuration)' == 'Debug'" Command="$(xUnitRunner) @(TestAssemblies, ' ') -trait $(TestFilter) -html $(TestOutput)" />
-  </Target>
-
   <Target Name="netstandard20">
     <Message Importance="high" Text="Build: netstandard20 started" />
     <PropertyGroup>
-      <Solution>$(Root)Azure.PowerShell.Common.Netcore.sln</Solution>
+      <Solution>$(Root)Azure.PowerShell.Common.sln</Solution>
       <TestOutput>$(Artifacts)Test\</TestOutput>
       <FileVersion Condition="'$(FileVersion)' == ''">1.0.0.0</FileVersion>
       <AssemblyVersion Condition="'$(AssemblyVersion)' == ''">1.0.0.0</AssemblyVersion>
@@ -56,5 +27,5 @@
     <Move Condition="'$(Configuration)' == 'Debug'" SourceFiles="@(TestResults)" DestinationFolder="$(TestOutput)" />
   </Target>
 
-  <Target Name="All" DependsOnTargets="net452;netstandard20" />
+  <Target Name="All" DependsOnTargets="netstandard20" />
 </Project>

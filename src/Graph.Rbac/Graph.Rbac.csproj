@@ -1,137 +1,65 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <Import Project="$(ProjectDir)..\Dependencies.targets" />
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{269ACF73-0A34-42DC-AB9C-4B15931A489D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Azure.PowerShell.Clients.Graph.Rbac</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Graph.RBAC</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Graph.RBAC</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <RestorePackages>true</RestorePackages>
-    <CodeAnalysisAdditionalOptions>/assemblyCompareMode:StrongNameIgnoringVersion</CodeAnalysisAdditionalOptions>
-    <BaseIntermediateOutputPath>$(ProjectDir)obj\$(Configuration)\net452</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)\net452</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <Prefer32Bit>false</Prefer32Bit>
+    <WarningsAsErrors />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)\net452</OutputPath>
-    <DefineConstants>TRACE;SIGN</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisLogFile>$(ProjectDir)..\..\artifacts\$(Configuration)\net452\Management.Utilities.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
-    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
-    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRuleSetDirectories>;$(MSBuildProgramFiles32)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Static Analysis Tools\Rule Sets\;$(MSBuildProgramFiles32)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\Rule Sets\</CodeAnalysisRuleSetDirectories>
+
+  <PropertyGroup>
+    <Title>Microsoft Azure PowerShell Clients Graph Rbac</Title>
+    <Description>Microsoft Azure PowerShell Clients Graph Rbac library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
+    <PackageTags>azure;powershell;clients;graph;rbac</PackageTags>
+    <Authors>Microsoft Corporation</Authors>
+    <Copyright>Copyright © Microsoft Corporation</Copyright>
+    <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Azure/azure-powershell-common</PackageProjectUrl>
+    <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <Prefer32Bit>false</Prefer32Bit>
+    <AssemblyOriginatorKeyFile>..\MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="ApplicationsOperations.cs" />
-    <Compile Include="ApplicationsOperationsExtensions.cs" />
-    <Compile Include="GraphRbacManagementClient.cs" />
-    <Compile Include="GroupsOperations.cs" />
-    <Compile Include="GroupsOperationsExtensions.cs" />
-    <Compile Include="IApplicationsOperations.cs" />
-    <Compile Include="IGraphRbacManagementClient.cs" />
-    <Compile Include="IGroupsOperations.cs" />
-    <Compile Include="IObjectsOperations.cs" />
-    <Compile Include="IServicePrincipalsOperations.cs" />
-    <Compile Include="IUsersOperations.cs" />
-    <Compile Include="Models\AADObject.cs" />
-    <Compile Include="Models\ADGroup.cs" />
-    <Compile Include="Models\Application.cs" />
-    <Compile Include="Models\ApplicationCreateParameters.cs" />
-    <Compile Include="Models\ApplicationUpdateParameters.cs" />
-    <Compile Include="Models\CheckGroupMembershipParameters.cs" />
-    <Compile Include="Models\CheckGroupMembershipResult.cs" />
-    <Compile Include="Models\GetObjectsParameters.cs" />
-    <Compile Include="Models\GraphError.cs" />
-    <Compile Include="Models\GraphErrorException.cs" />
-    <Compile Include="Models\GroupAddMemberParameters.cs" />
-    <Compile Include="Models\GroupCreateParameters.cs" />
-    <Compile Include="Models\GroupGetMemberGroupsParameters.cs" />
-    <Compile Include="Models\KeyCredential.cs" />
-    <Compile Include="Models\KeyCredentialsUpdateParameters.cs" />
-    <Compile Include="Models\Page.cs" />
-    <Compile Include="Models\Page1.cs" />
-    <Compile Include="Models\PasswordCredential.cs" />
-    <Compile Include="Models\PasswordCredentialsUpdateParameters.cs" />
-    <Compile Include="Models\PasswordProfile.cs" />
-    <Compile Include="Models\ServicePrincipal.cs" />
-    <Compile Include="Models\ServicePrincipalCreateParameters.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserCreateParameters.cs" />
-    <Compile Include="Models\UserGetMemberGroupsParameters.cs" />
-    <Compile Include="Models\UserUpdateParameters.cs" />
-    <Compile Include="ObjectsOperations.cs" />
-    <Compile Include="ObjectsOperationsExtensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
+    <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.csproj" />
+    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\ResourceManager\ResourceManager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>true</DesignTime>
+      <AutoGen>true</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ServicePrincipalsOperations.cs" />
-    <Compile Include="ServicePrincipalsOperationsExtensions.cs" />
-    <Compile Include="ActiveDirectory\ActiveDirectoryBaseCmdlet.cs" />
-    <Compile Include="ActiveDirectory\ActiveDirectoryClient.cs" />
-    <Compile Include="ActiveDirectory\ActiveDirectoryClientExtensions.cs" />
-    <Compile Include="ActiveDirectory\ADObjectFilterOptions.cs" />
-    <Compile Include="ActiveDirectory\CreatePSApplicationParameters.cs" />
-    <Compile Include="ActiveDirectory\CreatePSServicePrincipalParameters.cs" />
-    <Compile Include="ActiveDirectory\ParameterSet.cs" />
-    <Compile Include="ActiveDirectory\PSADApplication.cs" />
-    <Compile Include="ActiveDirectory\PSADCredential.cs" />
-    <Compile Include="ActiveDirectory\PSADGroup.cs" />
-    <Compile Include="ActiveDirectory\PSADKeyCredential.cs" />
-    <Compile Include="ActiveDirectory\PSADObject.cs" />
-    <Compile Include="ActiveDirectory\PSADPasswordCredential.cs" />
-    <Compile Include="ActiveDirectory\PSADServicePrincipal.cs" />
-    <Compile Include="ActiveDirectory\PSADUser.cs" />
-    <Compile Include="UsersOperations.cs" />
-    <Compile Include="UsersOperationsExtensions.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\ResourceManager\ResourceManager.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>ResourceManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
+    <None Remove="Properties\AssemblyInfo.cs" />
+    <Content Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
 </Project>

@@ -1,125 +1,37 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <Import Project="$(ProjectDir)..\Dependencies.Test.targets" />
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C2CF99A2-D35E-4AED-AFB9-C26960AF1D0D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.Test</RootNamespace>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Authentication.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-    <NuGetPackageImportStamp>9fdcb6f4</NuGetPackageImportStamp>
-    <BaseIntermediateOutputPath>$(ProjectDir)obj\$(Configuration)\net452</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)\net452</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RootNamespace>Microsoft.Azure.Authentication.Test</RootNamespace>
+    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <Prefer32Bit>false</Prefer32Bit>
+    <WarningsAsErrors />
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)\net452</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisLogFile>$(ProjectDir)..\..\artifacts\$(Configuration)\net452\Microsoft.Azure.Commands.Profile.Test.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
-    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
-    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRuleSetDirectories>;$(MSBuildProgramFiles32)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Static Analysis Tools\Rule Sets\;$(MSBuildProgramFiles32)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\Rule Sets\</CodeAnalysisRuleSetDirectories>
-    <CodeAnalysisRuleDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop\Rules</CodeAnalysisRuleDirectories>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <Prefer32Bit>false</Prefer32Bit>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="AzureSessionTests.cs" />
-    <Compile Include="ClientFactoryHandlerTests.cs" />
-    <Compile Include="ClientFactoryTests.cs" />
-    <Compile Include="AuthenticationFactoryTests.cs" />
-    <Compile Include="ConversionUtilitiesTests.cs" />
-    <Compile Include="Mocks\MockDataStore.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="TestHttpOperationsFactory.cs" />
-    <EmbeddedResource Include="Resources\ResourceLocator.cs" />
+    <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.csproj" />
+    <ProjectReference Include="..\Authentication\Authentication.csproj" />
+    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
+    <ProjectReference Include="..\Storage.Management\Storage.Management.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj">
-      <Project>{69c2eb6b-cd63-480a-89a0-c489706e9299}</Project>
-      <Name>Authentication.ResourceManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ResourceManager\ResourceManager.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>ResourceManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Authentication\Authentication.csproj">
-      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
-      <Name>Authentication</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ScenarioTest\ScenarioTest.csproj">
-      <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
-      <Name>ScenarioTest</Name>
-    </ProjectReference>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
+    <None Remove="Properties\AssemblyInfo.cs" />
+    <Content Remove="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Azure.publishsettings" />
-    <None Include="Resources\GB18030ServiceDefinition.csdef" />
-    <None Include="Resources\InvalidProfile.PublishSettings" />
-    <None Include="Resources\ValidProfile.PublishSettings" />
-    <None Include="Resources\ValidProfile2.PublishSettings" />
-    <None Include="Resources\ValidProfile3.PublishSettings" />
-    <None Include="Resources\ValidProfileChina.PublishSettings" />
-    <None Include="Resources\ValidProfileChinaOld.PublishSettings" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Azure.publishsettings" />
-    <EmbeddedResource Include="Resources\GB18030ServiceDefinition.csdef" />
-    <EmbeddedResource Include="Resources\InvalidProfile.PublishSettings" />
-    <EmbeddedResource Include="Resources\ValidProfile.PublishSettings" />
-    <EmbeddedResource Include="Resources\ValidProfile2.PublishSettings" />
-    <EmbeddedResource Include="Resources\ValidProfile3.PublishSettings" />
-    <EmbeddedResource Include="Resources\ValidProfileChina.PublishSettings" />
-    <EmbeddedResource Include="Resources\ValidProfileChinaOld.PublishSettings" />
-    <EmbeddedResource Include="Resources\invalidsubscriptions.xml" />
-    <EmbeddedResource Include="Resources\subscriptions.xml" />
-    <EmbeddedResource Include="Resources\testruntimemanifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

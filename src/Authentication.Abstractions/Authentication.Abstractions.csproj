@@ -1,119 +1,66 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(ProjectDir)..\Dependencies.targets" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{70527617-7598-4AEF-B5BD-DB9186B8184B}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <IncludeHyak>true</IncludeHyak>
+  </PropertyGroup>
+  <Import Project="$(ProjectDir)..\Dependencies.targets" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Azure.PowerShell.Authentication.Abstractions</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.Abstractions</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Authentication.Abstractions</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <RestorePackages>true</RestorePackages>
-    <CodeAnalysisAdditionalOptions>/assemblyCompareMode:StrongNameIgnoringVersion</CodeAnalysisAdditionalOptions>
-    <NuGetPackageImportStamp>06e19c11</NuGetPackageImportStamp>
-    <BaseIntermediateOutputPath>$(ProjectDir)obj\$(Configuration)\net452</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)\net452</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)\net452</OutputPath>
-    <DefineConstants>TRACE;SIGN</DefineConstants>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisLogFile>$(ProjectDir)..\..\artifacts\$(Configuration)\net452\Management.Utilities.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
-    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
-    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRuleSetDirectories>;$(MSBuildProgramFiles32)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Static Analysis Tools\Rule Sets\;$(MSBuildProgramFiles32)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\Rule Sets\</CodeAnalysisRuleSetDirectories>
+
+  <PropertyGroup>
+    <Title>Microsoft Azure PowerShell Authentication Abstractions</Title>
+    <Description>Microsoft Azure PowerShell Authentication Abstractions library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
+    <PackageTags>azure;powershell;authentication;abstractions</PackageTags>
+    <Authors>Microsoft Corporation</Authors>
+    <Copyright>Copyright © Microsoft Corporation</Copyright>
+    <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Azure/azure-powershell-common</PackageProjectUrl>
+    <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <Prefer32Bit>false</Prefer32Bit>
+    <AssemblyOriginatorKeyFile>..\MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="AuthenticationStore.cs" />
-    <Compile Include="Authentication\AadAuthenticationException.cs" />
-    <Compile Include="AzureAccount.cs" />
-    <Compile Include="AzurePSDataCollectionProfile.cs" />
-    <Compile Include="AzureRmProfileProvider.cs" />
-    <Compile Include="AzureSMProfileProvider.cs" />
-    <Compile Include="ContextSaveMode.cs" />
-    <Compile Include="DataCollectionController.cs" />
-    <Compile Include="DiskDataStore.cs" />
-    <Compile Include="Extensions\AzureAccountExtensions.cs" />
-    <Compile Include="AzureEnvironmentConstants.cs" />
-    <Compile Include="Extensions\AzureContextExtensions.cs" />
-    <Compile Include="Extensions\AzureEnvironmentExtensions.cs" />
-    <Compile Include="AzureModule.cs" />
-    <Compile Include="AzureSession.cs" />
-    <Compile Include="Extensions\AzureSubscriptionExtensions.cs" />
-    <Compile Include="Extensions\DictionaryExtensions.cs" />
-    <Compile Include="EnvironmentName.cs" />
-    <Compile Include="Extensions\ModelExtensions.cs" />
-    <Compile Include="Extensions\AzureTenantExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Interfaces\IAccessToken.cs" />
-    <Compile Include="Interfaces\IExtensibleSettings.cs" />
-    <Compile Include="Interfaces\IExtensibleModel.cs" />
-    <Compile Include="Interfaces\IFileProvider.cs" />
-    <Compile Include="Interfaces\IHyakAuthenticationFactory.cs" />
-    <Compile Include="Interfaces\IAzureSession.cs" />
-    <Compile Include="Interfaces\IAuthenticationFactory.cs" />
-    <Compile Include="Interfaces\IAuthenticationStore.cs" />
-    <Compile Include="Interfaces\IAzureAccount.cs" />
-    <Compile Include="Interfaces\IAzureContext.cs" />
-    <Compile Include="Interfaces\IAzureEnvironment.cs" />
-    <Compile Include="Interfaces\IAzureSubscription.cs" />
-    <Compile Include="Interfaces\IAzureTenant.cs" />
-    <Compile Include="Interfaces\IHyakClientFactory.cs" />
-    <Compile Include="Interfaces\IHyakClientAction.cs" />
-    <Compile Include="Interfaces\IClientAction.cs" />
-    <Compile Include="Interfaces\IClientFactory.cs" />
-    <Compile Include="Interfaces\IDataStore.cs" />
-    <Compile Include="Interfaces\IRenewableToken.cs" />
-    <Compile Include="Authentication\LoginType.cs" />
-    <Compile Include="Authentication\ShowDialog.cs" />
-    <Compile Include="Interfaces\IProfileProvider.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>true</DesignTime>
+      <AutoGen>true</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IStorageContext.cs" />
-    <Compile Include="AzureEnvironment.cs" />
-    <Compile Include="AzureTenant.cs" />
-    <Compile Include="AzureSubscription.cs" />
-    <Compile Include="AzureContext.cs" />
-    <Compile Include="Interfaces\IAzureContextContainer.cs" />
-    <Compile Include="Interfaces\IStorageContextProvider.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\FileUtilities.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
+    <None Remove="Properties\AssemblyInfo.cs" />
+    <Content Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
 </Project>
