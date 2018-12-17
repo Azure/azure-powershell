@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class GetUserTableSqlSyncCmdlet : TaskCmdlet
+    public class GetUserTableSqlSyncCmdlet : TaskCmdlet<ConnectionInfo>
     {
         private readonly string SelectedSourceDatabases = "SelectedSourceDatabases";
         private readonly string SelectedTargetDatabases = "SelectedTargetDatabases";

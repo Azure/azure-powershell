@@ -18,98 +18,94 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ManagementGroupsTests
+    public class ManagementGroupsTests : ResourceTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ManagementGroupsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ManagementGroupsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagementGroup()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetManagementGroup");
+            TestRunner.RunTestScript("Test-GetManagementGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagementGroupWithExpand()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetManagementGroupWithExpand");
+            TestRunner.RunTestScript("Test-GetManagementGroupWithExpand");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagementGroupWithExpandAndRecurse()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-GetManagementGroupWithExpandAndRecurse");
+            TestRunner.RunTestScript("Test-GetManagementGroupWithExpandAndRecurse");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewManagementGroup()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewManagementGroup");
+            TestRunner.RunTestScript("Test-NewManagementGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewManagementGroupWithDisplayName()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewManagementGroupWithDisplayName");
+            TestRunner.RunTestScript("Test-NewManagementGroupWithDisplayName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewManagementGroupWithParentId()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewManagementGroupWithParentId");
+            TestRunner.RunTestScript("Test-NewManagementGroupWithParentId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewManagementGroupWithDisplayNameAndParentId()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewManagementGroupWithDisplayNameAndParentId");
+            TestRunner.RunTestScript("Test-NewManagementGroupWithDisplayNameAndParentId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateManagementGroupWithDisplayName()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-UpdateManagementGroupWithDisplayName");
+            TestRunner.RunTestScript("Test-UpdateManagementGroupWithDisplayName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateManagementGroupWithParentId()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-UpdateManagementGroupWithParentId");
+            TestRunner.RunTestScript("Test-UpdateManagementGroupWithParentId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateManagementGroupWithDisplayNameAndParentId()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-UpdateManagementGroupWithDisplayNameAndParentId");
+            TestRunner.RunTestScript("Test-UpdateManagementGroupWithDisplayNameAndParentId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveManagementGroup()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RemoveManagementGroup");
+            TestRunner.RunTestScript("Test-RemoveManagementGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewRemoveManagementGroupSubscription()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewRemoveManagementGroupSubscription");
+            TestRunner.RunTestScript("Test-NewRemoveManagementGroupSubscription");
         }
     }
 }

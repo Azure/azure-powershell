@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -IkeEncryption
-The IKE encryption algorithm (IKE Phase 2)
+The IKE encryption algorithm (IKE Phase 1)
 
 ```yaml
 Type: System.String
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -IkeIntegrity
-The IKE integrity algorithm (IKE Phase 2)
+The IKE integrity algorithm (IKE Phase 1)
 
 ```yaml
 Type: System.String
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpsecEncryption
-The IPSec encryption algorithm (IKE Phase 1)
+The IPSec encryption algorithm (IKE Phase 2)
 
 ```yaml
 Type: System.String
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpsecIntegrity
-The IPSec integrity algorithm (IKE Phase 1)
+The IPSec integrity algorithm (IKE Phase 2)
 
 ```yaml
 Type: System.String
