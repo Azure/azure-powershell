@@ -26,9 +26,7 @@ function Test-CortexCRUD
 	$virtualHubName = Get-ResourceName
 	$vpnSiteName = Get-ResourceName
 	$vpnGatewayName = Get-ResourceName
-	$expressRouteGatewayName = Get-ResourceName
     $circuitName = Get-ResourceName
-    $expressRouteConnectionName = Get-ResourceName
 	$remoteVirtualNetworkName = Get-ResourceName
 	$vpnConnectionName = Get-ResourceName
 	$hubVnetConnectionName = Get-ResourceName
