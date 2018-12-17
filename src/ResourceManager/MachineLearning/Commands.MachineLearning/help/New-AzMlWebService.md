@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.dll-Help.xml
 Module Name: Az.MachineLearning
 online version: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning/new-azmlwebservice
 schema: 2.0.0
@@ -53,7 +53,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -203,7 +203,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
-Parameters: NewWebServiceDefinition (ByValue)
 
 ## OUTPUTS
 

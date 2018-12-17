@@ -164,7 +164,7 @@ function Api-ImportExportWadlTest {
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
-    $wadlPath = "$TestOutputRoot/Resources/WADLYahoo.xml"
+    $wadlPath = Join-Path "$TestOutputRoot" "Resources" "WADLYahoo.xml"
     $path = "wadlapi"
     $wadlApiId = getAssetName
 
@@ -198,7 +198,7 @@ function Api-ImportExportSwaggerTest {
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
-    $swaggerPath = "$TestOutputRoot/Resources/SwaggerPetStoreV2.json"
+    $swaggerPath = Join-Path "$TestOutputRoot" "Resources" "SwaggerPetStoreV2.json"
     $swaggerUrl = "http://petstore.swagger.io/v2/swagger.json"
     $path1 = "swaggerapifromFile"
     $path2 = "swaggerapifromUrl"
@@ -254,7 +254,7 @@ function Api-ImportExportWsdlTest {
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
     $wsdlUrl = "http://fazioapisoap.azurewebsites.net/fazioService.svc?singleWSDL"   
-    $wsdlPath1 = "$TestOutputRoot/Resources/Weather.wsdl"
+    $wsdlPath1 = Join-Path "$TestOutputRoot" "Resources" "Weather.wsdl"
     $path1 = "soapapifromFile"
     $path2 = "soapapifromUrl"
     $wsdlApiId1 = getAssetName
@@ -1091,10 +1091,10 @@ function Policy-CrudTest {
 
     # load from file get to pipeline scenarios
 
-    $tenantValidPath = "$TestOutputRoot/Resources/TenantValidPolicy.xml"
-    $productValidPath = "$TestOutputRoot/Resources/ProductValidPolicy.xml"
-    $apiValidPath = "$TestOutputRoot/Resources/ApiValidPolicy.xml"
-    $operationValidPath = "$TestOutputRoot/Resources/OperationValidPolicy.xml"
+    $tenantValidPath = Join-Path "$TestOutputRoot" "Resources" "TenantValidPolicy.xml"
+    $productValidPath = Join-Path "$TestOutputRoot" "Resources" "ProductValidPolicy.xml"
+    $apiValidPath = Join-Path "$TestOutputRoot" "Resources" "ApiValidPolicy.xml"
+    $operationValidPath = Join-Path "$TestOutputRoot" "Resources" "OperationValidPolicy.xml"
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
@@ -1180,8 +1180,8 @@ function Policy-CrudTest {
         Assert-AreEqual $true $set
 
         Get-AzureRmApiManagementPolicy -Context $context  -SaveAs "$TestOutputRoot/TenantPolicy.xml" -Force
-        $exists = [System.IO.File]::Exists("$TestOutputRoot/TenantPolicy.xml")
-        $policy = gc "$TestOutputRoot/TenantPolicy.xml"
+        $exists = [System.IO.File]::Exists((Join-Path "$TestOutputRoot" "TenantPolicy.xml"))
+        $policy = gc (Join-Path "$TestOutputRoot" "TenantPolicy.xml")
         Assert-True {$policy -like '*<find-and-replace from="aaa" to="BBB" />*'}
     }
     finally {
@@ -1200,8 +1200,8 @@ function Policy-CrudTest {
         Assert-AreEqual $true $set
 
         Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId -SaveAs "$TestOutputRoot/ProductPolicy.xml" -Force
-        $exists = [System.IO.File]::Exists("$TestOutputRoot/ProductPolicy.xml")
-        $policy = gc "$TestOutputRoot/ProductPolicy.xml"
+        $exists = [System.IO.File]::Exists((Join-Path "$TestOutputRoot" "ProductPolicy.xml"))
+        $policy = gc (Join-Path "$TestOutputRoot" "ProductPolicy.xml")
         Assert-True {$policy -like '*<rate-limit calls="5" renewal-period="60" />*'}
     }
     finally {
@@ -1212,7 +1212,7 @@ function Policy-CrudTest {
         Assert-Null $policy
 
         try {
-            rm "$TestOutputRoot/ProductPolicy.xml"
+            rm (Join-Path "$TestOutputRoot" "ProductPolicy.xml")
         }
         catch {}
     }
@@ -1224,9 +1224,9 @@ function Policy-CrudTest {
         $set = Set-AzureRmApiManagementPolicy -Context $context  -Policy $apiValid -ApiId $api.ApiId -PassThru
         Assert-AreEqual $true $set
 
-        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -SaveAs "$TestOutputRoot/ApiPolicy.xml" -Force
-        $exists = [System.IO.File]::Exists("$TestOutputRoot/ApiPolicy.xml")
-        $policy = gc "$TestOutputRoot/ApiPolicy.xml"
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -SaveAs (Join-Path "$TestOutputRoot" "ApiPolicy.xml") -Force
+        $exists = [System.IO.File]::Exists((Join-Path "$TestOutputRoot" "ApiPolicy.xml"))
+        $policy = gc (Join-Path "$TestOutputRoot" "ApiPolicy.xml")
         Assert-True {$policy -like '*<cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none">*'}
     }
     finally {
@@ -1237,7 +1237,7 @@ function Policy-CrudTest {
         Assert-Null $policy
 
         try {
-            rm "$TestOutputRoot/ApiPolicy.xml"
+            rm (Join-Path "$TestOutputRoot" "ApiPolicy.xml")
         }
         catch {}
     }
@@ -1252,9 +1252,9 @@ function Policy-CrudTest {
         Assert-AreEqual $true $set
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId `
-            -SaveAs "$TestOutputRoot/OperationPolicy.xml" -Force
-        $exists = [System.IO.File]::Exists("$TestOutputRoot/OperationPolicy.xml")
-        $policy = gc "$TestOutputRoot/OperationPolicy.xml"
+            -SaveAs (Join-Path "$TestOutputRoot" "OperationPolicy.xml") -Force
+        $exists = [System.IO.File]::Exists((Join-Path "$TestOutputRoot" "OperationPolicy.xml"))
+        $policy = gc (Join-Path "$TestOutputRoot" "OperationPolicy.xml")
         Assert-True {$policy -like '*<rewrite-uri template="/resource" />*'}
     }
     finally {
@@ -1265,7 +1265,7 @@ function Policy-CrudTest {
         Assert-Null $policy
 
         try {
-            rm "$TestOutputRoot/OperationPolicy.xml"
+            rm (Join-Path "$TestOutputRoot" "OperationPolicy.xml")
         }
         catch {}
     }
@@ -1285,7 +1285,7 @@ function Certificate-CrudTest {
 
     Assert-AreEqual 0 $certificates.Count
 
-    $certPath = "$TestOutputRoot\Resources\powershelltest.pfx"
+    $certPath = Join-Path "$TestOutputRoot" "Resources" "powershelltest.pfx"
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $certPassword = 'Password'
     $certSubject = "CN=*.msitesting.net"
@@ -1612,6 +1612,13 @@ function Logger-CrudTest {
          }
  
          Assert-Null $logger
+
+		 # remove all properties
+		 $properties = Get-AzureRmApiManagementProperty -Context $context
+		 for ($i = 0; $i -lt $properties.Count; $i++) {
+
+			Remove-AzureRmApiManagementProperty -Context $context -PropertyId $properties[$i].PropertyId
+		}
     }
 }
 
@@ -2062,7 +2069,7 @@ function Backend-CrudTest {
         Assert-AreEqual 1 $backend.Properties.Count
 
         #backend with proxy
-        $secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
+        $secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Secret used in recorded tests only")]#>
         $proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)
         $credential = New-AzureRmApiManagementBackendProxy -Url "http://12.168.1.1:8080" -ProxyCredential $proxyCreds
 
@@ -2115,7 +2122,7 @@ function BackendServiceFabric-CrudTest {
 
     # create certificate
     $certId = getAssetName    
-    $certPath = "$TestOutputRoot\Resources\powershelltest.pfx"
+    $certPath = Join-Path "$TestOutputRoot" "Resources" "powershelltest.pfx"
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $certPassword = 'Password'
     $certSubject = "CN=*.msitesting.net"
@@ -2292,7 +2299,7 @@ function ApiRevision-CrudTest {
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
    
-    $swaggerPath = "$TestOutputRoot/Resources/SwaggerPetStoreV2.json"    
+    $swaggerPath = Join-Path "$TestOutputRoot" "Resources" "SwaggerPetStoreV2.json"
     $path1 = "swaggerapifromFile"
     $swaggerApiId1 = getAssetName
     $apiRevisionId = "2"

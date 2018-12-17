@@ -82,6 +82,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.MultiInstanceSettings", "PSMultiInstanceSettings"},
             {"Microsoft.Azure.Batch.NameValuePair", "PSNameValuePair"},
             {"Microsoft.Azure.Batch.NetworkConfiguration", "PSNetworkConfiguration"},
+            {"Microsoft.Azure.Batch.NodeAgentInformation", "PSNodeAgentInformation"},
             {"Microsoft.Azure.Batch.NetworkSecurityGroupRule", "PSNetworkSecurityGroupRule"},
             {"Microsoft.Azure.Batch.NodeAgentSku", "PSNodeAgentSku"},
             {"Microsoft.Azure.Batch.NodeCounts", "PSNodeCounts"},
@@ -237,8 +238,6 @@ namespace PSModelGenerator
 
             ConstructorInfo[] constructors = t.GetConstructors();
             ConstructorInfo publicParameterless = null;
-            ConstructorInfo publicSystemParams = null;
-            ConstructorInfo publicEnumParams = null;
             List<ConstructorInfo> publicGeneralParams = new List<ConstructorInfo>();
             foreach (ConstructorInfo con in constructors.Where(c => c.IsPublic || c.IsStatic))
             {

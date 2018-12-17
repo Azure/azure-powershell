@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 4166119F-D26A-45A1-B040-D7B2459833D6
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/set-azwebapp
@@ -233,7 +233,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -489,16 +489,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Int32
-Parameters: NumberOfWorkers (ByValue)
 
 ### System.String
 
-### Microsoft.Azure.Management.WebSites.Models.Site
-Parameters: WebApp (ByValue)
+### Microsoft.Azure.Commands.WebApps.Models.PSSite
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.WebSites.Models.Site
+### Microsoft.Azure.Commands.WebApps.Models.PSSite
 
 ## NOTES
 

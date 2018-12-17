@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 169E6694-82CD-4FCB-AB3D-E8A74001B8DB
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmdatadisk
@@ -9,7 +9,7 @@ schema: 2.0.0
 # Add-AzVMDataDisk
 
 ## SYNOPSIS
-Adds a data disk to a virtual machine or a Vmss VM.
+Adds a data disk to a virtual machine.
 
 ## SYNTAX
 
@@ -28,16 +28,8 @@ Add-AzVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-Caching] <Cachin
  [<CommonParameters>]
 ```
 
-### VmScaleSetVMParameterSetName
-```
-Add-AzVMDataDisk [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [[-Caching] <CachingTypes>]
- [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [-ManagedDiskId] <String>
- [[-StorageAccountType] <String>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-The **Add-AzVMDataDisk** cmdlet adds a data disk to a virtual machine or a Vmss VM.
+The **Add-AzVMDataDisk** cmdlet adds a data disk to a virtual machine.
 You can add a data disk when you create a virtual machine, or you can add a data disk to an existing virtual machine.
 
 ## EXAMPLES
@@ -102,19 +94,6 @@ This approach is used to improve the readability of the following commands.
 The final command add a data disk to the virtual machine stored in $VirtualMachine.
 The command specifies the name and location for the disk, and other properties of the disk.
 
-### Example 5: Add a managed data disk to a Vmss VM.
-```
-PS C:\> $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0
-PS C:\> $VmssVM = Get-AzVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0
-PS C:\> $VmssVM = Add-AzVMDataDisk -VirtualMachineScaleSetVM $VmssVM -Lun 0 -DiskSizeInGB 10 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk.Id
-PS C:\> Update-AzVmssVM -VirtualMachineScaleSetVM $VmssVM
-```
-
-The first command gets an existing managed disk.
-The next command gets an existing Vmss VM given by the resource group name, the vmss name and the instance ID.
-The next command adds the managed disk to the Vmss VM stored locally in $VmssVM.
-The final command updates the Vmss VM with added data disk.
-
 ## PARAMETERS
 
 ### -Caching
@@ -172,7 +151,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -226,24 +205,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: System.String
-Parameter Sets: VmScaleSetVMParameterSetName
-Aliases:
-
-Required: True
-Position: 8
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the data disk to add.
 
 ```yaml
 Type: System.String
-Parameter Sets: VmNormalDiskParameterSetName, VmManagedDiskParameterSetName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -273,7 +240,7 @@ Specifies the storage account type of managed disk.
 
 ```yaml
 Type: System.String
-Parameter Sets: VmManagedDiskParameterSetName, VmScaleSetVMParameterSetName
+Parameter Sets: VmManagedDiskParameterSetName
 Aliases:
 
 Required: False
@@ -300,22 +267,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualMachineScaleSetVM
-Specifies the local virtual machine scale set VM object to which to add a data disk.
-You can use the **Get-AzVmssVM** cmdlet to obtain a virtual machine scale set VM object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
-Parameter Sets: VmScaleSetVMParameterSetName
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -VM
 Specifies the local virtual machine object to which to add a data disk.
 You can use the **Get-AzVM** cmdlet to obtain a virtual machine object.
@@ -323,7 +274,7 @@ You can use the **New-AzVMConfig** cmdlet to create a virtual machine object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
-Parameter Sets: VmNormalDiskParameterSetName, VmManagedDiskParameterSetName
+Parameter Sets: (All)
 Aliases: VMProfile
 
 Required: True
@@ -338,7 +289,7 @@ Specifies whether WriteAccelerator should be enabled or disabled on a managed da
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: VmManagedDiskParameterSetName, VmScaleSetVMParameterSetName
+Parameter Sets: VmManagedDiskParameterSetName
 Aliases:
 
 Required: False
@@ -355,13 +306,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
-
 ### System.String
 
 ### Microsoft.Azure.Management.Compute.Models.CachingTypes
 
-### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ## OUTPUTS
 

@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.RedisCache</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.RedisCache</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.RedisCache</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

@@ -47,8 +47,8 @@
                 <PropertyName>Updated</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Purge Disabled</Label>
-                <PropertyName>PurgeDisabled</PropertyName>
+                <Label>Recovery Level</Label>
+                <PropertyName>RecoveryLevel</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Tags</Label>
@@ -109,8 +109,8 @@
                 <PropertyName>Updated</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Purge Disabled</Label>
-                <PropertyName>PurgeDisabled</PropertyName>
+                <Label>Recovery Level</Label>
+                <PropertyName>RecoveryLevel</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Tags</Label>
