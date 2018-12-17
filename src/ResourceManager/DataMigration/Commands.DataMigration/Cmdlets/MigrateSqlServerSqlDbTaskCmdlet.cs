@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class MigrateSqlServerSqlDbTaskCmdlet : TaskCmdlet
+    public class MigrateSqlServerSqlDbTaskCmdlet : TaskCmdlet<ConnectionInfo>
     {
         private readonly string SchemaValidation = "SchemaValidation";
         private readonly string DataIntegrityValidation = "DataIntegrityValidation";
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         public override ProjectTaskProperties ProcessTaskCmdlet()
         {
             MigrateSqlServerSqlDbTaskProperties properties = new MigrateSqlServerSqlDbTaskProperties();
-
+ 
             SqlConnectionInfo source = new SqlConnectionInfo();
             SqlConnectionInfo target = new SqlConnectionInfo();
 

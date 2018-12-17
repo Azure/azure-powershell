@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         public GetBatchTaskCountsCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchTaskCountsCommand()
@@ -57,11 +57,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             const int running = 5;
             const int succeeded = 2;
             const int failed = 1;
-            const ProxyModels.TaskCountValidationStatus validationStatus = ProxyModels.TaskCountValidationStatus.Validated;
 
             // Build a TaskCounts instead of querying the service on a Get TaskCounts call
             AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders> response =
-                BatchTestHelpers.CreateTaskCountsGetResponse(active, running, succeeded, failed, validationStatus);
+                BatchTestHelpers.CreateTaskCountsGetResponse(active, running, succeeded, failed);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
                 ProxyModels.JobGetTaskCountsOptions,
                 AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders>>(response);
@@ -81,7 +80,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             Assert.Equal(succeeded + failed, taskCounts.Completed);
             Assert.Equal(succeeded, taskCounts.Succeeded);
             Assert.Equal(failed, taskCounts.Failed);
-            Assert.Equal(validationStatus.ToString(), taskCounts.ValidationStatus.ToString());
         }
     }
 }

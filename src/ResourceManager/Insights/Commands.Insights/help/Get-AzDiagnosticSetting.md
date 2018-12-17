@@ -1,8 +1,8 @@
----
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: Az.Insights
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+Module Name: Az.Monitor
 ms.assetid: 60B497F6-98A2-4C60-B142-FF5CD123362D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/get-azdiagnosticsetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azdiagnosticsetting
 schema: 2.0.0
 ---
 
@@ -46,7 +46,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

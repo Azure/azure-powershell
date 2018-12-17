@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.ManagementPartner
 Module Guid: bf60f35d-6c0b-42f2-be30-eb333a31279d
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.managementpartner

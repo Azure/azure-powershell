@@ -153,10 +153,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultLocation = (string)ProviderData[VaultParams.VaultLocation];
             CmdletModel.AzureFileShareRecoveryPoint recoveryPoint = ProviderData[RestoreBackupItemParams.RecoveryPoint]
                 as CmdletModel.AzureFileShareRecoveryPoint;
-            string storageAccountName = ProviderData.ContainsKey(RestoreBackupItemParams.StorageAccountName) ?
-                ProviderData[RestoreBackupItemParams.StorageAccountName].ToString() : null;
-            string storageAccountResourceGroupName = ProviderData.ContainsKey(RestoreBackupItemParams.StorageAccountResourceGroupName) ?
-                ProviderData[RestoreBackupItemParams.StorageAccountResourceGroupName].ToString() : null;
             string copyOptions = (string)ProviderData[RestoreFSBackupItemParams.ResolveConflict];
             string sourceFilePath = ProviderData.ContainsKey(RestoreFSBackupItemParams.SourceFilePath) ?
                 (string)ProviderData[RestoreFSBackupItemParams.SourceFilePath] : null;
@@ -798,54 +794,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 serviceClientRequest,
                 vaultName: vaultName,
                 resourceGroupName: vaultResourceGroupName);
-        }
-
-        public ResourceBackupStatus CheckBackupStatus()
-        {
-            string fileShareName = (string)ProviderData[ProtectionCheckParams.Name];
-            string azureStorageAccountResourceGroupName =
-                (string)ProviderData[ProtectionCheckParams.ResourceGroupName];
-
-            ODataQuery<ProtectedItemQueryObject> queryParams =
-                new ODataQuery<ProtectedItemQueryObject>(
-                    q => q.BackupManagementType
-                            == ServiceClientModel.BackupManagementType.AzureStorage &&
-                         q.ItemType == DataSourceType.AzureFileShare);
-
-            var vaultIds = ServiceClientAdapter.ListVaults();
-            foreach (var vaultId in vaultIds)
-            {
-                ResourceIdentifier vaultIdentifier = new ResourceIdentifier(vaultId);
-
-                var items = ServiceClientAdapter.ListProtectedItem(
-                    queryParams,
-                    vaultName: vaultIdentifier.ResourceName,
-                    resourceGroupName: vaultIdentifier.ResourceGroupName);
-
-                if (items.Any(
-                    item =>
-                    {
-                        ResourceIdentifier storageIdentifier =
-                            new ResourceIdentifier(item.Properties.SourceResourceId);
-                        var itemStorageAccountRgName = storageIdentifier.ResourceGroupName;
-
-                        return item.Name.Split(';')[1].ToLower() == fileShareName.ToLower() &&
-                            itemStorageAccountRgName.ToLower() == azureStorageAccountResourceGroupName.ToLower();
-                    }))
-                {
-                    return new ResourceBackupStatus(
-                        fileShareName,
-                        azureStorageAccountResourceGroupName,
-                        vaultId,
-                        true);
-                }
-            }
-
-            return new ResourceBackupStatus(
-                fileShareName,
-                azureStorageAccountResourceGroupName,
-                null,
-                false);
         }
 
         private void ValidateAzureStorageBackupManagementType(

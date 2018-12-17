@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.MachineLearning
 Module Guid: bb030259-49f9-46ef-806f-2a3f5a2e018e
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.machinelearning
@@ -26,6 +26,12 @@ Retrieves the summary information for one or more commitment plans.
 ### [Get-AzMlCommitmentPlanUsageHistory](Get-AzMlCommitmentPlanUsageHistory.md)
 Retrieves usage history information for a specified commitment plan.
 
+### [Get-AzMlOpCluster](Get-AzMlOpCluster.md)
+Gets an operationalization cluster object.
+
+### [Get-AzMlOpClusterKey](Get-AzMlOpClusterKey.md)
+Gets the access keys associated with an operationalization cluster.
+
 ### [Get-AzMlWebService](Get-AzMlWebService.md)
 Retrieves the summary information for one or more web services.
 
@@ -41,17 +47,32 @@ Moves a commitment association from one commitment plan to another.
 ### [New-AzMlCommitmentPlan](New-AzMlCommitmentPlan.md)
 Creates a new commitment plan.
 
+### [New-AzMlOpCluster](New-AzMlOpCluster.md)
+Creates a new operationalization cluster.
+
 ### [New-AzMlWebService](New-AzMlWebService.md)
 Creates a new web service.
 
 ### [Remove-AzMlCommitmentPlan](Remove-AzMlCommitmentPlan.md)
 Deletes a commitment plan.
 
+### [Remove-AzMlOpCluster](Remove-AzMlOpCluster.md)
+Removes an operationalization cluster.
+
 ### [Remove-AzMlWebService](Remove-AzMlWebService.md)
 Deletes a web service.
 
+### [Set-AzMlOpCluster](Set-AzMlOpCluster.md)
+Sets the properties of an operationalization cluster.
+
+### [Test-AzMlOpClusterSystemServicesUpdateAvailability](Test-AzMlOpClusterSystemServicesUpdateAvailability.md)
+Checks if there are updates available for the system services associated with an operationalization cluster.
+
 ### [Update-AzMlCommitmentPlan](Update-AzMlCommitmentPlan.md)
 Updates properties of an existing commitment plan resource.
+
+### [Update-AzMlOpClusterSystemService](Update-AzMlOpClusterSystemService.md)
+Starts an update on the operationalization cluster's system services.
 
 ### [Update-AzMlWebService](Update-AzMlWebService.md)
 Updates properties of an existing web service resource.

@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
     public class ValidationResult : IValidationResult
     {
         #region Fields and Properties
+        public ValidationKind Kind { get; set; }
         public ValidationType Type { get; set; }
         public string Path { get; set; }
         public ResultLevel Level { get; set; }
@@ -63,31 +64,36 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
         #endregion
 
         #region Public methods
-        public static IValidationResult SuccessfullValidationResult(ValidationType validationType)
+        public static IValidationResult SuccessfullValidationResult(ValidationType validationType, ValidationKind validationKind)
         {
             return new ValidationResult
             {
                 Type = validationType,
+                Kind = validationKind,
                 Level = ResultLevel.Info,
-                Result = Result.Success
+                Result = Result.Success,
+                Description = "Validation succeeded."
             };
         }
 
-        public static IValidationResult UnavailableValidation(ValidationType validationType, string description)
+        public static IValidationResult UnavailableValidation(ValidationType validationType, ValidationKind validationKind, string description)
         {
             return new ValidationResult
             {
                 Type = validationType,
+                Kind = validationKind,
                 Level = ResultLevel.Warning,
                 Result = Result.Unavailable,
                 Description = description
             };
         }
 
-        public static IValidationResult UnauthorizedAccessDir(IDirectoryInfo dir)
+        public static IValidationResult UnauthorizedAccessDir(ValidationType validationType, ValidationKind validationKind, IDirectoryInfo dir)
         {
             return new ValidationResult
             {
+                Type = validationType,
+                Kind = validationKind,
                 Level = ResultLevel.Warning,
                 Result = Result.Unavailable,
                 Description = "The directory could not be validated because the user is not authorized to access it.",

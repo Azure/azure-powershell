@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/set-azservicefabricupgradetype
 schema: 2.0.0
@@ -44,7 +44,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -150,10 +150,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Version (ByValue)
 
 ### Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode
-Parameters: UpgradeMode (ByValue)
 
 ## OUTPUTS
 

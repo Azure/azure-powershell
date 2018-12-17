@@ -1,8 +1,8 @@
----
-external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
-Module Name: Az.Insights
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+Module Name: Az.Monitor
 ms.assetid: 6140E973-D7AB-4A28-A4FA-818E08129372
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/remove-azautoscalesetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azautoscalesetting
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
