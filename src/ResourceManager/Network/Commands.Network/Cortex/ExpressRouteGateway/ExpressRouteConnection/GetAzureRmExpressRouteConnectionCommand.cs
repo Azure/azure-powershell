@@ -43,24 +43,24 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ParentExpressRouteGatewayName", "ExpressRouteGatewayName")]
+        [Alias("ExpressRouteGatewayName", "ExpressRouteGatewayName")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByExpressRouteGatewayName,
             HelpMessage = "The parent resource name.")]
         [ValidateNotNullOrEmpty]
-        public string ParentExpressRouteGatewayName { get; set; }
+        public string ExpressRouteGatewayName { get; set; }
 
-        [Alias("ParentExpressRouteGateway", "ExpressRouteGateway")]
+        [Alias("ExpressRouteGateway", "ExpressRouteGateway")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByExpressRouteGatewayObject,
             HelpMessage = "The parent ExpressRouteGateway for this connection.")]
         [ValidateNotNullOrEmpty]
-        public PSExpressRouteGateway ParentExpressRouteGatewayObject { get; set; }
+        public PSExpressRouteGateway ExpressRouteGatewayObject { get; set; }
 
-        [Alias("ParentExpressRouteGatewayId", "ExpressRouteGatewayId")]
+        [Alias("ExpressRouteGatewayId", "ExpressRouteGatewayId")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -83,23 +83,23 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
 
             if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteGatewayObject, StringComparison.OrdinalIgnoreCase))
             {
-                this.ResourceGroupName = this.ParentExpressRouteGatewayObject.ResourceGroupName;
-                this.ParentExpressRouteGatewayName = this.ParentExpressRouteGatewayObject.Name;
+                this.ResourceGroupName = this.ExpressRouteGatewayObject.ResourceGroupName;
+                this.ExpressRouteGatewayName = this.ExpressRouteGatewayObject.Name;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteGatewayResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentExpressRouteGatewayName = parsedResourceId.ResourceName;
+                this.ExpressRouteGatewayName = parsedResourceId.ResourceName;
             }
 
             if (!string.IsNullOrWhiteSpace(this.Name))
             {
-                WriteObject(this.GetExpressRouteConnection(this.ResourceGroupName, this.ParentExpressRouteGatewayName, this.Name));
+                WriteObject(this.GetExpressRouteConnection(this.ResourceGroupName, this.ExpressRouteGatewayName, this.Name));
             }
             else
             {
-                WriteObject(this.ListExpressRouteConnections(this.ResourceGroupName, this.ParentExpressRouteGatewayName), true);
+                WriteObject(this.ListExpressRouteConnections(this.ResourceGroupName, this.ExpressRouteGatewayName), true);
             }
         }
     }

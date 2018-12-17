@@ -457,15 +457,6 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The parent ExpressRouteGateway for this connection cannot be found..
-        /// </summary>
-        public static string ParentExpressRouteGatewayNotFound {
-            get {
-                return ResourceManager.GetString("ParentExpressRouteGatewayNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The parent virtual hub mentioned could not be found..
         /// </summary>
         public static string ParentVirtualHubNotFound {

@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ParentExpressRouteGatewayName", "ExpressRouteGatewayName")]
+        [Alias("ExpressRouteGatewayName", "ExpressRouteGatewayName")]
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByExpressRouteConnectionName,
             Mandatory = true,
             HelpMessage = "The parent resource name.")]
         [ValidateNotNullOrEmpty]
-        public string ParentExpressRouteGatewayName { get; set; }
+        public string ExpressRouteGatewayName { get; set; }
 
         [Alias("ResourceName", "ExpressRouteConnectionName")]
         [Parameter(
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
             if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteConnectionName, StringComparison.OrdinalIgnoreCase))
             {
                 this.ResourceGroupName = this.ResourceGroupName;
-                this.ParentExpressRouteGatewayName = this.ParentExpressRouteGatewayName;
+                this.ExpressRouteGatewayName = this.ExpressRouteGatewayName;
                 this.Name = this.Name;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteConnectionObject, StringComparison.OrdinalIgnoreCase))
@@ -114,16 +114,16 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
             }
 
             //// Get the expressRoutegateway object - this will throw not found if the object is not found
-            PSExpressRouteGateway parentExpressRouteGateway = this.GetExpressRouteGateway(this.ResourceGroupName, this.ParentExpressRouteGatewayName);
+            PSExpressRouteGateway expressRouteGateway = this.GetExpressRouteGateway(this.ResourceGroupName, this.ExpressRouteGatewayName);
 
-            if (parentExpressRouteGateway == null || 
-                parentExpressRouteGateway.ExpressRouteConnections == null ||
-                !parentExpressRouteGateway.ExpressRouteConnections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
+            if (expressRouteGateway == null || 
+                expressRouteGateway.ExpressRouteConnections == null ||
+                !expressRouteGateway.ExpressRouteConnections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
             {
                 throw new PSArgumentException(Properties.Resources.ExpressRouteConnectionNotFound);
             }
 
-            var expressRouteConnectionToModify = parentExpressRouteGateway.ExpressRouteConnections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
+            var expressRouteConnectionToModify = expressRouteGateway.ExpressRouteConnections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
             if (ParameterSetName.Equals(CortexParameterSetNames.ByExpressRouteConnectionObject, StringComparison.OrdinalIgnoreCase))
             {
                 expressRouteConnectionToModify = this.InputObject;
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-                    this.CreateOrUpdateExpressRouteConnection(this.ResourceGroupName, this.ParentExpressRouteGatewayName, expressRouteConnectionToModify, parentExpressRouteGateway.Tag);
+                    this.CreateOrUpdateExpressRouteConnection(this.ResourceGroupName, this.ExpressRouteGatewayName, expressRouteConnectionToModify, expressRouteGateway.Tag);
                 });
         }
 
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
 
             var parsedResourceId = new ResourceIdentifier(this.ResourceId);
             this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-            this.ParentExpressRouteGatewayName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+            this.ExpressRouteGatewayName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             this.Name = parsedResourceId.ResourceName;
         }
     }

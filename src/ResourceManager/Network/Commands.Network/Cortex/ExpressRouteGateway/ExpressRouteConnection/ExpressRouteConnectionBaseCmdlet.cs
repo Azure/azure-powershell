@@ -36,15 +36,15 @@ namespace Microsoft.Azure.Commands.Network
             return NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteConnection>(expressRouteConnection);
         }
 
-        public PSExpressRouteConnection GetExpressRouteConnection(string resourceGroupName, string parentExpressRouteGatewayName, string name)
+        public PSExpressRouteConnection GetExpressRouteConnection(string resourceGroupName, string expressRouteGatewayName, string name)
         {
-            var expressRouteConnection = this.ExpressRouteConnectionClient.Get(resourceGroupName, parentExpressRouteGatewayName, name);
+            var expressRouteConnection = this.ExpressRouteConnectionClient.Get(resourceGroupName, expressRouteGatewayName, name);
             return this.ToPsExpressRouteConnection(expressRouteConnection);
         }
 
-        public List<PSExpressRouteConnection> ListExpressRouteConnections(string resourceGroupName, string parentExpressRouteGatewayName)
+        public List<PSExpressRouteConnection> ListExpressRouteConnections(string resourceGroupName, string expressRouteGatewayName)
         {
-            var expressRouteConnections = this.ExpressRouteConnectionClient.List(resourceGroupName, parentExpressRouteGatewayName);
+            var expressRouteConnections = this.ExpressRouteConnectionClient.List(resourceGroupName, expressRouteGatewayName);
 
             List<PSExpressRouteConnection> connectionsToReturn = new List<PSExpressRouteConnection>();
             if (expressRouteConnections != null)
@@ -67,11 +67,11 @@ namespace Microsoft.Azure.Commands.Network
             return connectionToReturn;
         }
 
-        public bool IsExpressRouteConnectionPresent(string resourceGroupName, string parentExpressRouteGatewayName, string name)
+        public bool IsExpressRouteConnectionPresent(string resourceGroupName, string expressRouteGatewayName, string name)
         {
             try
             {
-                var connection = this.GetExpressRouteConnection(resourceGroupName, parentExpressRouteGatewayName, name);
+                var connection = this.GetExpressRouteConnection(resourceGroupName, expressRouteGatewayName, name);
                 if (connection == null)
                 {
                     return false;
