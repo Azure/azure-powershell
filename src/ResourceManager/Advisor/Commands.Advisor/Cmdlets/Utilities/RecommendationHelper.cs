@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// <param name="category">Category name</param>
         /// <param name="resourceGroup">Resource group name</param>
         /// <returns>Filtered list of recommendations</returns>
-        public static List<PsAzureAdvisorResourceRecommendationBase> RecomendationFilterByCategoryAndResource(IEnumerable<PsAzureAdvisorResourceRecommendationBase> recListTobeFiltered, string category, string resourceGroup)
+        public static List<PsAzureAdvisorResourceRecommendationBase> RecommendationFilterByCategoryAndResource(IEnumerable<PsAzureAdvisorResourceRecommendationBase> recListTobeFiltered, string category, string resourceGroup)
         {
             if (recListTobeFiltered == null || recListTobeFiltered.Count() == 0)
             {
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// <param name="recListTobeFiltered">List to be filtered</param>
         /// <param name="recommendationName">Name of the recommendation, type GUID.</param>
         /// <returns>Recommendation of PsAzureAdvisorResourceRecommendationBase type</returns>
-        public static PsAzureAdvisorResourceRecommendationBase RecomendationFilterByRecommendation(IEnumerable<PsAzureAdvisorResourceRecommendationBase> recListTobeFiltered, string recommendationName)
+        public static PsAzureAdvisorResourceRecommendationBase RecommendationFilterByRecommendation(IEnumerable<PsAzureAdvisorResourceRecommendationBase> recListTobeFiltered, string recommendationName)
         {
             foreach (PsAzureAdvisorResourceRecommendationBase recommendationEntry in recListTobeFiltered)
             {
@@ -127,12 +127,12 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// <param name="recListTobeFiltered">List to be filtered</param>
         /// <param name="recommendationNameList">List of recommendation-names, type GUID.</param>
         /// <returns>Recommendation list of PsAzureAdvisorResourceRecommendationBase type</returns>
-        public static List<PsAzureAdvisorResourceRecommendationBase> RecomendationFilterByRecommendation(IEnumerable<PsAzureAdvisorResourceRecommendationBase> recListTobeFiltered, List<string> recommendationNameList)
+        public static List<PsAzureAdvisorResourceRecommendationBase> RecommendationFilterByRecommendation(IEnumerable<PsAzureAdvisorResourceRecommendationBase> recListTobeFiltered, List<string> recommendationNameList)
         {
             List<PsAzureAdvisorResourceRecommendationBase> returnList = new List<PsAzureAdvisorResourceRecommendationBase>();
             foreach (string recommendationName in recommendationNameList)
             {
-                returnList.Add(RecomendationFilterByRecommendation(recListTobeFiltered, recommendationName));
+                returnList.Add(RecommendationFilterByRecommendation(recListTobeFiltered, recommendationName));
             }
 
             return returnList;
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// </summary>
         /// <param name="resourceID">ResourceId of recommendation</param>
         /// <returns>SubscriptionId as string</returns>
-        public static string GetResourceGroupfromResoureID(string resourceID)
+        public static string GetResourceGroupFromResoureID(string resourceID)
         {
             string resourceGroup = string.Empty;
             string[] resourceIdSplit = resourceID.Split('/');

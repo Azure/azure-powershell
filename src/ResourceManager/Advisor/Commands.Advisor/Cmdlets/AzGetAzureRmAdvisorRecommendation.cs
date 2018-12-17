@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.Advisor.Utilities.ResourceGraphBaseCmdlet" />
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PsAzureAdvisorResourceRecommendationBase))]
-    public class GetAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
+    public class AzGetAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
         /// Constant for IdParameterSet
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                 case IdParameterSet:
                     string recommendationId = RecommendationHelper.GetRecommendationIdFromResourceID(this.ResourceId);
 
-                    recommendation = this.ResourecAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourecAdvisorClient.SubscriptionId, recommendationId).Result;
+                    recommendation = this.ResourceAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourceAdvisorClient.SubscriptionId, recommendationId).Result;
                     results.Add(PsAzureAdvisorResourceRecommendationBase.GetFromResourceRecommendationBase(recommendation.Body));
                     break;
 
@@ -97,11 +97,11 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                     {
                         if (string.IsNullOrEmpty(nextPagelink))
                         {
-                            operationResponseRecommendation = this.ResourecAdvisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
+                            operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListWithHttpMessagesAsync().Result;
                         }
                         else
                         {
-                            operationResponseRecommendation = this.ResourecAdvisorClient.Recommendations.ListWithHttpMessagesAsync(nextPagelink).Result;
+                            operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListWithHttpMessagesAsync(nextPagelink).Result;
                         }
                         nextPagelink = operationResponseRecommendation.Body.NextPageLink;
                         // Add current page items to the List 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                     // Filter out the resourcegroupname recommendations
                     if (!string.IsNullOrEmpty(this.ResourceGroupName))
                     {
-                        results = RecommendationHelper.RecomendationFilterByCategoryAndResource(results, string.Empty, this.ResourceGroupName);
+                        results = RecommendationHelper.RecommendationFilterByCategoryAndResource(results, string.Empty, this.ResourceGroupName);
                     }
 
                     break;
@@ -123,12 +123,12 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 
             if (!string.IsNullOrEmpty(this.Category))
             {
-                results = RecommendationHelper.RecomendationFilterByCategoryAndResource(results, this.Category, string.Empty);
+                results = RecommendationHelper.RecommendationFilterByCategoryAndResource(results, this.Category, string.Empty);
             }
 
             if (Refresh)
             {
-                this.ResourecAdvisorClient.Recommendations.GenerateWithHttpMessagesAsync().Result;
+                this.ResourceAdvisorClient.Recommendations.GenerateWithHttpMessagesAsync();
             }
 
             this.WriteObject(results, true);

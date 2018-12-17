@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.Advisor.Utilities.ResourceGraphBaseCmdlet" />
     [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation", DefaultParameterSetName = IdParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsAzureAdvisorSuppressionContract))]
-    public class DisableAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
+    public class AzDisableAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
         /// Constant for IdParameterSet
@@ -110,19 +110,19 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 
                     if (ShouldProcess(recommendationId, string.Format(Resources.DisableRecommendationWarningMessage, recommendationId)))
                     {
-                        azureOperationResponseSuppression.Add(this.ResourecAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, DefaultSuppressionName, suppressionContract).Result);
+                        azureOperationResponseSuppression.Add(this.ResourceAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, DefaultSuppressionName, suppressionContract).Result);
                     }
 
                     break;
 
                 case NameParameterSet:
-                    AzureOperationResponse<ResourceRecommendationBase> recommendation = this.ResourecAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourecAdvisorClient.SubscriptionId, this.RecommendationName).Result;
+                    AzureOperationResponse<ResourceRecommendationBase> recommendation = this.ResourceAdvisorClient.Recommendations.GetWithHttpMessagesAsync("subscriptions/" + this.ResourceAdvisorClient.SubscriptionId, this.RecommendationName).Result;
                     resourceUri = RecommendationHelper.GetFullResourceUriFromResourceID(recommendation.Body.Id);
 
                     // Make a get recommendation for this Name and get the ID
                     if (ShouldProcess(this.RecommendationName, string.Format(Resources.DisableRecommendationWarningMessage, this.RecommendationName)))
                     {
-                        azureOperationResponseSuppression.Add(this.ResourecAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, this.RecommendationName, DefaultSuppressionName, suppressionContract).Result);
+                        azureOperationResponseSuppression.Add(this.ResourceAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, this.RecommendationName, DefaultSuppressionName, suppressionContract).Result);
                     }
                     break;
 
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 
                     if (ShouldProcess(recommendationId, string.Format(Resources.DisableRecommendationWarningMessage, recommendationId)))
                     {
-                        azureOperationResponseSuppression.Add(this.ResourecAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, DefaultSuppressionName, suppressionContract).Result);
+                        azureOperationResponseSuppression.Add(this.ResourceAdvisorClient.Suppressions.CreateWithHttpMessagesAsync(resourceUri, recommendationId, DefaultSuppressionName, suppressionContract).Result);
                     }
                     break;
             }
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
             // Get the supresssion details from the suppression Get API, the response does not have the data for the suppression-name, resourceid.
             if (azureOperationResponseSuppression.Count > 0)
             {
-                AzureOperationResponse<IPage<SuppressionContract>> suppressionList = this.ResourecAdvisorClient.Suppressions.ListWithHttpMessagesAsync().Result;
+                AzureOperationResponse<IPage<SuppressionContract>> suppressionList = this.ResourceAdvisorClient.Suppressions.ListWithHttpMessagesAsync().Result;
                 IEnumerable<PsAzureAdvisorSuppressionContract> psSuppressionContractList = PsAzureAdvisorSuppressionContract.FromSuppressionContractList(suppressionList.Body.AsEnumerable());
 
                 foreach (AzureOperationResponse<SuppressionContract> azureOperationResponse in azureOperationResponseSuppression)
