@@ -38,9 +38,9 @@
         Condition="'@(DelaySignedAssembliesToSign)' == ''" />
     
     <ESRPSignTask
-		CopyBackSignedFilesToOriginalLocation="true"
+	CopyBackSignedFilesToOriginalLocation="true"
         UnsignedFileList="@(DelaySignedAssembliesToSign)"
-        SignLogDirPath="$(LibraryRoot)signing-scripts.log" 
+        SignLogDirPath="$(LibraryRoot)dlls-signing.log" 
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
 
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"/>
@@ -76,13 +76,14 @@
     <ESRPSignTask
 		CopyBackSignedFilesToOriginalLocation="true"
 		UnsignedFileList="@(ScriptsToSign)"
-		SignLogDirPath="$(LibraryRoot)signing-scripts.log" 
+		SignLogDirPath="$(LibraryRoot)scripts-signing.log" 
 		Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/>
 		
-	<Message Text="----> Remove artifacts section" Importance="high"/>
+    <Message Text="----> Remove artifacts section" Importance="high"/>
 
 	<!-- RemoveCodeSignArtifacts.ps1 -->
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\RemoveCodeSignArtifacts.ps1 -CustomPath $(PackageDirectory)\$(Configuration) &quot;"
+    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\RemoveCodeSignArtifacts.ps1 -Path $(PackageDirectory)\$(Configuration) &quot;"
+		Condition="'$(Scope)' != 'Stack'"
         ContinueOnError="ErrorAndContinue" />
 		
 	<Message Text="----> CheckSignature section" Importance="high"/>
@@ -90,6 +91,11 @@
 	<!-- CheckSignature.ps1 -->
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckSignature.ps1 -CustomPath $(PackageDirectory)\$(Configuration) &quot;"
         Condition="'$(Scope)' != 'Stack'"
+        ContinueOnError="ErrorAndContinue" />
+		
+	<!-- RemoveCodeSignArtifacts.ps1 -->
+    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\RemoveCodeSignArtifacts.ps1 -Path $(StackPackageFolder)\$(Configuration) &quot;"
+		Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
         ContinueOnError="ErrorAndContinue" />
 		  
 	<!-- CheckSignature.ps1 -->

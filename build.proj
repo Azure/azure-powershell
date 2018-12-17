@@ -16,10 +16,10 @@
     /t:Publish
       Creates local nuget packages and MSI
 
-    /p:CodeSign=True
+    /p:CodeSignESRP=True
       Code sign binaries, mainly for official release. Default is false.
 
-    /p:CodeSign=True;DelaySign=True
+    /p:CodeSignESRP=True;DelaySign=True
       Test the code sign workflow locally.
 
     /p:Scope
@@ -51,7 +51,6 @@
     <LocalFeedFolder>$(LibraryToolsFolder)\LocalFeed</LocalFeedFolder>
     <PublishDirectory>$(LibrarySourceFolder)\Publish</PublishDirectory>
     <Configuration Condition=" '$(Configuration)' != 'Release'">Debug</Configuration>
-    <CodeSign Condition=" '$(CodeSign)' == '' ">false</CodeSign>
     <CodeSignESRP>false</CodeSignESRP>
     <!--Set this true only if you want to test the code sign workflow locally-->
     <DelaySign Condition =" '$(DelaySign)' == '' ">false</DelaySign>
@@ -122,7 +121,6 @@
     <OnPremiseBuild Condition=" ! Exists($(OnPremiseBuildTasks)) ">false</OnPremiseBuild>
   </PropertyGroup>
 
-  <UsingTask Condition=" $(OnPremiseBuild) " TaskName="CodeSigningTask" AssemblyFile="$(CIToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <UsingTask Condition=" $(OnPremiseBuild) " TaskName="CorporateValidation" AssemblyFile="$(CIToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <Import Condition=" $(OnPremiseBuild) " Project="$(CIToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
   <Import Project="CodeSignESRP.targets"/>
@@ -270,13 +268,13 @@
 
 
     <!-- Update module manifests. -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;" Condition="'$(CodeSign)' == 'false'" ContinueOnError="false" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;" Condition="'$(CodeSignESRP)' == 'false'" ContinueOnError="false" />
     <!-- Generate the Help -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration)&quot;" Condition="'$(SkipHelp)' == 'false' And '$(RunStaticAnalysis)' == 'true'" ContinueOnError="false" />
 
     <Exec ContinueOnError="false"
       Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration) &quot;" 
-      Condition="'$(CodeSign)' == 'true'"/>
+      Condition="'$(CodeSignESRP)' == 'true'"/>
 
     <CallTarget targets="DependencyAnalysisNetcore" ContinueOnError="ErrorAndContinue" Condition="'$(RunStaticAnalysis)' == 'true'" />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" Condition="'$(RunStaticAnalysis)' == 'true'" />
@@ -286,22 +284,22 @@
 
     <Exec ContinueOnError="false"
           Command="$(PowerShellCoreCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;" 
-          Condition="'$(CodeSign)' == 'true'"/>
+          Condition="'$(CodeSignESRP)' == 'true'"/>
     
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
 
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
     
-    <CallTarget Targets="CodeSignBinaries" Condition="'$(CodeSign)' == 'true'" />
-
-    <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration)&quot;" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'" />
+    <CallTarget Targets="CodeSignBinariesESRP" Condition="'$(CodeSignESRP)' == 'true'" />
+	
+    <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration)&quot;" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSignESRP) == 'true'" />
 
     <Message Importance="high" Text="Running Static Analyser" />
     <CallTarget targets="DependencyAnalysis" ContinueOnError="ErrorAndContinue" />
     <!-- TODO: Implement CheckAssemblies.ps1 for Az. -->
     <!-- <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" /> -->
 
-    <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration)&quot;" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'" />
+    <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration)&quot;" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSignESRP) == 'true'" />
   </Target>
 
   <!-- Do everything possible except Publish -->
@@ -312,117 +310,11 @@
     <MSBuild Projects="@(LocalBuildTasks)" Targets="Build" Properties="Configuration=$(Configuration);Platform=Any CPU" />
   </Target>
 
-  <Target Name="CodeSignBinaries" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
-    <PropertyGroup>
-      <!--public token associated with MSSharedLibKey.snk-->
-      <StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
-    </PropertyGroup>
-    <GetFrameworkSdkPath>
-      <Output TaskParameter="Path" PropertyName="WindowsSdkPath" />
-    </GetFrameworkSdkPath>
-
-    <!-- Azure -->
-    <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
-      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*PowerShell*Cmdlets*.dll" />
-      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
-    </ItemGroup>
-
-    <Message Importance="high" Text="$(PackageDirectory)\$(Configuration) does not contains any files to sign. Code sign will skip." Condition="'@(DelaySignedAssembliesToSign)' == ''" />
-
-    <ValidateStrongNameSignatureTask
-      WindowsSdkPath="$(WindowsSdkPath)"
-      Assembly="%(DelaySignedAssembliesToSign.Identity)"
-      ExpectedTokenSignature="$(StrongNameToken)"
-      ExpectedDelaySigned="true"
-      ContinueOnError="false"
-      Condition="'@(DelaySignedAssembliesToSign)' != ''" />
-
-    <CodeSigningTask
-      Description="Microsoft Azure PowerShell"
-      Keywords="Microsoft Azure PowerShell"
-      UnsignedFiles="@(DelaySignedAssembliesToSign)"
-      DestinationPath="$(LibrarySourceFolder)"
-      BasePath="$(LibrarySourceFolder)"
-      Certificates="72, 400"
-      SigningLogPath="$(LibraryRoot)\signing.log"
-      ToolsPath="$(CIToolsPath)"
-      Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''" />
-
-    <ValidateStrongNameSignatureTask
-        WindowsSdkPath="$(WindowsSdkPath)"
-        Assembly="%(DelaySignedAssembliesToSign.Identity)"
-        ExpectedTokenSignature="$(StrongNameToken)"
-        ExpectedDelaySigned="false"
-        ContinueOnError="false"
-        Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''" />
-
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;" />
-
-    <!-- Copying shortcut to be signed -->
-    <Copy SourceFiles="$(LibraryRoot)tools\Az\Az.psm1" DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition="'$(Scope)' == 'Netcore'" />
-
-    <!-- Azure -->
-    <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
-      <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.ps1" />
-      <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.psm1" />
-      <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.ps1xml" />
-      <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.js" />
-    </ItemGroup>
-
-    <CodeSigningTask
-      Description="Microsoft Azure PowerShell"
-      Keywords="Microsoft Azure PowerShell"
-      UnsignedFiles="@(ScriptsToSign)"
-      DestinationPath="$(LibrarySourceFolder)"
-      BasePath="$(LibrarySourceFolder)"
-      Certificates="400"
-      SigningLogPath="$(LibraryRoot)\signing-scripts.log"
-      ToolsPath="$(CIToolsPath)"
-      Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''" />
-
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckSignature.ps1 -CustomPath $(PackageDirectory)\$(Configuration) &quot;" Condition="'$(Scope)' != 'Stack'" ContinueOnError="ErrorAndContinue" />
-
-    <!-- Copy files back after signing -->
-    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\Az.psm1" DestinationFolder="$(LibraryRoot)tools\Az" Condition="'$(Scope)' == 'Netcore'" />
-  </Target>
-
   <Target Name="BuildInstaller" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'">
     <Exec Command="$(PowerShellCommandPrefix) &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(PackageDirectory) -InstallationPolicy Trusted &quot; " />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryRoot)\setup\generate.ps1 -repository MSIcreationrepository &quot; " />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot; " />
-    <CallTarget Targets="CodeSignInstaller" Condition=" '$(CodeSign)' == 'true'" />
     <CallTarget Targets="CodeSignInstallerESRP" Condition=" '$(CodeSignESRP)' == 'true'" />
-  </Target>
-
-  <Target Name="CodeSignInstaller">
-    <PropertyGroup>
-      <!--public token associated with MSSharedLibKey.snk-->
-      <StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
-    </PropertyGroup>
-    <GetFrameworkSdkPath>
-      <Output TaskParameter="Path" PropertyName="WindowsSdkPath" />
-    </GetFrameworkSdkPath>
-
-    <ItemGroup>
-      <InstallersToSign Include="$(LibraryRoot)\setup\*.msi" />
-    </ItemGroup>
-
-    <Message Importance="high" Text="$(LibraryRoot)\setup does not contain any installers to sign. Code sign will skip."
-             Condition="'@(InstallersToSign)' == ''" />
-
-    <CodeSigningTask
-      Description="Microsoft Azure PowerShell"
-      Keywords="Microsoft Azure PowerShell"
-      UnsignedFiles="@(InstallersToSign)"
-      DestinationPath="$(SignedOutputRootDir)"
-      SigningLogPath="$(LibraryRoot)\msi-signing.log"
-      Certificates="402"
-      ToolsPath="$(CIToolsPath)"
-      Condition="!$(DelaySign) and '@(InstallersToSign)' != ''" />
-
-    <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
-    <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
-    <SetEnvVar EnvName="SignedMsiDir" EnvValue="$(SignedOutputRootDir)" />
   </Target>
 
   <!-- Run Validation -->
