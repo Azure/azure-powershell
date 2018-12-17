@@ -966,6 +966,8 @@ function Test-GetAzureStorageAccountGeoReplicationStats
     }
 }
 
+<#
+.SYNOPSIS
 Test Get-AzureRmStorageAccount | New/Set-AzureRmStorageAccount
 #>
 function Test-PipingNewUpdateAccount
