@@ -25,12 +25,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSUpgradePolicy),
-        DeprecatedOutputProperties = new string[] { "AutomaticOSUpgrade", "AutoOSUpgradePolicy" })]
-    [CmdletOutputBreakingChange(typeof(PSVirtualMachineScaleSetIdentity),
-        DeprecatedOutputProperties = new string[] { "IdentityIds" })]
-#endif
     [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiskEncryption",SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public class RemoveAzureVmssDiskEncryptionCommand : VirtualMachineScaleSetExtensionBaseCmdlet

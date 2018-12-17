@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: AFDE5ECD-29AB-4C91-98BF-1B8C9C3BB079
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchaccountkeys
@@ -27,7 +27,9 @@ The **Get-AzBatchAccountKeys** cmdlet gets the keys of an Azure Batch account in
 ```
 PS C:\>$Context = Get-AzBatchAccountKeys -AccountName myaccount
 ```
+
 This command gets the account details and stores it in a `$Context` object for use later.
+
 ### Example 2: Get batch account keys and display them
 ```
 PS C:\>$Context = Get-AzBatchAccountKeys -AccountName myaccount
@@ -36,6 +38,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGH
 PS C:\>$Context.SecondaryAccountKey
 ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMN==
 ```
+
 This command gets the account keys and prints them to the console.
 
 ## PARAMETERS
@@ -61,7 +64,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

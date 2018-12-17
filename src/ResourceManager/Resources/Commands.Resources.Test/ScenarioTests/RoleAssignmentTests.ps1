@@ -112,7 +112,7 @@ function Test-RaDeleteByPSRoleAssignment
 
     # Test
     $newAssignment = New-AzureRmRoleAssignmentWithId `
-                        -ObjectId $users[0].Id.Guid `
+                        -ObjectId $users[0].Id `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope `
                         -RoleAssignmentId c7acc224-7df3-461a-8640-85d7bd15b5da
@@ -140,7 +140,7 @@ function Test-RaByScope
 
     # Test
     $newAssignment = New-AzureRmRoleAssignmentWithId `
-                        -ObjectId $users[0].Id.Guid `
+                        -ObjectId $users[0].Id `
                         -RoleDefinitionName $definitionName `
                         -Scope $assignmentScope `
                         -RoleAssignmentId 54e1188f-65ba-4b58-9bc3-a252adedcc7b
@@ -174,7 +174,7 @@ function Test-RaById
 
     # Test
     $newAssignment = New-AzureRmRoleAssignmentWithId `
-                        -ObjectId $users[0].Id.Guid `
+                        -ObjectId $users[0].Id `
                         -RoleDefinitionName $definitionName `
                         -Scope $assignmentScope `
                         -RoleAssignmentId 93cb604e-14dc-426b-834e-bf7bb3826cbc
@@ -210,7 +210,7 @@ function Test-RaByResourceGroup
 
     # Test
     $newAssignment = New-AzureRmRoleAssignmentWithId `
-                        -ObjectId $users[0].Id.Guid `
+                        -ObjectId $users[0].Id `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resourceGroups[0].ResourceGroupName `
                         -RoleAssignmentId 8748e3e7-2cc7-41a9-81ed-b704b6d328a5
@@ -243,7 +243,7 @@ function Test-RaByResource
 
     # Test
     $newAssignment = New-AzureRmRoleAssignmentWithId `
-                        -ObjectId $groups[0].Id.Guid `
+                        -ObjectId $groups[0].Id `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resource.ResourceGroupName `
                         -ResourceType $resource.ResourceType `
@@ -280,23 +280,23 @@ function Test-RaValidateInputParameters ($cmdName)
     # Check if Scope is valid.
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name' should begin with '/subscriptions/<subid>/resourceGroups'."
-    Assert-Throws { invoke-expression ($cmdName + " -Scope `"" + $scope  + "`" -ObjectId " + $groups[0].Id.Guid + " -RoleDefinitionName " + $definitionName) } $invalidScope
+    Assert-Throws { invoke-expression ($cmdName + " -Scope `"" + $scope  + "`" -ObjectId " + $groups[0].Id + " -RoleDefinitionName " + $definitionName) } $invalidScope
 
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
-    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id -RoleDefinitionName $definitionName } $invalidScope
 
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
-    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id -RoleDefinitionName $definitionName } $invalidScope
 
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name' should begin with '/subscriptions/<subid>/resourceGroups/<groupname>/providers'."
-    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id -RoleDefinitionName $definitionName } $invalidScope
 
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername' should have at least one pair of resource type and resource name. e.g. '/subscriptions/<subid>/resourceGroups/<groupname>/providers/<providername>/<resourcetype>/<resourcename>'."
-    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id -RoleDefinitionName $definitionName } $invalidScope
 
     # Check if ResourceType is valid
     Assert-AreEqual $resource.ResourceType "Microsoft.Web/sites"
@@ -305,7 +305,7 @@ function Test-RaValidateInputParameters ($cmdName)
     $resource.ResourceType = "Microsoft.KeyVault/"
     $invalidResourceType = "Scope '/subscriptions/"+$subscription.Id+"/resourceGroups/"+$resource.ResourceGroupName+"/providers/Microsoft.KeyVault/"+$resource.Name+"' should have even number of parts."
     Assert-Throws { &$cmdName `
-                        -ObjectId $groups[0].Id.Guid `
+                        -ObjectId $groups[0].Id `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resource.ResourceGroupName `
                         -ResourceType $resource.ResourceType `
@@ -455,7 +455,7 @@ function Test-RaDeletionByScope
 
     # Test
     $newAssignment = New-AzureRmRoleAssignmentWithId `
-                        -ObjectId $users[0].Id.Guid `
+                        -ObjectId $users[0].Id `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope `
                         -RoleAssignmentId 238799bf-1593-45d7-a90d-f3edbceb3bc7
@@ -489,7 +489,7 @@ function Test-RaDeletionByScopeAtRootScope
 
     # Test
     $newAssignment = New-AzureRmRoleAssignmentWithId `
-                        -ObjectId $users[0].Id.Guid `
+                        -ObjectId $users[0].Id `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope `
                         -RoleAssignmentId f3c560f8-afaa-4263-b1d7-e34e0ab49fc7
@@ -528,12 +528,12 @@ function Test-RaPropertiesValidation
     $rd = Get-AzureRmRoleDefinition -Name "Custom Reader Properties Test"
 
     $newAssignment = New-AzureRmRoleAssignmentWithId `
-                        -ObjectId $users[0].Id.Guid `
+                        -ObjectId $users[0].Id `
                         -RoleDefinitionName $roleDef.Name `
                         -Scope $scope `
                         -RoleAssignmentId 584d33a3-b14d-4eb4-863e-0df67b178389
 
-    $assignments = Get-AzureRmRoleAssignment -ObjectId $users[0].Id.Guid
+    $assignments = Get-AzureRmRoleAssignment -ObjectId $users[0].Id
     Assert-NotNull $assignments
 
     foreach ($assignment in $assignments){
@@ -570,7 +570,7 @@ function Test-RaDelegation
 
     # Test
     $newAssignment = New-AzureRmRoleAssignmentWithId `
-                        -ObjectId $users[0].Id.Guid `
+                        -ObjectId $users[0].Id `
                         -RoleDefinitionName $definitionName `
                         -Scope $assignmentScope `
                         -AllowDelegation `
@@ -606,18 +606,18 @@ function Test-RaGetByScope
 
     # Test
     $newAssignment1 = New-AzureRmRoleAssignmentWithId `
-                        -ObjectId $users[0].Id.Guid `
+                        -ObjectId $users[0].Id `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope1 `
                         -RoleAssignmentId 08fe91d5-b917-4d76-81d7-581ff5a99cab
 
     $newAssignment2 = New-AzureRmRoleAssignmentWithId `
-                        -ObjectId $users[0].Id.Guid `
+                        -ObjectId $users[0].Id `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope2 `
                         -RoleAssignmentId fa1a4d3b-2cca-406b-8956-6b6b32377641
 
-    $ras = Get-AzureRmRoleAssignment -ObjectId $users[0].Id.Guid `
+    $ras = Get-AzureRmRoleAssignment -ObjectId $users[0].Id `
             -RoleDefinitionName $definitionName `
             -Scope $scope1
 
@@ -664,7 +664,7 @@ function DeleteRoleAssignment
 {
     param([Parameter(Mandatory=$true)] [object] $roleAssignment)
 
-    Remove-AzureRmRoleAssignment -ObjectId $roleAssignment.ObjectId.Guid `
+    Remove-AzureRmRoleAssignment -ObjectId $roleAssignment.ObjectId `
                                -Scope $roleAssignment.Scope `
                                -RoleDefinitionName $roleAssignment.RoleDefinitionName
 }
@@ -677,7 +677,7 @@ function VerifyRoleAssignmentDeleted
 {
     param([Parameter(Mandatory=$true)] [object] $roleAssignment)
 
-    $deletedRoleAssignment = Get-AzureRmRoleAssignment -ObjectId $roleAssignment.ObjectId.Guid `
+    $deletedRoleAssignment = Get-AzureRmRoleAssignment -ObjectId $roleAssignment.ObjectId `
                                                      -Scope $roleAssignment.Scope `
                                                      -RoleDefinitionName $roleAssignment.RoleDefinitionName  | where {$_.roleAssignmentId -eq $roleAssignment.roleAssignmentId}
     Assert-Null $deletedRoleAssignment

@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.Dataplane.dll-Help.xml
 Module Name: Az.AnalysisServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/sync-azanalysisservicesinstance
 schema: 2.0.0
@@ -118,7 +118,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Database (ByValue), Instance (ByValue)
 
 ## OUTPUTS
 

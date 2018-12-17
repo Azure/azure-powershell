@@ -35,12 +35,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         public string Name { get; set; }
 
         /// <summary>
-        /// The policy sku.
-        /// </summary>
-        [JsonProperty(Required = Required.Always)]
-        public PolicySku Sku { get; set; }
-
-        /// <summary>
         /// The resource identity assigned to the policy assignment.
         /// </summary>
         [JsonProperty(Required = Required.Default)]

@@ -31,12 +31,6 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         public SwitchParameter PassThru { get; set; }
 
         /// <summary>
-        /// Gets or sets the privileged login names
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A semicolon separated list of privileged user ids login name")]
-        public string PrivilegedLogins { get; set; }
-
-        /// <summary>
         /// Gets or sets the privileged users names
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A semicolon separated list of privileged user ids login name")]
@@ -63,12 +57,6 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         protected override DatabaseDataMaskingPolicyModel ApplyUserInputToModel(DatabaseDataMaskingPolicyModel model)
         {
             base.ApplyUserInputToModel(model);
-
-            if (PrivilegedLogins != null) // empty string here means that the user clears the logins list
-            {
-                WriteWarning("The parameter PrivilegedLogins is being deprecated and will be removed in a future release. Use the PrivilegedUsers parameter to provide SQL users excluded from masking.");
-                model.PrivilegedUsers = PrivilegedLogins;
-            }
 
             if (PrivilegedUsers != null) // empty string here means that the user clears the users list
             {

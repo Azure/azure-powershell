@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.PowerBI.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.PowerBI.dll-Help.xml
 Module Name: Az.PowerBIEmbedded
 ms.assetid: 5321FC62-3585-4493-A3D2-22CD82503CA7
 online version: https://docs.microsoft.com/en-us/powershell/module/az.powerbiembedded/resume-azpowerbiembeddedcapacity
@@ -61,7 +61,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -183,7 +183,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
-Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
