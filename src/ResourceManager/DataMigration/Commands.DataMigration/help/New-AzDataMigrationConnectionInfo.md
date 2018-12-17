@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerType
-Enum that describes server type to connect to. Currently supported values are SQL for SQL Server, Azure SQL Managed Instance and Azure SQL Database. 
+Enum that describes server type to connect to. Currently supported values are SQL for SQL Server, Azure SQL Managed Instance, MongoDb, CosmosDb and Azure SQL Database. 
 
 ```yaml
 Type: Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum
