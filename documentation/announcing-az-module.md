@@ -1,5 +1,5 @@
 # Announcing New Module 'Az'
-In August 2018 we released a new module, 'Az' which combines the functionality of the AzureRM and AzureRM.Netcore modules.  Az will got to version 1.0 on 12/18/2018. Az runs on both PowerShell 5.1 and PowerShell Core.  'Az' ensures that the PowerShell and PowerShell Core cmdlets for managing Azure resources will always be in sync and up to date.  In addition, Az will simplify and regularize the naming of Azure cmdlets, and the organization of Azure modules.  Az is intended as a replacement for the AzureRM.Netcore and AzureRM modules.
+In August 2018 we released a new module, 'Az' which combines the functionality of the AzureRM and AzureRM.Netcore modules.  Az will go to version 1.0 on 12/18/2018. Az runs on both Windows PowerShell 5.1 and PowerShell Core.  'Az' ensures that the Windows PowerShell and PowerShell Core cmdlets for managing Azure resources will always be in sync and up to date.  In addition, Az will simplify and regularize the naming of Azure cmdlets, and the organization of Azure modules.  Az is intended as a replacement for the AzureRM.Netcore and AzureRM modules.
 
 Az currently ships in Cloud Shell, and can be found on the PowerShell Gallery [here](https://www.powershellgallery.com/packages/Az/)
 
@@ -98,7 +98,7 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 | -------------------------------------- | ------------------------------- |
 | AzureRM | Az |
 | Azure.AnalysisServices | Az.AnalysisServices |
-| Azure.Storage | **Az.Storage** |
+| **Azure.Storage** | **Az.Storage** |
 | AzureRM.Aks | Az.Aks |
 | AzureRM.AnalysisServices | Az.AnalysisServices |
 | AzureRM.ApiManagement | Az.ApiManagement |
@@ -169,13 +169,13 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 
 ### Installing Az and AzureRM Side-by-Side
 
-Az and AzureRM cannot be imported side-by-side into the same PowerShell session.  If you do not want to migrate your scripts from AzureRM to Az right away, there are three main options:
+Az and AzureRM cannot be imported side-by-side into the same PowerShell session.  If you do not want to migrate your scripts from AzureRM to Az right away, there are two main options:
 - Install Az in PowerShell Core, and leave AzureRM in Windows PowerShell
 - Install Az and AzureRM side-by-side in Windows PowerShell and ensure scripts do not mix the modules
 
 #### Install Az in PowerShell Core
 You can follow the instructions in [Installing PowerShell Core on Windows](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6
-) to install PowerSHell Core, then use ```Install-Module Az``` in PowerShell Core to acquire the Az module.  Since Windows PowerShell and PowerSHell Core can exist side-by-side and do not share module directories, this will effectively isolate the two modules.
+) to install PowerShell Core, then use ```Install-Module Az``` in PowerShell Core to acquire the Az module.  Since Windows PowerShell and PowerShell Core can exist side-by-side and do not share module directories, this will effectively isolate the two modules.
 
 #### Install Az and AzureRM Side-by-Side
 If you need to have both modules installed:
