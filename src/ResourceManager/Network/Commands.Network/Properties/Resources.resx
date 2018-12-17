@@ -285,7 +285,7 @@
   <data name="ParentVpnGatewayNotFound" xml:space="preserve">
     <value>The parent VpnGateway for this connection cannot be found.</value>
   </data>
-  <data name="ExpressRouteGatewayNotFound" xml:space="preserve">
+  <data name="ParentExpressRouteGatewayNotFound" xml:space="preserve">
     <value>The parent ExpressRouteGateway for this connection cannot be found.</value>
   </data>
   <data name="RemovingVirtualHubWarning" xml:space="preserve">
