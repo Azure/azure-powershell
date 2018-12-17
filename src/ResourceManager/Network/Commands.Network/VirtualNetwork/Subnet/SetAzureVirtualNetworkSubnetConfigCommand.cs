@@ -21,7 +21,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSVirtualNetwork), DeprecatedOutputProperties = new string[] { "EnableVmProtection" })]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetwork))]
     public class SetAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
     {
@@ -31,7 +30,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        [CmdletParameterBreakingChange("VirtualNetwork", ChangeDescription = "The EnableVMProtection property for the parameter Virtualnetwork is no longer supported. Setting this property has no impact. This property will be removed in a future release. Please remove it from your scripts")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
@@ -63,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            subnet.AddressPrefix = this.AddressPrefix;
+            subnet.AddressPrefix = this.AddressPrefix?.ToList();
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
@@ -94,7 +92,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.ServiceEndpointPolicy != null)
             {
-                subnet.ServiceEndpointPolicies = this.ServiceEndpointPolicy;
+                subnet.ServiceEndpointPolicies = this.ServiceEndpointPolicy?.ToList();
             }
             else
             {
@@ -103,7 +101,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.Delegation != null)
             {
-                subnet.Delegations = this.Delegation;
+                subnet.Delegations = this.Delegation?.ToList();
             }
             else
             {

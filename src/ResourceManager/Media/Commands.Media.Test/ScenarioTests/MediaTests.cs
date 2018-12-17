@@ -22,12 +22,12 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
     /// </summary>
     public class MediaTests
     {
-        private ServiceManagemenet.Common.Models.XunitTracingInterceptor _logger;
+        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
 
         public MediaTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
+            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Old ResourceManager version in test controller. Udpate and re-record.")]

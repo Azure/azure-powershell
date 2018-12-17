@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
+        ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
         /// </summary>
         internal static string InvalidDefaultSubscription {
             get {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzAccount to login..
         /// </summary>
         internal static string NoSubscriptionInContext {
             get {

@@ -25,7 +25,7 @@ using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.
 using Microsoft.Azure.Management.Storage;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {

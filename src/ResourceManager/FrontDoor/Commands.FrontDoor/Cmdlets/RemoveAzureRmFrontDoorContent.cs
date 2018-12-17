@@ -27,7 +27,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzureRmFrontDoor cmdlet.
+    /// Defines the New-AzFrontDoor cmdlet.
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorContent", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmFrontDoorContent : AzureFrontDoorCmdletBase

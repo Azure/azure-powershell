@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.Commands.Management.Storage.dll","Microsoft.Azure.Commands.Management.Storage.StorageAccount.GetAzureStorageUsageCommand","Get-AzureRmStorageUsage","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Get-AzureRmStorageUsage' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Get-AzureRmStorageUsage'."

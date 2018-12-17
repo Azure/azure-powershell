@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -52,7 +52,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         public void SelectAzureProfileInMemory()
         {
             var profile = new AzureRmProfile { DefaultContext = new AzureContext() };
-            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
+            var env = new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            env.Name = "foo";
+            profile.EnvironmentTable.Add("foo", env);
             ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
             // Setup
             cmdlt.AzureContext = profile;

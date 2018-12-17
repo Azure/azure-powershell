@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string VmNormalDiskParameterSet = "VmNormalDiskParameterSetName";
         protected const string VmManagedDiskParameterSet = "VmManagedDiskParameterSetName";
-        protected const string VmScaleSetVMParameterSet = "VmScaleSetVMParameterSetName";
 
         [Alias("VMProfile")]
         [Parameter(
@@ -47,16 +46,6 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = HelpMessages.VMProfile)]
         [ValidateNotNullOrEmpty]
         public CM.PSVirtualMachine VM { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VmScaleSetVMParameterSet,
-            HelpMessage = HelpMessages.VmssVMProfile)]
-        [ValidateNotNullOrEmpty]
-        public PSVirtualMachineScaleSetVM VirtualMachineScaleSetVM { get; set; }
 
         [Parameter(
             ParameterSetName = VmNormalDiskParameterSet,
@@ -126,12 +115,6 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = VmManagedDiskParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskId)]
-        [Parameter(
-            Position = 8,
-            ParameterSetName = VmScaleSetVMParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMManagedDiskId)]
         [ValidateNotNullOrEmpty]
         public string ManagedDiskId { get; set; }
 
@@ -140,21 +123,12 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = VmManagedDiskParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
-        [Parameter(
-            Position = 9,
-            ParameterSetName = VmScaleSetVMParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string StorageAccountType { get; set; }
 
         [Parameter(
             ParameterSetName = VmManagedDiskParameterSet,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = false)]
-        [Parameter(
-            ParameterSetName = VmScaleSetVMParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = false)]
         public SwitchParameter WriteAccelerator { get; set; }
@@ -196,7 +170,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 WriteObject(this.VM);
             }
-            else if (this.ParameterSetName.Equals(VmManagedDiskParameterSet))
+            else
             {
                 if (!string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.ManagedDiskId))
                 {
@@ -232,36 +206,6 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.StorageProfile = storageProfile;
 
                 WriteObject(this.VM);
-            }
-            else
-            {
-                WriteWarning("VirtualMachineScaleSetVM parameter will be deprecated.  Use Add-AzureRmVmssVMDataDisk instead.");
-
-                var storageProfile = this.VirtualMachineScaleSetVM.StorageProfile;
-
-                if (storageProfile == null)
-                {
-                    storageProfile = new StorageProfile();
-                }
-
-                if (storageProfile.DataDisks == null)
-                {
-                    storageProfile.DataDisks = new List<DataDisk>();
-                }
-
-                storageProfile.DataDisks.Add(new DataDisk
-                {
-                    Caching = this.Caching,
-                    DiskSizeGB = this.DiskSizeInGB,
-                    Lun = this.Lun.GetValueOrDefault(),
-                    CreateOption = this.CreateOption,
-                    ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType),
-                    WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
-                });
-
-                this.VirtualMachineScaleSetVM.StorageProfile = storageProfile;
-
-                WriteObject(this.VirtualMachineScaleSetVM);
             }
         }
     }

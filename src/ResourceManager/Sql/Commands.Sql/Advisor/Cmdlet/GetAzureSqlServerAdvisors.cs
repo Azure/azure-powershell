@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlServerAdvisors cmdlet
+    /// Defines the Get-AzSqlServerAdvisors cmdlet
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvisor")]
     [OutputType(typeof(AzureSqlServerAdvisorModel))]

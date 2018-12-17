@@ -29,7 +29,7 @@ using System.Security;
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
     /// <summary>
-    /// Defines the Add-AzureRmSqlServerTransparentDataEncryptionCertificate cmdlet
+    /// Defines the Add-AzSqlServerTransparentDataEncryptionCertificate cmdlet
     /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(bool))]

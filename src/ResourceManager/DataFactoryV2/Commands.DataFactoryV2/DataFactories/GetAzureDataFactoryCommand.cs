@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Alias(Constants.DataFactoryName)]
         public string Name { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             var filterOptions = new DataFactoryFilterOptions();

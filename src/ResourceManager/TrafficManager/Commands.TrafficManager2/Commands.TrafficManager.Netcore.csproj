@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.TrafficManager</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.TrafficManager</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.TrafficManager</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

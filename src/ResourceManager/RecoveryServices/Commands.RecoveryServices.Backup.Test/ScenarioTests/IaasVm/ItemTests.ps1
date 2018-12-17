@@ -33,7 +33,7 @@ function Test-AzureVMGetItems
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
 			-Status Registered `
-			-Name $vm.Name
+			-FriendlyName $vm.Name
 		
 		# VARIATION-1: Get all items for container
 		$items = Get-AzureRmRecoveryServicesBackupItem `

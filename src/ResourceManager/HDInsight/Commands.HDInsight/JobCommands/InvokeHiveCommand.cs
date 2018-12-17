@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 throw new NullReferenceException(
                     string.Format(
-                        "The cluster or resource group specified is null. Please use the Use-AzureRmHDInsightCluster command to connect to a cluster."));
+                        "The cluster or resource group specified is null. Please use the Use-AzHDInsightCluster command to connect to a cluster."));
             }
 
             //get hive job

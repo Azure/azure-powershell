@@ -23,7 +23,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class ConnectToTargetSqlSqlDbSyncTaskCmdlet : TaskCmdlet
+    public class ConnectToTargetSqlSqlDbSyncTaskCmdlet : TaskCmdlet<ConnectionInfo>
     {
         public ConnectToTargetSqlSqlDbSyncTaskCmdlet(InvocationInfo myInvocation) : base(myInvocation)
         {
