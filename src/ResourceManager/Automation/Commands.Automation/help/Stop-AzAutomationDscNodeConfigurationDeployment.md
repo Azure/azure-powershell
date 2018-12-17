@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Automation.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 32CF9BF7-519F-4B5D-9F2B-3CC556A77A48
 online version: https://docs.microsoft.com/en-us/powershell/module/az.automation/stop-azautomationdscnodeconfigurationdeployment
@@ -62,7 +62,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -186,7 +186,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Guid
 
 ### Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment
-Parameters: InputObject (ByValue)
 
 ### System.String
 

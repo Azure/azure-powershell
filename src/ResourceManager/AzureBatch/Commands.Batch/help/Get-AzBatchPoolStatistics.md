@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 8188C617-4895-4B43-8D3B-FA6FC5B868DD
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchpoolstatistics
@@ -73,7 +73,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -88,7 +88,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Batch.BatchAccountContext
-Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 

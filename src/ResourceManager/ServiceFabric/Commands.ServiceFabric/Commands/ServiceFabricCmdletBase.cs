@@ -57,6 +57,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         #region TEST
         internal static bool RunningTest = false;
         internal static string TestThumbprint = string.Empty;
+        internal static string TestCommonNameCACert = string.Empty;
+        internal static string TestCommonNameAppCert = string.Empty;
+        internal static string TestThumbprintAppCert = string.Empty;
+        internal static bool TestAppCert = false;
         #endregion
 
         /// <summary>
@@ -400,7 +404,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return vault;
         }
 
-        protected CertificateBundle ImportCertificateToAzureKeyVault(string keyVaultName, string certificateName, string pfxFilePath, SecureString password, out string thumbprint)
+        protected CertificateBundle ImportCertificateToAzureKeyVault(string keyVaultName, string certificateName, string pfxFilePath, SecureString password, out string thumbprint, out string commonName)
         {
             var keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(pfxFilePath));
             if (!keyFile.Exists)
@@ -409,7 +413,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     string.Format(ServiceFabricProperties.Resources.FileNotExist, pfxFilePath));
             }
 
-            thumbprint = new X509Certificate2(pfxFilePath, password).Thumbprint;
+            var cert = new X509Certificate2(pfxFilePath, password);
+            thumbprint = cert.Thumbprint;
+            commonName = cert.GetNameInfo(X509NameType.SimpleName, false);
 
             var collection = new X509Certificate2Collection();
             var flag = X509KeyStorageFlags.Exportable;

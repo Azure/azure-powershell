@@ -1,5 +1,5 @@
----
-external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 4631D36F-926A-4279-AA4D-5F694C18081E
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azstoragetable

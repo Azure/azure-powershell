@@ -51,6 +51,43 @@ function Test-NewAzureRmMapsAccount
 
 <#
 .SYNOPSIS
+Test New-AzureRmMapsAccountS1
+#>
+function Test-NewAzureRmMapsAccountS1
+{
+    # Setup
+    $rgname = Get-MapsManagementTestResourceName;
+    try
+    {
+        # Test
+        $accountname = 'ps-s1-' + $rgname;
+        $skuname = 'S1';
+        $location = 'West US';
+
+        New-AzureRmResourceGroup -Name $rgname -Location $location;
+
+        $createdAccount = New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        Assert-NotNull $createdAccount;
+        # Call create again, expect to get the same account
+        $createdAccountAgain = New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        Assert-NotNull $createdAccountAgain
+        Assert-AreEqual $createdAccount.Id $createdAccountAgain.Id;
+        Assert-AreEqual $createdAccount.ResourceGroupName $createdAccountAgain.ResourceGroupName;
+        Assert-AreEqual $createdAccount.Name $createdAccountAgain.Name;
+        Assert-AreEqual $createdAccount.Location $createdAccountAgain.Location;
+        Assert-AreEqual $createdAccount.Sku.Name $createdAccountAgain.Sku.Name;
+        
+        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Remove-AzureRmMapsAccount
 #>
 function Test-RemoveAzureRmMapsAccount

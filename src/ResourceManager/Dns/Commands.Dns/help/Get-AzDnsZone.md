@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: B831ABE6-348C-4DD6-9295-18D23A1FDF63
 online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/get-azdnszone
@@ -61,7 +61,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

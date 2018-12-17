@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         internal static class RestoreVM
         {
-            public const string TargetResourceGroupName = "The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks";
+            public const string TargetResourceGroupName = "The resource group to which the managed disks are restored. This parameter is mandatory for backup of VM with managed disks";
             public const string OsaOption = "Use this switch if the disks from the recovery point are to be restored to their original storage accounts";
         }
 
@@ -135,6 +135,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ResourceGroupName = "Name of the resource group of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.";
             public const string Type = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
             public const string ResourceId = "ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.";
+            public const string ProtectableObjName = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
         }
     }
 }

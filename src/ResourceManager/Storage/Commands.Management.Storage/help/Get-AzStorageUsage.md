@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Management.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 11AAA319-DDBB-4156-9BE7-4DE8B80A904C
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageusage
@@ -14,7 +14,7 @@ Gets the Storage resource usage of the current subscription.
 ## SYNTAX
 
 ```
-Get-AzStorageUsage [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzStorageUsage -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,15 +22,7 @@ The **Get-AzStorageUsage** cmdlet gets the resource usage for Azure Storage for 
 
 ## EXAMPLES
 
-### Example 1: Get the storage resources usage
-```
-PS C:\>Get-AzStorageUsage
-```
-
-This command gets the Storage resources usage of the current subscription.
- 
-
-### Example 2: Get the storage resources usage of specified location
+### Example 1: Get the storage resources usage of specified location
 ```
 PS C:\>Get-AzStorageUsage -Location 'West US'
 
@@ -51,7 +43,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -69,7 +61,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -81,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 

@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: B7A675D3-EF79-4EE2-9330-D4C690739006
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmsize
@@ -80,7 +80,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

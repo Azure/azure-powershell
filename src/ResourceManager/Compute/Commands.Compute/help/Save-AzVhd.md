@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 18E1AD70-42A6-47A2-A685-6E218B6DC4BE
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/save-azvhd
@@ -89,7 +89,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
