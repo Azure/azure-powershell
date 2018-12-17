@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Websites</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Websites</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.WebApps</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -36,10 +36,6 @@
     <None Include="Az.Websites.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

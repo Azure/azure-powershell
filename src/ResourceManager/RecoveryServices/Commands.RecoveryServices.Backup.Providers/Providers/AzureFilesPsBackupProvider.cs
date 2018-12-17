@@ -153,9 +153,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultLocation = (string)ProviderData[VaultParams.VaultLocation];
             CmdletModel.AzureFileShareRecoveryPoint recoveryPoint = ProviderData[RestoreBackupItemParams.RecoveryPoint]
                 as CmdletModel.AzureFileShareRecoveryPoint;
-            string storageAccountName = ProviderData[RestoreBackupItemParams.StorageAccountName].ToString();
-            string storageAccountResourceGroupName = ProviderData.ContainsKey(RestoreBackupItemParams.StorageAccountResourceGroupName) ?
-                ProviderData[RestoreBackupItemParams.StorageAccountResourceGroupName].ToString() : null;
             string copyOptions = (string)ProviderData[RestoreFSBackupItemParams.ResolveConflict];
             string sourceFilePath = ProviderData.ContainsKey(RestoreFSBackupItemParams.SourceFilePath) ?
                 (string)ProviderData[RestoreFSBackupItemParams.SourceFilePath] : null;
@@ -169,7 +166,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string targetFolder = ProviderData.ContainsKey(RestoreFSBackupItemParams.TargetFolder) ?
                 (string)ProviderData[RestoreFSBackupItemParams.TargetFolder] : null;
 
-            GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(storageAccountName);
+            //validate file recovery request
+            ValidateFileRestoreRequest(sourceFilePath, sourceFileType);
+
+            //validate alternate location restore request
+            ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName);
+
+            if (targetFileShareName != null && targetStorageAccountName != null && targetFolder == null)
+            {
+                targetFolder = "/";
+            }
+
+            GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(recoveryPoint.ContainerName.Split(';')[2]);
             GenericResource targetStorageAccountResource = null;
             string targetStorageAccountLocation = null;
             if (targetStorageAccountName != null)
@@ -788,54 +796,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 resourceGroupName: vaultResourceGroupName);
         }
 
-        public ResourceBackupStatus CheckBackupStatus()
-        {
-            string fileShareName = (string)ProviderData[ProtectionCheckParams.Name];
-            string azureStorageAccountResourceGroupName =
-                (string)ProviderData[ProtectionCheckParams.ResourceGroupName];
-
-            ODataQuery<ProtectedItemQueryObject> queryParams =
-                new ODataQuery<ProtectedItemQueryObject>(
-                    q => q.BackupManagementType
-                            == ServiceClientModel.BackupManagementType.AzureStorage &&
-                         q.ItemType == DataSourceType.AzureFileShare);
-
-            var vaultIds = ServiceClientAdapter.ListVaults();
-            foreach (var vaultId in vaultIds)
-            {
-                ResourceIdentifier vaultIdentifier = new ResourceIdentifier(vaultId);
-
-                var items = ServiceClientAdapter.ListProtectedItem(
-                    queryParams,
-                    vaultName: vaultIdentifier.ResourceName,
-                    resourceGroupName: vaultIdentifier.ResourceGroupName);
-
-                if (items.Any(
-                    item =>
-                    {
-                        ResourceIdentifier storageIdentifier =
-                            new ResourceIdentifier(item.Properties.SourceResourceId);
-                        var itemStorageAccountRgName = storageIdentifier.ResourceGroupName;
-
-                        return item.Name.Split(';')[1].ToLower() == fileShareName.ToLower() &&
-                            itemStorageAccountRgName.ToLower() == azureStorageAccountResourceGroupName.ToLower();
-                    }))
-                {
-                    return new ResourceBackupStatus(
-                        fileShareName,
-                        azureStorageAccountResourceGroupName,
-                        vaultId,
-                        true);
-                }
-            }
-
-            return new ResourceBackupStatus(
-                fileShareName,
-                azureStorageAccountResourceGroupName,
-                null,
-                false);
-        }
-
         private void ValidateAzureStorageBackupManagementType(
             CmdletModel.BackupManagementType backupManagementType)
         {
@@ -928,6 +888,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 throw new ArgumentException(string.Format(Resources.InvalidProtectionPolicyException,
                                             typeof(AzureFileShareItem).ToString()));
+            }
+        }
+
+        private void ValidateFileRestoreRequest(string sourceFilePath, string sourceFileType)
+        {
+            if (sourceFilePath == null && sourceFileType != null)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileSourceFilePathMissingException));
+            }
+            else if (sourceFilePath != null && sourceFileType == null)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileSourceFileTypeMissingException));
+            }
+        }
+
+        private void ValidateLocationRestoreRequest(string targetFileShareName, string targetStorageAccountName)
+        {
+            if (targetFileShareName == null && targetStorageAccountName != null)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileTargetFSNameMissingException));
+            }
+            else if (targetFileShareName != null && targetStorageAccountName == null)
+            {
+                throw new ArgumentException(string.Format(Resources.AzureFileTargetSANameMissingException));
             }
         }
     }

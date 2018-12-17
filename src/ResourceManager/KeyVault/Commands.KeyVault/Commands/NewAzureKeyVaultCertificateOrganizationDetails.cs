@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
     /// <summary>
-    /// New-AzureKeyVaultOrganizationDetails creates an in-memory organization details object
+    /// New-AzKeyVaultOrganizationDetails creates an in-memory organization details object
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateOrganizationDetails",SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultCertificateOrganizationDetails))]

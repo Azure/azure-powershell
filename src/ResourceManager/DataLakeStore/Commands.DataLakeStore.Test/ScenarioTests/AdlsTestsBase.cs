@@ -28,7 +28,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 {

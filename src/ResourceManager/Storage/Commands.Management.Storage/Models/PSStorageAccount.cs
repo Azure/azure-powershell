@@ -106,10 +106,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         [Ps1Xml(Label = "EnableHttpsTrafficOnly", Target = ViewControl.Table, Position = 8)]
         public bool? EnableHttpsTrafficOnly { get; set; }
+        
+        public bool? EnableHierarchicalNamespace { get; set; }
 
         public bool? EnableAzureFilesAadIntegrationForSMB { get; set; }
-
-        public bool? EnableHierarchicalNamespace { get; set; }
 
         public bool? FailoverInProgress { get; set; }
 

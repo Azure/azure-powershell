@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 CreateNewCloudService = false,
                 RecoveryPointId = rp.RecoveryPointId,
                 RecoveryType = RecoveryType.RestoreDisks,
-                Region = vaultLocation,
+                Region = vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation(),
                 StorageAccountId = storageAccountResource.Id,
                 SourceResourceId = rp.SourceResourceId,
                 TargetResourceGroupId = targetResourceGroupName != null ?
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 triggerRestoreRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
-                vaultLocation: vaultLocation);
+                vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation());
             return response;
         }
 
@@ -813,54 +813,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         }
 
-        public ResourceBackupStatus CheckBackupStatus()
-        {
-            string azureVmName = (string)ProviderData[ProtectionCheckParams.Name];
-            string azureVmResourceGroupName =
-                (string)ProviderData[ProtectionCheckParams.ResourceGroupName];
-
-            ODataQuery<ProtectedItemQueryObject> queryParams =
-                new ODataQuery<ProtectedItemQueryObject>(
-                    q => q.BackupManagementType
-                            == ServiceClientModel.BackupManagementType.AzureIaasVM &&
-                         q.ItemType == DataSourceType.VM);
-
-            var vaultIds = ServiceClientAdapter.ListVaults();
-            foreach (var vaultId in vaultIds)
-            {
-                ResourceIdentifier vaultIdentifier = new ResourceIdentifier(vaultId);
-
-                var items = ServiceClientAdapter.ListProtectedItem(
-                    queryParams,
-                    vaultName: vaultIdentifier.ResourceName,
-                    resourceGroupName: vaultIdentifier.ResourceGroupName);
-
-                if (items.Any(
-                    item =>
-                    {
-                        ResourceIdentifier vmIdentifier =
-                            new ResourceIdentifier(item.Properties.SourceResourceId);
-                        var itemVmName = vmIdentifier.ResourceName;
-                        var itemVmRgName = vmIdentifier.ResourceGroupName;
-
-                        return itemVmName.ToLower() == azureVmName.ToLower() &&
-                            itemVmRgName.ToLower() == azureVmResourceGroupName.ToLower();
-                    }))
-                {
-                    return new ResourceBackupStatus(
-                        azureVmName,
-                        azureVmResourceGroupName,
-                        vaultId,
-                        true);
-                }
-            }
-
-            return new ResourceBackupStatus(
-                azureVmName,
-                azureVmResourceGroupName,
-                null,
-                false);
-        }
 
         #region private
 

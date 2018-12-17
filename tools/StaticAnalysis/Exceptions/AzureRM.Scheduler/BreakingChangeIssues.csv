@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.Commands.Scheduler.dll","Microsoft.Azure.Commands.Scheduler.Cmdlets.GetAzureSchedulerJobCollectionCommand","Get-AzureRmSchedulerJobCollection","0","1020","The cmdlet 'Get-AzureRmSchedulerJobCollection' no longer has output type 'System.Object'.","Make cmdlet 'Get-AzureRmSchedulerJobCollection' return type 'System.Object'."

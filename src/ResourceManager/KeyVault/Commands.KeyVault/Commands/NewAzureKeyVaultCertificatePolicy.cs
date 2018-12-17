@@ -22,7 +22,7 @@ using System.Security.Cryptography.X509Certificates;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
-    /// New-AzureKeyVaultCertificatePolicy creates an in-memory Certificate Policy object
+    /// New-AzKeyVaultCertificatePolicy creates an in-memory Certificate Policy object
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificatePolicy",SupportsShouldProcess = true,DefaultParameterSetName = SubjectNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificatePolicy))]

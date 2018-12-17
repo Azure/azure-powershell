@@ -65,7 +65,7 @@ function Test-AzureFSItem
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
-			-Name $saName
+			-FriendlyName $saName
 		
 		# VARIATION-1: Get all items for container
 		$items = Get-AzureRmRecoveryServicesBackupItem `
@@ -149,7 +149,7 @@ function Test-AzureFSBackup
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
-			-Name $saName
+			-FriendlyName $saName
 
 		# Trigger backup and wait for completion
 		$backupJob = Backup-AzureRmRecoveryServicesBackupItem `
@@ -230,7 +230,7 @@ function Test-AzureFSGetRPs
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
-			-Name $saName
+			-FriendlyName $saName
 		$backupJob = Backup-Item $vault $item
 
 		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
@@ -269,7 +269,7 @@ function Test-AzureFSFullRestore
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
-			-Name $saName
+			-FriendlyName $saName
 		$backupJob = Backup-Item $vault $item
 
 		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
@@ -281,13 +281,46 @@ function Test-AzureFSFullRestore
 			-EndDate $backupEndTime `
 			-Item $item;
 
+		Assert-ThrowsContains { Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $recoveryPoint[0] `
+			-ResolveConflict Overwrite `
+			-TargetStorageAccountName $targetSaName `
+			-TargetFolder $targetFolder } `
+			"Provide TargetFileShareName for Alternate Location restore or remove TargetStorageAccountName for Original Location restore"
+
+		Assert-ThrowsContains { Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $recoveryPoint[0] `
+			-ResolveConflict Overwrite `
+			-TargetFileShareName $targetFileShareName `
+			-TargetFolder $targetFolder } `
+			"Provide TargetStorageAccountName for Alternate Location restore or remove TargetFileShareName for Original Location restore"
+
+		Assert-ThrowsContains { Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+		  	-VaultLocation $vault.Location `
+		  	-RecoveryPoint $recoveryPoint[0] `
+		  	-ResolveConflict Overwrite `
+		  	-SourceFileType File } `
+		  	"Provide SourceFilePath for File restore or remove SourceFileType for file share restore"
+
+		Assert-ThrowsContains { Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $recoveryPoint[0] `
+			-ResolveConflict Overwrite `
+			-SourceFilePath $filePath } `
+			"Provide SourceFileType for File restore or remove SourceFilePath for file share restore"
+    
+		# Test without storage account dependancy
 		# Item level restore at alternate location
 		$restoreJob1 = Restore-AzureRmRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
 			-RecoveryPoint $recoveryPoint[0] `
-			-StorageAccountName $saName `
-			-StorageAccountResourceGroupName $saRgName `
 			-ResolveConflict Overwrite `
 			-SourceFilePath $folderPath `
 			-SourceFileType Directory `
@@ -297,14 +330,13 @@ function Test-AzureFSFullRestore
 				Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJob1.Status -eq "Completed" }
-
-		# Full share restore at alternate location		
+    
+		# Test without storage account dependancy
+		# Full share restore at alternate location
 		$restoreJob2 = Restore-AzureRmRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
 			-RecoveryPoint $recoveryPoint[0] `
-			-StorageAccountName $saName `
-			-StorageAccountResourceGroupName $saRgName `
 			-ResolveConflict Overwrite `
 			-TargetStorageAccountName $targetSaName `
 			-TargetFileShareName $targetFileShareName `
@@ -313,13 +345,12 @@ function Test-AzureFSFullRestore
 		
 		Assert-True { $restoreJob2.Status -eq "Completed" }
 
+		# Test without storage account dependancy
 		# Item level restore at original location
 		$restoreJob3 = Restore-AzureRmRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
 			-RecoveryPoint $recoveryPoint[0] `
-			-StorageAccountName $saName `
-			-StorageAccountResourceGroupName $saRgName `
 			-ResolveConflict Overwrite `
 			-SourceFilePath $filePath `
 			-SourceFileType File | `
@@ -327,13 +358,12 @@ function Test-AzureFSFullRestore
 
 		Assert-True { $restoreJob3.Status -eq "Completed" }
 
+		# Test without storage account dependancy
 		# Full share restore at original location
 		$restoreJob4 = Restore-AzureRmRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
 			-RecoveryPoint $recoveryPoint[0] `
-			-StorageAccountName $saName `
-			-StorageAccountResourceGroupName $saRgName `
 			-ResolveConflict Overwrite | `
 				Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
 

@@ -1,16 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.DataFactoryV2</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.DataFactoryV2</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(ProjectDir)..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.DataFactoryV2\</OutputPath>
+    <OutputPath>$(ProjectDir)..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.DataFactory\</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
@@ -29,11 +29,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DataFactory" Version="2.3.1" />
-    <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="3.4.6604.1" />
+    <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="3.11.6898.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Az.DataFactoryV2.psd1">
+    <None Include="Az.DataFactory.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

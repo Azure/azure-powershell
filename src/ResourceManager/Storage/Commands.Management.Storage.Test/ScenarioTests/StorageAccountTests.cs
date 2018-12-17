@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -162,6 +162,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestGetAzureStorageAccountGeoReplicationStats()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureStorageAccountGeoReplicationStats");
-        }        
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPipingNewUpdateAccount()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-PipingNewUpdateAccount");
+        }
+
+        
     }
 }

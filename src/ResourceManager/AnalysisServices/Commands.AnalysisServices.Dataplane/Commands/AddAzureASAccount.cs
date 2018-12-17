@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AnalysisServicesAccount", DefaultParameterSetName = "UserParameterSetName", SupportsShouldProcess =true)]
-    [Alias("Login-AzureAsAccount")]
+    [Alias("Login-AzureAsAccount", "Login-AzAsAccount")]
     [OutputType(typeof(AsAzureProfile))]
     public class AddAzureASAccountCommand : AzurePSCmdlet
     {
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             get
             {
-                // Nothing to do with Azure Resource Managment context
+                // Nothing to do with Azure Resource Management context
                 return null;
             }
         }
@@ -141,8 +141,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public override void ExecuteCmdlet()
         {
-            AsAzureAccount azureAccount = new AsAzureAccount();
-            azureAccount.Type = ServicePrincipal ? AsAzureAccount.AccountType.ServicePrincipal : AsAzureAccount.AccountType.User;
+            var azureAccount = new AsAzureAccount
+            {
+                Type = ServicePrincipal ? AsAzureAccount.AccountType.ServicePrincipal : AsAzureAccount.AccountType.User
+            };
 
             SecureString password = null;
             if (Credential != null)
@@ -183,6 +185,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 {
                     AsAzureClientSession.Instance.SetCurrentContext(azureAccount, AsEnvironment);
                 }
+// TODO: Remove IfDef
 #if NETSTANDARD
                 var asAzureProfile = AsAzureClientSession.Instance.Login(currentProfile.Context, password, WriteWarning);
 #else

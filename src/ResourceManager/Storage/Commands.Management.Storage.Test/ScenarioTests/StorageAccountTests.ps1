@@ -549,9 +549,8 @@ function Test-NetworkRule
         $ip4 = "28.0.2.0/19";
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
-
-        $loc = Get-ProviderLocation_Stage;
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -NetworkRuleSet (@{bypass="Logging,Metrics,AzureServices";
+        
+        $global:sto = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -NetworkRuleSet (@{bypass="Logging,Metrics,AzureServices";
             ipRules=(@{IPAddressOrRange="$ip1";Action="allow"},
             @{IPAddressOrRange="$ip2";Action="allow"});
             defaultAction="Deny"}) 
@@ -564,8 +563,8 @@ function Test-NetworkRule
         Assert-AreEqual $ip2 $stoacl.IpRules[1].IPAddressOrRange;
         Assert-AreEqual 0 $stoacl.VirtualNetworkRules.Count
 
-        Update-AzureRmStorageAccountNetworkRuleSet -verbose -ResourceGroupName $rgname -Name $stoname -Bypass AzureServices,Metrics -DefaultAction Allow -IpRule (@{IPAddressOrRange="$ip3";Action="allow"},@{IPAddressOrRange="$ip4";Action="allow"})
-        $stoacl = Get-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName $rgname -Name $stoname
+        $sto | Update-AzureRmStorageAccountNetworkRuleSet -verbose -Bypass AzureServices,Metrics -DefaultAction Allow -IpRule (@{IPAddressOrRange="$ip3";Action="allow"},@{IPAddressOrRange="$ip4";Action="allow"})
+        $stoacl = $sto | Get-AzureRmStorageAccountNetworkRuleSet
         $stoacliprule = $stoacl.IpRules
         Assert-AreEqual 6 $stoacl.Bypass;
         Assert-AreEqual Allow $stoacl.DefaultAction;
@@ -959,6 +958,47 @@ function Test-GetAzureStorageAccountGeoReplicationStats
         Assert-NotNull $sto.GeoReplicationStats.LastSyncTime
         
         Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+        }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Get-AzureRmStorageAccount | New/Set-AzureRmStorageAccount
+#>
+function Test-PipingNewUpdateAccount
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stoname2 = 'sto' + $rgname + '2';
+        $stotype = 'Standard_GRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+
+        $global:sto = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+
+        Retry-IfException { $global:sto2 = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname | New-AzureRmStorageAccount -Name $stoname2 -skuName $stotype; }
+        Assert-AreEqual $sto.ResourceGroupName $sto2.ResourceGroupName;
+        Assert-AreEqual $sto.Location $sto2.Location;
+        Assert-AreNotEqual $sto.StorageAccountName $sto2.StorageAccountName;
+		
+		Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname | set-AzureRmStorageAccount -UpgradeToStorageV2
+		$global:sto = $sto | set-AzureRmStorageAccount -EnableHttpsTrafficOnly $true
+        Assert-AreEqual 'StorageV2' $sto.Kind;
+        Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
+
+        Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname | Remove-AzureRmStorageAccount -Force;
+        $sto2 | Remove-AzureRmStorageAccount -Force;
     }
     finally
     {

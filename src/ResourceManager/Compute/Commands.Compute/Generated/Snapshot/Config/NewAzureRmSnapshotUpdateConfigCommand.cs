@@ -31,9 +31,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(DiskSku), ReplacementCmdletOutputTypeName = "SnapshotSku")]
-#endif
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotUpdateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
     public partial class NewAzureRmSnapshotUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -137,10 +134,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?)null,
                 Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 EncryptionSettings = vEncryptionSettings,
-                Sku = new DiskSku
-                {
-                    Name = vSku.Name.ToString()
-                }
+                Sku = vSku
             };
 
             WriteObject(vSnapshotUpdate);

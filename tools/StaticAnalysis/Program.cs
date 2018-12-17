@@ -109,13 +109,10 @@ namespace StaticAnalysis
                 }
 
                 bool useNetcore = args.Any(a => a == "--use-netcore" || a == "-u");
-                if (!useNetcore)
-                {
-                    Analyzers.Add(new SignatureVerifier.SignatureVerifier());
-                    Analyzers.Add(new BreakingChangeAnalyzer.BreakingChangeAnalyzer());
-                }
+                Analyzers.Add(new SignatureVerifier.SignatureVerifier());
+                Analyzers.Add(new BreakingChangeAnalyzer.BreakingChangeAnalyzer());
 
-                if (!skipHelp && !useNetcore)
+                if (!skipHelp)
                 {
                     Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
                 }

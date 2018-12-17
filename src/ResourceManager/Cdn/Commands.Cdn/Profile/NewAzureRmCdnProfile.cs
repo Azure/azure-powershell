@@ -29,7 +29,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
     /// <summary>
-    /// Defines the New-AzureRmCdnProfile cmdlet.
+    /// Defines the New-AzCdnProfile cmdlet.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnProfile", SupportsShouldProcess = true), OutputType(typeof(PSProfile))]
     public class NewAzureRmCdnProfile : AzureCdnCmdletBase
