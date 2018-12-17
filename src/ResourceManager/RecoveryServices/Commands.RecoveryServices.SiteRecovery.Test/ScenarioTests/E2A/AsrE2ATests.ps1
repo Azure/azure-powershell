@@ -167,7 +167,7 @@ function Test-SiteRecoveryCreatePolicy
 	Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
 	# Create profile
-	$Job =  New-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -Encryption Disable -RecoveryAzureStorageAccountId $RecoveryAzureStorageAccountId
+	$Job =  New-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0  -RecoveryAzureStorageAccountId $RecoveryAzureStorageAccountId
 	WaitForJobCompletion -JobId $Job.Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds
 
 	# Get a profile created (with name ppAzure)

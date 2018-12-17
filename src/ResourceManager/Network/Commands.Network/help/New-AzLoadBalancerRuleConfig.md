@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: FD84D530-491B-4075-A6B4-2E1C46AD92D4
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azloadbalancerruleconfig
@@ -105,7 +105,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -334,7 +334,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+
+### System.Int32
+
+### Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
+
+### Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
+
+### Microsoft.Azure.Commands.Network.Models.PSProbe
 
 ## OUTPUTS
 

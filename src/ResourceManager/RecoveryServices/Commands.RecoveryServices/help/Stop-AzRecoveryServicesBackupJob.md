@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: A8FDC5A3-F309-49B3-B417-8E0A1535BAF4
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices.backup/stop-azrecoveryservicesbackupjob
@@ -50,7 +50,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -143,7 +143,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

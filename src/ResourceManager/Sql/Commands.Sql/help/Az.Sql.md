@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.Sql
 Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.sql
@@ -52,9 +52,6 @@ Gets one or more Advisors for an Azure SQL Database.
 
 ### [Get-AzSqlDatabaseAuditing](Get-AzSqlDatabaseAuditing.md)
 Gets the auditing settings of an Azure SQL database.
-
-### [Get-AzSqlDatabaseAuditingPolicy](Get-AzSqlDatabaseAuditingPolicy.md)
-Gets the auditing policy of a database.
 
 ### [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Gets a database long term retention policy.
@@ -161,12 +158,6 @@ Gets one or more Advisors for an Azure SQL Server.
 ### [Get-AzSqlServerAuditing](Get-AzSqlServerAuditing.md)
 Gets the auditing settings of an Azure SQL server.
 
-### [Get-AzSqlServerAuditingPolicy](Get-AzSqlServerAuditingPolicy.md)
-Gets the auditing policy of a SQL server.
-
-### [Get-AzSqlServerBackupLongTermRetentionVault](Get-AzSqlServerBackupLongTermRetentionVault.md)
-Gets a server long term retention vault.
-
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
 Gets communication links for elastic database transactions between database servers.
 
@@ -196,9 +187,6 @@ Gets the threat detection policy for a server.
 
 ### [Get-AzSqlServerTransparentDataEncryptionProtector](Get-AzSqlServerTransparentDataEncryptionProtector.md)
 Gets the Transparent Data Encryption (TDE) protector
-
-### [Get-AzSqlServerUpgrade](Get-AzSqlServerUpgrade.md)
-Gets the status of an Azure SQL Database server upgrade.
 
 ### [Get-AzSqlServerUpgradeHint](Get-AzSqlServerUpgradeHint.md)
 Gets pricing tier hints for upgrading an Azure SQL Database server.
@@ -290,9 +278,6 @@ Creates an Azure SQL Database Sync Member.
 ### [Remove-AzSqlDatabase](Remove-AzSqlDatabase.md)
 Removes an Azure SQL database.
 
-### [Remove-AzSqlDatabaseAuditing](Remove-AzSqlDatabaseAuditing.md)
-Removes the auditing of a database.
-
 ### [Remove-AzSqlDatabaseDataMaskingRule](Remove-AzSqlDatabaseDataMaskingRule.md)
 Removes a data masking rule from a database.
 
@@ -328,9 +313,6 @@ Removes an Azure SQL Database server.
 
 ### [Remove-AzSqlServerActiveDirectoryAdministrator](Remove-AzSqlServerActiveDirectoryAdministrator.md)
 Removes an Azure AD administrator for SQL Server.
-
-### [Remove-AzSqlServerAuditing](Remove-AzSqlServerAuditing.md)
-Removes the auditing of a SQL server.
 
 ### [Remove-AzSqlServerCommunicationLink](Remove-AzSqlServerCommunicationLink.md)
 Deletes a communication link for elastic database transactions between two servers.
@@ -379,9 +361,6 @@ Modifies auto execute status of an Azure SQL Database Advisor.
 
 ### [Set-AzSqlDatabaseAuditing](Set-AzSqlDatabaseAuditing.md)
 Changes the auditing settings for an Azure SQL database.
-
-### [Set-AzSqlDatabaseAuditingPolicy](Set-AzSqlDatabaseAuditingPolicy.md)
-Sets the auditing policy for a database.
 
 ### [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Sets a server long term retention policy.
@@ -437,12 +416,6 @@ Updates the auto execute status of an Azure SQL Server Advisor.
 ### [Set-AzSqlServerAuditing](Set-AzSqlServerAuditing.md)
 Changes the auditing settings of an Azure SQL server.
 
-### [Set-AzSqlServerAuditingPolicy](Set-AzSqlServerAuditingPolicy.md)
-Changes the auditing policy of a SQL Database server.
-
-### [Set-AzSqlServerBackupLongTermRetentionVault](Set-AzSqlServerBackupLongTermRetentionVault.md)
-Sets a server long term retention vault.
-
 ### [Set-AzSqlServerDisasterRecoveryConfiguration](Set-AzSqlServerDisasterRecoveryConfiguration.md)
 Modifies a database server recovery configuration.
 
@@ -470,9 +443,6 @@ Starts the workflow that runs a recommended index operation.
 ### [Start-AzSqlDatabaseVulnerabilityAssessmentScan](Start-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
 
-### [Start-AzSqlServerUpgrade](Start-AzSqlServerUpgrade.md)
-Starts the upgrade of a SQL Database server.
-
 ### [Start-AzSqlSyncGroupSync](Start-AzSqlSyncGroupSync.md)
 Starts a sync group synchronization.
 
@@ -484,9 +454,6 @@ Stops the workflow that runs a recommended index operation.
 
 ### [Stop-AzSqlElasticPoolActivity](Stop-AzSqlElasticPoolActivity.md)
 Cancels the asynchronous update operation on an elastic pool.
-
-### [Stop-AzSqlServerUpgrade](Stop-AzSqlServerUpgrade.md)
-Stops the upgrade of a SQL Database server.
 
 ### [Stop-AzSqlSyncGroupSync](Stop-AzSqlSyncGroupSync.md)
 Stops a sync group synchronization.
@@ -510,7 +477,4 @@ Updates an Azure SQL Database Sync Member.
 Update the sync schema for a sync member database or a sync hub database.
 It will get the the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
 If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
-
-### [Use-AzSqlServerAuditingPolicy](Use-AzSqlServerAuditingPolicy.md)
-Specifies that a database uses the auditing policy of its host server.
 

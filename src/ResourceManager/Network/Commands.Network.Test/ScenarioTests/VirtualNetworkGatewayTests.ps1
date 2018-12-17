@@ -198,13 +198,6 @@ param
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "Vpn" $expected.GatewayType
       Assert-AreEqual "RouteBased" $expected.VpnType
-      
-      # Update P2S VPNClient Configuration
-      #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-	  $Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
-      Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $expected -VpnClientAddressPool 200.168.0.0/16 -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd 
-      $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-	  Assert-AreEqual "200.168.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes
 
         $radiusCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
         $vpnProfilePackageUrl = New-AzureRmVpnClientConfiguration -ResourceGroupName $rgname -name $rname -AuthenticationMethod $vpnclientAuthMethod -RadiusRootCertificateFile $radiusCertFilePath
@@ -363,11 +356,6 @@ function Test-VirtualNetworkGatewayP2SAndSKU
       Assert-AreEqual "Succeeded" $actual.ProvisioningState
 	  $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname	  
       Assert-AreEqual "VpnGw2" $expected.Sku.Tier
-
-      # Update P2S VPNClient Address Pool
-      Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $expected -VpnClientAddressPool 200.168.0.0/16
-      $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-	  Assert-AreEqual "200.168.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes[0]
 
      # Get, list client Root certificates
      $rootCert = Get-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $clientRootCertName -VirtualNetworkGatewayName $expected.Name -ResourceGroupName $expected.ResourceGroupName

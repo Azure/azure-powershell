@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using Xunit;
 
     public class PowerBITests : PowerBITestsBase

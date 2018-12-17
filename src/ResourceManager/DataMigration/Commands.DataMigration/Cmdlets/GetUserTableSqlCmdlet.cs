@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class GetUserTableSqlCmdlet : TaskCmdlet
+    public class GetUserTableSqlCmdlet : TaskCmdlet<ConnectionInfo>
     {
         private readonly string SelectedDatabase = "SelectedDatabase";
 

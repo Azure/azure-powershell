@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.DataSync.Model;
 using Microsoft.Azure.Commands.Sql.DataSync.Services;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;

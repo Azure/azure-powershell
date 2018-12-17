@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 52C5CD8B-2489-4FE6-9F33-B3350531CD8E
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadgroupmember
@@ -15,7 +15,7 @@ Lists members of an AD group in the current tenant.
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzADGroupMember [-GroupObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+Get-AzADGroupMember [-GroupObjectId <String>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
@@ -68,7 +68,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The group object that you are listing members from.
 
 ```yaml
-Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
+Type: Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
 Parameter Sets: GroupObjectParameterSet
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Object Id of the group.
 
 ```yaml
-Type: System.Guid
+Type: System.String
 Parameter Sets: ObjectIdParameterSet
 Aliases: Id, ObjectId
 
@@ -172,14 +172,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Guid
+### System.String
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
-Parameters: GroupObject (ByValue)
+### Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
 
 ## OUTPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADObject
+### Microsoft.Azure.Commands.ActiveDirectory.PSADObject
 
 ## NOTES
 

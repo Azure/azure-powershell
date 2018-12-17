@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 0EB5C25C-D0A1-4444-AEA2-C963D5069CFC
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore/set-azdatalakestoreaccount
@@ -72,7 +72,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -149,7 +149,7 @@ You can use tags to identify a Data Lake Store account from other Azure resource
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: 2

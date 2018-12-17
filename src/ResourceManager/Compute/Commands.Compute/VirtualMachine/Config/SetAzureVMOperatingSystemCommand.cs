@@ -24,9 +24,6 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-#if NETSTANDARD
-    [CmdletOutputBreakingChange(typeof(PSVirtualMachineIdentity), DeprecatedOutputProperties = new string[] { "IdentityIds" })]
-#endif
     /// <summary>
     /// Setup the virtual machine's OS profile.
     /// </summary>

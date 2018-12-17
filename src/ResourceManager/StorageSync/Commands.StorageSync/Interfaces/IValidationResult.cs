@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 
     public interface IValidationResult
     {
+        ValidationKind Kind { get; }
         ValidationType Type { get; }
         ResultLevel Level { get; }
         List<int> Positions { get; }

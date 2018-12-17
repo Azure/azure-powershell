@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubroute
 schema: 2.0.0
@@ -68,7 +68,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -158,12 +158,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub
-System.String
+
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties, Microsoft.Azure.Commands.IotHub, Version=3.1.3.0, Culture=neutral, PublicKeyToken=null]]
+
+### Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties[]
 
 ## NOTES
 

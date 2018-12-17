@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ARSVault Vault { get; set; }        
+        public ARSVault Vault { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 var vault = RecoveryServicesClient.GetVault(Vault.ResourceGroupName, Vault.Name);
-                if(vault == null)
+                if (vault == null)
                 {
                     throw new ArgumentException(
                         string.Format(Properties.Resources.VaultNotFound, Vault.Name),
@@ -66,8 +66,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             catch (Exception exception)
             {
                 this.HandleException(exception);
-            }           
-           
+            }
+
         }
     }
 }
