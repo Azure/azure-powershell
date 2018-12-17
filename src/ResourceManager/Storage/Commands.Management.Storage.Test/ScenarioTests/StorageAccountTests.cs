@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingNewUpdateAccount()
         {
-            TestController.NewInstance.RunPsTest(_logger, "Test-PipingNewUpdateAccount");
+            TestRunner.RunTestScript("Test-PipingNewUpdateAccount");
         }
 
         
