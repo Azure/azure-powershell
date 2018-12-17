@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Network
             expressRouteGateway = this.GetExpressRouteGateway(this.ResourceGroupName, this.ExpressRouteGatewayName);
             if (expressRouteGateway == null)
             {
-                throw new PSArgumentException(Properties.Resources.ExpressRouteGatewayNotFound);
+                throw new PSArgumentException(Properties.Resources.ParentExpressRouteGatewayNotFound);
             }
 
             var peeringResourceId = new PSExpressRouteCircuitPeeringId() { Id = this.ExpressRouteCircuitPeeringId };
