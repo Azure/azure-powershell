@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.DataLakeAnalytics
 Module Guid: eca73aa1-a68f-4ceb-9775-70759316a57b
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datalakeanalytics
@@ -50,9 +50,6 @@ Creates a Data Lake Analytics account.
 ### [New-AzDataLakeAnalyticsCatalogCredential](New-AzDataLakeAnalyticsCatalogCredential.md)
 Creates a new Azure Data Lake Analytics catalog credential.
 
-### [New-AzDataLakeAnalyticsCatalogSecret](New-AzDataLakeAnalyticsCatalogSecret.md)
-Creates a Data Lake Analytics catalog secret.
-
 ### [New-AzDataLakeAnalyticsComputePolicy](New-AzDataLakeAnalyticsComputePolicy.md)
 Creates a Data Lake Analytics compute policy rule for a specific AAD entity.
 
@@ -64,9 +61,6 @@ Deletes an Azure Data Lake Analytics credential.
 
 ### [Remove-AzDataLakeAnalyticsCatalogItemAclEntry](Remove-AzDataLakeAnalyticsCatalogItemAclEntry.md)
 Deletes an entry from the ACL of a catalog or catalog item in Data Lake Analytics.
-
-### [Remove-AzDataLakeAnalyticsCatalogSecret](Remove-AzDataLakeAnalyticsCatalogSecret.md)
-Deletes a Data Lake Analytics secret.
 
 ### [Remove-AzDataLakeAnalyticsComputePolicy](Remove-AzDataLakeAnalyticsComputePolicy.md)
 Removes a specified Azure Data Lake Analytics compute policy
@@ -85,9 +79,6 @@ Modifies an Azure Data Lake Analytics catalog credential password.
 
 ### [Set-AzDataLakeAnalyticsCatalogItemAclEntry](Set-AzDataLakeAnalyticsCatalogItemAclEntry.md)
 Modifies an entry in the ACL of a catalog or catalog item in Data Lake Analytics.
-
-### [Set-AzDataLakeAnalyticsCatalogSecret](Set-AzDataLakeAnalyticsCatalogSecret.md)
-Modifies a Data Lake Analytics catalog secret.
 
 ### [Set-AzDataLakeAnalyticsDataSource](Set-AzDataLakeAnalyticsDataSource.md)
 Modifies the details of a data source of a Data Lake Analytics account.

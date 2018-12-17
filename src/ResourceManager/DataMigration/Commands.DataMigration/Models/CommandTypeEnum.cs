@@ -16,6 +16,9 @@ namespace Microsoft.Azure.Commands.DataMigration.Models
 {
     public enum CommandTypeEnum
     {
-        Complete
+        Complete,
+        Cancel,
+        Restart,
+        Finish
     }
 }

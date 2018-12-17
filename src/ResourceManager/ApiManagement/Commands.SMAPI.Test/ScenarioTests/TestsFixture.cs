@@ -10,36 +10,36 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Management.ApiManagement;
 using Microsoft.Azure.Management.ApiManagement.Models;
 using Microsoft.Azure.Test;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using TestBase = Microsoft.Azure.Test.TestBase;
+using ApiManagementClient = Microsoft.Azure.Management.ApiManagement.ApiManagementClient;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
-
     public class TestsFixture : RMTestBase
     {
         public TestsFixture()
         {
             // Initialize has bug which causes null reference exception
             HttpMockServer.FileSystemUtilsObject = new FileSystemUtils();
-            TestUtilities.StartTest();
-            using (MockContext context = MockContext.Start(TestUtilities.GetCallingClass(), TestUtilities.GetCurrentMethodName(2)))
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
+
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
-                var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient();
+                var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient(context);
                 resourceManagementClient.TryRegisterSubscriptionForResource();
             }
         }
@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             return context.GetServiceClient<ApiManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        public static ResourceManagementClient GetResourceManagementClient()
+        public static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static void ThrowIfTrue(bool condition, string message)
@@ -69,25 +69,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
         {
             var reg = resourceManagementClient.Providers.Register(providerName);
             ThrowIfTrue(reg == null, "_client.Providers.Register returned null.");
-            ThrowIfTrue(reg.StatusCode != HttpStatusCode.OK, $"_client.Providers.Register returned with status code {reg.StatusCode}");
 
             var resultAfterRegister = resourceManagementClient.Providers.Get(providerName);
             ThrowIfTrue(resultAfterRegister == null, "_client.Providers.Get returned null.");
-            ThrowIfTrue(string.IsNullOrEmpty(resultAfterRegister.Provider.Id), "Provider.Id is null or empty.");
-            ThrowIfTrue(!providerName.Equals(resultAfterRegister.Provider.Namespace), $"Provider name is not equal to {providerName}.");
-            ThrowIfTrue(ProviderRegistrationState.Registered != resultAfterRegister.Provider.RegistrationState &&
-                        ProviderRegistrationState.Registering != resultAfterRegister.Provider.RegistrationState,
-                $"Provider registration state was not 'Registered' or 'Registering', instead it was '{resultAfterRegister.Provider.RegistrationState}'");
-            ThrowIfTrue(resultAfterRegister.Provider.ResourceTypes == null || resultAfterRegister.Provider.ResourceTypes.Count == 0, "Provider.ResourceTypes is empty.");
-            ThrowIfTrue(resultAfterRegister.Provider.ResourceTypes[0].Locations == null || resultAfterRegister.Provider.ResourceTypes[0].Locations.Count == 0, "Provider.ResourceTypes[0].Locations is empty.");
+            ThrowIfTrue(string.IsNullOrEmpty(resultAfterRegister.Id), "Provider.Id is null or empty.");
+            ThrowIfTrue("Registered" != resultAfterRegister.RegistrationState &&
+                        "Registering" != resultAfterRegister.RegistrationState,
+                $"Provider registration state was not 'Registered' or 'Registering', instead it was '{resultAfterRegister.RegistrationState}'");
+            ThrowIfTrue(resultAfterRegister.ResourceTypes == null || resultAfterRegister.ResourceTypes.Count == 0, "Provider.ResourceTypes is empty.");
+            ThrowIfTrue(resultAfterRegister.ResourceTypes[0].Locations == null || resultAfterRegister.ResourceTypes[0].Locations.Count == 0, "Provider.ResourceTypes[0].Locations is empty.");
         }
 
         public static string TryGetResourceGroup(this ResourceManagementClient resourceManagementClient, string location)
         {
-            var resourceGroup =
-                resourceManagementClient.ResourceGroups
-                    .List(new ResourceGroupListParameters()).ResourceGroups
-                    .Where(group => string.IsNullOrWhiteSpace(location) || group.Location.Equals(location, StringComparison.OrdinalIgnoreCase))
+            var resourceGroups = resourceManagementClient.ResourceGroups.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body;
+            var resourceGroup = resourceGroups.Where(group => string.IsNullOrWhiteSpace(location) || group.Location.Equals(location, StringComparison.OrdinalIgnoreCase))
                     .FirstOrDefault(group => group.Name.Contains("Api-Default"));
 
             return resourceGroup != null

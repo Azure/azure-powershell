@@ -56,6 +56,12 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSResourceId, MNM.SubResource>();
                 cfg.CreateMap<MNM.SubResource, CNM.PSResourceId>();
 
+                // Managed Service Identity
+                cfg.CreateMap<CNM.PSManagedServiceIdentity, MNM.ManagedServiceIdentity>();
+                cfg.CreateMap<MNM.ManagedServiceIdentity, CNM.PSManagedServiceIdentity>();
+                cfg.CreateMap<CNM.PSManagedServiceIdentityUserAssignedIdentitiesValue, MNM.ManagedServiceIdentityUserAssignedIdentitiesValue>();
+                cfg.CreateMap<MNM.ManagedServiceIdentityUserAssignedIdentitiesValue, CNM.PSManagedServiceIdentityUserAssignedIdentitiesValue>();
+
                 // Route Filter 
                 cfg.CreateMap<CNM.PSRouteFilter, MNM.RouteFilter>();
                 cfg.CreateMap<MNM.RouteFilter, CNM.PSRouteFilter>();
@@ -281,12 +287,14 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSFlowLog, MNM.FlowLogInformation>();
                 cfg.CreateMap<CNM.PSRetentionPolicyParameters, MNM.RetentionPolicyParameters>();
+                cfg.CreateMap<CNM.PSFlowLogFormatParameters, MNM.FlowLogFormatParameters>();
                 cfg.CreateMap<CNM.PSTrafficAnalyticsProperties, MNM.TrafficAnalyticsProperties>();
                 cfg.CreateMap<CNM.PSTrafficAnalyticsConfigurationProperties, MNM.TrafficAnalyticsConfigurationProperties>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.FlowLogInformation, CNM.PSFlowLog>();
                 cfg.CreateMap<MNM.RetentionPolicyParameters, CNM.PSRetentionPolicyParameters>();
+                cfg.CreateMap<MNM.FlowLogFormatParameters, CNM.PSFlowLogFormatParameters>();
                 cfg.CreateMap<MNM.TrafficAnalyticsProperties, CNM.PSTrafficAnalyticsProperties>();
                 cfg.CreateMap<MNM.TrafficAnalyticsConfigurationProperties, CNM.PSTrafficAnalyticsConfigurationProperties>();
 

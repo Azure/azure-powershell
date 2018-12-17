@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: Az.IotCentral
 Module Guid: df9fc69a-c019-403a-9013-eefa7eb5e27a
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.iotcentral

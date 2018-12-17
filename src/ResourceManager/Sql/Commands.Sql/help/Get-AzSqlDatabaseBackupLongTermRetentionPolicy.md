@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabasebackuplongtermretentionpolicy
 schema: 2.0.0
@@ -13,7 +13,7 @@ Gets a database long term retention policy.
 ## SYNTAX
 
 ```
-Get-AzSqlDatabaseBackupLongTermRetentionPolicy [-Current] [-ServerName] <String> [-DatabaseName] <String>
+Get-AzSqlDatabaseBackupLongTermRetentionPolicy [-ServerName] <String> [-DatabaseName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ The policy is an Azure Backup resource used to define backup storage policy.
 
 ### Example 1: Get the current version of the long term retention policy
 ```powershell
-PS C:\> Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -Current
+PS C:\> Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01
 
 
 ResourceGroupName                      : resourcegroup01
@@ -43,42 +43,7 @@ Location                               :
 
 This command gets the current version of the long term retention policy for database01
 
-### Example 2: Get the legacy version of the long term retention policy
-```powershell
-PS C:\> Get-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01
-
-
-ResourceGroupName                      : resourcegroup01
-ServerName                             : server01
-DatabaseName                           : database01
-WeeklyRetention                        :
-MonthlyRetention                       :
-YearlyRetention                        :
-WeekOfYear                             :
-State                                  : Enabled
-RecoveryServicesBackupPolicyResourceId : /subscriptions/4f2b42fc-4fc3-fd41-8ab8-5a382d8b30df/resourceGroups/resourcegroup01/providers/MicrosoftRecoveryServices/vaults/vault01/backupPolicies/policy01
-Location                               : Southeast Asia
-```
-
-This command gets the legacy version of the long term retention policy for database01
-
 ## PARAMETERS
-
-### -Current
-If not provided, the command returns the legacy Long Term Retention policy information.
-Otherwise, the command returns the current version of the Long Term Retention policy.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DatabaseName
 The name of the Azure SQL Database to use.
@@ -101,7 +66,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

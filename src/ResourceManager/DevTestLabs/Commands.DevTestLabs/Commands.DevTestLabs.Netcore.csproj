@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.DevTestLabs</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.DevTestLabs</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.DevTestLabs</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

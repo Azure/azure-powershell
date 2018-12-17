@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.DataLakeStore</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.DataLakeStore</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

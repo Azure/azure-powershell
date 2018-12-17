@@ -40,9 +40,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool? PickHostNameFromBackendAddress { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string AffinityCookieName { get; set; }
-        [Obsolete("Property 'ProbeEnabled' is ignored and will be removed from the 'PSApplicationGatewayBackendHttpSettings' type in a future release.")]
-        [Ps1Xml(Target = ViewControl.Table)]
-        public bool ProbeEnabled { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string Path { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]

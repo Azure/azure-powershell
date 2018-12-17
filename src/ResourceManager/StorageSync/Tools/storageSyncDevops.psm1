@@ -85,6 +85,10 @@ function Update-StorageSyncHelp
         [ValidateSet("DEBUG", "RELEASE")]
         [string]$BuildConfig)
 
+    $PathToModuleManifest = Join-Path (Get-BuildOutputDirectory) "$($BuildConfig)\ResourceManager\AzureResourceManager\AzureRM.StorageSync\AzureRM.Profile.psd1"
+    Write-Verbose "Loading manifest: $PathToModuleManifest"
+    Import-Module $PathToModuleManifest -Scope Global
+
     $PathToModuleManifest = Join-Path (Get-BuildOutputDirectory) "$($BuildConfig)\ResourceManager\AzureResourceManager\AzureRM.StorageSync\AzureRM.StorageSync.psd1"
     Write-Verbose "Loading manifest: $PathToModuleManifest"
     Import-Module $PathToModuleManifest -Scope Global

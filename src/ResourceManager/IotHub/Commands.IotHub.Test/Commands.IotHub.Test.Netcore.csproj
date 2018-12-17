@@ -3,8 +3,8 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.Commands.IotHub.Test</AssemblyName>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.IotHub.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.IotHub.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -24,18 +24,9 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.3.0" />
     <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.1.1" />
-  </ItemGroup>
-
-<ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.EventHub">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.EventHub\Microsoft.Azure.Commands.EventHub.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Commands.IotHub">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.IotHub\Microsoft.Azure.Commands.IotHub.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

@@ -30,7 +30,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Action = System.Action;
 using Sku = Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku;
 
