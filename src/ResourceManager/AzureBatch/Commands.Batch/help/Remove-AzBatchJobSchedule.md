@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
 ms.assetid: 97FA5983-0D73-4336-99DA-46E5992F06DC
 online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/remove-azbatchjobschedule
@@ -22,6 +22,25 @@ Remove-AzBatchJobSchedule [-Id] <String> [-Force] -BatchContext <BatchAccountCon
 The **Remove-AzBatchJobSchedule** cmdlet removes an Azure Batch job schedule.
 
 ## EXAMPLES
+
+### Example 1: Delete a Batch job schedule
+```
+PS C:\>Remove-AzBatchJobSchedule -Id "MyJobSchedule" -BatchContext $Context
+```
+
+This command deletes the job schedule that has the ID MyJobSchedule.
+The command prompts you for confirmation before it deletes the job.
+Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
+
+### Example 2: Delete a Batch job without confirmation by using the pipeline
+```
+PS C:\>Get-AzBatchJobSchedule -Id "MyJobSchedule" -BatchContext $Context | Remove-AzBatchJobSchedule -Force -BatchContext $Context
+```
+
+This command gets the job schedule that has the ID MyJobSchedule by using the Get-AzBatchJobSchedule cmdlet.
+The command passes that job schedule to the current cmdlet by using the pipeline operator.
+The command deletes that job schedule.
+Because the command includes the *Force* parameter, it does not prompt you for confirmation.
 
 ## PARAMETERS
 
@@ -47,7 +66,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -125,7 +144,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.Batch.BatchAccountContext
-Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 

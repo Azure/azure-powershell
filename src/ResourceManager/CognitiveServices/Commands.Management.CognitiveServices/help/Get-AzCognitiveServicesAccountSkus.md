@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Management.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: 386F09F0-2EEC-4B55-825C-F2E88D3B60AA
 online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountskus
@@ -13,13 +13,6 @@ Gets the available SKUs for an account.
 
 ## SYNTAX
 
-### GetSkusWithAccount (Default)
-```
-Get-AzCognitiveServicesAccountSkus [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetSkusWithFilter
 ```
 Get-AzCognitiveServicesAccountSkus [-Type <String>] [-Location <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -36,7 +29,7 @@ Paid tiers include S0, S1, S2, and so on.
 
 ### Example 1
 ```powershell
-PS C:\> (Get-AzCognitiveServicesAccountSkus -ResourceGroupName cognitive-services-resource-group -Name myluis).Value | Select-Object -E
+PS C:\> (Get-AzCognitiveServicesAccountSkus -Type 'TextAnalytics' -Location "westus").Value | Select-Object -E
 xpandProperty Sku;
 
 Name     Tier
@@ -53,7 +46,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -67,41 +60,11 @@ Cognitive Services Account Location.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSkusWithFilter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the account.
-
-```yaml
-Type: System.String
-Parameter Sets: GetSkusWithAccount
-Aliases: CognitiveServicesAccountName, AccountName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group the account is assigned to.
-
-```yaml
-Type: System.String
-Parameter Sets: GetSkusWithAccount
-Aliases:
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -112,7 +75,7 @@ Cognitive Services Account Type.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSkusWithFilter
+Parameter Sets: (All)
 Aliases: CognitiveServicesAccountType, AccountType, Kind
 
 Required: False
@@ -131,8 +94,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesSkus
+### Microsoft.Azure.Management.CognitiveServices.Models.ResourceSku
 
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS

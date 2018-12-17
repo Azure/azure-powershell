@@ -3,9 +3,9 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
-    <AssemblyName>Microsoft.Azure.Commands.Profile.Test</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Accounts.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Profile.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -25,21 +25,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Profile">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Profile\Microsoft.Azure.Commands.Profile.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Commands.Profile\Commands.Profile.Netcore.csproj" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <None Remove="App.config" />
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="*.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Profile\Microsoft.Azure.PowerShell.ResourceManager.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
+
 </Project>

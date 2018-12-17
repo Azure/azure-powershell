@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/en-us/powershell/module/az.relay/set-azrelaynamespace
 schema: 2.0.0
@@ -49,7 +49,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -155,8 +155,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Collections.Hashtable
-Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter
+
+### System.Collections.Hashtable
+
+### Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttirbutesUpdateParameter
 
 ## OUTPUTS
 

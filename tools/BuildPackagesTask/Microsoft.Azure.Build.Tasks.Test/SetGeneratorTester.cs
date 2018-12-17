@@ -496,15 +496,15 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 ".github",
                 "documentation",
                 "src/ResourceManager/LogicApp/file",
-                "src/ResourceManager/UsageAggregates/file"
+                "src/ResourceManager/Billing/file"
 
             };
 
             string mapFilePath = MapFilePath;
             HashSet<string> expected = new HashSet<string>()
             {
-                @".\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll",
-                @".\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.Commands.LogicApp.Test.dll"
+                @".\src\ResourceManager\Billing\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.PowerShell.Cmdlets.UsageAggregates.Test.dll",
+                @".\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.PowerShell.Cmdlets.LogicApp.Test.dll"
             };
 
             IEnumerable<string> actual;

@@ -1,5 +1,5 @@
----
-external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
+﻿---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: D614B509-82DD-42FB-B975-D72CD3355E3E
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices.backup/set-azrecoveryservicesbackupprotectionpolicy
@@ -56,7 +56,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -164,10 +164,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
-Parameters: Policy (ByValue)
 
 ### System.String
-Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 
