@@ -97,13 +97,13 @@ namespace Microsoft.Azure.Commands.Resources
             string provider = this.OperationSearchString.Split(Separator).First();
             if (provider.Equals(WildCardCharacter))
             {
-                // 'Get-AzureRmProviderOperation *' or 'Get-AzureRmProviderOperation */virtualmachines/*'
+                // 'Get-AzProviderOperation *' or 'Get-AzProviderOperation */virtualmachines/*'
                 // get operations for all providers
                 providers.AddRange(this.ResourcesClient.ListProviderOperationsMetadata());
             }
             else
             {
-                // 'Get-AzureRmProviderOperation Microsoft.Compute/virtualmachines/*' or 'Get-AzureRmProviderOperation Microsoft.Sql/*'
+                // 'Get-AzProviderOperation Microsoft.Compute/virtualmachines/*' or 'Get-AzProviderOperation Microsoft.Sql/*'
                 providers.Add(this.ResourcesClient.GetProviderOperationsMetadata(provider));
             }
 

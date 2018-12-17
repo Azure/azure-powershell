@@ -18,4 +18,3 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Preview Release

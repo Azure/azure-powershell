@@ -242,7 +242,7 @@ function Get-ClientModules {
         if ($Scope -in $AllScopes -or $PublishLocal) {
             if ($Scope -eq "Netcore")
             {
-                $targets += "$resourceManagerRootFolder\Az.Profile"
+                $targets += "$resourceManagerRootFolder\Az.Accounts"
             }
             else
             {
@@ -274,7 +274,7 @@ function Get-ClientModules {
             }
 
             # We should ignore these, they are handled separatly.
-            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'Az.Profile')
+            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'Az.Accounts')
 
             # Add all modules for AzureRM for Azure
             foreach ($module in $resourceManagerModules) {

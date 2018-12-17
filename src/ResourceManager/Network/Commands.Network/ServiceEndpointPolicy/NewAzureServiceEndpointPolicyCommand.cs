@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using MNM = Microsoft.Azure.Management.Network.Models;
     using Management.Network;
+    using System.Linq;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceEndpointPolicy", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicy))]
     public class NewAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "List of service endpoint definitions")]
         [ValidateNotNullOrEmpty]
-        public List<PSServiceEndpointPolicyDefinition> ServiceEndpointPolicyDefinition { get; set; }
+        public PSServiceEndpointPolicyDefinition[] ServiceEndpointPolicyDefinition { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (ServiceEndpointPolicyDefinition != null)
             {
-                serviceEndpointPolicy.ServiceEndpointPolicyDefinitions = this.ServiceEndpointPolicyDefinition;
+                serviceEndpointPolicy.ServiceEndpointPolicyDefinitions = this.ServiceEndpointPolicyDefinition?.ToList();
             }
 
             var  serviceEndpointPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ServiceEndpointPolicy>(serviceEndpointPolicy);

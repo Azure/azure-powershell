@@ -20,7 +20,7 @@ using System;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 {
     /// <summary>
-    /// 'Remove-AzureRmServiceBusSubscription' Cmdlet removes the specified Subscription
+    /// 'Remove-AzServiceBusSubscription' Cmdlet removes the specified Subscription
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusSubscription", DefaultParameterSetName = SubscriptionPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusSubscription : AzureServiceBusCmdletBase

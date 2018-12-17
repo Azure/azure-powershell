@@ -108,13 +108,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account EnableHttpsTrafficOnly.")]
         public bool EnableHttpsTrafficOnly
         {
             get
             {
-                return enableHttpsTrafficOnly.Value;
+                return enableHttpsTrafficOnly != null ? enableHttpsTrafficOnly.Value : false;
             }
             set
             {
@@ -162,7 +161,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             get
             {
-                return enableHierarchicalNamespace.Value;
+                return enableHierarchicalNamespace != null ? enableHierarchicalNamespace.Value : false;
             }
             set
             {
@@ -225,10 +224,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (NetworkRuleSet != null)
             {
                 createParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
-            }
-            if (enableAzureFilesAadIntegrationForSMB != null)
-            {
-                createParameters.EnableAzureFilesAadIntegration = enableAzureFilesAadIntegrationForSMB;
             }
             if (enableHierarchicalNamespace != null)
             {

@@ -14,14 +14,14 @@ Our team trends to make the cmdlets output more convenient and consistent across
 
 # How table view output works by default.
 
- As an example let's consider [Get-AzureRmSubscription](https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Profile/Commands.Profile/Subscription/GetAzureRMSubscription.cs) cmdlet. 
+ As an example let's consider [Get-AzSubscription](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Commands.Profile/Subscription/GetAzureRMSubscription.cs) cmdlet. 
 
 The cmdlet class specifies the ```PSAzureSubscription``` class as an output type with the **OutputType attribute**:
 
 ```Cs
 namespace Microsoft.Azure.Commands.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSubscription", DefaultParameterSetName = ListByIdInTenantParameterSet),
+    [Cmdlet(VerbsCommon.Get, "AzSubscription", DefaultParameterSetName = ListByIdInTenantParameterSet),
         OutputType(typeof(PSAzureSubscription))]
     public class GetAzureRMSubscriptionCommand : AzureRmLongRunningCmdlet
     {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile
 // omitted for brevity the rest of the definition.
 ```
 
-The [PSAzureSubscription](https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Common/Commands.Common.Authentication.ResourceManager/Models/PSAzureSubscription.cs) class contains several public properties. 
+The [PSAzureSubscription](https://github.com/Azure/azure-powershell-common/blob/master/src/Authentication.ResourceManager/Models/PSAzureSubscription.cs) class contains several public properties. 
 
 * Id
 * Name
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 PowerShell uses these properties for the cmdlet table formated output:
 
 ```PowerShell
-PS C:\> Get-AzureRmSubscription | Format-Table
+PS C:\> Get-AzSubscription | Format-Table
 
 Id                                   Name                      State   SubscriptionId                       TenantId                             CurrentStorageAcc
                                                                                                                                                  ountName
@@ -115,14 +115,14 @@ To provide a better PowerShell Azure cmdlets output experience we worked out a m
 2. Run the New-FormatPs1Xml cmdlet to generate the format.ps1xml file.
 
 ---
- We presume that for the [output type](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/azure-powershell-design-guidelines.md#output-type) you created a new class that, for example,  wraps a returning .NET SDK type, rather than PSObject.
+ We presume that for the [output type](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/azure-powershell-design-guidelines.md#output-type) you created a new class that, for example,  wraps a returning .NET SDK type, rather than PSObject.
 
 ---
 
 
 #  Ps1XmlAttribute attribute.
 
-The key element of the mechanism is the **Ps1XmlAttribute** attribute located in the [Commands.Common](https://github.com/Azure/azure-powershell/blob/preview/src/Common/Commands.Common/Attributes/Ps1XmlAttribute.cs) project. Below is the attribute definition:
+The key element of the mechanism is the **Ps1XmlAttribute** attribute located in the [Commands.Common](https://github.com/Azure/azure-powershell-common/blob/master/src/Common/Attributes/Ps1XmlAttribute.cs) project. Below is the attribute definition:
 
 ```Cs
 namespace Microsoft.WindowsAzure.Commands.Common.Attributes
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
   ```
 * If **Label** is not specified - the property name will be used. 
 
-* Since the **Ps1Xml attribute** definition is located in the [Commands.Common](https://github.com/Azure/azure-powershell/tree/preview/src/Common/Commands.Common) project and the Command.Common project is likely referenced from your project - to make the attribute visible - you only need to add ```using Microsoft.WindowsAzure.Commands.Common.Attributes;``` statement.
+* Since the **Ps1Xml attribute** definition is located in the [Commands.Common](https://github.com/Azure/azure-powershell-common/tree/master/src/Common) project and the Command.Common project is likely referenced from your project - to make the attribute visible - you only need to add ```using Microsoft.WindowsAzure.Commands.Common.Attributes;``` statement.
 
 ## Properties of complex types.
 
@@ -309,7 +309,7 @@ This will place the column at the very beginning of the table.
 
 # How to generate format.ps1xml file.
 
-1. First of all you need to [build](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/azure-powershell-developer-guide.md#building-the-environment) PowerShell Azure:
+1. First of all you need to [build](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/azure-powershell-developer-guide.md#building-the-environment) PowerShell Azure:
 
 ```Powershell
 PS E:\git\azure-powershell> msbuild build.proj /p:SkipHelp=true
@@ -329,8 +329,8 @@ Mode                LastWriteTime         Length Name
 d-----        4/25/2018   4:37 PM                ResourceManager
 d-----        4/25/2018   4:35 PM                ServiceManagement
 d-----        4/25/2018   4:35 PM                Storage
--a----        4/25/2018   4:31 PM          11384 AzureRM.psd1
--a----        4/25/2018   4:50 PM           8708 AzureRM.psm1
+-a----        4/25/2018   4:31 PM          11384 Az.psd1
+-a----        4/25/2018   4:50 PM           8708 Az.psm1
 
 ```
 
@@ -340,15 +340,15 @@ d-----        4/25/2018   4:35 PM                Storage
 PS E:\git\azure-powershell> Import-Module E:\git\azure-powershell\tools\RepoTasks\RepoTasks.Cmdlets\bin\Debug\RepoTasks.Cmdlets.dll
 ```
 3. Run the **New-FormatPs1Xml** cmdlet. 
-* The cmdlet has one required argument **-ModulePath** - a path to a module manifest (psd1) file. Since in our example we are using the Get-AzureRmSubscription cmdlet from the AzureRM.Profile module we need to specify path to the AzureRm.Profile module manifest which is 
+* The cmdlet has one required argument **-ModulePath** - a path to a module manifest (psd1) file. Since in our example we are using the Get-AzSubscription cmdlet from the Az.Profile module we need to specify path to the Az.Profile module manifest which is 
 ```
-E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1 
+E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\Az.Profile\Az.Profile.psd1 
 ``` 
 * Also with the cmdlet we need to use **-OnlyMarkedProperties** switch.
 * You may also want to specify an output path for the generated file with the **-OutputPath** argument. If not specified this is current folder.
 
 ```
-PS E:\git\azure-powershell> New-FormatPs1Xml -ModulePath .\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1 -OnlyMarkedProperties
+PS E:\git\azure-powershell> New-FormatPs1Xml -ModulePath .\src\Package\Debug\ResourceManager\AzureResourceManager\Az.Profile\Az.Profile.psd1 -OnlyMarkedProperties
 
 E:\git\azure-powershell\Microsoft.Azure.Commands.Profile.generated.format.ps1xml
 ```
@@ -360,13 +360,13 @@ E:\git\azure-powershell\Microsoft.Azure.Commands.Profile.generated.format.ps1xml
 
 1. **Copy** the generated format.ps1xml file to the built module folder (this is where your module manifest file psd1 is located). In our example the module folder is 
 ```
-E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile
+E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\Az.Profile
 ```
 
 2. Modify your module manifest file. 
-* In our example the module manifest is AzureRM.Profile.psd1: 
+* In our example the module manifest is Az.Profile.psd1: 
 ```
-E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1 
+E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\Az.Profile\Az.Profile.psd1 
 ``` 
 
 * In the module manifest file there is a variable called **FormatsToProcess** to reference format.ps1xml files.
@@ -387,14 +387,14 @@ FunctionsToExport = @()
 
 # script omitted for brevity
 ```
-3. Open a **PowerShell window** and **import** your module. In our example it is AzureRm.Profile:
+3. Open a **PowerShell window** and **import** your module. In our example it is Az.Profile:
 ```Powershell
-PS C:\> Import-Module E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1
+PS C:\> Import-Module E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\Az.Profile\Az.Profile.psd1
 ```
 
 4. Try your cmdlet out. In our example it is Get-AuzreRmSubsription:
 ```Powershell
-PS C:\> Get-AzureRmSubscription
+PS C:\> Get-AzSubscription
 
 Subscription Id                      Subscription Name         State   Tenant Id
 ---------------                      -----------------         -----   ---------
@@ -409,9 +409,9 @@ c9cbd920-c00c-427c-852b-c329e824c3a8 Azure SDK Powershell Test Enabled 72f988bf-
 **Note:** All the paths used in the example in the section are under **_azure-powershell/src/ResourceManager/Profile_**
 
 
-1. Copy the generated file into your project source folder. In our example this is [src/ResourceManager/Profile/Commands.Profile](https://github.com/Azure/azure-powershell/tree/preview/src/ResourceManager/Profile/Commands.Profile) folder.
+1. Copy the generated file into your project source folder. In our example this is [src/ResourceManager/Profile/Commands.Profile](https://github.com/Azure/azure-powershell/tree/master/src/ResourceManager/Profile/Commands.Profile) folder.
 
-2. Reference the generated format.ps1xml file form your project. In our example this is [Commands.Profile.csproj](https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Profile/Commands.Profile/Commands.Profile.csproj) file:
+2. Reference the generated format.ps1xml file form your project. In our example this is [Commands.Profile.csproj](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Commands.Profile/Commands.Profile.csproj) file:
 
 ```Xml
   <ItemGroup>
@@ -438,7 +438,7 @@ c9cbd920-c00c-427c-852b-c329e824c3a8 Azure SDK Powershell Test Enabled 72f988bf-
     </None>
   </ItemGroup>
 ```
-3. Add the generated format.ps1xml file to your source module manifest **FormatsToProcess** variable. In our example this is [src/ResourceManager/Profile/AzureRM.Profile.psd1](https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Profile/AzureRM.Profile.psd1) file:
+3. Add the generated format.ps1xml file to your source module manifest **FormatsToProcess** variable. In our example this is [src/ResourceManager/Profile/Az.Profile.psd1](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Profile/Az.Profile.psd1) file:
 ```Powershell
 # script omitted for brevity
 

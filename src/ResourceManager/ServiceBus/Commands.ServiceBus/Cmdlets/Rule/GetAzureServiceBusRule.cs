@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
 {
     /// <summary>
-    /// 'Get-AzureRmServiceBusRule' Cmdlet gives the details of a / List of subscriptions Rules
+    /// 'Get-AzServiceBusRule' Cmdlet gives the details of a / List of subscriptions Rules
     /// <para> If Rule name provided, a single Rule detials will be returned</para>
     /// <para> If Rule name not provided, list of Rule will be returned</para>
     /// </summary>
