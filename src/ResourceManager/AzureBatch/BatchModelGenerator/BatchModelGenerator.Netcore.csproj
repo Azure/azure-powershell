@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\..\Repo.props" />
+  <Import Project="$(RepoTools)Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
