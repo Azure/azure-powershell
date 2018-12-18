@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Kusto
            string clusterName = Name;
            EnsureClusterSpecified(clusterName);
 
-            var result = KustoClient.CheckClusterNAmeAvailability(clusterName, location);
+            var result = KustoClient.CheckClusterNameAvailability(clusterName, location);
             WriteObject(result);
         }
     }

@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
 
         [Parameter(
             ParameterSetName = CmdletParametersSet,
+            Position = 2,
             Mandatory = true,
             HelpMessage = "Name of database to be removed.")]
         [ValidateNotNullOrEmpty]

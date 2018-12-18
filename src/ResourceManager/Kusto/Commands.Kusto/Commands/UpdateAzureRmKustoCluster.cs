@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Name of the Sku used to create the cluster")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("KC8", "KC16", "KS8", "KS16", "L8", "L16", "D14_v2", "D13_v2")]
@@ -84,7 +84,8 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
             string clusterName = Name;
             string resourceGroupName = ResourceGroupName;
             string location = null;
-
+            string skuName = null;
+            
             if (!string.IsNullOrEmpty(ResourceId))
             {
                 KustoUtils.GetResourceGroupNameAndClusterNameFromClusterId(ResourceId, out resourceGroupName, out clusterName);
@@ -105,6 +106,7 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                     }
 
                     location = cluster.Location;
+                    skuName = string.IsNullOrEmpty(SkuName) ? cluster.Sku: SkuName;
                 }
                 catch (CloudException ex)
                 {
@@ -125,7 +127,7 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                     }
                 }
 
-                var updatedCluster = KustoClient.CreateOrUpdateCluster(resourceGroupName, clusterName, location, SkuName);
+                var updatedCluster = KustoClient.CreateOrUpdateCluster(resourceGroupName, clusterName, location, skuName);
                 WriteObject(updatedCluster);
             }
         }

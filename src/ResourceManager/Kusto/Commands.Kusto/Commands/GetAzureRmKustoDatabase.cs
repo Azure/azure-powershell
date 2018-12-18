@@ -58,7 +58,6 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
         [Parameter(
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
-            Position = 2,
             ValueFromPipeline = true,
             HelpMessage = "Kusto cluster object.")]
         [ValidateNotNullOrEmpty]

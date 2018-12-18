@@ -58,16 +58,14 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
         public string Name { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The number of days that data should be kept before it stops being accessible to queries")]
-        public int SoftDeletePeriodInDays { get; set; }
+        public int? SoftDeletePeriodInDays { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The number of days that data should be kept in cache for fast queries")]
-        public int HotCachePeriodInDays { get; set; }
+        public int? HotCachePeriodInDays { get; set; }
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
@@ -93,6 +91,8 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
             string clusterName = ClusterName;
             string resourceGroupName = ResourceGroupName;
             string location = null;
+            int hotCachePeriodInDays = 0;
+            int softRetentionPeriodInDays = 0;
 
             if (!string.IsNullOrEmpty(ResourceId))
             {
@@ -116,6 +116,8 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                     }
 
                     location = database.Location;
+                    hotCachePeriodInDays = HotCachePeriodInDays ?? database.HotCachePeriodInDays.GetValueOrDefault();
+                    softRetentionPeriodInDays = SoftDeletePeriodInDays ?? database.SoftDeletePeriodInDays;
                 }
                 catch (CloudException ex)
                 {
@@ -135,12 +137,11 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                         throw;
                     }
                 }
-
-                var updatedDatabase = KustoClient.CreateOrUpdateDatabase(resourceGroupName, clusterName, databaseName, HotCachePeriodInDays, SoftDeletePeriodInDays, location);
+                
+                var updatedDatabase = KustoClient.CreateOrUpdateDatabase(resourceGroupName, clusterName, databaseName, hotCachePeriodInDays, softRetentionPeriodInDays, location);
                 WriteObject(updatedDatabase);
             }
         }
 
     }
 }
-

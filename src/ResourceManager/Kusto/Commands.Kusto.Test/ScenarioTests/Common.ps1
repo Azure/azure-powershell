@@ -75,15 +75,6 @@ function Get-Cluster-Resource-Type
 
 <#
 .SYNOPSIS
-Gets a resource group Location for testing.
-#>
-function Get-RG-Location
-{
-	return Get-Location
-}
-
-<#
-.SYNOPSIS
 Gets a cluster resource id
 #>
 function Get-Cluster-Resource-Id
@@ -170,7 +161,6 @@ Gets a the database does not exist message
 function Get-Database-Not-Exist-Message
 {
 	Param([string]$DatabaseName)
-#	return "$DatabaseName' is not found"
 	return "$DatabaseName' is not found"
 }
 

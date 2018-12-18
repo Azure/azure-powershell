@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "the amount of days.")]
+            HelpMessage = "The number of days data should be kept before it stops being accessible to queries.")]
         public int SoftDeletePeriodInDays { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Azure region where the cluster exists.")]
+            HelpMessage = "The number of days of data that should be kept in cache for fast queries.")]
         public int HotCachePeriodInDays { get; set; }
 
         [Parameter(

@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
-    [Cmdlet("Resume", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", DefaultParameterSetName = ResourceIdParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Resume", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", DefaultParameterSetName = CmdletParametersSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class ResumeAzureRmKustoCluster: KustoCmdletBase
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";
