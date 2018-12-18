@@ -19,5 +19,5 @@
 -->
 ## Current Release
 
-## Version 1.0.0
-* First version of the Kusto powershell
+## Version 0.1.0
+* Initial version of the Kusto powershell interface
