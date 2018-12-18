@@ -196,7 +196,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private static string GetConfigDirectory(string targetDirectory = "artifacts")
         {
             string result = null;
-            var directoryPath = "..";
+            var directoryPath = Path.Combine(ProbeForSrcDirectory(), "..");
             if (Directory.Exists(directoryPath))
             {
                 var baseDirectory = Path.Combine(directoryPath, targetDirectory);
