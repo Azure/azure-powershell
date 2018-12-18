@@ -12,24 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class DefaultCmdletTests : AccountsTestRunner
+    public class AccountsTestRunner
     {
-        public DefaultCmdletTests(ITestOutputHelper output)
-            : base(output)
-        {
-        }
+        protected readonly ITestRunner TestRunner;
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DefaultResourceGroup()
+        protected AccountsTestRunner(ITestOutputHelper output)
         {
-            TestRunner.RunTestScript("Test-DefaultResourceGroup");
+            TestRunner = TestManager.CreateInstance(output)
+                .WithNewPsScriptFilename($"{GetType().Name}.ps1")
+                .WithCommonPsScripts(new[]
+                {
+                    @"Common.ps1", @"AzureRM.Resources.ps1"
+                })
+                .WithNewRmModules(helper => new[]
+                {
+                    helper.RMProfileModule
+                })
+                .Build();
         }
     }
 }
