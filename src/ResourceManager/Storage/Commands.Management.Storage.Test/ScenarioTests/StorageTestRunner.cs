@@ -28,14 +28,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test
                 .WithProjectSubfolderForTests("ScenarioTests")
                 .WithCommonPsScripts(new[]
                 {
-                    @"Common.ps1",
+                    @"Common.ps1", @"../AzureRM.Resources.ps1"
                 })
-                .WithExtraRmModules(helper => new[]
+                .WithNewRmModules(helper => new[]
                 {
-#if !NETSTANDARD
-                    helper.RMStorageDataPlaneModule,
-#endif
-                    helper.RMStorageModule,
+                    helper.RMProfileModule,
+                    helper.RMStorageModule
                 })
                 .Build();
         }
