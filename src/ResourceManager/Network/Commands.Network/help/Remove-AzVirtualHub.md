@@ -244,3 +244,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVirtualHub](./Get-AzVirtualHub.md)
+
+[New-AzVirtualHub](./New-AzVirtualHub.md)
+
+[Update-AzVirtualHub](./Update-AzVirtualHub.md)

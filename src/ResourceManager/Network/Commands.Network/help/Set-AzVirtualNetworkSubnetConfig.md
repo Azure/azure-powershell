@@ -282,5 +282,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzVirtualNetworkSubnetConfig](./New-AzVirtualNetworkSubnetConfig.md)
 
 [Remove-AzVirtualNetworkSubnetConfig](./Remove-AzVirtualNetworkSubnetConfig.md)
-
-

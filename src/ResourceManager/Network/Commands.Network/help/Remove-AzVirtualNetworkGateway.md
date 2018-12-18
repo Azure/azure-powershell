@@ -170,3 +170,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVirtualNetworkGateway](./Get-AzVirtualNetworkGateway.md)
+
+[New-AzVirtualNetworkGateway](./New-AzVirtualNetworkGateway.md)
+
+[Reset-AzVirtualNetworkGateway](./Reset-AzVirtualNetworkGateway.md)
+
+[Resize-AzVirtualNetworkGateway](./Resize-AzVirtualNetworkGateway.md)
+
+[Set-AzVirtualNetworkGateway](./Set-AzVirtualNetworkGateway.md)

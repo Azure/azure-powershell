@@ -260,5 +260,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzVirtualNetworkGatewayIpConfig](./New-AzVirtualNetworkGatewayIpConfig.md)
 
 [Remove-AzVirtualNetworkGatewayIpConfig](./Remove-AzVirtualNetworkGatewayIpConfig.md)
-
-

@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns an object representing the item with which you are working.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -211,3 +211,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkProfile](./Get-AzNetworkProfile.md)
+
+[New-AzNetworkProfile](./New-AzNetworkProfile.md)
+
+[Set-AzNetworkProfile](./Set-AzNetworkProfile.md)

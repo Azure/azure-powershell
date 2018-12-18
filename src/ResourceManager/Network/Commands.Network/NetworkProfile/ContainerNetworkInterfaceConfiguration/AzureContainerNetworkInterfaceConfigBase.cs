@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies a collection of IP configuration profiles which determine what ip configurations are created when a container nic is instantiated from this container network interface configraution")]
+            HelpMessage = "Specifies a collection of IP configuration profiles which determine what ip configurations are created when a container nic is instantiated from this container network interface configuration")]
         public PSIPConfigurationProfile[] IpConfiguration { get; set; }
     }
 }

@@ -163,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns an object representing the item with which you are working.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
