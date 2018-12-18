@@ -10,135 +10,89 @@
    
 	<Target Name="CodeSignBinariesESRP" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
 
-    <Message Text="====> Executing CodeSignBinariesESRP Target..." Importance="high"/>
-	
-    <PropertyGroup>
-		<!--public token associated with MSSharedLibKey.snk-->
-		<StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
-    </PropertyGroup>
-	
-	<Message Text="----> Dlls signing section" Importance="high"/>
-
-    <!-- Azure -->
-    <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
-		<DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*Commands*.dll" Exclude="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*Commands*Common*.dll" />
-		<DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
-		<DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
-    </ItemGroup>
-
-    <!-- Stack -->
-    <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'">
-		<DelaySignedAssembliesToSign Include="$(StackPackageFolder)\$(Configuration)\**\Microsoft*Azure*Commands*.dll" Exclude="$(StackPackageFolder)\$(Configuration)\**\Microsoft*Azure*Commands*Common*.dll" />
-		<DelaySignedAssembliesToSign Include="$(StackPackageFolder)\$(Configuration)\**\Microsoft.Azure.Management.Storage.dll" />
-		<DelaySignedAssembliesToSign Include="$(StackPackageFolder)\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
-		<DelaySignedAssembliesToSign Include="$(StackPackageFolder)\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
-    </ItemGroup>
-
-    <Message Importance="high" Text="$(PackageDirectory)\$(Configuration) does not contains any files to sign. Code sign will skip."
-        Condition="'@(DelaySignedAssembliesToSign)' == ''" />
-    
-    <ESRPSignTask
-	CopyBackSignedFilesToOriginalLocation="true"
-        UnsignedFileList="@(DelaySignedAssembliesToSign)"
-        SignLogDirPath="$(LibraryRoot)dlls-signing.log" 
-        Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
-
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"/>
-
-    <!-- Copying shortcut to be signed -->
-    <Copy SourceFiles="$(LibraryRoot)tools\Az\Az.psm1"
-        DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition="'$(Scope)' == 'Netcore'" />
-    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1"
-        DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
-    <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureRM\AzureRM.psm1"
-        DestinationFolder="$(StackPackageFolder)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
-    <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureStack\AzureStack.psm1"
-        DestinationFolder="$(StackPackageFolder)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
-		  
-	<Message Text="----> Scripts signing section" Importance="high"/>
-
-    <!-- Azure -->
-    <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
-		<ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.ps1"/>
-		<ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.psm1"/>
-		<ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.ps1xml"/>
-		<ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.js"/>
-    </ItemGroup>
-
-    <!-- Stack -->
-    <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'">
-		<ScriptsToSign Include="$(StackPackageFolder)\$(Configuration)\**\*.ps1"/>
-		<ScriptsToSign Include="$(StackPackageFolder)\$(Configuration)\**\*.psm1"/>
-		<ScriptsToSign Include="$(StackPackageFolder)\$(Configuration)\**\*.ps1xml"/>
-		<ScriptsToSign Include="$(StackPackageFolder)\$(Configuration)\**\*.js"/>
-    </ItemGroup>
-
-    <ESRPSignTask
-		CopyBackSignedFilesToOriginalLocation="true"
-		UnsignedFileList="@(ScriptsToSign)"
-		SignLogDirPath="$(LibraryRoot)scripts-signing.log" 
-		Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/>
+		<Message Text="====> Executing CodeSignBinariesESRP Target..." Importance="high"/>
 		
-    <Message Text="----> Remove artifacts section" Importance="high"/>
-
-	<!-- RemoveCodeSignArtifacts.ps1 -->
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\RemoveCodeSignArtifacts.ps1 -Path $(PackageDirectory)\$(Configuration) &quot;"
-		Condition="'$(Scope)' != 'Stack'"
-        ContinueOnError="ErrorAndContinue" />
+		<PropertyGroup>
+			<!--public token associated with MSSharedLibKey.snk-->
+			<StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
+		</PropertyGroup>
 		
-	<Message Text="----> CheckSignature section" Importance="high"/>
+		<Message Text="----> Dlls signing section" Importance="high"/>
 
-	<!-- CheckSignature.ps1 -->
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckSignature.ps1 -CustomPath $(PackageDirectory)\$(Configuration) &quot;"
-        Condition="'$(Scope)' != 'Stack'"
-        ContinueOnError="ErrorAndContinue" />
+		 <!-- Azure -->
+		<ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
+			<DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*PowerShell*Cmdlets*.dll" />
+			<DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
+		</ItemGroup>
+
+		<Message Importance="high" Text="$(PackageDirectory)\$(Configuration) does not contains any files to sign. Code sign will skip."
+			Condition="'@(DelaySignedAssembliesToSign)' == ''" />
 		
-	<!-- RemoveCodeSignArtifacts.ps1 -->
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\RemoveCodeSignArtifacts.ps1 -Path $(StackPackageFolder)\$(Configuration) &quot;"
-		Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
-        ContinueOnError="ErrorAndContinue" />
-		  
-	<!-- CheckSignature.ps1 -->
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckSignature.ps1 -CustomPath $(StackPackageFolder)\$(Configuration) &quot;"
-        Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
-        ContinueOnError="ErrorAndContinue" />
+		<ESRPSignTask
+			CopyBackSignedFilesToOriginalLocation="true"
+			UnsignedFileList="@(DelaySignedAssembliesToSign)"
+			SignLogDirPath="$(LibraryRoot)dlls-signing.log" 
+			Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
 
-    <!-- Copy files back after signing -->
-    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\Az.psm1"
-        DestinationFolder="$(LibraryRoot)tools\Az" Condition="'$(Scope)' == 'Netcore'" />
-    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.psm1"
-        DestinationFolder="$(LibraryRoot)tools\AzureRM" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'" />
-    <Copy SourceFiles="$(StackPackageFolder)\$(Configuration)\AzureRM.psm1"
-        DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureRM" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
-    <Copy SourceFiles="$(StackPackageFolder)\$(Configuration)\AzureStack.psm1"
-        DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureStack" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
-  </Target>
+		<Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;" />
 
-  <Target Name="CodeSignInstallerESRP">
-    <PropertyGroup>
-		<!--public token associated with MSSharedLibKey.snk-->
-		<StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
-    </PropertyGroup>
-    <GetFrameworkSdkPath>
-		<Output TaskParameter="Path" PropertyName="WindowsSdkPath"/>
-    </GetFrameworkSdkPath>
+		<!-- Copying shortcut to be signed -->
+		<Copy SourceFiles="$(LibraryRoot)tools\Az\Az.psm1" DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition="'$(Scope)' == 'Netcore'" />
+			  
+		<Message Text="----> Scripts signing section" Importance="high"/>
 
-    <ItemGroup>
-		<InstallersToSign Include="$(LibraryRoot)\setup\*.msi" />
-    </ItemGroup>
+		 <!-- Azure -->
+		<ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
+			<ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.ps1" />
+			<ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.psm1" />
+			<ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.ps1xml" />
+			<ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.js" />
+		</ItemGroup>
 
-    <Message Importance="high" Text="$(LibraryRoot)\setup does not contain any installers to sign. Code sign will skip."
-        Condition="'@(InstallersToSign)' == ''" />
+		<ESRPSignTask
+			CopyBackSignedFilesToOriginalLocation="true"
+			UnsignedFileList="@(ScriptsToSign)"
+			SignLogDirPath="$(LibraryRoot)scripts-signing.log" 
+			Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/>			
 
-    <ESRPSignTask
-		SignedFilesRootDirPath="$(SignedOutputRootDir)"
-		UnsignedFileList="@(InstallersToSign)"
-		SignLogDirPath="$(LibraryRoot)\msi-signing.log" 
-		Condition="!$(DelaySign) and '@(InstallersToSign)' != ''"/>
+		<!-- RemoveCodeSignArtifacts.ps1 -->
+		<Message Text="----> Remove artifacts section" Importance="high"/>		
+		<Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\RemoveCodeSignArtifacts.ps1 -Path $(PackageDirectory)\$(Configuration) &quot;"
+			Condition="'$(Scope)' != 'Stack'"
+			ContinueOnError="ErrorAndContinue" />
+		
+		<!-- CheckSignature.ps1 -->	
+		<Message Text="----> CheckSignature section" Importance="high"/>		
+		<Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckSignature.ps1 -CustomPath $(PackageDirectory)\$(Configuration) &quot;" Condition="'$(Scope)' != 'Stack'" ContinueOnError="ErrorAndContinue" />
 
-    <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
-    <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
-    <SetEnvVar EnvName="SignedMsiDir" EnvValue="$(SignedOutputRootDir)" />
-  </Target>
+		<!-- Copy files back after signing -->
+		<Copy SourceFiles="$(PackageDirectory)\$(Configuration)\Az.psm1" DestinationFolder="$(LibraryRoot)tools\Az" Condition="'$(Scope)' == 'Netcore'" />
+	</Target>
 
+	<Target Name="CodeSignInstallerESRP">
+		<PropertyGroup>
+			<!--public token associated with MSSharedLibKey.snk-->
+			<StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
+		</PropertyGroup>
+		<GetFrameworkSdkPath>
+			<Output TaskParameter="Path" PropertyName="WindowsSdkPath"/>
+		</GetFrameworkSdkPath>
+
+		<ItemGroup>
+			<InstallersToSign Include="$(LibraryRoot)\setup\*.msi" />
+		</ItemGroup>
+
+		<Message Importance="high" Text="$(LibraryRoot)\setup does not contain any installers to sign. Code sign will skip."
+			Condition="'@(InstallersToSign)' == ''" />
+
+		<ESRPSignTask
+			SignedFilesRootDirPath="$(SignedOutputRootDir)"
+			UnsignedFileList="@(InstallersToSign)"
+			SignLogDirPath="$(LibraryRoot)\msi-signing.log" 
+			Condition="!$(DelaySign) and '@(InstallersToSign)' != ''"/>
+
+		<!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
+		<Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
+		<SetEnvVar EnvName="SignedMsiDir" EnvValue="$(SignedOutputRootDir)" />
+	</Target>
 </Project>
