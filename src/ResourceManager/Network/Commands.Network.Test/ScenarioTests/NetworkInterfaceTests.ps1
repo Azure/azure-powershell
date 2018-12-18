@@ -1025,6 +1025,7 @@ function Test-NetworkInterfaceVmss
     {
        # Create the resource group
        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+       #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
        $secpasswd = ConvertTo-SecureString "Pa$$word2018" -AsPlainText -Force
        $mycreds = New-Object System.Management.Automation.PSCredential ("username", $secpasswd)
 
