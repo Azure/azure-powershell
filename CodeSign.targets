@@ -70,6 +70,7 @@
 	</Target>
 
 	<Target Name="CodeSignInstaller">
+		<Message Text="----> CodeSignInstaller section" Importance="high"/>
 		<PropertyGroup>
 			<!--public token associated with MSSharedLibKey.snk-->
 			<StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
