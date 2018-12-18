@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix parameter set issue when providing `-ODataQuery` and `-ResourceId` parameters for `Get-AzResource`
+    - More information here: https://github.com/Azure/azure-powershell/issues/7875
 
 ## Version 1.0.0
 * General availability of `Az.Resources` module
