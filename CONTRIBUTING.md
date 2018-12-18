@@ -63,7 +63,7 @@ If you encounter any bugs with Microsoft Azure PowerShell, please file an issue 
 
 To suggest a new feature or changes that could be made to Azure PowerShell, file an issue the same way you would for a bug, but remove the provided template and replace it with information about your suggestion.
 
-You can find the code complete and release dates of the next three Azure PowerShell releases in the [Milestones](https://github.com/Azure/azure-powershell/milestones) section of the Issue page. Each milestone will display the issues that are being worked on for the corresponding release. 
+You can find the code complete and release dates of the next three Azure PowerShell releases in the [Milestones](https://github.com/Azure/azure-powershell/milestones) section of the Issue page. Each milestone will display the issues that are being worked on for the corresponding release.
 
 ## Submitting Changes
 
@@ -106,7 +106,7 @@ For more information on cleaning up the commits in a pull request, such as how t
 
 #### Updating the change log
 
-Any changes that are made must be reflected in the respecitve service's change log. This change log will allow customers to easily track what has been changed between releases of a service.
+Any changes that are made must be reflected in the respecitve service's change log under the `Upcoming Release` header. This change log will allow customers to easily track what has been changed between releases of a service.
 
 For ARM service projects, the change log is located at `src/ResourceManager/{{service}}/Commands.{{service}}/ChangeLog.md`.
 
