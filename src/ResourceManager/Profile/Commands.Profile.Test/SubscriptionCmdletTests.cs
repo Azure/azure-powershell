@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using  Microsoft.Azure.Commands.TestFx;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class SubscriptionCmdletTests : TestRunnerBase
+    public class SubscriptionCmdletTests : AccountsTestRunner
     {
         public SubscriptionCmdletTests(ITestOutputHelper output) 
             : base(output)
