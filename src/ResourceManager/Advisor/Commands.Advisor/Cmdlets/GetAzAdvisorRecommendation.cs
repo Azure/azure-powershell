@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    /// Search-AzureRmGraph cmdlet
+    /// Get-AzAdvisorRecommendation cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PsAzureAdvisorResourceRecommendationBase))]
-    public class AzGetAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
+    public class GetAzAdvisorRecommendation : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
         /// Constant for IdParameterSet

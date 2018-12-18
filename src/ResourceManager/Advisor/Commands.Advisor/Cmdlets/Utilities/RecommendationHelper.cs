@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// <summary>
         /// Position of recommendation-Id string in resource ID
         /// </summary>
-        private const int RECOMMENDAION_STRING_POSITION = 11;
+        private const int RECOMMENDATION_STRING_POSITION = 11;
 
         /// <summary>
         /// Position of recommendation-Id value in resource ID
         /// </summary>
-        private const int RECOMMENDAION_VALUE_POSITION = 12;
+        private const int RECOMMENDATION_VALUE_POSITION = 12;
 
         /// <summary>
         /// Filter recommendations by given category and resourceGroup name.
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         /// </summary>
         /// <param name="resourceID">ResourceId of recommendation</param>
         /// <returns>SubscriptionId as string</returns>
-        public static string GetResourceGroupFromResoureID(string resourceID)
+        public static string GetResourceGroupFromResourceID(string resourceID)
         {
             string resourceGroup = string.Empty;
             string[] resourceIdSplit = resourceID.Split('/');
@@ -184,9 +184,9 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
             string recommendationId = string.Empty;
             string[] resourceIdSplit = resourceID.Split('/');
 
-            if (resourceIdSplit[RECOMMENDAION_STRING_POSITION].Equals("recommendations"))
+            if (resourceIdSplit[RECOMMENDATION_STRING_POSITION].Equals("recommendations"))
             {
-                recommendationId = resourceIdSplit[RECOMMENDAION_VALUE_POSITION];
+                recommendationId = resourceIdSplit[RECOMMENDATION_VALUE_POSITION];
             }
 
             return recommendationId;

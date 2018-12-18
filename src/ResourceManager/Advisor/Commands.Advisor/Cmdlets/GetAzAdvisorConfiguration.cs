@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
-    /// Get-AzureRmAdvisorConfiguration cmdlet
+    /// Get-AzAdvisorConfiguration cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorConfiguration", DefaultParameterSetName = "RgParameterSet"),
         OutputType(typeof(PsAzureAdvisorConfigurationData))]
-    public class AzGetAzureRmAdvisorConfiguration : ResourceAdvisorBaseCmdlet
+    public class GetAzAdvisorConfiguration : ResourceAdvisorBaseCmdlet
     {
         public const string RgParameterSet = "RgParameterSet";
 
