@@ -255,3 +255,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVirtualHubVnetConnection](./Get-AzVirtualHubVnetConnection.md)
+
+[New-AzVirtualHubVnetConnection](./New-AzVirtualHubVnetConnection.md)

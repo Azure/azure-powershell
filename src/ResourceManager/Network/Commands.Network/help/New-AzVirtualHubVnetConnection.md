@@ -260,3 +260,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVirtualHubVnetConnection](./Get-AzVirtualHubVnetConnection.md)
+
+[Remove-AzVirtualHubVnetConnection](./Remove-AzVirtualHubVnetConnection.md)

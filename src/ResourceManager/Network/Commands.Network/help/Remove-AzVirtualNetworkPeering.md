@@ -183,3 +183,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzVirtualNetworkPeering](./Add-AzVirtualNetworkPeering.md)
+
+[Get-AzVirtualNetworkPeering](./Get-AzVirtualNetworkPeering.md)
+
+[Set-AzVirtualNetworkPeering](./Set-AzVirtualNetworkPeering.md)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceEndpointPolicy
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a service endpoint policy.
 
 ## SYNTAX
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{Fill ResourceId Description}}
+The ID of the service endpoint policy.
 
 ```yaml
 Type: System.String
@@ -149,3 +149,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzServiceEndpointPolicy](./New-AzServiceEndpointPolicy.md)
+
+[Remove-AzServiceEndpointPolicy](./Remove-AzServiceEndpointPolicy.md)
+
+[Set-AzServiceEndpointPolicy](./Set-AzServiceEndpointPolicy.md)

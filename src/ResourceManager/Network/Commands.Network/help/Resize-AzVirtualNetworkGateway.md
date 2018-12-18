@@ -118,10 +118,16 @@ You cannot resize from Basic/Standard/HighPerformance SKUs to the new VpnGw1/Vpn
 
 ## RELATED LINKS
 
-[Get-AzVpnClientPackage](./Get-AzVpnClientPackage.md)
-
 [Get-AzVirtualNetworkGateway](./Get-AzVirtualNetworkGateway.md)
 
+[New-AzVirtualNetworkGateway](./New-AzVirtualNetworkGateway.md)
+
+[Remove-AzVirtualNetworkGateway](./Remove-AzVirtualNetworkGateway.md)
+
+[Reset-AzVirtualNetworkGateway](./Reset-AzVirtualNetworkGateway.md)
+
+[Set-AzVirtualNetworkGateway](./Set-AzVirtualNetworkGateway.md)
+
+[Get-AzVpnClientPackage](./Get-AzVpnClientPackage.md)
+
 [Set-AzVirtualNetworkGatewayVpnClientConfig](./Set-AzVirtualNetworkGatewayVpnClientConfig.md)
-
-

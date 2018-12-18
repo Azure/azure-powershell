@@ -144,3 +144,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzContainerNicConfig](./New-AzContainerNicConfig.md)

@@ -213,3 +213,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVirtualNetworkTap](./Get-AzVirtualNetworkTap.md)
+
+[New-AzVirtualNetworkTap](./New-AzVirtualNetworkTap.md)
+
+[Set-AzVirtualNetworkTap](./Set-AzVirtualNetworkTap.md)

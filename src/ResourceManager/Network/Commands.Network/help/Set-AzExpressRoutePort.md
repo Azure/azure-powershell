@@ -130,3 +130,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzExpressRoutePort](./Get-AzExpressRoutePort.md)
+
+[New-AzExpressRoutePort](./New-AzExpressRoutePort.md)
+
+[Remove-AzExpressRoutePort](./Remove-AzExpressRoutePort.md)

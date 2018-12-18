@@ -201,3 +201,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkProfile](./Get-AzNetworkProfile.md)
+
+[Remove-AzNetworkProfile](./Remove-AzNetworkProfile.md)
+
+[Set-AzNetworkProfile](./Set-AzNetworkProfile.md)

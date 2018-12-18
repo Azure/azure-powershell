@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzServiceEndpointPolicyDefinition
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a service endpoint policy definition.
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+The service endpoint policy definition object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicyDefinition
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{Fill ResourceId Description}}
+The ID of the service endpoint definition.
 
 ```yaml
 Type: System.String
@@ -168,3 +168,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzServiceEndpointPolicyDefinition](./Add-AzServiceEndpointPolicyDefinition.md)
+
+[Get-AzServiceEndpointPolicyDefinition](./Get-AzServiceEndpointPolicyDefinition.md)
+
+[New-AzServiceEndpointPolicyDefinition](./New-AzServiceEndpointPolicyDefinition.md)
+
+[Set-AzServiceEndpointPolicyDefinition](./Set-AzServiceEndpointPolicyDefinition.md)

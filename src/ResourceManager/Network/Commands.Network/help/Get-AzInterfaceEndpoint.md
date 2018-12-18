@@ -41,7 +41,7 @@ This command gets the interface endpoint named InterfaceEndpoint1 that belongs t
 $interfaceendpoint = Get-AzInterfaceEndpoint -ResourceId "/subscriptions/sub1/resourceGroups/chsriniIEtest1/providers/Microsoft.Network/interfaceEndpoints/ie1.10"
 ```
 
-This command gets the interface endpoint with resourceId  /subscriptions/sub1/resourceGroups/chsriniIEtest1/providers/Microsoft.Network/interfaceEndpoints/ie1.10 and stores it in the $interfaceendpoint variable.
+This command gets the interface endpoint with resourceId /subscriptions/sub1/resourceGroups/chsriniIEtest1/providers/Microsoft.Network/interfaceEndpoints/ie1.10 and stores it in the $interfaceendpoint variable.
 
 ## PARAMETERS
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{Fill ResourceId Description}}
+The ID of the interface endpoint.
 
 ```yaml
 Type: System.String
