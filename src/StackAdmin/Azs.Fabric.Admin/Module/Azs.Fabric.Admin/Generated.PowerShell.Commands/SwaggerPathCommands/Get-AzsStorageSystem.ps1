@@ -5,10 +5,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Returns a list of all storage subsystems for a location.
+    Returns a list of all storage subsystems for a scale unit.
 
 .DESCRIPTION
-    Returns a list of all storage subsystems for a location.
+    Returns a list of all storage subsystems for a scale unit.
 
 .PARAMETER Name
     Resource group in which the resource provider has been registered.
@@ -85,6 +85,9 @@ function Get-AzsStorageSystem {
     )
 
     Begin {
+
+        Write-Warning "Get-AzsStorageSystem will be deperecated in a future release."
+
         Initialize-PSSwaggerDependencies -Azure
         $tracerObject = $null
         if (('continue' -eq $DebugPreference) -or ('inquire' -eq $DebugPreference)) {
