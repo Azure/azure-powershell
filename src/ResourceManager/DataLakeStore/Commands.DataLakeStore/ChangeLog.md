@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update the sdk version of dataplane to 1.1.14 to include SDK fixes
+* Update the sdk version of dataplane to 1.1.14. Please refer https://github.com/Azure/azure-data-lake-store-net/blob/master/CHANGELOG.md#version-1114 for SDK fixes.
 ## Version 1.0.0
 * General availability of `Az.DataLakeStore` module
 * Update the sdk version of dataplane to 1.1.13
