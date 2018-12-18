@@ -49,43 +49,5 @@ namespace Microsoft.Azure.Commands.Kusto.Utilities
             var identifier = new ResourceIdentifier(clusterId);
             resourceGroupName = identifier.ResourceGroupName;
         }
-
-        private static string[] ParseClusterResourceId(string clusterId)
-        {
-            
-
-            if (string.IsNullOrEmpty(clusterId))
-            {
-                throw new ArgumentNullException(nameof(clusterId));
-            }
-
-            // ResourceID should be in the following format:
-            // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.Kusto/clusters/{cluster}
-            string[] tokens = clusterId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            if (tokens.Length != 8)
-            {
-                throw new Exception($"ResourceId {clusterId} not in the expected format");
-            }
-
-            return tokens;
-        }
-
-        private static string[] ParseDatabaseResourceId(string databaseId)
-        {
-            if (string.IsNullOrEmpty(databaseId))
-            {
-                throw new ArgumentNullException(nameof(databaseId));
-            }
-
-            // ResourceID should be in the following format:
-            // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.Kusto/clusters/{cluster}/databases/{database}
-            string[] tokens = databaseId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            if (tokens.Length != 10)
-            {
-                throw new Exception($"ResourceId {databaseId} not in the expected format");
-            }
-
-            return tokens;
-        }
     }
 }

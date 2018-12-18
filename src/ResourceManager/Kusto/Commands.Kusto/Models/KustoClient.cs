@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Kusto.Models
 
         #region Cluster Related Operations
 
-        public CheckNameResult CheckClusterNAmeAvailability(string clusterName, string location)
+        public CheckNameResult CheckClusterNameAvailability(string clusterName, string location)
         {
             return _client.Clusters.CheckNameAvailability(location, new ClusterCheckNameRequest(clusterName));
         }
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.Kusto.Models
                     databaseName,
                     new Database()
                     {
-                       HotCachePeriodInDays = hotCachePeriodInDays,
+                        HotCachePeriodInDays = hotCachePeriodInDays,
                         SoftDeletePeriodInDays = softDeletePeriodInDays,
                         Location = location
                     });
