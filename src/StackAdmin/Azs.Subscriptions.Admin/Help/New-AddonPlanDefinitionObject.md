@@ -1,11 +1,11 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
-# New-AddonPlanDefinitionObject
+# New-AzsAddonPlanDefinitionObject
 
 ## SYNOPSIS
 Contains the name of the desired plan to be linked or unlinked from an offer.
@@ -13,7 +13,7 @@ Contains the name of the desired plan to be linked or unlinked from an offer.
 ## SYNTAX
 
 ```
-New-AddonPlanDefinitionObject [[-PlanId] <String>] [[-MaxAcquisitionCount] <Int64>] [<CommonParameters>]
+New-AzsAddonPlanDefinitionObject [[-PlanId] <String>] [[-MaxAcquisitionCount] <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ Contains the name of the desired plan to be linked or unlinked from an offer.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-New-AddonPlanDefinitionObject -PlanId $planIdentifier -MaxAcquisitionCount 500
+New-AzsAddonPlanDefinitionObject -PlanId $planIdentifier -MaxAcquisitionCount 500
 ```
 
 Create a new plan definition object for the specified plan with the acquisition limit of 500.
@@ -37,7 +37,7 @@ If not specified, the assumed value is 1.
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -52,7 +52,7 @@ Plan identifier.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1

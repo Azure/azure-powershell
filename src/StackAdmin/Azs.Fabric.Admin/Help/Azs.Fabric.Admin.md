@@ -69,7 +69,7 @@ Returns a list of all software load balancer instances at a location.
 Returns a list of all storage pools for a location.
 
 ### [Get-AzsStorageSubSystem](Get-AzsStorageSubSystem.md)
-Returns a list of all storage subsystems for a location.
+Returns a list of all storage subsystems for a scale unit.
 
 ### [Get-AzsStorageSystem](Get-AzsStorageSystem.md)
 Returns a list of all storage subsystems for a location.

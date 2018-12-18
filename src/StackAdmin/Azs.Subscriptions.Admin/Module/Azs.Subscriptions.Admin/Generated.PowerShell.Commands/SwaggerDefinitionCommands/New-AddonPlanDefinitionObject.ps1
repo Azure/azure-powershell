@@ -18,12 +18,12 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    New-AddonPlanDefinitionObject -PlanId $planIdentifier -MaxAcquisitionCount 500
+    New-AzsAddonPlanDefinitionObject -PlanId $planIdentifier -MaxAcquisitionCount 500
 
     Create a new plan definition object for the specified plan with the acquisition limit of 500.
 
 #>
-function New-AddonPlanDefinitionObject
+function New-AzsAddonPlanDefinitionObject
 {
     param(
         [Parameter(Mandatory = $false)]
@@ -34,6 +34,10 @@ function New-AddonPlanDefinitionObject
         [System.Nullable`1[long]]
         $MaxAcquisitionCount
     )
+
+    if ($MyInvocation.InvocationName -like '*New-DataDiskObject*') {
+        Write-Warning "New-DataDiskObject has been deprecated, please use New-AzsDataDiskObject"
+    }
 
     $Object = New-Object -TypeName Microsoft.AzureStack.Management.Subscriptions.Admin.Models.AddonPlanDefinition -ArgumentList @($planId,$maxAcquisitionCount)
 

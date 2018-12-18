@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.3.1
+* Added missing Azs prefix for New-AddonPlanDefinitionObject and created alias.  The cmdlet will be deprecated in a future release.
+
 ## Version 0.3.0
 * Module dependencies updated
 	* AzureRM.Profile
