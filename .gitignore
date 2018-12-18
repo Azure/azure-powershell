@@ -1,5 +1,4 @@
 # Azure PowerShell specific
-src/Publish/
 artifacts/
 src/Stack/
 src/local-artifacts/*
