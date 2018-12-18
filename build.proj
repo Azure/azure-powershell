@@ -60,7 +60,7 @@
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(LibrarySourceFolder)</NuGetPublishingSource>
     <Scope Condition="$(Scope) == ''" >All</Scope>
-    <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
+    <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)\netstandard2.0</BuildTasksPath>
     <PackageDirectory>$(LibrarySourceFolder)\Package</PackageDirectory>
     <StackPackageFolder>$(LibrarySourceFolder)\Stack</StackPackageFolder>
     <NetCore Condition="'$(NetCore)' != 'true'">false</NetCore>
@@ -85,19 +85,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'" />
+    <!-- <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'" /> -->
     <StackSolution    Include="$(LibrarySourceFolder)\StackAdmin\Stack.sln" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
     <StaticAnalysis   Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
     <StaticAnalysisNetcore   Include=".\tools\StaticAnalysis\StaticAnalysisNetcore.sln" />
-    <LocalBuildTasks  Include="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.sln" />
-    <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'" />
+    <LocalBuildTasks  Include="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.Netcore.sln" />
   </ItemGroup>
 
   <!-- Tasks -->
   <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="DebugTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
-  <UsingTask TaskName="VerifyAuthenticodeSignatureTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="FilesChangedTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="FilterTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="SetEnvVar" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll" >
@@ -155,18 +153,8 @@
     <PowerShellCoreCommandPrefix>$(PowerShellCoreCommand) -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
   </PropertyGroup>
 
-  <!--
-  Force nuget package restore so that packages that include .targets files
-  don't need to be checked into source control.
-  -->
-  <Target Name="RestoreNugetPackages" Condition="$(SkipNugetRestore) == 'false'">
-    <Message Importance="high" Text="Restore Nuget packages..." />
-    <!-- Restore packages for local build tasks-->
-    <Exec Command="$(NuGetCommand) restore %(LocalBuildTasks.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)" ContinueOnError="false" />
-  </Target>
-
   <Target Name="FilterBuild">
-    <Exec ContinueOnError="false" Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\CreateFilterMappings.ps1 &quot;" />
+    <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot; . $(LibraryToolsFolder)\CreateFilterMappings.ps1 &quot;" />
 
     <!-- Get all of the files changed in the given pull request -->
     <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)">
@@ -182,13 +170,22 @@
     <Message Text="Total: @(ModulesChanged->Count())" />
     <Message Text="" />
 
-    <!-- Get the list of solutions to build -->
-    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\SolutionMappings.json">
-        <Output TaskParameter="Output" ItemName="CmdletSolutionsToBuild" />
+    <!-- Get the list of projects to build and publish -->
+    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\CsprojNoTestMappings.json">
+        <Output TaskParameter="Output" ItemName="ProjectsNoTestToBuild" />
     </FilterTask>
-    <Message Text="Filtering solutions to build by the following:" />
-    <Message Text="%(CmdletSolutionsToBuild.Identity)" />
-    <Message Text="Total: @(CmdletSolutionsToBuild->Count())" />
+    <Message Text="Filtering projects to build and publish by the following:" />
+    <Message Text="%(ProjectsNoTestToBuild.Identity)" />
+    <Message Text="Total: @(ProjectsNoTestToBuild->Count())" />
+    <Message Text="" />
+
+    <!-- Get the list of all projects to build for testing -->
+    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\CsprojMappings.json">
+        <Output TaskParameter="Output" ItemName="ProjectsToBuild" />
+    </FilterTask>
+    <Message Text="Filtering projects to build for testing by the following:" />
+    <Message Text="%(ProjectsToBuild.Identity)" />
+    <Message Text="Total: @(ProjectsToBuild->Count())" />
     <Message Text="" />
 
     <!--Get the list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
@@ -199,15 +196,11 @@
     <Message Text="%(XUnitTests.Identity)" />
     <Message Text="Total: @(XunitTests->Count())" />
     <Message Text="" />
-
-    <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)" ContinueOnError="false" />
   </Target>
 
   <!-- Build all flavors of the Cmdlets -->
-  <!-- TODO: Reimplement the FilterBuild and update RepoTasks to NetStandard -->
   <!-- <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask;FilterBuild"> -->
-  <Target Name="Build">
+  <Target Name="Build" DependsOnTargets="BuildMsBuildTask;FilterBuild">
     <Message Importance="high" Text="Building Cmdlets..." />
     <PropertyGroup>
       <Scope>Netcore</Scope>
@@ -220,10 +213,7 @@
     <!-- Build and create package content -->
     <Exec Command="dotnet --version" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
-    <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/ResourceManager/**/*.csproj" Exclude="$(LibraryRoot)src/ResourceManager/**/*.Test.Netcore.csproj" />
-    </ItemGroup>
-    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFiles->'%(FullPath)', ' ')" />
+    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ProjectsNoTestToBuild, ' ')" />
     <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/Tools.Common/Tools.Common.Netcore.csproj $(LibraryRoot)tools/StaticAnalysis/StaticAnalysis.Netcore.csproj" />
     <Exec Command="dotnet publish Azure.PowerShell.sln -c $(Configuration)" />
 
@@ -270,7 +260,7 @@
     <!-- Update module manifests. -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;" Condition="'$(CodeSign)' == 'false'" ContinueOnError="false" />
     <!-- Generate the Help -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration)&quot;" Condition="'$(SkipHelp)' == 'false' And '$(RunStaticAnalysis)' == 'true'" ContinueOnError="false" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) -FilteredModules '@(ModulesChanged)'&quot;" Condition="'$(SkipHelp)' == 'false' And '$(RunStaticAnalysis)' == 'true'" ContinueOnError="false" />
 
     <Exec ContinueOnError="false"
       Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration) &quot;" 
@@ -285,17 +275,15 @@
     <Exec ContinueOnError="false"
           Command="$(PowerShellCoreCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;" 
           Condition="'$(CodeSign)' == 'true'"/>
-    
+
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
 
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
-    
+
     <CallTarget Targets="CodeSignBinaries" Condition="'$(CodeSign)' == 'true'" />
 
     <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration)&quot;" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'" />
 
-    <Message Importance="high" Text="Running Static Analyser" />
-    <CallTarget targets="DependencyAnalysis" ContinueOnError="ErrorAndContinue" />
     <!-- TODO: Implement CheckAssemblies.ps1 for Az. -->
     <!-- <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" /> -->
 
@@ -305,12 +293,11 @@
   <!-- Do everything possible except Publish -->
   <Target Name="Full" DependsOnTargets="Clean;Build;Test" />
 
-  <Target Name="BuildMsBuildTask" DependsOnTargets="RestoreNugetPackages">
-    <Message Importance="high" Text="Building RepoTasks" />
-    <MSBuild Projects="@(LocalBuildTasks)" Targets="Build" Properties="Configuration=$(Configuration);Platform=Any CPU" />
+  <Target Name="BuildMsBuildTask">
+  	<Exec Command="dotnet build @(LocalBuildTasks) -c $(Configuration)" />
   </Target>
 
-  <Target Name="CodeSignBinaries" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
+  <Target Name="CodeSignBinaries" DependsOnTargets="BuildMsBuildTask">
     <PropertyGroup>
       <!--public token associated with MSSharedLibKey.snk-->
       <StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
@@ -423,19 +410,6 @@
   </Target>
 
   <!-- Run Validation -->
-  <Target Name="DependencyAnalysis" Condition="'$(SkipDependencyAnalysis)' == 'false'">
-    <Message Importance="high" Text="Running dependency analysis..." />
-
-    <PropertyGroup>
-        <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
-    </PropertyGroup>
-    <!-- TODO: Use '-m @(ModulesChanged)' in command when FilterBuild is fixed. -->
-    <!-- <Exec Command="dotnet $(MSBuildThisFileDirectory)src/Package/StaticAnalysis/StaticAnalysis.Netcore.dll -p $(MSBuildThisFileDirectory)src/Package/$(Configuration) -r $(MSBuildThisFileDirectory)src/Package/StaticAnalysis $(SkipHelpValue) -u" /> -->
-
-    <OnError ExecuteTargets="StaticAnalysisErrorMessage" />
-  </Target>
-
-  <!-- Run Validation -->
   <Target Name="DependencyAnalysisNetcore"
           Condition="'$(SkipDependencyAnalysis)' == 'false'">
 
@@ -488,10 +462,7 @@
 
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
-    <ItemGroup>
-      <ModuleCsprojFiles Include="$(LibraryRoot)src/ResourceManager/**/*.csproj" />
-    </ItemGroup>
-    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ModuleCsprojFiles->'%(FullPath)', ' ')" />
+    <Exec Command="dotnet sln Azure.PowerShell.sln add @(ProjectsToBuild, ' ')" />
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
     <Exec Command="dotnet test Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx" />

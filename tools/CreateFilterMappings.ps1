@@ -107,6 +107,21 @@ function Create-Key
     return $Key
 }
 
+function Create-ProjectToFullPathMappings
+{
+    $Mappings = [ordered]@{}
+    foreach ($ServiceFolder in $Script:ServiceFolders)
+    {
+        $CsprojFiles = Get-ChildItem -Path $ServiceFolder -Filter "*.csproj" -Recurse | where { $_.FullName -notlike "*Stack*" }
+        foreach ($CsprojFile in $CsprojFiles)
+        {
+            $Mappings[$CsprojFile.BaseName] = $CsprojFile.FullName
+        }
+    }
+
+    return $Mappings
+}
+
 <#
 Creates a mapping from a solution file to the projects it references. For example:
 
@@ -128,15 +143,13 @@ function Create-SolutionToProjectMappings
     $Mappings = [ordered]@{}
     foreach ($ServiceFolder in $Script:ServiceFolders)
     {
-        $SolutionFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.sln" | where { $_.FullName -notlike "*Stack*" -and $_.FullName -notlike "*Netcore*" }
+        $SolutionFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.sln" | where { $_.FullName -notlike "*Stack*" }
         foreach ($SolutionFile in $SolutionFiles)
         {
             $Mappings = Add-ProjectDependencies -Mappings $Mappings -SolutionPath $SolutionFile.FullName
         }
     }
 
-    $Mappings = Add-ProjectDependencies -Mappings $Mappings -SolutionPath (Join-Path -Path $Script:ServiceManagementPath -ChildPath "ServiceManagement.sln")
-    $Mappings = Add-ProjectDependencies -Mappings $Mappings -SolutionPath (Join-Path -Path $Script:StoragePath -ChildPath "Storage.sln")
     return $Mappings
 }
 
@@ -156,7 +169,8 @@ function Add-ProjectDependencies
 
     $ProjectDependencies = @()
     $Content = Get-Content -Path $SolutionPath
-    $Content | Select-String -Pattern "`"[a-zA-Z.]*`"" | % { $_.Matches[0].Value.Trim('"') } | where { $_ -notlike "Test*" -and $_ -notlike "*.Test*" -and $_ -notlike "*Common*" } | % { $ProjectDependencies += $_ }
+    $Content | Select-String -Pattern "`"[a-zA-Z.]*`"" | % { $_.Matches[0].Value.Trim('"') } | where { $_ -notlike "Test*" -and `
+                                                                                                       $_ -notlike "*Common*" } | % { $ProjectDependencies += $_ }
     $Mappings[$SolutionPath] = $ProjectDependencies
     return $Mappings
 }
@@ -185,8 +199,6 @@ function Create-ProjectToSolutionMappings
         $Mappings = Add-SolutionReference -Mappings $Mappings -ServiceFolderPath $ServiceFolder.FullName
     }
 
-    $Mappings = Add-SolutionReference -Mappings $Mappings -ServiceFolderPath $Script:ServiceManagementPath
-    $Mappings = Add-SolutionReference -Mappings $Mappings -ServiceFolderPath $Script:StoragePath
     return $Mappings
 }
 
@@ -204,7 +216,8 @@ function Add-SolutionReference
         [string]$ServiceFolderPath
     )
 
-    $CsprojFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.csproj" -Recurse | where { $_.FullName -notlike "*Stack*" -and $_.FullName -notlike "*Netcore*" -and $_.FullName -notlike "*.Test*" }
+    $CsprojFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.csproj" -Recurse | where { $_.FullName -notlike "*Stack*" -and `
+                                                                                                $_.FullName -notlike "*.Test*" }
     foreach ($CsprojFile in $CsprojFiles)
     {
         $Key = $CsprojFile.BaseName
@@ -221,93 +234,87 @@ Creates the ModuleMappings.json file used during the build to filter StaticAnaly
 function Create-ModuleMappings
 {
     $PathsToIgnore = @(
-        "src/Common",
-        "src/ResourceManager/Common",
         "tools"
     )
 
-    $CustomMappings = @{
-        "src/ServiceManagement" = @( "Azure" );
-        "src/Storage" =           @( "Azure.Storage" )
-    }
+    $Script:ModuleMappings = Initialize-Mappings -PathsToIgnore $PathsToIgnore -CustomMappings $CustomMappings
 
-    $Mappings = Initialize-Mappings -PathsToIgnore $PathsToIgnore -CustomMappings $CustomMappings
-
-    $FilteredServiceFolders = $Script:ServiceFolders | where { $_.FullName -notlike "*src/ResourceManager/Common*" }
-    foreach ($ServiceFolder in $FilteredServiceFolders)
+    foreach ($ServiceFolder in $Script:ServiceFolders)
     {
         $Key = "src/ResourceManager/$($ServiceFolder.Name)"
-        $ModuleManifestFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.psd1" -Recurse | where { $_.FullName -notlike "*Stack*" -and $_.Name -like "*Azure*" -and $_.FullName -notlike "*Test*" }
+        $ModuleManifestFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.psd1" -Recurse | where { $_.FullName -notlike "*Stack*" -and `
+                                                                                                               $_.FullName -notlike "*Test*" -and `
+                                                                                                               $_.FullName -notlike "*Release*" -and `
+                                                                                                               $_.FullName -notlike "*Debug*" -and `
+                                                                                                               $_.Name -like "*Az.*" }
         if ($ModuleManifestFiles -ne $null)
         {
             $Value = @()
             $ModuleManifestFiles | % { $Value += $_.BaseName }
-            $Mappings[$Key] = $Value
+            $Script:ModuleMappings[$Key] = $Value
         }
     }
-
-    return $Mappings
 }
 
 <#
-Creates the SolutionMappings.json file used during the build to filter the build step by solution.
+Creates the CsprojMappings.json file used during the build to filter the build step by project.
 #>
-function Create-SolutionMappings
+function Create-CsprojMappings
 {
     $PathsToIgnore = @(
-        "src/Common",
-        "src/ResourceManager/Common",
         "tools"
     )
 
     $CustomMappings = @{}
 
-    $Mappings = Initialize-Mappings -PathsToIgnore $PathsToIgnore -CustomMappings $CustomMappings
+    $Script:CsprojMappings = Initialize-Mappings -PathsToIgnore $PathsToIgnore -CustomMappings $CustomMappings
+    $Script:CsprojNoTestMappings = Initialize-Mappings -PathsToIgnore $PathsToIgnore -CustomMappings $CustomMappings
     foreach ($ServiceFolder in $Script:ServiceFolders)
     {
-        $Mappings = Add-SolutionMappings -Mappings $Mappings -ServiceFolderPath $ServiceFolder.FullName
+        Add-CsprojMappings -ServiceFolderPath $ServiceFolder.FullName
     }
-
-    $Mappings = Add-SolutionMappings -Mappings $Mappings -ServiceFolderPath $Script:ServiceManagementPath
-    $Mappings = Add-SolutionMappings -Mappings $Mappings -ServiceFolderPath $Script:StoragePath
-    return $Mappings
 }
 
 <#
-Maps a normalized path to the solutions to be built based on the service folder provided.
+Maps a normalized path to the projects to be built based on the service folder provided.
 #>
-function Add-SolutionMappings
+function Add-CsprojMappings
 {
     param
     (
-        [Parameter(Mandatory = $true)]
-        [hashtable]$Mappings,
-
         [Parameter(Mandatory = $true)]
         [string]$ServiceFolderPath
     )
 
     $Key = Create-Key -FilePath $ServiceFolderPath
 
-    $CsprojFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.csproj" -Recurse | where { $_.FullName -notlike "*Stack*" -and $_.FullName -notlike "*Netcore*" -and $_.FullName -notlike "*.Test*" }
+    $CsprojFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.csproj" -Recurse | where { $_.FullName -notlike "*Stack*" -and `
+                                                                                                $_.FullName -notlike "*.Test*" }
     if ($CsprojFiles -ne $null)
     {
         $Values = New-Object System.Collections.Generic.HashSet[string]
+        $NoTestValues = New-Object System.Collections.Generic.HashSet[string]
         foreach ($CsprojFile in $CsprojFiles)
         {
             $Project = $CsprojFile.BaseName
             foreach ($Solution in $Script:ProjectToSolutionMappings[$Project])
             {
-                $Solution = $Solution -replace "\\","\"
-                $SolutionPath = "." + $Solution.Substring($Script:RootPath.length)
-                $Values.Add($SolutionPath) | Out-Null
+                foreach ($ReferencedProject in $Script:SolutionToProjectMappings[$Solution])
+                {
+                    $CsprojFullPath = $Script:ProjectToFullPathMappings[$ReferencedProject]
+                    if ($CsprojFullPath -notlike "*.Test.*")
+                    {
+                        $NoTestValues.Add($CsprojFullPath) | Out-Null
+                    }
+
+                    $Values.Add($CsprojFullPath) | Out-Null
+                }
             }
         }
 
-        $Mappings[$Key] = $Values
+        $Script:CsprojMappings[$Key] = $Values
+        $Script:CsprojNoTestMappings[$Key] = $NoTestValues
     }
-
-    return $Mappings
 }
 
 <#
@@ -315,23 +322,15 @@ Creates the TestMappings.json file used during the build to filter the tests to 
 #>
 function Create-TestMappings
 {
-    param
-    (
-        [Parameter(Mandatory = $true)]
-        [hashtable]$SolutionMappings
-    )
-
     $PathsToIgnore = @(
-        "src/Common",
-        "src/ResourceManager/Common",
         "tools"
     )
     $CustomMappings = @{
-        "tools/BuildPackagesTask" =                        @( ".\tools\BuildPackagesTask\Microsoft.Azure.Build.Tasks.Test\bin\Debug\Microsoft.Azure.Build.Tasks.Test.dll" );
-        "tools/RepoTasks" =                                @( ".\tools\RepoTasks\RepoTasks.Cmdlets.Tests\bin\Debug\RepoTasks.Cmdlets.Tests.dll" );
+        "tools/BuildPackagesTask" = @( ".\tools\BuildPackagesTask\Microsoft.Azure.Build.Tasks.Test\bin\Debug\Microsoft.Azure.Build.Tasks.Test.dll" );
+        "tools/RepoTasks" =         @( ".\tools\RepoTasks\RepoTasks.Cmdlets.Tests\bin\Debug\RepoTasks.Cmdlets.Tests.dll" );
     }
 
-    $Mappings = Initialize-Mappings -PathsToIgnore $PathsToIgnore -CustomMappings $CustomMappings
+    $Script:TestMappings = Initialize-Mappings -PathsToIgnore $PathsToIgnore -CustomMappings $CustomMappings
 
     $TestDllMappings = [ordered]@{}
     foreach ($ServiceFolder in $Script:ServiceFolders)
@@ -339,17 +338,10 @@ function Create-TestMappings
         $TestDllMappings = Add-TestDllMappings -Mappings $TestDllMappings -ServiceFolderPath $ServiceFolder.FullName
     }
 
-    $TestDllMappings = Add-TestDllMappings -Mappings $TestDllMappings -ServiceFolderPath $Script:ServiceManagementPath
-    $TestDllMappings = Add-TestDllMappings -Mappings $TestDllMappings -ServiceFolderPath $Script:StoragePath
-
     foreach ($ServiceFolder in $Script:ServiceFolders)
     {
-        $Mappings = Add-TestMappings -Mappings $Mappings -TestDllMappings $TestDllMappings -SolutionMappings $SolutionMappings -ServiceFolderPath $ServiceFolder.FullName
+        Add-TestMappings -TestDllMappings $TestDllMappings -ServiceFolderPath $ServiceFolder.FullName
     }
-
-    $Mappings = Add-TestMappings -Mappings $Mappings -TestDllMappings $TestDllMappings -SolutionMappings $SolutionMappings -ServiceFolderPath $Script:ServiceManagementPath
-    $Mappings = Add-TestMappings -Mappings $Mappings -TestDllMappings $TestDllMappings -SolutionMappings $SolutionMappings -ServiceFolderPath $Script:StoragePath
-    return $Mappings
 }
 
 <#
@@ -366,19 +358,19 @@ function Add-TestDllMappings
         [string]$ServiceFolderPath
     )
 
-    $SolutionFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.sln" | where { $_.FullName -notlike "*Netcore*" -and $_.FullName -notlike "*Stack*" }
+    $SolutionFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.sln" | where { $_.FullName -notlike "*Stack*" }
     if ($SolutionFiles -ne $null)
     {
-        $SolutionKeys = $SolutionFiles | % { (("./" + (Create-Key -FilePath $_.FullName)) -replace "/", "\").Trim("\") }
-        foreach ($Key in $SolutionKeys)
+        foreach ($Solution in $SolutionFiles)
         {
-            if ($Mappings[$Key] -eq $null)
+            if ($Mappings[$Solution.BaseName] -eq $null)
             {
-                $Mappings[$Key] = @()
+                $Mappings[$Solution.BaseName] = @()
             }
         }
 
-        $TestProjects = Get-ChildItem -Path $ServiceFolderPath -Filter "*.Test*csproj" -Recurse | where { $_.FullName -notlike "*Netcore*" -and $_.FullName -notlike "*Stack*" -and $_.FullName -notlike "*Commands.Common.Test*" }
+        $TestProjects = Get-ChildItem -Path $ServiceFolderPath -Filter "*.Test*csproj" -Recurse | where { $_.FullName -notlike "*Stack*" -and `
+                                                                                                          $_.FullName -notlike "*Commands.Common.Test*" }
         foreach ($TestProject in $TestProjects)
         {
             $AssemblyName = Get-AssemblyName -TestCsprojPath $TestProject.FullName
@@ -386,7 +378,7 @@ function Add-TestDllMappings
             {
                 $TestBasePath = $TestProject.Directory.FullName.Substring($Script:RootPath.length)
                 $TestDllPath = "." + $TestBasePath + "\bin\Debug\$AssemblyName.dll"
-                $SolutionKeys | % { $Mappings[$_] += $TestDllPath }
+                $SolutionFiles | % { $Mappings[$_.BaseName] += $TestDllPath }
             }
         }
     }
@@ -402,13 +394,7 @@ function Add-TestMappings
     param
     (
         [Parameter(Mandatory = $true)]
-        [hashtable]$Mappings,
-
-        [Parameter(Mandatory = $true)]
         [hashtable]$TestDllMappings,
-
-        [Parameter(Mandatory = $true)]
-        [hashtable]$SolutionMappings,
 
         [Parameter(Mandatory = $true)]
         [string]$ServiceFolderPath
@@ -417,30 +403,37 @@ function Add-TestMappings
     $Values = @()
     $TestDlls = New-Object System.Collections.Generic.HashSet[string]
     $Key = Create-Key -FilePath $ServiceFolderPath
-    $Solutions = $SolutionMappings[$Key]
-    foreach ($Solution in $Solutions)
+    $CsprojFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.csproj" -Recurse | where { $_.FullName -notlike "*Stack*" -and `
+                                                                                                $_.FullName -notlike "*.Test*" }
+    foreach ($CsprojFile in $CsprojFiles)
     {
-        $TestDllMappings[$Solution] | % { $TestDlls.Add($_) | Out-Null }
+        foreach ($Solution in $Script:ProjectToSolutionMappings[$CsprojFile.BaseName])
+        {
+            $SolutionFile = Get-Item -Path $Solution
+            foreach ($TestDll in $TestDllMappings[$SolutionFile.BaseName])
+            {
+                $TestDlls.Add($TestDll) | Out-Null
+            }
+        }
     }
 
     $TestDlls | % { $Values += $_ }
-    $Mappings[$Key] = $Values
-    return $Mappings
+    $Script:TestMappings[$Key] = $Values
 }
 
 $Script:RootPath = (Get-Item -Path $PSScriptRoot).Parent.FullName
 $Script:SrcPath = Join-Path -Path $Script:RootPath -ChildPath "src"
 $Script:ResourceManagerPath = Join-Path $Script:SrcPath -ChildPath "ResourceManager"
 $Script:ServiceFolders = Get-ChildItem -Path $Script:ResourceManagerPath -Directory
-$Script:ServiceManagementPath = Join-Path -Path $Script:SrcPath -ChildPath "ServiceManagement"
-$Script:StoragePath = Join-Path -Path $Script:SrcPath -ChildPath "Storage"
+$Script:ProjectToFullPathMappings = Create-ProjectToFullPathMappings
 $Script:SolutionToProjectMappings = Create-SolutionToProjectMappings
 $Script:ProjectToSolutionMappings = Create-ProjectToSolutionMappings
 
-$ModuleMappings = Create-ModuleMappings
-$SolutionMappings = Create-SolutionMappings
-$TestMappings = Create-TestMappings -SolutionMappings $SolutionMappings
+Create-ModuleMappings
+Create-CsprojMappings
+Create-TestMappings
 
-$ModuleMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "ModuleMappings.json")
-$SolutionMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "SolutionMappings.json")
-$TestMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "TestMappings.json")
+$Script:ModuleMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "ModuleMappings.json")
+$Script:CsprojMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "CsprojMappings.json")
+$Script:CsprojNoTestMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "CsprojNoTestMappings.json")
+$Script:TestMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "TestMappings.json")
