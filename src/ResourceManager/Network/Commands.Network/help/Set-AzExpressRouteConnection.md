@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermexpressrouteconnection
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azexpressrouteconnection
 schema: 2.0.0
 ---
 
-# Set-AzureRmExpressRouteConnection
+# Set-AzExpressRouteConnection
 
 ## SYNOPSIS
 Updates a ExpressRouteConnection object to a goal state.
@@ -14,24 +14,22 @@ Updates a ExpressRouteConnection object to a goal state.
 
 ### ByExpressRouteConnectionName (Default)
 ```
-Set-AzureRmExpressRouteConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
- [-EnableBgp <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzExpressRouteConnection -ResourceGroupName <String> -ExpressRouteGatewayName <String> -Name <String>
+ [-AuthorizationKey <String>] [-RoutingWeight <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExpressRouteConnectionResourceId
 ```
-Set-AzureRmExpressRouteConnection -ResourceId <String> [-SharedKey <SecureString>]
- [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzExpressRouteConnection -ResourceId <String> [-AuthorizationKey <String>] [-RoutingWeight <UInt32>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExpressRouteConnectionObject
 ```
-Set-AzureRmExpressRouteConnection -InputObject <PSExpressRouteConnection> [-SharedKey <SecureString>]
- [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzExpressRouteConnection -InputObject <PSExpressRouteConnection> [-AuthorizationKey <String>]
+ [-RoutingWeight <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,17 +40,17 @@ Modifies properties of an ExpressRouteConnection created between an ExpressRoute
 ### Example 1
 
 ```powershell
-PS C:\> New-AzureRmResourceGroup -Location "West Central US" -Name "testRG"
-PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West Central US"
-PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
-PS C:\> New-AzureRmExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
-PS C:\> $ExpressRouteGateway = Get-AzureRmExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw"
-PS C:\> $ExpressRouteCircuit = New-AzureRmExpressRouteCircuit -ResourceGroupName "testRG" -Name "testExpressRouteCircuit" -Location "West Central US" -SkuTier Premium -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
-PS C:\> Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ExpressRouteCircuit -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300
-PS C:\> $ExpressRouteCircuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ExpressRouteCircuit
+PS C:\> New-AzResourceGroup -Location "West Central US" -Name "testRG"
+PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West Central US"
+PS C:\> $virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+PS C:\> New-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
+PS C:\> $ExpressRouteGateway = Get-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw"
+PS C:\> $ExpressRouteCircuit = New-AzExpressRouteCircuit -ResourceGroupName "testRG" -Name "testExpressRouteCircuit" -Location "West Central US" -SkuTier Premium -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
+PS C:\> Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ExpressRouteCircuit -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300
+PS C:\> $ExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $ExpressRouteCircuit
 PS C:\> $ExpressRouteCircuitPeeringId = $ExpressRouteCircuit.Peerings[0].Id
-PS C:\> New-AzureRmExpressRouteConnection -ResourceGroupName $ExpressRouteGateway.ResourceGroupName -ParentResourceName $ExpressRouteGateway.Name -Name "testConnection" -ExpressRouteCircuitPeeringId $ExpressRouteCircuitPeeringId -RoutingWeight 20
-PS C:\> Set-AzureRmExpressRouteConnection -InputObject $ExpressRouteConnection -RoutingWeight 30
+PS C:\> New-AzExpressRouteConnection -ResourceGroupName $ExpressRouteGateway.ResourceGroupName -ParentResourceName $ExpressRouteGateway.Name -Name "testConnection" -ExpressRouteCircuitPeeringId $ExpressRouteCircuitPeeringId -RoutingWeight 20
+PS C:\> Set-AzExpressRouteConnection -InputObject $ExpressRouteConnection -RoutingWeight 30
 
 ExpressRouteCircuitPeeringId       : Microsoft.Azure.Commands.Network.Models.PSResourceId
 AuthorizationKey                   :
@@ -66,9 +64,9 @@ Id                                 : /subscriptions/{subscriptionId}/resourceGro
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a ExpressRouteSite in West US in "testRG" resource group in Azure. 
 A ExpressRoute gateway will be created thereafter in the Virtual Hub with 2 scale units.
 
-Once the gateway has been created, it is connected to the on premise ExpressRoute circuit peering using the New-AzureRmExpressRouteConnection command.
+Once the gateway has been created, it is connected to the on premise ExpressRoute circuit peering using the New-AzExpressRouteConnection command.
 
-The connection is then updated to have a different RoutingWeight by using the Set-AzureRmExpressRouteConnection command.
+The connection is then updated to have a different RoutingWeight by using the Set-AzExpressRouteConnection command.
 
 ## PARAMETERS
 
@@ -87,11 +85,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RoutingWeight
-The weight that needs to be assigned to this connection for packet routing.
+### -AuthorizationKey
+The authorization key to be used to create the ExpressRoute gateway connection.
 
 ```yaml
-Type: System.UInt32
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -106,11 +104,26 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpressRouteGatewayName
+The parent resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByExpressRouteConnectionName
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -147,21 +160,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParentResourceName
-The parent resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByExpressRouteConnectionName
-Aliases: ParentExpressRouteGatewayName, ExpressRouteGatewayName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name.
 
@@ -189,6 +187,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RoutingWeight
+The weight that needs to be assigned to this connection for packet routing.
+
+```yaml
+Type: System.UInt32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
