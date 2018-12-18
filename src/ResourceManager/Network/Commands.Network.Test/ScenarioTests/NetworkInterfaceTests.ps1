@@ -998,3 +998,59 @@ function Test-NetworkInterfaceTapConfigurationCRUD
         Clean-ResourceGroup $rgname;
     }
 }
+
+function Get-NameById($Id, $ResourceType)
+{
+    $name = $Id.Substring($Id.IndexOf($ResourceType + '/') + $ResourceType.Length + 1);
+    if ($name.IndexOf('/') -ne -1)
+    {
+        $name = $name.Substring(0, $name.IndexOf('/'));
+    }
+    return $name;
+}
+
+function Test-NetworkInterfaceVmss
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Compute/virtualMachineScaleSets"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $lbName = Get-ResourceName
+
+    try
+    {
+       # Create the resource group
+       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+       #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+       $secpasswd = ConvertTo-SecureString "Pa$$word2018" -AsPlainText -Force
+       $mycreds = New-Object System.Management.Automation.PSCredential ("username", $secpasswd)
+
+       $vmssName = "vmssip"
+       $templateFile = (Resolve-Path ".\ScenarioTests\Data\VmssDeploymentTemplate.json").Path
+       New-AzureRmResourceGroupDeployment -Name $rgname -ResourceGroupName $rgname -TemplateFile $templateFile;
+
+       $listAllResults = Get-AzureRmNetworkInterface -ResourceGroupName $rgname -VirtualMachineScaleSetName $vmssName;
+       Assert-NotNull $listAllResults;
+
+       $listFirstResultId = $listAllResults[0].Id;
+       $vmIndex = Get-NameById $listFirstResultId "virtualMachines";
+       $nicName = Get-NameById $listFirstResultId "networkInterfaces";
+
+       $listResults = Get-AzureRmNetworkInterface -ResourceGroupName $rgname -VirtualMachineScaleSetName $vmssName -VirtualmachineIndex $vmIndex;
+       Assert-NotNull $listResults;
+       Assert-AreEqualObjectProperties $listAllResults[0] $listResults[0] "List and list all results should contain equal items";
+
+       $vmssNic = Get-AzureRmNetworkInterface -VirtualMachineScaleSetName $vmssName -ResourceGroupName $rgname -VirtualMachineIndex $vmIndex -Name $nicName;
+       Assert-NotNull $vmssNic;
+       Assert-AreEqualObjectProperties $vmssNic $listResults[0] "List and get results should contain equal items";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
