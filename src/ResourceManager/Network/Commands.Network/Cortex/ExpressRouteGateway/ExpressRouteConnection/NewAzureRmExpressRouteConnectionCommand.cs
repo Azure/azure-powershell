@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSExpressRouteGateway ExpressRouteGatewayObject { get; set; }
 
-        [Alias("ExpressRouteGatewayId", "ExpressRouteGatewayId")]
+        [Alias("ExpressRouteGatewayId")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,

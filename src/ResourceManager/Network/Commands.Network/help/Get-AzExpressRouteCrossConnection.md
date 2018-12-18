@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 3efb6270-f908-4734-bdb1-6c7e4e4eb382
@@ -13,8 +13,15 @@ Gets an Azure ExpressRoute cross connection from Azure.
 
 ## SYNTAX
 
+### ListByResourceGroup
 ```
-Get-AzExpressRouteCrossConnection [-Name <String>] [-ResourceGroupName <String>]
+Get-AzExpressRouteCrossConnection -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ListSpecific
+```
+Get-AzExpressRouteCrossConnection -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -22,6 +29,7 @@ Get-AzExpressRouteCrossConnection [-Name <String>] [-ResourceGroupName <String>]
 The **Get-AzExpressRouteCrossConnection** cmdlet is used to retrieve an ExpressRoute cross connection object
 from your subscription.
 AzureRmExpressRouteCrossConnection
+
 ## EXAMPLES
 
 ### Example 1: Get the ExpressRoute cross connection
@@ -35,9 +43,9 @@ Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -50,11 +58,11 @@ Accept wildcard characters: False
 The name of the ExpressRoute cross connection.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
+Type: System.String
+Parameter Sets: ListSpecific
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -65,11 +73,11 @@ Accept wildcard characters: False
 The name of the resource group that contains the ExpressRoute cross connection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

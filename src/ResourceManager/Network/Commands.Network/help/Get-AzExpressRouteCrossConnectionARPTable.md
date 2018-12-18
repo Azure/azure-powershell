@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: F0370845-13D9-4FB5-B30E-826A22EBC5E0
@@ -6,16 +6,24 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.network/ge
 schema: 2.0.0
 ---
 
-# Get-AzExpressRouteCrossConnectionARPTable
+# Get-AzExpressRouteCrossConnectionArpTable
 
 ## SYNOPSIS
 Gets the ARP table from an ExpressRoute cross connection.
 
 ## SYNTAX
 
+### SpecifyByParameterValues
 ```
-Get-AzExpressRouteCrossConnectionARPTable -ResourceGroupName <String> -ExpressRouteCrossConnectionName <String>
- [-PeeringType <String>] -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
+Get-AzExpressRouteCrossConnectionArpTable -ResourceGroupName <String> -CrossConnectionName <String>
+ -PeeringType <String> -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### SpecifyByReference
+```
+Get-AzExpressRouteCrossConnectionArpTable -ExpressRouteCrossConnection <PSExpressRouteCrossConnection>
+ -PeeringType <String> -DevicePath <DevicePathEnum> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -33,13 +41,28 @@ Get-AzExpressRouteCrossConnectionARPTable -ResourceGroupName $RG -ExpressRouteCr
 
 ## PARAMETERS
 
+### -CrossConnectionName
+The Name of Express Route Cross Connection
+
+```yaml
+Type: System.String
+Parameter Sets: SpecifyByParameterValues
+Aliases: Name, ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -52,9 +75,9 @@ Accept wildcard characters: False
 The acceptable values for this parameter are: `Primary` or `Secondary`
 
 ```yaml
-Type: DevicePathEnum
+Type: Microsoft.Azure.Commands.Network.DevicePathEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Primary, Secondary
 
 Required: True
@@ -64,13 +87,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpressRouteCrossConnectionName
-The name of the ExpressRoute cross connection being examined.
+### -ExpressRouteCrossConnection
+The Express Route Cross Connection
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: Name, ResourceName
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCrossConnection
+Parameter Sets: SpecifyByReference
+Aliases:
 
 Required: True
 Position: Named
@@ -84,9 +107,9 @@ The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePubli
 `MicrosoftPeering`
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
 
 Required: True
@@ -100,9 +123,9 @@ Accept wildcard characters: False
 The name of the resource group containing the ExpressRoute cross connection.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: SpecifyByParameterValues
+Aliases:
 
 Required: True
 Position: Named

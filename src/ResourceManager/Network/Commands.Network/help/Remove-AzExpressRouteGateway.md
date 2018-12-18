@@ -1,48 +1,48 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermexpressroutegateway
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azexpressroutegateway
 schema: 2.0.0
 ---
 
-# Remove-AzureRmExpressRouteGateway
+# Remove-AzExpressRouteGateway
 
 ## SYNOPSIS
-The Remove-AzureRmExpressRouteGateway cmdlet removes an Azure ExpressRoute gateway. This is a gateway specific to Azure Virtual WAN's software defined connectivity.
+The Remove-AzExpressRouteGateway cmdlet removes an Azure ExpressRoute gateway. This is a gateway specific to Azure Virtual WAN's software defined connectivity.
 
 ## SYNTAX
 
 ### ByExpressRouteGatewayName (Default)
 ```
-Remove-AzureRmExpressRouteGateway -ResourceGroupName <String> -Name <String> [-PassThru] [-Force]
+Remove-AzExpressRouteGateway -ResourceGroupName <String> -Name <String> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExpressRouteGatewayObject
 ```
-Remove-AzureRmExpressRouteGateway -InputObject <PSExpressRouteGateway> [-PassThru] [-Force]
+Remove-AzExpressRouteGateway -InputObject <PSExpressRouteGateway> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExpressRouteGatewayResourceId
 ```
-Remove-AzureRmExpressRouteGateway -ResourceId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzExpressRouteGateway -ResourceId <String> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmExpressRouteGateway cmdlet removes an Azure ExpressRoute gateway. This is a gateway specific to Azure Virtual WAN's software defined connectivity.
+The Remove-AzExpressRouteGateway cmdlet removes an Azure ExpressRoute gateway. This is a gateway specific to Azure Virtual WAN's software defined connectivity.
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-PS C:\> New-AzureRmResourceGroup -Location "West Central US" -Name "testRG"
-PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West Central US"
-PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
-PS C:\> New-AzureRmExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
-PS C:\> Remove-AzureRmExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw" -Passthru
+PS C:\> New-AzResourceGroup -Location "West Central US" -Name "testRG"
+PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West Central US"
+PS C:\> $virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+PS C:\> New-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
+PS C:\> Remove-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw" -Passthru
 ```
 
 This example creates a Resource group, Virtual WAN, Virtual Hub, scalable ExpressRoute gateway in Central US and then immediately deletes it. 
@@ -52,15 +52,15 @@ This will delete the ExpressRouteGateway and all ExpressRouteConnections attache
 ### Example 2
 
 ```powershell
-PS C:\> New-AzureRmResourceGroup -Location "West Central US" -Name "testRG"
-PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West Central US"
-PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
-PS C:\> New-AzureRmExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
-PS C:\> Get-AzureRmExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw" | Remove-AzureRmExpressRouteGateway-Passthru
+PS C:\> New-AzResourceGroup -Location "West Central US" -Name "testRG"
+PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West Central US"
+PS C:\> $virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+PS C:\> New-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
+PS C:\> Get-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw" | Remove-AzExpressRouteGateway-Passthru
 ```
 
 This example creates a Resource group, Virtual WAN, Virtual Hub, scalable ExpressRoute gateway in West Central US and then immediately deletes it. 
-This deletion happens using powershell piping, which uses the ExpressRouteGateway object returned by the Get-AzureRmExpressRouteGateway command.
+This deletion happens using powershell piping, which uses the ExpressRouteGateway object returned by the Get-AzExpressRouteGateway command.
 To suppress the prompt when deleting the Virtual Gateway, use the -Force flag.
 This will delete the ExpressRouteGateway and all ExpressRouteConnections attached to it.
 
@@ -70,9 +70,9 @@ This will delete the ExpressRouteGateway and all ExpressRouteConnections attache
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -163,7 +163,7 @@ The Azure resource ID for the ExpressRouteGateway to be deleted.
 ```yaml
 Type: System.String
 Parameter Sets: ByExpressRouteGatewayResourceId
-Aliases: ExpressRouteGatewayId
+Aliases: expressRouteGatewayId
 
 Required: True
 Position: Named

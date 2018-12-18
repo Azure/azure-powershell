@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermexpressroutegateway
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azexpressroutegateway
 schema: 2.0.0
 ---
 
-# New-AzureRmExpressRouteGateway
+# New-AzExpressRouteGateway
 
 ## SYNOPSIS
 Creates a Scalable ExpressRoute Gateway.
@@ -14,30 +14,30 @@ Creates a Scalable ExpressRoute Gateway.
 
 ### ByVirtualHubName (Default)
 ```
-New-AzureRmExpressRouteGateway -ResourceGroupName <String> -Name <String> -MinScaleUnits <UInt32>
- -VirtualHubName <String> [-MaxScaleUnits <UInt32>] [-Tag <Hashtable>] [-AsJob]
+New-AzExpressRouteGateway -ResourceGroupName <String> -Name <String> -MinScaleUnits <UInt32>
+ [-MaxScaleUnits <UInt32>] -VirtualHubName <String> [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
-New-AzureRmExpressRouteGateway -ResourceGroupName <String> -Name <String> -MinScaleUnits <UInt32>
- -VirtualHub <PSVirtualHub> [-MaxScaleUnits <UInt32>] [-Tag <Hashtable>] [-AsJob]
+New-AzExpressRouteGateway -ResourceGroupName <String> -Name <String> -MinScaleUnits <UInt32>
+ [-MaxScaleUnits <UInt32>] -VirtualHub <PSVirtualHub> [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
-New-AzureRmExpressRouteGateway -ResourceGroupName <String> -Name <String> -MinScaleUnits <UInt32>
- -VirtualHubId <String> [-MaxScaleUnits <UInt32>] [-Tag <Hashtable>] [-AsJob]
+New-AzExpressRouteGateway -ResourceGroupName <String> -Name <String> -MinScaleUnits <UInt32>
+ [-MaxScaleUnits <UInt32>] -VirtualHubId <String> [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-New-AzureRmExpressRouteGateway creates a scalable ExpressRoute Gateway. This is software defined connectivity for on premise to Azure inside the VirtualHub. 
+New-AzExpressRouteGateway creates a scalable ExpressRoute Gateway. This is software defined connectivity for on premise to Azure inside the VirtualHub. 
 
-This gateway can be scaled based on the scale unit specified in this or the Set-AzureRmExpressRouteGateway cmdlet. 
+This gateway can be scaled based on the scale unit specified in this or the Set-AzExpressRouteGateway cmdlet. 
 
 A connection is set up from a on-premise ExpressRoute circuit to the scalable gateway.
 
@@ -48,10 +48,10 @@ The ExpressRouteGateway will be in the same location as the referenced VirtualHu
 ### Example 1
 
 ```powershell
-PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
-PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
-PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
-PS C:\> New-AzureRmExpressRouteGateway -ResourceGroupName "testRG" -Name "testergw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
+PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> $virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+PS C:\> New-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testergw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
 
 ResourceGroupName   : testRG
 Name                : testergw
@@ -88,11 +88,41 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxScaleUnits
+The maximum number of scale units for this ExpressRouteGateway. Valid range > 2
+
+```yaml
+Type: System.UInt32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinScaleUnits
+The minimum number of scale units for this ExpressRouteGateway. Valid range > 2
+
+```yaml
+Type: System.UInt32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -105,7 +135,7 @@ The resource name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ResourceName, VpnGatewayName
+Aliases: ResourceName, ExpressRouteGatewayName
 
 Required: True
 Position: Named
@@ -180,39 +210,6 @@ The Id of the VirtualHub this VpnGateway needs to be associated with.
 ```yaml
 Type: System.String
 Parameter Sets: ByVirtualHubName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VpnConnection
-The list of VpnConnections that this VpnGateway needs to have.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnConnection[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MinScaleUnits
-The minimum number of scale units for this ExpressRouteGateway. Valid range > 2
-
-### -MaxScaleUnits
-The maximum number of scale units for this ExpressRouteGateway. Valid range > 2
-
-```yaml
-Type: System.UInt32
-Parameter Sets: (All)
 Aliases:
 
 Required: True

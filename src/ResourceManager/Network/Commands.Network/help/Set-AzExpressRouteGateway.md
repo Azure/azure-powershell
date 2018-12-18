@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermexpressroutegateway
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azexpressroutegateway
 schema: 2.0.0
 ---
 
-#Set-AzureRmExpressRouteGateway
+# Set-AzExpressRouteGateway
 
 ## SYNOPSIS
 Updates a Scalable ExpressRoute Gateway.
@@ -14,38 +14,39 @@ Updates a Scalable ExpressRoute Gateway.
 
 ### ByExpressRouteGatewayName (Default)
 ```
-Set-AzureRmExpressRouteGateway -ResourceGroupName <String> -Name <String> -MinScaleUnits <UInt32>
-[-MaxScaleUnits <UInt32>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzExpressRouteGateway -ResourceGroupName <String> -Name <String> -MinScaleUnits <UInt32>
+ -MaxScaleUnits <UInt32> [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExpressRouteGatewayObject
 ```
-Set-AzureRmExpressRouteGateway -InputObject <PSExpressRouteGateway> 
-[-MaxScaleUnits <UInt32>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzExpressRouteGateway -InputObject <PSExpressRouteGateway> -MinScaleUnits <UInt32> -MaxScaleUnits <UInt32>
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### ByExpressRouteGatewayId
+### ByExpressRouteGatewayResourceId
 ```
-Set-AzureRmExpressRouteGateway -ResourceId <String> [-MaxScaleUnits <UInt32>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzExpressRouteGateway -ResourceId <String> -MinScaleUnits <UInt32> -MaxScaleUnits <UInt32>
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-Set-AzureRmExpressRouteGateway updates the scale units for the ExpressRouteGateway
+Set-AzExpressRouteGateway updates the scale units for the ExpressRouteGateway
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-PS C:\>Set-AzureRmResourceGroup -Location "West US" -Name "testRG"
-PS C:\> $virtualWan =Set-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
-PS C:\> $virtualHub =Set-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
-PS C:\>New-AzureRmExpressRouteGateway -ResourceGroupName "testRG" -Name "testergw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
-PS C:\>Set-AzureRmExpressRouteGateway -ResourceGroupName "testRG" -Name "testergw" -MinScaleUnits 3
+PS C:\>Set-AzResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan =Set-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> $virtualHub =Set-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+PS C:\>New-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testergw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
+PS C:\>Set-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testergw" -MinScaleUnits 3
 
 ResourceGroupName   : testRG
 Name                : testergw
@@ -80,54 +81,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ResourceName, ExpressRouteGatewayName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name of the ExpressRouteGateway to be updated.
-
-```yaml
-Type: System.String
-Parameter Sets: (ByExpressRouteGatewayName)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-A hashtable which represents resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -142,7 +98,7 @@ The ExpressRouteGateway that needs to be updated.
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteGateway
 Parameter Sets: ByExpressRouteGatewayObject
-Aliases:
+Aliases: ExpressRouteGateway
 
 Required: True
 Position: Named
@@ -151,23 +107,53 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The Id of the ExpressRouteGateway that needs to be updated.
+### -MaxScaleUnits
+The maximum number of scale units for this ExpressRouteGateway. Valid range > 2
 
 ```yaml
-Type: System.String
-Parameter Sets: ByExpressRouteGatewayId
+Type: System.UInt32
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinScaleUnits
+The minimum number of scale units for this ExpressRouteGateway. Valid range > 2
+
+```yaml
+Type: System.UInt32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ExpressRouteGateway that needs to be updated.
+The resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByExpressRouteGatewayName
+Aliases: ResourceName, ExpressRouteGatewayName, GatewayName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name of the ExpressRouteGateway to be updated.
 
 ```yaml
 Type: System.String
@@ -181,18 +167,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MinScaleUnits
-The minimum number of scale units for this ExpressRouteGateway. Valid range > 2
-
-### -MaxScaleUnits
-The maximum number of scale units for this ExpressRouteGateway. Valid range > 2
+### -ResourceId
+The Id of the ExpressRouteGateway that needs to be updated.
 
 ```yaml
-Type: System.UInt32
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByExpressRouteGatewayResourceId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+A hashtable which represents resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
