@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 
                 case NameParameterSet:
                     string nextPagelink = string.Empty;
-
+                    
                     // Iterate the page-link if exists, if the first iteration retreives the data.
                     do
                     {
@@ -102,7 +102,9 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                         {
                             operationResponseRecommendation = this.ResourceAdvisorClient.Recommendations.ListWithHttpMessagesAsync(nextPagelink).Result;
                         }
-                        nextPagelink = operationResponseRecommendation.Body.NextPageLink;
+                        // Advisor .net SDK is broken for the paging capability. So we will not use the paging until SDK is fixed.
+                        // nextPagelink = operationResponseRecommendation.Body.NextPageLink;
+
                         // Add current page items to the List 
                         entirePageLinkRecommendationData.AddRange(operationResponseRecommendation.Body.ToList());
                     }
@@ -114,7 +116,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                     // Filter out the resourcegroupname recommendations
                     if (!string.IsNullOrEmpty(this.ResourceGroupName))
                     {
-                        results = RecommendationHelper.RecommendationFilterByCategoryAndResource(results, string.Empty, this.ResourceGroupName);
+                        results = RecommendationHelper.RecommendationFilterByCategoryAndResource(results, string.Empty, this.ResourceGroupName);                    
                     }
 
                     break;
