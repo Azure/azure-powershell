@@ -59,15 +59,11 @@
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(LibrarySourceFolder)</NuGetPublishingSource>
-    <Scope Condition="$(Scope) == ''" >All</Scope>
+    <Scope Condition="$(Scope) == '' or '$(Scope)' == 'Netcore'" >All</Scope>
     <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
     <PackageDirectory>$(LibrarySourceFolder)\Package</PackageDirectory>
     <StackPackageFolder>$(LibrarySourceFolder)\Stack</StackPackageFolder>
-    <NetCore Condition="'$(NetCore)' != 'true'">false</NetCore>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="$(NetCore) == 'true' ">
-    <Scope>Netcore</Scope>
+    <NetCore>false</NetCore>
   </PropertyGroup>
 
   <!-- Set Skips -->
@@ -85,12 +81,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'" />
     <StackSolution    Include="$(LibrarySourceFolder)\StackAdmin\Stack.sln" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
     <StaticAnalysis   Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
     <LocalBuildTasks  Include="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.sln" />
-    <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'" />
-  </ItemGroup>
+    <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" />
+ </ItemGroup>
 
   <!-- Tasks -->
   <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
