@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Compute.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.2.0'
+    ModuleVersion     = '0.2.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -61,7 +61,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.Compute.Admin.dll')
-    
+
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
     ScriptsToProcess  = @()
 
@@ -80,7 +80,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Remove-AzsVMExtension',
     'Get-AzsPlatformImage', 'Get-AzsComputeQuota',
     'Add-AzsVMExtension', 'Set-AzsComputeQuota',
-    'Remove-AzsPlatformImage', 'New-DataDiskObject',
+    'Remove-AzsPlatformImage', 'New-AzsDataDiskObject',
     'Get-AzsDisk', 'Get-AzsDiskMigrationJob',
     'New-AzsDiskMigrationJob', 'Stop-AzsDiskMigrationJob'
 
@@ -120,20 +120,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.8.12
-            * New Module dependencies
-                * AzureRM.Profile
-                * AzureRM.Resources
-            * New Quota properties for managed disks
-                * StandardManagedDiskAndSnapshotSize
-                * PremiumManagedDiskAndSnapshotSize
-            * Support handling names of nested resources
-                * Get-AzsQuota and Set-AzsQuota now handles the Name property correctly
-            * Additional properties to objects
-                * Platform Images - Publisher, Offer, Sku, Version
-                * VM Extensions - Publisher, ExtensionType, TypeHandlerVersion
-            * Bug fixes
-                * Handle ErrorAction correctly now
+            ReleaseNotes = '## 2018.12
+            * Added missing Azs prefix for New-DataDiskObject and created alias.  The cmdlet will be deprecated in a future release.
             '
 
         } # End of PSData hashtable

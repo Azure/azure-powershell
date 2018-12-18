@@ -5,10 +5,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Returns a list of all storage subsystems for a location.
+    Returns a list of all storage subsystems for a scale unit.
 
 .DESCRIPTION
-    Returns a list of all storage subsystems for a location.
+    Returns a list of all storage subsystems for a scale unit.
 
 .PARAMETER Name
     Name of the storage subsystem.
@@ -38,13 +38,13 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     PS C:\> Get-AzsStorageSubSystem -ScaleUnit S-Cluster
 
-    Get all storage subsystems from a location.
+    Get all storage subsystems from a scale unit.
 
 .EXAMPLE
 
     PS C:\> Get-AzsStorageSubSystem -ScaleUnit S-Cluster -Name S-Cluster.azurestack.local
 
-    Get a storage subsystem given a location and name.
+    Get a storage subsystem given a scale unit and name.
 
 #>
 function Get-AzsStorageSubSystem {

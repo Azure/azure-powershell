@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzsStorageSubSystem
 
 ## SYNOPSIS
-Returns a list of all storage subsystems for a location.
+Returns a list of all storage subsystems for a scale unit.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzsStorageSubSystem -ResourceId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a list of all storage subsystems for a location.
+Returns a list of all storage subsystems for a scale unit.
 
 ## EXAMPLES
 
@@ -39,14 +39,14 @@ Returns a list of all storage subsystems for a location.
 Get-AzsStorageSubSystem -ScaleUnit S-Cluster
 ```
 
-Get all storage subsystems from a location.
+Get all storage subsystems from a scale unit.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 Get-AzsStorageSubSystem -ScaleUnit S-Cluster -Name S-Cluster.azurestack.local
 ```
 
-Get a storage subsystem given a location and name.
+Get a storage subsystem given a scale unit and name.
 
 ## PARAMETERS
 
