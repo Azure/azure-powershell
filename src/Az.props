@@ -1,0 +1,35 @@
+<Project>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\Repo.props" />
+  <Import Project="$(RepoTools)Common.Netcore.Dependencies.targets" />
+
+  <PropertyGroup>
+    <AzAssemblyPrefix>Microsoft.Azure.PowerShell.Cmdlets.</AzAssemblyPrefix>
+    <LegacyAssemblyPrefix>Microsoft.Azure.Commands.</LegacyAssemblyPrefix>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName)</AssemblyName>
+    <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>$(RepoArtifacts)$(Configuration)\ResourceManager\AzureResourceManager\Az.$(PsModuleName)\</OutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>$(RepoSrc)MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+  </PropertyGroup>
+
+</Project>
