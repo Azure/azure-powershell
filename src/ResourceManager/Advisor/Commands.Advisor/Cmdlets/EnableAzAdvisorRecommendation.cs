@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    /// Enable-AzureRmAdvisorRecommendation cmdlet
+    /// Enable-AzAdvisorRecommendation cmdlet
     /// </summary>
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsAzureAdvisorResourceRecommendationBase))]
-    public class AzEnableAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
+    public class EnableAzAdvisorRecommendation : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
         /// Constant for IdParameterSet

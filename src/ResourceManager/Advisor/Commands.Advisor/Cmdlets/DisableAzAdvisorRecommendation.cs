@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    /// Disable-AzureRmAdvisorRecommendation cmdlet
+    /// Disable-AzAdvisorRecommendation cmdlet
     /// </summary>
     [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorRecommendation", DefaultParameterSetName = IdParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsAzureAdvisorSuppressionContract))]
-    public class AzDisableAzureRmAdvisorRecommendation : ResourceAdvisorBaseCmdlet
+    public class DisableAzAdvisorRecommendation : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
         /// Constant for IdParameterSet

@@ -21,15 +21,14 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
     using Microsoft.Azure.Commands.Advisor.Properties;
     using Microsoft.Azure.Commands.Advisor.Utilities;
     using Microsoft.Azure.Management.Advisor.Models;
-    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Rest.Azure;
     using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
-    /// Set-AzureRmAdvisorConfiguration cmdlet
+    /// Set-AzAdvisorConfiguration cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AdvisorConfiguration", DefaultParameterSetName = InputObjectLowCpuExcludeParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsAzureAdvisorConfigurationData))]
-    public class AzSetAzureRmAdvisorConfiguration : ResourceAdvisorBaseCmdlet
+    public class SetAzAdvisorConfiguration : ResourceAdvisorBaseCmdlet
     {
         /// <summary>
         /// Constant for InputObjectLowCpuExcludeParameterSet
@@ -67,8 +66,8 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// <summary>
         /// Gets or sets the Object passed on from the pipeline
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 1, ParameterSetName = InputObjectLowCpuExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 1, ParameterSetName = InputObjectRgExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzureRmAdvisorConfiguration call.")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 1, ParameterSetName = InputObjectLowCpuExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzAdvisorConfiguration call.")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 1, ParameterSetName = InputObjectRgExcludeParameterSet, HelpMessage = "The powershell object type PsAzureAdvisorConfigurationData returned by Get-AzAdvisorConfiguration call.")]
         [ValidateNotNullOrEmpty]
         public PsAzureAdvisorConfigurationData InputObject { get; set; }
 
@@ -239,7 +238,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
                         isResourceGroupTypeConfiguration = SuppressionHelper.IsConfigurationResourceGroupLevel(this.InputObject);
                         if (isResourceGroupTypeConfiguration)
                         {
-                            string resourceGroup = RecommendationHelper.GetResourceGroupFromResoureID(this.InputObject.Id);
+                            string resourceGroup = RecommendationHelper.GetResourceGroupFromResourceID(this.InputObject.Id);
                             if (ShouldProcess(resourceGroup, string.Format(Resources.ConfigurationUpdateResourceGroupLevel, this.ResourceAdvisorClient.SubscriptionId, resourceGroup)))
                             {
                                 results = this.CreateConfigurationByResourceGroup(configData, resourceGroup);

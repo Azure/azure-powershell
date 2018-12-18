@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets.Utilities
         {
             bool isConfigurationResourceGroupLevel = false;
 
-            string resourceGroupName = RecommendationHelper.GetResourceGroupFromResoureID(psConfigData.Id);
+            string resourceGroupName = RecommendationHelper.GetResourceGroupFromResourceID(psConfigData.Id);
             isConfigurationResourceGroupLevel = string.IsNullOrEmpty(resourceGroupName) ? false : true;
 
             return isConfigurationResourceGroupLevel;
