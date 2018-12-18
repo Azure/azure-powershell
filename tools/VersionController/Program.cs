@@ -37,16 +37,12 @@ namespace VersionController
 
             _projectDirectories = new List<string>
             {
-                Path.Combine(srcDirectory, @"ResourceManager\"),
-                Path.Combine(srcDirectory, @"ServiceManagement\"),
-                Path.Combine(srcDirectory, @"Storage\")
+                Path.Combine(srcDirectory, @"ResourceManager\")
             }.Where((d) => Directory.Exists(d)).ToList();
 
             _outputDirectories = new List<string>
             {
-                Path.Combine(srcDirectory, @"Package\Debug\ResourceManager\AzureResourceManager\"),
-                Path.Combine(srcDirectory, @"Package\Debug\ServiceManagement\"),
-                Path.Combine(srcDirectory, @"Package\Debug\Storage\")
+                Path.Combine(srcDirectory, @"Package\Debug\ResourceManager\AzureResourceManager\")
             }.Where((d) => Directory.Exists(d)).ToList();
 
             var exceptionsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exceptions");
@@ -203,7 +199,7 @@ namespace VersionController
         /// <returns>The path to the module manifest file.</returns>
         private static string GetModuleManifestPath(string parentFolder)
         {
-            var moduleManifest = Directory.GetFiles(parentFolder, "*.psd1").Where(f => !f.Contains("Az.")).ToList();
+            var moduleManifest = Directory.GetFiles(parentFolder, "*.psd1").ToList();
             if (moduleManifest.Count == 0)
             {
                 throw new FileNotFoundException("No module manifest file found in directory " + parentFolder);

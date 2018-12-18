@@ -18,7 +18,6 @@ namespace VersionController.Models
     {
         private VersionFileHelper _fileHelper;
         private AnalysisLogger _logger;
-        private AppDomain _appDomain;
 
         public VersionMetadataHelper(VersionFileHelper fileHelper)
         {
@@ -117,20 +116,20 @@ namespace VersionController.Models
         {
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var galleryModuleDirectory = _fileHelper.GalleryModuleDirectory;
-            Console.WriteLine("Saving AzureRM.Profile from the PowerShell Gallery to check common code changes. This will take a few seconds.");
+            Console.WriteLine("Saving Az.Profile from the PowerShell Gallery to check common code changes. This will take a few seconds.");
             Version versionBump = Version.PATCH;
             var issueLogger = _logger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
             IEnumerable<string> commonAssemblies = null;
             using (PowerShell powershell = PowerShell.Create())
             {
-                powershell.AddScript("Save-Module -Name AzureRM.Profile -Repository PSGallery -Path " + outputModuleDirectory );
+                powershell.AddScript("Save-Module -Name Az.Profile -Repository PSGallery -Path " + outputModuleDirectory );
                 var cmdletResult = powershell.Invoke();
             }
 
             var galleryModuleVersionDirectory = _fileHelper.GalleryModuleVersionDirectory;
             using (PowerShell powershell = PowerShell.Create())
             {
-                powershell.AddScript("$metadata = Test-ModuleManifest -Path " + Path.Combine(galleryModuleVersionDirectory, "AzureRM.Profile.psd1") + ";$metadata.RequiredAssemblies");
+                powershell.AddScript("$metadata = Test-ModuleManifest -Path " + Path.Combine(galleryModuleVersionDirectory, "Az.Profile.psd1") + ";$metadata.RequiredAssemblies");
                 var cmdletResult = powershell.Invoke();
                 commonAssemblies = cmdletResult.Select(c => c.ToString().Substring(2)).Where(s => Regex.IsMatch(s, "Microsoft.*.Commands.*"));
             }
@@ -144,7 +143,7 @@ namespace VersionController.Models
                     var oldAssemblyPath = Directory.GetFiles(galleryModuleDirectory, assemblyName, SearchOption.AllDirectories).FirstOrDefault();
                     if (oldAssemblyPath == null)
                     {
-                        throw new Exception("Could not find assembly " + assemblyName + " in the folder saved from the PowerShell Gallery for AzureRM.Profile.");
+                        throw new Exception("Could not find assembly " + assemblyName + " in the folder saved from the PowerShell Gallery for Az.Profile.");
                     }
 
                     var oldAssembly = Assembly.LoadFrom(oldAssemblyPath);
@@ -229,7 +228,7 @@ namespace VersionController.Models
             }
             finally
             {
-                var directories = Directory.GetDirectories(outputModuleDirectory, "AzureRM.Profile", SearchOption.TopDirectoryOnly);
+                var directories = Directory.GetDirectories(outputModuleDirectory, "Az.Profile", SearchOption.TopDirectoryOnly);
                 foreach (var directory in directories)
                 {
                     try
@@ -292,7 +291,7 @@ namespace VersionController.Models
                 foreach (var nestedModule in nestedModules)
                 {
                     var assemblyPath = Directory.GetFiles(outputModuleDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
-                    var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(outputModuleManifestPath, out _appDomain);
+                    var proxy = new CmdletLoader();
                     var newModuleMetadata = proxy.GetModuleMetadata(assemblyPath, requiredModules);
                     var serializedCmdletName = nestedModule + ".json";
                     var serializedCmdletFile = Directory.GetFiles(serializedCmdletsDirectory, serializedCmdletName).FirstOrDefault();
@@ -391,10 +390,10 @@ namespace VersionController.Models
                 foreach (var nestedModule in nestedModules)
                 {
                     var assemblyPath = Directory.GetFiles(galleryModuleVersionDirectory, nestedModule).FirstOrDefault();
-                    var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(galleryModuleVersionDirectory, out _appDomain);
+                    var proxy = new CmdletLoader();
                     var oldModuleMetadata = proxy.GetModuleMetadata(assemblyPath, galleryRequiredModules);
                     assemblyPath = Directory.GetFiles(outputModuleDirectory, nestedModule).FirstOrDefault();
-                    proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(galleryModuleVersionDirectory, out _appDomain);
+                    proxy = new CmdletLoader();
                     var newModuleMetadata = proxy.GetModuleMetadata(assemblyPath, requiredModules);
                     CmdletLoader.ModuleMetadata = oldModuleMetadata;
                     issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyPath, "AssemblyFileName");
@@ -464,7 +463,7 @@ namespace VersionController.Models
                 foreach (var nestedModule in nestedModules)
                 {
                     var assemblyPath = Directory.GetFiles(outputModuleDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
-                    var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(outputModuleManifestPath, out _appDomain);
+                    var proxy = new CmdletLoader();
                     var newModuleMetadata = proxy.GetModuleMetadata(assemblyPath, requiredModules);
                     var serializedCmdletName = nestedModule + ".json";
                     var serializedCmdletFile = Path.Combine(serializedCmdletsDirectory, serializedCmdletName);

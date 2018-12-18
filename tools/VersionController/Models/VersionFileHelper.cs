@@ -17,16 +17,12 @@ namespace VersionController.Models
 
             _outputDirectories = new List<string>
             {
-                Path.Combine(DebugDirectory, @"ResourceManager\AzureResourceManager\"),
-                Path.Combine(DebugDirectory, @"ServiceManagement\"),
-                Path.Combine(DebugDirectory, @"Storage\")
+                Path.Combine(DebugDirectory, @"ResourceManager\AzureResourceManager\")
             };
 
             _projectDirectories = new List<string>
             {
-                Path.Combine(SrcDirectory, @"ResourceManager\"),
-                Path.Combine(SrcDirectory, @"ServiceManagement\"),
-                Path.Combine(SrcDirectory, @"Storage\")
+                Path.Combine(SrcDirectory, @"ResourceManager\")
             };
         }
 
@@ -50,7 +46,7 @@ namespace VersionController.Models
 
         public string SerializedCmdletsDirectory => Path.Combine(CommonToolsDirectory, @"SerializedCmdlets");
 
-        public string RollupModuleManifestPath => Path.Combine(ToolsDirectory, @"AzureRM\AzureRM.psd1");
+        public string RollupModuleManifestPath => Path.Combine(ToolsDirectory, @"Az\Az.psd1");
 
         public string VersionControllerDirectory => Path.Combine(ToolsDirectory, @"VersionController");
 
