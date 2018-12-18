@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ExpressRouteGatewayName", "ExpressRouteGatewayName")]
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByExpressRouteConnectionName,
             Mandatory = true,
