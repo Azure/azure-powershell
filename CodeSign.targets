@@ -8,9 +8,9 @@
 		<CISignRepoPath>$(CISignRepo)</CISignRepoPath>
 	</PropertyGroup>
    
-	<Target Name="CodeSignBinariesESRP" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
+	<Target Name="CodeSignBinaries" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
 
-    <Message Text="====> Executing CodeSignBinariesESRP Target..." Importance="high"/>
+    <Message Text="====> Executing CodeSignBinaries Target..." Importance="high"/>
 	
     <PropertyGroup>
 		<!--public token associated with MSSharedLibKey.snk-->
@@ -38,7 +38,7 @@
         Condition="'@(DelaySignedAssembliesToSign)' == ''" />
     
     <ESRPSignTask
-	CopyBackSignedFilesToOriginalLocation="true"
+		CopyBackSignedFilesToOriginalLocation="true"
         UnsignedFileList="@(DelaySignedAssembliesToSign)"
         SignLogDirPath="$(LibraryRoot)dlls-signing.log" 
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
@@ -114,7 +114,7 @@
         DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureStack" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
   </Target>
 
-  <Target Name="CodeSignInstallerESRP">
+  <Target Name="CodeSignInstaller">
     <PropertyGroup>
 		<!--public token associated with MSSharedLibKey.snk-->
 		<StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
