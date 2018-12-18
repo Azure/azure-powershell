@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ExpressRouteGatewayName", "ExpressRouteGatewayName")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByExpressRouteGatewayName,
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ExpressRouteGatewayName { get; set; }
 
-        [Alias("ExpressRouteGateway", "ExpressRouteGateway")]
+        [Alias("ExpressRouteGateway")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
