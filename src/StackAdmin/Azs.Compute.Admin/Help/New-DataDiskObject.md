@@ -1,11 +1,11 @@
 ---
 external help file: Azs.Compute.Admin-help.xml
 Module Name: Azs.Compute.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
-# New-DataDiskObject
+# New-AzsDataDiskObject
 
 ## SYNOPSIS
 Creates a data disk which is used to create a new virtual machine platform image.
@@ -13,7 +13,7 @@ Creates a data disk which is used to create a new virtual machine platform image
 ## SYNTAX
 
 ```
-New-DataDiskObject [[-Lun] <Int32>] [[-Uri] <String>] [<CommonParameters>]
+New-AzsDataDiskObject [[-Lun] <Int32>] [[-Uri] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ Creates an object holding information about a data disk.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-New-DataDiskObject -Lun 5 -URI test.blob.windows.net/disks/datadisk5.vhd
+New-AzsDataDiskObject -Lun 5 -URI test.blob.windows.net/disks/datadisk5.vhd
 ```
 
 Create a new data disk object.
@@ -36,7 +36,7 @@ Logical unit number.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -51,7 +51,7 @@ Location of the disk template.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2

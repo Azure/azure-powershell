@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Subscriptions.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.3.0'
+    ModuleVersion     = '0.3.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -92,7 +92,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Remove-AzsOfferDelegation', 'Get-AzsOfferDelegation',
     'Get-AzsUserSubscription', 'Set-AzsOffer',
     'Remove-AzsPlan', 'Set-AzsPlan',
-    'New-AddonPlanDefinitionObject'
+    'New-AzsAddonPlanDefinitionObject'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()
@@ -130,14 +130,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.9.10
-            * Module dependencies updated
-                * AzureRM.Profile
-                * AzureRM.Resources
-            * Deprecations
-                * Get-AzsDelegatedProviderManagedOffer, the parameter DelegatedProvider is now an alias for DelegatedProviderId
-            * Bug fixes
-                * Handle ErrrorAction correctly now
+            ReleaseNotes = '## 2018.12
+                * Added missing Azs prefix for New-AddonPlanDefinitionObject and created alias.  The cmdlet will be deprecated in a future release.
             '
 
         } # End of PSData hashtable
