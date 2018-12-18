@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         protected ResourceTestRunner(ITestOutputHelper output)
         {
-            TestRunner = TestFx.TestManager.CreateInstance(output)
+            TestRunner = TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")
                 .WithProjectSubfolderForTests("ScenarioTests")
                 .WithCommonPsScripts(new[]
@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 })
                 .WithExtraRmModules(helper => new[]
                 {
-                    helper.GetRMModulePath("AzureRM.Monitor.psd1"),
+                    helper.RMResourceModule,
+                    helper.GetRMModulePath("AzureRM.Monitor.psd1")
                 })
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
