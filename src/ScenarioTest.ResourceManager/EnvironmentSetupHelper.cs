@@ -193,13 +193,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             return result;
         }
 
-        private static string GetConfigDirectory(string targetDirectory = "Package")
+        private static string GetConfigDirectory(string targetDirectory = "artifacts")
         {
             string result = null;
-            var srcDirectory = ProbeForSrcDirectory();
-            if (srcDirectory != null)
+            var directoryPath = "..";
+            if (Directory.Exists(directoryPath))
             {
-                var baseDirectory = Path.Combine(srcDirectory, targetDirectory);
+                var baseDirectory = Path.Combine(directoryPath, targetDirectory);
                 if (Directory.Exists(baseDirectory))
                 {
                     result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault(
@@ -216,13 +216,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             return result;
         }
 
-        private static string GetRMModuleDirectory(string targetDirectory = "Package")
+        private static string GetRMModuleDirectory(string targetDirectory = "artifacts")
         {
             string configDirectory = GetConfigDirectory(targetDirectory);
-            return (string.IsNullOrEmpty(configDirectory)) ? null : Path.Combine(configDirectory, "ResourceManager", "AzureResourceManager");
+            return (string.IsNullOrEmpty(configDirectory)) ? null : configDirectory);
         }
 
-        private static string GetStorageDirectory(string targetDirectory = "Package")
+        private static string GetStorageDirectory(string targetDirectory = "artifacts")
         {
             string configDirectory = GetConfigDirectory(targetDirectory);
             return (string.IsNullOrEmpty(configDirectory)) ? null : Path.Combine(configDirectory, "Storage");
@@ -540,9 +540,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             if (mode == AzureModule.AzureProfile)
             {
                 this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Accounts\AzureRM.Accounts.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"AzureRM.Accounts\AzureRM.Accounts.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
@@ -560,9 +560,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             if (mode == AzureModule.AzureProfile)
             {
                 this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ServiceManagement\Azure\Azure.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Accounts\AzureRM.Accounts.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureRM.Accounts\AzureRM.Accounts.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
@@ -570,9 +570,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
             else if (mode == AzureModule.AzureResourceManager)
             {
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Accounts\AzureRM.Accounts.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureRM.Accounts\AzureRM.Accounts.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else
             {
