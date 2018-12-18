@@ -219,7 +219,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private static string GetRMModuleDirectory(string targetDirectory = "artifacts")
         {
             string configDirectory = GetConfigDirectory(targetDirectory);
-            return (string.IsNullOrEmpty(configDirectory)) ? null : configDirectory);
+            return (string.IsNullOrEmpty(configDirectory)) ? null : configDirectory;
         }
 
         private static string GetStorageDirectory(string targetDirectory = "artifacts")
