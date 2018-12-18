@@ -217,86 +217,88 @@ function Test-CortexDownloadConfig
 
 function Test-CortexExpressRouteCRUD
 {
- # Setup
+    # Setup
     $rgName = Get-ResourceName
     # ExpressRoute gateways have been enabled only in westcentralus region
     $rglocation = "westcentralus"
 
-	$virtualWanName = Get-ResourceName
-	$virtualHubName = Get-ResourceName
-	$expressRouteGatewayName = Get-ResourceName
+    $virtualWanName = Get-ResourceName
+    $virtualHubName = Get-ResourceName
+    $expressRouteGatewayName = Get-ResourceName
     $circuitName = Get-ResourceName
     $expressRouteConnectionName = Get-ResourceName
 
     try
-	{
-		# Create the resource group
+    {
+        # Create the resource group
         $resourceGroup = New-AzureRmResourceGroup -Name $rgName -Location $rglocation
 
-		# Create the Virtual Wan
-		$createdVirtualWan = New-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
-		$createdVirtualWan = Update-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -AllowVnetToVnetTraffic $false -AllowBranchToBranchTraffic $false
-		$virtualWan = Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
-		Write-Debug "Created Virtual WAN  $virtualWan.Name successfully"
+        # Create the Virtual Wan
+        $createdVirtualWan = New-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+        $createdVirtualWan = Update-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -AllowVnetToVnetTraffic $false -AllowBranchToBranchTraffic $false
+        $virtualWan = Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+        Write-Debug "Created Virtual WAN $virtualWan.Name successfully"
 
         $createdVirtualHub = New-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "10.8.0.0/24" -VirtualWan $virtualWan
-		$virtualHub = Get-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+        $virtualHub = Get-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
         Write-Debug "Created Virtual Hub virtualHub.Name successfully"
 
         # Create the ExpressRouteGateway
-		$createdExpressRouteGateway = New-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName -VirtualHub $virtualHub -MinScaleUnits 2
+        $createdExpressRouteGateway = New-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName -VirtualHub $virtualHub -MinScaleUnits 2
         Write-Debug "Created ExpressRoute Gateway $expressRouteGatewayName successfully"
-		$expressRouteGateway = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName
+        $expressRouteGateway = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName
         Assert-NotNull $expressRouteGateway
         Write-Debug "Retrieved ExpressRoute Gateway $expressRouteGatewayName successfully"
 
         # List the ExpressRouteGateway
         $expressRouteGateways = Get-AzureRmExpressRouteGateway
+        Assert-NotNull $expressRouteGateways
         Assert-True { $expressRouteGateways.Count -gt 0 }
+
         $expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName
+        Assert-NotNull $expressRouteGateways
         Assert-True { $expressRouteGateways.Count -gt 0 }
 
         # Create the ExpressRouteCircuit with peering to which the connection needs to be established to
         $peering = New-AzureRmExpressRouteCircuitPeeringConfig -Name AzurePrivatePeering -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.2.3.4/30" -SecondaryPeerAddressPrefix "11.2.3.4/30" -VlanId 22
-        #$circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $rglocation -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 1000 -Peering $peering
         $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $rglocation -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "Zayo" -PeeringLocation "Denver" -BandwidthInMbps 200 -Peering $peering
         Write-Debug "Created ExpressRoute Circuit with Private Peering $circuitName successfully"
 
-        #Get Express Route Circuit Resource
-		$circuitResult = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
-		$peeringResult = Get-AzureRmExpressRouteCircuitPeeringConfig -Name AzurePrivatePeering -ExpressRouteCircuit $circuitResult
+        # Get Express Route Circuit Resource
+        $circuitResult = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+        $peeringResult = Get-AzureRmExpressRouteCircuitPeeringConfig -Name AzurePrivatePeering -ExpressRouteCircuit $circuitResult
         Write-Debug "Created ExpressRoute Circuit with Private Peering $circuitName successfully"
 
         # Create the ExpressRoute Connection
-		$createdExpressRouteConnection = New-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ParentResourceName $expressRouteGatewayName -Name $expressRouteConnectionName -ExpressRouteCircuitPeeringId $peeringResult.Id -RoutingWeight 10
+        $createdExpressRouteConnection = New-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ParentResourceName $expressRouteGatewayName -Name $expressRouteConnectionName -ExpressRouteCircuitPeeringId $peeringResult.Id -RoutingWeight 10
         Write-Debug "Created ExpressRoute Connection with Private Peering $expressRouteConnectionName successfully"
-		$createdExpressRouteConnection = Set-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ParentResourceName $expressRouteGatewayName -Name $expressRouteConnectionName -RoutingWeight 30
+        $createdExpressRouteConnection = Set-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ParentResourceName $expressRouteGatewayName -Name $expressRouteConnectionName -RoutingWeight 30
         Write-Debug "Updated ExpressRoute Connection with Private Peering $expressRouteConnectionName successfully"
-		$expressRouteConnection = Get-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ParentResourceName $expressRouteGatewayName -Name $expressRouteConnectionName
+        $expressRouteConnection = Get-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ParentResourceName $expressRouteGatewayName -Name $expressRouteConnectionName
         Assert-NotNull $expressRouteConnection
         Write-Debug "Retrieved ExpressRoute Connection with Private Peering $expressRouteConnectionName successfully"
-		Assert-AreEqual $expressRouteConnectionName $expressRouteConnection.Name
-		Assert-AreEqual 30 $expressRouteConnection.RoutingWeight
-	}
+        Assert-AreEqual $expressRouteConnectionName $expressRouteConnection.Name
+        Assert-AreEqual 30 $expressRouteConnection.RoutingWeight
+    }
     catch
     {
         Write-Debug "Encountered an exception: $_.Exception.Message"
         throw
     }
-	finally
-	{
+    finally
+    {
         Remove-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ParentResourceName $expressRouteGatewayName -Name $expressRouteConnectionName
-		Assert-ThrowsContains { Get-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ParentResourceName $expressRouteGatewayName -Name $expressRouteConnectionName } "NotFound";
+        Assert-ThrowsContains { Get-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ParentResourceName $expressRouteGatewayName -Name $expressRouteConnectionName } "NotFound";
 
         Remove-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName -Force
-		Assert-ThrowsContains { Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName } "NotFound";
+        Assert-ThrowsContains { Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName } "NotFound";
 
-		Remove-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force
-		Assert-ThrowsContains { Get-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName } "NotFound";
+        Remove-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force
+        Assert-ThrowsContains { Get-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName } "NotFound";
 
-		Remove-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force
-		Assert-ThrowsContains { Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName } "NotFound";
+        Remove-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force
+        Assert-ThrowsContains { Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName } "NotFound";
 
-		Clean-ResourceGroup $rgname
-	}
+        Clean-ResourceGroup $rgname
+    }
 }
