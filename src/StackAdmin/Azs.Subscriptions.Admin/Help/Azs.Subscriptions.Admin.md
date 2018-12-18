@@ -55,7 +55,7 @@ Move subscriptions between delegated provider offers.
 This process will only perform a rebranding,
 the underlying offer, plans, quotas for the subscriptions will not be altered.
 
-### [New-AddonPlanDefinitionObject](New-AddonPlanDefinitionObject.md)
+### [New-AzsAddonPlanDefinitionObject](New-AzsAddonPlanDefinitionObject.md)
 Contains the name of the desired plan to be linked or unlinked from an offer.
 
 ### [New-AzsOffer](New-AzsOffer.md)

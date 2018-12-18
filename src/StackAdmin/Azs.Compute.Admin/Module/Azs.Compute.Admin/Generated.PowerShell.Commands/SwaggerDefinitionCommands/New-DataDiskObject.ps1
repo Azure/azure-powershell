@@ -21,12 +21,12 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 .EXAMPLE
 
-    PS C:\> New-DataDiskObject -Lun 5 -URI test.blob.windows.net/disks/datadisk5.vhd
+    PS C:\> New-AzsDataDiskObject -Lun 5 -URI test.blob.windows.net/disks/datadisk5.vhd
 
     Create a new data disk object.
 
 #>
-function New-DataDiskObject
+function New-AzsDataDiskObject
 {
     param(
         [Parameter(Mandatory = $false)]
@@ -37,6 +37,10 @@ function New-DataDiskObject
         [string]
         $Uri
     )
+
+    if ($MyInvocation.InvocationName -like '*New-DataDiskObject*') {
+        Write-Warning "New-DataDiskObject has been deprecated, please use New-AzsDataDiskObject"
+    }
 
     $Object = New-Object -TypeName Microsoft.AzureStack.Management.Compute.Admin.Models.DataDisk
 

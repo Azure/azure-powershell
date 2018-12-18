@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.2.1
+* Added missing Azs prefix for New-DataDiskObject and created alias.  The cmdlet will be deprecated in a future release.
+
 ## Version 0.2.0
 * New Module dependencies
 	* AzureRM.Profile
