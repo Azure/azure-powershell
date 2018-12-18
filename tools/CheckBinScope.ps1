@@ -7,7 +7,7 @@ param(
     [Parameter(Mandatory = $false)]
     [string] $CIToolsPath,
     [Parameter(Mandatory = $false)]
-    [ValidateSet('All', 'Latest', 'Stack', 'ServiceManagement', 'AzureStorage')]
+    [ValidateSet('All', 'Latest', 'Stack', 'ServiceManagement', 'AzureStorage', 'Netcore')]
     [System.String] $Scope
 )
 
@@ -15,7 +15,7 @@ $RMFolders = Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ResourceMan
 $RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ServiceManagement/Azure -Directory
 $RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/Storage -Directory
 
-if ($Scope -like 'All' -or $Scope -like 'Stack')
+if ($Scope -like 'All' -or $Scope -like 'Stack' -or $Scope -like 'Netcore')
 {
     $RMFolders += Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/ResourceManager/AzureResourceManager -Directory
     $RMFolders += Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/Storage -Directory
