@@ -16,10 +16,10 @@
     /t:Publish
       Creates local nuget packages and MSI
 
-    /p:CodeSignESRP=True
+    /p:CodeSign=True
       Code sign binaries, mainly for official release. Default is false.
 
-    /p:CodeSignESRP=True;DelaySign=True
+    /p:CodeSign=True;DelaySign=True
       Test the code sign workflow locally.
 
     /p:Scope
@@ -51,7 +51,7 @@
     <LocalFeedFolder>$(LibraryToolsFolder)\LocalFeed</LocalFeedFolder>
     <PublishDirectory>$(LibrarySourceFolder)\Publish</PublishDirectory>
     <Configuration Condition=" '$(Configuration)' != 'Release'">Debug</Configuration>
-    <CodeSignESRP>false</CodeSignESRP>
+    <CodeSign>false</CodeSign>
     <!--Set this true only if you want to test the code sign workflow locally-->
     <DelaySign Condition =" '$(DelaySign)' == '' ">false</DelaySign>
     <SignedOutputRootDir>$(LibraryRoot)signed</SignedOutputRootDir>
@@ -123,7 +123,7 @@
 
   <UsingTask Condition=" $(OnPremiseBuild) " TaskName="CorporateValidation" AssemblyFile="$(CIToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <Import Condition=" $(OnPremiseBuild) " Project="$(CIToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
-  <Import Project="CodeSignESRP.targets"/>
+  <Import Project="CodeSign.targets"/>
 
   <UsingTask AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runner.msbuild.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.runner.msbuild.dll" TaskName="Xunit.Runner.MSBuild.xunit" />
 
@@ -268,13 +268,13 @@
 
 
     <!-- Update module manifests. -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;" Condition="'$(CodeSignESRP)' == 'false'" ContinueOnError="false" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;" Condition="'$(CodeSign)' == 'false'" ContinueOnError="false" />
     <!-- Generate the Help -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration)&quot;" Condition="'$(SkipHelp)' == 'false' And '$(RunStaticAnalysis)' == 'true'" ContinueOnError="false" />
 
     <Exec ContinueOnError="false"
       Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration) &quot;" 
-      Condition="'$(CodeSignESRP)' == 'true'"/>
+      Condition="'$(CodeSign)' == 'true'"/>
 
     <CallTarget targets="DependencyAnalysisNetcore" ContinueOnError="ErrorAndContinue" Condition="'$(RunStaticAnalysis)' == 'true'" />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" Condition="'$(RunStaticAnalysis)' == 'true'" />
@@ -284,22 +284,22 @@
 
     <Exec ContinueOnError="false"
           Command="$(PowerShellCoreCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;" 
-          Condition="'$(CodeSignESRP)' == 'true'"/>
+          Condition="'$(CodeSign)' == 'true'"/>
     
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
 
     <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
     
-    <CallTarget Targets="CodeSignBinariesESRP" Condition="'$(CodeSignESRP)' == 'true'" />
+    <CallTarget Targets="CodeSignBinaries" Condition="'$(CodeSign)' == 'true'" />
 	
-    <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration)&quot;" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSignESRP) == 'true'" />
+    <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration)&quot;" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'" />
 
     <Message Importance="high" Text="Running Static Analyser" />
     <CallTarget targets="DependencyAnalysis" ContinueOnError="ErrorAndContinue" />
     <!-- TODO: Implement CheckAssemblies.ps1 for Az. -->
     <!-- <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" /> -->
 
-    <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration)&quot;" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSignESRP) == 'true'" />
+    <Exec ContinueOnError="false" Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration)&quot;" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'" />
   </Target>
 
   <!-- Do everything possible except Publish -->
@@ -314,7 +314,7 @@
     <Exec Command="$(PowerShellCommandPrefix) &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(PackageDirectory) -InstallationPolicy Trusted &quot; " />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryRoot)\setup\generate.ps1 -repository MSIcreationrepository &quot; " />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot; " />
-    <CallTarget Targets="CodeSignInstallerESRP" Condition=" '$(CodeSignESRP)' == 'true'" />
+    <CallTarget Targets="CodeSignInstaller" Condition=" '$(CodeSign)' == 'true'" />
   </Target>
 
   <!-- Run Validation -->
