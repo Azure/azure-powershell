@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceEndpointPolicyDefinition
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a service endpoint policy definition.
 
 ## SYNTAX
 
