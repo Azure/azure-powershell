@@ -15,27 +15,22 @@
 
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ManagedApplicationDefinitionTests : RMTestBase
+    public class ManagedApplicationDefinitionTests : ResourceTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ManagedApplicationDefinitionTests(ITestOutputHelper output)
+        public ManagedApplicationDefinitionTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedApplicationDefinitionCRUD()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-ManagedApplicationDefinitionCRUD");
+            TestRunner.RunTestScript("Test-ManagedApplicationDefinitionCRUD");
         }
     }
 }
