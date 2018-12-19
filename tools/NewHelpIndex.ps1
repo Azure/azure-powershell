@@ -103,22 +103,25 @@ $RMpsd1s | ForEach-Object {
 
     $outputCmdlets = @{}
 
-    $parsedPsd1.CmdletsToExport | ForEach-Object {
-        $cmdletHelpFile = $HelpFileMapping["$_.md"]
-        if ($cmdletHelpFile -eq $null -and $Target -eq "Latest")
-        {
-            throw "No help file found for cmdlet $_"
-        }
+    if ($_.Name -ne "Az.Kusto.psd1")
+    {
+        $parsedPsd1.CmdletsToExport | ForEach-Object {
+            $cmdletHelpFile = $HelpFileMapping["$_.md"]
+            if ($cmdletHelpFile -eq $null -and $Target -eq "Latest")
+            {
+                throw "No help file found for cmdlet $_"
+            }
 
-        $cmdletLabel = $labelMapping.$_
-        if ($cmdletLabel -eq $null -and $Target -eq "Latest")
-        {
-            throw "No label found for cmdlet $_"
-        }
+            $cmdletLabel = $labelMapping.$_
+            if ($cmdletLabel -eq $null -and $Target -eq "Latest")
+            {
+                throw "No label found for cmdlet $_"
+            }
 
-        $helpSourceUrl = "$SourceBaseUri\src\$(($cmdletHelpFile -split "\\src\\*")[1])".Replace("\", "/")
-        $helpEditUrl = "$EditBaseUri\src\$(($cmdletHelpFile -split "\\src\\*")[1])".Replace("\", "/")
-        $outputCmdlets.Add("$_", @{"service" = $cmdletLabel; "sourceUrl" = $helpSourceUrl; "editUrl" = $helpEditUrl})
+            $helpSourceUrl = "$SourceBaseUri\src\$(($cmdletHelpFile -split "\\src\\*")[1])".Replace("\", "/")
+            $helpEditUrl = "$EditBaseUri\src\$(($cmdletHelpFile -split "\\src\\*")[1])".Replace("\", "/")
+            $outputCmdlets.Add("$_", @{"service" = $cmdletLabel; "sourceUrl" = $helpSourceUrl; "editUrl" = $helpEditUrl})
+        }
     }
 
     $moduleHelpFile = $HelpFileMapping["$($_.BaseName).md"]
