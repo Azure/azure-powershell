@@ -866,7 +866,7 @@ if ($PublishLocal) {
     if ($Scope -eq 'Stack') {
         $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "Stack")
     } else {
-        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "Package")
+        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "..\artifacts")
     }
 }
 
