@@ -12,17 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Commands.TestFx;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class DefaultCmdletTests : TestRunnerBase
+    public class DefaultCmdletTests : AccountsTestRunner
     {
         public DefaultCmdletTests(ITestOutputHelper output)
             : base(output)
