@@ -123,6 +123,41 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageAccountManagementPolicy()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-AzureStorageAccountManagementPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountFileStorage()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureStorageAccountFileStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountBlockBlobStorage()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureStorageAccountBlockBlobStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFailoverAzureStorageAccount()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-FailoverAzureStorageAccount");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureStorageAccountGeoReplicationStats()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureStorageAccountGeoReplicationStats");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingNewUpdateAccount()
         {
             TestRunner.RunTestScript("Test-PipingNewUpdateAccount");

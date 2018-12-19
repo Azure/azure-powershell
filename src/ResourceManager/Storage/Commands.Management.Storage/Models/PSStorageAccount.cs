@@ -51,7 +51,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Tags = storageAccount.Tags;
             this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
             this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet);
-            this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled; 
+            this.EnableAzureFilesAadIntegrationForSMB = storageAccount.EnableAzureFilesAadIntegration;
+            this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled;
+            this.FailoverInProgress = storageAccount.FailoverInProgress;
+            this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
@@ -62,7 +65,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public string Id { get; set; }
 
-        [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 2)]
         public string Location { get; set; }
 
         [Ps1Xml(Label = "SkuName", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name", Position = 3)]
@@ -86,6 +88,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public Endpoints PrimaryEndpoints { get; set; }
 
+        [Ps1Xml(Label = "PrimaryLocation", Target = ViewControl.Table, Position = 2)]
         public string PrimaryLocation { get; set; }
 
         [Ps1Xml(Label = "ProvisioningState", Target = ViewControl.Table, Position = 7)]
@@ -106,7 +109,14 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         
         public bool? EnableHierarchicalNamespace { get; set; }
 
+        public bool? EnableAzureFilesAadIntegrationForSMB { get; set; }
+
+        public bool? FailoverInProgress { get; set; }
+
+
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
+
+        public PSGeoReplicationStats GeoReplicationStats { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {

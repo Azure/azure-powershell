@@ -27,10 +27,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
     {
         private StorageManagementClientWrapper storageClientWrapper;
 
-        protected const string StorageAccountNounStr = "AzureRmStorageAccount";
+        protected const string StorageAccountNounStr = "StorageAccount";
         protected const string StorageAccountKeyNounStr = StorageAccountNounStr + "Key";
         protected const string StorageAccountRuleNounStr = StorageAccountNounStr + "NetworkRule";
         protected const string StorageAccountRuleSetNounStr = StorageAccountRuleNounStr + "Set";
+        protected const string StorageAccountManagementPolicyNounStr = StorageAccountNounStr + "ManagementPolicy";
+        protected const string StorageAccountFailoverNounStr = StorageAccountNounStr + "Failover";
 
         protected const string StorageAccountNameAlias = "StorageAccountName";
         protected const string AccountNameAlias = "AccountName";
@@ -38,6 +40,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string StorageAccountTypeAlias = "StorageAccountType";
         protected const string AccountTypeAlias = "AccountType";
         protected const string Account_TypeAlias = "Type";
+
+        protected const string EnableFilesAadIntegrationAlias = "EnableFilesAADIntegration";
 
         protected const string StorageAccountKeySourceStr = StorageAccountNounStr + "EncryptionKeySource";
 
@@ -60,6 +64,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string Storage = "Storage";
             internal const string StorageV2 = "StorageV2";
             internal const string BlobStorage = "BlobStorage";
+            internal const string FileStorage = "FileStorage";
+            internal const string BlockBlobStorage = "BlockBlobStorage";
         }
         protected struct AccountAccessTier
         {
