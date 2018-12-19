@@ -1,5 +1,6 @@
 <Project>
 
+  <!-- Custom -->
   <PropertyGroup>
     <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
     <RepoSrc>$(RepoRoot)src\</RepoSrc>

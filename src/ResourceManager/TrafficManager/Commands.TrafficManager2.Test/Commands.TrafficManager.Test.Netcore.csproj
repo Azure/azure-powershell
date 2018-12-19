@@ -1,15 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
+  <PropertyGroup>
+    <PsModuleName>TrafficManager</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\Az.Test.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0</TargetFrameworks>
-    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.Test.ScenarioTests</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-    <IsPackable>false</IsPackable>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix).ScenarioTests</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
