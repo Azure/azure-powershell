@@ -861,7 +861,7 @@ if ($Scope -eq 'Stack') {
 }
 # Set temporary repo location
 $PublishLocal = test-path $repositoryLocation
-[string]$tempRepoPath = "$packageFolder"
+[string]$tempRepoPath = (Join-Path $packageFolder -ChildPath "Package")
 if ($PublishLocal) {
     if ($Scope -eq 'Stack') {
         $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "Stack")
