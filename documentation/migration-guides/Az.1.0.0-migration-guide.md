@@ -256,7 +256,7 @@ Scripts should no longer make processing decisions based on the values for these
 ### Az.RecoveryServices (previously AzureRM.RecoveryServices, AzureRM.RecoveryServices.Backup, and AzureRM.RecoveryServices.SiteRecovery)
 - Removed `Encryption` parameter from `New/Set-AzRecoveryServicesAsrPolicy` cmdlets
 - `TargetStorageAccountName` parameter is now mandatory for managed disk restores in `Restore-AzRecoveryServicesBackupItem` cmdlet
-- Removed `StorageAccountName` and `StorageAccountResourceGroupName` parameters in `Restore-AzRecoveryServicesBackupItem` cmdlet
+- Removed `StorageAccountName` and `StorageAccountResourceGroupName` parameters in `Restore-AzRecoveryServicesBackupItem` cmdlet for Azure File Share restore
 - Removed `Name`parameter in `Get-AzRecoveryServicesBackupContainer` cmdlet
 
 ### Az.Resources (previously AzureRM.Resources)
