@@ -870,6 +870,7 @@ if ($PublishLocal) {
     }
 }
 
+$null = New-Item -ItemType Directory -Force -Path $tempRepoPath
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
 $repo = Get-PSRepository | Where-Object { $_.SourceLocation -eq $tempRepoPath }
 if ($repo -ne $null) {
