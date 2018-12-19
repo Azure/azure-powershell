@@ -12,30 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
-namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
+namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
-    [Serializable]
-    public partial class AsAzureAccount
+    /// <summary>
+    /// Class to hold the endpoint format strings for dataplane cmdlets.
+    /// </summary>
+    class AsAzureEndpoints
     {
-        public string Id { get; set; }
+        public const string RestartEndpointPathFormat = "/webapi/servers/{0}/restart?api-version=2016-10-01";
+        public const string LogfileEndpointPathFormat = "/webapi/servers/{0}/logfileHere";
+        public const string SynchronizeEndpointPathFormat = "/servers/{0}/models/{1}/sync";
 
-        public string UniqueId { get; set; }
+        public const string ClusterResolveEndpoint = "/webapi/clusterResolve";
 
-        public string Tenant { get; set; }
-
-        public string Type { get; set; }
-
-        public string CertificateThumbprint { get; set; }
-
-        /// <summary>
-        /// string constants for known credential types
-        /// </summary>
-        public static class AccountType
-        {
-            public const string User = "User",
-            ServicePrincipal = "ServicePrincipal";
-        }
+        public const string UriSchemeAsAzure = "asazure";
     }
 }
