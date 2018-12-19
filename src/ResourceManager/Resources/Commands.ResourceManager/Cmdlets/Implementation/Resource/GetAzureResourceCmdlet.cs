@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = ByResourceIdParameterSet, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ODataQuery { get; set; }
 
