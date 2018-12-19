@@ -114,3 +114,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzVpnGateway](./New-AzVpnGateway.md)
+
+[Remove-AzVpnGateway](./Remove-AzVpnGateway.md)
+
+[Update-AzVpnGateway](./Update-AzVpnGateway.md)

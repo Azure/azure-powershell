@@ -160,5 +160,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzVirtualNetworkGatewayConnection](./New-AzVirtualNetworkGatewayConnection.md)
 
 [Set-AzVirtualNetworkGatewayConnection](./Set-AzVirtualNetworkGatewayConnection.md)
-
-

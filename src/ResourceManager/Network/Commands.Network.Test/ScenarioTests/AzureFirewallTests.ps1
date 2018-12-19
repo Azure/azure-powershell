@@ -137,6 +137,10 @@ function Test-AzureFirewallCRUD
         Assert-AreEqual @($list[0].NatRuleCollections).Count @($getAzureFirewall.NatRuleCollections).Count
         Assert-AreEqual @($list[0].NetworkRuleCollections).Count @($getAzureFirewall.NetworkRuleCollections).Count
 
+        # list all Azure Firewalls under subscription
+        $listAll = Get-AzureRmFirewall
+        Assert-NotNull $listAll
+
         # Create Application Rules
         $appRule = New-AzureRmFirewallApplicationRule -Name $appRule1Name -Description $appRule1Desc -Protocol $appRule1Protocol1, $appRule1Protocol2 -TargetFqdn $appRule1Fqdn1, $appRule1Fqdn2 -SourceAddress $appRule1SourceAddress1
 

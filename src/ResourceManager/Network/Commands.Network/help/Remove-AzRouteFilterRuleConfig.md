@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzRouteFilterRuleConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a route filter rule from a route filter.
 
 ## SYNTAX
 
@@ -18,16 +18,18 @@ Remove-AzRouteFilterRuleConfig -Name <String> -RouteFilter <PSRouteFilter> [-For
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzRouteFilterRuleConfig** cmdlet removes a route filter rule from a route filter.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+PS C:\> $rf = Get-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
+PS C:\> Remove-AzRouteFilterRuleConfig -RouteFilter $rf -Name "Rule01"
 ```
 
-{{ Add example description here }}
+The first command gets a route filter named RouteFilter01 that belongs to the resource group named ResourceGroup01 and stores it in the $rf variable.
+The second command removes the route filter rule named Rule01 from the route filter stored in $rf.
 
 ## PARAMETERS
 
@@ -135,3 +137,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzRouteFilterRuleConfig](./Add-AzRouteFilterRuleConfig.md)
+
+[Get-AzRouteFilterRuleConfig](./Get-AzRouteFilterRuleConfig.md)
+
+[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
+
+[Set-AzRouteFilterRuleConfig](./Set-AzRouteFilterRuleConfig.md)
+
+[Get-AzRouteFilter](./Get-AzRouteFilter.md)
+
+[New-AzRouteFilter](./New-AzRouteFilter.md)
+
+[Remove-AzRouteFilter](./Remove-AzRouteFilter.md)
+
+[Set-AzRouteFilter](./Set-AzRouteFilter.md)

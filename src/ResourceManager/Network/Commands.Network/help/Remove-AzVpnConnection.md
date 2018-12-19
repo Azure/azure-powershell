@@ -251,3 +251,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVpnConnection](./Get-AzVpnConnection.md)
+
+[New-AzVpnConnection](./New-AzVpnConnection.md)
+
+[Update-AzVpnConnection](./Update-AzVpnConnection.md)

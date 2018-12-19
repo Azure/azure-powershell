@@ -31,7 +31,7 @@ Remove-AzPublicIpPrefix -InputObject <PSPublicIpPrefix> [-Force] [-PassThru] [-A
 ```
 
 ## DESCRIPTION
-The **Remove-AzPublicIpPrefix cmdlet removes an Azure public IP prefix as long as there are no public IP addresses allocated from it.
+The **Remove-AzPublicIpPrefix** cmdlet removes an Azure public IP prefix as long as there are no public IP addresses allocated from it.
 
 ## EXAMPLES
 
@@ -212,3 +212,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzPublicIpPrefix](./Get-AzPublicIpPrefix.md)
+
+[New-AzPublicIpPrefix](./New-AzPublicIpPrefix.md)
+
+[Set-AzPublicIpPrefix](./Set-AzPublicIpPrefix.md)

@@ -24,12 +24,11 @@ The New-AzRouteFilter cmdlet creates an Azure route filter.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+PS C:\> New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
 ```
 
- 
-{{ Add example description here }}
+The command creates a new route filter.
 
 ## PARAMETERS
 
@@ -206,8 +205,16 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Get-AzRouteFilter](./Get-AzRouteFilter.md)
 
-[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
-
 [Remove-AzRouteFilter](./Remove-AzRouteFilter.md)
 
 [Set-AzRouteFilter](./Set-AzRouteFilter.md)
+
+[Add-AzRouteFilterRuleConfig](./Add-AzRouteFilterRuleConfig.md)
+
+[Get-AzRouteFilterRuleConfig](./Get-AzRouteFilterRuleConfig.md)
+
+[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
+
+[Remove-AzRouteFilterRuleConfig](./Remove-AzRouteFilterRuleConfig.md)
+
+[Set-AzRouteFilterRuleConfig](./Set-AzRouteFilterRuleConfig.md)

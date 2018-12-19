@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzRouteFilter
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a route filter.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Remove-AzRouteFilter -Name <String> -ResourceGroupName <String> [-Force] [-PassT
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzRouteFilter** cmdlet removes a route filter.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+PS C:\> Remove-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
 ```
 
-{{ Add example description here }}
+The command removes the route filter named RouteFilter01 in the resource group named ResourceGroup01.
 
 ## PARAMETERS
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns an object representing the item with which you are working.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -151,3 +151,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzRouteFilter](./Get-AzRouteFilter.md)
+
+[New-AzRouteFilter](./New-AzRouteFilter.md)
+
+[Set-AzRouteFilter](./Set-AzRouteFilter.md)
+
+[Add-AzRouteFilterRuleConfig](./Add-AzRouteFilterRuleConfig.md)
+
+[Get-AzRouteFilterRuleConfig](./Get-AzRouteFilterRuleConfig.md)
+
+[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
+
+[Remove-AzRouteFilterRuleConfig](./Remove-AzRouteFilterRuleConfig.md)
+
+[Set-AzRouteFilterRuleConfig](./Set-AzRouteFilterRuleConfig.md)
