@@ -94,7 +94,7 @@ Set-AzNetworkWatcherConfigFlowLog -Location <String> -TargetResourceId <String> 
 
 ## DESCRIPTION
 The Set-AzNetworkWatcherConfigFlowLog configures flow logging for a target resource. 
-Properties to configure include: whether or not flow logging is enabled for the resource provided, the configured storage account to send logs, the flow logging format and the retention policy for the logs. 
+Properties to configure include: whether or not flow logging is enabled for the resource provided, the configured storage account to send logs, the flow logging format, and the retention policy for the logs. 
 Currently Network Security Groups are supported for flow logging. 
 
 ## EXAMPLES
@@ -121,7 +121,7 @@ Format           : {
                    }
 ```
 
-In this example we configure flow logging status for a Network Security Group. In the response, we see the specified NSG has flow logging enabled, format and no retention policy set.
+In this example we configure flow logging status for a Network Security Group. In the response, we see the specified NSG has flow logging enabled, default format, and no retention policy set.
 
 ### Example 2: Configure Flow Logging for a Specified NSG and set the version of flow logging to 2.
 ```
