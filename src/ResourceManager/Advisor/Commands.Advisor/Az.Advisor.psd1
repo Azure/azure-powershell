@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = '(c) 2017 Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Azure Advisor Cmdlets for Advisor in Windows PowerShell and PowerShell Core. Get Advisor recommendations, Manage Advisor configurations.'
+Description = 'Microsoft Azure PowerShell - Azure Advisor Cmdlets for Advisor in PowerShell and PowerShell Core. Get Advisor recommendations, Manage Advisor configurations.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'

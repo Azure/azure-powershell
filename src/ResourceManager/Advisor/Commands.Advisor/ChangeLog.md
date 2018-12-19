@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.1.0
 *Added new cmdlets for Advisor Recommendation
     - Get-AzAdvisorRecommendation
     - Enable-AzAdvisorRecommendation
