@@ -12,77 +12,68 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections;
-using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.PowerBI.Models;
-using Microsoft.Azure.Commands.PowerBI.Properties;
+using Microsoft.Azure.Commands.Kusto.Models;
+using Microsoft.Azure.Commands.Kusto.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Rest.Azure;
 
-namespace Microsoft.Azure.Commands.PowerBI
+namespace Microsoft.Azure.Commands.Kusto
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIEmbeddedCapacity", SupportsShouldProcess = true), OutputType(typeof(PSPowerBIEmbeddedCapacity))]
-    public class NewPowerBIEmbeddedCapacity : PowerBICmdletBase
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", SupportsShouldProcess = true),
+        OutputType(typeof(PSKustoCluster))]
+    public class NewKustoCluster : KustoCmdletBase
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Position = 0, 
+            Position = 0,
             Mandatory = true,
-            HelpMessage = "Name of resource group under which you want to create the capacity.")]
+            HelpMessage = "Name of resource group under which you want to create the cluster.")]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Position = 1, 
+            Position = 1,
             Mandatory = true,
-            HelpMessage = "Name of the capacity to create.")]
+            HelpMessage = "Name of the cluster to be created.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Position = 2, 
             Mandatory = true,
-            HelpMessage = "Azure region where the capacity should be created.")]
-        [LocationCompleter("Microsoft.PowerBIDedicated/capacities")]
+            HelpMessage = "Azure region where the cluster should be created.")]
+        [LocationCompleter("Microsoft.Kusto/clusters")]
         public string Location { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Position = 3, 
             Mandatory = true,
-            HelpMessage = "Name of the Sku used to create the capacity")]
+            HelpMessage = "Name of the Sku used to create the cluster")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("A1", "A2", "A3", "A4", "A5", "A6", IgnoreCase = true)]
+        [PSArgumentCompleter("KC8", "KC16", "KS8", "KS16", "L8", "L16", "D14_v2", "D13_v2")]
         public string Sku { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
-             Position = 4,
-            Mandatory = true,
-            HelpMessage = "A comma separated capacity names to set as administrators on the capacity")]
-        [ValidateNotNull]
-        public string[] Administrator { get; set; }
+            Mandatory = false,
+            HelpMessage = "Name of the Tier used to create the cluster")]
+        [PSArgumentCompleter("Standard")]
+        public string Tier { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
             Mandatory = false,
-            HelpMessage = "A string,string dictionary of tags associated with this capacity")]
+            HelpMessage = "A string,string dictionary of tags associated with this cluster")]
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Resources.CreateNewPowerBIEmbeddedCapacity))
+            if (ShouldProcess(Name, Resources.CreateNewKustoCluster))
             {
                 try
                 {
-                    if (PowerBIClient.GetCapacity(ResourceGroupName, Name) != null)
+                    if (KustoClient.GetCluster(ResourceGroupName, Name) != null)
                     {
-                        throw new CloudException(string.Format(Resources.PowerBIEmbeddedCapacityExists, Name));
+                        throw new CloudException(string.Format(Resources.KustoClusterExists, Name));
                     }
                 }
                 catch (CloudException ex)
@@ -90,7 +81,7 @@ namespace Microsoft.Azure.Commands.PowerBI
                     if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) && ex.Body.Code == "ResourceNotFound" ||
                         ex.Message.Contains("ResourceNotFound"))
                     {
-                        // capacity does not exists so go ahead and create one
+                        // cluster does not exists so go ahead and create one
                     }
                     else if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) &&
                              ex.Body.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
@@ -104,8 +95,8 @@ namespace Microsoft.Azure.Commands.PowerBI
                     }
                 }
 
-                var createdCapacity = PowerBIClient.CreateOrUpdateCapacity(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null);
-                WriteObject(createdCapacity);
+                var createdCluster = KustoClient.CreateOrUpdateCluster(ResourceGroupName, Name, Location, Sku, Tag, null);
+                WriteObject(createdCluster);
             }
         }
     }
