@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support failover Storage account
+    - Invoke-AzureRmStorageAccountFailover
+* Support Get last sync time of Storage account by run get-AzureRMStorageAccount with parameter -IncludeGeoReplicationStats
+    - Get-AzureRMStorageAccount
 
 ## Version 1.0.0
 * General availability of `Az.Storage` module
