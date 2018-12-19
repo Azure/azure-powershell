@@ -2,22 +2,16 @@
 
   <Import Project="$(MSBuildThisFileDirectory)..\Repo.props" />
   <Import Project="$(RepoTools)Common.Netcore.Dependencies.targets" />
+  <Import Project="$(MSBuildThisFileDirectory)Az.Shared.props" />
 
-  <PropertyGroup>
-    <AzAssemblyPrefix>Microsoft.Azure.PowerShell.Cmdlets.</AzAssemblyPrefix>
-    <LegacyAssemblyPrefix>Microsoft.Azure.Commands.</LegacyAssemblyPrefix>
-  </PropertyGroup>
-
+  <!-- CsProj -->
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName)</AssemblyName>
     <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>$(RepoArtifacts)$(Configuration)\ResourceManager\AzureResourceManager\Az.$(PsModuleName)\</OutputPath>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
