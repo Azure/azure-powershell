@@ -126,10 +126,6 @@
                 <Label>DdosProtectionPlan</Label>
                 <PropertyName>DdosProtectionPlanText</PropertyName>
               </ListItem>
-              <ListItem>
-                <Label>EnableVmProtection</Label>
-                <PropertyName>EnableVmProtectionText</PropertyName>
-              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

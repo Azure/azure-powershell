@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: A8222AB8-0003-4AC6-8114-294ABE8054CE
@@ -56,7 +56,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -194,14 +194,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Object
 
-### Microsoft.Azure.Commands.DataLakeStore.Models.FileSystemCmdletProviderEncoding
+### System.Text.Encoding
 
 ### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
 ### System.String
-The full path to the created file or folder.
 
 ## NOTES
 

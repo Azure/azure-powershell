@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storagesync/invoke-azstoragesynccompatibilitycheck
@@ -66,7 +66,7 @@ This command checks the compatibility of the system and also of files and folder
 The computer you are performing this check on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComputerNameBased
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Your credentials for the share you are validating.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The UNC path of the share you are validating.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PathBased
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Set this flag to skip file namespace validations and only perform system validations.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: PathBased
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Set this flag to skip system validations and only perform file namespace validations.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +146,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationResult
+### Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSStorageSyncValidation
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, storagesync, filesync

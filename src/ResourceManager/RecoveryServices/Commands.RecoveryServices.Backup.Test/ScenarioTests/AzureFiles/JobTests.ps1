@@ -70,7 +70,7 @@ function Test-AzureFSGetJob
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
-			-Name $saName
+			-FriendlyName $saName
 	}
 	finally
 	{
@@ -100,7 +100,7 @@ function Test-AzureFSWaitJob
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
-			-Name $saName
+			-FriendlyName $saName
 	}
 	finally
 	{
@@ -128,7 +128,7 @@ function Test-AzureFSCancelJob
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
 			-Status Registered `
-			-Name $saName
+			-FriendlyName $saName
 	}
 	finally
 	{

@@ -142,8 +142,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                 {
                     param.DatabasesInfo = DatabaseInfo.ToList();
                 }
-                param.SourceConnectionInfo = SourceConnection;
-                param.TargetConnectionInfo = TargetConnection;
+                param.SourceConnectionInfo = SourceConnection as ConnectionInfo;
+                param.TargetConnectionInfo = TargetConnection as ConnectionInfo;
                 param.SourcePlatform = SourceType;
                 param.TargetPlatform = TargetType;
                 param.Location = Location;

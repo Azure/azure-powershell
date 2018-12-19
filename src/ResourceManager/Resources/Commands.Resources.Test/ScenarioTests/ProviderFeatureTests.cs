@@ -18,21 +18,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class ProviderFeatureTests
-    {
-        public XunitTracingInterceptor _logger;
 
-        public ProviderFeatureTests(ITestOutputHelper output)
+    public class ProviderFeatureTests : ResourceTestRunner
+    {
+        public ProviderFeatureTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProviderFeature()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-AzureProviderFeature");
+            TestRunner.RunTestScript("Test-AzureProviderFeature");
         }
     }
 }

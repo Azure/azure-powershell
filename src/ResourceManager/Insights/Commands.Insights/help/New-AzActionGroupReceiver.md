@@ -1,8 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
-Module Name: Az.Insights
+Module Name: Az.Monitor
 ms.assetid: 9830CD16-D797-47EB-BEF5-6CFE3454BCAA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.insights/new-azactiongroupreceiver
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azactiongroupreceiver
 schema: 2.0.0
 ---
 
@@ -80,7 +80,7 @@ The credentials, account, tenant, and subscription used for communication with a
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named

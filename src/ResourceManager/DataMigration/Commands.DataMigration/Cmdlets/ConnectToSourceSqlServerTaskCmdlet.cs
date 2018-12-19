@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class ConnectToSourceSqlServerTaskCmdlet : TaskCmdlet
+    public class ConnectToSourceSqlServerTaskCmdlet : TaskCmdlet<ConnectionInfo>
     {
         private readonly string CollectLogins = "CollectLogins";
         private readonly string CollectAgentJobs = "CollectAgentJobs";
