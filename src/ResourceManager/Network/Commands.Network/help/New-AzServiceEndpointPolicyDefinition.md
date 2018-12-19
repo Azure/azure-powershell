@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceEndpointPolicyDefinition
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a service endpoint policy definition.
 
 ## SYNTAX
 
@@ -151,3 +151,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzServiceEndpointPolicyDefinition](./Add-AzServiceEndpointPolicyDefinition.md)
+
+[Get-AzServiceEndpointPolicyDefinition](./Get-AzServiceEndpointPolicyDefinition.md)
+
+[Remove-AzServiceEndpointPolicyDefinition](./Remove-AzServiceEndpointPolicyDefinition.md)
+
+[Set-AzServiceEndpointPolicyDefinition](./Set-AzServiceEndpointPolicyDefinition.md)

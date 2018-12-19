@@ -173,5 +173,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzLocalNetworkGateway](./New-AzLocalNetworkGateway.md)
 
 [Remove-AzLocalNetworkGateway](./Remove-AzLocalNetworkGateway.md)
-
-

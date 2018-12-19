@@ -113,3 +113,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzVirtualHub](./New-AzVirtualHub.md)
+
+[Remove-AzVirtualHub](./Remove-AzVirtualHub.md)
+
+[Update-AzVirtualHub](./Update-AzVirtualHub.md)

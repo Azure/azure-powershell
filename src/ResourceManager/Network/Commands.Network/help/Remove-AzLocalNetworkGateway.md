@@ -176,5 +176,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzLocalNetworkGateway](./New-AzLocalNetworkGateway.md)
 
 [Set-AzLocalNetworkGateway](./Set-AzLocalNetworkGateway.md)
-
-

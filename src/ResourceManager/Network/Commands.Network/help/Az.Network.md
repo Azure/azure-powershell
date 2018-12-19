@@ -360,19 +360,19 @@ Gets a public IP prefix
 Gets routes from a route table.
 
 ### [Get-AzRouteFilter](Get-AzRouteFilter.md)
-{{Fill in the Synopsis}}
+Gets a route filter.
 
 ### [Get-AzRouteFilterRuleConfig](Get-AzRouteFilterRuleConfig.md)
-{{Fill in the Synopsis}}
+Gets a route filter rule in a route filter.
 
 ### [Get-AzRouteTable](Get-AzRouteTable.md)
 Gets route tables.
 
 ### [Get-AzServiceEndpointPolicy](Get-AzServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
+Gets a service endpoint policy.
 
 ### [Get-AzServiceEndpointPolicyDefinition](Get-AzServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
+Gets a service endpoint policy definition.
 
 ### [Get-AzVirtualHub](Get-AzVirtualHub.md)
 Gets an Azure VirtualHub by Name and ResourceGroupName or lists all Virtual Hubs by ResourceGroupName/Subscription.
@@ -672,10 +672,10 @@ Creates a route filter rule for a route filter.
 Creates a route table.
 
 ### [New-AzServiceEndpointPolicy](New-AzServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
+Creates a service endpoint policy.
 
 ### [New-AzServiceEndpointPolicyDefinition](New-AzServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
+Creates a service endpoint policy definition.
 
 ### [New-AzVirtualHub](New-AzVirtualHub.md)
 Creates an Azure VirtualHub resource.
@@ -886,19 +886,19 @@ Removes a public IP prefix
 Removes a route from a route table.
 
 ### [Remove-AzRouteFilter](Remove-AzRouteFilter.md)
-{{Fill in the Synopsis}}
+Removes a route filter.
 
 ### [Remove-AzRouteFilterRuleConfig](Remove-AzRouteFilterRuleConfig.md)
-{{Fill in the Synopsis}}
+Removes a route filter rule from a route filter.
 
 ### [Remove-AzRouteTable](Remove-AzRouteTable.md)
 Removes a route table.
 
 ### [Remove-AzServiceEndpointPolicy](Remove-AzServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
+Removes a service endpoint policy.
 
 ### [Remove-AzServiceEndpointPolicyDefinition](Remove-AzServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
+Removes a service endpoint policy definition.
 
 ### [Remove-AzVirtualHub](Remove-AzVirtualHub.md)
 Removes an Azure VirtualHub resource.
@@ -1096,19 +1096,19 @@ Sets the Tags for an existing PublicIpPrefix
 Sets the goal state for a route.
 
 ### [Set-AzRouteFilter](Set-AzRouteFilter.md)
-{{Fill in the Synopsis}}
+Updates a route filter.
 
 ### [Set-AzRouteFilterRuleConfig](Set-AzRouteFilterRuleConfig.md)
-{{Fill in the Synopsis}}
+Modifies the route filter rule of a route filter.
 
 ### [Set-AzRouteTable](Set-AzRouteTable.md)
 Sets the goal state for a route table.
 
 ### [Set-AzServiceEndpointPolicy](Set-AzServiceEndpointPolicy.md)
-{{Fill in the Synopsis}}
+Updates a service endpoint policy.
 
 ### [Set-AzServiceEndpointPolicyDefinition](Set-AzServiceEndpointPolicyDefinition.md)
-{{Fill in the Synopsis}}
+Updates a service endpoint policy definition.
 
 ### [Set-AzVirtualNetwork](Set-AzVirtualNetwork.md)
 Sets the goal state for a virtual network.

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRouteFilterRuleConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a route filter rule in a route filter.
 
 ## SYNTAX
 
@@ -18,16 +18,20 @@ Get-AzRouteFilterRuleConfig [-Name <String>] -RouteFilter <PSRouteFilter>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzRouteFilterRuleConfig** cmdlet gets a route filter rule or a list of route filter rules in a route filter.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+PS C:\> $rf = Get-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
+PS C:\> Get-AzRouteFilterRuleConfig -RouteFilter $rf -Name "Rule01"
+PS C:\> Get-AzRouteFilterRuleConfig -RouteFilter $rf
 ```
 
-{{ Add example description here }}
+The first command gets the route filter named MyRouteFilter, and then stores it in the variable $rf.
+The second command gets the route filter rule named Rule01 associated with that route filter.
+The third command gets a list of route filter rules associated with that route filter.
 
 ## PARAMETERS
 
@@ -90,3 +94,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzRouteFilterRuleConfig](./Add-AzRouteFilterRuleConfig.md)
+
+[New-AzRouteFilterRuleConfig](./New-AzRouteFilterRuleConfig.md)
+
+[Remove-AzRouteFilterRuleConfig](./Remove-AzRouteFilterRuleConfig.md)
+
+[Set-AzRouteFilterRuleConfig](./Set-AzRouteFilterRuleConfig.md)
+
+[Get-AzRouteFilter](./Get-AzRouteFilter.md)
+
+[New-AzRouteFilter](./New-AzRouteFilter.md)
+
+[Remove-AzRouteFilter](./Remove-AzRouteFilter.md)
+
+[Set-AzRouteFilter](./Set-AzRouteFilter.md)

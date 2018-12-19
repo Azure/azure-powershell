@@ -114,3 +114,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzLoadBalancerInboundNatPoolConfig](./Add-AzLoadBalancerInboundNatPoolConfig.md)
+
+[Get-AzLoadBalancerInboundNatPoolConfig](./Get-AzLoadBalancerInboundNatPoolConfig.md)
+
+[New-AzLoadBalancerInboundNatPoolConfig](./New-AzLoadBalancerInboundNatPoolConfig.md)
+
+[Set-AzLoadBalancerInboundNatPoolConfig](./Set-AzLoadBalancerInboundNatPoolConfig.md)

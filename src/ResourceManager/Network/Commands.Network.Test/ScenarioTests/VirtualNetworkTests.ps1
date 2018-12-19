@@ -65,6 +65,9 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual "10.0.1.0/24" $list[0].Subnets[0].AddressPrefix
         Assert-AreEqual $expected.Etag $list[0].Etag
 
+        $listAll = Get-AzureRmvirtualNetwork
+        Assert-NotNull $listAll
+
         # Test virtual network private ip address - available - TestByResource
         $testResponse1 = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Test-AzureRmPrivateIPAddressAvailability -IPAddress "10.0.1.10"
         Assert-AreEqual true $testResponse1.Available
