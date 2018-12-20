@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridsubscription
@@ -32,9 +32,9 @@ Get-AzureRmEventGridSubscription [[-ResourceGroupName] <String>] [[-TopicTypeNam
  [<CommonParameters>]
 ```
 
-### EventSubscriptionInputObjectSet
+### EventSubscriptionCustomTopicInputObjectParameterSet
 ```
-Get-AzureRmEventGridSubscription [-InputObject] <PSTopic> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmEventGridSubscription -CustomTopicInputObject <PSTopic> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -124,11 +124,26 @@ Gets the list of all event subscriptions created for the specific resource group
 
 ## PARAMETERS
 
+### -CustomTopicInputObject
+EventGrid Topic object.
+
+```yaml
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -143,9 +158,9 @@ Accept wildcard characters: False
 The name of the event subscription
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionTopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -158,9 +173,9 @@ Accept wildcard characters: False
 Include the full endpoint URL of the event subscription destination.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: EventSubscriptionTopicNameParameterSet, ResourceIdEventSubscriptionParameterSet, EventSubscriptionTopicTypeNameParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -169,28 +184,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-EventGrid Event Subscription object.
-
-```yaml
-Type: PSTopic
-Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
 Location
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionTopicTypeNameParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionTopicTypeNameParameterSet
 Aliases: ResourceGroup
 
@@ -218,9 +218,9 @@ Accept wildcard characters: False
 Identifier of the resource to which event subscriptions have been created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -233,9 +233,9 @@ Accept wildcard characters: False
 EventGrid Topic Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionTopicNameParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -248,9 +248,9 @@ Accept wildcard characters: False
 TopicType name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EventSubscriptionTopicTypeNameParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -276,4 +276,3 @@ System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSE
 ## NOTES
 
 ## RELATED LINKS
-

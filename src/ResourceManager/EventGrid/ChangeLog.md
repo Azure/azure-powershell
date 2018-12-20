@@ -19,6 +19,23 @@
 -->
 ## Current Release
 
+* Updated to use the 2019-01-01 API version.
+
+* Update the following cmdlets to support new scenario in 2019-01-01 API version
+	- New-AzureRmEventGridSubscription: Add new optional parameters for specifying:
+		- Event Time-To-Live,
+		- Maximum number of delivery attempts for the events,
+		- Dead letter endpoint.
+	- Update-AzureRmEventGridSubscription: Add new optional parameters for specifying:
+		- Event Time-To-Live,
+		- Maximum number of delivery attempts for the events,
+		- Dead letter endpoint.
+
+* Add new enum values (namely, storageQueue and hybridConnection) for EndpointType option in New-AzureRmEventGridSubscription and Update-AzureRmEventGridSubscription cmdlets.
+
+* Show warning message if creating or updating the event subscription is expected to entail manual action from user.
+
+
 ## Version 0.3.3
 * Set minimum dependency of module to PowerShell 5.0
 
