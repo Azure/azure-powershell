@@ -21,7 +21,7 @@ using Microsoft.Azure.DataLake.Store;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
+    [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
     [Alias("Export-AdlStoreItem")]
     public class ExportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public override void ExecuteCmdlet()
         {
             // We will let this throw itself if the path they give us is invalid
-            var powerShellReadyPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Destination);
+            var powerShellReadyPath = ResolveUserPath(Destination);
             ConfirmAction(
                 VerbsData.Export,
                 Path.TransformedPath,
@@ -119,12 +119,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     {
                         if (ParameterSetName.Equals(DiagnosticParameterSetName) && DiagnosticLogLevel != LogLevel.None)
                         {
-                            var diagnosticPath =
-                                SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
+                            var diagnosticPath = ResolveUserPath(DiagnosticLogPath);
                             DataLakeStoreFileSystemClient.SetupFileLogging(DiagnosticLogLevel, diagnosticPath);
                         }
 
-                        int threadCount = Concurrency;
+                        // Currently SDK default thread calculation is not correct, so pass a default thread count
+                        int threadCount = Concurrency == -1 ? DataLakeStoreFileSystemClient.ImportExportMaxThreads : Concurrency;
                         DataLakeStoreFileSystemClient.BulkCopy(powerShellReadyPath, Account,
                             Path.TransformedPath, CmdletCancellationToken, threadCount, Recurse, Force, Resume, true, this);
                         WriteObject(powerShellReadyPath);

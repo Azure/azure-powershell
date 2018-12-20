@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
@@ -52,20 +54,26 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   isDefaultContainer: other.IsDefaultContainer,
                   defaultHostName: other.DefaultHostName,
                   reserved: other.Reserved,
+                  isXenon: other.IsXenon,
                   possibleOutboundIpAddresses: other.PossibleOutboundIpAddresses,
                   dailyMemoryTimeQuota: other.DailyMemoryTimeQuota,
                   suspendedTill:other.SuspendedTill,
-                  snapshotInfo: other.SnapshotInfo,
                   slotSwapStatus: other.SlotSwapStatus,
                   httpsOnly: other.HttpsOnly,
                   identity: other.Identity
                   )
         {
+            if (other.SiteConfig != null)
+            {
+                AzureStoragePath = other.SiteConfig.AzureStorageAccounts.ConvertToWebAppAzureStorageArray();
+            }
         }
 
         public string GitRemoteName { get; set; }
         public string GitRemoteUri { get; set; }
         public string GitRemoteUsername { get; set; }
         public SecureString  GitRemotePassword { get; set; }
+
+        public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
     }
 }

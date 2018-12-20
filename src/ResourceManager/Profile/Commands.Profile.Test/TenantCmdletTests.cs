@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -58,7 +58,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 2);
             Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
-            Assert.Equal("microsoft.com", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Directory);
         }
 
         [Fact]
@@ -78,7 +77,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 3);
             Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
-            Assert.Equal("microsoft.com", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Directory);
         }
 
         [Fact]
@@ -97,7 +95,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 3);
             Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
-            Assert.Equal("microsoft.com", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Directory);
         }
 
         private void Login(string subscriptionId, string tenantId)
@@ -106,7 +103,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Subscription = subscriptionId;
-            cmdlt.TenantId = tenantId;
+            cmdlt.Tenant = tenantId;
 
             // Act
             cmdlt.InvokeBeginProcessing();

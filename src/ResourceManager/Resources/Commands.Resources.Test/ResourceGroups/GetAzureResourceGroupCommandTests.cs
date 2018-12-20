@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
             Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
             Assert.Equal(resourceGroupLocation, result[0].Location);
 
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
             Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
             Assert.Equal(resourceGroupLocation, result[0].Location);
         }

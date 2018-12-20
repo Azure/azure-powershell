@@ -12,15 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the ServiceDiagnosticSettings
+    /// Wrapps around the DiagnosticSettings
     /// </summary>
     public class PSLogProfile : LogProfileResource
     {
+        /// <summary>
+        /// Gets or sets the RetentionPolicy of the LogProfile
+        /// </summary>
+        public new Management.Monitor.Management.Models.RetentionPolicy RetentionPolicy { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PSLogProfile"/> class.
         /// </summary>
@@ -32,10 +37,11 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 location: logProfile.Location, 
                 locations: logProfile.Locations, 
                 categories: logProfile.Categories,
-                retentionPolicy: new PSRetentionPolicy(logProfile.RetentionPolicy))
+                retentionPolicy: new PSRetentionPolicy(logProfile.RetentionPolicy),
+                storageAccountId: logProfile.StorageAccountId,
+                serviceBusRuleId: logProfile.ServiceBusRuleId)
         {
-            this.ServiceBusRuleId = logProfile.ServiceBusRuleId;
-            this.StorageAccountId = logProfile.StorageAccountId;
+            this.RetentionPolicy = new Management.Monitor.Management.Models.RetentionPolicy(logProfile.RetentionPolicy);
         }
     }
 }

@@ -14,7 +14,11 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Commands.Profile.Models.Core;
+#endif
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using Xunit;
@@ -59,6 +63,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Null(environment.BatchEndpointResourceId);
             Assert.Null(environment.AzureOperationalInsightsEndpointResourceId);
             Assert.Null(environment.AzureOperationalInsightsEndpoint);
+            Assert.Null(environment.AzureAnalysisServicesEndpointSuffix);
+
         }
 
         [Theory]
@@ -69,21 +75,21 @@ namespace Microsoft.Azure.Commands.Profile.Test
             "https://manage.windowsazure.com/publishsettings", "https://management.azure.com",
             "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net",
             ".trafficmanager.windows.net", "https://batch.core.windows.net", "https://datalake.azure.net",
-            "https://api.loganalytics.io", "https://api.loganalytics.io/v1")]
+            "https://api.loganalytics.io", "https://api.loganalytics.io/v1", "analysisservices.azure.net")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertValidEnvironments(string name, bool onPremise, string activeDirectory, string serviceResource,
             string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix,
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
             string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource, string dataLakeResource,
-            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint)
+            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint, string analysisServicesSuffix)
         {
             AzureEnvironment azEnvironment = CreateEnvironment(name, onPremise, activeDirectory,
                 serviceResource, adTenant, dataLakeJobs, dataLakeFiles, kvDnsSuffix,
                 kvResource, gallery, graph, graphResource, portal, publishSettings,
                 resourceManager, serviceManagement, sqlSuffix, storageSuffix,
                 trafficManagerSuffix, batchResource, dataLakeResource,
-                azureOperationalInsightsEndpointResourceId, azureOperationalInsightsEndpoint);
+                azureOperationalInsightsEndpointResourceId, azureOperationalInsightsEndpoint, analysisServicesSuffix);
             var environment = (PSAzureEnvironment)azEnvironment;
             Assert.NotNull(environment);
             CheckEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, azEnvironment,
@@ -128,6 +134,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 environment.AzureOperationalInsightsEndpointResourceId);
             CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, azEnvironment,
                 environment.AzureOperationalInsightsEndpoint);
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, azEnvironment,
+                environment.AzureAnalysisServicesEndpointSuffix);
             Assert.Equal(azEnvironment.Name, environment.Name);
             Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
         }
@@ -163,7 +171,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.BatchEndpointResourceId));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix));
         }
+
         [Theory]
         [InlineData("TestAll", true, "https://login.microsoftonline.com", "https://management.core.windows.net/",
             "Common", "https://mangement.azure.com/dataLakeJobs", "https://management.azure.com/dataLakeFiles",
@@ -172,14 +182,14 @@ namespace Microsoft.Azure.Commands.Profile.Test
             "https://manage.windowsazure.com/publishsettings", "https://management.azure.com",
             "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net",
             ".trafficmanager.windows.net", "https://batch.core.windows.net", "https://datalake.azure.net",
-            "https://api.loganalytics.io", "https://api.loganalytics.io/v1")]
+            "https://api.loganalytics.io", "https://api.loganalytics.io/v1", "analysisservices.azure.net")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertValidPSEnvironments(string name, bool onPremise, string activeDirectory, string serviceResource,
             string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix,
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
             string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource, string dataLakeResource,
-            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint)
+            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint, string analysisServicesSuffix)
         {
             PSAzureEnvironment environment = new PSAzureEnvironment
             {
@@ -206,6 +216,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 BatchEndpointResourceId = batchResource,
                 AzureOperationalInsightsEndpointResourceId = azureOperationalInsightsEndpointResourceId,
                 AzureOperationalInsightsEndpoint = azureOperationalInsightsEndpoint,
+                AzureAnalysisServicesEndpointSuffix = analysisServicesSuffix
             };
             var azEnvironment = (AzureEnvironment)environment;
             Assert.NotNull(environment);
@@ -251,6 +262,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 environment.AzureOperationalInsightsEndpointResourceId);
             CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, azEnvironment,
                 environment.AzureOperationalInsightsEndpoint);
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, azEnvironment,
+                environment.AzureAnalysisServicesEndpointSuffix);
             Assert.Equal(azEnvironment.Name, environment.Name);
             Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
         }
@@ -261,7 +274,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
             string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource, string dataLakeResource,
-            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint)
+            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint, string analysisServicesSuffix)
         {
             var environment = new AzureEnvironment() { Name = name, OnPremise = onPremise };
             SetEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, environment, activeDirectory);
@@ -306,6 +319,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 azureOperationalInsightsEndpointResourceId);
             CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, environment,
                 azureOperationalInsightsEndpoint);
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, environment,
+                analysisServicesSuffix);
             return environment;
 
         }
@@ -408,7 +423,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Null((PSAzureTenant)null);
             var tenant = (PSAzureTenant)(new AzureTenant());
             Assert.NotNull(tenant);
-            Assert.Null(tenant.Directory);
             Assert.Equal(Guid.Empty, tenant.GetId());
             Assert.Null(tenant.ToString());
         }
@@ -425,7 +439,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 Id = Guid.NewGuid().ToString(),
             };
             var tenant = (PSAzureTenant)oldTenant;
-            Assert.Equal(oldTenant.Directory, tenant.Directory);
             Assert.Equal(oldTenant.Id.ToString(), tenant.Id);
             Assert.NotNull(tenant.ToString());
             Assert.Equal(oldTenant.Id, tenant.TenantId);
@@ -442,19 +455,15 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(Guid.Empty, tenant.GetId());
         }
 
-        [Theory,
-        InlineData(null),
-        InlineData("contoso.org")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanConvertValidPSAzureTenants(string domain)
+        public void CanConvertValidPSAzureTenants()
         {
             var oldTenant = new PSAzureTenant()
             {
-                Directory = domain,
                 Id = Guid.NewGuid().ToString()
             };
             var tenant = (AzureTenant)oldTenant;
-            Assert.Equal(oldTenant.Directory, tenant.Directory);
             Assert.Equal(oldTenant.Id, tenant.Id.ToString());
         }
 
@@ -466,7 +475,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var account = (PSAzureRmAccount)(new AzureAccount());
             Assert.NotNull(account);
             Assert.Null(account.Id);
-            Assert.Equal(null, account.Type);
+            Assert.Null(account.Type);
             Assert.Null(account.ToString());
         }
 
@@ -498,7 +507,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var account = (AzureAccount)(new PSAzureRmAccount());
             Assert.NotNull(account);
             Assert.Null(account.Id);
-            Assert.Equal(null, account.Type);
+            Assert.Null(account.Type);
         }
 
         [Theory,
@@ -559,7 +568,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(oldContext.Account.Type.ToString(), context.Account.Type);
             Assert.Equal(oldContext.Account.Id, context.Account.Id);
             Assert.NotNull(context.Tenant);
-            Assert.Equal(oldContext.Tenant.Directory, context.Tenant.Directory);
             Assert.Equal(oldContext.Tenant.Id.ToString(), context.Tenant.Id);
             Assert.NotNull(context.Subscription);
             Assert.Equal(oldContext.Subscription.Name, context.Subscription.Name);
@@ -596,11 +604,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Theory,
-        InlineData("user@contoso.org", "Test Subscription", "juststorageaccountname", "juststorageaccountname"),
-        InlineData("user@contoso.org", "Test Subscription", "AccountName=juststorageaccountname", "juststorageaccountname"),
-        InlineData("user@contoso.org", "Test Subscription", "key1 = value1; AccountName = juststorageaccountname", "juststorageaccountname")]
+        InlineData("user@contoso.org", "Test Subscription", "juststorageaccountname"),
+        InlineData("user@contoso.org", "Test Subscription", "AccountName=juststorageaccountname"),
+        InlineData("user@contoso.org", "Test Subscription", "key1 = value1; AccountName = juststorageaccountname")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanConvertValidPSAzureContexts(string account, string subscription, string storageAccount, string storageAccountName)
+        public void CanConvertValidPSAzureContexts(string account, string subscription, string storageAccount)
         {
             var tenantId = Guid.NewGuid();
             var subscriptionId = Guid.NewGuid();
@@ -623,7 +631,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 },
                 Tenant = new PSAzureTenant
                 {
-                    Directory = domain,
                     Id = tenantId.ToString()
                 }
             };
@@ -633,7 +640,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(oldContext.Account.Type, context.Account.Type.ToString());
             Assert.Equal(oldContext.Account.Id, context.Account.Id);
             Assert.NotNull(context.Tenant);
-            Assert.Equal(oldContext.Tenant.Directory, context.Tenant.Directory);
             Assert.Equal(oldContext.Tenant.Id, context.Tenant.Id.ToString());
             Assert.NotNull(context.Subscription);
             Assert.Equal(oldContext.Subscription.Name, context.Subscription.Name);

@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
         private readonly AnalysisServicesManagementClient _client;
         private readonly Guid _subscriptionId;
         private readonly string _currentUser;
+        public const string DissasociateGateway = "-";
 
         public AnalysisServicesClient(IAzureContext context)
         {
@@ -65,7 +66,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             string backupBlobContainerUri = null,
             int ReadonlyReplicaCount = 0,
             string DefaultConnectionMode = null,
-            IPv4FirewallSettings setting = null)
+            IPv4FirewallSettings setting = null,
+            string gatewayResourceId = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -85,6 +87,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 {
                     adminList.Add(_currentUser);
                 }
+            }
+
+            GatewayDetails gatewayDetails = null;
+            if (gatewayResourceId == DissasociateGateway)
+            {
+                gatewayDetails = new GatewayDetails();
+            }
+            else if (gatewayResourceId != null)
+            {
+                gatewayDetails = new GatewayDetails(gatewayResourceId);
             }
 
             AnalysisServicesServer newOrUpdatedServer = null;
@@ -121,6 +133,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                     updateParameters.IpV4FirewallSettings = setting;
                 }
 
+                if (gatewayDetails != null)
+                {
+                    updateParameters.GatewayDetails = gatewayDetails;
+                }
+
                 newOrUpdatedServer = _client.Servers.Update(resourceGroupName, serverName, updateParameters);
             }
             else
@@ -129,6 +146,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 if (DefaultConnectionMode != null)
                 {
                     connectionMode = (ConnectionMode)Enum.Parse(typeof(ConnectionMode), DefaultConnectionMode, true); 
+                }
+
+                if (adminList.Count == 0)
+                {
+                    adminList.Add(_currentUser);
                 }
 
                 newOrUpdatedServer = _client.Servers.Create(
@@ -142,8 +164,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                         Sku = GetResourceSkuFromName(skuName, ReadonlyReplicaCount + 1),
                         Tags = tags,
                         QuerypoolConnectionMode = connectionMode,
-                        IpV4FirewallSettings = setting
-            });
+                        IpV4FirewallSettings = setting,
+                        GatewayDetails = gatewayDetails
+                    });
             }            
 
             return newOrUpdatedServer;
@@ -264,5 +287,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
         }
 
         #endregion
-    }
+        }
 }

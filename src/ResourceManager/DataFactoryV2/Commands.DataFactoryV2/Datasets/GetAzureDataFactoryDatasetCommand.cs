@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get, Constants.Dataset, DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(List<PSDataset>), typeof(PSDataset))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Dataset", DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(PSDataset))]
     public class GetAzureDataFactoryDatasetCommand : DataFactoryContextBaseGetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Alias(Constants.DatasetName)]
         public override string Name { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             ByResourceId();

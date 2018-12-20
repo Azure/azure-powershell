@@ -18,8 +18,11 @@ Get policy events at management group scope
 #>
 function Get-AzureRmPolicyEvent-ManagementGroupScope
 {
-    $policyEvents = Get-AzureRmPolicyEvent -ManagementGroupName "AzGovTest1" -Top 5
-	Validate-PolicyEvents $policyEvents 5
+	$managementGroupName = Get-TestManagementGroupName
+	$from = Get-TestQueryIntervalStart
+
+    $policyEvents = Get-AzureRmPolicyEvent -ManagementGroupName $managementGroupName -Top 10 -From $from
+	Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -28,8 +31,10 @@ Get policy events at subscription scope
 #>
 function Get-AzureRmPolicyEvent-SubscriptionScope
 {
-    $policyEvents = Get-AzureRmPolicyEvent -Top 5
-	Validate-PolicyEvents $policyEvents 5
+	$from = Get-TestQueryIntervalStart
+
+    $policyEvents = Get-AzureRmPolicyEvent -Top 10 -From $from
+	Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -38,8 +43,11 @@ Get policy events at resource group scope
 #>
 function Get-AzureRmPolicyEvent-ResourceGroupScope
 {
-    $policyEvents = Get-AzureRmPolicyEvent -ResourceGroupName defaultresourcegroup-eus -Top 5
-	Validate-PolicyEvents $policyEvents 5
+	$resourceGroupName = Get-TestResourceGroupName
+	$from = Get-TestQueryIntervalStart
+
+    $policyEvents = Get-AzureRmPolicyEvent -ResourceGroupName $resourceGroupName -Top 10 -From $from
+	Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -48,8 +56,11 @@ Get policy events at resource scope
 #>
 function Get-AzureRmPolicyEvent-ResourceScope
 {
-    $policyEvents = Get-AzureRmPolicyEvent -ResourceId "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-d0610b27-9663-4c05-89f8-5b4be01e86a5-eus/linkedServices/Security"
-	Validate-PolicyEvents $policyEvents 7
+	$resourceId = Get-TestResourceId
+	$from = Get-TestQueryIntervalStart
+
+    $policyEvents = Get-AzureRmPolicyEvent -ResourceId $resourceId -Top 10 -From $from
+	Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -58,8 +69,10 @@ Get policy events at policy set definition scope
 #>
 function Get-AzureRmPolicyEvent-PolicySetDefinitionScope
 {
-    $policyEvents = Get-AzureRmPolicyEvent -PolicySetDefinitionName a03db67e-a286-43c3-9098-b2da83d361ad -Top 5
-	Validate-PolicyEvents $policyEvents 5
+	$policySetDefinitionName = Get-TestPolicySetDefinitionName
+
+    $policyEvents = Get-AzureRmPolicyEvent -PolicySetDefinitionName $policySetDefinitionName -Top 10
+	Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -68,8 +81,10 @@ Get policy events at policy definition scope
 #>
 function Get-AzureRmPolicyEvent-PolicyDefinitionScope
 {
-    $policyEvents = Get-AzureRmPolicyEvent -PolicyDefinitionName c8b79b49-a579-4045-984e-1b249ab8b474 -Top 5
-	Validate-PolicyEvents $policyEvents 5
+	$policyDefinitionName = Get-TestPolicyDefinitionName
+
+    $policyEvents = Get-AzureRmPolicyEvent -PolicyDefinitionName $policyDefinitionName -Top 10
+	Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -78,8 +93,10 @@ Get policy events at subscription level policy assignment scope
 #>
 function Get-AzureRmPolicyEvent-SubscriptionLevelPolicyAssignmentScope
 {
-    $policyEvents = Get-AzureRmPolicyEvent -PolicyAssignmentName e46af646ebdb461dba708e01 -Top 5
-	Validate-PolicyEvents $policyEvents 5
+	$policyAssignmentName = Get-TestPolicyAssignmentName
+
+    $policyEvents = Get-AzureRmPolicyEvent -PolicyAssignmentName $policyAssignmentName -Top 10
+	Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -88,6 +105,9 @@ Get policy events at resource group level policy assignment scope
 #>
 function Get-AzureRmPolicyEvent-ResourceGroupLevelPolicyAssignmentScope
 {
-    $policyEvents = Get-AzureRmPolicyEvent -ResourceGroupName cheggpolicy -PolicyAssignmentName d620f2d1462b4426a6b499fc -Top 1
-	Validate-PolicyEvents $policyEvents 1
+	$resourceGroupName = Get-TestResourceGroupNameForPolicyAssignmentEvents
+	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevelEvents
+
+    $policyEvents = Get-AzureRmPolicyEvent -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10
+	Validate-PolicyEvents $policyEvents 10
 }

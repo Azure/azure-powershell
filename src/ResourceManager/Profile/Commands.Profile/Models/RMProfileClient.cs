@@ -109,7 +109,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             SecureString password,
             bool skipValidation,
             Action<string> promptAction,
-            string name = null)
+            string name = null,
+            bool shouldPopulateContextList = true)
         {
             IAzureSubscription newSubscription = null;
             IAzureTenant newTenant = null;
@@ -146,6 +147,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 // (tenant is present and subscription is not provided)
                 if (!string.IsNullOrEmpty(tenantId))
                 {
+                    Guid tempGuid = Guid.Empty;
+                    if (!Guid.TryParse(tenantId, out tempGuid))
+                    {
+                        var tenant = ListAccountTenants(
+                            account,
+                            environment,
+                            password,
+                            promptBehavior,
+                            promptAction)?.FirstOrDefault();
+                        if (tenant == null || tenant.Id == null)
+                        {
+                            string baseMessage = string.Format(ProfileMessages.TenantDomainNotFound, tenantId);
+                            var typeMessageMap = new Dictionary<string, string>
+                            {
+                                { AzureAccount.AccountType.ServicePrincipal, string.Format(ProfileMessages.ServicePrincipalTenantDomainNotFound, account.Id) },
+                                { AzureAccount.AccountType.User, ProfileMessages.UserTenantDomainNotFound },
+                                { AzureAccount.AccountType.ManagedService, ProfileMessages.MSITenantDomainNotFound }
+                            };
+                            string typeMessage = typeMessageMap.ContainsKey(account.Type) ? typeMessageMap[account.Type] : string.Empty;
+                            throw new ArgumentNullException(string.Format("{0} {1}", baseMessage, typeMessage));
+                        }
+
+                        tenantId = tenant.Id;
+                    }
+
                     var token = AcquireAccessToken(
                         account,
                         environment,
@@ -226,6 +252,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
+            shouldPopulateContextList &= _profile.DefaultContext?.Account == null;
             if (newSubscription == null)
             {
                 if (subscriptionId != null)
@@ -260,6 +287,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             _profile.DefaultContext.TokenCache = _cache;
+            if (shouldPopulateContextList)
+            {
+                var defaultContext = _profile.DefaultContext;
+                var subscriptions = ListSubscriptions(tenantId).Take(25);
+                foreach (var subscription in subscriptions)
+                {
+                    IAzureTenant tempTenant = new AzureTenant()
+                    {
+                        Id = subscription.GetProperty(AzureSubscription.Property.Tenants)
+                    };
+
+                    var tempContext = new AzureContext(subscription, account, environment, tempTenant);
+                    tempContext.TokenCache = _cache;
+                    string tempName = null;
+                    if (!_profile.TryGetContextName(tempContext, out tempName))
+                    {
+                        WriteWarningMessage(string.Format(Resources.CannotGetContextName, subscription.Id));
+                        continue;
+                    }
+
+                    if (!_profile.TrySetContext(tempName, tempContext))
+                    {
+                        WriteWarningMessage(string.Format(Resources.CannotCreateContext, subscription.Id));
+                    }
+                }
+
+                _profile.TrySetDefaultContext(defaultContext);
+                _profile.TryRemoveContext("Default");
+            }
 
             return _profile.ToProfile();
         }
@@ -519,7 +575,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 {
                                     WriteWarningMessage(string.Format(
                                         "TenantId '{0}' contains more than one active subscription. First one will be selected for further use. " +
-                                        "To select another subscription, use Set-AzureRmContext.",
+                                        "To select another subscription, use Set-AzContext.",
                                         tenantId));
                                 }
                                 subscriptionFromServer = subscriptions.First();
@@ -547,7 +603,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                     tenant = new AzureTenant();
                     tenant.Id = accessToken.TenantId;
-                    tenant.Directory = accessToken.GetDomain();
                     return true;
                 }
 
@@ -557,14 +612,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 {
                     tenant = new AzureTenant();
                     tenant.Id = accessToken.TenantId;
-                    if (accessToken.UserId != null)
-                    {
-                        var domain = accessToken.UserId.Split(new[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
-                        if (domain.Length == 2)
-                        {
-                            tenant.Directory = domain[1];
-                        }
-                    }
                     return true;
                 }
 

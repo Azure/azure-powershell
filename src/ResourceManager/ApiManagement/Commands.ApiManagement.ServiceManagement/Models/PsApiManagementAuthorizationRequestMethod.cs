@@ -17,6 +17,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     public enum PsApiManagementAuthorizationRequestMethod
     {
         Get = 1,
-        Post = 2
+        Post = 2,
+        Head = 3,
+        Options = 4,
+        Trace = 5,
+        Put = 6,
+        Patch = 7,
+        Delete = 8
     }
 }

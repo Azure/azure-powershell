@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementIdentityProvider
+    public class PsApiManagementIdentityProvider : PsApiManagementArmResource
     {
         public PsApiManagementIdentityProviderType Type { get; set; }
         

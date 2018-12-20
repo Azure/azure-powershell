@@ -21,9 +21,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
 {
     /// <summary>
-    /// 'Set-AzureRmRelayNamespace' Cmdlet updates the specified Relay Namespace
+    /// 'Set-AzRelayNamespace' Cmdlet updates the specified Relay Namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, RelayNamespaceVerb, SupportsShouldProcess = true), OutputType(typeof(RelayNamespaceAttributes))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayNamespace", SupportsShouldProcess = true), OutputType(typeof(PSRelayNamespaceAttributes))]
     public class SetAzureRelayNamespace : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,

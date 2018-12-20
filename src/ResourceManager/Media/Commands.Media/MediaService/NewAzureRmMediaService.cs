@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     /// <summary>
     /// Create a media service.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, MediaServiceNounStr, SupportsShouldProcess = true), OutputType(typeof(PSMediaService))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MediaService", SupportsShouldProcess = true), OutputType(typeof(PSMediaService))]
     public class NewAzureRmMediaService : AzureMediaServiceCmdletBase
     {
         protected const string PrimaryStorageAccountParamSet = "StorageAccountIdParamSet";
@@ -108,8 +108,6 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         [Parameter(
             Mandatory = false, 
             HelpMessage = "The tags associated with the media service account.")]
-        [Obsolete("New-AzureRmMediaService: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
@@ -132,14 +130,12 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                 {
                     if (exception.Response != null && exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                     {
-#pragma warning disable CS0618
                         var restMediaService = new RestMediaService(
                             Location,
                             Tag.ToDictionaryTags(),
                             null,
                             null,
                             MediaServiceType);
-#pragma warning restore CS0618
 
                         switch (ParameterSetName)
                         {

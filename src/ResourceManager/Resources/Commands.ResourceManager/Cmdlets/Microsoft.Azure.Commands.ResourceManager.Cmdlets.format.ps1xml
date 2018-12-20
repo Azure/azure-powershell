@@ -282,6 +282,56 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>DeploymentName</Label>
+                <PropertyName>DeploymentName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Timestamp</Label>
+                <PropertyName>Timestamp</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Mode</Label>
+                <PropertyName>Mode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TemplateLink</Label>
+                <PropertyName>TemplateLinkString</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Parameters</Label>
+                <PropertyName>ParametersString</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Outputs</Label>
+                <PropertyName>OutputsString</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DeploymentDebugLogLevel</Label>
+                <PropertyName>DeploymentDebugLogLevel</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType</TypeName>

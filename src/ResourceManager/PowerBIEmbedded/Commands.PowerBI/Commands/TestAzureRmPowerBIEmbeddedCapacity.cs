@@ -19,8 +19,7 @@ using Microsoft.Azure.Management.PowerBIDedicated.Models;
 
 namespace Microsoft.Azure.Commands.PowerBI
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmPowerBIEmbeddedCapacity"), 
-        OutputType(typeof(bool))]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIEmbeddedCapacity"), OutputType(typeof(bool))]
     public class TestAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
     {
         [Parameter(

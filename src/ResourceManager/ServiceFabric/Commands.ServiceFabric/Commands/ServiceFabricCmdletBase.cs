@@ -29,12 +29,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
-using Microsoft.Azure.KeyVault;
-using Microsoft.Azure.KeyVault.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
@@ -45,18 +39,28 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     public class ServiceFabricCmdletBase : AzureRMCmdlet
     {
-        private const int NewCreatedKeyVaultWaitTimeInSec = 15;
+        internal static int NewCreatedKeyVaultWaitTimeInSec = 15;
 
         internal static int WriteVerboseIntervalInSec = 20;
 
         #region TEST
         internal static bool RunningTest = false;
         internal static string TestThumbprint = string.Empty;
+        internal static string TestCommonNameCACert = string.Empty;
+        internal static string TestCommonNameAppCert = string.Empty;
+        internal static string TestThumbprintAppCert = string.Empty;
+        internal static bool TestAppCert = false;
         #endregion
 
         /// <summary>
@@ -320,7 +324,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 Location = vaultLocation,
                 Properties = new VaultProperties
                 {
-                    Sku = new Management.KeyVault.Models.Sku
+                    Sku = new Azure.Commands.Common.KeyVault.Version2016_10_1.Models.Sku
                     {
                         Name = SkuName.Standard,
                     },
@@ -400,7 +404,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return vault;
         }
 
-        protected CertificateBundle ImportCertificateToAzureKeyVault(string keyVaultName, string certificateName, string pfxFilePath, SecureString password, out string thumbprint)
+        protected CertificateBundle ImportCertificateToAzureKeyVault(string keyVaultName, string certificateName, string pfxFilePath, SecureString password, out string thumbprint, out string commonName)
         {
             var keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(pfxFilePath));
             if (!keyFile.Exists)
@@ -409,7 +413,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     string.Format(ServiceFabricProperties.Resources.FileNotExist, pfxFilePath));
             }
 
-            thumbprint = new X509Certificate2(pfxFilePath, password).Thumbprint;
+            var cert = new X509Certificate2(pfxFilePath, password);
+            thumbprint = cert.Thumbprint;
+            commonName = cert.GetNameInfo(X509NameType.SimpleName, false);
 
             var collection = new X509Certificate2Collection();
             var flag = X509KeyStorageFlags.Exportable;
@@ -441,7 +447,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 ).GetAwaiter().GetResult();
 
-            WriteVerboseWithTimestamp(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.CertificateIdentifier));
+            WriteVerboseWithTimestamp(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.Id));
 
             return certificateBundle;
         }

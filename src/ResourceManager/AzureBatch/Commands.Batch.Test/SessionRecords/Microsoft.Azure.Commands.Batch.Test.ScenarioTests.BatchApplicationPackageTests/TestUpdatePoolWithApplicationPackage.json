@@ -7,22 +7,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c1a538e0-fe9d-4c1a-9f49-fbf8c8079ebe"
+          "497b39ea-3129-4492-bec6-b5fdc3655a30"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/4.2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"updatePoolWithApplicationPackage\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://matthchr1.blob.core.windows.net/app-updatepoolwithappl-4a358fdb664073254e74693d5d6d8255aed78782/updatepoolwithapplicationpackage-foo-2f656f1b-8893-4fc8-95c8-877aae70c450?sv=2015-04-05&sr=b&sig=Si12P1iQA2hhZDBGlS4xPYyC8haS6ehAxVL%2B0jgw3tY%3D&st=2017-10-06T03%3A14%3A47Z&se=2017-10-06T07%3A19%3A47Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2017-10-06T07:19:47.5338143Z\",\r\n  \"state\": \"pending\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"updatePoolWithApplicationPackage\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://matthchr1.blob.core.windows.net/app-updatepoolwithappl-4a358fdb664073254e74693d5d6d8255aed78782/updatepoolwithapplicationpackage-foo-ad45d481-c804-47d4-abaa-4f609be53f93?sv=2015-04-05&sr=b&sig=8kz0q8sa26PD0qlweoujFbpzWVHLjtkFNz%2BrB3Luh3w%3D&st=2018-09-24T21%3A49%3A03Z&se=2018-09-25T01%3A54%3A03Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2018-09-25T01:54:03.156329Z\",\r\n  \"state\": \"pending\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "452"
+          "451"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -37,7 +37,7 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "b6a45419-dfc8-43fe-a38c-e3fce216e650"
+          "ae57d0f2-30a8-4c06-b20d-545b173cbb0b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,16 +46,16 @@
           "nosniff"
         ],
         "x-ms-correlation-request-id": [
-          "f1643140-d4b9-4fd7-a744-95bb237d6cd5"
+          "234d813a-cb71-4fa7-92d1-928cf0b08afc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171006T031947Z:f1643140-d4b9-4fd7-a744-95bb237d6cd5"
+          "WESTUS2:20180924T215403Z:234d813a-cb71-4fa7-92d1-928cf0b08afc"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:19:47 GMT"
+          "Mon, 24 Sep 2018 21:54:03 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -64,8 +64,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTgtMDgtMDEuNy4w",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"testUpdatePoolWithAppPackages\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 1,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": true\r\n}",
       "RequestHeaders": {
@@ -76,32 +76,32 @@
           "260"
         ],
         "client-request-id": [
-          "9245c70e-0b3f-4884-815f-fd2feb858d5e"
+          "0a84a8d5-0c25-484e-be99-d359b0d79b66"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:19:47 GMT"
+          "Mon, 24 Sep 2018 21:54:03 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:19:47 GMT"
+          "Mon, 24 Sep 2018 21:54:03 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "685500d1-fa0a-40ee-b21b-273623f59b75"
+          "f1a23bb0-dda7-4f73-994b-69b3eac2d334"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -116,10 +116,10 @@
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testUpdatePoolWithAppPackages"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:19:47 GMT"
+          "Mon, 24 Sep 2018 21:54:03 GMT"
         ],
         "ETag": [
-          "0x8D50C6919497A42"
+          "0x8D622683E3372C1"
         ],
         "Location": [
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testUpdatePoolWithAppPackages"
@@ -143,15 +143,15 @@
           "23"
         ],
         "x-ms-client-request-id": [
-          "5e7b7b71-e3fb-4d17-9a58-95844f698742"
+          "9973048e-0861-49de-a81b-42757a73d255"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/4.2.0.0"
         ]
       },
@@ -161,13 +161,13 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:19:47 GMT"
+          "Mon, 24 Sep 2018 21:54:03 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "7a2eec9f-1ced-4854-b0d8-60cfa0c744e9"
+          "c89efdd2-666b-4d35-90cb-db375de4008e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -179,19 +179,19 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "90e315b9-a329-405d-88f2-22014e510623"
+          "ff1ae4da-0693-4a0f-91b0-cc8e12f07b0b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171006T031948Z:90e315b9-a329-405d-88f2-22014e510623"
+          "WESTUS2:20180924T215403Z:ff1ae4da-0693-4a0f-91b0-cc8e12f07b0b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:19:47 GMT"
+          "Mon, 24 Sep 2018 21:54:03 GMT"
         ],
         "ETag": [
-          "0x8D50C691948E86B"
+          "0x8D622683E004314"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -206,22 +206,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "05c2025f-d413-4dba-b369-5dbcd8b8114d"
+          "7be8c18f-6dd3-423e-aa6c-71b7deebb709"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/4.2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"updatePoolWithApplicationPackage\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://matthchr1.blob.core.windows.net/app-updatepoolwithappl-4a358fdb664073254e74693d5d6d8255aed78782/updatepoolwithapplicationpackage-foo-2f656f1b-8893-4fc8-95c8-877aae70c450?sv=2015-04-05&sr=b&sig=sHRmRr33SafcMRZhH%2BpQR%2FZpBXV7KUCWC6JXzPtYVec%3D&st=2017-10-06T03%3A14%3A48Z&se=2017-10-06T07%3A19%3A48Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2017-10-06T07:19:48.4805043Z\",\r\n  \"state\": \"active\",\r\n  \"format\": \"zip\",\r\n  \"lastActivationTime\": \"2017-10-06T03:19:48.3711457Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"updatePoolWithApplicationPackage\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://matthchr1.blob.core.windows.net/app-updatepoolwithappl-4a358fdb664073254e74693d5d6d8255aed78782/updatepoolwithapplicationpackage-foo-ad45d481-c804-47d4-abaa-4f609be53f93?sv=2015-04-05&sr=b&sig=Qgs6WSb23pGpVrSDhGebw3jJn9xc5L%2FUsShQs12wf54%3D&st=2018-09-24T21%3A49%3A04Z&se=2018-09-25T01%3A54%3A04Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2018-09-25T01:54:04.0433594Z\",\r\n  \"state\": \"active\",\r\n  \"format\": \"zip\",\r\n  \"lastActivationTime\": \"2018-09-24T21:54:03.9102184Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "520"
+          "518"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -230,16 +230,16 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:19:48 GMT"
+          "Mon, 24 Sep 2018 21:54:03 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
+          "11999"
         ],
         "x-ms-request-id": [
-          "2df6d449-a733-485c-8339-de285ea3db7b"
+          "55879aa0-0971-4a4f-bf08-e748677c2b8a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -248,19 +248,19 @@
           "nosniff"
         ],
         "x-ms-correlation-request-id": [
-          "a707dec5-d517-46d1-9a53-4144e1bada65"
+          "91e7fee2-c202-40b2-b879-a63df8bf5033"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171006T031948Z:a707dec5-d517-46d1-9a53-4144e1bada65"
+          "WESTUS2:20180924T215404Z:91e7fee2-c202-40b2-b879-a63df8bf5033"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:19:48 GMT"
+          "Mon, 24 Sep 2018 21:54:03 GMT"
         ],
         "ETag": [
-          "0x8D50C6919C189F0"
+          "0x8D622683E7B071A"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -269,41 +269,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testUpdatePoolWithAppPackages?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RVcGRhdGVQb29sV2l0aEFwcFBhY2thZ2VzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/testUpdatePoolWithAppPackages?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RVcGRhdGVQb29sV2l0aEFwcFBhY2thZ2VzP2FwaS12ZXJzaW9uPTIwMTgtMDgtMDEuNy4w",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "746cf91a-6f36-466f-90fc-e16a357c7494"
+          "0cdea2f1-74ec-48b0-a948-cca52006f794"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:19:48 GMT"
+          "Mon, 24 Sep 2018 21:54:04 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"testUpdatePoolWithAppPackages\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testUpdatePoolWithAppPackages\",\r\n  \"eTag\": \"0x8D50C6919497A42\",\r\n  \"lastModified\": \"2017-10-06T03:19:47.8138434Z\",\r\n  \"creationTime\": \"2017-10-06T03:19:47.8138434Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:19:47.8138434Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:19:47.8138434Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 1,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"testUpdatePoolWithAppPackages\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testUpdatePoolWithAppPackages\",\r\n  \"eTag\": \"0x8D622683E3372C1\",\r\n  \"lastModified\": \"2018-09-24T21:54:03.5006145Z\",\r\n  \"creationTime\": \"2018-09-24T21:54:03.5006145Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-09-24T21:54:03.5006145Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2018-09-24T21:54:03.5006145Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 1,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:19:47 GMT"
+          "Mon, 24 Sep 2018 21:54:03 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "a1f017ae-23a1-4441-a0c9-1ce29d99603f"
+          "77f17bfd-216b-419d-91d2-30a8f75979db"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -315,10 +315,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:19:48 GMT"
+          "Mon, 24 Sep 2018 21:54:04 GMT"
         ],
         "ETag": [
-          "0x8D50C6919497A42"
+          "0x8D622683E3372C1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -327,41 +327,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testUpdatePoolWithAppPackages?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RVcGRhdGVQb29sV2l0aEFwcFBhY2thZ2VzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/testUpdatePoolWithAppPackages?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RVcGRhdGVQb29sV2l0aEFwcFBhY2thZ2VzP2FwaS12ZXJzaW9uPTIwMTgtMDgtMDEuNy4w",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "5f849384-4711-40bb-8906-52c9fede5543"
+          "61e85284-e4fe-4324-be9c-698765ae0ea6"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:19:48 GMT"
+          "Mon, 24 Sep 2018 21:55:22 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"testUpdatePoolWithAppPackages\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testUpdatePoolWithAppPackages\",\r\n  \"eTag\": \"0x8D50C6919D83A63\",\r\n  \"lastModified\": \"2017-10-06T03:19:48.7493731Z\",\r\n  \"creationTime\": \"2017-10-06T03:19:47.8138434Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:19:47.8138434Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:19:47.8138434Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 1,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"applicationPackageReferences\": [\r\n    {\r\n      \"applicationId\": \"updatepoolwithapplicationpackage\",\r\n      \"version\": \"foo\"\r\n    }\r\n  ],\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"testUpdatePoolWithAppPackages\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testUpdatePoolWithAppPackages\",\r\n  \"eTag\": \"0x8D622686D078A77\",\r\n  \"lastModified\": \"2018-09-24T21:55:22.0657783Z\",\r\n  \"creationTime\": \"2018-09-24T21:54:03.5006145Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-09-24T21:54:03.5006145Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2018-09-24T21:55:20.240583Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 1,\r\n  \"targetDedicatedNodes\": 1,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"certificateReferences\": [],\r\n  \"applicationPackageReferences\": [\r\n    {\r\n      \"applicationId\": \"updatepoolwithapplicationpackage\",\r\n      \"version\": \"foo\"\r\n    }\r\n  ],\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:19:48 GMT"
+          "Mon, 24 Sep 2018 21:55:22 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "40d257f6-1939-4f95-bc86-31c9bb100c2e"
+          "4791bb03-2764-4210-8909-e141f19773ec"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -373,10 +373,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:19:48 GMT"
+          "Mon, 24 Sep 2018 21:55:22 GMT"
         ],
         "ETag": [
-          "0x8D50C6919D83A63"
+          "0x8D622686D078A77"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -385,8 +385,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testUpdatePoolWithAppPackages/updateproperties?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RVcGRhdGVQb29sV2l0aEFwcFBhY2thZ2VzL3VwZGF0ZXByb3BlcnRpZXM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/pools/testUpdatePoolWithAppPackages/updateproperties?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RVcGRhdGVQb29sV2l0aEFwcFBhY2thZ2VzL3VwZGF0ZXByb3BlcnRpZXM/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"certificateReferences\": [],\r\n  \"applicationPackageReferences\": [\r\n    {\r\n      \"applicationId\": \"updatePoolWithApplicationPackage\",\r\n      \"version\": \"foo\"\r\n    }\r\n  ],\r\n  \"metadata\": []\r\n}",
       "RequestHeaders": {
@@ -397,20 +397,136 @@
           "195"
         ],
         "client-request-id": [
-          "0a86961e-0701-4b1f-aee8-f56efddc4432"
+          "8d910b40-c713-4300-9228-eef83f1bd57c"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:19:48 GMT"
+          "Mon, 24 Sep 2018 21:54:04 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\r\n  \"code\": \"OperationTimedOut\",\r\n  \"message\": {\r\n    \"lang\": \"en-US\",\r\n    \"value\": \"Operation could not be completed within the specified time.\\nRequestId:07d47c21-81d7-47f4-9864-9cfde80f3a12\\nTime:2018-09-24T21:54:31.7444052Z\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "379"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "request-id": [
+          "07d47c21-81d7-47f4-9864-9cfde80f3a12"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 24 Sep 2018 21:54:31 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 500
+    },
+    {
+      "RequestUri": "/pools/testUpdatePoolWithAppPackages/updateproperties?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RVcGRhdGVQb29sV2l0aEFwcFBhY2thZ2VzL3VwZGF0ZXByb3BlcnRpZXM/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"certificateReferences\": [],\r\n  \"applicationPackageReferences\": [\r\n    {\r\n      \"applicationId\": \"updatePoolWithApplicationPackage\",\r\n      \"version\": \"foo\"\r\n    }\r\n  ],\r\n  \"metadata\": []\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; charset=utf-8"
+        ],
+        "Content-Length": [
+          "195"
+        ],
+        "client-request-id": [
+          "d3f59cec-3f16-4940-b7ad-92e63d3ed50f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 24 Sep 2018 21:54:32 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\r\n  \"code\": \"OperationTimedOut\",\r\n  \"message\": {\r\n    \"lang\": \"en-US\",\r\n    \"value\": \"Operation could not be completed within the specified time.\\nRequestId:569beaa7-341d-46a5-826a-e7ccc759bdba\\nTime:2018-09-24T21:54:59.5328219Z\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "379"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "request-id": [
+          "569beaa7-341d-46a5-826a-e7ccc759bdba"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 24 Sep 2018 21:54:59 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 500
+    },
+    {
+      "RequestUri": "/pools/testUpdatePoolWithAppPackages/updateproperties?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RVcGRhdGVQb29sV2l0aEFwcFBhY2thZ2VzL3VwZGF0ZXByb3BlcnRpZXM/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"certificateReferences\": [],\r\n  \"applicationPackageReferences\": [\r\n    {\r\n      \"applicationId\": \"updatePoolWithApplicationPackage\",\r\n      \"version\": \"foo\"\r\n    }\r\n  ],\r\n  \"metadata\": []\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; charset=utf-8"
+        ],
+        "Content-Length": [
+          "195"
+        ],
+        "client-request-id": [
+          "8fc877b0-e845-4402-a073-524f9a1f71ac"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 24 Sep 2018 21:55:01 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
       "ResponseBody": "",
@@ -419,10 +535,10 @@
           "0"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:19:48 GMT"
+          "Mon, 24 Sep 2018 21:55:22 GMT"
         ],
         "request-id": [
-          "6e2662c0-e117-4443-98a5-abe667e55173"
+          "5e91c7b3-7607-45df-83ed-79e8459e3def"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -437,10 +553,10 @@
           "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testUpdatePoolWithAppPackages/updateproperties"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:19:48 GMT"
+          "Mon, 24 Sep 2018 21:55:22 GMT"
         ],
         "ETag": [
-          "0x8D50C6919D83A63"
+          "0x8D622686D078A77"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -455,15 +571,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7f44049b-ac27-48f6-b1c6-27657b9ce7d9"
+          "65215690-69bd-4495-8098-b33a22601f52"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/4.2.0.0"
         ]
       },
@@ -476,7 +592,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c79444fc-e481-4b24-9b6e-1c4a2610bc3f"
+          "f3876b38-4957-42ae-b6b1-260b70dfa516"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -484,20 +600,20 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "b3aa788d-20ae-4867-b3fd-ce86734a5258"
+          "d050f6d1-952b-4840-aeaa-1c439573bb9a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171006T031949Z:b3aa788d-20ae-4867-b3fd-ce86734a5258"
+          "WESTUS2:20180924T215522Z:d050f6d1-952b-4840-aeaa-1c439573bb9a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:19:48 GMT"
+          "Mon, 24 Sep 2018 21:55:21 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -512,15 +628,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "77ad274d-67c1-4b9e-b9a7-6343e1276b24"
+          "e542244d-fff3-4746-a71e-1d0d5ca45a54"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/4.2.0.0"
         ]
       },
@@ -533,7 +649,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "93f2602f-1d26-4134-abb7-7f8a2c306f97"
+          "aa98a121-b2a4-43ef-af90-cb567406b013"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -541,20 +657,20 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "9b264f36-4e0d-4df2-b69b-ee6474cfe98c"
+          "9e5a1d4a-656e-4e3e-9bd4-4c1886aa076d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171006T031949Z:9b264f36-4e0d-4df2-b69b-ee6474cfe98c"
+          "WESTUS2:20180924T215523Z:9e5a1d4a-656e-4e3e-9bd4-4c1886aa076d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:19:49 GMT"
+          "Mon, 24 Sep 2018 21:55:22 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -563,26 +679,29 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/pools/testUpdatePoolWithAppPackages?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RVcGRhdGVQb29sV2l0aEFwcFBhY2thZ2VzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/testUpdatePoolWithAppPackages?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RVcGRhdGVQb29sV2l0aEFwcFBhY2thZ2VzP2FwaS12ZXJzaW9uPTIwMTgtMDgtMDEuNy4w",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
+        "Content-Length": [
+          "0"
+        ],
         "client-request-id": [
-          "5caff7b9-93c4-46d6-8305-65d1f5464795"
+          "99ae9852-768d-4129-89b2-a36f2d246f50"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:19:49 GMT"
+          "Mon, 24 Sep 2018 21:55:23 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.3163.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/9.0.0.0",
+          "AzurePowershell/v6.9.0"
         ]
       },
       "ResponseBody": "",
@@ -591,7 +710,7 @@
           "chunked"
         ],
         "request-id": [
-          "938a3455-93cb-4618-85ae-7790e4311190"
+          "b2e8c9f8-7e64-4cd6-a949-f9a1485e11b5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -603,7 +722,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:19:49 GMT"
+          "Mon, 24 Sep 2018 21:55:23 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

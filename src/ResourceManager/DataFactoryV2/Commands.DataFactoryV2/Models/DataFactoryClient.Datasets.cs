@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 PSDataset dataset = this.GetDataset(resourceGroupName, dataFactoryName, datasetName);
                 return dataset != null;
             }
-            catch (ErrorResponseException e)
+            catch (CloudException e)
             {
                 //Get throws Exception message with NotFound Status
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)

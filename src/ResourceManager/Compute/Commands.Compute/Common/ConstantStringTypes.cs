@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
     public static class HelpMessages
     {
         public const string VMProfile = "The virtual machine profile.";
+        public const string VmssVMProfile = "The virtual machine scale set VM profile.";
         public const string VMSize = "The virtual machine size.";
         public const string VMComputerName = "The virtual machine's omputer name.";
         public const string VMCredential = "The virtual machine's credential.";
@@ -44,6 +45,13 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
         public const string VMManagedDiskId = "The virtual machine managed disk's Id.";
         public const string VMManagedDiskAccountType = "The virtual machine managed disk's account type.";
+
+        public const string VmssVMDataDiskCaching = "The virtual machine scale set VM data disk's caching.";
+        public const string VmssVMDataDiskSizeInGB = "The virtual machine scale set VM data disk's size in GB.";
+        public const string VmssVMDataDiskLun = "The virtual machine scale set VM data disk's Lun.";
+        public const string VmssVMDataDiskCreateOption = "The virtual machine scale set VM data disk's create option.";
+        public const string VmssVMManagedDiskId = "The virtual machine scale set VM managed disk's Id.";
+        public const string VmssVMManagedDiskAccountType = "The virtual scale set VM machine managed disk's account type.";
 
         public const string VMNetworkInterfaceName = "The virtual machine network interface's name.";
         public const string VMNetworkInterfaceID = "The virtual machine network interface's ID.";

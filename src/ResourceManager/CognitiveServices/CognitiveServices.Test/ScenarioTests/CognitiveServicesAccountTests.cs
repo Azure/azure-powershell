@@ -15,7 +15,7 @@
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTests;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
@@ -39,21 +39,21 @@ namespace CognitiveServices.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-NewAzureRmCognitiveServicesAccount");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAllKindsOfAccounts()
         {
-            TestController.NewInstance.RunPsTest("Test-NewAzureRmAllKindsOfCognitiveServicesAccounts");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmAllKindsOfCognitiveServicesAccounts");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-RemoveAzureRmCognitiveServicesAccount");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-RemoveAzureRmCognitiveServicesAccount");
         }
 
 
@@ -61,76 +61,76 @@ namespace CognitiveServices.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAccounts()
         {
-            TestController.NewInstance.RunPsTest("Test-GetAzureCognitiveServiceAccount");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureCognitiveServiceAccount");
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-SetAzureRmCognitiveServicesAccount");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SetAzureRmCognitiveServicesAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAccountKeys()
         {
-            TestController.NewInstance.RunPsTest("Test-GetAzureRmCognitiveServicesAccountKey");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmCognitiveServicesAccountKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAccountKey()
         {
-            TestController.NewInstance.RunPsTest("Test-NewAzureRmCognitiveServicesAccountKey");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccountKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountSkus()
         {
-            TestController.NewInstance.RunPsTest("Test-GetAzureRmCognitiveServicesAccountSkus");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmCognitiveServicesAccountSkus");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAccountType()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetAzureRmCognitiveServicesAccountType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingToGetKey()
         {
-            TestController.NewInstance.RunPsTest("Test-PipingGetAccountToGetKey");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PipingGetAccountToGetKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingToSetAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-PipingToSetAzureAccount");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPipingToGetSkus()
-        {
-            TestController.NewInstance.RunPsTest("Test-PipingToGetAccountSkus");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-PipingToSetAzureAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMinMaxAccountNames()
         {
-            TestController.NewInstance.RunPsTest("Test-MinMaxAccountName");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-MinMaxAccountName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWithPaging()
         {
-            TestController.NewInstance.RunPsTest("Test-GetWithPaging");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetWithPaging");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUsages()
         {
-            TestController.NewInstance.RunPsTest("Test-GetUsages");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-GetUsages");
         }
     }
 }

@@ -22,15 +22,17 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     /// <summary>
-    /// 'Get-AzureRmEventGridTopic' Cmdlet gives the details of a / List of EventGrid topic(s)
+    /// 'Get-AzEventGridTopic' Cmdlet gives the details of a / List of EventGrid topic(s)
     /// <para> If Topic name provided, a single Topic details will be returned</para>
     /// <para> If Topic name not provided, list of Topics will be returned</para>
     /// </summary>
+
     [Cmdlet(
-        VerbsCommon.Get,
-        EventGridTopicVerb,
+        "Get",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridTopic",
         DefaultParameterSetName = ResourceGroupNameParameterSet),
-     OutputType(typeof(PSTopic), typeof(List<PSTopicListInstance>))]
+    OutputType(typeof(PSTopic), typeof(PSTopicListInstance))]
+    
     public class GetAzureRmEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(

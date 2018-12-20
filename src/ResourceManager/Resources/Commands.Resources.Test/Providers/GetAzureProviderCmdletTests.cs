@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
-    using Microsoft.Azure.ServiceManagemenet.Common.Models;
+    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -162,13 +162,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.IsType<PSResourceProvider[]>(obj);
 
                     var providers = (PSResourceProvider[])obj;
-                    Assert.Equal(1, providers.Length);
+                    Assert.Single(providers);
 
                     var provider = providers.Single();
                     Assert.Equal(RegisteredProviderNamespace, provider.ProviderNamespace);
                     Assert.Equal(ResourceManagerSdkClient.RegisteredStateName, provider.RegistrationState);
 
-                    Assert.Equal(1, provider.ResourceTypes.Length);
+                    Assert.Single(provider.ResourceTypes);
 
                     var resourceType = provider.ResourceTypes.Single();
                     Assert.Equal(ResourceTypeName, resourceType.ResourceTypeName);
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.IsType<PSResourceProvider[]>(obj);
 
                     var providers = (PSResourceProvider[])obj;
-                    Assert.Equal(1, providers.Length);
+                    Assert.Single(providers);
 
                     var provider = providers.Single();
                     Assert.Equal(UnregisteredProviderNamespace, provider.ProviderNamespace);
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.IsType<PSResourceProvider[]>(obj);
 
                     var providers = (PSResourceProvider[])obj;
-                    Assert.Equal(0, providers.Length);
+                    Assert.Empty(providers);
                 });
 
             this.cmdlet.ParameterSetOverride = GetAzureProviderCmdlet.ListAvailableParameterSet;
@@ -259,12 +259,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
               .Callback((object obj) =>
               {
                   var providers = (PSResourceProvider[])obj;
-                  Assert.Equal(0, providers.Length);
+                  Assert.Empty(providers);
 
                   var provider = providers.Single();
                   Assert.Equal(UnregisteredProviderNamespace, provider.ProviderNamespace);
 
-                  Assert.Equal(1, provider.ResourceTypes.Length);
+                  Assert.Single(provider.ResourceTypes);
 
                   var resourceType = provider.ResourceTypes.Single();
                   Assert.Equal(ResourceTypeName, resourceType.ResourceTypeName);

@@ -23,7 +23,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, Constants.AzureBatchTask, DefaultParameterSetName = JobIdAndSingleAddParameterSet)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchTask", DefaultParameterSetName = JobIdAndSingleAddParameterSet), OutputType(typeof(void))]
     public class NewBatchTaskCommand : BatchObjectModelCmdletBase
     {
         internal const string JobIdAndBulkAddParameterSet = "JobId_Bulk";

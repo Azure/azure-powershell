@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -71,6 +71,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
         public DataPlaneCommandTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+
+            SynchronizeAzureAzureAnalysisServer.DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(0);
         }
 
         [Fact]
@@ -106,7 +108,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
@@ -144,7 +150,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             commandRuntimeMock.Verify(f => f.WriteObject(AsAzureClientSession.Instance.Profile));
             mockAuthenticationProvider.Verify(authProvider => authProvider.GetAadAuthenticatedToken(It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>()), Times.Once);
@@ -163,7 +173,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
@@ -220,7 +234,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
@@ -253,7 +271,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
@@ -285,7 +307,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
@@ -359,7 +385,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
@@ -471,7 +501,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);

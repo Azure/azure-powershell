@@ -28,12 +28,29 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         // Currently the test runs too long to be marked as a check-in test.
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolCreate()
         {
             RunPowerShellTest("Test-CreateElasticPool");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVcoreElasticPoolCreate()
+        {
+            RunPowerShellTest("Test-CreateVcoreElasticPool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+        public void TestVcoreElasticPoolCreateWithLicenseType()
+        {
+            RunPowerShellTest("Test-CreateVcoreElasticPoolWithLicenseType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolCreateWithZoneRedundancy()
         {
             RunPowerShellTest("Test-CreateElasticPoolWithZoneRedundancy");
@@ -44,6 +61,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestElasticPoolUpdate()
         {
             RunPowerShellTest("Test-UpdateElasticPool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVcoreElasticPoolUpdate()
+        {
+            RunPowerShellTest("Test-UpdateVcoreElasticPool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVcoreElasticPoolUpdateWithLicenseType()
+        {
+            RunPowerShellTest("Test-UpdateVcoreElasticPoolWithLicenseType");
         }
 
         [Fact]

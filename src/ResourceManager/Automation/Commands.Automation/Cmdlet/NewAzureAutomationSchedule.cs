@@ -18,17 +18,18 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
+using Models = Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using DayOfWeek = Microsoft.Azure.Commands.Automation.Model.DayOfWeek;
+
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Creates an azure automation Schedule.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByDaily)]
-    [OutputType(typeof(Schedule))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByDaily)]
+    [OutputType(typeof(Models.Schedule))]
     public class NewAzureAutomationSchedule : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -137,12 +138,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string TimeZone { get; set; }
 
         /// <summary>
+        /// Passed to indicate that the schedule object returned by the cmdlet is to be used for update management
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that this schedule object will be used for scheduling an update deployment")]
+        public SwitchParameter ForUpdateConfiguration { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            var schedule = new Schedule
+            var schedule = new Models.Schedule
             {
                 Name = this.Name,
                 StartTime = this.StartTime,
@@ -154,14 +161,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             switch (this.ParameterSetName)
             {
                 case AutomationCmdletParameterSets.ByOneTime:
-                    schedule.Frequency = ScheduleFrequency.Onetime;
+                    schedule.Frequency = Models.ScheduleFrequency.Onetime;
                     break;
                 case AutomationCmdletParameterSets.ByDaily:
-                    schedule.Frequency = ScheduleFrequency.Day;
+                    schedule.Frequency = Models.ScheduleFrequency.Day;
                     schedule.Interval = this.DayInterval;
                     break;
                 case AutomationCmdletParameterSets.ByHourly:
-                    schedule.Frequency = ScheduleFrequency.Hour;
+                    schedule.Frequency = Models.ScheduleFrequency.Hour;
                     schedule.Interval = this.HourInterval;
                     break;
                 case AutomationCmdletParameterSets.ByWeekly:
@@ -175,7 +182,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     break;
             }
 
-            Schedule createdSchedule = this.AutomationClient.CreateSchedule(this.ResourceGroupName, this.AutomationAccountName, schedule);
+            Models.Schedule createdSchedule = schedule;
+
+            if (!this.ForUpdateConfiguration.IsPresent)
+            {
+                createdSchedule = this.AutomationClient.CreateSchedule(this.ResourceGroupName, this.AutomationAccountName, schedule);
+            }
+             
             this.WriteObject(createdSchedule);
         }
 
@@ -188,7 +201,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <exception cref="Exception">
         /// throws exception
         /// </exception>
-        private Schedule CreateMonthlyScheduleModel()
+        private Models.Schedule CreateMonthlyScheduleModel()
         {
             var dayOfWeek = this.DayOfWeek.HasValue ? this.DayOfWeek.ToString() : null;
             if ((!string.IsNullOrWhiteSpace(dayOfWeek) && this.DayOfWeekOccurrence == 0) || (string.IsNullOrWhiteSpace(dayOfWeek) && this.DayOfWeekOccurrence != 0))
@@ -196,18 +209,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 throw new ArgumentException(Resources.MonthlyScheduleNeedsDayOfWeekAndOccurrence);
             }
 
-            var newSchedule = new Schedule
+            var newSchedule = new Models.Schedule
             {
                 Name = this.Name,
                 StartTime = this.StartTime,
                 Description = this.Description,
                 ExpiryTime = this.ExpiryTime,
                 TimeZone = this.TimeZone,
-                Frequency = ScheduleFrequency.Month,
+                Frequency = Models.ScheduleFrequency.Month,
                 Interval = this.MonthInterval,
                 MonthlyScheduleOptions = this.IsMonthlyScheduleNull() 
                     ? null
-                    : new MonthlyScheduleOptions()
+                    : new Models.MonthlyScheduleOptions()
                     {
                         DaysOfMonth = this.DaysOfMonth,
                         DayOfWeek = this.DayOfWeek == null && this.DayOfWeekOccurrence == 0
@@ -240,20 +253,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <returns>
         /// The <see cref="Schedule"/>.
         /// </returns>
-        private Schedule CreateWeeklyScheduleModel()
+        private Models.Schedule CreateWeeklyScheduleModel()
         {
-            var newSchedule = new Schedule
+            var newSchedule = new Models.Schedule
             {
                 Name = this.Name,
                 StartTime = this.StartTime,
                 Description = this.Description,
                 ExpiryTime = this.ExpiryTime,
                 TimeZone = this.TimeZone,
-                Frequency = ScheduleFrequency.Week,
+                Frequency = Models.ScheduleFrequency.Week,
                 Interval = this.WeekInterval,
                 WeeklyScheduleOptions = this.DaysOfWeek == null
                     ? null
-                    : new WeeklyScheduleOptions()
+                    : new Models.WeeklyScheduleOptions()
                     {
                        DaysOfWeek = this.DaysOfWeek.Select(day => day.ToString()).ToList()
                     }

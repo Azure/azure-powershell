@@ -20,12 +20,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
-        VerbsCommon.Remove,
-        EventGridEventSubscriptionVerb,
+        "Remove",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSubscription",
         DefaultParameterSetName = ResourceGroupNameParameterSet,
         SupportsShouldProcess = true),
-     OutputType(typeof(bool))]
-
+    OutputType(typeof(bool))]
+    
     public class RemoveAzureRmEventGridSubscription : AzureEventGridCmdletBase
     {
         [Parameter(

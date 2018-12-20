@@ -7,7 +7,7 @@ function Test-AnalysisServicesServer
 	try
 	{  
 		# Creating server
-		$location = Get-Location
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		$backupBlobContainerUri = $env:AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI
@@ -19,6 +19,7 @@ function Test-AnalysisServicesServer
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
+		Assert-AreEqual $resourceGroupName $serverCreated.ResourceGroupName
 		Assert-AreEqual 2 $serverCreated.AsAdministrators.Count
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
 		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
@@ -33,6 +34,7 @@ function Test-AnalysisServicesServer
 		Assert-AreEqual $serverName $serverGetItem.Name
 		Assert-AreEqual $location $serverGetItem.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGetItem.Type
+		Assert-AreEqual $resourceGroupName $serverGetItem.ResourceGroupName
 		Assert-True {$serverGetItem.Id -like "*$resourceGroupName*"}
 
 		# Test to make sure the server does exist
@@ -47,11 +49,13 @@ function Test-AnalysisServicesServer
 		Assert-NotNull $serverUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
 		Assert-AreEqual $serverUpdated.AsAdministrators.Count 2
 		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
+		Assert-AreEqual $resourceGroupName $serverUpdated.ResourceGroupName
 
 		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
 		Assert-NotNull $serverUpdated.AsAdministrators "Server Administrator list is empty"
 		Assert-AreEqual $serverUpdated.AsAdministrators.Count 1
 		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
+		Assert-AreEqual $resourceGroupName $serverUpdated.ResourceGroupName
 
 		Assert-AreEqual $serverName $serverUpdated.Name
 		Assert-AreEqual $location $serverUpdated.Location
@@ -101,9 +105,8 @@ function Test-AnalysisServicesServer
 		Suspend-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
 		$serverGetItem = $serverGet[0]
-		# this is to ensure backward compatibility compatibility. The servie side would make change to differenciate state and provisioningState in future
 		Assert-True {$serverGetItem.State -like "Paused"}
-		Assert-True {$serverGetItem.ProvisioningState -like "Paused"}
+		# Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"} # TODO: Uncomment this in future after fix is deployed.
 
 		# Resume Analysis Servicesserver
 		Resume-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
@@ -135,7 +138,7 @@ function Test-AnalysisServicesServerScaleUpDown
 	try
 	{  
 		# Creating server
-		$location = Get-Location
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -143,6 +146,7 @@ function Test-AnalysisServicesServerScaleUpDown
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
+		Assert-AreEqual $resourceGroupName $serverCreated.ResourceGroupName
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
 		Assert-AreEqual B1 $serverCreated.Sku.Name
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
@@ -190,7 +194,7 @@ function Test-AnalysisServicesServerFirewall
 	try
 	{  
 		# Creating server
-		$location = Get-Location Microsoft.AnalysisServices 'servers' 'West US'
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -201,6 +205,7 @@ function Test-AnalysisServicesServerFirewall
 		Assert-AreEqual 1 $serverCreated.Sku.Capacity
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
+		Assert-AreEqual $resourceGroupName $serverCreated.ResourceGroupName
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
 		Assert-AreEqual B1 $serverCreated.Sku.Name
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
@@ -256,7 +261,7 @@ function Test-AnalysisServicesServerScaleOutIn
 	try
 	{  
 		# Creating server
-		$location = Get-Location Microsoft.AnalysisServices 'servers' 'West US'
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -318,7 +323,7 @@ function Test-AnalysisServicesServerDisableBackup
 	try
 	{  
 		# Creating server
-		$location = Get-Location
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		$backupBlobContainerUri = $env:AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI
@@ -384,7 +389,7 @@ function Test-NegativeAnalysisServicesServer
 	try
 	{
 		# Creating Account
-		$location = Get-Location
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -392,6 +397,7 @@ function Test-NegativeAnalysisServicesServer
 
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
+		Assert-AreEqual $resourceGroupName $serverCreated.ResourceGroupName
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
 
@@ -443,7 +449,7 @@ function Test-AnalysisServicesServerLogExport
 	)
     try
     {
-        $location = Get-Location
+        $location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -491,7 +497,7 @@ function Test-AnalysisServicesServerRestart
 	try
 	{
 		# Creating server
-		$location = Get-Location
+		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -547,7 +553,7 @@ function Test-AnalysisServicesServerSynchronizeSingle
 	try
 	{
 		# Creating server
-        $location = Get-Location
+        $location = Get-AnalysisServicesLocation
         $resourceGroupName = Get-ResourceGroupName
         $serverName = Get-AnalysisServicesServerName
         New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
@@ -611,4 +617,40 @@ function Test-AnalysisServicesServerLoginWithSPN
 	{
 
 	}
+}
+
+<#
+.SYNOPSIS
+Tests Analysis Services server gateway scenarios (associate/dissociate).
+The assocaited gateway is a unified gateway, which required pre-setup.
+1. Install on-premise gateway on target host https://www.microsoft.com/en-us/download/details.aspx?id=53127 
+2. Follow installation instruction to create azure on-premise gateway resource associating to the host.
+Afterward, use the gateway resource to associate with the AAS for testing.
+#>
+function Test-AnalysisServicesServerGateway
+{
+    try
+    {
+        # Creating server
+        $location = Get-AnalysisServicesLocation
+        $resourceGroupName = Get-ResourceGroupName
+        $serverName = Get-AnalysisServicesServerName
+        $gatewayName = $env:GATEWAY_NAME
+        $gateway = Get-AzureRmResource -ResourceName $gatewayName -ResourceGroupName $resourceGroupName
+        $serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku S0 -GatewayResourceId $gateway.ResourceId -PassThru
+
+        Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
+        Assert-True {$serverCreated.State -like "Succeeded"}
+        Assert-AreEqual $gateway.ResourceId $serverCreated.GatewayDetails.GatewayResourceId
+
+        # Dissociate gateway from server
+        $serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -DisassociateGateway -PassThru
+        Assert-True {[string]::IsNullOrEmpty($serverUpdated.GatewayDetails.GatewayResourceId)}
+    }
+    finally
+    {
+        # cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+        Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -ErrorAction SilentlyContinue} -IgnoreFailures
+        Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+    }
 }

@@ -17,14 +17,17 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using ScenarioTest;
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
     public class ConsumerGroupsTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public ConsumerGroupsTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
         
@@ -32,7 +35,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConsumerGroupsCRUD()
         {
-            EventHubsController.NewInstance.RunPsTest("ConsumerGroupsTests");
+            EventHubsController.NewInstance.RunPsTest(_logger, "ConsumerGroupsTests");
         }
         
     }

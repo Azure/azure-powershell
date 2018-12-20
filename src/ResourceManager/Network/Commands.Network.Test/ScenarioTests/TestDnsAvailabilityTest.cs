@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -21,16 +21,20 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class TestDnsAvailabilityTest : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        public TestDnsAvailabilityTest(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public TestDnsAvailabilityTest(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestDnsAvailability()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-DnsAvailability");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-DnsAvailability");
         }
     }
 }

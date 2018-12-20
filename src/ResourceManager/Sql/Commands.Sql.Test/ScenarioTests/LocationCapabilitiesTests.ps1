@@ -18,7 +18,7 @@
 #>
 function Test-Capabilities
 {
-	$location = "North Europe"
+	$location = "Southeast Asia"
 	$all = Get-AzureRmSqlCapability $location
 	Validate-Capabilities $all
 	
@@ -43,7 +43,7 @@ function Test-Capabilities
 function Validate-Capabilities ($capabilities)
 {
 	Assert-NotNull $capabilities
-	Assert-AreEqual $capabilities.Status "Available"
+	Assert-AreEqual $capabilities.Status "Default"
 	Assert-True {$capabilities.SupportedServerVersions.Count -gt 0}
 
 	foreach($version in $capabilities.SupportedServerVersions) {
@@ -68,9 +68,17 @@ function Validate-Capabilities ($capabilities)
 			
 				foreach($size in $so.SupportedMaxSizes) {
 					Assert-NotNull $size
-					Assert-NotNull $size.Limit
-					Assert-True { $size.Limit -gt 0 }
-					Assert-NotNull $size.Unit
+					Assert-NotNull $size.MinValue.Limit
+					Assert-True { $size.MinValue.Limit -gt 0 }
+					Assert-NotNull $size.MinValue.Unit
+
+					Assert-NotNull $size.MaxValue.Limit
+					Assert-True { $size.MaxValue.Limit -gt 0 }
+					Assert-NotNull $size.MaxValue.Unit
+
+					Assert-NotNull $size.ScaleSize.Limit
+					Assert-NotNull $size.ScaleSize.Unit
+
 					Assert-NotNull $size.Status
 				}
 			}

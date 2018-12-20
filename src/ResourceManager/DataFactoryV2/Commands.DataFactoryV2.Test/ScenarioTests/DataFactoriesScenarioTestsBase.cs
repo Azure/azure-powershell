@@ -14,70 +14,75 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.DataFactory;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using LegacyTest = Microsoft.Azure.Test;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
     public abstract class DataFactoriesScenarioTestsBase : RMTestBase
     {
-        private EnvironmentSetupHelper helper;
+        private const string TenantIdKey = "TenantId";
+
+        private readonly EnvironmentSetupHelper _helper;
 
         protected DataFactoriesScenarioTestsBase()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
         protected void SetupManagementClients(MockContext context)
         {
-            var resourceManagementClient = GetResourceManagementClient();
+            var resourceManagementClient = GetResourceManagementClient(context);
             var dataPipelineManagementClient = GetDataPipelineManagementClient(context);
-            var subscriptionsClient = GetSubscriptionClient();
-            var galleryClient = GetGalleryClient();
-            var authorizationManagementClient = GetAuthorizationManagementClient();
 
-            helper.SetupManagementClients(dataPipelineManagementClient,
-                resourceManagementClient,
-                subscriptionsClient,
-                galleryClient,
-                authorizationManagementClient);
+            _helper.SetupManagementClients(dataPipelineManagementClient, resourceManagementClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
+
+            _helper.TracingInterceptor = logger;
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-07-01"},
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (MockContext context = MockContext.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2)))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                UpdateDefaultContextForPlayback();
+
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
-                    helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.DataFactoryV2.psd1"),
+                    "ScenarioTests\\" + GetType().Name + ".ps1",
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath("AzureRM.DataFactory.psd1"),
                     "AzureRM.Resources.ps1");
 
-                helper.RunPowerShellTest(scripts);
+                _helper.RunPowerShellTest(scripts);
             }
         }
 
@@ -86,24 +91,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
             return context.GetServiceClient<DataFactoryManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected ResourceManagementClient GetResourceManagementClient()
+        protected ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(new LegacyTest.CSMTestEnvironmentFactory());
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected SubscriptionClient GetSubscriptionClient()
+        private static void UpdateDefaultContextForPlayback()
         {
-            return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(new LegacyTest.CSMTestEnvironmentFactory());
-        }
-
-        protected GalleryClient GetGalleryClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(new LegacyTest.CSMTestEnvironmentFactory());
-        }
-
-        protected AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(new LegacyTest.CSMTestEnvironmentFactory());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback && HttpMockServer.Variables.ContainsKey(TenantIdKey))
+            {
+                if (AzureRmProfileProvider.Instance?.Profile?.DefaultContext?.Tenant != null)
+                {
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = HttpMockServer.Variables[TenantIdKey];
+                }
+            }
         }
     }
 }
+

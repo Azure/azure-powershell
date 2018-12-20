@@ -9,6 +9,10 @@
         public const int CmdletWithUnapprovedVerb = 8300;
         public const int CmdletWithPluralNoun = 8400;
         public const int ParameterWithPluralNoun = 8410;
+        public const int ParameterWithOutOfRangePosition = 8420;
+        public const int ParameterSetWithSpace = 8500;
+        public const int MultipleParameterSetsWithNoDefault = 8510;
+        public const int CmdletWithNoOutputType = 8600;
         public const int CmdletWithDestructiveVerb = 98300;
         public const int CmdletWithForceParameter = 98310;
     }

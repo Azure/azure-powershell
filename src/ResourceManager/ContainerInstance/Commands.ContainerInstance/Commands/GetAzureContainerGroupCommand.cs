@@ -25,9 +25,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.ContainerInstance
 {
     /// <summary>
-    /// Get-AzureRmContainerGroup.
+    /// Get-AzContainerGroup.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ContainerGroupNoun, DefaultParameterSetName = ListContainerGroupParamSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerGroup", DefaultParameterSetName = ListContainerGroupParamSet)]
     [OutputType(typeof(PSContainerGroup))]
     public class GetAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {

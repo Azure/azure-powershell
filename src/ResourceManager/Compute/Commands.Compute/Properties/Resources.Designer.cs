@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using &quot;Set-AzureRmSubscription&quot;, or set the &quot;AZURE_STORAGE_CONNECTION_STRING&quot; environment variable..
+        ///   Looks up a localized string similar to Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using &quot;Set-AzSubscription&quot;, or set the &quot;AZURE_STORAGE_CONNECTION_STRING&quot; environment variable..
         /// </summary>
         internal static string AzureVMDscDefaultStorageCredentialsNotFound {
             get {
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A data disk, {0}, is not currently assigned for this VM. Use Add-AzureRmVMDataDisk to add it..
+        ///   Looks up a localized string similar to A data disk, {0}, is not currently assigned for this VM. Use Add-AzVMDataDisk to add it..
         /// </summary>
         internal static string DataDiskNotAssignedForVM {
             get {
@@ -573,6 +573,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         internal static string InvalidImageName {
             get {
                 return ResourceManager.GetString("InvalidImageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
+        /// </summary>
+        internal static string NoSubscriptionInContext {
+            get {
+                return ResourceManager.GetString("NoSubscriptionInContext", resourceCulture);
             }
         }
         
@@ -1167,7 +1176,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No current subscription has been designated. Use Select-AzureRmSubscription -Current &lt;subscriptionName&gt; to set the current subscription..
+        ///   Looks up a localized string similar to No current subscription has been designated. Use Select-AzSubscription -Current &lt;subscriptionName&gt; to set the current subscription..
         /// </summary>
         internal static string StorageCredentialsFactoryCurrentSubscriptionNotSet {
             get {

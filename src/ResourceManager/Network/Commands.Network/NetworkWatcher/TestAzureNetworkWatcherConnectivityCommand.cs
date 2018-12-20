@@ -16,13 +16,16 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmNetworkWatcherConnectivity", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSConnectivityInformation))]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectivity", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSConnectivityInformation))]
 
     public class TestAzureNetworkWatcherConnectivity : NetworkWatcherBaseCmdlet
     {
@@ -40,6 +43,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
+        [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -51,6 +55,14 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = "SetByLocation")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
+        [ValidateNotNull]
+        public string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -86,6 +98,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateRange(1, int.MaxValue)]
         public int DestinationPort { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Protocal configuration on which check connectivity will be performed.")]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkWatcherProtocolConfiguration ProtocolConfiguration { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -95,17 +113,71 @@ namespace Microsoft.Azure.Commands.Network
 
             MNM.ConnectivityParameters parameters = new MNM.ConnectivityParameters();
 
+            if (string.IsNullOrEmpty(this.DestinationId) && string.IsNullOrEmpty(this.DestinationAddress))
+            {
+                throw new ArgumentException(Properties.Resources.ConnectivityMissingDestinationResourceIdOrAddress);
+            }
+
+            if (!string.IsNullOrEmpty(this.DestinationId) && string.Equals(this.SourceId, this.DestinationId, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException(string.Format(Properties.Resources.ConnectivityDestinationIsMustNotBeTheSameAsSource, this.SourceId));
+            }
+
             parameters.Source = new MNM.ConnectivitySource();
             parameters.Source.ResourceId = this.SourceId;
-            parameters.Source.Port = this.SourcePort;
 
             parameters.Destination = new MNM.ConnectivityDestination();
             parameters.Destination.ResourceId = this.DestinationId;
             parameters.Destination.Address = this.DestinationAddress;
-            parameters.Destination.Port = this.DestinationPort;
+
+            if (this.SourcePort > 0)
+            {
+                parameters.Source.Port = this.SourcePort;
+            }
+
+            if (this.DestinationPort > 0)
+            {
+                parameters.Destination.Port = this.DestinationPort;
+            }
+            else if (this.ProtocolConfiguration == null || string.IsNullOrEmpty(this.ProtocolConfiguration.Protocol) || !string.Equals(this.ProtocolConfiguration.Protocol, "Icmp", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException(Properties.Resources.ConnectivityMissingDestinationPort);
+            }
+
+            if (this.ProtocolConfiguration != null && !string.IsNullOrEmpty(this.ProtocolConfiguration.Protocol))
+            {
+                parameters.Protocol = this.ProtocolConfiguration.Protocol;
+                if (string.Equals(this.ProtocolConfiguration.Protocol, "Http", StringComparison.OrdinalIgnoreCase))
+                {
+                    IList<MNM.HTTPHeader> headers = new List<MNM.HTTPHeader>();
+                    if (this.ProtocolConfiguration.Header != null)
+                    {
+                        foreach (DictionaryEntry entry in this.ProtocolConfiguration.Header)
+                        {
+                            headers.Add(new MNM.HTTPHeader((string)entry.Key, (string)entry.Value));
+                        }
+                    }
+
+                    MNM.HTTPConfiguration httpConfiguration = new MNM.HTTPConfiguration(this.ProtocolConfiguration.Method, headers, this.ProtocolConfiguration.ValidStatusCode.OfType<int?>().ToList());
+                    parameters.ProtocolConfiguration = new MNM.ProtocolConfiguration(httpConfiguration);
+                }
+            }
 
             MNM.ConnectivityInformation result = new MNM.ConnectivityInformation();
-            if (ParameterSetName.Contains("SetByResource"))
+            if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
+            {
+                var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
+
+                if (networkWatcher == null)
+                {
+                    throw new ArgumentException(string.Format(Properties.Resources.NoNetworkWatcherInLocation, this.Location));
+                }
+
+                this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
+                this.NetworkWatcherName = networkWatcher.Name;
+                result = this.NetworkWatcherClient.CheckConnectivity(this.ResourceGroupName, this.NetworkWatcherName, parameters);
+            }
+            else if (string.Equals(this.ParameterSetName, "SetByResource", StringComparison.OrdinalIgnoreCase))
             {
                 result = this.NetworkWatcherClient.CheckConnectivity(this.NetworkWatcher.ResourceGroupName, this.NetworkWatcher.Name, parameters);
             }

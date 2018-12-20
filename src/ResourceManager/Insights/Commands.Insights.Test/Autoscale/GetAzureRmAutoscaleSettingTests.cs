@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.Autoscale;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public GetAzureRmAutoscaleSettingTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
             insightsAutoscaleOperationsMock = new Mock<IAutoscaleSettingsOperations>();
-            insightsManagementClientMock = new Mock<MonitorManagementClient>();
+            insightsManagementClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmAutoscaleSettingCommand()
             {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
             responsePage = new AzureOperationResponse<IPage<AutoscaleSettingResource>>()
             {
-                Body = JsonConvert.DeserializeObject<Microsoft.Azure.Management.Monitor.Management.Models.Page<AutoscaleSettingResource>>(JsonConvert.SerializeObject(responseObject))
+                Body = JsonConvert.DeserializeObject<Microsoft.Azure.Management.Monitor.Models.Page<AutoscaleSettingResource>>(JsonConvert.SerializeObject(responseObject))
             };
 
             insightsAutoscaleOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))

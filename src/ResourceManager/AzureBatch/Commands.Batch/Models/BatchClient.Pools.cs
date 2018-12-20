@@ -359,5 +359,39 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return PSPagedEnumerable<PSPoolUsageMetrics, PoolUsageMetrics>.CreateWithMaxCount(
                 poolUsageMetrics, p => new PSPoolUsageMetrics(p), Int32.MaxValue, () => WriteVerbose(verboseLogString));
         }
+
+        /// <summary>
+        /// Lists the pool node counts matching the specified filter options.
+        /// </summary>
+        /// <param name="options">The options to use when listing pool node counts.</param>
+        /// <returns>The pool node counts matching the specified filter.</returns>
+        public IEnumerable<PSPoolNodeCounts> ListPoolNodeCounts(ListPoolNodeCountsOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException("options");
+            }
+
+            ODATADetailLevel detailLevel = null;
+
+            const string filterStringFormat = "(poolId eq '{0}')";
+            
+            if (!string.IsNullOrEmpty(options.PoolId))
+            {
+                detailLevel = new ODATADetailLevel(string.Format(filterStringFormat, options.PoolId));
+            }
+            else if (options.Pool != null)
+            {
+                detailLevel = new ODATADetailLevel(string.Format(filterStringFormat, options.Pool.Id));
+            }
+
+            IPagedEnumerable<PoolNodeCounts> poolNodeCounts = options.Context.BatchOMClient.PoolOperations.ListPoolNodeCounts(
+                detailLevel, options.AdditionalBehaviors);
+
+            Func<PoolNodeCounts, PSPoolNodeCounts> mappingFunction = p => { return new PSPoolNodeCounts(p); };
+
+            return PSPagedEnumerable<PSPoolNodeCounts, PoolNodeCounts>.CreateWithMaxCount(poolNodeCounts, mappingFunction,
+                options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+        }
     }
 }

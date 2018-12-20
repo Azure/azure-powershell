@@ -18,10 +18,13 @@ Tests location completer
 #>
 function Test-LocationCompleter
 {
-	$filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
+	$filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.PowerShell.ResourceManager.dll"
+    if (!(Test-Path $filePath)) {
+        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
+    }
 	$assembly = [System.Reflection.Assembly]::LoadFrom($filePath)
 	$resourceTypes = @("Microsoft.Batch/operations")
-	$locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.LocationCompleterAttribute]::FindLocations($resourceTypes, 60)
+	$locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.LocationCompleterAttribute]::FindLocations($resourceTypes, -1)
 	$expectedResourceType = Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch" | Where-Object {$_.ResourceTypes.ResourceTypeName -eq "operations"}
 	$expectedLocations = $expectedResourceType.Locations | ForEach-Object {"`'" + $_ + "`'"}
 	Assert-AreEqualArray $locations $expectedLocations
@@ -34,9 +37,38 @@ Tests resource group completer
 #>
 function Test-ResourceGroupCompleter
 {
-	$filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
+	$filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.PowerShell.ResourceManager.dll"
+    if (!(Test-Path $filePath)) {
+        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
+    }
 	$assembly = [System.Reflection.Assembly]::LoadFrom($filePath)
-	$resourceGroups = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleterAttribute]::GetResourceGroups(60)
+	$resourceGroups = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleterAttribute]::GetResourceGroups(-1)
 	$expectResourceGroups = Get-AzureRmResourceGroup | ForEach-Object {$_.ResourceGroupName}
 	Assert-AreEqualArray $resourceGroups $expectResourceGroups
+}
+
+<#
+.SYNOPSIS
+Tests resource id completer
+#>
+function Test-ResourceIdCompleter
+{
+    $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.PowerShell.ResourceManager.dll"
+    if (!(Test-Path $filePath)) {
+        $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
+    }
+    [System.Reflection.Assembly]::LoadFrom($filePath)
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $expectResourceIds = Get-AzureRmResource -ResourceType  $resourceType | ForEach-Object {$_.Id}
+    # take data from Azure and put to cache
+    $resourceIds = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceIdCompleterAttribute]::GetResourceIds($resourceType)
+    Assert-AreEqualArray $resourceIds $expectResourceIds
+    # take data from the cache
+    $resourceIds = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceIdCompleterAttribute]::GetResourceIds($resourceType)
+    Assert-AreEqualArray $resourceIds $expectResourceIds
+    # change time to update the cache
+    [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceIdCompleterAttribute]::TimeToUpdate = [System.TimeSpan]::FromSeconds(0)
+    # take data from Azure again and put to cache
+    $resourceIds = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceIdCompleterAttribute]::GetResourceIds($resourceType)
+    Assert-AreEqualArray $resourceIds $expectResourceIds
 }

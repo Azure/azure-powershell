@@ -22,8 +22,8 @@ using System.Threading.Tasks;
 using Xunit;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.Insights.ActivityLogAlert;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
 {
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
 
         public RemoveAzureRmActivityLogAlertTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
             insightsOperationsMock = new Mock<IActivityLogAlertsOperations>();
-            monitorClientMock = new Mock<MonitorManagementClient>();
+            monitorClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RemoveAzureRmActivityLogAlertCommand()
             {

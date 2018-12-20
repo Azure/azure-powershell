@@ -11,11 +11,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+
 namespace RepoTasks.RemoteWorker
 {
     public interface IReflectionWorker
     {
-        string BuildFormatPs1Xml(string assemblyPath, string[] cmdlet, bool onlyMarkedProperties);
+        Tuple<string, List<string>> BuildFormatPs1Xml(string assemblyPath, string[] cmdlet, bool onlyMarkedProperties);
         void Serialize(string filepath);
     }
 }

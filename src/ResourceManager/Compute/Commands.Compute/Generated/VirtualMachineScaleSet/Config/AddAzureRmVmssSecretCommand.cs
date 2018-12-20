@@ -21,6 +21,7 @@
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmVmssSecret", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssSecret", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class AddAzureRmVmssSecretCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -65,27 +66,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
             }
 
             // OsProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSProfile();
+                this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile();
             }
 
             // Secrets
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets == null)
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets = new List<Microsoft.Azure.Management.Compute.Models.VaultSecretGroup>();
+                this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets = new List<VaultSecretGroup>();
             }
 
-            var vSecrets = new Microsoft.Azure.Management.Compute.Models.VaultSecretGroup();
+            var vSecrets = new VaultSecretGroup();
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SourceVaultId"))
             {
                 // SourceVault
-                vSecrets.SourceVault = new Microsoft.Azure.Management.Compute.Models.SubResource();
+                vSecrets.SourceVault = new SubResource();
                 vSecrets.SourceVault.Id = this.SourceVaultId;
             }
             vSecrets.VaultCertificates = this.MyInvocation.BoundParameters.ContainsKey("VaultCertificate") ? this.VaultCertificate : null;
@@ -94,4 +95,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

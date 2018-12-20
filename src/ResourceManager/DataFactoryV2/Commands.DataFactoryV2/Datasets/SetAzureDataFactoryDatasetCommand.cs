@@ -20,9 +20,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Set, Constants.Dataset, DefaultParameterSetName = ParameterSetNames.ByFactoryName,
-        SupportsShouldProcess = true), OutputType(typeof(PSDataset))]
-    [Alias(VerbsCommon.New + "-" + Constants.DataFactory)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Dataset", DefaultParameterSetName = ParameterSetNames.ByFactoryName,SupportsShouldProcess = true), OutputType(typeof(PSDataset))]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Dataset")]
     public class SetAzureDataFactoryDatasetCommand : DataFactoryContextBaseSetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -31,14 +30,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Alias(Constants.DatasetName)]
         public override string Name { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             ByResourceId();
 
             string rawJsonContent = DataFactoryClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
 
-            CreatePSAdfEntityParameters parameters = new CreatePSAdfEntityParameters()
+            CreatePSAdfEntityParameters parameters = new CreatePSAdfEntityParameters
             {
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = DataFactoryName,

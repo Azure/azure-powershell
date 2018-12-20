@@ -17,14 +17,12 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.WindowsAzure.Management.Storage;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -38,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         ///  The storage management client used by this communicator
         /// </summary>
-        private static Microsoft.Azure.Management.Storage.StorageManagementClient StorageV2Client { get; set; }
+        private static StorageManagementClient StorageV2Client { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure subscription
@@ -77,19 +75,32 @@ namespace Microsoft.Azure.Commands.Sql.Common
         }
 
         /// <summary>
+        /// Lazy creation of a single instance of a storage client
+        /// </summary>
+        public static StorageManagementClient GetStorageV2Client(IAzureContext context)
+        {
+// TODO: Remove IfDef
+#if NETSTANDARD
+            return AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+#else
+            return AzureSession.Instance.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+#endif
+        }
+
+        /// <summary>
         /// Provides the storage keys for the storage account within the given resource group
         /// </summary>
         /// <returns>A dictionary with two entries, one for each possible key type with the appropriate key</returns>
         public async Task<Dictionary<StorageKeyKind, string>> GetStorageKeysAsync(string resourceGroupName, string storageAccountName)
         {
-            Management.Storage.StorageManagementClient client = GetCurrentStorageV2Client(Context);
+            var client = GetCurrentStorageV2Client();
 
-            string url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
+            var url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
             if (!url.EndsWith("/"))
             {
                 url = url + "/";
             }
-
+// TODO: Remove IfDef
 #if NETSTANDARD
             url = url + "subscriptions/" + (client.SubscriptionId != null ? client.SubscriptionId.Trim() : "");
 #else
@@ -99,19 +110,17 @@ namespace Microsoft.Azure.Commands.Sql.Common
             url = url + "/providers/Microsoft.ClassicStorage/storageAccounts/" + storageAccountName;
             url = url + "/listKeys?api-version=2014-06-01";
 
-            HttpRequestMessage httpRequest = new HttpRequestMessage();
-            httpRequest.Method = HttpMethod.Post;
-            httpRequest.RequestUri = new Uri(url);
+            var httpRequest = new HttpRequestMessage {Method = HttpMethod.Post, RequestUri = new Uri(url)};
 
             await client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
-            HttpResponseMessage httpResponse = await client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
-            string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-            Dictionary<StorageKeyKind, string> result = new Dictionary<StorageKeyKind, string>();
+            var httpResponse = await client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
+            var responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var result = new Dictionary<StorageKeyKind, string>();
             try
             {
-                JToken responseDoc = JToken.Parse(responseContent);
-                string primaryKey = (string)responseDoc["primaryKey"];
-                string secondaryKey = (string)responseDoc["secondaryKey"];
+                var responseDoc = JToken.Parse(responseContent);
+                var primaryKey = (string)responseDoc["primaryKey"];
+                var secondaryKey = (string)responseDoc["secondaryKey"];
                 if (string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
                     throw new Exception(); // this is caught by the synced wrapper
                 result.Add(StorageKeyKind.Primary, primaryKey);
@@ -126,18 +135,20 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
         private Dictionary<StorageKeyKind, string> GetV2Keys(string resourceGroupName, string storageAccountName)
         {
-            Microsoft.Azure.Management.Storage.StorageManagementClient storageClient = GetCurrentStorageV2Client(Context);
+            var storageClient = GetCurrentStorageV2Client();
             var r = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
+// TODO: Remove IfDef
 #if NETSTANDARD
-            string k1 = r.Keys[0].Value;
-            string k2 = r.Keys[1].Value;
+            var k1 = r.Keys[0].Value;
+            var k2 = r.Keys[1].Value;
 #else
             string k1 = r.StorageAccountKeys.Key1;
             string k2 = r.StorageAccountKeys.Key2;
 #endif
-            Dictionary<StorageKeyKind, String> result = new Dictionary<StorageKeyKind, String>();
-            result.Add(StorageKeyKind.Primary, k1);
-            result.Add(StorageKeyKind.Secondary, k2);
+            var result = new Dictionary<StorageKeyKind, String>
+            {
+                {StorageKeyKind.Primary, k1}, {StorageKeyKind.Secondary, k2}
+            };
             return result;
         }
 
@@ -148,7 +159,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         {
             try
             {
-                return this.GetStorageKeysAsync(resourceGroupName, storageAccountName).GetAwaiter().GetResult();
+                return GetStorageKeysAsync(resourceGroupName, storageAccountName).GetAwaiter().GetResult();
             }
             catch (Exception e)
             {
@@ -161,11 +172,11 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         public string GetStorageResourceGroup(string storageAccountName)
         {
-            ResourceManagementClient resourcesClient = GetCurrentResourcesClient(Context);
+            var resourcesClient = GetCurrentResourcesClient(Context);
 
-            foreach (string storageAccountType in new[] { StorageAccountType.ClassicStorage, StorageAccountType.Storage })
+            foreach (var storageAccountType in new[] { StorageAccountType.ClassicStorage, StorageAccountType.Storage })
             {
-                string resourceGroup = GetStorageResourceGroup(
+                var resourceGroup = GetStorageResourceGroup(
                     resourcesClient,
                     storageAccountName,
                     storageAccountType);
@@ -179,26 +190,21 @@ namespace Microsoft.Azure.Commands.Sql.Common
             throw new Exception(string.Format(Properties.Resources.StorageAccountNotFound, storageAccountName));
         }
 
-        private string GetStorageResourceGroup(
+        private static string GetStorageResourceGroup(
             ResourceManagementClient resourcesClient,
             string storageAccountName,
             string resourceType)
         {
             var query = new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(r => r.ResourceType == resourceType);
-            Rest.Azure.IPage<GenericResource> res = resourcesClient.Resources.List(query);
+            var res = resourcesClient.Resources.List(query);
             var allResources = new List<GenericResource>(res);
-            GenericResource account = allResources.Find(r => r.Name == storageAccountName);
-            if (account != null)
-            {
-                string resId = account.Id;
-                string[] segments = resId.Split('/');
-                int indexOfResoureGroup = new List<string>(segments).IndexOf("resourceGroups") + 1;
-                return segments[indexOfResoureGroup];
-            }
-            else
-            {
-                return null;
-            }
+            var account = allResources.Find(r => r.Name == storageAccountName);
+            if (account == null) return null;
+
+            var resId = account.Id;
+            var segments = resId.Split('/');
+            var indexOfResourceGroup = new List<string>(segments).IndexOf("resourceGroups") + 1;
+            return segments[indexOfResourceGroup];
         }
 
         public Dictionary<StorageKeyKind, string> GetStorageKeys(string storageName)
@@ -210,29 +216,167 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Lazy creation of a single instance of a storage client
         /// </summary>
-        private Microsoft.Azure.Management.Storage.StorageManagementClient GetCurrentStorageV2Client(IAzureContext context)
+        private StorageManagementClient GetCurrentStorageV2Client()
         {
-            if (StorageV2Client == null)
-            {
-#if NETSTANDARD
-                StorageV2Client = AzureSession.Instance.ClientFactory.CreateArmClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-#else
-                StorageV2Client = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-#endif
-            }
-            return StorageV2Client;
+            return StorageV2Client ?? (StorageV2Client = GetStorageV2Client(Context));
         }
 
         /// <summary>
-        /// Lazy creation of a single instance of a resoures client
+        /// Lazy creation of a single instance of a resources client
         /// </summary>
         private ResourceManagementClient GetCurrentResourcesClient(IAzureContext context)
         {
-            if (ResourcesClient == null)
-            {
-                ResourcesClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
-            return ResourcesClient;
+            return ResourcesClient ?? (ResourcesClient =
+                       AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager));
         }
+
+        /// <summary>
+        /// Retrieves storage keys.
+        /// </summary>
+        /// <param name="storageAccountSubscriptionId">Storage account subscription id</param>
+        /// <param name="storageAccountName">Storage account name</param>
+        /// <returns>Dictionary containing storage keys</returns>
+        internal Dictionary<StorageKeyKind, string> RetrieveStorageKeys(Guid storageAccountSubscriptionId, string storageAccountName)
+        {
+            // Retrieve the id of the storage account.
+            //
+            var storageAccountId = RetrieveStorageAccountIdAsync(storageAccountSubscriptionId, storageAccountName).GetAwaiter().GetResult();
+
+            // Extract storage account keys. 
+            //
+            return RetrieveStorageKeysAsync(storageAccountId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves storage account keys.
+        /// </summary>
+        /// <param name="storageAccountId">Storage account id</param>
+        /// <returns>Dictionary containing storage keys</returns>
+        private async Task<Dictionary<StorageKeyKind, string>> RetrieveStorageKeysAsync(string storageAccountId)
+        {
+            var isClassicStorage = storageAccountId.Contains("Microsoft.ClassicStorage/storageAccounts");
+
+            // Build a URI for calling corresponding REST-API
+            //
+            var uriBuilder = new StringBuilder(Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString());
+            uriBuilder.AppendFormat("{0}/listKeys?api-version={1}",
+                storageAccountId,
+                isClassicStorage ? ClassicStorageListKeysApiVersion : NonClassicStorageListKeysApiVersion);
+
+            // Define an exception to be thrown on failure.
+            //
+            var exception = new Exception(string.Format(Properties.Resources.RetrievingStorageAccountKeysFailed, storageAccountId));
+
+            // Call the URI and get storage account keys.
+            //
+            var storageAccountKeysResponse = await SendAsync(uriBuilder.ToString(), HttpMethod.Post, exception);
+
+            // Extract keys out of response.
+            //
+            var storageAccountKeys = new Dictionary<StorageKeyKind, string>();
+            string primaryKey;
+            string secondaryKey;
+            if (isClassicStorage)
+            {
+                primaryKey = (string)storageAccountKeysResponse[PrimaryKey];
+                secondaryKey = (string)storageAccountKeysResponse[SecondaryKey];
+            }
+            else
+            {
+                var storageAccountKeysArray = (JArray)storageAccountKeysResponse["keys"];
+                if (storageAccountKeysArray == null)
+                {
+                    throw exception;
+                }
+
+                primaryKey = (string)storageAccountKeysArray[0]["value"];
+                secondaryKey = (string)storageAccountKeysArray[1]["value"];
+            }
+
+            if (string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
+            {
+                throw exception;
+            }
+
+            storageAccountKeys.Add(StorageKeyKind.Primary, primaryKey);
+            storageAccountKeys.Add(StorageKeyKind.Secondary, secondaryKey);
+            return storageAccountKeys;
+        }
+
+        /// <summary>
+        /// Retrieves id of a storage account
+        /// </summary>
+        /// <param name="storageAccountSubscriptionId">Storage account subscription id</param>
+        /// <param name="storageAccountName">Storage account name</param>
+        /// <returns>Id of the storage account</returns>
+        private async Task<string> RetrieveStorageAccountIdAsync(Guid storageAccountSubscriptionId, string storageAccountName)
+        {
+            // Build a URI for calling corresponding REST-API.
+            //
+            var uriBuilder = new StringBuilder(Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString());
+            uriBuilder.AppendFormat("/resources?api-version=2018-05-01&$filter=(subscriptionId%20eq%20'{0}')%20and%20((resourceType%20eq%20'microsoft.storage/storageaccounts')%20or%20(resourceType%20eq%20'microsoft.classicstorage/storageaccounts'))%20and%20(name%20eq%20'{1}')",
+                storageAccountSubscriptionId,
+                storageAccountName);
+
+            var nextLink = uriBuilder.ToString();
+            string id = null;
+            while (!string.IsNullOrEmpty(nextLink))
+            {
+                JToken response = await SendAsync(nextLink, HttpMethod.Get, new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId)));
+                var valuesArray = (JArray)response["value"];
+                if (valuesArray.HasValues)
+            {
+                    var idValueToken = valuesArray[0];
+                    id = (string)idValueToken["id"];
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId));
+            }
+                }
+                nextLink = (string)response["nextLink"];
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new Exception(string.Format(Properties.Resources.StorageAccountNotFound, storageAccountName));
+            }
+            
+            return id;
+        }
+
+        /// <summary>
+        /// Sends an async HTTP request.
+        /// </summary>
+        /// <param name="url">URL of the request.</param>
+        /// <param name="method">Http method.</param>
+        /// <param name="exceptionToThrowOnFailure">Exception to be thrown if request did not succeed.</param>
+        /// <returns>Response of the request.</returns>
+        private async Task<JToken> SendAsync(string url, HttpMethod method, Exception exceptionToThrowOnFailure)
+        {
+            var client = GetCurrentResourcesClient(Context);
+            var httpRequest = new HttpRequestMessage {Method = method, RequestUri = new Uri(url)};
+            await client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
+            var httpResponse = await client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
+            if (!httpResponse.IsSuccessStatusCode)
+            {
+                throw exceptionToThrowOnFailure;
+            }
+
+            return JToken.Parse(await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false));
+        }
+        
+        /// <summary>
+        /// Version of classic storage listKeys REST-API.
+        /// </summary>
+        private const string ClassicStorageListKeysApiVersion = "2016-11-01";
+        
+        /// <summary>
+        /// Version of non classic storage listKeys REST-API.
+        /// </summary>
+        private const string NonClassicStorageListKeysApiVersion = "2017-06-01";
+        
+        private const string PrimaryKey = "primaryKey";
+        
+        private const string SecondaryKey = "secondaryKey";
     }
 }

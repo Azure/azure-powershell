@@ -14,11 +14,10 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql.LegacySdk;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using System.Threading.Tasks;
+using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 {
@@ -31,6 +30,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// The Sql client to be used by this end points communicator
         /// </summary>
         private static SqlManagementClient SqlClient { get; set; }
+
+        /// <summary>
+        /// The Legacy Sql client to be used by this end points communicator
+        /// </summary>
+        private static Management.Sql.LegacySdk.SqlManagementClient LegacySqlClient { get; set; }
 
         /// <summary>
         /// Gets or set the Azure subscription
@@ -48,6 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             if (context.Subscription != Subscription)
             {
                 Subscription = context.Subscription;
+                LegacySqlClient = null;
                 SqlClient = null;
             }
         }
@@ -55,95 +60,110 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Gets the database auditing policy for the given database in the given database server in the given resource group
         /// </summary>
-        public void GetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, out DatabaseAuditingPolicy policy)
+        public void GetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, out Management.Sql.LegacySdk.Models.DatabaseAuditingPolicy policy)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient().AuditingPolicy;
-            DatabaseAuditingPolicyGetResponse response = operations.GetDatabasePolicy(resourceGroupName, serverName, databaseName);
-            policy = response.AuditingPolicy;
+            policy = Management.Sql.LegacySdk.AuditingPolicyOperationsExtensions.GetDatabasePolicy(
+                GetCurrentLegacySqlClient().AuditingPolicy, resourceGroupName, serverName, databaseName).AuditingPolicy;
         }
 
         /// <summary>
         /// Gets the database server auditing policy for the given database server in the given resource group
         /// </summary>
-        public void GetServerAuditingPolicy(string resourceGroupName, string serverName, out ServerAuditingPolicy policy)
+        public void GetServerAuditingPolicy(string resourceGroupName, string serverName, out Management.Sql.LegacySdk.Models.ServerAuditingPolicy policy)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient().AuditingPolicy;
-            ServerAuditingPolicyGetResponse response = operations.GetServerPolicy(resourceGroupName, serverName);
-            policy = response.AuditingPolicy;
+            policy = Management.Sql.LegacySdk.AuditingPolicyOperationsExtensions.GetServerPolicy(
+                GetCurrentLegacySqlClient().AuditingPolicy, resourceGroupName, serverName).AuditingPolicy;
         }
 
         /// <summary>
         /// Calls the set audit APIs for the database auditing policy for the given database in the given database server in the given resource group
         /// </summary>
-        public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, DatabaseAuditingPolicyCreateOrUpdateParameters parameters)
+        public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, Management.Sql.LegacySdk.Models.DatabaseAuditingPolicyCreateOrUpdateParameters parameters)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient().AuditingPolicy;
-            operations.CreateOrUpdateDatabasePolicy(resourceGroupName, serverName, databaseName, parameters);
+            Management.Sql.LegacySdk.AuditingPolicyOperationsExtensions.CreateOrUpdateDatabasePolicy(
+                GetCurrentLegacySqlClient().AuditingPolicy, resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>
         /// Sets the database server auditing policy of the given database server in the given resource group
         /// </summary>
-        public void SetServerAuditingPolicy(string resourceGroupName, string serverName, ServerAuditingPolicyCreateOrUpdateParameters parameters)
+        public void SetServerAuditingPolicy(string resourceGroupName, string serverName, Management.Sql.LegacySdk.Models.ServerAuditingPolicyCreateOrUpdateParameters parameters)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient().AuditingPolicy;
-            operations.CreateOrUpdateServerPolicy(resourceGroupName, serverName, parameters);
-        }
-
-        /// <summary>
-        /// Gets the database blob auditing policy for the given database in the given database server in the given resource group
-        /// </summary>
-        public void GetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, out BlobAuditingPolicy policy)
-        {
-            var operations = GetCurrentSqlClient().BlobAuditing;
-            var response = operations.GetDatabaseBlobAuditingPolicy(resourceGroupName, serverName, databaseName);
-            policy = response.AuditingPolicy;
-        }
-
-        /// <summary>
-        /// Gets the database server blob auditing policy for the given database server in the given resource group
-        /// </summary>
-        public void GetServerAuditingPolicy(string resourceGroupName, string serverName, out BlobAuditingPolicy policy)
-        {
-            var operations = GetCurrentSqlClient().BlobAuditing;
-            var response = operations.GetServerPolicy(resourceGroupName, serverName);
-            policy = response.AuditingPolicy;
+            Management.Sql.LegacySdk.AuditingPolicyOperationsExtensions.CreateOrUpdateServerPolicy(
+                GetCurrentLegacySqlClient().AuditingPolicy, resourceGroupName, serverName, parameters);
         }
 
         /// <summary>
         /// Calls the set blob audit APIs for the database auditing policy for the given database in the given database server in the given resource group
         /// </summary>
-        public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, BlobAuditingCreateOrUpdateParameters parameters)
+        public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, DatabaseBlobAuditingPolicy policy)
         {
-            var operations = GetCurrentSqlClient().BlobAuditing;
-            operations.CreateOrUpdateDatabasePolicy(resourceGroupName, serverName, databaseName, parameters);
+            var operations = GetCurrentSqlClient().DatabaseBlobAuditingPolicies;
+            operations.CreateOrUpdate(resourceGroupName, serverName, databaseName, policy);
         }
 
         /// <summary>
         /// Sets the database server blob auditing policy of the given database server in the given resource group
         /// </summary>
-        public void SetServerAuditingPolicy(string resourceGroupName, string serverName, BlobAuditingCreateOrUpdateParameters parameters)
+        public void SetServerAuditingPolicy(string resourceGroupName, string serverName, ServerBlobAuditingPolicy policy)
         {
-            var operations = GetCurrentSqlClient().BlobAuditing;
-            var statusLink =  operations.CreateOrUpdateServerPolicy(resourceGroupName, serverName, parameters).OperationStatusLink;
-            for (var iterationCount = 0; iterationCount < 1800; iterationCount++) // wait for at most an hour
-            {
-                var status = GetServerCreateOrUpdateOperationStatus(statusLink);
-                if (status == OperationStatus.Succeeded)
-                {
-                    break;
-                }
-                Task.Delay(2000); // wait 2 seconds between each poll
-            }
+            var client = GetCurrentSqlClient();
+            AzureOperationResponse<ServerBlobAuditingPolicy> response =
+                client.ServerBlobAuditingPolicies.BeginCreateOrUpdateWithHttpMessagesAsync(
+                resourceGroupName, serverName, policy).Result;
+            var result = client.GetLongRunningOperationResultAsync(response, null, CancellationToken.None).Result;
         }
 
         /// <summary>
-        /// Returns the operation status of a server create or update operation
+        /// Gets the database extended blob auditing policy for the given database in the given database server in the given resource group
         /// </summary>
-        public OperationStatus GetServerCreateOrUpdateOperationStatus(string operationStatusLink)
+        public void GetExtendedDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, out ExtendedDatabaseBlobAuditingPolicy policy)
         {
-            var operations = GetCurrentSqlClient().BlobAuditing;
-            return operations.GetOperationStatus(operationStatusLink).OperationResult.Properties.State;
+            policy = GetCurrentSqlClient().ExtendedDatabaseBlobAuditingPolicies.Get(resourceGroupName, serverName, databaseName);
+        }
+
+        /// <summary>
+        /// Gets the server extended blob auditing policy for the given database server in the given resource group
+        /// </summary>
+        public void GetExtendedServerAuditingPolicy(string resourceGroupName, string serverName, out ExtendedServerBlobAuditingPolicy policy)
+        {
+            policy = GetCurrentSqlClient().ExtendedServerBlobAuditingPolicies.Get(resourceGroupName, serverName);
+        }
+
+        /// <summary>
+        /// Calls the set extended blob audit APIs for the database auditing policy for the given database in the given database server in the given resource group
+        /// </summary>
+        public void SetExtendedDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, ExtendedDatabaseBlobAuditingPolicy policy)
+        {
+            var operations = GetCurrentSqlClient().ExtendedDatabaseBlobAuditingPolicies;
+            operations.CreateOrUpdate(resourceGroupName, serverName, databaseName, policy);
+        }
+
+        /// <summary>
+        /// Sets the server extended blob auditing policy of the given database server in the given resource group
+        /// </summary>
+        public void SetExtendedServerAuditingPolicy(string resourceGroupName, string serverName, ExtendedServerBlobAuditingPolicy policy)
+        {
+            var client = GetCurrentSqlClient();
+            AzureOperationResponse<ExtendedServerBlobAuditingPolicy> response =
+                client.ExtendedServerBlobAuditingPolicies.BeginCreateOrUpdateWithHttpMessagesAsync(
+                resourceGroupName, serverName, policy).Result;
+            var result = client.GetLongRunningOperationResultAsync(response, null, CancellationToken.None).Result;
+        }
+
+        /// <summary>
+        /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
+        /// id tracing headers for the current cmdlet invocation.
+        /// </summary>
+        /// <returns>The SQL Management client for the currently selected subscription.</returns>
+        private Management.Sql.LegacySdk.SqlManagementClient GetCurrentLegacySqlClient()
+        {
+            // Get the Legacy SQL management client for the current subscription
+            if (LegacySqlClient == null)
+            {
+                LegacySqlClient = AzureSession.Instance.ClientFactory.CreateClient<Management.Sql.LegacySdk.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            }
+            return LegacySqlClient;
         }
 
         /// <summary>
@@ -156,8 +176,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
+
             return SqlClient;
         }
     }

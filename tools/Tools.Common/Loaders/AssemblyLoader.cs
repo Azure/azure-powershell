@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Reflection;
+// TODO: Remove IfDef
+#if NETSTANDARD
+using System.Runtime.Loader;
+#endif
 using Tools.Common.Models;
 
 namespace Tools.Common.Loaders
@@ -62,10 +67,27 @@ namespace Tools.Common.Loaders
             }
 
             AssemblyMetadata result = null;
+// TODO: Remove IfDef
+#if NETSTANDARD
+            try
+            {
+                return new AssemblyMetadata(AssemblyLoadContext.Default.LoadFromAssemblyPath(assemblyPath));
+            }
+            catch(System.IO.FileLoadException ex) when (string.Equals(ex.Message, "Assembly with same name is already loaded"))
+            {
+                var assemblyName = AssemblyLoadContext.GetAssemblyName(assemblyPath);
+                var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == assemblyName?.Name);
+                if (assembly != null)
+                {
+                    result = new AssemblyMetadata(assembly);
+                }
+            }
+#else
             try
             {
                 return new AssemblyMetadata(Assembly.ReflectionOnlyLoadFrom(assemblyPath));
             }
+#endif
             catch
             {
             }

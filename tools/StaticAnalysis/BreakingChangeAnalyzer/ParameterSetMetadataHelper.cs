@@ -13,8 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Tools.Common.Loggers;
 using Tools.Common.Models;
+#if NETSTANDARD
+using StaticAnalysis.Netcore.Properties;
+#else
+using StaticAnalysis.Properties;
+#endif
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -115,7 +121,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     bool foundAdditional = false;
                     foreach (var parameter in newParameterSet.Parameters)
                     {
-                        if (parameterDictionary.ContainsKey(parameter.ParameterMetadata.Name))
+                        if (parameterDictionary.ContainsKey(parameter.ParameterMetadata.Name) ||
+                            parameter.ParameterMetadata.AliasList.Any(a => parameterDictionary.ContainsKey(a)))
                         {
                             continue;
                         }
@@ -136,13 +143,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                 if (!foundMatch)
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterSet,
-                        description: string.Format(Properties.Resources.RemovedParameterSetDescription,
+                        description: string.Format(Resources.RemovedParameterSetDescription,
                             oldParameterSet.Name, cmdlet.Name),
-                        remediation: string.Format(Properties.Resources.RemovedParameterSetRemediation,
+                        remediation: string.Format(Resources.RemovedParameterSetRemediation,
                             oldParameterSet.Name, cmdlet.Name));
                 }
             }

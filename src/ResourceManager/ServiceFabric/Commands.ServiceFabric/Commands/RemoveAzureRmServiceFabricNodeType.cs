@@ -17,16 +17,17 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricNodeType, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricNodeType", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricNodeType : ServiceFabricNodeTypeCmdletBase
     {
         /// <summary>
@@ -94,17 +95,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 if (existingNodeType != null)
                 {
                     cluster.NodeTypes.Remove(existingNodeType);
+
+                    /**
+                     * * Pulled this out after discussion with Justin. Opened Issue #6246 to track the Null Ptr Exception.
                     cluster.UpgradeDescription.DeltaHealthPolicy = new ClusterUpgradeDeltaHealthPolicy()
                     {
                         MaxPercentDeltaUnhealthyApplications = 0,
                         MaxPercentDeltaUnhealthyNodes = 0,
                         MaxPercentUpgradeDomainDeltaUnhealthyNodes = 0
+                    };**/
+
+                    var patchRequest = new ClusterUpdateParameters
+                    {
+                        NodeTypes = cluster.NodeTypes
                     };
 
-                    cluster = SendPutRequest(cluster);
+                    var psCluster = SendPatchRequest(patchRequest);
+                    WriteObject(psCluster, true);
                 }
-                
-                WriteObject((PSCluster)cluster, true);
+                else
+                {
+                    WriteObject((PSCluster)cluster, true);
+                }
             }
         }
     }

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Get Cognitive Services Account by name, all accounts under resource group or all accounts under the subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CognitiveServicesAccountNounStr), OutputType(typeof(PSCognitiveServicesAccount))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccount"), OutputType(typeof(PSCognitiveServicesAccount))]
     public class GetAzureCognitiveServicesAccountCommand : CognitiveServicesAccountBaseCmdlet
     {
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";

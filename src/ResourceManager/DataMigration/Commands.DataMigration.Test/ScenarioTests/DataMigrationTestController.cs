@@ -14,56 +14,50 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.DataMigration.Test;
-using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DataMigration;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Test;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
 {
 
     public class DataMigrationTestController : RMTestBase
     {
-        private int defaultTimeOut = 60;
-        private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private int _defaultTimeOut = 60;
+        private readonly EnvironmentSetupHelper _helper;
 
-        public static DataMigrationTestController NewInstance
-        {
-            get
-            {
-                return new DataMigrationTestController();
-            }
-        }
+        public static DataMigrationTestController NewInstance => new DataMigrationTestController();
 
         public DataMigrationTestController()
         {
-            helper = new EnvironmentSetupHelper();
-            DataMigrationAppSettings settings = DataMigrationAppSettings.Instance;
+            _helper = new EnvironmentSetupHelper();
+            var settings = DataMigrationAppSettings.Instance;
             if (settings == null)
             {
                 throw new ArgumentException("DMS Config File Appsettings.json not loaded properly");
             }
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = Microsoft.Azure.Test.TestUtilities.GetCallingClass(2);
-            var mockName = Microsoft.Azure.Test.TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
+
+            _helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom initializer
-                null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -71,94 +65,74 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            d.Add("Microsoft.Compute", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Compute", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
-
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
-
                 SetupManagementClients(context);
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.GetRMModulePath(@"AzureRM.DataMigration.psd1"),
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.DataMigration.psd1"),
                     "AzureRM.Resources.ps1"
                     );
 
                 try
                 {
-                    if (scriptBuilder != null)
-                    {
-                        var psScripts = scriptBuilder();
+                    var psScripts = scriptBuilder?.Invoke();
 
-                        if (psScripts != null)
-                        {
-                            helper.RunPowerShellTest(psScripts);
-                        }
+                    if (psScripts != null)
+                    {
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }
 
         private void SetupManagementClients(MockContext context)
         {
-            helper.SetupManagementClients(
-                GetResourceManagementClient(),
-                GetDmsClient(context),
-                GetAuthorizationManagementClient(context)
-                );
+            _helper.SetupManagementClients(
+                GetResourceManagementClient(context),
+                GetDmsClient(context));
         }
 
         private DataMigrationServiceClient GetDmsClient(MockContext context)
         {
-            DataMigrationServiceClient client = context.GetServiceClient<DataMigrationServiceClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            var client = context.GetServiceClient<DataMigrationServiceClient>(TestEnvironmentFactory.GetTestEnvironment());
 
             client.LongRunningOperationRetryTimeout = DefaultTimeOut;
 
             return client;
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return Microsoft.Azure.Test.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
-        }
-
-        private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<AuthorizationManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private int DefaultTimeOut
@@ -167,10 +141,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
             {
                 if (HttpMockServer.Mode == HttpRecorderMode.Playback)
                 {
-                    defaultTimeOut = 0;
+                    _defaultTimeOut = 0;
                 }
 
-                return defaultTimeOut;
+                return _defaultTimeOut;
             }
         }
 

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
         public NewBatchJobCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewBatchJobCommand()
@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
                     new AzureOperationHeaderResponse<JobAddHeaders>(),
                     request =>
                         {
-                            Assert.Equal(request.Parameters.OnAllTasksComplete, OnAllTasksComplete.TerminateJob);
-                            Assert.Equal(request.Parameters.OnTaskFailure, OnTaskFailure.PerformExitOptionsJobAction);
+                            Assert.Equal(OnAllTasksComplete.TerminateJob, request.Parameters.OnAllTasksComplete);
+                            Assert.Equal(OnTaskFailure.PerformExitOptionsJobAction, request.Parameters.OnTaskFailure);
                         });
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };

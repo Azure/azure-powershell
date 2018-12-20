@@ -32,12 +32,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.New,
-        Constants.CommandNames.AzureHDInsightCluster,
-        DefaultParameterSetName = DefaultParameterSet),
-    OutputType(
-        typeof(AzureHDInsightCluster))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster",DefaultParameterSetName = DefaultParameterSet),OutputType(typeof(AzureHDInsightCluster))]
     public class NewAzureHDInsightClusterCommand : HDInsightCmdletBase
     {
         private ClusterCreateParameters parameters;

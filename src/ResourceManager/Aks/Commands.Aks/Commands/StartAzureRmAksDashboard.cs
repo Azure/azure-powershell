@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,19 +22,16 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Aks.Generated;
+using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-#if NETSTANDARD
-using Microsoft.Extensions.DependencyInjection;
-#endif
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet("Start", KubeNounStr + "Dashboard", DefaultParameterSetName = GroupNameParameterSet)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksDashboard", DefaultParameterSetName = GroupNameParameterSet)]
     [OutputType(typeof(KubeTunnelJob))]
     public class StartAzureRmAksDashboard : KubeCmdletBase
     {
@@ -181,34 +178,27 @@ namespace Microsoft.Azure.Commands.Aks
 
         private void PopBrowser(string uri)
         {
-#if NETSTANDARD
-
             var browserProcess = new Process
             {
-                StartInfo = new ProcessStartInfo
-                {
-                    UseShellExecute = true,
-                    Arguments = uri
-                }
+                StartInfo = new ProcessStartInfo { Arguments = uri }
             };
-
+            var verboseMessage = Resources.StartingOnDefault;
+// TODO: Remove IfDef
+#if NETSTANDARD
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                WriteVerbose("Starting on OSX with open");
+                verboseMessage = "Starting on OSX with open";
                 browserProcess.StartInfo.FileName = "open";
-                browserProcess.Start();
-                return;
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                WriteVerbose("Starting on Unix with xdg-open");
+                verboseMessage = "Starting on Unix with xdg-open";
                 browserProcess.StartInfo.FileName = "xdg-open";
-                browserProcess.Start();
-                return;
             }
 #endif
-            WriteVerbose(Resources.StartingOnDefault);
-            Process.Start(uri);
+
+            WriteVerbose(verboseMessage);
+            browserProcess.Start();
         }
     }
 
@@ -219,7 +209,7 @@ namespace Microsoft.Azure.Commands.Aks
         private readonly string _dashPod;
         private string _statusMsg = "Initializing";
 
-        public KubeTunnelJob(string credFilePath, string dashPod) : base("Start-AzureRmKubernetesDashboard",
+        public KubeTunnelJob(string credFilePath, string dashPod) : base("Start-AzKubernetesDashboard",
             "Kubectl-Tunnel")
         {
             _credFilePath = credFilePath;

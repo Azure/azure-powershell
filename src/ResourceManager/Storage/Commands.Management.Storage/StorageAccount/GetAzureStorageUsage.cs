@@ -13,19 +13,34 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
 {
-    [Cmdlet(VerbsCommon.Get, StorageUsageNounStr), OutputType(typeof(PSUsage))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageUsage"), OutputType(typeof(PSUsage))]
     public class GetAzureStorageUsageCommand : StorageAccountBaseCmdlet
     {
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Accounts Location.")]
+        [LocationCompleter("Microsoft.Storage/storageAccounts")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            foreach (var usage in this.StorageClient.Usage.List())
+            //Get usage
+            IEnumerable<Usage> usages = this.StorageClient.Usages.ListByLocation(Location);
+
+            //Output usage
+            foreach (var usage in usages)
             {
                 WriteObject(new PSUsage()
                 {

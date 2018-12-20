@@ -250,7 +250,7 @@ namespace VersionController.Models
         }
 
         /// <summary>
-        /// Get the releases notes for the current release from a change log.
+        /// Get the releases notes for the upcoming release from a change log.
         /// </summary>
         /// <returns></returns>
         private string GetReleaseNotes()

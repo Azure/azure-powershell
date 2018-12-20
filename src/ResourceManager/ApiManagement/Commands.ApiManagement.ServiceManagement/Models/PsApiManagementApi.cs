@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementApi
+    public class PsApiManagementApi : PsApiManagementArmResource
     {
         public string ApiId { get; set; }
 
@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         public string ServiceUrl { get; set; }
 
         public string Path { get; set; }
+
+        public string ApiType { get; set; }
 
         public PsApiManagementSchema[] Protocols { get; set; }
 
@@ -39,5 +41,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 
         // map from SubscriptionKeyParameterNames.Query
         public string SubscriptionKeyQueryParamName { get; set; }
+
+        public string ApiRevision { get; set; }
+
+        public string ApiVersion { get; set; }
+
+        public bool IsCurrent { get; set;  }
+
+        public bool IsOnline { get; set; }
     }
 }

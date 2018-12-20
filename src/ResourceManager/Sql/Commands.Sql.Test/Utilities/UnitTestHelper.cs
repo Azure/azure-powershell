@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.Utilities
         public static void CheckConfirmImpact(Type cmdlet, ConfirmImpact confirmImpact)
         {
             object[] cmdletAttributes = cmdlet.GetCustomAttributes(typeof(CmdletAttribute), true);
-            Assert.Equal(1, cmdletAttributes.Length);
+            Assert.Single(cmdletAttributes);
             CmdletAttribute attribute = (CmdletAttribute)cmdletAttributes[0];
             Assert.Equal(confirmImpact, attribute.ConfirmImpact);
         }
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.Utilities
         {
             // If the Cmdlet modifies data, SupportsShouldProcess should be set to true.
             object[] cmdletAttributes = cmdlet.GetCustomAttributes(typeof(CmdletAttribute), true);
-            Assert.Equal(1, cmdletAttributes.Length);
+            Assert.Single(cmdletAttributes);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.Utilities
             Assert.NotNull(property);
 
             object[] attributes = property.GetCustomAttributes(typeof(ParameterAttribute), true);
-            Assert.Equal(1, attributes.Length);
+            Assert.Single(attributes);
             ParameterAttribute paramAttr = attributes[0] as ParameterAttribute;
             Assert.NotNull(paramAttr);
             Assert.Equal(isMandatory, paramAttr.Mandatory);

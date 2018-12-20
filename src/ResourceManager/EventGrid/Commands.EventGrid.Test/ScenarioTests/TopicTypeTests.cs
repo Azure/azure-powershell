@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -23,16 +23,19 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 {
     public class TopicTypeTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public TopicTypeTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicTypes()
         {
-            EventGridController.NewInstance.RunPsTest("TopicTypeTests_Operations");
+            EventGridController.NewInstance.RunPsTest(_logger, "TopicTypeTests_Operations");
         }
     }
 }

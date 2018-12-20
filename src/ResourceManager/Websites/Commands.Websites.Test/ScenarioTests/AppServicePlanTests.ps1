@@ -59,6 +59,56 @@ function Test-CreateNewAppServicePlan
 
 <#
 .SYNOPSIS
+Tests creating a new Web Hosting Plan with HyperV container.
+#>
+function Test-CreateNewAppServicePlanHyperV
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$whpName = Get-WebHostPlanName
+	$location = Get-Location
+    $capacity = 1
+	$skuName = "PC2"
+    $tier = "PremiumContainer"
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+
+		# Test
+		$job = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV  -AsJob
+		$job | Wait-Job
+		$createResult = $job | Receive-Job
+
+		# Assert
+		Assert-AreEqual $whpName $createResult.Name
+		Assert-AreEqual $tier $createResult.Sku.Tier
+		Assert-AreEqual $skuName $createResult.Sku.Name
+		Assert-AreEqual $capacity $createResult.Sku.Capacity
+
+		# Assert
+
+		$getResult = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name $whpName
+		Assert-AreEqual $whpName $getResult.Name
+		Assert-AreEqual PremiumContainer $getResult.Sku.Tier
+		Assert-AreEqual $skuName $getResult.Sku.Name
+		Assert-AreEqual $capacity $getResult.Sku.Capacity
+        Assert-AreEqual $true $getResult.IsXenon
+        Assert-AreEqual "xenon" $getResult.Kind
+
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+	}
+}
+
+
+<#
+.SYNOPSIS
 Tests creating a new Web Hosting Plan.
 #>
 function Test-SetAppServicePlan

@@ -13,7 +13,7 @@
 //  limitations under the License.
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementProduct
+    public class PsApiManagementProduct : PsApiManagementArmResource
     {
         public string ProductId { get; set; }
 

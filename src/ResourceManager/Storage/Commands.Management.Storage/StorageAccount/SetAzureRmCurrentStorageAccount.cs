@@ -23,8 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmCurrentStorageAccount", DefaultParameterSetName = ResourceNameParameterSet),
-    OutputType(typeof(string))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CurrentStorageAccount", DefaultParameterSetName = ResourceNameParameterSet),OutputType(typeof(string))]
     public class SetAzureRmCurrentStorageAccount : StorageAccountBaseCmdlet
     {
         private const string StorageContextParameterSet = "UsingStorageContext";

@@ -20,7 +20,6 @@
 // code is regenerated.
 
 using AutoMapper;
-using Microsoft.Azure.Commands.Compute.Common;
 using FROM = Microsoft.Azure.Management.Compute.Models;
 using TO = Microsoft.Azure.Commands.Compute.Automation.Models;
 
@@ -57,9 +56,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySetList>();
-                cfg.CreateMap<TO.PSAvailabilitySetList, TO.PSAvailabilitySet>();
-                cfg.CreateMap<TO.PSAvailabilitySet, TO.PSAvailabilitySetList>();
                 cfg.CreateMap<FROM.ContainerService, TO.PSContainerServiceList>();
                 cfg.CreateMap<TO.PSContainerServiceList, TO.PSContainerService>();
                 cfg.CreateMap<TO.PSContainerService, TO.PSContainerServiceList>();
@@ -69,6 +65,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDisk, TO.PSDiskList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
+                cfg.CreateMap<FROM.Gallery, TO.PSGalleryList>();
+                cfg.CreateMap<TO.PSGalleryList, TO.PSGallery>();
+                cfg.CreateMap<TO.PSGallery, TO.PSGalleryList>();
+                cfg.CreateMap<FROM.GalleryImage, TO.PSGalleryImageList>();
+                cfg.CreateMap<TO.PSGalleryImageList, TO.PSGalleryImage>();
+                cfg.CreateMap<TO.PSGalleryImage, TO.PSGalleryImageList>();
+                cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersionList>();
+                cfg.CreateMap<TO.PSGalleryImageVersionList, TO.PSGalleryImageVersion>();
+                cfg.CreateMap<TO.PSGalleryImageVersion, TO.PSGalleryImageVersionList>();
                 cfg.CreateMap<FROM.Image, TO.PSImageList>();
                 cfg.CreateMap<TO.PSImageList, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, TO.PSImageList>();
@@ -90,32 +95,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.VirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVMList, TO.PSVirtualMachineScaleSetVM>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
-                cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineList>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
-                cfg.CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
-                cfg.CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
-                cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineList>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
-                cfg.CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
-                cfg.CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<FROM.Disk, FROM.DiskUpdate>();
                 cfg.CreateMap<FROM.DiskUpdate, FROM.Disk>();
                 cfg.CreateMap<FROM.DiskUpdate, TO.PSDiskUpdate>();
                 cfg.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>();
                 cfg.CreateMap<FROM.Snapshot, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
+                cfg.CreateMap<FROM.DiskSku, FROM.SnapshotSku>()
+                    .ForMember(c => c.Name, o => o.MapFrom(r => r.Name.ToString()));
+                cfg.CreateMap<FROM.SnapshotSku, FROM.DiskSku>()
+                    .ForMember(c => c.Name, o => o.MapFrom(r => r.Name.ToString()));
                 cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>();
                 cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
-                cfg.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
-                cfg.CreateMap<TO.PSAvailabilitySet, FROM.AvailabilitySet>();
-                cfg.CreateMap<FROM.OperationStatusResponse, TO.PSOperationStatusResponse>();
-                cfg.CreateMap<TO.PSOperationStatusResponse, FROM.OperationStatusResponse>();
-                cfg.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
-                cfg.CreateMap<TO.PSVirtualMachineSize, FROM.VirtualMachineSize>();
                 cfg.CreateMap<FROM.ContainerService, TO.PSContainerService>();
                 cfg.CreateMap<TO.PSContainerService, FROM.ContainerService>();
                 cfg.CreateMap<FROM.Disk, TO.PSDisk>()
@@ -124,6 +115,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<FROM.AccessUri, TO.PSAccessUri>();
                 cfg.CreateMap<TO.PSAccessUri, FROM.AccessUri>();
+                cfg.CreateMap<FROM.Gallery, TO.PSGallery>();
+                cfg.CreateMap<TO.PSGallery, FROM.Gallery>();
+                cfg.CreateMap<FROM.GalleryImage, TO.PSGalleryImage>();
+                cfg.CreateMap<TO.PSGalleryImage, FROM.GalleryImage>();
+                cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersion>();
+                cfg.CreateMap<TO.PSGalleryImageVersion, FROM.GalleryImageVersion>();
                 cfg.CreateMap<FROM.Image, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, FROM.Image>();
                 cfg.CreateMap<FROM.LogAnalyticsOperationResult, TO.PSLogAnalyticsOperationResult>();
@@ -146,22 +143,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSRecoveryWalkResponse, FROM.RecoveryWalkResponse>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetInstanceView, TO.PSVirtualMachineScaleSetInstanceView>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetInstanceView, FROM.VirtualMachineScaleSetInstanceView>();
+                cfg.CreateMap<FROM.UpgradeOperationHistoricalStatusInfo, TO.PSUpgradeOperationHistoricalStatusInfo>();
+                cfg.CreateMap<TO.PSUpgradeOperationHistoricalStatusInfo, FROM.UpgradeOperationHistoricalStatusInfo>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetSku, TO.PSVirtualMachineScaleSetSku>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetSku, FROM.VirtualMachineScaleSetSku>();
+                cfg.CreateMap<FROM.VirtualMachineInstanceView, FROM.VirtualMachineScaleSetVMInstanceView>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSetVMInstanceView, FROM.VirtualMachineInstanceView>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVM>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVM, FROM.VirtualMachineScaleSetVM>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetVMInstanceView, TO.PSVirtualMachineScaleSetVMInstanceView>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVMInstanceView, FROM.VirtualMachineScaleSetVMInstanceView>();
-                cfg.CreateMap<FROM.VirtualMachineCaptureResult, TO.PSVirtualMachineCaptureResult>();
-                cfg.CreateMap<TO.PSVirtualMachineCaptureResult, FROM.VirtualMachineCaptureResult>();
-                cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
-                cfg.CreateMap<TO.PSVirtualMachine, FROM.VirtualMachine>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
-                cfg.CreateMap<FROM.VirtualMachineInstanceView, TO.PSVirtualMachineInstanceView>();
-                cfg.CreateMap<TO.PSVirtualMachineInstanceView, FROM.VirtualMachineInstanceView>();
                 cfg.CreateMap<FROM.RunCommandResult, TO.PSRunCommandResult>();
                 cfg.CreateMap<TO.PSRunCommandResult, FROM.RunCommandResult>();
+                cfg.CreateMap<FROM.VirtualMachineCaptureResult, TO.PSVirtualMachineCaptureResult>();
+                cfg.CreateMap<TO.PSVirtualMachineCaptureResult, FROM.VirtualMachineCaptureResult>();
+                cfg.CreateMap<FROM.VirtualMachineInstanceView, TO.PSVirtualMachineInstanceView>();
+                cfg.CreateMap<TO.PSVirtualMachineInstanceView, FROM.VirtualMachineInstanceView>();
+                cfg.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
+                cfg.CreateMap<TO.PSVirtualMachineSize, FROM.VirtualMachineSize>();
 
             });
             _mapper = config.CreateMapper();

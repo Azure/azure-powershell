@@ -15,6 +15,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Xunit;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -48,3 +49,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.14.0")]
 [assembly: AssemblyFileVersion("0.14.0")]
+[assembly: CollectionBehavior(DisableTestParallelization = true)]

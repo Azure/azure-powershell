@@ -12,35 +12,51 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.Compute.Common;
+using CM = Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Add,
-        ProfileNouns.DataDisk),
-    OutputType(
-        typeof(PSVirtualMachine))]
-    public class AddAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDataDisk",DefaultParameterSetName = VmNormalDiskParameterSet),OutputType(typeof(CM.PSVirtualMachine), typeof (PSVirtualMachineScaleSetVM))]
+    public class AddAzureVMDataDiskCommand : ComputeClientBaseCmdlet
     {
+        protected const string VmNormalDiskParameterSet = "VmNormalDiskParameterSetName";
+        protected const string VmManagedDiskParameterSet = "VmManagedDiskParameterSetName";
+
         [Alias("VMProfile")]
         [Parameter(
+            ParameterSetName = VmNormalDiskParameterSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMProfile)]
+        [Parameter(
+            ParameterSetName = VmManagedDiskParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMProfile)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachine VM { get; set; }
+        public CM.PSVirtualMachine VM { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            ParameterSetName = VmNormalDiskParameterSet,
             Position = 1,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMDataDiskName)]
+        [Parameter(
+            ParameterSetName = VmManagedDiskParameterSet,
+            Position = 1,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskName)]
         [ValidateNotNullOrEmpty]
@@ -49,6 +65,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             Position = 2,
+            ParameterSetName = VmNormalDiskParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskVhdUri)]
         [ValidateNotNullOrEmpty]
@@ -87,6 +104,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Alias("SourceImage")]
         [Parameter(
             Position = 7,
+            ParameterSetName = VmNormalDiskParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMSourceImageUri)]
         [ValidateNotNullOrEmpty]
@@ -94,6 +112,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Position = 8,
+            ParameterSetName = VmManagedDiskParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskId)]
         [ValidateNotNullOrEmpty]
@@ -101,59 +120,93 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Position = 9,
+            ParameterSetName = VmManagedDiskParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard_LRS", "Premium_LRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string StorageAccountType { get; set; }
 
         [Parameter(
+            ParameterSetName = VmManagedDiskParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = false)]
         public SwitchParameter WriteAccelerator { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var storageProfile = this.VM.StorageProfile;
-
-            if (storageProfile == null)
+            if (this.ParameterSetName.Equals(VmNormalDiskParameterSet))
             {
-                storageProfile = new StorageProfile();
-            }
+                var storageProfile = this.VM.StorageProfile;
 
-            if (storageProfile.DataDisks == null)
-            {
-                storageProfile.DataDisks = new List<DataDisk>();
-            }
-
-            storageProfile.DataDisks.Add(new DataDisk
-            {
-                Name = this.Name,
-                Caching = this.Caching,
-                DiskSizeGB = this.DiskSizeInGB,
-                Lun = this.Lun.GetValueOrDefault(),
-                Vhd = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk
+                if (storageProfile == null)
                 {
-                    Uri = this.VhdUri
-                },
-                CreateOption = this.CreateOption,
-                Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
+                    storageProfile = new StorageProfile();
+                }
+
+                if (storageProfile.DataDisks == null)
                 {
-                    Uri = this.SourceImageUri
-                },
-                ManagedDisk = (this.ManagedDiskId == null && this.StorageAccountType == null)
-                              ? null
-                              : new ManagedDiskParameters
-                              {
-                                  Id = this.ManagedDiskId,
-                                  StorageAccountType = this.StorageAccountType
-                              },
-                WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
-            });
+                    storageProfile.DataDisks = new List<DataDisk>();
+                }
 
-            this.VM.StorageProfile = storageProfile;
+                storageProfile.DataDisks.Add(new DataDisk
+                {
+                    Name = this.Name,
+                    Caching = this.Caching,
+                    DiskSizeGB = this.DiskSizeInGB,
+                    Lun = this.Lun.GetValueOrDefault(),
+                    Vhd = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk
+                    {
+                        Uri = this.VhdUri
+                    },
+                    CreateOption = this.CreateOption,
+                    Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
+                    {
+                        Uri = this.SourceImageUri
+                    }
+                });
 
-            WriteObject(this.VM);
+                this.VM.StorageProfile = storageProfile;
+
+                WriteObject(this.VM);
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.ManagedDiskId))
+                {
+                    if (!this.Name.Equals(GetDiskNameFromId(this.ManagedDiskId)))
+                    {
+                        ThrowInvalidArgumentError("Disk name, {0}, does not match with given managed disk ID", this.Name);
+                    }
+                }
+
+                var storageProfile = this.VM.StorageProfile;
+
+                if (storageProfile == null)
+                {
+                    storageProfile = new StorageProfile();
+                }
+
+                if (storageProfile.DataDisks == null)
+                {
+                    storageProfile.DataDisks = new List<DataDisk>();
+                }
+
+                storageProfile.DataDisks.Add(new DataDisk
+                {
+                    Name = this.Name,
+                    Caching = this.Caching,
+                    DiskSizeGB = this.DiskSizeInGB,
+                    Lun = this.Lun.GetValueOrDefault(),
+                    CreateOption = this.CreateOption,
+                    ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType),
+                    WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
+                });
+
+                this.VM.StorageProfile = storageProfile;
+
+                WriteObject(this.VM);
+            }
         }
     }
 }

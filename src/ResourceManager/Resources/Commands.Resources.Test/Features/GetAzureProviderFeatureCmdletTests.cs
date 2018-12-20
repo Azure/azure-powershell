@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.IsType<PSProviderFeature[]>(obj);
 
                     var features = (PSProviderFeature[])obj;
-                    Assert.Equal(1, features.Length);
+                    Assert.Single(features);
 
                     var provider = features.Single();
                     Assert.Equal(Provider1Namespace, provider.ProviderName, StringComparer.OrdinalIgnoreCase);
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.IsType<PSProviderFeature[]>(obj);
 
                     var features = (PSProviderFeature[])obj;
-                    Assert.Equal(1, features.Length);
+                    Assert.Single(features);
 
                     var provider = features.Single();
                     Assert.Equal(Provider1Namespace, provider.ProviderName, StringComparer.OrdinalIgnoreCase);
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.IsType<PSProviderFeature[]>(obj);
 
                     var features = (PSProviderFeature[])obj;
-                    Assert.Equal(0, features.Length);
+                    Assert.Empty(features);
                 });
 
             this.cmdlet.ExecuteCmdlet();
@@ -247,8 +247,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
                   Assert.IsType<PSProviderFeature[]>(obj);
                   var features = (PSProviderFeature[])obj;
                   Assert.Equal(2, features.Length);
-                  Assert.True(features.Any(feature => string.Equals(feature.FeatureName, Feature1Name, StringComparison.OrdinalIgnoreCase)));
-                  Assert.True(features.Any(feature => string.Equals(feature.FeatureName, Feature2Name, StringComparison.OrdinalIgnoreCase)));
+                  Assert.Contains(features, feature => string.Equals(feature.FeatureName, Feature1Name, StringComparison.OrdinalIgnoreCase));
+                  Assert.Contains(features, feature => string.Equals(feature.FeatureName, Feature2Name, StringComparison.OrdinalIgnoreCase));
                   Assert.True(features.All(feature => string.Equals(feature.ProviderName, Provider1Namespace, StringComparison.OrdinalIgnoreCase)));
               });
 
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 {
                     Assert.IsType<PSProviderFeature[]>(obj);
                     var features = (PSProviderFeature[])obj;
-                    Assert.Equal(1, features.Length);
+                    Assert.Single(features);
                     var feature = features.Single();
                     Assert.Equal(Provider2Namespace, feature.ProviderName, StringComparer.OrdinalIgnoreCase);
                     Assert.Equal(Feature1Name, feature.FeatureName, StringComparer.OrdinalIgnoreCase);

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Properties;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmRedisCache"), OutputType(typeof(List<RedisCacheAttributes>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCache"), OutputType(typeof(RedisCacheAttributes))]
     public class GetAzureRedisCache : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which want to create cache.")]

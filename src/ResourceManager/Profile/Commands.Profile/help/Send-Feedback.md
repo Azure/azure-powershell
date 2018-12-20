@@ -1,7 +1,7 @@
 ﻿---
-external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-Module Name: AzureRM.Profile
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/send-feedback
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
+Module Name: Az.Accounts
+online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/send-feedback
 schema: 2.0.0
 ---
 
@@ -48,9 +48,9 @@ your@email.com
 The credentials, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -65,7 +65,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
@@ -74,4 +73,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

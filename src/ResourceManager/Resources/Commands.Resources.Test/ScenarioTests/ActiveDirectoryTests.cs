@@ -12,22 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Test;
+using System.Reflection;
+using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ActiveDirectoryTests : RMTestBase
+    public class ActiveDirectoryTests: ResourceTestRunner
     {
         XunitTracingInterceptor interceptor { get; set; }
 
-        public ActiveDirectoryTests(ITestOutputHelper output)
+        public ActiveDirectoryTests(ITestOutputHelper output) : base(output)
         {
             interceptor = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(interceptor);
@@ -42,21 +42,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newGroup = CreateNewAdGroup(controllerAdmin);
                     return new[] { scriptMethod };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -68,28 +67,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newGroup = CreateNewAdGroup(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newGroup.DisplayName) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupWithBadSearchString()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetADGroupWithBadSearchString");
+            TestRunner.RunTestScript("Test-GetADGroupWithBadSearchString");
         }
 
         [Fact]
@@ -101,21 +99,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newGroup = CreateNewAdGroup(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newGroup.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -127,28 +124,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newGroup = CreateNewAdGroup(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newGroup.ObjectId, newGroup.SecurityEnabled) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupWithBadObjectId()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetADGroupWithBadObjectId");
+            TestRunner.RunTestScript("Test-GetADGroupWithBadObjectId");
         }
 
         [Fact]
@@ -160,21 +156,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -187,6 +182,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
@@ -203,23 +199,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                     return new[] { string.Format(scriptMethod, newGroup.ObjectId, newUser.ObjectId, newUser.DisplayName) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupMemberWithBadGroupObjectId()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetADGroupMemberWithBadGroupObjectId");
+            TestRunner.RunTestScript("Test-GetADGroupMemberWithBadGroupObjectId");
         }
 
         [Fact]
@@ -231,21 +225,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -257,21 +250,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newGroup = CreateNewAdGroup(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newGroup.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -284,6 +276,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
@@ -291,23 +284,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newServicePrincipal = CreateNewAdServicePrincipal(controllerAdmin, app.AppId);
                     return new[] { string.Format(scriptMethod, newServicePrincipal.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdServicePrincipal(controllerAdmin, newServicePrincipal);
                     DeleteAdApp(controllerAdmin, app);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithBadObjectId()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetADServicePrincipalWithBadObjectId");
+            TestRunner.RunTestScript("Test-GetADServicePrincipalWithBadObjectId");
         }
 
         [Fact]
@@ -319,21 +310,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -346,6 +336,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
@@ -353,23 +344,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newServicePrincipal = CreateNewAdServicePrincipal(controllerAdmin, app.AppId);
                     return new[] { string.Format(scriptMethod, newServicePrincipal.ServicePrincipalNames[1]) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdServicePrincipal(controllerAdmin, newServicePrincipal);
                     DeleteAdApp(controllerAdmin, app);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithBadSPN()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetADServicePrincipalWithBadSPN");
+            TestRunner.RunTestScript("Test-GetADServicePrincipalWithBadSPN");
         }
 
         [Fact]
@@ -382,6 +371,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
@@ -389,23 +379,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newServicePrincipal = CreateNewAdServicePrincipal(controllerAdmin, app.AppId);
                     return new[] { string.Format(scriptMethod, newServicePrincipal.DisplayName) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdServicePrincipal(controllerAdmin, newServicePrincipal);
                     DeleteAdApp(controllerAdmin, app);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithBadSearchString()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetADServicePrincipalWithBadSearchString");
+            TestRunner.RunTestScript("Test-GetADServicePrincipalWithBadSearchString");
         }
 
         [Fact]
@@ -417,21 +405,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -450,15 +437,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -470,28 +455,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.UserPrincipalName) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithBadObjectId()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetADUserWithBadObjectId");
+            TestRunner.RunTestScript("Test-GetADUserWithBadObjectId");
         }
 
         [Fact]
@@ -503,21 +487,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newGroup = CreateNewAdGroup(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newGroup.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -529,34 +512,34 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.UserPrincipalName) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact(Skip = "Currently not working.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithFPOUPN()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetADUserWithFPOUPN");
+            TestRunner.RunTestScript("Test-GetADUserWithFPOUPN");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithBadUPN()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetADUserWithBadUPN");
+            TestRunner.RunTestScript("Test-GetADUserWithBadUPN");
         }
 
         [Fact]
@@ -568,56 +551,69 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.DisplayName) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithBadSearchString()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetADUserWithBadSearchString");
+            TestRunner.RunTestScript("Test-GetADUserWithBadSearchString");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADApplication()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewADApplication");
+            TestRunner.RunTestScript("Test-NewADApplication");
         }
 
-        [Fact(Skip = "Need AD team to re-record test")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipalWithoutApp()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewADServicePrincipalWithoutApp");
+            TestRunner.RunTestScript("Test-NewADServicePrincipalWithoutApp");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewADServicePrincipalWithReaderRole()
+        {
+            TestRunner.RunTestScript("Test-NewADServicePrincipalWithReaderRole");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewADServicePrincipalWithCustomScope()
+        {
+            TestRunner.RunTestScript("Test-NewADServicePrincipalWithCustomScope");
         }
 
         [Fact(Skip = "Not working in playback.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteAppPasswordCredentials()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-CreateDeleteAppPasswordCredentials");
+            TestRunner.RunTestScript("Test-CreateDeleteAppPasswordCredentials");
         }
 
         [Fact(Skip = "Not working in playback.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteSpPasswordCredentials()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-CreateDeleteSpPasswordCredentials");
+            TestRunner.RunTestScript("Test-CreateDeleteSpPasswordCredentials");
         }
 
         [Fact]
@@ -629,21 +625,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var controllerAdmin = ResourcesController.NewInstance;
 
             controllerAdmin.RunPsTestWorkflow(
+                interceptor,
                 // scriptBuilder
                 () =>
                 {
                     application = CreateNewAdApp(controllerAdmin);
                     return new[] { string.Format(scriptMethod, application.AppId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdApp(controllerAdmin, application);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         private User CreateNewAdUser(ResourcesController controllerAdmin)

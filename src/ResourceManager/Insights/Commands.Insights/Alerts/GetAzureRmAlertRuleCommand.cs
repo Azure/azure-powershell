@@ -14,8 +14,8 @@
 
 using System;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Get an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAlertRule"), OutputType(typeof(List<PSAlertRule>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertRule"), OutputType(typeof(PSAlertRule))]
     public class GetAzureRmAlertRuleCommand : ManagementCmdletBase
     {
         internal const string GetAzureRmAlertRuleParamGroup = "GetByResourceGroup";
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         protected override void ProcessRecordInternal()
         {
             this.WriteIdentifiedWarning(
-                cmdletName: "Get-AzureRmAlertRule",
+                cmdletName: "Get-AzAlertRule",
                 topic: "Parameter deprecation", 
                 message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             if (string.IsNullOrWhiteSpace(this.Name))

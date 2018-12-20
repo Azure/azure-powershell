@@ -52,5 +52,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             get { return ResourcesExtensions.ConstructDeploymentVariableTable(Outputs); }
         }
+
+        public OnErrorDeploymentExtended OnErrorDeployment { get; set; }
     }
 }

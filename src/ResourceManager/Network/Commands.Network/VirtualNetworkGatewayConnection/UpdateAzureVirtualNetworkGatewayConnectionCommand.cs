@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
@@ -24,8 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayConnection", SupportsShouldProcess = true),
-        OutputType(typeof(PSVirtualNetworkGatewayConnection))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayConnection", SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetworkGatewayConnection))]
     public class SetAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Parameter(
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of IPSec policies.")]
-        public List<PSIpsecPolicy> IpsecPolicies { get; set; }
+        public PSIpsecPolicy[] IpsecPolicies { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Network
 
                     if (this.IpsecPolicies != null)
                     {
-                        this.VirtualNetworkGatewayConnection.IpsecPolicies = this.IpsecPolicies;
+                        this.VirtualNetworkGatewayConnection.IpsecPolicies = this.IpsecPolicies?.ToList();
                     }
 
                     var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);

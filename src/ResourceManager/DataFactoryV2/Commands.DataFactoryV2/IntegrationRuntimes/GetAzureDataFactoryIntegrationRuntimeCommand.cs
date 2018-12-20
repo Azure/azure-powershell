@@ -19,15 +19,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get,
-        Constants.IntegrationRuntime,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),
-        OutputType(
-            typeof(List<PSIntegrationRuntime>),
-            typeof(PSManagedIntegrationRuntime),
-            typeof(PSSelfHostedIntegrationRuntime),
-            typeof(PSLinkedIntegrationRuntime)
-        )]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),OutputType(typeof(PSIntegrationRuntime),typeof(PSManagedIntegrationRuntime),typeof(PSSelfHostedIntegrationRuntime),typeof(PSLinkedIntegrationRuntime))]
     public class GetAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(
@@ -44,7 +36,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpIntegrationRuntimeStatus)]
         public SwitchParameter Status { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             this.ByResourceId();

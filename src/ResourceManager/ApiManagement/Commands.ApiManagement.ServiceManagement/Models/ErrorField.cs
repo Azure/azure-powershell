@@ -12,11 +12,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using Microsoft.Azure.Management.ApiManagement.SmapiModels;
-using System;
-
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
+    using Management.ApiManagement.Models;
+    using System;
+
     public class ErrorField
     {
         public string Code { get; set; }

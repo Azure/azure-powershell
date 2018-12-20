@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeAnalyticsDataSource")]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsDataSource")]
     [Alias("Add-AdlAnalyticsDataSource")]
     public class AddAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
@@ -70,21 +70,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         {
             if (ParameterSetName.Equals(BlobParameterSetName, StringComparison.InvariantCultureIgnoreCase))
             {
-                var toAdd = new StorageAccountInfo
+                var toAdd = new AddStorageAccountParameters
                 {
-                    Name = Blob,
                     AccessKey = AccessKey
-                    
                 };
 
-                DataLakeAnalyticsClient.AddStorageAccount(ResourceGroupName, Account, toAdd);
+                DataLakeAnalyticsClient.AddStorageAccount(ResourceGroupName, Account, Blob, toAdd);
             }
             else
             {
-                var toAdd = new DataLakeStoreAccountInfo
-                {
-                    Name = DataLakeStore
-                };
+                var toAdd = new DataLakeStoreAccountInformation
+                (
+                    name: DataLakeStore
+                );
 
                 DataLakeAnalyticsClient.AddDataLakeStoreAccount(ResourceGroupName, Account, toAdd);
             }

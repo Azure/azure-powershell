@@ -21,9 +21,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
     /// <summary>
-    /// 'Get-AzureRmRelayOperation' Cmdlet retrive the Operations List
+    /// 'Get-AzRelayOperation' Cmdlet retrive the Operations List
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmServiceBusOperation"), OutputType(typeof(List<PSOperationAttributes>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusOperation"), OutputType(typeof(PSOperationAttributes))]
     public class GetAzureServiceBusOperations : AzureServiceBusCmdletBase
     {
         public override void ExecuteCmdlet()

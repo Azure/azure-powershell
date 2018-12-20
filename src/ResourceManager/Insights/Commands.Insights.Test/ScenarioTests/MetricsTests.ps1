@@ -19,15 +19,24 @@ Tests getting metrics values for a particular resource.
 function Test-GetMetrics
 {
     # Setup
-	$rscname = 'subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/myWeb1'
+	$rscname = 'subscriptions/56bb45c9-5c14-4914-885e-c6fd6f130f7c/resourceGroups/reactdemo/providers/Microsoft.Web/sites/reactdemowebapi'
 
-    try 
+    try
     {
         # Test
-        $actual = Get-AzureRmMetric -ResourceId $rscname -timeGrain 00:01:00 -starttime 2015-03-23T22:00:00Z -endtime 2015-03-23T22:30:00Z -Aggrega Count -MetricNames CPU, Requests
+        $actual = Get-AzureRmMetric -ResourceId $rscname -starttime 2018-03-23T22:00:00Z -endtime 2018-03-23T22:30:00Z
  
         # Assert TODO add more asserts
-		Assert-AreEqual 1 $actual.Count
+        Assert-AreEqual 1 $actual.Count
+
+        $actual = Get-AzureRmMetric -ResourceId $rscname -MetricNames CpuTime,Requests -timeGrain 00:01:00 -starttime 2018-03-23T22:00:00Z -endtime 2018-03-23T22:30:00Z -AggregationType Count
+
+        # Assert TODO add more asserts
+        Assert-AreEqual 2 $actual.Count
+
+        $metricFilter = New-AzureRmMetricFilter -Dimension City -Operator eq -Value "Seattle","New York"
+
+        Assert-AreEqual 1 $metricFilter.Count
     }
     finally
     {
@@ -38,19 +47,23 @@ function Test-GetMetrics
 
 <#
 .SYNOPSIS
-Tests getting metrics definitions.
+Tests getting metrics definitions and creating a new metric dimension filter.
 #>
 function Test-GetMetricDefinitions
 {
     # Setup
-    $rscname = 'subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/myWeb1'
+    $rscname = 'subscriptions/56bb45c9-5c14-4914-885e-c6fd6f130f7c/resourceGroups/reactdemo/providers/Microsoft.Web/sites/reactdemowebapi'
 
-    try 
+    try
     {
-	    $actual = Get-AzureRmMetricDefinition -ResourceId $rscname 
+        $actual = Get-AzureRmMetricDefinition -ResourceId $rscname
 
         # Assert TODO add more asserts
-		Assert-AreEqual 15 $actual.Count
+        Assert-AreEqual 33 $actual.Count
+
+        $actual = Get-AzureRmMetricDefinition -ResourceId $rscname -MetricName CpuTime,Requests -MetricNamespace "Microsoft.Web/sites"
+
+        Assert-AreEqual 2 $actual.Count
     }
     finally
     {

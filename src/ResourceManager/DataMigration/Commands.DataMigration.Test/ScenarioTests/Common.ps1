@@ -75,7 +75,7 @@ function Create-DataMigrationService($rg)
 	}else{
 		$serviceName = Get-ServiceName
 		$virtualSubNetId = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("VIRTUAL_SUBNET_ID")
-		$sku = "Basic_2vCores"
+		$sku = "BusinessCritical_4vCores"
 		$service = New-AzureRmDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $ServiceName -Location $rg.Location -Sku $sku -VirtualSubnetId $virtualSubNetId
 	}
 
@@ -106,6 +106,31 @@ function Create-Project($rg, $service, $targetPlatform)
     $project = New-AzureRmDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $ProjectName -Location $rg.Location -SourceType SQL -TargetType $targetPlatform -SourceConnection $sourceConnInfo -TargetConnection $targetConnInfo -DatabaseInfo $dbList
 
 	return $project
+}
+
+function Create-ProjectMongoDbMongoDb($rg, $service)
+{
+	$ProjectName = Get-ProjectName
+	$sourceConnInfo = New-SourceMongoDbConnectionInfo
+	$targetConnInfo = New-TargetMongoDbConnectionInfo
+
+    $project = New-AzureRmDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $ProjectName -Location $rg.Location -SourceType MongoDb -TargetType MongoDb -SourceConnection $sourceConnInfo -TargetConnection $targetConnInfo
+
+	return $project
+}
+
+function New-SourceMongoDbConnectionInfo
+{
+	$sourceConn = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MONGODB_SOURCE_CONNECTIONSTRING")
+	$connectioninfo = New-AzureRmDmsConnInfo -ServerType MongoDb -ConnectionString $sourceConn
+	return $connectioninfo
+}
+
+function New-TargetMongoDbConnectionInfo
+{
+	$cosmosConn = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("COSMOSDB_TARGET_CONNECTIONSTRING")
+	$connectioninfo = New-AzureRmDmsConnInfo -ServerType MongoDb -ConnectionString $cosmosConn
+	return $connectioninfo
 }
 
 function getDmsAssetName($prefix)

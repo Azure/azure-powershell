@@ -12,108 +12,109 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceGroupTests : RMTestBase
+    public class ResourceGroupTests : ResourceTestRunner
     {
-        public ResourceGroupTests(ITestOutputHelper output)
+        public ResourceGroupTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewSimpleResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-CreatesNewSimpleResourceGroup");
+            TestRunner.RunTestScript("Test-CreatesNewSimpleResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdatesExistingResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-UpdatesExistingResourceGroup");
+            TestRunner.RunTestScript("Test-UpdatesExistingResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesAndRemoveResourceGroupViaPiping()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-CreatesAndRemoveResourceGroupViaPiping");
+            TestRunner.RunTestScript("Test-CreatesAndRemoveResourceGroupViaPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetNonExistingResourceGroup");
+            TestRunner.RunTestScript("Test-GetNonExistingResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewResourceGroupInNonExistingLocation()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewResourceGroupInNonExistingLocation");
+            TestRunner.RunTestScript("Test-NewResourceGroupInNonExistingLocation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveNonExistingResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RemoveNonExistingResourceGroup");
+            TestRunner.RunTestScript("Test-RemoveNonExistingResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFindResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-FindResourceGroup");
+            TestRunner.RunTestScript("Test-FindResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-ExportResourceGroup");
+            TestRunner.RunTestScript("Test-ExportResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceGroupWithPositionalParams()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-ResourceGroupWithPositionalParams");
+            TestRunner.RunTestScript("Test-ResourceGroupWithPositionalParams");
         }
 
         [Fact(Skip = "TODO: Fix the broken test.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureTagsEndToEnd()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-AzureTagsEndToEnd");
+            TestRunner.RunTestScript("Test-AzureTagsEndToEnd");
         }
 
         [Fact(Skip = "Depends on Bug 2040630")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentAndProviderRegistration()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentAndProviderRegistration");
+            TestRunner.RunTestScript("Test-NewDeploymentAndProviderRegistration");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait("Re-record", "ClientRuntime changes")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveDeployment()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RemoveDeployment");
+            TestRunner.RunTestScript("Test-RemoveDeployment");
         }
 
         [Fact(Skip = "Doesn't add any value. Will improve negative tests in a future release")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingResourceGroupWithDebugStream()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetNonExistingResourceGroupWithDebugStream");
+            TestRunner.RunTestScript("Test-GetNonExistingResourceGroupWithDebugStream");
         }
     }
 }

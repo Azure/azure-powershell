@@ -14,19 +14,15 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Management.Storage;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
+using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
 {
@@ -79,19 +75,19 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database in the Elastic Pool
+        /// Gets the Azure Sql Database
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Database GetDatabase(string resourceGroupName, string serverName, string elasticPoolName, string databaseName)
+        public Management.Sql.Models.Database GetDatabase(string resourceGroupName, string serverName, string databaseName)
         {
-            return GetLegacySqlClient().ElasticPools.GetDatabases(resourceGroupName, serverName, elasticPoolName, databaseName).Database;
+            return GetCurrentSqlClient().Databases.Get(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>
-        /// Lists the Azure Sql Database in the Elastic Pool
+        /// List Azure Sql databases in the Elastic Pool
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.Database> ListDatabases(string resourceGroupName, string serverName, string elasticPoolName)
+        public IList<Management.Sql.Models.Database> ListDatabases(string resourceGroupName, string serverName, string elasticPoolName)
         {
-            return GetLegacySqlClient().ElasticPools.ListDatabases(resourceGroupName, serverName, elasticPoolName).Databases;
+            return GetCurrentSqlClient().Databases.ListByElasticPool(resourceGroupName, serverName, elasticPoolName).ToList();
         }
 
         /// <summary>
@@ -103,9 +99,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
-        /// Creates or updates an Elastic Pool
+        /// Creates an Elastic Pool
         /// </summary>
-        public Management.Sql.Models.ElasticPool CreateOrUpdate(string resourceGroupName, string serverName, string elasticPoolName, Management.Sql.Models.ElasticPool parameters)
+        public Management.Sql.Models.ElasticPool Create(string resourceGroupName, string serverName, string elasticPoolName, Management.Sql.Models.ElasticPool parameters)
         {
             // Occasionally after PUT elastic pool, if we poll for operation results immediately then
             // the polling may fail with 404. This is mitigated in the client by adding a brief wait.
@@ -115,10 +111,18 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                     resourceGroupName, serverName, elasticPoolName, parameters).Result;
 
             // Sleep 5 seconds
-            Thread.Sleep(5000);
+            TestMockSupport.Delay(5000);
 
             return client.GetPutOrPatchOperationResultAsync(
                 createOrUpdateResponse, null, CancellationToken.None).Result.Body;
+        }
+
+        /// <summary>
+        /// Updates an Elastic Pool using Patch
+        /// </summary>
+        public Management.Sql.Models.ElasticPool CreateOrUpdate(string resourceGroupName, string serverName, string elasticPoolName, ElasticPoolUpdate parameters)
+        {
+            return GetCurrentSqlClient().ElasticPools.Update(resourceGroupName, serverName, elasticPoolName, parameters);
         }
 
         /// <summary>
@@ -132,7 +136,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Gets Elastic Pool Activity
         /// </summary>
-        public IList<Management.Sql.Models.ElasticPoolActivity> ListActivity(string resourceGroupName, string serverName, string elasticPoolName)
+        public IList<ElasticPoolActivity> ListActivity(string resourceGroupName, string serverName, string elasticPoolName)
         {
             return GetCurrentSqlClient().ElasticPoolActivities.ListByElasticPool(resourceGroupName, serverName, elasticPoolName).ToList();
         }
@@ -144,7 +148,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <param name="serverName"></param>
         /// <param name="elasticPoolName"></param>
         /// <returns></returns>
-        public IList<Management.Sql.Models.ElasticPoolOperation> ListOperation(string resourceGroupName, string serverName, string elasticPoolName)
+        public IList<ElasticPoolOperation> ListOperation(string resourceGroupName, string serverName, string elasticPoolName)
         {
             return GetCurrentSqlClient().ElasticPoolOperations.ListByElasticPool(resourceGroupName, serverName, elasticPoolName).ToList();
         }

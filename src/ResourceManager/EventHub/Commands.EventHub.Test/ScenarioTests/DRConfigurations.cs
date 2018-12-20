@@ -16,28 +16,31 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagemenet.Common.Models;
+    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
     public class DRConfigurationTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public DRConfigurationTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DRConfigurationsCURD()
         {
-            EventHubsController.NewInstance.RunPsTest("DRConfigurationTests");
+            EventHubsController.NewInstance.RunPsTest(_logger, "DRConfigurationTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DRConfigurationsCURDAlternateName()
         {
-            EventHubsController.NewInstance.RunPsTest("DRConfigurationTestsAlternateName");
+            EventHubsController.NewInstance.RunPsTest(_logger, "DRConfigurationTestsAlternateName");
         }
     }
 }

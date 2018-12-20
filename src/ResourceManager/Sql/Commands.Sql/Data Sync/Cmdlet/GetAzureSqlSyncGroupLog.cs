@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to get synchronization log of  a specified sync group
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlSyncGroupLog",
-        ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncGroupLogModel))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlSyncGroupLog",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncGroupLogModel))]
     public class GetAzureSqlSyncGroupLog : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlSyncGroupLogModel>, AzureSqlDataSyncAdapter>
     {
         /// <summary>
@@ -81,8 +80,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             return ModelAdapter.ListSyncGroupLogs(this.ResourceGroupName, this.ServerName, this.DatabaseName, new SyncGroupLogGetParameters
             {
                 SyncGroupName = this.SyncGroupName,
-                StartTime = this.StartTime.ToString(),
-                EndTime = MyInvocation.BoundParameters.ContainsKey("EndTime") ? this.EndTime.ToString() : DateTime.Now.ToString(),
+                StartTime = this.StartTime.ToString("s"),
+                EndTime = MyInvocation.BoundParameters.ContainsKey("EndTime") ? this.EndTime.ToString("s") : DateTime.Now.ToString("s"),
                 Type = MyInvocation.BoundParameters.ContainsKey("LogLevel") ? this.LogLevel : LogType.All.ToString()
             });
         }

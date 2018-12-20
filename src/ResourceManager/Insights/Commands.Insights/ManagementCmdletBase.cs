@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Insights
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// </summary>
         public IMonitorManagementClient MonitorManagementClient
         {
-            // The premise is that a command to establish a context (like Connect-AzureRmAccount) has
+            // The premise is that a command to establish a context (like Connect-AzAccount) has
             //   been called before this command in order to have a correct CurrentContext
             get
             {

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     /// <summary>
     /// Regenerate the key of media service.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, MediaServiceKeyNounStr, SupportsShouldProcess = true), OutputType(typeof(PSServiceKey))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MediaServiceKey", SupportsShouldProcess = true), OutputType(typeof(PSServiceKey))]
     public class SetAzureRmMediaServiceKey : AzureMediaServiceCmdletBase
     {
         private const string SetMediaServiceKeyWhatIfMessage = "Set MediaService key";

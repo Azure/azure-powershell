@@ -1,13 +1,13 @@
 <!--
 
 If this issue is a bug report:
-- Upgrade to the latest version of AzureRM and verify you are able to reproduce the issue
-    - You can install the latest version of AzureRM from the PowerShell Gallery
-        - https://www.powershellgallery.com/packages/AzureRM
+- Upgrade to the latest version of Az and verify you are able to reproduce the issue
+    - You can install the latest version of Az from the PowerShell Gallery
+        - https://www.powershellgallery.com/packages/Az
     - You can also install the latest version from the Releases section
         - https://github.com/Azure/azure-powershell/releases
 - Ensure that you repro the issue with $DebugPreference = "Continue" to receive the debug stream
-- If this bug involves an exception being thrown, please run Resolve-AzureRmError to receive extended information on the error
+- If this bug involves an exception being thrown, please run Resolve-AzError to receive extended information on the error
 - Fill out the below template
 
 If this issue is not a bug report, please remove the below template
@@ -28,10 +28,10 @@ If this issue is not a bug report, please remove the below template
 
 ### Module Version
 
-<!-- Please run (Get-Module -Name AzureRM -ListAvailable) to get the version(s) of AzureRM installed on your machine -->
+<!-- Please run (Get-Module -ListAvailable) to get the version(s) of all modules, including Azure installed on your machine -->
 
 ```powershell
-Get-Module -Name AzureRM -ListAvailable
+Get-Module -ListAvailable
 ```
 
 ### Environment Data
@@ -44,7 +44,7 @@ $PSVersionTable
 
 ### Debug Output
 
-<!-- Please run the above script with $DebugPreference = "Continue" and paste the resulting debug stream in the below code block -->
+<!-- Please run the above script with $DebugPreference='Continue' and paste the resulting debug stream in the below code block -->
 
 ```
 

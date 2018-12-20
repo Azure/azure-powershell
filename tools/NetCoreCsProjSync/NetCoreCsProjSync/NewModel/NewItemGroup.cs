@@ -41,5 +41,8 @@ namespace NetCoreCsProjSync.NewModel
 
         [XmlElement("Content")]
         public List<NewContent> ContentItems { get; set; }
+
+        [XmlElement("Reference")]
+        public List<NewReference> References { get; set; }
     }
 }

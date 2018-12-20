@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Sets the auditing settings properties for a specific database server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerAuditing", SupportsShouldProcess = true), OutputType(typeof(ServerBlobAuditingSettingsModel))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAuditing", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(ServerBlobAuditingSettingsModel))]
     public class SetAzureSqlServerAuditing : SqlServerAuditingSettingsCmdletBase
     {
         /// <summary>
@@ -51,8 +51,16 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// Gets or sets the name of the storage account to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountNameHelpMessage)]
+        [Parameter(ParameterSetName = StorageAccountSubscriptionIdSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets storage account subscription id.
+        /// </summary>
+        [Parameter(ParameterSetName = StorageAccountSubscriptionIdSetName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountSubscriptionIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public Guid StorageAccountSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the storage account to use.
@@ -68,6 +76,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.RetentionInDaysHelpMessage)]
         [ValidateNotNullOrEmpty]
         public uint? RetentionInDays { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets the predicate expression.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.PredicateExpressionHelpMessage)]
+        [ValidateNotNull]
+        public string PredicateExpression { get; internal set; }
 
         /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
@@ -103,7 +118,25 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.AuditActionGroup = AuditActionGroup;
             }
 
+            if (!StorageAccountSubscriptionId.Equals(Guid.Empty))
+            {
+                model.StorageAccountSubscriptionId = StorageAccountSubscriptionId;
+            }
+            else if (StorageAccountName != null)
+            {
+                model.StorageAccountSubscriptionId = Guid.Parse(DefaultProfile.DefaultContext.Subscription.Id);
+            }
+
+            if (PredicateExpression != null)
+            {
+                model.PredicateExpression = PredicateExpression = PredicateExpression;
+            }
+
             return model;
         }
+
+        private const string StorageAccountSubscriptionIdSetName = "StorageAccountSubscriptionIdSet";
+
+        private const string DefaultParameterSetName = "DefaultParameterSet";
     }
 }

@@ -22,9 +22,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.ContainerInstance
 {
     /// <summary>
-    /// Remove-AzureRmContainerGroup
+    /// Remove-AzContainerGroup
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ContainerGroupNoun, SupportsShouldProcess = true, DefaultParameterSetName = RemoveContainerGroupByResourceGroupAndNameParamSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerGroup", SupportsShouldProcess = true, DefaultParameterSetName = RemoveContainerGroupByResourceGroupAndNameParamSet)]
     [OutputType(typeof(PSContainerGroup))]
     public class RemoveAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {

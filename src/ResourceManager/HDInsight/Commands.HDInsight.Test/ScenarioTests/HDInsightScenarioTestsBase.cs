@@ -14,57 +14,56 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.HDInsight;
-using Microsoft.Azure.Test;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
     public class HDInsightScenarioTestsBase : RMTestBase
     {
-        private EnvironmentSetupHelper helper;
-        private CSMTestEnvironmentFactory csmTestFactory;
+        private readonly EnvironmentSetupHelper _helper;
 
-        public static HDInsightScenarioTestsBase NewInstance
-        {
-            get
-            {
-                return new HDInsightScenarioTestsBase();
-            }
-        }
+        public static HDInsightScenarioTestsBase NewInstance => new HDInsightScenarioTestsBase();
 
         protected HDInsightScenarioTestsBase()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected void SetupManagementClients(MockContext context)
         {
-            var hdinsightManagementClient = GetHdInsightManagementClient();
+            var hdinsightManagementClient = GetHdInsightManagementClient(context);
 
-            helper.SetupSomeOfManagementClients(hdinsightManagementClient);
+            _helper.SetupSomeOfManagementClients(hdinsightManagementClient);
         }
 
-        protected HDInsightManagementClient GetHdInsightManagementClient()
+        protected HDInsightManagementClient GetHdInsightManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<HDInsightManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<HDInsightManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         /// <summary>
         /// Runs the PowerShell test
         /// </summary>
         /// <param name="scripts">script to be executed</param>
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
+
+            _helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom initializer
-                null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -75,60 +74,51 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         /// Runs the PowerShell test under mock undo context based on the test mode setting (Record|Playback)
         /// </summary>
         /// <param name="scriptBuilder">Script builder delegate</param>
-        /// <param name="initialize">initialize action</param>
         /// <param name="cleanup">cleanup action</param>
         /// <param name="callingClassType">Calling class type</param>
         /// <param name="mockName">Mock Name</param>
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
-            using (UndoContext context = UndoContext.Current)
+            var providers = new Dictionary<string, string>
             {
-                context.Start(callingClassType, mockName);
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Compute", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
-
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
-
-                SetupManagementClients();
-
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-
-                helper.SetupModules(AzureModule.AzureResourceManager,
+            using (var context = MockContext.Start(callingClassType, mockName))
+            {
+                SetupManagementClients(context);
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.HDInsight.psd1"));
+                    _helper.RMProfileModule,
+                    //_helper.RMResourceModule,
+                    _helper.GetRMModulePath("AzureRM.HDInsight.psd1"));
 
                 try
                 {
-                    if (scriptBuilder != null)
+                    var psScripts = scriptBuilder?.Invoke();
+                    if (psScripts != null)
                     {
-                        var psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            helper.RunPowerShellTest(psScripts);
-                        }
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }

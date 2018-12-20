@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.WebApps.Properties;
 using System;
 using System.Diagnostics;
 using System.IO;

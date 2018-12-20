@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,7 @@ using Microsoft.Azure.DataLake.Store.AclTools;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(DataLakeStoreItemAce))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItemAclEntry", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(DataLakeStoreItemAce))]
     [Alias("Set-AdlStoreItemAclEntry")]
     public class SetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, ValueFromPipeline = true, ParameterSetName = BaseParameterSetName, Position = 2,
             Mandatory = true,
             HelpMessage =
-                "The ACL spec containing the entries to set. These entries MUST exist in the ACL spec for the file already. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
+                "The ACL spec containing the entries to set. These entries MUST exist in the ACL spec for the file already. This can be a modified ACL from Get-AzDataLakeStoreItemAcl or it can be the string " +
                 " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
                 "This cmdlet is not to be used for setting the owner or owning group.")]
         public DataLakeStoreItemAce[] Acl { get; set; }
@@ -95,23 +94,39 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         )]
         public int Concurrency { get; set; } = -1;
 
+        [Parameter(Mandatory = false,
+            HelpMessage =
+                "If passed then progress status is showed. Only applicable when recursive Acl modify is done."
+        )]
+        public SwitchParameter ShowProgress { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteWarning(Resources.IncorrectOutputTypeWarning);
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                 ? Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList()
-                : new List<AclEntry>() { new AclEntry((AclType)AceType, Id.ToString(), Default ? AclScope.Default : AclScope.Access, (AclAction)Permissions) };
+                : new List<AclEntry> { new AclEntry((AclType)AceType, Id.ToString(), Default ? AclScope.Default : AclScope.Access, (AclAction)Permissions) };
+
+            bool recurseAndDefaultAcls = Recurse && !aclSpec.Any(aclEntry => aclEntry.Scope == AclScope.Access);
+            
+            // For recurse and all acls are default, give a warning message
+            if (recurseAndDefaultAcls)
+            {
+                WriteWarning(Resources.SetOnlyDefaultAclRecursively);
+            }
 
             ConfirmAction(
-                string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
+                string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath) + (recurseAndDefaultAcls ? "\n" + Resources.SetOnlyDefaultAclRecursively : ""),
                 Path.OriginalPath,
                 () =>
                 {
                     if (Recurse)
                     {
+                        // Currently SDK default thread calculation is not correct, so pass a default thread count
+                        int threadCount = Concurrency == -1 ? DataLakeStoreFileSystemClient.ImportExportMaxThreads : Concurrency;
+
                         DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
                             Account,
-                            Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.ModifyAcl, Concurrency);
+                            aclSpec, RequestedAclType.ModifyAcl, threadCount, this, ShowProgress, CmdletCancellationToken);
                     }
                     else
                     {

@@ -1,5 +1,6 @@
 ﻿// ----------------------------------------------------------------------------------
 //
+//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,8 +26,8 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to get user tenant information. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmTenant")]
-    [Alias("Get-AzureRmDomain")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Tenant")]
+    [Alias("Get-AzureRmDomain", "Get-AzDomain")]
     [OutputType(typeof(PSAzureTenant))]
     public class GetAzureRMTenantCommand : AzureRMCmdlet
     {

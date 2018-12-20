@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
         public NewBatchPoolCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewBatchPoolCommand()
@@ -172,8 +172,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             // Verify the request parameters match the cmdlet parameters
             Assert.Equal(cmdlet.AutoScaleEvaluationInterval, requestParameters.AutoScaleEvaluationInterval);
             Assert.Equal(cmdlet.AutoScaleFormula, requestParameters.AutoScaleFormula);
-            Assert.Equal(true, requestParameters.EnableAutoScale);
-            Assert.Equal(null, requestParameters.TargetDedicatedNodes);
+            Assert.True(requestParameters.EnableAutoScale);
+            Assert.Null(requestParameters.TargetDedicatedNodes);
         }
 
         [Fact]

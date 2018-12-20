@@ -20,9 +20,10 @@ using Microsoft.Azure.Management.EventGrid.Models;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
-        VerbsCommon.Get,
-		EventGridTopicTypeVerb),
-     OutputType(typeof(List<PSTopicTypeInfoListInstance>), typeof(PSTopicTypeInfo))]
+        "Get",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridTopicType"),
+    OutputType(typeof(PSTopicTypeInfoListInstance), typeof(PSTopicTypeInfo))]
+
     public class GetAzureRmEventGridTopicType : AzureEventGridCmdletBase
     {
         [Parameter(

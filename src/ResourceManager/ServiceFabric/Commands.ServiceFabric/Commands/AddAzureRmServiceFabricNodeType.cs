@@ -21,23 +21,23 @@ using System.Security;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabric.Models;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json.Linq;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using System.Text;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricNodeType, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricNodeType", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricNodeType : ServiceFabricNodeTypeCmdletBase
     {
         private const string LoadBalancerIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}";
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                  new VirtualMachineScaleSet()
                  {
                      Location = GetLocation(),
-                     Sku = new Management.Compute.Models.Sku(this.VmSku, this.Tier, this.Capacity),
+                     Sku = new Sku(this.VmSku, this.Tier, this.Capacity),
                      Overprovision = false,
                      Tags = GetServiceFabricTags(),
                      UpgradePolicy = new UpgradePolicy()
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     new LoadBalancingRule()
                     {
                         Name = "LBRule",
-                        BackendAddressPool = new Management.Network.Models.SubResource()
+                        BackendAddressPool = new Management.Internal.Network.Version2017_10_01.Models.SubResource()
                         {
                            Id = string.Format(
                                BackendAddressIdFormat,
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         },
                         BackendPort = Constants.DefaultTcpPort,
                         EnableFloatingIP = false,
-                        FrontendIPConfiguration = new Management.Network.Models.SubResource()
+                        FrontendIPConfiguration = new Management.Internal.Network.Version2017_10_01.Models.SubResource()
                         {
                             Id = string.Format(
                                 FrontendIdFormat,
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                        FrontendPort = Constants.DefaultTcpPort,
                        IdleTimeoutInMinutes = 5,
                        Protocol = "tcp",
-                       Probe = new Management.Network.Models.SubResource()
+                       Probe = new Management.Internal.Network.Version2017_10_01.Models.SubResource()
                        {
                            Id = string.Format(
                                 ProbeIdFormat,
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     new LoadBalancingRule()
                     {
                         Name = "LBHttpRule",
-                        BackendAddressPool = new Management.Network.Models.SubResource()
+                        BackendAddressPool = new Management.Internal.Network.Version2017_10_01.Models.SubResource()
                         {
                            Id = string.Format(
                                BackendAddressIdFormat,
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         },
                         BackendPort = Constants.DefaultHttpPort,
                         EnableFloatingIP = false,
-                        FrontendIPConfiguration = new Management.Network.Models.SubResource()
+                        FrontendIPConfiguration = new Management.Internal.Network.Version2017_10_01.Models.SubResource()
                         {
                             Id = string.Format(
                                 FrontendIdFormat,
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         FrontendPort = Constants.DefaultHttpPort,
                         IdleTimeoutInMinutes = 5,
                         Protocol = "tcp",
-                        Probe = new Management.Network.Models.SubResource()
+                        Probe = new Management.Internal.Network.Version2017_10_01.Models.SubResource()
                         {
                            Id = string.Format(
                                 ProbeIdFormat,
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     {
                         Name = inboundNatPoolName,
                         BackendPort = Constants.DefaultBackendPort,
-                        FrontendIPConfiguration = new Management.Network.Models.SubResource()
+                        FrontendIPConfiguration = new Management.Internal.Network.Version2017_10_01.Models.SubResource()
                         {
                              Id = string.Format(
                                 FrontendIdFormat,
@@ -587,14 +587,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             {
                                 Name = ipconfigName,
                                 LoadBalancerBackendAddressPools = newLoadBalancer.BackendAddressPools.Select(
-                                    b => new Management.Compute.Models.SubResource()
+                                    b => new Azure.Commands.Common.Compute.Version_2018_04.Models.SubResource()
                                     {
                                         Id = b.Id
                                     }
                                     ).ToList(),
 
                                 LoadBalancerInboundNatPools = newLoadBalancer.InboundNatPools.Select(
-                                    p => new Management.Compute.Models.SubResource()
+                                    p => new Azure.Commands.Common.Compute.Version_2018_04.Models.SubResource()
                                     {
                                         Id = p.Id
                                     }

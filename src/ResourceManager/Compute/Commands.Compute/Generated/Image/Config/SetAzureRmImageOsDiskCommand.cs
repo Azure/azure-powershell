@@ -20,8 +20,6 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -32,7 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmImageOsDisk", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ImageOsDisk", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
     public partial class SetAzureRmImageOsDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -74,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter("Standard_LRS", "Premium_LRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string StorageAccountType { get; set; }
 
         [Parameter(
@@ -102,12 +100,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
-                    this.Image.StorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                    this.Image.StorageProfile = new ImageStorageProfile();
                 }
                 // OsDisk
                 if (this.Image.StorageProfile.OsDisk == null)
                 {
-                    this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
+                    this.Image.StorageProfile.OsDisk = new ImageOSDisk();
                 }
 
                 this.Image.StorageProfile.OsDisk.OsType = this.OsType.Value;
@@ -118,12 +116,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
-                    this.Image.StorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                    this.Image.StorageProfile = new ImageStorageProfile();
                 }
                 // OsDisk
                 if (this.Image.StorageProfile.OsDisk == null)
                 {
-                    this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
+                    this.Image.StorageProfile.OsDisk = new ImageOSDisk();
                 }
 
                 this.Image.StorageProfile.OsDisk.OsState = this.OsState.Value;
@@ -134,12 +132,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
-                    this.Image.StorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                    this.Image.StorageProfile = new ImageStorageProfile();
                 }
                 // OsDisk
                 if (this.Image.StorageProfile.OsDisk == null)
                 {
-                    this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
+                    this.Image.StorageProfile.OsDisk = new ImageOSDisk();
                 }
                 this.Image.StorageProfile.OsDisk.BlobUri = this.BlobUri;
             }
@@ -149,12 +147,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
-                    this.Image.StorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                    this.Image.StorageProfile = new ImageStorageProfile();
                 }
                 // OsDisk
                 if (this.Image.StorageProfile.OsDisk == null)
                 {
-                    this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
+                    this.Image.StorageProfile.OsDisk = new ImageOSDisk();
                 }
                 this.Image.StorageProfile.OsDisk.Caching = this.Caching;
             }
@@ -164,12 +162,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
-                    this.Image.StorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                    this.Image.StorageProfile = new ImageStorageProfile();
                 }
                 // OsDisk
                 if (this.Image.StorageProfile.OsDisk == null)
                 {
-                    this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
+                    this.Image.StorageProfile.OsDisk = new ImageOSDisk();
                 }
                 this.Image.StorageProfile.OsDisk.DiskSizeGB = this.DiskSizeGB;
             }
@@ -179,12 +177,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
-                    this.Image.StorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                    this.Image.StorageProfile = new ImageStorageProfile();
                 }
                 // OsDisk
                 if (this.Image.StorageProfile.OsDisk == null)
                 {
-                    this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
+                    this.Image.StorageProfile.OsDisk = new ImageOSDisk();
                 }
                 this.Image.StorageProfile.OsDisk.StorageAccountType = this.StorageAccountType;
             }
@@ -194,17 +192,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
-                    this.Image.StorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                    this.Image.StorageProfile = new ImageStorageProfile();
                 }
                 // OsDisk
                 if (this.Image.StorageProfile.OsDisk == null)
                 {
-                    this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
+                    this.Image.StorageProfile.OsDisk = new ImageOSDisk();
                 }
                 // Snapshot
                 if (this.Image.StorageProfile.OsDisk.Snapshot == null)
                 {
-                    this.Image.StorageProfile.OsDisk.Snapshot = new Microsoft.Azure.Management.Compute.Models.SubResource();
+                    this.Image.StorageProfile.OsDisk.Snapshot = new SubResource();
                 }
                 this.Image.StorageProfile.OsDisk.Snapshot.Id = this.SnapshotId;
             }
@@ -214,17 +212,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
-                    this.Image.StorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                    this.Image.StorageProfile = new ImageStorageProfile();
                 }
                 // OsDisk
                 if (this.Image.StorageProfile.OsDisk == null)
                 {
-                    this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
+                    this.Image.StorageProfile.OsDisk = new ImageOSDisk();
                 }
                 // ManagedDisk
                 if (this.Image.StorageProfile.OsDisk.ManagedDisk == null)
                 {
-                    this.Image.StorageProfile.OsDisk.ManagedDisk = new Microsoft.Azure.Management.Compute.Models.SubResource();
+                    this.Image.StorageProfile.OsDisk.ManagedDisk = new SubResource();
                 }
                 this.Image.StorageProfile.OsDisk.ManagedDisk.Id = this.ManagedDiskId;
             }
@@ -233,4 +231,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

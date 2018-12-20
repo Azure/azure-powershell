@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 {
     public class ProfileTests
     {
-        private ServiceManagemenet.Common.Models.XunitTracingInterceptor _logger;
+        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
 
         public ProfileTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
+            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -33,6 +33,13 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
         public void TestProfileCrud()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileCrud");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSkuCreate()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SkuCreate");
         }
 
         [Fact]

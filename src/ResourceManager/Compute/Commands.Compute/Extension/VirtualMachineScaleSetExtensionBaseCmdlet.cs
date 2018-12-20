@@ -100,16 +100,5 @@ namespace Microsoft.Azure.Commands.Compute
                 return VolumeType;
             }
         }
-
-        protected void ThrowInvalidArgumentError(string errorMessage, string arg)
-        {
-            ThrowTerminatingError
-                (new ErrorRecord(
-                    new ArgumentException(string.Format(CultureInfo.InvariantCulture,
-                        errorMessage, arg)),
-                    "InvalidArgument",
-                    ErrorCategory.InvalidArgument,
-                    null));
-        }
     }
 }

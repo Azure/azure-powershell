@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get, Constants.Pipeline, DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(List<PSPipeline>), typeof(PSPipeline))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Pipeline", DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(PSPipeline))]
     public class GetAzureDataFactoryPipelineCommand : DataFactoryContextBaseGetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Alias(Constants.PipelineName)]
         public override string Name { get; set; }
 
-        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             ByResourceId();

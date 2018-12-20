@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "clusterLocation": {
-      "value": "westus"
+      "value": "southcentralus"
     },
     "clusterName": {
-      "value": "azurermsfcluster2"
+      "value": "azurermsfclustertptest"
     },
     "adminUserName": {
       "value": "username"

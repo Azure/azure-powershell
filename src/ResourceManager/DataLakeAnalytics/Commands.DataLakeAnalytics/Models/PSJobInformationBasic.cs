@@ -24,25 +24,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
     /// </summary>
     class PSJobInformationBasic : JobInformationBasic
     {
-        /// <summary>
-        /// Gets or sets the job specific properties.
-        /// </summary>
-        [Obsolete("This property is in JobInformation but removed in JobInformationBasic because the server does not return this property when listing jobs. This will be removed in a future release.")]
-        public JobProperties Properties { get; private set; }
-
-        /// <summary>
-        /// Gets the error message details for the job, if the job failed.
-        /// </summary>
-        [Obsolete("This property is in JobInformation but removed in JobInformationBasic because the server does not return this property when listing jobs. This will be removed in a future release.")]
-        public IList<JobErrorDetails> ErrorMessage { get; private set; }
-
-        /// <summary>
-        /// Gets the job state audit records, indicating when various
-        /// operations have been performed on this job.
-        /// </summary>
-        [Obsolete("This property is in JobInformation but removed in JobInformationBasic because the server does not return this property when listing jobs. This will be removed in a future release.")]
-        public IList<JobStateAuditRecord> StateAuditRecords { get; private set; }
-
         public PSJobInformationBasic(JobInformationBasic baseJob) :
             base(
                 baseJob.Name,
@@ -60,9 +41,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 baseJob.LogFilePatterns,
                 baseJob.Related)
         {
-            this.Properties = null;
-            this.ErrorMessage = null;
-            this.StateAuditRecords = null;
         }
     }
 }

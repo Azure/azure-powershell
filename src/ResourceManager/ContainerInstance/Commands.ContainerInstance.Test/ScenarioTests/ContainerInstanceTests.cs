@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -23,9 +23,12 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
 {
     public class ContainerInstanceTests : RMTestBase
     {
-        public ContainerInstanceTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public ContainerInstanceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
@@ -33,28 +36,56 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateContainerGroup()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroup");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateContainerGroupWithIdentity()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateContainerGroupWithIdentities()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithIdentities");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestContainerInstanceLog()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerInstanceLog");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerInstanceLog");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateContainerGroupWithVolume()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroupWithVolumeMount");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithVolume");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateContainerGroupWithDnsNameLabel()
+        public void TestCreateContainerGroupWithVolumeAndIdentity()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroupWithDnsNameLabel");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithVolumeAndIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateContainerGroupWithVolumeAndIdentities()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithVolumeAndIdentities");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateContainerGroupDnsLabel()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerGroupWithDnsNameLabel");
         }
     }
 }

@@ -118,15 +118,31 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="e">The object to transform</param>
         /// <returns>The converted database max size capability model</returns>
-        private MaxSizeCapabilityModel CreateSupportedMaxSizeModel(Management.Sql.Models.MaxSizeCapability m)
+        private MaxSizeRangeCapabilityModel CreateSupportedMaxSizeModel(Management.Sql.Models.MaxSizeRangeCapability m)
         {
-            MaxSizeCapabilityModel maxSize = new MaxSizeCapabilityModel();
+            MaxSizeRangeCapabilityModel maxSizeRange = new MaxSizeRangeCapabilityModel();
 
-            maxSize.Limit = m.Limit;
-            maxSize.Status = m.Status.ToString();
-            maxSize.Unit = m.Unit.ToString();
+            maxSizeRange.MinValue = new MaxSizeCapabilityModel
+            {
+                Limit = m.MinValue.Limit,
+                Unit = m.MinValue.Unit
+            };
 
-            return maxSize;
+            maxSizeRange.MaxValue = new MaxSizeCapabilityModel()
+            {
+                Limit = m.MaxValue.Limit,
+                Unit = m.MaxValue.Unit
+            };
+            
+            maxSizeRange.ScaleSize = new MaxSizeCapabilityModel()
+            {
+                Limit = m.ScaleSize.Limit,
+                Unit = m.ScaleSize.Unit
+            };
+
+            maxSizeRange.Status = m.Status;
+
+            return maxSizeRange;
         }
     }
 }

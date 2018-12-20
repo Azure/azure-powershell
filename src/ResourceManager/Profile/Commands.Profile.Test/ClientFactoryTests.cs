@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
                     ), AzureEnvironment.Endpoint.ResourceManager);
                 Assert.Equal(5, client.HttpClient.DefaultRequestHeaders.UserAgent.Count);
-                Assert.True(client.HttpClient.DefaultRequestHeaders.UserAgent.Contains(new ProductInfoHeaderValue("agent1", "")));
-                Assert.True(client.HttpClient.DefaultRequestHeaders.UserAgent.Contains(new ProductInfoHeaderValue("agent1", "1.0.0")));
-                Assert.True(client.HttpClient.DefaultRequestHeaders.UserAgent.Contains(new ProductInfoHeaderValue("agent1", "1.9.8")));
-                Assert.True(client.HttpClient.DefaultRequestHeaders.UserAgent.Contains(new ProductInfoHeaderValue("agent2", "")));
+                Assert.Contains(new ProductInfoHeaderValue("agent1", ""), client.HttpClient.DefaultRequestHeaders.UserAgent);
+                Assert.Contains(new ProductInfoHeaderValue("agent1", "1.0.0"), client.HttpClient.DefaultRequestHeaders.UserAgent);
+                Assert.Contains(new ProductInfoHeaderValue("agent1", "1.9.8"), client.HttpClient.DefaultRequestHeaders.UserAgent);
+                Assert.Contains(new ProductInfoHeaderValue("agent2", ""), client.HttpClient.DefaultRequestHeaders.UserAgent);
             }
             finally
             {

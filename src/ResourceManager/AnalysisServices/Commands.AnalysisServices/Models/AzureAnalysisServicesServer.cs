@@ -15,7 +15,7 @@
 using System;
 using Microsoft.Azure.Management.Analysis.Models;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {
@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public string BackupBlobContainerUri { get; set; }
 
+        public string ResourceGroupName { get; set; }
+
         public ServerSku Sku { get; set; }
 
         public System.Collections.Generic.IDictionary<string, string> Tag { get; set; }
@@ -47,7 +49,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
 
-        internal static AzureAnalysisServicesServerDetail FromAnalysisServicesServer(AnalysisServicesServer server)
+        public ServerGateway GatewayInfo { get; set; }
+
+        internal static AzureAnalysisServicesServer FromAnalysisServicesServer(AnalysisServicesServer server)
         {
             if (server == null)
             {
@@ -77,7 +81,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 config = new PsAzureAnalysisServicesFirewallConfig(enablePowerBIService, rules);
             }
 
-            return new AzureAnalysisServicesServerDetail()
+            ResourceIdentifier resourceIdentifier = new ResourceIdentifier(server.Id);
+
+            return new AzureAnalysisServicesServer()
             {
                 AsAdministrators = server.AsAdministrators == null
                     ? new List<string>()
@@ -89,29 +95,26 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 ProvisioningState = server.ProvisioningState,
                 Id = server.Id,
                 ServerFullName = server.ServerFullName,
-                Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku) : new Dictionary<string, string>(),
+                Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku) : new ServerSku(),
                 Tag = server.Tags != null ? new Dictionary<string, string>(server.Tags) : new Dictionary<string, string>(),
                 BackupBlobContainerUri = server.BackupBlobContainerUri == null ? String.Empty : server.BackupBlobContainerUri,
+                ResourceGroupName = resourceIdentifier.ResourceGroupName,
                 DefaultConnectionMode = server.QuerypoolConnectionMode.ToString(),
-                FirewallConfig = config
+                FirewallConfig = config,
+                GatewayInfo = server.GatewayDetails != null ? ServerGateway.FromResourceGateway(server.GatewayDetails) : null
             };
         }
 
-        internal static List<AzureAnalysisServicesServerDetail> FromAnalysisServicesServerCollection(List<AnalysisServicesServer> list)
+        internal static List<AzureAnalysisServicesServer> FromAnalysisServicesServerCollection(List<AnalysisServicesServer> list)
         {
             if (list == null)
             {
                 return null;
             }
 
-            var listAzureAnalysisServicesServer = new List<AzureAnalysisServicesServerDetail>();
+            var listAzureAnalysisServicesServer = new List<AzureAnalysisServicesServer>();
             list.ForEach(server => listAzureAnalysisServicesServer.Add(FromAnalysisServicesServer(server)));
             return listAzureAnalysisServicesServer;
         }
-    }
-
-    public class AzureAnalysisServicesServerDetail : AzureAnalysisServicesServer
-    {
-        public new System.Collections.Generic.IDictionary<string, string> Sku { get; set; }
     }
 }

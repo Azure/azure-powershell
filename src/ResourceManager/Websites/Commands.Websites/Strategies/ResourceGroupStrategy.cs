@@ -13,7 +13,6 @@
 
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Resources
 {

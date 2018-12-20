@@ -23,11 +23,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
-        VerbsData.Update,
-        EventGridEventSubscriptionVerb,
+        "Update",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSubscription",
         SupportsShouldProcess = true,
         DefaultParameterSetName = ResourceGroupNameParameterSet),
-     OutputType(typeof(PSEventSubscription))]
+    OutputType(typeof(PSEventSubscription))]
+    
     public class UpdateAzureEventGridSubscription : AzureEventGridCmdletBase
     {
         [Parameter(

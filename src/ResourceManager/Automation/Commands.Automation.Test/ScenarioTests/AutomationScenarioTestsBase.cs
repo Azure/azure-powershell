@@ -12,52 +12,85 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Automation;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 
 namespace Microsoft.Azure.Commands.Automation.Test
 {
     public abstract class AutomationScenarioTestsBase : RMTestBase
     {
-        private EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper _helper;
 
         protected AutomationScenarioTestsBase()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected void SetupManagementClients(MockContext context)
         {
-            var automationManagementClient = GetAutomationManagementClient();
-
-            helper.SetupManagementClients(automationManagementClient);
+            var resourceManagementClient = GetResourceManagementClient(context);
+            var armStorageManagementClient = GetArmStorageManagementClient(context);
+            var automationManagementClient = GetAutomationManagementClient(context);
+            _helper.SetupSomeOfManagementClients(resourceManagementClient, armStorageManagementClient, automationManagementClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            using (UndoContext context = UndoContext.Current)
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
+
+            HttpMockServer.RecordsDirectory = GetSessionRecordsDirectory();
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
+                SetupManagementClients(context);
 
-                SetupManagementClients();
+                var callingClassName = callingClassType ?
+                    .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
+                    .Last();
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-
-                helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
-                    helper.RMProfileModule,
-                    helper.GetRMModulePath(@"AzureRM.Automation.psd1"));
-
-                helper.RunPowerShellTest(scripts);
+                var scriptLocation = Path.Combine("ScenarioTests", callingClassName + ".ps1");
+                _helper.SetupModules(
+                    scriptLocation,
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.Automation.psd1"), "AzureRM.Resources.ps1");
+                _helper.RunPowerShellTest(scripts);
             }
         }
 
-        protected AutomationManagementClient GetAutomationManagementClient()
+        protected StorageManagementClient GetArmStorageManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<AutomationManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected AutomationClient GetAutomationManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<AutomationClient>
+                (Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private string GetSessionRecordsDirectory()
+        {
+            // Note: if you are developing new tests, set the recording directory to a local path.
+            //       this is the location where the json files will be created.
+            var recordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            return recordsDirectory;
         }
     }
 }
