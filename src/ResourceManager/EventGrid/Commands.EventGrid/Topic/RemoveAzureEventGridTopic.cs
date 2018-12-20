@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         DefaultParameterSetName = TopicNameParameterSet,
         SupportsShouldProcess = true),
     OutputType(typeof(bool))]
-    
+
     public class RemoveAzureRmEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(Mandatory = true,
