@@ -3,20 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.StorageSync.Netcore", "Commands.StorageSync\Commands.StorageSync.Netcore.csproj", "{EE1767F4-8E0F-424E-9588-9082A521BB90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageSync", "Commands.StorageSync\StorageSync.csproj", "{EE1767F4-8E0F-424E-9588-9082A521BB90}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F5988A53-297A-499C-8FB8-A8CE4CCB6A32} = {F5988A53-297A-499C-8FB8-A8CE4CCB6A32}
 		{475F75DA-134E-4A4A-A6E7-B332B0FB4D4F} = {475F75DA-134E-4A4A-A6E7-B332B0FB4D4F}
 		{9946CDDD-AFE3-4479-8A0A-7AC66C707FB6} = {9946CDDD-AFE3-4479-8A0A-7AC66C707FB6}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Netcore", "..\Profile\Commands.Profile\Commands.Profile.Netcore.csproj", "{9946CDDD-AFE3-4479-8A0A-7AC66C707FB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Profile\Commands.Profile\Accounts.csproj", "{9946CDDD-AFE3-4479-8A0A-7AC66C707FB6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools.Common.Netcore", "..\..\..\tools\Tools.Common\Tools.Common.Netcore.csproj", "{F5988A53-297A-499C-8FB8-A8CE4CCB6A32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools.Common", "..\..\..\tools\Tools.Common\Tools.Common.csproj", "{F5988A53-297A-499C-8FB8-A8CE4CCB6A32}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StaticAnalysis.Netcore", "..\..\..\tools\StaticAnalysis\StaticAnalysis.Netcore.csproj", "{475F75DA-134E-4A4A-A6E7-B332B0FB4D4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StaticAnalysis", "..\..\..\tools\StaticAnalysis\StaticAnalysis.csproj", "{475F75DA-134E-4A4A-A6E7-B332B0FB4D4F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.StorageSync.Test.Netcore", "Commands.StorageSync.Test\Commands.StorageSync.Test.Netcore.csproj", "{DE6F6163-4D2A-444A-81F0-BA0EA957FBF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageSync.Test", "Commands.StorageSync.Test\StorageSync.Test.csproj", "{DE6F6163-4D2A-444A-81F0-BA0EA957FBF1}"
 	ProjectSection(ProjectDependencies) = postProject
 		{39BCFA32-3717-4CFF-A76B-FA76C3410876} = {39BCFA32-3717-4CFF-A76B-FA76C3410876}
 		{EE1767F4-8E0F-424E-9588-9082A521BB90} = {EE1767F4-8E0F-424E-9588-9082A521BB90}
