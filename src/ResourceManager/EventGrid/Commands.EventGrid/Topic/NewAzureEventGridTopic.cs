@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         EventGridTopicVerb,
         SupportsShouldProcess = true,
         DefaultParameterSetName = TopicNameParameterSet),
-     OutputType(typeof(PSTopic))]
+      OutputType(typeof(PSTopic))]
     public class NewAzureEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(
