@@ -116,20 +116,20 @@ namespace VersionController.Models
         {
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var galleryModuleDirectory = _fileHelper.GalleryModuleDirectory;
-            Console.WriteLine("Saving Az.Profile from the PowerShell Gallery to check common code changes. This will take a few seconds.");
+            Console.WriteLine("Saving Az.Accounts from the PowerShell Gallery to check common code changes. This will take a few seconds.");
             Version versionBump = Version.PATCH;
             var issueLogger = _logger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
             IEnumerable<string> commonAssemblies = null;
             using (PowerShell powershell = PowerShell.Create())
             {
-                powershell.AddScript("Save-Module -Name Az.Profile -Repository PSGallery -Path " + outputModuleDirectory );
+                powershell.AddScript("Save-Module -Name Az.Accounts -Repository PSGallery -Path " + outputModuleDirectory );
                 var cmdletResult = powershell.Invoke();
             }
 
             var galleryModuleVersionDirectory = _fileHelper.GalleryModuleVersionDirectory;
             using (PowerShell powershell = PowerShell.Create())
             {
-                powershell.AddScript("$metadata = Test-ModuleManifest -Path " + Path.Combine(galleryModuleVersionDirectory, "Az.Profile.psd1") + ";$metadata.RequiredAssemblies");
+                powershell.AddScript("$metadata = Test-ModuleManifest -Path " + Path.Combine(galleryModuleVersionDirectory, "Az.Accounts.psd1") + ";$metadata.RequiredAssemblies");
                 var cmdletResult = powershell.Invoke();
                 commonAssemblies = cmdletResult.Select(c => c.ToString().Substring(2)).Where(s => Regex.IsMatch(s, "Microsoft.*.Commands.*"));
             }
@@ -143,7 +143,7 @@ namespace VersionController.Models
                     var oldAssemblyPath = Directory.GetFiles(galleryModuleDirectory, assemblyName, SearchOption.AllDirectories).FirstOrDefault();
                     if (oldAssemblyPath == null)
                     {
-                        throw new Exception("Could not find assembly " + assemblyName + " in the folder saved from the PowerShell Gallery for Az.Profile.");
+                        throw new Exception("Could not find assembly " + assemblyName + " in the folder saved from the PowerShell Gallery for Az.Accounts.");
                     }
 
                     var oldAssembly = Assembly.LoadFrom(oldAssemblyPath);
@@ -228,7 +228,7 @@ namespace VersionController.Models
             }
             finally
             {
-                var directories = Directory.GetDirectories(outputModuleDirectory, "Az.Profile", SearchOption.TopDirectoryOnly);
+                var directories = Directory.GetDirectories(outputModuleDirectory, "Az.Accounts", SearchOption.TopDirectoryOnly);
                 foreach (var directory in directories)
                 {
                     try

@@ -88,7 +88,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -142,7 +142,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -256,7 +256,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -367,7 +367,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -385,7 +385,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -403,7 +403,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -421,7 +421,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -521,6 +521,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -612,7 +613,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -636,7 +637,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -660,7 +661,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -766,6 +767,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -812,7 +814,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -836,7 +838,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -964,7 +966,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -988,7 +990,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1012,7 +1014,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1118,6 +1120,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1212,7 +1215,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1340,7 +1343,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1364,7 +1367,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1388,7 +1391,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1494,6 +1497,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1644,7 +1648,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1668,7 +1672,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1692,7 +1696,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1798,6 +1802,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1994,7 +1999,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2068,7 +2073,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2092,7 +2097,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2116,7 +2121,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2222,6 +2227,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2322,7 +2328,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2495,7 +2501,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2519,7 +2525,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2543,7 +2549,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2649,6 +2655,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3022,7 +3029,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3122,6 +3129,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3190,7 +3198,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3296,6 +3304,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3393,7 +3402,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3499,6 +3508,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3630,7 +3640,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3736,6 +3746,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3867,7 +3878,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3973,6 +3984,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4043,7 +4055,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4149,6 +4161,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4195,7 +4208,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4301,6 +4314,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4438,7 +4452,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4453,6 +4467,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -4494,7 +4509,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4515,6 +4530,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4558,6 +4574,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5027,7 +5044,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5127,6 +5144,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -5514,7 +5532,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5620,6 +5638,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5690,7 +5709,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5796,6 +5815,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5842,7 +5862,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5948,6 +5968,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6411,7 +6432,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6426,6 +6447,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -6835,7 +6857,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6856,6 +6878,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7073,9 +7096,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant, Microsoft.Azure.PowerShell.Authentication.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Id": "System.String",
-              "Directory": "System.String",
-              "TenantId": "System.String"
+              "TenantId": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7315,7 +7337,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7333,7 +7355,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7433,6 +7455,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -7610,7 +7633,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7634,7 +7657,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7740,6 +7763,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7789,9 +7813,8 @@
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant, Microsoft.Azure.PowerShell.Authentication.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Id": "System.String",
-                    "Directory": "System.String",
-                    "TenantId": "System.String"
+                    "TenantId": "System.String",
+                    "Id": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7918,7 +7941,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7942,7 +7965,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8048,6 +8071,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8240,7 +8264,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8264,7 +8288,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8370,6 +8394,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8521,7 +8546,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8545,7 +8570,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8651,6 +8676,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8775,7 +8801,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8799,7 +8825,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8905,6 +8931,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9002,7 +9029,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9026,7 +9053,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9132,6 +9159,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9203,6 +9231,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -9241,6 +9270,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9310,6 +9340,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -9348,6 +9379,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9828,7 +9860,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9981,7 +10013,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10081,6 +10113,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -10272,7 +10305,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10378,6 +10411,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10804,7 +10838,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11029,7 +11063,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11135,6 +11169,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11431,7 +11466,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11537,6 +11572,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11704,6 +11740,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -11766,6 +11803,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11936,7 +11974,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -12036,6 +12074,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -12101,7 +12140,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12207,6 +12246,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12687,7 +12727,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -12840,7 +12880,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -12940,6 +12980,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -13131,7 +13172,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13237,6 +13278,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -13663,7 +13705,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13888,7 +13930,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13994,6 +14036,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14290,7 +14333,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14396,6 +14439,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14465,6 +14509,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -14503,6 +14548,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14700,7 +14746,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -14715,6 +14761,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -14804,7 +14851,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14825,6 +14872,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14919,7 +14967,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14940,6 +14988,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14986,7 +15035,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15007,6 +15056,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15063,9 +15113,8 @@
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant, Microsoft.Azure.PowerShell.Authentication.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Id": "System.String",
-              "Directory": "System.String",
-              "TenantId": "System.String"
+              "TenantId": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15154,6 +15203,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -15219,6 +15269,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15290,11 +15341,13 @@
       "Parameters": [
         {
           "Name": "PassThru",
-          "AliasList": [],
+          "AliasList": [
+            "yo"
+          ],
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15309,6 +15362,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -15346,11 +15400,13 @@
             {
               "ParameterMetadata": {
                 "Name": "PassThru",
-                "AliasList": [],
+                "AliasList": [
+                  "yo"
+                ],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15371,6 +15427,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15424,7 +15481,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
             "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ErrorCategory": "System.Management.Automation.ErrorCategoryInfo",
               "ErrorDetails": "System.Management.Automation.ErrorDetails",
@@ -15481,7 +15538,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
             "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "InnerException": "System.Boolean",
               "Exception": "System.Exception",
@@ -15551,7 +15608,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
             "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequestMessage": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo",
               "ServerResponse": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo",
@@ -15647,7 +15704,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.ErrorRecord[]",
-            "AssemblyQualifiedName": "System.Management.Automation.ErrorRecord[], System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.ErrorRecord[], System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "System.Management.Automation.ErrorRecord",
             "GenericTypeArguments": [],
@@ -15665,7 +15722,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15680,6 +15737,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -15721,7 +15779,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.ErrorRecord[]",
-                  "AssemblyQualifiedName": "System.Management.Automation.ErrorRecord[], System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.ErrorRecord[], System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "System.Management.Automation.ErrorRecord",
                   "GenericTypeArguments": [],
@@ -15742,6 +15800,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15788,7 +15847,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15809,6 +15868,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15852,6 +15912,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15926,7 +15987,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15944,7 +16005,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15962,7 +16023,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15980,7 +16041,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -16080,6 +16141,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -16121,7 +16183,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16145,7 +16207,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16169,7 +16231,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16193,7 +16255,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16299,6 +16361,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16345,7 +16408,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16369,7 +16432,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16393,7 +16456,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16499,6 +16562,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16552,7 +16616,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSResourceGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSResourceGroup, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSResourceGroup, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -16609,7 +16673,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -16624,6 +16688,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -16665,7 +16730,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16686,6 +16751,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16729,6 +16795,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16782,7 +16849,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSResourceGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSResourceGroup, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSResourceGroup, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -16857,7 +16924,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -16875,7 +16942,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -16975,6 +17042,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -17040,7 +17108,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17064,7 +17132,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17170,6 +17238,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17216,7 +17285,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17240,7 +17309,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17346,6 +17415,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17458,7 +17528,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -17473,6 +17543,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -17566,7 +17637,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17587,6 +17658,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17699,7 +17771,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -17714,6 +17786,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -17807,7 +17880,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17828,6 +17901,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17939,7 +18013,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -18039,6 +18113,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -18080,7 +18155,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -18186,6 +18261,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18297,7 +18373,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -18397,6 +18473,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -18438,7 +18515,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -18544,6 +18621,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18655,7 +18733,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -18755,6 +18833,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -18796,7 +18875,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -18902,6 +18981,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18974,7 +19054,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -18992,7 +19072,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19010,7 +19090,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19110,6 +19190,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -19151,7 +19232,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19175,7 +19256,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19199,7 +19280,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19305,6 +19386,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19517,7 +19599,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19535,7 +19617,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19553,7 +19635,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19653,6 +19735,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -19779,7 +19862,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19803,7 +19886,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19827,7 +19910,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19933,6 +20016,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19979,7 +20063,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20003,7 +20087,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20027,7 +20111,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20133,6 +20217,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -20345,7 +20430,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -20363,7 +20448,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -20381,7 +20466,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -20481,6 +20566,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -20607,7 +20693,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20631,7 +20717,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20655,7 +20741,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20761,6 +20847,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -20807,7 +20894,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20831,7 +20918,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20855,7 +20942,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20961,6 +21048,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -21173,7 +21261,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -21273,6 +21361,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -21399,7 +21488,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21505,6 +21594,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -21551,7 +21641,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21657,6 +21747,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -22001,8 +22092,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22594,7 +22684,7 @@
     "System.Management.Automation.ErrorCategoryInfo": {
       "Namespace": "System.Management.Automation",
       "Name": "System.Management.Automation.ErrorCategoryInfo",
-      "AssemblyQualifiedName": "System.Management.Automation.ErrorCategoryInfo, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "System.Management.Automation.ErrorCategoryInfo, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22604,7 +22694,7 @@
     "System.Management.Automation.ErrorDetails": {
       "Namespace": "System.Management.Automation",
       "Name": "System.Management.Automation.ErrorDetails",
-      "AssemblyQualifiedName": "System.Management.Automation.ErrorDetails, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "System.Management.Automation.ErrorDetails, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22614,7 +22704,7 @@
     "System.Management.Automation.InvocationInfo": {
       "Namespace": "System.Management.Automation",
       "Name": "System.Management.Automation.InvocationInfo",
-      "AssemblyQualifiedName": "System.Management.Automation.InvocationInfo, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "System.Management.Automation.InvocationInfo, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22634,7 +22724,7 @@
     "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo": {
       "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
       "Name": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
         "Verb": "System.String",
@@ -22731,7 +22821,7 @@
     "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo": {
       "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
       "Name": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo, Microsoft.Azure.Commands.Profile, Version=5.8.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
         "ResponseStatusCode": "System.String",
@@ -22792,7 +22882,7 @@
     "System.Management.Automation.ErrorRecord": {
       "Namespace": "System.Management.Automation",
       "Name": "System.Management.Automation.ErrorRecord",
-      "AssemblyQualifiedName": "System.Management.Automation.ErrorRecord, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "System.Management.Automation.ErrorRecord, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
