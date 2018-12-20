@@ -75,7 +75,7 @@ namespace VersionController.Models
             var moduleName = _fileHelper.ModuleName;
             var splitVersion = _oldVersion.Split('.').Select(v => int.Parse(v)).ToArray();
             var versionBump = _metadataHelper.GetVersionBumpUsingSerialized();
-            if (string.Equals(moduleName, "Az.Profile"))
+            if (string.Equals(moduleName, "Az.Accounts"))
             {
                 var commonCodeVersionBump = _metadataHelper.GetVersionBumpForCommonCode();
                 if (commonCodeVersionBump == Version.MAJOR)
@@ -162,7 +162,9 @@ namespace VersionController.Models
             var file = File.ReadAllLines(rollupModuleManifestPath);
             var pattern = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)RequiredVersion(\s*)=(\s*)(['\""])" + _oldVersion + @"(['\""])";
             var updatedFile = file.Select(l => Regex.Replace(l, pattern, "ModuleName = '" + moduleName + "'; RequiredVersion = '" + _newVersion + "'"));
-            File.WriteAllLines(rollupModuleManifestPath, updatedFile);
+            var pattern2 = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)ModuleVersion(\s*)=(\s*)(['\""])" + _oldVersion + @"(['\""])";
+            var updatedFile2 = updatedFile.Select(l => Regex.Replace(l, pattern2, "ModuleName = '" + moduleName + "'; ModuleVersion = '" + _newVersion + "'"));
+            File.WriteAllLines(rollupModuleManifestPath, updatedFile2);
         }
 
         /// <summary>

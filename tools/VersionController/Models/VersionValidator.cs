@@ -182,7 +182,7 @@ namespace VersionController.Models
             }
 
             Version version = _metadataHelper.GetVersionBumpUsingGallery();
-            if (string.Equals(moduleName, "Az.Profile"))
+            if (string.Equals(moduleName, "Az.Accounts"))
             {
                 var commonCodeVersion = _metadataHelper.GetVersionBumpForCommonCode();
                 if (commonCodeVersion == Version.MAJOR)
