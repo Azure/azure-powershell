@@ -161,7 +161,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (FullUri)
             {
-                string fullUri = blob.Uri.ToString() + sasToken;
+                string fullUri = blob.SnapshotQualifiedUri.ToString();
+                if (blob.IsSnapshot)
+                {
+                    // Since snapshot URL already has '?', need remove '?' in the first char of sas
+                    fullUri = fullUri + "&" + sasToken.Substring(1);
+                }
+                else
+                {
+                    fullUri = fullUri + sasToken;
+                }
                 WriteObject(fullUri);
             }
             else
