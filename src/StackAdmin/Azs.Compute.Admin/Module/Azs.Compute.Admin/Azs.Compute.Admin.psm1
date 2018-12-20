@@ -37,8 +37,5 @@ if (Test-Path -Path $ClrPath -PathType Container) {
 $allPs1FilesPath = Join-Path -Path $PSScriptRoot -ChildPath 'Generated.PowerShell.Commands' | Join-Path -ChildPath '*.ps1'
 Get-ChildItem -Path $allPs1FilesPath -Recurse -File | ForEach-Object { . $_.FullName}
 
-$script:aliases = @{
-    "New-DataDiskObject" = "New-DataDiskObject";
-}
-
-New-Alias -Name 'New-DataDiskObject' -Value 'New-DataDiskObject' -Description 'Azs.Compute.Admin Alias'
+# Aliases go below here
+New-Alias -Name 'New-DataDiskObject' -Value 'New-AzsDataDiskObject' -Description 'Azs.Compute.Admin Alias'
