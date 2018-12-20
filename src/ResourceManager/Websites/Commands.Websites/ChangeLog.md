@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed a date parsing bug in `Get-AzDeletedWebApp`
 
 ## Version 1.0.0
 * General availability of `Az.Websites` module
