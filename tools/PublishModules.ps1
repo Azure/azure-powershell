@@ -104,7 +104,7 @@ function Get-Directories {
     )
 
     PROCESS {
-        $packageFolder = "$PSScriptRoot\..\artifacts\Package"
+        $packageFolder = "$PSScriptRoot\..\artifacts"
 
         $resourceManagerRootFolder = "$packageFolder\..\$buildConfig"
 
@@ -861,12 +861,12 @@ if ($Scope -eq 'Stack') {
 }
 # Set temporary repo location
 $PublishLocal = test-path $repositoryLocation
-[string]$tempRepoPath = (Join-Path $packageFolder -ChildPath "Package")
+[string]$tempRepoPath = "$packageFolder"
 if ($PublishLocal) {
     if ($Scope -eq 'Stack') {
         $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "Stack")
     } else {
-        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "..\artifacts\Package")
+        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "..\artifacts")
     }
 }
 
