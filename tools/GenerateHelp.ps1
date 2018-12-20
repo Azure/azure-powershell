@@ -11,6 +11,7 @@ Param(
     [string]$FilteredModules
 )
 
+$ResourceManagerFolders = Get-ChildItem -Path ".\src\ResourceManager"
 Import-Module "$PSScriptRoot\HelpGeneration\HelpGeneration.psm1"
 $UnfilteredHelpFolders = Get-ChildItem "help" -Recurse -Directory | where { $_.FullName -like "*$BuildConfig*" -and $_.FullName -notlike "*Stack*" }
 $FilteredHelpFolders = $UnfilteredHelpFolders
@@ -36,6 +37,22 @@ if ($ValidateMarkdownHelp)
         New-Item -Path "$PSScriptRoot\..\src\Package" -Name "Exceptions" -ItemType Directory
     }
 
+    $Exceptions = @()
+    foreach ($ServiceFolder in $ResourceManagerFolders)
+    {
+        $HelpFolder = Get-ChildItem -Path $ServiceFolder -Filter "help" -Recurse -Directory
+        if ($HelpFolder -eq $null)
+        {
+            $Exceptions += $ServiceFolder.Name
+        }
+    }
+
+    if ($Exceptions.Count -gt 0)
+    {
+        $Services = $Exceptions -Join ", "
+        throw "No help folder found in the following services: $Services"
+    }
+
     $SuppressedExceptionsPath = "$PSScriptRoot\..\src\Package\Exceptions"
     $NewExceptionsPath = "$PSScriptRoot\..\src\Package"
     Copy-Item -Path "$PSScriptRoot\HelpGeneration\Exceptions\ValidateHelpIssues.csv" -Destination $SuppressedExceptionsPath
@@ -50,7 +67,7 @@ if ($ValidateMarkdownHelp)
     }
     else
     {
-        Remove-Item -Path "$NewExceptionsPath\ValidateHelpIssues.csv" -Force   
+        Remove-Item -Path "$NewExceptionsPath\ValidateHelpIssues.csv" -Force
     }
 }
 
