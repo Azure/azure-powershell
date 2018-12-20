@@ -310,7 +310,7 @@
     <MSBuild Projects="@(LocalBuildTasks)" Targets="Build" Properties="Configuration=$(Configuration);Platform=Any CPU" />
   </Target>
 
-  <Target Name="BuildInstaller" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'">
+  <Target Name="BuildInstaller" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
     <Exec Command="$(PowerShellCommandPrefix) &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(PackageDirectory) -InstallationPolicy Trusted &quot; " />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryRoot)\setup\generate.ps1 -repository MSIcreationrepository &quot; " />
     <Exec Command="$(PowerShellCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot; " />
