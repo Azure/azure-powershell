@@ -40,7 +40,7 @@ if ($ValidateMarkdownHelp)
     $Exceptions = @()
     foreach ($ServiceFolder in $ResourceManagerFolders)
     {
-        $HelpFolder = (Get-ChildItem -Path $ServiceFolder -Filter "help" -Recurse -Directory)
+        $HelpFolder = (Get-ChildItem -Path $ServiceFolder.FullName -Filter "help" -Recurse -Directory)
         if ($HelpFolder -eq $null)
         {
             $Exceptions += $ServiceFolder.Name
