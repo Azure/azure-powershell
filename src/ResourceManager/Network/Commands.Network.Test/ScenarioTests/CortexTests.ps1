@@ -271,7 +271,7 @@ function Test-CortexExpressRouteCRUD
         Write-Debug "Created Virtual Hub virtualHub.Name successfully"
 
         # Create the ExpressRouteGateway
-        $createdExpressRouteGateway = New-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName -VirtualHub $virtualHub -MinScaleUnits 2 -MaxScaleUnits 4
+        $createdExpressRouteGateway = New-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName -VirtualHub $virtualHub -MinScaleUnits 2
         Write-Debug "Created ExpressRoute Gateway $expressRouteGatewayName successfully"
         $expressRouteGateway = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName
         Assert-NotNull $expressRouteGateway
@@ -309,16 +309,15 @@ function Test-CortexExpressRouteCRUD
 
         # Clean up
         Remove-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ExpressRouteGatewayName $expressRouteGatewayName -Name $expressRouteConnectionName -Force
-        Assert-ThrowsContains { Get-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ExpressRouteGatewayName $expressRouteGatewayName -Name $expressRouteConnectionName } "NotFound"
+        Assert-ThrowsLike { Get-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ExpressRouteGatewayName $expressRouteGatewayName -Name $expressRouteConnectionName } "*Not*Found*"
 
         Remove-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName -Force
-        Assert-ThrowsContains { Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName } "NotFound"
+        Assert-ThrowsLike { Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName } "*Not*Found*"
 
         Remove-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force
-        Assert-ThrowsContains { Get-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName } "NotFound"
 
         Remove-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force
-        Assert-ThrowsContains { Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName } "NotFound"
+        Assert-ThrowsLike { Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName } "*Not*Found*"
     }
     finally
     {

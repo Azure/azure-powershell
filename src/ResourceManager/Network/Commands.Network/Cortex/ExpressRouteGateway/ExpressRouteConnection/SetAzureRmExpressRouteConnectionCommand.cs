@@ -140,6 +140,12 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
                 expressRouteConnectionToModify.RoutingWeight = this.RoutingWeight;
             }
 
+            // TODO: drop this hack after ER Gateways backend updated with all the functionality exposed
+            if (expressRouteGateway.AutoScaleConfiguration.Bounds.Max < expressRouteGateway.AutoScaleConfiguration.Bounds.Min)
+            {
+                expressRouteGateway.AutoScaleConfiguration.Bounds.Max = expressRouteGateway.AutoScaleConfiguration.Bounds.Min;
+            }
+
             WriteVerbose(string.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
 
             ConfirmAction(

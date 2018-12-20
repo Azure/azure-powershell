@@ -106,6 +106,12 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.ExpressRouteConnectionNotFound, this.Name);
             }
 
+            // TODO: drop this hack after ER Gateways backend updated with all the functionality exposed
+            if (parentGateway.AutoScaleConfiguration.Bounds.Max < parentGateway.AutoScaleConfiguration.Bounds.Min)
+            {
+                parentGateway.AutoScaleConfiguration.Bounds.Max = parentGateway.AutoScaleConfiguration.Bounds.Min;
+            }
+
             if (parentGateway.ExpressRouteConnections.Any())
             {
                 var expressRouteConnectionToRemove = parentGateway.ExpressRouteConnections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
