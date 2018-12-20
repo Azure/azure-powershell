@@ -170,6 +170,14 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
 
                         var filePath = executingPath + "\\SerializedCmdlets\\" + fileName;
+
+                        var serialize = false;
+                        if (serialize)
+                        {
+                            SerializeCmdlets(filePath, newModuleMetadata);
+                            continue;
+                        }
+
                         if (!File.Exists(filePath))
                         {
                             continue;
