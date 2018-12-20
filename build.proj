@@ -372,7 +372,7 @@
           Condition="'$(Scope)' != 'Stack'"
           ContinueOnError="false" />
 
-    <CallTarget Targets="BuildInstaller" Condition="'$(Scope)' =='All'" />
+    <CallTarget Targets="BuildInstaller" Condition="'$(Scope)' =='All' or '$(Scope)' == 'Netcore'" />
   </Target>
 
   <Target Name="Test">
