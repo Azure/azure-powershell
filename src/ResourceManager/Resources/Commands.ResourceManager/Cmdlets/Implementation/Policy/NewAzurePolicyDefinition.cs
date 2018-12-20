@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyDefinitionModeHelp)]
         [ValidateNotNullOrEmpty]
-        public PolicyDefinitionMode? Mode { get; set; }
+        public PolicyDefinitionMode Mode { get; set; }
 
         /// <summary>
         /// Gets or sets the new policy definition management group name parameter.
@@ -90,6 +90,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = PolicyCmdletBase.SubscriptionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyDefinitionSubscriptionIdHelp)]
         [ValidateNotNullOrEmpty]
         public Guid? SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Instantiates a new instance of the NewAzurePolicyDefinition cmdlet
+        /// </summary>
+        public NewAzurePolicyDefinitionCmdlet()
+        {
+            this.Mode = PolicyDefinitionMode.NotSpecified;
+        }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -146,7 +154,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     PolicyRule = JObject.Parse(this.GetObjectFromParameter(this.Policy).ToString()),
                     Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
                     Parameters = this.Parameter == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Parameter).ToString()),
-                    Mode = this.Mode.HasValue ? this.Mode : PolicyDefinitionMode.All
+                    Mode = this.Mode != PolicyDefinitionMode.NotSpecified ? this.Mode : PolicyDefinitionMode.All
                 }
             };
 

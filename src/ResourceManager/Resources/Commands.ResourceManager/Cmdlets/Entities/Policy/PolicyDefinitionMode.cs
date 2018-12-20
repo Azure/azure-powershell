@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         /// <summary>
         /// The policy definition mode is all.
         /// </summary>
-        All
+        All,
+
+        /// <summary>
+        /// The policy definition mode is not known.
+        /// </summary>
+        NotSpecified
     }
 }

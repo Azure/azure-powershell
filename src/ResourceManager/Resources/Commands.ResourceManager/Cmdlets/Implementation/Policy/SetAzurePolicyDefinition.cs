@@ -81,11 +81,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Parameter { get; set; }
 
         /// <summary>
-        /// Gets or sets the new policy definition mode parameter.
+        /// Gets or sets the policy definition mode parameter.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyDefinitionModeHelp)]
         [ValidateNotNullOrEmpty]
-        public PolicyDefinitionMode? Mode { get; set; }
+        public PolicyDefinitionMode Mode { get; set; }
 
         /// <summary>
         /// Gets or sets the policy definition management group name parameter.
@@ -100,6 +100,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = PolicyCmdletBase.SubscriptionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyDefinitionSubscriptionIdHelp)]
         [ValidateNotNullOrEmpty]
         public Guid? SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Instantiates a new instance of the SetAzurePolicyDefinition cmdlet
+        /// </summary>
+        public SetAzurePolicyDefinitionCmdlet()
+        {
+            this.Mode = PolicyDefinitionMode.NotSpecified;
+        }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -160,7 +168,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     PolicyRule = string.IsNullOrEmpty(policyRuleJson) ? null : JObject.Parse(policyRuleJson),
                     Metadata = string.IsNullOrEmpty(metaDataJson) ? null : JObject.Parse(metaDataJson),
                     Parameters = string.IsNullOrEmpty(parameterJson) ? null : JObject.Parse(parameterJson),
-                    Mode = this.Mode ?? existingMode
+                    Mode = this.Mode != PolicyDefinitionMode.NotSpecified ? this.Mode : existingMode
                 }
             };
 
