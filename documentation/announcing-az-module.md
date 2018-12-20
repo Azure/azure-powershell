@@ -149,7 +149,7 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 | AzureRM.RedisCache | Az.RedisCache |
 | AzureRM.Relay | Az.Relay |
 | AzureRM.Reservations | Az.Reservations |
-| AzureRM.Resources | Az. Resources |
+| AzureRM.Resources | Az.Resources |
 | ~~AzureRM.Scheduler~~ | **REMOVED** |
 | AzureRM.Search | Az.Search |
 | AzureRM.Security | Az.Security |
