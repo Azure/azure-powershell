@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -56,6 +56,13 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
         public void SetSubscriptionLevelResource()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecurityContact-SubscriptionLevelResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetSubscriptionLevelResourceSecondary()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecurityContact-SubscriptionLevelResource-Secondary");
         }
 
         [Fact]

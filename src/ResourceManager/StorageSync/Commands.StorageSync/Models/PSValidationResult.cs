@@ -19,6 +19,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
     using System;
     using System.Collections.Generic;
 
+    public enum PSValidationKind
+    {
+        SystemValidation,
+        NamespaceValidation
+    }
+
     public enum PSValidationType
     {
         FilenameCharacters,
@@ -42,6 +48,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
     public class PSValidationResult
     {
         #region Fields and Properties
+        public PSValidationKind Kind { get; set; }
         public PSValidationType Type { get; set; }
         public PSResultLevel Level { get; set; }
         public List<int> Positions { get; set; }
@@ -53,6 +60,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
 
         public PSValidationResult(IValidationResult result)
         {
+            this.Kind = this.Convert(result.Kind);
             this.Type = this.Convert(result.Type);
             this.Level = this.Convert(result.Level);
             this.Positions = result.Positions != null ? new List<int>(result.Positions) : null;
@@ -110,6 +118,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Models
                     throw new ArgumentException($"{value.GetType().Name} value {value} is unsupported");
             }
         }
+
+        private PSValidationKind Convert(ValidationKind value)
+        {
+            switch (value)
+            {
+                case ValidationKind.SystemValidation:
+                    return PSValidationKind.SystemValidation;
+                case ValidationKind.NamespaceValidation:
+                    return PSValidationKind.NamespaceValidation;
+                default:
+                    throw new ArgumentException($"{value.GetType().Name} value {value} is unsupported");
+            }
+        }
+
         #endregion
     }
 }

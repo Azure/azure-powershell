@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services;
 namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlServerKeyVaultKey cmdlet
+    /// Defines the Get-AzSqlServerKeyVaultKey cmdlet
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerKeyVaultKey", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerKeyVaultKeyModel))]

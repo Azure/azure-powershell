@@ -1,9 +1,9 @@
 <!--
     Please leave this section at the top of the change log.
 
-    Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
+    Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
-    ## Current Release
+    ## Upcoming Release
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
@@ -17,23 +17,7 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Release
+## Upcoming Release
 
-## Version 1.0.5
-* Fixed issue with default resource groups not being set.
-* Updated common runtime assemblies
-
-## Version 1.0.4
-* Fixed issue with default resource groups not being set.
-
-## Version 1.0.3
-* Updated to the latest version of the Azure ClientRuntime.
-
-## Version 1.0.2
-* Updated help files to include full parameter types and correct input/output types.
-
-## Version 1.0.1
-* Fixed formatting of OutputType in help files
-
-## Version 1.0.0
-* First release of Maps management cmdlets
+## Version 0.7.1
+* Added support for `S1` SKU

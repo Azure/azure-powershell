@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
 
+        public List<PSApplicationGatewayRewriteRuleSet> RewriteRuleSets { get; set; }
+
         public List<PSApplicationGatewayRedirectConfiguration> RedirectConfigurations { get; set; }
 
         public PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
@@ -72,6 +74,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public PSManagedServiceIdentity Identity { get; set; }
 
         [JsonIgnore]
         public string GatewayIpConfigurationsText
@@ -119,6 +124,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string HttpListenersText
         {
             get { return JsonConvert.SerializeObject(HttpListeners, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string RewriteRuleSetsText
+        {
+            get { return JsonConvert.SerializeObject(RewriteRuleSets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

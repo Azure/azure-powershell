@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools?api-version=2018-03-01.6.1",
-      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
+      "RequestUri": "/pools?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTgtMDgtMDEuNy4w",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"changeospool\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": true\r\n}",
       "RequestHeaders": {
@@ -68,8 +68,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools/changeospool?api-version=2018-03-01.6.1",
-      "EncodedRequestUri": "L3Bvb2xzL2NoYW5nZW9zcG9vbD9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLjYuMQ==",
+      "RequestUri": "/pools/changeospool?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L3Bvb2xzL2NoYW5nZW9zcG9vbD9hcGktdmVyc2lvbj0yMDE4LTA4LTAxLjcuMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -126,8 +126,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/changeospool?api-version=2018-03-01.6.1",
-      "EncodedRequestUri": "L3Bvb2xzL2NoYW5nZW9zcG9vbD9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLjYuMQ==",
+      "RequestUri": "/pools/changeospool?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L3Bvb2xzL2NoYW5nZW9zcG9vbD9hcGktdmVyc2lvbj0yMDE4LTA4LTAxLjcuMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -148,7 +148,7 @@
           "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"changeospool\",\r\n  \"url\": \"https://batchtestaccount.westus.batch.azure.com/pools/changeospool\",\r\n  \"eTag\": \"0x8D5C26F062AF0DF\",\r\n  \"lastModified\": \"2018-05-25T18:40:44.3429087Z\",\r\n  \"creationTime\": \"2018-05-25T18:40:43.8840546Z\",\r\n  \"state\": \"upgrading\",\r\n  \"stateTransitionTime\": \"2018-05-25T18:40:44.3429087Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2018-05-25T18:40:44.041944Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"WA-GUEST-OS-2.51_201605-01\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"changeospool\",\r\n  \"url\": \"https://batchtestaccount.westus.batch.azure.com/pools/changeospool\",\r\n  \"eTag\": \"0x8D5C26F062AF0DF\",\r\n  \"lastModified\": \"2018-05-25T18:40:44.3429087Z\",\r\n  \"creationTime\": \"2018-05-25T18:40:43.8840546Z\",\r\n  \"state\": \"upgrading\",\r\n  \"stateTransitionTime\": \"2018-05-25T18:40:44.3429087Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2018-05-25T18:40:44.041944Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"WA-GUEST-OS-4.56_201807-02\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -184,10 +184,10 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/changeospool/upgradeos?api-version=2018-03-01.6.1",
-      "EncodedRequestUri": "L3Bvb2xzL2NoYW5nZW9zcG9vbC91cGdyYWRlb3M/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
+      "RequestUri": "/pools/changeospool/upgradeos?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L3Bvb2xzL2NoYW5nZW9zcG9vbC91cGdyYWRlb3M/YXBpLXZlcnNpb249MjAxOC0wOC0wMS43LjA=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"targetOSVersion\": \"WA-GUEST-OS-2.51_201605-01\"\r\n}",
+      "RequestBody": "{\r\n  \"targetOSVersion\": \"WA-GUEST-OS-4.56_201807-02\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata; charset=utf-8"
@@ -248,8 +248,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/pools/changeospool?api-version=2018-03-01.6.1",
-      "EncodedRequestUri": "L3Bvb2xzL2NoYW5nZW9zcG9vbD9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLjYuMQ==",
+      "RequestUri": "/pools/changeospool?api-version=2018-08-01.7.0",
+      "EncodedRequestUri": "L3Bvb2xzL2NoYW5nZW9zcG9vbD9hcGktdmVyc2lvbj0yMDE4LTA4LTAxLjcuMA==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

@@ -157,6 +157,11 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
         public string AzureFileVolumeMountPath { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed identity.
+        /// </summary>
+        public ContainerGroupIdentity Identity { get; set; }
+
+        /// <summary>
         /// Validates the creation parameters.
         /// </summary>
         public void Validate()

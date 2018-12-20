@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Profile.Models;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
 #endif
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;

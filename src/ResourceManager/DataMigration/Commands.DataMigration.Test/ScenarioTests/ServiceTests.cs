@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -146,6 +146,28 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
         public void TestMigrateSqlSqlDBSync()
         {
             DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-MigrateSqlSqlDBSync");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConnectToSourceMongoDb()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToSourceMongoDb");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConnectToTargetCosmosDb()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToTargetCosmosDb");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMigrateMongoDb()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-MigrateMongoDb");
         }
     }
 }

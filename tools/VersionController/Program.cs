@@ -54,7 +54,7 @@ namespace VersionController
             {
                 exceptionsDirectory = args[0];
             }
-            
+
             if (!Directory.Exists(exceptionsDirectory))
             {
                 throw new ArgumentException("Please provide a path to the Exceptions folder in the output directory (src/Package/Exceptions).");
@@ -158,22 +158,22 @@ namespace VersionController
         }
 
         /// <summary>
-        /// Check if a change log has anythign under the Current Release header.
+        /// Check if a change log has anything under the Upcoming Release header.
         /// </summary>
         /// <param name="changeLogPath">Path to the change log.</param>
-        /// <returns>True if there is an entry under the Current Release header, false otherwise.</returns>
+        /// <returns>True if there is an entry under the Upcoming Release header, false otherwise.</returns>
         private static bool IsChangeLogUpdated(string changeLogPath)
         {
             var file = File.ReadAllLines(changeLogPath);
             var idx = 0;
-            while (idx < file.Length && !file[idx].Equals("## Current Release"))
+            while (idx < file.Length && !file[idx].Equals("## Upcoming Release"))
             {
                 idx++;
             }
 
             if (idx == file.Length)
             {
-                throw new IndexOutOfRangeException("Unable to find the Current Release header in change log " + changeLogPath);
+                throw new IndexOutOfRangeException("Unable to find the Upcoming Release header in change log " + changeLogPath);
             }
 
             bool found = false;

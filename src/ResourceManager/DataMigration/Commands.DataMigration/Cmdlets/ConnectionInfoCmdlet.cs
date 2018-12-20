@@ -12,18 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
+using System;
 using System.Management.Automation;
-using Microsoft.Azure.Management.DataMigration.Models;
+using System.Runtime.InteropServices;
+using System.Security;
+using System.Security.Permissions;
+
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     public abstract class ConnectionInfoCmdlet : DynamicCmdlet
     {
+        protected readonly string loginCredential = "login";
+
         public ConnectionInfoCmdlet(InvocationInfo myInvocation) : base(myInvocation)
         {
         }
 
-        public abstract ConnectionInfo ProcessConnectionInfoCmdlet();
+        public abstract object ProcessConnectionInfoCmdlet();
 
+        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+        internal static string Decrypt(SecureString secureString)
+        {
+            IntPtr unmanagedString = IntPtr.Zero;
+            try
+            {
+                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(secureString);
+                return Marshal.PtrToStringUni(unmanagedString);
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
+            }
+        }
     }
 }
