@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         SupportsShouldProcess = true,
         DefaultParameterSetName = ResourceGroupNameParameterSet),
     OutputType(typeof(PSEventSubscription))]
-    
+
     public class UpdateAzureEventGridSubscription : AzureEventGridCmdletBase
     {
         [Parameter(

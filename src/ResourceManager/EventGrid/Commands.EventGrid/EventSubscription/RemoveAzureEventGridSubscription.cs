@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         DefaultParameterSetName = ResourceGroupNameParameterSet,
         SupportsShouldProcess = true),
     OutputType(typeof(bool))]
-    
+
     public class RemoveAzureRmEventGridSubscription : AzureEventGridCmdletBase
     {
         [Parameter(

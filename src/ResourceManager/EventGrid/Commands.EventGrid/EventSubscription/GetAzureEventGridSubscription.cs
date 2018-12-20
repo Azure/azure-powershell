@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSubscription",
         DefaultParameterSetName = EventSubscriptionTopicNameParameterSet),
     OutputType(typeof(PSEventSubscription))]
-    
+
     public class GetAzureRmEventGridSubscription : AzureEventGridCmdletBase
     {
         [Parameter(
@@ -250,8 +250,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 PSEventSubscriptionListInstance psEventSubscription;
 
-                if (includeFullEndpointUrl &&
-                    eventSubscription.Destination is WebHookEventSubscriptionDestination)
+                if (includeFullEndpointUrl && eventSubscription.Destination is WebHookEventSubscriptionDestination)
                 {
                     EventSubscriptionFullUrl fullUrl = this.Client.GetEventSubscriptionFullUrl(eventSubscription.Topic, eventSubscription.Name);
                     psEventSubscription = new PSEventSubscriptionListInstance(eventSubscription, fullUrl.EndpointUrl);

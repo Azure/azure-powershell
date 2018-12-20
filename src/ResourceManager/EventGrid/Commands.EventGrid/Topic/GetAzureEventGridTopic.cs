@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridTopic",
         DefaultParameterSetName = ResourceGroupNameParameterSet),
     OutputType(typeof(PSTopic), typeof(PSTopicListInstance))]
-    
+
     public class GetAzureRmEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(
