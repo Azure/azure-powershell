@@ -8,7 +8,6 @@
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
