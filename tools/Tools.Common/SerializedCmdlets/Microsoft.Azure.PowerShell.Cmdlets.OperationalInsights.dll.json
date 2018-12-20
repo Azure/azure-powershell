@@ -8,13 +8,13 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "ByWorkspaceName",
+      "DefaultParameterSetName": "ByWorkspaceNameByKind",
       "OutputTypes": [
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -90,7 +90,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -242,6 +242,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -283,7 +284,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -385,6 +386,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -431,7 +433,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -541,6 +543,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -656,6 +659,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -779,6 +783,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -822,6 +827,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -857,10 +863,6 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
-        },
-        {
-          "Name": "ByWorkspaceName",
-          "Parameters": []
         }
       ],
       "AliasList": []
@@ -879,7 +881,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -955,7 +957,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -1135,6 +1137,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1176,7 +1179,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -1350,6 +1353,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1537,6 +1541,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1676,6 +1681,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1731,7 +1737,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -1807,7 +1813,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -1969,6 +1975,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2010,7 +2017,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -2160,6 +2167,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2323,6 +2331,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2438,6 +2447,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2491,7 +2501,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -2567,7 +2577,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -2783,6 +2793,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2824,7 +2835,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -3046,6 +3057,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3281,6 +3293,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3468,6 +3481,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3521,7 +3535,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -3597,7 +3611,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -3903,6 +3917,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3944,7 +3959,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -4286,6 +4301,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4641,6 +4657,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4948,6 +4965,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5001,7 +5019,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -5077,7 +5095,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -5293,6 +5311,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -5334,7 +5353,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -5556,6 +5575,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5791,6 +5811,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5978,6 +5999,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6031,7 +6053,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -6107,7 +6129,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -6341,6 +6363,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -6382,7 +6405,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -6628,6 +6651,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6887,6 +6911,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7098,6 +7123,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7170,7 +7196,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -7314,6 +7340,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -7355,7 +7382,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -7481,6 +7508,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7620,6 +7648,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7711,6 +7740,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7764,7 +7794,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -7840,7 +7870,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -7912,6 +7942,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -7953,7 +7984,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
                     "Name": "System.String",
@@ -8031,6 +8062,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8088,7 +8120,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -8164,7 +8196,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -8272,6 +8304,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -8313,7 +8346,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -8391,6 +8424,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8482,6 +8516,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8525,6 +8560,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8578,7 +8614,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -8654,7 +8690,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -8762,6 +8798,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -8803,7 +8840,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -8881,6 +8918,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8972,6 +9010,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9015,6 +9054,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9068,7 +9108,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -9144,7 +9184,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -9252,6 +9292,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -9293,7 +9334,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -9371,6 +9412,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9462,6 +9504,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9505,6 +9548,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9558,7 +9602,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -9634,7 +9678,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -9742,6 +9786,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -9783,7 +9828,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -9861,6 +9906,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9952,6 +9998,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9995,6 +10042,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10048,7 +10096,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -10124,7 +10172,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -10232,6 +10280,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -10273,7 +10322,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -10351,6 +10400,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10442,6 +10492,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10485,6 +10536,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10538,7 +10590,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -10614,7 +10666,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -10722,6 +10774,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -10763,7 +10816,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -10841,6 +10894,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10932,6 +10986,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10975,6 +11030,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11028,7 +11084,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -11104,7 +11160,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -11212,6 +11268,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -11253,7 +11310,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -11331,6 +11388,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11422,6 +11480,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11465,6 +11524,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11518,7 +11578,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -11594,7 +11654,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -11702,6 +11762,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -11743,7 +11804,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -11821,6 +11882,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11912,6 +11974,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11955,6 +12018,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12008,7 +12072,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Metadata": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata",
               "Value": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue]"
@@ -12068,7 +12132,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSavedSearchResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSavedSearchResponse, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSavedSearchResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties",
               "ETag": "System.String",
@@ -12186,6 +12250,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -12298,6 +12363,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12351,7 +12417,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSearchResultsResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSearchResultsResponse, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSearchResultsResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Error": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchError",
               "Metadata": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata",
@@ -12470,6 +12536,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -12582,6 +12649,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12635,7 +12703,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSchemaResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSchemaResponse, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSchemaResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Metadata": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata",
               "Value": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue]"
@@ -12734,6 +12802,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -12822,6 +12891,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12875,7 +12945,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSearchResultsResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSearchResultsResponse, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSearchResultsResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Error": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchError",
               "Metadata": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata",
@@ -13106,6 +13176,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -13366,6 +13437,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -13581,6 +13653,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -13813,6 +13886,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14046,6 +14120,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -14302,6 +14377,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14427,6 +14503,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -14539,6 +14616,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14772,6 +14850,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -15028,6 +15107,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15081,7 +15161,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tables": "System.Collections.Generic.List`1[System.String]",
               "Containers": "System.Collections.Generic.List`1[System.String]",
@@ -15159,7 +15239,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -15285,6 +15365,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -15326,7 +15407,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -15428,6 +15509,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15543,6 +15625,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15610,6 +15693,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15663,7 +15747,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tables": "System.Collections.Generic.List`1[System.String]",
               "Containers": "System.Collections.Generic.List`1[System.String]",
@@ -15741,7 +15825,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -15957,6 +16041,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -15998,7 +16083,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -16220,6 +16305,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16455,6 +16541,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16642,6 +16729,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16714,7 +16802,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -16858,6 +16946,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -16899,7 +16988,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -17025,6 +17114,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17164,6 +17254,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17255,6 +17346,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17308,7 +17400,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tables": "System.Collections.Generic.List`1[System.String]",
               "Containers": "System.Collections.Generic.List`1[System.String]",
@@ -17386,7 +17478,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -17566,6 +17658,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -17607,7 +17700,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -17781,6 +17874,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17968,6 +18062,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18107,6 +18202,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18160,7 +18256,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Enabled": "System.Boolean",
               "Name": "System.String"
@@ -18263,6 +18359,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -18351,6 +18448,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18404,7 +18502,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSAccount, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSAccount, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomerId": "System.Nullable`1[System.Guid]",
               "AccountName": "System.String",
@@ -18467,6 +18565,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -18505,6 +18604,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18558,7 +18658,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -18667,6 +18767,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -18753,6 +18854,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18806,7 +18908,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsGateway": "System.Boolean",
               "ServerCount": "System.Int32",
@@ -18909,6 +19011,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -18995,6 +19098,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19048,7 +19152,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceKeys, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceKeys, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimarySharedKey": "System.String",
               "SecondarySharedKey": "System.String"
@@ -19145,6 +19249,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -19231,6 +19336,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19284,7 +19390,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSUsageMetric",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSUsageMetric, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSUsageMetric, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CurrentValue": "System.Double",
               "Limit": "System.Double",
@@ -19386,6 +19492,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -19472,6 +19579,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19525,7 +19633,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -19752,6 +19860,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -19992,6 +20101,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -20115,6 +20225,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -20225,6 +20336,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -20278,7 +20390,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Enabled": "System.Boolean",
               "Name": "System.String"
@@ -20417,6 +20529,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -20553,6 +20666,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -20606,7 +20720,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -20682,7 +20796,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -20852,6 +20966,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -20893,7 +21008,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -21051,6 +21166,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -21222,6 +21338,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -21345,6 +21462,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -21398,7 +21516,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSQueryResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSQueryResponse, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSQueryResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Statistics": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
               "Render": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -21465,7 +21583,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "CustomerId": "System.Nullable`1[System.Guid]",
@@ -21649,6 +21767,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -21859,6 +21978,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -21905,7 +22025,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "CustomerId": "System.Nullable`1[System.Guid]",
@@ -22131,6 +22251,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -22322,6 +22443,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -22506,7 +22628,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Kind": "System.String"
       },
@@ -22694,8 +22816,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22779,7 +22900,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Schema": "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema",
         "CoreResponses": "System.Collections.Generic.IEnumerable`1[System.Object]",
@@ -22849,7 +22970,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Version": "System.Int64",
         "Name": "System.String"
@@ -22926,7 +23047,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22938,7 +23059,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "NumberOfDocuments": "System.Int64",
         "Status": "System.String"
@@ -22993,7 +23114,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -23005,7 +23126,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Order": "System.String"
@@ -23094,7 +23215,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -23106,7 +23227,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties",
         "ETag": "System.String",
@@ -23162,7 +23283,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "System.Collections.Hashtable",
         "Version": "System.Nullable`1[System.Int64]",
@@ -23230,7 +23351,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchError": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchError",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchError, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchError, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Type": "System.String",
         "Message": "System.String"
@@ -23285,7 +23406,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -23297,7 +23418,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Indexed": "System.Boolean",
         "Stored": "System.Boolean",

@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Common.Tags",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Values": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]",
               "Name": "System.String",
@@ -103,6 +103,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -189,6 +190,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -242,7 +244,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Common.Tags",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Values": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]",
               "Name": "System.String",
@@ -331,6 +333,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -417,6 +420,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -470,7 +474,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Common.Tags",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Values": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]",
               "Name": "System.String",
@@ -577,6 +581,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -687,6 +692,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -871,7 +877,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -883,7 +889,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Common.Tags",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Count": "System.String"
@@ -1044,8 +1050,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],

@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Certificate": "System.Security.Cryptography.X509Certificates.X509Certificate2",
               "KeyVaultId": "System.String",
@@ -241,8 +241,49 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "CertificateCommonName",
+          "AliasList": [
+            "CertCommonName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "CertificateIssuerThumbprint",
+          "AliasList": [
+            "CertIssuerThumbprint"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -353,8 +394,61 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CertificateCommonName",
+                "AliasList": [
+                  "CertCommonName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CertificateIssuerThumbprint",
+                "AliasList": [
+                  "CertIssuerThumbprint"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -574,6 +668,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -765,8 +860,61 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CertificateCommonName",
+                "AliasList": [
+                  "CertCommonName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CertificateIssuerThumbprint",
+                "AliasList": [
+                  "CertIssuerThumbprint"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -810,6 +958,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -863,32 +1012,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -1044,7 +1196,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName",
             "GenericTypeArguments": [],
@@ -1115,6 +1267,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1253,6 +1406,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1418,6 +1572,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1516,7 +1671,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName",
                   "GenericTypeArguments": [],
@@ -1537,6 +1692,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1678,6 +1834,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1721,6 +1878,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1774,32 +1932,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -2028,8 +2189,49 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "CertificateCommonName",
+          "AliasList": [
+            "CertCommonName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "CertificateIssuerThumbprint",
+          "AliasList": [
+            "CertIssuerThumbprint"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2140,8 +2342,61 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CertificateCommonName",
+                "AliasList": [
+                  "CertCommonName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CertificateIssuerThumbprint",
+                "AliasList": [
+                  "CertIssuerThumbprint"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2361,6 +2616,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2552,8 +2808,61 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CertificateCommonName",
+                "AliasList": [
+                  "CertCommonName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CertificateIssuerThumbprint",
+                "AliasList": [
+                  "CertIssuerThumbprint"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2597,6 +2906,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2650,32 +2960,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -2810,6 +3123,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2948,6 +3262,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3001,32 +3316,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -3216,7 +3534,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3334,6 +3652,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3545,7 +3864,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3675,6 +3994,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3728,32 +4048,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -3850,6 +4173,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3912,6 +4236,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4005,6 +4330,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4048,6 +4374,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4105,7 +4432,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentResult, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentResult, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Cluster": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
               "Deployment": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentExtended",
@@ -4371,6 +4698,46 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "CertificateCommonName",
+          "AliasList": [
+            "CertCommonName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "CertificateIssuerThumbprint",
+          "AliasList": [
+            "CertIssuerThumbprint"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "Location",
           "AliasList": [],
           "Type": {
@@ -4490,7 +4857,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4628,6 +4995,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -4736,6 +5104,58 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CertificateCommonName",
+                "AliasList": [
+                  "CertCommonName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CertificateIssuerThumbprint",
+                "AliasList": [
+                  "CertIssuerThumbprint"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "VmPassword",
                 "AliasList": [],
                 "Type": {
@@ -4786,6 +5206,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5051,6 +5472,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5316,6 +5738,58 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "CertificateCommonName",
+                "AliasList": [
+                  "CertCommonName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CertificateIssuerThumbprint",
+                "AliasList": [
+                  "CertIssuerThumbprint"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "VmPassword",
                 "AliasList": [],
                 "Type": {
@@ -5342,6 +5816,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5662,7 +6137,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5794,6 +6269,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5837,6 +6313,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5890,32 +6367,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -6053,7 +6533,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName",
             "GenericTypeArguments": [],
@@ -6124,6 +6604,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -6260,6 +6741,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6379,6 +6861,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6477,7 +6960,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName",
                   "GenericTypeArguments": [],
@@ -6498,6 +6981,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6639,6 +7123,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6682,6 +7167,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6735,32 +7221,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -6875,6 +7364,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -6987,6 +7477,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7040,32 +7531,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -7200,6 +7694,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -7338,6 +7833,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7391,32 +7887,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -7531,6 +8030,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -7643,6 +8143,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7696,32 +8197,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -7857,7 +8361,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription",
             "GenericTypeArguments": [],
@@ -7872,6 +8376,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -8008,6 +8513,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8104,7 +8610,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription",
                   "GenericTypeArguments": [],
@@ -8125,6 +8631,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8168,6 +8675,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8221,32 +8729,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -8400,7 +8911,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription",
             "GenericTypeArguments": [],
@@ -8415,6 +8926,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -8575,6 +9087,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8671,7 +9184,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[], Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription",
                   "GenericTypeArguments": [],
@@ -8692,6 +9205,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8735,6 +9249,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8788,32 +9303,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -8913,7 +9431,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9033,6 +9551,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -9124,7 +9643,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9230,6 +9749,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9326,7 +9846,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9458,6 +9978,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9501,6 +10022,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9554,32 +10076,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -9699,7 +10224,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9817,6 +10342,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -9934,7 +10460,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10064,6 +10590,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10117,32 +10644,35 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+              "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
               "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
               "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+              "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+              "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
               "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
               "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
               "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
               "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-              "ClusterEndpoint": "System.String",
-              "Type": "System.String",
-              "Name": "System.String",
-              "Id": "System.String",
-              "ClusterId": "System.String",
-              "VmImage": "System.String",
-              "ClusterState": "System.String",
-              "ClusterCodeVersion": "System.String",
-              "ManagementEndpoint": "System.String",
+              "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
               "Location": "System.String",
-              "UpgradeMode": "System.String",
-              "ReliabilityLevel": "System.String",
+              "ManagementEndpoint": "System.String",
+              "ClusterId": "System.String",
               "ProvisioningState": "System.String",
+              "ReliabilityLevel": "System.String",
+              "ClusterEndpoint": "System.String",
+              "ClusterCodeVersion": "System.String",
+              "UpgradeMode": "System.String",
+              "VmImage": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ClusterState": "System.String",
               "PSClusterString": "System.String"
             },
             "ElementType": null,
@@ -10244,7 +10774,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
             "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10364,6 +10894,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -10457,7 +10988,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
                   "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10589,6 +11120,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10899,8 +11431,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11121,7 +11652,6 @@
       "Properties": {
         "HealthPolicy": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterHealthPolicy",
         "DeltaHealthPolicy": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradeDeltaHealthPolicy",
-        "OverrideUserUpgradePolicy": "System.Nullable`1[System.Boolean]",
         "ForceRestart": "System.Nullable`1[System.Boolean]",
         "UpgradeReplicaSetCheckTimeout": "System.String",
         "HealthCheckWaitDuration": "System.String",
@@ -11200,10 +11730,6 @@
             },
             {
               "Name": "healthPolicy",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "overrideUserUpgradePolicy",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
@@ -11306,7 +11832,11 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Management.ServiceFabric.Models.ApplicationHealthPolicy, Microsoft.Azure.Management.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DefaultServiceTypeHealthPolicy": "Microsoft.Azure.Management.ServiceFabric.Models.ServiceTypeHealthPolicy",
-        "SerivceTypeHealthPolicies": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.ServiceFabric.Models.ServiceTypeHealthPolicy]"
+        "DefaultServiceTypeHealthPolicy1": "Microsoft.Azure.Management.ServiceFabric.Models.ServiceTypeHealthPolicy",
+        "ServiceTypeHealthPolicies": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.ServiceFabric.Models.ServiceTypeHealthPolicy]",
+        "ServiceTypeHealthPolicyMap": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.ServiceFabric.Models.ServiceTypeHealthPolicy]",
+        "ConsiderWarningAsError": "System.Nullable`1[System.Boolean]",
+        "MaxPercentUnhealthyDeployedApplications": "System.Nullable`1[System.Int32]"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11357,7 +11887,23 @@
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
-              "Name": "serivceTypeHealthPolicies",
+              "Name": "serviceTypeHealthPolicies",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "considerWarningAsError",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "maxPercentUnhealthyDeployedApplications",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "defaultServiceTypeHealthPolicy1",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "serviceTypeHealthPolicyMap",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]
@@ -11448,12 +11994,24 @@
       "Methods": [],
       "Constructors": []
     },
+    "System.Nullable`1[System.Boolean]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Boolean]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Boolean"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
     "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradeDeltaHealthPolicy": {
       "Namespace": "Microsoft.Azure.Management.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradeDeltaHealthPolicy",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradeDeltaHealthPolicy, Microsoft.Azure.Management.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "ApplicationHealthPolicies": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.ServiceFabric.Models.ApplicationDeltaHealthPolicy]",
+        "ApplicationDeltaHealthPolicies": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.ServiceFabric.Models.ApplicationDeltaHealthPolicy]",
         "MaxPercentDeltaUnhealthyNodes": "System.Int32",
         "MaxPercentUpgradeDomainDeltaUnhealthyNodes": "System.Int32",
         "MaxPercentDeltaUnhealthyApplications": "System.Int32"
@@ -11515,7 +12073,7 @@
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
-              "Name": "applicationHealthPolicies",
+              "Name": "applicationDeltaHealthPolicies",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]
@@ -11541,7 +12099,7 @@
       "AssemblyQualifiedName": "Microsoft.Azure.Management.ServiceFabric.Models.ApplicationDeltaHealthPolicy, Microsoft.Azure.Management.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DefaultServiceTypeDeltaHealthPolicy": "Microsoft.Azure.Management.ServiceFabric.Models.ServiceTypeDeltaHealthPolicy",
-        "SerivceTypeDeltaHealthPolicies": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.ServiceFabric.Models.ServiceTypeDeltaHealthPolicy]"
+        "ServiceTypeDeltaHealthPolicies": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.ServiceFabric.Models.ServiceTypeDeltaHealthPolicy]"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11592,7 +12150,7 @@
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
-              "Name": "serivceTypeDeltaHealthPolicies",
+              "Name": "serviceTypeDeltaHealthPolicies",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]
@@ -11671,18 +12229,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "System.Nullable`1[System.Boolean]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[System.Boolean]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Boolean"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
     "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig": {
       "Namespace": "Microsoft.Azure.Management.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
@@ -11756,6 +12302,141 @@
             },
             {
               "Name": "tableEndpoint",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames": {
+      "Namespace": "Microsoft.Azure.Management.ServiceFabric.Models",
+      "Name": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames, Microsoft.Azure.Management.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "CommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonName]",
+        "X509StoreName": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "commonNames",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "x509StoreName",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonName]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonName]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonName, Microsoft.Azure.Management.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonName"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonName": {
+      "Namespace": "Microsoft.Azure.Management.ServiceFabric.Models",
+      "Name": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonName",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonName, Microsoft.Azure.Management.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "CertificateCommonName": "System.String",
+        "CertificateIssuerThumbprint": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Validate",
+          "Parameters": [],
+          "ReturnType": "System.Void"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "certificateCommonName",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "certificateIssuerThumbprint",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]
@@ -12335,7 +13016,7 @@
     "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName": {
       "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsAdmin": "System.Boolean",
         "CertificateCommonName": "System.String",
@@ -12396,32 +13077,35 @@
     "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster": {
       "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AzureActiveDirectory": "Microsoft.Azure.Management.ServiceFabric.Models.AzureActiveDirectory",
-        "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
         "Certificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
+        "ReverseProxyCertificate": "Microsoft.Azure.Management.ServiceFabric.Models.CertificateDescription",
         "UpgradeDescription": "Microsoft.Azure.Management.ServiceFabric.Models.ClusterUpgradePolicy",
         "DiagnosticsStorageAccountConfig": "Microsoft.Azure.Management.ServiceFabric.Models.DiagnosticsStorageAccountConfig",
+        "CertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
+        "ReverseProxyCertificateCommonNames": "Microsoft.Azure.Management.ServiceFabric.Models.ServerCertificateCommonNames",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "ClientCertificateCommonNames": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateCommonName]",
         "ClientCertificateThumbprints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClientCertificateThumbprint]",
         "AvailableClusterVersions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.ClusterVersionDetails]",
         "NodeTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.NodeTypeDescription]",
         "FabricSettings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServiceFabric.Models.SettingsSectionDescription]",
-        "ClusterEndpoint": "System.String",
-        "Type": "System.String",
-        "Name": "System.String",
-        "Id": "System.String",
-        "ClusterId": "System.String",
-        "VmImage": "System.String",
-        "ClusterState": "System.String",
-        "ClusterCodeVersion": "System.String",
-        "ManagementEndpoint": "System.String",
+        "AddOnFeatures": "System.Collections.Generic.IList`1[System.String]",
         "Location": "System.String",
-        "UpgradeMode": "System.String",
-        "ReliabilityLevel": "System.String",
+        "ManagementEndpoint": "System.String",
+        "ClusterId": "System.String",
         "ProvisioningState": "System.String",
+        "ReliabilityLevel": "System.String",
+        "ClusterEndpoint": "System.String",
+        "ClusterCodeVersion": "System.String",
+        "UpgradeMode": "System.String",
+        "VmImage": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "ClusterState": "System.String",
         "PSClusterString": "System.String"
       },
       "ElementType": null,
@@ -12474,7 +13158,7 @@
     "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentExtended": {
       "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentExtended",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentExtended, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSDeploymentExtended, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Properties": "Microsoft.Azure.Management.Internal.Resources.Models.DeploymentPropertiesExtended",
         "Name": "System.String",
@@ -12530,7 +13214,7 @@
     "Microsoft.Azure.Management.Internal.Resources.Models.DeploymentPropertiesExtended": {
       "Namespace": "Microsoft.Azure.Management.Internal.Resources.Models",
       "Name": "Microsoft.Azure.Management.Internal.Resources.Models.DeploymentPropertiesExtended",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.DeploymentPropertiesExtended, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.DeploymentPropertiesExtended, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DebugSetting": "Microsoft.Azure.Management.Internal.Resources.Models.DebugSetting",
         "ParametersLink": "Microsoft.Azure.Management.Internal.Resources.Models.ParametersLink",
@@ -12644,7 +13328,7 @@
     "Microsoft.Azure.Management.Internal.Resources.Models.DebugSetting": {
       "Namespace": "Microsoft.Azure.Management.Internal.Resources.Models",
       "Name": "Microsoft.Azure.Management.Internal.Resources.Models.DebugSetting",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.DebugSetting, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.DebugSetting, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DetailLevel": "System.String"
       },
@@ -12698,7 +13382,7 @@
     "Microsoft.Azure.Management.Internal.Resources.Models.ParametersLink": {
       "Namespace": "Microsoft.Azure.Management.Internal.Resources.Models",
       "Name": "Microsoft.Azure.Management.Internal.Resources.Models.ParametersLink",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.ParametersLink, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.ParametersLink, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Uri": "System.String",
         "ContentVersion": "System.String"
@@ -12762,7 +13446,7 @@
     "Microsoft.Azure.Management.Internal.Resources.Models.TemplateLink": {
       "Namespace": "Microsoft.Azure.Management.Internal.Resources.Models",
       "Name": "Microsoft.Azure.Management.Internal.Resources.Models.TemplateLink",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.TemplateLink, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.TemplateLink, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Uri": "System.String",
         "ContentVersion": "System.String"
@@ -12826,7 +13510,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.Dependency]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.Dependency]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Resources.Models.Dependency, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Resources.Models.Dependency, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -12838,7 +13522,7 @@
     "Microsoft.Azure.Management.Internal.Resources.Models.Dependency": {
       "Namespace": "Microsoft.Azure.Management.Internal.Resources.Models",
       "Name": "Microsoft.Azure.Management.Internal.Resources.Models.Dependency",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.Dependency, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.Dependency, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DependsOn": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.BasicDependency]",
         "Id": "System.String",
@@ -12907,7 +13591,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.BasicDependency]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.BasicDependency]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Resources.Models.BasicDependency, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Resources.Models.BasicDependency, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -12919,7 +13603,7 @@
     "Microsoft.Azure.Management.Internal.Resources.Models.BasicDependency": {
       "Namespace": "Microsoft.Azure.Management.Internal.Resources.Models",
       "Name": "Microsoft.Azure.Management.Internal.Resources.Models.BasicDependency",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.BasicDependency, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.BasicDependency, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String",
         "ResourceType": "System.String",
@@ -12983,7 +13667,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.Provider]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.Provider]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Resources.Models.Provider, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Resources.Models.Provider, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -12995,7 +13679,7 @@
     "Microsoft.Azure.Management.Internal.Resources.Models.Provider": {
       "Namespace": "Microsoft.Azure.Management.Internal.Resources.Models",
       "Name": "Microsoft.Azure.Management.Internal.Resources.Models.Provider",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.Provider, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.Provider, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.ProviderResourceType]",
         "Id": "System.String",
@@ -13064,7 +13748,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.ProviderResourceType]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.ProviderResourceType]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Resources.Models.ProviderResourceType, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Resources.Models.ProviderResourceType, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13076,7 +13760,7 @@
     "Microsoft.Azure.Management.Internal.Resources.Models.ProviderResourceType": {
       "Namespace": "Microsoft.Azure.Management.Internal.Resources.Models",
       "Name": "Microsoft.Azure.Management.Internal.Resources.Models.ProviderResourceType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.ProviderResourceType, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.ProviderResourceType, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "Aliases": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.AliasType]",
@@ -13150,7 +13834,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.AliasType]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.AliasType]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Resources.Models.AliasType, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Resources.Models.AliasType, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13162,7 +13846,7 @@
     "Microsoft.Azure.Management.Internal.Resources.Models.AliasType": {
       "Namespace": "Microsoft.Azure.Management.Internal.Resources.Models",
       "Name": "Microsoft.Azure.Management.Internal.Resources.Models.AliasType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.AliasType, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.AliasType, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Paths": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.AliasPathType]",
         "Name": "System.String"
@@ -13221,7 +13905,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.AliasPathType]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Resources.Models.AliasPathType]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Resources.Models.AliasPathType, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Resources.Models.AliasPathType, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13233,7 +13917,7 @@
     "Microsoft.Azure.Management.Internal.Resources.Models.AliasPathType": {
       "Namespace": "Microsoft.Azure.Management.Internal.Resources.Models",
       "Name": "Microsoft.Azure.Management.Internal.Resources.Models.AliasPathType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.AliasPathType, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.AliasPathType, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ApiVersions": "System.Collections.Generic.IList`1[System.String]",
         "Path": "System.String"
@@ -13292,7 +13976,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.Internal.Resources.Models.DeploymentMode]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Management.Internal.Resources.Models.DeploymentMode]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Internal.Resources.Models.DeploymentMode, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Internal.Resources.Models.DeploymentMode, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13304,7 +13988,7 @@
     "Microsoft.Azure.Management.Internal.Resources.Models.DeploymentMode": {
       "Namespace": "Microsoft.Azure.Management.Internal.Resources.Models",
       "Name": "Microsoft.Azure.Management.Internal.Resources.Models.DeploymentMode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.DeploymentMode, Microsoft.Azure.PowerShell.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Resources.Models.DeploymentMode, Microsoft.Azure.PowerShell.Clients.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -13431,7 +14115,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13443,7 +14127,7 @@
     "Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault": {
       "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSKeyVault, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Certificate": "System.Security.Cryptography.X509Certificates.X509Certificate2",
         "KeyVaultId": "System.String",
@@ -13494,7 +14178,7 @@
     "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription": {
       "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Parameters": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription]",
         "Name": "System.String"
@@ -13544,7 +14228,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13556,7 +14240,7 @@
     "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription": {
       "Namespace": "Microsoft.Azure.Commands.ServiceFabric.Models",
       "Name": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription, Microsoft.Azure.Commands.ServiceFabric, Version=0.3.14.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsParameterDescription, Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Value": "System.String"

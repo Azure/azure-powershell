@@ -143,6 +143,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -330,6 +331,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -513,6 +515,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -697,6 +700,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -836,6 +840,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1018,6 +1023,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1205,6 +1211,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1371,6 +1378,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1424,7 +1432,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -1535,6 +1543,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1597,6 +1606,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1690,6 +1700,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1733,6 +1744,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1786,7 +1798,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "AutomationAccountName": "System.String",
@@ -1894,6 +1906,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1980,6 +1993,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2033,7 +2047,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Exportable": "System.Boolean",
               "ExpiryTime": "System.DateTimeOffset",
@@ -2163,6 +2177,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2273,6 +2288,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2364,6 +2380,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2421,7 +2438,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -2555,6 +2572,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2667,6 +2685,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2758,6 +2777,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2815,7 +2835,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Connection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FieldDefinitionValues": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -2962,6 +2982,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3072,6 +3093,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3187,6 +3209,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3278,6 +3301,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3335,7 +3359,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.DateTimeOffset",
               "LastModifiedTime": "System.DateTimeOffset",
@@ -3463,6 +3487,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3573,6 +3598,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3664,6 +3690,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3721,7 +3748,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CompilationJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobParameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -3948,6 +3975,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -4060,6 +4088,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4266,6 +4295,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4446,6 +4476,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4537,6 +4568,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4590,7 +4622,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobStream",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStream, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStream, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Time": "System.DateTimeOffset",
               "JobId": "System.Guid",
@@ -4691,7 +4723,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Common",
             "Name": "Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4852,6 +4884,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -4919,7 +4952,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Common",
                   "Name": "Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5104,6 +5137,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5157,7 +5191,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationTime": "System.DateTimeOffset",
               "LastSeen": "System.DateTimeOffset",
@@ -5256,7 +5290,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Common",
             "Name": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5455,6 +5489,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -5567,6 +5602,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5613,7 +5649,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Common",
                   "Name": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5800,6 +5836,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5846,7 +5883,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Common",
                   "Name": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6031,6 +6068,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6077,7 +6115,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Common",
                   "Name": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.DscNodeStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6238,6 +6276,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6353,6 +6392,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6444,6 +6484,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6497,7 +6538,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CompilationJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobParameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -6672,6 +6713,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -6784,6 +6826,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6926,6 +6969,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7044,6 +7088,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7135,6 +7180,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7188,7 +7234,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Job": "Microsoft.Azure.Commands.Automation.Model.Job",
               "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
@@ -7518,6 +7564,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -7628,6 +7675,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7807,6 +7855,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7898,6 +7947,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7951,7 +8001,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeploymentSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeploymentSchedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeploymentSchedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
               "JobScheduleId": "System.Guid",
@@ -8077,6 +8127,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -8187,6 +8238,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8278,6 +8330,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8335,7 +8388,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationTime": "System.DateTimeOffset",
               "LastSeen": "System.DateTimeOffset",
@@ -8543,6 +8596,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -8677,6 +8731,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8844,6 +8899,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8985,6 +9041,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9076,6 +9133,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9129,7 +9187,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscOnboardingMetaconfig",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscOnboardingMetaconfig, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscOnboardingMetaconfig, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "AutomationAccountName": "System.String",
@@ -9289,6 +9347,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -9447,6 +9506,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9500,7 +9560,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RunbookWorker": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker]",
               "ResourceGroupName": "System.String",
@@ -9628,6 +9688,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -9740,6 +9801,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9831,6 +9893,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9888,7 +9951,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Job",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobParameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -10134,6 +10197,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -10246,6 +10310,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10451,6 +10516,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10630,6 +10696,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10721,6 +10788,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10774,7 +10842,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobStream",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStream, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStream, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Time": "System.DateTimeOffset",
               "JobId": "System.Guid",
@@ -10875,7 +10943,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Common",
             "Name": "Microsoft.Azure.Commands.Automation.Common.StreamType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.StreamType, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.StreamType, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -11031,6 +11099,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -11098,7 +11167,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Common",
                   "Name": "Microsoft.Azure.Commands.Automation.Common.StreamType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.StreamType, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.StreamType, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11278,6 +11347,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11331,7 +11401,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobStreamRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStreamRecord, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobStreamRecord, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Value": "System.Collections.Hashtable",
               "Time": "System.DateTimeOffset",
@@ -11484,6 +11554,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -11620,6 +11691,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11673,7 +11745,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Module",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsGlobal": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -11804,6 +11876,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -11914,6 +11987,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12005,6 +12079,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12062,7 +12137,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "LogProgress": "System.Boolean",
@@ -12200,6 +12275,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -12312,6 +12388,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12403,6 +12480,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12460,7 +12538,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
               "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -12603,6 +12681,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -12715,6 +12794,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12806,6 +12886,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12863,7 +12944,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Parameters": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -13032,6 +13113,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -13144,6 +13226,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -13261,6 +13344,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -13402,6 +13486,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -13517,6 +13602,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -13608,6 +13694,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -13665,7 +13752,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.SourceControl",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControl, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControl, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AutoSync": "System.Boolean",
               "PublishRunbook": "System.Boolean",
@@ -13820,6 +13907,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -13930,6 +14018,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14049,6 +14138,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14140,6 +14230,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14193,7 +14284,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJob, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJob, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.DateTimeOffset",
               "SourceControlSyncJobId": "System.Guid",
@@ -14272,7 +14363,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJobRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJobRecord, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJobRecord, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.DateTimeOffset",
               "SourceControlSyncJobId": "System.Guid",
@@ -14429,6 +14520,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -14567,6 +14659,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14620,7 +14713,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJobStream",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJobStream, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJobStream, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SourceControlSyncJobId": "System.Guid",
               "Time": "System.Nullable`1[System.DateTimeOffset]",
@@ -14702,7 +14795,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJobStreamRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJobStreamRecord, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJobStreamRecord, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Value": "System.Collections.Hashtable",
               "SourceControlSyncJobId": "System.Guid",
@@ -14830,7 +14923,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Common",
             "Name": "Microsoft.Azure.Commands.Automation.Common.SourceControlSyncJobStreamType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.SourceControlSyncJobStreamType, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.SourceControlSyncJobStreamType, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -14986,6 +15079,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -15079,7 +15173,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Common",
                   "Name": "Microsoft.Azure.Commands.Automation.Common.SourceControlSyncJobStreamType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.SourceControlSyncJobStreamType, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Common.SourceControlSyncJobStreamType, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15259,6 +15353,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15312,7 +15407,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Variable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Encrypted": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -15441,6 +15536,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -15551,6 +15647,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15642,6 +15739,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15699,7 +15797,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Webhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Parameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -15852,6 +15950,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -15964,6 +16063,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16079,6 +16179,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16170,6 +16271,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16227,7 +16329,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -16455,6 +16557,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -16691,6 +16794,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16744,7 +16848,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfiguration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.DateTimeOffset",
               "LastModifiedTime": "System.DateTimeOffset",
@@ -16912,6 +17016,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -17070,6 +17175,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17127,7 +17233,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "LogProgress": "System.Boolean",
@@ -17424,6 +17530,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -17743,6 +17850,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17796,7 +17904,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -17966,6 +18074,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -18131,6 +18240,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18184,7 +18294,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Exportable": "System.Boolean",
               "ExpiryTime": "System.DateTimeOffset",
@@ -18386,6 +18496,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -18592,6 +18703,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18707,6 +18819,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18760,7 +18873,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Connection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FieldDefinitionValues": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -18943,6 +19056,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -19125,6 +19239,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19216,6 +19331,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19269,7 +19385,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.DateTimeOffset",
               "LastModifiedTime": "System.DateTimeOffset",
@@ -19433,6 +19549,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -19591,6 +19708,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19682,6 +19800,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19735,7 +19854,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AgentRegistration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "AutomationAccountName": "System.String",
@@ -19864,6 +19983,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -19977,6 +20097,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -20030,7 +20151,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Module",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsGlobal": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -20181,6 +20302,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -20317,6 +20439,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -20372,7 +20495,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "LogProgress": "System.Boolean",
@@ -20612,6 +20735,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -20856,6 +20980,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -21079,6 +21204,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -21132,7 +21258,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
               "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -21294,7 +21420,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth[], Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth[], Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth",
             "GenericTypeArguments": [],
@@ -21332,7 +21458,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Automation.Cmdlet.DayOfWeekOccurrence",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DayOfWeekOccurrence, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DayOfWeekOccurrence, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -21612,6 +21738,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -21818,6 +21945,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -22101,6 +22229,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -22147,7 +22276,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth[], Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth[], Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth",
                   "GenericTypeArguments": [],
@@ -22384,6 +22513,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -22456,7 +22586,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Automation.Cmdlet.DayOfWeekOccurrence",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DayOfWeekOccurrence, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DayOfWeekOccurrence, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -22778,6 +22908,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -23013,6 +23144,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -23272,6 +23404,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -23531,6 +23664,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -23584,7 +23718,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.SourceControl",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControl, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControl, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AutoSync": "System.Boolean",
               "PublishRunbook": "System.Boolean",
@@ -23865,6 +23999,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -24171,6 +24306,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -24224,7 +24360,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Variable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Encrypted": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -24407,6 +24543,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -24589,6 +24726,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -24680,6 +24818,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -24733,7 +24872,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Webhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Parameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -24976,6 +25115,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -25232,6 +25372,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -25285,7 +25426,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "LogProgress": "System.Boolean",
@@ -25423,6 +25564,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -25535,6 +25677,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -25626,6 +25769,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -25918,6 +26062,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -26251,6 +26396,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -26304,7 +26450,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Parameters": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -26491,6 +26637,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -26677,6 +26824,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -26768,6 +26916,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -26825,7 +26974,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -26954,6 +27103,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -27066,6 +27216,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -27189,6 +27340,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -27299,6 +27451,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -27390,6 +27543,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -27531,6 +27685,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -27665,6 +27820,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -27756,6 +27912,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -27897,6 +28054,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -28031,6 +28189,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -28122,6 +28281,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -28245,6 +28405,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -28355,6 +28516,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -28446,6 +28608,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -28589,6 +28752,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -28725,6 +28889,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -28886,6 +29051,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -29046,6 +29212,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -29171,6 +29338,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -29283,6 +29451,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -29374,6 +29543,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -29515,6 +29685,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -29649,6 +29820,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -29740,6 +29912,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -29883,6 +30056,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -30019,6 +30193,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -30134,6 +30309,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -30275,6 +30451,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -30409,6 +30586,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -30524,6 +30702,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -30680,6 +30859,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -30814,6 +30994,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -30937,6 +31118,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -31047,6 +31229,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -31170,6 +31353,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -31280,6 +31464,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -31405,6 +31590,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -31517,6 +31703,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -31570,7 +31757,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.AutomationAccount, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -31722,6 +31909,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -31863,6 +32051,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -31916,7 +32105,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CertificateInfo, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Exportable": "System.Boolean",
               "ExpiryTime": "System.DateTimeOffset",
@@ -32120,6 +32309,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -32328,6 +32518,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -32445,6 +32636,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -32498,7 +32690,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Connection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Connection, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FieldDefinitionValues": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -32663,6 +32855,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -32821,6 +33014,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -32912,6 +33106,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -32965,7 +33160,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CredentialInfo, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.DateTimeOffset",
               "LastModifiedTime": "System.DateTimeOffset",
@@ -33129,6 +33324,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -33287,6 +33483,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -33378,6 +33575,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -33431,7 +33629,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationTime": "System.DateTimeOffset",
               "LastSeen": "System.DateTimeOffset",
@@ -33599,6 +33797,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -33759,6 +33958,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -33898,6 +34098,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -33951,7 +34152,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Module",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Module, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsGlobal": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -34120,6 +34321,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -34280,6 +34482,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -34421,6 +34624,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -34474,7 +34678,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Runbook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Runbook, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LogVerbose": "System.Boolean",
               "LogProgress": "System.Boolean",
@@ -34688,6 +34892,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -34900,6 +35105,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -35091,6 +35297,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -35144,7 +35351,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
               "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -35323,6 +35530,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -35483,6 +35691,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -35624,6 +35833,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -35677,7 +35887,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Variable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Encrypted": "System.Boolean",
               "CreationTime": "System.DateTimeOffset",
@@ -35860,6 +36070,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -36018,6 +36229,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -36157,6 +36369,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -36248,6 +36461,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -36301,7 +36515,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Webhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Webhook, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Parameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -36472,6 +36686,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -36632,6 +36847,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -36685,7 +36901,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.CompilationJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.CompilationJob, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobParameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -36857,6 +37073,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -37017,6 +37234,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -37070,7 +37288,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Job": "Microsoft.Azure.Commands.Automation.Model.Job",
               "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
@@ -37317,7 +37535,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
               "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -37424,7 +37642,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Job": "Microsoft.Azure.Commands.Automation.Model.Job",
               "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
@@ -37665,6 +37883,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -37756,7 +37975,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
                     "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -37920,6 +38139,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -38016,7 +38236,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Job": "Microsoft.Azure.Commands.Automation.Model.Job",
                     "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
@@ -38275,6 +38495,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -38366,6 +38587,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -38419,7 +38641,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Job",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobParameters": "System.Collections.Hashtable",
               "CreationTime": "System.DateTimeOffset",
@@ -38666,6 +38888,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -38830,6 +39053,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -39047,6 +39271,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -39138,6 +39363,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -39191,7 +39417,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJob, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJob, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationTime": "System.DateTimeOffset",
               "SourceControlSyncJobId": "System.Guid",
@@ -39347,6 +39573,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -39485,6 +39712,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -39611,7 +39839,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Job": "Microsoft.Azure.Commands.Automation.Model.Job",
               "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
@@ -39852,6 +40080,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -40010,6 +40239,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -40125,6 +40355,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -40171,7 +40402,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Job": "Microsoft.Azure.Commands.Automation.Model.Job",
                     "JobSchedule": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
@@ -40454,6 +40685,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -40579,6 +40811,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -40691,6 +40924,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -40816,6 +41050,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -40928,6 +41163,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -40981,7 +41217,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.DscNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DscNode, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationTime": "System.DateTimeOffset",
               "LastSeen": "System.DateTimeOffset",
@@ -41131,6 +41367,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -41267,6 +41504,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -41382,6 +41620,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -41563,6 +41802,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -41699,6 +41939,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -41864,6 +42105,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -41979,6 +42221,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -42032,7 +42275,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.SourceControl",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControl, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.SourceControl, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AutoSync": "System.Boolean",
               "PublishRunbook": "System.Boolean",
@@ -42277,6 +42520,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -42535,6 +42779,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -42588,7 +42833,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
             "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScheduleConfiguration": "Microsoft.Azure.Commands.Automation.Model.Schedule",
               "ErrorInfo": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ErrorInfo",
@@ -42713,6 +42958,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -42823,6 +43069,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -42938,6 +43185,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -43029,6 +43277,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -43086,7 +43335,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
             "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRun",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRun, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRun, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "TargetComputerType": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ComputerType",
               "OperatingSystem": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType",
@@ -43180,7 +43429,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
             "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRun",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRun, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRun, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OperatingSystem": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType",
               "Status": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus",
@@ -43240,7 +43489,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -43311,6 +43560,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -43421,6 +43671,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -43491,7 +43742,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -43586,6 +43837,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -43632,7 +43884,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRun",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRun, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRun, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "OperatingSystem": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType",
                     "Status": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus",
@@ -43698,7 +43950,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -43793,6 +44045,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -43839,7 +44092,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -43934,6 +44187,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -44025,6 +44279,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -44078,7 +44333,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
             "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRun",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRun, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRun, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "OperatingSystem": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType",
               "Status": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus",
@@ -44175,7 +44430,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
             "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScheduleConfiguration": "Microsoft.Azure.Commands.Automation.Model.Schedule",
               "ErrorInfo": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ErrorInfo",
@@ -44230,7 +44485,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -44250,7 +44505,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -44321,6 +44576,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -44431,6 +44687,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -44501,7 +44758,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -44527,7 +44784,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -44622,6 +44879,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -44668,7 +44926,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ScheduleConfiguration": "Microsoft.Azure.Commands.Automation.Model.Schedule",
                     "ErrorInfo": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ErrorInfo",
@@ -44729,7 +44987,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -44755,7 +45013,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -44850,6 +45108,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -44896,7 +45155,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -44922,7 +45181,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -45017,6 +45276,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -45108,6 +45368,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -45161,7 +45422,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
             "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScheduleConfiguration": "Microsoft.Azure.Commands.Automation.Model.Schedule",
               "ErrorInfo": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ErrorInfo",
@@ -45217,7 +45478,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model",
             "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
               "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -45396,7 +45657,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
             "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses[], Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses[], Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses",
             "GenericTypeArguments": [],
@@ -45450,7 +45711,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
             "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses[], Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses[], Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses",
             "GenericTypeArguments": [],
@@ -45537,6 +45798,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -45578,7 +45840,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
                     "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -45790,6 +46052,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -45860,7 +46123,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses[], Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses[], Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses",
                   "GenericTypeArguments": [],
@@ -45932,7 +46195,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
                     "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -46144,6 +46407,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -46214,7 +46478,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses[], Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses[], Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses",
                   "GenericTypeArguments": [],
@@ -46286,7 +46550,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
                     "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -46498,6 +46762,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -46603,7 +46868,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
             "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScheduleConfiguration": "Microsoft.Azure.Commands.Automation.Model.Schedule",
               "ErrorInfo": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ErrorInfo",
@@ -46709,6 +46974,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -46843,6 +47109,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -46889,7 +47156,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
                   "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ScheduleConfiguration": "Microsoft.Azure.Commands.Automation.Model.Schedule",
                     "ErrorInfo": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ErrorInfo",
@@ -47019,6 +47286,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -47134,6 +47402,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -47424,8 +47693,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -47571,7 +47839,7 @@
     "Microsoft.Azure.Commands.Automation.Model.Job": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.Job",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Job, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "JobParameters": "System.Collections.Hashtable",
         "CreationTime": "System.DateTimeOffset",
@@ -47665,7 +47933,7 @@
     "Microsoft.Azure.Commands.Automation.Model.JobSchedule": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.JobSchedule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.JobSchedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Parameters": "System.Collections.Hashtable",
         "ResourceGroupName": "System.String",
@@ -47746,7 +48014,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -47758,7 +48026,7 @@
     "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "RegistrationTime": "System.DateTimeOffset",
         "LastSeenDateTime": "System.DateTimeOffset",
@@ -47815,7 +48083,7 @@
     "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DayOfWeek": "Microsoft.Azure.Commands.Automation.Model.DayOfWeek",
         "DaysOfMonth": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth]"
@@ -47860,7 +48128,7 @@
     "Microsoft.Azure.Commands.Automation.Model.DayOfWeek": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.DayOfWeek",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DayOfWeek, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.DayOfWeek, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Occurrence": "System.String",
         "Day": "System.String"
@@ -47905,7 +48173,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -47917,7 +48185,7 @@
     "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Cmdlet",
       "Name": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Cmdlet.DaysOfMonth, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -48012,7 +48280,7 @@
     "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -48107,7 +48375,7 @@
     "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.WeeklyScheduleOptions, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DaysOfWeek": "System.Collections.Generic.IList`1[System.String]"
       },
@@ -48364,7 +48632,7 @@
     "Microsoft.Azure.Commands.Automation.Model.Schedule": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model",
       "Name": "Microsoft.Azure.Commands.Automation.Model.Schedule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Schedule, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "MonthlyScheduleOptions": "Microsoft.Azure.Commands.Automation.Model.MonthlyScheduleOptions",
         "Frequency": "Microsoft.Azure.Commands.Automation.Model.ScheduleFrequency",
@@ -48445,7 +48713,7 @@
     "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ErrorInfo": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
       "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ErrorInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ErrorInfo, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ErrorInfo, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Code": "System.String",
         "Message": "System.String"
@@ -48490,7 +48758,7 @@
     "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
       "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Linux": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxConfiguration",
         "OperatingSystem": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType",
@@ -48539,7 +48807,7 @@
     "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxConfiguration": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
       "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxConfiguration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IncludedPackageClassifications": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses]",
         "ExcludedPackageNameMasks": "System.Collections.Generic.IList`1[System.String]",
@@ -48585,7 +48853,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -48597,7 +48865,7 @@
     "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
       "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -48692,7 +48960,7 @@
     "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
       "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -48787,7 +49055,7 @@
     "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsConfiguration": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
       "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsConfiguration, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IncludedUpdateClassifications": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses]",
         "ExcludedKbNumbers": "System.Collections.Generic.IList`1[System.String]",
@@ -48833,7 +49101,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -48845,7 +49113,7 @@
     "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
       "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -48962,7 +49230,7 @@
     "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ComputerType": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
       "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ComputerType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ComputerType, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.ComputerType, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -49057,7 +49325,7 @@
     "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
       "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -49152,7 +49420,7 @@
     "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus": {
       "Namespace": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement",
       "Name": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus, Microsoft.Azure.Commands.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus, Microsoft.Azure.PowerShell.Cmdlets.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

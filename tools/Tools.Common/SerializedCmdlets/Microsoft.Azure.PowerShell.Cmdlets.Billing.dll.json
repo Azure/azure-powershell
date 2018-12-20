@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Billing.Models",
             "Name": "Microsoft.Azure.Commands.Billing.Models.PSInvoice",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.14.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.PowerShell.Cmdlets.Billing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BillingPeriodNames": "System.Collections.Generic.List`1[System.String]",
               "InvoicePeriodStartDate": "System.Nullable`1[System.DateTime]",
@@ -157,6 +157,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -219,6 +220,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -288,6 +290,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -381,6 +384,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -424,6 +428,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -477,7 +482,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Billing.Models",
             "Name": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.14.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.PowerShell.Cmdlets.Billing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "InvoiceNames": "System.Collections.Generic.List`1[System.String]",
               "BillingPeriodStartDate": "System.Nullable`1[System.DateTime]",
@@ -560,6 +565,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -622,6 +628,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -665,6 +672,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -722,7 +730,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Billing.Models",
             "Name": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.14.6.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.PowerShell.Cmdlets.Billing, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "InvoiceNames": "System.Collections.Generic.List`1[System.String]",
               "BillingPeriodStartDate": "System.Nullable`1[System.DateTime]",
@@ -827,6 +835,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -891,6 +900,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -960,6 +970,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1003,6 +1014,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1337,8 +1349,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],

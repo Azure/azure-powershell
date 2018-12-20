@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSServiceKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKeys, Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKeys, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryAuthEndpoint": "System.String",
               "SecondaryAuthEndpoint": "System.String",
@@ -107,6 +107,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -196,6 +197,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -249,7 +251,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSServiceKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKey, Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKey, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Key": "System.String",
               "KeyType": "System.String"
@@ -442,6 +444,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -640,6 +643,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -768,6 +772,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -883,6 +888,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -936,7 +942,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSMediaService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApiEndpoints": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
               "StorageAccounts": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
@@ -1032,6 +1038,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1094,6 +1101,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1188,6 +1196,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1231,6 +1240,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1284,7 +1294,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSCheckNameAvailabilityOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSCheckNameAvailabilityOutput, Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSCheckNameAvailabilityOutput, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NameAvailable": "System.Boolean",
               "Reason": "System.String",
@@ -1336,6 +1346,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1374,6 +1385,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1427,7 +1439,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSMediaService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApiEndpoints": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
               "StorageAccounts": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
@@ -1564,7 +1576,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
             "GenericTypeArguments": [],
@@ -1578,9 +1590,7 @@
         },
         {
           "Name": "Tag",
-          "AliasList": [
-            "Tags"
-          ],
+          "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
@@ -1599,6 +1609,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1737,9 +1748,7 @@
             {
               "ParameterMetadata": {
                 "Name": "Tag",
-                "AliasList": [
-                  "Tags"
-                ],
+                "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
@@ -1764,6 +1773,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1885,7 +1895,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Media.Models",
                   "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
                   "GenericTypeArguments": [],
@@ -1905,9 +1915,7 @@
             {
               "ParameterMetadata": {
                 "Name": "Tag",
-                "AliasList": [
-                  "Tags"
-                ],
+                "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
@@ -1932,6 +1940,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1974,9 +1983,7 @@
             {
               "ParameterMetadata": {
                 "Name": "Tag",
-                "AliasList": [
-                  "Tags"
-                ],
+                "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
@@ -2001,6 +2008,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2054,7 +2062,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsPrimary": "System.Nullable`1[System.Boolean]",
               "Id": "System.String",
@@ -2107,6 +2115,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2145,6 +2154,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2271,6 +2281,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2384,6 +2395,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2437,7 +2449,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSMediaService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApiEndpoints": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
               "StorageAccounts": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
@@ -2554,7 +2566,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
             "GenericTypeArguments": [],
@@ -2569,6 +2581,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2685,7 +2698,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Media.Models",
                   "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
                   "GenericTypeArguments": [],
@@ -2706,6 +2719,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3006,8 +3020,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -3101,7 +3114,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3113,7 +3126,7 @@
     "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint": {
       "Namespace": "Microsoft.Azure.Commands.Media.Models",
       "Name": "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Endpoint": "System.String",
         "MajorVersion": "System.String"
@@ -3158,7 +3171,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3170,7 +3183,7 @@
     "Microsoft.Azure.Commands.Media.Models.PSStorageAccount": {
       "Namespace": "Microsoft.Azure.Commands.Media.Models",
       "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.Commands.Media, Version=0.10.4.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsPrimary": "System.Nullable`1[System.Boolean]",
         "Id": "System.String",

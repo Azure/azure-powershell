@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -132,6 +132,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -218,6 +219,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -285,6 +287,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -328,6 +331,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -381,7 +385,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -560,6 +564,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -749,6 +754,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -802,7 +808,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -923,7 +929,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -1004,6 +1010,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1114,6 +1121,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1205,6 +1213,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1251,7 +1260,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
                   "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -1344,6 +1353,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1411,6 +1421,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1464,7 +1475,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -1585,7 +1596,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -1666,6 +1677,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1776,6 +1788,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1867,6 +1880,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1913,7 +1927,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
                   "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -2006,6 +2020,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2073,6 +2088,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2126,7 +2142,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -2247,7 +2263,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -2328,6 +2344,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2438,6 +2455,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2529,6 +2547,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2575,7 +2594,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
                   "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -2668,6 +2687,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2735,6 +2755,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2822,6 +2843,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2884,6 +2906,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2937,7 +2960,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -3119,7 +3142,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -3200,6 +3223,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3389,6 +3413,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3535,6 +3560,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3705,6 +3731,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3751,7 +3778,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
                   "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -3923,6 +3950,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4235,8 +4263,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],

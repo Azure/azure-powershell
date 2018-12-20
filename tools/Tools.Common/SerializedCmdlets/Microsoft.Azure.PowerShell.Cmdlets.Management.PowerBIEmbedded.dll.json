@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace, Microsoft.Azure.Commands.Management.PowerBIEmbedded, Version=4.1.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -115,6 +115,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -204,6 +205,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -257,7 +259,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.Commands.Management.PowerBIEmbedded, Version=4.1.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Id": "System.String",
@@ -358,6 +360,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -420,6 +423,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -514,6 +518,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -557,6 +562,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -610,7 +616,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.Commands.Management.PowerBIEmbedded, Version=4.1.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "KeyName": "System.String",
               "Value": "System.String"
@@ -710,6 +716,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -799,6 +806,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -852,7 +860,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.Commands.Management.PowerBIEmbedded, Version=4.1.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Id": "System.String",
@@ -971,6 +979,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1084,6 +1093,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1192,6 +1202,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1281,6 +1292,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1334,7 +1346,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.Commands.Management.PowerBIEmbedded, Version=4.1.10.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "KeyName": "System.String",
               "Value": "System.String"
@@ -1470,6 +1482,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1607,6 +1620,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1791,7 +1805,7 @@
     "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace": {
       "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
       "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace, Microsoft.Azure.Commands.Management.PowerBIEmbedded, Version=4.1.10.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Id": "System.String",
         "Name": "System.String",
@@ -1963,8 +1977,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -2048,7 +2061,7 @@
     "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection": {
       "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
       "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.Commands.Management.PowerBIEmbedded, Version=4.1.10.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Id": "System.String",
@@ -2104,7 +2117,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.Commands.Management.PowerBIEmbedded, Version=4.1.10.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -2116,7 +2129,7 @@
     "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey": {
       "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
       "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.Commands.Management.PowerBIEmbedded, Version=4.1.10.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.Management.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "KeyName": "System.String",
         "Value": "System.String"

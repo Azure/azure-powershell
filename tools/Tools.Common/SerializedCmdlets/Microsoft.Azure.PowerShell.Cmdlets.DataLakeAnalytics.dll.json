@@ -108,6 +108,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -220,6 +221,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -363,6 +365,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -406,6 +409,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -461,7 +465,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "StartIpAddress": "System.String",
@@ -610,6 +614,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -770,6 +775,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -825,7 +831,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "DataLakeStoreAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]",
@@ -863,6 +869,70 @@
                 "Parameters": [],
                 "ReturnType": "System.Void"
               },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "baseAccount",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountBasic",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountBasic, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "State": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccountState]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Analytics.Models.DataLakeAnalyticsAccountStatus]",
+              "CreationTime": "System.Nullable`1[System.DateTime]",
+              "LastModifiedTime": "System.Nullable`1[System.DateTime]",
+              "AccountId": "System.Nullable`1[System.Guid]",
+              "Endpoint": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
               {
                 "Name": "ToString",
                 "Parameters": [],
@@ -947,6 +1017,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1009,6 +1080,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1100,6 +1172,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1143,6 +1216,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1290,7 +1364,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1393,7 +1467,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DatabaseName": "System.String",
               "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -1456,6 +1530,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1523,7 +1598,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1632,7 +1707,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -1701,6 +1776,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1756,7 +1832,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ObjectId": "System.Nullable`1[System.Guid]",
               "MaxDegreeOfParallelismPerJob": "System.Nullable`1[System.Int32]",
@@ -1880,6 +1956,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1994,6 +2071,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2049,9 +2127,8 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "AccessKey": "System.String",
               "Suffix": "System.String",
               "Id": "System.String",
               "Name": "System.String",
@@ -2107,7 +2184,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Suffix": "System.String",
               "Id": "System.String",
@@ -2164,7 +2241,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Type": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+DataSourceType",
               "IsDefault": "System.Boolean",
@@ -2311,6 +2388,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2423,6 +2501,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2542,6 +2621,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2635,6 +2715,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2678,6 +2759,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2733,7 +2815,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "StartIpAddress": "System.String",
@@ -2846,6 +2928,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2958,6 +3041,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3204,7 +3288,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3476,6 +3560,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3766,6 +3851,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3862,7 +3948,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3968,6 +4054,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4011,6 +4098,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4066,7 +4154,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Runs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Analytics.Models.JobPipelineRunInformation]",
               "Recurrences": "System.Collections.Generic.IList`1[System.Nullable`1[System.Guid]]",
@@ -4217,6 +4305,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -4333,6 +4422,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4480,6 +4570,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4523,6 +4614,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4578,7 +4670,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LastSubmitTime": "System.Nullable`1[System.DateTimeOffset]",
               "AuHoursFailed": "System.Nullable`1[System.Double]",
@@ -4721,6 +4813,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -4837,6 +4930,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4984,6 +5078,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5027,6 +5122,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5082,7 +5178,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "DataLakeStoreAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]",
@@ -5340,6 +5436,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -5604,6 +5701,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5857,6 +5955,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -6041,6 +6140,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6206,6 +6306,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6249,6 +6350,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6292,609 +6394,6 @@
     },
     {
       "VerbName": "New",
-      "NounName": "AzDataLakeAnalyticsCatalogSecret",
-      "Name": "New-AzDataLakeAnalyticsCatalogSecret",
-      "ClassName": "Microsoft.Azure.Commands.DataLakeAnalytics.NewAzureDataLakeAnalyticsCatalogSecret",
-      "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
-      "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [
-        {
-          "Type": {
-            "Namespace": "Microsoft.Azure.Management.DataLake.Analytics.Models",
-            "Name": "Microsoft.Azure.Management.DataLake.Analytics.Models.USqlSecret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Analytics.Models.USqlSecret, Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {
-              "CreationTime": "System.Nullable`1[System.DateTimeOffset]",
-              "Version": "System.Nullable`1[System.Guid]",
-              "DatabaseName": "System.String",
-              "Name": "System.String",
-              "Uri": "System.String",
-              "Password": "System.String",
-              "ComputeAccountName": "System.String"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
-                "Name": "Equals",
-                "Parameters": [
-                  {
-                    "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.Boolean"
-              },
-              {
-                "Name": "GetHashCode",
-                "Parameters": [],
-                "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
-              }
-            ],
-            "Constructors": [
-              {
-                "Name": "",
-                "ReturnType": null,
-                "Parameters": []
-              },
-              {
-                "Name": "",
-                "ReturnType": null,
-                "Parameters": [
-                  {
-                    "Name": "computeAccountName",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "version",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "databaseName",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "name",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "creationTime",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "uri",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "password",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ]
-              }
-            ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        }
-      ],
-      "Parameters": [
-        {
-          "Name": "Account",
-          "AliasList": [
-            "AccountName"
-          ],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "DatabaseName",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "Secret",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "Uri",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.Uri",
-            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "DatabaseHost",
-          "AliasList": [
-            "Host"
-          ],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Port",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.Int32",
-            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "DefaultProfile",
-          "AliasList": [
-            "AzureRmContext",
-            "AzureCredential"
-          ],
-          "Type": {
-            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {
-              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "Clear",
-                "Parameters": [],
-                "ReturnType": "System.Void"
-              }
-            ],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        }
-      ],
-      "ParameterSets": [
-        {
-          "Name": "CreateByFullURI",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Account",
-                "AliasList": [
-                  "AccountName"
-                ],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 0,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DatabaseName",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 1,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Secret",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 2,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DatabaseHost",
-                "AliasList": [
-                  "Host"
-                ],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": 3,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Port",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Int32",
-                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": 4,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRmContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {
-                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Clear",
-                      "Parameters": [],
-                      "ReturnType": "System.Void"
-                    }
-                  ],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "CreateByHostNameAndPort",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Account",
-                "AliasList": [
-                  "AccountName"
-                ],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 0,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DatabaseName",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 1,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Secret",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 2,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Uri",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": 3,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRmContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {
-                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Clear",
-                      "Parameters": [],
-                      "ReturnType": "System.Void"
-                    }
-                  ],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "__AllParameterSets",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRmContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {
-                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Clear",
-                      "Parameters": [],
-                      "ReturnType": "System.Void"
-                    }
-                  ],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        }
-      ],
-      "AliasList": [
-        "New-AdlCatalogSecret"
-      ]
-    },
-    {
-      "VerbName": "New",
       "NounName": "AzDataLakeAnalyticsComputePolicy",
       "Name": "New-AzDataLakeAnalyticsComputePolicy",
       "ClassName": "Microsoft.Azure.Commands.DataLakeAnalytics.NewAzureDataLakeAnalyticsComputePolicy",
@@ -6907,7 +6406,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ObjectId": "System.Nullable`1[System.Guid]",
               "MaxDegreeOfParallelismPerJob": "System.Nullable`1[System.Int32]",
@@ -7113,6 +6612,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -7333,6 +6833,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7476,6 +6977,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -7610,6 +7112,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -7809,6 +7312,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -8017,6 +7521,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8056,329 +7561,6 @@
       ],
       "AliasList": [
         "Remove-AdlCatalogCredential"
-      ]
-    },
-    {
-      "VerbName": "Remove",
-      "NounName": "AzDataLakeAnalyticsCatalogSecret",
-      "Name": "Remove-AzDataLakeAnalyticsCatalogSecret",
-      "ClassName": "Microsoft.Azure.Commands.DataLakeAnalytics.RemoveAzureDataLakeAnalyticsSecret",
-      "SupportsShouldProcess": true,
-      "ConfirmImpact": 2,
-      "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [
-        {
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.Boolean",
-            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        }
-      ],
-      "Parameters": [
-        {
-          "Name": "Account",
-          "AliasList": [
-            "AccountName"
-          ],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "DatabaseName",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "Name",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "Force",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "PassThru",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "DefaultProfile",
-          "AliasList": [
-            "AzureRmContext",
-            "AzureCredential"
-          ],
-          "Type": {
-            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {
-              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "Clear",
-                "Parameters": [],
-                "ReturnType": "System.Void"
-              }
-            ],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        }
-      ],
-      "ParameterSets": [
-        {
-          "Name": "__AllParameterSets",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Account",
-                "AliasList": [
-                  "AccountName"
-                ],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 0,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DatabaseName",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 1,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Name",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": 2,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Force",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": 3,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "PassThru",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": 4,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRmContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {
-                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Clear",
-                      "Parameters": [],
-                      "ReturnType": "System.Void"
-                    }
-                  ],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        }
-      ],
-      "AliasList": [
-        "Remove-AdlCatalogSecret"
       ]
     },
     {
@@ -8487,6 +7669,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -8625,6 +7808,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -8808,6 +7992,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -8968,6 +8153,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9135,6 +8321,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9178,6 +8365,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9323,6 +8511,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -9459,6 +8648,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -9514,7 +8704,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "DataLakeStoreAccounts": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]",
@@ -9776,6 +8966,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -10044,6 +9235,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10315,6 +9507,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -10523,6 +9716,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10712,6 +9906,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10755,6 +9950,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -10794,609 +9990,6 @@
       ],
       "AliasList": [
         "Set-AdlCatalogCredential"
-      ]
-    },
-    {
-      "VerbName": "Set",
-      "NounName": "AzDataLakeAnalyticsCatalogSecret",
-      "Name": "Set-AzDataLakeAnalyticsCatalogSecret",
-      "ClassName": "Microsoft.Azure.Commands.DataLakeAnalytics.SetAzureDataLakeAnalyticsCatalogSecret",
-      "SupportsShouldProcess": false,
-      "ConfirmImpact": 2,
-      "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [
-        {
-          "Type": {
-            "Namespace": "Microsoft.Azure.Management.DataLake.Analytics.Models",
-            "Name": "Microsoft.Azure.Management.DataLake.Analytics.Models.USqlSecret",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataLake.Analytics.Models.USqlSecret, Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {
-              "CreationTime": "System.Nullable`1[System.DateTimeOffset]",
-              "Version": "System.Nullable`1[System.Guid]",
-              "DatabaseName": "System.String",
-              "Name": "System.String",
-              "Uri": "System.String",
-              "Password": "System.String",
-              "ComputeAccountName": "System.String"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
-                "Name": "Equals",
-                "Parameters": [
-                  {
-                    "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.Boolean"
-              },
-              {
-                "Name": "GetHashCode",
-                "Parameters": [],
-                "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
-              }
-            ],
-            "Constructors": [
-              {
-                "Name": "",
-                "ReturnType": null,
-                "Parameters": []
-              },
-              {
-                "Name": "",
-                "ReturnType": null,
-                "Parameters": [
-                  {
-                    "Name": "computeAccountName",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "version",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "databaseName",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "name",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "creationTime",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "uri",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "password",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ]
-              }
-            ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        }
-      ],
-      "Parameters": [
-        {
-          "Name": "Account",
-          "AliasList": [
-            "AccountName"
-          ],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "DatabaseName",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "Secret",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "Uri",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.Uri",
-            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "DatabaseHost",
-          "AliasList": [
-            "Host"
-          ],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Port",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.Int32",
-            "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "DefaultProfile",
-          "AliasList": [
-            "AzureRmContext",
-            "AzureCredential"
-          ],
-          "Type": {
-            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
-            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {
-              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "Clear",
-                "Parameters": [],
-                "ReturnType": "System.Void"
-              }
-            ],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        }
-      ],
-      "ParameterSets": [
-        {
-          "Name": "SetByFullUri",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Account",
-                "AliasList": [
-                  "AccountName"
-                ],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 0,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DatabaseName",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 1,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Secret",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 2,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DatabaseHost",
-                "AliasList": [
-                  "Host"
-                ],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": 3,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Port",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Int32",
-                  "AssemblyQualifiedName": "System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": 4,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRmContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {
-                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Clear",
-                      "Parameters": [],
-                      "ReturnType": "System.Void"
-                    }
-                  ],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "SetByHostNameAndPort",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Account",
-                "AliasList": [
-                  "AccountName"
-                ],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 0,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DatabaseName",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 1,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Secret",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": true,
-              "Position": 2,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Uri",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": 3,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRmContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {
-                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Clear",
-                      "Parameters": [],
-                      "ReturnType": "System.Void"
-                    }
-                  ],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "__AllParameterSets",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRmContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
-                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {
-                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Clear",
-                      "Parameters": [],
-                      "ReturnType": "System.Void"
-                    }
-                  ],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        }
-      ],
-      "AliasList": [
-        "Set-AdlCatalogSecret"
       ]
     },
     {
@@ -11505,6 +10098,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -11643,6 +10237,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -11698,7 +10293,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsFirewallRule, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "StartIpAddress": "System.String",
@@ -11847,6 +10442,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -12007,6 +10603,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12152,6 +10749,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -12288,6 +10886,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -12791,6 +11390,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -13053,6 +11653,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -13320,6 +11921,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -13635,6 +12237,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -13950,6 +12553,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14363,6 +12967,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14776,6 +13381,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14819,6 +13425,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -14926,6 +13533,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -15012,6 +13620,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15106,7 +13715,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15209,7 +13818,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DatabaseName": "System.String",
               "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -15272,6 +13881,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -15339,7 +13949,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15448,7 +14058,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -15517,6 +14127,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -15572,7 +14183,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsComputePolicy, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ObjectId": "System.Nullable`1[System.Guid]",
               "MaxDegreeOfParallelismPerJob": "System.Nullable`1[System.Int32]",
@@ -15738,6 +14349,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -15906,6 +14518,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16185,6 +14798,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -16321,6 +14935,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16376,7 +14991,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAcl",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAcl, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAcl, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Permissions": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
               "Id": "System.String",
@@ -16510,7 +15125,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DatabaseName": "System.String",
               "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -16573,6 +15188,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -16637,6 +15253,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16730,6 +15347,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16823,6 +15441,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -16919,7 +15538,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -16988,6 +15607,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17108,7 +15728,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -17177,6 +15797,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17297,7 +15918,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -17366,6 +15987,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17409,6 +16031,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17578,7 +16201,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DatabaseName": "System.String",
               "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -17659,6 +16282,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -17747,6 +16371,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -17891,6 +16516,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18012,7 +16638,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -18131,6 +16757,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18275,6 +16902,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18396,7 +17024,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -18515,6 +17143,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -18570,7 +17199,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAcl",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAcl, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAcl, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Permissions": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
               "Id": "System.String",
@@ -18779,7 +17408,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DatabaseName": "System.String",
               "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -18845,7 +17474,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
             "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -18945,6 +17574,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -19009,6 +17639,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19106,7 +17737,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19238,6 +17869,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19359,7 +17991,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -19431,7 +18063,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19563,6 +18195,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19660,7 +18293,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19792,6 +18425,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -19913,7 +18547,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -19985,7 +18619,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20117,6 +18751,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -20187,7 +18822,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20319,6 +18954,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -20413,7 +19049,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -20485,7 +19121,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20617,6 +19253,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -20687,7 +19324,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20819,6 +19456,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -20913,7 +19551,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -20985,7 +19623,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21117,6 +19755,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -21187,7 +19826,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21319,6 +19958,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -21413,7 +20053,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "DatabaseName": "System.String",
                     "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -21485,7 +20125,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
                   "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21617,6 +20257,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -21909,8 +20550,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22004,7 +20644,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22016,7 +20656,7 @@
     "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Suffix": "System.String",
         "Id": "System.String",
@@ -22068,7 +20708,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22080,9 +20720,8 @@
     "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "AccessKey": "System.String",
         "Suffix": "System.String",
         "Id": "System.String",
         "Name": "System.String",
@@ -23083,7 +21722,7 @@
     "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DatabaseName": "System.String",
         "SchemaAssemblyOrExternalDataSourceName": "System.String",
@@ -23141,7 +21780,7 @@
     "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+DataSourceType": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+DataSourceType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+DataSourceType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+DataSourceType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -24238,7 +22877,7 @@
     "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeAnalytics.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.Commands.DataLakeAnalytics, Version=5.1.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType, Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

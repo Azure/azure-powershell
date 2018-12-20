@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSCatalog",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSCatalog, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSCatalog, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SkuProperties": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.SkuProperty]",
               "Restrictions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.SkuRestriction]",
@@ -153,6 +153,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -263,6 +264,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -316,7 +318,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NextPageLink": "System.String"
             },
@@ -380,7 +382,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -518,7 +520,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Reservations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.ReservationResponse]",
               "RequestDateTime": "System.Nullable`1[System.DateTime]",
@@ -596,7 +598,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NextPageLink": "System.String"
             },
@@ -660,6 +662,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -746,6 +749,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -792,7 +796,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Reservations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.ReservationResponse]",
                     "RequestDateTime": "System.Nullable`1[System.DateTime]",
@@ -873,6 +877,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -919,7 +924,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "NextPageLink": "System.String"
                   },
@@ -989,6 +994,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1032,6 +1038,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1085,7 +1092,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NextPageLink": "System.String"
             },
@@ -1189,7 +1196,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -1287,6 +1294,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1373,6 +1381,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1419,7 +1428,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
                     "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -1523,6 +1532,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1566,6 +1576,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1619,7 +1630,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NextPageLink": "System.String"
             },
@@ -1683,7 +1694,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Reservations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.ReservationResponse]",
               "RequestDateTime": "System.Nullable`1[System.DateTime]",
@@ -1777,6 +1788,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1839,6 +1851,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1985,6 +1998,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2047,6 +2061,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2100,7 +2115,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -2238,7 +2253,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[], Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[], Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
             "GenericTypeArguments": [],
@@ -2253,6 +2268,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2339,6 +2355,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2385,7 +2402,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[], Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[], Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
                   "GenericTypeArguments": [],
@@ -2406,6 +2423,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2449,6 +2467,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2502,7 +2521,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -2694,7 +2713,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -2810,6 +2829,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2992,6 +3012,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3131,6 +3152,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3177,7 +3199,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
                     "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -3377,6 +3399,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3430,7 +3453,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -3586,7 +3609,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -3684,6 +3707,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3794,6 +3818,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3861,6 +3886,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3907,7 +3933,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
                     "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -4035,6 +4061,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4482,8 +4509,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -4567,7 +4593,7 @@
     "System.Collections.Generic.IEnumerator`1[Microsoft.Azure.Commands.Reservations.Models.PSReservation]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerator`1[Microsoft.Azure.Commands.Reservations.Models.PSReservation]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerator`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerator`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4579,7 +4605,7 @@
     "Microsoft.Azure.Commands.Reservations.Models.PSReservation": {
       "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
       "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
         "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
@@ -5152,7 +5178,7 @@
     "System.Collections.Generic.IEnumerator`1[Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerator`1[Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerator`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerator`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5164,7 +5190,7 @@
     "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder": {
       "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
       "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.7.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.PowerShell.Cmdlets.Reservations, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Reservations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.ReservationResponse]",
         "RequestDateTime": "System.Nullable`1[System.DateTime]",

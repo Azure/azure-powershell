@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagementPartner",
             "Name": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.Commands.ManagementPartner, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PartnerId": "System.String",
               "PartnerName": "System.String",
@@ -91,6 +91,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -153,6 +154,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -206,7 +208,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagementPartner",
             "Name": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.Commands.ManagementPartner, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PartnerId": "System.String",
               "PartnerName": "System.String",
@@ -283,6 +285,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -345,6 +348,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -450,6 +454,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -536,6 +541,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -589,7 +595,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagementPartner",
             "Name": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.Commands.ManagementPartner, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PartnerId": "System.String",
               "PartnerName": "System.String",
@@ -666,6 +672,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -728,6 +735,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1028,8 +1036,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],

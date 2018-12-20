@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
             "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
               "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -130,6 +130,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -216,6 +217,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -283,6 +285,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -326,6 +329,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -379,7 +383,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
             "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationClusterCredentials",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationClusterCredentials, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationClusterCredentials, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsCredentials",
               "ContainerRegistry": "Microsoft.Azure.Management.MachineLearningCompute.Models.ContainerRegistryCredentials",
@@ -485,7 +489,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
             "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
               "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -582,6 +586,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -668,6 +673,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -716,7 +722,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
                   "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
                     "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -801,6 +807,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -868,6 +875,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -911,6 +919,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -964,7 +973,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
             "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
               "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -1085,7 +1094,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
             "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
               "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -1456,6 +1465,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1542,6 +1552,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1590,7 +1601,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
                   "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
                     "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -1723,6 +1734,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2202,6 +2214,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2312,7 +2325,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
             "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
               "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -2427,6 +2440,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2537,6 +2551,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2585,7 +2600,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
                   "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
                     "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -2694,6 +2709,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2785,6 +2801,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2852,6 +2869,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2905,7 +2923,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
             "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
               "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -2990,7 +3008,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
             "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
               "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -3215,6 +3233,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -3258,7 +3277,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
                   "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
                     "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -3465,6 +3484,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3654,6 +3674,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3867,6 +3888,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3910,6 +3932,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3963,7 +3986,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
             "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSCheckSystemServicesUpdatesAvailableResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSCheckSystemServicesUpdatesAvailableResponse, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSCheckSystemServicesUpdatesAvailableResponse, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "UpdatesAvailable": "System.String"
             },
@@ -4059,7 +4082,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
             "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
               "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -4156,6 +4179,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -4242,6 +4266,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4290,7 +4315,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
                   "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
                     "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -4375,6 +4400,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4442,6 +4468,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4485,6 +4512,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4538,7 +4566,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
             "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSUpdateSystemServicesResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSUpdateSystemServicesResponse, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSUpdateSystemServicesResponse, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "UpdateStartedOn": "System.Nullable`1[System.DateTime]",
               "UpdateCompletedOn": "System.Nullable`1[System.DateTime]",
@@ -4636,7 +4664,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
             "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
               "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -4733,6 +4761,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -4819,6 +4848,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -4867,7 +4897,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
                   "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningCompute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
                     "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
@@ -4952,6 +4982,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5019,6 +5050,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -5062,6 +5094,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -6537,8 +6570,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],

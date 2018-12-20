@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.Commands.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -135,6 +135,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -197,6 +198,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -288,6 +290,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -355,6 +358,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -398,6 +402,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -451,7 +456,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys, Microsoft.Azure.Commands.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRKeys, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "PrimaryKey": "System.String",
@@ -571,7 +576,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.Commands.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -637,6 +642,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -723,6 +729,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -790,6 +797,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -836,7 +844,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.Commands.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -908,6 +916,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -951,6 +960,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1004,7 +1014,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.Commands.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1200,6 +1210,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1409,6 +1420,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1535,7 +1547,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.Commands.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1640,6 +1652,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -1777,6 +1790,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1895,6 +1909,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -1941,7 +1956,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.Commands.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2064,6 +2079,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2158,6 +2174,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2284,7 +2301,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
             "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.Commands.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2386,6 +2403,7 @@
         {
           "Name": "DefaultProfile",
           "AliasList": [
+            "AzContext",
             "AzureRmContext",
             "AzureCredential"
           ],
@@ -2520,6 +2538,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2635,6 +2654,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2681,7 +2701,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
                   "Name": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.Commands.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2801,6 +2821,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -2892,6 +2913,7 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
+                  "AzContext",
                   "AzureRmContext",
                   "AzureCredential"
                 ],
@@ -3076,7 +3098,7 @@
     "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku": {
       "Namespace": "Microsoft.Azure.Commands.SignalR.Models",
       "Name": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku, Microsoft.Azure.Commands.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SignalR.Models.PSResourceSku, Microsoft.Azure.PowerShell.Cmdlets.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Capacity": "System.Nullable`1[System.Int32]",
         "Family": "System.String",
@@ -3257,8 +3279,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Directory": "System.String"
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
