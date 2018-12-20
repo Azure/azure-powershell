@@ -12,6 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$managementGroup = 'AzGovTest7'
 $description = 'Unit test junk: sorry for littering. Please delete me!'
 $updatedDescription = "Updated $description"
 $metadataName = 'testName'
@@ -57,6 +58,12 @@ function Test-PolicyDefinitionCRUD
     New-AzureRMPolicyDefinition -Name test2 -Policy "{""if"":{""source"":""action"",""equals"":""blah""},""then"":{""effect"":""deny""}}" -Description $description
     $list = Get-AzureRMPolicyDefinition | ?{ $_.Name -in @($policyName, 'test2') }
     Assert-True { $list.Count -eq 2 }
+
+    # ensure that only custom definitions are returned using the custom flag
+    $list = Get-AzureRmPolicyDefinition -Custom
+    Assert-True { $list.Count -gt 0 }
+    $builtIns = $list | Where-Object { $_.Properties.policyType -ieq 'BuiltIn' }
+    Assert-True { $builtIns.Count -eq 0 }
 
     # clean up
     $remove = Remove-AzureRMPolicyDefinition -Name $policyName -Force
@@ -120,8 +127,6 @@ function Test-PolicyDefinitionMode
     Assert-AreEqual True $remove
 
     # repeat the same four tests at management group
-    $managementGroup = 'AzGovTest8'
-
     # make a policy definition with non-default mode, get it back and validate
     $expected = New-AzureRMPolicyDefinition -ManagementGroupName $managementGroup -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Mode All -Description $description
     $actual = Get-AzureRMPolicyDefinition -ManagementGroupName $managementGroup -Name $policyName
@@ -167,7 +172,7 @@ function Test-PolicyDefinitionMode
     Assert-AreEqual True $remove
 
     # repeat the same four tests at subscription id
-    $subscriptionId = 'e8a0d3c2-c26a-4363-ba6b-f56ac74c5ae0'  # AIMES Deployment Test
+    $subscriptionId = $subscriptionId = (Get-AzureRmContext).Subscription.Id
 
     # make a policy definition with non-default mode, get it back and validate
     $expected = New-AzureRMPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Mode All -Description $description
@@ -413,6 +418,12 @@ function Test-PolicySetDefinitionCRUD
     Assert-NotNull($actual.Properties.Metadata)
     Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
 
+    # ensure that only custom set definitions are returned using the custom flag
+    $list = Get-AzureRmPolicySetDefinition -Custom
+    Assert-True { $list.Count -gt 0 }
+    $builtIns = $list | Where-Object { $_.Properties.policyType -ieq 'BuiltIn' }
+    Assert-True { $builtIns.Count -eq 0 }
+
     # clean up
     $remove = Remove-AzureRMPolicySetDefinition -Name $policySetDefName -Force
     Assert-AreEqual True $remove
@@ -637,7 +648,6 @@ function Test-PolicyDefinitionCRUDAtManagementGroup
 {
     # setup
     $policyName = Get-ResourceName
-    $managementGroup = 'AzGovTest8'
 
     # make a policy definition, get it back and validate
     $expected = New-AzureRMPolicyDefinition -Name $policyName -ManagementGroupName $managementGroup -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Mode Indexed -Description $description
@@ -721,7 +731,6 @@ function Test-PolicySetDefinitionCRUDAtManagementGroup
     # setup
     $policySetDefName = Get-ResourceName
     $policyDefName = Get-ResourceName
-    $managementGroup = 'AzGovTest8'
 
     # make a policy definition and policy set definition that references it, get the policy set definition back and validate
     $policyDefinition = New-AzureRMPolicyDefinition -Name $policyDefName -ManagementGroupName $managementGroup -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
@@ -1064,7 +1073,6 @@ function Test-RemovePolicyDefinitionParameters
     $subscriptionId = (Get-AzureRmContext).Subscription.Id
     $goodScope = "/subscriptions/$subscriptionId"
     $goodId = "$goodScope/providers/Microsoft.Authorization/policyDefinitions/$someName"
-    $goodManagementGroup = 'AzGovTest8'
     $goodObject = Get-AzureRmPolicyDefinition -Builtin | select -First 1
 
     # validate with no parameters
@@ -1074,7 +1082,7 @@ function Test-RemovePolicyDefinitionParameters
     Assert-ThrowsContains { Remove-AzureRmPolicyDefinition -Name $someName -Id $someId } $parameterSetError
     $ok = Remove-AzureRmPolicyDefinition -Name $someName -Force
     Assert-AreEqual True $ok
-    $ok = Remove-AzureRmPolicyDefinition -Name $someName -ManagementGroupName $goodManagementGroup -Force
+    $ok = Remove-AzureRmPolicyDefinition -Name $someName -ManagementGroupName $managementGroup -Force
     Assert-AreEqual True $ok
     $ok = Remove-AzureRmPolicyDefinition -Name $someName -SubscriptionId $subscriptionId -Force
     Assert-AreEqual True $ok
@@ -1209,7 +1217,6 @@ function Test-RemovePolicySetDefinitionParameters
     $subscriptionId = (Get-AzureRmContext).Subscription.Id
     $goodScope = "/subscriptions/$subscriptionId"
     $goodId = "$goodScope/providers/Microsoft.Authorization/policySetDefinitions/$someName"
-    $goodManagementGroup = 'AzGovTest8'
     $goodObject = Get-AzureRmPolicySetDefinition -Builtin | select -First 1
 
     # validate with no parameters
@@ -1219,7 +1226,7 @@ function Test-RemovePolicySetDefinitionParameters
     Assert-ThrowsContains { Remove-AzureRmPolicySetDefinition -Name $someName -Id $someId } $parameterSetError
     $ok = Remove-AzureRmPolicySetDefinition -Name $someName -Force
     Assert-AreEqual True $ok
-    $ok = Remove-AzureRmPolicySetDefinition -Name $someName -ManagementGroupName $goodManagementGroup -Force
+    $ok = Remove-AzureRmPolicySetDefinition -Name $someName -ManagementGroupName $managementGroup -Force
     Assert-AreEqual True $ok
     $ok = Remove-AzureRmPolicySetDefinition -Name $someName -SubscriptionId $subscriptionId -Force
     Assert-AreEqual True $ok
