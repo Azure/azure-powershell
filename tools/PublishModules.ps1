@@ -106,7 +106,7 @@ function Get-Directories {
     PROCESS {
         $packageFolder = "$PSScriptRoot\..\artifacts"
 
-        $resourceManagerRootFolder = "$packageFolder\..\$buildConfig"
+        $resourceManagerRootFolder = "$packageFolder\$buildConfig"
 
         Write-Output -InputObject $packageFolder, $resourceManagerRootFolder
     }
